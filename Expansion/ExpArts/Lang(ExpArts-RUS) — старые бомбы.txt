@@ -1,0 +1,2510 @@
+FormInfo ^{
+    br=<br>
+}
+Script ^{
+	Mod_ExpArts ~{
+		TimerSet=Таймер установлен на <Data1> дн.
+		WillExplodeIn=<br>Детонирует через: <Data1> дн.
+		WillBeActivatedIn=<br>Сработает через: <Data1> дн.
+	}
+}
+Artefacts ^{
+	ArtArtefactor ^{
+		Description=Артефактор - переходник для подключения артефактов. В его схеме используется принцип кристаллического инвертирования сигнала, поэтому он позволяет подключить <clr>три<clrEnd> артефакта вместо одного дроида.
+		Name=Артефактор
+		Text=Разветвитель для подключения редких видов оборудования. Позволяет использовать коннектор дроида для подключения <clr>трёх<clrEnd> артефактов. Дополнительные шины питания и передачи данных дают возможность <clr>Пролонгеру<clrEnd>, <clr>Вероятностному анализатору<clrEnd>, <clr>Сканерному кэшу<clrEnd>, <clr>Хаскеру_PROx64<clrEnd> и <clr>Биомиру<clrEnd> работать в режиме ограниченной функциональности из трюма корабля, не занимая слот нестандартного оборудования.
+		OnActCodeTypes=t_OnPlayerTalkedWithShip,t_OnShipTalkedWithPlayer,t_OnStep
+		OnActStepTypes=11
+		OnActCode ^{
+			01=if(!ItemIsInUse(CurItem()))exit;
+			02=dword ship=ScriptItemActShip();
+			03=if(!ship)exit;
+			04=if(!ItemDurability(CurItem()))exit;
+			05=if(ArtefactTypeInUse(ship,'RNDart_03'))exit;
+			06=int hasker_check=0;
+			07=for(int i=0;i<ShipArts(ship);i=i+1)
+			08 ^{
+				01=dword art=ShipArts(ship,i);
+				02=if(ItemType(art)==t_Artefact)
+				03 ^{
+					01=if(EquipmentImageName(art)=='RNDart_03')
+					02 ^{
+						01=if(ItemDurability(art))
+						02 ^{
+							01=hasker_check=1;
+							02=break;
+						}
+					}
+				}
+			}
+			09=if(hasker_check)
+			10 ^{
+				01=if(ScriptItemActionType(t_OnStep,11))
+				02 ^{
+					01=CreateActCodeEvent(t_OnStep,art,ship,0,0,11);
+				}
+				03=if(ScriptItemActionType(t_OnPlayerTalkedWithShip) || ScriptItemActionType(t_OnShipTalkedWithPlayer))
+				04 ^{
+					01=if(ScriptItemActionType(t_OnPlayerTalkedWithShip))CreateActCodeEvent(t_OnPlayerTalkedWithShip,art,ship,ScriptItemActObject1(),0,0);
+					02=else CreateActCodeEvent(t_OnShipTalkedWithPlayer,art,ship,ScriptItemActObject1(),0,0);
+				}
+			}
+		}
+	}
+    CustomArtefacts ^{
+        RNDart_01 ^{
+            Broken=(не функционирует)
+            BrokenInBattle=Меткое вражеское попадание повредило энергетический пакет <color=255,240,100>Техдиструптора</color>. Устройство более не функционально.
+            BrokenInUse=<color=255,240,100>Техдиструптор</color> израсходовал свой энергетический ресурс и нуждается в перезарядке.
+            Name=Техдиструптор
+			CountsAs=ArtSplinter
+			SharedUse=0
+			SharedEffect=0
+			OnActCodeTypes=t_OnWeaponShot
+            OnActCode ^{
+				01=if(!ItemIsInUse(CurItem()))exit;
+				02=if(!ScriptItemActShip())exit;
+                03=if(!ItemDurability(CurItem()))exit;
+                04=if(ScriptItemActionType(t_OnWeaponShot))
+                05 ^{
+                    01=if(ObjectType(ScriptItemActObject1())!=4 && ObjectType(ScriptItemActObject1())!=5)exit;
+                    02=str weapon_type='';
+                    03=if(ItemType(ScriptItemActObject2())==t_CustomWeapon)
+                    04 ^{
+                        01=if(GetCustomWeaponPrimaryDamageType(CustomWeaponType(ScriptItemActObject2()))==1)weapon_type='Splinter';
+                        02=else exit;
+                    }
+                    05=else weapon_type=CT('Items.Weapon.Stats.'+(ItemType(ScriptItemActObject2())-t_DefGenerator)+'.DamageSet');
+                    06=if(findsubstr(weapon_type,'Splinter')>=0)
+                    07 ^{
+                        01=int shot=Rnd(1,100);
+                        02=int shot_chance=25;
+						//Повышенный шанс игнора брони для ЧДшного оружия отключён во избежание абуза оборудования клисан
+                        //03=if(ItemOwner(ScriptItemActObject2())==6)shot_chance=40;
+                        04=if(shot_chance>=shot)
+                        05 ^{
+                            01=int damag=(ScriptItemActParam()+ShipArmor(ScriptItemActObject1()))*100;
+                            02=damag=damag/(100-ShipProtectability(ScriptItemActObject1()));
+                            03=ScriptItemActParam(damag);
+                        }
+                    }
+					08=if(!ItemDurability(CurItem()) && ScriptItemActShip()==Player())Ether(8,'',CT('Artefacts.CustomArtefacts.RNDart_01.BrokenInUse'));
+                }
+            }
+            Size=7
+			Cost=2100
+            Text=Переносит на снаряды осколочного оружия нейтральный статический заряд и увеличивает их начальную скорость, в результате чего броня корпуса цели и генератор защитного поля игнорируются с вероятностью в <clr>25%<clrEnd>.
+        }
+        RNDart_02 ^{
+            Broken=(изношен)
+            BrokenInBattle=В результате полученного в бою удара купол <color=255,240,100>Рефлектора</color> треснул пополам. В таком состоянии устройство не способно отражать урон.
+            BrokenInUse=<color=255,240,100>Рефлектор</color> сильно износился и более не функционирует. Требуется капитальный ремонт.
+            Name=Рефлектор
+			CountsAs=ArtEnergyDef
+			SharedUse=0
+			SharedEffect=0
+			OnActCodeTypes=t_OnTakingDamage,t_OnTakingDamageEn
+            OnActCode ^{
+				01=dword cur_item=CurItem();
+				02=if(!ItemDurability(cur_item))exit;
+			    03=if(!ItemIsInUse(cur_item))exit;
+				04=dword cur_ship=ScriptItemActShip();
+				05=if(!cur_ship)exit;
+				//Отражаем урон от звезды
+                06=if(ScriptItemActionType(t_OnTakingDamage))
+				07 ^{
+					01=if(ObjectType(ScriptItemActObject1())==1 && ItemDurability(cur_item))//Убеждаемся, что урон был нанесён звездой
+					02 ^{
+						01=ItemDurability(cur_item,ItemDurability(cur_item)-3);
+						02=int i=0;
+						03=dword ship=0;
+						04=dword damag=ScriptItemActParam();
+						05=if(CustomArtData(cur_item,3)!=CurTurn())
+						06 ^{
+							01=if(ShipStar(Player())==ShipStar(cur_ship) && ShipInNormalSpace(Player()))ShowEffect('Weapon.13',6,cur_ship,cur_ship,0,0,1,0,0,0);
+							02=CustomArtData(cur_item,3,CurTurn());
+						}
+						//Перенаправляем урон от звезды на враждебные корабли (работает только в эквипе рейнджера)
+						07=if(ShipTypeN(cur_ship)==1)
+						08 ^{
+							01=for(i=0;i<StarShips(ShipStar(cur_ship));i=i+1)
+							02 ^{
+								01=ship=StarShips(ShipStar(cur_ship),i);
+								02=if(Dist(ship,cur_ship)>330)continue;
+								03=if(RelationToRanger(ship,cur_ship)>=10)continue;
+								04=if(!ShipInNormalSpace(ship))continue;
+								//Снижение дамага враждебным кораблям на треть при большой дистанции
+								05=if(Dist(ship,cur_ship)>165)damag=damag-(damag/3);
+								06=if(HullHP(ship)>damag)HullHP(ship,HullHP(ship)-damag);
+								07=else ShipDestroy(ship,1);
+								08=if(ShipStar(Player())==ShipStar(cur_ship) && ShipInNormalSpace(Player()))ShowEffect('Weapon.NoGraph',0,ship,cur_ship,damag,0,0,255,255,255);
+							}
+						}
+						09=if(!ItemDurability(cur_item) && cur_ship==Player())Ether(8,'',CT('Artefacts.CustomArtefacts.RNDart_02.BrokenInUse'));
+						10=ScriptItemActParam(0);
+					}
+				}
+                08=if(ScriptItemActionType(t_OnTakingDamageEn))
+                09 ^{
+					01=if(ItemDurability(cur_item))
+					02 ^{
+						01=ScriptItemActParam(ScriptItemActParam()-ScriptItemActParam()/5);
+						02=if(Rnd(1,50)>50)ItemDurability(cur_item,ItemDurability(cur_item)-1);
+						03=if(!ItemDurability(cur_item) && cur_ship==Player())Ether(8,'',CT('Artefacts.CustomArtefacts.RNDart_02.BrokenInUse'));
+					}
+                }
+            }
+            Size=12
+			Cost=1600
+            Text=Создаёт вокруг корабля особое поле, которое полностью отражает тепловое и ионизирующее излучение, исходящее от звезды. При этом всё отражённое таким образом излучение <clr>перенаправляется<clrEnd> на враждебно настроенные корабли, находящиеся в достаточной близости от носителя <clr>Рефлектора<clrEnd>.<br>В качестве побочного эффекта, увеличивает защиту от энергетического оружия на <clr>20%<clrEnd>.
+        }
+		RNDart_03 ^{
+            Broken=(отключён)
+            BrokenInBattle=При выполнении манёвра уклонения <color=255,240,100>Хаскер_PROx64</color> выпал из своего гнезда. От удара о палубу экран прибора разбился и теперь требует замены.
+            BrokenInUse=Перепад напряжения энергетических узлов корабля вызвал короткое замыкание в <color=255,240,100>Хаскере_PROx64</color>. Требуется замена оплавленных контактов и главных наноплат.
+			Name=Хаскер_PROx64
+			CountsAs=ArtMiniExpl
+			SharedUse=0
+			SharedEffect=0
+			OnActCodeTypes=t_OnPlayerTalkedWithShip,t_OnShipTalkedWithPlayer,t_OnItemDeEquip,t_OnStep
+			OnActStepTypes=11
+            OnActCode ^{
+				01=dword cur_item=CurItem();
+				02=if(ScriptItemActionType(t_OnItemDeEquip))
+				03 ^{
+					//Обнуляем данные Хаскера, если он был снят
+					01=CustomArtData(cur_item,1,0);
+					02=CustomArtData(cur_item,2,0);
+				}
+				04=if(!ItemDurability(cur_item))exit;
+				05=dword cur_ship=ScriptItemActShip();
+				06=if(!cur_ship)exit;
+				07=if(CustomArtData(cur_item,3)>=CurTurn())exit;
+				08=if(ScriptItemActionType(t_OnStep,11))
+				09 ^{
+					//Выдача доп. денег не-игроку рейнджеру при рэкете
+					01=if(cur_ship!=Player())
+					02 ^{
+						01=if(ShipTypeN(cur_ship)==1)
+						02 ^{
+							01=if(ShipInNormalSpace(cur_ship))
+							02 ^{
+								01=if(CustomArtData(cur_item,1)==0 || CustomArtData(cur_item,2)==0)
+								02 ^{
+									01=CustomArtData(cur_item,1,ShipStatus(cur_ship,1));
+									02=CustomArtData(cur_item,2,ShipMoney(cur_ship));
+								}
+								03=else
+								04 ^{
+									01=if(CustomArtData(cur_item,1)!=ShipStatus(cur_ship,1))
+									02 ^{
+										01=if(CustomArtData(cur_item,2)!=ShipMoney(cur_ship))
+										02 ^{
+											01=ShipMoney(cur_ship,ShipMoney(cur_ship)+(((ShipMoney(cur_ship)-CustomArtData(cur_item,2))*Rnd(55,95))/100));
+											02=ItemDurability(cur_item,ItemDurability(cur_item)-5);
+											//Задаём число дней кулдауна Хаскера
+											03=CustomArtData(cur_item,3,CurTurn()+Rnd(1,3));
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+                10=if(ScriptItemActionType(t_OnPlayerTalkedWithShip) || ScriptItemActionType(t_OnShipTalkedWithPlayer))
+                11 ^{
+                    01=int i=0;
+                    02=dword ship=ScriptItemActObject1();
+                    03=int j=0;
+                    04=int drp_scs=0;
+                    05=str text_2;
+                    06=int money=0;
+                    07=str text;
+                    08=for(i=GalaxyEvents()-1;i>=0;i=i-1)
+                    09 ^{
+                        01=if(GalaxyEventDate(i)<CurTurn())break;
+                        02=if(GalaxyEventType(i)=='PlayerExtortsMoney' || GalaxyEventType(i)=='PlayerAcceptsMoneyForTruce')
+                        03 ^{
+							//Задаём количество дополнительных денег, "украденных" Хаскером
+							01=int how_much;
+							02=if(ItemIsInUse(cur_item))how_much=Rnd(55,95);
+							03=else how_much=Rnd(25,50);
+							04=money=(GalaxyEventData(i,0)*how_much)/100;
+							05=ShipMoney(Player(),ShipMoney(Player())+money);
+							06=text=Format('<color=255,240,100>Хаскер_PROx64</color> произвёл успешный взлом! На ваш счёт поступают дополнительные средства в размере MONEY cr.','MONEY',money);
+							07=Ether(0,'',text);
+							08=Sound('Sound.Sell');
+							09=ItemDurability(cur_item,ItemDurability(cur_item)-5);
+							//Задаём число дней кулдауна Хаскера
+							10=CustomArtData(cur_item,3,CurTurn()+Rnd(1,3));
+                        }
+                        04=else if(GalaxyEventType(i)=='PlayerExtortsGoods')
+                        05 ^{
+                            01=for(j=t_Food;j<=t_Narcotics;j=j+1)
+                            02 ^{
+                                01=if(GoodsCount(ship,j)>1)
+                                02 ^{
+									//Задаём количество дополнительного груза, который дропнет цель
+									01=int how_much2;
+									02=if(ItemIsInUse(cur_item))how_much2=Rnd(2,GoodsCount(ship,j));
+									03=else how_much2=Rnd(1,GoodsCount(ship,j)-1);
+                                    04=GoodsDrop(ship,j,how_much2);
+                                    05=drp_scs=1;
+                                }
+                                03=if(drp_scs==1 && j==t_Narcotics)
+                                04 ^{
+                                    01=text_2='<color=255,240,100>Хаскер_PROx64</color> произвёл успешный взлом грузовых систем корабля, готовьтесь принимать чужой груз!';
+                                    02=Ether(0,'',text_2);
+                                    03=ItemDurability(cur_item,ItemDurability(cur_item)-5);
+									//Задаём число дней кулдауна Хаскера
+                                    04=CustomArtData(cur_item,3,CurTurn()+Rnd(1,3));
+                                }
+                            }
+                        }
+                    }
+                    10=if(!ItemDurability(cur_item) && cur_ship==Player())Ether(8,'',CT('Artefacts.CustomArtefacts.RNDart_03.BrokenInUse'));
+                }
+				12=if(!ItemIsInUse(cur_item))
+				13 ^{
+					//Обнуляем данные Хаскера, если он не надет (нужно для запуска его акткода Артефактором из трюма)
+					01=CustomArtData(cur_item,1,0);
+					02=CustomArtData(cur_item,2,0);
+				}
+            }
+            Size=5
+			Cost=1100
+            Text=Налаживает неустойчивое скрытое соединение с другим кораблём через канал связи обыкновенного коммуникатора. При перечислении денег на счёт капитана корабля, использующего <color=255,240,100>Хаскер_PROx64</color>, либо при открытии створок грузового шлюза, капитан судна, подвергнутого атаке <color=255,240,100>Хаскера</color>, рискует недосчитаться на своём счету или в трюме несколько <color=255,240,100>большей суммы</color>, или <color=255,240,100>части груза</color>, чем он планировал передавать вымогателю.
+        }
+        RNDart_04 ^{
+			Broken=(сломан)
+			BrokenInBattle=В бою была повреждена вычислительная система <color=255,240,100>Бустера</color>! Из-за высокой вероятности самопроизвольной детонации ракет система безопасности отключила артефакт.
+			BrokenInUse=Длительный срок эксплуатации износил калибровочные узлы <color=255,240,100>Бустера</color>, ваш корабль теперь цель номер <color=255,240,100>1</color>. Требуется ремонт.
+			Name=Бустер
+			CountsAs=ArtFastRacks
+			SharedUse=0
+			SharedEffect=0
+			OnActCodeTypes=t_OnMissileShot
+			OnActCode ^{
+				01=dword ship=ScriptItemActShip();
+				02=if(!ship)exit;
+                03=if(!ItemDurability(CurItem()))exit;
+                04=if(ScriptItemActionType(t_OnMissileShot))
+                05 ^{
+                    01=if(EqModule(ScriptItemActObject2())>-1)
+                    02 ^{
+                        01=if(EqModule(ScriptItemActObject2())==FindBonusByCustomTag('empty_mm'))exit;
+                    }
+					03=dword missile=ScriptItemActObject1();
+                    04=MissileAngle(missile,Angle(WeaponTarget(ScriptItemActObject2()),missile));
+                    05=MissileLive(missile,Rnd(500,600));
+                    06=MissileSpeed(missile,MissileSpeed(missile)+Rnd(900,1400));
+					07=if(!ItemDurability(CurItem()) && ship==Player())Ether(8,'',CT('Artefacts.CustomArtefacts.RNDart_04.BrokenInUse'));
+                }
+            }
+            Size=18
+			Cost=2500
+			Text=Оптимизирует системы наведения пусковых установок, что позволяет им наводить ракеты на цель ещё перед запуском. Кроме того, перераспределяет расход топлива, увеличивая скорость ракет в ущерб максимальной продолжительности их полёта.
+        }
+		Null-generator ^{
+			Name=Нуль-генератор
+            Size=5
+			Cost=2500
+			NoWear=1
+			Text=Искривляет темпоральное поле вокруг корабля и убирает гравитационные помехи из прыжкового контура двигателя, тем самым позволяя совершить <color=255,240,100>нуль-переход из любой точки</color> пространства. К сожалению, после первого же подобного перехода источник питания генератора полностью истощается, а потому использовать устройство повторно физически невозможно.
+        }
+		Stun_bomb ^{
+			Name=Оглушающая бомба
+            Size=5
+			Cost=1500
+			NoWear=1
+			Text=Сложное электронное устройство, уникальное наследие древности, при активации генерирующее поток излучения неизвестной доселе природы. Излучение подавляет любую высшую нервную деятельность, равно как и логику любых типов компьютеров<br>на срок от <color=255,240,100>5</color> до <color=255,240,100>15</color> суток.
+        }
+		EMP_bomb ^{
+			Name=ЭМП бомба
+            Size=5
+			Cost=1500
+			NoWear=1
+			Text=При активации генерирует мощный электромагнитный импульс. Наносит тяжёлые повреждения всей электронике и полностью выводит из строя двигатели на обширной территории.
+        }
+    }
+}
+MicroModuls ~{
+    ExpArts_Ionizer ^{
+        Cost=100
+        CustomTag=dt_Shock
+        Equipments=WMissile
+        Fragility=117
+        Name=Ионизатор
+        Owner=Any
+        Priority=50
+        Size=100
+        Text=Микромодуль второго уровня. Модифицирует механизм заряжания ракетного оружия так, что в результате каждая ракета при попадании производит ионизацию поверхности<br>корпуса цели, тем самым увеличивая<br>наносимый ей урон.
+		Text=<clr><clrEnd>
+        Text=Дополнительный эффект: <clr>ионизация<clrEnd>
+        Text=Надёжность оружия: <clr>-15%<clrEnd>
+        WeaponMods=Shock
+    }
+    ExpArts_Decelerator ^{
+        CustomTag=dt_Decelerate
+        Equipments=Any
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Декалератор<clrEnd>
+        ExText=<color=248,252,248>Вместе с энергетическим импульсом при выстреле высвобождается поток заряженных частиц, подавляющих работу ускорительного контура двигателя, что приводит к существенному снижению скорости цели. К сожалению, в момент активации модифицированный излучатель генерирует избыточное<br>количество тепла, что не лучшим образом сказывается на долговечности орудия.</color>
+		ExText=<clr><clrEnd>
+		ExText=Дополнительный эффект: <clr>замедление цели<clrEnd>
+		ExText=Надёжность оружия: <clr>-15%<clrEnd>
+        Fragility=117
+        Name=dt_Modify_Decelerator
+		Owner=None
+        Priority=0
+        WeaponMods=Decelerate,DecelerateA,DecelerateAEx
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+    }
+    ExpArts_Acidius ^{
+        CustomTag=dt_Acid
+        Equipments=Any
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Асидий<clrEnd>
+        ExText=<color=248,252,248>Разрыв каждого снаряда распыляет мелкодисперсное облако особого коррозийного состава, заметно ослабляющего броню в зоне поражения. Усложнение конструкции механизма заряжания, однако, негативным образом отразилось на надёжности орудия.</color>
+		ExText=<clr><clrEnd>
+		ExText=Дополнительный эффект: <clr>ослабление брони<clrEnd>
+		ExText=Надёжность оружия: <clr>-15%<clrEnd>
+        Fragility=117
+        Name=dt_Modify_Acidius
+		Owner=None
+        Priority=0
+        WeaponMods=Acid
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+    }
+	ExpArts_TillCapacitors ^{
+        CustomTag=dt_ModifyItem04
+        Equipments=Any
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Тиливые конденсаторы<clrEnd>
+        ExText=<color=248,252,248>Тиливые конденсаторы обладают повышенной ёмкостью, что позволяет накапливать большую мощность выстрела, однако эта же избыточная мощность быстрее изнашивает проводящие энергоузлы орудия, которые попросту не предназначались для распределения подобных нагрузок.</color>
+		ExText=<clr><clrEnd>
+		ExText=Сила оружия: <clr>+15<clrEnd> ед.
+		ExText=Надёжность оружия: <clr>-20%<clrEnd>
+        Fragility=125
+        Name=dt_Modify_TillCapacitors
+        Priority=0
+        bonWEnergy=15
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+    }
+    ExpArts_WeakenedLimiters ^{
+        CustomTag=dt_ModifyItem05
+        Equipments=Any
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Подкрученные ограничители<clrEnd>
+        ExText=<color=248,252,248>Блок управления стрельбой, с которого были аккуратно сняты некоторые заводские ограничения. Орудия, оснащённые таким блоком, способны вести огонь на большие дистанции, однако механизмы компенсации отдачи не выдерживают дополнительной нагрузки из-за чего быстрее выходят из строя.</color>
+		ExText=<clr><clrEnd>
+		ExText=Дальность стрельбы: <clr>+40<clrEnd> ед.
+		ExText=Надёжность оружия: <clr>-20%<clrEnd>
+        Fragility=125
+        Name=dt_Modify_WeakenedLimiters
+        Priority=0
+        bonWRadius=40
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+    }
+    ExpArts_AdditionalStowage ^{
+        CustomTag=dt_ModifyItem06
+        Equipments=Any
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Дополнительная боеукладка<clrEnd>
+        ExText=<color=248,252,248>Дополнительная боеукладка под реактивные<br>снаряды, подключённая напрямую<br>к механизму заряжания.</color>
+		ExText=<clr><clrEnd>
+		ExText=Максимальное количество зарядов: <clr>+15<clrEnd> шт.
+        Name=dt_Modify_AdditionalStowage
+        Priority=0
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+    }
+    ExpArts_FieldDensityAmplifier ^{
+        CustomTag=dt_ModifyItem07
+        Equipments=Any
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Уплотнитель поля<clrEnd>
+        ExText=<color=248,252,248>Уплотнитель защитного поля усиливает эффект, выдаваемый генератором в штатном режиме работы, однако дополнительная нагрузка на энергосистему устройства снижает его долговечность.</color>
+		ExText=<clr><clrEnd>
+		ExText=Генератор поля: <clr>+6<clrEnd> ед.
+		ExText=Надёжность генератора: <clr>-20%<clrEnd>
+        Fragility=125
+        Name=dt_Modify_FieldCompressor
+        Priority=0
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+    }
+    ExpArts_MeonChips ^{
+        CustomTag=dt_ModifyItem08
+        Equipments=Any
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Меонные чипы<clrEnd>
+        ExText=<color=248,252,248>Меонные чипы не славятся своей долговечностью, зато позволяют значительно повысить общую эффективность радара.</color>
+		ExText=<clr><clrEnd>
+		ExText=Дальность радара: <clr>+900<clrEnd> млн. км.
+		ExText=Надёжность оборудования: <clr>-20%<clrEnd>
+        Fragility=125
+        Name=dt_Modify_MeonChips
+        Priority=0
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+    }
+    ExpArts_CircuitAmplifier ^{
+        CustomTag=dt_ModifyItem09
+        Equipments=Any
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Контурный усилитель<clrEnd>
+        ExText=<color=248,252,248>Усиливает напряжение, подаваемое на сканирующий контур, что приводит к увеличению мощности сканирования. К несчастью, скорость выгорания контура также возрастает.</color>
+		ExText=<clr><clrEnd>
+		ExText=Мощность сканера: <clr>+7<clrEnd> ед.
+		ExText=Надёжность сканера: <clr>-20%<clrEnd>
+        Fragility=125
+        Name=dt_Modify_CircuitAmplifier
+        Priority=0
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+    }
+    ExpArts_ProcessorsExtreme ^{
+        CustomTag=dt_ModifyItem10
+        Equipments=Any
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Процессоры "Экстрим"<clrEnd>
+        ExText=<color=248,252,248>Процессоры "Экстрим" меняют логику поведения дроида, в результате чего тот становится менее осторожным, но в тоже время быстрее производит необходимый ремонт.</color>
+		ExText=<clr><clrEnd>
+		ExText=Эффективность дроида: <clr>+8<clrEnd> ед.
+		ExText=Надёжность дроида: <clr>-20%<clrEnd>
+        Fragility=125
+        Name=dt_Modify_ProcessorsExtreme
+        Priority=0
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+    }
+    ExpArts_SecurityReplacement ^{
+        CustomTag=dt_ModifyItem11
+        Equipments=Any
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Замена систем безопасности<clrEnd>
+        ExText=<color=248,252,248>Перекодировка и удаление некоторых систем безопасности позволили ощутимо повысить максимальную вместимость бака, однако его надёжность от такого издевательства отнюдь не улучшилась.</color>
+		ExText=<clr><clrEnd>
+		ExText=Объем бака: <clr>+20<clrEnd> ед.
+		ExText=Надёжность бака: <clr>-60%<clrEnd>
+        Fragility=250
+        Name=dt_Modify_SecurityReplacement
+        Priority=0
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+    }
+    ExpArts_HackedInjector ^{
+        CustomTag=dt_ModifyItem12
+        Equipments=Any
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Хакнутый инжектор<clrEnd>
+        ExText=<color=248,252,248>Хакнутая версия инжектора пропускает в камеру сгорания больше топлива, что ведёт к существенному приросту скорости двигателя. К несчастью, повышенное поступление топлива фактически переводит двигатель на постоянный форсированный режим, что отрицательным образом сказывается на долговечности агрегата.</color>
+		ExText=<clr><clrEnd>
+		ExText=Скорость двигателя: <clr>+200<clrEnd> ед.
+		ExText=Надёжность двигателя: <clr>-40%<clrEnd>
+        Fragility=165
+        Name=dt_Modify_HackedInjector
+        Priority=0
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+    }
+    ExpArts_ReinforcedServoDrives ^{
+        CustomTag=dt_ModifyItem13
+        Equipments=Any
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Усиленные сервоприводы<clrEnd>
+        ExText=<color=248,252,248>Захват оборудован усиленными сервоприводами, что позволяет ему захватывать предметы большего размера и веса. К сожалению, весь остальной механизм устройства на повышенную нагрузку не рассчитан, а потому выходит из строя намного раньше положенного срока.</color>
+		ExText=<clr><clrEnd>
+		ExText=Мощность захвата: <clr>+40<clrEnd> ед.
+		ExText=Надёжность захвата: <clr>-25%<clrEnd>
+        Fragility=133
+        Name=dt_Modify_ReinforcedServoDrives
+        Priority=0
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+    }
+    ExpArts_FragiliumParts ^{
+        CustomTag=dt_ModifyItem14
+        Equipments=Any
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Детали из фрагилиума<clrEnd>
+        ExText=<color=248,252,248>Самые ходовые детали в этом оборудовании были заменены на более износостойкие аналоги из фрагилиума.</color>
+		ExText=<clr><clrEnd>
+		ExText=Надёжность оборудования: <clr>+40%<clrEnd>
+        Fragility=71
+        Name=dt_Modify_FragiliumParts
+        Priority=0
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+    }
+	ExpArts_SmugglersCompartment ^{
+        CustomTag=dt_ModifyItem15
+        Equipments=Any
+        ExText=<color=248,252,248>Улучшение:</color> <clr>Отсек контрабандиста<clrEnd>
+        ExText=<color=248,252,248>На этот корабль был установлен специальный отсек для перевозки контрабанды, значительно расширивший его изначальную вместимость. Дополнительный отсек защищён от сканирования, но, к сожалению, не несёт на себе никакой брони, а потому является ослабленной зоной корпуса.</color>
+		ExText=<clr><clrEnd>
+		ExText=Размер корпуса: <clr>+25%<clrEnd>
+		ExText=Восприимчивость к урону: <clr>+15%<clrEnd>
+        FragilityEnergy=117
+        FragilitySplinter=117
+		FragilityMissile=117
+        Name=dt_Modify_SmugglersCompartment
+        Priority=0
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+    }
+    436 ^{
+        Name=Биогенный дроид I
+		BioEquip=1
+    }
+    437 ^{
+        Name=Биогенный дроид II
+		BioEquip=1
+    }
+    438 ^{
+        Name=Биогенный дроид III
+		BioEquip=1
+    }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            RNDbomb_2_infos ^{
+                Description=Экипаж корабля подвергся воздействию неизвестного излучения и временно утратил контроль над собственными действиями.
+                Icon=1
+                Name=Оглушение
+				OnActCodeTypes=t_OnEnteringForm,t_OnStep
+				OnActStepTypes=0,11
+                OnActCode ^{
+                    01=dword infos=CurInfo();
+					02=dword ship=ScriptItemActShip();
+                    03=if(ScriptItemActionType(t_OnStep,0))
+                    04 ^{
+                        01=int i;
+						02=OrderNone(ship);
+						03=for(i=1;i<=ShipCntWeapon(ship);i=i+1)
+						04 ^{
+							01=WeaponTarget(ShipWeapon(ship,i),0);
+						}
+						05=float angle=pi*(ShipAngle(ship)+90.0)/180.0;
+						06=OrderMove(ship,cos(angle)*10.0+CoordX(ship),sin(angle)*10.0+CoordY(ship));
+                    }
+					//Обработчики для конца хода
+					05=if(ScriptItemActionType(t_OnStep,11))
+                    06 ^{
+					    01=int infos_var=ShipCustomShipInfoData(0,infos,1);
+                        //Снятие "оглушения"
+						02=if(!infos_var)
+                        03 ^{
+                            01=OrderLock(ship,0);
+							02=ShipSpecialBonuses(ship,bonHook,ShipSpecialBonuses(ship,bonHook)+50000);
+							03=if(ship==Player())
+							04 ^{
+								//Восстанавливаем энергию, если корпус - ТИ
+								01=if(HullSpecial(Player())>-1)
+								02 ^{
+									01=if(BonusNumInCfg(HullSpecial(Player()))==490)CapitalShipStats(ShipItems(Player(),0),1,1000);
+								}
+								03=if(ShipCustomShipInfoData(0,infos,3)!=0)
+								04 ^{
+									01=int b=ShipCustomShipInfoData(0,infos,3)%10;
+									02=while(b)
+									03 ^{
+										01=InterfaceState('StarMap','set_button_'+b+'_c',1);
+										02=b=b-1;
+									}
+									04=if(int(ShipCustomShipInfoData(0,infos,3)/10)>0)
+									05 ^{
+										01=InterfaceState('StarMap','Klesh_panel',1);
+									}
+									06=if(int(ShipCustomShipInfoData(0,infos,3)/10)>1)
+									07 ^{
+										01=InterfaceState('StarMap','ppb_panel',1);
+									}
+								}
+							}
+                            05=if(ShipCustomShipInfoData(0,infos,3)==1)NoTalkToShip(ship,0);
+                            06=ShipDeleteCustomShipInfo(ship,'RNDbomb_2_infos');
+                        }
+						//Отсчитываем ход и вешаем автопропуск фильма
+                        04=else
+						05 ^{
+							01=ShipCustomShipInfoData(0,infos,1,infos_var-1);
+							02=if(ship==Player())FilmFlags(3,1);
+							//Каждый ход вешаем на все корабли системы запрет на разговор и скан (если он и так на них не висит)
+							03=if(ship==Player())
+							04 ^{
+								01=for(i=0;i<StarShips(ShipStar(Player()));i=i+1)
+								02 ^{
+									01=if(!NoTalkToShip(StarShips(ShipStar(Player()),i)) || !NoScanToShip(StarShips(ShipStar(Player()),i)))
+									02 ^{
+										01=ShipAddCustomShipInfo(StarShips(ShipStar(Player()),i),'RNDbomb_2_PlayerInfos','NoShow',1);
+										02=if(!NoTalkToShip(StarShips(ShipStar(Player()),i)))
+										03 ^{
+											01=NoTalkToShip(StarShips(ShipStar(Player()),i),1);
+											02=ShipCustomShipInfoData(StarShips(ShipStar(Player()),i),ShipFindCustomShipInfoByType(StarShips(ShipStar(Player()),i),'RNDbomb_2_PlayerInfos'),2,1);
+										}
+										04=if(!NoScanToShip(StarShips(ShipStar(Player()),i)))
+										05 ^{
+											01=NoScanToShip(StarShips(ShipStar(Player()),i),1);
+											02=ShipCustomShipInfoTextData(StarShips(ShipStar(Player()),i),ShipFindCustomShipInfoByType(StarShips(ShipStar(Player()),i),'RNDbomb_2_PlayerInfos'),1,'1');
+										}
+									}
+								}
+							}
+						}
+					}
+					//Блокировка заходов на формы
+					07=if(ScriptItemActionType(t_OnEnteringForm))
+					08 ^{
+						01=str cur_form=CurrentForm();
+						02=if(cur_form=='Ship' || cur_form=='Info' || cur_form=='Rating' || cur_form=='Galaxy' || PlayerBridge())
+						03 ^{
+							01=MessageBox('Вы подверглись воздействию неизвестного излучения и временно утратили контроль над собственными действиями.',34);
+							02=FormChange('StarMap');
+						}
+						//Восстанавливаем блок смены комплектаций (кнопки автоматически восстанавливаются после перезахода на Ship)
+						04=else if(cur_form=='StarMap')
+						05 ^{
+							01=if(ShipCustomShipInfoData(Player(),infos,3)!=0)
+							02 ^{
+								01=int k=ShipCustomShipInfoData(0,infos,3)%10;
+								02=while(k)
+								03 ^{
+									01=InterfaceState('StarMap','set_button_'+k+'_c',0);
+									02=k=k-1;
+								}
+							}
+						}
+					}
+                }
+            }
+			RNDbomb_2_PlayerInfos ^{
+                Description=Эта инфошка снимает с корабля запрет на разговор и скан в конце хода
+                Icon=1
+                Name=
+				OnActCodeTypes=t_OnStep
+				OnActStepTypes=11
+                OnActCode ^{
+                    01=if(ScriptItemActionType(t_OnStep,11))
+                    02 ^{
+						01=dword infos=CurInfo();
+						02=dword ship=ScriptItemActShip();
+						03=if(!ShipCustomShipInfoData(0,infos,1))
+						04 ^{
+							01=if(ShipCustomShipInfoData(0,infos,2)==1)NoTalkToShip(ship,0);
+							02=if(ShipCustomShipInfoTextData(0,infos,1)=='1')NoScanToShip(ship,0);
+							03=ShipDeleteCustomShipInfo(ship,'RNDbomb_2_PlayerInfos');
+						}
+						05=else ShipCustomShipInfoData(0,infos,1,0);
+                    }
+                }
+            }
+        }
+    }
+}
+//Значения UselessItemData(bomb,2)
+//UselessItemData(bomb,2)==0 - бомба без таймера, не взведена, лежит в трюме
+//UselessItemData(bomb,2)==1 - бомба без таймера, не взведена, выброшена в космос
+//UselessItemData(bomb,2)==-1 - бомба с таймером, не взведена, лежит в трюме
+//UselessItemData(bomb,2)==-2 - бомба с таймером, взведена, лежит в космосе (обезвредить уже нельзя)
+
+//UselessItemData(bomb,2)==-3 - бомба с контактным взрывателем, не взведена, лежит в трюме
+//UselessItemData(bomb,2)==-4 - бомба с контактным взрывателем, взведена, лежит в космосе (обезвредить уже нельзя)
+//UselessItemData(bomb,2)==-5 - бомба с таймером и контактным взрывателем, не взведена, лежит в трюме
+//UselessItemData(bomb,2)==-6 - бомба с таймером и контактным взрывателем, взведена, лежит в космосе (обезвредить уже нельзя)
+//UselessItemData(bomb,2)==2 - бомба уже детонировала и не может сделать это ещё раз, где бы она ни лежала
+
+//UselessItemData(bomb,2)==-3 - бомба уже детонировала и не может сделать это ещё раз, где бы она ни лежала
+UselessItems ^{
+    RNDbomb_1 ^{
+        Cost=Big
+        Name=Кварковая бомба
+		OnActCodeTypes=t_OnStep,t_OnDropItem,t_OnDropItemFixed,t_OnItemPickUp,t_OnItemHit,t_OnItemDestroy
+		OnActStepTypes=1,5
+        OnActCode ^{
+			01=dword bomb=CurItem();
+			02=if(UselessItemData(bomb,2)==-3)exit;//Бомба уже детонировала и не может бахнуть повторно
+			03=if(ScriptItemActionType(t_OnDropItem) || ScriptItemActionType(t_OnDropItemFixed))
+            04 ^{
+				01=if(ScriptItemActObject1()==bomb)
+				02 ^{
+					01=if(UselessItemData(bomb,2)==0 || UselessItemData(bomb,2)==-1)
+					02 ^{
+						//Запоминаем систему, в которой выкинули бомбу
+						01=UselessItemData(bomb,3,Id(ShipStar(ScriptItemActShip())));
+						//Включаем возможность детонации (выбросили в космос)
+						02=if(UselessItemData(bomb,2)==0)
+						03 ^{
+							01=UselessItemData(bomb,2,1);
+						}
+						//Активируем таймер (выбросили в космос с таймером)
+						04=else if(UselessItemData(bomb,2)==-1)
+						05 ^{
+							01=UselessItemText(bomb,CT('UselessItems.'+EquipmentImageName(bomb)+'.Text')+substr(CT('Cheat.Ok'),0,2)+CT('Script.Mod_ExpArts.WillExplodeIn'));
+							02=UselessItemData(bomb,2,-2);
+						}
+					}
+				}
+			}
+			05=if(ScriptItemActionType(t_OnItemPickUp))
+            06 ^{//Выключаем возможность детонации (чтобы не бахала в трюме)
+				01=if(ScriptItemActObject1()==bomb)
+				02 ^{
+					01=if(UselessItemData(bomb,2)==1)
+					02 ^{
+						01=UselessItemData(bomb,2,0);
+					}
+				}
+			}
+            07=if(ScriptItemActionType(t_OnStep,1))
+            08 ^{//Считаем дни до детонации
+				01=if(UselessItemData(bomb,2)==-2)
+				02 ^{
+					01=if(UselessItemData(bomb,1))
+					02 ^{
+						01=if(UselessItemData(bomb,1)==1)UselessItemData(bomb,1,UselessItemData(bomb,1)-2);
+						02=else UselessItemData(bomb,1,UselessItemData(bomb,1)-1);
+					}
+				}
+            }
+			//Происходит детонация бомбы
+			09=int temp_flag=0;
+			10=if(ScriptItemActionType(t_OnItemHit))temp_flag=(ItemType(ScriptItemActObject1())==t_Weapon16 || ObjectType(ScriptItemActObject1())==7);
+			11=else if(ScriptItemActionType(t_OnItemDestroy))temp_flag=(UselessItemData(bomb,2)!=0 && UselessItemData(bomb,2)!=-1);
+			12=else if(UselessItemData(bomb,1)==-1 && ScriptItemActionType(t_OnStep,5))temp_flag=1;
+			13=else if(ScriptItemActionType(t_OnItemPickUp))temp_flag=(ScriptItemActObject1()==bomb && UselessItemData(bomb,2)==-2);
+			14=if(temp_flag)
+            15 ^{
+				01=dword ship;
+				02=dword item;
+				03=dword pick_ship=0;
+				04=dword bomb_star=GalaxyStar(UselessItemData(bomb,3)-1);
+				05=int k=0;
+				06=int Tdist=0;
+				07=int Tdamage=0;
+				08=int Edamage=0;
+				09=int targetInfo=-2;
+				10=if(ScriptItemActionType(t_OnItemHit))ItemDestroy(bomb,0);
+				11=if(ScriptItemActionType(t_OnItemPickUp))
+				12 ^{
+					01=pick_ship=ScriptItemActShip();
+					02=OrderNone(pick_ship);
+					//Перед активацией эффекта обязательно делаем проверку на нахождение в пространстве системы игрока (!!!)
+					03=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))
+					04 ^{
+						01=targetInfo=ShipFindCustomShipInfoByType(pick_ship,'LifeboatLaunchInfo');
+						02=if(targetInfo==-1)ShowStaticEffect('RNDbomb_1BAM',CoordX(pick_ship),CoordY(pick_ship));
+						03=else ShipCustomShipInfoTextData(pick_ship,targetInfo,2,'ShowBAMEffect');
+					}
+				}
+				13=else
+				14 ^{
+					//Перед активацией эффекта обязательно делаем проверку на нахождение в пространстве системы игрока (!!!)
+					01=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))
+					02 ^{
+						01=if(ScriptItemActionType(t_OnItemHit))
+						02 ^{
+							01=if(ItemType(ScriptItemActObject1())==t_Weapon16 || ObjectType(ScriptItemActObject1())==7)
+							02 ^{
+								//Отдельная анимация (по длительности) для эсодафера
+								01=if(ItemType(ScriptItemActObject1())==t_Weapon16)ShowStaticEffect('RNDbomb_1SlowBAM',CoordX(bomb),CoordY(bomb));
+								//Отдельная анимация (по длительности) для попадания ракеты/торпеды
+								02=if(ObjectType(ScriptItemActObject1())==7)ShowStaticEffect('RNDbomb_1FastBAM',CoordX(bomb),CoordY(bomb));
+							}
+						}
+						03=else ShowStaticEffect('RNDbomb_1BAM',CoordX(bomb),CoordY(bomb));
+					}
+				}
+				//Дамажим корабли в радиусе взрыва
+				15=for(k=0;k<StarShips(bomb_star);k=k+1)
+				16 ^{
+					01=ship=StarShips(bomb_star,k);
+					02=if(ScriptItemActionType(t_OnItemPickUp))
+					03 ^{
+						01=if(Dist(pick_ship,ship)>250)continue;
+						02=else Tdist=Dist(pick_ship,ship);
+					}
+					04=else
+					05 ^{
+						01=if(Dist(bomb,ship)>250)continue;
+						02=else Tdist=Dist(bomb,ship);
+					}
+					06=if(!ShipInNormalSpace(ship))continue;
+					//Вычисляем урон по формуле round(BombPowerMax-(BombPowerMax-BombPowerMin)*dist2/BombRadius2), где 2 - квадрат
+					07=Tdamage=round(800.0-(400.0*(Tdist*Tdist)/62500));
+					//Добавляем визуального дамага для подобравшего бомбу корабля, чтобы как бы гарантированно его уничтожить
+					08=if(ship==pick_ship)
+					09 ^{
+						01=if(HullHP(pick_ship)>Tdamage)Tdamage=HullHP(pick_ship)+Rnd(43,157);
+					}
+					//Перед активацией эффекта обязательно делаем проверку на нахождение в пространстве системы игрока (!!!)
+					10=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))ShowEffect('Weapon.NoGraph',0,ship,ship,Tdamage,0,0,255,0,0);
+					//Применяем урон
+					11=if(HullHP(ship)>Tdamage)HullHP(ship,HullHP(ship)-Tdamage);
+					12=else
+					13 ^{
+						//Проверяем, не установлена ли на корабле спасательная шлюпка и если да, то говорим ему не отображать над собой урон посредством маркера в инфошке
+						01=if(targetInfo==-2)targetInfo=ShipFindCustomShipInfoByType(ship,'LifeboatLaunchInfo');
+						02=if(targetInfo>-1)
+						03 ^{
+							01=ShipCustomShipInfoTextData(ship,targetInfo,3,bomb);
+							02=DealDamageToShip(ship,bomb,100000,0);
+						}
+						//Уничтожение корабля через функцию нужно для корректного отображения взрыва, ведь ебаная функция DealDamageToShip взрыв не рисует, СУКА!!!
+						04=else if(ShipFindCustomShipInfoByType(ship,'AbandonedShipInfo')==-1)ShipDestroy(ship,1);
+					}
+				}
+				//Уничтожаем предметы в радиусе взрыва
+				17=for(k=0;k<StarItems(bomb_star);k=k+1)
+				18 ^{
+					01=item=StarItems(bomb_star,k);
+					02=if(item==bomb)continue;
+					03=if(ScriptItemActionType(t_OnItemPickUp))
+					04 ^{
+						01=if(Dist(pick_ship,item)>250)continue;
+						02=else Tdist=Dist(pick_ship,item);
+					}
+					05=else
+					06 ^{
+						01=if(Dist(bomb,item)>250)continue;
+						02=else Tdist=Dist(bomb,item);
+					}
+					//Вычисляем шанс уничтожения по формуле round(20-20*dist2/BombRadius2), где 2 - квадрат
+					07=Tdamage=round(20.0-(20.0*(Tdist*Tdist)/62500));//Максимальный шанс уничтожения предмета составляет 20%
+					//Применяем полученный шанс
+					08=if(Rnd(1,100)<=Tdamage)
+					09 ^{
+						01=if(ItemType(item)==t_ArtefactBomb)
+						02 ^{
+							//Отрисовываем взрыв кварки обычной кварке, т.к. при ItemDestroy 1 "родного" визуального эффекта у неё не будет 
+							01=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))ShowStaticEffect('RNDbomb_1BAM',CoordX(item),CoordY(item));
+							02=ItemDestroy(item,1);
+						}
+						03=else ItemDestroy(item,1);
+					}
+					10=else continue;
+				}
+				//Если бомбу подобрал корабль, то его уничтожение происходит здесь же, вместе с предметом
+				19=UselessItemData(bomb,2,-3);
+				20=ItemDestroy(bomb,1);
+            }
+        }
+        Owner=PirateClan
+        Size=7
+        Text=При взрыве наносит всем материальным объектам значительные повреждения.
+    }
+    RNDbomb_2 ^{
+        Cost=Big
+        Name=Оглушающая бомба
+		OnActCodeTypes=t_OnStep,t_OnDropItem,t_OnDropItemFixed,t_OnItemPickUp,t_OnItemHit,t_OnItemDestroy
+		OnActStepTypes=1,5
+        OnActCode ^{
+			01=dword bomb=CurItem();
+			02=if(UselessItemData(bomb,2)==-3)exit;//Бомба уже детонировала и не может бахнуть повторно
+			03=if(ScriptItemActionType(t_OnDropItem) || ScriptItemActionType(t_OnDropItemFixed))
+            04 ^{
+				01=if(ScriptItemActObject1()==bomb)
+				02 ^{
+					01=if(UselessItemData(bomb,2)==0 || UselessItemData(bomb,2)==-1)
+					02 ^{
+						//Запоминаем систему, в которой выкинули бомбу
+						01=UselessItemData(bomb,3,Id(ShipStar(ScriptItemActShip())));
+						//Включаем возможность детонации (выбросили в космос)
+						02=if(UselessItemData(bomb,2)==0)
+						03 ^{
+							01=UselessItemData(bomb,2,1);
+						}
+						//Активируем таймер (выбросили в космос с таймером)
+						04=else if(UselessItemData(bomb,2)==-1)
+						05 ^{
+							01=UselessItemText(bomb,CT('UselessItems.'+EquipmentImageName(bomb)+'.Text')+substr(CT('Cheat.Ok'),0,2)+CT('Script.Mod_ExpArts.WillBeActivatedIn'));
+							02=UselessItemData(bomb,2,-2);
+						}
+					}
+				}
+			}
+			05=if(ScriptItemActionType(t_OnItemPickUp))
+            06 ^{//Выключаем возможность детонации (чтобы не бахала в трюме)
+				01=if(ScriptItemActObject1()==bomb)
+				02 ^{
+					01=if(UselessItemData(bomb,2)==1)
+					02 ^{
+						01=UselessItemData(bomb,2,0);
+					}
+				}
+			}
+            07=if(ScriptItemActionType(t_OnStep,1))
+            08 ^{//Считаем дни до детонации
+				01=if(UselessItemData(bomb,2)==-2)
+				02 ^{
+					01=if(UselessItemData(bomb,1))
+					02 ^{
+						01=if(UselessItemData(bomb,1)==1)UselessItemData(bomb,1,UselessItemData(bomb,1)-2);
+						02=else UselessItemData(bomb,1,UselessItemData(bomb,1)-1);
+					}
+				}
+            }
+			//Отдельно даём команду проиграть звук активации бомбы при попадании ракеты/торпеды, поскольку по событию ItemDestroy этот звук почему-то не воспроизводится
+			09=if(ScriptItemActionType(t_OnItemHit))
+			10 ^{
+				01=if(ObjectType(ScriptItemActObject1())==7)
+				02 ^{
+					01=if(ShipStar(Player())==GalaxyStar(UselessItemData(bomb,3)-1) && ShipInNormalSpace(Player()))FilmSound('Sound.RndHole03',bomb);
+				}
+			}
+			//Происходит активация бомбы
+            11=if((ScriptItemActionType(t_OnItemDestroy) && UselessItemData(bomb,2)!=0 && UselessItemData(bomb,2)!=-1) || (UselessItemData(bomb,1)==-1 && ScriptItemActionType(t_OnStep,5)) || (ScriptItemActionType(t_OnItemPickUp) && ScriptItemActObject1()==bomb && UselessItemData(bomb,2)==-2))
+            12 ^{
+				01=dword ship;
+				02=dword pick_ship=0;
+				03=dword bomb_star=GalaxyStar(UselessItemData(bomb,3)-1);
+				04=int k=0;
+				05=int i=0;
+				06=int Tdist=0;
+				07=int DayLong=0;
+				08=if(ScriptItemActionType(t_OnItemPickUp))
+				09 ^{
+					01=pick_ship=ScriptItemActShip();
+					02=OrderNone(pick_ship);
+					//Перед активацией эффекта обязательно делаем проверку на нахождение в пространстве системы игрока (!!!)
+					03=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))ShowStaticEffect('RNDbomb_2BAM',CoordX(pick_ship),CoordY(pick_ship));
+					04=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))FilmSound('Sound.RndHole03',pick_ship);
+				}
+				10=else
+				11 ^{
+					//Перед активацией эффекта обязательно делаем проверку на нахождение в пространстве системы игрока (!!!)
+					01=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))ShowStaticEffect('RNDbomb_2BAM',CoordX(bomb),CoordY(bomb));
+					02=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))FilmSound('Sound.RndHole03',bomb);
+				}
+				12=for(k=0;k<StarShips(bomb_star);k=k+1)
+				13 ^{
+					01=ship=StarShips(bomb_star,k);
+					02=if(ScriptItemActionType(t_OnItemPickUp))
+					03 ^{
+						01=if(Dist(pick_ship,ship)>250)continue;
+						02=else Tdist=Dist(pick_ship,ship);
+					}
+					04=else
+					05 ^{
+						01=if(Dist(bomb,ship)>250)continue;
+						02=else Tdist=Dist(bomb,ship);
+					}
+					06=if(!ShipInNormalSpace(ship))continue;
+					07=if(ObjectType(ship)==4 || (ShipPilotRace(ship)==5 && findsubstr(Name(ship),'Верфь ')==0))continue;
+					08=if(ship==Keller() || ship==Terron() || ship==Blazer() || ShipType(ship)=='Machpella')continue;
+					//Вычисляем урон по формуле round(BombPowerMax-(BombPowerMax-BombPowerMin)*dist2/BombRadius2), где 2 - квадрат
+					09=DayLong=round(15.0-(10.0*(Tdist*Tdist)/62500));//Линейная формула без квадрата DayLong=15-round(0.04*Tdist);
+					//Вешаем на корабль вращение на месте (если взлетает, то вращение откладывается до следующего хода)
+					10=OrderLock(ship,1);
+					11=if(!ShipIsTakeoff(ship))
+					12 ^{
+						01=float angle=pi*(ShipAngle(ship)+90.0)/180.0;
+						02=OrderMove(ship,cos(angle)*10.0+CoordX(ship),sin(angle)*10.0+CoordY(ship));
+					}
+					//Отключаем прерывание фильма хода (прервать может только сам игрок)
+					13=if(ship==Player())FilmFlags(3,1);
+					14=int targ_infos=ShipFindCustomShipInfoByType(ship,'RNDbomb_2_infos');
+					15=if(targ_infos==-1)
+					16 ^{
+						01=if(ship==Player())ShipAddCustomShipInfo(ship,'RNDbomb_2_infos','Вы подверглись воздействию неизвестного излучения и временно утратили контроль над собственными действиями.',DayLong);
+						02=else ShipAddCustomShipInfo(ship,'RNDbomb_2_infos','',DayLong);
+						//"Отключаем" кораблю захват
+						03=ShipSpecialBonuses(ship,bonHook,ShipSpecialBonuses(ship,bonHook)-50000);
+						//Вешаем запрет на разговор, но только если корабль не имел его ранее
+						04=if(!NoTalkToShip(ship))
+						05 ^{
+							01=NoTalkToShip(ship,1);
+							02=ShipCustomShipInfoData(ship,ShipFindCustomShipInfoByType(ship,'RNDbomb_2_infos'),3,1);
+						}
+					}
+					//Если корабль уже и так был оглушён, то просто продляем действие
+					17=else ShipCustomShipInfoData(ship,targ_infos,1,ShipCustomShipInfoData(ship,targ_infos,1)+DayLong);
+					//Вешаем разговорный и сканерный запрет на все корабли системы, если под оглушение попал сам игрок
+					18=if(ship==Player())
+					19 ^{
+						01=for(i=0;i<StarShips(ShipStar(Player()));i=i+1)
+						02 ^{
+							01=if(!NoTalkToShip(StarShips(ShipStar(Player()),i)) || !NoScanToShip(StarShips(ShipStar(Player()),i)))
+							02 ^{
+								01=ShipAddCustomShipInfo(StarShips(ShipStar(Player()),i),'RNDbomb_2_PlayerInfos','NoShow',1);
+								02=if(!NoTalkToShip(StarShips(ShipStar(Player()),i)))
+								03 ^{
+									01=NoTalkToShip(StarShips(ShipStar(Player()),i),1);
+									02=ShipCustomShipInfoData(StarShips(ShipStar(Player()),i),ShipFindCustomShipInfoByType(StarShips(ShipStar(Player()),i),'RNDbomb_2_PlayerInfos'),2,1);
+								}
+								04=if(!NoScanToShip(StarShips(ShipStar(Player()),i)))
+								05 ^{
+									01=NoScanToShip(StarShips(ShipStar(Player()),i),1);
+									02=ShipCustomShipInfoTextData(StarShips(ShipStar(Player()),i),ShipFindCustomShipInfoByType(StarShips(ShipStar(Player()),i),'RNDbomb_2_PlayerInfos'),1,'1');
+								}
+							}
+						}
+						//Временно снимаем энергию в 0, если корпус - ТИ
+						03=if(HullSpecial(Player())>-1)
+						04 ^{
+							01=if(BonusNumInCfg(HullSpecial(Player()))==490)CapitalShipStats(ShipItems(Player(),0),1,0);
+						}
+						//Скрываем некоторые рабочие элементы из ExpPanel
+						05=if(GetMainData('Data.Script.Mod_ExpPanel')=='1,Script.Mod_ExpPanel')
+						06 ^{
+							01=ShipCustomShipInfoData(Player(),ShipFindCustomShipInfoByType(Player(),'RNDbomb_2_infos'),3,0);
+							02=int v=9;
+							03=while(v)
+							04 ^{
+								01=if(InterfaceState('StarMap','set_button_'+v+'_c')==1)
+								02 ^{
+									01=InterfaceState('StarMap','set_button_'+v+'_c',0);
+									02=ShipCustomShipInfoData(Player(),ShipFindCustomShipInfoByType(Player(),'RNDbomb_2_infos'),3,ShipCustomShipInfoData(Player(),ShipFindCustomShipInfoByType(Player(),'RNDbomb_2_infos'),3)+1);
+								}
+								03=v=v-1;
+							}
+							05=if(InterfaceState('StarMap','Klesh_panel')==1)
+							06 ^{
+								01=InterfaceState('StarMap','Klesh_panel',0);
+								02=ShipCustomShipInfoData(Player(),ShipFindCustomShipInfoByType(Player(),'RNDbomb_2_infos'),3,ShipCustomShipInfoData(Player(),ShipFindCustomShipInfoByType(Player(),'RNDbomb_2_infos'),3)+10);
+							}
+							07=if(InterfaceState('StarMap','ppb_panel')==1)
+							08 ^{
+								01=InterfaceState('StarMap','ppb_panel',0);
+								02=ShipCustomShipInfoData(Player(),ShipFindCustomShipInfoByType(Player(),'RNDbomb_2_infos'),3,ShipCustomShipInfoData(Player(),ShipFindCustomShipInfoByType(Player(),'RNDbomb_2_infos'),3)+10);
+							}
+						}
+					}
+				}
+				14=SetName(bomb,'Разряженная оглушающая бомба');
+				15=UselessItemText(bomb,'Эта бомба уже истратила свой заряд и не может быть использована повторно. Представляет ценность исключительно в виде металлолома.');
+				16=ItemCost(bomb,Rnd(15,21)*ItemSize(bomb));
+				17=UselessItemData(bomb,2,-3);
+            }
+        }
+        Owner=PirateClan
+        Size=7
+        Text=Сложное электронное устройство, уникальное наследие древности, при активации генерирующее поток излучения неизвестной доселе природы. Излучение подавляет любую высшую нервную деятельность, равно как и логику любых типов компьютеров<br>на срок от <color=255,240,100>5</color> до <color=255,240,100>15</color> суток.
+    }
+	RNDbomb_3 ^{
+        Cost=Big
+        Name=ЭМП бомба
+		OnActCodeTypes=t_OnStep,t_OnDropItem,t_OnDropItemFixed,t_OnItemPickUp,t_OnItemHit,t_OnItemDestroy
+		OnActStepTypes=1,5
+        OnActCode ^{
+			01=dword bomb=CurItem();
+			02=if(UselessItemData(bomb,2)==-3)exit;//Бомба уже детонировала и не может бахнуть повторно
+			03=if(ScriptItemActionType(t_OnDropItem) || ScriptItemActionType(t_OnDropItemFixed))
+            04 ^{
+				01=if(ScriptItemActObject1()==bomb)
+				02 ^{
+					01=if(UselessItemData(bomb,2)==0 || UselessItemData(bomb,2)==-1)
+					02 ^{
+						//Запоминаем систему, в которой выкинули бомбу
+						01=UselessItemData(bomb,3,Id(ShipStar(ScriptItemActShip())));
+						//Включаем возможность детонации (выбросили в космос)
+						02=if(UselessItemData(bomb,2)==0)
+						03 ^{
+							01=UselessItemData(bomb,2,1);
+						}
+						//Активируем таймер (выбросили в космос с таймером)
+						04=else if(UselessItemData(bomb,2)==-1)
+						05 ^{
+							01=UselessItemText(bomb,CT('UselessItems.'+EquipmentImageName(bomb)+'.Text')+substr(CT('Cheat.Ok'),0,2)+CT('Script.Mod_ExpArts.WillBeActivatedIn'));
+							02=UselessItemData(bomb,2,-2);
+						}
+					}
+				}
+			}
+			05=if(ScriptItemActionType(t_OnItemPickUp))
+            06 ^{//Выключаем возможность детонации (чтобы не бахала в трюме)
+				01=if(ScriptItemActObject1()==bomb)
+				02 ^{
+					01=if(UselessItemData(bomb,2)==1)
+					02 ^{
+						01=UselessItemData(bomb,2,0);
+					}
+				}
+			}
+            07=if(ScriptItemActionType(t_OnStep,1))
+			08 ^{//Считаем дни до детонации
+				01=if(UselessItemData(bomb,2)==-2)
+				02 ^{
+					01=if(UselessItemData(bomb,1))
+					02 ^{
+						01=if(UselessItemData(bomb,1)==1)UselessItemData(bomb,1,UselessItemData(bomb,1)-2);
+						02=else UselessItemData(bomb,1,UselessItemData(bomb,1)-1);
+					}
+				}
+            }
+			//Отдельно даём команду проиграть звук активации бомбы при попадании ракеты/торпеды, поскольку по событию ItemDestroy этот звук почему-то не воспроизводится
+			09=if(ScriptItemActionType(t_OnItemHit))
+			10 ^{
+				01=if(ObjectType(ScriptItemActObject1())==7)
+				02 ^{
+					01=if(ShipStar(Player())==GalaxyStar(UselessItemData(bomb,3)-1) && ShipInNormalSpace(Player()))FilmSound('Sound.Zamknulo',bomb);
+				}
+			}
+            11=if((ScriptItemActionType(t_OnItemDestroy) && UselessItemData(bomb,2)!=0 && UselessItemData(bomb,2)!=-1) || (UselessItemData(bomb,1)==-1 && ScriptItemActionType(t_OnStep,5)) || (ScriptItemActionType(t_OnItemPickUp) && ScriptItemActObject1()==bomb && UselessItemData(bomb,2)==-2))
+            12 ^{
+				01=dword ship=0;
+				02=dword pick_ship=0;
+				03=dword bomb_star=GalaxyStar(UselessItemData(bomb,3)-1);
+				04=int k=0;
+				05=int j=0;
+				06=int reduce=0;
+				07=int Tdist=0;
+				08=dword item=0;
+				09=if(ScriptItemActionType(t_OnItemPickUp))
+				10 ^{
+					01=pick_ship=ScriptItemActShip();
+					02=OrderNone(pick_ship);
+					//Перед активацией эффекта обязательно делаем проверку на нахождение в пространстве системы игрока (!!!)
+					03=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))ShowStaticEffect('RNDbomb_3BAM',CoordX(pick_ship),CoordY(pick_ship));
+					04=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))FilmSound('Sound.Zamknulo',pick_ship);
+				}
+				11=else
+				12 ^{
+					//Перед активацией эффекта обязательно делаем проверку на нахождение в пространстве системы игрока (!!!)
+					01=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))ShowStaticEffect('RNDbomb_3BAM',CoordX(bomb),CoordY(bomb));
+					02=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))FilmSound('Sound.Zamknulo',bomb);
+				}
+				13=for(k=0;k<StarShips(bomb_star);k=k+1)
+				14 ^{
+					01=ship=StarShips(bomb_star,k);
+					02=if(ScriptItemActionType(t_OnItemPickUp))
+					03 ^{
+						01=if(Dist(pick_ship,ship)>250)continue;
+						02=else Tdist=Dist(pick_ship,ship);
+					}
+					04=else
+					05 ^{
+						01=if(Dist(bomb,ship)>250)continue;
+						02=else Tdist=Dist(bomb,ship);
+					}
+					06=if(!ShipInNormalSpace(ship))continue;
+					//Клисане урона не получают вообще, т.к. являются псевдобиологическими конструктами
+					07=str tempType=ShipType(ship);
+					08=if(tempType=='Klissan' || tempType=='Klissan1' || tempType=='Klissan2' || tempType=='Klissan3' || tempType=='Klissan4' || tempType=='Klissan5' || tempType=='KB' || tempType=='Machpella')continue;
+					//Ломаем экипированное оборудование
+					09=for(j=1;j<ShipItems(ship);j=j+1)
+					10 ^{
+						01=item=ShipItems(ship,j);
+						02=if(!ItemIsInUse(item))continue;
+						//Исключаем биогенных дроидов
+						03=if(EqSpecial(item)>-1)
+						04 ^{
+							01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BioEquip')==1)continue;
+						}
+						//Исключаем клисанское оборудование и пушки
+						05=if(EqCustomFaction(item)=='Klissan')continue;
+						//Вычисляем урон по формуле round(BombPowerMax-(BombPowerMax-BombPowerMin)*dist2/BombRadius2), где 2 - квадрат
+						06=reduce=round(75.0-(45.0*(Tdist*Tdist)/62500));//Линейная формула без квадрата reduce=75-round(0.24*Tdist);
+						07=if(!ShipProtectability(ship))reduce=reduce*2;
+						08=if(ship==pick_ship)reduce=100;
+						//Боссы доминаторов получают крайне малый урон
+						09=if(ship==Keller() || ship==Terron() || ship==Blazer())reduce=reduce/10;
+						10=if(ItemDurability(item)-reduce<0)ItemDurability(item,0);
+						11=else ItemDurability(item,ItemDurability(item)-reduce);
+						//Ломай двигатели полностью! (но только не боссам)
+						12=if(ship==Keller() || ship==Terron() || ship==Blazer())continue;
+						13=ItemDurability(ShipEqInSlot(ship,t_Engine),0);
+						//Также накладываем на все корабли в радиусе поражения ЭМ-помехи
+						//DealDamageToShip игнорирует броню, но игровая функция накладывающая эффект об этом не знает, а потому плюсует броню к реально полученному урону
+						//Таким образом, сила брони корабля, по сути, задаёт силу накладываемого ниже эффекта
+						14=int memHP=HullHP(ship);
+						15=HullHP(ship,HullHP(ship)+100);
+						16=ShipSpecialBonuses(ship,bonHull,ShipSpecialBonuses(ship,bonHull)+reduce*15);
+						17=DealDamageToShip(ship,0,10,256);
+						18=ShipSpecialBonuses(ship,bonHull,ShipSpecialBonuses(ship,bonHull)-reduce*15);
+						19=if(HullHP(ship)!=memHP)HullHP(ship,memHP);
+					}
+					//Ломаем экипированные артефакты
+					11=for(j=1;j<=4;j=j+1)
+					12 ^{
+						01=item=ShipEqInSlot(ship,t_Artefact,j);
+						02=if(ItemType(item)>t_Artefact && ItemType(item)<t_ArtefactRadar)continue;
+						//Вычисляем урон по формуле round(BombPowerMax-(BombPowerMax-BombPowerMin)*dist2/BombRadius2), где 2 - квадрат
+						03=reduce=round(75.0-(45.0*(Tdist*Tdist)/62500));//Линейная формула без квадрата reduce=75-round(0.24*Tdist);
+						04=if(!ShipProtectability(ship))reduce=reduce*2;
+						05=if(ship==pick_ship)reduce=100;
+						//Боссы доминаторов получают крайне малый урон
+						06=if(ship==Keller() || ship==Terron() || ship==Blazer())reduce=reduce/10;
+						07=if(ItemDurability(item)-reduce<0)ItemDurability(item,0);
+						08=else ItemDurability(item,ItemDurability(item)-reduce);
+					}
+				}
+				15=SetName(bomb,'Разряженная ЭМП бомба');
+				16=UselessItemText(bomb,'Эта бомба уже истратила свой заряд и не может быть использована повторно. Представляет ценность исключительно в виде металлолома.');
+				17=ItemCost(bomb,Rnd(15,21)*ItemSize(bomb));
+				18=UselessItemData(bomb,2,-3);
+			}
+        }
+        Owner=PirateClan
+        Size=7
+        Text=При активации генерирует мощный электромагнитный импульс. Наносит тяжёлые повреждения всей электронике и полностью выводит из строя двигатели на обширной территории.
+    }
+    RNDbombbox ^{
+        Cost=Big
+        Name=Контейнер с бомбами
+        OnUseCode ^{
+            01=if(FindItemInShip(Player(),CurItem())==-1)exit;
+			02=if(MessageBoxYesNo('Вы уверены, что хотите открыть этот контейнер?'))
+			03 ^{
+				01=dword Titem=0;
+				02=str Ttype=0;
+				03=int Tquant=0;
+				//Определяем количество выпавших таймеров (от 0 до 3)
+				04=if(UselessItemData(CurItem(),1)>30)Tquant=1;//Вероятность в 70%
+				05=if(UselessItemData(CurItem(),1)>70)Tquant=2;//Вероятность в 30%
+				06=if(UselessItemData(CurItem(),1)>95)Tquant=3;//Вероятность в 5%
+				07=while(Tquant>0)
+				08 ^{
+					01=Titem=CreateQuestItem('RNDtimer',PirateClan);
+					02=ItemSize(Titem,1);
+					03=AddItemToShip(Player(),Titem);
+					04=Tquant=Tquant-1;
+				}
+				//Определяем количество выпавших бомб (от 1 до 4)
+				09=Tquant=1;//1 бомба гарантирована в любом случае
+				10=if(UselessItemData(CurItem(),2)>35)Tquant=2;//Вероятность в 65%
+				11=if(UselessItemData(CurItem(),2)>75)Tquant=3;//Вероятность в 25%
+				12=if(UselessItemData(CurItem(),2)>90)Tquant=4;//Вероятность в 10%
+				//Узнаём тип каждой из 4 возможных выпавших бомб и добавляем бомбы на корабль
+				13=while(Tquant>0)
+				14 ^{
+					01=Ttype=UselessItemData(CurItem(),3)+'';
+					02=Ttype=substr(Ttype,Tquant-1,1);
+					03=if(Ttype!='1')
+					04 ^{
+						01=Titem=CreateQuestItem('RNDbomb_'+Ttype,PirateClan);
+						02=ItemSize(Titem,ItemSize(Titem)+Rnd(-2,2));
+						03=ItemCost(Titem,ItemCost(Titem)+Rnd(-297,303));
+						04=AddItemToShip(Player(),Titem);
+					}
+					05=else
+					06 ^{
+						01=Titem=CreateArt(t_ArtefactBomb,PirateClan);
+						02=ItemSize(Titem,ItemSize(Titem)+Rnd(-2,2));
+						03=ItemCost(Titem,ItemCost(Titem)+Rnd(-297,303));
+						04=AddItemToShip(Player(),Titem);
+					}
+					07=Tquant=Tquant-1;
+				}
+				15=FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),CurItem())));
+			}
+        }
+        Owner=PirateClan
+        Size=40
+        Text=Тайник, предназначенный для оперативного обеспечения членов <color=255,240,100>пиратского клана</color> эффективным оружием. Содержит в себе несколько <color=255,240,100>бомб</color> и <color=255,240,100>детонаторов</color> пиратского производства.
+    }
+	RNDmodbox ^{
+        Cost=Big
+        Name=Контейнер с кустарной модификацией
+        OnUseCode ^{
+            01=if(FindItemInShip(Player(),CurItem())==-1)exit;
+            02=if(MessageBoxYesNo('Вы уверены, что хотите открыть контейнер?'))
+            03 ^{
+                01=str itemName='RNDmoditem_'+UselessItemData(CurItem(),1);
+                02=dword item=CreateQuestItem(itemName,ItemOwner(CurItem()));
+                03=AddItemToShip(Player(),item);
+                04=FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),CurItem())));
+            }
+        }
+        Owner=PirateClan
+        Size=13
+        Text=В попытках догнать Коалицию по уровню технического оснащения, <color=255,240,100>пиратское братство</color> начало производство собственных <color=255,240,100>улучшений</color> для различных типов <color=255,240,100>оборудования</color>. Общее качество подобных модификаций зачастую оставляет желать лучшего, однако требуемого эффекта им достигнуть всё же удаётся. Одной из традиционных схем распространения таких улучшений всегда выступала закладка разнообразных тайников.
+    }
+    RNDmoditem_2 ^{
+        Cost=Huge
+        Name=Нуль-генератор
+		OnActCodeTypes=t_OnReEnteringForm
+        OnActCode ^{
+		    01=if(ScriptItemActionType(t_OnReEnteringForm))
+            02 ^{
+				01=if(CurrentForm()=='Ship' && UselessItemData(CurItem(),1)==1)
+				02 ^{
+					01=UselessItemData(CurItem(),1,0);
+					02=RunChildForm('Galaxy');
+					03=if(ShipOrder(Player())==7)
+					04 ^{
+						01=ShipOrderData1(Player(),1);
+						02=FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),CurItem())));
+						03=ForceNextDay();
+						04=ButtonClick('Ship','Exit');
+						05=exit;
+					}
+					05=else UselessItemData(CurItem(),1,0);
+					06=UpdateFormShip();
+				}
+			}
+        }
+        OnUseCode ^{
+            01=if(!ShipInNormalSpace(Player()))
+            02 ^{
+                01=MessageBox(CT('FormShip.UseOnlyInSpace'));
+                02=exit;
+            }
+			03=if(ShipSpeed(Player())<=0)
+            04 ^{
+                01=MessageBox(CT('Help.Speed0'),34);
+                02=exit;
+            }
+            05=if(MessageBoxYesNo('Вы уверены, что хотите совершить нуль-переход? При переходе нуль-генератор <color=0,50,200>будет потерян</color>.'))
+            06 ^{
+				01=UselessItemData(CurItem(),1,1);
+            }
+        }
+        Owner=None
+        Size=5
+        Text=Искривляет темпоральное поле вокруг корабля и убирает гравитационные помехи из прыжкового контура двигателя, тем самым позволяя совершить <color=255,240,100>нуль-переход из любой точки</color> пространства. К сожалению, после первого же подобного перехода источник питания генератора полностью истощается, а потому использовать устройство повторно физически невозможно.
+    }
+	RNDmoditem_1 ^{
+        Cost=Big
+        Name=Декалератор
+		OnActCodeTypes=t_OnCheckingUsability,t_OnAnotherItem
+        OnActCode ^{
+			01=if(ScriptItemActionType(t_OnCheckingUsability))
+            02 ^{
+                01=dword item=ScriptItemActObject1();
+                02=if(ItemType(item)<=t_DefGenerator || ItemType(item)>t_CustomWeapon)exit;
+				03=int dmgset=GetEquipmentStats(item,6);
+                04=if((dmgset & 1)!=1 || (dmgset & 8)==8 || (dmgset & 512)==512 || (dmgset & 1024)==1024)exit;
+                05=int sp=0;
+                06=if(ItemExtraSpecials(item))
+                07 ^{
+                    01=int i=0;
+                    02=str sp_name;
+                    03=int sp_num=0;
+                    04=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    05 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				08=if(EqSpecial(item)>-1)
+				09 ^{
+					//Исключение не улучшаемых предметов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+				//Отправляем команду о необходимости подсветить пригодный для установки предмет
+				10=if(!sp)ScriptItemActParam(1);
+			}
+            03=if(ScriptItemActionType(t_OnAnotherItem))
+            04 ^{
+				01=item=ScriptItemActObject1();
+                02=if(ItemType(item)<=t_DefGenerator || ItemType(item)>t_CustomWeapon)exit;
+				03=dmgset=GetEquipmentStats(item,6);
+                04=if((dmgset & 1)!=1 || (dmgset & 8)==8 || (dmgset & 512)==512 || (dmgset & 1024)==1024)exit;
+                05=sp=0;
+                06=if(ItemExtraSpecials(item))
+                07 ^{
+                    01=i=0;
+                    02=sp_num=0;
+                    03=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    04 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				08=if(EqSpecial(item)>-1)
+				09 ^{
+					//Исключение не улучшаемых предметов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+				10=if(!sp)
+				11 ^{
+					01=str text_q='Вы уверены, что хотите установить ModuleName в ItemName?';
+					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));					
+					03=if(MessageBoxYesNo(text_q))
+					04 ^{
+						01=ItemExtraSpecialsAddByType(item,FindBonusByCustomTag('dt_Decelerate'),1);
+						02=ItemSize(item,ItemSize(item)+ItemSize(CurItem()));
+						03=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
+						04=ScriptItemActParam(1);
+					}
+                }
+            }
+        }
+        Owner=None
+        Size=5
+        Text=Набор для модификации <color=255,240,100>энергетического оружия</color>.<br>Дополняет излучатель орудия особой камерой с заряженными частицами, которые, получая энергетический импульс, в общем потоке устремляются к цели, а достигнув её, подавляют работу ускорительного контура двигателя, тем самым заметно снижая скорость облучённого корабля. К сожалению, посторонняя камера, установленная на пути выстрела, частично задерживает энергетический выброс и перегревает орудие, что в конечном итоге приводит к снижению его долговечности.
+		Text=<clr><clrEnd>
+		Text=Дополнительный эффект: <color=255,240,100>замедление цели</color>
+		Text=Надёжность оружия: <color=255,240,100>-15%</color>
+		Text=<clr><clrEnd>
+		Text=<color=255,240,100>Невозможно установить в оружие, уже имеющее<br>замедляющий эффект.</color>
+    }
+	RNDmoditem_3 ^{
+        Cost=Big
+        Name=Асидий
+		OnActCodeTypes=t_OnCheckingUsability,t_OnAnotherItem
+        OnActCode ^{
+			01=if(ScriptItemActionType(t_OnCheckingUsability))
+            02 ^{
+                01=dword item=ScriptItemActObject1();
+                02=if(ItemType(item)<=t_DefGenerator || ItemType(item)>t_CustomWeapon)exit;
+				03=int dmgset=GetEquipmentStats(item,6);
+                04=if((dmgset & 2)!=2 || (dmgset & 128)==128)exit;
+                05=int sp=0;
+                06=if(ItemExtraSpecials(item))
+                07 ^{
+                    01=int i=0;
+                    02=str sp_name;
+                    03=int sp_num=0;
+                    04=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    05 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				08=if(EqSpecial(item)>-1)
+				09 ^{
+					//Исключение не улучшаемых предметов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+				//Отправляем команду о необходимости подсветить пригодный для установки предмет
+				10=if(!sp)ScriptItemActParam(1);
+			}
+            03=if(ScriptItemActionType(t_OnAnotherItem))
+            04 ^{
+				01=item=ScriptItemActObject1();
+                02=if(ItemType(item)<=t_DefGenerator || ItemType(item)>t_CustomWeapon)exit;
+				03=dmgset=GetEquipmentStats(item,6);
+                04=if((dmgset & 2)!=2 || (dmgset & 128)==128)exit;
+                05=sp=0;
+                06=if(ItemExtraSpecials(item))
+                07 ^{
+                    01=i=0;
+                    02=sp_num=0;
+                    03=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    04 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				08=if(EqSpecial(item)>-1)
+				09 ^{
+					//Исключение не улучшаемых предметов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+                10=if(!sp)
+                11 ^{
+					01=str text_q='Вы уверены, что хотите установить ModuleName в ItemName?';
+					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
+					03=if(MessageBoxYesNo(text_q))
+					04 ^{
+						01=ItemExtraSpecialsAddByType(item,FindBonusByCustomTag('dt_Acid'),1);
+						02=ItemSize(item,ItemSize(item)+ItemSize(CurItem()));
+						03=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
+						04=ScriptItemActParam(1);
+					}
+                }
+            }
+        }
+        Owner=None
+        Size=5
+        Text=Набор для модификации <color=255,240,100>осколочного оружия</color>.<br>Оснащает механизм заряжания специальным устройством, начиняющим все снаряды особым коррозийным составом, который, распыляясь в момент детонации, ослабляет броню вражеского судна. Усложнение базовой конструкции механизма заряжания, однако, отрицательным образом сказывается на<br>надёжности орудия.
+		Text=<clr><clrEnd>
+		Text=Дополнительный эффект: <color=255,240,100>ослабление брони</color>
+		Text=Надёжность оружия: <color=255,240,100>-15%</color>
+		Text=<clr><clrEnd>
+		Text=<color=255,240,100>Невозможно установить в оружие, уже имеющее<br>ослабляющий броню эффект.</color>
+    }
+	RNDmoditem_4 ^{
+        Cost=Average
+        Name=Тиливые конденсаторы
+		OnActCodeTypes=t_OnCheckingUsability,t_OnAnotherItem
+        OnActCode ^{
+			01=if(ScriptItemActionType(t_OnCheckingUsability))
+            02 ^{
+				01=dword item=ScriptItemActObject1();
+                02=if(ItemType(item)<=t_DefGenerator || ItemType(item)>t_CustomWeapon)exit;
+				03=int dmgset=GetEquipmentStats(item,6);
+                04=if(!(dmgset & 1))exit;
+                05=int sp=0;
+                06=if(ItemExtraSpecials(item))
+                07 ^{
+                    01=int i=0;
+                    02=str sp_name;
+                    03=int sp_num=0;
+                    04=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    05 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				08=if(EqSpecial(item)>-1)
+				09 ^{
+					//Исключение не улучшаемых предметов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+				//Отправляем команду о необходимости подсветить пригодный для установки предмет
+				10=if(!sp)ScriptItemActParam(1);
+			}
+            03=if(ScriptItemActionType(t_OnAnotherItem))
+            04 ^{
+				01=item=ScriptItemActObject1();
+                02=if(ItemType(item)<=t_DefGenerator || ItemType(item)>t_CustomWeapon)exit;
+				03=dmgset=GetEquipmentStats(item,6);
+                04=if(!(dmgset & 1))exit;
+                05=sp=0;
+                06=if(ItemExtraSpecials(item))
+                07 ^{
+                    01=i=0;
+                    02=sp_num=0;
+                    03=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    04 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				08=if(EqSpecial(item)>-1)
+				09 ^{
+					//Исключение не улучшаемых предметов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+                10=if(!sp)
+                11 ^{
+					01=str text_q='Вы уверены, что хотите установить <color=0,50,200>тиливые конденсаторы</color> в ItemName?';
+					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
+                    03=if(MessageBoxYesNo(text_q))
+                    04 ^{
+                        01=ItemExtraSpecialsAddByType(item,FindBonusByCustomTag('dt_ModifyItem04'),1);
+                        02=ItemSize(item,ItemSize(item)+ItemSize(CurItem()));
+                        03=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
+                        04=ScriptItemActParam(1);
+                    }
+                }
+            }
+        }
+        Owner=PirateClan
+        Size=7
+        Text=Набор для модификации <color=255,240,100>энергетического оружия</color>.<br>Тиливые конденсаторы обладают повышенной ёмкостью, что позволяет накапливать большую мощность выстрела, однако эта же избыточная мощность быстрее изнашивает проводящие энергоузлы орудия, которые попросту не предназначались для распределения подобных нагрузок.
+		Text=<clr><clrEnd>
+		Text=Сила оружия: <color=255,240,100>+15</color> ед.
+		Text=Надёжность оружия: <color=255,240,100>-20%</color>
+    }
+    RNDmoditem_5 ^{
+        Cost=Average
+        Name=Подкрученные ограничители
+		OnActCodeTypes=t_OnCheckingUsability,t_OnAnotherItem
+        OnActCode ^{
+			01=if(ScriptItemActionType(t_OnCheckingUsability))
+            02 ^{
+				01=dword item=ScriptItemActObject1();
+                02=if(ItemType(item)<=t_DefGenerator || ItemType(item)>t_CustomWeapon)exit;
+				03=int dmgset=GetEquipmentStats(item,6);
+                04=if((dmgset & 2)!=2)exit;
+                05=int sp=0;
+                06=if(ItemExtraSpecials(item))
+                07 ^{
+                    01=int i=0;
+                    02=str sp_name;
+                    03=int sp_num=0;
+                    04=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    05 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				08=if(EqSpecial(item)>-1)
+				09 ^{
+					//Исключение не улучшаемых предметов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+				//Отправляем команду о необходимости подсветить пригодный для установки предмет
+				10=if(!sp)ScriptItemActParam(1);
+			}
+            03=if(ScriptItemActionType(t_OnAnotherItem))
+            04 ^{
+				01=item=ScriptItemActObject1();
+                02=if(ItemType(item)<=t_DefGenerator || ItemType(item)>t_CustomWeapon)exit;
+				03=dmgset=GetEquipmentStats(item,6);
+                04=if((dmgset & 2)!=2)exit;
+                05=sp=0;
+                06=if(ItemExtraSpecials(item))
+                07 ^{
+                    01=i=0;
+                    02=sp_num=0;
+                    03=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    04 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				08=if(EqSpecial(item)>-1)
+				09 ^{
+					//Исключение не улучшаемых предметов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+                10=if(!sp)
+                11 ^{
+					01=str text_q='Вы уверены, что хотите установить <color=0,50,200>подкрученные ограничители</color> в ItemName?';
+					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
+                    03=if(MessageBoxYesNo(text_q))
+                    04 ^{
+                        01=ItemExtraSpecialsAddByType(item,FindBonusByCustomTag('dt_ModifyItem05'),1);
+                        02=ItemSize(item,ItemSize(item)+ItemSize(CurItem()));
+                        03=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
+                        04=ScriptItemActParam(1);
+                    }
+                }
+            }
+        }
+        Owner=PirateClan
+        Size=7
+        Text=Набор для модификации <color=255,240,100>осколочного оружия</color>.<br>Блок управления стрельбой, с которого были аккуратно сняты некоторые заводские ограничения. Орудия, оснащённые таким блоком, способны вести огонь на большие дистанции, однако механизмы компенсации отдачи не выдерживают дополнительной нагрузки из-за чего быстрее выходят из строя.
+		Text=<clr><clrEnd>
+		Text=Дальность стрельбы: <color=255,240,100>+40</color> ед.
+		Text=Надёжность оружия: <color=255,240,100>-20%</color>
+    }
+    RNDmoditem_6 ^{
+        Cost=Average
+        Name=Дополнительная боеукладка
+		OnActCodeTypes=t_OnCheckingUsability,t_OnAnotherItem
+        OnActCode ^{
+			01=if(ScriptItemActionType(t_OnCheckingUsability))
+            02 ^{
+				01=dword item=ScriptItemActObject1();
+                02=if(ItemType(item)<=t_DefGenerator || ItemType(item)>t_CustomWeapon)exit;
+				03=int dmgset=GetEquipmentStats(item,6);
+                04=if((dmgset & 4)!=4)exit;
+                05=int sp=0;
+                06=if(ItemExtraSpecials(item))
+                07 ^{
+                    01=int i=0;
+                    02=str sp_name;
+                    03=int sp_num=0;
+                    04=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    05 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				08=if(EqSpecial(item)>-1)
+				09 ^{
+					//Исключаем из списка физган
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.KindGraph')=='fizgun_main')sp=1;
+					//Исключение не улучшаемых предметов
+					02=else if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+				//Отправляем команду о необходимости подсветить пригодный для установки предмет
+				10=if(!sp)ScriptItemActParam(1);
+			}
+            03=if(ScriptItemActionType(t_OnAnotherItem))
+            04 ^{
+				01=item=ScriptItemActObject1();
+                02=if(ItemType(item)<=t_DefGenerator || ItemType(item)>t_CustomWeapon)exit;
+				03=dmgset=GetEquipmentStats(item,6);
+                04=if((dmgset & 4)!=4)exit;
+                05=sp=0;
+                06=if(ItemExtraSpecials(item))
+                07 ^{
+                    01=i=0;
+                    02=sp_num=0;
+                    03=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    04 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				08=if(EqSpecial(item)>-1)
+				09 ^{
+					//Исключаем из списка физган
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.KindGraph')=='fizgun_main')sp=1;
+					//Исключение не улучшаемых предметов
+					02=else if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+				10=if(!sp)
+				11 ^{
+					01=str text_q='Вы уверены, что хотите установить <color=0,50,200>дополнительную боеукладку</color> в ItemName?';
+					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
+                    03=if(MessageBoxYesNo(text_q))
+                    04 ^{
+                        01=ItemExtraSpecialsAddByType(item,FindBonusByCustomTag('dt_ModifyItem06'),1);
+                        02=WeaponMaxAmmunition(item,WeaponMaxAmmunition(item)+15);
+                        03=ItemSize(item,ItemSize(item)+ItemSize(CurItem()));
+                        04=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
+                        05=ScriptItemActParam(1);
+                    }
+                }
+            }
+        }
+        Owner=PirateClan
+        Size=12
+        Text=Набор для модификации <color=255,240,100>ракетного оружия</color>.<br>Дополнительная боеукладка под реактивные снаряды, подключаемая напрямую к механизму заряжания. Увеличивает максимальное количество вмещаемых зарядов.
+		Text=<clr><clrEnd>
+		Text=Максимальное количество зарядов: <color=255,240,100>+15</color> шт.
+    }
+    RNDmoditem_7 ^{
+        Cost=Big
+        Name=Уплотнитель поля
+		OnActCodeTypes=t_OnCheckingUsability,t_OnAnotherItem
+        OnActCode ^{
+			01=if(ScriptItemActionType(t_OnCheckingUsability))
+            02 ^{
+				01=dword item=ScriptItemActObject1();
+                02=if(ItemType(item)!=t_DefGenerator)exit;
+                03=int sp=0;
+                04=if(ItemExtraSpecials(item))
+                05 ^{
+                    01=int i=0;
+                    02=str sp_name;
+                    03=int sp_num=0;
+                    04=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    05 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				06=if(EqSpecial(item)>-1)
+				07 ^{
+					//Исключение не улучшаемых предметов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+				//Отправляем команду о необходимости подсветить пригодный для установки предмет
+				08=if(!sp)ScriptItemActParam(1);
+			}
+            03=if(ScriptItemActionType(t_OnAnotherItem))
+            04 ^{
+				01=item=ScriptItemActObject1();
+                02=if(ItemType(item)!=t_DefGenerator)exit;
+                03=sp=0;
+                04=if(ItemExtraSpecials(item))
+                05 ^{
+                    01=i=0;
+                    02=sp_num=0;
+                    03=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    04 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				06=if(EqSpecial(item)>-1)
+				07 ^{
+					//Исключение не улучшаемых предметов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+				08=if(!sp)
+                09 ^{
+					01=str text_q='Вы уверены, что хотите установить <color=0,50,200>уплотнитель поля</color> в ItemName?';
+					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
+                    03=if(MessageBoxYesNo(text_q))
+                    04 ^{
+                        01=ItemExtraSpecialsAddByType(item,FindBonusByCustomTag('dt_ModifyItem07'),1);
+                        02=SetEquipmentStats(item,GetEquipmentStats(item,0)+6,0);
+                        03=ItemSize(item,ItemSize(item)+ItemSize(CurItem()));
+                        04=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
+                        05=ScriptItemActParam(1);
+                    }
+                }
+            }
+        }
+        Owner=PirateClan
+        Size=7
+        Text=Набор для модификации <color=255,240,100>генератора защитного поля</color>.<br>Уплотнитель защитного поля усиливает эффект, выдаваемый генератором в штатном режиме работы, однако дополнительная нагрузка на энергосистему устройства снижает его долговечность.
+		Text=<clr><clrEnd>
+		Text=Генератор поля: <color=255,240,100>+6</color> ед.
+		Text=Надёжность генератора: <color=255,240,100>-20%</color>
+		Text=<clr><clrEnd>
+		Text=<color=255,240,100>После данной модификации улучшить генератор защиты стандартным способом будет невозможно.</color>
+    }
+    RNDmoditem_8 ^{
+        Cost=Average
+        Name=Меонные чипы
+		OnActCodeTypes=t_OnCheckingUsability,t_OnAnotherItem
+        OnActCode ^{
+			01=if(ScriptItemActionType(t_OnCheckingUsability))
+            02 ^{
+				01=dword item=ScriptItemActObject1();
+                02=if(ItemType(item)!=t_Radar)exit;
+                03=int sp=0;
+                04=if(ItemExtraSpecials(item))
+                05 ^{
+                    01=int i=0;
+                    02=str sp_name;
+                    03=int sp_num=0;
+                    04=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    05 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				06=if(EqSpecial(item)>-1)
+				07 ^{
+					//Исключение не улучшаемых предметов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+				//Отправляем команду о необходимости подсветить пригодный для установки предмет
+				08=if(!sp)ScriptItemActParam(1);
+			}
+            03=if(ScriptItemActionType(t_OnAnotherItem))
+            04 ^{
+				01=item=ScriptItemActObject1();
+                02=if(ItemType(item)!=t_Radar)exit;
+                03=sp=0;
+                04=if(ItemExtraSpecials(item))
+                05 ^{
+                    01=i=0;
+                    02=sp_num=0;
+                    03=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    04 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				06=if(EqSpecial(item)>-1)
+				07 ^{
+					//Исключаем Убиваторов
+					01=if(BonusNumInCfg(EqSpecial(item))=='RevAcrynUbivator' || BonusNumInCfg(EqSpecial(item))=='RevAcrynUbivator2')
+					02 ^{
+						01=sp=1;
+						02=MessageBox('Данное устройство не является радаром, а вставлять в него что-либо кроме микромодуля крайне небезопасно.',34);
+					}
+					//Исключение не улучшаемых предметов
+					03=else if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+				08=if(!sp)
+				09 ^{
+					01=str text_q='Вы уверены, что хотите установить <color=0,50,200>меонные чипы</color> в ItemName?';
+					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
+                    03=if(MessageBoxYesNo(text_q))
+                    04 ^{
+                        01=ItemExtraSpecialsAddByType(item,FindBonusByCustomTag('dt_ModifyItem08'),1);
+                        02=SetEquipmentStats(item,GetEquipmentStats(item,0)+900,0);
+                        03=ItemSize(item,ItemSize(item)+ItemSize(CurItem()));
+                        04=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
+                        05=ScriptItemActParam(1);
+                    }
+                }
+            }
+        }
+        Owner=PirateClan
+        Size=7
+        Text=Набор для модификации <color=255,240,100>радара</color>.<br>Меонные чипы не славятся своей долговечностью, зато позволяют значительно повысить общую эффективность радара.
+		Text=<clr><clrEnd>
+		Text=Дальность радара: <color=255,240,100>+900</color> млн. км.
+		Text=Надёжность радара: <color=255,240,100>-20%</color>
+		Text=<clr><clrEnd>
+		Text=<color=255,240,100>После данной модификации улучшить радар стандартным способом будет невозможно.</color>
+    }
+    RNDmoditem_9 ^{
+        Cost=Average
+        Name=Контурный усилитель
+		OnActCodeTypes=t_OnCheckingUsability,t_OnAnotherItem
+        OnActCode ^{
+			01=if(ScriptItemActionType(t_OnCheckingUsability))
+            02 ^{
+				01=dword item=ScriptItemActObject1();
+                02=if(ItemType(item)!=t_Scaner)exit;
+                03=int sp=0;
+                04=if(ItemExtraSpecials(item))
+                05 ^{
+                    01=int i=0;
+                    02=str sp_name;
+                    03=int sp_num=0;
+                    04=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    05 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				06=if(EqSpecial(item)>-1)
+				07 ^{
+					//Исключение не улучшаемых предметов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+				//Отправляем команду о необходимости подсветить пригодный для установки предмет
+				08=if(!sp)ScriptItemActParam(1);
+			}
+            03=if(ScriptItemActionType(t_OnAnotherItem))
+            04 ^{
+				01=item=ScriptItemActObject1();
+                02=if(ItemType(item)!=t_Scaner)exit;
+                03=sp=0;
+                04=if(ItemExtraSpecials(item))
+                05 ^{
+                    01=i=0;
+                    02=sp_num=0;
+                    03=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    04 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				06=if(EqSpecial(item)>-1)
+				07 ^{
+					//Исключение не улучшаемых предметов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+			    08=if(!sp)
+                09 ^{
+					01=str text_q='Вы уверены, что хотите установить <color=0,50,200>контурный усилитель</color> в ItemName?';
+					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
+                    03=if(MessageBoxYesNo(text_q))
+                    04 ^{
+                        01=ItemExtraSpecialsAddByType(item,FindBonusByCustomTag('dt_ModifyItem09'),1);
+                        02=SetEquipmentStats(item,GetEquipmentStats(item,0)+7,0);
+                        03=ItemSize(item,ItemSize(item)+ItemSize(CurItem()));
+                        04=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
+                        05=ScriptItemActParam(1);
+                    }
+                }
+            }
+        }
+        Owner=PirateClan
+        Size=7
+        Text=Набор для модификации <color=255,240,100>сканера</color>.<br>Усиливает напряжение, подаваемое на сканирующий контур, тем самым увеличивая мощность сканирования. К сожалению, скорость выгорания сканирующего контура также возрастает.
+		Text=<clr><clrEnd>
+		Text=Мощность сканера: <color=255,240,100>+7</color> ед.
+		Text=Надёжность сканера: <color=255,240,100>-20%</color>
+		Text=<clr><clrEnd>
+		Text=<color=255,240,100>После данной модификации улучшить сканер стандартным способом будет невозможно.</color>
+    }
+    RNDmoditem_10 ^{
+        Cost=Average
+        Name=Процессоры "Экстрим"
+		OnActCodeTypes=t_OnCheckingUsability,t_OnAnotherItem
+        OnActCode ^{
+			01=if(ScriptItemActionType(t_OnCheckingUsability))
+            02 ^{
+				01=dword item=ScriptItemActObject1();
+                02=if(ItemType(item)!=t_RepairRobot)exit;
+                03=int sp=0;
+                04=if(ItemExtraSpecials(item))
+                05 ^{
+                    01=int i=0;
+                    02=str sp_name;
+                    03=int sp_num=0;
+                    04=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    05 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				06=if(EqSpecial(item)>-1)
+				07 ^{
+					01=str bon_num=BonusNumInCfg(EqSpecial(item));
+					//Исключение не улучшаемых предметов
+					02=if(CT('MicroModuls.'+bon_num+'.NotImprovable')==1)sp=1;
+					//Исключаем из списка биогенных дроидов (потому что они биогенные) и боевого дроида, потому что он не чинит
+					03=else if(CT('MicroModuls.'+bon_num+'.BioEquip')==1)sp=1;
+					04=else if(bon_num=='RevAcrynBattleDroid')sp=1;
+				}
+				//Отправляем команду о необходимости подсветить пригодный для установки предмет
+				08=if(!sp)ScriptItemActParam(1);
+			}
+            03=if(ScriptItemActionType(t_OnAnotherItem))
+            04 ^{
+				01=item=ScriptItemActObject1();
+                02=if(ItemType(item)!=t_RepairRobot)exit;
+                03=sp=0;
+                04=if(ItemExtraSpecials(item))
+                05 ^{
+                    01=i=0;
+                    02=sp_num=0;
+                    03=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    04 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				06=if(EqSpecial(item)>-1)
+				07 ^{
+					01=bon_num=BonusNumInCfg(EqSpecial(item));
+					//Исключение не улучшаемых предметов
+					02=if(CT('MicroModuls.'+bon_num+'.NotImprovable')==1)sp=1;
+					//Исключаем из списка биогенных дроидов (потому что они биогенные) и боевого дроида, потому что он не чинит
+					03=else if(CT('MicroModuls.'+bon_num+'.BioEquip')==1)
+					04 ^{
+						01=sp=1;
+						02=MessageBox('Вы не вполне уверены, имеется ли у этого дроида процессор, но так или иначе, пытаться запихнуть его в несчастное животное было бы крайне негуманно.',34);
+					}
+					05=else if(bon_num=='RevAcrynBattleDroid')
+					06 ^{
+						01=sp=1;
+						02=MessageBox('Боевой дроид не способен выполнять ремонт, а его поведение под вражеским обстрелом и без того экстремальнее некуда.',34);
+					}
+				}
+				08=if(!sp)
+                09 ^{
+					01=str text_q='Вы уверены, что хотите установить ModuleName в ItemName?';
+					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
+					03=if(MessageBoxYesNo(text_q))
+					04 ^{
+						01=ItemExtraSpecialsAddByType(item,FindBonusByCustomTag('dt_ModifyItem10'),1);
+						02=SetEquipmentStats(item,GetEquipmentStats(item,0)+8,0);
+						03=ItemSize(item,ItemSize(item)+ItemSize(CurItem()));
+						04=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
+						05=ScriptItemActParam(1);
+					}
+                }
+            }
+        }
+        Owner=PirateClan
+        Size=3
+        Text=Набор для модификации <color=255,240,100>дроида</color>.<br>Процессоры "Экстрим" меняют логику поведения дроида, в результате чего тот становится менее осторожным, но в тоже время быстрее производит необходимый ремонт.
+		Text=<clr><clrEnd>
+		Text=Эффективность дроида: <color=255,240,100>+8</color> ед.
+		Text=Надёжность дроида: <color=255,240,100>-20%</color>
+		Text=<clr><clrEnd>
+		Text=<color=255,240,100>После данной модификации улучшить дроида стандартным способом будет невозможно.</color>
+    }
+    RNDmoditem_11 ^{
+        Cost=Average
+        Name=Замена систем безопасности
+		OnActCodeTypes=t_OnCheckingUsability,t_OnAnotherItem
+        OnActCode ^{
+			01=if(ScriptItemActionType(t_OnCheckingUsability))
+            02 ^{
+				01=dword item=ScriptItemActObject1();
+                02=if(ItemType(item)!=t_FuelTanks)exit;
+                03=int sp=0;
+                04=if(ItemExtraSpecials(item))
+                05 ^{
+                    01=int i=0;
+                    02=str sp_name;
+                    03=int sp_num=0;
+                    04=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    05 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				06=if(EqSpecial(item)>-1)
+				07 ^{
+					//Исключение не улучшаемых предметов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+				//Отправляем команду о необходимости подсветить пригодный для установки предмет
+				08=if(!sp)ScriptItemActParam(1);
+			}
+            03=if(ScriptItemActionType(t_OnAnotherItem))
+            04 ^{
+				01=item=ScriptItemActObject1();
+                02=if(ItemType(item)!=t_FuelTanks)exit;
+                03=sp=0;
+                04=if(ItemExtraSpecials(item))
+                05 ^{
+                    01=i=0;
+                    02=sp_num=0;
+                    03=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    04 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				06=if(EqSpecial(item)>-1)
+				07 ^{
+					//Исключение не улучшаемых предметов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+				08=if(!sp)
+                09 ^{
+					01=str text_q='Вы уверены, что хотите установить <color=0,50,200>замену систем безопасности</color> в ItemName?';
+					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
+					03=if(MessageBoxYesNo(text_q))
+					04 ^{
+						01=ItemExtraSpecialsAddByType(item,FindBonusByCustomTag('dt_ModifyItem11'),1);
+						02=SetEquipmentStats(item,GetEquipmentStats(item,0)+20,0);
+						03=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
+						04=ScriptItemActParam(1);
+					}
+                }
+            }
+        }
+        Owner=PirateClan
+        Size=5
+        Text=Набор для модификации <color=255,240,100>топливного бака</color>.<br>Перекодировка и удаление некоторых систем безопасности позволяет ощутимо повысить максимальную вместимость бака, в ущерб его надёжности.
+		Text=<clr><clrEnd>
+		Text=Объем бака: <color=255,240,100>+20</color> ед.
+		Text=Надёжность бака: <color=255,240,100>-60%</color>
+		Text=<clr><clrEnd>
+		Text=<color=255,240,100>После данной модификации улучшить топливный бак стандартным способом будет невозможно.</color>
+    }
+    RNDmoditem_12 ^{
+        Cost=Big
+        Name=Хакнутый инжектор
+		OnActCodeTypes=t_OnCheckingUsability,t_OnAnotherItem
+        OnActCode ^{
+			01=if(ScriptItemActionType(t_OnCheckingUsability))
+            02 ^{
+				01=dword item=ScriptItemActObject1();
+                02=if(ItemType(item)!=t_Engine)exit;
+                03=int sp=0;
+                04=if(ItemExtraSpecials(item))
+                05 ^{
+                    01=int i=0;
+                    02=str sp_name;
+                    03=int sp_num=0;
+                    04=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    05 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				06=if(EqSpecial(item)>-1)
+				07 ^{
+					//Исключение не улучшаемых предметов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+				//Отправляем команду о необходимости подсветить пригодный для установки предмет
+				08=if(!sp)ScriptItemActParam(1);
+			}
+            03=if(ScriptItemActionType(t_OnAnotherItem))
+            04 ^{
+				01=item=ScriptItemActObject1();
+                02=if(ItemType(item)!=t_Engine)exit;
+                03=sp=0;
+                04=if(ItemExtraSpecials(item))
+                05 ^{
+                    01=i=0;
+                    02=sp_num=0;
+                    03=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    04 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				06=if(EqSpecial(item)>-1)
+				07 ^{
+					//Исключение не улучшаемых предметов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+				08=if(!sp)
+                09 ^{
+					01=str text_q='Вы уверены, что хотите установить <color=0,50,200>хакнутый инжектор</color> в ItemName?';
+					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
+					03=if(MessageBoxYesNo(text_q))
+					04 ^{
+						01=ItemExtraSpecialsAddByType(item,FindBonusByCustomTag('dt_ModifyItem12'),1);
+						02=SetEquipmentStats(item,GetEquipmentStats(item,0)+200,0);
+						03=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
+						04=ScriptItemActParam(1);
+					}
+                }
+            }
+        }
+        Owner=PirateClan
+        Size=8
+        Text=Набор для модификации <color=255,240,100>двигателя</color>.<br>Заменяет стандартный топливный инжектор на хакнутую версию, пропускающую в камеру сгорания ощутимо большее количество топливо, что ведёт к существенному приросту скорости двигателя. К несчастью, повышенное поступление топлива фактически переводит двигатель на постоянный форсированный режим, что отрицательным образом сказывается на долговечности агрегата.
+		Text=<clr><clrEnd>
+		Text=Скорость двигателя: <color=255,240,100>+200</color> ед.
+		Text=Надёжность двигателя: <color=255,240,100>-40%</color>
+		Text=<clr><clrEnd>
+		Text=<color=255,240,100>После данной модификации улучшить двигатель стандартным способом будет невозможно.</color>
+    }
+    RNDmoditem_13 ^{
+        Cost=Average
+        Name=Усиленные сервоприводы
+		OnActCodeTypes=t_OnCheckingUsability,t_OnAnotherItem
+        OnActCode ^{
+			01=if(ScriptItemActionType(t_OnCheckingUsability))
+            02 ^{
+				01=dword item=ScriptItemActObject1();
+                02=if(ItemType(item)!=t_CargoHook)exit;
+                03=int sp=0;
+                04=if(ItemExtraSpecials(item))
+                05 ^{
+                    01=int i=0;
+                    02=str sp_name;
+                    03=int sp_num=0;
+                    04=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    05 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				06=if(EqSpecial(item)>-1)
+				07 ^{
+					//Исключение не улучшаемых предметов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+				//Отправляем команду о необходимости подсветить пригодный для установки предмет
+				08=if(!sp)ScriptItemActParam(1);
+			}
+            03=if(ScriptItemActionType(t_OnAnotherItem))
+            04 ^{
+				01=item=ScriptItemActObject1();
+                02=if(ItemType(item)!=t_CargoHook)exit;
+                03=sp=0;
+                04=if(ItemExtraSpecials(item))
+                05 ^{
+                    01=i=0;
+                    02=sp_num=0;
+                    03=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    04 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				06=if(EqSpecial(item)>-1)
+				07 ^{
+					//Исключение не улучшаемых предметов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+				08=if(!sp)
+                09 ^{
+					01=str text_q='Вы уверены, что хотите установить <color=0,50,200>усиленные сервоприводы</color> в ItemName?';
+					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
+					03=if(MessageBoxYesNo(text_q))
+					04 ^{
+						01=ItemExtraSpecialsAddByType(item,FindBonusByCustomTag('dt_ModifyItem13'),1);
+						02=SetEquipmentStats(item,GetEquipmentStats(item,0)+40,0);
+						03=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
+						04=ScriptItemActParam(1);
+					}
+                }
+            }
+        }
+        Owner=PirateClan
+        Size=16
+        Text=Набор для модификации <color=255,240,100>захвата</color>.<br>Оборудует захват усиленными сервоприводами, что позволяет ему захватывать предметы большего размера и веса. К сожалению, весь остальной механизм устройства на повышенную нагрузку не рассчитан, а потому выходит из строя намного раньше положенного срока.
+		Text=<clr><clrEnd>
+		Text=Мощность захвата: <color=255,240,100>+40</color> ед.
+		Text=Надёжность захвата: <color=255,240,100>-25%</color>
+		Text=<clr><clrEnd>
+		Text=<color=255,240,100>После данной модификации улучшить захват стандартным способом будет невозможно.</color>
+    }
+    RNDmoditem_14 ^{
+        Cost=Big
+        Name=Набор деталей из фрагилиума
+		OnActCodeTypes=t_OnCheckingUsability,t_OnAnotherItem
+        OnActCode ^{
+			01=if(ScriptItemActionType(t_OnCheckingUsability))
+            02 ^{
+				01=dword item=ScriptItemActObject1();
+                02=if(ItemType(item)<t_FuelTanks || ItemType(item)>t_CustomWeapon)exit;
+                03=int sp=0;
+                04=if(ItemExtraSpecials(item))
+                05 ^{
+                    01=int i=0;
+                    02=str sp_name;
+                    03=int sp_num=0;
+                    04=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    05 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+				//Отправляем команду о необходимости подсветить пригодный для установки предмет
+				06=if(!sp)ScriptItemActParam(1);
+			}
+            03=if(ScriptItemActionType(t_OnAnotherItem))
+            04 ^{
+				01=item=ScriptItemActObject1();
+                02=if(ItemType(item)<t_FuelTanks || ItemType(item)>t_CustomWeapon)exit;
+                03=sp=0;
+                04=if(ItemExtraSpecials(item))
+                05 ^{
+                    01=i=0;
+                    02=sp_num=0;
+                    03=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    04 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                    }
+                }
+                06=if(!sp)
+                07 ^{
+					01=str text_q='Вы действительно хотите укрепить ItemName <color=0,50,200>фрагилиумными деталями</color>?';
+					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
+					03=if(MessageBoxYesNo(text_q))
+					04 ^{
+						01=ItemExtraSpecialsAddByType(item,FindBonusByCustomTag('dt_ModifyItem14'),1);
+						02=ItemSize(item,ItemSize(item)+ItemSize(CurItem()));
+						03=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
+						04=ScriptItemActParam(1);
+					}
+                }
+            }
+        }
+        Owner=PirateClan
+        Size=5
+        Text=Набор для модификации<br><color=255,240,100>любого</color> оборудования.<br>Заменяет самые ходовые детали в оборудовании на более износостойкие аналоги из фрагилиума.
+		Text=<clr><clrEnd>
+		Text=Надёжность оборудования: <color=255,240,100>+40%</color>
+    }
+	RNDmoditem_15 ^{
+        Cost=Huge
+        Name=Отсек контрабандиста
+		OnActCodeTypes=t_OnCheckingUsability,t_OnAnotherItem
+        OnActCode ^{
+            01=if(ScriptItemActionType(t_OnCheckingUsability))
+            02 ^{
+				01=dword item=ScriptItemActObject1();
+				02=if(ItemType(item)!=t_Hull)exit;
+				03=int sp=0;
+				04=if(ItemExtraSpecials(item))
+				05 ^{
+                    01=int i=0;
+                    02=str sp_name;
+                    03=int sp_num=0;
+                    04=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    05 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+					}
+				}
+				06=if(EqSpecial(item)>-1)
+				07 ^{
+					//Исключение не улучшаемых корпусов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+				//Отправляем команду о необходимости подсветить пригодный для установки отсека корпус
+				08=if(!sp)ScriptItemActParam(1);
+			}
+            03=if(ScriptItemActionType(t_OnAnotherItem))
+            04 ^{
+				01=item=ScriptItemActObject1();
+				02=if(ItemType(item)!=t_Hull)exit;
+				03=sp=0;
+				04=if(ItemExtraSpecials(item))
+				05 ^{
+                    01=i=0;
+                    03=sp_num=0;
+                    04=for(i=0;i<ItemExtraSpecials(item);i=i+1)
+                    05 ^{
+                        01=sp_num=ItemExtraSpecials(item,i);
+                        02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
+                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+					}
+				}
+				06=if(EqSpecial(item)>-1)
+				07 ^{
+					//Исключение не улучшаемых корпусов
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+				}
+				08=if(!sp)
+                09 ^{
+					01=str text_q='Вы уверены, что хотите установить <color=0,50,200>отсек контрабандиста</color> на ItemName?';
+					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
+                    03=if(MessageBoxYesNo(text_q))
+					04 ^{
+                        01=ItemExtraSpecialsAddByType(item,FindBonusByCustomTag('dt_ModifyItem15'),1);
+                        02=ItemSize(item,ItemSize(item)+(ItemSize(item)*25)/100);
+						03=HullHP(item,ItemSize(item));
+						//Определяем, что конкретно за контрабанду игрок нашёл внутри
+						04=if(UselessItemData(item,1)>=1 && UselessItemData(item,1)<=3)
+						05 ^{
+							01=MessageBox('В новом отсеке вы обнаружили партию контрабандного <color=0,50,200>оружия</color>.');
+							02=ShipGoods(Player(),t_Arms,GoodsCount(Player(),t_Arms)+UselessItemData(item,2));
+						}
+						06=else if(UselessItemData(item,1)==4 || UselessItemData(item,1)==5)
+						07 ^{
+							01=MessageBox('В новом отсеке вы обнаружили партию контрабандной <color=0,50,200>роскоши</color>.');
+							02=ShipGoods(Player(),t_Luxury,GoodsCount(Player(),t_Luxury)+UselessItemData(item,2));
+						}
+						08=else if(UselessItemData(item,1)==6)
+						09 ^{
+							01=MessageBox('В новом отсеке вы обнаружили партию контрабандных <color=0,50,200>наркотиков</color>.');
+							02=ShipGoods(Player(),t_Narcotics,GoodsCount(Player(),t_Narcotics)+UselessItemData(item,2));
+						}
+                        10=ItemCost(item,ItemCost(item)+(ItemCost(CurItem())/2));
+                        11=ScriptItemActParam(1);
+					}
+                }
+            }
+        }
+        Owner=PirateClan
+        Size=65
+        Text=Отсек для перевозки запрещённого груза, экстренно сброшенный неизвестным контрабандистом, вероятнее всего, в попытках уйти от сил закона.<br>При установке добавляет кораблю специальный отсек, значительно расширяющий его изначальную вместимость. Дополнительный отсек защищён от сканирования, но, к сожалению, не несёт на себе никакой брони, а потому становится ослабленной зоной корпуса.
+		Text=<clr><clrEnd>
+		Text=Размер корпуса: <color=255,240,100>+25%</color>
+		Text=Восприимчивость к урону: <color=255,240,100>+15%</color>
+        TextBlackMarket=Внешний отсек для скрытной перевозки запрещённого груза.<br>При установке добавляет кораблю специальный отсек, значительно расширяющий его изначальную вместимость. Дополнительный отсек защищён от сканирования, но, к сожалению, не несёт на себе никакой брони, а потому становится ослабленной зоной корпуса.
+		TextBlackMarket=<clr><clrEnd>
+		TextBlackMarket=Размер корпуса: <color=255,240,100>+25%</color>
+		TextBlackMarket=Восприимчивость к урону: <color=255,240,100>+15%</color>
+    }
+	RNDtimer ^{
+        Cost=Average
+        Name=Детонатор с таймером
+		OnActCodeTypes=t_OnAnotherItem
+        OnActCode ^{
+            01=if(ScriptItemActionType(t_OnAnotherItem))
+            02 ^{
+                01=dword item=ScriptItemActObject1();
+                02=if(ItemType(item)!=t_UselessItem && ItemType(item)!=t_ArtefactBomb)exit;
+				03=if(EquipmentImageName(item)!='RNDbomb_1' && EquipmentImageName(item)!='RNDbomb_2' && EquipmentImageName(item)!='RNDbomb_3' && ItemType(item)!=t_ArtefactBomb)exit;
+				04=if(UselessItemData(item,2)==-3)exit;
+				05=if(UselessItemData(item,2)==-1)
+				06 ^{
+					01=MessageBox('На этой бомбе уже стоит'+CT('FormInfo.br')+'один детонатор. Второй'+CT('FormInfo.br')+'ей ни к чему.',34);
+					02=ScriptItemActParam(2);
+					03=exit;
+				}
+                07=if(MessageBoxYesNo(Format('Установить детонатор на NAME?','NAME',Name(item))))
+                08 ^{
+                    01=int blow_turn=0;
+                    02=dword item_2=0;
+					03=str BombName='';
+					04=if(ItemType(item)==t_ArtefactBomb)BombName='Bm.Items.2ArtBomb_s';
+					05=else BombName='Bm.ItemsUseless.2'+EquipmentImageName(item)+'_s';
+                    06=blow_turn=NumberBox(BombName,'На сколько дней вы хотите установить таймер?',1,30);
+					07=if(blow_turn>=1)
+                    08 ^{
+						01=if(findsubstr(EquipmentImageName(item),'RNDbomb_')==0)item_2=item;
+						//Если таймер устанавливается на кварку, то создаём особую кварку с акткодом
+						02=else if(ItemType(item)==t_ArtefactBomb)
+						03 ^{
+							01=item_2=CreateQuestItem('RNDbomb_1');
+							02=ItemOwner(item_2,ItemOwner(item));
+							03=ItemSize(item_2,ItemSize(item));
+							04=ItemCost(item_2,ItemCost(item));
+							//Удаляем предмет через дроп в другой системе, чтобы после его прямого удаления акткод не крашнул игру, обратившись к удалённому предмету
+							05=DropItemInSystem(StarNearbyStars(ShipStar(Player()),1),GetArtFromShip(Player(),FindItemInShip(Player(),item)),30000,30000,30000,30000);
+							06=ItemDestroy(item,1);
+							07=AddItemToShip(Player(),item_2);
+						}
+						//Записываем в бомбу задержку таймера
+						04=UselessItemData(item_2,1,blow_turn);
+						//Устанавливаем таймер в положение выкл.
+						05=UselessItemData(item_2,2,-1);
+						06=UselessItemText(item_2,CT('UselessItems.'+EquipmentImageName(item_2)+'.Text')+substr(CT('Cheat.Ok'),0,2)+CT('Script.Mod_ExpArts.TimerSet'));
+						07=ItemSize(item_2,ItemSize(item_2)+ItemSize(CurItem()));
+						08=ItemCost(item_2,ItemCost(item_2)+ItemCost(CurItem()));
+						09=SetName(item_2,Name(item_2)+' с таймером');
+						//Уничтожаем предмет таймера
+						10=ScriptItemActParam(1);
+					}
+					09=else ScriptItemActParam(2);
+                }
+                09=else ScriptItemActParam(2);
+            }
+        }
+        Owner=PirateClan
+        Size=1
+        Text=При установке на <color=255,240,100>бомбу</color> подрывает (или активирует) её по истечении заданного времени. Обратный отсчёт начнётся только после выброса бомбы в <color=255,240,100>открытый космос</color>, однако подобрать бомбу с активированным таймером будет уже невозможно.
+    }
+}

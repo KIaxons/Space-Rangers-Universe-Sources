@@ -1,0 +1,124 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ~{
+            ExpPanel_infos ^{
+                Description=Updates the values on the repair panel and disables the ranks of NPC-transports when scanning
+                Icon=0
+                Name=--
+                OnActCode ^{
+                    01=int i=0;
+                    02=dword temp_dword=0;
+                    05=int dur=0;
+                    06=int dur_count=0;
+                    07=if(ScriptItemActionType()==t_OnEnteringForm)
+                    08 ^{
+                        00=if(CurrentForm()=='Ship')
+                        01 ^{
+                            00=if(InterfaceState('StarMap','fix_info_window')==1)InterfaceState('StarMap','fix_info_window',0);
+                        }
+                        02=if(CurrentForm()=='StarMap')
+                        03 ^{
+                            00=InterfaceSize('StarMap','HPbar_s',0,141-141*HullDamage(Player())/100);
+                            01=InterfacePos('StarMap','HPbar_s',0,141*HullDamage(Player())/100,0);
+                        }
+                    }
+                    09=if(ScriptItemActionType()==t_OnLeavingForm)
+                    10 ^{
+                        01=if(CurrentForm()=='Ship')
+                        02 ^{
+                            01=for(i=1;i<10;i=i+1)
+                            02 ^{
+                                01=if(PlayerEqSet(i)==0)InterfaceState('StarMap','set_button_'+i+'_c',0);
+                                02=if(PlayerEqSet(i)==1)InterfaceState('StarMap','set_button_'+i+'_c',1);
+                                03=if(PlayerEqSet(i)==2)
+                                04 ^{
+                                    00=InterfaceState('StarMap','set_button_'+i+'_c',0);
+                                    01=if(i>1 && i<9)
+                                    02 ^{
+                                        00=InterfaceState('StarMap','set_button_a',1);
+                                        01=InterfacePos('StarMap','set_button_a',PlayerEqSet()*20,0,0);
+                                        02=InterfaceState('StarMap','set_button_a_first',0);
+                                        03=InterfaceState('StarMap','set_button_a_last',0);
+                                    }
+                                    03=if(i==1)
+                                    04 ^{
+                                        00=InterfaceState('StarMap','set_button_a',0);
+                                        02=InterfaceState('StarMap','set_button_a_first',1);
+                                        03=InterfaceState('StarMap','set_button_a_last',0);
+                                    }
+                                    05=if(i==9)
+                                    06 ^{
+                                        00=InterfaceState('StarMap','set_button_a',0);
+                                        02=InterfaceState('StarMap','set_button_a_first',0);
+                                        03=InterfaceState('StarMap','set_button_a_last',1);
+                                    }
+                                }
+                            }
+                            09=for(i=0;i<ShipItems(Player());i=i+1)
+                            10 ^{
+                                01=temp_dword=ShipItems(Player(),i);
+                                02=if(!ItemIsInUse(temp_dword) || ItemType(temp_dword)==t_Hull) continue;
+                                03=dur_count=dur_count+1;
+                                04=dur=dur+ItemDurability(temp_dword);
+                            }
+                            11=for(i=1;i<5;i=i+1)
+                            12 ^{
+                                01=temp_dword=ShipEqInSlot(Player(),t_Artefact,i);
+                                02=if(temp_dword)
+                                03 ^{
+                                    01=dur=dur+ItemDurability(temp_dword);
+                                    02=dur_count=dur_count+1;
+                                }
+                            }
+                            13=if(dur_count>=0)
+                            14 ^{
+                                01=dur_count=dur_count+1;
+                                02=dur=dur+(100-HullDamage(Player()));
+                            }
+                            15=dur=43-43*(dur/dur_count)/100;
+                            16=InterfacePos('StarMap','fix_info_butt_a',-dur,0,0);
+                        }
+                        03=if(CurrentForm()=='StarMap' && InterfaceState('StarMap','fix_info_window')==1)InterfaceState('StarMap','fix_info_window',0);
+                    }
+                    13=if(ScriptItemActionType()==t_OnScan)
+                    14 ^{
+                        01=temp_dword=ScriptItemActObject1();
+                        02=if(ShipType(temp_dword)=='Transport' || ShipType(temp_dword)=='Liner' || ShipType(temp_dword)=='Diplomat' || ShipType(temp_dword)=='Kling')InterfaceState('Scaner','RankWndCustom',0);
+                        03=if(ShipType(temp_dword)=='Warrior' || ShipType(temp_dword)=='Pirate' || ShipType(temp_dword)=='Ranger' || ShipType(temp_dword)=='RangerPirate')InterfaceState('Scaner','RankWndCustom',1);
+                    }
+                    15=if(ScriptItemActParam()==11 && ScriptItemActionType()==t_OnStep)
+                    16 ^{
+                        01=for(i=0;i<ShipItems(Player());i=i+1)
+                        02 ^{
+                            01=temp_dword=ShipItems(Player(),i);
+                            02=if(!ItemIsInUse(temp_dword) || ItemType(temp_dword)==t_Hull)continue;
+                            03=dur_count=dur_count+1;
+                            04=if(ItemDurability(temp_dword)>0)dur=dur+ItemDurability(temp_dword);
+                            05=if(ItemDurability(temp_dword)<=0)dur=dur+0;
+                        }
+                        03=for(i=1;i<5;i=i+1)
+                        04 ^{
+                            01=temp_dword=ShipEqInSlot(Player(),t_Artefact,i);
+                            02=if(temp_dword)
+                            03 ^{
+                                01=if(ItemDurability(temp_dword)>0)dur=dur+ItemDurability(temp_dword);
+                                02=if(ItemDurability(temp_dword)<=0)dur=dur+0;
+                                03=dur_count=dur_count+1;
+                            }
+                        }
+                        05=if(dur_count>=0)
+                        06 ^{
+                            01=dur_count=dur_count+1;
+                            02=dur=dur+(100-HullDamage(Player()));
+                        }
+                        07=dur=43-43*(dur/dur_count)/100;
+                        08=InterfacePos('StarMap','fix_info_butt_a',-dur,0,0);
+                        09=if(InterfaceState('StarMap','fix_info_window')==1)InterfaceState('StarMap','fix_info_window',0);
+                        10=InterfaceSize('StarMap','HPbar_s',0,141-141*HullDamage(Player())/100);
+                        11=InterfacePos('StarMap','HPbar_s',0,141*HullDamage(Player())/100,0);
+                    }
+                }
+            }
+        }
+    }
+}

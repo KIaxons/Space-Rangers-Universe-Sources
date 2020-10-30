@@ -1,0 +1,94 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ~{
+            auto_upgr_ruins ^{
+                Description=Infos of bases auto upgrade, hanging up in the script
+                Icon=0
+                Name=--
+                OnActCode ^{
+                    01=if(ScriptItemActionType()==t_OnStep && ScriptItemActParam()==11)
+                    02 ^{
+                        01=dword curship=ScriptItemActShip();
+                        02=int infos=ShipFindCustomShipInfoByType(curship,'auto_upgr_ruins');
+                        03=int infos_var_3=ShipCustomShipInfoData(curship,infos,3);
+                        04=if(infos_var_3==0)
+                        05 ^{
+                            01=ShipCustomShipInfoData(curship,infos,3,Rnd(160,250));
+                            02=int count=0;
+                            03=dword temp_dword;
+                            04=for(count=0;count<ShipItems(curship);count=count+1)
+                            05 ^{
+                                01=temp_dword=ShipItems(curship,count);
+                                02=if(!ItemIsInUse(temp_dword)) continue;
+                                03=if(ItemSize(temp_dword)<=179 && ItemType(temp_dword)!=t_Hull) ItemSize(temp_dword,Rnd(80,100));
+                                04=if(ItemLevel(temp_dword)<GalaxyTechLevel()) ItemLevel(temp_dword,GalaxyTechLevel()-2);
+                                05=if(!ItemImprovement(temp_dword)) ItemImprovement(temp_dword,2,0);
+                                06=if(ItemSize(temp_dword)<=199 && ItemType(temp_dword)>=t_Weapon1)ItemSize(temp_dword,Rnd(200,220));
+                            }
+                            06=if(ShipDroidRepair(curship)==0)
+                            07 ^{
+                                01=temp_dword=CreateEquipment(t_RepairRobot,Rnd(80,100),GalaxyTechLevel()-2,ShipOwner(curship));
+                                02=ItemImprovement(temp_dword,2,0);
+                                03=AddItemToShip(curship,temp_dword);
+                                04=ItemIsInUse(temp_dword,curship,1);
+                            }
+                            08=if(ShipHookPower(curship)==0)
+                            09 ^{
+                                01=temp_dword=CreateEquipment(t_CargoHook,Rnd(80,100),GalaxyTechLevel()-2,ShipOwner(curship));
+                                02=ItemImprovement(temp_dword,2,0);
+                                03=AddItemToShip(curship,temp_dword);
+                                04=ItemIsInUse(temp_dword,curship,1);
+                            }
+                            10=if(ShipProtectability(curship)==0)
+                            11 ^{
+                                01=temp_dword=CreateEquipment(t_DefGenerator,Rnd(80,100),GalaxyTechLevel()-2,ShipOwner(curship));
+                                02=ItemImprovement(temp_dword,2,0);
+                                03=AddItemToShip(curship,temp_dword);
+                                04=ItemIsInUse(temp_dword,curship,1);
+                            }
+                            12=if(ShipCntWeapon(curship)<5)
+                            13 ^{
+                                01=for(count=0;count<5;count=count+1)
+                                02 ^{
+                                    01=temp_dword=CreateEquipment(t_Weapon3,Rnd(80,100),GalaxyTechLevel(),ShipOwner(curship));
+                                    02=ItemImprovement(temp_dword,2,0);
+                                    03=AddItemToShip(curship,temp_dword);
+                                }
+                            }
+                            14=if(ShipSkill(curship,0)!=6 || ShipSkill(curship,1)!=6 || ShipSkill(curship,2)!=6);
+                            15 ^{
+                                01=int skillup=0;
+                                02=if(ShipSkill(curship,0)!=6 && skillup==0)
+                                03 ^{
+                                    01=ShipSkill(curship,0,ShipSkill(curship,0)+1);
+                                    02=skillup=1;
+                                }
+                                04=if(ShipSkill(curship,1)!=6 && skillup==0)
+                                05 ^{
+                                    01=ShipSkill(curship,1,ShipSkill(curship,1)+1);
+                                    02=skillup=1;
+                                }
+                                06=if(ShipSkill(curship,2)!=6 && skillup==0)
+                                07 ^{
+                                    01=ShipSkill(curship,2,ShipSkill(curship,2)+1);
+                                    02=skillup=1;
+                                }
+                                08=skillup=0;
+                            }
+                            16=int curHP=Hitpoints(curship);
+                            17=ShipRepairEq(curship);
+                            18=if(StarBattle(ShipStar(curship)))HullHP(curship,curHP);
+                            19=ArrangeItems(curship);
+                            20=for(count=ShipItems(curship)-1;count>0;count=count-1)
+                            21 ^{
+                                01=if(!ItemIsInUse(ShipItems(curship,count))) FreeItem(GetItemFromShip(curship,count));
+                            }
+                        }
+                        06=if(infos_var_3>0)ShipCustomShipInfoData(curship,infos,3,infos_var_3-1);
+                        07=if(RuinsAllowModernization(curship)==1)ShipDeleteCustomShipInfo(curship,'auto_upgr_ruins');
+                    }
+                }
+            }
+        }
+    }
+}

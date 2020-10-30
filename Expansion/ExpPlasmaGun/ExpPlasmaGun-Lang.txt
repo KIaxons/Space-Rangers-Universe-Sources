@@ -1,0 +1,188 @@
+Items ^{
+    Weapon ^{
+        Name ^{
+            PlasmaGun=Плазмоган
+        }
+        Text ^{
+            PlasmaGun=Поражает цель зарядом, состоящим из ионизированного газа, разогретого до состояния плазмы, и нанося <CntAttacks>x(<MinDamage>-<MaxDamage>)<Bonus> ед. урона на дистанции до <Radius>.
+        }
+		CustomWeapon ~{
+			StatsVersion ^{
+				ExpPlasmaGun=19.07.2020
+			}
+			PlasmaGun ~{
+				BaseGun=Industrial_Laser
+				MinDamage=18
+				MaxDamage=36
+				DamageSet=Energy
+				ShotType=Normal
+				Speed=60
+				AverageRadius=250
+				SecondaryDamageRadius=0
+				MissileRadius=0
+				MissileMinSpeed=0
+				MissileMaxSpeed=0
+				MissileChanceToBeHit=0
+				mWeaponDamage=1.00,1.10,1.20,1.30,1.40,1.60,1.90,2.30
+				ShotsPerTurn=3
+				ArcadeType=Flow_Blaster
+				MiningFactor=4
+				kCost=150
+				AverageSize=250
+				TechLevel=5
+				InventTechLevel=Wave_Phaser
+				StoreAvailability=CoalitionOnly
+				ShotEffectPath=Weapon.1
+				ShotEffectPalette=4
+				SplashEffectPath=Weapon.0
+				MissileExplosionEffectPath=
+			}
+		}
+		OriginalWeaponType ~{
+			Industrial_Laser=1
+			Fragmentation_Cannon=2
+			Flux=3
+			Missile_Launcher=4
+			Treton=5
+			Wave_Phaser=6
+			Flow_Blaster=7
+			Electronic_Cutter=8
+			Multiresonator=9
+			Atomic_Vision=10
+			Disintegrator=11
+			Turbogravitron=12
+			IMHO-9000=13
+			Vertix=14
+			Torpedo_Tube=15
+			Esodapher=16
+			Caphasitor=17
+			Lirecron=18
+		}
+    }
+}
+MicroModuls ~{
+	ExpPlasmaGun_Diphrode ^{
+		Cost=120
+		Equipments=PlasmaGun
+		Fragility=100
+		KindGraph=Diphrode
+		Name="Дифрод"
+		OnPlanets=1
+		Owner=Maloc,Peleng,People,Fei,Gaal
+		Priority=10
+		Ruins=Any
+		ShotVisual=4
+		Size=110
+		Special=1
+		Text=<color=248,252,248>Серийный комплект модифицированных узлов орудия и программных доработок "Дифрод", увеличивающих мощность оружия разных типов.</color><br> <br>
+		Text=Бонус к урону: <clr>15%<clrEnd>
+		Text=Мощность сканера: <bonScan> ед.
+		Text=(необходимо превышение мощности сканера над защитой цели)
+		WeaponMods=ScanBonus
+		bonScan=-1
+	}
+	ExpPlasmaGun_Liphocarus ^{
+		Cost=120
+		Equipments=PlasmaGun
+		Fragility=100
+		KindGraph=Liphocarus
+		Name="Лифокар"
+		OnPlanets=1
+		Owner=Maloc,Peleng,People,Fei,Gaal
+		Priority=10
+		Ruins=Any
+		ShotVisual=4
+		Size=110
+		Special=1
+		Text=<color=248,252,248>Модифицированное по проекту "Лифокар" вооружение наносит дополнительный урон повреждённым целям, используя механизм последовательной сверхточной стрельбы в пробоины корпуса.</color><br> <br>
+		Text=Бонус к урону до: <clr>33%<clrEnd>
+		Text=Мощность сканера: <bonScan> ед.
+		Text=(необходимо превышение мощности сканера над защитой цели)
+		WeaponMods=BonusToDamaged
+		bonScan=-1
+	}
+	ExpPlasmaGun_Javitor ^{
+		Cost=120
+		Equipments=PlasmaGun
+		Fragility=100
+		KindGraph=Javitor
+		Name="Джавитор"
+		OnPlanets=1
+		Owner=Maloc,Peleng,People,Fei,Gaal
+		Priority=10
+		Ruins=Any
+		ShotVisual=4
+		Size=110
+		Special=1
+		Text=<color=248,252,248>Модифицированное для прицельного отстрела ремонтных роботов, вооружение в варианте "Джавитор" позволяет вести огонь по траектории движения дроида, тем самым получая шанс блокировать вражескому кораблю проведение ремонта в ходе битвы.</color><br> <br>
+		Text=Шанс блокировки <clr>дроида<clrEnd> обратно пропорционален размеру корпуса цели
+		Text=Мощность сканера: <bonScan> ед.
+		Text=(необходимо превышение мощности сканера над защитой цели)
+		WeaponMods=BlockDroid
+		bonScan=-1
+	}
+	ExpPlasmaGun_Armoloc ^{
+		Cost=120
+		Equipments=PlasmaGun
+		Fragility=100
+		KindGraph=Armoloc
+		Name="Армолок"
+		OnPlanets=1
+		Owner=Maloc,Peleng,People,Fei,Gaal
+		Priority=10
+		Ruins=Any
+		ShotVisual=2
+		Size=110
+		Special=1
+		Text=<color=248,252,248>Оружие модификации "Армолок" может высокоточными выстрелами выводить из строя концентратор каналов управления вооружением цели, на некоторое время отнимая у противника способность вести ответный огонь.</color><br> <br>
+		Text=Шанс блокировки <clr>вооружения<clrEnd> обратно пропорционален размеру корпуса цели
+		Text=Мощность сканера: <bonScan> ед.
+		Text=(необходимо превышение мощности сканера над защитой цели)
+		WeaponMods=BlockWeapon
+		bonScan=-1
+	}
+	ExpPlasmaGun_Involute ^{
+		Cost=300
+		Equipments=PlasmaGun
+		Fragility=200
+		KindGraph=Involute
+		Name="Эвольвента"
+		OnPlanets=1
+		Owner=Maloc,Peleng,People,Fei,Gaal
+		Priority=10
+		Ruins=Any
+		ShotVisual=0
+		Size=70
+		Special=1
+		Text=<color=248,252,248>Следующий этап в развитии плазмогана. Модифицированная энергетическая установка значительно дороже и быстрее перегревается, но зато увеличивает скорострельность, дальность стрельбы, а также уменьшает занимаемый орудием объём.</color><br> <br>
+		Text=Число выстрелов в день: <clr>+1<clrEnd>
+		Text=Дальность стрельбы: <clr>+80<clrEnd> ед.
+		Text=Надёжность оружия: <clr>-50%<clrEnd>
+		bonAttacks=1
+		bonWRadius=80
+	}
+	ExpPlasmaGun_Magnetron ^{
+		Cost=190
+		Equipments=PlasmaGun
+		Fragility=133
+		KindGraph=Magnetron
+		Name="Магнетрон"
+		OnPlanets=1
+		Owner=Maloc,Peleng,People,Fei,Gaal
+		Priority=10
+		Ruins=Any
+		ShotVisual=1
+		Size=100
+		Special=1
+		Text=<color=248,252,248>Источник мощного магнитного поля, установленный на данном орудии, значительно увеличивает пробивную силу любого энергетического импульса. При этом вызываемые магнитным полем помехи заметно снижают эффективность работы бортового оборудования как атакующего, так и его цели.</color><br> <br>
+        Text=Дополнительный эффект: <clr>ЭМ-помехи<clrEnd>
+		Text=Бонус к урону: <clr>+15<clrEnd> ед.
+		Text=Дальность радара: <bonRadar> млн. км.
+		Text=Мощность сканера: <bonScan> ед.
+		Text=Надёжность оружия: <clr>-25%<clrEnd>
+		WeaponMods=Magnetic
+		bonWEnergy=15
+		bonRadar=-100
+		bonScan=-2
+	}
+}

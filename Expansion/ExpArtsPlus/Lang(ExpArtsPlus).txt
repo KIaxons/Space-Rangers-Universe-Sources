@@ -1,0 +1,410 @@
+Artefacts ^{
+	ArtNano ^{
+        Name=Нанитоиды
+		OnUseCode ^{
+			01=if(EqModule(CurItem())==-1)
+			02 ^{
+				//Установленный на артефакт ММ не изменяет его статы, зато служит индикатором активации дополнительных возможностей
+				01=EqModule(CurItem(),FindBonusByCustomTag('AkrinAmplifier'));
+				//Меняем системное имя, а с ним и описание для артефакта
+				02=EquipmentImageName(CurItem(),'ArtNano_AddOn');
+				03=Sound('Sound.Mod_Switch');
+			}
+			03=else
+			04 ^{
+				01=EqModule(CurItem(),-1);
+				02=EquipmentImageName(CurItem(),'');
+				03=Sound('Sound.Mod_Switch');
+			}
+		}
+		OnActCodeTypes=t_OnStep
+		OnActStepTypes=11
+		OnActCode ^{
+			//Починка уникального доминаторского оружия (ИМХО, вертикс, торпедник) нанитоидами
+			01=dword ship=ScriptItemActShip();
+			02=if(!ship)exit;
+			03=dword cur_item=CurItem();
+			04=if(!ItemDurability(cur_item))exit;
+			05=if(ScriptItemActionType(t_OnStep,11))
+			06 ^{
+				01=if(EqModule(cur_item)>-1)
+				02 ^{
+					//Проверка на совместимость нанитоидов отрицательная
+					01=if(!ArtefactTypeBoosted(ship,t_ArtefactNano))
+					02 ^{
+						01=for(int i=1;i<6;i=i+1)
+						02 ^{
+							01=dword tdwd=ShipEqInSlot(ship,t_Weapon1,i);
+							02=if(ItemType(tdwd)>=t_Weapon13 && ItemType(tdwd)<=t_Weapon15)
+							03 ^{
+								01=if(GetNodesFromShip(ship)<1)break;
+								02=if(ItemDurability(tdwd)<61)
+								03 ^{
+									01=if(!ItemDurability(tdwd))Ether(2,'',Format(CT('Artefacts.ArtNano.RepairItem'),'<Name>',Name(tdwd)));
+									02=ItemDurability(tdwd,ItemDurability(tdwd)+2);
+									03=GetNodesFromShip(ship,1);
+									04=if(Rnd(1,100)<=33)ItemDurability(cur_item,ItemDurability(cur_item)-1);
+								}
+							}
+							//Проверка на кастомное оружие с ремонтом только за ноды (его тоже чиним)
+							04=else if(ItemType(tdwd)==t_CustomWeapon)
+							05 ^{
+								01=if(GetCustomWeaponData(CustomWeaponType(tdwd),'Availability')=='NotSoldAndNodeRepair')
+								02 ^{
+									01=if(GetNodesFromShip(ship)<1)break;
+									02=if(ItemDurability(tdwd)<61)
+									03 ^{
+										01=if(!ItemDurability(tdwd))Ether(2,'',Format(CT('Artefacts.ArtNano.RepairItem'),'<Name>',Name(tdwd)));
+										02=ItemDurability(tdwd,ItemDurability(tdwd)+2);
+										03=GetNodesFromShip(ship,1);
+										04=if(Rnd(1,100)<=33)ItemDurability(cur_item,ItemDurability(cur_item)-1);
+									}
+								}
+							}
+						}
+					}
+					//Проверка на совместимость нанитоидов положительная
+					03=else
+					04 ^{
+						01=for(int j=1;j<ShipItems(ship);j=j+1)
+						02 ^{
+							01=dword tdwd2=ShipItems(ship,j);
+							02=if(ItemType(tdwd2)>=t_Weapon13 && ItemType(tdwd2)<=t_Weapon15)
+							03 ^{
+								01=if(GetNodesFromShip(ship)<1)break;
+								02=if(ItemDurability(tdwd2)<61)
+								03 ^{
+									01=if(!ItemDurability(tdwd2))Ether(2,'',Format(CT('Artefacts.ArtNano.RepairItem'),'<Name>',Name(tdwd2)));
+									02=ItemDurability(tdwd2,ItemDurability(tdwd2)+2);
+									03=GetNodesFromShip(ship,1);
+									04=if(Rnd(1,100)<=33)ItemDurability(cur_item,ItemDurability(cur_item)-1);
+								}
+							}
+							//Проверка на кастомное оружие с ремонтом только за ноды (его тоже чиним)
+							04=else if(ItemType(tdwd2)==t_CustomWeapon)
+							05 ^{
+								01=if(GetCustomWeaponData(CustomWeaponType(tdwd2),'Availability')=='NotSoldAndNodeRepair')
+								02 ^{
+									01=if(GetNodesFromShip(ship)<1)break;
+									02=if(ItemDurability(tdwd2)<61)
+									03 ^{
+										01=if(!ItemDurability(tdwd2))Ether(2,'',Format(CT('Artefacts.ArtNano.RepairItem'),'<Name>',Name(tdwd2)));
+										02=ItemDurability(tdwd2,ItemDurability(tdwd2)+2);
+										03=GetNodesFromShip(ship,1);
+										04=if(Rnd(1,100)<=33)ItemDurability(cur_item,ItemDurability(cur_item)-1);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+        RepairItem=Хорошая новость - нанитоиды подлатали <Name>!
+        Text=Миниатюрные роботы чинят в день до <clr>10%<clrEnd> от одного из случайно выбранных предметов на корабле, целостность которых не превышает <clr>60%<clrEnd>.
+		Text=<br> <br>
+		Text=<color=255,0,0>Дополнительное свойство отключено:</color>
+		Text=Способны чинить даже уникальные виды <clr>доминаторского<clrEnd> вооружения, но при этом будут ежедневно расходовать по <clr>1<clrEnd> ед. нодов из трюма.
+    }
+	ArtNano_AddOn ^{
+        Text=Миниатюрные роботы чинят в день до <clr>10%<clrEnd> от одного из случайно выбранных предметов на корабле, целостность которых не превышает <clr>60%<clrEnd>.
+		Text=<br> <br>
+		Text=<color=0,255,0>Дополнительное свойство активно:</color>
+		Text=Способны чинить даже уникальные виды <clr>доминаторского<clrEnd> вооружения, но при этом будут ежедневно расходовать по <clr>1<clrEnd> ед. нодов из трюма.
+	}
+	ArtFuel ^{
+	    BrokenInBattle=Ужас! Вражеский выстрел попал прямо в чёрную жижу. Выработка топлива прекращена.
+        BrokenInUse=Чёрная жижа исчерпала свои ресурсы. Необходимо заправить её. Но чем?
+        Description=Чёрная жижа - смесь, полученная учёными древности. Способ приготовления чёрной жижи безвозвратно утерян, но несколько порций этого вещества сохранилось в Галактике по сей день. Помещённая в топливный бак, жижа действует как катализатор, постепенно увеличивая количество топлива.
+        Name=Чёрная жижа
+		OnUseCode ^{
+			01=if(EqModule(CurItem())==-1)
+			02 ^{
+				//Установленный на артефакт ММ не изменяет его статы, зато служит индикатором активации дополнительных возможностей
+				01=EqModule(CurItem(),FindBonusByCustomTag('AkrinAmplifier'));
+				//Меняем системное имя, а с ним и описание для артефакта
+				02=EquipmentImageName(CurItem(),'ArtFuel_AddOn');
+				03=Sound('Sound.Mod_Switch');
+			}
+			03=else
+			04 ^{
+				01=EqModule(CurItem(),-1);
+				02=EquipmentImageName(CurItem(),'');
+				03=Sound('Sound.Mod_Switch');
+			}
+		}
+		OnActCodeTypes=t_OnStep
+		OnActStepTypes=11
+		OnActCode ^{
+			//Починка чёрной жижей бака и двигателя
+			01=dword ship=ScriptItemActShip();
+			02=if(!ship)exit;
+			03=if(!ItemDurability(CurItem()))exit;
+			04=if(ScriptItemActionType(t_OnStep,11))
+			05 ^{
+				01=if(EqModule(CurItem())>-1)
+				02 ^{
+					01=if(!OrderForsage(ship))
+					02 ^{
+						//В режиме совместимости увеличиваем шанс успешного ремонта
+						01=int compCheck=ArtefactTypeBoosted(ship,t_ArtMissileDef);
+						02=int rollChance=50;
+						03=if(compCheck)rollChance=75;
+						04=if(Rnd(1,100)<=rollChance)
+						05 ^{
+							01=dword tdwd=ShipEqInSlot(ship,t_Engine);
+							02=if(tdwd!=0)
+							03 ^{
+								01=if(ItemDurability(tdwd)<85)ItemDurability(tdwd,ItemDurability(tdwd)+1);
+							}
+							04=tdwd=ShipEqInSlot(ship,t_FuelTanks);
+							05=if(tdwd!=0)
+							06 ^{
+								01=if(ItemDurability(tdwd)<85)ItemDurability(tdwd,ItemDurability(tdwd)+1);
+							}
+							//И добавляем шанс не потерять прочность при починке
+							07=if(!compCheck)rollChance=100;
+							08=if(Rnd(1,100)<=rollChance)ItemDurability(CurItem(),ItemDurability(CurItem())-1);
+						}
+					}
+				}
+			}
+		}
+        Text=Вырабатывает топливо, постепенно наполняя топливный бак.
+		Text=<br> <br>
+		Text=<color=255,0,0>Дополнительное свойство отключено:</color>
+        Text=При соблюдении определённых условий имеет<br>шанс произвести особые наночастицы, которые,<br>смешиваясь с топливом, благоприятно воздействуют<br>на топливный бак и двигатель изнутри, постепенно<br>восстанавливая их структуру.
+	}
+	ArtFuel_AddOn ^{
+        Text=Вырабатывает топливо, постепенно наполняя топливный бак.
+		Text=<br> <br>
+		Text=<color=0,255,0>Дополнительное свойство активно:</color>
+        Text=При соблюдении определённых условий имеет<br>шанс произвести особые наночастицы, которые,<br>смешиваясь с топливом, благоприятно воздействуют<br>на топливный бак и двигатель изнутри, постепенно<br>восстанавливая их структуру.
+	}
+    ArtFastRacks ^{
+        Description=Ралс - тестовая версия нового программного обеспечения механизма заряжания ракетного оружия, выполненная в виде отдельного субблока. Позволяет произвести два залпа вместо одного за счёт оптимизации алгоритмов перемещения подвижных частей.
+        Name=Ралс
+        OnUseCode ^{
+            01=OnUseCodeMissileDef();
+        }
+		Text=Обеспечивает <clr>15%<clrEnd> шанс двойного залпа из ракетного оружия.
+		Text=<br> <br>
+		Text=При активации передаёт всем выпущенным ракетам команду на мгновенную детонацию, тем самым ликвидируя их ещё до подлёта к заданной цели.
+    }
+	ArtMissileDef ^{
+        BrokenInUse=Плазмоуритановая составляющая слоя ракетанга высохла из-за сильной звёздной активности. Наномеханизмы парализованы, требуется ремонт.
+        Description=Ракетанг - система наномеханизмов, которые покрывают поверхность корпуса тонкой управляемой плазмоуритановой плёнкой. Уникальность этих наномеханизмов заключается в том, что они точно определяют место попадания ракеты и мгновенно укрепляют броню корабля на соответствующем участке. Кроме того, наномеханизмы способны собирать ракеты самостоятельно, используя в качестве подручного материала обломки реактивных снарядов, поглощаемых ими при отражении вражеских атак.
+        Name=Ракетанг
+		OnUseCode ^{
+			0=if(EqModule(CurItem())==-1)
+			01 ^{
+				//Установленный на артефакт ММ не изменяет его статы, зато служит индикатором активации дополнительных возможностей
+				01=EqModule(CurItem(),FindBonusByCustomTag('AkrinAmplifier'));
+				//Меняем системное имя, а с ним и описание для артефакта
+				02=EquipmentImageName(CurItem(),'ArtMissileDef_AddOn');
+				03=Sound('Sound.Mod_Switch');
+			}
+			02=else
+			03 ^{
+				01=EqModule(CurItem(),-1);
+				02=EquipmentImageName(CurItem(),'');
+				03=Sound('Sound.Mod_Switch');
+			}
+		}
+		OnActCodeTypes=t_OnStep
+		OnActStepTypes=0
+		OnActCode ^{
+			01=if(!ScriptItemActShip())exit;
+			02=dword cur_item=CurItem();
+			//Замена оригинального артефакта кастомным при пропуске хода
+			03=if(ScriptItemActionType(t_OnStep,0))
+			04 ^{
+				01=dword ship=ScriptItemActShip();
+				02=dword TnewItem=CreateCustomArt('ArtMissileDef_Modified',ItemSize(cur_item),ItemCost(cur_item),ItemOwner(cur_item));
+				03=ItemDurability(TnewItem,ItemDurability(cur_item));
+				04=int Tcheck=0;
+				05=if(ItemIsInUse(cur_item))Tcheck=ItemIsInUse(cur_item,ship);
+				06=if(EqModule(cur_item)==-1)
+				07 ^{
+					01=CustomArtTextData(TnewItem,1,'<color=255,0,0>Дополнительное свойство отключено:</color>');
+					02=CustomArtData(TnewItem,1,0);
+				}
+				08=else
+				09 ^{
+					01=CustomArtTextData(TnewItem,1,'<color=0,255,0>Дополнительное свойство активно:</color>');
+					02=CustomArtData(TnewItem,1,1);
+				}
+				10=FreeItem(GetArtFromShip(ship,FindItemInShip(ship,cur_item)));
+				11=AddItemToShip(ship,TnewItem);
+				12=if(Tcheck)ItemIsInUse(TnewItem,ship,1,Tcheck);
+			}
+		}
+		Text=Плазмоуритановый защитный механизм, оснащённый усиленными детекторами и встроенным сборщиком ракет. Блокирует <clr>10-40%<clrEnd> ущерба от попадания ракетного оружия, попутно поглощая обломки, из которых в дальнейшем способен собирать полноценные боевые снаряды.
+		Text=<br> <br>
+		Text=<color=255,0,0>Дополнительное свойство отключено:</color>
+		Text=При наличии материала, ежедневно восполняет <clr>1<clrEnd> заряд в одном из экипированных ракетных орудий, начиная с самого разряженного. Для заправки двигателей произведённых боеприпасов расходует по <clr>1<clrEnd> ед. топлива из основного бака.
+		Text=Доступно зарядов для сборки: <clr>0<clrEnd> шт.
+	}
+	ArtMissileDef_AddOn ^{
+		Text=Плазмоуритановый защитный механизм, оснащённый усиленными детекторами и встроенным сборщиком ракет. Блокирует <clr>10-40%<clrEnd> ущерба от попадания ракетного оружия, попутно поглощая обломки, из которых в дальнейшем способен собирать полноценные боевые снаряды.
+		Text=<br> <br>
+		Text=<color=0,255,0>Дополнительное свойство активно:</color>
+		Text=При наличии материала, ежедневно восполняет <clr>1<clrEnd> заряд в одном из экипированных ракетных орудий, начиная с самого разряженного. Для заправки двигателей произведённых боеприпасов расходует по <clr>1<clrEnd> ед. топлива из основного бака.
+		Text=Доступно зарядов для сборки: <clr>0<clrEnd> шт.
+	}
+    CustomArtefacts ^{
+		ArtMissileDef_Modified ^{
+			Broken=(сломан)
+			BrokenInBattle=Внимание! Ракетанг неудачно определил вероятность попадания, и вражеский выстрел разделил общую массу наномеханизмов на две части. Для соединения требуется помощь специалиста.
+			BrokenInUse=Плазмоуритановая составляющая слоя ракетанга высохла из-за сильной звёздной активности. Наномеханизмы парализованы, требуется ремонт.
+			Name=Ракетанг
+			//Артефакт считается ботами артефактом ArtMissileDef (Ракетангом)
+			CountsAs=ArtMissileDef
+			//Артефакт считается полным аналогом Ракетанга и не может быть установлен в слот, если в другом слоте уже есть Ракетанг или другой такой же артефакт
+			SharedUse=1
+			//Артефакт в точности копирует весь функционал оригинального Ракетанга
+			SharedEffect=1
+			OnUseCode ^{
+				0=if(!CustomArtData(CurItem(),1))
+				01 ^{
+					//Ставим переключатель восполнения боекомплекта на Вкл.
+					01=CustomArtData(CurItem(),1,1);
+					02=CustomArtTextData(CurItem(),1,'<color=0,255,0>Дополнительное свойство активно:</color>');
+					03=Sound('Sound.Mod_Switch');
+				}
+				02=else
+				03 ^{
+					//Ставим переключатель восполнения боекомплекта на Выкл.
+					01=CustomArtData(CurItem(),1,0);
+					02=CustomArtTextData(CurItem(),1,'<color=255,0,0>Дополнительное свойство отключено:</color>');
+					03=Sound('Sound.Mod_Switch');
+				}
+			}
+			OnActCodeTypes=t_OnGettingMissileHit,t_OnStep
+			OnActStepTypes=11
+			OnActCode ^{
+				//Восполнение ракет Ракетангом
+				01=if(!ScriptItemActShip())exit;
+				02=if(!ItemDurability(CurItem()))exit;
+				03=dword cur_item=CurItem();
+				04=if(ScriptItemActionType(t_OnStep,11))
+				05 ^{
+					01=if(CustomArtData(cur_item,1))//Проверка, что автозарядка боекомплекта включена
+					02 ^{
+						//Сразу скипаем этап пополнения, если отсутствует топливо и арт несовместим
+						01=if(!ShipFuel(ScriptItemActShip()))
+						02 ^{
+							01=if(!ArtefactTypeBoosted(ScriptItemActShip(),t_ArtMissileDef))exit;
+						}
+						//Проверка на режим совместимости Ракетанга
+						03=int i;
+						04=int compCheck=ArtefactTypeBoosted(ScriptItemActShip(),t_ArtMissileDef);
+						05=int rounds=1;
+						//Делаем два прохода зарядки вместо одного, если Ракетанг находится в режиме совместимости
+						06=if(compCheck)rounds=2;
+						07=for(i=rounds;i>0;i=i-1)
+						08 ^{
+							01=if(CustomArtData(cur_item,2))//Проверка, что текущий запас залпов для перезарядки не равен 0
+							02 ^{
+								01=dword ship=ScriptItemActShip();
+								02=dword gun=0;
+								03=int missiles=0;
+								//Ищем ракетное орудие с наименьшим зарядом
+								04=for(int j=1;j<=ShipCntWeapon(ship);j=j+1)
+								05 ^{
+									01=dword tdwd=ShipWeapon(ship,j);
+									02=dword tdwd2=MissilesToRearm(tdwd);
+									03=if(tdwd2)
+									04 ^{
+										01=if(tdwd2>missiles)
+										02 ^{
+											01=gun=tdwd;
+											02=missiles=tdwd2;
+										}
+									}
+								}
+								//Если нашли, то заряжаем его
+								06=if(gun)
+								07 ^{
+									01=MissilesToRearm(gun,1);
+									//Не тратим топливо при зарядке в режиме совместимости
+									02=if(!compCheck)ShipFuel(ship,ShipFuel(ship)-1);
+									03=CustomArtData(cur_item,2,CustomArtData(cur_item,2)-1);//Отнимаем один залп из готового запаса
+									04=if(Rnd(1,100)<=50)ItemDurability(cur_item,ItemDurability(cur_item)-1);
+								}
+							}
+						}
+					}
+				}
+				06=if(ScriptItemActionType(t_OnGettingMissileHit))
+				07 ^{
+					01=if(ItemDurability(cur_item))
+					02 ^{
+						01=if(ScriptItemActObject2())
+						02 ^{
+							//Убеждаемся, что запас залпов ещё не максимален
+							01=if(CustomArtData(cur_item,2)<100)
+							02 ^{
+								01=int nuclearCheck=0;
+								02=int acrinCheck=EqSpecial(ScriptItemActObject2());
+								03=if(acrinCheck>-1)
+								04 ^{
+									//Если попала ядерка
+									01=if(BonusCustomTag(acrinCheck)=='NukeAcryn')
+									02 ^{
+										01=nuclearCheck=1;
+										//Помещаем 5 готовых залпов сразу в запас
+										02=CustomArtData(cur_item,2,CustomArtData(cur_item,2)+5);
+										//Удаляем из запаса возможный избыток
+										03=if(CustomArtData(cur_item,2)>100)CustomArtData(cur_item,2,100);
+									}
+								}
+								//Иначе считаем подробно
+								05=if(!nuclearCheck)
+								06 ^{
+									01=str Tmissile=CustomMissileType(ScriptItemActObject2());
+									02=int Tshots=1;
+									//Отдельно проверяем оригинальные игровые виды ракетного оружия
+									03=if(Tmissile=='W04' || Tmissile=='W15' || Tmissile=='W18')
+									04 ^{
+										01=Tshots=GetCustomWeaponData(t_Weapon1-1+Tmissile,'ShotCount');
+										02=if(!Tshots)Tshots=1;
+										//Прибавляем к числу деталей число, зависящее от количества ракет, выпускаемых за залп из оружия из которого был произведён выстрел
+										03=CustomArtData(cur_item,3,CustomArtData(cur_item,3)+120/(Tshots*2));
+										04=if(CustomArtData(cur_item,3)>=120)
+										05 ^{
+											//Если деталей хватает (120 - наименьшее общее кратное для чётных от 2 до 12)
+											//То "собираем" готовый залп
+											01=CustomArtData(cur_item,3,CustomArtData(cur_item,3)-120);
+											//После чего помещаем залп в запас, а из деталей вычитаем необходимое на "сборку" залпа число
+											02=CustomArtData(cur_item,2,CustomArtData(cur_item,2)+1);
+										}
+									}
+									//После чего переходим непосредственно к кастомным
+									05=else
+									06 ^{
+										01=Tshots=GetCustomWeaponData(Tmissile,'ShotCount');
+										02=if(!Tshots)Tshots=1;
+										03=CustomArtData(cur_item,3,CustomArtData(cur_item,3)+120/(Tshots*2));
+										04=if(CustomArtData(cur_item,3)>=120)
+										05 ^{
+											01=CustomArtData(cur_item,3,CustomArtData(cur_item,3)-120);
+											02=CustomArtData(cur_item,2,CustomArtData(cur_item,2)+1);
+										}
+									}
+								}
+							}
+							//Иначе обнуляем число набранных лишних деталей
+							03=else CustomArtData(cur_item,3,0);
+						}
+					}
+				}
+			}
+			Text=Плазмоуритановый защитный механизм, оснащённый усиленными детекторами и встроенным сборщиком ракет. Блокирует <clr>10-40%<clrEnd> ущерба от попадания ракетного оружия, попутно поглощая обломки, из которых в дальнейшем способен собирать полноценные боевые снаряды.
+			Text=<br> <br>
+			Text=<TextData1>
+			Text=При наличии материала, ежедневно восполняет <clr>1<clrEnd> заряд в одном из экипированных ракетных орудий, начиная с самого разряженного. Для заправки двигателей произведённых боеприпасов расходует по <clr>1<clrEnd> ед. топлива из основного бака.
+			Text=Доступно зарядов для сборки: <Data2> шт.
+		}
+	}
+}

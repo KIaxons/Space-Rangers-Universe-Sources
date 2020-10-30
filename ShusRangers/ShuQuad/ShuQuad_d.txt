@@ -1,0 +1,1901 @@
+Version=7
+GlobalVars ~{
+}
+GlobalCode=<<<
+  if(CurTurn()>=9000 && GalaxyTechLevel()>=8 && !Rnd(0,3) && GRunFrom==1 || Name(ShipStar(Player()))=='Эрэфия') {
+    GRun();
+  }
+>>>
+LocalVars ~{
+    sh ~{
+        Type=Dword
+        Value=0
+    }
+    i ~{
+        Type=Dword
+        Value=0
+    }
+    it ~{
+        Type=Dword
+        Value=0
+    }
+    s ~{
+        Type=Dword
+        Value=0
+    }
+    rand ~{
+        Type=Dword
+        Value=0
+    }
+    give_eq_item_var ~{
+        Type=Dword
+        Value=0
+    }
+    pl ~{
+        Type=Dword
+        Value=0
+    }
+    inet ~{
+        Type=Dword
+        Value=0
+    }
+    i2 ~{
+        Type=Dword
+        Value=0
+    }
+    it2 ~{
+        Type=Dword
+        Value=0
+    }
+    script_state ~{
+        Type=Dword
+        Value=0
+    }
+    was_ether ~{
+        Type=Dword
+        Value=0
+    }
+    spawn_voldar ~{
+        Type=Dword
+        Value=0
+    }
+    Ranger ~{
+        Type=String
+        Value=
+    }
+    spawn_giadr ~{
+        Type=Dword
+        Value=0
+    }
+    was_dialog ~{
+        Type=Dword
+        Value=0
+    }
+    was_dialog2 ~{
+        Type=Dword
+        Value=0
+    }
+    escort_timer ~{
+        Type=Dword
+        Value=0
+    }
+    was_ether3 ~{
+        Type=Dword
+        Value=0
+    }
+    was_ether2 ~{
+        Type=Dword
+        Value=0
+    }
+    turn_born ~{
+        Type=Dword
+        Value=0
+    }
+    turn_dyrka ~{
+        Type=Dword
+        Value=1260588259
+    }
+    was_tranks ~{
+        Type=Dword
+        Value=0
+    }
+    zakopat_veila ~{
+        Type=Dword
+        Value=0
+    }
+    pl_id ~{
+        Type=Dword
+        Value=0
+    }
+    was_engine ~{
+        Type=Dword
+        Value=0
+    }
+    voland ~{
+        Type=Dword
+        Value=0
+    }
+    blake_mm ~{
+        Type=Dword
+        Value=0
+    }
+    microwave ~{
+        Type=Dword
+        Value=0
+    }
+    spawn_giadr2 ~{
+        Type=Dword
+        Value=0
+    }
+    st ~{
+        Type=Dword
+        Value=0
+    }
+    pls ~{
+        Type=Dword
+        Value=0
+    }
+    PlanetNew ~{
+        Type=Dword
+        Value=0
+    }
+    nearpl ~{
+        Type=Dword
+        Value=0
+    }
+    scriptquad ~{
+        Type=Dword
+        Value=0
+    }
+    rescripter ~{
+        Type=Dword
+        Value=0
+    }
+    chrono ~{
+        Type=Dword
+        Value=0
+    }
+    gTransport ~{
+        Type=Dword
+        Value=0
+    }
+    gTrank ~{
+        Type=Dword
+        Value=1
+    }
+    GroupNew ~{
+        Type=Dword
+        Value=2
+    }
+    Battle ~{
+        Type=Dword
+        Value=3
+    }
+    Escort ~{
+        Type=Dword
+        Value=4
+    }
+    giadr ~{
+        Type=Dword
+        Value=5
+    }
+    voland2 ~{
+        Type=Dword
+        Value=6
+    }
+    Dialog1 ~{
+        Type=Dword
+        Value=0
+    }
+    Dialog2 ~{
+        Type=Dword
+        Value=1
+    }
+    Dialog3 ~{
+        Type=Dword
+        Value=2
+    }
+}
+Constellations=0
+Stars ~{
+    st ~{
+        Constellation=-1
+        NoKling=False
+        NoComeKling=False
+        StarLinks ~{
+        }
+        Planets ~{
+            pls ~{
+                Race=Maloc,Peleng,People,Gaal
+                Owner=Use,None
+                Economy=Agriculture,Industrial,Mixed
+                Government=Anarchy,Dictatorship,Monarchy,Republic,Democracy
+                Range=0..100
+                Dialog=
+            }
+            PlanetNew ~{
+                Race=Use,Maloc,Peleng,People,Fei,Gaal
+                Owner=Use,Maloc,Peleng,People,Fei,Gaal,PirateClan
+                Economy=Agriculture,Industrial,Mixed
+                Government=Anarchy,Dictatorship,Monarchy,Republic,Democracy
+                Range=0..100
+                Dialog=
+            }
+        }
+        Ships ~{
+            0 ~{
+                Count=1
+                Owner=Maloc,Peleng,People,Fei,Gaal
+                Type=Ranger,Warrior,Pirate,Transport,Liner,Diplomat
+                IsPlayer=True
+                Speed=0..10000
+                Weapon=Undef
+                CargoHook=0
+                EmptySpace=0
+                Status ~{
+                    Trader=0..100
+                    Warrior=0..100
+                    Pirate=0..100
+                }
+                Strength=0.0..0.0
+                Ruins=
+            }
+        }
+    }
+}
+Places ~{
+    nearpl ~{
+        Star=st
+        Type=NearPlanet
+        Object=pls
+        Radius=300
+    }
+}
+Items ~{
+    scriptquad ~{
+        Place=
+        Class=Unknown
+        Type=0
+        Size=10
+        Level=1
+        Radius=150
+        Owner=None
+        Useless=
+    }
+    rescripter ~{
+        Place=
+        Class=Unknown
+        Type=0
+        Size=10
+        Level=1
+        Radius=150
+        Owner=None
+        Useless=
+    }
+    chrono ~{
+        Place=
+        Class=Unknown
+        Type=0
+        Size=10
+        Level=1
+        Radius=150
+        Owner=None
+        Useless=
+    }
+}
+Groups ~{
+    gTransport ~{
+        Planet=pls
+        State=6(State0)
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Type=Ranger,Warrior,Pirate,Transport,Liner,Diplomat
+        Count=0..0
+        Speed=100..10000
+        Weapon=Undef
+        CargoHook=0
+        EmptySpace=0
+        AddPlayer=False
+        Status ~{
+            Trader=0..100
+            Warrior=0..100
+            Pirate=0..100
+        }
+        SearchDist=10000
+        Dialog=
+        Strength=0.0..0.0
+        Ruins=
+    }
+    gTrank ~{
+        Planet=pls
+        State=2(State1T)
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Type=Ranger,Warrior,Pirate,Transport,Liner,Diplomat
+        Count=0..0
+        Speed=100..10000
+        Weapon=Undef
+        CargoHook=0
+        EmptySpace=0
+        AddPlayer=False
+        Status ~{
+            Trader=0..100
+            Warrior=0..100
+            Pirate=0..100
+        }
+        SearchDist=10000
+        Dialog=
+        Strength=0.0..0.0
+        Ruins=
+    }
+    GroupNew ~{
+        Planet=pls
+        State=7(StateNew)
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Type=Ranger,Warrior,Pirate,Transport,Liner,Diplomat
+        Count=1..1
+        Speed=100..10000
+        Weapon=Undef
+        CargoHook=0
+        EmptySpace=0
+        AddPlayer=True
+        Status ~{
+            Trader=0..100
+            Warrior=0..100
+            Pirate=0..100
+        }
+        SearchDist=10000
+        Dialog=
+        Strength=0.0..0.0
+        Ruins=
+    }
+    Battle ~{
+        Planet=PlanetNew
+        State=9(StartState)
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Type=Ranger,Warrior,Pirate,Transport,Liner,Diplomat
+        Count=0..0
+        Speed=100..10000
+        Weapon=Undef
+        CargoHook=0
+        EmptySpace=0
+        AddPlayer=False
+        Status ~{
+            Trader=0..100
+            Warrior=0..100
+            Pirate=0..100
+        }
+        SearchDist=10000
+        Dialog=
+        Strength=0.0..0.0
+        Ruins=
+    }
+    Escort ~{
+        Planet=PlanetNew
+        State=13(StateNew2)
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Type=Ranger,Warrior,Pirate,Transport,Liner,Diplomat
+        Count=0..0
+        Speed=100..10000
+        Weapon=Undef
+        CargoHook=0
+        EmptySpace=0
+        AddPlayer=False
+        Status ~{
+            Trader=0..100
+            Warrior=0..100
+            Pirate=0..100
+        }
+        SearchDist=10000
+        Dialog=
+        Strength=0.0..0.0
+        Ruins=
+    }
+    giadr ~{
+        Planet=PlanetNew
+        State=15(StateNew3)
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Type=Ranger,Warrior,Pirate,Transport,Liner,Diplomat
+        Count=0..0
+        Speed=100..10000
+        Weapon=Undef
+        CargoHook=0
+        EmptySpace=0
+        AddPlayer=False
+        Status ~{
+            Trader=0..100
+            Warrior=0..100
+            Pirate=0..100
+        }
+        SearchDist=10000
+        Dialog=
+        Strength=0.0..0.0
+        Ruins=
+    }
+    voland2 ~{
+        Planet=PlanetNew
+        State=14(StateNew2)
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Type=Ranger,Warrior,Pirate,Transport,Liner,Diplomat
+        Count=0..0
+        Speed=100..10000
+        Weapon=Undef
+        CargoHook=0
+        EmptySpace=0
+        AddPlayer=False
+        Status ~{
+            Trader=0..100
+            Warrior=0..100
+            Pirate=0..100
+        }
+        SearchDist=10000
+        Dialog=
+        Strength=0.0..0.0
+        Ruins=
+    }
+}
+GroupLinks ~{
+}
+InitCode=<<<
+  function GiveExtremeEq(ship,eq_type,race,size)
+  {
+  if (eq_type=='Weapon')
+  {
+  if (GalaxyTechLevel()<=3)
+  {
+  rand=Rnd(1,2);
+  if (rand==1) eq_type=t_Weapon3;
+  else eq_type=t_Weapon6;
+  if (eq_type==t_Weapon3) i=Rnd(3,4);
+  else i=Rnd(2,3);
+  }
+  if (GalaxyTechLevel()==4)
+  {
+  rand=Rnd(1,100);
+  if (rand<=35) eq_type=t_Weapon6;
+  else if (rand<=75) eq_type=t_Weapon7;
+  else eq_type=t_Weapon3;
+  if (eq_type==t_Weapon3) i=Rnd(5,6);
+  else if (eq_type==t_Weapon6) i=Rnd(4,5);
+  else i=Rnd(3,4);
+  }
+  if (GalaxyTechLevel()==5)
+  {
+  rand=Rnd(1,100);
+  if (rand<=30) eq_type=t_Weapon7;
+  else if (rand<=70) eq_type=t_Weapon8;
+  else eq_type=t_Weapon9;
+  if (eq_type==t_Weapon7) i=Rnd(4,6);
+  else if (eq_type==t_Weapon8) i=Rnd(3,5);
+  else if (eq_type==t_Weapon9) i=Rnd(3,4);
+  }
+  if (GalaxyTechLevel()==6)
+  {
+  rand=Rnd(1,100);
+  if (rand<=20) eq_type=t_Weapon8;
+  else if (rand<=47) eq_type=t_Weapon9;
+  else if (rand<=73) eq_type=t_Weapon10;
+  else eq_type=t_Weapon11;
+  if (eq_type==t_Weapon8) i=Rnd(6,7);
+  else if (eq_type==t_Weapon9) i=Rnd(4,6);
+  else i=Rnd(3,5);
+  }
+  if (GalaxyTechLevel()==7)
+  {
+  rand=Rnd(1,100);
+  if (rand<=30) eq_type=t_Weapon10;
+  else if (rand<=65) eq_type=t_Weapon11;
+  else eq_type=t_Weapon12;
+  if (eq_type==t_Weapon12) i=Rnd(3,5);
+  else i=Rnd(5,7);
+  }
+  if (GalaxyTechLevel()==8)
+  {
+  if (rand<=45) eq_type=t_Weapon12;
+  else if (rand<=75) eq_type=t_Weapon11;
+  else eq_type=t_Weapon10;
+  if (eq_type==t_Weapon12) i=Rnd(6,8);
+  else i=Rnd(7,8);
+  }
+  if (eq_type==t_Weapon2) size=Rnd(20,40);
+  if (eq_type==t_Weapon3) size=Rnd(25,50);
+  if (eq_type==t_Weapon4) size=Rnd(10,30);
+  if (eq_type==t_Weapon6) size=Rnd(20,40);
+  if (eq_type==t_Weapon7) size=Rnd(30,60);
+  if (eq_type==t_Weapon8) size=Rnd(15,30);
+  if (eq_type==t_Weapon9) size=Rnd(35,70);
+  if (eq_type==t_Weapon10) size=Rnd(40,80);
+  if (eq_type==t_Weapon11) size=Rnd(45,90);
+  if (eq_type==t_Weapon12) size=Rnd(50,100);
+  if (eq_type==t_Weapon16) size=Rnd(30,60);
+  if (eq_type==t_Weapon17) size=Rnd(25,50);
+  if (eq_type==t_Weapon18) size=Rnd(15,40);
+  }
+  else
+  {
+  rand=Rnd(1,100);
+  if (GalaxyTechLevel()==3)
+  {
+  if (rand<=45) i=4;
+  else i=3;
+  }
+  if (GalaxyTechLevel()==4)
+  {
+  if (rand<=47) i=5;
+  else i=4;
+  }
+  if (GalaxyTechLevel()==5)
+  {
+  if (rand<=50) i=6;
+  else i=5;
+  }
+  if (GalaxyTechLevel()==6)
+  {
+  if (rand<=53) i=7;
+  else i=6;
+  }
+  if (GalaxyTechLevel()==7)
+  {
+  if (rand<=55) i=8;
+  else i=7;
+  }
+  if (GalaxyTechLevel()==8)
+  {
+  if (rand<=85) i=8;
+  else i=7;
+  }
+  }
+  give_eq_item_var=CreateEquipment(eq_type,size,i,race);
+  AddItemToShip(ship,give_eq_item_var);
+  }
+  function GiveCoolEq(ship,eq_type,race,size)
+  {
+  if (eq_type=='Weapon')
+  {
+  if (GalaxyTechLevel()<=3)
+  {
+  rand=Rnd(1,3);
+  if (rand==1) eq_type=t_Weapon3;
+  else eq_type=t_Weapon2;
+  if (race==PirateClan && !Rnd(0,1)) eq_type=t_Weapon17;
+  i=Rnd(2,3);
+  }
+  if (GalaxyTechLevel()==4)
+  {
+  rand=Rnd(1,100);
+  if (rand<=40) eq_type=t_Weapon6;
+  else if (rand<=70) eq_type=t_Weapon4;
+  else eq_type=t_Weapon3;
+  if (race==PirateClan && !Rnd(0,3)) eq_type=t_Weapon17;
+  if (eq_type==t_Weapon6) i=Rnd(2,3);
+  if (eq_type==t_Weapon4) i=Rnd(3,4);
+  if (eq_type==t_Weapon3 || eq_type==t_Weapon17) i=4;
+  }
+  if (GalaxyTechLevel()==5)
+  {
+  rand=Rnd(1,100);
+  if (rand<=50) eq_type=t_Weapon7;
+  if (rand<=80) eq_type=t_Weapon6;
+  else eq_type=t_Weapon4;
+  if (race==PirateClan && !Rnd(0,2)) eq_type=t_Weapon18;
+  if (eq_type==t_Weapon7 || eq_type==t_Weapon18) i=Rnd(2,4);
+  if (eq_type==t_Weapon6) i=Rnd(4,5);
+  if (eq_type==t_Weapon4) i=Rnd(4,5);
+  }
+  if (GalaxyTechLevel()==6)
+  {
+  rand=Rnd(1,100);
+  if (rand<=45) eq_type=t_Weapon9;
+  else if (rand<=85) eq_type=t_Weapon8;
+  else eq_type=t_Weapon7;
+  if (race==PirateClan && !Rnd(0,4)) eq_type=t_Weapon18;
+  if (eq_type==t_Weapon9) i=Rnd(2,4);
+  else if (eq_type==t_Weapon8) i=Rnd(3,5);
+  else if (eq_type==t_Weapon18 || eq_type==t_Weapon7) i=Rnd(5,6);
+  }
+  if (GalaxyTechLevel()==7)
+  {
+  rand=Rnd(1,100);
+  if (rand<=35) eq_type=t_Weapon10;
+  else if (rand<=70) eq_type=t_Weapon11;
+  else eq_type=t_Weapon9;
+  if (race==PirateClan && !Rnd(0,3)) eq_type=t_Weapon16;
+  if (eq_type==t_Weapon10 || eq_type==t_Weapon11) i=Rnd(3,5);
+  if (eq_type==t_Weapon9 || eq_type==t_Weapon16) i=Rnd(4,6);
+  }
+  if (GalaxyTechLevel()==8)
+  {
+  if (rand<=30) eq_type=t_Weapon12;
+  else if (rand<=55) eq_type=t_Weapon11;
+  else if (rand<=80) eq_type=t_Weapon10;
+  else eq_type=t_Weapon9;
+  if (race==PirateClan && !Rnd(0,4)) eq_type=t_Weapon16;
+  if (eq_type==t_Weapon12) i=Rnd(2,5);
+  if (eq_type==t_Weapon11 || eq_type==t_Weapon10) i=Rnd(4,6);
+  if (eq_type==t_Weapon9 || eq_type==t_Weapon16) i=Rnd(5,8);
+  }
+  if (eq_type==t_Weapon2) size=Rnd(20,40);
+  if (eq_type==t_Weapon3) size=Rnd(25,50);
+  if (eq_type==t_Weapon4) size=Rnd(10,30);
+  if (eq_type==t_Weapon6) size=Rnd(20,40);
+  if (eq_type==t_Weapon7) size=Rnd(30,60);
+  if (eq_type==t_Weapon8) size=Rnd(15,30);
+  if (eq_type==t_Weapon9) size=Rnd(35,70);
+  if (eq_type==t_Weapon10) size=Rnd(40,80);
+  if (eq_type==t_Weapon11) size=Rnd(45,90);
+  if (eq_type==t_Weapon12) size=Rnd(50,100);
+  if (eq_type==t_Weapon16) size=Rnd(30,60);
+  if (eq_type==t_Weapon17) size=Rnd(25,50);
+  if (eq_type==t_Weapon18) size=Rnd(15,40);
+  }
+  else
+  {
+  rand=Rnd(1,100);
+  if (GalaxyTechLevel()==3)
+  {
+  if (rand<=65) i=3;
+  else i=2;
+  }
+  if (GalaxyTechLevel()==4)
+  {
+  if (rand<=60) i=4;
+  else i=3;
+  }
+  if (GalaxyTechLevel()==5)
+  {
+  if (rand<=55) i=5;
+  else i=4;
+  }
+  if (GalaxyTechLevel()==6)
+  {
+  if (rand<=45) i=6;
+  else if (rand<=85) i=5;
+  else i=4;
+  }
+  if (GalaxyTechLevel()==7)
+  {
+  if (rand<=42) i=7;
+  else if (rand<=79) i=6;
+  else i=5;
+  }
+  if (GalaxyTechLevel()==8)
+  {
+  if (rand<=38) i=8;
+  else if (rand<=75) i=7;
+  else i=6;
+  }
+  }
+  give_eq_item_var=CreateEquipment(eq_type,size,i,race);
+  AddItemToShip(ship,give_eq_item_var);
+  }
+  function GiveCommonEq(ship,eq_type,race,size)
+  {
+  if (eq_type=='Weapon')
+  {
+  if (GalaxyTechLevel()<=3)
+  {
+  rand=Rnd(1,3);
+  if (rand==1) eq_type=t_Weapon2;
+  else eq_type=t_Weapon1;
+  i=1;
+  }
+  if (GalaxyTechLevel()==4)
+  {
+  rand=Rnd(1,5);
+  if (rand==1 || rand==2 || rand==3) eq_type=t_Weapon1;
+  if (rand==4 || rand==5) eq_type=t_Weapon2;
+  if (eq_type==t_Weapon1) i=Rnd(1,2);
+  else i=1;
+  }
+  if (GalaxyTechLevel()==5)
+  {
+  rand=Rnd(1,10);
+  if (rand==1 || rand==2 || rand==3 || rand==4) eq_type=t_Weapon1;
+  if (rand==5 || rand==6 || rand==7) eq_type=t_Weapon2;
+  if (rand==8 || rand==9) eq_type=t_Weapon5;
+  if (rand==10) eq_type=t_Weapon3;
+  if (eq_type==t_Weapon1 && Rnd(0,3)) i=Rnd(1,2);
+  else if (eq_type==t_Weapon1) i=3;
+  if (eq_type==t_Weapon2 && Rnd(0,3)) i=1;
+  else if (eq_type==t_Weapon2) i=2;
+  else i=1;
+  }
+  if (GalaxyTechLevel()==6)
+  {
+  rand=Rnd(1,9);
+  if (rand==1 || rand==2 || rand==3) eq_type=t_Weapon1;
+  if (rand==4 || rand==5) eq_type=t_Weapon2;
+  if (rand==6 || rand==7 || rand==8) eq_type=t_Weapon5;
+  if (rand==9) eq_type=t_Weapon3;
+  i=Rnd(1,3);
+  }
+  if (GalaxyTechLevel()==7)
+  {
+  rand=Rnd(1,11);
+  if (rand==1 || rand==2 || rand==3) eq_type=t_Weapon1;
+  if (rand==4 || rand==5) eq_type=t_Weapon2;
+  if (rand==6 || rand==7 || rand==8) eq_type=t_Weapon5;
+  if (rand==9 || rand==10) eq_type=t_Weapon3;
+  if (rand==11) eq_type=t_Weapon6;
+  if (eq_type==t_Weapon6) i=1;
+  else i=Rnd(1,3);
+  }
+  if (GalaxyTechLevel()==8)
+  {
+  rand=Rnd(1,11);
+  if (rand==1 || rand==2 || rand==3) eq_type=t_Weapon1;
+  if (rand==4 || rand==5) eq_type=t_Weapon2;
+  if (rand==6 || rand==7 || rand==8) eq_type=t_Weapon5;
+  if (rand==9 || rand==10) eq_type=t_Weapon3;
+  if (rand==11) eq_type=t_Weapon6;
+  if (eq_type==t_Weapon6 && Rnd(0,2)) i=1;
+  else if (eq_type==t_Weapon6) i=2;
+  else i=Rnd(1,3);
+  }
+  if (eq_type==t_Weapon1) size=Rnd(15,30);
+  if (eq_type==t_Weapon2) size=Rnd(20,40);
+  if (eq_type==t_Weapon3) size=Rnd(25,50);
+  if (eq_type==t_Weapon5) size=Rnd(15,30);
+  if (eq_type==t_Weapon6) size=Rnd(20,40);
+  }
+  else
+  {
+  if (GalaxyTechLevel()<=3) i=1;
+  if (GalaxyTechLevel()==4)
+  {
+  if (Rnd(0,3)) i=1;
+  else i=2;
+  }
+  if (GalaxyTechLevel()==5)
+  {
+  rand=Rnd(1,5);
+  if (rand==1 || rand==2) i=1;
+  if (rand==3 || rand==4) i=2;
+  if (rand==5) i=3;
+  }
+  if (GalaxyTechLevel()==6)
+  {
+  rand=Rnd(0,7);
+  if (rand==0 || rand==1) i=1;
+  if (rand==2 || rand==3 || rand==4) i=2;
+  if (rand==5 || rand==6) i=3;
+  }
+  if (GalaxyTechLevel()==7)
+  {
+  rand=Rnd(1,8);
+  if (rand==1 || rand==2) i=1;
+  if (rand==3 || rand==4 || rand==5) i=2;
+  if (rand==6 || rand==7) i=3;
+  if (rand==8) i=4;
+  }
+  if (GalaxyTechLevel()==8)
+  {
+  rand=Rnd(1,4);
+  if (rand==1) i=1;
+  if (rand==2) i=2;
+  if (rand==3) i=3;
+  if (rand==4) i=4;
+  }
+  }
+  give_eq_item_var=CreateEquipment(eq_type,size,i,race);
+  AddItemToShip(ship,give_eq_item_var);
+  }
+  function GiveAverageEq(ship,eq_type,race,size)
+  {
+  if (eq_type=='Weapon')
+  {
+  if (GalaxyTechLevel()<=3)
+  {
+  rand=Rnd(1,100);
+  if (rand<=65) eq_type=t_Weapon2;
+  else eq_type=t_Weapon1;
+  i=Rnd(1,3);
+  }
+  if (GalaxyTechLevel()==4)
+  {
+  rand=Rnd(1,100);
+  if (rand<=35) eq_type=t_Weapon3;
+  else if (rand<=75) eq_type=t_Weapon2;
+  else eq_type=t_Weapon1;
+  if (race==PirateClan && !Rnd(0,2)) eq_type=t_Weapon17;
+  if (eq_type==t_Weapon2 || eq_type==t_Weapon1) i=Rnd(3,4);
+  else i=Rnd(2,4);
+  }
+  if (GalaxyTechLevel()==5)
+  {
+  rand=Rnd(1,100);
+  if (rand<=25) eq_type=t_Weapon3;
+  else if (rand<=55) eq_type=t_Weapon2;
+  else if (rand<=75) eq_type=t_Weapon6;
+  else eq_type=t_Weapon5;
+  if (race==PirateClan && !Rnd(0,3)) eq_type=t_Weapon17;
+  if (eq_type==t_Weapon6) i=Rnd(2,3);
+  else i=Rnd(3,5);
+  }
+  if (GalaxyTechLevel()==6)
+  {
+  rand=Rnd(1,100);
+  if (rand<=25) eq_type=t_Weapon2;
+  else if (rand<=50) eq_type=t_Weapon3;
+  else if (rand<=75) eq_type=t_Weapon6;
+  else if (rand<=100) eq_type=t_Weapon7;
+  if (race==PirateClan && !Rnd(0,3)) eq_type=t_Weapon18;
+  if (eq_type==t_Weapon2 || eq_type==t_Weapon3) i=Rnd(5,6);
+  if (eq_type==t_Weapon6) i=Rnd(3,5);
+  if (eq_type==t_Weapon7 || eq_type==t_Weapon18) i=Rnd(2,4); 
+  }
+  if (GalaxyTechLevel()==7)
+  {
+  rand=Rnd(1,100);
+  if (rand<=20) eq_type=t_Weapon2;
+  else if (rand<=40) eq_type=t_Weapon3;
+  else if (rand<=60) eq_type=t_Weapon6;
+  else if (rand<=80) eq_type=t_Weapon7;
+  else eq_type=t_Weapon8;
+  if (race==PirateClan && !Rnd(0,4)) eq_type=t_Weapon18;
+  if (eq_type==t_Weapon3 || eq_type==t_Weapon2) i=Rnd(6,7);
+  if (eq_type==t_Weapon6) i=Rnd(5,7);
+  if (eq_type==t_Weapon7 || eq_type==t_Weapon18) i=Rnd(3,6);
+  if (eq_type==t_Weapon8) i=Rnd(2,4);
+  }
+  if (GalaxyTechLevel()==8)
+  {
+  rand=Rnd(1,100);
+  if (rand<=19) eq_type=t_Weapon2;
+  else if (rand<=34) eq_type=t_Weapon3;
+  else if (rand<=51) eq_type=t_Weapon6;
+  else if (rand<=69) eq_type=t_Weapon7;
+  else if (rand<=86) eq_type=t_Weapon8;
+  else eq_type=t_Weapon9;
+  if (race==PirateClan && !Rnd(0,4)) eq_type=t_Weapon16;
+  if (eq_type==t_Weapon2 || eq_type==t_Weapon3) i=Rnd(7,8);
+  if (eq_type==t_Weapon6) i=Rnd(6,8);
+  if (eq_type==t_Weapon7) i=Rnd(5,8);
+  if (eq_type==t_Weapon8) i=Rnd(4,7);
+  if (eq_type==t_Weapon9 || eq_type==t_Weapon16) i=Rnd(2,5);
+  }
+  if (eq_type==t_Weapon1) size=Rnd(15,45);
+  if (eq_type==t_Weapon2) size=Rnd(20,60);
+  if (eq_type==t_Weapon3) size=Rnd(25,75);
+  if (eq_type==t_Weapon4) size=Rnd(10,40);
+  if (eq_type==t_Weapon5) size=Rnd(15,45);
+  if (eq_type==t_Weapon6) size=Rnd(20,60);
+  if (eq_type==t_Weapon7) size=Rnd(30,90);
+  if (eq_type==t_Weapon8) size=Rnd(15,45);
+  if (eq_type==t_Weapon9) size=Rnd(35,105);
+  if (eq_type==t_Weapon16) size=Rnd(30,90);
+  if (eq_type==t_Weapon17) size=Rnd(25,75);
+  if (eq_type==t_Weapon18) size=Rnd(15,45);
+  }
+  else
+  {
+  if (GalaxyTechLevel()<=3) i=1;
+  if (GalaxyTechLevel()==4)
+  {
+  if (Rnd(0,3)) i=1;
+  else i=2;
+  }
+  if (GalaxyTechLevel()==5)
+  {
+  rand=Rnd(1,5);
+  if (rand==1 || rand==2) i=1;
+  if (rand==3 || rand==4) i=2;
+  if (rand==5) i=3;
+  }
+  if (GalaxyTechLevel()==6)
+  {
+  rand=Rnd(0,7);
+  if (rand==0 || rand==1) i=1;
+  if (rand==2 || rand==3 || rand==4) i=2;
+  if (rand==5 || rand==6) i=3;
+  }
+  if (GalaxyTechLevel()==7)
+  {
+  rand=Rnd(1,8);
+  if (rand==1 || rand==2) i=1;
+  if (rand==3 || rand==4 || rand==5) i=2;
+  if (rand==6 || rand==7) i=3;
+  if (rand==8) i=4;
+  }
+  if (GalaxyTechLevel()==8)
+  {
+  rand=Rnd(1,4);
+  if (rand==1) i=1;
+  if (rand==2) i=2;
+  if (rand==3) i=3;
+  if (rand==4) i=4;
+  }
+  }
+  give_eq_item_var=CreateEquipment(eq_type,size,i,race);
+  AddItemToShip(ship,give_eq_item_var);
+  }
+>>>
+TurnCode=<<<
+  if(!spawn_voldar && CurTurn()>12000 && CurTurn()<15000 && GetShipPlanet(Player()) && StarOwner(ShipStar(Player()))!=1 && voland==0) {
+    spawn_voldar=1;
+    s=BuyTransport(PlanetPirateClan(),0);
+    SetName(s,CT("Script.ShuQuad.7"));
+    ShipAddCustomShipInfo(s,'QuadArmor');
+    ShipSpecialBonuses(s,bonHull,8);
+    ShipJoin(voland2,s);
+    ShipPilotRace(s,2);
+    ShipOwner(s,7);
+    ShipFace(s,21);
+    ShipType(s,'Salvager');
+    ShipSpecialBonuses(s,bonSpeed,-2000);
+    ShipSpecialBonuses(s,bonMass,1000);
+    rand=Rnd(4000,5000);
+    ItemSize(ShipItems(s,0),rand);
+    HullHP(s,rand);
+    GiveCoolEq(s,'Weapon',PirateClan,1);
+    GiveAverageEq(s,'Weapon',PirateClan,1);
+    GiveAverageEq(s,'Weapon',PirateClan,1);
+    GiveAverageEq(s,'Weapon',PirateClan,1);
+    GiveCoolEq(s,t_RepairRobot,PirateClan,Rnd(20,80));
+    GiveCoolEq(s,t_DefGenerator,PirateClan,Rnd(20,80));
+    ShipSpecialBonuses(s,bonSlotWeapon,5);
+    ShipSpecialBonuses(s,bonSlotDef,5);
+    ArrangeItems(s);
+    ShipSkill(s,0,Rnd(2,5));
+    ShipSkill(s,1,Rnd(2,5));
+    ShipSkill(s,2,6);
+    ShipSkill(s,3,6);
+    ShipSkill(s,4,6);
+    ShipSkill(s,5,6);
+    i=CreateEquipment(t_Engine,20,8,6);
+    SpecialToEquipment(FindBonusByName(CT("Script.ShuQuad.6")),i);
+    AddItemToShip(s,i);
+    ItemIsInUse(i,s,1);
+    NoDropItem(i,1);
+    it=CreateEquipment(t_Engine,20,8,6);
+    SpecialToEquipment(FindBonusByName(CT("Script.ShuQuad.6")),i);
+    ShipAddDropItem(s,it);
+    Chameleon(s,'Ship.HS.4');
+    TransferShip(s,GetShipPlanet(Player()));
+    voland=5252;
+  }
+  it=0;
+  for (i=0; i<ShipItems(Player()); i=i+1)
+  {
+  s=ShipItems(Player(),i);
+  if (ItemName(s)==CT("Script.ShuQuad.5")){ it=1; break; }
+  }
+  if (it==0) ShipSpecialBonuses(Player(),bonRadar,0);
+  if(!spawn_giadr2 && CurTurn()>13000 && GetShipPlanet(Player()) && !GroupCount(giadr) && StarOwner(ShipStar(Player()))!=1) {
+    if(PlanetOwner(GetShipPlanet(Player()))!=5) {
+      s=BuyTransport(PlanetPirateClan(),0);
+      ShipAddCustomShipInfo(s,'QuadArmor');
+      ShipSpecialBonuses(s,bonHull,8);
+      SetName(s,CT("Script.ShuQuad.4"));
+      ShipJoin(giadr,s);
+      ShipPilotRace(s,2);
+      ShipOwner(s,7);
+      ShipFace(s,2);
+      ShipType(s,'Salvager');
+      //NoDropToShip(s,1);
+      ShipSpecialBonuses(s,bonSpeed,-2000);
+      ShipSpecialBonuses(s,bonMass,1000);
+      rand=Rnd(4000,5000);
+      ItemSize(ShipItems(s,0),rand);
+      HullHP(s,rand);
+      GiveCoolEq(s,'Weapon',PirateClan,1);
+      GiveAverageEq(s,'Weapon',PirateClan,1);
+      GiveAverageEq(s,'Weapon',PirateClan,1);
+      GiveAverageEq(s,'Weapon',PirateClan,1);
+      GiveCoolEq(s,t_RepairRobot,PirateClan,Rnd(20,80));
+      GiveCoolEq(s,t_DefGenerator,PirateClan,Rnd(20,80));
+      ShipSpecialBonuses(s,bonSlotWeapon,5);
+      ShipSpecialBonuses(s,bonSlotDef,5);
+      ArrangeItems(s);
+      ShipSkill(s,0,Rnd(2,5));
+      ShipSkill(s,1,Rnd(2,5));
+      ShipSkill(s,2,6);
+      ShipSkill(s,3,6);
+      ShipSkill(s,4,6);
+      ShipSkill(s,5,6);
+      Chameleon(s,'Ship.HS.4');
+      TransferShip(s,NearCivilPlanet(Player()));
+      i=CreateEquipment(t_Engine,20,8,6);
+      it=CreateEquipment(t_Engine,20,8,6);
+      SpecialToEquipment(FindBonusByCustomTag('Strunnik'),i);
+      SpecialToEquipment(FindBonusByCustomTag('Strunnik'),it);
+      AddItemToShip(s,i);
+      ItemIsInUse(i,s,1);
+      NoDropItem(i,1);
+      ShipAddDropItem(s,it);
+      i=CreateQuestItem('Mater',None);
+      ShipAddDropItem(s,i);
+      spawn_giadr=1;
+    }
+  }
+  if(ShipInHole(Player()) && ShipFindCustomShipInfoByType(Player(),'QuadHole')>-1) {
+    if(Id(ShipOrderObj(Player()))==ShipCustomShipInfoData(Player(),ShipFindCustomShipInfoByType(Player(),'QuadHole'),1)) {
+      it=Rnd(3,4);
+      for (i=0; i<it; i=i+1)
+      {
+      if (i==0)s=CreateQuestItem('Ultrascan',None);
+      else s=CreateEquipment(Rnd(42,48),Rnd(20,60),Rnd(GalaxyTechLevel()-1,GalaxyTechLevel()),None);
+      CreateABShip('Ship.HS.Trank',0,Rnd(25,40),Rnd(100,200),'',s);
+      }
+      StartAB('ABMap.map_'+Rnd(1,14),1);
+      ShipDeleteCustomShipInfo(Player(),'QuadHole');
+      turn_dyrka=CurTurn()+5;
+    }
+  }
+  //SFT('turncode');
+  //SFT('inet is '+inet);
+  if(GroupCount(gTransport) && GroupCount(gTrank)) {
+    if(!was_ether && ShipInStar(GroupToShip(gTrank),st)) {
+      was_ether=1;
+      NewsAdd(Format(CT("Script.ShuQuad.3"),"<0>",Name(GroupToShip(gTrank)),"<1>",Name(GroupToShip(gTransport))));
+    }
+  }
+  if(!inet) {
+    inet=1;
+    was_engine=1;
+    s=BuyTransport(PlanetPirateClan(),0);
+    SetName(s,CT("Script.ShuQuad.2"));
+    ShipAddCustomShipInfo(s,'QuadArmor');
+    ShipSpecialBonuses(s,bonHull,8);
+    ShipPilotRace(s,2);
+    ShipOwner(s,2);
+    ShipFace(s,24);
+    ShipType(s,'Salvager');
+    NoDropToShip(s,1);
+    NoTalkToShip(s,1);
+    ShipSpecialBonuses(s,bonSpeed,-2000);
+    ShipSpecialBonuses(s,bonMass,1000);
+    rand=Rnd(4000,5000);
+    ItemSize(ShipItems(s,0),rand);
+    HullHP(s,rand);
+    GiveCoolEq(s,'Weapon',PirateClan,1);
+    GiveAverageEq(s,'Weapon',PirateClan,1);
+    GiveAverageEq(s,'Weapon',PirateClan,1);
+    GiveAverageEq(s,'Weapon',PirateClan,1);
+    GiveCoolEq(s,t_RepairRobot,PirateClan,Rnd(20,80));
+    GiveCoolEq(s,t_DefGenerator,PirateClan,Rnd(20,80));
+    ShipSpecialBonuses(s,bonSlotWeapon,5);
+    ShipSpecialBonuses(s,bonSlotDef,5);
+    ArrangeItems(s);
+    i=CreateEquipment(t_Engine,20,8,6);
+    SpecialToEquipment(FindBonusByCustomTag('Strunnik'),i);
+    AddItemToShip(s,i);
+    ItemIsInUse(i,s,1);
+    NoDropItem(i,1);
+    ShipSkill(s,0,Rnd(2,5));
+    ShipSkill(s,1,Rnd(2,5));
+    ShipSkill(s,2,6);
+    ShipSkill(s,3,6);
+    ShipSkill(s,4,6);
+    ShipSkill(s,5,6);
+    Chameleon(s,'Ship.HS.4');
+    MakeShipEnterStar(s,st,StarNearbyStars(st,70),1);
+    ShipJoin(gTransport,s);
+    i=CreateQuestItem('Chrono',None);
+    LinkItemToScript(i,chrono);
+    AddItemToShip(s,i);
+    i=CreateQuestItem('ReScripter',None);
+    LinkItemToScript(i,rescripter);
+    AddItemToShip(s,i);
+    it2=Rnd(3,5);
+    for (i2=0; i2<it2; i2=i2+1)
+    {
+    s=BuyTranclucator(PlanetPirateClan(),0);
+    RelationToRanger(s,Player(),0);
+    Chameleon(s,'Ship.HS.Trank');
+    rand=ItemSize(ShipItems(s,0))*2;
+    if (rand>800) rand=Rnd(650,900);
+    ItemSize(ShipItems(s,0),rand);
+    HullHP(s,rand);
+    ShipSkill(s,0,6);
+    ShipSkill(s,1,Rnd(1,6));
+    NoTalkToShip(s,1);
+    GiveExtremeEq(s,'Weapon',PirateClan,1);
+    GiveCoolEq(s,'Weapon',PirateClan,1);
+    GiveCoolEq(s,'Weapon',PirateClan,1);
+    GiveAverageEq(s,'Weapon',PirateClan,1);
+    GiveAverageEq(s,'Weapon',PirateClan,1);
+    GiveCommonEq(s,t_Radar,PirateClan,Rnd(20,40));
+    GiveCoolEq(s,t_Engine,PirateClan,Rnd(20,40));
+    GiveCoolEq(s,t_RepairRobot,PirateClan,Rnd(20,40));
+    GiveCoolEq(s,t_DefGenerator,PirateClan,Rnd(20,40));
+    ArrangeItems(s);
+    MakeShipEnterStar(s,st,StarNearbyStars(st,70),Rnd(2,4));
+    ShipJoin(gTrank,s);
+    }
+  }
+  if(!GroupCount(gTrank) && was_dialog && !was_ether3 || was_dialog && !ShipInStar(Player(),st) && !was_ether3) {
+    //SFT('ether');
+    Ether(2,'',CT("Script.ShuQuad.0"));
+    for (i=0; i<StarRuins(st); i=i+1)
+    {
+    s=StarRuins(st,i);
+    NoLanding(s,0);
+    }
+    for (i=0; i<StarPlanets(st); i=i+1)
+    {
+    s=StarPlanets(st,i);
+    NoLanding(s,0);
+    }
+    NoJump(0);
+    //SFT('ether end');
+    was_ether3=1;
+  }
+  if(CurTurn()>=turn_dyrka+1 && !was_tranks) {
+    was_tranks=1;
+    turn_dyrka=5555555555555;
+    //SFT('turn_dyrka');
+    s=BuyPirate(PlanetPirateClan(),0);
+    ShipAddCustomShipInfo(s,'QuadArmor');
+    ShipSpecialBonuses(s,bonHull,8);
+    SpecialToEquipment(FindBonusByCustomTag('makaan'),ShipItems(s,0));
+    Chameleon(s);
+    ShipType(s,'абстрактный тип');
+    SetName(s,CT("Script.ShuQuad.1"));
+    rand=Rnd(3000,4000);
+    ShipFace(s,45);
+    ItemSize(ShipItems(s,0),rand);
+    HullHP(s,rand);
+    turn_born=CurTurn();
+    ShipSkill(s,0,6);
+    ShipSkill(s,1,6);
+    ShipSkill(s,2,6);
+    ShipSkill(s,3,6);
+    ShipSkill(s,4,6);
+    ShipSkill(s,5,6);
+    NoTalkToShip(s,1);
+    NoScanToShip(s,1);
+    i=CreateEquipment(t_Weapon9,100,8,None);
+    AddItemToShip(s,i);
+    SpecialToEquipment(FindBonusByCustomTag('DishotSplinter'),i);
+    ItemExtraSpecialsAddByType(i,FindBonusByCustomTag('tripleshot0'),1);
+    //NoDropItem(i,1);
+    i=CreateEquipment(t_Weapon9,100,8,None);
+    AddItemToShip(s,i);
+    SpecialToEquipment(FindBonusByCustomTag('DishotSplinter'),i);
+    ItemExtraSpecialsAddByType(i,FindBonusByCustomTag('tripleshot0'),1);
+    //NoDropItem(i,1);
+    i=CreateEquipment(t_Weapon9,100,8,None);
+    AddItemToShip(s,i);
+    SpecialToEquipment(FindBonusByCustomTag('DishotSplinter'),i);
+    ItemExtraSpecialsAddByType(i,FindBonusByCustomTag('tripleshot0'),1);
+    //NoDropItem(i,1);
+    i=CreateEquipment(t_Weapon9,100,8,None);
+    AddItemToShip(s,i);
+    SpecialToEquipment(FindBonusByCustomTag('DishotSplinter'),i);
+    ItemExtraSpecialsAddByType(i,FindBonusByCustomTag('tripleshot0'),1);
+    //NoDropItem(i,1);
+    i=CreateEquipment(t_Weapon9,100,8,None);
+    AddItemToShip(s,i);
+    SpecialToEquipment(FindBonusByCustomTag('DishotSplinter'),i);
+    ItemExtraSpecialsAddByType(i,FindBonusByCustomTag('tripleshot0'),1);
+    //NoDropItem(i,1);
+    GiveExtremeEq(s,t_Radar,PirateClan,Rnd(20,40));
+    GiveExtremeEq(s,t_Engine,PirateClan,Rnd(20,40));
+    GiveExtremeEq(s,t_RepairRobot,PirateClan,Rnd(20,40));
+    GiveExtremeEq(s,t_DefGenerator,PirateClan,Rnd(20,40));
+    ArrangeItems(s);
+    ShipJoin(Battle,s);
+    MakeShipEnterStar(s,ShipStar(Player()),ShipStar(s),1);
+    ShipSpecialBonuses(s,bonSlotDroid,1);
+    ShipSpecialBonuses(s,bonSlotDef,1);
+    ShipSpecialBonuses(s,bonSlotWeapon,5);
+    ShipSpecialBonuses(s,bonWRadius,150);
+    ShipSpecialBonuses(s,bonWEnergy,30);
+    ShipSpecialBonuses(s,bonWSplinter,30);
+    ShipSpecialBonuses(s,bonWMissile,30);
+    ShipSpecialBonuses(s,bonHull,10);
+    ShipSpecialBonuses(s,bonAttacks,1);
+    //SFT('dyrka_done');
+    it2=0;
+    //SFT('tranks');
+    for (i2=0; i2<it2; i2=i2+1)
+    {
+    s=BuyTranclucator(PlanetPirateClan(),0);
+    RelationToRanger(s,Player(),0);
+    Chameleon(s,'Ship.HS.Trank');
+    rand=ItemSize(ShipItems(s,0))*2;
+    if (rand>800) rand=Rnd(650,900);
+    ItemSize(ShipItems(s,0),rand);
+    HullHP(s,rand);
+    ShipSkill(s,0,6);
+    ShipSkill(s,1,Rnd(1,6));
+    NoTalkToShip(s,1);
+    GiveExtremeEq(s,'Weapon',PirateClan,1);
+    GiveCoolEq(s,'Weapon',PirateClan,1);
+    GiveCoolEq(s,'Weapon',PirateClan,1);
+    GiveAverageEq(s,'Weapon',PirateClan,1);
+    GiveAverageEq(s,'Weapon',PirateClan,1);
+    GiveCommonEq(s,t_Radar,PirateClan,Rnd(20,40));
+    GiveCoolEq(s,t_Engine,PirateClan,Rnd(20,40));
+    GiveCoolEq(s,t_RepairRobot,PirateClan,Rnd(20,40));
+    GiveCoolEq(s,t_DefGenerator,PirateClan,Rnd(20,40));
+    ArrangeItems(s);
+    ShipJoin(Escort,s);
+    }
+    //SFT('tranks done');
+  }
+  if(!GroupCount(Battle) && was_dialog2 && !was_ether2 || was_dialog2 && !ShipInStar(Player(),st) && !was_ether2) {
+    //SFT('ether');
+    Ether(2,'',CT("Script.ShuQuad.0"));
+    for (i=0; i<StarRuins(st); i=i+1)
+    {
+    s=StarRuins(st,i);
+    NoLanding(s,0);
+    }
+    for (i=0; i<StarPlanets(st); i=i+1)
+    {
+    s=StarPlanets(st,i);
+    NoLanding(s,0);
+    }
+    NoJump(0);
+    //SFT('ether end');
+    was_ether2=1;
+  }
+  if (blake_mm==666)
+  {
+  blake_mm=4;
+  i=CreateEquipment(t_Engine,20,8,6);
+  SpecialToEquipment(FindBonusByCustomTag('Strunnik'),i);
+  AddItemToShip(Player(),i);
+  }
+  if(!GroupCount(Battle) && was_dialog2 && !zakopat_veila) {
+    for (i=0; i<StarPlanets(ShipStar(Player())); i=i+1)
+    {
+    pl=StarPlanets(ShipStar(Player()),i);
+    if (PlanetOwner(pl)==6) break;
+    }
+    s=Player();
+    i=CreateQuestItem('TrankMod',None);
+    AddItemToPlanet(pl,i);
+    i=CreateQuestItem('TrankMod',None);
+    AddItemToPlanet(pl,i);
+    i=CreateQuestItem('TrankMod',None);
+    AddItemToPlanet(pl,i);
+    i=CreateArt(t_ArtefactTranclucator,None);
+    AddItemToPlanet(pl,i);
+    i=CreateArt(t_ArtefactTranclucator,None);
+    AddItemToPlanet(pl,i);
+    i=CreateArt(t_ArtefactTranclucator,None);
+    AddItemToPlanet(pl,i);
+    i=CreateQuestItem('Vacuum',PirateClan);
+    AddItemToPlanet(pl,i);
+    ItemCost(i,ItemCost(i)*4);
+    zakopat_veila=1;
+    pl_id=Id(pl);
+  }
+  if(!GroupCount(Escort) && GroupCount(Battle) && 1==0) {
+    escort_timer=escort_timer+1;
+  }
+  if(escort_timer>182 && GroupCount(Battle) && 1==0) {
+    it2=5;
+    for (i2=0; i2<it2; i2=i2+1)
+    {
+    s=BuyTranclucator(PlanetPirateClan(),0);
+    RelationToRanger(s,Player(),0);
+    Chameleon(s,'Ship.HS.Trank');
+    rand=ItemSize(ShipItems(s,0))*2;
+    if (rand>800) rand=Rnd(650,900);
+    ItemSize(ShipItems(s,0),rand);
+    HullHP(s,rand);
+    ShipSkill(s,0,6);
+    ShipSkill(s,1,Rnd(1,6));
+    NoTalkToShip(s,1);
+    GiveExtremeEq(s,'Weapon',PirateClan,1);
+    GiveCoolEq(s,'Weapon',PirateClan,1);
+    GiveCoolEq(s,'Weapon',PirateClan,1);
+    GiveAverageEq(s,'Weapon',PirateClan,1);
+    GiveAverageEq(s,'Weapon',PirateClan,1);
+    GiveCommonEq(s,t_Radar,PirateClan,Rnd(20,40));
+    GiveCoolEq(s,t_Engine,PirateClan,Rnd(20,40));
+    GiveCoolEq(s,t_RepairRobot,PirateClan,Rnd(20,40));
+    GiveCoolEq(s,t_DefGenerator,PirateClan,Rnd(20,40));
+    ArrangeItems(s);
+    MakeShipEnterStar(s,ShipStar(GroupToShip(Battle)),StarNearbyStars(st,70),Rnd(2,4));
+    ShipJoin(Escort,s);
+    }
+    escort_timer=0;
+  }
+>>>
+DialogBegin=
+States ~{
+    State1 ~{
+        Type=Move
+        Object=nearpl
+        Attack ~{
+            0=gTrank
+        }
+        TakeItem=
+        TakeAll=False
+        OutMsg=
+        InMsg=
+        Ether=
+        Code=<<<
+            ShipOwner(CurShip,None);
+            if(ShipInNormalSpace(CurShip)) {
+              if(script_state) {
+                ChangeState(1);
+                exit;
+              }
+              if(!script_state) {
+                Dialog(Dialog1,gTransport);
+              }
+            }
+        >>>
+    }
+    State2 ~{
+        Type=Move
+        Object=nearpl
+        Attack ~{
+            0=gTrank
+        }
+        TakeItem=
+        TakeAll=False
+        OutMsg=
+        InMsg=
+        Ether=
+        Code=<<<
+            ShipOwner(CurShip,None);
+            if(script_state==2) {
+              ChangeState(5);
+              exit;
+            }
+            if(!GroupCount(gTrank) && ShipInNormalSpace(Player()) && ShipInStar(Player(),ShipStar(CurShip))) {
+              if (script_state==1) Dialog(Dialog2,gTransport);
+              ChangeState(5);
+              exit;
+            }
+        >>>
+    }
+    State1T ~{
+        Type=None
+        Attack ~{
+        }
+        TakeItem=
+        TakeAll=False
+        OutMsg=
+        InMsg=
+        Ether=
+        Code=<<<
+            ShipSetBad(CurShip,Player());
+            RelationToRanger(CurShip,Player(),0);
+            ShipOwner(CurShip,None);
+            if(ShipInNormalSpace(CurShip)) {
+              ChangeState(3);
+              exit;
+            }
+            if(!GroupCount(gTransport) && !was_dialog || !ShipInStar(Player(),st)) {
+              ShipDestroy(CurShip);
+            }
+            if(was_dialog) {
+              ChangeState(4);
+              exit;
+            }
+        >>>
+    }
+    State2T ~{
+        Type=Follow
+        Object=gTransport
+        Attack ~{
+            0=gTransport
+        }
+        TakeItem=
+        TakeAll=False
+        OutMsg=
+        InMsg=
+        Ether=
+        Code=<<<
+            ShipSetBad(CurShip,Player());
+            RelationToRanger(CurShip,Player(),0);
+            ShipOwner(CurShip,None);
+            if(!GroupCount(gTransport) && !was_dialog || !ShipInStar(Player(),st)) {
+              ShipDestroy(CurShip);
+            }
+            if(Hit(CurShip,0)) {
+              ChangeState(4);
+              exit;
+            }
+            if(was_dialog) {
+              ChangeState(4);
+              exit;
+            }
+        >>>
+    }
+    State3T ~{
+        Type=Follow
+        Object=GroupNew
+        Attack ~{
+            0=GroupNew
+        }
+        TakeItem=
+        TakeAll=False
+        OutMsg=
+        InMsg=
+        Ether=
+        Code=<<<
+            ShipSetBad(CurShip,Player());
+            RelationToRanger(CurShip,Player(),0);
+            ShipOwner(CurShip,None);
+            if(!GroupCount(gTransport) && !was_dialog || !ShipInStar(Player(),st)) {
+              ShipDestroy(CurShip);
+            }
+        >>>
+    }
+    State3 ~{
+        Type=Landing
+        Object=pls
+        Attack ~{
+        }
+        TakeItem=
+        TakeAll=False
+        OutMsg=
+        InMsg=
+        Ether=
+        Code=<<<
+            ShipOwner(CurShip,None);
+            if(GetShipPlanet(CurShip)) {
+              if (!microwave)
+              {
+              microwave=1;
+              i=CreateQuestItem('Chrono',None);
+              ItemCost(i,ItemCost(chrono));
+              ItemSize(i,ItemSize(chrono));
+              AddItemToPlanet(pls,i);
+              i=CreateQuestItem('Microwave',None);
+              AddItemToPlanet(pls,i);
+              i=CreateQuestItem('Banana',None);
+              ItemCost(i,10);
+              ItemSize(i,1);
+              AddItemToPlanet(pls,i);
+              }
+              ShipDestroy(CurShip);
+            }
+        >>>
+    }
+    State0 ~{
+        Type=Free
+        Attack ~{
+        }
+        TakeItem=
+        TakeAll=False
+        OutMsg=
+        InMsg=
+        Ether=
+        Code=<<<
+            ShipOwner(CurShip,None);
+            if(ShipInNormalSpace(CurShip)) {
+              ChangeState(0);
+              exit;
+            }
+        >>>
+    }
+    StateNew ~{
+        Type=None
+        Attack ~{
+        }
+        TakeItem=
+        TakeAll=False
+        OutMsg=
+        InMsg=
+        Ether=
+        Code=
+    }
+    SpecialState ~{
+        Type=Follow
+        Object=GroupNew
+        Attack ~{
+            0=GroupNew
+        }
+        TakeItem=
+        TakeAll=False
+        OutMsg=Dialog3
+        InMsg=Dialog3
+        Ether=
+        Code=<<<
+            ShipSetBad(CurShip,Player());
+            RelationToRanger(CurShip,Player(),0);
+            ShipOwner(CurShip,None);
+            if(ShipInNormalSpace(CurShip) && !was_dialog2) {
+              Dialog(Dialog3,Battle);
+            }
+            if(!ShipInStar(Player(),ShipStar(CurShip)) && CurTurn()>=turn_born+365) {
+              ShipDestroy(CurShip);
+            }
+        >>>
+    }
+    StartState ~{
+        Type=Free
+        Attack ~{
+        }
+        TakeItem=
+        TakeAll=False
+        OutMsg=
+        InMsg=
+        Ether=
+        Code=<<<
+            ShipOwner(CurShip,None);
+            for (i=0; i<GroupCount(Escort); i=i+1)
+            {
+            s=GroupShip(Escort,i);
+            if (GetShipRuins(s)==CurShip) it=1;
+            else{ break; it=0; }
+            }
+            if(it && !ShipInHyperSpace(CurShip) && 1==0) {
+              MakeShipEnterStar(s,ShipStar(Player()),ShipStar(CurShip),3);
+            }
+            if(ShipInStar(CurShip,ShipStar(Player())) && ShipInNormalSpace(CurShip)) {
+              ChangeState(8);
+              exit;
+            }
+        >>>
+    }
+    Start ~{
+        Type=Free
+        Attack ~{
+        }
+        TakeItem=
+        TakeAll=False
+        OutMsg=
+        InMsg=
+        Ether=
+        Code=<<<
+            //SFT('trank is '+Name(CurShip));
+            if(ShipInNormalSpace(CurShip) && ShipInNormalSpace(GroupToShip(Battle)) && ShipInStar(CurShip,ShipStar(GroupToShip(Battle)))) {
+              OrderLock(CurShip,0);
+              if (!GetShipRuins(CurShip)){ OrderLanding(CurShip,GroupToShip(Battle)); OrderForsage(CurShip,1); }
+              else ShipRepairEq(CurShip);
+              OrderLock(CurShip,1);
+              if(ShipGetBad(GroupToShip(Battle)) && ShipInNormalSpace(GroupToShip(Battle))) {
+                ChangeState(12);
+                exit;
+              }
+            }
+        >>>
+    }
+    Attack ~{
+        Type=Free
+        Attack ~{
+        }
+        TakeItem=
+        TakeAll=False
+        OutMsg=
+        InMsg=
+        Ether=
+        Code=<<<
+            //SFT('trank is '+Name(CurShip));
+            if(!ShipGetBad(GroupToShip(Battle))) {
+              ChangeState(10);
+              exit;
+            }
+            if(ShipGetBad(GroupToShip(Battle))) {
+              OrderLock(CurShip,0);
+              OrderFollowShip(CurShip,ShipGetBad(GroupToShip(Battle)),1);
+              ShipSetBad(CurShip,ShipGetBad(GroupToShip(Battle)));
+              OrderLock(CurShip,1);
+            }
+        >>>
+    }
+    Zatychka ~{
+        Type=Free
+        Attack ~{
+        }
+        TakeItem=
+        TakeAll=False
+        OutMsg=
+        InMsg=
+        Ether=
+        Code=<<<
+            //SFT('trank is '+Name(CurShip));
+            OrderTakeOff(CurShip);
+            if(ShipInNormalSpace(CurShip)) {
+              ChangeState(11);
+              exit;
+            }
+        >>>
+    }
+    StateNew2 ~{
+        Type=None
+        Attack ~{
+        }
+        TakeItem=
+        TakeAll=False
+        OutMsg=
+        InMsg=
+        Ether=
+        Code=<<<
+            if(1==0) {
+              ChangeState(10);
+              exit;
+            }
+        >>>
+    }
+    StateNew2 ~{
+        Type=Free
+        Attack ~{
+        }
+        TakeItem=
+        TakeAll=False
+        OutMsg=
+        InMsg=
+        Ether=
+        Code=<<<
+            if (GroupCount(voland)>1) ShipDestroy(CurShip);
+            ShipOwner(CurShip,None);
+        >>>
+    }
+    StateNew3 ~{
+        Type=Free
+        Attack ~{
+        }
+        TakeItem=
+        TakeAll=False
+        OutMsg=
+        InMsg=
+        Ether=
+        Code=<<<
+            if (GroupCount(giadr)>2) ShipDestroy(CurShip);
+            NoDropToShip(CurShip,0);
+            if (Hit(CurShip)) spawn_giadr2=1;
+            //if (HullDamage(CurShip)>70 && Hit(CurShip,0)){ spawn_giadr=1; it=CreateQuestItem('Mater',None); ShipAddDropItem(CurShip,it); ShipDestroy(CurShip); }
+            ShipOwner(CurShip,None);
+        >>>
+    }
+}
+Dialogs ~{
+    Dialog1 ~{
+        Code=<<<
+            Ranger=ShortName(Player());
+            StartMusic('Quad');
+            DChange(0);
+            exit;
+        >>>
+    }
+    Dialog2 ~{
+        Code=<<<
+            DChange(1);
+            exit;
+        >>>
+    }
+    Dialog3 ~{
+        Code=<<<
+            Sound('Sound.Battlecruiser');
+            DChange(7);
+            exit;
+        >>>
+    }
+}
+DialogMsgs ~{
+    0 ~{
+        Name=
+        Code=<<<
+            DText(Format(CT("Script.ShuQuad.8"),"<0>",ShortName(GroupToShip(gTransport)),"<1>",Name(pls)));    DAdd(1);
+            DAdd(2);
+
+        >>>
+    }
+    1 ~{
+        Name=
+        Code=<<<
+            DText(CT("Script.ShuQuad.9"));    DAdd(0);
+
+        >>>
+    }
+    2 ~{
+        Name=
+        Code=<<<
+            DText(Format(CT("Script.ShuQuad.10"),"<0>",Ranger));    if(!DomiksDefeated()) {
+              DAdd(3);
+            }
+            if(DomiksDefeated()) {
+              DAdd(4);
+            }
+            DAdd(5);
+
+        >>>
+    }
+    3 ~{
+        Name=
+        Code=<<<
+            DText(Format(CT("Script.ShuQuad.11"),"<0>",Name(pls)));    DAdd(6);
+
+        >>>
+    }
+    4 ~{
+        Name=
+        Code=<<<
+            DText(CT("Script.ShuQuad.12"));    DAdd(7);
+
+        >>>
+    }
+    5 ~{
+        Name=
+        Code=<<<
+            DText(CT("Script.ShuQuad.13"));    DAdd(8);
+
+        >>>
+    }
+    6 ~{
+        Name=
+        Code=<<<
+            DText(CT("Script.ShuQuad.14"));    DAdd(9);
+
+        >>>
+    }
+    7 ~{
+        Name=
+        Code=<<<
+            DText(CT("Script.ShuQuad.15"));    DAdd(10);
+            DAdd(11);
+
+        >>>
+    }
+    8 ~{
+        Name=
+        Code=<<<
+            DText(CT("Script.ShuQuad.16"));    DAdd(12);
+
+        >>>
+    }
+}
+DialogAnswers ~{
+    0 ~{
+        Command=exit
+        Answer=DAnswer('exit~'+CT("Script.ShuQuad.17"));
+        Code=<<<
+            script_state=2;
+            i=CreateQuestItem('Quad',None);
+            ItemCost(i,ItemCost(i)*5);
+            LinkItemToScript(i,scriptquad);
+            AddItemToShip(Player(),i);
+            it2=Rnd(5,7);
+            was_dialog=1;
+            for (i2=0; i2<it2; i2=i2+1)
+            {
+            s=BuyTranclucator(PlanetPirateClan(),0);
+            Chameleon(s,'Ship.HS.Trank');
+            rand=ItemSize(ShipItems(s,0))*2;
+            if (rand>800) rand=Rnd(650,900);
+            ItemSize(ShipItems(s,0),rand);
+            HullHP(s,rand);
+            ShipSkill(s,0,6);
+            ShipSkill(s,1,Rnd(1,6));
+            NoTalkToShip(s,1);
+            GiveExtremeEq(s,'Weapon',PirateClan,1);
+            GiveCoolEq(s,'Weapon',PirateClan,1);
+            GiveCoolEq(s,'Weapon',PirateClan,1);
+            GiveAverageEq(s,'Weapon',PirateClan,1);
+            GiveAverageEq(s,'Weapon',PirateClan,1);
+            GiveCommonEq(s,t_Radar,PirateClan,Rnd(20,40));
+            GiveCoolEq(s,t_Engine,PirateClan,Rnd(20,40));
+            GiveCoolEq(s,t_RepairRobot,PirateClan,Rnd(20,40));
+            GiveCoolEq(s,t_DefGenerator,PirateClan,Rnd(20,40));
+            ArrangeItems(s);
+            MakeShipEnterStar(s,st,StarNearbyStars(st,70),Rnd(2,4));
+            ShipJoin(gTrank,s);
+            }
+            for (i=0; i<StarPlanets(st); i=i+1)
+            {
+            s=StarPlanets(st,i);
+            NoLanding(s,1);
+            }
+            for (i=0; i<StarRuins(st); i=i+1)
+            {
+            s=StarRuins(st,i);
+            NoLanding(s,1);
+            }
+            NoJump(1);
+            Ether(8,'',CT("Script.ShuQuad.18"));
+        >>>
+    }
+    1 ~{
+        Command=
+        Answer=DAnswer(CT("Script.ShuQuad.19"));
+        Code=<<<
+            DChange(2);
+            exit;
+        >>>
+    }
+    2 ~{
+        Command=exit
+        Answer=DAnswer('exit~'+CT("Script.ShuQuad.20"));
+        Code=<<<
+            script_state=2;
+            RelationToRanger(GroupToShip(gTransport),Player(),25);
+            OrderNone(Player());
+        >>>
+    }
+    3 ~{
+        Command=
+        Answer=DAnswer(CT("Script.ShuQuad.21"));
+        Code=<<<
+            DChange(3);
+            exit;
+        >>>
+    }
+    4 ~{
+        Command=
+        Answer=DAnswer(CT("Script.ShuQuad.22"));
+        Code=<<<
+            DChange(3);
+            exit;
+        >>>
+    }
+    5 ~{
+        Command=exit
+        Answer=DAnswer('exit~'+CT("Script.ShuQuad.23"));
+        Code=<<<
+            script_state=2;
+            RelationToRanger(GroupToShip(gTransport),Player(),25);
+            OrderNone(Player());
+        >>>
+    }
+    6 ~{
+        Command=
+        Answer=DAnswer(CT("Script.ShuQuad.24"));
+        Code=<<<
+            DChange(4);
+            exit;
+        >>>
+    }
+    7 ~{
+        Command=
+        Answer=DAnswer(CT("Script.ShuQuad.25"));
+        Code=<<<
+            DChange(5);
+            exit;
+        >>>
+    }
+    8 ~{
+        Command=
+        Answer=DAnswer(CT("Script.ShuQuad.26"));
+        Code=<<<
+            DChange(6);
+            exit;
+        >>>
+    }
+    9 ~{
+        Command=exit
+        Answer=DAnswer('exit');
+        Code=<<<
+            OrderNone(Player());
+            script_state=1;
+            ShipSpecialBonuses(CurShip,bonHook,5);
+            ShipAddCustomShipInfo(CurShip,'Cashmaker','NoShow');
+        >>>
+    }
+    10 ~{
+        Command=
+        Answer=DAnswer(CT("Script.ShuQuad.27"));
+        Code=<<<
+            DChange(8);
+            exit;
+        >>>
+    }
+    11 ~{
+        Command=
+        Answer=DAnswer(CT("Script.ShuQuad.28"));
+        Code=<<<
+            DChange(8);
+            exit;
+        >>>
+    }
+    12 ~{
+        Command=exit
+        Answer=DAnswer('exit');
+        Code=<<<
+            was_dialog2=1;
+            st=ShipStar(Player());
+            for (i=0; i<StarPlanets(st); i=i+1)
+            {
+            s=StarPlanets(st,i);
+            NoLanding(s,1);
+            }
+            for (i=0; i<StarRuins(st); i=i+1)
+            {
+            s=StarRuins(st,i);
+            NoLanding(s,1);
+            }
+            NoJump(1);
+            if (ShipOrder(Player())==2 || ShipOrder(Player())==3){ ShipOrderObj(Player(),0); OrderNone(Player()); }
+            Ether(8,'',CT("Script.ShuQuad.18"));
+        >>>
+    }
+}
