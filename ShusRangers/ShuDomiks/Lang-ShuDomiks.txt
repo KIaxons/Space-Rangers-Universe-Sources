@@ -1231,84 +1231,86 @@ UselessItems ^{
                 01=MessageBox('Этот предмет может быть использован только в открытом космосе.');
                 02=exit;
             }
-            04=dword s=ShipStar(ship);
-            05=if(s==PlanetToStar(GetShipHomePlanet(ship)))
+            04=dword star=ShipStar(ship);
+            05=if(star==PlanetToStar(GetShipHomePlanet(ship)))
             06 ^{
                 01=MessageBox('В данной системе уже функционируют конструкции манипуляции с гиперпространством');
                 02=exit;
             }
-            07=if(StarRuins(s,'Inhibitor'))
+            07=if(StarRuins(star,'Inhibitor'))
             08 ^{
                 01=MessageBox('В системе уже размещен ингибитор');
                 02=exit;
             }
-            09=if(StarOwner(s)==1)
-            10 ^{
+			09=int star_owner=StarOwner(star);
+            10=if(star_owner==1)
+            11 ^{
                 01=MessageBox('Невозможно разместить ингибитор в доминаторской системе');
                 02=exit;
             }
-            11=if((StarOwner(s)==0 && ShipOnSidePirateClan(ship)) || StarOwner(s)==2)
-            12 ^{
+            12=if((star_owner==0 && ShipOnSidePirateClan(ship)) || star_owner==2 || StarCustomFaction(star)!='')
+            13 ^{
                 01=MessageBox('Невозможно разместить ингибитор в системе враждебной фракции');
                 02=exit;
             }
-            13=int it=0;
-            14=for(int i=0;i<GalaxyStars();i=i+1)
-            15 ^{
-                01=dword sh=GalaxyStar(i);
-                02=if(StarRuins(sh,'Inhibitor'))it=it+1;
+            14=int active_inhibs=0;
+            15=for(int i=0;i<GalaxyStars();i=i+1)
+            16 ^{
+                01=if(StarRuins(GalaxyStar(i),'Inhibitor'))active_inhibs=active_inhibs+1;
             }
-            16=if(it>=GMaxInhibitorsCount)
-            17 ^{
+            17=if(active_inhibs>=GMaxInhibitorsCount)
+            18 ^{
                 01=MessageBox('На данный момент размещено максимальное число ингибиторов');
                 02=exit;
             }
-            18=dword k=0;
-            19=if(StarOwner(s)==0)k=BuildCustomRuins(s,'Inhibitor',2);
-            20=else if(StarOwner(s)==2)k=BuildCustomRuins(s,'Inhibitor',7);
+            19=if(FindItemInShip(ship,CurItem())>-1)FreeItem(GetItemFromShip(ship,FindItemInShip(ship,CurItem())));
+            20=else FreeItem(GetItemFromStorage(FindItemInStorage(CurItem())));
+            21=dword inhib;
+            22=if(star_owner==0)inhib=BuildCustomRuins(star,'Inhibitor',2);
+            23=else if(star_owner==2)inhib=BuildCustomRuins(star,'Inhibitor',7);
 			//Чистим магазин товаров на ингибиторе
-			21=for(i=0;i<=7;i=i+1)
-			22 ^{
+			24=for(i=0;i<=7;i=i+1)
+			25 ^{
 				//Запоминаем количество уже имеющегося в магазине товара
-				01=int goods=GoodsAdd(ship,i,0);
+				01=int goods=GoodsAdd(inhib,i,0);
 				//И обнуляем его
-				02=GoodsAdd(ship,i,-goods);
+				02=GoodsAdd(inhib,i,-goods);
 			}
 			//Чистим магазин оборудования на ингибиторе
-			23=for(i=ShopItems(ship)-1;i>=0;i=i-1)FreeItem(GetItemFromShop(ship,i));
-			24=NoShopUpdate(ship,1);
-            25=ShipSetCoords(k,CoordX(ship),CoordY(ship));
-            26=CoordY(k,CoordY(ship));
-            27=NoLanding(k,1);
-            28=HullHP(k,Rnd(200,500)+GalaxyTechLevel()*75);
-            29=ItemSize(ShipItems(k,0),HullHP(k));
-            30=ItemCost(ShipItems(k,0),ItemCost(CurItem()));
-            31=ShipSpecialBonuses(k,bonSpeed,-10000);
-            32=SetName(k,'#'+Rnd(1,9999));
-            33=SpecialToEquipment(FindBonusByNameInCfg('ShuDomiks_InhibitorOff'),ShipItems(k,0));
-            34=Chameleon(k);
-            35=if(FindItemInShip(ship,CurItem())>-1)FreeItem(GetItemFromShip(ship,FindItemInShip(ship,CurItem())));
-            36=else FreeItem(GetItemFromStorage(FindItemInStorage(CurItem())));
-			37=AddItemToShip(ship,CreateEquipment(t_Weapon3,25,GalaxyTechLevel(),ShipOwner(ship)));
-			38=AddItemToShip(ship,CreateEquipment(t_Weapon3,25,GalaxyTechLevel(),ShipOwner(ship)));
-			39=AddItemToShip(ship,CreateEquipment(t_Weapon3,25,GalaxyTechLevel(),ShipOwner(ship)));
-			40=AddItemToShip(ship,CreateEquipment(t_Weapon3,25,GalaxyTechLevel(),ShipOwner(ship)));
-			41=AddItemToShip(ship,CreateEquipment(t_Weapon3,25,GalaxyTechLevel(),ShipOwner(ship)));
-			42=AddItemToShip(ship,CreateEquipment(t_DefGenerator,20,GalaxyTechLevel(),ShipOwner(ship)));
-			43=AddItemToShip(ship,CreateEquipment(t_RepairRobot,20,GalaxyTechLevel(),ShipOwner(ship)));
-			44=ShipImproveItems(ship,20);
-			45=ShipSpecialBonuses(ship,bonWEnergy,10+5*GalaxyTechLevel());
-			46=ShipSpecialBonuses(ship,bonWSplinter,14+7*GalaxyTechLevel());
-			47=ShipSpecialBonuses(ship,bonWMissile,12+6*GalaxyTechLevel());
-			48=ShipSpecialBonuses(ship,bonDef,2*GalaxyTechLevel());
-			49=ShipSpecialBonuses(ship,bonWRadius,200);
-			50=GShuDomiksTempDwd=ship;
-			51=dword crutch=GetItemFromVault('ShuDomiks_Semerenka');
+			26=for(i=ShopItems(inhib)-1;i>=0;i=i-1)FreeItem(GetItemFromShop(inhib,i));
+			27=NoShopUpdate(inhib,1);
+            28=ShipSetCoords(inhib,CoordX(ship),CoordY(ship));
+            29=NoLanding(inhib,1);
+            30=HullHP(inhib,Rnd(200,500)+GalaxyTechLevel()*75);
+            31=ItemSize(ShipItems(inhib,0),HullHP(inhib));
+            32=ItemCost(ShipItems(inhib,0),ItemCost(CurItem()));
+            33=ShipSpecialBonuses(inhib,bonSpeed,-10000);
+            34=SetName(inhib,'#'+Rnd(1,9999));
+            35=SpecialToEquipment(FindBonusByNameInCfg('ShuDomiks_InhibitorOff'),ShipItems(inhib,0));
+            36=Chameleon(inhib);
+			37=if(1)
+			38 ^{
+				01=AddItemToShip(inhib,CreateEquipment(t_Weapon3,25,GalaxyTechLevel(),ShipOwner(inhib)));
+				02=AddItemToShip(inhib,CreateEquipment(t_Weapon3,25,GalaxyTechLevel(),ShipOwner(inhib)));
+				03=AddItemToShip(inhib,CreateEquipment(t_Weapon3,25,GalaxyTechLevel(),ShipOwner(inhib)));
+				04=AddItemToShip(inhib,CreateEquipment(t_Weapon3,25,GalaxyTechLevel(),ShipOwner(inhib)));
+				05=AddItemToShip(inhib,CreateEquipment(t_Weapon3,25,GalaxyTechLevel(),ShipOwner(inhib)));
+				06=AddItemToShip(inhib,CreateEquipment(t_DefGenerator,20,GalaxyTechLevel(),ShipOwner(inhib)));
+				07=AddItemToShip(inhib,CreateEquipment(t_RepairRobot,20,GalaxyTechLevel(),ShipOwner(inhib)));
+				08=ShipImproveItems(inhib,20);
+				09=ShipSpecialBonuses(inhib,bonWEnergy,10+5*GalaxyTechLevel());
+				10=ShipSpecialBonuses(inhib,bonWSplinter,14+7*GalaxyTechLevel());
+				11=ShipSpecialBonuses(inhib,bonWMissile,12+6*GalaxyTechLevel());
+				12=ShipSpecialBonuses(inhib,bonDef,2*GalaxyTechLevel());
+				13=ShipSpecialBonuses(inhib,bonWRadius,200);
+			}
+			39=GShuDomiksTempDwd=inhib;
+			40=dword crutch=GetItemFromVault('ShuDomiks_Semerenka');
 			//Запускаем акткод в "костыльной семерёнке", чтобы записать ингибитор в нужную скриптовую группу
-			52=CreateActCodeEvent(0,crutch);
-			53=PutItemInVault('ShuDomiks_Semerenka',crutch);
-            54=Sound('Sound.Repair');
-            55=MessageBox('Ингибитор успешно размещен');
+			41=CreateActCodeEvent(0,crutch);
+			42=PutItemInVault('ShuDomiks_Semerenka',crutch);
+            43=Sound('Sound.Repair');
+            44=MessageBox('Ингибитор успешно размещен');
         }
         Owner=None
         Size=150
