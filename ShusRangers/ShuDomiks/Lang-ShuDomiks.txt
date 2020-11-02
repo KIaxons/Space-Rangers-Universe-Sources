@@ -1270,13 +1270,13 @@ UselessItems ^{
 			21=for(i=0;i<=7;i=i+1)
 			22 ^{
 				//Запоминаем количество уже имеющегося в магазине товара
-				01=int goods=GoodsAdd(cur_ship,i,0);
+				01=int goods=GoodsAdd(ship,i,0);
 				//И обнуляем его
-				02=GoodsAdd(cur_ship,i,-goods);
+				02=GoodsAdd(ship,i,-goods);
 			}
 			//Чистим магазин оборудования на ингибиторе
-			23=for(i=ShopItems(cur_ship)-1;i>=0;i=i-1)FreeItem(GetItemFromShop(cur_ship,i));
-			24=NoShopUpdate(cur_ship,1);
+			23=for(i=ShopItems(ship)-1;i>=0;i=i-1)FreeItem(GetItemFromShop(ship,i));
+			24=NoShopUpdate(ship,1);
             25=ShipSetCoords(k,CoordX(ship),CoordY(ship));
             26=CoordY(k,CoordY(ship));
             27=NoLanding(k,1);
