@@ -878,39 +878,41 @@ ShipInfo ^{
 					04=SetName(clone_ship,'TranclucatorKeller');
 					05=ShipOwner(clone_ship,2);
 					06=OrderLock(clone_ship,1);
-					07=for(int i=ShipItems(cur_ship)-1;i>0;i=i-1)FreeItem(GetItemFromShip(cur_ship,i));
+					07=for(int i=ShipItems(clone_ship)-1;i>0;i=i-1)FreeItem(GetItemFromShip(clone_ship,i));
 					08=ItemSize(ShipItems(clone_ship,0),ItemSize(ShipItems(keller,0)));
 					09=ItemCost(ShipItems(clone_ship,0),ItemCost(ShipItems(keller,0)));
 					10=HullHP(clone_ship,ItemSize(ShipItems(clone_ship,0)));
 					//Перебираем вещи Келлера и создаём их дубликаты для транка
-					11=for(i=1;i<ShipItems(keller);i=i-1)
+					11=for(i=1;i<ShipItems(keller);i=i+1)
 					12 ^{
 						01=dword cur_item=ShipItems(keller,i);
 						02=if(!ItemIsInUse(cur_item))continue;
-						03=if(ItemType(cur_item)>t_DefGenerator)continue;
-						04=dword cloned_item=CreateEquipment(type,ItemSize(cur_item),8,5);
-						05=ItemCost(cloned_item,ItemCost(cur_item));
-						06=ItemSubrace(cloned_item,1);
-						07=SetEquipmentStats(cloned_item,GetEquipmentStats(cur_item,0),0);
-						08=AddItemToShip(clone_ship,cloned_item);
-						09=ItemIsInUse(cloned_item,clone_ship,1);
+						03=int type=ItemType(cur_item);
+						04=if(type>t_DefGenerator)continue;
+						05=dword cloned_item=CreateEquipment(type,ItemSize(cur_item),8,5);
+						06=ItemCost(cloned_item,ItemCost(cur_item));
+						07=ItemSubrace(cloned_item,1);
+						08=SetEquipmentStats(cloned_item,GetEquipmentStats(cur_item,0),0);
+						09=AddItemToShip(clone_ship,cloned_item);
+						10=ItemIsInUse(cloned_item,clone_ship,1);
 					}
 					//Перебираем оружие
 					13=for(i=1;i<=5;i=i+1)
 					14 ^{
 						01=cur_item=ShipWeapon(keller,i);
-						02=if(ItemType(cur_item)>=t_CustomWeapon)continue;
-						03=cloned_item=CreateEquipment(type,ItemSize(cur_item),8,5);
-						04=ItemCost(cloned_item,ItemCost(cur_item));
-						05=ItemSubrace(cloned_item,1);
-						06=SetEquipmentStats(cloned_item,GetEquipmentStats(cur_item,0),0);
-						07=SetEquipmentStats(cloned_item,GetEquipmentStats(cur_item,1),1);
-						08=SetEquipmentStats(cloned_item,GetEquipmentStats(cur_item,2),2);
-						09=AddItemToShip(clone_ship,cloned_item);
-						10=ItemIsInUse(cloned_item,clone_ship,1,i);
+						02=type=ItemType(cur_item);
+						03=if(type>=t_CustomWeapon)continue;
+						04=cloned_item=CreateEquipment(type,ItemSize(cur_item),8,5);
+						05=ItemCost(cloned_item,ItemCost(cur_item));
+						06=ItemSubrace(cloned_item,1);
+						07=SetEquipmentStats(cloned_item,GetEquipmentStats(cur_item,0),0);
+						08=SetEquipmentStats(cloned_item,GetEquipmentStats(cur_item,1),1);
+						09=SetEquipmentStats(cloned_item,GetEquipmentStats(cur_item,2),2);
+						10=AddItemToShip(clone_ship,cloned_item);
+						11=ItemIsInUse(cloned_item,clone_ship,1,i);
 					}
 					//Отправляем транка сидеть на Меркурий
-					15=TransferShip(StarPlanets(GalaxyStar(2),0));
+					15=TransferShip(clone_ship,StarPlanets(GalaxyStar(2),0));
                 }
             }
             KellerClone ^{
@@ -929,7 +931,7 @@ ShipInfo ^{
 					}
 					05=else
 					06 ^{
-						01=if(!ShipCustomShipInfoData(0,cur_info,3))Ether(4,'KellerCloneTask',Format(CT('Script.DomAcryns.KellerCloneTask'),'#0#',Name(ShipStar(cur_ship))));
+						01=if(!ShipCustomShipInfoData(0,cur_info,3))Ether(4,'KellerCloneTask',Format(CT('Script.Mod_ShuDomiks.KellerCloneTask'),'#0#',Name(ShipStar(cur_ship))));
 					}
                 }
             }
