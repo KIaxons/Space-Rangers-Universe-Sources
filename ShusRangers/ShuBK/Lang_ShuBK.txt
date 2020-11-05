@@ -1,25 +1,25 @@
 MicroModuls ^{
-    ShuBK_Discont25 ^{
+    ShuBK_Discount25 ^{
         Cost=75
-        KindGraph=DiscontMM_25
+        KindGraph=DiscountMM_25
         LockedAcryn=3
         Name=<"><">
         NonSearchable=1
         Priority=80
         Special=1
     }
-    ShuBK_Discont50 ^{
+    ShuBK_Discount50 ^{
         Cost=50
-        KindGraph=DiscontMM_50
+        KindGraph=DiscountMM_50
         LockedAcryn=3
         Name=<"><">
         NonSearchable=1
         Priority=50
         Special=1
     }
-    ShuBK_Discont75 ^{
+    ShuBK_Discount75 ^{
         Cost=25
-        KindGraph=DiscontMM_75
+        KindGraph=DiscountMM_75
         LockedAcryn=3
         Name=<"><">
         NonSearchable=1
@@ -50,9 +50,9 @@ ShipInfo ^{
 					01=if(CurTurn()>=ShipCustomShipInfoData(0,CurInfo(),1))
 					02 ^{
 						01=dword cur_ruin=ScriptItemActShip();
-						02=int dis_25=FindBonusByNameInCfg('ShuBK_Discont25');
-						03=int dis_50=FindBonusByNameInCfg('ShuBK_Discont50');
-						04=int dis_75=FindBonusByNameInCfg('ShuBK_Discont75');
+						02=int dis_25=FindBonusByNameInCfg('ShuBK_Discount25');
+						03=int dis_50=FindBonusByNameInCfg('ShuBK_Discount50');
+						04=int dis_75=FindBonusByNameInCfg('ShuBK_Discount75');
 						05=for(int i=0;i<ShopItems(cur_ruin);i=i+1)
 						06 ^{
 							01=dword item=ShopItems(cur_ruin,i);
@@ -81,9 +81,9 @@ ShipInfo ^{
 					05 ^{
 						01=if(CurrentForm() == 'Ship')
 						02 ^{
-							01=int dis_25=FindBonusByNameInCfg('ShuBK_Discont25');
-							02=int dis_50=FindBonusByNameInCfg('ShuBK_Discont50');
-							03=int dis_75=FindBonusByNameInCfg('ShuBK_Discont75');
+							01=int dis_25=FindBonusByNameInCfg('ShuBK_Discount25');
+							02=int dis_50=FindBonusByNameInCfg('ShuBK_Discount50');
+							03=int dis_75=FindBonusByNameInCfg('ShuBK_Discount75');
 							//Перебираем галасобытия, ищем свежекупленные предметы
 							04=for(int i=GalaxyEvents()-1; i>=0; i=i-1)
 							05 ^{
@@ -110,9 +110,9 @@ ShipInfo ^{
 					07 ^{
 						01=if(CurrentForm() == 'EquipmentShop')
 						02 ^{
-							01=dis_25=FindBonusByNameInCfg('ShuBK_Discont25');
-							02=dis_50=FindBonusByNameInCfg('ShuBK_Discont50');
-							03=dis_75=FindBonusByNameInCfg('ShuBK_Discont75');
+							01=dis_25=FindBonusByNameInCfg('ShuBK_Discount25');
+							02=dis_50=FindBonusByNameInCfg('ShuBK_Discount50');
+							03=dis_75=FindBonusByNameInCfg('ShuBK_Discount75');
 							//Перебираем галасобытия, ищем свежекупленные предметы
 							04=for(i=GalaxyEvents()-1; i>=0; i=i-1)
 							05 ^{
