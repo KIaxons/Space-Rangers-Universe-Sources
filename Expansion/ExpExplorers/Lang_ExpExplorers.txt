@@ -260,7 +260,7 @@ ShipInfo ^{
 												05=else if(TrndCount==27)TrndArt=0;
 											}
 										}
-										05=if(TrndArt>27)
+										05=else
 										06 ^{
 											01=if(GgiveArtsArray[TrndArt]!=EquipmentImageName(Tequip1))break;
 											02=else if(GgiveArtsArray[TrndArt]!=EquipmentImageName(Tequip2))break;
