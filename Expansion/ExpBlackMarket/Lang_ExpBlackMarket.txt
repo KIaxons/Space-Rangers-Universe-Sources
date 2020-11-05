@@ -3504,7 +3504,7 @@ ShipInfo ^{
 						02 ^{
 							01=InterfaceState('Ship','PM_EndTurn',0);
 							02=InterfaceState('Ship','RT_EndTurn_Block',1);
-							//Перебираем галасобытия, ищём свежекупленные предметы
+							//Перебираем галасобытия, ищем свежекупленные предметы
 							03=for(int i=GalaxyEvents()-1;i>=0;i=i-1)
 							04 ^{
 								01=if(i<=ShipCustomShipInfoData(0,CurInfo(),2))break;
@@ -3637,7 +3637,7 @@ ShipInfo ^{
 							02=InterfaceState('EquipmentShop','RT_EndTurn_Block',0);
 							03=InterfaceState('RuinsTalk','PM_EndTurn',0);
 							04=InterfaceState('RuinsTalk','RT_EndTurn_Block',1);
-							//Перебираем галасобытия, ищём свежекупленные предметы
+							//Перебираем галасобытия, ищем свежекупленные предметы
 							05=for(i=GalaxyEvents()-1;i>=0;i=i-1)
 							06 ^{
 								01=if(i<=ShipCustomShipInfoData(0,CurInfo(),2))break;
@@ -3646,11 +3646,10 @@ ShipInfo ^{
 								04 ^{
 									01=if(GalaxyEventData(i,5)==ShipCustomShipInfoData(0,CurInfo(),1))
 									02 ^{
-										01=item;
-										02=type=GalaxyEventData(i,0);
-										03=flt=0;
-										04=if(type>=t_FuelTanks && type<=t_DefGenerator)
-										05 ^{
+										01=type=GalaxyEventData(i,0);
+										02=flt=0;
+										03=if(type>=t_FuelTanks && type<=t_DefGenerator)
+										04 ^{
 											01=item=IdToItem(GalaxyEventData(i,3));
 											02=if(ItemOwner(item)==6)
 											03 ^{
@@ -3665,8 +3664,8 @@ ShipInfo ^{
 												03=ItemCost(item,round(1.0*ItemCost(item)/flt));
 											}
 										}
-										06=else if(type>=t_Weapon1 && type<=t_CustomWeapon)
-										07 ^{
+										05=else if(type>=t_Weapon1 && type<=t_CustomWeapon)
+										06 ^{
 											01=item=IdToItem(GalaxyEventData(i,3));
 											02=if(ItemOwner(item)==6)
 											03 ^{
@@ -3681,8 +3680,8 @@ ShipInfo ^{
 												03=ItemCost(item,round(1.0*ItemCost(item)/flt));
 											}
 										}
-										08=else if(type>=t_Artefact && type<=t_ArtFastRacks)
-										09 ^{
+										07=else if(type>=t_Artefact && type<=t_ArtFastRacks)
+										08 ^{
 											01=item=IdToItem(GalaxyEventData(i,3));
 											02=flt=CT('BlackMarketShopList.Artefacts.ArtAdditionalCostCoef');
 											03=if(flt<=0)flt=1.0;
@@ -3705,8 +3704,8 @@ ShipInfo ^{
 												}
 											}
 										}
-										10=else if(type==t_MicroModule)
-										11 ^{
+										09=else if(type==t_MicroModule)
+										10 ^{
 											01=item=IdToItem(GalaxyEventData(i,3));
 											02=level=BonusPriority(EqModule(item));
 											03=if(level<=30)flt=CT('BlackMarketShopList.MicroModuls.MMLevelOneCostCoef');
@@ -3715,8 +3714,8 @@ ShipInfo ^{
 											06=if(flt<=0)flt=1.0;
 											07=ItemCost(item,round(1.0*ItemCost(item)/flt));
 										}
-										12=if(!ShopItems(GetShipRuins(Player())))
-										13 ^{
+										11=if(!ShopItems(GetShipRuins(Player())))
+										12 ^{
 											01=InterfaceState('RuinsTalk','PR_Shop',0);
 											02=InterfaceState('RuinsTalk','PR_BMShopBlock',1);
 										}
