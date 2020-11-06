@@ -117,63 +117,110 @@ ShipInfo ^{
 									15=dword Tequip2=0;
 									16=dword Tequip3=0;
 									17=dword Tequip4=0;
-									//Узнаём сколько и чем слотов под артефакты заняты у рейнджера
-									18=for(i=0;i<ShipArts(ship);i=i+1)
+									//Узнаём сколько и чем слотов под артефакты занято у рейнджера
+									18=for(i=0; i<ShipArts(ship); i=i+1)
 									19 ^{
 										01=dword Tart=ShipArts(ship,i);
 										02=if(ItemIsInUse(Tart))
 										03 ^{
-											01=if(Tequip1==0)Tequip1=Tart;
-											02=else if(Tequip2==0)Tequip2=Tart;
-											03=else if(Tequip3==0)Tequip3=Tart;
-											04=else if(Tequip4==0)Tequip4=Tart;
+											01=if(!Tequip1)Tequip1=Tart;
+											02=else if(!Tequip2)Tequip2=Tart;
+											03=else if(!Tequip3)Tequip3=Tart;
+											04=else if(!Tequip4)Tequip4=Tart;
 										}
 									}
-									20=dword TrndArt=1;
-									21=int TrndCount=0;
+									20=int max_arts_types=ArrayDim(GgiveArtsArray)-1;
+									21=dword TrndArt=0;
+									//Если нашли у рейнджера инфошку хозяина транклюкаторов, то даём ему шанс на получение нового транка
+									22=int TrndCount=ShipFindCustomShipInfoByType(ship,'TrancNPCOwnerInfo');
+									23=if(TrndCount > -1)
+									24 ^{
+										//Транклюкатор выпадет рейнджеру-хозяину с вероятностью в 15%
+										01=if(Rnd(1,100) <= 15)
+										02 ^{
+											//Если число транклюкаторов у этого рейнджера ещё не максимально
+											01=if(ShipCustomShipInfoData(ship,TrndCount,3) < 6)
+											02 ^{
+												01=TrndArt=CreateArt(t_ArtefactTranclucator, 6);
+												//Если у рейнджера хватает места в трюме под нового транклюкатора
+												02=if(ShipFreeSpace(ship) >= ItemSize(TrndArt))
+												03 ^{
+													01=AddItemToShip(ship, TrndArt);
+													02=CreateActCodeEvent(t_OnItemPickUp, ship, ship, TrndArt, 0, 0);
+													03=TrndArt=0;
+													//Маркер, что свой артефакт рейнджер уже получил
+													04=TrndCount=-1;
+												}
+												04=else
+												05 ^{
+													01=FreeItem(TrndArt);
+													02=TrndArt=0;
+													03=TrndCount=0;
+												}
+											}
+											03=else TrndCount=0;
+										}
+										03=else TrndCount=0;
+									}
 									//Выбираем артефакт и убеждаемся, что выбранный тип артефакта ещё не стоит ни в одном из слотов рейнджера
-									22=while(TrndArt==1)
-									23 ^{
-										01=if(IsScriptActive('Mod_ExpArts'))TrndArt=Rnd(1,31);//+4 дополнительных артефакта из ExpArts
+									25=if(TrndCount > -1)while(1)
+									26 ^{
+										01=if(IsScriptActive('Mod_ExpArts'))TrndArt=Rnd(1,max_arts_types);//+4 дополнительных артефакта из ExpArts
 										02=else TrndArt=Rnd(1,27);//Иначе только оригинальные экипируемые
+										//В рандоме выпал оригинальный артефакт
 										03=if(TrndArt<=27)
 										04 ^{
-											01=if(GgiveArtsArray[TrndArt]!=ItemType(Tequip1))break;
-											02=else if(GgiveArtsArray[TrndArt]!=ItemType(Tequip2))break;
-											03=else if(GgiveArtsArray[TrndArt]!=ItemType(Tequip3))break;
-											04=else if(GgiveArtsArray[TrndArt]!=ItemType(Tequip4))break;
+											01=if(GgiveArtsArray[TrndArt] != ItemType(Tequip1))break;
+											02=else if(GgiveArtsArray[TrndArt] != ItemType(Tequip2))break;
+											03=else if(GgiveArtsArray[TrndArt] != ItemType(Tequip3))break;
+											04=else if(GgiveArtsArray[TrndArt] != ItemType(Tequip4))break;
+											//Если выпавший артефакт в слоте рейнджера уже есть, то продолжаем крутить рандомизатор по количеству возможных типов артов в принципе, авось чего выпадет
 											05=else
 											06 ^{
-												01=TrndArt=1;
+												01=TrndArt=0;
 												02=TrndCount=TrndCount+1;
 												03=if(IsScriptActive('Mod_ExpArts'))
 												04 ^{
-													01=if(TrndCount==31)TrndArt=0;
+													01=if(TrndCount == max_arts_types)
+													02 ^{
+														01=TrndArt=0;
+														02=break;
+													}
 												}
-												05=else if(TrndCount==27)TrndArt=0;
+												05=else if(TrndCount == 27)
+												06 ^{
+													01=TrndArt=0;
+													02=break;
+												}
 											}
 										}
+										//В рандоме выпал кастомный артефакт
 										05=else
 										06 ^{
-											01=if(GgiveArtsArray[TrndArt]!=EquipmentImageName(Tequip1))break;
-											02=else if(GgiveArtsArray[TrndArt]!=EquipmentImageName(Tequip2))break;
-											03=else if(GgiveArtsArray[TrndArt]!=EquipmentImageName(Tequip3))break;
-											04=else if(GgiveArtsArray[TrndArt]!=EquipmentImageName(Tequip4))break;
+											01=if(GgiveArtsArray[TrndArt] != EquipmentImageName(Tequip1))break;
+											02=else if(GgiveArtsArray[TrndArt] != EquipmentImageName(Tequip2))break;
+											03=else if(GgiveArtsArray[TrndArt] != EquipmentImageName(Tequip3))break;
+											04=else if(GgiveArtsArray[TrndArt] != EquipmentImageName(Tequip4))break;
+											//Если выпавший артефакт в слоте рейнджера уже есть, то продолжаем крутить рандомизатор по количеству возможных типов артов в принципе, авось чего выпадет
 											05=else
 											06 ^{
-												01=TrndArt=1;
+												01=TrndArt=0;
 												02=TrndCount=TrndCount+1;
-												03=if(TrndCount==31)TrndArt=0;
+												03=if(TrndCount==max_arts_types)
+												04 ^{
+													01=TrndArt=0;
+													02=break;
+												}
 											}
 										}
 									}
-									24=if(TrndArt)
-									25 ^{
+									27=if(TrndArt)
+									28 ^{
 										//Создаём оригинальный артефакт
 										01=if(TrndArt<=27)
 										02 ^{
 											01=TrndArt=CreateArt(GgiveArtsArray[TrndArt],6);
-											02=if(ShipFreeSpace(ship)>=ItemSize(TrndArt))AddItemToShip(ship,TrndArt);
+											02=if(ShipFreeSpace(ship) >= ItemSize(TrndArt))AddItemToShip(ship,TrndArt);
 											03=else FreeItem(TrndArt);
 										}
 										//Создаём кастомный артефакт из ExpArts
