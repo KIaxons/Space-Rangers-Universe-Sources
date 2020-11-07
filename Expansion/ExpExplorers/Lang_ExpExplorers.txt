@@ -20,7 +20,7 @@ ShipInfo ^{
 					04=if(ShipPartners(ship))exit;
 					05=if(ShipIsPartner(ship))
 					06 ^{
-						//Если игрок сделал рейнджера партнёром, пока тот летел в ЧД
+						//Если данного рейнджера сделали партнёром, пока он направлялся к ЧД
 						01=if(ShipCustomShipInfoData(0,cur_info,1))
 						02 ^{
 							01=ShipCustomShipInfoData(0,cur_info,1,0);
