@@ -1,5 +1,5 @@
 Script ^{
-	Mod_ExpExplorers ^{
+    Mod_ExpExplorers ^{
 		0=<0>
 	}
 }
@@ -309,13 +309,10 @@ ShipInfo ^{
 							05=if(Rnd(1,1000)<=90)
 							06 ^{
 								//Проверяем, что обнаруженная ранее ЧД всё ещё существует в системе
-								01=for(i=0;i<GalaxyHoles();i=i+1)
+								01=for(i=0; i<GalaxyHoles(); i=i+1)
 								02 ^{
-									01=if(ShipCustomShipInfoData(0,cur_info,2)==Id(GalaxyHoles(i)))
-									02 ^{
-										01=THoleExistCheck=GalaxyHoles(i);
-										02=break;
-									}
+									01=THoleExistCheck=GalaxyHoles(i);
+									02=if(ShipCustomShipInfoData(0,cur_info,2) == Id(THoleExistCheck))break;
 									03=else THoleExistCheck=0;
 								}
 								03=if(THoleExistCheck)
@@ -339,13 +336,10 @@ ShipInfo ^{
 						15=if(ShipCustomShipInfoData(0,cur_info,1) == 2)
 						16 ^{
 							//Проверяем, что выбранная ЧД всё ещё существует
-							01=for(i=0;i<GalaxyHoles();i=i+1)
+							01=for(i=0; i<GalaxyHoles(); i=i+1)
 							02 ^{
-								01=if(ShipCustomShipInfoData(0,cur_info,2)==Id(GalaxyHoles(i)))
-								02 ^{
-									01=THoleExistCheck=GalaxyHoles(i);
-									02=break;
-								}
+								01=THoleExistCheck=GalaxyHoles(i);
+								02=if(ShipCustomShipInfoData(0,cur_info,2) == Id(THoleExistCheck))break;
 								03=else
 								04 ^{
 									01=THoleExistCheck=0;
@@ -471,6 +465,8 @@ ShipInfo ^{
 				//	1 - партнёр летит к указанной ЧД;
 				//	2 - партнёр находится в ЧД и событие её посещения уже сработало;
 				//Data2 - Id "чёрной дыры", в которую прыгает партнёр;
+				//TextData1 - координата X координаты ЧД в которую направляется корабль;
+				//TextData2 - координата Y координаты ЧД в которую направляется корабль;
 				OnActCodeTypes=t_OnStep,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
 				OnActStepTypes=0,11
                 OnActCode ^{
@@ -543,7 +539,8 @@ ShipInfo ^{
 							//Отменяем приказ о прыжке, если корабль ушёл в гипер или сел на планету/станцию
 							01=OrderLock(ship,0);
 							02=ShipDeleteCustomShipInfo(ship,'OrderJumpHole_ForCompanion');
-							03=exit;
+							03=ShipFreeFlight(ship);
+							04=exit;
 						}
 						//Корабль направляется к ЧД
 						06=if(ShipCustomShipInfoData(0,cur_info,1) == 1)
@@ -551,11 +548,8 @@ ShipInfo ^{
 							//Проверяем, что указанная ЧД всё ещё существует
 							01=for(int i=0; i<GalaxyHoles(); i=i+1)
 							02 ^{
-								01=if(ShipCustomShipInfoData(0,cur_info,2) == Id(GalaxyHoles(i)))
-								02 ^{
-									01=THoleExistCheck=GalaxyHoles(i);
-									02=break;
-								}
+								01=THoleExistCheck=GalaxyHoles(i);
+								02=if(ShipCustomShipInfoData(0,cur_info,2) == Id(THoleExistCheck))break;
 								03=else
 								04 ^{
 									01=THoleExistCheck=0;
@@ -588,21 +582,34 @@ ShipInfo ^{
 								}
 								04=if(check)
 								05 ^{
-									01=if(Dist(ship,THoleExistCheck) <= 175)
-									02 ^{
+									//Определяем расстояние до входа/выхода в ЧД
+									01=unknown DistCoords=ImportedFunction('UtilityFunctions','DistCoords');
+									02=if(HoleStar1(THoleExistCheck) == ShipStar(ship))
+									03 ^{
+										01=int BH_X=HoleX1(THoleExistCheck);
+										02=int BH_Y=HoleY1(THoleExistCheck);
+										03=ShipCustomShipInfoTextData(0,cur_info,1,BH_X);
+										04=ShipCustomShipInfoTextData(0,cur_info,2,BH_Y);
+									}
+									04=else
+									05 ^{
+										01=BH_X=HoleX2(THoleExistCheck);
+										02=BH_Y=HoleY2(THoleExistCheck);
+										03=ShipCustomShipInfoTextData(0,cur_info,1,BH_X);
+										04=ShipCustomShipInfoTextData(0,cur_info,2,BH_Y);
+									}
+									06=if(DistCoords(CoordX(ship), CoordY(ship), BH_X, BH_Y) <= 195)
+									07 ^{
 										01=check=1;
-										02=if(Dist(Player(),THoleExistCheck) <= 175)
+										02=if(DistCoords(CoordX(Player()), CoordY(Player()), BH_X, BH_Y) <= 195)
 										03 ^{
-											01=if(ShipOrder(Player()) == 4)
+											//Если и корабль и игрок оба находятся рядом с ЧД, и игрок как раз направляется в неё
+											01=if(ShipOrderObj(Player()) == THoleExistCheck)
 											02 ^{
-												//Если и корабль и игрок оба находятся рядом с ЧД и игрок как раз направляется в неё
-												01=if(ShipOrderObj(Player()) == THoleExistCheck)
-												02 ^{
-													//Отдаём приказ кораблю залететь в ЧД
-													01=OrderJumpHole(ship,THoleExistCheck,100);
-													02=OrderLock(ship,1);
-												}
-												03=else check=0;
+												//Отдаём приказ кораблю залететь в ЧД
+												01=OrderJumpHole(ship,THoleExistCheck,100);
+												02=OrderLock(ship,1);
+												03=exit;
 											}
 											03=else check=0;
 										}
@@ -610,13 +617,13 @@ ShipInfo ^{
 										05=if(!check)
 										06 ^{
 											//Иначе отдаём приказ кораблю крутиться на месте в ожидании игрока
-											01=float angle=pi*(ShipAngle(ship)+90.0)/180.0;
+											01=float angle=pi*(ShipAngle(ship)+90.0)/Rnd(179,181);
 											02=OrderMove(ship,cos(angle)*10.0+CoordX(ship),sin(angle)*10.0+CoordY(ship));
 											03=exit;
 										}
 									}
-									03=else
-									04 ^{
+									08=else
+									09 ^{
 										//Отдаём приказ кораблю залететь в ЧД
 										01=OrderJumpHole(ship,THoleExistCheck,100);
 										02=OrderLock(ship,1);
@@ -628,7 +635,8 @@ ShipInfo ^{
 								07 ^{
 									01=OrderLock(ship,0);
 									02=ShipDeleteCustomShipInfo(ship,'OrderJumpHole_ForCompanion');
-									03=exit;
+									03=ShipFreeFlight(ship);
+									04=exit;
 								}
 							}
 							//Если нет
@@ -637,20 +645,23 @@ ShipInfo ^{
 								//Отменяем приказ на прыжок
 								01=OrderLock(ship,0);
 								02=ShipDeleteCustomShipInfo(ship,'OrderJumpHole_ForCompanion');
-								03=exit;
+								03=ShipFreeFlight(ship);
+								04=exit;
 							}
 						}
 					}
 					//Конец расчёта хода
 					05=else if(ScriptItemActionType(t_OnStep,11))
 					06 ^{
-						//Корабль направляется к дыре, выставляем приказ на движение по её координатам (чтобы не глючил маркер движения)
+						//Корабль направляется к дыре, выставляем приказ на движение по её координатам (чтобы не блокировать ЧД приказом на залёт в неё)
 						01=if(ShipCustomShipInfoData(0,cur_info,1) == 1)
 						02 ^{
 							01=if(ShipInNormalSpace(ship))
 							02 ^{
-								01=ShipOrder(ship,1);
-								02=ShipOrderObj(ship,0);
+								//01=ShipOrder(ship,1);
+								//02=ShipOrderObj(ship,0);
+								01=OrderMove(ship,ShipCustomShipInfoTextData(0,cur_info,1),ShipCustomShipInfoTextData(0,cur_info,2));
+								02=OrderLock(ship,1);
 								03=exit;
 							}
 						}
@@ -662,7 +673,8 @@ ShipInfo ^{
 							02 ^{
 								01=OrderLock(ship,0);
 								02=ShipDeleteCustomShipInfo(ship,'OrderJumpHole_ForCompanion');
-								03=exit;
+								03=ShipFreeFlight(ship);
+								04=exit;
 							}
 						}
 					}
@@ -672,13 +684,14 @@ ShipInfo ^{
 						01=if(ShipTypeN(ship) != t_Tranclucator)
 						02 ^{
 							//Корабль забивает на приказ, если получил слишком много повреждений, а игрок свалил хрен пойми куда
-							01=if(HullDamage(ship) >= 66)
+							01=if(HullDamage(ship) >= 70)
 							02 ^{
-								01=if(Dist(ship,Player()) > 200)
+								01=if(Dist(ship,Player()) > 250)
 								02 ^{
 									01=OrderLock(ship,0);
 									02=ShipDeleteCustomShipInfo(ship,'OrderJumpHole_ForCompanion');
-									03=exit;
+									03=ShipFreeFlight(ship);
+									04=exit;
 								}
 							}
 						}

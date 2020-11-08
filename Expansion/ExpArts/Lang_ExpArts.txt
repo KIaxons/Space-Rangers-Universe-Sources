@@ -610,7 +610,7 @@ ShipInfo ^{
 						04 ^{
 							01=WeaponTarget(ShipWeapon(ship,i),0);
 						}
-						05=float angle=pi*(ShipAngle(ship)+90.0)/180.0;
+						05=float angle=pi*(ShipAngle(ship)+90.0)/Rnd(179,181);
 						06=OrderMove(ship,cos(angle)*10.0+CoordX(ship),sin(angle)*10.0+CoordY(ship));
                     }
 					//Обработчики для конца хода
@@ -1154,7 +1154,7 @@ UselessItems ^{
 					10=OrderLock(ship,1);
 					11=if(!ShipIsTakeoff(ship))
 					12 ^{
-						01=float angle=pi*(ShipAngle(ship)+90.0)/180.0;
+						01=float angle=pi*(ShipAngle(ship)+90.0)/Rnd(179,181);
 						02=OrderMove(ship,cos(angle)*10.0+CoordX(ship),sin(angle)*10.0+CoordY(ship));
 					}
 					//Отключаем прерывание фильма хода (прервать может только сам игрок)
