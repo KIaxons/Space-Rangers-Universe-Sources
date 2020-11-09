@@ -286,13 +286,22 @@ ShipInfo ^{
                 OnActCode ^{
 				//ShipCustomShipInfoData(0,CurInfo(),1) - если не 0, то равно Id планеты, на которую можно совершать посадку при сборе предметов;
 				//ShipCustomShipInfoData(0,CurInfo(),2) - если не 0, то равно Id станции, на которую можно совершать посадку при сборе предметов;
-				//ShipCustomShipInfoData(0,CurInfo(),3) - ---
+				//ShipCustomShipInfoData(0,CurInfo(),3) - таймер до завершения приказа форсажа у транка;
 				//ShipCustomShipInfoTextData(0,CurInfo(),1) - маркер об инициации транком определённого диалога с игроком;
 				//ShipCustomShipInfoTextData(0,CurInfo(),2) - маркер о том, что транклюкатор совершает посадку для сдачи собранных вещей на склад;
 				//ShipCustomShipInfoTextData(0,CurInfo(),3) - проверка о наличии приказа форсажа, нужна для корректного включения кода, привязанного к стейту (если 'turn', то вкл.);
 					01=dword cur_Tranc=ScriptItemActShip();
-					02=if(ScriptItemActionType(t_OnStep,0))
+					02=if(ShipFindCustomShipInfoByType(cur_Tranc,'OrderJumpHole_ForCompanion') > -1)
 					03 ^{
+						01=if(ScriptItemActionType(t_OnStep,11))
+						02 ^{
+							01=infos=CurInfo();
+							02=if(OrderForsage(cur_Tranc))ShipCustomShipInfoTextData(0,infos,3,'turn');
+						}
+						03=exit;
+					}
+					04=if(ScriptItemActionType(t_OnStep,0))
+					05 ^{
 						01=int bonus=FindBonusByCustomTag('EvoTranc_TrancItemAcrin');
 						02=int bonus2=FindBonusByCustomTag('EvoTranc_TrancWeaponAcrin');
 						03=dword infos=CurInfo();
@@ -440,8 +449,8 @@ ShipInfo ^{
 						//Если транклюкатор не готовится к прыжку
 						07=if(ShipOrder(cur_Tranc)!=2 && ShipOrder(cur_Tranc)!=3)OrderLock(cur_Tranc,0);
 					}
-					04=else if(ScriptItemActionType(t_OnStep,11))
-					05 ^{
+					06=else if(ScriptItemActionType(t_OnStep,11))
+					07 ^{
 						01=infos=CurInfo();
 						//Обнуляем таймер диалога только сейчас, чтобы транк не вызывал игрока по несколько раз за ход
 						02=ShipCustomShipInfoTextData(0,CurInfo(),1,'');
@@ -737,8 +746,8 @@ ShipInfo ^{
 							}
 						}
 					}
-					06=else if(ScriptItemActionType(t_OnEnteringForm))
-					07 ^{
+					08=else if(ScriptItemActionType(t_OnEnteringForm))
+					09 ^{
 						01=if(CurrentForm()=='Ship')
 						02 ^{
 							01=if(GetEquipmentStats(ShipItems(cur_Tranc,0),8))
@@ -756,8 +765,8 @@ ShipInfo ^{
 							01=if(OrderLock(ScriptItemActShip()))OrderLock(ScriptItemActShip(),0);
 						}
 					}
-					08=else if(ScriptItemActionType(t_OnLeavingForm))
-					09 ^{
+					10=else if(ScriptItemActionType(t_OnLeavingForm))
+					11 ^{
 						01=infos=CurInfo();
 						//Сбрасываем лишние маркеры и восстанавливаем OrderLock, если игрок не отменил транку приказ прыжка
 						02=if(CurrentForm()=='Talk')
@@ -793,8 +802,8 @@ ShipInfo ^{
 							}
 						}
 					}
-					10=else if(ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi))
-					11 ^{
+					12=else if(ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi))
+					13 ^{
 						//Если игрок атаковал собственного транклюкатора
 						01=if(ScriptItemActObject1()==Player())
 						02 ^{
@@ -808,8 +817,8 @@ ShipInfo ^{
 							}
 						}
 					}
-					12=else
-					13 ^{
+					14=else
+					15 ^{
 						01=dword itemU=ScriptItemActObject1();
 						02=if(ItemExtraSpecials(itemU))
 						03 ^{
@@ -1111,22 +1120,23 @@ ShipInfo ^{
 					//ShipCustomShipInfoTextData(0,CurInfo(),1) - режим прыжков (True/TrueAll/False)
 					//ShipCustomShipInfoTextData(0,CurInfo(),2) - разрешение на автозаправку (True/TrueOnIt/False) TrueOnIt - значит транк прямо сейчас летит на заправку
 					//ShipCustomShipInfoTextData(0,CurInfo(),3) - текущая линия поведения ('JumpByOrder','JumpByItself','JumpByItselfFar','')
-					01=if(ScriptItemActionType(t_OnStep,0))
-					02 ^{
-						01=dword cur_info=CurInfo();
-						02=dword tranc=ScriptItemActShip();
-						03=dword curTank=ShipEqInSlot(tranc,t_FuelTanks);
-						04=dword item;
-						05=str behav=ShipCustomShipInfoTextData(0,cur_info,3);
-						06=int i;
-						07=if(!ShipSpeed(tranc))
-						08 ^{
+					01=dword tranc=ScriptItemActShip();
+					02=if(ShipFindCustomShipInfoByType(tranc,'OrderJumpHole_ForCompanion') > -1)exit;
+					03=dword cur_info=CurInfo();
+					04=if(ScriptItemActionType(t_OnStep,0))
+					05 ^{
+						01=dword curTank=ShipEqInSlot(tranc,t_FuelTanks);
+						02=dword item;
+						03=str behav=ShipCustomShipInfoTextData(0,cur_info,3);
+						04=int i;
+						05=if(!ShipSpeed(tranc))
+						06 ^{
 							01=OrderLock(tranc,0);
 							02=exit;
 						}
 						//Автозаправка транка из имеющихся на борту баков/цистерн (если разрешено)
-						09=if(ShipCustomShipInfoTextData(0,cur_info,2)=='True' || ShipCustomShipInfoTextData(0,cur_info,2)=='TrueOnIt')
-						10 ^{
+						07=if(ShipCustomShipInfoTextData(0,cur_info,2)=='True' || ShipCustomShipInfoTextData(0,cur_info,2)=='TrueOnIt')
+						08 ^{
 							//Заодно здесь же рассчитываем стоимость единицы топлива на текущий ход (не пересчитываем формулу каждый раз с учетом фактического количества топлива на пополнение, потому что я рот ебал этого акткода, в котором невозможно объявить нормальную функцию)
 							01=if(1)
 							02 ^{
@@ -1170,8 +1180,8 @@ ShipInfo ^{
 							}
 						}
 						//Если разрешены прыжки вслед за игроком
-						11=if(ShipCustomShipInfoTextData(0,cur_info,1)!='False')
-						12 ^{
+						09=if(ShipCustomShipInfoTextData(0,cur_info,1)!='False')
+						10 ^{
 							01=if(behav!='JumpByOrder')
 							02 ^{
 								01=dword owner=Player();
@@ -1458,8 +1468,8 @@ ShipInfo ^{
 								}
 							}
 						}
-						13=else if(behav=='JumpByOrder')
-						14 ^{
+						11=else if(behav=='JumpByOrder')
+						12 ^{
 							//Транк летит к точке прыжка в систему, указанную игроком
 							01=if(!ShipInHyperSpace(tranc))
 							02 ^{
@@ -1472,21 +1482,19 @@ ShipInfo ^{
 								02=ShipCustomShipInfoTextData(0,cur_info,3,'');
 							}
 						}
-						15=else if(OrderLock(tranc))OrderLock(tranc,0);
+						13=else if(OrderLock(tranc))OrderLock(tranc,0);
 					}
-					03=else if(ScriptItemActionType(t_OnStep,11))
-					04 ^{
-						01=tranc=ScriptItemActShip();
-						02=cur_info=CurInfo();
-						03=dword temp_plan;
-						04=dword temp_ruin;
-						05=dword temp_place;
-						06=dword cur_star=ShipStar(tranc);
+					06=else
+					07 ^{
+						01=dword temp_plan;
+						02=dword temp_ruin;
+						03=dword temp_place;
+						04=dword cur_star=ShipStar(tranc);
 						//Если в конце данного хода транк свернулся на склад, то проверка системы будет возвращать 0
-						07=if(!cur_star)exit;
+						05=if(!cur_star)exit;
 						//Автозаправка транка (если включена)
-						08=if(ShipCustomShipInfoTextData(0,cur_info,2)=='True' || ShipCustomShipInfoTextData(0,cur_info,2)=='TrueOnIt')
-						09 ^{
+						06=if(ShipCustomShipInfoTextData(0,cur_info,2)=='True' || ShipCustomShipInfoTextData(0,cur_info,2)=='TrueOnIt')
+						07 ^{
 							01=if(!ShipInHyperSpace(tranc))
 							02 ^{
 								//Если к концу хода топлива транку всё ещё не хватает
@@ -1594,10 +1602,10 @@ ShipInfo ^{
 								}
 							}
 						}
-						10=else if(ShipOrder(tranc)!=3)OrderLock(tranc,0);
+						08=else if(ShipOrder(tranc)!=3)OrderLock(tranc,0);
 						//Если включено автопополнение ракетных орудий
-						11=if(ShipCustomShipInfoData(0,cur_info,3))
-						12 ^{
+						09=if(ShipCustomShipInfoData(0,cur_info,3))
+						10 ^{
 							//Вычисляем стоимость одного заряда на текущем ГТУ
 							01=dword round_cost=10+(18*(GalaxyTechLevel()-2));
 							02=if(round_cost>100)round_cost=100;
@@ -2019,7 +2027,7 @@ ShipInfo ^{
 														01=int diff=GalaxyTechLevel()-level;
 														02=ItemLevel(item,GalaxyTechLevel());
 														03=ItemSize(item,ItemSize(item)+(75*diff));
-														04=ItemExtraSpecialsAddByType(item,FindBonusByCustomTag('TrancPlus_akrin_size'),diff);
+														04=ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('EvoTranc_TrancSizePlus'),diff);
 														05=for(j=diff;j>0;j=j-1)ItemCost(item,round(1.12*ItemCost(item)));//Увеличение цены за доп. расширения вместимости
 														06=for(j=diff;j>0;j=j-1)ItemCost(item,round(1.25*ItemCost(item)));//Увеличение цены за подъёмы ТУ
 														07=level=ItemLevel(item);
@@ -2031,7 +2039,7 @@ ShipInfo ^{
 														02 ^{
 															01=if(Rnd(1,100)<=35)//Бросок на шанс
 															02 ^{
-																01=ItemExtraSpecialsAddByType(item,FindBonusByName('add_slot_radar'));
+																01=ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('EvoTranc_TrancAddSlotRadar'));
 																02=ItemSize(item,ItemSize(item)-25);
 																03=ItemCost(item,round(1.07*ItemCost(item)));
 															}
@@ -2044,7 +2052,7 @@ ShipInfo ^{
 														02 ^{
 															01=if(Rnd(1,100)<=22)//Бросок на шанс
 															02 ^{
-																01=ItemExtraSpecialsAddByType(item,FindBonusByName('add_slot_scaner'));
+																01=ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('EvoTranc_TrancAddSlotScaner'));
 																02=ItemSize(item,ItemSize(item)-25);
 																03=ItemCost(item,round(1.04*ItemCost(item)));
 															}
@@ -2057,7 +2065,7 @@ ShipInfo ^{
 														02 ^{
 															01=if(Rnd(1,100)<=15)//Бросок на шанс
 															02 ^{
-																01=ItemExtraSpecialsAddByType(item,FindBonusByName('add_slot_forsage'));
+																01=ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('EvoTranc_TrancAddSlotForsage'));
 																02=ItemSize(item,ItemSize(item)-25);
 																03=ItemCost(item,round(1.07*ItemCost(item)));
 															}
@@ -2273,7 +2281,7 @@ ShipInfo ^{
 												18 ^{
 													01=if(Rnd(1,100)<=level2+9)//Бросок на шанс
 													02 ^{
-														01=ItemExtraSpecialsAddByType(item,FindBonusByName('add_slot_radar'));
+														01=ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('EvoTranc_TrancAddSlotRadar'));
 														02=ItemSize(item,ItemSize(item)-25);
 														03=ItemCost(item,round(1.07*ItemCost(item)));
 													}
@@ -2283,7 +2291,7 @@ ShipInfo ^{
 												20 ^{
 													01=if(Rnd(1,100)<=level2+3)//Бросок на шанс
 													02 ^{
-														01=ItemExtraSpecialsAddByType(item,FindBonusByName('add_slot_scaner'));
+														01=ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('EvoTranc_TrancAddSlotScaner'));
 														02=ItemSize(item,ItemSize(item)-25);
 														03=ItemCost(item,round(1.04*ItemCost(item)));
 													}
@@ -2293,7 +2301,7 @@ ShipInfo ^{
 												22 ^{
 													01=if(Rnd(1,100)<=level2-1)//Бросок на шанс
 													02 ^{
-														01=ItemExtraSpecialsAddByType(item,FindBonusByName('add_slot_forsage'));
+														01=ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('EvoTranc_TrancAddSlotForsage'));
 														02=ItemSize(item,ItemSize(item)-25);
 														03=ItemCost(item,round(1.07*ItemCost(item)));
 													}
@@ -3086,7 +3094,6 @@ UselessItems ^{
 }
 MicroModuls ^{
     EvoTranc_TrancSizePlus ^{
-        CustomTag=TrancPlus_akrin_size
         Priority=0
         Special=1
 		LockedAcryn=3
@@ -3095,7 +3102,6 @@ MicroModuls ^{
     EvoTranc_TrancAddSlotScaner ^{
         Cost=200
         Equipments=Any
-        Name=add_slot_scaner
         Priority=0
         bonSlotScaner=1
         Special=1
@@ -3105,7 +3111,6 @@ MicroModuls ^{
     EvoTranc_TrancAddSlotRadar ^{
         Cost=200
         Equipments=Any
-        Name=add_slot_radar
         Priority=0
         bonSlotRadar=1
         Special=1
@@ -3115,7 +3120,6 @@ MicroModuls ^{
     EvoTranc_TrancAddSlotForsage ^{
         Cost=200
         Equipments=Any
-        Name=add_slot_forsage
         Priority=0
         bonSlotForsage=1
         Special=1

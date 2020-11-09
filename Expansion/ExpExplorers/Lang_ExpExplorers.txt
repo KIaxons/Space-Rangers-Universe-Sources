@@ -1,6 +1,21 @@
 Script ^{
     Mod_ExpExplorers ^{
 		0=<0>
+		LineBreak=<br>
+		PlayerCoalAsk=Ей, видишь вон ту "чёрную дыру"? Давай-ка бросай все свои дела и дуй в неё вместе со мной
+		CoalAgree=В "чёрную дыру" говоришь? Ну ладно, уже лечу, буду ждать тебя у края червоточины.
+		CoalDisagree=Ну уж нет, в эту "чёрную дыру" ты меня не затащишь! Судя по показаниям сканера, там происходит какая-то аномальная активность, а проверять степень её "аномальности" на своей обшивке у меня желания нет.
+		CoalDisagreeLowHP=Прошу меня простить, но мой корабль в критическом состоянии. Соваться в таком виде в "чёрную дыру" - форменное самоубийство!
+		PlayerCoalDisagree=Эх ты, а ещё напарничек называется!
+		PlayerPirateAsk=Браток, а подсоби-ка мне вон ту "чёрную дыру" обшмонать, а?
+		PirateAgree=Замётано, босс, по части "дырок" я специалист видный, хе-хе! Буду ждать у входа.
+		PirateDisagree=Не, сорян, босс, но на сканерах чё-то какая-то муть с этой "дыркой" творится. Не хочу на своей шкуре проверять, что там конкретно в ней не так.
+		PirateDisagreeLowHP=Слушай, ну мне вот вообще сейчас не в мазу в эту жопу соваться, смекаешь? Корабль того и гляди пополам треснет!
+		PlayerPirateDisagree=Чё?! Зассал? Тоже мне пират космический, блин!
+		PlayerTrancAsk=Приказываю отставить все свои дела и лететь за мной в указанную "чёрную дыру"
+		TrancAgree=Слушаюсь, хозяин! Устанавливаю курс на указанную червоточину.<br>По прибытии на место буду ожидать вас у границы гиперперехода.
+		TrancDisagree=Простите хозяин, но я вынужден отказать в исполнении вашего приказа.<br>Судя по моим датчикам, гиперактивность в указанной червоточине превышает допустимые пределы. Имеется значительная вероятность, что мои навигационные системы <clr>не выдержат<clrEnd> нагрузки, и я буду навсегда потерян в неизученном пространстве, что идёт вразрез с моей основной программой служения вам.
+		PlayerTrancDisagree=Тьфу ты, глупая машина!
 	}
 }
 ShipInfo ^{
@@ -51,7 +66,7 @@ ShipInfo ^{
 							02=if(action_mark != 3)
 							03 ^{
 								//Если не погиб (может погибнуть в совместной аркадной битве с игроком), то получает артефакт
-								01=if(HullHP(ship))
+								01=if(HullHP(ship) > 0)
 								02 ^{
 									//Если рейнджер не влетел в ЧД вместе с игроком
 									01=if(action_mark < 4)
@@ -61,8 +76,9 @@ ShipInfo ^{
 										//Здесь же у него имеется небольшой шанс погибнуть в ЧД
 										02=if(!HullHP(ship))
 										03 ^{
-											01=ShipCustomShipInfoData(0,cur_info,1,3);
-											02=exit;
+											01=ShipDestroy(ship,1);
+											02=ShipCustomShipInfoData(0,cur_info,1,3);
+											03=exit;
 										}
 									}
 									//Метка, сигнализирующая о том, что выдавать рейнджеру артефакт за посещение ЧД в этот раз не нужно
@@ -467,7 +483,7 @@ ShipInfo ^{
 				//Data2 - Id "чёрной дыры", в которую прыгает партнёр;
 				//TextData1 - координата X координаты ЧД в которую направляется корабль;
 				//TextData2 - координата Y координаты ЧД в которую направляется корабль;
-				OnActCodeTypes=t_OnStep,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
+				OnActCodeTypes=t_OnStep,t_OnLeavingForm,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
 				OnActStepTypes=0,11
                 OnActCode ^{
 					01=dword ship=ScriptItemActShip();
@@ -482,7 +498,7 @@ ShipInfo ^{
 							01=if(ShipCustomShipInfoData(0,cur_info,1) != 2)
 							02 ^{
 								//Если не погиб (может погибнуть в совместной аркадной битве с игроком), то активируем обработчик победы
-								01=if(HullHP(ship))
+								01=if(HullHP(ship) > 0)
 								02 ^{
 									01=OrderLock(ship,0);
 									//Ставим маркер о том, что корабль находится в ЧД, и событие её посещения уже сработало
@@ -552,91 +568,79 @@ ShipInfo ^{
 								02=if(ShipCustomShipInfoData(0,cur_info,2) == Id(THoleExistCheck))break;
 								03=else
 								04 ^{
-									01=THoleExistCheck=0;
-									02=OrderLock(ship,0);
+									01=OrderLock(ship,0);
+									02=THoleExistCheck=0;
 								}
 							}
 							//Если существует
 							03=if(THoleExistCheck)
 							04 ^{
 								01=int check=1;
-								02=while(1)
+								//Делаем проверки на то, что корабль всё ещё исполняет отданный ему приказ
+								//Если игрок сам забил на отданный приказ и свалил
+								02=if(!ShipInNormalSpace(Player()))
 								03 ^{
-									//Делаем проверки на то, что корабль всё ещё исполняет отданный ему приказ
-									01=if(ShipTypeN(ship) != t_Tranclucator)
-									02 ^{
-										//Если игрок порвал отношения с партнёром
-										01=if(!ShipIsPartner(ship))
-										02 ^{
-											01=check=0;
-											02=break;
-										}
-									}
-									//Если игрок сам забил на отданный приказ и свалил
-									03=if(!ShipInNormalSpace(Player()))
-									04 ^{
-										01=check=0;
-										02=break;
-									}
-									05=break;
-								}
-								04=if(check)
-								05 ^{
-									//Определяем расстояние до входа/выхода в ЧД
-									01=unknown DistCoords=ImportedFunction('UtilityFunctions','DistCoords');
-									02=if(HoleStar1(THoleExistCheck) == ShipStar(ship))
-									03 ^{
-										01=int BH_X=HoleX1(THoleExistCheck);
-										02=int BH_Y=HoleY1(THoleExistCheck);
-										03=ShipCustomShipInfoTextData(0,cur_info,1,BH_X);
-										04=ShipCustomShipInfoTextData(0,cur_info,2,BH_Y);
-									}
-									04=else
-									05 ^{
-										01=BH_X=HoleX2(THoleExistCheck);
-										02=BH_Y=HoleY2(THoleExistCheck);
-										03=ShipCustomShipInfoTextData(0,cur_info,1,BH_X);
-										04=ShipCustomShipInfoTextData(0,cur_info,2,BH_Y);
-									}
-									06=if(DistCoords(CoordX(ship), CoordY(ship), BH_X, BH_Y) <= 195)
-									07 ^{
-										01=check=1;
-										02=if(DistCoords(CoordX(Player()), CoordY(Player()), BH_X, BH_Y) <= 195)
-										03 ^{
-											//Если и корабль и игрок оба находятся рядом с ЧД, и игрок как раз направляется в неё
-											01=if(ShipOrderObj(Player()) == THoleExistCheck)
-											02 ^{
-												//Отдаём приказ кораблю залететь в ЧД
-												01=OrderJumpHole(ship,THoleExistCheck,100);
-												02=OrderLock(ship,1);
-												03=exit;
-											}
-											03=else check=0;
-										}
-										04=else check=0;
-										05=if(!check)
-										06 ^{
-											//Иначе отдаём приказ кораблю крутиться на месте в ожидании игрока
-											01=float angle=pi*(ShipAngle(ship)+90.0)/Rnd(179,181);
-											02=OrderMove(ship,cos(angle)*10.0+CoordX(ship),sin(angle)*10.0+CoordY(ship));
-											03=exit;
-										}
-									}
-									08=else
-									09 ^{
-										//Отдаём приказ кораблю залететь в ЧД
-										01=OrderJumpHole(ship,THoleExistCheck,100);
-										02=OrderLock(ship,1);
-										03=exit;
-									}
-								}
-								//Иначе отменяем приказ на прыжок
-								06=else
-								07 ^{
 									01=OrderLock(ship,0);
 									02=ShipDeleteCustomShipInfo(ship,'OrderJumpHole_ForCompanion');
 									03=ShipFreeFlight(ship);
 									04=exit;
+								}
+								//Определяем расстояние до входа/выхода в ЧД
+								04=unknown DistCoords=ImportedFunction('UtilityFunctions','DistCoords');
+								05=if(HoleStar1(THoleExistCheck) == ShipStar(ship))
+								06 ^{
+									01=int BH_X=HoleX1(THoleExistCheck);
+									02=int BH_Y=HoleY1(THoleExistCheck);
+									03=ShipCustomShipInfoTextData(0,cur_info,1,BH_X);
+									04=ShipCustomShipInfoTextData(0,cur_info,2,BH_Y);
+								}
+								07=else
+								08 ^{
+									01=BH_X=HoleX2(THoleExistCheck);
+									02=BH_Y=HoleY2(THoleExistCheck);
+									03=ShipCustomShipInfoTextData(0,cur_info,1,BH_X);
+									04=ShipCustomShipInfoTextData(0,cur_info,2,BH_Y);
+								}
+								09=if(DistCoords(CoordX(ship), CoordY(ship), BH_X, BH_Y) <= 200)
+								10 ^{
+									01=check=1;
+									02=if(DistCoords(CoordX(Player()), CoordY(Player()), BH_X, BH_Y) <= 200)
+									03 ^{
+										//Если и корабль и игрок оба находятся рядом с ЧД, и игрок как раз направляется в неё
+										01=if(ShipOrderObj(Player()) == THoleExistCheck)
+										02 ^{
+											//Отдаём приказ кораблю залететь в ЧД
+											01=OrderJumpHole(ship,THoleExistCheck,100);
+											02=OrderLock(ship,1);
+											03=exit;
+										}
+										03=else check=0;
+									}
+									04=else check=0;
+									05=if(!check)
+									06 ^{
+										//Иначе отдаём приказ кораблю крутиться на месте в ожидании игрока
+										//Следим за тем, чтобы новое направление разворота не выходила за границы минимального радиуса
+										//для одноходового залёта в ЧД
+										01=float angle=pi*(ShipAngle(ship)+90.0)/Rnd(179,181);
+										02=int dX = cos(angle)*10.0+CoordX(ship) - BH_X;
+										03=int dY = sin(angle)*10.0+CoordY(ship) - BH_Y;
+										04=if(dX*dX+dY*dY > 180*180)
+										05 ^{
+											01=dX=0.5*dX;
+											02=dY=0.5*dY;
+										}
+										06=OrderMove(ship,BH_X+dX,BH_Y+dY);
+										07=OrderLock(ship,1);
+										08=exit;
+									}
+								}
+								11=else
+								12 ^{
+									//Отдаём приказ кораблю залететь в ЧД
+									01=OrderJumpHole(ship,THoleExistCheck,100);
+									02=OrderLock(ship,1);
+									03=exit;
 								}
 							}
 							//Если нет
@@ -658,11 +662,8 @@ ShipInfo ^{
 						02 ^{
 							01=if(ShipInNormalSpace(ship))
 							02 ^{
-								//01=ShipOrder(ship,1);
-								//02=ShipOrderObj(ship,0);
 								01=OrderMove(ship,ShipCustomShipInfoTextData(0,cur_info,1),ShipCustomShipInfoTextData(0,cur_info,2));
-								02=OrderLock(ship,1);
-								03=exit;
+								02=exit;
 							}
 						}
 						//Корабль находится в ЧД и его обработчик события в ЧД уже сработал
@@ -678,9 +679,82 @@ ShipInfo ^{
 							}
 						}
 					}
-					//По кораблю ведут огонь
-					07=else
+					07=else if(ScriptItemActionType(t_OnLeavingForm))
 					08 ^{
+						01=if(CurrentForm() == 'Talk')
+						02 ^{
+							//Если игрок порвал отношения с партнёром
+							01=if(!ShipIsPartner(ship))
+							02 ^{
+								01=if(ShipTypeN(ship) != t_Tranclucator)
+								02 ^{
+									01=OrderLock(ship,0);
+									02=ShipDeleteCustomShipInfo(ship,'OrderJumpHole_ForCompanion');
+									03=ShipFreeFlight(ship);
+									04=exit;
+								}
+								03=else
+								04 ^{
+									//Если игрок приказал транклюкатору делать что-то ещё, проверяем заодно и всех остальных активных транклюкаторов
+									//Мог быть отдан групповой приказ
+									01=for(i=0; i<PlayerTranclucators(); i=i+1)
+									02 ^{
+										01=ship=PlayerTranclucators(i);
+										02=if(ShipFindCustomShipInfoByType(ship,'OrderJumpHole_ForCompanion') == -1)continue;
+										03=if(ShipOrder(ship) == 1)
+										04 ^{
+											01=OrderLock(ship,1);
+											02=continue;
+										}
+										05=ShipDeleteCustomShipInfo(ship,'OrderJumpHole_ForCompanion');
+										06=OrderLock(ship,0);
+									}
+								}
+							}
+							03=else
+							04 ^{
+								//Если игрок приказал партнёру делать что-то ещё, проверяем заодно и всех остальных партнёров
+								//Мог быть отдан групповой приказ
+								01=int typeN=ShipTypeN(ship);
+								02=if(typeN == t_Ranger)
+								03 ^{
+									01=for(i=0; i<ShipPartners(Player()); i=i+1)
+									02 ^{
+										01=ship=ShipPartners(Player(),i);
+										02=if(ShipFindCustomShipInfoByType(ship,'OrderJumpHole_ForCompanion') == -1)continue;
+										03=if(ShipOrder(ship) == 1)
+										04 ^{
+											01=OrderLock(ship,1);
+											02=continue;
+										}
+										05=ShipDeleteCustomShipInfo(ship,'OrderJumpHole_ForCompanion');
+										06=OrderLock(ship,0);
+									}
+								}
+								04=else
+								05 ^{
+									01=for(i=0; i<PlayerPirates(Player()); i=i+1)
+									02 ^{
+										01=ship=PlayerPirates(Player(),i);
+										02=if(ShipFindCustomShipInfoByType(ship,'OrderJumpHole_ForCompanion') == -1)continue;
+										03=if(ShipOrder(ship) == 1)
+										04 ^{
+											01=OrderLock(ship,1);
+											02=continue;
+										}
+										05=ShipDeleteCustomShipInfo(ship,'OrderJumpHole_ForCompanion');
+										06=OrderLock(ship,0);
+									}
+								}
+								06=exit;
+							}
+							//Удаляем все возможные оверрайды с кнопки закрытия формы диалога
+							05=InterfaceState('Talk','Close',-1);
+						}
+					}
+					//По кораблю ведут огонь
+					09=else
+					10 ^{
 						01=if(ShipTypeN(ship) != t_Tranclucator)
 						02 ^{
 							//Корабль забивает на приказ, если получил слишком много повреждений, а игрок свалил хрен пойми куда
