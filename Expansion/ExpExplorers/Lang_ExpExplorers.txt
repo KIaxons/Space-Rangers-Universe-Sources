@@ -604,7 +604,7 @@ ShipInfo ^{
 								09=if(DistCoords(CoordX(ship), CoordY(ship), BH_X, BH_Y) <= 200)
 								10 ^{
 									01=check=1;
-									02=if(DistCoords(CoordX(Player()), CoordY(Player()), BH_X, BH_Y) <= 200)
+									02=if(DistCoords(CoordX(Player()), CoordY(Player()), BH_X, BH_Y) <= 195)
 									03 ^{
 										//Если и корабль и игрок оба находятся рядом с ЧД, и игрок как раз направляется в неё
 										01=if(ShipOrderObj(Player()) == THoleExistCheck)
