@@ -1646,7 +1646,7 @@ ShipInfo ^{
 									02 ^{
 										01=if(ItemIsInUse(art))
 										02 ^{
-											01=art_koef=art_koef+CT('Script2.BioworldInSlotCoef');
+											01=art_koef=art_koef+(-1.0+CT('Script2.BioworldInSlotCoef'));
 											02=break;
 										}
 										03=else
@@ -1658,13 +1658,13 @@ ShipInfo ^{
 											03 ^{
 												01=if(pilot_stama < 2)
 												02 ^{
-													01=art_koef=art_koef+CT('Script2.BioworldInHoldCoef');
+													01=art_koef=art_koef+(-1.0+CT('Script2.BioworldInHoldCoef'));
 													02=break;
 												}
 												//При установке в слоты двух и более Артефакторов, Биомиры начинают работать в полную силу
 												03=else
 												04 ^{
-													01=art_koef=art_koef+CT('Script2.BioworldInSlotCoef');
+													01=art_koef=art_koef+(-1.0+CT('Script2.BioworldInSlotCoef'));
 													02=break;
 												}
 											}
@@ -1672,37 +1672,36 @@ ShipInfo ^{
 									}
 								}
 							}
-							12=if(!art_koef)art_koef=1.0;
-                            13=if(ShipHealthFactor(Player(),15))stama_koef=stama_koef+3;
-                            14=if(ShipHealthFactor(Player(),17))stama_koef=stama_koef+3;
-                            15=if(ShipHealthFactor(Player(),18))stama_koef=stama_koef+8;
-                            16=if(ShipHealthFactor(Player(),20))stama_koef=stama_koef+2;
-                            17=if(ShipHealthFactor(Player(),23))stama_koef=stama_koef-1;
-                            18=if(ShipHealthFactor(Player(),3))stama_koef=stama_koef+2;
-                            19=if(ShipHealthFactor(Player(),4))stama_koef=stama_koef-3;
-                            20=if(ShipHealthFactor(Player(),6))stama_koef=stama_koef-6;
-                            21=if(ShipHealthFactor(Player(),7))stama_koef=stama_koef-4;
-                            22=if(ShipHealthFactor(Player(),9))stama_koef=stama_koef-1;
-                            23=if(ShipHealthFactor(Player(),10))stama_koef=stama_koef-2;
-                            24=if(ShipHealthFactor(Player(),11))stama_koef=stama_koef-2;
-                            25=if(ShipHealthFactor(Player(),12))stama_koef=stama_koef-4;
+                            12=if(ShipHealthFactor(Player(),15))stama_koef=stama_koef+3;
+                            13=if(ShipHealthFactor(Player(),17))stama_koef=stama_koef+3;
+                            14=if(ShipHealthFactor(Player(),18))stama_koef=stama_koef+8;
+                            15=if(ShipHealthFactor(Player(),20))stama_koef=stama_koef+2;
+                            16=if(ShipHealthFactor(Player(),23))stama_koef=stama_koef-1;
+                            17=if(ShipHealthFactor(Player(),3))stama_koef=stama_koef+2;
+                            18=if(ShipHealthFactor(Player(),4))stama_koef=stama_koef-3;
+                            19=if(ShipHealthFactor(Player(),6))stama_koef=stama_koef-6;
+                            20=if(ShipHealthFactor(Player(),7))stama_koef=stama_koef-4;
+                            21=if(ShipHealthFactor(Player(),9))stama_koef=stama_koef-1;
+                            22=if(ShipHealthFactor(Player(),10))stama_koef=stama_koef-2;
+                            23=if(ShipHealthFactor(Player(),11))stama_koef=stama_koef-2;
+                            24=if(ShipHealthFactor(Player(),12))stama_koef=stama_koef-4;
 							//Лихорадочный штраф (вместо штрафа к нагрузке)
-							26=if(infos_2>-1)stama_koef=stama_koef-3;
-							27=pilot_stama=ShipPilotRace(Player());
+							25=if(infos_2>-1)stama_koef=stama_koef-3;
+							26=pilot_stama=ShipPilotRace(Player());
                             //Малоки
-							28=if(pilot_stama == 0)pilot_stama=10;
+							27=if(pilot_stama == 0)pilot_stama=10;
 							//Пеленги
-                            29=else if(pilot_stama == 1)pilot_stama=7;
+                            28=else if(pilot_stama == 1)pilot_stama=7;
 							//Люди
-                            30=else if(pilot_stama == 2)pilot_stama=7;
+                            29=else if(pilot_stama == 2)pilot_stama=7;
 							//Фэяне
-                            31=else if(pilot_stama == 3)pilot_stama=5;
+                            30=else if(pilot_stama == 3)pilot_stama=5;
 							//Гаальцы
-                            32=else pilot_stama=6;
+                            31=else pilot_stama=6;
 							//Общий предел выносливости с учётом всех бонусов
-                            33=total_stama=round(art_koef*pilot_stama+stama_koef);
+                            32=total_stama=round(art_koef*pilot_stama+stama_koef);
 							//Текущая доступная выносливость: общая выносливость минус нагрузка от биомодулей
-                            34=cur_stama=total_stama-Tstama_count;
+                            33=cur_stama=total_stama-Tstama_count;
                         }
 						//Если таймер начала лихорадки дошёл до нуля
                         10=if(ill_data <= CurTurn())
