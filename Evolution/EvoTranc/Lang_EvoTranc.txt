@@ -374,19 +374,23 @@ ShipInfo ^{
 														01=dword ruin=StarRuins(star,i);
 														//Исключаем ингибиторы, нейролинки и доминионы, если игрок не пират
 														02=tempStr=ShipType(ruin);
-														03=if(tempStr=='Inhibitor' || tempStr=='KB' || tempStr=='Machpella' || tempStr=='SSB')continue;
-														04=if(tempStr=='Handler')
-														05 ^{
+														03=if(tempStr=='Inhibitor')continue;
+														04=if(tempStr=='BM')continue;
+														05=if(tempStr=='KB')continue;
+														06=if(tempStr=='Machpella')continue;
+														07=if(tempStr=='SSB')continue;
+														08=if(tempStr=='Handler')
+														09 ^{
 															01=if(ShipOwner(Player())!=7 && GetShipPirateRank(Player())<7)continue;
 														}
-														06=if(tempStr=='CB' && ShipOwner(Player())!=7)continue;
-														07=if(!closest_base)
-														08 ^{
+														10=if(tempStr=='CB' && ShipOwner(Player())!=7)continue;
+														11=if(!closest_base)
+														12 ^{
 															01=closest_base=ruin;
 															02=distNear=Dist(cur_Tranc,closest_base);
 														}
-														09=else if(Dist(cur_Tranc,ruin)<distNear)
-														10 ^{
+														13=else if(Dist(cur_Tranc,ruin)<distNear)
+														14 ^{
 															01=closest_base=ruin;
 															02=distNear=Dist(cur_Tranc,ruin);
 														}
@@ -530,19 +534,23 @@ ShipInfo ^{
 														01=dword ruin2=StarRuins(star,i);
 														//Исключаем ингибиторы, нейролинки и доминионы, если игрок не пират
 														02=tempStr=ShipType(ruin2);
-														03=if(tempStr=='Inhibitor' || tempStr=='KB' || tempStr=='Machpella' || tempStr=='SSB')continue;
-														04=if(tempStr=='Handler')
-														05 ^{
+														03=if(tempStr=='Inhibitor')continue;
+														04=if(tempStr=='BM')continue;
+														05=if(tempStr=='KB')continue;
+														06=if(tempStr=='Machpella')continue;
+														07=if(tempStr=='SSB')continue;
+														08=if(tempStr=='Handler')
+														09 ^{
 															01=if(ShipOwner(Player())!=7 && GetShipPirateRank(Player())<7)continue;
 														}
-														06=if(tempStr=='CB' && ShipOwner(Player())!=7)continue;
-														07=if(!closest_base)
-														08 ^{
+														10=if(tempStr=='CB' && ShipOwner(Player())!=7)continue;
+														11=if(!closest_base)
+														12 ^{
 															01=closest_base=ruin2;
 															02=distNear=Dist(cur_Tranc,closest_base);
 														}
-														09=else if(Dist(cur_Tranc,ruin2)<distNear)
-														10 ^{
+														13=else if(Dist(cur_Tranc,ruin2)<distNear)
+														14 ^{
 															01=closest_base=ruin2;
 															02=distNear=Dist(cur_Tranc,ruin2);
 														}
@@ -1530,14 +1538,18 @@ ShipInfo ^{
 																	01=dword ruin=StarRuins(cur_star,i);
 																	//Исключаем лишние станции
 																	02=str tempStr=ShipType(ruin);
-																	03=if(tempStr=='Inhibitor' || tempStr=='KB' || tempStr=='Machpella' || tempStr=='SSB')continue;
-																	04=if(tempStr=='Handler')
-																	05 ^{
+																	03=if(tempStr=='Inhibitor')continue;
+																	04=if(tempStr=='BM')continue;
+																	05=if(tempStr=='KB')continue;
+																	06=if(tempStr=='Machpella')continue;
+																	07=if(tempStr=='SSB')continue;
+																	08=if(tempStr=='Handler')
+																	09 ^{
 																		01=if(ShipOwner(Player())!=7 && GetShipPirateRank(Player())<7)continue;
 																	}
-																	06=if(tempStr=='CB' && ShipOwner(Player())!=7)continue;
-																	07=if(Dist(tranc,ruin)<distT)
-																	08 ^{
+																	10=if(tempStr=='CB' && ShipOwner(Player())!=7)continue;
+																	11=if(Dist(tranc,ruin)<distT)
+																	12 ^{
 																		01=distT=Dist(tranc,ruin);
 																		02=locat=ruin;
 																	}
