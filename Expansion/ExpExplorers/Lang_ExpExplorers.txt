@@ -714,39 +714,32 @@ ShipInfo ^{
 							03=else
 							04 ^{
 								//Если игрок приказал партнёру делать что-то ещё, проверяем заодно и всех остальных партнёров
-								//Мог быть отдан групповой приказ
-								01=int typeN=ShipTypeN(ship);
-								02=if(typeN == t_Ranger)
-								03 ^{
-									01=for(i=0; i<ShipPartners(Player()); i=i+1)
-									02 ^{
-										01=ship=ShipPartners(Player(),i);
-										02=if(ShipFindCustomShipInfoByType(ship,'OrderJumpHole_ForCompanion') == -1)continue;
-										03=if(ShipOrder(ship) == 1)
-										04 ^{
-											01=OrderLock(ship,1);
-											02=continue;
-										}
-										05=ShipDeleteCustomShipInfo(ship,'OrderJumpHole_ForCompanion');
-										06=OrderLock(ship,0);
+								//Так как игроком мог быть отдан групповой приказ
+								01=for(i=0; i<ShipPartners(Player()); i=i+1)
+								02 ^{
+									01=ship=ShipPartners(Player(),i);
+									02=if(ShipFindCustomShipInfoByType(ship,'OrderJumpHole_ForCompanion') == -1)continue;
+									03=if(ShipOrder(ship) == 1)
+									04 ^{
+										01=OrderLock(ship,1);
+										02=continue;
 									}
+									05=ShipDeleteCustomShipInfo(ship,'OrderJumpHole_ForCompanion');
+									06=OrderLock(ship,0);
 								}
-								04=else
-								05 ^{
-									01=for(i=0; i<PlayerPirates(Player()); i=i+1)
-									02 ^{
-										01=ship=PlayerPirates(Player(),i);
-										02=if(ShipFindCustomShipInfoByType(ship,'OrderJumpHole_ForCompanion') == -1)continue;
-										03=if(ShipOrder(ship) == 1)
-										04 ^{
-											01=OrderLock(ship,1);
-											02=continue;
-										}
-										05=ShipDeleteCustomShipInfo(ship,'OrderJumpHole_ForCompanion');
-										06=OrderLock(ship,0);
+								03=for(i=0; i<PlayerPirates(); i=i+1)
+								04 ^{
+									01=ship=PlayerPirates(i);
+									02=if(ShipFindCustomShipInfoByType(ship,'OrderJumpHole_ForCompanion') == -1)continue;
+									03=if(ShipOrder(ship) == 1)
+									04 ^{
+										01=OrderLock(ship,1);
+										02=continue;
 									}
+									05=ShipDeleteCustomShipInfo(ship,'OrderJumpHole_ForCompanion');
+									06=OrderLock(ship,0);
 								}
-								06=exit;
+								05=exit;
 							}
 							//Удаляем все возможные оверрайды с кнопки закрытия формы диалога
 							05=InterfaceState('Talk','Close',-1);
