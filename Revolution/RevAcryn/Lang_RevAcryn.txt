@@ -18,23 +18,28 @@ Artefacts ^{
 			06=if(!droid)
 			07 ^{
 				01=hull=ShipItems(ship,0);
-				02=if(HullHP(hull)<ItemSize(hull))
+				02=if(HullHP(hull) < ItemSize(hull))
 				03 ^{
-					01=HullHP(hull,HullHP(hull)+10);
-					02=if(HullHP(hull)>ItemSize(hull))HullHP(hull,ItemSize(hull));
+					//Повышенная эффективность дроида младшего в случае, если он работает в режиме совместимости
+					01=if(ArtefactTypeBoosted(ship,t_ArtefactDroid))HullHP(hull,HullHP(hull)+20);
+					02=else HullHP(hull,HullHP(hull)+10);
+					03=if(HullHP(hull)>ItemSize(hull))HullHP(hull,ItemSize(hull));
 					//Немного увеличиваем износ, если дроид младший чинит корабль без основного дроида
-					03=if(Rnd(1,100)<=15)ItemDurability(CurItem(),ItemDurability(CurItem())-1);
+					04=if(Rnd(1,100)<=15)ItemDurability(CurItem(),ItemDurability(CurItem())-1);
 				}
 			}
 			08=else if(EqSpecial(droid)>-1)
 			09 ^{
+				//Также чиним корабль младшим дроидом, если на него установлен боевой дроид (который сам по себе ремонт не производит)
 				01=if(BonusNumInCfg(EqSpecial(droid))=='RevAcrynBattleDroid')
 				02 ^{
 					01=hull=ShipItems(ship,0);
-					02=if(HullHP(hull)<ItemSize(hull))
+					02=if(HullHP(hull) < ItemSize(hull))
 					03 ^{
-						01=HullHP(hull,HullHP(hull)+10);
-						02=if(HullHP(hull)>ItemSize(hull))HullHP(hull,ItemSize(hull));
+						//Повышенная эффективность дроида младшего в случае, если он работает в режиме совместимости
+						01=if(ArtefactTypeBoosted(ship,t_ArtefactDroid))HullHP(hull,HullHP(hull)+20);
+						02=else HullHP(hull,HullHP(hull)+10);
+						03=if(HullHP(hull)>ItemSize(hull))HullHP(hull,ItemSize(hull));
 					}
 				}
 			}
@@ -54,7 +59,7 @@ ActCodeBlocksList ^{
 			04=if(!item)exit;
 			05=if(!ItemIsInUse(item))exit;
 			06=if(!ItemDurability(item))exit;
-			07=if(ObjectType(ship)!=4)
+			07=if(ObjectType(ship) != 4)
 			08 ^{
 				01=for(int i=1;i<=ShipCntWeapon(ship);i=i+1)
 				02 ^{
@@ -72,9 +77,6 @@ ActCodeBlocksList ^{
 			06=int k;
 			//Начинаем искать, где же находится наш дроид
 			//А всё потому, что ебучие события t_OnItemEquip и t_OnItemDeEquip НЕ ВОЗВРАЩАЮТ, СУКА, ЭКИПИРОВАВШИЙ ПРЕДМЕТ КОРАБЛЬ!
-			//Я, БЛЯТЬ, НЕ ШУЧУ НАХУЙ!!!
-			//СУКА, БЛЯТЬ!!!
-			//...
 			//Сперва чекаем игрока, как наиболее вероятного кандидата
 			07=for(j=0;j<ShipItems(Player());j=j+1)
 			08 ^{
