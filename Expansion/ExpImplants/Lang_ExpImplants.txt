@@ -2309,10 +2309,21 @@ ShipInfo ^{
 					02 ^{
 						01=int i;
 						02=int infos=0;
-						03=for(i=0;i<PlayerTranclucators();i=i+1)
+						//≈сли при закрытии меню корабл€ обнаружили у игрока запущенных транков, то вешаем на транков усилители и инфошку
+						03=for(i=0; i<PlayerTranclucators(); i=i+1)
 						04 ^{
-							01=infos=ShipFindCustomShipInfoByType(PlayerTranclucators(i),'bioMM_AD_TR');
-							02=if(infos<0)ShipAddCustomShipInfo(PlayerTranclucators(i),'bioMM_AD_TR','',0);
+							01=dword tranc=PlayerTranclucators(i);
+							02=infos=ShipFindCustomShipInfoByType(tranc,'bioMM_AD_TR');
+							03=if(infos < 0)
+							04 ^{
+								01=ShipSpecialBonuses(tranc,bonSkill1,ShipSpecialBonuses(tranc,bonSkill1)+4);
+								02=ShipSpecialBonuses(tranc,bonSkill2,ShipSpecialBonuses(tranc,bonSkill2)+4);
+								03=ShipSpecialBonuses(tranc,bonWEnergy,ShipSpecialBonuses(tranc,bonWEnergy)+8);
+								04=ShipSpecialBonuses(tranc,bonWSplinter,ShipSpecialBonuses(tranc,bonWSplinter)+10);
+								05=ShipSpecialBonuses(tranc,bonWMissile,ShipSpecialBonuses(tranc,bonWMissile)+12);
+								//—разу делаем в инфошке пометку о том, что усилители уже были применены
+								06=ShipAddCustomShipInfo(PlayerTranclucators(i),'bioMM_AD_TR','',1);
+							}
 						}
 					}
                 }
