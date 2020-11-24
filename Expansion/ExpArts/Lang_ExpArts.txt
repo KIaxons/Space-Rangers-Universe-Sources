@@ -2591,9 +2591,11 @@ UselessItems ^{
             02 ^{
 				01=dword item=ScriptItemActObject1();
 				02=if(ItemType(item)!=t_Hull)exit;
-				03=int sp=0;
-				04=if(ItemExtraSpecials(item))
-				05 ^{
+				//Пропускаем корпуса транклюкаторов
+				03=if(HullType(item)==7)exit;
+				04=int sp=0;
+				05=if(ItemExtraSpecials(item))
+				06 ^{
                     01=int i=0;
                     02=str sp_name;
                     03=int sp_num=0;
@@ -2604,21 +2606,23 @@ UselessItems ^{
                         03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
 					}
 				}
-				06=if(EqSpecial(item)>-1)
-				07 ^{
+				07=if(EqSpecial(item)>-1)
+				08 ^{
 					//Исключение не улучшаемых корпусов
 					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
 				}
 				//Отправляем команду о необходимости подсветить пригодный для установки отсека корпус
-				08=if(!sp)ScriptItemActParam(1);
+				09=if(!sp)ScriptItemActParam(1);
 			}
             03=if(ScriptItemActionType(t_OnAnotherItem))
             04 ^{
 				01=item=ScriptItemActObject1();
 				02=if(ItemType(item)!=t_Hull)exit;
-				03=sp=0;
-				04=if(ItemExtraSpecials(item))
-				05 ^{
+				//Пропускаем корпуса транклюкаторов
+				03=if(HullType(item)==7)exit;
+				04=sp=0;
+				05=if(ItemExtraSpecials(item))
+				06 ^{
                     01=i=0;
                     03=sp_num=0;
                     04=for(i=0;i<ItemExtraSpecials(item);i=i+1)
@@ -2628,13 +2632,13 @@ UselessItems ^{
                         03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
 					}
 				}
-				06=if(EqSpecial(item)>-1)
-				07 ^{
+				07=if(EqSpecial(item)>-1)
+				08 ^{
 					//Исключение не улучшаемых корпусов
 					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
 				}
-				08=if(!sp)
-                09 ^{
+				09=if(!sp)
+                10 ^{
 					01=str text_q='Вы уверены, что хотите установить <color=0,50,200>отсек контрабандиста</color> на ItemName?';
 					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
                     03=if(MessageBoxYesNo(text_q))
