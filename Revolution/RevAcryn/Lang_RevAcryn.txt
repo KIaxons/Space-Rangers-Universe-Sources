@@ -21,8 +21,8 @@ Artefacts ^{
 				02=if(HullHP(hull) < ItemSize(hull))
 				03 ^{
 					//Повышенная эффективность дроида младшего в случае, если он работает в режиме совместимости
-					01=if(ArtefactTypeBoosted(ship,t_ArtefactDroid))HullHP(hull,HullHP(hull)+20);
-					02=else HullHP(hull,HullHP(hull)+10);
+					01=if(ArtefactTypeBoosted(ship,t_ArtefactDroid))HullHP(hull,HullHP(hull) + CT('Artefacts.NumericValues.kArtefactDroid') + CT('Artefacts.NumericValues.kArtefactDroidEx'));
+					02=else HullHP(hull,HullHP(hull) + CT('Artefacts.NumericValues.kArtefactDroid'));
 					03=if(HullHP(hull)>ItemSize(hull))HullHP(hull,ItemSize(hull));
 					//Немного увеличиваем износ, если дроид младший чинит корабль без основного дроида
 					04=if(Rnd(1,100)<=15)ItemDurability(CurItem(),ItemDurability(CurItem())-1);
@@ -37,8 +37,8 @@ Artefacts ^{
 					02=if(HullHP(hull) < ItemSize(hull))
 					03 ^{
 						//Повышенная эффективность дроида младшего в случае, если он работает в режиме совместимости
-						01=if(ArtefactTypeBoosted(ship,t_ArtefactDroid))HullHP(hull,HullHP(hull)+20);
-						02=else HullHP(hull,HullHP(hull)+10);
+						01=if(ArtefactTypeBoosted(ship,t_ArtefactDroid))HullHP(hull,HullHP(hull) + CT('Artefacts.NumericValues.kArtefactDroid') + CT('Artefacts.NumericValues.kArtefactDroidEx'));
+						02=else HullHP(hull,HullHP(hull) + CT('Artefacts.NumericValues.kArtefactDroid'));
 						03=if(HullHP(hull)>ItemSize(hull))HullHP(hull,ItemSize(hull));
 					}
 				}
