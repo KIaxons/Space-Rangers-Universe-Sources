@@ -3402,15 +3402,55 @@ ShipInfo ^{
                 Name=
 				OnActCodeTypes=t_OnShipBuysGoods,t_OnShipSellsGoods
                 OnActCode ^{
-					01=dword cur_info=CurInfo();
-					02=dword cur_ship=ScriptItemActShip();
-					03=dword planet=GetShipPlanet(cur_ship);
-					04=if(planet)
-					05 ^{
-						01=if(ShipGoodsIllegalOnPlanet(cur_ship,ScriptItemActObject1(),planet))
-						02 ^{
-							01=if(ScriptItemActionType(t_OnShipBuysGoods))ShipCustomShipInfoData(0,cur_info,1,ShipCustomShipInfoData(0,cur_info,1)+ScriptItemActParam());
-							02=else ShipCustomShipInfoData(0,cur_info,2,ShipCustomShipInfoData(0,cur_info,2)+ScriptItemActParam());
+					01=dword cur_ship = ScriptItemActShip();
+					//Если игрок совершил контрабандную сделку
+					02=if(ScriptItemActParam())
+					03 ^{
+						01=dword cur_info = CurInfo();
+						02=dword obj1 = ScriptItemActObject1();
+						03=int deal_summ = ItemCost(obj1);
+						04=if(ScriptItemActionType(t_OnShipBuysGoods))
+						05 ^{
+							//Запоминаем сумму совершённой сделки при покупке контрабанды
+							01=ShipCustomShipInfoData(0, cur_info, 1, ShipCustomShipInfoData(0, cur_info, 1) + deal_summ);
+						}
+						06=else
+						07 ^{
+							01=dword obj2 = ScriptItemActObject2();
+							//Запоминаем сумму совершённой сделки при продаже контрабанды
+							02=ShipCustomShipInfoData(0, cur_info, 2, ShipCustomShipInfoData(0, cur_info, 2) + deal_summ);
+							03=int size2 = ItemSize(obj2);
+							04=int profit = 0;
+							//Если из проданной партии игроком было приобретено (а не найдено) вообще хоть что-нибудь
+							05=if(size2)
+							06 ^{
+								01=int size1 = ItemSize(obj1);
+								02=int diff_summ = ItemCost(obj2);
+								//Если вся проданная партия была приобретена самим игроком, то просто считаем прибыль/убыль
+								03=if(size1 == size2)profit = deal_summ - diff_summ;
+								//Иначе сперва определяем, какая часть проданной партии была реально приобретена игроком
+								04=else
+								05 ^{
+									01=deal_summ = (deal_summ / size1) * size2;
+									02=profit = deal_summ - diff_summ;
+								}
+							}
+							//Если игрок получил "валидную" торговую прибыль с этой продажи
+							07=if(profit > 0)
+							08 ^{
+								01=int penalty = ShipStatistic(cur_ship, 9);
+								//Если на игроке не висит "торговое пенальти"
+								02=if(!penalty)ShipCustomShipInfoData(0, cur_info, 3, ShipCustomShipInfoData(0, cur_info, 3) + profit);
+								//Если таки висит
+								03=else
+								04 ^{
+									01=if(profit > penalty)
+									02 ^{
+										01=profit = profit - penalty;
+										02=ShipCustomShipInfoData(0, cur_info, 3, ShipCustomShipInfoData(0, cur_info, 3) + profit);
+									}
+								}
+							}
 						}
 					}
                 }
