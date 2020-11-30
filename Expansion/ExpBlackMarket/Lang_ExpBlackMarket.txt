@@ -3384,15 +3384,15 @@ ShipInfo ^{
                 OnActCode ^{
 					01=if(ShipInNormalSpace(Player()))
 					02 ^{
-						01=dword cur_info=CurInfo();
-						02=if(CurTurn()==ShipCustomShipInfoTextData(0,cur_info,1))exit;
-						03=dword warrior=IdToShip(ShipCustomShipInfoData(0,cur_info,1));
-						04=dword smuggler=IdToShip(ShipCustomShipInfoData(0,cur_info,2));
-						05=dword planet=IdToPlanet(ShipCustomShipInfoData(0,cur_info,3));
-						06=CustomEther('TalkSpecial',0,'BM_StartTalks',Format(CT("Script.Mod_ExpBlackMarket_1.SmugglerChaseTalk"),"<0>",Name(warrior),"<1>",Name(smuggler),"<2>",Name(smuggler),"<3>",Rnd(GalaxyMoney(1,1)/4,GalaxyMoney(4,1)/2),"<4>",Name(planet)),warrior,smuggler);
+						01=dword cur_info = CurInfo();
+						02=if(CurTurn() == ShipCustomShipInfoTextData(0, cur_info, 1))exit;
+						03=dword warrior = IdToShip(ShipCustomShipInfoData(0, cur_info, 1));
+						04=dword smuggler = IdToShip(ShipCustomShipInfoData(0, cur_info, 2));
+						05=dword planet = IdToPlanet(ShipCustomShipInfoData(0, cur_info, 3));
+						06=CustomEther('TalkSpecial', 0, 'BM_StartTalks', Format(CT("Script.Mod_ExpBlackMarket_1.SmugglerChaseTalk"), "<0>", Name(warrior), "<1>", Name(smuggler), "<2>", Name(smuggler), "<3>", Rnd(GalaxyMoney(1,1)/4,GalaxyMoney(4,1)/2), "<4>", Name(planet)), warrior, smuggler);
 						07=Sound('Sound.NewMsg');
-						08=ExpBlackMarketGlobal=0;
-						09=ShipDeleteCustomShipInfo(Player(),'TalkMsgBMHideInfo');
+						08=ExpBlackMarketGlobal = 0;
+						09=ShipDeleteCustomShipInfo(Player(), 'TalkMsgBMHideInfo');
 					}
                 }
             }
