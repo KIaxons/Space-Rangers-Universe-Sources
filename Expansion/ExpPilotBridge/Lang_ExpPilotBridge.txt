@@ -1160,34 +1160,33 @@ ShipInfo ^{
 										}
 										09=LEventNumber=BuyPirate(GetShipPlanet(Player()),650);
 										//Акрином открываем слоты всех артов и дроида для пиратов
-										10=ItemExtraSpecialsAddByType(ShipItems(LEventNumber,0),FindBonusByCustomTag('PlayerBridge_PirateBon_'+(LTempInt-3)));
 										10=ItemSize(ShipItems(LEventNumber,0),ItemSize(ShipItems(LEventNumber,0))+(25+Rnd(7,15))*GalaxyTechLevel());
-										10=HullHP(LEventNumber,ItemSize(ShipItems(LEventNumber,0)));
-										11=ShipSpecialBonuses(LEventNumber,bonSlotForsage,1);
-										12=ShipSpecialBonuses(LEventNumber,bonSlotDroid,1);
-										13=ShipSpecialBonuses(LEventNumber,bonSlotWeapon,5);
-										14=NoDropItem(ShipItems(LEventNumber,0),1);
-										15=ShipRefit(LEventNumber);
-										16=ShipType(LEventNumber,'PirateRunner');
-										17=PlanetOwner(GetShipPlanet(Player()),LTempStr);
-										18=PlanetRace(GetShipPlanet(Player()),l);
+										11=HullHP(LEventNumber,ItemSize(ShipItems(LEventNumber,0)));
+										12=ShipSpecialBonuses(LEventNumber,bonSlotForsage,1);
+										13=ShipSpecialBonuses(LEventNumber,bonSlotDroid,1);
+										14=ShipSpecialBonuses(LEventNumber,bonSlotWeapon,5);
+										15=NoDropItem(ShipItems(LEventNumber,0),1);
+										16=ShipRefit(LEventNumber);
+										17=ShipType(LEventNumber,'PirateRunner');
+										18=PlanetOwner(GetShipPlanet(Player()),LTempStr);
+										19=PlanetRace(GetShipPlanet(Player()),l);
 										//Удаляем старый движёк
-										19=GShipJoinGlobal=ShipEqInSlot(LEventNumber,t_Engine);
-										20=ItemIsInUse(GShipJoinGlobal,LEventNumber,0);
-										21=FreeItem(GetItemFromShip(LEventNumber,FindItemInShip(LEventNumber,GShipJoinGlobal)));
+										20=GShipJoinGlobal=ShipEqInSlot(LEventNumber,t_Engine);
+										21=ItemIsInUse(GShipJoinGlobal,LEventNumber,0);
+										22=FreeItem(GetItemFromShip(LEventNumber,FindItemInShip(LEventNumber,GShipJoinGlobal)));
 										//Спавним и улучшаем новый движёк (у каждого пирата он должен быть идентичным по статам)
-										22=GShipJoinGlobal=CreateEquipment(t_Engine,35+Rnd(-7,7),GalaxyTechLevel(),0);
-										23=SetEquipmentStats(GShipJoinGlobal,GetEquipmentStats(GShipJoinGlobal,0)+50,0);
-										24=SetEquipmentStats(GShipJoinGlobal,GetEquipmentStats(GShipJoinGlobal,1)+12,1);
+										23=GShipJoinGlobal=CreateEquipment(t_Engine,35+Rnd(-7,7),GalaxyTechLevel(),0);
+										24=SetEquipmentStats(GShipJoinGlobal,GetEquipmentStats(GShipJoinGlobal,0)+50,0);
+										25=SetEquipmentStats(GShipJoinGlobal,GetEquipmentStats(GShipJoinGlobal,1)+12,1);
 										//Вставляем в двигатель "Двима"
-										25=ModuleToEquipment(FindBonusByNameInCfg('214'),GShipJoinGlobal);
-										26=AddItemToShip(LEventNumber,GShipJoinGlobal);
-										27=ItemIsInUse(GShipJoinGlobal,LEventNumber,1);
-										28=if(LTempInt>4)NoDropItem(GShipJoinGlobal,1);
+										26=ModuleToEquipment(FindBonusByNameInCfg('214'),GShipJoinGlobal);
+										27=AddItemToShip(LEventNumber,GShipJoinGlobal);
+										28=ItemIsInUse(GShipJoinGlobal,LEventNumber,1);
+										29=if(LTempInt>4)NoDropItem(GShipJoinGlobal,1);
 										//Проверяем наличие в эквипе дроида
-										29=GShipJoinGlobal=ShipEqInSlot(LEventNumber,t_RepairRobot);
-										30=if(GShipJoinGlobal>0)
-										31 ^{
+										30=GShipJoinGlobal=ShipEqInSlot(LEventNumber,t_RepairRobot);
+										31=if(GShipJoinGlobal>0)
+										32 ^{
 											//Вставляем в дроида "Дроннер"
 											01=if(EqModule(GShipJoinGlobal)==-1)
 											02 ^{
@@ -1196,8 +1195,8 @@ ShipInfo ^{
 											}
 											02=NoDropItem(GShipJoinGlobal,1);
 										}
-										32=else
-										33 ^{
+										33=else
+										34 ^{
 											//Или создаём стандартного для ГТУ дроида
 											01=GShipJoinGlobal=CreateEquipment(t_RepairRobot,31+Rnd(-7,7),GalaxyTechLevel(),ShipPilotRace(LEventNumber));
 											//И только ПОТОМ вставляем в него "Дроннер"
@@ -1208,46 +1207,46 @@ ShipInfo ^{
 											06=NoDropItem(GShipJoinGlobal,1);
 										}
 										//Подстраиваем вместимость бака под дальность прыжка двигателя
-										34=GShipJoinGlobal=ShipEqInSlot(LEventNumber,t_FuelTanks);
-										35=SetEquipmentStats(GShipJoinGlobal,round(1.2*GetEquipmentStats(ShipEqInSlot(LEventNumber,t_Engine),1)),0);
-										36=NoDropItem(GShipJoinGlobal,1);
+										35=GShipJoinGlobal=ShipEqInSlot(LEventNumber,t_FuelTanks);
+										36=SetEquipmentStats(GShipJoinGlobal,round(1.2*GetEquipmentStats(ShipEqInSlot(LEventNumber,t_Engine),1)),0);
+										37=NoDropItem(GShipJoinGlobal,1);
 										//Добавляем чёрную жижу
-										37=GShipJoinGlobal=CreateArt(t_ArtefactFuel,ShipPilotRace(LEventNumber));
-										38=AddItemToShip(LEventNumber,GShipJoinGlobal);
-										39=ItemIsInUse(GShipJoinGlobal,LEventNumber,1);
-										40=NoDropItem(GShipJoinGlobal,1);
+										38=GShipJoinGlobal=CreateArt(t_ArtefactFuel,ShipPilotRace(LEventNumber));
+										39=AddItemToShip(LEventNumber,GShipJoinGlobal);
+										40=ItemIsInUse(GShipJoinGlobal,LEventNumber,1);
+										41=NoDropItem(GShipJoinGlobal,1);
 										//Добавляем нанитоиды
-										41=GShipJoinGlobal=CreateArt(t_ArtefactNano,ShipPilotRace(LEventNumber));
-										42=AddItemToShip(LEventNumber,GShipJoinGlobal);
-										43=ItemIsInUse(GShipJoinGlobal,LEventNumber,1);
-										44=NoDropItem(GShipJoinGlobal,1);
+										42=GShipJoinGlobal=CreateArt(t_ArtefactNano,ShipPilotRace(LEventNumber));
+										43=AddItemToShip(LEventNumber,GShipJoinGlobal);
+										44=ItemIsInUse(GShipJoinGlobal,LEventNumber,1);
+										45=NoDropItem(GShipJoinGlobal,1);
 										//Добавляем отморозки
-										45=GShipJoinGlobal=CreateArt(t_ArtefactPower,ShipPilotRace(LEventNumber));
-										46=AddItemToShip(LEventNumber,GShipJoinGlobal);
-										47=ItemIsInUse(GShipJoinGlobal,LEventNumber,1);
-										48=NoDropItem(GShipJoinGlobal,1);
+										46=GShipJoinGlobal=CreateArt(t_ArtefactPower,ShipPilotRace(LEventNumber));
+										47=AddItemToShip(LEventNumber,GShipJoinGlobal);
+										48=ItemIsInUse(GShipJoinGlobal,LEventNumber,1);
+										49=NoDropItem(GShipJoinGlobal,1);
 										//Добавляем пси-ускоритель
-										49=GShipJoinGlobal=CreateArt(t_ArtefactSpeed,ShipPilotRace(LEventNumber));
-										50=AddItemToShip(LEventNumber,GShipJoinGlobal);
-										51=ItemIsInUse(GShipJoinGlobal,LEventNumber,1);
-										52=NoDropItem(GShipJoinGlobal,1);
+										50=GShipJoinGlobal=CreateArt(t_ArtefactSpeed,ShipPilotRace(LEventNumber));
+										51=AddItemToShip(LEventNumber,GShipJoinGlobal);
+										52=ItemIsInUse(GShipJoinGlobal,LEventNumber,1);
+										53=NoDropItem(GShipJoinGlobal,1);
 										//Рандомное улучшение нескольких предметов
-										53=ShipImproveItems(LEventNumber,Rnd(3,5));
+										54=ShipImproveItems(LEventNumber,Rnd(3,5));
 										//Вкалываем малокскую сижу и гаалистру времени
-										54=ShipHealthFactor(LEventNumber,13,CurTurn()+547);
-										55=ShipHealthFactor(LEventNumber,17,CurTurn()+547);
+										55=ShipHealthFactor(LEventNumber,13,CurTurn()+547);
+										56=ShipHealthFactor(LEventNumber,17,CurTurn()+547);
 										//Повышаем навыки техники и торговли
-										56=ShipSkill(LEventNumber,2,3);
-										57=ShipSkill(LEventNumber,3,2);
+										57=ShipSkill(LEventNumber,2,3);
+										58=ShipSkill(LEventNumber,3,2);
 										//Фикс на случай возникновения перевеса
-										58=if(ShipSpeed(LEventNumber)==0)ShipFreeFlight(LEventNumber);
-										59=ShipAddCustomShipInfo(LEventNumber,'PlayerBridge_PiratesPursue','NoShow');
-										60=OrderLock(LEventNumber,1);
-										61=GShipJoinGlobal=LEventNumber;
-										62=LEventNumber=GetItemFromVault('Semerenka');
+										59=if(ShipSpeed(LEventNumber)==0)ShipFreeFlight(LEventNumber);
+										60=ShipAddCustomShipInfo(LEventNumber,'PlayerBridge_PiratesPursue','NoShow');
+										61=OrderLock(LEventNumber,1);
+										62=GShipJoinGlobal=LEventNumber;
+										63=LEventNumber=GetItemFromVault('Semerenka');
 										//Запускаем акткод в "костыльной семерёнке", чтобы записать корабль в нужную нам группу
-										63=CreateActCodeEvent(0,LEventNumber);
-										64=PutItemInVault('Semerenka',LEventNumber);
+										64=CreateActCodeEvent(0,LEventNumber);
+										65=PutItemInVault('Semerenka',LEventNumber);
 									}
 									//Убеждаемся, что корпус цел, и записываем его цену в сумму долга
 									04=LEventNumber=HullHP(newHull);
@@ -1717,71 +1716,6 @@ MicroModuls ^{
 		bonJump=20
 		bonSkill5=2
 		bonSkill6=-3
-	}
-	ExpPilotBridge_PirateBon1 ^{
-		CustomTag=PlayerBridge_PirateBon_1
-		Name=PlayerBridge_PirateBon_1
-		Priority=0
-		Special=1
-		bonSlotWeapon=5
-		bonSlotDroid=1
-		bonSlotArt=4
-		bonSlotForsage=1
-		bonHull=3
-		LockedAcryn=3
-		NonSearchable=1
-	}
-	ExpPilotBridge_PirateBon2 ^{
-		CustomTag=PlayerBridge_PirateBon_2
-		Name=PlayerBridge_PirateBon_2
-		Priority=0
-		Special=1
-		bonSlotWeapon=5
-		bonSlotDroid=1
-		bonSlotArt=4
-		bonSlotForsage=1
-		bonHull=2
-		LockedAcryn=3
-		NonSearchable=1
-	}
-	ExpPilotBridge_PirateBon3 ^{
-		CustomTag=PlayerBridge_PirateBon_3
-		Name=PlayerBridge_PirateBon_3
-		Priority=0
-		Special=1
-		bonSlotWeapon=5
-		bonSlotDroid=1
-		bonSlotArt=4
-		bonSlotForsage=1
-		bonHull=3
-		LockedAcryn=3
-		NonSearchable=1
-	}
-	ExpPilotBridge_PirateBon4 ^{
-		CustomTag=PlayerBridge_PirateBon_4
-		Name=PlayerBridge_PirateBon_4
-		Priority=0
-		Special=1
-		bonSlotWeapon=5
-		bonSlotDroid=1
-		bonSlotArt=4
-		bonSlotForsage=1
-		bonHull=3
-		LockedAcryn=3
-		NonSearchable=1
-	}
-	ExpPilotBridge_PirateBon5 ^{
-		CustomTag=PlayerBridge_PirateBon_5
-		Name=PlayerBridge_PirateBon_5
-		Priority=0
-		Special=1
-		bonSlotWeapon=5
-		bonSlotDroid=1
-		bonSlotArt=4
-		bonSlotForsage=1
-		bonHull=5
-		LockedAcryn=3
-		NonSearchable=1
 	}
 }
 UselessItems ^{

@@ -83,31 +83,25 @@ Artefacts ^{
 				01=if(!ItemIsInUse(CurItem()))exit;
 				02=if(!ScriptItemActShip())exit;
                 03=if(!ItemDurability(CurItem()))exit;
-                04=if(ScriptItemActionType(t_OnWeaponShot))
-                05 ^{
-                    01=if(ObjectType(ScriptItemActObject1())!=4 && ObjectType(ScriptItemActObject1())!=5)exit;
-                    02=str weapon_type='';
-                    03=if(ItemType(ScriptItemActObject2())==t_CustomWeapon)
-                    04 ^{
-                        01=if(GetCustomWeaponPrimaryDamageType(CustomWeaponType(ScriptItemActObject2()))==1)weapon_type='Splinter';
-                        02=else exit;
-                    }
-                    05=else weapon_type=CT('Items.Weapon.Stats.'+(ItemType(ScriptItemActObject2())-t_DefGenerator)+'.DamageSet');
-                    06=if(findsubstr(weapon_type,'Splinter')>=0)
-                    07 ^{
-                        01=int shot=Rnd(1,100);
-                        02=int shot_chance=25;
-						//Повышенный шанс игнора брони для ЧДшного оружия отключён во избежание абуза оборудования клисан
-                        //03=if(ItemOwner(ScriptItemActObject2())==6)shot_chance=40;
-                        04=if(shot_chance>=shot)
-                        05 ^{
-                            01=int damag=(ScriptItemActParam()+ShipArmor(ScriptItemActObject1()))*100;
-                            02=damag=damag/(100-ShipProtectability(ScriptItemActObject1()));
-                            03=ScriptItemActParam(damag);
-                        }
-                    }
-					08=if(!ItemDurability(CurItem()) && ScriptItemActShip()==Player())Ether(8,'',CT('Artefacts.CustomArtefacts.RNDart_01.BrokenInUse'));
-                }
+				04=dword target = ScriptItemActObject1();
+				05=if(ObjectType(target) != 4 && ObjectType(target) != 5)exit;
+				06=int damage_set = GetEquipmentStats(ScriptItemActObject2(), 6);
+				//Пропускаем оружие без осколочного типа урона
+				07=if(!(damage_set & 2))exit;
+				//Пропускаем оружие с игнорирующим защиту (неотразимым) типом урона
+				08=if((damage_set & 2048))exit;
+				09=if(findsubstr(weapon_type,'Splinter') >= 0)
+				10=int shot = Rnd(1, 100);
+				11=int shot_chance = 25;
+				//Повышенный шанс игнора брони для ЧДшного оружия отключён во избежание абуза оружия клисан
+				//12=if(ItemOwner(ScriptItemActObject2()) == 6)shot_chance = 40;
+				12=if(shot_chance >= shot)
+				13 ^{
+					01=int damag = (ScriptItemActParam() + ShipArmor(target)) * 100;
+					02=damag = damag / (100 - ShipProtectability(target));
+					03=ScriptItemActParam(damag);
+				}
+				14=if(!ItemDurability(CurItem()) && ScriptItemActShip() == Player())Ether(8, '', CT('Artefacts.CustomArtefacts.RNDart_01.BrokenInUse'));
             }
             Size=7
 			Cost=2100
@@ -158,17 +152,17 @@ Artefacts ^{
 								08=if(ShipStar(Player())==ShipStar(cur_ship) && ShipInNormalSpace(Player()))ShowEffect('Weapon.NoGraph',0,ship,cur_ship,damag,0,0,255,255,255);
 							}
 						}
-						09=if(!ItemDurability(cur_item) && cur_ship==Player())Ether(8,'',CT('Artefacts.CustomArtefacts.RNDart_02.BrokenInUse'));
+						09=if(!ItemDurability(cur_item) && cur_ship == Player())Ether(8, '', CT('Artefacts.CustomArtefacts.RNDart_02.BrokenInUse'));
 						10=ScriptItemActParam(0);
 					}
 				}
-                08=if(ScriptItemActionType(t_OnTakingDamageEn))
+                08=else
                 09 ^{
 					01=if(ItemDurability(cur_item))
 					02 ^{
-						01=ScriptItemActParam(ScriptItemActParam()-ScriptItemActParam()/5);
-						02=if(Rnd(1,50)>50)ItemDurability(cur_item,ItemDurability(cur_item)-1);
-						03=if(!ItemDurability(cur_item) && cur_ship==Player())Ether(8,'',CT('Artefacts.CustomArtefacts.RNDart_02.BrokenInUse'));
+						01=ScriptItemActParam(ScriptItemActParam() - ScriptItemActParam() / 5);
+						02=if(Rnd(1, 100) <= 20)ItemDurability(cur_item,ItemDurability(cur_item) - 1);
+						03=if(!ItemDurability(cur_item) && cur_ship == Player())Ether(8, '', CT('Artefacts.CustomArtefacts.RNDart_02.BrokenInUse'));
 					}
                 }
             }
@@ -184,7 +178,7 @@ Artefacts ^{
 			CountsAs=ArtMiniExpl
 			SharedUse=0
 			SharedEffect=0
-			OnActCodeTypes=t_OnPlayerTalkedWithShip,t_OnShipTalkedWithPlayer,t_OnItemDeEquip,t_OnStep
+			OnActCodeTypes=t_OnStep,t_OnItemDeEquip,t_OnPlayerTalkedWithShip,t_OnShipTalkedWithPlayer
 			OnActStepTypes=11
             OnActCode ^{
 				01=dword cur_item=CurItem();
@@ -197,7 +191,7 @@ Artefacts ^{
 				04=if(!ItemDurability(cur_item))exit;
 				05=dword cur_ship=ScriptItemActShip();
 				06=if(!cur_ship)exit;
-				07=if(CustomArtData(cur_item,3)>=CurTurn())exit;
+				07=if(CustomArtData(cur_item,3) >= CurTurn())exit;
 				08=if(ScriptItemActionType(t_OnStep,11))
 				09 ^{
 					//Выдача доп. денег не-игроку рейнджеру при рэкете
@@ -306,18 +300,15 @@ Artefacts ^{
 				01=dword ship=ScriptItemActShip();
 				02=if(!ship)exit;
                 03=if(!ItemDurability(CurItem()))exit;
-                04=if(ScriptItemActionType(t_OnMissileShot))
-                05 ^{
-                    01=if(EqModule(ScriptItemActObject2())>-1)
-                    02 ^{
-                        01=if(EqModule(ScriptItemActObject2())==FindBonusByCustomTag('empty_mm'))exit;
-                    }
-					03=dword missile=ScriptItemActObject1();
-                    04=MissileAngle(missile,Angle(WeaponTarget(ScriptItemActObject2()),missile));
-                    05=MissileLive(missile,Rnd(500,600));
-                    06=MissileSpeed(missile,MissileSpeed(missile)+Rnd(900,1400));
-					07=if(!ItemDurability(CurItem()) && ship==Player())Ether(8,'',CT('Artefacts.CustomArtefacts.RNDart_04.BrokenInUse'));
-                }
+				04=if(EqModule(ScriptItemActObject2()) > -1)
+				05 ^{
+					01=if(EqModule(ScriptItemActObject2()) == FindBonusByCustomTag('empty_mm'))exit;
+				}
+				06=dword missile = ScriptItemActObject1();
+				07=MissileAngle(missile, Angle(WeaponTarget(ScriptItemActObject2()), missile));
+				08=MissileLive(missile, Rnd(500, 600));
+				09=MissileSpeed(missile, MissileSpeed(missile) + Rnd(900, 1400));
+				10=if(!ItemDurability(CurItem()) && ship == Player())Ether(8, '', CT('Artefacts.CustomArtefacts.RNDart_04.BrokenInUse'));
             }
             Size=18
 			Cost=2500

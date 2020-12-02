@@ -5,7 +5,7 @@ Artefacts ^{
             BrokenInBattle=Хрупкий корпус блинкера треснул в самый разгар боя. Более устройство не функционирует.
             BrokenInUse=Блинкер и без того уже достаточно длительное время работал с перебоями, но сегодня сломался окончательно.
             Name=Блинкер
-			OnActCodeTypes=t_OnEnteringForm,t_OnStep
+			OnActCodeTypes=t_OnStep,t_OnEnteringForm
 			OnActStepTypes=11
             OnActCode ^{
                 01=if(ScriptItemActionType(t_OnStep,11))
@@ -19,17 +19,17 @@ Artefacts ^{
 						}
 					}
                 }
-                03=if(CustomArtData(CurItem(),2)==1)
+                03=else
                 04 ^{
-                    01=if(ScriptItemActionType(t_OnEnteringForm))
-                    02 ^{
+					01=if(CustomArtData(CurItem(),2)==1)
+					02 ^{
 						01=if(CurrentForm()=='StarMap')
 						02 ^{
 							01=StarMapCenterView(CoordX(Player()),CoordY(Player()));
 							02=CustomArtData(CurItem(),2,0);
 						}
-                    }
-                }
+					}
+				}
             }
             OnUseCode ^{
                 01=if(ShipInNormalSpace(Player()) && ItemDurability(CurItem())<=5)
@@ -92,17 +92,14 @@ Artefacts ^{
 			OnActCodeTypes=t_OnStep
 			OnActStepTypes=11
             OnActCode ^{
-                01=if(ScriptItemActionType(t_OnStep,11))
-                02 ^{
-					01=if(ItemDurability(CurItem()))
+				01=if(ItemDurability(CurItem()))
+				02 ^{
+					01=if(CustomArtData(CurItem(), 1) < 1000)
 					02 ^{
-						01=if(CustomArtData(CurItem(),1)<1000)
-						02 ^{
-							01=if(ItemIsInUse(CurItem())) CustomArtData(CurItem(),1,CustomArtData(CurItem(),1)+Rnd(5,10));
-							02=if(CustomArtData(CurItem(),1)>1000) CustomArtData(CurItem(),1,1000);
-						}
+						01=if(ItemIsInUse(CurItem()))CustomArtData(CurItem(), 1, CustomArtData(CurItem(), 1) + Rnd(5, 10));
+						02=if(CustomArtData(CurItem(),1) > 1000) CustomArtData(CurItem(), 1, 1000);
 					}
-                }
+				}
             }
             OnUseCode ^{
                 01=if(ShipInNormalSpace(Player()) && ItemDurability(CurItem())<=5)MessageBox('Артефакт не выдержит активации, требуется ремонт.');
@@ -182,31 +179,37 @@ Artefacts ^{
             BrokenInBattle=В пылу битвы вышел из строя подпространственный коммуникатор.
             BrokenInUse=Подпространственный коммуникатор износился и нуждается в починке.
             Name=Подпространственный коммуникатор
-			OnActCodeTypes=t_OnEnteringForm,t_OnStep
+			OnActCodeTypes=t_OnStep,t_OnEnteringForm
 			OnActStepTypes=11
             OnActCode ^{
-                01=if(ScriptItemActionType(t_OnStep,11) && ItemDurability(CurItem())>0)
+                01=if(ScriptItemActionType(t_OnStep,11))
                 02 ^{
-                    01=if(CustomArtData(CurItem(),1)<100)
-                    02 ^{
-                        01=CustomArtData(CurItem(),1,CustomArtData(CurItem(),1)+Rnd(0,2));
-                        02=if(ItemIsInUse(CurItem()))CustomArtData(CurItem(),1,CustomArtData(CurItem(),1)+1);
-                        03=if(CustomArtData(CurItem(),1)>100)CustomArtData(CurItem(),1,100);
-                    }
+					01=if(ItemDurability(CurItem()))
+					02 ^{
+						01=if(CustomArtData(CurItem(),1)<100)
+						02 ^{
+							01=CustomArtData(CurItem(),1,CustomArtData(CurItem(),1)+Rnd(0,2));
+							02=if(ItemIsInUse(CurItem()))CustomArtData(CurItem(),1,CustomArtData(CurItem(),1)+1);
+							03=if(CustomArtData(CurItem(),1)>100)CustomArtData(CurItem(),1,100);
+						}
+					}
                 }
-                03=if(CustomArtData(CurItem(),2)==1)
-                04 ^{
-                    01=if(ScriptItemActionType(t_OnEnteringForm) && CurrentForm()=='StarMap')
-                    02 ^{
-                        01=CustomArtData(CurItem(),2,0);
-                        03=dword temp_dword=BuyPirate(StarPlanets(GalaxyStar(4),0));
-                        04=ShipType(temp_dword,'t_Head');
-                        05=SetName(temp_dword,'X-24&1/2');
-                        06=ShipFace(temp_dword,1);
-                        07=ShipSetCoords(temp_dword,CoordX(Player()),CoordY(Player()));
-                        08=Dialog(temp_dword);
-                    }
-                }
+				03=else
+				04 ^{
+					01=if(CurrentForm() == 'StarMap')
+					02 ^{
+						01=if(CustomArtData(CurItem(),2)==1)
+						02 ^{
+							01=CustomArtData(CurItem(),2,0);
+							02=dword temp_dword=BuyPirate(StarPlanets(GalaxyStar(4),0));
+							03=ShipType(temp_dword,'t_Head');
+							04=SetName(temp_dword,'X-24&1/2');
+							05=ShipFace(temp_dword,1);
+							06=ShipSetCoords(temp_dword,CoordX(Player()),CoordY(Player()));
+							07=Dialog(temp_dword);
+						}
+					}
+				}
             }
             OnUseCode ^{
                 01=if(!ShipInNormalSpace(Player()))MessageBox(CT('FormShip.UseOnlyInSpace'));
@@ -228,7 +231,7 @@ Artefacts ^{
             BrokenInBattle=Конструкция пульсара не выдержала перегрузок космического боя. Устройство непригодно к использованию и нуждается в починке.
             BrokenInUse=Программное обеспечение пульсара спровоцировало создание побочной временной воронки, вызвавшей в устройстве замкнутый хроноколлапс. Необходимо обновление софта и восстановление нормального темпорального течения.
             Name=Пульсар
-			OnActCodeTypes=t_OnItemEquip,t_OnItemDeEquip,t_OnScan,t_OnWeaponShot,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnStep
+			OnActCodeTypes=t_OnStep,t_OnItemEquip,t_OnItemDeEquip,t_OnScan,t_OnWeaponShot,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
 			OnActStepTypes=11
             OnActCode ^{
                 00=dword target_item=0;
@@ -548,37 +551,43 @@ ShipInfo ^{
                 Name=
 				OnActCodeTypes=t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
                 OnActCode ^{
-                    01=if(ScriptItemActionType(t_OnTakingDamage) || ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi))ScriptItemActParam(0);
+                    01=ScriptItemActParam(0);
                 }
             }
             SelfDestroy ^{
-                Description=для уничтожения галограмм
+                Description=Для уничтожения голограмм
                 Icon=2
                 Name=Сумоуничтожение
-				OnActCodeTypes=t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnStep
+				OnActCodeTypes=t_OnStep,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
 				OnActStepTypes=1,2,3,4,5,6,7,8,9,10,11
                 OnActCode ^{
-                    01=int infos=ShipFindCustomShipInfoByType(ScriptItemActShip(),'SelfDestroy');
-                    02=int infos_var_1=ShipCustomShipInfoData(ScriptItemActShip(),infos,1);
+                    01=int infos = ShipFindCustomShipInfoByType(ScriptItemActShip(), 'SelfDestroy');
+                    02=int infos_var_1 = ShipCustomShipInfoData(ScriptItemActShip(), infos, 1);
                     03=int shot;
-                    04=if(ScriptItemActionType(t_OnStep,11) && infos_var_1==0)
-                    05 ^{
-                        01=if(ShipStar(ScriptItemActShip())==ShipStar(Player())) ShowEffect('Weapon.MissileHit',5,ScriptItemActShip(),ScriptItemActShip(),0,0,0,0,0,0);
-                        02=HullHP(ScriptItemActShip(),0);
-                    }
-                    06=if(ScriptItemActionType(t_OnStep,11) && infos_var_1>0)
-                    07 ^{
-                        01=ShipCustomShipInfoData(ScriptItemActShip(),infos,1,infos_var_1-1);
-                    }
-                    08=if(ScriptItemActionType(t_OnStep) && ScriptItemActParam()>0 && ScriptItemActParam()<11)
-                    09 ^{
-						01=if(ShipOrder(ScriptItemActShip())==6)
+					04=if(ScriptItemActionType(t_OnStep))
+					05 ^{
+						01=if(ScriptItemActParam() == 11)
 						02 ^{
-							01=shot=Rnd(0,10);
-							02=if(Dist(ScriptItemActShip(),ShipOrderObj(ScriptItemActShip()))<=300 && ShipStar(ScriptItemActShip())==ShipStar(Player()) && shot>=5) ShowEffect('Weapon.0',1,ShipOrderObj(ScriptItemActShip()),ScriptItemActShip(),0,0,0,0,0,0);
+							01=if(infos_var_1 == 0)
+							02 ^{
+								01=if(ShipStar(ScriptItemActShip()) == ShipStar(Player()))ShowEffect('Weapon.MissileHit', 5, ScriptItemActShip(), ScriptItemActShip(), 0, 0, 0, 0, 0, 0);
+								02=HullHP(ScriptItemActShip(), 0);
+							}
+							03=else if(infos_var_1 > 0)
+							04 ^{
+								01=ShipCustomShipInfoData(ScriptItemActShip(), infos, 1, infos_var_1 - 1);
+							}
 						}
-                    }
-                    10=if(ScriptItemActionType(t_OnTakingDamage) || ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi))ScriptItemActParam(0);
+						03=else
+						04 ^{
+							01=if(ShipOrder(ScriptItemActShip()) == 6)
+							02 ^{
+								01=shot = Rnd(0, 10);
+								02=if(Dist(ScriptItemActShip(), ShipOrderObj(ScriptItemActShip())) <= 300 && ShipStar(ScriptItemActShip()) == ShipStar(Player()) && shot >= 5)ShowEffect('Weapon.0', 1, ShipOrderObj(ScriptItemActShip()), ScriptItemActShip(), 0, 0, 0, 0, 0, 0);
+							}
+						}
+					}
+                    06=else ScriptItemActParam(0);
                 }
             }
             pulsar_infos ^{
