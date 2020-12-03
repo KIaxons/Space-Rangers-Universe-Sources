@@ -1,6 +1,6 @@
 MicroModuls ~{
     ShuMercs_MercMalocHull ^{
-        Cost=150
+        Cost=110
         CustomTag=Merc0
 		Equipments=Hull
         Fragility=90
@@ -13,12 +13,9 @@ MicroModuls ~{
         bonSlotArt=-3
         bonSlotDef=-1
         bonSlotHook=-1
-        bonWEnergy=5
-        bonWMissile=7
-        bonWSplinter=10
     }
     ShuMercs_MercPelengHull ^{
-        Cost=150
+        Cost=110
         CustomTag=Merc1
 		Equipments=Hull
         Fragility=110
@@ -31,12 +28,9 @@ MicroModuls ~{
         bonSlotArt=-3
         bonSlotDroid=-1
         bonSlotWeapon=-1
-        bonWEnergy=2
-        bonWMissile=3
-        bonWSplinter=10
     }
     ShuMercs_MercPeopleHull ^{
-        Cost=150
+        Cost=110
         CustomTag=Merc2
 		Equipments=Hull
         Fragility=110
@@ -46,16 +40,12 @@ MicroModuls ~{
 		ImitatedHullType=Ranger,Warrior
         Name=</color><Type> корпус наемника
         Special=1
-        bonHull=1
         bonSlotArt=-4
         bonSlotHook=-1
         bonSlotWeapon=-1
-        bonWEnergy=5
-        bonWMissile=5
-        bonWSplinter=5
     }
     ShuMercs_MercFeiHull ^{
-        Cost=150
+        Cost=110
         CustomTag=Merc3
 		Equipments=Hull
         Fragility=70
@@ -65,13 +55,8 @@ MicroModuls ~{
 		ImitatedHullType=Ranger,Warrior
         Name=</color><Type> корпус наемника
         Special=1
-        bonDef=3
         bonSlotArt=-2
         bonSlotWeapon=-1
-        bonWEnergy=7
-        bonWMissile=7
-        bonWRadius=20
-        bonWSplinter=7
     }
     ShuMercs_FreeMercMalocHull ^{
         Cost=110
@@ -144,7 +129,9 @@ MicroModuls ~{
         Cost=250
         CustomTag=MercHull
         Equipments=Hull
-        Fragility=95
+        FragilityEnergy=94
+        FragilityMissile=94
+        FragilitySplinter=94
         KindGraph=Merzenary
         LockedAcryn=3
         Name=Корпус "Мерценарий" I
@@ -158,8 +145,18 @@ MicroModuls ~{
         Priority=10
         Ruins=MB
         Special=1
-        Text=<color=248,252,248>Древний корпус, чья технологическая начинка была полностью переоборудована под нужды современных наёмнических спецподразделений. Помимо сниженной восприимчивости, корпус имеет встроенные аналитические модули, запатентованные крупнейшими наёмническими группировками, чье использование контролируется по их приватным каналам.</color>
-        Text=Все навыки: <clr>+1<clrEnd>
+        Text=<color=248,252,248>Древний корпус, чья технологическая начинка была полностью переоборудована под нужды современных наёмнических спецподразделений. Помимо сниженной восприимчивости к урону, корпус имеет встроенные аналитические модули, запатентованные крупнейшими наёмническими группировками, использование которых контролируется по их приватным каналам.</color>
+		Text=<clr><clrEnd>
+		Text=Навык точности: <bonSkill1>
+        Text=Навык манёвренности: <bonSkill2>
+		Text=Навык техники: <bonSkill3>
+		Text=Навык торговли: <bonSkill4>
+        Text=Навык обаяния: <bonSkill5>
+		Text=Навык лидерства: <bonSkill6>
+		Text=Мощность сканера: <bonScan> ед.
+		Text=Мощность захвата: <bonHook> ед.
+		Text=Дальность захвата: <bonHook> ед.
+		Text=Скорость захвата: <bonHook> ед.
         bonSkill1=1
         bonSkill2=1
         bonSkill3=1
@@ -168,12 +165,19 @@ MicroModuls ~{
         bonSkill6=1
         bonSlotArt=-4
         bonSlotWeapon=-2
+		bonScan=-6
+		bonHook=-10
+		bonHookRadius=-10
+		bonHookMaxSpeed=-2
+		bonHookMinSpeed=-2
     }
     ShuMercs_Merzenary2 ^{
         Cost=350
         CustomTag=MercHull
         Equipments=Hull
-        Fragility=90
+        FragilityEnergy=90
+        FragilityMissile=90
+        FragilitySplinter=90
         KindGraph=Merzenary
         LockedAcryn=3
         Name=Корпус "Мерценарий" II
@@ -187,8 +191,18 @@ MicroModuls ~{
         Priority=30
         Ruins=MB
         Special=1
-        Text=<color=248,252,248>Древний корпус, чья технологическая начинка была полностью переоборудована под нужды современных наёмнических спецподразделений. Помимо сниженной восприимчивости, корпус имеет встроенные аналитические модули, запатентованные крупнейшими наёмническими группировками, чье использование контролируется по их приватным каналам.</color>
-        Text=Все навыки: <clr>+1<clrEnd>
+        Text=<color=248,252,248>Древний корпус, чья технологическая начинка была полностью переоборудована под нужды современных наёмнических спецподразделений. Помимо сниженной восприимчивости к урону, корпус имеет встроенные аналитические модули, запатентованные крупнейшими наёмническими группировками, использование которых контролируется по их приватным каналам.</color>
+		Text=<clr><clrEnd>
+		Text=Навык точности: <bonSkill1>
+        Text=Навык манёвренности: <bonSkill2>
+		Text=Навык техники: <bonSkill3>
+		Text=Навык торговли: <bonSkill4>
+        Text=Навык обаяния: <bonSkill5>
+		Text=Навык лидерства: <bonSkill6>
+		Text=Мощность сканера: <bonScan> ед.
+		Text=Мощность захвата: <bonHook> ед.
+		Text=Дальность захвата: <bonHook> ед.
+		Text=Скорость захвата: <bonHook> ед.
         bonSkill1=1
         bonSkill2=1
         bonSkill3=1
@@ -196,13 +210,20 @@ MicroModuls ~{
         bonSkill5=1
         bonSkill6=1
         bonSlotArt=-3
-        bonSlotWeapon=-1
+        bonSlotWeapon=-2
+		bonScan=-6
+		bonHook=-10
+		bonHookRadius=-10
+		bonHookMaxSpeed=-2
+		bonHookMinSpeed=-2
     }
     ShuMercs_Merzenary3 ^{
         Cost=450
         CustomTag=MercHull
         Equipments=Hull
-        Fragility=85
+        FragilityEnergy=86
+        FragilityMissile=86
+        FragilitySplinter=86
         KindGraph=Merzenary
         LockedAcryn=3
         Name=Корпус "Мерценарий" III
@@ -216,22 +237,39 @@ MicroModuls ~{
         Priority=50
         Ruins=MB
         Special=1
-        Text=<color=248,252,248>Древний корпус, чья технологическая начинка была полностью переоборудована под нужды современных наёмнических спецподразделений. Помимо сниженной восприимчивости, корпус имеет встроенные аналитические модули, запатентованные крупнейшими наёмническими группировками, чье использование контролируется по их приватным каналам.</color>
-        Text=Все навыки: <clr>+1<clrEnd>
+        Text=<color=248,252,248>Древний корпус, чья технологическая начинка была полностью переоборудована под нужды современных наёмнических спецподразделений. Помимо сниженной восприимчивости к урону, корпус имеет встроенные аналитические модули, запатентованные крупнейшими наёмническими группировками, использование которых контролируется по их приватным каналам.</color>
+		Text=<clr><clrEnd>
+		Text=Навык точности: <bonSkill1>
+        Text=Навык манёвренности: <bonSkill2>
+		Text=Навык техники: <bonSkill3>
+		Text=Навык торговли: <bonSkill4>
+        Text=Навык обаяния: <bonSkill5>
+		Text=Навык лидерства: <bonSkill6>
+		Text=Мощность сканера: <bonScan> ед.
+		Text=Мощность захвата: <bonHook> ед.
+		Text=Дальность захвата: <bonHook> ед.
+		Text=Скорость захвата: <bonHook> ед.
         bonSkill1=1
         bonSkill2=1
         bonSkill3=1
         bonSkill4=1
         bonSkill5=1
         bonSkill6=1
-        bonSlotArt=-1
-        bonSlotWeapon=-1
+        bonSlotArt=-2
+        bonSlotWeapon=-2
+		bonScan=-6
+		bonHook=-10
+		bonHookRadius=-10
+		bonHookMaxSpeed=-2
+		bonHookMinSpeed=-2
     }
     ShuMercs_Merzenary4 ^{
         Cost=500
         CustomTag=MercHull
         Equipments=Hull
-        Fragility=90
+        FragilityEnergy=90
+        FragilityMissile=90
+        FragilitySplinter=90
         KindGraph=Merzenary
         LockedAcryn=3
         Name=Корпус "Мерценарий" IV
@@ -245,14 +283,29 @@ MicroModuls ~{
         Priority=70
         Ruins=MB
         Special=1
-        Text=<color=248,252,248>Древний корпус, чья технологическая начинка была полностью переоборудована под нужды современных наёмнических спецподразделений. Помимо сниженной восприимчивости, корпус имеет встроенные аналитические модули, запатентованные крупнейшими наёмническими группировками, чье использование контролируется по их приватным каналам.</color>
-        Text=Все навыки: <clr>+1<clrEnd>
+        Text=<color=248,252,248>Древний корпус, чья технологическая начинка была полностью переоборудована под нужды современных наёмнических спецподразделений. Помимо сниженной восприимчивости к урону, корпус имеет встроенные аналитические модули, запатентованные крупнейшими наёмническими группировками, использование которых контролируется по их приватным каналам.</color>
+		Text=<clr><clrEnd>
+		Text=Навык точности: <bonSkill1>
+        Text=Навык манёвренности: <bonSkill2>
+		Text=Навык техники: <bonSkill3>
+		Text=Навык торговли: <bonSkill4>
+        Text=Навык обаяния: <bonSkill5>
+		Text=Навык лидерства: <bonSkill6>
+		Text=Мощность сканера: <bonScan> ед.
+		Text=Мощность захвата: <bonHook> ед.
+		Text=Дальность захвата: <bonHook> ед.
+		Text=Скорость захвата: <bonHook> ед.
         bonSkill1=1
         bonSkill2=1
         bonSkill3=1
         bonSkill4=1
         bonSkill5=1
         bonSkill6=1
+		bonScan=-7
+		bonHook=-15
+		bonHookRadius=-15
+		bonHookMaxSpeed=-3
+		bonHookMinSpeed=-3
     }
     353 ^{
         Ruins=SB,BK,TC,MB,Manaan

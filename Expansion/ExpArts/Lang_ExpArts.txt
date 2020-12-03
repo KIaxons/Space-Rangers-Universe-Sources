@@ -90,18 +90,17 @@ Artefacts ^{
 				07=if(!(damage_set & 2))exit;
 				//Пропускаем оружие с игнорирующим защиту (неотразимым) типом урона
 				08=if((damage_set & 2048))exit;
-				09=if(findsubstr(weapon_type,'Splinter') >= 0)
-				10=int shot = Rnd(1, 100);
-				11=int shot_chance = 25;
+				09=int shot = Rnd(1, 100);
+				10=int shot_chance = 25;
 				//Повышенный шанс игнора брони для ЧДшного оружия отключён во избежание абуза оружия клисан
-				//12=if(ItemOwner(ScriptItemActObject2()) == 6)shot_chance = 40;
-				12=if(shot_chance >= shot)
-				13 ^{
+				//11=if(ItemOwner(ScriptItemActObject2()) == 6)shot_chance = 40;
+				11=if(shot_chance >= shot)
+				12 ^{
 					01=int damag = (ScriptItemActParam() + ShipArmor(target)) * 100;
 					02=damag = damag / (100 - ShipProtectability(target));
 					03=ScriptItemActParam(damag);
 				}
-				14=if(!ItemDurability(CurItem()) && ScriptItemActShip() == Player())Ether(8, '', CT('Artefacts.CustomArtefacts.RNDart_01.BrokenInUse'));
+				13=if(!ItemDurability(CurItem()) && ScriptItemActShip() == Player())Ether(8, '', CT('Artefacts.CustomArtefacts.RNDart_01.BrokenInUse'));
             }
             Size=7
 			Cost=2100

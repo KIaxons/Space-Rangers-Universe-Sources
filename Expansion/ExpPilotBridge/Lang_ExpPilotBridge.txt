@@ -735,7 +735,7 @@ ShipInfo ^{
 						01=if(CurrentForm()=='Info')
 						02 ^{
 							01=InterfaceState('RuinsTalk','SecondLayerBridge',0);
-							02=if(GetShipRuins(Player())!=0)
+							02=if(GetShipRuins(Player()))
 							03 ^{
 								01=if(ShipType(GetShipRuins(Player()))=='CBRUAlpha')
 								02 ^{
@@ -745,7 +745,7 @@ ShipInfo ^{
 									04=InterfacePos('Info','SecondLayerBridgeInfo',(GetGameOptions('ResolutionX')-1024)/2,(GetGameOptions('ResolutionY')-768)/2,0);
 								}
 							}
-							04=if(PlayerBridge()>0)
+							04=if(PlayerBridge())
 							05 ^{
 								01=InterfaceState('Info','PM_EndTurn',0);
 								02=InterfaceState('Info','RT_EndTurn_Lock',1);
@@ -754,7 +754,7 @@ ShipInfo ^{
 						//Подстановка "заглушки" вместо кнопки пропуска хода
 						03=if(CurrentForm()=='Ship')
 						04 ^{
-							01=if(PlayerBridge()>0)
+							01=if(PlayerBridge())
 							02 ^{
 								01=InterfaceState('Ship','PM_EndTurn',0);
 								02=InterfaceState('Ship','RT_EndTurn_Lock',1);
@@ -762,7 +762,7 @@ ShipInfo ^{
 						}
 						05=if(CurrentForm()=='Rating')
 						06 ^{
-							01=if(PlayerBridge()>0)
+							01=if(PlayerBridge())
 							02 ^{
 								01=InterfaceState('Rating','PM_EndTurn',0);
 								02=InterfaceState('Rating','RT_EndTurn_Lock',1);
@@ -770,14 +770,22 @@ ShipInfo ^{
 						}
 						07=if(CurrentForm()=='Galaxy')
 						08 ^{
-							01=if(PlayerBridge()>0)
+							01=if(PlayerBridge())
 							02 ^{
 								01=InterfaceState('Galaxy','PM_EndTurn',0);
 								02=InterfaceState('Galaxy','RT_EndTurn_Lock',1);
 							}
 						}
-						09=if(CurrentForm()=='RuinsTalk')
+						09=if(CurrentForm()=='Journal')
 						10 ^{
+							01=if(PlayerBridge())
+							02 ^{
+								01=InterfaceState('Journal','PM_EndTurn',0);
+								02=InterfaceState('Journal','RT_EndTurn_Lock',1);
+							}
+						}
+						11=if(CurrentForm()=='RuinsTalk')
+						12 ^{
 							01=if(PlayerBridge()>2 && PlayerBridge()<16)
 							02 ^{
 								//Функция смены фона мостика, срабатывающая при заходе на него (космический фон, ангарный фон, фон незаселёнок)
@@ -794,7 +802,7 @@ ShipInfo ^{
 									}
 								}
 								//На планете или станции
-								03=if(GetShipPlanet(GetShipRuins(Player()))!=0 || GetShipRuins(GetShipRuins(Player()))!=0)
+								03=if(GetShipPlanet(GetShipRuins(Player())) || GetShipRuins(GetShipRuins(Player())))
 								04 ^{
 									01=InterfaceState('RuinsTalk','StarFieldM',0);
 									02=InterfaceImage('RuinsTalk','FirstLayerBridge','Bm.FormRuins.2CBRHAlphabg');
@@ -805,7 +813,7 @@ ShipInfo ^{
 										01=InterfaceImage('RuinsTalk','FirstLayerBridge','Bm.FormRuins.2DestroyerBridgeAlphabg');
 									}
 									//Конкретно на незаселёнке
-									06=if(GetShipPlanet(GetShipRuins(Player()))!=0)
+									06=if(GetShipPlanet(GetShipRuins(Player())))
 									07 ^{
 										01=if(PlanetOwner(GetShipPlanet(GetShipRuins(Player())))==6)
 										02 ^{
@@ -836,18 +844,18 @@ ShipInfo ^{
 							}
 						}
 						//Проверка ухода с мостика ТИ и всех прочих привязанных к нему мостиков
-						11=if(GDestroyerBridge==1 && PlayerBridge()==0)
-						12 ^{
+						13=if(GDestroyerBridge==1 && !PlayerBridge())
+						14 ^{
 							01=GDestroyerBridge=0;
 						}
 						//Отключение/подключение кнопки конца хода
-						13=if(PlayerBridge()>0)
-						14 ^{
+						15=if(PlayerBridge())
+						16 ^{
 							01=InterfaceState('RuinsTalk','PM_EndTurn',0);
 							02=InterfaceState('RuinsTalk','RT_EndTurn_Lock',1);
 						}
-						15=if(PlayerBridge()==0)
-						16 ^{
+						17=else
+						18 ^{
 							01=InterfaceState('RuinsTalk','PM_EndTurn',-1);
 							02=InterfaceState('RuinsTalk','RT_EndTurn_Lock',0);
 						}
@@ -864,7 +872,7 @@ ShipInfo ^{
 					}
 					07=else if(ScriptItemActionType(t_OnLeavingForm))
                     08 ^{
-						01=if(GetShipRuins(Player())!=0)
+						01=if(GetShipRuins(Player()))
 						02 ^{
 							//Возвращаемся обратно в Галанет при закрытии инфоцентра на мостике
 							01=if(CurrentForm()=='Info' && (ShipType(GetShipRuins(Player()))=='CBRCAlpha' || ShipType(GetShipRuins(Player()))=='CBRHAlpha' || ShipType(GetShipRuins(Player()))=='CBRUAlpha' || ShipType(GetShipRuins(Player()))=='DBISAlpha'))
@@ -877,7 +885,7 @@ ShipInfo ^{
 							//Снятие "заглушки" кнопки пропуска хода
 							03=if(CurrentForm()=='Ship')
 							04 ^{
-								01=if(PlayerBridge()>0)
+								01=if(PlayerBridge())
 								02 ^{
 									01=InterfaceState('Ship','PM_EndTurn',-1);
 									02=InterfaceState('Ship','RT_EndTurn_Lock',0);
@@ -885,7 +893,7 @@ ShipInfo ^{
 							}
 							05=if(CurrentForm()=='Rating')
 							06 ^{
-								01=if(PlayerBridge()>0)
+								01=if(PlayerBridge())
 								02 ^{
 									01=InterfaceState('Rating','PM_EndTurn',-1);
 									02=InterfaceState('Rating','RT_EndTurn_Lock',0);
@@ -893,10 +901,18 @@ ShipInfo ^{
 							}
 							07=if(CurrentForm()=='Galaxy')
 							08 ^{
-								01=if(PlayerBridge()>0)
+								01=if(PlayerBridge())
 								02 ^{
 									01=InterfaceState('Galaxy','PM_EndTurn',-1);
 									02=InterfaceState('Galaxy','RT_EndTurn_Lock',0);
+								}
+							}
+							09=if(CurrentForm()=='Journal')
+							10 ^{
+								01=if(PlayerBridge())
+								02 ^{
+									01=InterfaceState('Journal','PM_EndTurn',-1);
+									02=InterfaceState('Journal','RT_EndTurn_Lock',0);
 								}
 							}
 						}

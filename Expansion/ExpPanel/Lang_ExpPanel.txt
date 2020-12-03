@@ -10,6 +10,10 @@ FormShip ^{
     OnSpaceSet8=Восьмая комплектация
     OnSpaceSet9=Девятая комплектация
 }
+Help ^{
+	EndTurnBrakeOn=Автоостановка хода <color=255,240,100>включена</color>
+	EndTurnBrakeOff=Автоостановка хода <color=255,240,100>выключена</color>
+}
 ShipInfo ^{
     AddInfo ^{
         CustomInfos ~{
@@ -17,43 +21,56 @@ ShipInfo ^{
                 Description=Обновляет значения на панели ремонта и отключает звания невоенным NPC при сканировании
                 Icon=0
                 Name=
-				OnActCodeTypes=t_OnEnteringForm,t_OnLeavingForm,t_OnScan,t_OnStep
-				OnActStepTypes=11
+				OnActCodeTypes=t_OnStep,t_OnEnteringForm,t_OnLeavingForm,t_OnScan
+				OnActStepTypes=0,11
                 OnActCode ^{
                     01=int i=0;
                     02=dword temp_dword=0;
                     03=int dur=0;
                     04=int dur_count=0;
-                    05=if(ScriptItemActionType(t_OnStep,11))
+                    05=if(ScriptItemActionType(t_OnStep))
                     06 ^{
-                        01=for(i=0;i<ShipItems(Player());i=i+1)
-                        02 ^{
-                            01=temp_dword=ShipItems(Player(),i);
-                            02=if(!ItemIsInUse(temp_dword) || ItemType(temp_dword)==t_Hull)continue;
-                            03=dur_count=dur_count+1;
-                            04=if(ItemDurability(temp_dword)>0)dur=dur+ItemDurability(temp_dword);
-                            05=if(ItemDurability(temp_dword)<=0)dur=dur+0;
-                        }
-                        03=for(i=1;i<5;i=i+1)
-                        04 ^{
-                            01=temp_dword=ShipEqInSlot(Player(),t_Artefact,i);
-                            02=if(temp_dword)
-                            03 ^{
-                                01=if(ItemDurability(temp_dword)>0)dur=dur+ItemDurability(temp_dword);
-                                02=if(ItemDurability(temp_dword)<=0)dur=dur+0;
-                                03=dur_count=dur_count+1;
-                            }
-                        }
-                        05=if(dur_count>=0)
-                        06 ^{
-                            01=dur_count=dur_count+1;
-                            02=dur=dur+(100-HullDamage(Player()));
-                        }
-                        07=dur=43-43*(dur/dur_count)/100;
-                        08=InterfacePos('StarMap','fix_info_butt_a',-dur,0,0);
-                        09=if(InterfaceState('StarMap','fix_info_window')==1)InterfaceState('StarMap','fix_info_window',0);
-                        10=InterfaceSize('StarMap','HPbar_s',0,141-141*HullDamage(Player())/100);
-                        11=InterfacePos('StarMap','HPbar_s',0,141*HullDamage(Player())/100,0);
+						//Если игроком был включён принудительный пропуск ходов (включается в Main)
+						01=if(!ScriptItemActParam())
+						02 ^{
+							01=if(GTurnBrakeOff)
+							02 ^{
+								//Если игрок не находится на планете, станции, в гипере или в ЧД
+								//(т.к. после взлёта ему по любому придется отдать какой-то приказ), то принудительно пропускаем ход
+								01=if(ShipInNormalSpace(Player()))FilmFlags(3, 1);
+							}
+						}
+						03=else
+						04 ^{
+							01=for(i=0;i<ShipItems(Player());i=i+1)
+							02 ^{
+								01=temp_dword=ShipItems(Player(),i);
+								02=if(!ItemIsInUse(temp_dword) || ItemType(temp_dword)==t_Hull)continue;
+								03=dur_count=dur_count+1;
+								04=if(ItemDurability(temp_dword)>0)dur=dur+ItemDurability(temp_dword);
+								05=if(ItemDurability(temp_dword)<=0)dur=dur+0;
+							}
+							03=for(i=1;i<5;i=i+1)
+							04 ^{
+								01=temp_dword=ShipEqInSlot(Player(),t_Artefact,i);
+								02=if(temp_dword)
+								03 ^{
+									01=if(ItemDurability(temp_dword)>0)dur=dur+ItemDurability(temp_dword);
+									02=if(ItemDurability(temp_dword)<=0)dur=dur+0;
+									03=dur_count=dur_count+1;
+								}
+							}
+							05=if(dur_count>=0)
+							06 ^{
+								01=dur_count=dur_count+1;
+								02=dur=dur+(100-HullDamage(Player()));
+							}
+							07=dur=43-43*(dur/dur_count)/100;
+							08=InterfacePos('StarMap','fix_info_butt_a',-dur,0,0);
+							09=if(InterfaceState('StarMap','fix_info_window')==1)InterfaceState('StarMap','fix_info_window',0);
+							10=InterfaceSize('StarMap','HPbar_s',0,141-141*HullDamage(Player())/100);
+							11=InterfacePos('StarMap','HPbar_s',0,141*HullDamage(Player())/100,0);
+						}
                     }
                     07=else if(ScriptItemActionType(t_OnEnteringForm))
                     08 ^{
