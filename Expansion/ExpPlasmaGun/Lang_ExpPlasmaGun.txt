@@ -60,126 +60,102 @@ Items ^{
 		}
     }
 }
-MicroModuls ~{
+MicroModuls ^{
 	ExpPlasmaGun_Diphrode ^{
-		Cost=120
+        Cost=120
 		Equipments=PlasmaGun
-		Fragility=100
-		KindGraph=Diphrode
-		Name="Дифрод"
-		OnPlanets=1
-		Owner=Maloc,Peleng,People,Fei,Gaal
-		Priority=10
-		Ruins=Any
-		ShotVisual=4
-		Size=110
-		Special=1
-		Text=<color=248,252,248>Серийный комплект модифицированных узлов орудия и программных доработок "Дифрод", увеличивающих мощность оружия разных типов.</color><br> <br>
-		Text=Бонус к урону: <clr>15%<clrEnd>
-		Text=Мощность сканера: <bonScan> ед.
-		Text=(необходимо превышение мощности сканера над защитой цели)
-		WeaponMods=ScanBonus
-		bonScan=-1
+        KindGraph=Diphrode
+        Name="Дифрод"
+        OnPlanets=1
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=10
+        Ruins=Any
+        ShotVisual=1
+        Size=110
+        Special=1
+        Text=<color=248,252,248>Серийный комплект модифицированных узлов орудия и программных доработок "Дифрод", увеличивающий мощность оружия любого типа.</color>
+        Text=<clr><clrEnd>
+        Text=Бонус к урону: <clr>+15%<clrEnd>
+        Text=Мощность сканера: <bonScan> ед.
+        Text=(для применения бонуса требуется превышение<br>мощности сканера над защитой цели)
+        WeaponMods=ScanBonus
+        bonScan=-1
 	}
 	ExpPlasmaGun_Liphocarus ^{
-		Cost=120
+        Cost=120
 		Equipments=PlasmaGun
-		Fragility=100
-		KindGraph=Liphocarus
-		Name="Лифокар"
-		OnPlanets=1
-		Owner=Maloc,Peleng,People,Fei,Gaal
-		Priority=10
-		Ruins=Any
-		ShotVisual=4
-		Size=110
-		Special=1
-		Text=<color=248,252,248>Модифицированное по проекту "Лифокар" вооружение наносит дополнительный урон повреждённым целям, используя механизм последовательной сверхточной стрельбы в пробоины корпуса.</color><br> <br>
-		Text=Бонус к урону до: <clr>33%<clrEnd>
-		Text=Мощность сканера: <bonScan> ед.
-		Text=(необходимо превышение мощности сканера над защитой цели)
-		WeaponMods=BonusToDamaged
-		bonScan=-1
+        KindGraph=Liphocarus
+        Name="Лифокар"
+        OnPlanets=1
+        Priority=10
+        Ruins=Any
+        ShotVisual=2
+        Size=110
+        Special=1
+        Text=<color=248,252,248>Модернизированное по проекту "Лифокар" вооружение наносит дополнительный урон повреждённым целям, используя механизм последовательной сверхточной стрельбы в пробоины корпуса.</color>
+        Text=<clr><clrEnd>
+        Text=Бонус к урону: <clr>до +33%<clrEnd>
+        Text=Мощность сканера: <bonScan> ед.
+        Text=(для применения бонуса требуется превышение<br>мощности сканера над защитой цели)
+        WeaponMods=BonusToDamaged
+        bonScan=-1
 	}
 	ExpPlasmaGun_Javitor ^{
-		Cost=120
+        Cost=120
 		Equipments=PlasmaGun
-		Fragility=100
 		KindGraph=Javitor
-		Name="Джавитор"
-		OnPlanets=1
-		Owner=Maloc,Peleng,People,Fei,Gaal
-		Priority=10
-		Ruins=Any
-		ShotVisual=4
-		Size=110
-		Special=1
-		Text=<color=248,252,248>Модифицированное для прицельного отстрела ремонтных роботов, вооружение в варианте "Джавитор" позволяет вести огонь по траектории движения дроида, тем самым получая шанс блокировать вражескому кораблю проведение ремонта в ходе битвы.</color><br> <br>
-		Text=Шанс блокировки <clr>дроида<clrEnd> обратно пропорционален размеру корпуса цели
-		Text=Мощность сканера: <bonScan> ед.
-		Text=(необходимо превышение мощности сканера над защитой цели)
-		WeaponMods=BlockDroid
-		bonScan=-1
+        Name="Джавитор"
+        OnPlanets=1
+        Priority=10
+        Ruins=Any
+        ShotVisual=3
+        Size=110
+        Special=1
+        TText=<color=248,252,248>Разработанное для прицельного отстрела ремонтных роботов, вооружение с модификацией "Джавитор" позволяет вести огонь по траектории движения дроида, тем самым получая шанс блокировать вражескому кораблю проведение ремонта в ходе битвы.</color>
+        Text=<clr><clrEnd>
+        Text=Шанс блокировки <clr>дроида<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Мощность сканера: <bonScan> ед.
+        Text=(для применения бонуса требуется превышение<br>мощности сканера над защитой цели)
+        WeaponMods=BlockDroid
+        bonScan=-1
 	}
 	ExpPlasmaGun_Armoloc ^{
-		Cost=120
+        Cost=120
 		Equipments=PlasmaGun
-		Fragility=100
 		KindGraph=Armoloc
-		Name="Армолок"
-		OnPlanets=1
-		Owner=Maloc,Peleng,People,Fei,Gaal
-		Priority=10
-		Ruins=Any
-		ShotVisual=2
-		Size=110
-		Special=1
-		Text=<color=248,252,248>Оружие модификации "Армолок" может высокоточными выстрелами выводить из строя концентратор каналов управления вооружением цели, на некоторое время отнимая у противника способность вести ответный огонь.</color><br> <br>
-		Text=Шанс блокировки <clr>вооружения<clrEnd> обратно пропорционален размеру корпуса цели
-		Text=Мощность сканера: <bonScan> ед.
-		Text=(необходимо превышение мощности сканера над защитой цели)
-		WeaponMods=BlockWeapon
-		bonScan=-1
-	}
-	ExpPlasmaGun_Involute ^{
-		Cost=300
-		Equipments=PlasmaGun
-		Fragility=200
-		KindGraph=Involute
-		Name="Эвольвента"
-		OnPlanets=1
-		Owner=Maloc,Peleng,People,Fei,Gaal
-		Priority=10
-		Ruins=Any
-		ShotVisual=0
-		Size=70
-		Special=1
-		Text=<color=248,252,248>Следующий этап в развитии плазмогана. Модифицированная энергетическая установка значительно дороже и быстрее перегревается, но зато увеличивает скорострельность, дальность стрельбы, а также уменьшает занимаемый орудием объём.</color><br> <br>
-		Text=Число выстрелов в день: <clr>+1<clrEnd>
-		Text=Дальность стрельбы: <clr>+80<clrEnd> ед.
-		Text=Надёжность оружия: <clr>-50%<clrEnd>
-		bonAttacks=1
-		bonWRadius=80
+        Name="Армолок"
+        OnPlanets=1
+        Priority=10
+        Ruins=Any
+        ShotVisual=4
+        Size=110
+        Special=1
+        Text=<color=248,252,248>Оружие в модификации "Армолок" способно высокоточными выстрелами выводить из строя концентратор каналов управления вооружением цели, на некоторое время отнимая у противника способность вести ответный огонь.</color>
+        Text=<clr><clrEnd>
+        Text=Шанс блокировки <clr>вооружения<clrEnd> обратно пропорционален размеру корпуса цели
+        Text=Мощность сканера: <bonScan> ед.
+        Text=(для применения бонуса требуется превышение<br>мощности сканера над защитой цели)
+        WeaponMods=BlockWeapon
+        bonScan=-1
 	}
 	ExpPlasmaGun_Magnetron ^{
-		Cost=190
 		Equipments=PlasmaGun
-		Fragility=133
 		KindGraph=Magnetron
 		Name="Магнетрон"
 		OnPlanets=1
-		Owner=Maloc,Peleng,People,Fei,Gaal
 		Priority=10
 		Ruins=Any
 		ShotVisual=1
-		Size=100
 		Special=1
-		Text=<color=248,252,248>Источник мощного магнитного поля, установленный на данном орудии, значительно увеличивает пробивную силу любого энергетического импульса. При этом вызываемые магнитным полем помехи заметно снижают эффективность работы бортового оборудования как атакующего, так и его цели.</color><br> <br>
-        Text=Дополнительный эффект: <clr>ЭМ-помехи<clrEnd>
+		Text=<color=248,252,248>Источник мощного магнитного поля, установленный на данном орудии, значительно увеличивает пробивную силу любого энергетического импульса. При этом вызываемые магнитным полем помехи отрицательно сказываются на надёжности установки, а также ощутимо снижают эффективность работы бортового оборудования как атакующего, так и его цели.</color>
+        Text=<clr><clrEnd>
 		Text=Бонус к урону: <clr>+15<clrEnd> ед.
+        Text=Накладывает на цель: <clr>ЭМ-помехи<clrEnd>
 		Text=Дальность радара: <bonRadar> млн. км.
 		Text=Мощность сканера: <bonScan> ед.
-		Text=Надёжность оружия: <clr>-25%<clrEnd>
+		Cost=180
+		Size=110
+		Fragility=133
 		WeaponMods=Magnetic
 		bonWEnergy=15
 		bonRadar=-100

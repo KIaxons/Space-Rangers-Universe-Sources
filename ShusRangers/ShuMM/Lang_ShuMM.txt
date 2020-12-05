@@ -1,55 +1,170 @@
-MicroModuls ~{
+MicroModuls ^{
     490 ^{
         CustomTag=special_hull
     }
     498 ^{
-        Cost=200
         CustomTag=AkrinAmplifier
         Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
         Name=Акринатор
         Priority=0
-        Size=200
         Special=1
-		LockedAcryn=3
-        Text=Уникальный микромодуль первого уровня, ручной работы. Новейшая экспериментальная разработка техников Коалиции в области акриновых технологий, создана в единственном экземпляре. Увеличивает все особые эффекты <clr>акринового<clrEnd> оборудования в три раза и нейтрализует все его негативные эффекты. Размер и стоимость оборудования при этом увеличиваются в два раза. Из-за конфликта устаревших разъемов невозможна его установка в корпус.
+        Text=Уникальный микромодуль первого уровня ручной работы. Новейшая экспериментальная разработка техников Коалиции в области акриновых технологий, произведённая в единственном экземпляре. Увеличивает все особые эффекты <clr>акринового<clrEnd> оборудования в <clr>три раза<clrEnd> и нейтрализует все его негативные эффекты. Размер и стоимость оборудования при этом увеличиваются в два раза. Из-за конфликта устаревших разъёмов, установка <clr>Акринатора<clrEnd> в корпус не представляется возможной.
+        Text=<clr><clrEnd>
 		Text=Акриновые бонусы: <clr>+200%<clrEnd>
 		Text=Акриновые штрафы: <clr>-100%<clrEnd>
-        Text=Размер: <clr>+100%<clrEnd>
+		Text=Размер: <clr>+100%<clrEnd>
         Text=Стоимость: <clr>+100%<clrEnd>
+        Cost=200
+        Size=200
         bonExtraAkrinEff=200
         bonExtraAkrinPenalty=-99.99
     }
-    ShuMM_AcrynExtra ^{
+	//Бонусы из мода
+    ShuMM_Downgrade ^{
+        Cost=40
         Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
-        Name=Акрин-экстра
-        Owner=Any
-        Priority=75
-        Text=Микромодуль третьего уровня. Снимает системные ограничения <clr>акринового<clrEnd> оборудования, увеличивая его положительные эффекты на <clr>25%<clrEnd>.
-        bonExtraAkrinEff=25
+        Fragility=150
+        Name=Даунгрейд
+        Owner=Fei,Gaal
+        Priority=70
+        Size=70
+        Text=Микромодуль третьего уровня. Заменяет часть дорогих и громоздких <clr>фэянских и гаальских<clrEnd> деталей более компактными и низкокачественными пеленгскими, также удаляя все декоративные и малофункциональные элементы. Не используется для корпуса и оружия.
+        Text=Стоимость: <clr>-60%<clrEnd>
+        Text=Размер: <clr>-30%<clrEnd>
+        Text=Надежность: <clr>-33%<clrEnd>
     }
-    ShuMM_ArmoriteDroid ^{
-        Cost=120
-        Equipments=Droid
-        Fragility=80
-        KindGraph=ArmoriteDroid
-        Name=Бронелитовый дроид
-        OnPlanets=1
-        Owner=Peleng
-        Priority=10
-        Ruins=WB,MB,Manaan
-        Special=1
-        Text=<color=248,252,248>Оборудование, разработанное специально для армии. Имеет минималистичный дизайн и, помимо базового функционала, производит специальную обработку поверхности корпуса, увеличивая тем самым его защищённость. Также перенастраивает бортовую орудийную систему на повышение дальности выстрела, из-за чего страдает общая огневая мощь.</color>
-        Text=<clr><clrEnd>
-        Text=Дальность стрельбы: <bonWRadius> ед.
-        Text=Броня корпуса: <bonHull> ед.
-        Text=Сила энергетического оружия: <bonWEnergy> ед.
+    ShuMM_Khataber ^{
+        Cost=70
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        Fragility=85
+        Name=Хатабер
+        Owner=PirateClan
+        Priority=80
+        RacialRestriction=1
+        Size=90
+        Text=Микромодуль третьего уровня. Патчит нелицензионное программное обеспечение <clr>пиратского<clrEnd> оборудования до последней версии, исправляет поврежденные файлы реестра и чистит кэш системы, таким образом обеспечивая лучшее качество работы и простоту ремонта.
+        Text=Стоимость: <clr>-30%<clrEnd>
+        Text=Размер: <clr>-10%<clrEnd>
+        Text=Надежность: <clr>+15%<clrEnd>
+    }
+    ShuMM_FragUp ^{
+        Equipments=WSplinter
+        Name=Фраг-ап
+        Owner=Maloc,Peleng
+        Priority=50
+        Size=80
+        Text=Микромодуль второго уровня. Заменяет старую систему подачи <clr>осколочных<clrEnd> снарядов более эффективным и компактным аналогом. Применяется только для замены старых <clr>пеленгских<clrEnd> и <clr>малокских<clrEnd> компонентов, по неизвестной причине конфликтует с <clr>доминаторским<clrEnd> программным обеспечением.
         Text=Сила осколочного оружия: <bonWSplinter> ед.
-        Text=Навык торговли: <bonSkill4>
-        bonHull=3
-        bonSkill4=-1
-        bonWEnergy=-3
-        bonWRadius=25
-        bonWSplinter=-4
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Размер: <clr>-20%<clrEnd>
+        bonWRadius=20
+        bonWSplinter=12
+    }
+    ShuMM_Upgrade ^{
+        Cost=175
+        Equipments=Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        Fragility=66
+        Name=Апгрейд
+        Owner=Keller
+        Priority=45
+        RacialRestriction=1
+        Text=Микромодуль второго уровня. Обновляет программное обеспечение <clr>келлероидного<clrEnd> оборудования, повышая его надежность и характеристики. Не применяется для корпуса, топливного бака и орудийных систем.
+        Text=Надежность: <clr>+50%<clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> ед.
+        Text=Дальность радара: <bonRadar> ед.
+        Text=Генератор поля: <bonDef> ед.
+        Text=Мощность захвата: <bonHook> ед.
+        Text=Дальность захвата:<bonHookRadius> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Мощность сканера: <bonScan> ед.
+        bonDef=5
+        bonDroid=15
+        bonHook=45
+        bonHookRadius=45
+        bonJump=8
+        bonRadar=750
+        bonScan=6
+        bonSpeed=75
+    }
+    ShuMM_TEDB ^{
+        Equipments=Engine
+        Fragility=66
+        Name=ТЕДБ
+        Owner=People
+        Priority=55
+        Size=120
+        Text=Микромодуль второго уровня. Устанавливает на двигатель <clr>человеческого<clrEnd> производства модификатор "ТЕДБ" (что значит "Тише едешь - дальше будешь"), перенаправляющий энергию из основных систем на гипердвигатель, что приводит к увеличению дальности гиперпрыжка взамен скорости и повышению надежности двигателя.
+        Text=Дальность прыжка: <bonJump> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Размер: <clr>+20%<clrEnd>
+        Text=Надежность: <clr>+50%<clrEnd>
+        bonJump=10
+        bonSpeed=-75
+    }
+    ShuMM_Elephant ^{
+        Equipments=Hull
+        Fragility=160
+        Name=Слонопотам
+        Owner=Peleng,People
+        Priority=42
+        Size=135
+        Text=Микромодуль второго уровня. Увеличивает расстояние между атомами корпуса корабля, повышая его размер. Отрицательным эффектом является уменьшение прочности таких кораблей, в связи с большей удаленностью атомов друг от друга. Применяется к <clr>человеческим и пеленгским<clrEnd> корпусам.
+        Text=Размер: <clr>+35%<clrEnd>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Прочность: <clr>-37%<clrEnd>
+        bonHull=-1
+    }
+    ShuMM_EMGenerator ^{
+        Equipments=WEnergy
+        Name=ЭМ-генератор
+        Owner=Fei
+        Priority=50
+        Size=110
+        Text=Микромодуль второго уровня. Монтирует на <clr>энергетическое<clrEnd> вооружение <clr>фэянского<clrEnd> производства генератор электромагнитных импульсов, вызывающий перебои в работе вражеского оборудования.
+        WeaponMods=Magnetic
+    }
+    ShuMM_Berserker ^{
+        Equipments=Hull
+        Fragility=120
+        Name=Берсеркер
+        Owner=Maloc,Peleng,People,Fei
+        Priority=60
+        Text=Микромодуль второго уровня. Снимает часть брони корпуса, размещая вместо нее два орудийных отсека. По требованиям <clr>гаальских<clrEnd> пацифистов, запрещен к применению в корпусах этой расы.
+        bonSlotWeapon=2
+    }
+    ShuMM_Minigun ^{
+        Equipments=W02
+        Name=Миниган
+        Owner=PirateClan
+		RacialRestriction=1
+        Priority=15
+		Fragility=285
+		Cost=250
+        Size=200
+        Text=Микромодуль первого уровня. Уникальная разработка <clr>пиратского клана<clrEnd>. Модифицирует <clr>осколочное орудие<clrEnd>, невероятно увеличивая его <clr>скорострельность<clrEnd>, но взамен существенно ухудшая все прочие ключевые характеристики.
+		Text=<clr><clrEnd>
+		Text=Число выстрелов за ход: <bonAttacks>
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+		Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Надёжность: <clr>-75%<clrEnd>
+        Text=Стоимость: <clr>+150%<clrEnd>
+        Text=Размер: <clr>+100%<clrEnd>
+        bonAttacks=5
+        bonWSplinter=-18
+        bonWRadius=-30
+    }
+    ShuMM_ExtremeFly ^{
+        Equipments=Engine
+        Fragility=200
+        Name=Экстрим-флай
+        Owner=PirateClan
+        Priority=15
+        RacialRestriction=1
+        Text=Микромодуль первого уровня. Снимает скоростные ограничения двигателей <clr>пиратского<clrEnd> производства, увеличивая скорость полета и повышая износ вдвое.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Надежность: <clr>-50%<clrEnd>
+        bonSpeed=270
     }
     ShuMM_Autocannon ^{
         Cost=175
@@ -69,14 +184,110 @@ MicroModuls ~{
         bonWEnergy=-7
         bonWRadius=-15
     }
-    ShuMM_Berserker ^{
-        Equipments=Hull
-        Fragility=120
-        Name=Берсеркер
-        Owner=Maloc,Peleng,People,Fei
-        Priority=60
-        Text=Микромодуль второго уровня. Снимает часть брони корпуса, размещая вместо нее два орудийных отсека. По требованиям <clr>гаальских<clrEnd> пацифистов, запрещен к применению в корпусах этой расы.
-        bonSlotWeapon=2
+    ShuMM_BlockerV217 ^{
+        Cost=200
+        Equipments=DefGenerator
+        Fragility=80
+        Name=Блокиратор v2.1.7
+        Owner=Terron
+        Priority=30
+        RacialRestriction=1
+        Size=350
+        Text=Микромодуль первого уровня. Подключает к <clr>терроноидному<clrEnd> генератору защитного поля четыре огромные батареи, увеличивающие его мощность до предела.
+        Text=Генератор поля: <bonDef> ед.
+        Text=Стоимость: <clr>+100%<clrEnd>
+        Text=Размер: <clr>+250%<clrEnd>
+        Text=Надежность: <clr>+25%<clrEnd>
+        bonDef=15
+    }
+	//Конец ММ
+	//Начало акринов
+    ShuMM_ArmoriteDroid1 ^{
+        Equipments=Droid
+        KindGraph=ArmoriteDroid
+        Name=Бронелитовый дроид
+        Owner=Maloc,Peleng
+        Priority=10
+        Ruins=WB,MB,Manaan
+        Special=1
+		AcrynSerie=Бронелитовый дроид I-III
+		AcrynLevel=1
+		SerieLevel1=ShuMM_ArmoriteDroid1
+		SerieLevel2=ShuMM_ArmoriteDroid2
+		SerieLevel3=ShuMM_ArmoriteDroid3
+		LevelsCount=3
+        Text=<color=248,252,248>Дроид, разработанный специально для армии. Имеет минималистичный дизайн и, помимо базового ремонта, производит особую механическую обработку поверхности корпуса, увеличивая тем самым его защищённость. Также перенастраивает бортовую орудийную систему на повышение дальности выстрела, из-за чего страдает общая огневая мощь.</color>
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Навык торговли: <bonSkill4>
+        Cost=150
+		Fragility=80
+        bonHull=3
+        bonSkill4=-1
+        bonWEnergy=-3
+        bonWRadius=25
+        bonWSplinter=-4
+    }
+    ShuMM_ArmoriteDroid2 ^{
+        Equipments=Droid
+        KindGraph=ArmoriteDroid
+        Name=Бронелитовый дроид
+        Owner=Maloc,Peleng
+        Priority=30
+        Ruins=WB,MB,Manaan
+        Special=1
+		AcrynSerie=Бронелитовый дроид I-III
+		AcrynLevel=2
+		SerieLevel1=ShuMM_ArmoriteDroid1
+		SerieLevel2=ShuMM_ArmoriteDroid2
+		SerieLevel3=ShuMM_ArmoriteDroid3
+		LevelsCount=3
+        Text=<color=248,252,248>Дроид, разработанный специально для армии. Имеет минималистичный дизайн и, помимо базового ремонта, производит особую механическую обработку поверхности корпуса, увеличивая тем самым его защищённость. Также перенастраивает бортовую орудийную систему на повышение дальности выстрела, из-за чего страдает общая огневая мощь.</color>
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Навык торговли: <bonSkill4>
+        Cost=200
+		Fragility=80
+        bonHull=3
+        bonSkill4=-1
+        bonWEnergy=-3
+        bonWRadius=25
+        bonWSplinter=-4
+    }
+    ShuMM_ArmoriteDroid3 ^{
+        Equipments=Droid
+        KindGraph=ArmoriteDroid
+        Name=Бронелитовый дроид
+        Owner=Maloc,Peleng
+        Priority=50
+        Ruins=WB,MB,Manaan
+        Special=1
+		AcrynSerie=Бронелитовый дроид I-III
+		AcrynLevel=3
+		SerieLevel1=ShuMM_ArmoriteDroid1
+		SerieLevel2=ShuMM_ArmoriteDroid2
+		SerieLevel3=ShuMM_ArmoriteDroid3
+		LevelsCount=3
+        Text=<color=248,252,248>Дроид, разработанный специально для армии. Имеет минималистичный дизайн и, помимо базового ремонта, производит особую механическую обработку поверхности корпуса, увеличивая тем самым его защищённость. Также перенастраивает бортовую орудийную систему на повышение дальности выстрела, из-за чего страдает общая огневая мощь.</color>
+        Text=<clr><clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Навык торговли: <bonSkill4>
+        Cost=250
+		Fragility=80
+        bonHull=3
+        bonSkill4=-1
+        bonWEnergy=-3
+        bonWRadius=25
+        bonWSplinter=-4
     }
     ShuMM_BiogeneticDroid ^{
         Cost=115
@@ -166,22 +377,6 @@ MicroModuls ~{
         Text=Дальность радара: <bonRadar> ед.
         bonDef=6
         bonRadar=-1200
-    }
-    ShuMM_BlockerV217 ^{
-        Cost=200
-        Equipments=DefGenerator
-        Fragility=80
-        Name=Блокиратор v2.1.7
-        Owner=Terron
-        Priority=30
-        RacialRestriction=1
-        Size=350
-        Text=Микромодуль первого уровня. Подключает к <clr>терроноидному<clrEnd> генератору защитного поля четыре огромные батареи, увеличивающие его мощность до предела.
-        Text=Генератор поля: <bonDef> ед.
-        Text=Стоимость: <clr>+100%<clrEnd>
-        Text=Размер: <clr>+250%<clrEnd>
-        Text=Надежность: <clr>+25%<clrEnd>
-        bonDef=15
     }
     ShuMM_CellRadar ^{
         Cost=120
@@ -305,19 +500,6 @@ MicroModuls ~{
         bonHookMinSpeed=-2
         bonHookRadius=-90
     }
-    ShuMM_Downgrade ^{
-        Cost=40
-        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
-        Fragility=150
-        Name=Даунгрейд
-        Owner=Fei,Gaal
-        Priority=70
-        Size=70
-        Text=Микромодуль третьего уровня. Заменяет часть дорогих и громоздких <clr>фэянских и гаальских<clrEnd> деталей более компактными и низкокачественными пеленгскими, также удаляя все декоративные и малофункциональные элементы. Не используется для корпуса и оружия.
-        Text=Стоимость: <clr>-60%<clrEnd>
-        Text=Размер: <clr>-30%<clrEnd>
-        Text=Надежность: <clr>-33%<clrEnd>
-    }
     ShuMM_DuplexScaner ^{
         Cost=120
         Equipments=Scaner
@@ -358,15 +540,6 @@ MicroModuls ~{
         Text=<color=248,252,248>Второе поколение оборудования, разработанного пиратским кланом. Помимо усовершенствованных акриновых технологий, вторая серия обладает биосканером, блокирующим особые свойства для непринадлежащих к пиратскому клану гуманоидов.</color>
         Text=Мощность сканера: <bonScan> ед.
         bonScan=6
-    }
-    ShuMM_EMGenerator ^{
-        Equipments=WEnergy
-        Name=ЭМ-генератор
-        Owner=Fei
-        Priority=50
-        Size=110
-        Text=Микромодуль второго уровня. Монтирует на <clr>энергетическое<clrEnd> вооружение <clr>фэянского<clrEnd> производства генератор электромагнитных импульсов, вызывающий перебои в работе вражеского оборудования.
-        WeaponMods=Magnetic
     }
     ShuMM_ElectrogenicHook ^{
         Cost=120
@@ -411,19 +584,6 @@ MicroModuls ~{
         bonHook=25
         bonHookMaxSpeed=1
         bonHookMinSpeed=1
-    }
-    ShuMM_Elephant ^{
-        Equipments=Hull
-        Fragility=160
-        Name=Слонопотам
-        Owner=Peleng,People
-        Priority=42
-        Size=135
-        Text=Микромодуль второго уровня. Увеличивает расстояние между атомами корпуса корабля, повышая его размер. Отрицательным эффектом является уменьшение прочности таких кораблей, в связи с большей удаленностью атомов друг от друга. Применяется к <clr>человеческим и пеленгским<clrEnd> корпусам.
-        Text=Размер: <clr>+35%<clrEnd>
-        Text=Броня корпуса: <bonHull> ед.
-        Text=Прочность: <clr>-37%<clrEnd>
-        bonHull=-1
     }
     ShuMM_EnergenicEngine1 ^{
         Cost=140
@@ -506,45 +666,6 @@ MicroModuls ~{
         bonSkill2=-1
         bonSpeed=120
     }
-    ShuMM_ExtremeFly ^{
-        Equipments=Engine
-        Fragility=200
-        Name=Экстрим-флай
-        Owner=PirateClan
-        Priority=15
-        RacialRestriction=1
-        Text=Микромодуль первого уровня. Снимает скоростные ограничения двигателей <clr>пиратского<clrEnd> производства, увеличивая скорость полета и повышая износ вдвое.
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Надежность: <clr>-50%<clrEnd>
-        bonSpeed=270
-    }
-    ShuMM_Extrimium ^{
-        Cost=200
-        Equipments=W01,W02,W03,W05,W06,W07,W08,W09,W10,W11,W12,W17,sphere_gun,splash_faser,laser_gun,photon_gun2
-        Fragility=170
-        Name="Экстремум"
-        OnPlanets=1
-        Owner=PirateClan
-        Priority=30
-        Ruins=PB,CB
-        Size=80
-        Special=1
-        Text=<color=248,252,248>Данное оружие оснащено экспериментальным источником энергии, способным увеличить наносимый урон до максимума, независимо от навыков пилота. Модифицированный блок занимает малый объем, но потребляет огромное количество ресурсов, вследствие чего быстро изнашивается и очень дорог в эксплуатации. Излюбленная модификация пиратов, предпочитающих внезапность и мощность надежности и стабильности.</color>
-        WeaponMods=NoDelta
-    }
-    ShuMM_FragUp ^{
-        Equipments=WSplinter
-        Name=Фраг-ап
-        Owner=Maloc,Peleng
-        Priority=50
-        Size=80
-        Text=Микромодуль второго уровня. Заменяет старую систему подачи <clr>осколочных<clrEnd> снарядов более эффективным и компактным аналогом. Применяется только для замены старых <clr>пеленгских<clrEnd> и <clr>малокских<clrEnd> компонентов, по неизвестной причине конфликтует с <clr>доминаторским<clrEnd> программным обеспечением.
-        Text=Сила осколочного оружия: <bonWSplinter> ед.
-        Text=Дальность стрельбы: <bonWRadius> ед.
-        Text=Размер: <clr>-20%<clrEnd>
-        bonWRadius=20
-        bonWSplinter=12
-    }
     ShuMM_ImpulseEngine1 ^{
         Cost=60
         Equipments=Engine
@@ -588,20 +709,6 @@ MicroModuls ~{
         Text=Дальность прыжка: <bonJump> ед.
         bonJump=-2
         bonSpeed=-40
-    }
-    ShuMM_Khataber ^{
-        Cost=70
-        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
-        Fragility=85
-        Name=Хатабер
-        Owner=PirateClan
-        Priority=80
-        RacialRestriction=1
-        Size=90
-        Text=Микромодуль третьего уровня. Патчит нелицензионное программное обеспечение <clr>пиратского<clrEnd> оборудования до последней версии, исправляет поврежденные файлы реестра и чистит кэш системы, таким образом обеспечивая лучшее качество работы и простоту ремонта.
-        Text=Стоимость: <clr>-30%<clrEnd>
-        Text=Размер: <clr>-10%<clrEnd>
-        Text=Надежность: <clr>+15%<clrEnd>
     }
     ShuMM_MicrogenaryHook ^{
         Cost=120
@@ -740,27 +847,6 @@ MicroModuls ~{
         Text=<color=248,252,248>Микрогеновая линейка оборудования разработана гаальскими техниками в сотрудничестве с фэянскими. При его сборке удаляются некоторые особо объемные элементы, а предмет покрывают сжимающим акриновым напылением. Правда, извлечение защитных компонентов совсем не способствует высокой прочности.</color>
         Text=Масса корабля: <bonMass><clr>%<clrEnd>
         bonMass=-3
-    }
-    ShuMM_Minigun ^{
-        Equipments=W02
-        Name=Миниган
-        Owner=PirateClan
-		RacialRestriction=1
-        Priority=15
-		Fragility=285
-		Cost=250
-        Size=200
-        Text=Микромодуль первого уровня. Уникальная разработка <clr>пиратского клана<clrEnd>. Модифицирует <clr>осколочное орудие<clrEnd>, невероятно увеличивая его <clr>скорострельность<clrEnd>, но взамен существенно ухудшая все прочие ключевые характеристики.
-		Text=<clr><clrEnd>
-		Text=Число выстрелов за ход: <bonAttacks>
-        Text=Сила осколочного оружия: <bonWSplinter> ед.
-		Text=Дальность стрельбы: <bonWRadius> ед.
-        Text=Надёжность: <clr>-75%<clrEnd>
-        Text=Стоимость: <clr>+150%<clrEnd>
-        Text=Размер: <clr>+100%<clrEnd>
-        bonAttacks=5
-        bonWSplinter=-18
-        bonWRadius=-30
     }
     ShuMM_PangolinDefGenerator ^{
         Equipments=DefGenerator
@@ -1260,69 +1346,6 @@ MicroModuls ~{
         Size=50
         Special=1
         Text=<color=248,252,248>Синхрофазовые топливные баки, производимые пиратским кланом, сделаны более компактными при сохранении прежней вместительности. Минусом этой технологии является хрупкость таких баков, вызванная снятием части бронепластин.</color>
-    }
-    ShuMM_TEDB ^{
-        Equipments=Engine
-        Fragility=66
-        Name=ТЕДБ
-        Owner=People
-        Priority=55
-        Size=120
-        Text=Микромодуль второго уровня. Устанавливает на двигатель <clr>человеческого<clrEnd> производства модификатор "ТЕДБ" (что значит "Тише едешь - дальше будешь"), перенаправляющий энергию из основных систем на гипердвигатель, что приводит к увеличению дальности гиперпрыжка взамен скорости и повышению надежности двигателя.
-        Text=Дальность прыжка: <bonJump> ед.
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Размер: <clr>+20%<clrEnd>
-        Text=Надежность: <clr>+50%<clrEnd>
-        bonJump=10
-        bonSpeed=-75
-    }
-    ShuMM_Torpedo ^{
-        Cost=150
-        Equipments=W04
-        Fragility=140
-        KindGraph=Torpedo
-        Name="Торпедо"
-        OnPlanets=1
-        Owner=Maloc,Peleng,People,Fei,Gaal
-        Priority=60
-        Ruins=Any
-        ShotVisual=2
-        Size=150
-        Special=1
-        Text=<color=248,252,248>Акриновые ракетометы серии "Торпедо" - попытка ученых Коалиции воссоздать доминаторские торпедные аппараты. Данная технология позволяет ракетомету выпускать одну мощную, медленную ракету, снижающую навыки цели. К несчастью, псевдоторпеды не доработаны до конца, и ракетометы серии "Торпедо" изнашиваются значительно быстрее.</color>
-		Text=<clr><clrEnd>
-		Text=Надёжность оружия: <clr>-50%<clrEnd>
-        WeaponMods=NoDelta,Decelerate
-        bonMissileSpeed=-400
-        bonShots=-2
-        bonWMissile=35
-    }
-    ShuMM_Upgrade ^{
-        Cost=175
-        Equipments=Engine,Radar,Scaner,Droid,Hook,DefGenerator
-        Fragility=66
-        Name=Апгрейд
-        Owner=Keller
-        Priority=45
-        RacialRestriction=1
-        Text=Микромодуль второго уровня. Обновляет программное обеспечение <clr>келлероидного<clrEnd> оборудования, повышая его надежность и характеристики. Не применяется для корпуса, топливного бака и орудийных систем.
-        Text=Надежность: <clr>+50%<clrEnd>
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Дальность прыжка: <bonJump> ед.
-        Text=Дальность радара: <bonRadar> ед.
-        Text=Генератор поля: <bonDef> ед.
-        Text=Мощность захвата: <bonHook> ед.
-        Text=Дальность захвата:<bonHookRadius> ед.
-        Text=Эффективность дроида: <bonDroid> ед.
-        Text=Мощность сканера: <bonScan> ед.
-        bonDef=5
-        bonDroid=15
-        bonHook=45
-        bonHookRadius=45
-        bonJump=8
-        bonRadar=750
-        bonScan=6
-        bonSpeed=75
     }
     ShuMM_UpgradeniumDefGenerator ^{
         Cost=85
@@ -2027,121 +2050,40 @@ MicroModuls ~{
         bonSlotForsage=-1
         bonSlotWeapon=-2
     }
-    ShuMM_PirateClanFeiHull ^{
-        Cost=120
-        CustomTag=ClanPirate3
-        Equipments=Hull
-        Fragility=95
-        KindGraph=Fei_PC
-        LockedAcryn=3
-        Name=</color><Type> корпус пирата
-        NonSearchable=2
-		ImitatedHullType=Pirate
+    ShuMM_Extrimium ^{
+        Cost=200
+        Equipments=W01,W02,W03,W05,W06,W07,W08,W09,W10,W11,W12,W17,sphere_gun,splash_faser,laser_gun,photon_gun2
+        Fragility=170
+        Name="Экстремум"
         OnPlanets=1
         Owner=PirateClan
-        Priority=10
-        RacialRestriction=1
+        Priority=30
         Ruins=PB,CB
-        Size=100
+        Size=80
         Special=1
-        Text=<color=248,252,248>Особый корпус, использующийся пиратским кланом. Внедрение акриновых технологий позволяет ему лучше показывать себя в бою.</color>
-        Text=Навык техники: <bonSkill3> (только для <clr>пиратов<clrEnd>)
-        bonSkill3=1
-        bonSlotWeapon=-2
+        Text=<color=248,252,248>Данное оружие оснащено экспериментальным источником энергии, способным увеличить наносимый урон до максимума, независимо от навыков пилота. Модифицированный блок занимает малый объем, но потребляет огромное количество ресурсов, вследствие чего быстро изнашивается и очень дорог в эксплуатации. Излюбленная модификация пиратов, предпочитающих внезапность и мощность надежности и стабильности.</color>
+        WeaponMods=NoDelta
     }
-    ShuMM_PirateClanGaalHull ^{
-        Cost=120
-        CustomTag=ClanPirate4
-        Equipments=Hull
-        Fragility=95
-        KindGraph=Gaal_PC
-        LockedAcryn=3
-        Name=</color><Type> корпус пирата
-        NonSearchable=2
-		ImitatedHullType=Pirate
+    ShuMM_Torpedo ^{
+        Cost=150
+        Equipments=W04
+        Fragility=140
+        KindGraph=Torpedo
+        Name="Торпедо"
         OnPlanets=1
-        Owner=PirateClan
-        Priority=10
-        RacialRestriction=1
-        Ruins=PB,CB
-        Size=100
+        Owner=Maloc,Peleng,People,Fei,Gaal
+        Priority=60
+        Ruins=Any
+        ShotVisual=2
+        Size=150
         Special=1
-        Text=<color=248,252,248>Особый корпус, использующийся пиратским кланом. Внедрение акриновых технологий позволяет ему лучше показывать себя в бою.</color>
-        Text=Навык маневренности: <bonSkill2> (только для <clr>пиратов<clrEnd>)
-        bonSkill2=1
-        bonSlotArt=-1
-        bonSlotWeapon=-2
-    }
-    ShuMM_PirateClanMalocHull ^{
-        Cost=120
-        CustomTag=ClanPirate0
-        Equipments=Hull
-        Fragility=95
-        KindGraph=Maloc_PC
-        LockedAcryn=3
-        Name=</color><Type> корпус пирата
-        NonSearchable=2
-		ImitatedHullType=Pirate
-        OnPlanets=1
-        Owner=PirateClan
-        Priority=10
-        RacialRestriction=1
-        Ruins=PB,CB
-        Size=100
-        Special=1
-        Text=<color=248,252,248>Особый корпус, использующийся пиратским кланом. Внедрение акриновых технологий позволяет ему лучше показывать себя в бою.</color>
-        Text=Навык точности: <bonSkill1> (только для <clr>пиратов<clrEnd>)
-        bonSkill1=1
-        bonSlotArt=-3
-        bonSlotDroid=-1
-        bonSlotWeapon=-1
-    }
-    ShuMM_PirateClanPelengHull ^{
-        Cost=120
-        CustomTag=ClanPirate1
-        Equipments=Hull
-        Fragility=95
-        KindGraph=Peleng_PC
-        LockedAcryn=3
-        Name=</color><Type> корпус пирата
-        NonSearchable=2
-		ImitatedHullType=Pirate
-        OnPlanets=1
-        Owner=PirateClan
-        Priority=10
-        RacialRestriction=1
-        Ruins=PB,CB
-        Size=100
-        Special=1
-        Text=<color=248,252,248>Особый корпус, использующийся пиратским кланом. Внедрение акриновых технологий позволяет ему лучше показывать себя в бою.</color>
-        Text=Навык маневренности: <bonSkill2> (только для <clr>пиратов<clrEnd>)
-        bonSkill2=1
-        bonSlotArt=-2
-        bonSlotDef=-1
-        bonSlotWeapon=4
-    }
-    ShuMM_PirateClanPeopleHull ^{
-        Cost=120
-        CustomTag=ClanPirate2
-        Equipments=Hull
-        Fragility=95
-        KindGraph=People_PC
-        LockedAcryn=3
-        Name=</color><Type> корпус пирата
-        NonSearchable=2
-		ImitatedHullType=Pirate
-        OnPlanets=1
-        Owner=PirateClan
-        Priority=10
-        RacialRestriction=1
-        Ruins=PB,CB
-        Size=100
-        Special=1
-        Text=<color=248,252,248>Особый корпус, использующийся пиратским кланом. Внедрение акриновых технологий позволяет ему лучше показывать себя в бою.</color>
-        Text=Навык точности: <bonSkill1> (только для <clr>пиратов<clrEnd>)
-        bonSkill1=1
-        bonSlotArt=-1
-        bonSlotWeapon=-1
+        Text=<color=248,252,248>Акриновые ракетометы серии "Торпедо" - попытка ученых Коалиции воссоздать доминаторские торпедные аппараты. Данная технология позволяет ракетомету выпускать одну мощную, медленную ракету, снижающую навыки цели. К несчастью, псевдоторпеды не доработаны до конца, и ракетометы серии "Торпедо" изнашиваются значительно быстрее.</color>
+		Text=<clr><clrEnd>
+		Text=Надёжность оружия: <clr>-50%<clrEnd>
+        WeaponMods=NoDelta,Decelerate
+        bonMissileSpeed=-400
+        bonShots=-2
+        bonWMissile=35
     }
 }
 Rebellion ^{
