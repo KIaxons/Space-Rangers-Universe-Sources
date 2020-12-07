@@ -235,6 +235,32 @@ begin
 
 end;
 
+procedure SF_DeleteRewardByNom(av:array of TVarEC; code:TCodeEC);
+var
+  ship:TShip;
+  i,cnt,no:integer;
+begin
+  if(High(av) < 2) then raise Exception.Create('Error.Script SF_DeleteRewardByNom');
+
+  ship:=TShip(av[1].VDW);
+  no:=av[2].VInt;
+  if High(av) > 2 then cnt:=av[3].VInt else cnt:=1;
+
+  av[0].VInt:=0;
+
+  if ship.FRewards=nil then exit;
+
+  cnt:=0;
+  for i:=ship.FRewards.Count-1 downto 0 do
+    if integer(ship.FRewards.Items[i])=no then
+    begin
+      ship.FRewards.Delete(i);
+      av[0].VInt:=av[0].VInt+1;
+      if av[0].VInt >= cnt then exit;
+    end;
+
+end;
+
 procedure SF_DropItem(av:array of TVarEC; code:TCodeEC);
 label done;
 var
@@ -721,8 +747,9 @@ begin
     if High(av)<1 then raise Exception.Create('Error.Script ShipType');
     ship:=TShip(av[1].VDW);
 
-    if ship.FCustomTypeName='' then av[0].VStr:=ship.TypeName
-    else av[0].VStr:=ship.FCustomTypeName;
+    if ship.FCustomTypeName<>'' then av[0].VStr:=ship.FCustomTypeName
+    else if (ship.FScriptShip<>nil) and (TScriptShip(ship.FScriptShip).FScript.FCD = 'Script.PC_fem_rangers') and ship.IsFemale then av[0].VStr:='FemRanger'
+    else av[0].VStr:=ship.TypeName;
 
     if High(av)>1 then
     begin
@@ -827,7 +854,7 @@ begin
     if High(av)<1 then raise Exception.Create('Error.Script ShipRankPoints');
     ship:=TShip(av[1].VDW) as TNormalShip;
     av[0].VInt:=integer(ship.FRankPoints);
-    if High(av)>1 then ship.FRankPoints:=word(av[1].VInt);
+    if High(av)>1 then ship.FRankPoints:=word(av[2].VInt);
 end;
 
 procedure SF_ShipNextRankPoints(av:array of TVarEC; code:TCodeEC);
@@ -1087,6 +1114,11 @@ begin
       av[0].VInt:=Player.FKillShipInGiperSpace;
       if(High(av) > 2) then Player.FKillShipInGiperSpace:=av[3].VInt;
     end;
+    9: begin
+      if ship<>Player then exit;
+      av[0].VInt:=Player.FTradePenalty;
+      if(High(av) > 2) then Player.FTradePenalty:=av[3].VInt;
+    end;
   else
     raise Exception.Create('Error.Script ShipStatistic');
   end;
@@ -1264,14 +1296,16 @@ begin
 
     st:=av[1].VInt;
 
-	for i:=0 to Galaxy.FStars.Count-1 do begin
-    	star:=Galaxy.FStars.Items[i];
-		for u:=0 to star.FShips.Count-1 do begin
-        	ship:=star.FShips.Items[u];
-
-            if (st=1) and (ship.FShipType=t_Kling) and (TKling(ship).FSeries=t_Blazer) and (TKling(ship).FType<>KlingBoss) then ship.FShipDestroy:=true;
-        end;
-    end; 
+	for i:=0 to Galaxy.FStars.Count-1 do
+  begin
+    star:=Galaxy.FStars.Items[i];
+		for u:=0 to star.FShips.Count-1 do
+    begin
+      ship:=star.FShips.Items[u];
+      if (st=1) and (ship.FShipType=t_Kling) and (TKling(ship).FSeries=t_Blazer) and (TKling(ship).FType<>KlingBoss)
+         and not ship.IsCustomFaction then ship.FShipDestroy:=true;
+    end;
+  end;
 end;
 
 
@@ -2062,8 +2096,10 @@ begin
             end;
         end else if (LowerCase(av[1].VStr)='main') then begin
             //GFormTalk.M_ScriptMain;
-            GFormTalk.M_Main(false);
-            
+            //GFormTalk.M_Main(false);
+            GTalk_ScriptRun:=-1;
+            GFormTalk.I_Start(true);
+
         end else if GetStrParEC(LowerCase(av[1].VStr),0,'~')='exit_end' then begin
             GEndType:=4;
             cnt:=GetCountParEC(av[1].VStr,'~');
@@ -2370,14 +2406,17 @@ var
     value:integer;
     costChange:integer;
 begin
-    if High(av)<>3 then raise Exception.Create('Error.Script ShipGoods');
+    if High(av)<3 then raise Exception.Create('Error.Script ShipGoods');
 
     ship:=TShip(av[1].VDW);
     it:=TItemType(av[2].VInt);
     value:=av[3].VInt;
     value:=max(value, -ship.FGoods[it].Cnt);
-    if value=0 then exit;
-    if value>0 then costChange:=value*mGoods[it].AverageCost
+
+    //if value=0 then exit;
+
+    if High(av)>3 then costChange:=av[4].VInt
+    else if value>0 then costChange:=value*mGoods[it].AverageCost
     else costChange:=round(ship.FGoods[it].Cost*value/ship.FGoods[it].Cnt);
 
     ship.FGoods[it].Cnt:=ship.FGoods[it].Cnt+value;
@@ -2786,6 +2825,7 @@ begin
       exit;
     end;
     if High(av)<3 then no:=0 else no:=av[3].VInt-1;//1..5 for weapons, 1..4 for arts
+    ship.SlotCorrect;
     av[0].VDW:=cardinal(ship.SlotGetEquipment(it,no));
 end;
 
@@ -4501,6 +4541,8 @@ begin
         case datatype of
           0: av[0].VInt := (item as TCargoHook).FPickUpSize;
           1: av[0].VInt := (item as TCargoHook).FHookRadius;
+          2: av[0].VFloat := (item as TCargoHook).FSpeedMin;
+          3: av[0].VFloat := (item as TCargoHook).FSpeedMax;
         end;
       end;
       t_DefGenerator: av[0].VInt := round(100-100*(item as TDefGenerator).FDefFactor);
@@ -4574,6 +4616,8 @@ begin
         case datatype of
           0: (item as TCargoHook).FPickUpSize := value;
           1: (item as TCargoHook).FHookRadius := value;
+          2: (item as TCargoHook).FSpeedMin:=av[2].VFloat;
+          3: (item as TCargoHook).FSpeedMax:=av[2].VFloat;
         end;
       end;
       t_DefGenerator: (item as TDefGenerator).FDefFactor := (100 - value)*0.01;
@@ -4973,6 +5017,7 @@ begin
   ship.ArrangeEquipments;
   ship.ArrangeArtefacts;
   ship.DropWasteItems;
+  ship.SlotCorrect;
 end;
 
 procedure SF_AddItemToPlanet(av:array of TVarEC; code:TCodeEC);
@@ -5491,9 +5536,10 @@ end;
 
 procedure SF_GotoGov(av:array of TVarEC; code:TCodeEC);
 begin
-  if(High(av) < 1) then raise Exception.Create('Error.Script GotoGov');
+  av[0].VInt:=Player.FGotoGov;
+  //if(High(av) < 1) then raise Exception.Create('Error.Script GotoGov');
 
-  Player.FGotoGov:=av[1].VInt;
+  if High(av) >= 1 then Player.FGotoGov:=av[1].VInt;
 end;
 
 procedure SF_GetShipPlanet(av:array of TVarEC; code:TCodeEC);
@@ -5628,7 +5674,8 @@ begin
 
   shipab:=TabShipAI.Create;
   shipab.FShipType:=av[1].VStr;
-  shipab.FIsPartner:=(High(av) > 1) and (av[2].VInt = 1);
+  shipab.FNoRandomDrop:=true;
+  if High(av) > 1 then shipab.FSide:=av[2].VInt else shipab.FSide:=0;
 
   if(High(av) > 2) then shipab.FPercentHitPoints:=av[3].VInt else shipab.FPercentHitPoints:=100;
   if(High(av) > 3) then shipab.FPercentPower:=av[4].VInt else shipab.FPercentPower:=100;
@@ -5636,7 +5683,8 @@ begin
   if(High(av) > 5) then
   begin
     obj:=TObject(av[6].VDW);
-    if obj is TScriptItem then shipab.FCustomDrop:=TScriptItem(obj).FItem
+    if av[6].VInt = -1 then shipab.FNoRandomDrop:=false
+    else if obj is TScriptItem then shipab.FCustomDrop:=TScriptItem(obj).FItem
     else shipab.FCustomDrop:=TItem(obj);
   end else shipab.FCustomDrop:=nil;
 
@@ -5668,8 +5716,12 @@ begin
   if(ship <> nil) then
   begin
     shipab:=TabShipAI.Create;
+    shipab.FNoRandomDrop:=true;
 
-    if(ship is TRuins) then shipab.InitAnim(ship.FGraphShip.TypeO, max(ship.FGraphShip.Size.X, ship.FGraphShip.Size.Y))
+    //if(ship is TRuins) then shipab.InitAnim(ship.FGraphShip.TypeO, max(ship.FGraphShip.Size.X, ship.FGraphShip.Size.Y))
+    //else shipab.Init(ship.FGraphShip.TypeO, ship.FGraphShip.Size.X);
+
+    if ship.FGraphShip is TRuinsSE then shipab.InitAnim(ship.FGraphShip.TypeO, max(ship.FGraphShip.Size.X, ship.FGraphShip.Size.Y))
     else shipab.Init(ship.FGraphShip.TypeO, ship.FGraphShip.Size.X);
 
     shipab.FIsConvFromShip:=true;
@@ -5677,19 +5729,22 @@ begin
     shipab.FHitPoints:=ship.FHull.FHitPoints;
 
     shipab.FWeaponCnt:=0;
+
+    ship.SlotCorrect;
     for i:=0 to 4 do
     begin
       w:=ship.SlotGetEquipment(t_Weapon1, i) as TWeapon;
       if not ship.AbleToUse(w) then continue;
 
-      abWaeponInitStd(@(shipab.FWeapon[i]), w.FItemType);
+      if w.FItemType<>t_CustomWeapon then abWaeponInitStd(@(shipab.FWeapon[i]), w.FItemType)
+      else abWaeponInitStd(@(shipab.FWeapon[i]), w.WeaponInfo.ABWeaponType);
       shipab.FWeapon[i].FSlot:=w.FSlot;
 
       shipab.FWeaponCnt:=shipab.FWeaponCnt+1;
     end;
     shipab.FWeaponCur:=0;
 
-    shipab.FIsPartner:=(High(av) > 1) and (av[2].VInt = 1);
+    if High(av) > 1 then shipab.FSide:=av[2].VInt else shipab.FSide:=0;
 
     if(High(av) > 2) then shipab.FPercentHitPoints:=av[3].VInt else shipab.FPercentHitPoints:=100;
     if(High(av) > 3) then shipab.FPercentPower:=av[4].VInt else shipab.FPercentPower:=100;
@@ -5697,7 +5752,8 @@ begin
     if(High(av) > 5) then
     begin
       obj:=TObject(av[6].VDW);
-      if obj is TScriptItem then shipab.FCustomDrop:=TScriptItem(obj).FItem
+      if av[6].VInt = -1 then shipab.FNoRandomDrop:=false
+      else if obj is TScriptItem then shipab.FCustomDrop:=TScriptItem(obj).FItem
       else shipab.FCustomDrop:=TItem(obj);
     end else shipab.FCustomDrop:=nil;
 
@@ -7934,6 +7990,7 @@ end;
 procedure SF_StarEnemyThreatLevel(av:array of TVarEC; code:TCodeEC);
 var
   star,star2: TStar;
+  ship:TShip;
   i,j:integer;
 begin
   if(High(av) < 1) then raise Exception.Create('Error.Script StarEnemyThreatLeve');
@@ -7944,24 +8001,34 @@ begin
   if star.FStatus.Battle then begin av[0].VInt:=2; exit; end;
   av[0].VInt:=0;
 
-  if Galaxy.FKellerAttackStar=star then av[0].VInt:=1;
+  if Galaxy.FKellerAttackStar=star then begin av[0].VInt:=1; exit; end;
 
   for j:=0 to star.FShips.Count-1 do
-    if TShip(star.FShips.Items[j]).FCurStanding in [tst_Kling,tst_Custom] then av[0].VInt:=1;
+  begin
+    ship:=star.FShips.Items[j];
+    if (ship.FCurPlanet<>nil) and (TPlanet(ship.FCurPlanet).FOwner=None) then continue;
+    if ship.FCurStanding in [tst_Kling,tst_Custom] then
+    begin
+      av[0].VInt:=1;
+      exit;
+    end;
+  end;
 
-  i:=1;
-  while ((i<Galaxy.FStars.Count) and (av[0].VInt=0)) do begin
+  for i:=1 to Galaxy.FStars.Count-1 do
+  begin
     star2:=TStar(star.FStarDist[i].FStar);
     if(star2.FStatus.Owners = Klings) or (star.FStatus.CustomFaction <> '') then
     begin
       for j:=0 to star2.FShips.Count-1 do
-        if(TShip(star2.FShips.Items[j]).FCurStanding in [tst_Kling,tst_Custom]) and (TShip(star2.FShips.Items[j]).FOrderObj = star) then
+      begin
+        ship:=star2.FShips.Items[j];
+        if(ship.FCurStanding in [tst_Kling,tst_Custom]) and (ship.FOrderObj = star) then
         begin
           av[0].VInt:=1;
           exit;
         end;
+      end;
     end;
-    i:=i+1;
   end;
 end;
 
@@ -8108,18 +8175,14 @@ begin
   ship.FScriptOrderAbsolute:=0;
   ship.OrderJump(starto, true);
   ship.FScriptOrderAbsolute:=scriptorder;
-  pos:=ship.CalcAfterJumpPoint(starto);
-  ship.FOrderDes:=pos;
-  ship.FPos.X:=pos.X;
-  ship.FPos.Y:=pos.Y;
-  
-  ship.FAngle:=AngleCalc(starfrom.FPos,starto.FPos);
 
   starto.FShips.Add(ship);
   ship.FCurStar:=starto;
   ship.FOrderData:=delay;
   ship.FInHiperSpace:=true;
   ship.FPrevStar:=starfrom;
+
+  ship.FAngle:=AngleCalc(starfrom.FPos,starto.FPos);
 
   if ship is TNormalShip then
     if (ship as TNormalShip).FLastPlanet=nil then
@@ -8159,6 +8222,10 @@ begin
   av[0].VInt:=GCntMicroModuls;
 end;
 
+procedure SF_SeriesCount(av:array of TVarEC; code:TCodeEC);
+begin
+  av[0].VInt:=GCntHullType;
+end;
 
 procedure SF_BonusPriority(av:array of TVarEC; code:TCodeEC);
 begin
@@ -9939,7 +10006,7 @@ var
   effName:WideString;
   target,source:TObject;
   item:TItem;
-  damage,palette:integer;
+  damage,palette,expType:integer;
   explo,sound:boolean;
   color:Cardinal;
   lFilmObj: TEFilmObj;
@@ -9985,7 +10052,7 @@ begin
     begin
       //color:=GR_PF.Color(255, 255, 255) //white
       if target=Player then color := OwnerColor(RaceToOwner(Player.FPilotRace))
-      else if TShip(target).IsCustomFaction then color := FactionColor(TScriptShip(TShip(target).FScriptShip).FCustomFaction)
+      else if TShip(target).IsSubFaction then color := FactionColor(TScriptShip(TShip(target).FScriptShip).FCustomFaction)
       else color := OwnerColor(TShip(target).FOwner);
     end
     else color:=0;    //invisible (black)
@@ -10033,6 +10100,12 @@ begin
     lFilmObj := GFilm.ObjAdd(0, lWeaponGraph, '', '');
     GFilm.OrderWeaponSetShip(step, lFilmObj, sourceFO, targetFO);
     GFilm.OrderWeaponSet(step, lFilmObj, color,damage,explo,sound);
+    if explo and (av[6].VInt>1) then
+    begin
+      expType:=av[6].VInt-1;
+      GFilm.OrderWeaponTypeExpl(step, lFilmObj, expType);
+      if expType=SEWE_Kamikaze then GFilm.OrderTrans(step,targetFO,0);
+    end;
     GFilm.OrderGraphConnect(step, lFilmObj);
 
 
@@ -11125,13 +11198,27 @@ begin
   av[0].VDW:=ord(canBeBroken);
 end;
 
+procedure SF_ItemFragility(av:array of TVarEC; code:TCodeEC);
+var
+  obj: TObject;
+  item: TItem;
+begin
+  if(High(av) < 1) then raise Exception.Create('Error.Script ItemFragility');
+  obj:=TObject(av[1].VDW);
+  item:=nil;
+  if(obj is TItem) then item:=TItem(obj);
+  if(obj is TScriptItem) then item:=TScriptItem(obj).FItem;
+  av[0].VFloat:=1;
+  if(item <> nil) and (item is TEquipment) then av[0].VFloat:=TEquipment(item).Fragility;
+end;
+
 procedure SF_ItemDurability(av:array of TVarEC; code:TCodeEC);
 var
   obj: TObject;
   durability,change: integer;
   item: TItem;
 begin
-  if(High(av) < 1) then raise Exception.Create('Error.Script ItemCanBeBroken');
+  if(High(av) < 1) then raise Exception.Create('Error.Script ItemDurability');
   durability:=100;
   obj:=TObject(av[1].VDW);
   item:=nil;
@@ -11493,8 +11580,7 @@ begin
 end;
 
 procedure SF_ExecuteCodeFromString(av:array of TVarEC; code:TCodeEC);
-var locVar:TVarArrayEC;
-  tstr:WideString;
+var tstr:WideString;
   tempCode:TCodeEC;
   tmpScr:TScript;
   i,cnt:integer;
@@ -11504,11 +11590,10 @@ begin
 
   tstr:=av[1].VStr;
 
-  if GScriptCur<>nil then locVar:=GScriptCur.FCodeInit.LocalVar else locVar:=nil;
-
   if High(av) = 1 then
   begin
-    InterpretAndExecuteString(tstr,code);
+    if code<>nil then InterpretAndExecuteString(tstr,code.LocalVar)
+    else InterpretAndExecuteString(tstr);
     exit;
   end;
 
@@ -11520,7 +11605,7 @@ begin
   tempCode.LinkAll(GScriptGlobalVarGame);
   tempCode.LinkAll(GScriptFun);
   tempCode.FScriptFunLinked:=true;
-  if locVar<>nil then tempCode.LinkAll(locVar);
+  if code<>nil then tempCode.LinkAll(code.LocalVar);
 
   cnt:=(High(av)-1) div 2;
 
@@ -12318,7 +12403,7 @@ end;
 
 procedure SF_UICheckElement(av:array of TVarEC; code:TCodeEC);
 var formName,objName,checkType:WideString;
-    form:mlForm;
+    ml:TMessageLoopGI;
     obj:TObjectGI;
 begin
   if(High(av) < 3) then raise Exception.Create('Error.Script UICheckElement');
@@ -12326,16 +12411,12 @@ begin
   //MainForm, PlanetQuest, GameLoad, GameSettings, Introduction, Hangar, Planet, PlanetNO, RuinsTalk, AB, Gov, Info, Rating, Rewards, Ship, Talk, Scaner, StarMap, Film, Galaxy, Jump, EquipmentShop, GoodsShop, SaveManager, GameMenu, CfgSettings, GameEnd, About, Score, SelectFace, Journal, LoadRobot, LoadQuest, LoadAB, Achievements
 
   objName:=av[2].VStr;//name of object in selected form (object must have name unique to selected form)
-
   obj:=nil;
-  for form:=Low(form) to High(form) do
-  begin
-    if GForm[form]=nil then continue;
-    if not (GForm[form] is TMessageLoopGI) then continue;
-    if TMessageLoopGI(GForm[form]).FName<>formName then continue;
-    obj:=TMessageLoopGI(GForm[form]).GetByNameNE(objName);
-    break;
-  end;
+
+  if formName='' then ml:=GetCurrentML
+  else ml:=GetMLByName(formName);
+
+  if ml<>nil then obj:=ml.GetByNameNE(objName);
 
   if obj=nil then raise Exception.Create('Error.Script UICheckElement - cant find '+objName+' ('+formName+')');
 
@@ -12344,6 +12425,18 @@ begin
   if checkType='IsActive' then
   begin
     av[0].VInt:=ord(obj.Active);
+    exit;
+  end;
+
+  if checkType='PosX' then
+  begin
+    av[0].VInt:=obj.Pos.X;
+    exit;
+  end;
+
+  if checkType='PosY' then
+  begin
+    av[0].VInt:=obj.Pos.Y;
     exit;
   end;
 
@@ -12379,6 +12472,17 @@ begin
   begin
     if not (obj is TgaiGI) then raise Exception.Create('Error.Script UICheckElement - '+objName+' ('+formName+') is not a gai');
     av[0].VInt:=TgaiGI(obj).CurFrame;
+    exit;
+  end;
+
+  if checkType='IsDown' then
+  begin
+    if obj is TGraphButtonGI then
+    begin
+      av[0].VInt:=ord(TGraphButtonGI(obj).Down);
+      if High(av) > 3 then TGraphButtonGI(obj).Down:=(av[4].VInt<>0);
+    end
+    else raise Exception.Create('Error.Script UICheckElement - '+objName+' ('+formName+') is not a button');
     exit;
   end;
 
@@ -12524,11 +12628,13 @@ begin
     if obj is TgaiGI then av[0].VStr:=TgaiGI(obj).Image
     else if obj is TgiGI then av[0].VStr:=TgiGI(obj).Image
     else if obj is TImageGI then av[0].VStr:=TImageGI(obj).Image
-    else raise Exception.Create('Object is not an image - '+objName);
+    else av[0].VStr:=obj.Style;
+    //raise Exception.Create('Object is not an image - '+objName);
 
     if High(av) > 2 then
     begin
-      if obj is TgaiGI then TgaiGI(obj).Image:=av[3].VStr
+      if (GetCountParEC(av[3].VStr,':')>1) and (GetStrParEC(av[3].VStr,0,':')='Style') then obj.Style:=GetStrParEC(av[3].VStr,1,':')
+      else if obj is TgaiGI then TgaiGI(obj).Image:=av[3].VStr
       else if obj is TgiGI then TgiGI(obj).Image:=av[3].VStr
       else if obj is TImageGI then TImageGI(obj).Image:=av[3].VStr
       else raise Exception.Create('Object is not an image - '+objName);
@@ -12674,7 +12780,9 @@ begin
   formName:=av[1].VStr;//name of form
   objName:=av[2].VStr;//name of object in selected form (object must have name unique to selected form)
 
-  ml:=GetMLByName(formName);
+  if formName='' then ml:=GetCurrentML
+  else ml:=GetMLByName(formName);
+
   if ml=nil then raise Exception.Create('Error.Script ButtonClick - ML not found');
 
   obj:=ml.GetByNameNE(objName);
@@ -12684,7 +12792,31 @@ begin
 
   but:=obj as TGraphButtonGI;
 
-  if Assigned(but.FunButtonUp) then but.FunButtonUp(but);
+  if Assigned(but.FunButtonUp) then but.FunButtonUp(but)
+  else if Assigned(but.FunButtonDown) then but.FunButtonDown(but);
+
+end;
+
+
+procedure SF_SetFocus(av:array of TVarEC; code:TCodeEC);
+var formName,objName:WideString;
+    obj:TObjectGI;
+    ml:TMessageLoopGI;
+    but:TGraphButtonGI;
+begin
+  if(High(av) < 2) then raise Exception.Create('Error.Script SetFocus');
+  formName:=av[1].VStr;//name of form
+  objName:=av[2].VStr;//name of object in selected form (object must have name unique to selected form)
+
+  if formName='' then ml:=GetCurrentML
+  else ml:=GetMLByName(formName);
+
+  if ml=nil then raise Exception.Create('Error.Script SetFocus - ML not found');
+
+  obj:=ml.GetByNameNE(objName);
+  if obj=nil then raise Exception.Create('Error.Script SetFocus - Object not found');
+
+  ml.SetFocus(obj);
 
 end;
 
@@ -12894,6 +13026,12 @@ begin
   if obj=nil then raise Exception.Create('Error.Script CustomInterfaceState - object not found');
   av[0].VInt:=ord(obj.Active);
   if High(av) > 1 then obj.Active:=(av[2].VInt>0);
+
+  if obj is TGraphButtonGI then
+  begin
+    if obj.Active then av[0].VInt:=av[0].VInt+ord(TGraphButtonGI(obj).Disable);
+    if High(av) > 1 then TGraphButtonGI(obj).Disable:=(av[2].VInt=2);
+  end;
 end;
 
 procedure SF_CustomInterfaceText(av:array of TVarEC; code:TCodeEC);
@@ -12930,13 +13068,16 @@ begin
   if obj is TgaiGI then av[0].VStr:=TgaiGI(obj).Image
   else if obj is TgiGI then av[0].VStr:=TgiGI(obj).Image
   else if obj is TImageGI then av[0].VStr:=TImageGI(obj).Image
-  else raise Exception.Create('Error.Script CustomInterfaceImage - object is not a image: '+av[1].VStr);
+  else av[0].VStr:=obj.Style;
+  //else raise Exception.Create('Error.Script CustomInterfaceImage - object is not a image: '+av[1].VStr);
 
   if High(av) > 1 then
   begin
-    if obj is TgaiGI then TgaiGI(obj).Image:=av[2].VStr
+    if (GetCountParEC(av[2].VStr,':')>1) and (GetStrParEC(av[2].VStr,0,':')='Style') then obj.Style:=GetStrParEC(av[2].VStr,1,':')
+    else if obj is TgaiGI then TgaiGI(obj).Image:=av[2].VStr
     else if obj is TgiGI then TgiGI(obj).Image:=av[2].VStr
-    else if obj is TImageGI then TImageGI(obj).Image:=av[2].VStr;
+    else if obj is TImageGI then TImageGI(obj).Image:=av[2].VStr
+    else raise Exception.Create('Error.Script CustomInterfaceImage - object is not a image: '+av[1].VStr);
   end;
 
 end;
@@ -13004,6 +13145,20 @@ begin
 end;
 
 
+procedure SF_CustomWeaponTypes(av:array of TVarEC; code:TCodeEC);
+var no:integer;
+begin
+  if High(av) < 1 then
+  begin
+    av[0].VInt:=Galaxy.FCustomWeaponInfos.Count;
+    exit;
+  end;
+  no:=av[1].VInt;
+  if (no >= 0) and (no < Galaxy.FCustomWeaponInfos.Count) then av[0].VStr:=PWeaponInfo(Galaxy.FCustomWeaponInfos[no]).SysName
+  else av[0].VStr:='';
+end;
+
+
 procedure SF_InventNewCustomWeapon(av:array of TVarEC; code:TCodeEC);
 var winfo,winfofrom:PWeaponInfo;
     typefrom:TItemType;
@@ -13068,6 +13223,7 @@ begin
   else if stat='SecondaryDamageRadius' then av[0].VFloat:=winfo.SecondaryDamageRadius
   else if stat='MaxDamage' then av[0].VInt:=winfo.MaxDamage
   else if stat='MinDamage' then av[0].VInt:=winfo.MinDamage
+  else if stat='DamageType' then av[0].VDW:=Cardinal(winfo.DamageType)
   else if stat='kCost' then av[0].VFloat:=winfo.kCost
   else if stat='AttackCount' then av[0].VInt:=winfo.AttackCount
   else if stat='ShotCount' then av[0].VInt:=winfo.ShotCount
@@ -13372,6 +13528,7 @@ begin
   va.Add('GiveRewardByNom',vtExternFun).VExternFun:=SF_GiveRewardByNom;
   va.Add('CountReward',vtExternFun).VExternFun:=SF_CountReward;
   va.Add('CountRewardByNom',vtExternFun).VExternFun:=SF_CountRewardByNom;
+  va.Add('DeleteRewardByNom',vtExternFun).VExternFun:=SF_DeleteRewardByNom;
   va.Add('Rnd',vtExternFun).VExternFun:=SF_Rnd;
   va.Add('GameDateTxtByTurn',vtExternFun).VExternFun:=SF_GameDateTxtByTurn;
   va.Add('Id',vtExternFun).VExternFun:=SF_Id;
@@ -13577,7 +13734,7 @@ begin
   va.Add('ForSecretMission',vtInt).VInt:=integer(ForSecretMission);
   va.Add('ForCowardice',vtInt).VInt:=integer(ForCowardice);
   va.Add('ForPerfidy',vtInt).VInt:=integer(ForPerfidy);
-  va.Add('ForPlanetBattle',vtInt).VInt:=integer(ForPerfidy);
+  va.Add('ForPlanetBattle',vtInt).VInt:=integer(ForPlanetBattle);
 
   va.Add('Maloc',vtInt).VInt:=integer(Maloc);
   va.Add('Peleng',vtInt).VInt:=integer(Peleng);
@@ -13904,6 +14061,7 @@ begin
   va.Add('OrderLock',vtExternFun).VExternFun:=SF_OrderLock;
 
   va.Add('BonusCount',vtExternFun).VExternFun:=SF_BonusCount;
+  va.Add('SeriesCount',vtExternFun).VExternFun:=SF_SeriesCount;
   va.Add('BonusPriority',vtExternFun).VExternFun:=SF_BonusPriority;
   va.Add('BonusIsSpecial',vtExternFun).VExternFun:=SF_BonusIsSpecial;
   va.Add('BonusName',vtExternFun).VExternFun:=SF_BonusName;
@@ -14072,6 +14230,7 @@ begin
   va.Add('StarCustomStarInfoData',vtExternFun).VExternFun:=SF_StarCustomStarInfoData;
 
   va.Add('ItemCanBeBroken',vtExternFun).VExternFun:=SF_ItemCanBeBroken;
+  va.Add('ItemFragility',vtExternFun).VExternFun:=SF_ItemFragility;
   va.Add('ItemDurability',vtExternFun).VExternFun:=SF_ItemDurability;
   va.Add('ItemLevel',vtExternFun).VExternFun:=SF_ItemLevel;
   va.Add('ContainerFuel',vtExternFun).VExternFun:=SF_ContainerFuel;
@@ -14131,6 +14290,7 @@ begin
   va.Add('InterfaceSize',vtExternFun).VExternFun:=SF_InterfaceSize;
 
   va.Add('ButtonClick',vtExternFun).VExternFun:=SF_ButtonClick;
+  va.Add('SetFocus',vtExternFun).VExternFun:=SF_SetFocus;
   va.Add('CurrentForm',vtExternFun).VExternFun:=SF_CurrentForm;
   va.Add('FormShipCurItem',vtExternFun).VExternFun:=SF_FormShipCurItem;
   va.Add('UpdateFormShip',vtExternFun).VExternFun:=SF_UpdateFormShip;
@@ -14152,6 +14312,7 @@ begin
   va.Add('StarMapCurPosX',vtExternFun).VExternFun:=SF_StarMapCurPosX;
   va.Add('StarMapCurPosY',vtExternFun).VExternFun:=SF_StarMapCurPosY;
 
+  va.Add('CustomWeaponTypes',vtExternFun).VExternFun:=SF_CustomWeaponTypes;
   va.Add('InventNewCustomWeapon',vtExternFun).VExternFun:=SF_InventNewCustomWeapon;
   va.Add('GetCustomWeaponInfo',vtExternFun).VExternFun:=SF_GetCustomWeaponInfo;
   va.Add('GetCustomWeaponData',vtExternFun).VExternFun:=SF_GetCustomWeaponData;
@@ -14265,4 +14426,3 @@ begin
 end;
 
 end.
-
