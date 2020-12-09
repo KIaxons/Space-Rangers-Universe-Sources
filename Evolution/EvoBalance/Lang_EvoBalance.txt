@@ -1002,7 +1002,6 @@ MicroModuls ^{
 	//Конец ММ
 	//Начало акринов
     350 ^{
-        Cost=600
         CustomTag=SuperHullPB
         Equipments=Hull
         KindGraph=1
@@ -1017,6 +1016,7 @@ MicroModuls ^{
         Text=Навык торговли: <bonSkill4>
         Text=Навык обаяния: <bonSkill5>
 		Fragility=100
+        Cost=600
 		Size=100
         bonSkill1=1
         bonSkill2=-1
@@ -1028,7 +1028,6 @@ MicroModuls ^{
         bonWSplinter=21
     }
     351 ^{
-        Cost=600
         CustomTag=SuperHullWB
         Equipments=Hull
         KindGraph=2
@@ -1038,25 +1037,25 @@ MicroModuls ^{
         Text=Эффективность дроида: <bonDroid> ед.
         Text=Навык манёвренности: <bonSkill2>
         Text=Навык техники: <bonSkill3>
-		Text=Скорость двигателя: <bonSpeed> ед.
-		Text=Мощность сканера: <bonScan> ед.
-		Text=Дальность радара: <bonRadar> млн. км.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
         Text=Навык торговли: <bonSkill4>
         Text=Навык обаяния: <bonSkill5>
-		Fragility=100
-		Size=125
-        bonDroid=35
+        Fragility=90
+        Cost=600
+        Size=100
+        bonDroid=30
         bonHull=5
         bonSkill2=1
         bonSkill3=1
-		bonScan=-6
-		bonRadar=-700
+        bonScan=-6
+        bonRadar=-1000
         bonSkill4=-1
         bonSkill5=-1
         bonSpeed=-150
     }
     352 ^{
-        Cost=600
         CustomTag=SuperHullSB
         Equipments=Hull
         KindGraph=3
@@ -1066,11 +1065,12 @@ MicroModuls ^{
         Text=Дальность прыжка: <bonJump> пк.
         Text=Дальность радара: <bonRadar> млн. км.
         Text=Броня корпуса: <bonHull> ед.
-		Fragility=100
-		Size=90
+        Fragility=105
+        Cost=600
+        Size=100
         bonHull=-4
         bonJump=10
-        bonRadar=450
+        bonRadar=800
         bonSpeed=250
     }
     353 ^{
@@ -1359,7 +1359,6 @@ MicroModuls ^{
         bonWSplinter=20
     }
     369 ^{
-        Cost=200
         Equipments=Hull
         KindGraph=E
         Name=Пигамарный корпус I
@@ -1374,15 +1373,15 @@ MicroModuls ^{
         FragilityEnergy=95
         FragilityMissile=95
         FragilitySplinter=95
+        Cost=200
 		Size=120
         bonDef=-3
-        bonRadar=-200
+        bonRadar=-300
         bonSlotArt=-1
         bonSlotWeapon=-2
-        bonWMissile=10
+        bonWMissile=13
     }
     370 ^{
-        Cost=300
         Equipments=Hull
         KindGraph=E
         Name=Пигамарный корпус II
@@ -1397,15 +1396,15 @@ MicroModuls ^{
         FragilityEnergy=95
         FragilityMissile=95
         FragilitySplinter=95
+        Cost=300
 		Size=110
         bonDef=-5
-        bonRadar=-300
+        bonRadar=-450
         bonSlotArt=-1
         bonSlotWeapon=-1
-        bonWMissile=15
+        bonWMissile=19
     }
     371 ^{
-        Cost=400
         Equipments=Hull
         KindGraph=E
         Name=Пигамарный корпус III
@@ -1418,15 +1417,15 @@ MicroModuls ^{
         Text=Дальность радара: <bonRadar> млн. км.
         Text=Генератор поля: <bonDef> ед.
 		Fragility=100
+        Cost=400
 		Size=100
         bonDef=-7
-        bonRadar=-500
+        bonRadar=-600
         bonSlotScaner=-1
 		bonSlotWeapon=-1
-        bonWMissile=25
+        bonWMissile=26
     }
     372 ^{
-        Cost=500
         Equipments=Hull
         KindGraph=E
         Name=Пигамарный корпус IV
@@ -1439,10 +1438,11 @@ MicroModuls ^{
         Text=Дальность радара: <bonRadar> млн. км.
         Text=Генератор поля: <bonDef> ед.
 		Fragility=100
+        Cost=500
 		Size=100
         bonDef=-5
-        bonRadar=-300
-        bonWMissile=20
+        bonRadar=-450
+        bonWMissile=21
     }
     373 ^{
         Cost=150
@@ -1859,7 +1859,7 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-1
-        bonRadar=-50
+        bonRadar=-100
         bonWMissile=4
     }
     401 ^{
@@ -1878,7 +1878,7 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-2
-        bonRadar=-100
+        bonRadar=-150
         bonWMissile=7
     }
     408 ^{
@@ -1897,7 +1897,7 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-3
-        bonRadar=-150
+        bonRadar=-200
         bonWMissile=10
     }
     395 ^{
@@ -1916,7 +1916,7 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-1
-        bonRadar=-50
+        bonRadar=-100
         bonWMissile=4
     }
     402 ^{
@@ -1935,7 +1935,7 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-2
-        bonRadar=-100
+        bonRadar=-150
         bonWMissile=7
     }
     409 ^{
@@ -1954,7 +1954,7 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-3
-        bonRadar=-150
+        bonRadar=-200
         bonWMissile=10
     }
     396 ^{
@@ -1973,7 +1973,7 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-1
-        bonRadar=-50
+        bonRadar=-100
         bonWMissile=4
     }
     403 ^{
@@ -1992,7 +1992,7 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-2
-        bonRadar=-100
+        bonRadar=-150
         bonWMissile=7
     }
     410 ^{
@@ -2011,7 +2011,7 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-3
-        bonRadar=-150
+        bonRadar=-200
         bonWMissile=10
     }
     397 ^{
@@ -2030,7 +2030,7 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-1
-        bonRadar=-50
+        bonRadar=-100
         bonWMissile=4
     }
     404 ^{
@@ -2049,7 +2049,7 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-2
-        bonRadar=-100
+        bonRadar=-150
         bonWMissile=7
     }
     411 ^{
@@ -2068,7 +2068,7 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-3
-        bonRadar=-150
+        bonRadar=-200
         bonWMissile=10
     }
     398 ^{
@@ -2087,7 +2087,7 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-1
-        bonRadar=-50
+        bonRadar=-100
         bonWMissile=4
     }
     405 ^{
@@ -2106,7 +2106,7 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-2
-        bonRadar=-100
+        bonRadar=-150
         bonWMissile=7
     }
     412 ^{
@@ -2125,7 +2125,7 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-3
-        bonRadar=-150
+        bonRadar=-200
         bonWMissile=10
     }
     399 ^{
@@ -2144,7 +2144,7 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-1
-        bonRadar=-50
+        bonRadar=-100
         bonWMissile=4
     }
     406 ^{
@@ -2163,7 +2163,7 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-2
-        bonRadar=-100
+        bonRadar=-150
         bonWMissile=7
     }
     413 ^{
@@ -2182,7 +2182,7 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-3
-        bonRadar=-150
+        bonRadar=-200
         bonWMissile=10
     }
     400 ^{
@@ -2201,7 +2201,7 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-1
-        bonRadar=-50
+        bonRadar=-100
         bonWMissile=4
     }
     407 ^{
@@ -2220,7 +2220,7 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-2
-        bonRadar=-100
+        bonRadar=-150
         bonWMissile=7
     }
     414 ^{
@@ -2239,11 +2239,10 @@ MicroModuls ^{
 		Fragility=100
 		Size=100
         bonDef=-3
-        bonRadar=-150
+        bonRadar=-200
         bonWMissile=10
     }
     415 ^{
-        Cost=150
         Equipments=Engine
         KindGraph=10
         Name=Трансцендентальный двигатель I
@@ -2255,12 +2254,12 @@ MicroModuls ^{
         Text=Генератор поля: <bonDef> ед.
         Text=Масса корабля: <bonMass><clr>%<clrEnd>
 		Fragility=100
+        Cost=150
 		Size=100
         bonDef=2
         bonMass=6
     }
     416 ^{
-        Cost=200
         Equipments=Engine
         KindGraph=10
         Name=Трансцендентальный двигатель II
@@ -2272,12 +2271,12 @@ MicroModuls ^{
         Text=Генератор поля: <bonDef> ед.
         Text=Масса корабля: <bonMass><clr>%<clrEnd>
 		Fragility=100
+        Cost=200
 		Size=100
         bonDef=3
         bonMass=9
     }
     417 ^{
-        Cost=250
         Equipments=Engine
         KindGraph=10
         Name=Трансцендентальный двигатель III
@@ -2289,12 +2288,13 @@ MicroModuls ^{
         Text=Генератор поля: <bonDef> ед.
         Text=Масса корабля: <bonMass><clr>%<clrEnd>
 		Fragility=100
+        Cost=250
 		Size=100
         bonDef=4
         bonMass=12
     }
     418 ^{
-        Cost=100
+        Cost=150
         Equipments=Hook
         KindGraph=14
         Name=Апгрейтинговый захват I
@@ -2306,14 +2306,14 @@ MicroModuls ^{
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
         Text=Навык обаяния: <bonSkill5>
-		Fragility=125
+		Fragility=150
 		Size=90
-		bonHook=8
-        bonHookRadius=8
+		bonHook=15
+        bonHookRadius=10
         bonSkill5=-2
     }
     419 ^{
-        Cost=100
+        Cost=150
         Equipments=DefGenerator
         KindGraph=13
         Name=Апгрейтинговый генератор защиты I
@@ -2325,14 +2325,14 @@ MicroModuls ^{
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
         Text=Навык обаяния: <bonSkill5>
-		Fragility=125
+		Fragility=150
 		Size=90
-		bonHook=8
-        bonHookRadius=8
+		bonHook=15
+        bonHookRadius=10
         bonSkill5=-2
     }
     420 ^{
-        Cost=100
+        Cost=150
         Equipments=Engine
         KindGraph=14
         Name=Апгрейтинговый двигатель I
@@ -2344,14 +2344,14 @@ MicroModuls ^{
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
         Text=Навык обаяния: <bonSkill5>
-		Fragility=125
+		Fragility=150
 		Size=90
-		bonHook=8
-        bonHookRadius=8
+		bonHook=15
+        bonHookRadius=10
         bonSkill5=-2
     }
     421 ^{
-        Cost=100
+        Cost=150
         Equipments=FuelTank
         KindGraph=13
         Name=Апгрейтинговый топливный бак I
@@ -2363,14 +2363,14 @@ MicroModuls ^{
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
         Text=Навык обаяния: <bonSkill5>
-		Fragility=125
+		Fragility=150
 		Size=90
-		bonHook=8
-        bonHookRadius=8
+		bonHook=15
+        bonHookRadius=10
         bonSkill5=-2
     }
     422 ^{
-        Cost=100
+        Cost=150
         Equipments=Radar
         KindGraph=13
         Name=Апгрейтинговый радар I
@@ -2382,14 +2382,14 @@ MicroModuls ^{
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
         Text=Навык обаяния: <bonSkill5>
-		Fragility=125
+		Fragility=150
 		Size=90
-		bonHook=8
-        bonHookRadius=8
+		bonHook=15
+        bonHookRadius=10
         bonSkill5=-2
     }
     423 ^{
-        Cost=100
+        Cost=150
         Equipments=Scaner
         KindGraph=13
         Name=Апгрейтинговый сканер I
@@ -2401,14 +2401,14 @@ MicroModuls ^{
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
         Text=Навык обаяния: <bonSkill5>
-		Fragility=125
+		Fragility=150
 		Size=90
-		bonHook=8
-        bonHookRadius=8
+		bonHook=15
+        bonHookRadius=10
         bonSkill5=-2
     }
     424 ^{
-        Cost=150
+        Cost=200
         Equipments=Hook
         KindGraph=14
         Name=Апгрейтинговый захват II
@@ -2420,14 +2420,14 @@ MicroModuls ^{
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
         Text=Навык обаяния: <bonSkill5>
-		Fragility=125
+		Fragility=150
 		Size=90
-		bonHook=12
-        bonHookRadius=10
+		bonHook=19
+        bonHookRadius=13
         bonSkill5=-2
     }
     425 ^{
-        Cost=150
+        Cost=200
         Equipments=DefGenerator
         KindGraph=13
         Name=Апгрейтинговый генератор защиты II
@@ -2439,14 +2439,14 @@ MicroModuls ^{
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
         Text=Навык обаяния: <bonSkill5>
-		Fragility=125
+		Fragility=150
 		Size=90
-		bonHook=12
-        bonHookRadius=10
+		bonHook=19
+        bonHookRadius=13
         bonSkill5=-2
     }
     426 ^{
-        Cost=150
+        Cost=200
         Equipments=Engine
         KindGraph=14
         Name=Апгрейтинговый двигатель II
@@ -2458,14 +2458,14 @@ MicroModuls ^{
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
         Text=Навык обаяния: <bonSkill5>
-		Fragility=125
+		Fragility=150
 		Size=90
-		bonHook=12
-        bonHookRadius=10
+		bonHook=19
+        bonHookRadius=13
         bonSkill5=-2
     }
     427 ^{
-        Cost=150
+        Cost=200
         Equipments=FuelTank
         KindGraph=13
         Name=Апгрейтинговый топливный бак II
@@ -2477,14 +2477,14 @@ MicroModuls ^{
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
         Text=Навык обаяния: <bonSkill5>
-		Fragility=125
+		Fragility=150
 		Size=90
-		bonHook=12
-        bonHookRadius=10
+		bonHook=19
+        bonHookRadius=13
         bonSkill5=-2
     }
     428 ^{
-        Cost=150
+        Cost=200
         Equipments=Radar
         KindGraph=13
         Name=Апгрейтинговый радар II
@@ -2496,14 +2496,14 @@ MicroModuls ^{
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
         Text=Навык обаяния: <bonSkill5>
-		Fragility=125
+		Fragility=150
 		Size=90
-		bonHook=12
-        bonHookRadius=10
+		bonHook=19
+        bonHookRadius=13
         bonSkill5=-2
     }
     429 ^{
-        Cost=150
+        Cost=200
         Equipments=Scaner
         KindGraph=13
         Name=Апгрейтинговый сканер II
@@ -2515,14 +2515,14 @@ MicroModuls ^{
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
         Text=Навык обаяния: <bonSkill5>
-		Fragility=125
+		Fragility=150
 		Size=90
-		bonHook=12
-        bonHookRadius=10
+		bonHook=19
+        bonHookRadius=13
         bonSkill5=-2
     }
     430 ^{
-        Cost=200
+        Cost=250
         Equipments=Hook
         KindGraph=14
         Name=Апгрейтинговый захват III
@@ -2534,14 +2534,14 @@ MicroModuls ^{
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
         Text=Навык обаяния: <bonSkill5>
-		Fragility=125
+		Fragility=150
 		Size=90
-		bonHook=16
-        bonHookRadius=12
+		bonHook=25
+        bonHookRadius=15
         bonSkill5=-2
     }
     431 ^{
-        Cost=200
+        Cost=250
         Equipments=DefGenerator
         KindGraph=13
         Name=Апгрейтинговый генератор защиты III
@@ -2553,14 +2553,14 @@ MicroModuls ^{
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
         Text=Навык обаяния: <bonSkill5>
-		Fragility=125
+		Fragility=150
 		Size=90
-		bonHook=16
-        bonHookRadius=12
+		bonHook=25
+        bonHookRadius=15
         bonSkill5=-2
     }
     432 ^{
-        Cost=200
+        Cost=250
         Equipments=Engine
         KindGraph=14
         Name=Апгрейтинговый двигатель III
@@ -2572,14 +2572,14 @@ MicroModuls ^{
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
         Text=Навык обаяния: <bonSkill5>
-		Fragility=125
+		Fragility=150
 		Size=90
-		bonHook=16
-        bonHookRadius=12
+		bonHook=25
+        bonHookRadius=15
         bonSkill5=-2
     }
     433 ^{
-        Cost=200
+        Cost=250
         Equipments=FuelTank
         KindGraph=13
         Name=Апгрейтинговый топливный бак III
@@ -2591,14 +2591,14 @@ MicroModuls ^{
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
         Text=Навык обаяния: <bonSkill5>
-		Fragility=125
+		Fragility=150
 		Size=90
-		bonHook=16
-        bonHookRadius=12
+		bonHook=25
+        bonHookRadius=15
         bonSkill5=-2
     }
     434 ^{
-        Cost=200
+        Cost=250
         Equipments=Radar
         KindGraph=13
         Name=Апгрейтинговый радар III
@@ -2610,14 +2610,14 @@ MicroModuls ^{
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
         Text=Навык обаяния: <bonSkill5>
-		Fragility=125
+		Fragility=150
 		Size=90
-		bonHook=16
-        bonHookRadius=12
+		bonHook=25
+        bonHookRadius=15
         bonSkill5=-2
     }
     435 ^{
-        Cost=200
+        Cost=250
         Equipments=Scaner
         KindGraph=13
         Name=Апгрейтинговый сканер III
@@ -2629,14 +2629,13 @@ MicroModuls ^{
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
         Text=Навык обаяния: <bonSkill5>
-		Fragility=125
+		Fragility=150
 		Size=90
-		bonHook=16
-        bonHookRadius=12
+		bonHook=25
+        bonHookRadius=15
         bonSkill5=-2
     }
     436 ^{
-        Cost=150
         Equipments=Droid
         KindGraph=14
         Name=Биогенный дроид I
@@ -2650,14 +2649,14 @@ MicroModuls ^{
         Text=Мощность сканера: <bonScan> ед.
         Text=Навык техники: <bonSkill3>
 		Fragility=77
+        Cost=150
 		Size=100
         bonJump=2
-        bonRadar=100
+        bonRadar=200
         bonScan=1
         bonSkill3=-2
     }
     437 ^{
-        Cost=200
         Equipments=Droid
         KindGraph=14
         Name=Биогенный дроид II
@@ -2671,14 +2670,14 @@ MicroModuls ^{
         Text=Мощность сканера: <bonScan> ед.
         Text=Навык техники: <bonSkill3>
 		Fragility=111
+        Cost=200
 		Size=100
         bonJump=3
-        bonRadar=125
+        bonRadar=250
         bonScan=2
         bonSkill3=-2
     }
     438 ^{
-        Cost=250
         Equipments=Droid
         KindGraph=14
         Name=Биогенный дроид III
@@ -2692,9 +2691,10 @@ MicroModuls ^{
         Text=Мощность сканера: <bonScan> ед.
         Text=Навык техники: <bonSkill3>
 		Fragility=90
+        Cost=250
 		Size=100
         bonJump=4
-        bonRadar=150
+        bonRadar=300
         bonScan=3
         bonSkill3=-3
     }
@@ -3549,7 +3549,7 @@ MicroModuls ^{
 		FragilitySplinter=90
 		FragilityMissile=90
 		Size=100
-        bonHookRadius=15
+        bonHookRadius=23
         bonJump=4
         bonMass=-10
         bonSkill4=-2
@@ -3575,7 +3575,7 @@ MicroModuls ^{
 		FragilitySplinter=90
 		FragilityMissile=90
 		Size=100
-        bonHookRadius=20
+        bonHookRadius=30
         bonJump=5
         bonMass=-15
         bonSkill4=-3
@@ -3601,7 +3601,7 @@ MicroModuls ^{
 		FragilitySplinter=95
 		FragilityMissile=95
 		Size=100
-        bonHookRadius=25
+        bonHookRadius=37
         bonJump=6
         bonMass=-20
         bonSkill4=-3
@@ -3627,7 +3627,7 @@ MicroModuls ^{
 		FragilitySplinter=96
 		FragilityMissile=96
 		Size=100
-        bonHookRadius=20
+        bonHookRadius=30
         bonJump=5
         bonMass=-15
         bonSkill4=-3
@@ -3645,11 +3645,11 @@ MicroModuls ^{
         Text=Дальность захвата: <bonHookRadius> ед.
         Text=Масса корабля: <bonMass><clr>%<clrEnd>
         Text=Навык торговли: <bonSkill4>
-        FragilityEnergy=93
-        FragilitySplinter=93
-        FragilityMissile=93
+        FragilityEnergy=95
+        FragilitySplinter=95
+        FragilityMissile=95
         Size=150
-        bonHookRadius=25
+        bonHookRadius=40
         bonJump=10
         bonMass=-35
         bonSkill4=-3
@@ -3670,7 +3670,7 @@ MicroModuls ^{
 		Fragility=100
         Size=130
         bonJump=7
-        bonRadar=100
+        bonRadar=200
 		bonScan=3
         bonSlotArt=-1
         bonSlotDef=-1
@@ -3696,7 +3696,7 @@ MicroModuls ^{
         Size=122
         bonJump=8
 		bonScan=4
-        bonRadar=150
+        bonRadar=300
         bonSlotDef=-1
         bonSlotWeapon=-2
     }
@@ -3721,7 +3721,7 @@ MicroModuls ^{
         bonDef=-8
         bonJump=10
 		bonScan=6
-        bonRadar=200
+        bonRadar=400
         bonSlotWeapon=-2
     }
     475 ^{
@@ -3745,7 +3745,7 @@ MicroModuls ^{
         bonDef=-6
         bonJump=9
 		bonScan=5
-        bonRadar=150
+        bonRadar=300
     }
 	487 ^{
         Cost=600
@@ -3767,7 +3767,7 @@ MicroModuls ^{
         bonDef=-12
         bonJump=16
         bonScan=10
-        bonRadar=500
+        bonRadar=1000
     }
     476 ^{
         Cost=200

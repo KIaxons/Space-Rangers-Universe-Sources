@@ -15,7 +15,7 @@ ShipInfo ^{
 							01=InterfaceState('StarMap','RadarJamming',1);
 							02=InterfaceState('Talk','RadarJamming',1);
 						}
-						03=else if(ShipStatusEffect(cur_ship,2)>0)
+						03=else if(ShipStatusEffect(cur_ship,2))
 						04 ^{
 							01=InterfaceState('StarMap','RadarJamming',1);
 							02=InterfaceState('Talk','RadarJamming',1);

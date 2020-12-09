@@ -311,7 +311,7 @@ MicroModuls ^{
         Cost=200
 		Size=100
         bonJump=3
-        bonRadar=125
+        bonRadar=250
         bonScan=2
     }
     ShuMM_BipolarRadar1 ^{
@@ -336,8 +336,8 @@ MicroModuls ^{
         Fragility=100
         Cost=150
         Size=100
-        bonDef=4
-        bonRadar=-400
+        bonDef=2
+        bonRadar=-150
     }
     ShuMM_BipolarRadar2 ^{
         Equipments=Radar
@@ -361,8 +361,8 @@ MicroModuls ^{
         Fragility=100
         Cost=200
         Size=100
-        bonDef=6
-        bonRadar=-600
+        bonDef=3
+        bonRadar=-200
     }
     ShuMM_BipolarRadar3 ^{
         Equipments=Radar
@@ -386,59 +386,232 @@ MicroModuls ^{
         Fragility=100
         Cost=250
         Size=100
-        bonDef=8
-        bonRadar=-800
+        bonDef=4
+        bonRadar=-250
     }
-    ShuMM_CellRadar ^{
-        Cost=120
+    ShuMM_CellRadar1 ^{
         Equipments=Radar
-        Fragility=90
         KindGraph=CellRadar
-        Name=Сотовый радар
+        Name=Сотовый радар I
         OnPlanets=1
         Owner=PirateClan
         Priority=10
-        Ruins=MB,Manaan
+        Ruins=PB,CB,MB,Manaan
         Special=1
-		AcrynSerie=Сотовый радар I-II
+		AcrynSerie=Сотовый радар I-III
 		AcrynLevel=1
-		SerieLevel1=ShuMM_CellRadar
-		SerieLevel2=ShuMM_CellRadarT2
-		LevelsCount=2
-        Text=<color=248,252,248>Серия оборудования, разработанного пиратским кланом. Акриновые технологии значительно повышают надежность и мощность такого оборудования.</color>
+		SerieLevel1=ShuMM_CellRadar1
+		SerieLevel2=ShuMM_CellRadar2
+		SerieLevel2=ShuMM_CellRadar3
+		LevelsCount=3
+        Text=<color=248,252,248>Серия радаров, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной надёжностью нестабильные сотовые чипы, долговечность таких радаров всё равно оказалась на непрактично низком уровне.</color>
+		Text=<clr><clrEnd>
         Text=Дальность радара: <bonRadar> млн. км.
+        Fragility=200
+        Cost=150
+		Size=100
         bonRadar=400
     }
-    ShuMM_CellRadarT2 ^{
-        Cost=135
+    ShuMM_CellRadar2 ^{
         Equipments=Radar
-        Fragility=90
         KindGraph=CellRadar
-        Name=Сотовый радар Т2
+        Name=Сотовый радар II
         OnPlanets=1
         Owner=PirateClan
-        Priority=60
-        RacialRestriction=1
-        Ruins=MB,Manaan
+        Priority=30
+        Ruins=PB,CB,MB,Manaan
         Special=1
-		AcrynSerie=Сотовый радар I-II
+		AcrynSerie=Сотовый радар I-III
 		AcrynLevel=2
-		SerieLevel1=ShuMM_CellRadar
-		SerieLevel2=ShuMM_CellRadarT2
-		LevelsCount=2
-        Text=<color=248,252,248>Второе поколение оборудования, разработанного пиратским кланом. Помимо усовершенствованных акриновых технологий, вторая серия обладает биосканером, блокирующим особые свойства для непринадлежащих к пиратскому клану гуманоидов.</color>
+		SerieLevel1=ShuMM_CellRadar1
+		SerieLevel2=ShuMM_CellRadar2
+		SerieLevel2=ShuMM_CellRadar3
+		LevelsCount=3
+        Text=<color=248,252,248>Серия радаров, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной надёжностью нестабильные сотовые чипы, долговечность таких радаров всё равно оказалась на непрактично низком уровне.</color>
+		Text=<clr><clrEnd>
         Text=Дальность радара: <bonRadar> млн. км.
-        bonRadar=700
+        Fragility=250
+        Cost=200
+		Size=100
+        bonRadar=600
+    }
+    ShuMM_CellRadar3 ^{
+        Equipments=Radar
+        KindGraph=CellRadar
+        Name=Сотовый радар III
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=50
+        Ruins=PB,CB,MB,Manaan
+        Special=1
+		AcrynSerie=Сотовый радар I-III
+		AcrynLevel=3
+		SerieLevel1=ShuMM_CellRadar1
+		SerieLevel2=ShuMM_CellRadar2
+		SerieLevel2=ShuMM_CellRadar3
+		LevelsCount=3
+        Text=<color=248,252,248>Серия радаров, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной надёжностью нестабильные сотовые чипы, долговечность таких радаров всё равно оказалась на непрактично низком уровне.</color>
+		Text=<clr><clrEnd>
+        Text=Дальность радара: <bonRadar> млн. км.
+        Fragility=300
+        Cost=250
+		Size=100
+        bonRadar=800
+    }
+    ShuMM_DuplexScaner1 ^{
+        Equipments=Scaner
+        KindGraph=DuplexScaner
+        Name=Дуплексный сканер I
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=10
+        Ruins=PB,CB,MB,Manaan
+        Special=1
+		AcrynSerie=Дуплексный сканер I-III
+		AcrynLevel=1
+		SerieLevel1=ShuMM_DuplexScaner1
+		SerieLevel2=ShuMM_DuplexScaner2
+		SerieLevel3=ShuMM_DuplexScaner3
+		LevelsCount=3
+        Text=<color=248,252,248>Серия сканеров, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной живучестью легкоплавкие дуплексные контуры, долговечность таких сканеров всё равно оказалась на непрактично низком уровне.</color>
+		Text=<clr><clrEnd>
+        Text=Мощность сканера: <bonScan> ед.
+        Fragility=200
+        Cost=150
+        Size=100
+        bonScan=4
+    }
+    ShuMM_DuplexScaner2 ^{
+        Equipments=Scaner
+        KindGraph=DuplexScaner
+        Name=Дуплексный сканер II
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=30
+        Ruins=PB,CB,MB,Manaan
+        Special=1
+		AcrynSerie=Дуплексный сканер I-III
+		AcrynLevel=2
+		SerieLevel1=ShuMM_DuplexScaner1
+		SerieLevel2=ShuMM_DuplexScaner2
+		SerieLevel3=ShuMM_DuplexScaner3
+		LevelsCount=3
+        Text=<color=248,252,248>Серия сканеров, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной живучестью легкоплавкие дуплексные контуры, долговечность таких сканеров всё равно оказалась на непрактично низком уровне.</color>
+		Text=<clr><clrEnd>
+        Text=Мощность сканера: <bonScan> ед.
+        Fragility=250
+        Cost=200
+        Size=100
+        bonScan=6
+    }
+    ShuMM_DuplexScaner3 ^{
+        Equipments=Scaner
+        KindGraph=DuplexScaner
+        Name=Дуплексный сканер III
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=50
+        Ruins=PB,CB,MB,Manaan
+        Special=1
+		AcrynSerie=Дуплексный сканер I-III
+		AcrynLevel=3
+		SerieLevel1=ShuMM_DuplexScaner1
+		SerieLevel2=ShuMM_DuplexScaner2
+		SerieLevel3=ShuMM_DuplexScaner3
+		LevelsCount=3
+        Text=<color=248,252,248>Серия сканеров, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной живучестью легкоплавкие дуплексные контуры, долговечность таких сканеров всё равно оказалась на непрактично низком уровне.</color>
+		Text=<clr><clrEnd>
+        Text=Мощность сканера: <bonScan> ед.
+        Fragility=300
+        Cost=250
+        Size=100
+        bonScan=8
+    }
+    ShuMM_ElectrogenicHook1 ^{
+        Equipments=Hook
+        KindGraph=ElectrogenicHook
+        Name=Электрогенный захват I
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=10
+        Ruins=PB,CB,MB,Manaan
+        Special=1
+		AcrynSerie=Электрогенный захват I-III
+		AcrynLevel=1
+		SerieLevel1=ShuMM_ElectrogenicHook1
+		SerieLevel2=ShuMM_ElectrogenicHook2
+		SerieLevel2=ShuMM_ElectrogenicHook3
+		LevelsCount=3
+        Text=<color=248,252,248>Серия захватов, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной износостойкостью хрупкие электрогенные приводы, долговечность таких захватов всё равно оказалась на непрактично низком уровне.</color>
+		Text=<clr><clrEnd>
+        Text=Мощность захвата: <bonHook> ед.
+        Text=Скорость захвата: <bonHookMaxSpeed> ед.
+        Fragility=200
+        Cost=150
+		Size=100
+        bonHook=16
+		bonHookMaxSpeed=1
+		bonHookMinSpeed=1
+    }
+    ShuMM_ElectrogenicHook2 ^{
+        Equipments=Hook
+        KindGraph=ElectrogenicHook
+        Name=Электрогенный захват II
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=30
+        Ruins=PB,CB,MB,Manaan
+        Special=1
+		AcrynSerie=Электрогенный захват I-III
+		AcrynLevel=2
+		SerieLevel1=ShuMM_ElectrogenicHook1
+		SerieLevel2=ShuMM_ElectrogenicHook2
+		SerieLevel2=ShuMM_ElectrogenicHook3
+		LevelsCount=3
+        Text=<color=248,252,248>Серия захватов, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной износостойкостью хрупкие электрогенные приводы, долговечность таких захватов всё равно оказалась на непрактично низком уровне.</color>
+		Text=<clr><clrEnd>
+        Text=Мощность захвата: <bonHook> ед.
+        Text=Скорость захвата: <bonHookMaxSpeed> ед.
+        Fragility=250
+        Cost=200
+		Size=100
+        bonHook=32
+		bonHookMaxSpeed=1
+		bonHookMinSpeed=1
+    }
+    ShuMM_ElectrogenicHook3 ^{
+        Equipments=Hook
+        KindGraph=ElectrogenicHook
+        Name=Электрогенный захват III
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=50
+        Ruins=PB,CB,MB,Manaan
+        Special=1
+		AcrynSerie=Электрогенный захват I-III
+		AcrynLevel=3
+		SerieLevel1=ShuMM_ElectrogenicHook1
+		SerieLevel2=ShuMM_ElectrogenicHook2
+		SerieLevel2=ShuMM_ElectrogenicHook3
+		LevelsCount=3
+        Text=<color=248,252,248>Серия захватов, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной износостойкостью хрупкие электрогенные приводы, долговечность таких захватов всё равно оказалась на непрактично низком уровне.</color>
+		Text=<clr><clrEnd>
+        Text=Мощность захвата: <bonHook> ед.
+        Text=Скорость захвата: <bonHookMaxSpeed> ед.
+        Fragility=300
+        Cost=250
+		Size=100
+        bonHook=48
+		bonHookMaxSpeed=1
+		bonHookMinSpeed=1
     }
     ShuMM_CyberneticHook1 ^{
-        Cost=125
         Equipments=Hook
-        Fragility=130
         KindGraph=CyberneticHook
         Name=Кибернетический захват I
         OnPlanets=1
         Owner=People,Fei
-        Priority=20
+        Priority=10
         Ruins=TC,MB,Manaan
         Special=1
 		AcrynSerie=Кибернетический захват I-III
@@ -447,26 +620,29 @@ MicroModuls ^{
 		SerieLevel2=ShuMM_CyberneticHook2
 		SerieLevel3=ShuMM_CyberneticHook3
 		LevelsCount=3
-        Text=<color=248,252,248>Выпускаемое фэянами и людьми оборудование создано в режиме совместимости с другим имеющимся на корабле аппаратным обеспечением. Кибернетический захват по факту является роботом, подбирающим небольшие предметы на скромной дистанции, попутно ремонтируя корпус корабля. Слабой стороной захвата является его броня, не способная эффективно отражать выстрелы.</color>
+        Text=<color=248,252,248>Уникальная совместная разработка <color=255,240,100>людей</color> и <color=255,240,100>фэян</color>. Данный "захват" по сути является <color=255,240,100>ремонтным дроидом</color>, параллельно занимающимся сбором валяющихся вокруг корабля вещей. Увеличение числа обязанностей ожидаемо не пошло ремонтному дроиду впрок, да и под обстрел вражеских пушек этот трудяга попадает значительно чаще, зато в бою владелец сего девайса может рассчитывать на помощь сразу двух металлических хранителей.</color>
+		Text=<clr><clrEnd>
         Text=Эффективность дроида: <bonDroid> ед.
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
-        bonDroid=12
+		Text=Скорость захвата: <bonHookMinSpeed> ед.
+        Fragility=125
+        Cost=150
+        Size=100
+        bonDroid=16
         bonHook=-20
+        bonHookRadius=-10
         bonHookMinSpeed=-1
-        bonHookRadius=-55
+		bonHookMaxSpeed=-1
     }
     ShuMM_CyberneticHook2 ^{
-        Cost=150
         Equipments=Hook
-        Fragility=145
         KindGraph=CyberneticHook
         Name=Кибернетический захват II
         OnPlanets=1
         Owner=People,Fei
-        Priority=50
+        Priority=30
         Ruins=TC,MB,Manaan
-        Size=105
         Special=1
 		AcrynSerie=Кибернетический захват I-III
 		AcrynLevel=2
@@ -474,26 +650,29 @@ MicroModuls ^{
 		SerieLevel2=ShuMM_CyberneticHook2
 		SerieLevel3=ShuMM_CyberneticHook3
 		LevelsCount=3
-        Text=<color=248,252,248>Выпускаемое фэянами и людьми оборудование создано в режиме совместимости с другим имеющимся на корабле аппаратным обеспечением. Кибернетический захват по факту является роботом, подбирающим небольшие предметы на скромной дистанции, попутно ремонтируя корпус корабля. Слабой стороной захвата является его броня, не способная эффективно отражать выстрелы.</color>
+        Text=<color=248,252,248>Уникальная совместная разработка <color=255,240,100>людей</color> и <color=255,240,100>фэян</color>. Данный "захват" по сути является <color=255,240,100>ремонтным дроидом</color>, параллельно занимающимся сбором валяющихся вокруг корабля вещей. Увеличение числа обязанностей ожидаемо не пошло ремонтному дроиду впрок, да и под обстрел вражеских пушек этот трудяга попадает значительно чаще, зато в бою владелец сего девайса может рассчитывать на помощь сразу двух металлических хранителей.</color>
+		Text=<clr><clrEnd>
         Text=Эффективность дроида: <bonDroid> ед.
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
-        bonDroid=18
-        bonHook=-40
+		Text=Скорость захвата: <bonHookMinSpeed> ед.
+        Fragility=125
+        Cost=200
+        Size=100
+        bonDroid=24
+        bonHook=-25
+        bonHookRadius=-15
         bonHookMinSpeed=-2
-        bonHookRadius=-70
+		bonHookMaxSpeed=-2
     }
     ShuMM_CyberneticHook3 ^{
-        Cost=175
         Equipments=Hook
-        Fragility=160
         KindGraph=CyberneticHook
         Name=Кибернетический захват III
         OnPlanets=1
         Owner=People,Fei
-        Priority=85
+        Priority=50
         Ruins=TC,MB,Manaan
-        Size=115
         Special=1
 		AcrynSerie=Кибернетический захват I-III
 		AcrynLevel=3
@@ -501,111 +680,28 @@ MicroModuls ^{
 		SerieLevel2=ShuMM_CyberneticHook2
 		SerieLevel3=ShuMM_CyberneticHook3
 		LevelsCount=3
-        Text=<color=248,252,248>Выпускаемое фэянами и людьми оборудование создано в режиме совместимости с другим имеющимся на корабле аппаратным обеспечением. Кибернетический захват по факту является роботом, подбирающим небольшие предметы на скромной дистанции, попутно ремонтируя корпус корабля. Слабой стороной захвата является его броня, не способная эффективно отражать выстрелы.</color>
+        Text=<color=248,252,248>Уникальная совместная разработка <color=255,240,100>людей</color> и <color=255,240,100>фэян</color>. Данный "захват" по сути является <color=255,240,100>ремонтным дроидом</color>, параллельно занимающимся сбором валяющихся вокруг корабля вещей. Увеличение числа обязанностей ожидаемо не пошло ремонтному дроиду впрок, да и под обстрел вражеских пушек этот трудяга попадает значительно чаще, зато в бою владелец сего девайса может рассчитывать на помощь сразу двух металлических хранителей.</color>
+		Text=<clr><clrEnd>
         Text=Эффективность дроида: <bonDroid> ед.
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
-        bonDroid=24
-        bonHook=-60
-        bonHookMaxSpeed=-1
-        bonHookMinSpeed=-2
-        bonHookRadius=-90
-    }
-    ShuMM_DuplexScaner ^{
-        Cost=120
-        Equipments=Scaner
-        Fragility=90
-        KindGraph=DuplexScaner
-        Name=Дуплексный сканер
-        OnPlanets=1
-        Owner=PirateClan
-        Priority=10
-        Ruins=MB,Manaan
-        Special=1
-		AcrynSerie=Дуплексный сканер I-II
-		AcrynLevel=1
-		SerieLevel1=ShuMM_DuplexScaner
-		SerieLevel2=ShuMM_DuplexScanerT2
-		LevelsCount=2	
-        Text=<color=248,252,248>Серия оборудования, разработанного пиратским кланом. Акриновые технологии значительно повышают надежность и мощность такого оборудования.</color>
-        Text=Мощность сканера: <bonScan> ед.
-        bonScan=4
-    }
-    ShuMM_DuplexScanerT2 ^{
-        Cost=135
-        Equipments=Scaner
-        Fragility=90
-        KindGraph=DuplexScaner
-        Name=Дуплексный сканер Т2
-        OnPlanets=1
-        Owner=PirateClan
-        Priority=50
-        RacialRestriction=1
-        Ruins=MB,Manaan
-        Special=1
-		AcrynSerie=Дуплексный сканер I-II
-		AcrynLevel=2
-		SerieLevel1=ShuMM_DuplexScaner
-		SerieLevel2=ShuMM_DuplexScanerT2
-		LevelsCount=2
-        Text=<color=248,252,248>Второе поколение оборудования, разработанного пиратским кланом. Помимо усовершенствованных акриновых технологий, вторая серия обладает биосканером, блокирующим особые свойства для непринадлежащих к пиратскому клану гуманоидов.</color>
-        Text=Мощность сканера: <bonScan> ед.
-        bonScan=6
-    }
-    ShuMM_ElectrogenicHook ^{
-        Cost=120
-        Equipments=Hook
-        Fragility=90
-        KindGraph=ElectrogenicHook
-        Name=Электрогенный захват
-        OnPlanets=1
-        Owner=PirateClan
-        Priority=10
-        Ruins=MB,Manaan
-        Special=1
-		AcrynSerie=Электрогенный захват I-II
-		AcrynLevel=1
-		SerieLevel1=ShuMM_ElectrogenicHook
-		SerieLevel2=ShuMM_ElectrogenicHookT2
-		LevelsCount=2
-        Text=<color=248,252,248>Серия оборудования, разработанного пиратским кланом. Акриновые технологии значительно повышают надежность и мощность такого оборудования.</color>
-        Text=Мощность захвата: <bonHook> ед.
-        bonHook=15
-    }
-    ShuMM_ElectrogenicHookT2 ^{
-        Cost=135
-        Equipments=Hook
-        Fragility=90
-        KindGraph=ElectrogenicHook
-        Name=Электрогенный захват Т2
-        OnPlanets=1
-        Owner=PirateClan
-        Priority=50
-        RacialRestriction=1
-        Ruins=MB,Manaan
-        Special=1
-		AcrynSerie=Электрогенный захват I-II
-		AcrynLevel=2
-		SerieLevel1=ShuMM_ElectrogenicHook
-		SerieLevel2=ShuMM_ElectrogenicHookT2
-		LevelsCount=2
-        Text=<color=248,252,248>Второе поколение оборудования, разработанного пиратским кланом. Помимо усовершенствованных акриновых технологий, вторая серия обладает биосканером, блокирующим особые свойства для непринадлежащих к пиратскому клану гуманоидов.</color>
-        Text=Мощность захвата: <bonHook> ед.
-        Text=Скорость захвата: <bonHookMaxSpeed> ед.
-        bonHook=25
-        bonHookMaxSpeed=1
-        bonHookMinSpeed=1
+		Text=Скорость захвата: <bonHookMinSpeed> ед.
+        Fragility=125
+        Cost=250
+        Size=100
+        bonDroid=32
+        bonHook=-30
+        bonHookRadius=-20
+        bonHookMinSpeed=-3
+		bonHookMaxSpeed=-3
     }
     ShuMM_EnergenicEngine1 ^{
-        Cost=140
         Equipments=Engine
-        Fragility=95
         KindGraph=EnergenicEngine
         Name=Энергенный двигатель I
-        Owner=Any
+        Owner=Maloc,Peleng,PirateClan
         Priority=10
-        Ruins=PB,CB,MB,Manaan
-        Size=175
+        Ruins=WB,PB,CB,MB,Manaan
         Special=1
 		AcrynSerie=Энергенный двигатель I-III
 		AcrynLevel=1
@@ -613,26 +709,25 @@ MicroModuls ^{
 		SerieLevel2=ShuMM_EnergenicEngine2
 		SerieLevel3=ShuMM_EnergenicEngine3
 		LevelsCount=3
-        Text=<color=248,252,248>Особый двигатель, созданный пиратскими техниками. Акриновые технологии позволяют добиться внушительного прироста характеристик. К сожалению, за это двигателю приходится расплачиваться слабыми маневровыми движками и нескромными габаритами. </color>
+        Text=<color=248,252,248>Неоднозначная приспособа <color=255,240,100>пиратских</color> "кулибиных". Часть энергии маневровых сопел данного двигателя была перенаправлена в маршевый канал, что привело к увеличению скорости, но также существенно снизило манёвренность судна. Большинство коалиционных рас такой "разработкой" побрезговали, однако <color=255,240,100>малокам</color> и <color=255,240,100>пеленгам</color> идея пришлась вполне по душе.</color>
+		Text=<clr><clrEnd>
         Text=Скорость двигателя: <bonSpeed> ед.
         Text=Дальность прыжка: <bonJump> пк.
-        Text=Масса корабля: <bonMass><clr>%<clrEnd>
-        Text=Навык маневренности: <bonSkill2>
-        bonJump=6
-        bonMass=-5
-        bonSkill2=-1
+        Text=Навык манёвренности: <bonSkill2>
+        Fragility=100
+        Cost=150
+        Size=100
         bonSpeed=40
+        bonJump=4
+        bonSkill2=-2
     }
     ShuMM_EnergenicEngine2 ^{
-        Cost=170
         Equipments=Engine
-        Fragility=90
         KindGraph=EnergenicEngine
         Name=Энергенный двигатель II
-        Owner=Any
+        Owner=Maloc,Peleng,PirateClan
         Priority=30
-        Ruins=PB,CB,MB,Manaan
-        Size=210
+        Ruins=WB,PB,CB,MB,Manaan
         Special=1
 		AcrynSerie=Энергенный двигатель I-III
 		AcrynLevel=2
@@ -640,26 +735,25 @@ MicroModuls ^{
 		SerieLevel2=ShuMM_EnergenicEngine2
 		SerieLevel3=ShuMM_EnergenicEngine3
 		LevelsCount=3
-        Text=<color=248,252,248>Особый двигатель, созданный пиратскими техниками. Акриновые технологии позволяют добиться внушительного прироста характеристик. К сожалению, за это двигателю приходится расплачиваться слабыми маневровыми движками и нескромными габаритами. </color>
+        Text=<color=248,252,248>Неоднозначная приспособа <color=255,240,100>пиратских</color> "кулибиных". Часть энергии маневровых сопел данного двигателя была перенаправлена в маршевый канал, что привело к увеличению скорости, но также существенно снизило манёвренность судна. Большинство коалиционных рас такой "разработкой" побрезговали, однако <color=255,240,100>малокам</color> и <color=255,240,100>пеленгам</color> идея пришлась вполне по душе.</color>
+		Text=<clr><clrEnd>
         Text=Скорость двигателя: <bonSpeed> ед.
         Text=Дальность прыжка: <bonJump> пк.
-        Text=Масса корабля: <bonMass><clr>%<clrEnd>
-        Text=Навык маневренности: <bonSkill2>
-        bonJump=8
-        bonMass=-7
-        bonSkill2=-1
-        bonSpeed=80
+        Text=Навык манёвренности: <bonSkill2>
+        Fragility=125
+        Cost=200
+        Size=100
+        bonSpeed=50
+        bonJump=5
+        bonSkill2=-2
     }
     ShuMM_EnergenicEngine3 ^{
-        Cost=200
         Equipments=Engine
-        Fragility=85
         KindGraph=EnergenicEngine
         Name=Энергенный двигатель III
-        Owner=Any
+        Owner=Maloc,Peleng,PirateClan
         Priority=50
-        Ruins=PB,CB,MB,Manaan
-        Size=250
+        Ruins=WB,PB,CB,MB,Manaan
         Special=1
 		AcrynSerie=Энергенный двигатель I-III
 		AcrynLevel=3
@@ -667,59 +761,17 @@ MicroModuls ^{
 		SerieLevel2=ShuMM_EnergenicEngine2
 		SerieLevel3=ShuMM_EnergenicEngine3
 		LevelsCount=3
-        Text=<color=248,252,248>Особый двигатель, созданный пиратскими техниками. Акриновые технологии позволяют добиться внушительного прироста характеристик. К сожалению, за это двигателю приходится расплачиваться слабыми маневровыми движками и нескромными габаритами. </color>
+        Text=<color=248,252,248>Неоднозначная приспособа <color=255,240,100>пиратских</color> "кулибиных". Часть энергии маневровых сопел данного двигателя была перенаправлена в маршевый канал, что привело к увеличению скорости, но также существенно снизило манёвренность судна. Большинство коалиционных рас такой "разработкой" побрезговали, однако <color=255,240,100>малокам</color> и <color=255,240,100>пеленгам</color> идея пришлась вполне по душе.</color>
+		Text=<clr><clrEnd>
         Text=Скорость двигателя: <bonSpeed> ед.
         Text=Дальность прыжка: <bonJump> пк.
-        Text=Масса корабля: <bonMass><clr>%<clrEnd>
         Text=Навык манёвренности: <bonSkill2>
-        bonJump=10
-        bonMass=-10
-        bonSkill2=-1
-        bonSpeed=120
-    }
-    ShuMM_ImpulseEngine1 ^{
-        Cost=60
-        Equipments=Engine
-        Fragility=115
-        KindGraph=ImpulseEngine
-        Name=Импульсный двигатель I
-        Owner=Any
-        Priority=10
-        Ruins=RC,SB,MC,BK
-        Size=75
-        Special=1
-		AcrynSerie=Импульсный двигатель I-II
-		AcrynLevel=1
-		SerieLevel1=ShuMM_ImpulseEngine1
-		SerieLevel2=ShuMM_ImpulseEngine2
-		LevelsCount=2
-        Text=<color=248,252,248>Импульсные двигатели были созданы специально для малоимущих пилотов. Они изготовлены из недорогих и компактных материалов, что позволяет добиться минимального размера и стоимости взамен мощности и прочности.</color>
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Дальность прыжка: <bonJump> пк.
-        bonJump=-3
-        bonSpeed=-50
-    }
-    ShuMM_ImpulseEngine2 ^{
-        Cost=40
-        Equipments=Engine
         Fragility=125
-        KindGraph=ImpulseEngine
-        Name=Импульсный двигатель II
-        Owner=Any
-        Priority=30
-        Ruins=RC,SB,MC,BK
-        Size=75
-        Special=1
-		AcrynSerie=Импульсный двигатель I-II
-		AcrynLevel=2
-		SerieLevel1=ShuMM_ImpulseEngine1
-		SerieLevel2=ShuMM_ImpulseEngine2
-		LevelsCount=2
-        Text=<color=248,252,248>Импульсные двигатели были созданы специально для малоимущих пилотов. Они изготовлены из недорогих и компактных материалов, что позволяет добиться минимального размера и стоимости взамен мощности и прочности.</color>
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Дальность прыжка: <bonJump> пк.
-        bonJump=-2
-        bonSpeed=-40
+        Cost=250
+        Size=105
+        bonSpeed=60
+        bonJump=6
+        bonSkill2=-2
     }
     ShuMM_MicrogenaryHook ^{
         Cost=120
@@ -1372,7 +1424,7 @@ MicroModuls ^{
         Special=1
         Text=<color=248,252,248>Производимое пеленгскими техниками оборудование собирается преимущественно из старых запчастей и ярко раскрашивается для придания товарного вида. Оно дешевое, компактное и потребляет мало энергии, что полезно для работы захвата.</color>
         Text=Мощность захвата: <bonHook> ед.
-        Text=Навык маневренности: <bonSkill2>
+        Text=Навык манёвренности: <bonSkill2>
         Text=Навык обаяния: <bonSkill5>
         bonHook=15
         bonSkill2=1
@@ -1394,7 +1446,7 @@ MicroModuls ^{
 		NonSearchable=1
         Text=<color=248,252,248>Корпус "Таухито" - старинная разработка Коалиции, переходившая лишь потомкам участников ее тестирования в качестве наследства, но лишенная особых свойств, пока диск с данными об оригинальном проекте не был найден неким рейнджером. Корпус был воссоздан специалистами из сети центров рейнджеров, максимально приближенный к изначальной задумке - бортовой компьютер вводит пилота в киберпространство, поразительно повышая его скорость и реакцию, а также максимизируя работу сканера и радара. Расплачиваться приходится частично утерянной связью с реальностью, приводящей к снижению социальных способностей летчика. </color>
         Text=Навык точности: <bonSkill1>
-        Text=Навык маневренности: <bonSkill2>
+        Text=Навык манёвренности: <bonSkill2>
         Text=Навык техники: <bonSkill3>
         Text=Навык торговли: <bonSkill4>
         Text=Навык обаяния: <bonSkill5>
@@ -1605,8 +1657,8 @@ MicroModuls ^{
         Ruins=PB,MB,Manaan
         Size=85
         Special=1
-        Text=<color=248,252,248><clr>Шмякуш<clrEnd> - пеленгский молниеносный и юркий перехватчик. Удачное расположение двигателей и усиленный впрыск топлива способствуют достижению завидных скоростей и впечатляющей маневренности, а собственное силовое поле и дополнительные бронелисты обеспечивают образцовую защиту корпуса. Поступающая к орудиям энергия перенаправляется с дальности на мощность выстрелов. Только вот защита корпуса, позволяющая исключительно <clr>пеленгам<clrEnd> использовать полный его функционал, тормозит работу корабельного оборудования, приводя к различным техническим неполадкам, а ракетное вооружение становится и вовсе непредсказуемым.</color>
-        Text=Навык маневренности: <bonSkill2>
+        Text=<color=248,252,248><clr>Шмякуш<clrEnd> - пеленгский молниеносный и юркий перехватчик. Удачное расположение двигателей и усиленный впрыск топлива способствуют достижению завидных скоростей и впечатляющей манёвренности, а собственное силовое поле и дополнительные бронелисты обеспечивают образцовую защиту корпуса. Поступающая к орудиям энергия перенаправляется с дальности на мощность выстрелов. Только вот защита корпуса, позволяющая исключительно <clr>пеленгам<clrEnd> использовать полный его функционал, тормозит работу корабельного оборудования, приводя к различным техническим неполадкам, а ракетное вооружение становится и вовсе непредсказуемым.</color>
+        Text=Навык манёвренности: <bonSkill2>
         Text=Сила энергетического оружия: <bonWEnergy> ед.
         Text=Сила осколочного оружия: <bonWSplinter> ед.
         Text=Скорость двигателя: <bonSpeed> ед.
@@ -1649,8 +1701,8 @@ MicroModuls ^{
         Ruins=PB,MB,Manaan
         Size=90
         Special=1
-        Text=<color=248,252,248><clr>Шмякуш<clrEnd> - пеленгский молниеносный и юркий перехватчик. Удачное расположение двигателей и усиленный впрыск топлива способствуют достижению завидных скоростей и впечатляющей маневренности, а собственное силовое поле и дополнительные бронелисты обеспечивают образцовую защиту корпуса. Поступающая к орудиям энергия перенаправляется с дальности на мощность выстрелов. Только вот защита корпуса, позволяющая исключительно <clr>пеленгам<clrEnd> использовать полный его функционал, тормозит работу корабельного оборудования, приводя к различным техническим неполадкам, а ракетное вооружение становится и вовсе непредсказуемым.</color>
-        Text=Навык маневренности: <bonSkill2>
+        Text=<color=248,252,248><clr>Шмякуш<clrEnd> - пеленгский молниеносный и юркий перехватчик. Удачное расположение двигателей и усиленный впрыск топлива способствуют достижению завидных скоростей и впечатляющей манёвренности, а собственное силовое поле и дополнительные бронелисты обеспечивают образцовую защиту корпуса. Поступающая к орудиям энергия перенаправляется с дальности на мощность выстрелов. Только вот защита корпуса, позволяющая исключительно <clr>пеленгам<clrEnd> использовать полный его функционал, тормозит работу корабельного оборудования, приводя к различным техническим неполадкам, а ракетное вооружение становится и вовсе непредсказуемым.</color>
+        Text=Навык манёвренности: <bonSkill2>
         Text=Сила энергетического оружия: <bonWEnergy> ед.
         Text=Сила осколочного оружия: <bonWSplinter> ед.
         Text=Скорость двигателя: <bonSpeed> ед.
@@ -1693,8 +1745,8 @@ MicroModuls ^{
         Ruins=PB,MB,Manaan
         Size=90
         Special=1
-        Text=<color=248,252,248><clr>Шмякуш<clrEnd> - пеленгский молниеносный и юркий перехватчик. Удачное расположение двигателей и усиленный впрыск топлива способствуют достижению завидных скоростей и впечатляющей маневренности, а собственное силовое поле и дополнительные бронелисты обеспечивают образцовую защиту корпуса. Поступающая к орудиям энергия перенаправляется с дальности на мощность выстрелов. Только вот защита корпуса, позволяющая исключительно <clr>пеленгам<clrEnd> использовать полный его функционал, тормозит работу корабельного оборудования, приводя к различным техническим неполадкам, а ракетное вооружение становится и вовсе непредсказуемым.</color>
-        Text=Навык маневренности: <bonSkill2>
+        Text=<color=248,252,248><clr>Шмякуш<clrEnd> - пеленгский молниеносный и юркий перехватчик. Удачное расположение двигателей и усиленный впрыск топлива способствуют достижению завидных скоростей и впечатляющей манёвренности, а собственное силовое поле и дополнительные бронелисты обеспечивают образцовую защиту корпуса. Поступающая к орудиям энергия перенаправляется с дальности на мощность выстрелов. Только вот защита корпуса, позволяющая исключительно <clr>пеленгам<clrEnd> использовать полный его функционал, тормозит работу корабельного оборудования, приводя к различным техническим неполадкам, а ракетное вооружение становится и вовсе непредсказуемым.</color>
+        Text=Навык манёвренности: <bonSkill2>
         Text=Сила энергетического оружия: <bonWEnergy> ед.
         Text=Сила осколочного оружия: <bonWSplinter> ед.
         Text=Скорость двигателя: <bonSpeed> ед.
@@ -2107,7 +2159,7 @@ Script ^{
         4=Давайте посмотрим, что вы нам принесли... О, судя по дате, это же разработка еще времен клисанской войны! Крайне занимательно. Так-так-так, где-то здесь у нас как раз сохранился древний дисковод...<br><br><Player>, да вы раскопали чертежи уникального корпуса прошлого под названием <clr>"Таухито"<clrEnd>! Часть технологий уже утеряна или более не используется, но мы можем по имеющимся данным приблизительно точно восстановить корпус с применением современных акриновых технологий и продать вам, либо же предоставить вознаграждение в денежном эквиваленте, а именно <0> cr. Что выбираете, рейнджер?
         5=Отлично! На доскональное изучения диска и сборку корпуса может уйти масса времени, дайте нам около года на столь крупный массив работы.
         6=Вознаграждение в размере <0> кредитов уже переведено на ваш счет.
-        7=Вы, <Player>, вижу, вернулись за корпусом. Замечательно. Посмотрите сводку по техническим характеристикам корпуса:<br><br>-------------<br>Корпус "Таухито" - старинная разработка Коалиции, переходившая лишь потомкам участников ее тестирования в качестве наследства, но лишенная особых свойств, пока диск с данными об оригинальном проекте не был найден неким рейнджером. Корпус был воссоздан специалистами из сети центров рейнджеров, максимально приближенный к изначальной задумке - бортовой компьютер вводит пилота в киберпространство, поразительно повышая его скорость и реакцию, а также максимизируя работу сканера и радара. Расплачиваться приходится частично утерянной связью с реальностью, приводящей к снижению социальных способностей летчика.<br><br>    Навык точности: <clr>+2<clrEnd><br>    Навык маневренности: <clr>+2<clrEnd><br>    Навык техники: <clr>+2<clrEnd><br>    Навык торговли: <clr>-2<clrEnd><br>    Навык обаяния: <clr>-2<clrEnd><br>    Навык лидерства: <clr>-2<clrEnd><br>    Масса корабля: <clr>-25<clrEnd>%<br>    Дальность стрельбы: <clr>+30<clrEnd> ед.<br>    Дальность радара: <clr>+3000<clrEnd> ед.<br>    Мощность сканера: <clr>+20<clrEnd> ед.<br>    Скорость захвата: <clr>+2<clrEnd> ед. <br>-------------<br><br>Ну как, возьмете корпус размером <0> тонн за <1> cr.?
+        7=Вы, <Player>, вижу, вернулись за корпусом. Замечательно. Посмотрите сводку по техническим характеристикам корпуса:<br><br>-------------<br>Корпус "Таухито" - старинная разработка Коалиции, переходившая лишь потомкам участников ее тестирования в качестве наследства, но лишенная особых свойств, пока диск с данными об оригинальном проекте не был найден неким рейнджером. Корпус был воссоздан специалистами из сети центров рейнджеров, максимально приближенный к изначальной задумке - бортовой компьютер вводит пилота в киберпространство, поразительно повышая его скорость и реакцию, а также максимизируя работу сканера и радара. Расплачиваться приходится частично утерянной связью с реальностью, приводящей к снижению социальных способностей летчика.<br><br>    Навык точности: <clr>+2<clrEnd><br>    Навык манёвренности: <clr>+2<clrEnd><br>    Навык техники: <clr>+2<clrEnd><br>    Навык торговли: <clr>-2<clrEnd><br>    Навык обаяния: <clr>-2<clrEnd><br>    Навык лидерства: <clr>-2<clrEnd><br>    Масса корабля: <clr>-25<clrEnd>%<br>    Дальность стрельбы: <clr>+30<clrEnd> ед.<br>    Дальность радара: <clr>+3000<clrEnd> ед.<br>    Мощность сканера: <clr>+20<clrEnd> ед.<br>    Скорость захвата: <clr>+2<clrEnd> ед. <br>-------------<br><br>Ну как, возьмете корпус размером <0> тонн за <1> cr.?
         9=От уникального корпуса я бы не отказался
         10=Давайте <0> cr.
         11=Спасибо!
