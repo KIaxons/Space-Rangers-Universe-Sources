@@ -1,7 +1,76 @@
+Items ^{
+    Weapon ^{
+        CustomWeapon ^{
+            StatsVersion ^{
+                ShuMM=10.12.20
+            }
+            ShuMM ~{
+                1=MissileLauncherTorpedo
+                Count=1
+            }
+            MissileLauncherTorpedo ~{
+                BaseGun=Torpedo_Tube
+                MinDamage=22
+                MaxDamage=26
+                DamageSet=Missile
+                ShotType=Torpedo
+                Speed=5
+                AverageRadius=700
+                SecondaryDamageRadius=60
+                MissileRadius=1000
+                MissileMinSpeed=550
+                MissileMaxSpeed=900
+                MissileChanceToBeHit=33
+                mWeaponDamage=1.00,1.20,1.40,1.70,2.00,2.40,2.80,3.20
+                ShotsPerTurn=1
+                ArcadeType=Torpedo_Tube
+                TechLevel=4
+                MiningFactor=6
+                kCost=4.0//52.5 у торпедного аппарата
+                AverageSize=20
+                InventTechLevel=Missile_Launcher
+                StoreAvailability=NotSold
+                ShotEffectPath=Weapon.15
+                ShotEffectPalette=3
+                SplashEffectPath=Weapon.AuraEffect
+                MissileExplosionEffectPath=Weapon.MissileHit
+            }
+		}
+        Missile ^{
+            MissileLauncherTorpedo ^{
+                Name=Торпеда
+                Text=Самонаводящаяся торпеда
+            }
+        }
+        Name ~{
+            MissileLauncherTorpedo=Ракетомет
+        }
+        OriginalWeaponType ~{
+            Industrial_Laser=1
+            Fragmentation_Cannon=2
+            Flux=3
+            Missile_Launcher=4
+            Treton=5
+            Wave_Phaser=6
+            Flow_Blaster=7
+            Electronic_Cutter=8
+            Multiresonator=9
+            Atomic_Vision=10
+            Disintegrator=11
+            Turbogravitron=12
+            IMHO-9000=13
+            Vertix=14
+            Torpedo_Tube=15
+            Esodapher=16
+            Caphasitor=17
+            Lirecron=18
+        }
+        Text ^{
+            MissileLauncherTorpedo=Торпеды, оснащённые плазменным ионизатором, активирующимся в момент взрыва. Наносят от <MinDamage> до <MaxDamage><Bonus> ед. ущерба цели и ближайшим к ней кораблям. Сохраняют эффективность даже на очень большой дистанции.<br>Количество: <Count>/<MaxCount> шт.<br><clr><clrEnd><br>Модификация <color=255,240,100>"Торпедо"</color><br>Ракетометы модификации "Торпедо" - попытка учёных Коалиции воссоздать доминаторские торпедные аппараты. Пусковая установка была переоборудована для запуска одиночных мощных торпед, которые, хотя и уступают по эффективности доминаторским образцам, представляют собой определённое подспорье новейшему вооружению противника.
+        }
+	}
+}
 MicroModuls ^{
-    490 ^{
-        CustomTag=special_hull
-    }
     498 ^{
         CustomTag=AkrinAmplifier
         Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
@@ -19,6 +88,11 @@ MicroModuls ^{
         bonExtraAkrinEff=200
         bonExtraAkrinPenalty=-99.99
     }
+	ShuMM_Torpedo ^{
+
+		AcrynTrueType=t_Weapon4
+		AcrynFalseType=t_CustomWeapon,MissileLauncherTorpedo
+	}
 	//ММ из мода
     ShuMM_Downgrade ^{
         Cost=40
@@ -389,6 +463,416 @@ MicroModuls ^{
         bonDef=4
         bonRadar=-250
     }
+    ShuMM_CyberneticHook1 ^{
+        Equipments=Hook
+        KindGraph=CyberneticHook
+        Name=Кибернетический захват I
+        OnPlanets=1
+        Owner=People,Fei
+        Priority=10
+        Ruins=TC,MB,Manaan
+        Special=1
+		AcrynSerie=Кибернетический захват I-III
+		AcrynLevel=1
+		SerieLevel1=ShuMM_CyberneticHook1
+		SerieLevel2=ShuMM_CyberneticHook2
+		SerieLevel3=ShuMM_CyberneticHook3
+		LevelsCount=3
+        Text=<color=248,252,248>Уникальная совместная разработка <color=255,240,100>людей</color> и <color=255,240,100>фэян</color>. Данный "захват" по сути является <color=255,240,100>ремонтным дроидом</color>, параллельно занимающимся сбором валяющихся вокруг корабля вещей. Увеличение числа обязанностей ожидаемо не пошло ремонтному дроиду впрок, да и под обстрел вражеских пушек этот трудяга попадает значительно чаще, зато в бою владелец сего девайса может рассчитывать на помощь сразу двух металлических хранителей.</color>
+		Text=<clr><clrEnd>
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Мощность захвата: <bonHook> ед.
+        Text=Дальность захвата: <bonHookRadius> ед.
+		Text=Скорость захвата: <bonHookMinSpeed> ед.
+        Fragility=125
+        Cost=150
+        Size=100
+        bonDroid=16
+        bonHook=-20
+        bonHookRadius=-10
+        bonHookMinSpeed=-1
+		bonHookMaxSpeed=-1
+    }
+    ShuMM_CyberneticHook2 ^{
+        Equipments=Hook
+        KindGraph=CyberneticHook
+        Name=Кибернетический захват II
+        OnPlanets=1
+        Owner=People,Fei
+        Priority=30
+        Ruins=TC,MB,Manaan
+        Special=1
+		AcrynSerie=Кибернетический захват I-III
+		AcrynLevel=2
+		SerieLevel1=ShuMM_CyberneticHook1
+		SerieLevel2=ShuMM_CyberneticHook2
+		SerieLevel3=ShuMM_CyberneticHook3
+		LevelsCount=3
+        Text=<color=248,252,248>Уникальная совместная разработка <color=255,240,100>людей</color> и <color=255,240,100>фэян</color>. Данный "захват" по сути является <color=255,240,100>ремонтным дроидом</color>, параллельно занимающимся сбором валяющихся вокруг корабля вещей. Увеличение числа обязанностей ожидаемо не пошло ремонтному дроиду впрок, да и под обстрел вражеских пушек этот трудяга попадает значительно чаще, зато в бою владелец сего девайса может рассчитывать на помощь сразу двух металлических хранителей.</color>
+		Text=<clr><clrEnd>
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Мощность захвата: <bonHook> ед.
+        Text=Дальность захвата: <bonHookRadius> ед.
+		Text=Скорость захвата: <bonHookMinSpeed> ед.
+        Fragility=125
+        Cost=200
+        Size=100
+        bonDroid=24
+        bonHook=-25
+        bonHookRadius=-15
+        bonHookMinSpeed=-2
+		bonHookMaxSpeed=-2
+    }
+    ShuMM_CyberneticHook3 ^{
+        Equipments=Hook
+        KindGraph=CyberneticHook
+        Name=Кибернетический захват III
+        OnPlanets=1
+        Owner=People,Fei
+        Priority=50
+        Ruins=TC,MB,Manaan
+        Special=1
+		AcrynSerie=Кибернетический захват I-III
+		AcrynLevel=3
+		SerieLevel1=ShuMM_CyberneticHook1
+		SerieLevel2=ShuMM_CyberneticHook2
+		SerieLevel3=ShuMM_CyberneticHook3
+		LevelsCount=3
+        Text=<color=248,252,248>Уникальная совместная разработка <color=255,240,100>людей</color> и <color=255,240,100>фэян</color>. Данный "захват" по сути является <color=255,240,100>ремонтным дроидом</color>, параллельно занимающимся сбором валяющихся вокруг корабля вещей. Увеличение числа обязанностей ожидаемо не пошло ремонтному дроиду впрок, да и под обстрел вражеских пушек этот трудяга попадает значительно чаще, зато в бою владелец сего девайса может рассчитывать на помощь сразу двух металлических хранителей.</color>
+		Text=<clr><clrEnd>
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Мощность захвата: <bonHook> ед.
+        Text=Дальность захвата: <bonHookRadius> ед.
+		Text=Скорость захвата: <bonHookMinSpeed> ед.
+        Fragility=125
+        Cost=250
+        Size=100
+        bonDroid=32
+        bonHook=-30
+        bonHookRadius=-20
+        bonHookMinSpeed=-3
+		bonHookMaxSpeed=-3
+    }
+    ShuMM_ScanBot1 ^{
+        Equipments=Scaner
+        KindGraph=ScanBot
+        Name=СканБот R1
+        OnPlanets=1
+        Owner=People,Fei
+        Priority=10
+        Ruins=TC,MB,Manaan
+        Special=1
+		AcrynSerie=СканБот I-III
+		AcrynLevel=1
+		SerieLevel1=ShuMM_ScanBot1
+		SerieLevel2=ShuMM_ScanBot2
+		SerieLevel3=ShuMM_ScanBot3
+		LevelsCount=3
+        Text=<color=248,252,248>Уникальная совместная разработка <color=255,240,100>людей</color> и <color=255,240,100>фэян</color>. СканБот - роботизированный сканер, помимо своей основной задачи занимающийся поиском и диагностикой технических неполадок на корабле хозяина. Последнее, впрочем, не лучшим образом сказывается на эффективности сканирования всех прочих судов.</color>
+		Text=<clr><clrEnd>
+        Text=Навык техники: <bonSkill3>
+        Text=Мощность сканера: <bonScan> ед.
+		Fragility=90
+        Cost=150
+		Size=100
+        bonSkill3=1
+        bonScan=-2
+    }
+    ShuMM_ScanBot2 ^{
+        Equipments=Scaner
+        KindGraph=ScanBot
+        Name=СканБот R2
+        OnPlanets=1
+        Owner=People,Fei
+        Priority=30
+        Ruins=TC,MB,Manaan
+        Special=1
+		AcrynSerie=СканБот I-III
+		AcrynLevel=2
+		SerieLevel1=ShuMM_ScanBot1
+		SerieLevel2=ShuMM_ScanBot2
+		SerieLevel3=ShuMM_ScanBot3
+		LevelsCount=3
+        Text=<color=248,252,248>Уникальная совместная разработка <color=255,240,100>людей</color> и <color=255,240,100>фэян</color>. СканБот - роботизированный сканер, помимо своей основной задачи занимающийся поиском и диагностикой технических неполадок на корабле хозяина. Последнее, впрочем, не лучшим образом сказывается на эффективности сканирования всех прочих судов.</color>
+		Text=<clr><clrEnd>
+        Text=Навык техники: <bonSkill3>
+        Text=Мощность сканера: <bonScan> ед.
+		Fragility=90
+        Cost=200
+		Size=100
+        bonSkill3=2
+        bonScan=-6
+    }
+    ShuMM_ScanBot3 ^{
+        Equipments=Scaner
+        KindGraph=ScanBot
+        Name=СканБот R3
+        OnPlanets=1
+        Owner=People,Fei
+        Priority=50
+        Ruins=TC,MB,Manaan
+        Special=1
+		AcrynSerie=СканБот I-III
+		AcrynLevel=3
+		SerieLevel1=ShuMM_ScanBot1
+		SerieLevel2=ShuMM_ScanBot2
+		SerieLevel3=ShuMM_ScanBot3
+		LevelsCount=3
+        Text=<color=248,252,248>Уникальная совместная разработка <color=255,240,100>людей</color> и <color=255,240,100>фэян</color>. СканБот - роботизированный сканер, помимо своей основной задачи занимающийся поиском и диагностикой технических неполадок на корабле хозяина. Последнее, впрочем, не лучшим образом сказывается на эффективности сканирования всех прочих судов.</color>
+		Text=<clr><clrEnd>
+        Text=Навык техники: <bonSkill3>
+        Text=Мощность сканера: <bonScan> ед.
+		Fragility=90
+        Cost=250
+		Size=100
+        bonSkill3=3
+        bonScan=-10
+    }
+    ShuMM_AuxiliarySubreactor1 ^{
+        Equipments=DefGenerator
+        KindGraph=AuxiliarySubreactor
+        Name=</color>Термоквантовый субреактор
+		Name=</color>Квадроводородный субреактор
+		Name=</color>Плазмориновый субреактор
+		Name=</color>Экзосепараторный субреактор
+		CustomTag=AuxiliarySubreactor
+        Owner=Nothing
+        Priority=60
+        Ruins=Nothing
+        Special=1
+        LockedAcryn=3
+        NotImprovable=1
+		NonSearchable=1
+		BlockMM=1
+        TextReplace=<color=248,252,248>Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек генератора защитного поля.</color>		
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Мощность захвата: <bonHook> ед.
+        Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Дальность стрельбы: <bonWRadius> ед.
+		Fragility=100
+        Cost=200
+        Size=150
+        bonDef=-500000000
+        bonDroid=5
+        bonHook=8
+        bonJump=2
+        bonRadar=200
+        bonScan=2
+        bonSpeed=30
+        bonWEnergy=2
+        bonWRadius=10
+        bonWSplinter=1
+    }
+    ShuMM_PlasmaGenerator2 ^{
+        Cost=150
+        Equipments=DefGenerator
+        KindGraph=PlasmaGenerator
+        LockedAcryn=3
+        Name=Плазменный генератор R2
+		AcrynSerie=Плазменный генератор I-IV
+		AcrynLevel=2
+		SerieLevel1=ShuMM_PlasmaGenerator1
+		SerieLevel2=ShuMM_PlasmaGenerator2
+		SerieLevel3=ShuMM_PlasmaGenerator3
+		SerieLevel4=ShuMM_PlasmaGenerator4
+		LevelsCount=4
+        NotImprovable=1
+		NonSearchable=1
+        Owner=Any
+        Priority=30
+        Ruins=RC,BK,TC,PB
+        Size=135
+        Special=1
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Мощность захвата: <bonHook> ед.
+        Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        TextReplace=<color=248,252,248>Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек генератора защитного поля.</color>
+        bonDef=-500000000
+        bonDroid=8
+        bonHook=15
+        bonJump=4
+        bonRadar=400
+        bonScan=3
+        bonSpeed=45
+        bonWEnergy=3
+        bonWRadius=15
+        bonWSplinter=2
+    }
+    ShuMM_PlasmaGenerator3 ^{
+        Cost=175
+        Equipments=DefGenerator
+        KindGraph=PlasmaGenerator
+        LockedAcryn=3
+        Name=Плазменный генератор R3
+		AcrynSerie=Плазменный генератор I-IV
+		AcrynLevel=3
+		SerieLevel1=ShuMM_PlasmaGenerator1
+		SerieLevel2=ShuMM_PlasmaGenerator2
+		SerieLevel3=ShuMM_PlasmaGenerator3
+		SerieLevel4=ShuMM_PlasmaGenerator4
+		LevelsCount=4
+        NotImprovable=1
+		NonSearchable=1
+        Owner=Any
+        Priority=50
+        Ruins=RC,BK,TC,PB
+        Size=150
+        Special=1
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Дальность захвата: <bonHookRadius> ед.
+        Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        TextReplace=<color=248,252,248>Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек генератора защитного поля.</color>
+        bonDef=-500000000
+        bonDroid=11
+        bonHookRadius=25
+        bonJump=6
+        bonRadar=600
+        bonScan=5
+        bonSpeed=60
+        bonWEnergy=6
+        bonWRadius=25
+        bonWSplinter=3
+    }
+    ShuMM_PlasmaGenerator4 ^{
+        Cost=200
+        Equipments=DefGenerator
+        KindGraph=PlasmaGenerator
+        LockedAcryn=3
+        Name=Плазменный генератор R4
+		AcrynSerie=Плазменный генератор I-IV
+		AcrynLevel=4
+		SerieLevel1=ShuMM_PlasmaGenerator1
+		SerieLevel2=ShuMM_PlasmaGenerator2
+		SerieLevel3=ShuMM_PlasmaGenerator3
+		SerieLevel4=ShuMM_PlasmaGenerator4
+		LevelsCount=4
+        NotImprovable=1
+		NonSearchable=1
+        Owner=Any
+        Priority=70
+        Ruins=RC,BK,TC,PB
+        Size=165
+        Special=1
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Дальность захвата: <bonHookRadius> ед.
+        Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        TextReplace=<color=248,252,248>Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек генератора защитного поля.</color>
+        bonDef=-500000000
+        bonDroid=15
+        bonHookRadius=30
+        bonJump=8
+        bonRadar=800
+        bonScan=7
+        bonSpeed=85
+        bonWEnergy=8
+        bonWRadius=35
+        bonWSplinter=5
+    }
+    ShuMM_EnergenicEngine1 ^{
+        Equipments=Engine
+        KindGraph=EnergenicEngine
+        Name=Энергенный двигатель I
+        Owner=Maloc,Peleng,PirateClan
+        Priority=10
+        Ruins=WB,PB,CB,MB,Manaan
+        Special=1
+		AcrynSerie=Энергенный двигатель I-III
+		AcrynLevel=1
+		SerieLevel1=ShuMM_EnergenicEngine1
+		SerieLevel2=ShuMM_EnergenicEngine2
+		SerieLevel3=ShuMM_EnergenicEngine3
+		LevelsCount=3
+        Text=<color=248,252,248>Неоднозначная приспособа <color=255,240,100>пиратских</color> "кулибиных". Часть энергии маневровых сопел данного двигателя была перенаправлена в маршевый канал, что привело к увеличению скорости, но также существенно снизило манёвренность судна. Большинство коалиционных рас такой "разработкой" побрезговали, однако <color=255,240,100>малокам</color> и <color=255,240,100>пеленгам</color> идея пришлась вполне по душе.</color>
+		Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Навык манёвренности: <bonSkill2>
+        Fragility=100
+        Cost=150
+        Size=100
+        bonSpeed=40
+        bonJump=4
+        bonSkill2=-2
+    }
+    ShuMM_EnergenicEngine2 ^{
+        Equipments=Engine
+        KindGraph=EnergenicEngine
+        Name=Энергенный двигатель II
+        Owner=Maloc,Peleng,PirateClan
+        Priority=30
+        Ruins=WB,PB,CB,MB,Manaan
+        Special=1
+		AcrynSerie=Энергенный двигатель I-III
+		AcrynLevel=2
+		SerieLevel1=ShuMM_EnergenicEngine1
+		SerieLevel2=ShuMM_EnergenicEngine2
+		SerieLevel3=ShuMM_EnergenicEngine3
+		LevelsCount=3
+        Text=<color=248,252,248>Неоднозначная приспособа <color=255,240,100>пиратских</color> "кулибиных". Часть энергии маневровых сопел данного двигателя была перенаправлена в маршевый канал, что привело к увеличению скорости, но также существенно снизило манёвренность судна. Большинство коалиционных рас такой "разработкой" побрезговали, однако <color=255,240,100>малокам</color> и <color=255,240,100>пеленгам</color> идея пришлась вполне по душе.</color>
+		Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Навык манёвренности: <bonSkill2>
+        Fragility=125
+        Cost=200
+        Size=100
+        bonSpeed=50
+        bonJump=5
+        bonSkill2=-2
+    }
+    ShuMM_EnergenicEngine3 ^{
+        Equipments=Engine
+        KindGraph=EnergenicEngine
+        Name=Энергенный двигатель III
+        Owner=Maloc,Peleng,PirateClan
+        Priority=50
+        Ruins=WB,PB,CB,MB,Manaan
+        Special=1
+		AcrynSerie=Энергенный двигатель I-III
+		AcrynLevel=3
+		SerieLevel1=ShuMM_EnergenicEngine1
+		SerieLevel2=ShuMM_EnergenicEngine2
+		SerieLevel3=ShuMM_EnergenicEngine3
+		LevelsCount=3
+        Text=<color=248,252,248>Неоднозначная приспособа <color=255,240,100>пиратских</color> "кулибиных". Часть энергии маневровых сопел данного двигателя была перенаправлена в маршевый канал, что привело к увеличению скорости, но также существенно снизило манёвренность судна. Большинство коалиционных рас такой "разработкой" побрезговали, однако <color=255,240,100>малокам</color> и <color=255,240,100>пеленгам</color> идея пришлась вполне по душе.</color>
+		Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Навык манёвренности: <bonSkill2>
+        Fragility=125
+        Cost=250
+        Size=105
+        bonSpeed=60
+        bonJump=6
+        bonSkill2=-2
+    }
     ShuMM_CellRadar1 ^{
         Equipments=Radar
         KindGraph=CellRadar
@@ -402,7 +886,7 @@ MicroModuls ^{
 		AcrynLevel=1
 		SerieLevel1=ShuMM_CellRadar1
 		SerieLevel2=ShuMM_CellRadar2
-		SerieLevel2=ShuMM_CellRadar3
+		SerieLevel3=ShuMM_CellRadar3
 		LevelsCount=3
         Text=<color=248,252,248>Серия радаров, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной надёжностью нестабильные сотовые чипы, долговечность таких радаров всё равно оказалась на непрактично низком уровне.</color>
 		Text=<clr><clrEnd>
@@ -425,7 +909,7 @@ MicroModuls ^{
 		AcrynLevel=2
 		SerieLevel1=ShuMM_CellRadar1
 		SerieLevel2=ShuMM_CellRadar2
-		SerieLevel2=ShuMM_CellRadar3
+		SerieLevel3=ShuMM_CellRadar3
 		LevelsCount=3
         Text=<color=248,252,248>Серия радаров, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной надёжностью нестабильные сотовые чипы, долговечность таких радаров всё равно оказалась на непрактично низком уровне.</color>
 		Text=<clr><clrEnd>
@@ -448,7 +932,7 @@ MicroModuls ^{
 		AcrynLevel=3
 		SerieLevel1=ShuMM_CellRadar1
 		SerieLevel2=ShuMM_CellRadar2
-		SerieLevel2=ShuMM_CellRadar3
+		SerieLevel3=ShuMM_CellRadar3
 		LevelsCount=3
         Text=<color=248,252,248>Серия радаров, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной надёжностью нестабильные сотовые чипы, долговечность таких радаров всё равно оказалась на непрактично низком уровне.</color>
 		Text=<clr><clrEnd>
@@ -540,7 +1024,7 @@ MicroModuls ^{
 		AcrynLevel=1
 		SerieLevel1=ShuMM_ElectrogenicHook1
 		SerieLevel2=ShuMM_ElectrogenicHook2
-		SerieLevel2=ShuMM_ElectrogenicHook3
+		SerieLevel3=ShuMM_ElectrogenicHook3
 		LevelsCount=3
         Text=<color=248,252,248>Серия захватов, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной износостойкостью хрупкие электрогенные приводы, долговечность таких захватов всё равно оказалась на непрактично низком уровне.</color>
 		Text=<clr><clrEnd>
@@ -566,7 +1050,7 @@ MicroModuls ^{
 		AcrynLevel=2
 		SerieLevel1=ShuMM_ElectrogenicHook1
 		SerieLevel2=ShuMM_ElectrogenicHook2
-		SerieLevel2=ShuMM_ElectrogenicHook3
+		SerieLevel3=ShuMM_ElectrogenicHook3
 		LevelsCount=3
         Text=<color=248,252,248>Серия захватов, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной износостойкостью хрупкие электрогенные приводы, долговечность таких захватов всё равно оказалась на непрактично низком уровне.</color>
 		Text=<clr><clrEnd>
@@ -592,7 +1076,7 @@ MicroModuls ^{
 		AcrynLevel=3
 		SerieLevel1=ShuMM_ElectrogenicHook1
 		SerieLevel2=ShuMM_ElectrogenicHook2
-		SerieLevel2=ShuMM_ElectrogenicHook3
+		SerieLevel3=ShuMM_ElectrogenicHook3
 		LevelsCount=3
         Text=<color=248,252,248>Серия захватов, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной износостойкостью хрупкие электрогенные приводы, долговечность таких захватов всё равно оказалась на непрактично низком уровне.</color>
 		Text=<clr><clrEnd>
@@ -605,215 +1089,218 @@ MicroModuls ^{
 		bonHookMaxSpeed=1
 		bonHookMinSpeed=1
     }
-    ShuMM_CyberneticHook1 ^{
-        Equipments=Hook
-        KindGraph=CyberneticHook
-        Name=Кибернетический захват I
+    ShuMM_PhaseEngine1 ^{
+        Equipments=Engine
+        KindGraph=PhaseEngine
+        Name=Фазовый двигатель I
         OnPlanets=1
-        Owner=People,Fei
+        Owner=PirateClan
         Priority=10
-        Ruins=TC,MB,Manaan
+        Ruins=PB,CB,MB,Manaan
         Special=1
-		AcrynSerie=Кибернетический захват I-III
+		AcrynSerie=Фазовый двигатель I-III
 		AcrynLevel=1
-		SerieLevel1=ShuMM_CyberneticHook1
-		SerieLevel2=ShuMM_CyberneticHook2
-		SerieLevel3=ShuMM_CyberneticHook3
+		SerieLevel1=ShuMM_PhaseEngine1
+		SerieLevel2=ShuMM_PhaseEngine2
+		SerieLevel3=ShuMM_PhaseEngine3
 		LevelsCount=3
-        Text=<color=248,252,248>Уникальная совместная разработка <color=255,240,100>людей</color> и <color=255,240,100>фэян</color>. Данный "захват" по сути является <color=255,240,100>ремонтным дроидом</color>, параллельно занимающимся сбором валяющихся вокруг корабля вещей. Увеличение числа обязанностей ожидаемо не пошло ремонтному дроиду впрок, да и под обстрел вражеских пушек этот трудяга попадает значительно чаще, зато в бою владелец сего девайса может рассчитывать на помощь сразу двух металлических хранителей.</color>
+		Text=<color=248,252,248>Серия двигателей, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной стабильностью энергоёмкие фазовые ускорители, долговечность таких двигателей всё равно оказалась на непрактично низком уровне.</color>
 		Text=<clr><clrEnd>
-        Text=Эффективность дроида: <bonDroid> ед.
-        Text=Мощность захвата: <bonHook> ед.
-        Text=Дальность захвата: <bonHookRadius> ед.
-		Text=Скорость захвата: <bonHookMinSpeed> ед.
-        Fragility=125
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Fragility=200
         Cost=150
-        Size=100
-        bonDroid=16
-        bonHook=-20
-        bonHookRadius=-10
-        bonHookMinSpeed=-1
-		bonHookMaxSpeed=-1
+		Size=100
+        bonSpeed=30
+        bonJump=2
     }
-    ShuMM_CyberneticHook2 ^{
-        Equipments=Hook
-        KindGraph=CyberneticHook
-        Name=Кибернетический захват II
+    ShuMM_PhaseEngine2 ^{
+        Equipments=Engine
+        KindGraph=PhaseEngine
+        Name=Фазовый двигатель II
         OnPlanets=1
-        Owner=People,Fei
+        Owner=PirateClan
         Priority=30
-        Ruins=TC,MB,Manaan
+        Ruins=PB,CB,MB,Manaan
         Special=1
-		AcrynSerie=Кибернетический захват I-III
+		AcrynSerie=Фазовый двигатель I-III
 		AcrynLevel=2
-		SerieLevel1=ShuMM_CyberneticHook1
-		SerieLevel2=ShuMM_CyberneticHook2
-		SerieLevel3=ShuMM_CyberneticHook3
+		SerieLevel1=ShuMM_PhaseEngine1
+		SerieLevel2=ShuMM_PhaseEngine2
+		SerieLevel3=ShuMM_PhaseEngine3
 		LevelsCount=3
-        Text=<color=248,252,248>Уникальная совместная разработка <color=255,240,100>людей</color> и <color=255,240,100>фэян</color>. Данный "захват" по сути является <color=255,240,100>ремонтным дроидом</color>, параллельно занимающимся сбором валяющихся вокруг корабля вещей. Увеличение числа обязанностей ожидаемо не пошло ремонтному дроиду впрок, да и под обстрел вражеских пушек этот трудяга попадает значительно чаще, зато в бою владелец сего девайса может рассчитывать на помощь сразу двух металлических хранителей.</color>
+		Text=<color=248,252,248>Серия двигателей, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной стабильностью энергоёмкие фазовые ускорители, долговечность таких двигателей всё равно оказалась на непрактично низком уровне.</color>
 		Text=<clr><clrEnd>
-        Text=Эффективность дроида: <bonDroid> ед.
-        Text=Мощность захвата: <bonHook> ед.
-        Text=Дальность захвата: <bonHookRadius> ед.
-		Text=Скорость захвата: <bonHookMinSpeed> ед.
-        Fragility=125
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Fragility=250
         Cost=200
-        Size=100
-        bonDroid=24
-        bonHook=-25
-        bonHookRadius=-15
-        bonHookMinSpeed=-2
-		bonHookMaxSpeed=-2
+		Size=100
+        bonSpeed=45
+        bonJump=3
     }
-    ShuMM_CyberneticHook3 ^{
-        Equipments=Hook
-        KindGraph=CyberneticHook
-        Name=Кибернетический захват III
+    ShuMM_PhaseEngine3 ^{
+        Equipments=Engine
+        KindGraph=PhaseEngine
+        Name=Фазовый двигатель III
         OnPlanets=1
-        Owner=People,Fei
+        Owner=PirateClan
         Priority=50
-        Ruins=TC,MB,Manaan
+        Ruins=PB,CB,MB,Manaan
         Special=1
-		AcrynSerie=Кибернетический захват I-III
+		AcrynSerie=Фазовый двигатель I-III
 		AcrynLevel=3
-		SerieLevel1=ShuMM_CyberneticHook1
-		SerieLevel2=ShuMM_CyberneticHook2
-		SerieLevel3=ShuMM_CyberneticHook3
+		SerieLevel1=ShuMM_PhaseEngine1
+		SerieLevel2=ShuMM_PhaseEngine2
+		SerieLevel3=ShuMM_PhaseEngine3
 		LevelsCount=3
-        Text=<color=248,252,248>Уникальная совместная разработка <color=255,240,100>людей</color> и <color=255,240,100>фэян</color>. Данный "захват" по сути является <color=255,240,100>ремонтным дроидом</color>, параллельно занимающимся сбором валяющихся вокруг корабля вещей. Увеличение числа обязанностей ожидаемо не пошло ремонтному дроиду впрок, да и под обстрел вражеских пушек этот трудяга попадает значительно чаще, зато в бою владелец сего девайса может рассчитывать на помощь сразу двух металлических хранителей.</color>
+		Text=<color=248,252,248>Серия двигателей, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной стабильностью энергоёмкие фазовые ускорители, долговечность таких двигателей всё равно оказалась на непрактично низком уровне.</color>
 		Text=<clr><clrEnd>
-        Text=Эффективность дроида: <bonDroid> ед.
-        Text=Мощность захвата: <bonHook> ед.
-        Text=Дальность захвата: <bonHookRadius> ед.
-		Text=Скорость захвата: <bonHookMinSpeed> ед.
-        Fragility=125
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Fragility=300
         Cost=250
-        Size=100
-        bonDroid=32
-        bonHook=-30
-        bonHookRadius=-20
-        bonHookMinSpeed=-3
-		bonHookMaxSpeed=-3
-    }
-    ShuMM_EnergenicEngine1 ^{
-        Equipments=Engine
-        KindGraph=EnergenicEngine
-        Name=Энергенный двигатель I
-        Owner=Maloc,Peleng,PirateClan
-        Priority=10
-        Ruins=WB,PB,CB,MB,Manaan
-        Special=1
-		AcrynSerie=Энергенный двигатель I-III
-		AcrynLevel=1
-		SerieLevel1=ShuMM_EnergenicEngine1
-		SerieLevel2=ShuMM_EnergenicEngine2
-		SerieLevel3=ShuMM_EnergenicEngine3
-		LevelsCount=3
-        Text=<color=248,252,248>Неоднозначная приспособа <color=255,240,100>пиратских</color> "кулибиных". Часть энергии маневровых сопел данного двигателя была перенаправлена в маршевый канал, что привело к увеличению скорости, но также существенно снизило манёвренность судна. Большинство коалиционных рас такой "разработкой" побрезговали, однако <color=255,240,100>малокам</color> и <color=255,240,100>пеленгам</color> идея пришлась вполне по душе.</color>
-		Text=<clr><clrEnd>
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Дальность прыжка: <bonJump> пк.
-        Text=Навык манёвренности: <bonSkill2>
-        Fragility=100
-        Cost=150
-        Size=100
-        bonSpeed=40
-        bonJump=4
-        bonSkill2=-2
-    }
-    ShuMM_EnergenicEngine2 ^{
-        Equipments=Engine
-        KindGraph=EnergenicEngine
-        Name=Энергенный двигатель II
-        Owner=Maloc,Peleng,PirateClan
-        Priority=30
-        Ruins=WB,PB,CB,MB,Manaan
-        Special=1
-		AcrynSerie=Энергенный двигатель I-III
-		AcrynLevel=2
-		SerieLevel1=ShuMM_EnergenicEngine1
-		SerieLevel2=ShuMM_EnergenicEngine2
-		SerieLevel3=ShuMM_EnergenicEngine3
-		LevelsCount=3
-        Text=<color=248,252,248>Неоднозначная приспособа <color=255,240,100>пиратских</color> "кулибиных". Часть энергии маневровых сопел данного двигателя была перенаправлена в маршевый канал, что привело к увеличению скорости, но также существенно снизило манёвренность судна. Большинство коалиционных рас такой "разработкой" побрезговали, однако <color=255,240,100>малокам</color> и <color=255,240,100>пеленгам</color> идея пришлась вполне по душе.</color>
-		Text=<clr><clrEnd>
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Дальность прыжка: <bonJump> пк.
-        Text=Навык манёвренности: <bonSkill2>
-        Fragility=125
-        Cost=200
-        Size=100
-        bonSpeed=50
-        bonJump=5
-        bonSkill2=-2
-    }
-    ShuMM_EnergenicEngine3 ^{
-        Equipments=Engine
-        KindGraph=EnergenicEngine
-        Name=Энергенный двигатель III
-        Owner=Maloc,Peleng,PirateClan
-        Priority=50
-        Ruins=WB,PB,CB,MB,Manaan
-        Special=1
-		AcrynSerie=Энергенный двигатель I-III
-		AcrynLevel=3
-		SerieLevel1=ShuMM_EnergenicEngine1
-		SerieLevel2=ShuMM_EnergenicEngine2
-		SerieLevel3=ShuMM_EnergenicEngine3
-		LevelsCount=3
-        Text=<color=248,252,248>Неоднозначная приспособа <color=255,240,100>пиратских</color> "кулибиных". Часть энергии маневровых сопел данного двигателя была перенаправлена в маршевый канал, что привело к увеличению скорости, но также существенно снизило манёвренность судна. Большинство коалиционных рас такой "разработкой" побрезговали, однако <color=255,240,100>малокам</color> и <color=255,240,100>пеленгам</color> идея пришлась вполне по душе.</color>
-		Text=<clr><clrEnd>
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Дальность прыжка: <bonJump> пк.
-        Text=Навык манёвренности: <bonSkill2>
-        Fragility=125
-        Cost=250
-        Size=105
+		Size=100
         bonSpeed=60
-        bonJump=6
-        bonSkill2=-2
+        bonJump=4
     }
-    ShuMM_MicrogenaryHook ^{
-        Cost=120
-        Equipments=Hook
-        Fragility=120
-        KindGraph=MicrogenaryHook
-        Name=Микрогенарный захват
+    ShuMM_PneumaticDroid1 ^{
+        Equipments=Droid
+        KindGraph=PneumaticDroid
+        Name=Пневматический дроид I
         OnPlanets=1
-        Owner=Peleng
+        Owner=PirateClan
         Priority=10
-        Ruins=MB,Manaan
-        Size=60
+        Ruins=PB,CB,MB,Manaan
         Special=1
-        Text=<color=248,252,248>Микрогенарная линейка оборудования выпускается пеленгами по "заимствованной" у гаальцев и фэян технологии. При его сборке удаляются некоторые особо объемные элементы, а предмет покрывают сжимающим акриновым напылением. Правда, извлечение защитных компонентов совсем не способствует высокой прочности.</color>
+		AcrynSerie=Пневматический дроид I-III
+		AcrynLevel=1
+		SerieLevel1=ShuMM_PneumaticDroid1
+		SerieLevel2=ShuMM_PneumaticDroid2
+		SerieLevel3=ShuMM_PneumaticDroid3
+		LevelsCount=3
+		Text=<color=248,252,248>Серия дроидов, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной прочностью форсированные пневматические приводы, долговечность таких дроидов всё равно оказалась на непрактично низком уровне.</color>
+		Text=<clr><clrEnd>
+        Text=Эффективность дроида: <bonDroid> ед.
+        Fragility=200
+        Cost=150
+		Size=100
+        bonDroid=10
     }
-    ShuMM_MicrogenaryRadar ^{
-        Cost=120
-        Equipments=Radar
-        Fragility=120
-        KindGraph=MicrogenaryRadar
-        Name=Микрогенарный радар
+    ShuMM_PneumaticDroid2 ^{
+        Equipments=Droid
+        KindGraph=PneumaticDroid
+        Name=Пневматический дроид II
         OnPlanets=1
-        Owner=Peleng
-        Priority=10
-        Ruins=MB,Manaan
-        Size=60
+        Owner=PirateClan
+        Priority=30
+        Ruins=PB,CB,MB,Manaan
         Special=1
-        Text=<color=248,252,248>Микрогенарная линейка оборудования выпускается пеленгами по "заимствованной" у гаальцев и фэян технологии. При его сборке удаляются некоторые особо объемные элементы, а предмет покрывают сжимающим акриновым напылением. Правда, извлечение защитных компонентов совсем не способствует высокой прочности.</color>
+		AcrynSerie=Пневматический дроид I-III
+		AcrynLevel=2
+		SerieLevel1=ShuMM_PneumaticDroid1
+		SerieLevel2=ShuMM_PneumaticDroid2
+		SerieLevel3=ShuMM_PneumaticDroid3
+		LevelsCount=3
+		Text=<color=248,252,248>Серия дроидов, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной прочностью форсированные пневматические приводы, долговечность таких дроидов всё равно оказалась на непрактично низком уровне.</color>
+		Text=<clr><clrEnd>
+        Text=Эффективность дроида: <bonDroid> ед.
+        Fragility=250
+        Cost=200
+		Size=100
+        bonDroid=15
     }
-    ShuMM_MicrogenaryScaner ^{
-        Cost=120
-        Equipments=Scaner
-        Fragility=120
-        KindGraph=MicrogenaryScaner
-        Name=Микрогенарный сканер
+    ShuMM_PneumaticDroid3 ^{
+        Equipments=Droid
+        KindGraph=PneumaticDroid
+        Name=Пневматический дроид III
         OnPlanets=1
-        Owner=Peleng
-        Priority=10
-        Ruins=MB,Manaan
-        Size=60
+        Owner=PirateClan
+        Priority=50
+        Ruins=PB,CB,MB,Manaan
         Special=1
-        Text=<color=248,252,248>Микрогенарная линейка оборудования выпускается пеленгами по "заимствованной" у гаальцев и фэян технологии. При его сборке удаляются некоторые особо объемные элементы, а предмет покрывают сжимающим акриновым напылением. Правда, извлечение защитных компонентов совсем не способствует высокой прочности.</color>
+		AcrynSerie=Пневматический дроид I-III
+		AcrynLevel=3
+		SerieLevel1=ShuMM_PneumaticDroid1
+		SerieLevel2=ShuMM_PneumaticDroid2
+		SerieLevel3=ShuMM_PneumaticDroid3
+		LevelsCount=3
+		Text=<color=248,252,248>Серия дроидов, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной прочностью форсированные пневматические приводы, долговечность таких дроидов всё равно оказалась на непрактично низком уровне.</color>
+		Text=<clr><clrEnd>
+        Text=Эффективность дроида: <bonDroid> ед.
+        Fragility=300
+        Cost=250
+		Size=100
+        bonDroid=20
+    }
+    ShuMM_StationyDefGenerator1 ^{
+        Equipments=DefGenerator
+        KindGraph=StationyDefGenerator
+        Name=Стационный генератор защиты I
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=10
+        Ruins=PB,CB,MB,Manaan
+        Special=1
+		AcrynSerie=Стационный генератор защиты I-III
+		AcrynLevel=1
+		SerieLevel1=ShuMM_StationyDefGenerator1
+		SerieLevel2=ShuMM_StationyDefGenerator2
+		SerieLevel3=ShuMM_StationyDefGenerator3
+		LevelsCount=3
+		Text=<color=248,252,248>Серия генераторов защиты, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной стабильностью энергоёмкие стационные излучатели, долговечность таких генераторов всё равно оказалась на непрактично низком уровне.</color>
+		Text=<clr><clrEnd>
+        Text=Генератор поля: <bonDef> ед.
+        Fragility=200
+        Cost=150
+		Size=118
+        bonDef=3
+    }
+    ShuMM_StationyDefGenerator2 ^{
+        Equipments=DefGenerator
+        KindGraph=StationyDefGenerator
+        Name=Стационный генератор защиты II
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=30
+        Ruins=PB,CB,MB,Manaan
+        Special=1
+		AcrynSerie=Стационный генератор защиты I-III
+		AcrynLevel=2
+		SerieLevel1=ShuMM_StationyDefGenerator1
+		SerieLevel2=ShuMM_StationyDefGenerator2
+		SerieLevel3=ShuMM_StationyDefGenerator3
+		LevelsCount=3
+		Text=<color=248,252,248>Серия генераторов защиты, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной стабильностью энергоёмкие стационные излучатели, долговечность таких генераторов всё равно оказалась на непрактично низком уровне.</color>
+		Text=<clr><clrEnd>
+        Text=Генератор поля: <bonDef> ед.
+        Fragility=250
+        Cost=200
+		Size=111
+        bonDef=4
+    }
+    ShuMM_StationyDefGenerator3 ^{
+        Equipments=DefGenerator
+        KindGraph=StationyDefGenerator
+        Name=Стационный генератор защиты III
+        OnPlanets=1
+        Owner=PirateClan
+        Priority=50
+        Ruins=PB,CB,MB,Manaan
+        Special=1
+		AcrynSerie=Стационный генератор защиты I-III
+		AcrynLevel=3
+		SerieLevel1=ShuMM_StationyDefGenerator1
+		SerieLevel2=ShuMM_StationyDefGenerator2
+		SerieLevel3=ShuMM_StationyDefGenerator3
+		LevelsCount=3
+		Text=<color=248,252,248>Серия генераторов защиты, разработанных <color=255,240,100>пиратским кланом</color> в попытках ликвидировать техническое отставание от новейших коалиционных разработок в данной сфере. Несмотря на отчаянные попытки пиратских мастеров обеспечить достаточной стабильностью энергоёмкие стационные излучатели, долговечность таких генераторов всё равно оказалась на непрактично низком уровне.</color>
+		Text=<clr><clrEnd>
+        Text=Генератор поля: <bonDef> ед.
+        Fragility=300
+        Cost=250
+		Size=105
+        bonDef=5
     }
     ShuMM_MicrogenicDefGenerator ^{
         Cost=110
@@ -1016,459 +1503,19 @@ MicroModuls ^{
         Text=Броня корпуса: <bonHull> ед.
         bonHull=1
     }
-    ShuMM_PangoliniumDefGenerator ^{
-        Cost=120
-        Equipments=DefGenerator
-        Fragility=75
-        KindGraph=PangoliniumDefGenerator
-        Name=Панголиниумный генератор защиты
-        OnPlanets=1
-        Owner=Peleng
-        Priority=20
-        Ruins=MB,Manaan
-        Size=175
-        Special=1
-        Text=<color=248,252,248>Панголиниумное оборудование сделано по "заимствованной" у малоков панголиновой технологии с некоторыми доработками: при очень высокой прочности пеленгам удается собирать это оборудование хоть и крупногабаритным, но меньшим по весу в сравнении с малокским аналогом.</color>
-    }
-    ShuMM_PangoliniumDroid ^{
-        Cost=120
-        Equipments=Droid
-        Fragility=75
-        KindGraph=PangoliniumDroid
-        Name=Панголиниумный дроид
-        OnPlanets=1
-        Owner=Peleng
-        Priority=30
-        Ruins=MB,Manaan
-        Size=175
-        Special=1
-        Text=<color=248,252,248>Панголиниумное оборудование сделано по "заимствованной" у малоков панголиновой технологии с некоторыми доработками: при очень высокой прочности пеленгам удается собирать это оборудование хоть и крупногабаритным, но меньшим по весу в сравнении с малокским аналогом.</color>
-    }
-    ShuMM_PangoliniumEngine ^{
-        Cost=120
-        Equipments=Engine
-        Fragility=75
-        KindGraph=PangoliniumEngine
-        Name=Панголиниумный двигатель
-        OnPlanets=1
-        Owner=Peleng
-        Priority=10
-        Ruins=MB,Manaan
-        Size=175
-        Special=1
-        Text=<color=248,252,248>Панголиниумное оборудование сделано по "заимствованной" у малоков панголиновой технологии с некоторыми доработками: при очень высокой прочности пеленгам удается собирать это оборудование хоть и крупногабаритным, но меньшим по весу в сравнении с малокским аналогом.</color>
-    }
-    ShuMM_PhaseEngine ^{
-        Cost=120
-        Equipments=Engine
-        Fragility=90
-        KindGraph=PhaseEngine
-        Name=Фазовый двигатель
-        OnPlanets=1
-        Owner=PirateClan
-        Priority=10
-        Ruins=MB,Manaan
-        Special=1
-		AcrynSerie=Фазовый двигатель I-II
-		AcrynLevel=1
-		SerieLevel1=ShuMM_PhaseEngine
-		SerieLevel2=ShuMM_PhaseEngineT2
-		LevelsCount=2
-        Text=<color=248,252,248>Серия оборудования, разработанного пиратским кланом. Акриновые технологии значительно повышают надежность и мощность такого оборудования.</color>
-        Text=Скорость двигателя: <bonSpeed> ед.
-        bonSpeed=60
-    }
-    ShuMM_PhaseEngineT2 ^{
-        Cost=135
-        Equipments=Engine
-        Fragility=80
-        KindGraph=PhaseEngine
-        Name=Фазовый двигатель Т2
-        OnPlanets=1
-        Owner=PirateClan
-        Priority=60
-        RacialRestriction=1
-        Ruins=MB,Manaan
-        Special=1
-		AcrynSerie=Фазовый двигатель I-II
-		AcrynLevel=2
-		SerieLevel1=ShuMM_PhaseEngine
-		SerieLevel2=ShuMM_PhaseEngineT2
-		LevelsCount=2
-        Text=<color=248,252,248>Второе поколение оборудования, разработанного пиратским кланом. Помимо усовершенствованных акриновых технологий, вторая серия обладает биосканером, блокирующим особые свойства для непринадлежащих к пиратскому клану гуманоидов.</color>
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Дальность прыжка: <bonJump> пк.
-        bonJump=2
-        bonSpeed=80
-    }
-    ShuMM_PlasmaGeneratorR1 ^{
-        Cost=135
-        CustomTag=delete_asteroids
-        Equipments=DefGenerator
-        KindGraph=PlasmaGenerator
-        LockedAcryn=3
-        Name=Плазменный генератор R1
-		AcrynSerie=Плазменный генератор I-IV
-		AcrynLevel=1
-		SerieLevel1=ShuMM_PlasmaGeneratorR1
-		SerieLevel2=ShuMM_PlasmaGeneratorR2
-		SerieLevel3=ShuMM_PlasmaGeneratorR3
-		SerieLevel4=ShuMM_PlasmaGeneratorR4
-		LevelsCount=4
-        NotImprovable=1
-		NonSearchable=1
-        Owner=Any
-        Priority=10
-        Ruins=RC,BK,TC,PB
-        Size=125
-        Special=1
-        TextReplace=<color=248,252,248>Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек генератора защитного поля.</color>		
-        Text=<clr><clrEnd>
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Дальность прыжка: <bonJump> пк.
-        Text=Мощность сканера: <bonScan> ед.
-        Text=Дальность радара: <bonRadar> млн. км.
-        Text=Эффективность дроида: <bonDroid> ед.
-        Text=Мощность захвата: <bonHook> ед.
-        Text=Сила энергетического оружия: <bonWEnergy> ед.
-        Text=Сила осколочного оружия: <bonWSplinter> ед.
-        Text=Дальность стрельбы: <bonWRadius> ед.
-        bonDef=-500000000
-        bonDroid=5
-        bonHook=8
-        bonJump=2
-        bonRadar=200
-        bonScan=2
-        bonSpeed=30
-        bonWEnergy=2
-        bonWRadius=10
-        bonWSplinter=1
-    }
-    ShuMM_PlasmaGeneratorR2 ^{
-        Cost=150
-        CustomTag=delete_asteroids
-        Equipments=DefGenerator
-        KindGraph=PlasmaGenerator
-        LockedAcryn=3
-        Name=Плазменный генератор R2
-		AcrynSerie=Плазменный генератор I-IV
-		AcrynLevel=2
-		SerieLevel1=ShuMM_PlasmaGeneratorR1
-		SerieLevel2=ShuMM_PlasmaGeneratorR2
-		SerieLevel3=ShuMM_PlasmaGeneratorR3
-		SerieLevel4=ShuMM_PlasmaGeneratorR4
-		LevelsCount=4
-        NotImprovable=1
-		NonSearchable=1
-        Owner=Any
-        Priority=30
-        Ruins=RC,BK,TC,PB
-        Size=135
-        Special=1
-        Text=<clr><clrEnd>
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Дальность прыжка: <bonJump> пк.
-        Text=Мощность сканера: <bonScan> ед.
-        Text=Дальность радара: <bonRadar> млн. км.
-        Text=Эффективность дроида: <bonDroid> ед.
-        Text=Мощность захвата: <bonHook> ед.
-        Text=Сила энергетического оружия: <bonWEnergy> ед.
-        Text=Сила осколочного оружия: <bonWSplinter> ед.
-        Text=Дальность стрельбы: <bonWRadius> ед.
-        TextReplace=<color=248,252,248>Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек генератора защитного поля.</color>
-        bonDef=-500000000
-        bonDroid=8
-        bonHook=15
-        bonJump=4
-        bonRadar=400
-        bonScan=3
-        bonSpeed=45
-        bonWEnergy=3
-        bonWRadius=15
-        bonWSplinter=2
-    }
-    ShuMM_PlasmaGeneratorR3 ^{
-        Cost=175
-        CustomTag=delete_asteroids
-        Equipments=DefGenerator
-        KindGraph=PlasmaGenerator
-        LockedAcryn=3
-        Name=Плазменный генератор R3
-		AcrynSerie=Плазменный генератор I-IV
-		AcrynLevel=3
-		SerieLevel1=ShuMM_PlasmaGeneratorR1
-		SerieLevel2=ShuMM_PlasmaGeneratorR2
-		SerieLevel3=ShuMM_PlasmaGeneratorR3
-		SerieLevel4=ShuMM_PlasmaGeneratorR4
-		LevelsCount=4
-        NotImprovable=1
-		NonSearchable=1
-        Owner=Any
-        Priority=50
-        Ruins=RC,BK,TC,PB
-        Size=150
-        Special=1
-        Text=<clr><clrEnd>
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Дальность прыжка: <bonJump> пк.
-        Text=Мощность сканера: <bonScan> ед.
-        Text=Дальность радара: <bonRadar> млн. км.
-        Text=Эффективность дроида: <bonDroid> ед.
-        Text=Дальность захвата: <bonHookRadius> ед.
-        Text=Сила энергетического оружия: <bonWEnergy> ед.
-        Text=Сила осколочного оружия: <bonWSplinter> ед.
-        Text=Дальность стрельбы: <bonWRadius> ед.
-        TextReplace=<color=248,252,248>Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек генератора защитного поля.</color>
-        bonDef=-500000000
-        bonDroid=11
-        bonHookRadius=25
-        bonJump=6
-        bonRadar=600
-        bonScan=5
-        bonSpeed=60
-        bonWEnergy=6
-        bonWRadius=25
-        bonWSplinter=3
-    }
-    ShuMM_PlasmaGeneratorR4 ^{
+    ShuMM_Extrimium ^{
         Cost=200
-        CustomTag=delete_asteroids
-        Equipments=DefGenerator
-        KindGraph=PlasmaGenerator
-        LockedAcryn=3
-        Name=Плазменный генератор R4
-		AcrynSerie=Плазменный генератор I-IV
-		AcrynLevel=4
-		SerieLevel1=ShuMM_PlasmaGeneratorR1
-		SerieLevel2=ShuMM_PlasmaGeneratorR2
-		SerieLevel3=ShuMM_PlasmaGeneratorR3
-		SerieLevel4=ShuMM_PlasmaGeneratorR4
-		LevelsCount=4
-        NotImprovable=1
-		NonSearchable=1
-        Owner=Any
-        Priority=70
-        Ruins=RC,BK,TC,PB
-        Size=165
-        Special=1
-        Text=<clr><clrEnd>
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Дальность прыжка: <bonJump> пк.
-        Text=Мощность сканера: <bonScan> ед.
-        Text=Дальность радара: <bonRadar> млн. км.
-        Text=Эффективность дроида: <bonDroid> ед.
-        Text=Дальность захвата: <bonHookRadius> ед.
-        Text=Сила энергетического оружия: <bonWEnergy> ед.
-        Text=Сила осколочного оружия: <bonWSplinter> ед.
-        Text=Дальность стрельбы: <bonWRadius> ед.
-        TextReplace=<color=248,252,248>Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек генератора защитного поля.</color>
-        bonDef=-500000000
-        bonDroid=15
-        bonHookRadius=30
-        bonJump=8
-        bonRadar=800
-        bonScan=7
-        bonSpeed=85
-        bonWEnergy=8
-        bonWRadius=35
-        bonWSplinter=5
-    }
-    ShuMM_PneumaticDroid ^{
-        Cost=120
-        Equipments=Droid
-        Fragility=90
-        KindGraph=PneumaticDroid
-        Name=Пневматический дроид
+        Equipments=W01,W02,W03,W05,W06,W07,W08,W09,W10,W11,W12,W17,sphere_gun,splash_faser,laser_gun,photon_gun2
+        Fragility=170
+        Name="Экстремум"
         OnPlanets=1
         Owner=PirateClan
-        Priority=10
-        Ruins=MB,Manaan
+        Priority=30
+        Ruins=PB,CB
+        Size=80
         Special=1
-		AcrynSerie=Пневматический дроид I-II
-		AcrynLevel=1
-		SerieLevel1=ShuMM_PneumaticDroid
-		SerieLevel2=ShuMM_PneumaticDroidT2
-		LevelsCount=2
-        Text=<color=248,252,248>Серия оборудования, разработанного пиратским кланом. Акриновые технологии значительно повышают надежность и мощность такого оборудования.</color>
-        Text=Эффективность дроида: <bonDroid> ед.
-        bonDroid=7
-    }
-    ShuMM_PneumaticDroidT2 ^{
-        Cost=135
-        Equipments=Droid
-        Fragility=90
-        KindGraph=PneumaticDroid
-        Name=Пневматический дроид Т2
-        OnPlanets=1
-        Owner=PirateClan
-        Priority=60
-        RacialRestriction=1
-        Ruins=MB,Manaan
-        Special=1
-		AcrynSerie=Пневматический дроид I-II
-		AcrynLevel=2
-		SerieLevel1=ShuMM_PneumaticDroid
-		SerieLevel2=ShuMM_PneumaticDroidT2
-		LevelsCount=2
-        Text=<color=248,252,248>Второе поколение оборудования, разработанного пиратским кланом. Помимо усовершенствованных акриновых технологий, вторая серия обладает биосканером, блокирующим особые свойства для непринадлежащих к пиратскому клану гуманоидов.</color>
-        Text=Эффективность дроида: <bonDroid> ед.
-        bonDroid=12
-    }
-    ShuMM_ScanBotR1 ^{
-        Cost=125
-        Equipments=Scaner
-        KindGraph=ScanBot
-        Name=СканБот R1
-        OnPlanets=1
-        Owner=People,Fei
-        Priority=10
-        Ruins=TC,MB,Manaan
-        Special=1
-		AcrynSerie=СканБот I-II
-		AcrynLevel=1
-		SerieLevel1=ShuMM_ScanBotR1
-		SerieLevel2=ShuMM_ScanBotR2
-		LevelsCount=2
-        Text=<color=248,252,248>Выпускаемое фэянами и людьми оборудование создано в режиме совместимости с другим имеющимся на корабле аппаратным обеспечением. СканБот - роботизированный сканер, помимо основной функции диагностирующий неполадки корабля, что, к сожалению, пагубно сказывается на мощности сканирования.</color>
-        Text=Навык техники: <bonSkill3>
-        Text=Мощность сканера: <bonScan> ед.
-        bonScan=-4
-        bonSkill3=1
-    }
-    ShuMM_ScanBotR2 ^{
-        Cost=160
-        Equipments=Scaner
-        KindGraph=ScanBot
-        Name=СканБот R2
-        OnPlanets=1
-        Owner=People,Fei
-        Priority=40
-        Ruins=TC,MB,Manaan
-        Special=1
-		AcrynSerie=СканБот I-II
-		AcrynLevel=2
-		SerieLevel1=ShuMM_ScanBotR1
-		SerieLevel2=ShuMM_ScanBotR2
-		LevelsCount=2
-        Text=<color=248,252,248>Выпускаемое фэянами и людьми оборудование создано в режиме совместимости с другим имеющимся на корабле аппаратным обеспечением. СканБот - роботизированный сканер, помимо основной функции диагностирующий неполадки корабля, что, к сожалению, пагубно сказывается на мощности сканирования.</color>
-        Text=Навык техники: <bonSkill3>
-        Text=Мощность сканера: <bonScan> ед.
-        bonScan=-10
-        bonSkill3=2
-    }
-    ShuMM_StationyDefGenerator ^{
-        Cost=120
-        Equipments=DefGenerator
-        Fragility=90
-        KindGraph=StationyDefGenerator
-        Name=Стационный генератор защиты
-        OnPlanets=1
-        Owner=PirateClan
-        Priority=10
-        Ruins=MB,Manaan
-        Special=1
-		AcrynSerie=Стационный генератор защиты I-II
-		AcrynLevel=1
-		SerieLevel1=ShuMM_StationyDefGenerator
-		SerieLevel2=ShuMM_StationyDefGeneratorT2
-		LevelsCount=2
-        Text=<color=248,252,248>Серия оборудования, разработанного пиратским кланом. Акриновые технологии значительно повышают надежность и мощность такого оборудования.</color>
-        Text=Генератор поля: <bonDef> ед.
-        bonDef=3
-    }
-    ShuMM_StationyDefGeneratorT2 ^{
-        Cost=135
-        Equipments=DefGenerator
-        Fragility=90
-        KindGraph=StationyDefGenerator
-        Name=Стационный генератор защиты Т2
-        OnPlanets=1
-        Owner=PirateClan
-        Priority=50
-        RacialRestriction=1
-        Ruins=MB,Manaan
-        Special=1
-		AcrynSerie=Стационный генератор защиты I-II
-		AcrynLevel=2
-		SerieLevel1=ShuMM_StationyDefGenerator
-		SerieLevel2=ShuMM_StationyDefGeneratorT2
-		LevelsCount=2
-        Text=<color=248,252,248>Второе поколение оборудования, разработанного пиратским кланом. Помимо усовершенствованных акриновых технологий, вторая серия обладает биосканером, блокирующим особые свойства для непринадлежащих к пиратскому клану гуманоидов.</color>
-        Text=Генератор поля: <bonDef> ед.
-        bonDef=5
-    }
-    ShuMM_SynchrophaseFuelTank ^{
-        Cost=135
-        Equipments=FuelTank
-        Fragility=175
-        KindGraph=SynchrophaseFuelTank
-        Name=Синхрофазовый топливный бак
-        OnPlanets=1
-        Owner=PirateClan
-        Priority=10
-        Size=50
-        Special=1
-        Text=<color=248,252,248>Синхрофазовые топливные баки, производимые пиратским кланом, сделаны более компактными при сохранении прежней вместительности. Минусом этой технологии является хрупкость таких баков, вызванная снятием части бронепластин.</color>
-    }
-    ShuMM_UpgradeniumDefGenerator ^{
-        Cost=85
-        Equipments=DefGenerator
-        Fragility=115
-        KindGraph=UpgradeniumDefGenerator
-        Name=Апгрейтиниумный генератор защиты
-        OnPlanets=1
-        Owner=Peleng
-        Priority=20
-        Ruins=MB,Manaan
-        Size=85
-        Special=1
-        Text=<color=248,252,248>Производимое пеленгскими техниками оборудование собирается преимущественно из старых запчастей и ярко раскрашивается для придания товарного вида. Оно дешевое, компактное и потребляет мало энергии, что полезно для работы захвата.</color>
-        Text=Мощность захвата: <bonHook> ед.
-        Text=Навык манёвренности: <bonSkill2>
-        Text=Навык обаяния: <bonSkill5>
-        bonHook=15
-        bonSkill2=1
-        bonSkill5=-1
-    }
-    ShuMM_TauhitHull ^{
-        Cost=300
-        CustomTag=Tag
-        Equipments=Hull
-        FragilityEnergy=80
-        FragilityMissile=80
-        FragilitySplinter=80
-        KindGraph=Tauhit
-        Name=Корпус "Таухито"
-        Owner=Any
-        Priority=100
-        Special=1
-		LockedAcryn=3
-		NonSearchable=1
-        Text=<color=248,252,248>Корпус "Таухито" - старинная разработка Коалиции, переходившая лишь потомкам участников ее тестирования в качестве наследства, но лишенная особых свойств, пока диск с данными об оригинальном проекте не был найден неким рейнджером. Корпус был воссоздан специалистами из сети центров рейнджеров, максимально приближенный к изначальной задумке - бортовой компьютер вводит пилота в киберпространство, поразительно повышая его скорость и реакцию, а также максимизируя работу сканера и радара. Расплачиваться приходится частично утерянной связью с реальностью, приводящей к снижению социальных способностей летчика. </color>
-        Text=Навык точности: <bonSkill1>
-        Text=Навык манёвренности: <bonSkill2>
-        Text=Навык техники: <bonSkill3>
-        Text=Навык торговли: <bonSkill4>
-        Text=Навык обаяния: <bonSkill5>
-        Text=Навык лидерства: <bonSkill6>
-        Text=Масса корабля: <bonMass>%
-        Text=Дальность стрельбы: <bonWRadius> ед.
-        Text=Дальность радара: <bonRadar> млн. км.
-        Text=Мощность сканера: <bonScan> ед.
-        Text=Скорость захвата: <bonHookMaxSpeed> ед.
-        bonHookMaxSpeed=2
-        bonHookMinSpeed=2
-        bonMass=-25
-        bonRadar=3000
-        bonScan=20
-        bonSkill1=2
-        bonSkill2=2
-        bonSkill3=2
-        bonSkill4=-2
-        bonSkill5=-2
-        bonSkill6=-2
-        bonSlotWeapon=-2
-        bonWRadius=50
+        Text=<color=248,252,248>Данное оружие оснащено экспериментальным источником энергии, способным увеличить наносимый урон до максимума, независимо от навыков пилота. Модифицированный блок занимает малый объем, но потребляет огромное количество ресурсов, вследствие чего быстро изнашивается и очень дорог в эксплуатации. Излюбленная модификация пиратов, предпочитающих внезапность и мощность надежности и стабильности.</color>
+        WeaponMods=NoDelta
     }
     ShuMM_DrynduletHull1 ^{
         Cost=200
@@ -2113,40 +2160,45 @@ MicroModuls ^{
         bonSlotForsage=-1
         bonSlotWeapon=-2
     }
-    ShuMM_Extrimium ^{
-        Cost=200
-        Equipments=W01,W02,W03,W05,W06,W07,W08,W09,W10,W11,W12,W17,sphere_gun,splash_faser,laser_gun,photon_gun2
-        Fragility=170
-        Name="Экстремум"
-        OnPlanets=1
-        Owner=PirateClan
-        Priority=30
-        Ruins=PB,CB
-        Size=80
+    ShuMM_TauhitHull ^{
+        Equipments=Hull
+        KindGraph=Tauhit
+        Name=Корпус "Таухито"
+        Owner=Any
+        Priority=100
         Special=1
-        Text=<color=248,252,248>Данное оружие оснащено экспериментальным источником энергии, способным увеличить наносимый урон до максимума, независимо от навыков пилота. Модифицированный блок занимает малый объем, но потребляет огромное количество ресурсов, вследствие чего быстро изнашивается и очень дорог в эксплуатации. Излюбленная модификация пиратов, предпочитающих внезапность и мощность надежности и стабильности.</color>
-        WeaponMods=NoDelta
-    }
-    ShuMM_Torpedo ^{
-        Cost=150
-        Equipments=W04
-        Fragility=140
-        KindGraph=Torpedo
-        Name="Торпедо"
-        OnPlanets=1
-        Owner=Maloc,Peleng,People,Fei,Gaal
-        Priority=60
-        Ruins=Any
-        ShotVisual=2
-        Size=150
-        Special=1
-        Text=<color=248,252,248>Акриновые ракетометы серии "Торпедо" - попытка ученых Коалиции воссоздать доминаторские торпедные аппараты. Данная технология позволяет ракетомету выпускать одну мощную, медленную ракету, снижающую навыки цели. К несчастью, псевдоторпеды не доработаны до конца, и ракетометы серии "Торпедо" изнашиваются значительно быстрее.</color>
-		Text=<clr><clrEnd>
-		Text=Надёжность оружия: <clr>-50%<clrEnd>
-        WeaponMods=NoDelta,Decelerate
-        bonMissileSpeed=-400
-        bonShots=-2
-        bonWMissile=35
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Корпус "Таухито" - старинная разработка Коалиции, переходившая лишь потомкам участников ее тестирования в качестве наследства, но лишенная особых свойств, пока диск с данными об оригинальном проекте не был найден неким рейнджером. Корпус был воссоздан специалистами из сети центров рейнджеров, максимально приближенный к изначальной задумке - бортовой компьютер вводит пилота в киберпространство, поразительно повышая его скорость и реакцию, а также максимизируя работу сканера и радара. Расплачиваться приходится частично утерянной связью с реальностью, приводящей к снижению социальных способностей летчика. </color>
+        Text=Навык точности: <bonSkill1>
+        Text=Навык манёвренности: <bonSkill2>
+        Text=Навык техники: <bonSkill3>
+        Text=Навык торговли: <bonSkill4>
+        Text=Навык обаяния: <bonSkill5>
+        Text=Навык лидерства: <bonSkill6>
+        Text=Масса корабля: <bonMass>%
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=Скорость захвата: <bonHookMaxSpeed> ед.
+        FragilityEnergy=80
+        FragilityMissile=80
+        FragilitySplinter=80
+        Cost=600
+		Size=100
+        bonHookMaxSpeed=2
+        bonHookMinSpeed=2
+        bonMass=-25
+        bonRadar=3000
+        bonScan=20
+        bonSkill1=2
+        bonSkill2=2
+        bonSkill3=2
+        bonSkill4=-2
+        bonSkill5=-2
+        bonSkill6=-2
+        bonSlotWeapon=-2
+        bonWRadius=50
     }
 }
 Rebellion ^{
