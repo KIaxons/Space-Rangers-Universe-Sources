@@ -1,4 +1,10 @@
 Items ^{
+	CustomCountables ^{
+        NuggetAsteroid ^{
+            Name=Драгоценные минералы
+            Text=Содержит редкие, или не очень, соединения металлов и минералов.
+        }
+    }
     Weapon ^{
         Missile ^{
             30 ^{
@@ -46,168 +52,170 @@ Items ^{
 }
 MicroModuls ~{
     ExpTC_DyshotEnergy ^{
+        Cost=400
+        CustomTag=ExpTC_DyshotEnergy
         Equipments=W01,W03,W05,W06,W08,W10,W11,W12,W17
+        Fragility=133
         Name="Дишот"
-		CustomTag=ExpTC_DyshotEnergy
         OnPlanets=1
-		Ruins=Any
         Priority=10
+        Ruins=Any
+        Size=200
         Special=1
         Text=<color=248,252,248>На это орудие установлен дополнительный энергомодуль, который вводится в строй, пока основной находится на перезарядке. Синхронизировав циклы их работы, инженеры смогли добиться впечатляющего прироста скорострельности установки. Недостатком же данного подхода явился возросший вес и стоимость орудия, а также ускоренный износ главных проводящих контуров устройства.</color>
-		Text=<clr><clrEnd>
-		Text=Скорострельность: <clr>+1<clrEnd>
-        Fragility=133
-        Cost=400
-        Size=200
+        Text=<clr><clrEnd>
+        Text=Скорострельность: <clr>+1<clrEnd>
         bonAttacks=1
     }
     ExpTC_DyshotSplinter ^{
+        Cost=400
+        CustomTag=ExpTC_DyshotSplinter
         Equipments=W02,W07,W09,W16
+        Fragility=133
         Name="Дишот"
-		CustomTag=ExpTC_DyshotSplinter
         OnPlanets=1
-		Ruins=Any
         Priority=10
+        Ruins=Any
+        Size=200
         Special=1
         Text=<color=248,252,248>На данном орудии установлена продвинутая система подачи снарядов. Материалы нулевого трения и дополнительные системы охлаждения позволили существенно сократить время, необходимое для полной перезарядки и, соответственно, снизить нежелательную задержку перед выстрелом. К сожалению, полностью устранить фактор ускоренного износа инженеры так и не смогли, а применение более плотных и дорогих деталей привело к увеличению конечного веса всей конструкции.</color>
-		Text=<clr><clrEnd>
-		Text=Скорострельность: <clr>+1<clrEnd>
-        Fragility=133
-        Cost=400
-        Size=200
+        Text=<clr><clrEnd>
+        Text=Скорострельность: <clr>+1<clrEnd>
         bonAttacks=1
     }
-	ExpTC_MagnetronEnergy ^{
-		Equipments=W01,W03,W05,W06,W08,W10,W11,W12,W17,PlasmaGun
-		Name="Магнетрон"
-		OnPlanets=1
-		Priority=10
-		Ruins=Any
-		Special=1
-		Text=<color=248,252,248>Источник мощного магнитного поля, установленный на данном орудии, значительно увеличивает пробивную силу любого энергетического импульса. При этом вызываемые магнитным полем помехи отрицательно сказываются на надёжности установки, а также ощутимо снижают эффективность работы бортового оборудования как атакующего, так и его цели.</color>
+    ExpTC_MagnetronEnergy ^{
+        Cost=180
+        Equipments=W01,W03,W05,W06,W08,W10,W11,W12,W17,PlasmaGun
+        Fragility=133
+        Name="Магнетрон"
+        OnPlanets=1
+        Priority=10
+        Ruins=Any
+        Size=110
+        Special=1
+        Text=<color=248,252,248>Источник мощного магнитного поля, установленный на данном орудии, значительно увеличивает пробивную силу любого энергетического импульса. При этом вызываемые магнитным полем помехи отрицательно сказываются на надёжности установки, а также ощутимо снижают эффективность работы бортового оборудования как атакующего, так и его цели.</color>
         Text=<clr><clrEnd>
-		Text=Бонус к урону: <clr>+15<clrEnd> ед.
+        Text=Бонус к урону: <clr>+15<clrEnd> ед.
         Text=Накладывает на цель: <clr>ЭМ-помехи<clrEnd>
-		Text=Дальность радара: <bonRadar> млн. км.
-		Text=Мощность сканера: <bonScan> ед.
-		Cost=180
-		Size=110
-		Fragility=133
-		WeaponMods=Magnetic
-		bonWEnergy=15
-		bonRadar=-100
-		bonScan=-2
-	}
-	ExpTC_MagnetronSplinter ^{
-		Equipments=W02,W07,W09,W16
-		Name="Магнетрон"
-		OnPlanets=1
-		Priority=10
-		Ruins=Any
-		Special=1
-		Text=<color=248,252,248>Источник мощного магнитного поля, установленный на данном орудии, значительно увеличивает пробивную силу любого кинетического боеприпаса. При этом вызываемые магнитным полем помехи отрицательно сказываются на надёжности установки, а также ощутимо снижают эффективность работы бортового оборудования как атакующего, так и его цели.</color>
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan> ед.
+        WeaponMods=Magnetic
+        bonRadar=-100
+        bonScan=-2
+        bonWEnergy=15
+    }
+    ExpTC_MagnetronSplinter ^{
+        Cost=180
+        Equipments=W02,W07,W09,W16
+        Fragility=133
+        Name="Магнетрон"
+        OnPlanets=1
+        Priority=10
+        Ruins=Any
+        Size=110
+        Special=1
+        Text=<color=248,252,248>Источник мощного магнитного поля, установленный на данном орудии, значительно увеличивает пробивную силу любого кинетического боеприпаса. При этом вызываемые магнитным полем помехи отрицательно сказываются на надёжности установки, а также ощутимо снижают эффективность работы бортового оборудования как атакующего, так и его цели.</color>
         Text=<clr><clrEnd>
-		Text=Бонус к урону: <clr>+15<clrEnd> ед.
+        Text=Бонус к урону: <clr>+15<clrEnd> ед.
         Text=Накладывает на цель: <clr>ЭМ-помехи<clrEnd>
-		Text=Дальность радара: <bonRadar> млн. км.
-		Text=Мощность сканера: <bonScan> ед.
-		Cost=180
-		Size=110
-		Fragility=133
-		WeaponMods=Magnetic
-		bonWEnergy=15
-		bonRadar=-100
-		bonScan=-2
-	}
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan> ед.
+        WeaponMods=Magnetic
+        bonRadar=-100
+        bonScan=-2
+        bonWSplinter=15
+    }
     ExpTC_ExpHull1 ^{
+        AcrynLevel=1
+        AcrynSerie=Экспериментальный корпус I-IV
         Cost=200
+        CustomTag=ExpTC_ExpHull1
         Equipments=Hull
         FragilityEnergy=150
         FragilityMissile=150
         FragilitySplinter=150
-		Owner=Maloc
         KindGraph=ExperimentalHull
+        LevelsCount=4
         Name=Экспериментальный корпус I
-		AcrynSerie=Экспериментальный корпус I-IV
-		AcrynLevel=1
-		SerieLevel1=ExpTC_ExpHull1
-		SerieLevel2=ExpTC_ExpHull2
-		SerieLevel3=ExpTC_ExpHull3
-		SerieLevel4=ExpTC_ExpHull4
-		LevelsCount=4
-		CustomTag=ExpTC_ExpHull1
+        Owner=Maloc
         Priority=10
         Ruins=TC
+        SerieLevel1=ExpTC_ExpHull1
+        SerieLevel2=ExpTC_ExpHull2
+        SerieLevel3=ExpTC_ExpHull3
+        SerieLevel4=ExpTC_ExpHull4
         Special=1
         Text=<color=248,252,248>Специалисты Технологических центров находятся в постоянных поисках решений для улучшения оборудования, данный корпус является очередным "гениальным" решением, одного из ведущих специалистов. Оптимизация внутреннего пространства и энергетических узлов позволяет подключить почти всё возможное оборудование. Однако проектировщики забыли о реалиях современного космоса и перенесли многие уязвимые системы корабля слишком близко к обшивке. В результате этого в бою данный корабль страдает намного сильнее.</color>
     }
     ExpTC_ExpHull2 ^{
+        AcrynLevel=2
+        AcrynSerie=Экспериментальный корпус I-IV
         Cost=300
+        CustomTag=ExpTC_ExpHull2
         Equipments=Hull
         FragilityEnergy=140
         FragilityMissile=140
         FragilitySplinter=140
-		Owner=Maloc
         KindGraph=ExperimentalHull
+        LevelsCount=4
         Name=Экспериментальный корпус II
-		AcrynSerie=Экспериментальный корпус I-IV
-		AcrynLevel=2
-		SerieLevel1=ExpTC_ExpHull1
-		SerieLevel2=ExpTC_ExpHull2
-		SerieLevel3=ExpTC_ExpHull3
-		SerieLevel4=ExpTC_ExpHull4
-		LevelsCount=4
-		CustomTag=ExpTC_ExpHull2
+        Owner=Maloc
         Priority=30
         Ruins=TC
+        SerieLevel1=ExpTC_ExpHull1
+        SerieLevel2=ExpTC_ExpHull2
+        SerieLevel3=ExpTC_ExpHull3
+        SerieLevel4=ExpTC_ExpHull4
         Special=1
         Text=<color=248,252,248>Специалисты Технологических центров находятся в постоянных поисках решений для улучшения оборудования, данный корпус является очередным "гениальным" решением, одного из ведущих специалистов. Оптимизация внутреннего пространства и энергетических узлов позволяет подключить почти всё возможное оборудование. Однако проектировщики забыли о реалиях современного космоса и перенесли многие уязвимые системы корабля слишком близко к обшивке. В результате этого в бою данный корабль страдает намного сильнее.</color>
     }
     ExpTC_ExpHull3 ^{
+        AcrynLevel=3
+        AcrynSerie=Экспериментальный корпус I-IV
         Cost=400
+        CustomTag=ExpTC_ExpHull3
         Equipments=Hull
         FragilityEnergy=130
         FragilityMissile=130
         FragilitySplinter=130
-		Owner=Maloc
         KindGraph=ExperimentalHull
+        LevelsCount=4
         Name=Экспериментальный корпус III
-		AcrynSerie=Экспериментальный корпус I-IV
-		AcrynLevel=3
-		SerieLevel1=ExpTC_ExpHull1
-		SerieLevel2=ExpTC_ExpHull2
-		SerieLevel3=ExpTC_ExpHull3
-		SerieLevel4=ExpTC_ExpHull4
-		LevelsCount=4
-		CustomTag=ExpTC_ExpHull3
+        Owner=Maloc
         Priority=50
         Ruins=TC
+        SerieLevel1=ExpTC_ExpHull1
+        SerieLevel2=ExpTC_ExpHull2
+        SerieLevel3=ExpTC_ExpHull3
+        SerieLevel4=ExpTC_ExpHull4
         Special=1
         Text=<color=248,252,248>Специалисты Технологических центров находятся в постоянных поисках решений для улучшения оборудования, данный корпус является очередным "гениальным" решением, одного из ведущих специалистов. Оптимизация внутреннего пространства и энергетических узлов позволяет подключить почти всё возможное оборудование. Однако проектировщики забыли о реалиях современного космоса и перенесли многие уязвимые системы корабля слишком близко к обшивке. В результате этого в бою данный корабль страдает намного сильнее.</color>
     }
     ExpTC_ExpHull4 ^{
+        AcrynLevel=4
+        AcrynSerie=Экспериментальный корпус I-IV
         Cost=500
+        CustomTag=ExpTC_ExpHull4
         Equipments=Hull
         FragilityEnergy=120
         FragilityMissile=120
         FragilitySplinter=120
-		Owner=Maloc
         KindGraph=ExperimentalHull
+        LevelsCount=4
         Name=Экспериментальный корпус IV
-		AcrynSerie=Экспериментальный корпус I-IV
-		AcrynLevel=4
-		SerieLevel1=ExpTC_ExpHull1
-		SerieLevel2=ExpTC_ExpHull2
-		SerieLevel3=ExpTC_ExpHull3
-		SerieLevel4=ExpTC_ExpHull4
-		LevelsCount=4
-		CustomTag=ExpTC_ExpHull4
+        Owner=Maloc
         Priority=70
         Ruins=TC
+        SerieLevel1=ExpTC_ExpHull1
+        SerieLevel2=ExpTC_ExpHull2
+        SerieLevel3=ExpTC_ExpHull3
+        SerieLevel4=ExpTC_ExpHull4
         Special=1
         Text=<color=248,252,248>Специалисты Технологических центров находятся в постоянных поисках решений для улучшения оборудования, данный корпус является очередным "гениальным" решением, одного из ведущих специалистов. Оптимизация внутреннего пространства и энергетических узлов позволяет подключить почти всё возможное оборудование. Однако проектировщики забыли о реалиях современного космоса и перенесли многие уязвимые системы корабля слишком близко к обшивке. В результате этого в бою данный корабль страдает намного сильнее.</color>
     }
     ExpTC_Lifeboat ^{
+        AbandonedShipName=Покинутый корабль
+        BlockMM=1
         Cost=20
         CustomTag=ExpTC_Lifeboat
         Equipments=Hull
@@ -215,17 +223,15 @@ MicroModuls ~{
         FragilityMissile=33
         FragilitySplinter=33
         KindGraph=Lifeboat
+        LockedAcryn=3
         Name=</color>Спасательная шлюпка
+        NoBridge=1
+        NonSearchable=1
+        NotImprovable=1
         Priority=0
         Size=100
         Special=1
-		BlockMM=1
-		NoBridge=1
-		LockedAcryn=3
-		NotImprovable=1
-		NonSearchable=1
         TextReplace=Крошечный корпус-шлюпка, созданный для экстренного катапультирования. Благодаря минимальной комплектации и небольшим размерам способен развивать внушительную скорость, однако и прочность его крайне невелика.
-		AbandonedShipName=Покинутый корабль
         bonSlotArt=-4
         bonSlotDef=-1
         bonSlotDroid=-1
@@ -238,319 +244,319 @@ MicroModuls ~{
     }
     ExpTC_SecondLife ^{
         CustomTag=ExpTC_SecondLife
+        LockedAcryn=3
         Name=name22
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_SecondLifeText ^{
         CustomTag=ExpTC_SecondLifeText
         ExText=<color=255,167,84>Корпус оборудован <color=255,240,100>спасательной шлюпкой</color>.</color>
+        LockedAcryn=3
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_EmptyMMPhysGun ^{
         CustomTag=empty_mm
         KindGraph=Empty
+        LockedAcryn=3
         Name=Физган
+        NonSearchable=1
+        NotRemovable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NotRemovable=1
-		NonSearchable=1
     }
     ExpTC_FragilityPlus10 ^{
         Cost=200
         Equipments=Any
         Fragility=91
+        LockedAcryn=3
         Name=Fragility_10_plus
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_FragilityPlus20 ^{
         Cost=200
         Equipments=Any
         Fragility=83
+        LockedAcryn=3
         Name=Fragility_20_plus
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_FragilityMinus5 ^{
         Cost=200
         Equipments=Any
         Fragility=105
+        LockedAcryn=3
         Name=Fragility_5_minus
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_FragilityMinus10 ^{
         Cost=200
         Equipments=Any
         Fragility=111
+        LockedAcryn=3
         Name=Fragility_10_minus
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_FragilityMinus20 ^{
         Cost=200
         Equipments=Any
         Fragility=125
+        LockedAcryn=3
         Name=Fragility_20_minus
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_FragilityMinus30 ^{
         Cost=200
         Equipments=Any
         Fragility=143
+        LockedAcryn=3
         Name=Fragility_30_minus
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_FirmwareOn ^{
         Cost=200
         Equipments=Any
+        LockedAcryn=3
         Name=proshiv
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_FirmwareOff ^{
         Cost=200
         Equipments=Any
+        LockedAcryn=3
         Name=deup
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_EquipmentImprovement ^{
         Cost=200
         Equipments=Any
+        LockedAcryn=3
         Name=un_upg
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_ZondImprovement ^{
         Cost=200
         Equipments=Any
+        LockedAcryn=3
         Name=uniq_upgrade
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_AddSlotWeapon ^{
         Cost=200
         Equipments=Any
+        LockedAcryn=3
         Name=add_slot_weapon
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         bonSlotWeapon=1
     }
     ExpTC_AddSlotForsage ^{
         Cost=200
         Equipments=Any
+        LockedAcryn=3
         Name=add_slot_forsage
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         bonSlotForsage=1
     }
     ExpTC_AddSlotRadar ^{
         Cost=200
         Equipments=Any
+        LockedAcryn=3
         Name=add_slot_radar
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         bonSlotRadar=1
     }
     ExpTC_AddSlotScaner ^{
         Cost=200
         Equipments=Any
+        LockedAcryn=3
         Name=add_slot_scaner
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         bonSlotScaner=1
     }
     ExpTC_AddSlotDroid ^{
         Cost=200
         Equipments=Any
+        LockedAcryn=3
         Name=add_slot_droid
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         bonSlotDroid=1
     }
     ExpTC_AddSlotHook ^{
         Cost=200
         Equipments=Any
+        LockedAcryn=3
         Name=add_slot_hook
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         bonSlotHook=1
     }
     ExpTC_AddSlotDefGenerator ^{
         Cost=200
         Equipments=Any
+        LockedAcryn=3
         Name=add_slot_def
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         bonSlotDef=1
     }
     ExpTC_AddSlotArtefact ^{
         Cost=200
         Equipments=Any
+        LockedAcryn=3
         Name=add_slot_art
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         bonSlotArt=1
     }
     ExpTC_AddAllSlotsForTest ^{
+        CustomTag=all_slots_plus
         Equipments=Any
-		CustomTag=all_slots_plus
+        LockedAcryn=3
         Name=all_slots_plus
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         bonSlotArt=1
-		bonSlotDef=1
-		bonSlotHook=1
-		bonSlotDroid=1
-		bonSlotScaner=1
-		bonSlotRadar=1
-		bonSlotForsage=1
-		bonSlotWeapon=1
+        bonSlotDef=1
+        bonSlotDroid=1
+        bonSlotForsage=1
+        bonSlotHook=1
+        bonSlotRadar=1
+        bonSlotScaner=1
+        bonSlotWeapon=1
     }
     ExpTC_DeleteSlotWeapon ^{
         Cost=200
         Equipments=Any
+        LockedAcryn=3
         Name=del_slot_weapon
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         bonSlotWeapon=-1
     }
     ExpTC_DeleteSlotForsage ^{
         Cost=200
         Equipments=Any
+        LockedAcryn=3
         Name=del_slot_forsage
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         bonSlotForsage=-1
     }
     ExpTC_DeleteSlotRadar ^{
         Cost=200
         Equipments=Any
+        LockedAcryn=3
         Name=del_slot_radar
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         bonSlotRadar=-1
     }
     ExpTC_DeleteSlotScaner ^{
         Cost=200
         Equipments=Any
+        LockedAcryn=3
         Name=del_slot_scaner
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         bonSlotScaner=-1
     }
     ExpTC_DeleteSlotDroid ^{
         Cost=200
         Equipments=Any
+        LockedAcryn=3
         Name=del_slot_droid
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         bonSlotDroid=-1
     }
     ExpTC_DeleteSlotHook ^{
         Cost=200
         Equipments=Any
+        LockedAcryn=3
         Name=del_slot_hook
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         bonSlotHook=-1
     }
     ExpTC_DeleteSlotDefGenerator ^{
         Cost=200
         Equipments=Any
+        LockedAcryn=3
         Name=del_slot_def
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         bonSlotDef=-1
     }
     ExpTC_DeleteSlotArtefact ^{
         Cost=200
         Equipments=Any
+        LockedAcryn=3
         Name=del_slot_art
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         bonSlotArt=-1
     }
     ExpTC_DeleteAllSlotsForTest ^{
+        CustomTag=all_slots_minus
         Equipments=Any
-		CustomTag=all_slots_minus
+        LockedAcryn=3
         Name=all_slots_minus
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         bonSlotArt=-1
-		bonSlotDef=-1
-		bonSlotHook=-1
-		bonSlotDroid=-1
-		bonSlotScaner=-1
-		bonSlotRadar=-1
-		bonSlotForsage=-1
-		bonSlotWeapon=-1
+        bonSlotDef=-1
+        bonSlotDroid=-1
+        bonSlotForsage=-1
+        bonSlotHook=-1
+        bonSlotRadar=-1
+        bonSlotScaner=-1
+        bonSlotWeapon=-1
     }
     ExpTC_TotalHullSusceptibilityMinus3 ^{
         Cost=200
@@ -558,11 +564,11 @@ MicroModuls ~{
         FragilityEnergy=97
         FragilityMissile=97
         FragilitySplinter=97
+        LockedAcryn=3
         Name=add_balance_1
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_TotalHullSusceptibilityMinus6 ^{
         Cost=200
@@ -570,11 +576,11 @@ MicroModuls ~{
         FragilityEnergy=94
         FragilityMissile=94
         FragilitySplinter=94
+        LockedAcryn=3
         Name=add_balance_2
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_TotalHullSusceptibilityMinus9 ^{
         Cost=200
@@ -582,101 +588,101 @@ MicroModuls ~{
         FragilityEnergy=91
         FragilityMissile=91
         FragilitySplinter=91
+        LockedAcryn=3
         Name=add_balance_3
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_EnergyHullSusceptibilityMinus9 ^{
         Cost=200
         Equipments=Any
         FragilityEnergy=91
+        LockedAcryn=3
         Name=add_energo_1
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_EnergyHullSusceptibilityMinus16 ^{
         Cost=200
         Equipments=Any
         FragilityEnergy=84
+        LockedAcryn=3
         Name=add_energo_2
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_EnergyHullSusceptibilityMinus23 ^{
         Cost=200
         Equipments=Any
         FragilityEnergy=77
+        LockedAcryn=3
         Name=add_energo_3
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_SplinterHullSusceptibilityMinus9 ^{
         Cost=200
         Equipments=Any
         FragilitySplinter=91
+        LockedAcryn=3
         Name=add_splinter_1
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_SplinterHullSusceptibilityMinus16 ^{
         Cost=200
         Equipments=Any
         FragilitySplinter=84
+        LockedAcryn=3
         Name=add_splinter_2
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_SplinterHullSusceptibilityMinus23 ^{
         Cost=200
         Equipments=Any
         FragilitySplinter=77
+        LockedAcryn=3
         Name=add_splinter_3
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_MissileHullSusceptibilityMinus9 ^{
         Cost=200
         Equipments=Any
         FragilityMissile=91
+        LockedAcryn=3
         Name=add_rocket_1
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_MissileHullSusceptibilityMinus16 ^{
         Cost=200
         Equipments=Any
         FragilityMissile=84
+        LockedAcryn=3
         Name=add_rocket_2
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_MissileHullSusceptibilityMinus23 ^{
         Cost=200
         Equipments=Any
         FragilityMissile=77
+        LockedAcryn=3
         Name=add_rocket_3
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_TotalHullSusceptibilityMinus99 ^{
         Cost=1
@@ -685,11 +691,11 @@ MicroModuls ~{
         FragilityEnergy=1
         FragilityMissile=1
         FragilitySplinter=1
+        LockedAcryn=3
         Name=immortal
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_TotalHullSusceptibilityPlus10 ^{
         Cost=200
@@ -697,25 +703,25 @@ MicroModuls ~{
         FragilityEnergy=110
         FragilityMissile=110
         FragilitySplinter=110
+        LockedAcryn=3
         Name=del_balance_10
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_PhysgunWithMissile39 ^{
         Cost=100
         CustomTag=w30_gr_w
         Equipments=W04
         KindGraph=fizgun_main
+        LockedAcryn=3
         MissileGraph=39
         Name=Экспериментальное оружие
+        NonSearchable=1
         Owner=Any
         Priority=0
         Size=100
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Бортовой физган, в отличии от своего предшественника, обладает огромной мощью, но крайне низкой точностью. Способен ускорять астероиды и небольшие кометы.
         TextReplace=Поражает цель астероидом, наносящим стандартный астероидный урон.
@@ -727,14 +733,14 @@ MicroModuls ~{
         CustomTag=w30_yw_w
         Equipments=W04
         KindGraph=fizgun_main
+        LockedAcryn=3
         MissileGraph=38
         Name=Экспериментальное оружие
+        NonSearchable=1
         Owner=Any
         Priority=0
         Size=100
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Бортовой физган, в отличии от своего предшественника, обладает огромной мощью, но крайне низкой точностью. Способен ускорять астероиды и небольшие кометы.
         TextReplace=Поражает цель астероидом, наносящим стандартный астероидный урон.
@@ -746,14 +752,14 @@ MicroModuls ~{
         CustomTag=w30_wh_w
         Equipments=W04
         KindGraph=fizgun_main
+        LockedAcryn=3
         MissileGraph=37
         Name=Экспериментальное оружие
+        NonSearchable=1
         Owner=Any
         Priority=0
         Size=100
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Бортовой физган, в отличии от своего предшественника, обладает огромной мощью, но крайне низкой точностью. Способен ускорять астероиды и небольшие кометы.
         TextReplace=Поражает цель астероидом, наносящим стандартный астероидный урон.
@@ -765,14 +771,14 @@ MicroModuls ~{
         CustomTag=w30_rd_w
         Equipments=W04
         KindGraph=fizgun_main
+        LockedAcryn=3
         MissileGraph=36
         Name=Экспериментальное оружие
+        NonSearchable=1
         Owner=Any
         Priority=0
         Size=100
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Бортовой физган, в отличии от своего предшественника, обладает огромной мощью, но крайне низкой точностью. Способен ускорять астероиды и небольшие кометы.
         TextReplace=Поражает цель астероидом, наносящим стандартный астероидный урон.
@@ -784,14 +790,14 @@ MicroModuls ~{
         CustomTag=w30_es_w
         Equipments=W04
         KindGraph=fizgun_main
+        LockedAcryn=3
         MissileGraph=35
         Name=Экспериментальное оружие
+        NonSearchable=1
         Owner=Any
         Priority=0
         Size=100
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Бортовой физган, в отличии от своего предшественника, обладает огромной мощью, но крайне низкой точностью. Способен ускорять астероиды и небольшие кометы.
         TextReplace=Поражает цель предметом, урон зависит от типа и массы предмета.
@@ -803,14 +809,14 @@ MicroModuls ~{
         CustomTag=w30_ft_w
         Equipments=W04
         KindGraph=fizgun_main
+        LockedAcryn=3
         MissileGraph=34
         Name=Экспериментальное оружие
+        NonSearchable=1
         Owner=Any
         Priority=0
         Size=100
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Бортовой физган, в отличии от своего предшественника, обладает огромной мощью, но крайне низкой точностью. Способен ускорять астероиды и небольшие кометы.
         TextReplace=Поражает цель ёмкостью с топливом, урон зависит от количества топлива.
@@ -822,14 +828,14 @@ MicroModuls ~{
         CustomTag=w30_eb_w
         Equipments=W04
         KindGraph=fizgun_main
+        LockedAcryn=3
         MissileGraph=33
         Name=Экспериментальное оружие
+        NonSearchable=1
         Owner=Any
         Priority=0
         Size=100
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Бортовой физган, в отличии от своего предшественника, обладает огромной мощью, но крайне низкой точностью. Способен ускорять астероиды и небольшие кометы.
         TextReplace=Поражает цель предметом, урон зависит от типа и массы предмета.
@@ -841,14 +847,14 @@ MicroModuls ~{
         CustomTag=w30_qb_w
         Equipments=W04
         KindGraph=fizgun_main
+        LockedAcryn=3
         MissileGraph=32
         Name=Экспериментальное оружие
+        NonSearchable=1
         Owner=Any
         Priority=0
         Size=100
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Бортовой физган, в отличии от своего предшественника, обладает огромной мощью, но крайне низкой точностью. Способен ускорять астероиды и небольшие кометы.
         TextReplace=Поражает цель кварковой бомбой, детонирующей при попадании.
@@ -860,14 +866,14 @@ MicroModuls ~{
         CustomTag=w30_bl_w
         Equipments=W04
         KindGraph=fizgun_main
+        LockedAcryn=3
         MissileGraph=31
         Name=Экспериментальное оружие
+        NonSearchable=1
         Owner=Any
         Priority=0
         Size=100
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Бортовой физган, в отличии от своего предшественника, обладает огромной мощью, но крайне низкой точностью. Способен ускорять астероиды и небольшие кометы.
         TextReplace=Поражает цель астероидом, наносящим стандартный астероидный урон.
@@ -879,14 +885,14 @@ MicroModuls ~{
         CustomTag=w30_pp_w
         Equipments=W04
         KindGraph=fizgun_main
+        LockedAcryn=3
         MissileGraph=30
         Name=Экспериментальное оружие
+        NonSearchable=1
         Owner=Any
         Priority=0
         Size=100
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Бортовой физган, в отличии от своего предшественника, обладает огромной мощью, но крайне низкой точностью. Способен ускорять астероиды и небольшие кометы.
         TextReplace=Поражает цель астероидом, наносящим стандартный астероидный урон.
@@ -898,14 +904,14 @@ MicroModuls ~{
         CustomTag=w30_empty
         Equipments=W04
         KindGraph=fizgun_main
+        LockedAcryn=3
         MissileGraph=30
         Name=Экспериментальное оружие
+        NonSearchable=1
         Owner=Any
         Priority=0
         Size=100
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Бортовой физган, в отличии от своего предшественника, обладает огромной мощью, но не очень точный. Способен ускорять астероиды и небольшие кометы.
         TextReplace=Заряд: <color=255,240,100>отсутствует</color>
@@ -914,93 +920,93 @@ MicroModuls ~{
     }
     ExpTC_Missile39 ^{
         CustomTag=w30_gr
+        LockedAcryn=3
         MissileGraph=39
         Name=из бортового физгана
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_Missile38 ^{
         CustomTag=w30_yw
+        LockedAcryn=3
         MissileGraph=38
         Name=из бортового физгана
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_Missile37 ^{
         CustomTag=w30_wh
+        LockedAcryn=3
         MissileGraph=37
         Name=из бортового физгана
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_Missile36 ^{
         CustomTag=w30_rd
+        LockedAcryn=3
         MissileGraph=36
         Name=из бортового физгана
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_Missile35 ^{
         CustomTag=w30_es
+        LockedAcryn=3
         MissileGraph=35
         Name=из бортового физгана
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_Missile34 ^{
         CustomTag=w30_ft
+        LockedAcryn=3
         MissileGraph=34
         Name=из бортового физгана
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_Missile33 ^{
         CustomTag=w30_eb
+        LockedAcryn=3
         MissileGraph=33
         Name=из бортового физгана
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_Missile32 ^{
         CustomTag=w30_qb
+        LockedAcryn=3
         MissileGraph=32
         Name=из бортового физгана
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_Missile31 ^{
         CustomTag=w30_bl
+        LockedAcryn=3
         MissileGraph=31
         Name=из бортового физгана
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     ExpTC_Missile30 ^{
         CustomTag=w30_pp
+        LockedAcryn=3
         MissileGraph=30
         Name=из бортового физгана
+        NonSearchable=1
         Priority=0
         Special=1
-		LockedAcryn=3
-		NonSearchable=1
     }
     353 ^{
         Ruins=SB,BK,TC,MB,Manaan
@@ -1103,209 +1109,209 @@ MicroModuls ~{
     }
 }
 RuinName ^{
-	TC ~{
-		1=Винтик
-		2=Шпунтик
-		3=Гаечный ключ
-		4=Умелых рук
-		5=Машинного масла
-		6=Шиномонтаж
-		7=Ударного труда
-		8=Модернизации
-		9=Сурового техпроцесса
-		10=Тяжёлых механизмов
-		11=Космическая гавань
-		12=Астромастерская
-		13=Блестящий болт
-		14=Перевыполнения
-		15=Весёлый Кулибин
-		16=Высокой закалки
-		17=Конструктивный
-		18=Трансмиссия
-		19=Гравицапа
-		20=Заводной апельсин
-		21=Качественных деталей
-		22=Звёздная кузня
-		23=Оптимальная твёрдость
-		24=Дефектоскопии
-		25=Им. Ю. Гагарина
-		26=Им. Г. Титова
-		27=Им. С. Королёва
-		28=Им. А. Шепарда
-		29=Им. Д. Гленна
-		Name_count=29
-	}
+    TC ~{
+        1=Винтик
+        2=Шпунтик
+        3=Гаечный ключ
+        4=Умелых рук
+        5=Машинного масла
+        6=Шиномонтаж
+        7=Ударного труда
+        8=Модернизации
+        9=Сурового техпроцесса
+        10=Тяжёлых механизмов
+        11=Космическая гавань
+        12=Астромастерская
+        13=Блестящий болт
+        14=Перевыполнения
+        15=Весёлый Кулибин
+        16=Высокой закалки
+        17=Конструктивный
+        18=Трансмиссия
+        19=Гравицапа
+        20=Заводной апельсин
+        21=Качественных деталей
+        22=Звёздная кузня
+        23=Оптимальная твёрдость
+        24=Дефектоскопии
+        25=Им. Ю. Гагарина
+        26=Им. Г. Титова
+        27=Им. С. Королёва
+        28=Им. А. Шепарда
+        29=Им. Д. Гленна
+        Name_count=29
+    }
 }
 Script ^{
     Mod_ExpTC ^{
-		477=Мы рады сообщить вам, что наша сеть технологических центров расширяется! Новая сервисная станция <0> ждет пилотов в системе <1> сектора <2>! Не пролетайте мимо! Только у нас вы найдете лучшие технологические услуги во всей Галактике!
-		478=Сегодня открылся новый технологический центр <0> в системе <1> сектора <2>. Настоятельно рекомендуем всем небезразличным пилотам в кратчайшие сроки пройти техосмотр своих звездолетов.
-		479=Внимание всем пилотам! В системе <0> сектора <1> главный архитектор только что перерезал красную ленточку нового технологического центра <2>! Информация на ваших галактических картах уже обновлена.
-		480=Давно мечтали проапгрейдить своё старое ржавое корыто, доставшееся в наследство от прабабушки? Спешите в систему <0>, где наши высококвалифицированные специалисты с удовольствием превратят его в настоящую ласточку! Технологический центр <1> - лучшие расценки в секторе <2>!
-		463=Мощный взрыв сотряс корабль и выбил вас из кресла пилота. Физган взорвался и чуть было не уничтожил ваш корабль. Не совсем, правда, понятно, что стало тому причиной… Может быть, пыль попала? Или он не выдержал полетных нагрузок? Так или иначе, теперь от этой игрушки пользы нет.
-		464=Получилось! Астероид уничтожен, а планета <0> спасена. Теперь осталось только явиться к правительству с докладом и получить причитающуюся награду и почести.
-		465=Мощный взрыв сотряс корабль и выбил вас из кресла пилота. Похоже, что физган не выдержал нагрузок и взорвался, чуть было не уничтожив ваш корабль. Теперь от этой игрушки пользы нет.
-		466=Сегодня, благодаря слаженным действиям пилотов в системе <0>, а также личному героизму рейнджера с позывным <1>, была предотвращена, возможно, самая крупная катастрофа за всю историю Коалиции. Астероид рекордных размеров чуть было не уничтожил всю жизнь на планете <2>, но трагедии удалось избежать. Власти спасенной планеты уже изъявили желание по-королевски наградить рейнджера.
-		467=Уничтожение цели - Астероид -665- подтверждено. Планета <0> вне опасности. Повторяю. Уничтожение цели...
-		468=Астероид -665- не удалось остановить вовремя и он врезался в планету <0>. Миллионы мирных жителей погибли, естественно ни о какой награде теперь не может быть и речи.
-		469=Сегодняшний день <0> объявлен датой траура. Сегодня произошла одна из самых ужасных катастроф за все историю Коалиции. Миллионы жителей планеты <1> (система <2>) погибли в результате её столкновения с Астероидом -665-. Поиски выживших уже ведутся, но спасатели утверждают, что надежды очень призрачны - столкновение было безумно мощным. Почтим погибших минутой молчания.
-		470=Похоже, обычные пушки его не берут. Мне прислали сообщение с технологического центра <0>, возможно, они чем-то смогут помочь.
-		471=Внимание, рейнджер <0>! Немедленно прекратите атаку на планетоид и как можно скорее прибудьте на технологический центр <1>! Это дело первостепенной важности!
-		472=Поступила информация, что в системе <0> обнаружен астероид рекордных размеров. К несчастью траектория полета астероида с большой вероятностью пересечется с планетой <1>, на которой сейчас объявлен режим чрезвычайного положения. В случае столкновения ни системы планетарной защиты, ни подземные убежища не смогут уберечь жителей планеты. Галактический Совет обратился с убедительной просьбой к каждому пилоту прибыть в систему и помочь с эвакуацией, либо с уничтожением астероида.
-		473=Чрезвычайная ситуация в системе...
-		242=<br>
-		474=СРОЧНО! ВСЕМ КОРАБЛЯМ!
-		475=Чрезвычайная ситуация в системе <0>! Планета <1> в большой опасности! Требуется помощь всех свободных пилотов! Повторяю:
-		476=...всех свободных пилотов! Повторяю:
-		363=Улучшить зонд
-		516=Произвести уникальные улучшения
-		517=Улучшить корпус
-		597=Сдать редкие минералы
-		368=Откатить улучшение
-		580=Прошивка оборудования
-		600=Спасибо, что посетили нашу станцию <0>. Удобно располагайтесь, <1>, чувствуйте себя здесь как дома. Мы - лучшие специалисты Галактики в области технологического сервиса космических кораблей. В перечень наших услуг входит: улучшение оборудования, закрытие и открытие слотов, изменение восприимчивости к тому или иному типу урона и многое другое! Предлагаю вам в полной мере насладиться нашим вкусным кофе и изучить за это время прейскурант.
-		371=Зачем вызывали? Я там вообще-то занят был!
-		372=Вы что за дрянь мне подсунули? Угробить меня решили? Эта ваша штука взорвалась прямо у меня под носом!
-		511=<clrEnd>Корпус уже был изменен, восприимчивость к урону повысится на <0>%.
-		426=<clrEnd>Восприимчивость к урону повысится на <0>%.
-		544=<clrEnd>Износостойкость оборудования <clr>снизится<clrEnd> на <0>%
-		450=<clrEnd>Данное оборудование ещё не улучшалось нашими специалистами.<clr>
-		451=<clrEnd>Итоговая надёжность: <clr><0>%
-		452=<clrEnd>Итоговая надёжность: +<clr><0>%
-		453=<clrEnd>Уникальных улучшений: <clr><0>
-		454=<clrEnd>Профессиональное совмещение оборудования и модуля.<clr>
-		455=<clrEnd>Прошивок: <clr><0>
-		547=<clrEnd>Удалений микромодулей: <clr><0>
-		513=<clrEnd>Откатов к заводским параметрам: <clr><0>
-		579= типа<0>
-		427= (транк)
-		596=типа <color=0,50,200><0></color>
-		583=(трюм)
-		481=</color>Кроме того вы также на все 100% справились с дополнительным поручением, которое я вам дал. Абсолютно все лайнеры, которых мы послали, успешно достигли пункта назначения. Это самая настоящая победа! Я действительно не ожидал, что вы так блестяще справитесь с заданием. Поздравляю. В качестве награды мы переводим на ваш счет дополнительную сумму в <0> cr. А теперь, если вы не против, предлагаю проследовать на банкет.
-		482=</color>Кроме того вы также смогли справиться с дополнительным поручением, которое я вам дал, пусть и не всем, но хотя бы некоторым лайнерам удалось успешно эвакуировать часть жителей с нашей планеты. По нашим данным места назначения достигли <0> лайнеров из <1>. Что, как я и обещал, положительно отразиться на вашем гонораре, в виде дополнительной суммы в <2> cr. А теперь, если вы не против, предлагаю проследовать на банкет.
-		483=</color>К сожалению, наше торжество омрачается тем, что все лайнеры, которые мы снарядили эвакуировать мирных жителей, были уничтожены, но я уверен, что это не ваша вина, в конце концов, вашей первостепенной задачей было остановить астероид. А теперь, если вы не против, предлагаю проследовать на банкет.
-		514=Отсутствует подходящее для изменения оборудование.
-		428=Выбрать что-то ещё
-		431=Выбрать донор
-		494=Откатите без донора
-		515=Мы можем откатить <0> к стандартным заводским показателям за <1> cr.<br><2><br>Однако если у вас найдется "предмет-донор", снижение износостойкости не превысит 5%, правда лишь в том случае, если в нём найдутся нужные детали.
-		429=Отлично, работа уже сделана, а ваши деньги уже на нашем счету. Вот так мы быстро работаем! Возможно, вы хотите что-то еще улучшить?
-		602=Наши техники стараются работать качественно и профессионально, но у каждого предмета есть свой предел. Сварные швы, которые образуются в результате этого улучшения будут не такими прочными на разрыв, как заводские, так что в целом устойчивость корпуса к повреждениям снизиться. Кроме того, при улучшении размер корпуса <0>. Также вам следует знать, что снять <clr>ограничения серии<clrEnd> мы никак не можем. Стоимость услуги - <1> cr.<br>Итак, какую часть корабля нам изменить?
-		521=Сложно выполнять такую работу в сжатые сроки, но наши техники должны успеть вовремя. Не желаете ли заказать что-то ещё?
-		522=Наша сеть разработала уникальное напыление на основе акрина. Обработанные корпуса становятся менее восприимчивыми к повреждениям различных типов, однако обычное улучшение обшивки становится невозможным.<br>Сколько слоёв напыления вы желаете нанести?
-		523=Понятно. Мы можем использовать сбалансированное напыление или специализированное под определенный тип урона. Какую обработку вы хотите заказать?<br>Ещё, за отдельную плату мы можем нанести винилы. Нет? Может быть, хотите установить хромированные закрылки или неоновую подсветку под днище? Любой каприз за ваши деньги!
-		524=Это не займёт много времени. Правда новое напыление имеет специфический запах, но не беспокойтесь, через несколько дней вы перестанете его замечать. А пока мы повесим вам в кабину ароматический фарюк. И, заметьте, совершенно бесплатно!
-		436=<clrEnd>Уникальное улучшение точности Физгана
-		437=<clrEnd>Дальность стрельбы
-		438=<clrEnd>Урон
-		439=<clrEnd>Дальность захвата
-		440=<clrEnd>Мощность захвата
-		441=<clrEnd>Дальность прыжка
-		442=<clrEnd>Скорость
-		545=Так так... Дополнительные детали обойдутся вам в <0> cr.<br>Какой параметр улучшить?
-		444=В вашем трюме не нашлось подходящих микромодулей.
-		124=Согласен
-		548=Тесты проведены, конфликтов не обнаружено. Данная услуга будет стоить вам <0> cr.
-		525=Удаляйте без донора
-		549=Мы можем удалить микромодуль из оборудования за <0> cr.<br><1><br>Но если у вас есть предмет-донор, повышение износа не превысит 5%, правда лишь в том случае, если в нём найдутся нужные детали.
-		405=Улучшить корпус можно следующими способами:<br>-установка спасательной шлюпки<br>-напыление защитного слоя<br>-изменить функционал корпуса
-		527=Распределить улучшение равномерно
-		461=Исследование горных поверхностей
-		460=Исследование равнинных поверхностей
-		459=Исследование водных поверхностей
-		546=Так так... Дополнительные детали обойдутся вам в <0> cr.<br>Какой параметр улучшаем?
-		238=Корпус уже улучшен, дальнейшие изменения будут бесполезны.
-		159=<0>
-		528=Вероятность успеха крайне мала! Я бы рекомендовал отменить операцию. Вы действительно желаете продолжить?
-		529=На вашем корабле уже установлена спасательная шлюпка. Установка второй невозможна из-за технических особенностей шлюпки. Да и зачем вам две, в конце концов?
-		530=Стандартная спасательная шлюпка обойдётся вам в <0> cr.<br>Система полностью автоматизирована, никакого ручного контроля. Шлюпка катапультируется даже если вы потеряете сознание в пылу битвы... С вами на борту разумеется.<br>Однако, в силу непреодолимых технических сложностей в гиперпространстве, к сожалению, система диагностики корабля отказывает.
-		493=К концу дня мы закончим установку и подключение.
-		587=за <0> cr.
-		588=за
-		599=Извините, но как-либо улучшить спасательную шлюпку не представляется возможным. Купите себе нормальный корпус или перестаньте страдать фигнёй.
-		532="Откатом" мы называем возвращение оборудованию его заводских параметров. Может показаться, что это простая процедура, но на самом деле сбросить пользовательские настройки бывает не так уж и просто. Разумеется услуга платная.
-		533=Удаление микромодулей, до недавнего времени считалось технически невыполнимой задачей, однако нашим инженерам удалось разработать универсальную методику, которая позволяет это сделать. К сожалению, при этом оборудование подвергается серьезным аппаратным и программным нагрузкам, от которых уже не сможет оправиться. Надежность такого оборудование безвозвратно снижается. Этот эффект будет только накапливаться в случае повторных удалений.
-		534=Сетью наших станций была разработана уникальная методика разгона параметров оборудования. Это наше ноу-хау. Мы можем повысить один из параметров оборудования не затрагивая второй. При этом износостойкость оборудования не измениться. Разумеется это возможно лишь в том случае, если оборудование пригодно для улучшения.<br>Какое оборудование желаете улучшить?
-		535=Конечно, поставить микромодуль в оборудование может кто угодно. Для этого хватит даже самого базового технического образования. Однако, только профессионал способен раскрыть весь потенциал микромодуля. Знали ли вы, что при грамотной установке микромодуль может повысить износостойкость оборудования? Наши специалисты с этим легко справятся.
-		536=Дополнительная услуга сети наших центров. Мы можем оптимизировать работу ваших исследовательских зондов, повысив их эффективность и надежность.
-		537=Мы ведём учёт каждого установленного улучшения. Техосмотр, какого оборудования вы бы хотели провести?
-		538=Выберите оборудование из которого будут извлечены детали. Обращаем ваше внимание на то, что после изъятия деталей ремонт будет невозможен. Оставшиеся запчасти наш центр оставляет за собой в качестве оплаты за демонтаж.
-		275=Вероятность успеха равна <0>%
-		278=Выберите микромодуль который хотите совместить с данным оборудованием.
-		555=Рейнджер <0>! Наконец-то адекватное лицо. Вы просто представить себе не можете, что тут творится. Все наши попытки не допустить паники потерпели сокрушительное фиаско! В космопорте гигантские толпы беженцев, все наши транспортники работают на пределе, но всех вывезти мы все равно не успеем.<br>Народ уже дошел до предела, бегают повсюду с плакатами на тему нашего незавидного будущего, а точнее его отсутствия. Из всех щелей повылезали фанатики, зачитывающие такие места из религиозных текстов, что мне самому становится не по себе, и я уже не говорю про мародеров... Словом - ад, такое впечатление, что астероид уже в нас врезался. Не помню такого бардака с тех времен, когда широкая общественность впервые услышала о доминаторах.<br>Так или иначе, у нас тут объявлено чрезвычайное положение и нам бы очень пригодилась ваша помощь. Астероид необходимо уничтожить и за это мы уже назначили крупную награду, вы готовы нам помочь?
-		551=Отлично! Покажите там этой каменюке! Вдарьте всей мощью, что у вас есть! Да и еще кое-что: как я уже говорил мы проводим эвакуацию, однако она и гроша ломанного не будет стоить, если на наши лайнеры нападут пираты, а ведь они могут. Очень вас прошу, если у вас будет возможность, постарайтесь защитить наши эвакуационные лайнеры в случае чего. Приоритетом по прежнему является уничтожение астероида, но за каждый лайнер, который сможет достичь пункта назначения я готов заплатить дополнительную награду. А теперь идите... Скорее, <0>, наша жизнь сейчас в ваших руках... Еще в руках других пилотов, что сейчас пытаются сбить астероид, но это не повод расслабляться! Вперед!
-		320=Вы что все еще здесь? На нас все еще летит самый большой астероид в истории коалиции у нас действительно нет времени на праздные разговоры. Отправляйтесь в космос и уничтожьте уже эту чертову каменюгу!
-		324=Рейнджер <0>, наконец-то вы прибыли! Мы боялись, что вы пропустите наше сообщение или не предадите ему значения, особенно учитывая насколько важным делом вы были заняты. Но все дело в том, что ваши попытки сбить данный планетоид ни к чему не приведут, он обладает слишком необычной структурой, стандартное бортовое вооружение просто не в состоянии нанести ему хоть сколько-нибудь существенный урон.
-		325=Отлично, мы уже перенесли физган в ваш трюм. Как только взлетите ищите ближайший астероид, подлетите к нему и используйте встроенный в физган захват, чтобы поймать его. После чего запустите импровизированный снаряд в Разрушителя, вот собственно и все. Ничего сложного, но время поджимает, так что поторопитесь!
-		488=Вот вы где! Наш герой и спаситель рейнджер <0>! Я бы расцеловал вас, но боюсь меня могут не правильно понять. Мы вас уже тут заждались! Банкет в вашу честь уже подготовлен, но это не самое главное... Что? А награда! Конечно, как я мог забыть! Сумма <1> уже переведена на ваш счет, точно также как и наша бесконечная благодарность!<br><2>
-		360=О чем это вы? Вы же спасли целую планету! Мы видели, как это произошло. Было так круто! Вы запускаете свой астероид прямо по Разрушителю и он раскалывается на мелкие кусочки! У нас тут столько народу хотят взять у вас автограф! Что говорите? Физган взорвался от перегрузки? Ну бывает, это ведь первая экспериментальная модель была. Так вы дадите мне автограф? Ну ладно, ладно, не надо на меня так смотреть...<br>В качестве извинения за инцидент с поломкой мы хотим предложить вам обновленную версию физгана. Защитные механизмы были значительно усовершенствованы, так что теперь мы можем гарантировать, что никаких взрывов от перегрузки не будет… Ну по крайней мере в 99% случаев... В 98% так точно... Ну может быть в 97%...<br>Кроме того, мы оборудовали новую модель удобным приемником, позволяющим заряжать её прямо изнутри корабля. Собственно, вы и раньше могли это делать, просто это было бы не так удобно... А я что, не говорил вам? Ну значит забыл. Так вот, заряжать вы его можете практически чем угодно. Абсолютно все, что есть у вас в трюме, может быть использовано в качестве снаряда для физгана. Разумеется, возможность захватывать астероиды тоже никуда не делась, ну что скажете?
-		539=Просканировав ваш корабль на предмет редких металлов, мы обнаружили в вашем трюме партию на сумму <0> сr.<br>Будете продавать?
-		315=Мне сейчас некогда общаться, <0>. Я провожу эвакуацию населения с планеты <1>, которая находиться под угрозой столкновения с астероидом. Нужно вывести от туда как можно больше жителей, ни секунды нет, чтобы передохнуть.
-		327=И вы туда же? Проклятье, скоро с этим астероидом вообще нормальных гуманоидов не останется. Ну тогда проваливайте, хватит отнимать мое время! Единственная просьба: когда будете убегать, словно крыса с тонущего корабля, хотя бы захватите с собой кого-нибудь из местных. Хотя бы чуть-чуть облегчите мою задачу.
-		328=Опять вы?! У меня нет времени слушать ваши апокалиптические бредни! Я пытаюсь как-то организовать то недоразумение, что у нас называют эвакуацией, и вы мне тут совсем не помогаете. Проваливайте.
-		565=Что вы, разумеется нет... Позвольте я вам объясню: дело в том, что внутренняя структура данного космического тела представляет собой огромный кристалл. Плотность этого кристалла невероятно высока и все, что смогут ему сделать наше стандартное вооружение это уничтожить верхний слой, состоящий из мягких горных пород и водяного льда и слегка поцарапать сердцевину. Однако путь есть и он состоит в том, чтобы разбить кристалл. Достаточно всего нескольких точных ударов большой мощности. Приложить, так сказать, достаточно кинетической энергии, на достаточно малой площади и к счастью мы уже придумали как это сделать. Нужно запустить в нашего Разрушителя, именно так мы его тут называем, другой астероид, точнее несколько...<br>Не надо смотреть на меня как на умалишенного, это действительно можно сделать. Слышали когда-нибудь о физических устройствах направленной антигравитации? В просторечье физганах? Эти устройства были изобретены знаменитым гаальским инженером Рее-Кляйном и используются сейчас для погрузочных работ. Мы же увеличили энергетическое ядро физгана и добавили ему стазисный генератор нулевой энергии, естественно это привело к увеличению устройства и невозможности его ручного использования, зато резко увеличили максимальную массу объектов, которые он может перемещать, а создание вокруг перемещаемого объекта энергетического стазиса защищает его от любых повреждений. Короче говоря - представляем вам первую экспериментальную модель <clr>Бортового физгана<clrEnd>. Он способен захватывать объекты размером со стандартный астероид и помещать их в стазис под днищем корабля, а когда вам понадобиться достаточно направить физган в нужную сторону и отключить стазис - большое количество энергии, до тех пор изолируемое от объекта с помощью стазиса войдет в свои права и придаст объекту огромное ускорение. К сожалению это делает бортовой физган совершенно несостоятельным как устройство для перемещения грузов, зато делает его полезным в качестве оружия, чем вам и необходимо воспользоваться, если вы конечно согласитесь. Как я уже сказал - это первая экспериментальная модель. Возможны... форс-мажоры... Но учтите, если вы откажетесь - это может стать причиной гибели целой планеты.
-		356=Ну что же... Это ваше право. К сожалению мы вряд ли теперь успеем найти кого-нибудь еще... Боюсь жителям планеты <0> теперь остается рассчитывать только на скорейшую эвакуацию... Если честно - я разочарован в вас <1>.
-		357=Нам очень жаль, правда. Как мы уже говорили - это был первый тестовый образец. Мы искренне надеялись, что он сможет вам помочь спасти планету, но нет... Мы наблюдали как это произошло... Просто вспышка и планета замолчала... Жуть. Но это не ваша вина, мы уверены, что вы сделали все что могли.
-		563=Просканировав ваш корабль на предмет редких металлов, мы  не обнаружили в вашем трюме ничего редкого.<br>Советуем вам посбивать астероиды, а вдруг повезёт.
-		590="Прошивкой" мы называем замену ряда модулей в оборудовании на более новые, а также соответствующее обновление программного обеспечения. Сугубо говоря это вовсе не прошивка, а апгрейд, но название прицепилось... Словом, прошивая старое оборудование, мы вполне способны добиться от него результатов на уровне его самых новых аналогов. Износостойкость оборудования <clr>снизится<clrEnd> на <0>%<br>Так какое оборудование желаете прошить?
-		591=До типа <color=0,50,200><0></color>, стоимость прошивки: <1> cr.
-		592=До типа <color=0,50,200><0></color>, стоимость прошивки:
-		593=До какого технологического типа будем прошивать?
-		540=Напыление на корпус
-		541=Демонтаж лишнего оборудования
-		381=</color>увеличивается
-		542=Установка дополнительного оборудования
-		383=</color>уменьшается
-		384=Оружейные системы
-		387=Ремонтные системы
-		388=Системы захвата
-		389=Системы генератора защитного поля
-		390=Системы сканера
-		391=Системы радара
-		392=Системы дополнительного оборудования
-		393=Системы форсажа
-		394=Возможно, а что вы можете предложить?
-		423=Передумал
-		566=Один слой, за <0> cr
-		567=Два слоя, за <0> cr
-		568=Три слоя, за <0> cr
-		418=Смешайте все типы равномерно
-		419=Антиэнергетическое напыление
-		420=Антиосколочное напыление
-		421=Антиракетное напыление
-		422=Спасибо...
-		398=Далее
-		543=Согласиться
-		434=</color>Отлично, работа уже сделана, а ваши деньги уже на нашем счету. Вот так мы быстро работаем!
-		435=</color>В предмете доноре не нашлось нужных деталей.
-		395=Хочу установить спасательную шлюпку
-		396=Понятно
-		397=Отказываюсь
-		399=Воспользуюсь услугами других специалистов
-		321=Разумеется готов!
-		322=Мы все погибнем! Надо бежать! КОНЕЦ БЛИЗОК!
-		323=Уже бегу!
-		344=Планета <0> находиться в большой опасности. Мне необходимо найти способ уничтожить Астероид -665-, который угрожает с ней столкнуться. Кроме того мне нужно следить за тем, чтобы эвакуационные лайнеры, в целости добрались до пункта назначения, но уничтожение астероида - первостепенно.
-		331=Ладно, уговорили. Ставьте свой агрегат
-		332=Ну уж нет, не надо мне такой радости. Еще взорвется у меня на корабле, знаю я вас
-		333=Уже вылетаю!
-		349=Мне предоставили какую-то экспериментальную пушку, говорят, с помощью неё астероид можно будет уничтожить. Ну попробуем. Все что от меня требуется - это ловить маленькие астероиды и запускать их в большой. Даже ребенок справиться.
-		556=Непротестированный 
-		341=Проследовать на банкет
-		553=День прожит не зря! Планета <0> спасена от неминуемой гибели, меня публично объявили героем, а самое главное – мой банковский счет изрядно потолстел. Кто бы мог подумать, что предотвращение катастрофы планетарного масштаба может принести столько положительных эмоций.
-		345=Ну давайте сюда свою пукалку. Только учтите, если и она попытается меня взорвать, то я сюда вернусь!
-		490=Экспериментальное оружие 
-		346=Нет уж, спасибо. Не надо мне такого счастья. Не доверяю я теперь этим вашим экспериментальным технологиям
-		561=Конечно, забирайте
-		562=Нет! Не отдам... моя прелесть...
-		316=Конец связи
-		334=Сматываемся от сюда!
-		335=Я передумал и хочу помочь в уничтожении астероида
-		336=И что же теперь делать? Неужели опускать руки и дать планете погибнуть?
-		337=Ничем не могу вам с этим помочь
-		350=Они хотели всучить мне какую-то непонятную экспериментальную пушку. На вид доверия она не вызывает, так что я отказался. Меньше всего мне нужно, чтобы она взорвала мой корабль в самый ответственный момент, придется справляться самому.
-		564=Ясно, буду иметь в виду
-		HyperDeath=Механизм запуска <color=255,240,100>спасательной шлюпки</color>, в обычной ситуации всегда срабатывающий как часы, не был приспособлен для запуска лишь в одном единственном месте... в <color=255,240,100>гиперпространстве</color>. Однако, как это часто происходит по иронии судьбы, именно туда-то и угораздило затянуть ваш корабль за считанные секунды до того, как оглушительный взрыв навсегда оборвал вашу героическую и полную невероятных приключений жизнь.<br>Вы погибли, <Player>, и теперь вся слава достанется другим рейнджерам! Но ваше имя будет навечно занесено в список героев войны, а семья получит положенную страховку в размере <Money> cr.
+        124=Согласен
+        159=<0>
+        238=Корпус уже улучшен, дальнейшие изменения будут бесполезны.
+        242=<br>
+        275=Вероятность успеха равна <0>%
+        278=Выберите микромодуль который хотите совместить с данным оборудованием.
+        315=Мне сейчас некогда общаться, <0>. Я провожу эвакуацию населения с планеты <1>, которая находиться под угрозой столкновения с астероидом. Нужно вывести от туда как можно больше жителей, ни секунды нет, чтобы передохнуть.
+        316=Конец связи
+        320=Вы что все еще здесь? На нас все еще летит самый большой астероид в истории коалиции у нас действительно нет времени на праздные разговоры. Отправляйтесь в космос и уничтожьте уже эту чертову каменюгу!
+        321=Разумеется готов!
+        322=Мы все погибнем! Надо бежать! КОНЕЦ БЛИЗОК!
+        323=Уже бегу!
+        324=Рейнджер <0>, наконец-то вы прибыли! Мы боялись, что вы пропустите наше сообщение или не предадите ему значения, особенно учитывая насколько важным делом вы были заняты. Но все дело в том, что ваши попытки сбить данный планетоид ни к чему не приведут, он обладает слишком необычной структурой, стандартное бортовое вооружение просто не в состоянии нанести ему хоть сколько-нибудь существенный урон.
+        325=Отлично, мы уже перенесли физган в ваш трюм. Как только взлетите ищите ближайший астероид, подлетите к нему и используйте встроенный в физган захват, чтобы поймать его. После чего запустите импровизированный снаряд в Разрушителя, вот собственно и все. Ничего сложного, но время поджимает, так что поторопитесь!
+        327=И вы туда же? Проклятье, скоро с этим астероидом вообще нормальных гуманоидов не останется. Ну тогда проваливайте, хватит отнимать мое время! Единственная просьба: когда будете убегать, словно крыса с тонущего корабля, хотя бы захватите с собой кого-нибудь из местных. Хотя бы чуть-чуть облегчите мою задачу.
+        328=Опять вы?! У меня нет времени слушать ваши апокалиптические бредни! Я пытаюсь как-то организовать то недоразумение, что у нас называют эвакуацией, и вы мне тут совсем не помогаете. Проваливайте.
+        331=Ладно, уговорили. Ставьте свой агрегат
+        332=Ну уж нет, не надо мне такой радости. Еще взорвется у меня на корабле, знаю я вас
+        333=Уже вылетаю!
+        334=Сматываемся от сюда!
+        335=Я передумал и хочу помочь в уничтожении астероида
+        336=И что же теперь делать? Неужели опускать руки и дать планете погибнуть?
+        337=Ничем не могу вам с этим помочь
+        341=Проследовать на банкет
+        344=Планета <0> находиться в большой опасности. Мне необходимо найти способ уничтожить Астероид -665-, который угрожает с ней столкнуться. Кроме того мне нужно следить за тем, чтобы эвакуационные лайнеры, в целости добрались до пункта назначения, но уничтожение астероида - первостепенно.
+        345=Ну давайте сюда свою пукалку. Только учтите, если и она попытается меня взорвать, то я сюда вернусь!
+        346=Нет уж, спасибо. Не надо мне такого счастья. Не доверяю я теперь этим вашим экспериментальным технологиям
+        349=Мне предоставили какую-то экспериментальную пушку, говорят, с помощью неё астероид можно будет уничтожить. Ну попробуем. Все что от меня требуется - это ловить маленькие астероиды и запускать их в большой. Даже ребенок справиться.
+        350=Они хотели всучить мне какую-то непонятную экспериментальную пушку. На вид доверия она не вызывает, так что я отказался. Меньше всего мне нужно, чтобы она взорвала мой корабль в самый ответственный момент, придется справляться самому.
+        356=Ну что же... Это ваше право. К сожалению мы вряд ли теперь успеем найти кого-нибудь еще... Боюсь жителям планеты <0> теперь остается рассчитывать только на скорейшую эвакуацию... Если честно - я разочарован в вас <1>.
+        357=Нам очень жаль, правда. Как мы уже говорили - это был первый тестовый образец. Мы искренне надеялись, что он сможет вам помочь спасти планету, но нет... Мы наблюдали как это произошло... Просто вспышка и планета замолчала... Жуть. Но это не ваша вина, мы уверены, что вы сделали все что могли.
+        360=О чем это вы? Вы же спасли целую планету! Мы видели, как это произошло. Было так круто! Вы запускаете свой астероид прямо по Разрушителю и он раскалывается на мелкие кусочки! У нас тут столько народу хотят взять у вас автограф! Что говорите? Физган взорвался от перегрузки? Ну бывает, это ведь первая экспериментальная модель была. Так вы дадите мне автограф? Ну ладно, ладно, не надо на меня так смотреть...<br>В качестве извинения за инцидент с поломкой мы хотим предложить вам обновленную версию физгана. Защитные механизмы были значительно усовершенствованы, так что теперь мы можем гарантировать, что никаких взрывов от перегрузки не будет… Ну по крайней мере в 99% случаев... В 98% так точно... Ну может быть в 97%...<br>Кроме того, мы оборудовали новую модель удобным приемником, позволяющим заряжать её прямо изнутри корабля. Собственно, вы и раньше могли это делать, просто это было бы не так удобно... А я что, не говорил вам? Ну значит забыл. Так вот, заряжать вы его можете практически чем угодно. Абсолютно все, что есть у вас в трюме, может быть использовано в качестве снаряда для физгана. Разумеется, возможность захватывать астероиды тоже никуда не делась, ну что скажете?
+        363=Улучшить зонд
+        368=Откатить улучшение
+        371=Зачем вызывали? Я там вообще-то занят был!
+        372=Вы что за дрянь мне подсунули? Угробить меня решили? Эта ваша штука взорвалась прямо у меня под носом!
+        381=</color>увеличивается
+        383=</color>уменьшается
+        384=Оружейные системы
+        387=Ремонтные системы
+        388=Системы захвата
+        389=Системы генератора защитного поля
+        390=Системы сканера
+        391=Системы радара
+        392=Системы дополнительного оборудования
+        393=Системы форсажа
+        394=Возможно, а что вы можете предложить?
+        395=Хочу установить спасательную шлюпку
+        396=Понятно
+        397=Отказываюсь
+        398=Далее
+        399=Воспользуюсь услугами других специалистов
+        405=Улучшить корпус можно следующими способами:<br>-установка спасательной шлюпки<br>-напыление защитного слоя<br>-изменить функционал корпуса
+        418=Смешайте все типы равномерно
+        419=Антиэнергетическое напыление
+        420=Антиосколочное напыление
+        421=Антиракетное напыление
+        422=Спасибо...
+        423=Передумал
+        426=<clrEnd>Восприимчивость к урону повысится на <0>%.
+        427= (транк)
+        428=Выбрать что-то ещё
+        429=Отлично, работа уже сделана, а ваши деньги уже на нашем счету. Вот так мы быстро работаем! Возможно, вы хотите что-то еще улучшить?
+        431=Выбрать донор
+        434=</color>Отлично, работа уже сделана, а ваши деньги уже на нашем счету. Вот так мы быстро работаем!
+        435=</color>В предмете доноре не нашлось нужных деталей.
+        436=<clrEnd>Уникальное улучшение точности Физгана
+        437=<clrEnd>Дальность стрельбы
+        438=<clrEnd>Урон
+        439=<clrEnd>Дальность захвата
+        440=<clrEnd>Мощность захвата
+        441=<clrEnd>Дальность прыжка
+        442=<clrEnd>Скорость
+        444=В вашем трюме не нашлось подходящих микромодулей.
+        450=<clrEnd>Данное оборудование ещё не улучшалось нашими специалистами.<clr>
+        451=<clrEnd>Итоговая надёжность: <clr><0>%
+        452=<clrEnd>Итоговая надёжность: +<clr><0>%
+        453=<clrEnd>Уникальных улучшений: <clr><0>
+        454=<clrEnd>Профессиональное совмещение оборудования и модуля.<clr>
+        455=<clrEnd>Прошивок: <clr><0>
+        459=Исследование водных поверхностей
+        460=Исследование равнинных поверхностей
+        461=Исследование горных поверхностей
+        463=Мощный взрыв сотряс корабль и выбил вас из кресла пилота. Физган взорвался и чуть было не уничтожил ваш корабль. Не совсем, правда, понятно, что стало тому причиной… Может быть, пыль попала? Или он не выдержал полетных нагрузок? Так или иначе, теперь от этой игрушки пользы нет.
+        464=Получилось! Астероид уничтожен, а планета <0> спасена. Теперь осталось только явиться к правительству с докладом и получить причитающуюся награду и почести.
+        465=Мощный взрыв сотряс корабль и выбил вас из кресла пилота. Похоже, что физган не выдержал нагрузок и взорвался, чуть было не уничтожив ваш корабль. Теперь от этой игрушки пользы нет.
+        466=Сегодня, благодаря слаженным действиям пилотов в системе <0>, а также личному героизму рейнджера с позывным <1>, была предотвращена, возможно, самая крупная катастрофа за всю историю Коалиции. Астероид рекордных размеров чуть было не уничтожил всю жизнь на планете <2>, но трагедии удалось избежать. Власти спасенной планеты уже изъявили желание по-королевски наградить рейнджера.
+        467=Уничтожение цели - Астероид -665- подтверждено. Планета <0> вне опасности. Повторяю. Уничтожение цели...
+        468=Астероид -665- не удалось остановить вовремя и он врезался в планету <0>. Миллионы мирных жителей погибли, естественно ни о какой награде теперь не может быть и речи.
+        469=Сегодняшний день <0> объявлен датой траура. Сегодня произошла одна из самых ужасных катастроф за все историю Коалиции. Миллионы жителей планеты <1> (система <2>) погибли в результате её столкновения с Астероидом -665-. Поиски выживших уже ведутся, но спасатели утверждают, что надежды очень призрачны - столкновение было безумно мощным. Почтим погибших минутой молчания.
+        470=Похоже, обычные пушки его не берут. Мне прислали сообщение с технологического центра <0>, возможно, они чем-то смогут помочь.
+        471=Внимание, рейнджер <0>! Немедленно прекратите атаку на планетоид и как можно скорее прибудьте на технологический центр <1>! Это дело первостепенной важности!
+        472=Поступила информация, что в системе <0> обнаружен астероид рекордных размеров. К несчастью траектория полета астероида с большой вероятностью пересечется с планетой <1>, на которой сейчас объявлен режим чрезвычайного положения. В случае столкновения ни системы планетарной защиты, ни подземные убежища не смогут уберечь жителей планеты. Галактический Совет обратился с убедительной просьбой к каждому пилоту прибыть в систему и помочь с эвакуацией, либо с уничтожением астероида.
+        473=Чрезвычайная ситуация в системе...
+        474=СРОЧНО! ВСЕМ КОРАБЛЯМ!
+        475=Чрезвычайная ситуация в системе <0>! Планета <1> в большой опасности! Требуется помощь всех свободных пилотов! Повторяю:
+        476=...всех свободных пилотов! Повторяю:
+        477=Мы рады сообщить вам, что наша сеть технологических центров расширяется! Новая сервисная станция <0> ждет пилотов в системе <1> сектора <2>! Не пролетайте мимо! Только у нас вы найдете лучшие технологические услуги во всей Галактике!
+        478=Сегодня открылся новый технологический центр <0> в системе <1> сектора <2>. Настоятельно рекомендуем всем небезразличным пилотам в кратчайшие сроки пройти техосмотр своих звездолетов.
+        479=Внимание всем пилотам! В системе <0> сектора <1> главный архитектор только что перерезал красную ленточку нового технологического центра <2>! Информация на ваших галактических картах уже обновлена.
+        480=Давно мечтали проапгрейдить своё старое ржавое корыто, доставшееся в наследство от прабабушки? Спешите в систему <0>, где наши высококвалифицированные специалисты с удовольствием превратят его в настоящую ласточку! Технологический центр <1> - лучшие расценки в секторе <2>!
+        481=</color>Кроме того вы также на все 100% справились с дополнительным поручением, которое я вам дал. Абсолютно все лайнеры, которых мы послали, успешно достигли пункта назначения. Это самая настоящая победа! Я действительно не ожидал, что вы так блестяще справитесь с заданием. Поздравляю. В качестве награды мы переводим на ваш счет дополнительную сумму в <0> cr. А теперь, если вы не против, предлагаю проследовать на банкет.
+        482=</color>Кроме того вы также смогли справиться с дополнительным поручением, которое я вам дал, пусть и не всем, но хотя бы некоторым лайнерам удалось успешно эвакуировать часть жителей с нашей планеты. По нашим данным места назначения достигли <0> лайнеров из <1>. Что, как я и обещал, положительно отразиться на вашем гонораре, в виде дополнительной суммы в <2> cr. А теперь, если вы не против, предлагаю проследовать на банкет.
+        483=</color>К сожалению, наше торжество омрачается тем, что все лайнеры, которые мы снарядили эвакуировать мирных жителей, были уничтожены, но я уверен, что это не ваша вина, в конце концов, вашей первостепенной задачей было остановить астероид. А теперь, если вы не против, предлагаю проследовать на банкет.
+        488=Вот вы где! Наш герой и спаситель рейнджер <0>! Я бы расцеловал вас, но боюсь меня могут не правильно понять. Мы вас уже тут заждались! Банкет в вашу честь уже подготовлен, но это не самое главное... Что? А награда! Конечно, как я мог забыть! Сумма <1> уже переведена на ваш счет, точно также как и наша бесконечная благодарность!<br><2>
+        490=Экспериментальное оружие
+        493=К концу дня мы закончим установку и подключение.
+        494=Откатите без донора
+        511=<clrEnd>Корпус уже был изменен, восприимчивость к урону повысится на <0>%.
+        513=<clrEnd>Откатов к заводским параметрам: <clr><0>
+        514=Отсутствует подходящее для изменения оборудование.
+        515=Мы можем откатить <0> к стандартным заводским показателям за <1> cr.<br><2><br>Однако если у вас найдется "предмет-донор", снижение износостойкости не превысит 5%, правда лишь в том случае, если в нём найдутся нужные детали.
+        516=Произвести уникальные улучшения
+        517=Улучшить корпус
+        521=Сложно выполнять такую работу в сжатые сроки, но наши техники должны успеть вовремя. Не желаете ли заказать что-то ещё?
+        522=Наша сеть разработала уникальное напыление на основе акрина. Обработанные корпуса становятся менее восприимчивыми к повреждениям различных типов, однако обычное улучшение обшивки становится невозможным.<br>Сколько слоёв напыления вы желаете нанести?
+        523=Понятно. Мы можем использовать сбалансированное напыление или специализированное под определенный тип урона. Какую обработку вы хотите заказать?<br>Ещё, за отдельную плату мы можем нанести винилы. Нет? Может быть, хотите установить хромированные закрылки или неоновую подсветку под днище? Любой каприз за ваши деньги!
+        524=Это не займёт много времени. Правда новое напыление имеет специфический запах, но не беспокойтесь, через несколько дней вы перестанете его замечать. А пока мы повесим вам в кабину ароматический фарюк. И, заметьте, совершенно бесплатно!
+        525=Удаляйте без донора
+        527=Распределить улучшение равномерно
+        528=Вероятность успеха крайне мала! Я бы рекомендовал отменить операцию. Вы действительно желаете продолжить?
+        529=На вашем корабле уже установлена спасательная шлюпка. Установка второй невозможна из-за технических особенностей шлюпки. Да и зачем вам две, в конце концов?
+        530=Стандартная спасательная шлюпка обойдётся вам в <0> cr.<br>Система полностью автоматизирована, никакого ручного контроля. Шлюпка катапультируется даже если вы потеряете сознание в пылу битвы... С вами на борту разумеется.<br>Однако, в силу непреодолимых технических сложностей в гиперпространстве, к сожалению, система диагностики корабля отказывает.
+        532="Откатом" мы называем возвращение оборудованию его заводских параметров. Может показаться, что это простая процедура, но на самом деле сбросить пользовательские настройки бывает не так уж и просто. Разумеется услуга платная.
+        533=Удаление микромодулей, до недавнего времени считалось технически невыполнимой задачей, однако нашим инженерам удалось разработать универсальную методику, которая позволяет это сделать. К сожалению, при этом оборудование подвергается серьезным аппаратным и программным нагрузкам, от которых уже не сможет оправиться. Надежность такого оборудование безвозвратно снижается. Этот эффект будет только накапливаться в случае повторных удалений.
+        534=Сетью наших станций была разработана уникальная методика разгона параметров оборудования. Это наше ноу-хау. Мы можем повысить один из параметров оборудования не затрагивая второй. При этом износостойкость оборудования не измениться. Разумеется это возможно лишь в том случае, если оборудование пригодно для улучшения.<br>Какое оборудование желаете улучшить?
+        535=Конечно, поставить микромодуль в оборудование может кто угодно. Для этого хватит даже самого базового технического образования. Однако, только профессионал способен раскрыть весь потенциал микромодуля. Знали ли вы, что при грамотной установке микромодуль может повысить износостойкость оборудования? Наши специалисты с этим легко справятся.
+        536=Дополнительная услуга сети наших центров. Мы можем оптимизировать работу ваших исследовательских зондов, повысив их эффективность и надежность.
+        537=Мы ведём учёт каждого установленного улучшения. Техосмотр, какого оборудования вы бы хотели провести?
+        538=Выберите оборудование из которого будут извлечены детали. Обращаем ваше внимание на то, что после изъятия деталей ремонт будет невозможен. Оставшиеся запчасти наш центр оставляет за собой в качестве оплаты за демонтаж.
+        539=Просканировав ваш корабль на предмет редких металлов, мы обнаружили в вашем трюме партию на сумму <0> сr.<br>Будете продавать?
+        540=Напыление на корпус
+        541=Демонтаж лишнего оборудования
+        542=Установка дополнительного оборудования
+        543=Согласиться
+        544=<clrEnd>Износостойкость оборудования <clr>снизится<clrEnd> на <0>%
+        545=Так так... Дополнительные детали обойдутся вам в <0> cr.<br>Какой параметр улучшить?
+        546=Так так... Дополнительные детали обойдутся вам в <0> cr.<br>Какой параметр улучшаем?
+        547=<clrEnd>Удалений микромодулей: <clr><0>
+        548=Тесты проведены, конфликтов не обнаружено. Данная услуга будет стоить вам <0> cr.
+        549=Мы можем удалить микромодуль из оборудования за <0> cr.<br><1><br>Но если у вас есть предмет-донор, повышение износа не превысит 5%, правда лишь в том случае, если в нём найдутся нужные детали.
+        551=Отлично! Покажите там этой каменюке! Вдарьте всей мощью, что у вас есть! Да и еще кое-что: как я уже говорил мы проводим эвакуацию, однако она и гроша ломанного не будет стоить, если на наши лайнеры нападут пираты, а ведь они могут. Очень вас прошу, если у вас будет возможность, постарайтесь защитить наши эвакуационные лайнеры в случае чего. Приоритетом по прежнему является уничтожение астероида, но за каждый лайнер, который сможет достичь пункта назначения я готов заплатить дополнительную награду. А теперь идите... Скорее, <0>, наша жизнь сейчас в ваших руках... Еще в руках других пилотов, что сейчас пытаются сбить астероид, но это не повод расслабляться! Вперед!
+        553=День прожит не зря! Планета <0> спасена от неминуемой гибели, меня публично объявили героем, а самое главное – мой банковский счет изрядно потолстел. Кто бы мог подумать, что предотвращение катастрофы планетарного масштаба может принести столько положительных эмоций.
+        555=Рейнджер <0>! Наконец-то адекватное лицо. Вы просто представить себе не можете, что тут творится. Все наши попытки не допустить паники потерпели сокрушительное фиаско! В космопорте гигантские толпы беженцев, все наши транспортники работают на пределе, но всех вывезти мы все равно не успеем.<br>Народ уже дошел до предела, бегают повсюду с плакатами на тему нашего незавидного будущего, а точнее его отсутствия. Из всех щелей повылезали фанатики, зачитывающие такие места из религиозных текстов, что мне самому становится не по себе, и я уже не говорю про мародеров... Словом - ад, такое впечатление, что астероид уже в нас врезался. Не помню такого бардака с тех времен, когда широкая общественность впервые услышала о доминаторах.<br>Так или иначе, у нас тут объявлено чрезвычайное положение и нам бы очень пригодилась ваша помощь. Астероид необходимо уничтожить и за это мы уже назначили крупную награду, вы готовы нам помочь?
+        556=Непротестированный
+        561=Конечно, забирайте
+        562=Нет! Не отдам... моя прелесть...
+        563=Просканировав ваш корабль на предмет редких металлов, мы  не обнаружили в вашем трюме ничего редкого.<br>Советуем вам посбивать астероиды, а вдруг повезёт.
+        564=Ясно, буду иметь в виду
+        565=Что вы, разумеется нет... Позвольте я вам объясню: дело в том, что внутренняя структура данного космического тела представляет собой огромный кристалл. Плотность этого кристалла невероятно высока и все, что смогут ему сделать наше стандартное вооружение это уничтожить верхний слой, состоящий из мягких горных пород и водяного льда и слегка поцарапать сердцевину. Однако путь есть и он состоит в том, чтобы разбить кристалл. Достаточно всего нескольких точных ударов большой мощности. Приложить, так сказать, достаточно кинетической энергии, на достаточно малой площади и к счастью мы уже придумали как это сделать. Нужно запустить в нашего Разрушителя, именно так мы его тут называем, другой астероид, точнее несколько...<br>Не надо смотреть на меня как на умалишенного, это действительно можно сделать. Слышали когда-нибудь о физических устройствах направленной антигравитации? В просторечье физганах? Эти устройства были изобретены знаменитым гаальским инженером Рее-Кляйном и используются сейчас для погрузочных работ. Мы же увеличили энергетическое ядро физгана и добавили ему стазисный генератор нулевой энергии, естественно это привело к увеличению устройства и невозможности его ручного использования, зато резко увеличили максимальную массу объектов, которые он может перемещать, а создание вокруг перемещаемого объекта энергетического стазиса защищает его от любых повреждений. Короче говоря - представляем вам первую экспериментальную модель <clr>Бортового физгана<clrEnd>. Он способен захватывать объекты размером со стандартный астероид и помещать их в стазис под днищем корабля, а когда вам понадобиться достаточно направить физган в нужную сторону и отключить стазис - большое количество энергии, до тех пор изолируемое от объекта с помощью стазиса войдет в свои права и придаст объекту огромное ускорение. К сожалению это делает бортовой физган совершенно несостоятельным как устройство для перемещения грузов, зато делает его полезным в качестве оружия, чем вам и необходимо воспользоваться, если вы конечно согласитесь. Как я уже сказал - это первая экспериментальная модель. Возможны... форс-мажоры... Но учтите, если вы откажетесь - это может стать причиной гибели целой планеты.
+        566=Один слой, за <0> cr
+        567=Два слоя, за <0> cr
+        568=Три слоя, за <0> cr
+        579= типа<0>
+        580=Прошивка оборудования
+        583=(трюм)
+        587=за <0> cr.
+        588=за
+        590="Прошивкой" мы называем замену ряда модулей в оборудовании на более новые, а также соответствующее обновление программного обеспечения. Сугубо говоря это вовсе не прошивка, а апгрейд, но название прицепилось... Словом, прошивая старое оборудование, мы вполне способны добиться от него результатов на уровне его самых новых аналогов. Износостойкость оборудования <clr>снизится<clrEnd> на <0>%<br>Так какое оборудование желаете прошить?
+        591=До типа <color=0,50,200><0></color>, стоимость прошивки: <1> cr.
+        592=До типа <color=0,50,200><0></color>, стоимость прошивки:
+        593=До какого технологического типа будем прошивать?
+        596=типа <color=0,50,200><0></color>
+        597=Сдать редкие минералы
+        599=Извините, но как-либо улучшить спасательную шлюпку не представляется возможным. Купите себе нормальный корпус или перестаньте страдать фигнёй.
+        600=Спасибо, что посетили нашу станцию <0>. Удобно располагайтесь, <1>, чувствуйте себя здесь как дома. Мы - лучшие специалисты Галактики в области технологического сервиса космических кораблей. В перечень наших услуг входит: улучшение оборудования, закрытие и открытие слотов, изменение восприимчивости к тому или иному типу урона и многое другое! Предлагаю вам в полной мере насладиться нашим вкусным кофе и изучить за это время прейскурант.
+        602=Наши техники стараются работать качественно и профессионально, но у каждого предмета есть свой предел. Сварные швы, которые образуются в результате этого улучшения будут не такими прочными на разрыв, как заводские, так что в целом устойчивость корпуса к повреждениям снизиться. Кроме того, при улучшении размер корпуса <0>. Также вам следует знать, что снять <clr>ограничения серии<clrEnd> мы никак не можем. Стоимость услуги - <1> cr.<br>Итак, какую часть корабля нам изменить?
+        HyperDeath=Механизм запуска <color=255,240,100>спасательной шлюпки</color>, в обычной ситуации всегда срабатывающий как часы, не был приспособлен для запуска лишь в одном единственном месте... в <color=255,240,100>гиперпространстве</color>. Однако, как это часто происходит по иронии судьбы, именно туда-то и угораздило затянуть ваш корабль за считанные секунды до того, как оглушительный взрыв навсегда оборвал вашу героическую и полную невероятных приключений жизнь.<br>Вы погибли, <Player>, и теперь вся слава достанется другим рейнджерам! Но ваше имя будет навечно занесено в список героев войны, а семья получит положенную страховку в размере <Money> cr.
     }
 }
 ShipInfo ^{
@@ -1394,87 +1400,87 @@ ShipInfo ^{
                     }
                     13=if(ScriptItemActionType(t_OnMissileShot))
                     14 ^{
-						01=if(EqModule(ScriptItemActObject2())==FindBonusByCustomTag('empty_mm'))
-						02 ^{
-							01=rocket=ScriptItemActObject1();
-							02=angle=Angle(WeaponTarget(weapon),rocket);
-							03=MissileAngle(rocket,angle);
-							04=MissileLive(rocket,400);
-							05=MissileSpeed(rocket,2000);
-							06=EqSpecial(rocket,FindBonusByCustomTag(substr(BonusCustomTag(EqSpecial(weapon)),0,6)));
-							07=WeaponTarget(weapon,0);
-							08=EqSpecial(weapon,FindBonusByCustomTag('w30_empty'));
-							09=if(accur==0) MissileTarget(rocket,0);
-						}
+                        01=if(EqModule(ScriptItemActObject2())==FindBonusByCustomTag('empty_mm'))
+                        02 ^{
+                            01=rocket=ScriptItemActObject1();
+                            02=angle=Angle(WeaponTarget(weapon),rocket);
+                            03=MissileAngle(rocket,angle);
+                            04=MissileLive(rocket,400);
+                            05=MissileSpeed(rocket,2000);
+                            06=EqSpecial(rocket,FindBonusByCustomTag(substr(BonusCustomTag(EqSpecial(weapon)),0,6)));
+                            07=WeaponTarget(weapon,0);
+                            08=EqSpecial(weapon,FindBonusByCustomTag('w30_empty'));
+                            09=if(accur==0) MissileTarget(rocket,0);
+                        }
                     }
                     15=if(ScriptItemActionType(t_OnMissileShot2) || ScriptItemActionType(t_OnMissileHittingObject))
                     16 ^{
-						01=if(EqModule(ScriptItemActObject2())==FindBonusByCustomTag('empty_mm'))
-						02 ^{
-							01=temp_int_1=EqSpecial(ScriptItemActObject2());
-							02=if(BonusCustomTag(temp_int_1)=='w30_qb' || BonusCustomTag(temp_int_1)=='w30_ft')
-							03 ^{
-								01=if(BonusCustomTag(temp_int_1)=='w30_qb')damag_item=CreateArt(t_ArtefactBomb,1);
-								02=if(BonusCustomTag(temp_int_1)=='w30_ft') damag_item=GetItemFromVault('CISTERNA_FIZGUN_'+damag);
-								03=DropItemInSystem(ShipStar(Player()),damag_item,CoordX(ScriptItemActObject1()),CoordY(ScriptItemActObject1()),CoordX(ScriptItemActObject1()),CoordY(ScriptItemActObject1()));
-								04=StopMovingItem(ShipStar(Player()),damag_item);
-								05=if(BonusCustomTag(temp_int_1)=='w30_ft') ItemDestroy(damag_item,damag);
-								06=FireWeapon(Player(),damag_item,0);
-							}
-							04=if(BonusCustomTag(temp_int_1)=='w30_pp' || BonusCustomTag(temp_int_1)=='w30_rd' || BonusCustomTag(temp_int_1)=='w30_gr' || BonusCustomTag(temp_int_1)=='w30_wh' || BonusCustomTag(temp_int_1)=='w30_yw' || BonusCustomTag(temp_int_1)=='w30_bl')
-							05 ^{
-								01=angle=(Rnd(0,360)*pi)/180.0;
-								02=DropItemInSystem(ShipStar(Player()),CreateGoods(4,Rnd(10,30),1),CoordX(ScriptItemActObject1()),CoordY(ScriptItemActObject1()),CoordX(ScriptItemActObject1())+100.0*sin(angle),CoordY(ScriptItemActObject1())-100.0*cos(angle));
-								03=angle=(Rnd(0,360)*pi)/180.0;
-								04=DropItemInSystem(ShipStar(Player()),CreateGoods(4,Rnd(10,30),1),CoordX(ScriptItemActObject1()),CoordY(ScriptItemActObject1()),CoordX(ScriptItemActObject1())+100.0*sin(angle),CoordY(ScriptItemActObject1())-100.0*cos(angle));
-								05=angle=(Rnd(0,360)*pi)/180.0;
-								06=DropItemInSystem(ShipStar(Player()),CreateGoods(4,Rnd(10,30),1),CoordX(ScriptItemActObject1()),CoordY(ScriptItemActObject1()),CoordX(ScriptItemActObject1())+100.0*sin(angle),CoordY(ScriptItemActObject1())-100.0*cos(angle));
-								07=angle=(Rnd(0,360)*pi)/180.0;
-								08=DropItemInSystem(ShipStar(Player()),CreateGoods(4,Rnd(10,30),1),CoordX(ScriptItemActObject1()),CoordY(ScriptItemActObject1()),CoordX(ScriptItemActObject1())+100.0*sin(angle),CoordY(ScriptItemActObject1())-100.0*cos(angle));
-								09=temp_dword=ScriptItemActObject1();
-								10=if(ObjectType(temp_dword)==4 || ObjectType(temp_dword)==5)
-								11 ^{
-									01=if(temp_dword==Keller() || temp_dword==Terron() || temp_dword==Blazer()) damag=200;
-									02=if(temp_dword!=Keller() && temp_dword!=Terron() && temp_dword!=Blazer())
-									03 ^{
-										01=if(ShipProtectability(temp_dword)==0 && ItemSize(ShipItems(temp_dword,0))<=150) damag=ItemSize(ShipItems(temp_dword,0))+20;
-										02=if(ShipProtectability(temp_dword)==0 && ItemSize(ShipItems(temp_dword,0))>150 && ItemSize(ShipItems(temp_dword,0))<=300) damag=(80*ItemSize(ShipItems(temp_dword,0)))/100;
-										03=if(ShipProtectability(temp_dword)==0 && ItemSize(ShipItems(temp_dword,0))>300) damag=(Rnd(40,50)*ItemSize(ShipItems(temp_dword,0)))/100;
-										04=if(ShipProtectability(temp_dword)>0 && ItemSize(ShipItems(temp_dword,0))<=150) damag=(50*ItemSize(ShipItems(temp_dword,0)))/100;
-										05=if(ShipProtectability(temp_dword)>0 && ItemSize(ShipItems(temp_dword,0))>150 && ItemSize(ShipItems(temp_dword,0))<=300) damag=(40*ItemSize(ShipItems(temp_dword,0)))/100;
-										06=if(ShipProtectability(temp_dword)>0 && ItemSize(ShipItems(temp_dword,0))>300) damag=(25*ItemSize(ShipItems(temp_dword,0)))/100;
-										07=if(HullDamageSuspectibility(temp_dword,2)>=100) damag=damag-(damag*(HullDamageSuspectibility(temp_dword,2)-100))/150;
-										08=if(HullDamageSuspectibility(temp_dword,2)<100) damag=damag+(damag*(100-HullDamageSuspectibility(temp_dword,2)))/50;
-										09=damag=damag+(damag*(ShipProtectability(temp_dword)))/100+ShipArmor(temp_dword)*2;
-										10=OrderNone(temp_dword);
-									}
-									04=MissileMaxDamage(ScriptItemActObject2(),damag-1);
-									05=MissileMinDamage(ScriptItemActObject2(),damag+1);
-								}
-							}
-							06=if(BonusCustomTag(temp_int_1)=='w30_eb')
-							07 ^{
-								01=MissileMaxDamage(ScriptItemActObject2(),0);
-								02=MissileMinDamage(ScriptItemActObject2(),0);
-								03=if(ScriptItemActionType()==t_OnMissileShot2)
-								04 ^{
-									01=temp_dword=ScriptItemActObject1();
-									02=damag=damag+(damag*(ShipProtectability(temp_dword)))/100+(damag*(ShipArmor(temp_dword)*2))/100;
-									03=if(HullDamageSuspectibility(temp_dword,2)>=100) damag=damag-(damag*(HullDamageSuspectibility(temp_dword,2)-100))/100;
-									04=if(HullDamageSuspectibility(temp_dword,2)<100) damag=damag+(damag*(100-HullDamageSuspectibility(temp_dword,2)))/100;
-									05=MissileMaxDamage(ScriptItemActObject2(),damag);
-									06=MissileMinDamage(ScriptItemActObject2(),damag);
-									07=if(damagset!=0) ScriptItemActParam(damagset);
-								}
-								05=if(ScriptItemActionType()==t_OnMissileHittingObject)
-								06 ^{
-									01=MissileMaxDamage(ScriptItemActObject2(),1);
-									02=MissileMinDamage(ScriptItemActObject2(),1);
-								}
-							}
-							08=if(ItemDurability(weapon)>=5)ItemDurability(weapon,ItemDurability(weapon)-5);
-						}
-					}
+                        01=if(EqModule(ScriptItemActObject2())==FindBonusByCustomTag('empty_mm'))
+                        02 ^{
+                            01=temp_int_1=EqSpecial(ScriptItemActObject2());
+                            02=if(BonusCustomTag(temp_int_1)=='w30_qb' || BonusCustomTag(temp_int_1)=='w30_ft')
+                            03 ^{
+                                01=if(BonusCustomTag(temp_int_1)=='w30_qb')damag_item=CreateArt(t_ArtefactBomb,1);
+                                02=if(BonusCustomTag(temp_int_1)=='w30_ft') damag_item=GetItemFromVault('CISTERNA_FIZGUN_'+damag);
+                                03=DropItemInSystem(ShipStar(Player()),damag_item,CoordX(ScriptItemActObject1()),CoordY(ScriptItemActObject1()),CoordX(ScriptItemActObject1()),CoordY(ScriptItemActObject1()));
+                                04=StopMovingItem(ShipStar(Player()),damag_item);
+                                05=if(BonusCustomTag(temp_int_1)=='w30_ft') ItemDestroy(damag_item,damag);
+                                06=FireWeapon(Player(),damag_item,0);
+                            }
+                            04=if(BonusCustomTag(temp_int_1)=='w30_pp' || BonusCustomTag(temp_int_1)=='w30_rd' || BonusCustomTag(temp_int_1)=='w30_gr' || BonusCustomTag(temp_int_1)=='w30_wh' || BonusCustomTag(temp_int_1)=='w30_yw' || BonusCustomTag(temp_int_1)=='w30_bl')
+                            05 ^{
+                                01=angle=(Rnd(0,360)*pi)/180.0;
+                                02=DropItemInSystem(ShipStar(Player()),CreateGoods(4,Rnd(10,30),1),CoordX(ScriptItemActObject1()),CoordY(ScriptItemActObject1()),CoordX(ScriptItemActObject1())+100.0*sin(angle),CoordY(ScriptItemActObject1())-100.0*cos(angle));
+                                03=angle=(Rnd(0,360)*pi)/180.0;
+                                04=DropItemInSystem(ShipStar(Player()),CreateGoods(4,Rnd(10,30),1),CoordX(ScriptItemActObject1()),CoordY(ScriptItemActObject1()),CoordX(ScriptItemActObject1())+100.0*sin(angle),CoordY(ScriptItemActObject1())-100.0*cos(angle));
+                                05=angle=(Rnd(0,360)*pi)/180.0;
+                                06=DropItemInSystem(ShipStar(Player()),CreateGoods(4,Rnd(10,30),1),CoordX(ScriptItemActObject1()),CoordY(ScriptItemActObject1()),CoordX(ScriptItemActObject1())+100.0*sin(angle),CoordY(ScriptItemActObject1())-100.0*cos(angle));
+                                07=angle=(Rnd(0,360)*pi)/180.0;
+                                08=DropItemInSystem(ShipStar(Player()),CreateGoods(4,Rnd(10,30),1),CoordX(ScriptItemActObject1()),CoordY(ScriptItemActObject1()),CoordX(ScriptItemActObject1())+100.0*sin(angle),CoordY(ScriptItemActObject1())-100.0*cos(angle));
+                                09=temp_dword=ScriptItemActObject1();
+                                10=if(ObjectType(temp_dword)==4 || ObjectType(temp_dword)==5)
+                                11 ^{
+                                    01=if(temp_dword==Keller() || temp_dword==Terron() || temp_dword==Blazer()) damag=200;
+                                    02=if(temp_dword!=Keller() && temp_dword!=Terron() && temp_dword!=Blazer())
+                                    03 ^{
+                                        01=if(ShipProtectability(temp_dword)==0 && ItemSize(ShipItems(temp_dword,0))<=150) damag=ItemSize(ShipItems(temp_dword,0))+20;
+                                        02=if(ShipProtectability(temp_dword)==0 && ItemSize(ShipItems(temp_dword,0))>150 && ItemSize(ShipItems(temp_dword,0))<=300) damag=(80*ItemSize(ShipItems(temp_dword,0)))/100;
+                                        03=if(ShipProtectability(temp_dword)==0 && ItemSize(ShipItems(temp_dword,0))>300) damag=(Rnd(40,50)*ItemSize(ShipItems(temp_dword,0)))/100;
+                                        04=if(ShipProtectability(temp_dword)>0 && ItemSize(ShipItems(temp_dword,0))<=150) damag=(50*ItemSize(ShipItems(temp_dword,0)))/100;
+                                        05=if(ShipProtectability(temp_dword)>0 && ItemSize(ShipItems(temp_dword,0))>150 && ItemSize(ShipItems(temp_dword,0))<=300) damag=(40*ItemSize(ShipItems(temp_dword,0)))/100;
+                                        06=if(ShipProtectability(temp_dword)>0 && ItemSize(ShipItems(temp_dword,0))>300) damag=(25*ItemSize(ShipItems(temp_dword,0)))/100;
+                                        07=if(HullDamageSuspectibility(temp_dword,2)>=100) damag=damag-(damag*(HullDamageSuspectibility(temp_dword,2)-100))/150;
+                                        08=if(HullDamageSuspectibility(temp_dword,2)<100) damag=damag+(damag*(100-HullDamageSuspectibility(temp_dword,2)))/50;
+                                        09=damag=damag+(damag*(ShipProtectability(temp_dword)))/100+ShipArmor(temp_dword)*2;
+                                        10=OrderNone(temp_dword);
+                                    }
+                                    04=MissileMaxDamage(ScriptItemActObject2(),damag-1);
+                                    05=MissileMinDamage(ScriptItemActObject2(),damag+1);
+                                }
+                            }
+                            06=if(BonusCustomTag(temp_int_1)=='w30_eb')
+                            07 ^{
+                                01=MissileMaxDamage(ScriptItemActObject2(),0);
+                                02=MissileMinDamage(ScriptItemActObject2(),0);
+                                03=if(ScriptItemActionType()==t_OnMissileShot2)
+                                04 ^{
+                                    01=temp_dword=ScriptItemActObject1();
+                                    02=damag=damag+(damag*(ShipProtectability(temp_dword)))/100+(damag*(ShipArmor(temp_dword)*2))/100;
+                                    03=if(HullDamageSuspectibility(temp_dword,2)>=100) damag=damag-(damag*(HullDamageSuspectibility(temp_dword,2)-100))/100;
+                                    04=if(HullDamageSuspectibility(temp_dword,2)<100) damag=damag+(damag*(100-HullDamageSuspectibility(temp_dword,2)))/100;
+                                    05=MissileMaxDamage(ScriptItemActObject2(),damag);
+                                    06=MissileMinDamage(ScriptItemActObject2(),damag);
+                                    07=if(damagset!=0) ScriptItemActParam(damagset);
+                                }
+                                05=if(ScriptItemActionType()==t_OnMissileHittingObject)
+                                06 ^{
+                                    01=MissileMaxDamage(ScriptItemActObject2(),1);
+                                    02=MissileMinDamage(ScriptItemActObject2(),1);
+                                }
+                            }
+                            08=if(ItemDurability(weapon)>=5)ItemDurability(weapon,ItemDurability(weapon)-5);
+                        }
+                    }
                 }
                 1 ^{
                     01=temp_int_2=0;
@@ -1515,17 +1521,15 @@ ShipInfo ^{
                 Description=
                 Icon=0
                 Name=
-				OnActCodeTypes=t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
                 OnActCode ^{
                     01=ScriptItemActParam(0);
                 }
+                OnActCodeTypes=t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
             }
             blow_astr ^{
                 Description=Код "астероида"
                 Icon=1
                 Name=
-				OnActCodeTypes=t_OnStep,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
-				OnActStepTypes=11
                 OnActCode ^{
                     01=int infos=ShipFindCustomShipInfoByType(ScriptItemActShip(),'blow_astr');
                     02=float angl;
@@ -1651,13 +1655,13 @@ ShipInfo ^{
                         }
                     }
                 }
+                OnActCodeTypes=t_OnStep,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
+                OnActStepTypes=11
             }
             blow_astr_bsh ^{
                 Description=Инфошка для эвакуации из квеста физгана
                 Icon=1
                 Name=
-				OnActCodeTypes=t_OnStep
-				OnActStepTypes=11
                 OnActCode ^{
                     01=int infos=ShipFindCustomShipInfoByType(ScriptItemActShip(),'blow_astr_bsh');
                     02=dword t_planet=IdToPlanet(ShipCustomShipInfoData(ScriptItemActShip(),infos,1));
@@ -1697,238 +1701,226 @@ ShipInfo ^{
                         }
                     }
                 }
+                OnActCodeTypes=t_OnStep
+                OnActStepTypes=11
             }
             LifeboatLaunchInfo ~{
                 Description=Инфошка спасательной шлюпки
                 Icon=0
                 Name=
-				//ShipCustomShipInfoData(0,infos,1) - Id корабля, выполняющего роль покинутого корпуса;
-				//ShipCustomShipInfoData(0,infos,2) - маркер состояния готовности спуска шлюпки: 0 - шлюпка просто лежит "в трюме", 1 - корабль получил смертельный урон, шлюпка готова к спуску, 2 - шлюпка выпускается, 3 - шлюпка в космосе, корабль уничтожен, происходит удаление инфошки и бонуса "второй жизни";
-				//ShipCustomShipInfoTextData(0,infos,3) - Id объекта, наносящего урон, который не нужно отрисовывать (т.к. его отрисует сам объект);
-				OnActCodeTypes=t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnStep
-				OnActStepTypes=0,9,11
-				OnActCode ^{
-					01=dword cur_ship=ScriptItemActShip();
-					02=int bon=FindBonusByCustomTag('ExpTC_SecondLife');
-					03=if(!ItemExtraSpecialsCountByType(ShipItems(cur_ship,0),bon))exit;
+                OnActCodeTypes=t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnStep
+                OnActStepTypes=0,9,11
+                OnActCode ^{
+                    01=dword cur_ship=ScriptItemActShip();
+                    02=int bon=FindBonusByCustomTag('ExpTC_SecondLife');
+                    03=if(!ItemExtraSpecialsCountByType(ShipItems(cur_ship,0),bon))exit;
                     04=int i;
                     05=int infos=CurInfo();
-					06=int infos_var_2;
-					//Фиксируем получение урона
+                    06=int infos_var_2;
                     07=if(ScriptItemActionType(t_OnTakingDamage) || ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi))
                     08 ^{
-						01=infos_var_2=ShipCustomShipInfoData(0,infos,2);
-						//Если ранее обработчик уже сработал, то обнуляем урон, полученный позже
-						02=if(infos_var_2)ScriptItemActParam(0);
-						//Фиксируем получение смертельного урона, срабатывает обработчик инициации спуска шлюпки
-						03=if(ScriptItemActParam()>=HullHP(cur_ship) && !infos_var_2)
-						04 ^{
-							01=int effectCheck=(ShipStar(cur_ship)==ShipStar(Player()) && ShipInNormalSpace(Player()));
-							02=dword dealer=ScriptItemActObject1();
-							03=int dealerType=ObjectType(dealer);
-							04=int saveItemsCheck=1;
-							05=unknown itemsArr=newarray(1);
-							06=for(i=ShipItems(cur_ship)-1;i>0;i=i-1)ArrayAdd(itemsArr,GetItemFromShip(cur_ship,i));
-							07=unknown artsArr=newarray(1);
-							08=for(i=ShipArts(cur_ship)-1;i>=0;i=i-1)ArrayAdd(artsArr,GetArtFromShip(cur_ship,i));
-							09=dword ejectship=BuyTransport(StarPlanets(GalaxyStar(0),3),1);
-							10=for(i=ShipItems(ejectship)-1;i>0;i=i-1)FreeItem(GetItemFromShip(ejectship,i));
-							11=for(i=ShipArts(ejectship)-1;i>=0;i=i-1)FreeItem(GetArtFromShip(ejectship,i));
-							12=dword hullOld=GetItemFromShip(ejectship,0);
-							13=dword hull=GetItemFromShip(cur_ship,0);
-							14=AddItemToShip(ejectship,hull);
-							15=ItemIsInUse(hull,ejectship,1);
-							16=if(1)
-							17 ^{
-								01=ShipSpecialBonuses(ejectship,bonSlotRadar,-1);
-								02=ShipSpecialBonuses(ejectship,bonSlotScaner,-1);
-								03=ShipSpecialBonuses(ejectship,bonSlotDroid,-1);
-								04=ShipSpecialBonuses(ejectship,bonSlotHook,-1);
-								05=ShipSpecialBonuses(ejectship,bonSlotDef,-1);
-								06=ShipSpecialBonuses(ejectship,bonSlotWeapon,-4);
-								07=ShipSpecialBonuses(ejectship,bonSlotArt,-4);
-								08=ShipSpecialBonuses(ejectship,bonSkill1,-300);
-								09=ShipSpecialBonuses(ejectship,bonSkill2,-300);
-								10=ShipSpecialBonuses(ejectship,bonSkill3,-300);
-								11=ShipSpecialBonuses(ejectship,bonSkill4,-300);
-								12=ShipSpecialBonuses(ejectship,bonSkill5,-300);
-								13=ShipSpecialBonuses(ejectship,bonSkill6,-300);
-								14=ShipSpecialBonuses(ejectship,bonSpeed,-10000);
-								15=dword add_item;
-								16=add_item=CreateEquipment(t_FuelTanks,0,1,0);
-								17=AddItemToShip(ejectship,add_item);
-								18=ItemIsInUse(add_item,ejectship,1);
-								19=NoDropItem(add_item,1);
-								20=add_item=CreateEquipment(t_Engine,0,1,0);
-								21=SetEquipmentStats(add_item,0,0);
-								22=AddItemToShip(ejectship,add_item);
-								23=ItemIsInUse(add_item,ejectship,1);
-								24=NoDropItem(add_item,1);
-								25=add_item=CreateEquipment(t_Weapon1,0,1,0);
-								26=ItemDurability(add_item,0);
-								27=AddItemToShip(ejectship,add_item);
-								28=ItemIsInUse(add_item,ejectship,1);
-								29=NoDropItem(add_item,1);
-								30=ShipAddCustomShipInfo(ejectship,'AbandonedShipInfo','NoShow');
-								31=if(effectCheck)
-								32 ^{
-									01=int NoEffectCheck=ShipCustomShipInfoTextData(0,infos,3);
-									02=if(NoEffectCheck!=dealer)
-									03 ^{
-										01=if(dealerType==1)
-										02 ^{
-											01=ShowEffect('Weapon.NoGraph',1,cur_ship,0,ScriptItemActParam(),0,0,255,255,255);
-										}
-										03=else if(dealerType==6)
-										04 ^{
-											01=ShowEffect('Weapon.NoGraph',1,cur_ship,0,ScriptItemActParam(),0,0,255,0,0);
-										}
-										05=else ShowEffect('Weapon.NoGraph',1,cur_ship,0,ScriptItemActParam(),0,0);
-									}
-								}
-								33=if(dealerType==1 || dealerType==6)saveItemsCheck=0;
-								34=int RNDbomb_1_Num=0;
-								35=if(saveItemsCheck)
-								36 ^{
-									01=for(i=ArrayDim(itemsArr)-1;i;i=i-1)
-									02 ^{
-										01=if(ItemType(itemsArr[i])==t_UselessItem)
-										02 ^{
-											01=str itemSysName=EquipmentImageName(itemsArr[i]);
-											02=if(findsubstr(itemSysName,'RNDbomb')>-1)
-											03 ^{
-												01=if(itemSysName=='RNDbomb_1')
-												02 ^{
-													01=if(UselessItemData(itemsArr[i],2)==-2)
-													02 ^{
-														01=DropItemInSystem(StarNearbyStars(ShipStar(Player()),1),itemsArr[i],30000,30000,30000,30000);
-														02=ItemDestroy(itemsArr[i],1);
-													}
-													03=else
-													04 ^{
-														01=RNDbomb_1_Num=RNDbomb_1_Num+1;
-														02=PutItemInVault('RNDbomb_1_'+Id(ejectship)+'_'+RNDbomb_1_Num,itemsArr[i]);
-													}
-												}
-												03=else AddItemToShip(ejectship,itemsArr[i]);
-											}
-											04=else AddItemToShip(ejectship,itemsArr[i]);
-										}
-										03=else AddItemToShip(ejectship,itemsArr[i]);
-									}
-									03=for(i=ArrayDim(artsArr)-1;i;i=i-1)
-									04 ^{
-										01=AddItemToShip(ejectship,artsArr[i]);
-									}
-								}
-								37=else
-								38 ^{
-									01=for(i=ArrayDim(itemsArr)-1;i;i=i-1)
-									02 ^{
-										01=DropItemInSystem(StarNearbyStars(ShipStar(Player()),1),itemsArr[i],30000,30000,30000,30000);
-										02=ItemDestroy(itemsArr[i],1);
-									}
-									02=for(i=ArrayDim(artsArr)-1;i;i=i-1)FreeItem(artsArr[i]);
-								}
-							}
-							18=Chameleon(ejectship);
-							19=ShipCustomShipInfoData(ejectship,'AbandonedShipInfo',1,RNDbomb_1_Num);
-							20=FreeItem(hullOld);
-							21=SetName(ejectship,'<color=57,239,255>'+CT('MicroModuls.ExpTC_Lifeboat.AbandonedShipName')+'</color>');
-							22=ShipType(ejectship,'AbandonedShip');
-							23=ShipOwner(ejectship,ShipOwner(cur_ship));
-							24=RelationToRanger(ejectship,Player(),50);
-							25=NoTalkToShip(ejectship,1);
-							26=NoScanToShip(ejectship,1);
-							27=OrderNone(ejectship);
-							28=OrderLock(ejectship,1);
-							29=ShipAngle(ejectship,ShipAngle(cur_ship));
-							30=TransferShip(ejectship,ShipStar(cur_ship));
-							31=ShipSetCoords(ejectship,CoordX(cur_ship),CoordY(cur_ship));
-							32=ShipCustomShipInfoData(0,infos,1,Id(ejectship));
-							33=dword hullBoat=CreateHull(t_Ranger,100,1,3,-1);
-							34=SetEquipmentStats(hullBoat,0,0);
-							35=AddItemToShip(cur_ship,hullBoat);
-							36=ItemIsInUse(hullBoat,cur_ship,1);
-							37=SpecialToEquipment(FindBonusByCustomTag('ExpTC_Lifeboat'),hullBoat);
-							38=ShipCustomShipInfoData(0,infos,2,1);
-							39=add_item=CreateEquipment(t_FuelTanks,10,1,ItemOwner(hullBoat));
-							40=AddItemToShip(cur_ship,add_item);
-							41=ItemIsInUse(add_item,cur_ship,1);
-							42=add_item=CreateEquipment(t_Engine,15,1,ItemOwner(hullBoat));
-							43=AddItemToShip(cur_ship,add_item);
-							44=ItemIsInUse(add_item,cur_ship,1);
-							45=add_item=CreateEquipment(t_Weapon1,15,1,ItemOwner(hullBoat));
-							46=AddItemToShip(cur_ship,add_item);
-							47=ItemExtraSpecialsAddByType(ShipItems(cur_ship,0),bon);
-							48=ItemIsInUse(add_item,cur_ship,1);
-							49=Chameleon(cur_ship);
-							50=AutoBattle(0);
-							//Скрываем кнопки переключения режимов Клеща из мода ExpPanel
-							51=if(GetMainData('Data.Script.Mod_ExpPanel')=='1,Script.Mod_ExpPanel')
-							52 ^{
-								01=if(InterfaceState('StarMap','Klesh_panel'))
-								02 ^{
-									01=InterfaceState('StarMap','Klesh_panel',0);
-								}
-							}
-							53=HullHP(ejectship,1);
-							//И под конец зануляем урон, чтобы он не прошёл по шлюпке
-							54=ScriptItemActParam(0);
-						}
+                        01=infos_var_2=ShipCustomShipInfoData(0,infos,2);
+                        02=if(infos_var_2)ScriptItemActParam(0);
+                        03=if(ScriptItemActParam()>=HullHP(cur_ship) && !infos_var_2)
+                        04 ^{
+                            01=int effectCheck=(ShipStar(cur_ship)==ShipStar(Player()) && ShipInNormalSpace(Player()));
+                            02=dword dealer=ScriptItemActObject1();
+                            03=int dealerType=ObjectType(dealer);
+                            04=int saveItemsCheck=1;
+                            05=unknown itemsArr=newarray(1);
+                            06=for(i=ShipItems(cur_ship)-1;i>0;i=i-1)ArrayAdd(itemsArr,GetItemFromShip(cur_ship,i));
+                            07=unknown artsArr=newarray(1);
+                            08=for(i=ShipArts(cur_ship)-1;i>=0;i=i-1)ArrayAdd(artsArr,GetArtFromShip(cur_ship,i));
+                            09=dword ejectship=BuyTransport(StarPlanets(GalaxyStar(0),3),1);
+                            10=for(i=ShipItems(ejectship)-1;i>0;i=i-1)FreeItem(GetItemFromShip(ejectship,i));
+                            11=for(i=ShipArts(ejectship)-1;i>=0;i=i-1)FreeItem(GetArtFromShip(ejectship,i));
+                            12=dword hullOld=GetItemFromShip(ejectship,0);
+                            13=dword hull=GetItemFromShip(cur_ship,0);
+                            14=AddItemToShip(ejectship,hull);
+                            15=ItemIsInUse(hull,ejectship,1);
+                            16=if(1)
+                            17 ^{
+                                01=ShipSpecialBonuses(ejectship,bonSlotRadar,-1);
+                                02=ShipSpecialBonuses(ejectship,bonSlotScaner,-1);
+                                03=ShipSpecialBonuses(ejectship,bonSlotDroid,-1);
+                                04=ShipSpecialBonuses(ejectship,bonSlotHook,-1);
+                                05=ShipSpecialBonuses(ejectship,bonSlotDef,-1);
+                                06=ShipSpecialBonuses(ejectship,bonSlotWeapon,-4);
+                                07=ShipSpecialBonuses(ejectship,bonSlotArt,-4);
+                                08=ShipSpecialBonuses(ejectship,bonSkill1,-300);
+                                09=ShipSpecialBonuses(ejectship,bonSkill2,-300);
+                                10=ShipSpecialBonuses(ejectship,bonSkill3,-300);
+                                11=ShipSpecialBonuses(ejectship,bonSkill4,-300);
+                                12=ShipSpecialBonuses(ejectship,bonSkill5,-300);
+                                13=ShipSpecialBonuses(ejectship,bonSkill6,-300);
+                                14=ShipSpecialBonuses(ejectship,bonSpeed,-10000);
+                                15=dword add_item;
+                                16=add_item=CreateEquipment(t_FuelTanks,0,1,0);
+                                17=AddItemToShip(ejectship,add_item);
+                                18=ItemIsInUse(add_item,ejectship,1);
+                                19=NoDropItem(add_item,1);
+                                20=add_item=CreateEquipment(t_Engine,0,1,0);
+                                21=SetEquipmentStats(add_item,0,0);
+                                22=AddItemToShip(ejectship,add_item);
+                                23=ItemIsInUse(add_item,ejectship,1);
+                                24=NoDropItem(add_item,1);
+                                25=add_item=CreateEquipment(t_Weapon1,0,1,0);
+                                26=ItemDurability(add_item,0);
+                                27=AddItemToShip(ejectship,add_item);
+                                28=ItemIsInUse(add_item,ejectship,1);
+                                29=NoDropItem(add_item,1);
+                                30=ShipAddCustomShipInfo(ejectship,'AbandonedShipInfo','NoShow');
+                                31=if(effectCheck)
+                                32 ^{
+                                    01=int NoEffectCheck=ShipCustomShipInfoTextData(0,infos,3);
+                                    02=if(NoEffectCheck!=dealer)
+                                    03 ^{
+                                        01=if(dealerType==1)
+                                        02 ^{
+                                            01=ShowEffect('Weapon.NoGraph',1,cur_ship,0,ScriptItemActParam(),0,0,255,255,255);
+                                        }
+                                        03=else if(dealerType==6)
+                                        04 ^{
+                                            01=ShowEffect('Weapon.NoGraph',1,cur_ship,0,ScriptItemActParam(),0,0,255,0,0);
+                                        }
+                                        05=else ShowEffect('Weapon.NoGraph',1,cur_ship,0,ScriptItemActParam(),0,0);
+                                    }
+                                }
+                                33=if(dealerType==1 || dealerType==6)saveItemsCheck=0;
+                                34=int RNDbomb_1_Num=0;
+                                35=if(saveItemsCheck)
+                                36 ^{
+                                    01=for(i=ArrayDim(itemsArr)-1;i;i=i-1)
+                                    02 ^{
+                                        01=if(ItemType(itemsArr[i])==t_UselessItem)
+                                        02 ^{
+                                            01=str itemSysName=EquipmentImageName(itemsArr[i]);
+                                            02=if(findsubstr(itemSysName,'RNDbomb')>-1)
+                                            03 ^{
+                                                01=if(itemSysName=='RNDbomb_1')
+                                                02 ^{
+                                                    01=if(UselessItemData(itemsArr[i],2)==-2)
+                                                    02 ^{
+                                                        01=DropItemInSystem(StarNearbyStars(ShipStar(Player()),1),itemsArr[i],30000,30000,30000,30000);
+                                                        02=ItemDestroy(itemsArr[i],1);
+                                                    }
+                                                    03=else
+                                                    04 ^{
+                                                        01=RNDbomb_1_Num=RNDbomb_1_Num+1;
+                                                        02=PutItemInVault('RNDbomb_1_'+Id(ejectship)+'_'+RNDbomb_1_Num,itemsArr[i]);
+                                                    }
+                                                }
+                                                03=else AddItemToShip(ejectship,itemsArr[i]);
+                                            }
+                                            04=else AddItemToShip(ejectship,itemsArr[i]);
+                                        }
+                                        03=else AddItemToShip(ejectship,itemsArr[i]);
+                                    }
+                                    03=for(i=ArrayDim(artsArr)-1;i;i=i-1)
+                                    04 ^{
+                                        01=AddItemToShip(ejectship,artsArr[i]);
+                                    }
+                                }
+                                37=else
+                                38 ^{
+                                    01=for(i=ArrayDim(itemsArr)-1;i;i=i-1)
+                                    02 ^{
+                                        01=DropItemInSystem(StarNearbyStars(ShipStar(Player()),1),itemsArr[i],30000,30000,30000,30000);
+                                        02=ItemDestroy(itemsArr[i],1);
+                                    }
+                                    02=for(i=ArrayDim(artsArr)-1;i;i=i-1)FreeItem(artsArr[i]);
+                                }
+                            }
+                            18=Chameleon(ejectship);
+                            19=ShipCustomShipInfoData(ejectship,'AbandonedShipInfo',1,RNDbomb_1_Num);
+                            20=FreeItem(hullOld);
+                            21=SetName(ejectship,'<color=57,239,255>'+CT('MicroModuls.ExpTC_Lifeboat.AbandonedShipName')+'</color>');
+                            22=ShipType(ejectship,'AbandonedShip');
+                            23=ShipOwner(ejectship,ShipOwner(cur_ship));
+                            24=RelationToRanger(ejectship,Player(),50);
+                            25=NoTalkToShip(ejectship,1);
+                            26=NoScanToShip(ejectship,1);
+                            27=OrderNone(ejectship);
+                            28=OrderLock(ejectship,1);
+                            29=ShipAngle(ejectship,ShipAngle(cur_ship));
+                            30=TransferShip(ejectship,ShipStar(cur_ship));
+                            31=ShipSetCoords(ejectship,CoordX(cur_ship),CoordY(cur_ship));
+                            32=ShipCustomShipInfoData(0,infos,1,Id(ejectship));
+                            33=dword hullBoat=CreateHull(t_Ranger,100,1,3,-1);
+                            34=SetEquipmentStats(hullBoat,0,0);
+                            35=AddItemToShip(cur_ship,hullBoat);
+                            36=ItemIsInUse(hullBoat,cur_ship,1);
+                            37=SpecialToEquipment(FindBonusByCustomTag('ExpTC_Lifeboat'),hullBoat);
+                            38=ShipCustomShipInfoData(0,infos,2,1);
+                            39=add_item=CreateEquipment(t_FuelTanks,10,1,ItemOwner(hullBoat));
+                            40=AddItemToShip(cur_ship,add_item);
+                            41=ItemIsInUse(add_item,cur_ship,1);
+                            42=add_item=CreateEquipment(t_Engine,15,1,ItemOwner(hullBoat));
+                            43=AddItemToShip(cur_ship,add_item);
+                            44=ItemIsInUse(add_item,cur_ship,1);
+                            45=add_item=CreateEquipment(t_Weapon1,15,1,ItemOwner(hullBoat));
+                            46=AddItemToShip(cur_ship,add_item);
+                            47=ItemExtraSpecialsAddByType(ShipItems(cur_ship,0),bon);
+                            48=ItemIsInUse(add_item,cur_ship,1);
+                            49=Chameleon(cur_ship);
+                            50=AutoBattle(0);
+                            51=if(GetMainData('Data.Script.Mod_ExpPanel')=='1,Script.Mod_ExpPanel')
+                            52 ^{
+                                01=if(InterfaceState('StarMap','Klesh_panel'))
+                                02 ^{
+                                    01=InterfaceState('StarMap','Klesh_panel',0);
+                                }
+                            }
+                            53=HullHP(ejectship,1);
+                            54=ScriptItemActParam(0);
+                        }
                     }
                     09=if(ScriptItemActionType(t_OnStep,9))
                     10 ^{
-						//Сбрасываем приказ чуть раньше полного конца хода, чтобы корабль не повис в гипере, если смертельный урон нанесли перед прыжком
-						01=if(ShipCustomShipInfoData(0,infos,2)==1)OrderNone(cur_ship);
-					}
+                        01=if(ShipCustomShipInfoData(0,infos,2)==1)OrderNone(cur_ship);
+                    }
                     11=if(ScriptItemActionType(t_OnStep,11))
                     12 ^{
-						01=infos_var_2=ShipCustomShipInfoData(0,infos,2);
-						//Это срабатывает в конце того же хода, когда стало понятно, что корабль получил смертельный урон
-						02=if(infos_var_2==1)
-						03 ^{
-							01=ShipCustomShipInfoData(0,infos,2,2);
-							02=Chameleon(cur_ship);
-							//Автоматически форсируем расчёт следующего хода
-							03=if(IsPlayer(cur_ship))ForceNextDay();
-							//04=else затычка под шлюпку ботов
-						}
-						//Это срабатывает в конце следующего хода
-						04=else if(infos_var_2==3)
-						05 ^{
-							01=if(!IsPlayer(cur_ship))ShipDeleteCustomShipInfo(cur_ship,'LifeboatLaunchInfo');
-							02=ItemExtraSpecialsDeleteByType(ShipItems(cur_ship,0),bon);
-							03=ShipCustomShipInfoData(0,infos,1,0);
-							04=ShipCustomShipInfoData(0,infos,2,0);
-						}
+                        01=infos_var_2=ShipCustomShipInfoData(0,infos,2);
+                        02=if(infos_var_2==1)
+                        03 ^{
+                            01=ShipCustomShipInfoData(0,infos,2,2);
+                            02=Chameleon(cur_ship);
+                            03=if(IsPlayer(cur_ship))ForceNextDay();
+                        }
+                        04=else if(infos_var_2==3)
+                        05 ^{
+                            01=if(!IsPlayer(cur_ship))ShipDeleteCustomShipInfo(cur_ship,'LifeboatLaunchInfo');
+                            02=ItemExtraSpecialsDeleteByType(ShipItems(cur_ship,0),bon);
+                            03=ShipCustomShipInfoData(0,infos,1,0);
+                            04=ShipCustomShipInfoData(0,infos,2,0);
+                        }
                     }
                     13=if(ScriptItemActionType(t_OnStep,0))
                     14 ^{
-						//Это срабатывает в начале следующего хода
-						01=if(ShipCustomShipInfoData(0,infos,2)==2)
-						02 ^{
-							01=if(!ShipInHyperSpace(cur_ship))
-							02 ^{
-								01=ejectship=IdToShip(ShipCustomShipInfoData(0,infos,1));
-								02=float angle=(ShipAngle(cur_ship)*3.141592653)/180.0;
-								03=OrderMove(cur_ship,CoordX(cur_ship)+700.0*sin(angle),CoordY(cur_ship)-700.0*cos(angle),1);//700 - дистанция, на которую шлюпка делает рывок
-								04=ShipCustomShipInfoData(0,infos,2,3);
-								05=ShipAngle(ejectship,ShipAngle(cur_ship));
-								06=ShipSetCoords(ejectship,CoordX(cur_ship),CoordY(cur_ship));
-								07=ShipDestroy(ejectship,1);
-								08=if(ShipCustomShipInfoTextData(0,infos,2)=='ShowBAMEffect')
-								09 ^{
-									01=if(effectCheck)ShowStaticEffect('RNDbomb_1BAM',CoordX(ejectship),CoordY(ejectship));
-								}
-							}
-							03=else if(cur_ship==Player())CustomLose(CT('Script.Mod_ExpTC.HyperDeath'));
-							04=else
-							05 ^{
-								01=ShipDestroy(IdToShip(ShipCustomShipInfoData(0,infos,1)),1);
-								02=ShipDestroy(cur_ship,1);
-							}
-						}
+                        01=if(ShipCustomShipInfoData(0,infos,2)==2)
+                        02 ^{
+                            01=if(!ShipInHyperSpace(cur_ship))
+                            02 ^{
+                                01=ejectship=IdToShip(ShipCustomShipInfoData(0,infos,1));
+                                02=float angle=(ShipAngle(cur_ship)*3.141592653)/180.0;
+                                03=OrderMove(cur_ship,CoordX(cur_ship)+700.0*sin(angle),CoordY(cur_ship)-700.0*cos(angle),1);
+                                04=ShipCustomShipInfoData(0,infos,2,3);
+                                05=ShipAngle(ejectship,ShipAngle(cur_ship));
+                                06=ShipSetCoords(ejectship,CoordX(cur_ship),CoordY(cur_ship));
+                                07=ShipDestroy(ejectship,1);
+                                08=if(ShipCustomShipInfoTextData(0,infos,2)=='ShowBAMEffect')
+                                09 ^{
+                                    01=if(effectCheck)ShowStaticEffect('RNDbomb_1BAM',CoordX(ejectship),CoordY(ejectship));
+                                }
+                            }
+                            03=else if(cur_ship==Player())CustomLose(CT('Script.Mod_ExpTC.HyperDeath'));
+                            04=else
+                            05 ^{
+                                01=ShipDestroy(IdToShip(ShipCustomShipInfoData(0,infos,1)),1);
+                                02=ShipDestroy(cur_ship,1);
+                            }
+                        }
                     }
                 }
             }
@@ -1936,77 +1928,76 @@ ShipInfo ^{
                 Description=Инфошка для покинутого корабля (без зануления урона будет крашить)
                 Icon=0
                 Name=
-				OnActCodeTypes=t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnDeath
+                OnActCodeTypes=t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnDeath
                 OnActCode ^{
-					01=if(ScriptItemActionType(t_OnDeath))
-					02 ^{
-						01=dword ship=ScriptItemActShip();
-						02=dword star=ShipStar(ship);
-						03=dword item;
-						04=int tX=CoordX(ship);
-						05=int tY=CoordY(ship);
-						06=float angle;
-						07=int rad;
-						08=int i;
-						09=int tId=Id(ship);
-						10=for(i=ShipCustomShipInfoData(0,CurInfo(),1);i>0;i=i-1)
-						11 ^{
-							01=item=GetItemFromVault('RNDbomb_1_'+tId+'_'+i);
-							02=AddItemToShip(ship,item);
-						}
-						//Вручную раскидываем дроп. По-другому не выходит :|
-						12=for(i=ShipItems(ship);i>0;i=i-1)
-						13 ^{
-							01=item=ShipItems(ship,i);
-							02=if(ItemIsInUse(item))continue;
-							03=if(ItemType(item)==t_UselessItem)DropItem(ship,t_UselessItem);
-							04=else
-							05 ^{
-								01=angle=0.01*Rnd(0,200)*3.141592653;
-								02=rad=Rnd(100,200);
-								03=if(ItemInScript(item))DropItemInSystem(star,GetItemFromShip(ship,i),tX,tY,round(cos(angle)*rad)+tX,round(sin(angle)*rad)+tY);
-								04=else if(ItemType(item)==t_UselessItem)DropItemInSystem(star,GetItemFromShip(ship,i),tX,tY,round(cos(angle)*rad)+tX,round(sin(angle)*rad)+tY);
-								05=else if(Rnd(1,100)<=15)DropItemInSystem(star,GetItemFromShip(ship,i),tX,tY,round(cos(angle)*rad)+tX,round(sin(angle)*rad)+tY);
-							}
-						}
-						14=for(i=ShipArts(ship);i>=0;i=i-1)
-						15 ^{
-							01=item=ShipArts(ship,i);
-							02=angle=0.01*Rnd(0,200)*3.141592653;
-							03=rad=Rnd(100,200);
-							04=DropItemInSystem(star,GetArtFromShip(ship,i),tX,tY,round(cos(angle)*rad)+tX,round(sin(angle)*rad)+tY);
-						}
-					}
+                    01=if(ScriptItemActionType(t_OnDeath))
+                    02 ^{
+                        01=dword ship=ScriptItemActShip();
+                        02=dword star=ShipStar(ship);
+                        03=dword item;
+                        04=int tX=CoordX(ship);
+                        05=int tY=CoordY(ship);
+                        06=float angle;
+                        07=int rad;
+                        08=int i;
+                        09=int tId=Id(ship);
+                        10=for(i=ShipCustomShipInfoData(0,CurInfo(),1);i>0;i=i-1)
+                        11 ^{
+                            01=item=GetItemFromVault('RNDbomb_1_'+tId+'_'+i);
+                            02=AddItemToShip(ship,item);
+                        }
+                        12=for(i=ShipItems(ship);i>0;i=i-1)
+                        13 ^{
+                            01=item=ShipItems(ship,i);
+                            02=if(ItemIsInUse(item))continue;
+                            03=if(ItemType(item)==t_UselessItem)DropItem(ship,t_UselessItem);
+                            04=else
+                            05 ^{
+                                01=angle=0.01*Rnd(0,200)*3.141592653;
+                                02=rad=Rnd(100,200);
+                                03=if(ItemInScript(item))DropItemInSystem(star,GetItemFromShip(ship,i),tX,tY,round(cos(angle)*rad)+tX,round(sin(angle)*rad)+tY);
+                                04=else if(ItemType(item)==t_UselessItem)DropItemInSystem(star,GetItemFromShip(ship,i),tX,tY,round(cos(angle)*rad)+tX,round(sin(angle)*rad)+tY);
+                                05=else if(Rnd(1,100)<=15)DropItemInSystem(star,GetItemFromShip(ship,i),tX,tY,round(cos(angle)*rad)+tX,round(sin(angle)*rad)+tY);
+                            }
+                        }
+                        14=for(i=ShipArts(ship);i>=0;i=i-1)
+                        15 ^{
+                            01=item=ShipArts(ship,i);
+                            02=angle=0.01*Rnd(0,200)*3.141592653;
+                            03=rad=Rnd(100,200);
+                            04=DropItemInSystem(star,GetArtFromShip(ship,i),tX,tY,round(cos(angle)*rad)+tX,round(sin(angle)*rad)+tY);
+                        }
+                    }
                     03=else
                     04 ^{
-						01=ScriptItemActParam(0);
-					}
-				}
-			}
+                        01=ScriptItemActParam(0);
+                    }
+                }
+            }
         }
     }
 }
 ShipType ^{
     Fei ^{
-		AbandonedShip=
+        AbandonedShip=
     }
     Gaal ^{
-		AbandonedShip=
+        AbandonedShip=
     }
     Maloc ^{
-		AbandonedShip=
+        AbandonedShip=
     }
     Peleng ^{
-		AbandonedShip=
+        AbandonedShip=
     }
     People ^{
-		AbandonedShip=
+        AbandonedShip=
     }
     TypeName ^{
+        AbandonedShip=Корабль
         Aster=Астероид
         TC=Технологический центр
         TCSmall=ТЦ
-		AbandonedShip=Корабль
     }
 }
 UselessItems ^{

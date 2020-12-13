@@ -868,64 +868,65 @@ ShipInfo ^{
 							03=dword tranc=ScriptItemActShip();
 							04=int distT=ShipCustomShipInfoData(0,cur_info2,2);
 							05=int charge=ShipCustomShipInfoData(0,cur_info2,3);
-							06=if(charge>=100)
+							06=if(charge >= 100)
 							07 ^{
-								01=for(int i=1;i<=ShipCntWeapon(tranc);i=i+1)
+								01=for(int i = 1; i <= ShipCntWeapon(tranc); i = i + 1)
 								02 ^{
-									01=dword gun=ShipWeapon(tranc,i);
-									02=if(!WeaponTarget(gun))continue;
-									03=dword target=WeaponTarget(gun);
-									04=if(Dist(tranc,target)>distT)continue;
-									05=if(ObjectType(target)!=4 && ObjectType(target)!=5)continue;
-									06=ShipCustomShipInfoTextData(0,cur_info2,1,gun);
-									07=if(ShipStar(tranc)==ShipStar(Player()) && ShipInNormalSpace(Player()))FilmSound('Sound.MusashiGunCharge',tranc);
+									01=dword gun = ShipWeapon(tranc, i);
+									02=if(!WeaponTarget(gun)) continue;
+									03=dword target = WeaponTarget(gun);
+									04=if(Dist(tranc,target) > distT) continue;
+									05=if(ObjectType(target) != 4 && ObjectType(target) != 5) continue;
+									06=ShipCustomShipInfoTextData(0, cur_info2, 1, gun);
+									07=if(ShipStar(tranc) == ShipStar(Player()) && ShipInNormalSpace(Player())) FilmSound('Sound.MusashiGunCharge', tranc);
 									08=break;
 								}
 							}
 						}
 						03=else if(ScriptItemActionType(t_OnStep,10))
 						04 ^{
-							01=cur_info2=CurInfo();
-							02=tranc=ScriptItemActShip();
-							03=distT=ShipCustomShipInfoData(0,cur_info2,2);
-							04=dword gunF=ShipCustomShipInfoTextData(0,cur_info2,1);
-							05=if(gunF)
+							01=cur_info2 = CurInfo();
+							02=tranc = ScriptItemActShip();
+							03=distT = ShipCustomShipInfoData(0, cur_info2, 2);
+							04=gun = ShipCustomShipInfoTextData(0, cur_info2, 1);
+							05=if(gun)
 							06 ^{
-								01=if(WeaponTarget(gunF))
-								02 ^{
-									01=if(Dist(tranc,target)<=distT)
+								01=target = WeaponTarget(gun);
+								02=if(target)
+								03 ^{
+									01=if(Dist(tranc, target) <= distT)
 									02 ^{
-										01=int damage=ShipCustomShipInfoData(0,cur_info2,1);
-										02=damage=damage-ShipProtectability(target)-ShipArmor(target);
-										03=if(damage<0)damage=0;
+										01=int damage = ShipCustomShipInfoData(0, cur_info2, 1);
+										02=damage = damage - ShipProtectability(target) - ShipArmor(target);
+										03=if(damage < 0) damage = 0;
 										//ѕровер€ем, не установлена ли на корабле цели спасательна€ шлюпка и если да, то говорим ему не отображать над собой урон посредством маркера в инфошке
-										04=int targetInfo=ShipFindCustomShipInfoByType(target,'LifeboatLaunchInfo');
-										05=if(targetInfo>-1)
+										04=int targetInfo = ShipFindCustomShipInfoByType(target, 'LifeboatLaunchInfo');
+										05=if(targetInfo > -1)
 										06 ^{
-											01=ShipCustomShipInfoTextData(target,targetInfo,3,tranc);
-											02=int temp_dmg=DealDamageToShip(target,tranc,damage,2+16+128);
-											03=if(temp_dmg)damage=temp_dmg;
+											01=ShipCustomShipInfoTextData(target, targetInfo, 3, tranc);
+											02=int temp_dmg = DealDamageToShip(target, tranc, damage, 2+16+128);
+											03=if(temp_dmg) damage = temp_dmg;
 										}
-										07=else damage=DealDamageToShip(target,tranc,damage,2+16+128);
-										08=ShipCustomShipInfoData(0,cur_info2,3,0);
-										09=ShipCustomShipInfoTextData(0,cur_info2,1,'Shot');
-										10=if(ShipStar(tranc)==ShipStar(Player()) && ShipInNormalSpace(Player()))
+										07=else damage = DealDamageToShip(target, tranc, damage, 2+16+128);
+										08=ShipCustomShipInfoData(0, cur_info2, 3, 0);
+										09=ShipCustomShipInfoTextData(0, cur_info2, 1, 'Shot');
+										10=if(ShipStar(tranc) == ShipStar(Player()) && ShipInNormalSpace(Player()))
 										11 ^{
-											01=if(HullHP(target)>0)ShowEffect('Weapon.8',8,target,tranc,damage,0,0);
-											02=else ShowEffect('Weapon.8',8,target,tranc,damage,1,0);
-											03=FilmSound('Sound.MusashiGunFire',tranc);
+											01=if(HullHP(target) > 0) ShowEffect('Weapon.8', 8, target, tranc, damage, 0, 0);
+											02=else ShowEffect('Weapon.8', 8, target, tranc, damage, 1, 0);
+											03=FilmSound('Sound.MusashiGunFire', tranc);
 										}
 									}
 									03=else
 									04 ^{
-										01=ShipCustomShipInfoTextData(0,cur_info2,1,'0');
-										02=if(ShipStar(tranc)==ShipStar(Player()) && ShipInNormalSpace(Player()))FilmSound('Sound.MusashiGunOff',tranc);
+										01=ShipCustomShipInfoTextData(0, cur_info2, 1, '0');
+										02=if(ShipStar(tranc) == ShipStar(Player()) && ShipInNormalSpace(Player())) FilmSound('Sound.MusashiGunOff', tranc);
 									}
 								}
-								03=else
-								04 ^{
-									01=ShipCustomShipInfoTextData(0,cur_info2,1,'0');
-									02=if(ShipStar(tranc)==ShipStar(Player()) && ShipInNormalSpace(Player()))FilmSound('Sound.MusashiGunOff',tranc);
+								04=else
+								05 ^{
+									01=ShipCustomShipInfoTextData(0, cur_info2, 1, '0');
+									02=if(ShipStar(tranc) == ShipStar(Player()) && ShipInNormalSpace(Player())) FilmSound('Sound.MusashiGunOff', tranc);
 								}
 							}
 						}

@@ -1976,9 +1976,10 @@ UselessItems ^{
             02 ^{
 				01=dword item=ScriptItemActObject1();
                 02=if(ItemType(item)!=t_DefGenerator)exit;
-                03=int sp=0;
-                04=if(ItemExtraSpecials(item))
-                05 ^{
+				03=if(ItemImprovement(item))exit;
+                04=int sp=0;
+                05=if(ItemExtraSpecials(item))
+                06 ^{
                     01=int i=0;
                     02=str sp_name;
                     03=int sp_num=0;
@@ -1989,21 +1990,22 @@ UselessItems ^{
                         03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
                     }
                 }
-				06=if(EqSpecial(item)>-1)
-				07 ^{
+				07=if(EqSpecial(item)>-1)
+				08 ^{
 					//Исключение не улучшаемых предметов
 					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
 				}
 				//Отправляем команду о необходимости подсветить пригодный для установки предмет
-				08=if(!sp)ScriptItemActParam(1);
+				09=if(!sp)ScriptItemActParam(1);
 			}
             03=if(ScriptItemActionType(t_OnAnotherItem))
             04 ^{
 				01=item=ScriptItemActObject1();
                 02=if(ItemType(item)!=t_DefGenerator)exit;
-                03=sp=0;
-                04=if(ItemExtraSpecials(item))
-                05 ^{
+				03=if(ItemImprovement(item))exit;
+                04=sp=0;
+                05=if(ItemExtraSpecials(item))
+                06 ^{
                     01=i=0;
                     02=sp_num=0;
                     03=for(i=0;i<ItemExtraSpecials(item);i=i+1)
@@ -2013,13 +2015,13 @@ UselessItems ^{
                         03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
                     }
                 }
-				06=if(EqSpecial(item)>-1)
-				07 ^{
+				07=if(EqSpecial(item)>-1)
+				08 ^{
 					//Исключение не улучшаемых предметов
 					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
 				}
-				08=if(!sp)
-                09 ^{
+				09=if(!sp)
+                10 ^{
 					01=str text_q='Вы уверены, что хотите установить <color=0,50,200>уплотнитель поля</color> в ItemName?';
 					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
                     03=if(MessageBoxYesNo(text_q))
@@ -2051,9 +2053,10 @@ UselessItems ^{
             02 ^{
 				01=dword item=ScriptItemActObject1();
                 02=if(ItemType(item)!=t_Radar)exit;
-                03=int sp=0;
-                04=if(ItemExtraSpecials(item))
-                05 ^{
+				03=if(ItemImprovement(item))exit;
+                04=int sp=0;
+                05=if(ItemExtraSpecials(item))
+                06 ^{
                     01=int i=0;
                     02=str sp_name;
                     03=int sp_num=0;
@@ -2064,21 +2067,22 @@ UselessItems ^{
                         03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
                     }
                 }
-				06=if(EqSpecial(item)>-1)
-				07 ^{
+				07=if(EqSpecial(item)>-1)
+				08 ^{
 					//Исключение не улучшаемых предметов
 					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
 				}
 				//Отправляем команду о необходимости подсветить пригодный для установки предмет
-				08=if(!sp)ScriptItemActParam(1);
+				09=if(!sp)ScriptItemActParam(1);
 			}
             03=if(ScriptItemActionType(t_OnAnotherItem))
             04 ^{
 				01=item=ScriptItemActObject1();
                 02=if(ItemType(item)!=t_Radar)exit;
-                03=sp=0;
-                04=if(ItemExtraSpecials(item))
-                05 ^{
+				03=if(ItemImprovement(item))exit;
+                04=sp=0;
+                05=if(ItemExtraSpecials(item))
+                06 ^{
                     01=i=0;
                     02=sp_num=0;
                     03=for(i=0;i<ItemExtraSpecials(item);i=i+1)
@@ -2088,8 +2092,8 @@ UselessItems ^{
                         03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
                     }
                 }
-				06=if(EqSpecial(item)>-1)
-				07 ^{
+				07=if(EqSpecial(item)>-1)
+				08 ^{
 					//Исключаем Убиваторов
 					01=if(BonusNumInCfg(EqSpecial(item))=='RevAcrynUbivator' || BonusNumInCfg(EqSpecial(item))=='RevAcrynUbivator2')
 					02 ^{
@@ -2099,8 +2103,8 @@ UselessItems ^{
 					//Исключение не улучшаемых предметов
 					03=else if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
 				}
-				08=if(!sp)
-				09 ^{
+				09=if(!sp)
+				10 ^{
 					01=str text_q='Вы уверены, что хотите установить <color=0,50,200>меонные чипы</color> в ItemName?';
 					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
                     03=if(MessageBoxYesNo(text_q))
@@ -2132,9 +2136,10 @@ UselessItems ^{
             02 ^{
 				01=dword item=ScriptItemActObject1();
                 02=if(ItemType(item)!=t_Scaner)exit;
-                03=int sp=0;
-                04=if(ItemExtraSpecials(item))
-                05 ^{
+				03=if(ItemImprovement(item))exit;
+                04=int sp=0;
+                05=if(ItemExtraSpecials(item))
+                06 ^{
                     01=int i=0;
                     02=str sp_name;
                     03=int sp_num=0;
@@ -2145,21 +2150,22 @@ UselessItems ^{
                         03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
                     }
                 }
-				06=if(EqSpecial(item)>-1)
-				07 ^{
+				07=if(EqSpecial(item)>-1)
+				08 ^{
 					//Исключение не улучшаемых предметов
 					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
 				}
 				//Отправляем команду о необходимости подсветить пригодный для установки предмет
-				08=if(!sp)ScriptItemActParam(1);
+				09=if(!sp)ScriptItemActParam(1);
 			}
             03=if(ScriptItemActionType(t_OnAnotherItem))
             04 ^{
 				01=item=ScriptItemActObject1();
                 02=if(ItemType(item)!=t_Scaner)exit;
-                03=sp=0;
-                04=if(ItemExtraSpecials(item))
-                05 ^{
+				03=if(ItemImprovement(item))exit;
+                04=sp=0;
+                05=if(ItemExtraSpecials(item))
+                06 ^{
                     01=i=0;
                     02=sp_num=0;
                     03=for(i=0;i<ItemExtraSpecials(item);i=i+1)
@@ -2169,13 +2175,13 @@ UselessItems ^{
                         03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
                     }
                 }
-				06=if(EqSpecial(item)>-1)
-				07 ^{
+				07=if(EqSpecial(item)>-1)
+				08 ^{
 					//Исключение не улучшаемых предметов
 					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
 				}
-			    08=if(!sp)
-                09 ^{
+			    09=if(!sp)
+                10 ^{
 					01=str text_q='Вы уверены, что хотите установить <color=0,50,200>контурный усилитель</color> в ItemName?';
 					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
                     03=if(MessageBoxYesNo(text_q))
@@ -2207,9 +2213,10 @@ UselessItems ^{
             02 ^{
 				01=dword item=ScriptItemActObject1();
                 02=if(ItemType(item)!=t_RepairRobot)exit;
-                03=int sp=0;
-                04=if(ItemExtraSpecials(item))
-                05 ^{
+				03=if(ItemImprovement(item))exit;
+                04=int sp=0;
+                05=if(ItemExtraSpecials(item))
+                06 ^{
                     01=int i=0;
                     02=str sp_name;
                     03=int sp_num=0;
@@ -2220,8 +2227,8 @@ UselessItems ^{
                         03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
                     }
                 }
-				06=if(EqSpecial(item)>-1)
-				07 ^{
+				07=if(EqSpecial(item)>-1)
+				08 ^{
 					01=str bon_num=BonusNumInCfg(EqSpecial(item));
 					//Исключение не улучшаемых предметов
 					02=if(CT('MicroModuls.'+bon_num+'.NotImprovable')==1)sp=1;
@@ -2230,15 +2237,16 @@ UselessItems ^{
 					04=else if(bon_num=='RevAcrynBattleDroid')sp=1;
 				}
 				//Отправляем команду о необходимости подсветить пригодный для установки предмет
-				08=if(!sp)ScriptItemActParam(1);
+				09=if(!sp)ScriptItemActParam(1);
 			}
             03=if(ScriptItemActionType(t_OnAnotherItem))
             04 ^{
 				01=item=ScriptItemActObject1();
                 02=if(ItemType(item)!=t_RepairRobot)exit;
-                03=sp=0;
-                04=if(ItemExtraSpecials(item))
-                05 ^{
+				03=if(ItemImprovement(item))exit;
+                04=sp=0;
+                05=if(ItemExtraSpecials(item))
+                06 ^{
                     01=i=0;
                     02=sp_num=0;
                     03=for(i=0;i<ItemExtraSpecials(item);i=i+1)
@@ -2248,8 +2256,8 @@ UselessItems ^{
                         03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
                     }
                 }
-				06=if(EqSpecial(item)>-1)
-				07 ^{
+				07=if(EqSpecial(item)>-1)
+				08 ^{
 					01=bon_num=BonusNumInCfg(EqSpecial(item));
 					//Исключение не улучшаемых предметов
 					02=if(CT('MicroModuls.'+bon_num+'.NotImprovable')==1)sp=1;
@@ -2265,8 +2273,8 @@ UselessItems ^{
 						02=MessageBox('Боевой дроид не способен выполнять ремонт, а его поведение под вражеским обстрелом и без того экстремальнее некуда.',34);
 					}
 				}
-				08=if(!sp)
-                09 ^{
+				09=if(!sp)
+                10 ^{
 					01=str text_q='Вы уверены, что хотите установить ModuleName в ItemName?';
 					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
 					03=if(MessageBoxYesNo(text_q))
@@ -2298,9 +2306,10 @@ UselessItems ^{
             02 ^{
 				01=dword item=ScriptItemActObject1();
                 02=if(ItemType(item)!=t_FuelTanks)exit;
-                03=int sp=0;
-                04=if(ItemExtraSpecials(item))
-                05 ^{
+				03=if(ItemImprovement(item))exit;
+                04=int sp=0;
+                05=if(ItemExtraSpecials(item))
+                06 ^{
                     01=int i=0;
                     02=str sp_name;
                     03=int sp_num=0;
@@ -2311,21 +2320,22 @@ UselessItems ^{
                         03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
                     }
                 }
-				06=if(EqSpecial(item)>-1)
-				07 ^{
+				07=if(EqSpecial(item)>-1)
+				08 ^{
 					//Исключение не улучшаемых предметов
 					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
 				}
 				//Отправляем команду о необходимости подсветить пригодный для установки предмет
-				08=if(!sp)ScriptItemActParam(1);
+				09=if(!sp)ScriptItemActParam(1);
 			}
             03=if(ScriptItemActionType(t_OnAnotherItem))
             04 ^{
 				01=item=ScriptItemActObject1();
                 02=if(ItemType(item)!=t_FuelTanks)exit;
-                03=sp=0;
-                04=if(ItemExtraSpecials(item))
-                05 ^{
+				03=if(ItemImprovement(item))exit;
+                04=sp=0;
+                05=if(ItemExtraSpecials(item))
+                06 ^{
                     01=i=0;
                     02=sp_num=0;
                     03=for(i=0;i<ItemExtraSpecials(item);i=i+1)
@@ -2335,13 +2345,13 @@ UselessItems ^{
                         03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
                     }
                 }
-				06=if(EqSpecial(item)>-1)
-				07 ^{
+				07=if(EqSpecial(item)>-1)
+				08 ^{
 					//Исключение не улучшаемых предметов
 					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
 				}
-				08=if(!sp)
-                09 ^{
+				09=if(!sp)
+                10 ^{
 					01=str text_q='Вы уверены, что хотите установить <color=0,50,200>замену систем безопасности</color> в ItemName?';
 					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
 					03=if(MessageBoxYesNo(text_q))
@@ -2372,9 +2382,10 @@ UselessItems ^{
             02 ^{
 				01=dword item=ScriptItemActObject1();
                 02=if(ItemType(item)!=t_Engine)exit;
-                03=int sp=0;
-                04=if(ItemExtraSpecials(item))
-                05 ^{
+				03=if(ItemImprovement(item))exit;
+                04=int sp=0;
+                05=if(ItemExtraSpecials(item))
+                06 ^{
                     01=int i=0;
                     02=str sp_name;
                     03=int sp_num=0;
@@ -2385,21 +2396,22 @@ UselessItems ^{
                         03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
                     }
                 }
-				06=if(EqSpecial(item)>-1)
-				07 ^{
+				07=if(EqSpecial(item)>-1)
+				08 ^{
 					//Исключение не улучшаемых предметов
 					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
 				}
 				//Отправляем команду о необходимости подсветить пригодный для установки предмет
-				08=if(!sp)ScriptItemActParam(1);
+				09=if(!sp)ScriptItemActParam(1);
 			}
             03=if(ScriptItemActionType(t_OnAnotherItem))
             04 ^{
 				01=item=ScriptItemActObject1();
                 02=if(ItemType(item)!=t_Engine)exit;
-                03=sp=0;
-                04=if(ItemExtraSpecials(item))
-                05 ^{
+				03=if(ItemImprovement(item))exit;
+                04=sp=0;
+                05=if(ItemExtraSpecials(item))
+                06 ^{
                     01=i=0;
                     02=sp_num=0;
                     03=for(i=0;i<ItemExtraSpecials(item);i=i+1)
@@ -2409,13 +2421,13 @@ UselessItems ^{
                         03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
                     }
                 }
-				06=if(EqSpecial(item)>-1)
-				07 ^{
+				07=if(EqSpecial(item)>-1)
+				08 ^{
 					//Исключение не улучшаемых предметов
 					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
 				}
-				08=if(!sp)
-                09 ^{
+				09=if(!sp)
+                10 ^{
 					01=str text_q='Вы уверены, что хотите установить <color=0,50,200>хакнутый инжектор</color> в ItemName?';
 					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
 					03=if(MessageBoxYesNo(text_q))
@@ -2446,9 +2458,10 @@ UselessItems ^{
             02 ^{
 				01=dword item=ScriptItemActObject1();
                 02=if(ItemType(item)!=t_CargoHook)exit;
-                03=int sp=0;
-                04=if(ItemExtraSpecials(item))
-                05 ^{
+				03=if(ItemImprovement(item))exit;
+                04=int sp=0;
+                05=if(ItemExtraSpecials(item))
+                06 ^{
                     01=int i=0;
                     02=str sp_name;
                     03=int sp_num=0;
@@ -2459,21 +2472,22 @@ UselessItems ^{
                         03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
                     }
                 }
-				06=if(EqSpecial(item)>-1)
-				07 ^{
+				07=if(EqSpecial(item)>-1)
+				08 ^{
 					//Исключение не улучшаемых предметов
 					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
 				}
 				//Отправляем команду о необходимости подсветить пригодный для установки предмет
-				08=if(!sp)ScriptItemActParam(1);
+				09=if(!sp)ScriptItemActParam(1);
 			}
             03=if(ScriptItemActionType(t_OnAnotherItem))
             04 ^{
 				01=item=ScriptItemActObject1();
                 02=if(ItemType(item)!=t_CargoHook)exit;
-                03=sp=0;
-                04=if(ItemExtraSpecials(item))
-                05 ^{
+				03=if(ItemImprovement(item))exit;
+                04=sp=0;
+                05=if(ItemExtraSpecials(item))
+                06 ^{
                     01=i=0;
                     02=sp_num=0;
                     03=for(i=0;i<ItemExtraSpecials(item);i=i+1)
@@ -2483,13 +2497,13 @@ UselessItems ^{
                         03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
                     }
                 }
-				06=if(EqSpecial(item)>-1)
-				07 ^{
+				07=if(EqSpecial(item)>-1)
+				08 ^{
 					//Исключение не улучшаемых предметов
 					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
 				}
-				08=if(!sp)
-                09 ^{
+				09=if(!sp)
+                10 ^{
 					01=str text_q='Вы уверены, что хотите установить <color=0,50,200>усиленные сервоприводы</color> в ItemName?';
 					02=text_q=Format(text_q,'ModuleName',Name(CurItem()),'ItemName',Name(item));
 					03=if(MessageBoxYesNo(text_q))
