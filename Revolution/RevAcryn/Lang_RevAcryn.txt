@@ -1,57 +1,9 @@
-Artefacts ^{
-    ArtDroid ^{
-        Broken=(испорчен)
-        BrokenInBattle=Внимание! Младший дроид был повреждён в бою. Требуется ремонт.
-        BrokenInUse=Младший дроид долго работал в невыносимых условиях и сломался. Требуется ремонт.
-        Description=Младший дроид - облегчённый вариант основного дроида, при помощи специальной системы синхронизации подключаемый к общему кабелю. Работает вместе с основным дроидом, снижая его износ в два раза, а также увеличивая скорость ремонтных работ на корабле.
-        Name=Дроид младший
-        Text=Этот маленький дроид может восстанавливать <clr>10<clrEnd> единиц повреждённого корпуса корабля и способен работать даже в гиперпространстве. Также снижает износ основного дроида в <clr>2<clrEnd> раза.
-		OnActCodeTypes=t_OnStep
-		OnActStepTypes=11
-		OnActCode ^{
-			//Чиним корабль при установке дроида младшего даже в том случае, если главный дроид отсутствует или установлен "Боевой дроид"
-			01=dword ship=ScriptItemActShip();
-			02=if(!ship)exit;
-			03=if(!ItemDurability(CurItem()))exit;
-			04=dword droid=ShipEqInSlot(ship,t_RepairRobot);
-			05=dword hull;
-			06=if(!droid)
-			07 ^{
-				01=hull=ShipItems(ship,0);
-				02=if(HullHP(hull) < ItemSize(hull))
-				03 ^{
-					//Повышенная эффективность дроида младшего в случае, если он работает в режиме совместимости
-					01=if(ArtefactTypeBoosted(ship,t_ArtefactDroid))HullHP(hull,HullHP(hull) + CT('Artefacts.NumericValues.kArtefactDroid') + CT('Artefacts.NumericValues.kArtefactDroidEx'));
-					02=else HullHP(hull,HullHP(hull) + CT('Artefacts.NumericValues.kArtefactDroid'));
-					03=if(HullHP(hull)>ItemSize(hull))HullHP(hull,ItemSize(hull));
-					//Немного увеличиваем износ, если дроид младший чинит корабль без основного дроида
-					04=if(Rnd(1,100)<=15)ItemDurability(CurItem(),ItemDurability(CurItem())-1);
-				}
-			}
-			08=else if(EqSpecial(droid)>-1)
-			09 ^{
-				//Также чиним корабль младшим дроидом, если на него установлен боевой дроид (который сам по себе ремонт не производит)
-				01=if(BonusNumInCfg(EqSpecial(droid))=='RevAcrynBattleDroid')
-				02 ^{
-					01=hull=ShipItems(ship,0);
-					02=if(HullHP(hull) < ItemSize(hull))
-					03 ^{
-						//Повышенная эффективность дроида младшего в случае, если он работает в режиме совместимости
-						01=if(ArtefactTypeBoosted(ship,t_ArtefactDroid))HullHP(hull,HullHP(hull) + CT('Artefacts.NumericValues.kArtefactDroid') + CT('Artefacts.NumericValues.kArtefactDroidEx'));
-						02=else HullHP(hull,HullHP(hull) + CT('Artefacts.NumericValues.kArtefactDroid'));
-						03=if(HullHP(hull)>ItemSize(hull))HullHP(hull,ItemSize(hull));
-					}
-				}
-			}
-		}
-    }
-}
 ActCodeBlocksList ^{
 	//Код для смены акрина на сборочном дроиде, а также сбросе прицела у всех орудий, если дроид установлен не на станции
 	RevAcrynAssemblyDroidActCode ^{
 		01=dword ship;
 		02=dword item;
-		03=if(ScriptItemActionType(t_OnStep,0))
+		03=if(ScriptItemActionType(t_OnStep, 0))
 		04 ^{
 			01=item=CurItem();
 			02=ship=ScriptItemActShip();
