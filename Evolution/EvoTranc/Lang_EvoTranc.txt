@@ -9,95 +9,131 @@ Artefacts ^{
 			0=dword cur_tranc=0;
 			01=int i;
 			02=int ship_tranc=0;
-			03=for(i=0;i<ShipArts(Player());i=i+1)
+			03=for(i = 0; i < ShipArts(Player()); i = i + 1)
 			04 ^{
-				01=if(ItemType(ShipArts(Player(),i))==t_ArtefactTranclucator)ship_tranc=ship_tranc+1;
+				01=if(ItemType(ShipArts(Player(), i)) == t_ArtefactTranclucator) ship_tranc = ship_tranc + 1;
 			}
-			05=int tranc_count_skill=ShipSkill(Player(),2)-PlayerTranclucators();
-			06=if(tranc_count_skill<=0)
+			05=int talky = 0;
+			//Если подключён ExpTraitors, то ищём на корабле попугая, который будет озвучивать запуски транклюкаторов
+			06=if(IsScriptActive('Mod_ExpTraitors'))
 			07 ^{
-				01=if(PlayerTranclucators()>=6)
+				01=if(ShipInNormalSpace(Player()))
 				02 ^{
-					01=MessageBox('Достигнут лимит одновременно активных транклюкаторов',10);
+					01=for(i = 0; i < ShipItems(Player()); i = i + 1)
+					02 ^{
+						01=dword item = ShipItems(Player(), i);
+						02=if(ItemType(item) == t_UselessItem)
+						03 ^{
+							01=if(EquipmentImageName(item) == 'ExpTraitors_PirateParrot') talky = 1;
+						}
+					}
+				}
+			}
+			08=int tranc_count_skill = ShipSkill(Player(), 2) - PlayerTranclucators();
+			09=if(tranc_count_skill <= 0)
+			10 ^{
+				01=if(PlayerTranclucators() >= 6)
+				02 ^{
+					01=MessageBox('Достигнут лимит одновременно активных транклюкаторов', 10);
 					02=exit;
 				}
 				03=else
 				04 ^{
-					01=MessageBox('Не хватает знания'+CT('FormInfo.br')+'техники для активации транклюкатора',10);
+					01=MessageBox('Не хватает знания' + CT('FormInfo.br') + 'техники для активации транклюкатора', 10);
 					02=exit;
 				}
 			}
-			08=else
-			09 ^{
-				01=int tranc_count=0;
-				02=int temp_int=2;
-				03=if(tranc_count_skill>ship_tranc)tranc_count=ship_tranc;
-				04=else tranc_count=tranc_count_skill;
-				05=int numTrancs=0;
-				06=if(tranc_count<2)
+			11=else
+			12 ^{
+				01=int tranc_count = 0;
+				02=int temp_int = 2;
+				03=if(tranc_count_skill > ship_tranc) tranc_count = ship_tranc;
+				04=else tranc_count = tranc_count_skill;
+				05=int numTrancs = 0;
+				06=if(tranc_count < 2)
 				07 ^{
 					01=if(GetShipPlanet(Player()))
 					02 ^{
-						01=if(PlanetOwner(GetShipPlanet(Player()))==6)MessageBox('Запуск транклюкатора на незаселённой планете невозможен');
+						01=if(PlanetOwner(GetShipPlanet(Player())) == 6) MessageBox('Запуск транклюкатора на незаселённой планете невозможен');
 						02=else
 						03 ^{
 							01=OnUseCodeTranclucator();
-							02=if(ShipInNormalSpace(Player()))Sound('Sound.UseATranc');
-							03=numTrancs=1;
+							02=if(talky)
+							03 ^{
+								01=if(Rnd(1, 100) <= 66) Sound('Sound.ParrotPhrase4');
+								02=else Sound('Sound.ParrotPhrase1');
+							}
+							04=if(ShipInNormalSpace(Player())) Sound('Sound.UseATranc');
+							05=numTrancs = 1;
 						}
 					}
 					03=else
 					04 ^{
 						01=OnUseCodeTranclucator();
-						02=if(ShipInNormalSpace(Player()))Sound('Sound.UseATranc');
-						03=numTrancs=1;
+						02=if(talky)
+						03 ^{
+							01=if(Rnd(1, 100) <= 66) Sound('Sound.ParrotPhrase4');
+							02=else Sound('Sound.ParrotPhrase1');
+						}
+						04=if(ShipInNormalSpace(Player())) Sound('Sound.UseATranc');
+						05=numTrancs = 1;
 					}
 				}
 				08=else
 				09 ^{
 					01=if(GetShipPlanet(Player()))
 					02 ^{
-						01=if(PlanetOwner(GetShipPlanet(Player()))==6)MessageBox('Запуск транклюкатора на незаселённой планете невозможен');
+						01=if(PlanetOwner(GetShipPlanet(Player())) == 6) MessageBox('Запуск транклюкатора на незаселённой планете невозможен');
 						02=else
 						03 ^{
-							01=cur_tranc=CurItem();
-							02=str temp_str='Bm.Items.2ArtTranclucator_s';
-							03=if(EquipmentImageName(cur_tranc)!='')temp_str='Bm.Items.2'+DeleteTags(EquipmentImageName(cur_tranc))+'s';
-							04=numTrancs=NumberBox(temp_str,'Сколько транклюкаторов вы хотите запустить?',1,tranc_count,tranc_count);
+							01=cur_tranc = CurItem();
+							02=str temp_str = 'Bm.Items.2ArtTranclucator_s';
+							03=if(EquipmentImageName(cur_tranc) != '') temp_str = 'Bm.Items.2' + DeleteTags(EquipmentImageName(cur_tranc)) + 's';
+							04=numTrancs = NumberBox(temp_str, 'Сколько транклюкаторов вы хотите запустить?', 1, tranc_count, tranc_count);
 							05=if(numTrancs)
 							06 ^{
 								01=OnUseCodeTranclucator();
-								02=for(i=numTrancs-1;i>0;i=i-1)UseTranclucator(Player());
-								03=if(ShipInNormalSpace(Player()))Sound('Sound.UseATranc');
+								02=for(i = numTrancs - 1; i > 0; i = i - 1) UseTranclucator(Player());
+								03=if(talky)
+								04 ^{
+									01=if(Rnd(1, 100) <= 66) Sound('Sound.ParrotPhrase4');
+									02=else Sound('Sound.ParrotPhrase1');
+								}
+								05=if(ShipInNormalSpace(Player())) Sound('Sound.UseATranc');
 							}
 						}
 					}
 					03=else
 					04 ^{
-						01=cur_tranc=CurItem();
-						02=str temp_str2='Bm.Items.2ArtTranclucator_s';
-						03=if(EquipmentImageName(cur_tranc)!='')temp_str2='Bm.Items.2'+DeleteTags(EquipmentImageName(cur_tranc))+'s';
-						04=numTrancs=NumberBox(temp_str2,'Сколько транклюкаторов вы хотите запустить?',1,tranc_count,tranc_count);
+						01=cur_tranc = CurItem();
+						02=str temp_str2 = 'Bm.Items.2ArtTranclucator_s';
+						03=if(EquipmentImageName(cur_tranc) != '') temp_str2 = 'Bm.Items.2'+DeleteTags(EquipmentImageName(cur_tranc)) + 's';
+						04=numTrancs = NumberBox(temp_str2, 'Сколько транклюкаторов вы хотите запустить?', 1, tranc_count,tranc_count);
 						05=if(numTrancs)
 						06 ^{
 							01=OnUseCodeTranclucator();
-							02=for(i=numTrancs-1;i>0;i=i-1)UseTranclucator(Player());
-							03=if(ShipInNormalSpace(Player()))Sound('Sound.UseATranc');
+							02=for(i = numTrancs - 1; i > 0; i = i - 1) UseTranclucator(Player());
+							03=if(talky)
+							04 ^{
+								01=if(Rnd(1, 100) <= 66) Sound('Sound.ParrotPhrase4');
+								02=else Sound('Sound.ParrotPhrase1');
+							}
+							05=if(ShipInNormalSpace(Player())) Sound('Sound.UseATranc');
 						}
 					}
 				}
 				10=if(PlayerTranclucators() && numTrancs)
 				11 ^{
-					01=InterfaceState('StarMap','Tranc_panel',1);
-					02=if(ShipFindCustomShipInfoByType(Player(),'TrancPanelMoverInfo')==-1)ShipAddCustomShipInfo(Player(),'TrancPanelMoverInfo','NoShow');
-					03=int activeTrancs=PlayerTranclucators();
-					04=for(i=1;i<=6;i=i+1)
+					01=InterfaceState('StarMap', 'Tranc_panel', 1);
+					02=if(ShipFindCustomShipInfoByType(Player(), 'TrancPanelMoverInfo') == -1) ShipAddCustomShipInfo(Player(), 'TrancPanelMoverInfo', 'NoShow');
+					03=int activeTrancs = PlayerTranclucators();
+					04=for(i = 1; i <= 6; i = i + 1)
 					05 ^{
-						01=InterfaceState('StarMap','TP_but_'+i,-1);
-						02=if(PlayerTranclucators()>=i)
+						01=InterfaceState('StarMap', 'TP_but_' + i, -1);
+						02=if(PlayerTranclucators() >= i)
 						03 ^{
-							01=InterfaceState('StarMap','TP_but_'+i,1);
-							02=cur_tranc=PlayerTranclucators(i-1);
+							01=InterfaceState('StarMap', 'TP_but_' + i, 1);
+							02=cur_tranc = PlayerTranclucators(i - 1);
 							03=if(ShipFindCustomShipInfoByType(cur_tranc,'TrancModAddInfo')==-1)ShipAddCustomShipInfo(cur_tranc,'TrancModAddInfo','NoShow',0,0);
 							//Удаляем лишние инфошки NPC, если игрок раздобыл себе чужого транклюкатора
 							04=if(ShipFindCustomShipInfoByType(cur_tranc,'TrancNPCAddInfo')>-1)
@@ -122,27 +158,27 @@ Artefacts ^{
 							}
 						}
 					}
-					06=if(activeTrancs==1)
+					06=if(activeTrancs == 1)
 					07 ^{
 						01=InterfacePos('StarMap','Tranc_panel_sigment_2',2,0,0);
 					}
-					08=else if(activeTrancs==2)
+					08=else if(activeTrancs == 2)
 					09 ^{
 						01=InterfacePos('StarMap','Tranc_panel_sigment_2',-16,0,0);
 					}
-					10=else if(activeTrancs==3)
+					10=else if(activeTrancs == 3)
 					11 ^{
 						01=InterfacePos('StarMap','Tranc_panel_sigment_2',-34,0,0);
 					}
-					12=else if(activeTrancs==4)
+					12=else if(activeTrancs == 4)
 					13 ^{
 						01=InterfacePos('StarMap','Tranc_panel_sigment_2',-52,0,0);
 					}
-					14=else if(activeTrancs==5)
+					14=else if(activeTrancs == 5)
 					15 ^{
 						01=InterfacePos('StarMap','Tranc_panel_sigment_2',-70,0,0);
 					}
-					16=else if(activeTrancs==6)
+					16=else if(activeTrancs == 6)
 					17 ^{
 						01=InterfacePos('StarMap','Tranc_panel_sigment_2',-88,0,0);
 					}

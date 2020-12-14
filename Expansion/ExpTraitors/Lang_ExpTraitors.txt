@@ -765,14 +765,12 @@ UselessItems ^{
 					}
 					03=Sound('Sound.ParrotPhrase2');
 					04=UselessItemData(bird,3,-3);
-					//05=DropItemInSystem(ShipStar(Player()),bird,0,0,0,0);
 					05=CoordX(bird,0);
 					06=CoordY(bird,0);
 				}
 				03=else if(rnd(100)+1<=4)Sound('Sound.ParrotPhrase1');
 				04=else if(rnd(100)+1<=4)Sound('Sound.ParrotPhrase4');
 			}
-			//12=else if(FindItemInShip(Player(),bird)==-1)exit;
 			//Говорилка
 			13=else if(ScriptItemActionType(t_OnItemEquip) || ScriptItemActionType(t_OnItemDeEquip))
 			14 ^{
@@ -791,8 +789,6 @@ UselessItems ^{
 				01=if(rnd(1000)+1<=25)
 				02 ^{
 					01=Sound('Sound.ParrotPhrase'+(rnd(6)+1));
-					//02=if(UselessItemData(bird,3)<0)UselessItemData(bird,3,Rnd(1,5));
-					//03=else UselessItemData(bird,3,UselessItemData(bird,3)-1);
 				}
 			}
 		}
