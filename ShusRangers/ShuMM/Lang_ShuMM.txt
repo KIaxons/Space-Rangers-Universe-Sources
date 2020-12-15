@@ -2,7 +2,7 @@ Items ^{
     Weapon ^{
         CustomWeapon ^{
             StatsVersion ^{
-                ShuMM=10.12.20
+                ShuMM=15.12.20
             }
             ShuMM ~{
                 1=MissileLauncherTorpedo
@@ -627,7 +627,7 @@ MicroModuls ^{
         Equipments=DefGenerator
         KindGraph=AuxiliarySubreactor
         Name=</color>Термоквантовый субреактор
-		Name=</color>Квадроводородный субреактор
+		Name=</color>Квадроадронный субреактор
 		Name=</color>Плазмориновый субреактор
 		Name=</color>Экзосепараторный субреактор
 		CustomTag=AuxiliarySubreactor
@@ -664,26 +664,23 @@ MicroModuls ^{
         bonWRadius=10
         bonWSplinter=1
     }
-    ShuMM_PlasmaGenerator2 ^{
-        Cost=150
+    ShuMM_AuxiliarySubreactor2 ^{
         Equipments=DefGenerator
-        KindGraph=PlasmaGenerator
+        KindGraph=AuxiliarySubreactor
+        Name=</color>Термоквантовый субреактор
+		Name=</color>Квадроадронный субреактор
+		Name=</color>Плазмориновый субреактор
+		Name=</color>Экзосепараторный субреактор
+		CustomTag=AuxiliarySubreactor
+        Owner=Nothing
+        Priority=60
+        Ruins=Nothing
+        Special=1
         LockedAcryn=3
-        Name=Плазменный генератор R2
-		AcrynSerie=Плазменный генератор I-IV
-		AcrynLevel=2
-		SerieLevel1=ShuMM_PlasmaGenerator1
-		SerieLevel2=ShuMM_PlasmaGenerator2
-		SerieLevel3=ShuMM_PlasmaGenerator3
-		SerieLevel4=ShuMM_PlasmaGenerator4
-		LevelsCount=4
         NotImprovable=1
 		NonSearchable=1
-        Owner=Any
-        Priority=30
-        Ruins=RC,BK,TC,PB
-        Size=135
-        Special=1
+		BlockMM=1
+        TextReplace=<color=248,252,248>Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек генератора защитного поля.</color>		
         Text=<clr><clrEnd>
         Text=Скорость двигателя: <bonSpeed> ед.
         Text=Дальность прыжка: <bonJump> пк.
@@ -694,101 +691,101 @@ MicroModuls ^{
         Text=Сила энергетического оружия: <bonWEnergy> ед.
         Text=Сила осколочного оружия: <bonWSplinter> ед.
         Text=Дальность стрельбы: <bonWRadius> ед.
-        TextReplace=<color=248,252,248>Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек генератора защитного поля.</color>
-        bonDef=-500000000
-        bonDroid=8
-        bonHook=15
-        bonJump=4
-        bonRadar=400
-        bonScan=3
-        bonSpeed=45
-        bonWEnergy=3
-        bonWRadius=15
-        bonWSplinter=2
-    }
-    ShuMM_PlasmaGenerator3 ^{
-        Cost=175
-        Equipments=DefGenerator
-        KindGraph=PlasmaGenerator
-        LockedAcryn=3
-        Name=Плазменный генератор R3
-		AcrynSerie=Плазменный генератор I-IV
-		AcrynLevel=3
-		SerieLevel1=ShuMM_PlasmaGenerator1
-		SerieLevel2=ShuMM_PlasmaGenerator2
-		SerieLevel3=ShuMM_PlasmaGenerator3
-		SerieLevel4=ShuMM_PlasmaGenerator4
-		LevelsCount=4
-        NotImprovable=1
-		NonSearchable=1
-        Owner=Any
-        Priority=50
-        Ruins=RC,BK,TC,PB
-        Size=150
-        Special=1
-        Text=<clr><clrEnd>
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Дальность прыжка: <bonJump> пк.
-        Text=Мощность сканера: <bonScan> ед.
-        Text=Дальность радара: <bonRadar> млн. км.
-        Text=Эффективность дроида: <bonDroid> ед.
-        Text=Дальность захвата: <bonHookRadius> ед.
-        Text=Сила энергетического оружия: <bonWEnergy> ед.
-        Text=Сила осколочного оружия: <bonWSplinter> ед.
-        Text=Дальность стрельбы: <bonWRadius> ед.
-        TextReplace=<color=248,252,248>Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек генератора защитного поля.</color>
-        bonDef=-500000000
-        bonDroid=11
-        bonHookRadius=25
-        bonJump=6
-        bonRadar=600
-        bonScan=5
-        bonSpeed=60
-        bonWEnergy=6
-        bonWRadius=25
-        bonWSplinter=3
-    }
-    ShuMM_PlasmaGenerator4 ^{
+		Fragility=100
         Cost=200
+        Size=150
+        bonDef=-500000000
+        bonDroid=5
+        bonHook=8
+        bonJump=2
+        bonRadar=200
+        bonScan=2
+        bonSpeed=30
+        bonWEnergy=2
+        bonWRadius=10
+        bonWSplinter=1
+    }
+	ShuMM_AuxiliarySubreactor3 ^{
         Equipments=DefGenerator
-        KindGraph=PlasmaGenerator
+        KindGraph=AuxiliarySubreactor
+        Name=</color>Термоквантовый субреактор
+		Name=</color>Квадроадронный субреактор
+		Name=</color>Плазмориновый субреактор
+		Name=</color>Экзосепараторный субреактор
+		CustomTag=AuxiliarySubreactor
+        Owner=Nothing
+        Priority=60
+        Ruins=Nothing
+        Special=1
         LockedAcryn=3
-        Name=Плазменный генератор R4
-		AcrynSerie=Плазменный генератор I-IV
-		AcrynLevel=4
-		SerieLevel1=ShuMM_PlasmaGenerator1
-		SerieLevel2=ShuMM_PlasmaGenerator2
-		SerieLevel3=ShuMM_PlasmaGenerator3
-		SerieLevel4=ShuMM_PlasmaGenerator4
-		LevelsCount=4
         NotImprovable=1
 		NonSearchable=1
-        Owner=Any
-        Priority=70
-        Ruins=RC,BK,TC,PB
-        Size=165
-        Special=1
+		BlockMM=1
+        TextReplace=<color=248,252,248>Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек генератора защитного поля.</color>		
         Text=<clr><clrEnd>
         Text=Скорость двигателя: <bonSpeed> ед.
         Text=Дальность прыжка: <bonJump> пк.
         Text=Мощность сканера: <bonScan> ед.
         Text=Дальность радара: <bonRadar> млн. км.
         Text=Эффективность дроида: <bonDroid> ед.
-        Text=Дальность захвата: <bonHookRadius> ед.
+        Text=Мощность захвата: <bonHook> ед.
         Text=Сила энергетического оружия: <bonWEnergy> ед.
         Text=Сила осколочного оружия: <bonWSplinter> ед.
         Text=Дальность стрельбы: <bonWRadius> ед.
-        TextReplace=<color=248,252,248>Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек генератора защитного поля.</color>
+		Fragility=100
+        Cost=200
+        Size=150
         bonDef=-500000000
-        bonDroid=15
-        bonHookRadius=30
-        bonJump=8
-        bonRadar=800
-        bonScan=7
-        bonSpeed=85
-        bonWEnergy=8
-        bonWRadius=35
-        bonWSplinter=5
+        bonDroid=5
+        bonHook=8
+        bonJump=2
+        bonRadar=200
+        bonScan=2
+        bonSpeed=30
+        bonWEnergy=2
+        bonWRadius=10
+        bonWSplinter=1
+    }
+    ShuMM_AuxiliarySubreactor4 ^{
+        Equipments=DefGenerator
+        KindGraph=AuxiliarySubreactor
+        Name=</color>Термоквантовый субреактор
+		Name=</color>Квадроадронный субреактор
+		Name=</color>Плазмориновый субреактор
+		Name=</color>Экзосепараторный субреактор
+		CustomTag=AuxiliarySubreactor
+        Owner=Nothing
+        Priority=60
+        Ruins=Nothing
+        Special=1
+        LockedAcryn=3
+        NotImprovable=1
+		NonSearchable=1
+		BlockMM=1
+        TextReplace=<color=248,252,248>Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек генератора защитного поля.</color>		
+        Text=<clr><clrEnd>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Мощность захвата: <bonHook> ед.
+        Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Дальность стрельбы: <bonWRadius> ед.
+		Fragility=100
+        Cost=200
+        Size=150
+        bonDef=-500000000
+        bonDroid=5
+        bonHook=8
+        bonJump=2
+        bonRadar=200
+        bonScan=2
+        bonSpeed=30
+        bonWEnergy=2
+        bonWRadius=10
+        bonWSplinter=1
     }
     ShuMM_EnergenicEngine1 ^{
         Equipments=Engine

@@ -27,8 +27,19 @@ FormInfo ^{
 	AutoSearchAcrynLevelNone=---
 	AutoSearchHowOften=Как часто производить указанный запрос?
 	DamageSusceptibility=Восприимчивость к Э/О/Р:
-	CostShort=Цена:
 	DoubleQuote="
+	CostShort=Цена:
+	Reliability=Надёжность: <val>
+    Equipment ^{
+        Fuel=Ёмкость: <val>
+        QualityGrade0=непревзойдённая
+        QualityGrade1=очень высокая
+        QualityGrade2=высокая
+        QualityGrade3=средняя
+        QualityGrade4=низкая
+        QualityGrade5=очень низкая
+        QualityGrade6=ужасная
+	}
 }
 Script ^{
     Mod_ExpAutoSearch ~{
@@ -79,9 +90,16 @@ Script ^{
 					04=else if(type >= t_Weapon1 && type <= t_Weapon18)
 					05 ^{
 						01=GAcrynListTempArr[1] = type;
-						02=if(type <= t_Weapon9) type = 'W0' + (-t_Weapon1 + 1 + type);
-						03=else type = 'W' + (-t_Weapon1 + 1 + type);
-						04=add_type = 't_Weapon' + (-t_Weapon1 + 1 + type);
+						02=if(type <= t_Weapon9)
+						03 ^{
+							01=add_type = 't_Weapon' + (-t_Weapon1 + 1 + type);
+							02=type = 'W0' + (-t_Weapon1 + 1 + type);
+						}
+						04=else
+						05 ^{
+							01=add_type = 't_Weapon' + (-t_Weapon1 + 1 + type);
+							02=type = 'W' + (-t_Weapon1 + 1 + type);
+						}
 					}
 					06=else if(type == t_CustomWeapon)
 					07 ^{
