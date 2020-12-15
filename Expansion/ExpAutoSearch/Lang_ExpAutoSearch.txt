@@ -35,215 +35,226 @@ Script ^{
 		function_AcrynListForAutoSearch ^{//str type - тип оборудования/оружия для которого нужно искать акрины
 										  //str custom_type - тип кастомного оружия, если было выбрано именно оно
 			01=int i;
-			02=arraychange(GAcrynListTempArr,2);
-			03=if(type=='WeaponNames')
+			02=arraychange(GAcrynListTempArr, 2);
+			03=if(type == 'WeaponNames')
 			04 ^{
-				01=GAcrynListTempArr[1]='WeaponNames';
-				02=ArrayAdd(GAcrynListTempArr,0);
-				03=int c=0;
-				04=int GTL=GalaxyTechLevel()+1;
-				05=if(GTL>8)GTL=8;
-				06=for(i=1;i<=18;i=i+1)
+				01=GAcrynListTempArr[1] = 'WeaponNames';
+				02=ArrayAdd(GAcrynListTempArr, 0);
+				03=int c = 0;
+				04=int GTL = GalaxyTechLevel() + 1;
+				05=if(GTL > 8) GTL = 8;
+				06=for(i = 1; i <= 18; i = i + 1)
 				07 ^{
-					01=if(i<=12 || i>=16)
+					01=if(i <= 12 || i >= 16)
 					02 ^{
-						01=if(GTL>=GetCustomWeaponData((t_Weapon1-1)+i,'TechLevel'))
+						01=if(GTL >= GetCustomWeaponData((t_Weapon1 - 1) + i, 'TechLevel'))
 						02 ^{
-							01=ArrayAdd(GAcrynListTempArr,i);
-							02=c=c+1;
+							01=ArrayAdd(GAcrynListTempArr, i);
+							02=c = c + 1;
 						}
 					}
 				}
-				08=GAcrynListTempArr[2]=c;
-				09=for(i=0;i<CustomWeaponTypes();i=i+1)
+				08=GAcrynListTempArr[2] = c;
+				09=for(i = 0; i < CustomWeaponTypes(); i = i + 1)
 				10 ^{
-					01=str CWtype=CustomWeaponTypes(i);
-					02=if(GTL>=GetCustomWeaponData(CWtype,'TechLevel'))
+					01=str CWtype = CustomWeaponTypes(i);
+					02=if(GTL >= GetCustomWeaponData(CWtype, 'TechLevel'))
 					03 ^{
-						01=if(GetCustomWeaponData(CWtype,'Availability')!='NotSold' && GetCustomWeaponData(CWtype,'Availability')!='NotSoldAndNodeRepair')ArrayAdd(GAcrynListTempArr,CWtype);
+						01=if(GetCustomWeaponData(CWtype, 'Availability') != 'NotSold' && GetCustomWeaponData(CWtype, 'Availability') != 'NotSoldAndNodeRepair')ArrayAdd(GAcrynListTempArr, CWtype);
 					}
 				}
 			}
-			05=else if((type>=t_Hull && type<=t_CustomWeapon) || type==-1)
+			05=else if((type >= t_Hull && type <= t_CustomWeapon) || type == -1)
 			06 ^{
-				01=ArrayAdd(GAcrynListTempArr,-2);
-				02=ArrayAdd(GAcrynListTempArr,-1);
-				03=if(type!=-1)
+				01=ArrayAdd(GAcrynListTempArr, -2);
+				02=ArrayAdd(GAcrynListTempArr, -1);
+				03=if(type != -1)
 				04 ^{
-					01=if(type==t_Hull)
-					02 ^{
-						01=GAcrynListTempArr[1]=type;
-						02=type='Hull';
+					01=str add_type;
+					02=if(type == t_Hull)
+					03 ^{
+						01=GAcrynListTempArr[1] = type;
+						02=type = 'Hull';
 					}
-					03=else if(type>=t_Weapon1 && type<=t_Weapon18)
-					04 ^{
-						01=GAcrynListTempArr[1]=type;
-						02=if(type<=t_Weapon9)type='W0'+(-t_Weapon1+1+type);
-						03=else type='W'+(-t_Weapon1+1+type);
+					04=else if(type >= t_Weapon1 && type <= t_Weapon18)
+					05 ^{
+						01=GAcrynListTempArr[1] = type;
+						02=if(type <= t_Weapon9) type = 'W0' + (-t_Weapon1 + 1 + type);
+						03=else type = 'W' + (-t_Weapon1 + 1 + type);
+						04=add_type = 't_Weapon' + (-t_Weapon1 + 1 + type);
 					}
-					05=else if(type==t_CustomWeapon)
-					06 ^{
-						01=GAcrynListTempArr[1]=custom_type;
-						02=type=custom_type;
+					06=else if(type == t_CustomWeapon)
+					07 ^{
+						01=GAcrynListTempArr[1] = custom_type;
+						02=type = custom_type;
+						03=add_type = 't_CustomWeapon';
 					}
-					07=else if(type==t_Engine)
-					08 ^{
-						01=GAcrynListTempArr[1]=type;
-						02=type='Engine';
+					08=else if(type == t_Engine)
+					09 ^{
+						01=GAcrynListTempArr[1] = type;
+						02=type = 'Engine';
+						03=add_type = 't_Engine';
 					}
-					09=else if(type==t_FuelTanks)
-					10 ^{
-						01=GAcrynListTempArr[1]=type;
-						02=type='FuelTank';
+					10=else if(type == t_FuelTanks)
+					11 ^{
+						01=GAcrynListTempArr[1] = type;
+						02=type = 'FuelTank';
+						03=add_type = 't_FuelTanks';
 					}
-					11=else if(type==t_Radar)
-					12 ^{
-						01=GAcrynListTempArr[1]=type;
-						02=type='Radar';
+					12=else if(type == t_Radar)
+					13 ^{
+						01=GAcrynListTempArr[1] = type;
+						02=type = 'Radar';
+						03=add_type = 't_Radar';
 					}
-					13=else if(type==t_Scaner)
-					14 ^{
-						01=GAcrynListTempArr[1]=type;
-						02=type='Scaner';
+					14=else if(type == t_Scaner)
+					15 ^{
+						01=GAcrynListTempArr[1] = type;
+						02=type = 'Scaner';
+						03=add_type = 't_Scaner';
 					}
-					15=else if(type==t_RepairRobot)
-					16 ^{
-						01=GAcrynListTempArr[1]=type;
-						02=type='Droid';
+					16=else if(type == t_RepairRobot)
+					17 ^{
+						01=GAcrynListTempArr[1] = type;
+						02=type = 'Droid';
+						03=add_type = 't_RepairRobot';
 					}
-					17=else if(type==t_CargoHook)
-					18 ^{
-						01=GAcrynListTempArr[1]=type;
-						02=type='Hook';
+					18=else if(type == t_CargoHook)
+					19 ^{
+						01=GAcrynListTempArr[1] = type;
+						02=type = 'Hook';
+						03=add_type = 't_CargoHook';
 					}
-					19=else if(type==t_DefGenerator)
-					20 ^{
-						01=GAcrynListTempArr[1]=type;
-						02=type='DefGenerator';
+					20=else if(type == t_DefGenerator)
+					21 ^{
+						01=GAcrynListTempArr[1] = type;
+						02=type = 'DefGenerator';
+						03=add_type = 't_DefGenerator';
 					}
-					21=str series_in_list='#';
-					22=for(i=0;i<BonusCount();i=i+1)
-					23 ^{
-						01=str numInCfg=BonusNumInCfg(i);
+					22=str series_in_list = '#';
+					23=for(i = 0; i < BonusCount(); i = i + 1)
+					24 ^{
+						01=str numInCfg = BonusNumInCfg(i);
 						//Исключаем не акрины
-						02=if(!BonusIsSpecial(i))continue;
+						02=if(!BonusIsSpecial(i)) continue;
 						//Исключаем бонусы, недоступные для поиска
-						03=if(CT('MicroModuls.'+numInCfg+'.NonSearchable'))continue;
+						03=if(CT('MicroModuls.' + numInCfg + '.NonSearchable')) continue;
 						//Исключаем бонусы, неподходящие для текущего оборудования/оружия
-						04=str equipOn=CT('MicroModuls.'+numInCfg+'.Equipments');
-						05=if(findsubstr(equipOn,type)==-1)
+						04=str equipOn = CT('MicroModuls.' + numInCfg + '.Equipments');
+						05=if(findsubstr(equipOn, type) == -1)
 						06 ^{
-							01=if(equipOn!='Any')continue;
+							01=if(equipOn != 'Any' && equipOn != '')
+							02 ^{
+								01=str imit_type = CT('MicroModuls.' + numInCfg + '.ImitatedEquipType');
+								//Дополнительные проверки на соответствие запроса имитируемому акрином типу
+								02=if(imit_type == '') continue;
+								03=if(findsubstr(imit_type, add_type)) continue;
+								04=if(add_type == 't_CustomWeapon')
+								05 ^{
+									01=unknown GetParFromString = ImportedFunction('UtilityFunctions', 'GetParFromString');
+									02=if(GetParFromString(imit_type, ',', 1, 1) != type) continue;
+								}
+							}
 						}
-						07=str serie_name=CT('MicroModuls.'+numInCfg+'.AcrynSerie');
-						08=if(serie_name=='')
+						07=str serie_name = CT('MicroModuls.' + numInCfg + '.AcrynSerie');
+						08=if(serie_name == '')
 						09 ^{
 							//Исключаем бонусы, неподходящие для текущего ГТУ
-							01=if(GalaxyTechLevel()<8.0*(0.01*CT('MicroModuls.'+numInCfg+'.Priority')))continue;
-							02=ArrayAdd(GAcrynListTempArr,numInCfg);
+							01=if(GalaxyTechLevel() < 8.0 * (0.01 * CT('MicroModuls.' + numInCfg + '.Priority'))) continue;
+							02=ArrayAdd(GAcrynListTempArr, numInCfg);
 						}
 						10=else
 						11 ^{
-							01=if(findsubstr(series_in_list,'#'+serie_name+'#')>-1)continue;
-							02=series_in_list=series_in_list+serie_name+'#';
-							03=numInCfg=CT('MicroModuls.'+numInCfg+'.SerieLevel1');
+							01=if(findsubstr(series_in_list, '#' + serie_name + '#') > -1) continue;
+							02=series_in_list = series_in_list + serie_name + '#';
+							03=numInCfg = CT('MicroModuls.' + numInCfg + '.SerieLevel1');
 							//Исключаем бонусы, неподходящие для текущего ГТУ (делаем проверку по акрину первого уровня)
-							04=if(GalaxyTechLevel()<8.0*(0.01*CT('MicroModuls.'+numInCfg+'.Priority')))continue;
-							05=ArrayAdd(GAcrynListTempArr,numInCfg);
+							04=if(GalaxyTechLevel() < 8.0 * (0.01 * CT('MicroModuls.' + numInCfg + '.Priority'))) continue;
+							05=ArrayAdd(GAcrynListTempArr, numInCfg);
 						}
 					}
 				}
-				05=else GAcrynListTempArr[1]=type;
+				05=else GAcrynListTempArr[1] = type;
 			}
 		}
 		//Функция для выделения сета рас из соответствующей строки
 		function_RaceSetDefine ^{//race_str - строка с названиями рас через запятую, которую необходимо перевести в сет
 								 //race_set - готовый сет рас
-			01=int race_set=0;
-			02=if(race_str=='')
+			01=int race_set = 0;
+			02=if(race_str == 'Any' || race_str == '')
 			03 ^{
-				01=race_set=255;
+				01=race_set = 255;
 				02=exit;
 			}
-			04=int end_while=0;
-			05=int check_comma;
-			06=str t_str;
+			04=int check_comma;
+			05=str t_str;
+			06=int end_while = 0;
 			07=while(!end_while)
 			08 ^{
-				01=check_comma=findsubstr(race_str,',');
+				01=check_comma = findsubstr(race_str, ',');
 				//Если впереди ещё есть запятая
-				02=if(check_comma>-1)
+				02=if(check_comma > -1)
 				03 ^{
 					//Заносим расу в сет
-					01=t_str=substr(race_str,0,check_comma);
-					02=if(t_str=='Any')
+					01=t_str = substr(race_str, 0, check_comma);
+					02=if(t_str == 'Maloc')
 					03 ^{
-						01=race_set=255;
-						02=end_while=1;
+						01=if(!(race_set & 1)) race_set = race_set + 1;
 					}
-					04=else if(t_str=='Maloc')
+					04=else if(t_str == 'Peleng')
 					05 ^{
-						01=if(!(race_set & 1))race_set=race_set+1;
+						01=if(!(race_set & 2)) race_set = race_set + 2;
 					}
-					06=else if(t_str=='Peleng')
+					06=else if(t_str == 'People')
 					07 ^{
-						01=if(!(race_set & 2))race_set=race_set+2;
+						01=if(!(race_set & 4)) race_set = race_set + 4;
 					}
-					08=else if(t_str=='People')
+					08=else if(t_str == 'Fei')
 					09 ^{
-						01=if(!(race_set & 4))race_set=race_set+4;
+						01=if(!(race_set & 8)) race_set = race_set + 8;
 					}
-					10=else if(t_str=='Fei')
+					10=else if(t_str == 'Gaal')
 					11 ^{
-						01=if(!(race_set & 8))race_set=race_set+8;
+						01=if(!(race_set & 16)) race_set = race_set + 16;
 					}
-					12=else if(t_str=='Gaal')
+					12=else if(t_str == 'PirateClan')
 					13 ^{
-						01=if(!(race_set & 16))race_set=race_set+16;
-					}
-					14=else if(t_str=='PirateClan')
-					15 ^{
-						01=if(!(race_set & 128))race_set=race_set+128;
+						01=if(!(race_set & 128)) race_set = race_set + 128;
 					}
 					//И "отрезаем" её от общего списка в строке
-					16=race_str=substr(race_str,check_comma+1);
+					14=race_str = substr(race_str, check_comma + 1);
 				}
 				//Если расы закончились, либо в списке была всего одна
 				04=else
 				05 ^{
-					01=t_str=race_str;
+					01=t_str = race_str;
 					//Заносим расу в сет
-					02=if(t_str=='Any')
+					02=if(t_str == 'Maloc')
 					03 ^{
-						01=race_set=255;
-						02=end_while=1;
+						01=if(!(race_set & 1)) race_set = race_set + 1;
 					}
-					04=else if(t_str=='Maloc')
+					04=else if(t_str == 'Peleng')
 					05 ^{
-						01=if(!(race_set & 1))race_set=race_set+1;
+						01=if(!(race_set & 2)) race_set = race_set + 2;
 					}
-					06=else if(t_str=='Peleng')
+					06=else if(t_str == 'People')
 					07 ^{
-						01=if(!(race_set & 2))race_set=race_set+2;
+						01=if(!(race_set & 4)) race_set = race_set + 4;
 					}
-					08=else if(t_str=='People')
+					08=else if(t_str == 'Fei')
 					09 ^{
-						01=if(!(race_set & 4))race_set=race_set+4;
+						01=if(!(race_set & 8)) race_set = race_set + 8;
 					}
-					10=else if(t_str=='Fei')
+					10=else if(t_str == 'Gaal')
 					11 ^{
-						01=if(!(race_set & 8))race_set=race_set+8;
+						01=if(!(race_set & 16)) race_set = race_set + 16;
 					}
-					12=else if(t_str=='Gaal')
+					12=else if(t_str == 'PirateClan')
 					13 ^{
-						01=if(!(race_set & 16))race_set=race_set+16;
-					}
-					14=else if(t_str=='PirateClan')
-					15 ^{
-						01=if(!(race_set & 128))race_set=race_set+128;
+						01=if(!(race_set & 128)) race_set = race_set + 128;
 					}
 					//И завершаем цикл
-					16=end_while=1;
+					14=end_while = 1;
 				}
 			}
 		}

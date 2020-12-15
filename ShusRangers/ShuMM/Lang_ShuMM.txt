@@ -88,12 +88,6 @@ MicroModuls ^{
         bonExtraAkrinEff=200
         bonExtraAkrinPenalty=-99.99
     }
-	ShuMM_Torpedo ^{
-
-		Text=<color=248,252,248>Ракетометы модификации "Торпедо" - попытка учёных Коалиции воссоздать доминаторские торпедные аппараты. Пусковая установка была переоборудована для запуска одиночных мощных торпед, которые, хотя и уступают по эффективности доминаторским образцам, представляют собой определённое подспорье новейшему вооружению противника.</color>
-		ImitatedEquipType=t_Weapon4
-		ActualEquipType=t_CustomWeapon,MissileLauncherTorpedo
-	}
 	//ММ из мода
     ShuMM_Downgrade ^{
         Cost=40
@@ -1504,6 +1498,19 @@ MicroModuls ^{
         Text=Броня корпуса: <bonHull> ед.
         bonHull=1
     }
+	ShuMM_Torpedo ^{
+        Equipments=MissileLauncherTorpedo
+		ImitatedEquipType=t_Weapon4
+		ActualEquipType=t_CustomWeapon,MissileLauncherTorpedo
+		Name="Торпедо"
+		Owner=Maloc,Peleng,People,Fei,Gaal
+		Text=<color=248,252,248>Ракетометы модификации "Торпедо" - попытка учёных Коалиции воссоздать доминаторские торпедные аппараты. Пусковая установка была переоборудована для запуска одиночных мощных торпед, которые, хотя и уступают по эффективности доминаторским образцам, представляют собой определённое подспорье новейшему вооружению противника.</color>
+		Special=1
+		Priority=0
+		Fragility=100
+        Cost=150
+        Size=120
+	}
     ShuMM_Extrimium ^{
         Cost=200
         Equipments=W01,W02,W03,W05,W06,W07,W08,W09,W10,W11,W12,W17,sphere_gun,splash_faser,laser_gun,photon_gun2

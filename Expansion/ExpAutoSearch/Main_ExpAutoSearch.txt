@@ -2562,35 +2562,45 @@ ML ^{
 								12=CustomInterfaceState('TypeEnImg_Weapons',1);
 								13=CustomInterfaceState('TypeSpImg_Weapons',1);
 								14=CustomInterfaceState('TypeMiImg_Weapons',1);
-								15=if((damageSet & 1))
-								16 ^{
+								15=int type_check=0;
+								16=if((damageSet & 1))
+								17 ^{
 									01=UICheckElement('','TypeEnBut_Weapons','IsDown',1);
 									02=CustomInterfaceImage('TypeEnImg_Weapons','GI,Bm.FormInfo3.2MCheckD_Disabled');
+									03=type_check=1;
 								}
-								17=else
-								18 ^{
+								18=else
+								19 ^{
 									01=UICheckElement('','TypeEnBut_Weapons','IsDown',0);
 									02=CustomInterfaceImage('TypeEnImg_Weapons','GI,Bm.FormInfo3.2MCheckN_Disabled');
 								}
-								19=if((damageSet & 2))
-								20 ^{
+								20=if((damageSet & 2))
+								21 ^{
 									01=UICheckElement('','TypeSpBut_Weapons','IsDown',1);
 									02=CustomInterfaceImage('TypeSpImg_Weapons','GI,Bm.FormInfo3.2MCheckD_Disabled');
+									03=type_check=1;
 								}
-								21=else
-								22 ^{
+								22=else
+								23 ^{
 									01=UICheckElement('','TypeSpBut_Weapons','IsDown',0);
 									02=CustomInterfaceImage('TypeSpImg_Weapons','GI,Bm.FormInfo3.2MCheckN_Disabled');
 								}
-								23=if((damageSet & 4))
-								24 ^{
+								24=if((damageSet & 4))
+								25 ^{
 									01=UICheckElement('','TypeMiBut_Weapons','IsDown',1);
 									02=CustomInterfaceImage('TypeMiImg_Weapons','GI,Bm.FormInfo3.2MCheckD_Disabled');
+									03=type_check=1;
 								}
-								25=else
-								26 ^{
+								26=else
+								27 ^{
 									01=UICheckElement('','TypeMiBut_Weapons','IsDown',0);
 									02=CustomInterfaceImage('TypeMiImg_Weapons','GI,Bm.FormInfo3.2MCheckN_Disabled');
+								}
+								//На случай, если в дамагсете орудия не указан базовый тип урона (что есть ошибка, но встречается)
+								28=if(!type_check)
+								29 ^{
+									01=UICheckElement('','TypeEnBut_Weapons','IsDown',1);
+									02=CustomInterfaceImage('TypeEnImg_Weapons','GI,Bm.FormInfo3.2MCheckD_Disabled');
 								}
 							}
 						}

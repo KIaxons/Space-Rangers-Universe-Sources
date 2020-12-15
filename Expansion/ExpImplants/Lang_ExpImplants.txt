@@ -2506,7 +2506,7 @@ ShipInfo ^{
 														//Определяем штраф к шансу напугать цель в зависимости от типа корабля-цели
 														07=str tstr2=ShipType(target);
 														08=int tint3=85;
-														09=if(tstr2=='Ranger')
+														09=if(tstr2 == 'Ranger' || target == Player())
 														10 ^{
 															//Если рейнджер более пират, нежели воин
 															01=if(ShipStatus(target,1)>ShipStatus(target,2))tint3=80;
