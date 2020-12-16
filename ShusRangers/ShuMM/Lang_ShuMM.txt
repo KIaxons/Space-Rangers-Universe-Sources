@@ -623,169 +623,133 @@ MicroModuls ^{
         bonSkill3=3
         bonScan=-10
     }
-    ShuMM_AuxiliarySubreactor1 ^{
+    ShuMM_AuxiliarySubreactor5 ^{
         Equipments=DefGenerator
         KindGraph=AuxiliarySubreactor
         Name=</color>Термоквантовый субреактор
-		Name=</color>Квадроадронный субреактор
-		Name=</color>Плазмориновый субреактор
-		Name=</color>Экзосепараторный субреактор
-		CustomTag=AuxiliarySubreactor
-        Owner=Nothing
+		CustomTag=AuxiliarySubreactor5
         Priority=60
+        Owner=Nothing
         Ruins=Nothing
         Special=1
         LockedAcryn=3
-        BlockImp=1
 		NonSearchable=1
+        BlockImp=1
 		BlockMM=1
-        TextReplace=<color=248,252,248>Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек генератора защитного поля.</color>		
+        TextReplace=<color=248,252,248>Компактный термоквантовый реактор, вырабатывающий энергию, которую можно с лёгкостью перенаправить на усиление любых энергоёмких бортовых систем. Поскольку конструкция такого реактора крайне габаритна, для его полноценной установки на корабле требуется полностью занять под крепления и разводку весь <color=255,240,100>генераторный отсек</color>.</color>
         Text=<clr><clrEnd>
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Дальность прыжка: <bonJump> пк.
-        Text=Мощность сканера: <bonScan> ед.
-        Text=Дальность радара: <bonRadar> млн. км.
-        Text=Эффективность дроида: <bonDroid> ед.
-        Text=Мощность захвата: <bonHook> ед.
         Text=Сила энергетического оружия: <bonWEnergy> ед.
-        Text=Сила осколочного оружия: <bonWSplinter> ед.
         Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=Мощность захвата: <bonHook> ед.
+		Text=Дальность захвата: <bonHookRadius> ед.
 		Fragility=100
-        Cost=200
-        Size=150
+        Cost=250
+        Size=200
+        bonWEnergy=20
+        bonWRadius=30
+        bonRadar=300
+        bonScan=6
+        bonHook=50
+		bonHookRadius=20
         bonDef=-500000000
-        bonDroid=5
-        bonHook=8
-        bonJump=2
-        bonRadar=200
-        bonScan=2
-        bonSpeed=30
-        bonWEnergy=2
-        bonWRadius=10
-        bonWSplinter=1
     }
-    ShuMM_AuxiliarySubreactor2 ^{
+    ShuMM_AuxiliarySubreactor6 ^{
         Equipments=DefGenerator
         KindGraph=AuxiliarySubreactor
-        Name=</color>Термоквантовый субреактор
-		Name=</color>Квадроадронный субреактор
-		Name=</color>Плазмориновый субреактор
 		Name=</color>Экзосепараторный субреактор
-		CustomTag=AuxiliarySubreactor
+		CustomTag=AuxiliarySubreactor6
+        Priority=70
         Owner=Nothing
-        Priority=60
         Ruins=Nothing
         Special=1
         LockedAcryn=3
-        BlockImp=1
 		NonSearchable=1
+        BlockImp=1
 		BlockMM=1
-        TextReplace=<color=248,252,248>Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек генератора защитного поля.</color>		
+        TextReplace=<color=248,252,248>Компактный экзосепараторный реактор, вырабатывающий энергию, которую можно с лёгкостью перенаправить на усиление любых энергоёмких бортовых систем. Поскольку конструкция такого реактора крайне габаритна, для его полноценной установки на корабле требуется полностью занять под крепления и разводку весь <color=255,240,100>генераторный отсек</color>.</color>
         Text=<clr><clrEnd>
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Дальность прыжка: <bonJump> пк.
-        Text=Мощность сканера: <bonScan> ед.
-        Text=Дальность радара: <bonRadar> млн. км.
-        Text=Эффективность дроида: <bonDroid> ед.
-        Text=Мощность захвата: <bonHook> ед.
         Text=Сила энергетического оружия: <bonWEnergy> ед.
-        Text=Сила осколочного оружия: <bonWSplinter> ед.
         Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=Мощность захвата: <bonHook> ед.
+		Text=Дальность захвата: <bonHookRadius> ед.
 		Fragility=100
-        Cost=200
-        Size=150
+        Cost=250
+        Size=200
+        bonWEnergy=22
+        bonWRadius=35
+        bonRadar=400
+        bonScan=7
+        bonHook=60
+		bonHookRadius=25
         bonDef=-500000000
-        bonDroid=5
-        bonHook=8
-        bonJump=2
-        bonRadar=200
-        bonScan=2
-        bonSpeed=30
-        bonWEnergy=2
-        bonWRadius=10
-        bonWSplinter=1
     }
-	ShuMM_AuxiliarySubreactor3 ^{
+    ShuMM_AuxiliarySubreactor7 ^{
         Equipments=DefGenerator
         KindGraph=AuxiliarySubreactor
-        Name=</color>Термоквантовый субреактор
-		Name=</color>Квадроадронный субреактор
 		Name=</color>Плазмориновый субреактор
-		Name=</color>Экзосепараторный субреактор
-		CustomTag=AuxiliarySubreactor
+		CustomTag=AuxiliarySubreactor7
+        Priority=80
         Owner=Nothing
-        Priority=60
         Ruins=Nothing
         Special=1
         LockedAcryn=3
-        BlockImp=1
 		NonSearchable=1
+        BlockImp=1
 		BlockMM=1
-        TextReplace=<color=248,252,248>Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек генератора защитного поля.</color>		
+        TextReplace=<color=248,252,248>Компактный плазмориновый реактор, вырабатывающий энергию, которую можно с лёгкостью перенаправить на усиление любых энергоёмких бортовых систем. Поскольку конструкция такого реактора крайне габаритна, для его полноценной установки на корабле требуется полностью занять под крепления и разводку весь <color=255,240,100>генераторный отсек</color>.</color>
         Text=<clr><clrEnd>
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Дальность прыжка: <bonJump> пк.
-        Text=Мощность сканера: <bonScan> ед.
-        Text=Дальность радара: <bonRadar> млн. км.
-        Text=Эффективность дроида: <bonDroid> ед.
-        Text=Мощность захвата: <bonHook> ед.
         Text=Сила энергетического оружия: <bonWEnergy> ед.
-        Text=Сила осколочного оружия: <bonWSplinter> ед.
         Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=Мощность захвата: <bonHook> ед.
+		Text=Дальность захвата: <bonHookRadius> ед.
 		Fragility=100
-        Cost=200
-        Size=150
+        Cost=250
+        Size=200
+        bonWEnergy=26
+        bonWRadius=40
+        bonRadar=500
+        bonScan=8
+        bonHook=60
+		bonHookRadius=27
         bonDef=-500000000
-        bonDroid=5
-        bonHook=8
-        bonJump=2
-        bonRadar=200
-        bonScan=2
-        bonSpeed=30
-        bonWEnergy=2
-        bonWRadius=10
-        bonWSplinter=1
     }
-    ShuMM_AuxiliarySubreactor4 ^{
+    ShuMM_AuxiliarySubreactor8 ^{
         Equipments=DefGenerator
         KindGraph=AuxiliarySubreactor
-        Name=</color>Термоквантовый субреактор
 		Name=</color>Квадроадронный субреактор
-		Name=</color>Плазмориновый субреактор
-		Name=</color>Экзосепараторный субреактор
-		CustomTag=AuxiliarySubreactor
+		CustomTag=AuxiliarySubreactor8
+        Priority=90
         Owner=Nothing
-        Priority=60
         Ruins=Nothing
         Special=1
         LockedAcryn=3
-        BlockImp=1
 		NonSearchable=1
+        BlockImp=1
 		BlockMM=1
-        TextReplace=<color=248,252,248>Вырабатывает энергию, усиливая работу всего оборудования на корабле. Устанавливается в отсек генератора защитного поля.</color>		
+        TextReplace=<color=248,252,248>Компактный квадроадронный реактор, вырабатывающий энергию, которую можно с лёгкостью перенаправить на усиление любых энергоёмких бортовых систем. Поскольку конструкция такого реактора крайне габаритна, для его полноценной установки на корабле требуется полностью занять под крепления и разводку весь <color=255,240,100>генераторный отсек</color>.</color>
         Text=<clr><clrEnd>
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Дальность прыжка: <bonJump> пк.
-        Text=Мощность сканера: <bonScan> ед.
-        Text=Дальность радара: <bonRadar> млн. км.
-        Text=Эффективность дроида: <bonDroid> ед.
-        Text=Мощность захвата: <bonHook> ед.
         Text=Сила энергетического оружия: <bonWEnergy> ед.
-        Text=Сила осколочного оружия: <bonWSplinter> ед.
         Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=Мощность захвата: <bonHook> ед.
+		Text=Дальность захвата: <bonHookRadius> ед.
 		Fragility=100
-        Cost=200
-        Size=150
+        Cost=250
+        Size=200
+        bonWEnergy=30
+        bonWRadius=45
+        bonRadar=500
+        bonScan=8
+        bonHook=75
+		bonHookRadius=30
         bonDef=-500000000
-        bonDroid=5
-        bonHook=8
-        bonJump=2
-        bonRadar=200
-        bonScan=2
-        bonSpeed=30
-        bonWEnergy=2
-        bonWRadius=10
-        bonWSplinter=1
     }
     ShuMM_EnergenicEngine1 ^{
         Equipments=Engine
