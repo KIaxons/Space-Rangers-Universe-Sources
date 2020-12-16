@@ -1606,7 +1606,7 @@ UselessItems ^{
 				08=if(EqSpecial(item)>-1)
 				09 ^{
 					//Исключение не улучшаемых предметов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 				//Отправляем команду о необходимости подсветить пригодный для установки предмет
 				10=if(!sp)ScriptItemActParam(1);
@@ -1632,7 +1632,7 @@ UselessItems ^{
 				08=if(EqSpecial(item)>-1)
 				09 ^{
 					//Исключение не улучшаемых предметов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 				10=if(!sp)
 				11 ^{
@@ -1684,7 +1684,7 @@ UselessItems ^{
 				08=if(EqSpecial(item)>-1)
 				09 ^{
 					//Исключение не улучшаемых предметов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 				//Отправляем команду о необходимости подсветить пригодный для установки предмет
 				10=if(!sp)ScriptItemActParam(1);
@@ -1710,7 +1710,7 @@ UselessItems ^{
 				08=if(EqSpecial(item)>-1)
 				09 ^{
 					//Исключение не улучшаемых предметов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
                 10=if(!sp)
                 11 ^{
@@ -1762,7 +1762,7 @@ UselessItems ^{
 				08=if(EqSpecial(item)>-1)
 				09 ^{
 					//Исключение не улучшаемых предметов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 				//Отправляем команду о необходимости подсветить пригодный для установки предмет
 				10=if(!sp)ScriptItemActParam(1);
@@ -1788,7 +1788,7 @@ UselessItems ^{
 				08=if(EqSpecial(item)>-1)
 				09 ^{
 					//Исключение не улучшаемых предметов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
                 10=if(!sp)
                 11 ^{
@@ -1838,7 +1838,7 @@ UselessItems ^{
 				08=if(EqSpecial(item)>-1)
 				09 ^{
 					//Исключение не улучшаемых предметов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 				//Отправляем команду о необходимости подсветить пригодный для установки предмет
 				10=if(!sp)ScriptItemActParam(1);
@@ -1864,7 +1864,7 @@ UselessItems ^{
 				08=if(EqSpecial(item)>-1)
 				09 ^{
 					//Исключение не улучшаемых предметов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
                 10=if(!sp)
                 11 ^{
@@ -1916,7 +1916,7 @@ UselessItems ^{
 					//Исключаем из списка физган
 					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.KindGraph')=='fizgun_main')sp=1;
 					//Исключение не улучшаемых предметов
-					02=else if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					02=else if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 				//Отправляем команду о необходимости подсветить пригодный для установки предмет
 				10=if(!sp)ScriptItemActParam(1);
@@ -1944,7 +1944,7 @@ UselessItems ^{
 					//Исключаем из списка физган
 					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.KindGraph')=='fizgun_main')sp=1;
 					//Исключение не улучшаемых предметов
-					02=else if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					02=else if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 				10=if(!sp)
 				11 ^{
@@ -1993,7 +1993,7 @@ UselessItems ^{
 				07=if(EqSpecial(item)>-1)
 				08 ^{
 					//Исключение не улучшаемых предметов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 				//Отправляем команду о необходимости подсветить пригодный для установки предмет
 				09=if(!sp)ScriptItemActParam(1);
@@ -2018,7 +2018,7 @@ UselessItems ^{
 				07=if(EqSpecial(item)>-1)
 				08 ^{
 					//Исключение не улучшаемых предметов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 				09=if(!sp)
                 10 ^{
@@ -2070,7 +2070,7 @@ UselessItems ^{
 				07=if(EqSpecial(item)>-1)
 				08 ^{
 					//Исключение не улучшаемых предметов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 				//Отправляем команду о необходимости подсветить пригодный для установки предмет
 				09=if(!sp)ScriptItemActParam(1);
@@ -2101,7 +2101,7 @@ UselessItems ^{
 						02=MessageBox('Данное устройство не является радаром, а вставлять в него что-либо кроме микромодуля крайне небезопасно.',34);
 					}
 					//Исключение не улучшаемых предметов
-					03=else if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					03=else if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 				09=if(!sp)
 				10 ^{
@@ -2153,7 +2153,7 @@ UselessItems ^{
 				07=if(EqSpecial(item)>-1)
 				08 ^{
 					//Исключение не улучшаемых предметов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 				//Отправляем команду о необходимости подсветить пригодный для установки предмет
 				09=if(!sp)ScriptItemActParam(1);
@@ -2178,7 +2178,7 @@ UselessItems ^{
 				07=if(EqSpecial(item)>-1)
 				08 ^{
 					//Исключение не улучшаемых предметов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 			    09=if(!sp)
                 10 ^{
@@ -2231,7 +2231,7 @@ UselessItems ^{
 				08 ^{
 					01=str bon_num=BonusNumInCfg(EqSpecial(item));
 					//Исключение не улучшаемых предметов
-					02=if(CT('MicroModuls.'+bon_num+'.NotImprovable')==1)sp=1;
+					02=if(CT('MicroModuls.'+bon_num+'.BlockImp')==1)sp=1;
 					//Исключаем из списка биогенных дроидов (потому что они биогенные) и боевого дроида, потому что он не чинит
 					03=else if(CT('MicroModuls.'+bon_num+'.BioEquip')==1)sp=1;
 					04=else if(bon_num=='RevAcrynBattleDroid')sp=1;
@@ -2260,7 +2260,7 @@ UselessItems ^{
 				08 ^{
 					01=bon_num=BonusNumInCfg(EqSpecial(item));
 					//Исключение не улучшаемых предметов
-					02=if(CT('MicroModuls.'+bon_num+'.NotImprovable')==1)sp=1;
+					02=if(CT('MicroModuls.'+bon_num+'.BlockImp')==1)sp=1;
 					//Исключаем из списка биогенных дроидов (потому что они биогенные) и боевого дроида, потому что он не чинит
 					03=else if(CT('MicroModuls.'+bon_num+'.BioEquip')==1)
 					04 ^{
@@ -2323,7 +2323,7 @@ UselessItems ^{
 				07=if(EqSpecial(item)>-1)
 				08 ^{
 					//Исключение не улучшаемых предметов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 				//Отправляем команду о необходимости подсветить пригодный для установки предмет
 				09=if(!sp)ScriptItemActParam(1);
@@ -2348,7 +2348,7 @@ UselessItems ^{
 				07=if(EqSpecial(item)>-1)
 				08 ^{
 					//Исключение не улучшаемых предметов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 				09=if(!sp)
                 10 ^{
@@ -2399,7 +2399,7 @@ UselessItems ^{
 				07=if(EqSpecial(item)>-1)
 				08 ^{
 					//Исключение не улучшаемых предметов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 				//Отправляем команду о необходимости подсветить пригодный для установки предмет
 				09=if(!sp)ScriptItemActParam(1);
@@ -2424,7 +2424,7 @@ UselessItems ^{
 				07=if(EqSpecial(item)>-1)
 				08 ^{
 					//Исключение не улучшаемых предметов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 				09=if(!sp)
                 10 ^{
@@ -2475,7 +2475,7 @@ UselessItems ^{
 				07=if(EqSpecial(item)>-1)
 				08 ^{
 					//Исключение не улучшаемых предметов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 				//Отправляем команду о необходимости подсветить пригодный для установки предмет
 				09=if(!sp)ScriptItemActParam(1);
@@ -2500,7 +2500,7 @@ UselessItems ^{
 				07=if(EqSpecial(item)>-1)
 				08 ^{
 					//Исключение не улучшаемых предметов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 				09=if(!sp)
                 10 ^{
@@ -2613,7 +2613,7 @@ UselessItems ^{
 				07=if(EqSpecial(item)>-1)
 				08 ^{
 					//Исключение не улучшаемых корпусов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 				//Отправляем команду о необходимости подсветить пригодный для установки отсека корпус
 				09=if(!sp)ScriptItemActParam(1);
@@ -2639,7 +2639,7 @@ UselessItems ^{
 				07=if(EqSpecial(item)>-1)
 				08 ^{
 					//Исключение не улучшаемых корпусов
-					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.NotImprovable')==1)sp=1;
+					01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BlockImp')==1)sp=1;
 				}
 				09=if(!sp)
                 10 ^{
