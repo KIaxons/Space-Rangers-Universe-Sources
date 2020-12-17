@@ -129,7 +129,6 @@ ML ^{
 				}
 				08=else
 				09 ^{
-					//01=UICheckElement('','RaceMalocBut_'+requestType,'IsDown',1);
 					01=CustomInterfaceState('RaceMalocBut_'+requestType,2);
 				}
 				10=if(GItemsToSearchArr[requestNum,1]>-1)
@@ -138,7 +137,6 @@ ML ^{
 				}
 				12=else
 				13 ^{
-					//01=UICheckElement('','RacePelengBut_'+requestType,'IsDown',1);
 					01=CustomInterfaceState('RacePelengBut_'+requestType,2);
 				}
 				14=if(GItemsToSearchArr[requestNum,2]>-1)
@@ -147,7 +145,6 @@ ML ^{
 				}
 				16=else
 				17 ^{
-					//01=UICheckElement('','RacePeopleBut_'+requestType,'IsDown',1);
 					01=CustomInterfaceState('RacePeopleBut_'+requestType,2);
 				}
 				18=if(GItemsToSearchArr[requestNum,3]>-1)
@@ -156,7 +153,6 @@ ML ^{
 				}
 				20=else
 				21 ^{
-					//01=UICheckElement('','RaceFeiBut_'+requestType,'IsDown',1);
 					01=CustomInterfaceState('RaceFeiBut_'+requestType,2);
 				}
 				22=if(GItemsToSearchArr[requestNum,4]>-1)
@@ -165,7 +161,6 @@ ML ^{
 				}
 				24=else
 				25 ^{
-					//01=UICheckElement('','RaceGaalBut_'+requestType,'IsDown',1);
 					01=CustomInterfaceState('RaceGaalBut_'+requestType,2);
 				}
 				26=if(GItemsToSearchArr[requestNum,7]>-1)
@@ -174,20 +169,19 @@ ML ^{
 				}
 				28=else
 				29 ^{
-					//01=UICheckElement('','RacePirateBut_'+requestType,'IsDown',1);
 					01=CustomInterfaceState('RacePirateBut_'+requestType,2);
 				}
 				//Выводим оставшиеся характеристики
 				30=if(requestType=='Hulls')
 				31 ^{
-					01=if(!GItemsToSearchArr[requestNum,12])UICheckElement('','TypeRangerBut_Hulls','IsDown', 0);
-					02=if(!GItemsToSearchArr[requestNum,13])UICheckElement('','TypeWarriorBut_Hulls','IsDown', 0);
-					03=if(!GItemsToSearchArr[requestNum,14])UICheckElement('','TypePirateBut_Hulls','IsDown', 0);
-					04=if(!GItemsToSearchArr[requestNum,15])UICheckElement('','TypeTransportBut_Hulls','IsDown', 0);
-					05=if(!GItemsToSearchArr[requestNum,16])UICheckElement('','TypeLinerBut_Hulls','IsDown', 0);
-					06=if(!GItemsToSearchArr[requestNum,17])UICheckElement('','TypeDiplomatBut_Hulls','IsDown', 0);
-					07=for(i=1;i<=GItemsToSearchArr[requestNum,19];i=i+1)UICheckElement('','SlotWeapon'+i+'_Hulls','IsDown',1);
-					08=for(i=1;i<=GItemsToSearchArr[requestNum,20];i=i+1)UICheckElement('','SlotArt'+i+'_Hulls','IsDown',1);
+					01=if(!GItemsToSearchArr[requestNum,12]) UICheckElement('','TypeRangerBut_Hulls','IsDown', 0);
+					02=if(!GItemsToSearchArr[requestNum,13]) UICheckElement('','TypeWarriorBut_Hulls','IsDown', 0);
+					03=if(!GItemsToSearchArr[requestNum,14]) UICheckElement('','TypePirateBut_Hulls','IsDown', 0);
+					04=if(!GItemsToSearchArr[requestNum,15]) UICheckElement('','TypeTransportBut_Hulls','IsDown', 0);
+					05=if(!GItemsToSearchArr[requestNum,16]) UICheckElement('','TypeLinerBut_Hulls','IsDown', 0);
+					06=if(!GItemsToSearchArr[requestNum,17]) UICheckElement('','TypeDiplomatBut_Hulls','IsDown', 0);
+					07=for(i=1;i<=GItemsToSearchArr[requestNum,19];i=i+1) UICheckElement('','SlotWeapon'+i+'_Hulls','IsDown',1);
+					08=for(i=1;i<=GItemsToSearchArr[requestNum,20];i=i+1) UICheckElement('','SlotArt'+i+'_Hulls','IsDown',1);
 					09=UICheckElement('','SlotRadar_Hulls','IsDown',GItemsToSearchArr[requestNum,21]);
 					10=UICheckElement('','SlotScanner_Hulls','IsDown',GItemsToSearchArr[requestNum,22]);
 					11=UICheckElement('','SlotDroid_Hulls','IsDown',GItemsToSearchArr[requestNum,23]);
@@ -195,11 +189,11 @@ ML ^{
 					13=UICheckElement('','SlotShieldGenerator_Hulls','IsDown',GItemsToSearchArr[requestNum,25]);
 					14=UICheckElement('','SlotForsage_Hulls','IsDown',GItemsToSearchArr[requestNum,26]);
 					//Восприимчивость к различному урону
-					15=if(GItemsToSearchArr[requestNum,27])CustomInterfaceText('SusceptibilityEn_Hulls',GItemsToSearchArr[requestNum,27]);
-					16=if(GItemsToSearchArr[requestNum,28])CustomInterfaceText('SusceptibilitySp_Hulls',GItemsToSearchArr[requestNum,28]);
-					17=if(GItemsToSearchArr[requestNum,29])CustomInterfaceText('SusceptibilityMi_Hulls',GItemsToSearchArr[requestNum,29]);
+					15=if(GItemsToSearchArr[requestNum,27]) CustomInterfaceText('SusceptibilityEn_Hulls',GItemsToSearchArr[requestNum,27]);
+					16=if(GItemsToSearchArr[requestNum,28]) CustomInterfaceText('SusceptibilitySp_Hulls',GItemsToSearchArr[requestNum,28]);
+					17=if(GItemsToSearchArr[requestNum,29]) CustomInterfaceText('SusceptibilityMi_Hulls',GItemsToSearchArr[requestNum,29]);
 					//Минимальное количество брони
-					18=if(GItemsToSearchArr[requestNum,30])CustomInterfaceText('Armor_Hulls',GItemsToSearchArr[requestNum,30]);
+					18=if(GItemsToSearchArr[requestNum,30]) CustomInterfaceText('Armor_Hulls',GItemsToSearchArr[requestNum,30]);
 					//Акрин и его уровень
 					19=CustomInterfaceText('ChoosedAcrynNum_Hulls',GItemsToSearchArr[requestNum,33]);
 					20=if(GItemsToSearchArr[requestNum,33]==-2)
@@ -210,7 +204,7 @@ ML ^{
 					}
 					22=else if(GItemsToSearchArr[requestNum,33]==-1)
 					23 ^{
-						01=if(GItemsToSearchArr[requestNum,34])CustomInterfaceText('AcrynLevel_Hulls',GItemsToSearchArr[requestNum,34]);
+						01=if(GItemsToSearchArr[requestNum,34]) CustomInterfaceText('AcrynLevel_Hulls',GItemsToSearchArr[requestNum,34]);
 						02=CustomInterfaceText('ChoosedAcryn_Hulls', CT('FormInfo.AutoSearchAcrynAny'));
 					}
 					24=else
@@ -224,38 +218,38 @@ ML ^{
 						}
 						04=else
 						05 ^{
-							01=tstr=serie_name;
-							02=if(GItemsToSearchArr[requestNum,34])CustomInterfaceText('AcrynLevel_Hulls',GItemsToSearchArr[requestNum,34]);
+							01=tstr = serie_name;
+							02=if(GItemsToSearchArr[requestNum, 34]) CustomInterfaceText('AcrynLevel_Hulls', GItemsToSearchArr[requestNum, 34]);
 						}
-						06=tstr=Format(tstr, CT('FormInfo.WordHullCapital')+' ','');
-						07=tstr=Format(tstr,' '+CT('FormInfo.WordHullLowercase'),'');
-						08=CustomInterfaceText('ChoosedAcryn_Hulls',DeleteTags(Format(tstr, CT('FormInfo.DoubleQuote'),'')));
-						09=CustomInterfaceState('TypeRangerBut_Hulls',2);
-						10=CustomInterfaceState('TypeRangerImg_Hulls',1);
-						11=CustomInterfaceState('TypeWarriorBut_Hulls',2);
-						12=CustomInterfaceState('TypeWarriorImg_Hulls',1);
-						13=CustomInterfaceState('TypePirateBut_Hulls',2);
-						14=CustomInterfaceState('TypePirateImg_Hulls',1);
-						15=CustomInterfaceState('TypeTransportBut_Hulls',2);
-						16=CustomInterfaceState('TypeTransportImg_Hulls',1);
-						17=CustomInterfaceState('TypeLinerBut_Hulls',2);
-						18=CustomInterfaceState('TypeLinerImg_Hulls',1);
-						19=CustomInterfaceState('TypeDiplomatBut_Hulls',2);
-						20=CustomInterfaceState('TypeDiplomatImg_Hulls',1);
+						06=tstr = Format(tstr, CT('FormInfo.WordHullCapital') + ' ', '');
+						07=tstr = Format(tstr, ' ' + CT('FormInfo.WordHullLowercase'), '');
+						08=CustomInterfaceText('ChoosedAcryn_Hulls', DeleteTags(Format(tstr, CT('FormInfo.DoubleQuote'), '')));
+						09=CustomInterfaceState('TypeRangerBut_Hulls', 2);
+						10=CustomInterfaceState('TypeRangerImg_Hulls', 1);
+						11=CustomInterfaceState('TypeWarriorBut_Hulls', 2);
+						12=CustomInterfaceState('TypeWarriorImg_Hulls', 1);
+						13=CustomInterfaceState('TypePirateBut_Hulls', 2);
+						14=CustomInterfaceState('TypePirateImg_Hulls', 1);
+						15=CustomInterfaceState('TypeTransportBut_Hulls', 2);
+						16=CustomInterfaceState('TypeTransportImg_Hulls', 1);
+						17=CustomInterfaceState('TypeLinerBut_Hulls', 2);
+						18=CustomInterfaceState('TypeLinerImg_Hulls', 1);
+						19=CustomInterfaceState('TypeDiplomatBut_Hulls', 2);
+						20=CustomInterfaceState('TypeDiplomatImg_Hulls', 1);
 					}
 					//Переключаемся на экран настройки запроса поиска корпуса
 					26=CustomInterfaceState('PanelChoose_Main', 0);
-					27=CustomInterfaceState('PanelChoose_Hulls',1);
-					28=CustomInterfaceState('ButConfirm',3);
-					29=CustomInterfaceState('ButDelete',1);
-					30=CustomInterfaceState('ButPrev',3);
-					31=CustomInterfaceState('ButNext',2);
-					32=SetFocus('','SusceptibilityEn_Hulls');
-					33=CustomInterfaceText('PanelState','Hulls');
+					27=CustomInterfaceState('PanelChoose_Hulls', 1);
+					28=CustomInterfaceState('ButConfirm', 3);
+					29=CustomInterfaceState('ButDelete', 1);
+					30=CustomInterfaceState('ButPrev', 3);
+					31=CustomInterfaceState('ButNext', 2);
+					32=SetFocus('', 'SusceptibilityEn_Hulls');
+					33=CustomInterfaceText('PanelState', 'Hulls');
 				}
-				32=else if(requestType=='Weapons')
+				32=else if(requestType == 'Weapons')
 				33 ^{
-					01=if(!GItemsToSearchArr[requestNum,12])
+					01=if(!GItemsToSearchArr[requestNum, 12])
 					02 ^{
 						01=CustomInterfaceImage('TypeEnImg_Weapons','GI,Bm.FormInfo3.2MCheckN_Disabled');
 						02=UICheckElement('','TypeEnBut_Weapons','IsDown', 0);
@@ -270,62 +264,62 @@ ML ^{
 						01=CustomInterfaceImage('TypeMiImg_Weapons','GI,Bm.FormInfo3.2MCheckN_Disabled');
 						02=UICheckElement('','TypeMiBut_Weapons','IsDown', 0);
 					}
-					07=if(GItemsToSearchArr[requestNum,15])CustomInterfaceText('DamageMin_Weapons',GItemsToSearchArr[requestNum,15]);
-					08=if(GItemsToSearchArr[requestNum,16])CustomInterfaceText('DamageMax_Weapons',GItemsToSearchArr[requestNum,16]);
-					09=if(GItemsToSearchArr[requestNum,17])CustomInterfaceText('MinRange_Weapons',GItemsToSearchArr[requestNum,17]);
+					07=if(GItemsToSearchArr[requestNum, 15]) CustomInterfaceText('DamageMin_Weapons',GItemsToSearchArr[requestNum,15]);
+					08=if(GItemsToSearchArr[requestNum, 16]) CustomInterfaceText('DamageMax_Weapons',GItemsToSearchArr[requestNum,16]);
+					09=if(GItemsToSearchArr[requestNum, 17]) CustomInterfaceText('MinRange_Weapons',GItemsToSearchArr[requestNum,17]);
 					//Вспоминаем тип орудия
 					10=CustomInterfaceText('ChoosedType_Weapons',GItemsToSearchArr[requestNum,19]);
 					11=CustomInterfaceText('ChoosedCustomType_Weapons',GItemsToSearchArr[requestNum,20]);
 					12=if(GItemsToSearchArr[requestNum,19]!=-1)
 					13 ^{
-						01=if(GItemsToSearchArr[requestNum,19]!=t_CustomWeapon)CustomInterfaceText('Name_Weapons', CT('Items.Weapon.Name.'+(GItemsToSearchArr[requestNum,19]-t_Weapon1+1)));
-						02=else CustomInterfaceText('Name_Weapons', CT('Items.Weapon.Name.'+GItemsToSearchArr[requestNum,20]));
-						03=CustomInterfaceState('TypeEnBut_Weapons',2);
-						04=CustomInterfaceState('TypeSpBut_Weapons',2);
-						05=CustomInterfaceState('TypeMiBut_Weapons',2);
-						06=CustomInterfaceState('TypeEnImg_Weapons',1);
-						07=CustomInterfaceState('TypeSpImg_Weapons',1);
-						08=CustomInterfaceState('TypeMiImg_Weapons',1);
+						01=if(GItemsToSearchArr[requestNum, 19] != t_CustomWeapon) CustomInterfaceText('Name_Weapons', CT('Items.Weapon.Name.' + (GItemsToSearchArr[requestNum, 19] - t_Weapon1 + 1)));
+						02=else CustomInterfaceText('Name_Weapons', CT('Items.Weapon.Name.' + GItemsToSearchArr[requestNum, 20]));
+						03=CustomInterfaceState('TypeEnBut_Weapons', 2);
+						04=CustomInterfaceState('TypeSpBut_Weapons', 2);
+						05=CustomInterfaceState('TypeMiBut_Weapons', 2);
+						06=CustomInterfaceState('TypeEnImg_Weapons', 1);
+						07=CustomInterfaceState('TypeSpImg_Weapons', 1);
+						08=CustomInterfaceState('TypeMiImg_Weapons', 1);
 					}
-					14=CustomInterfaceText('ChoosedAcrynNum_Weapons',GItemsToSearchArr[requestNum,33]);
-					15=if(GItemsToSearchArr[requestNum,33]==-2)
+					14=CustomInterfaceText('ChoosedAcrynNum_Weapons', GItemsToSearchArr[requestNum, 33]);
+					15=if(GItemsToSearchArr[requestNum, 33] == -2)
 					16 ^{
 						01=CustomInterfaceState('AcrynLevel_Weapons', 0);
 						02=CustomInterfaceState('EditBG_Weapons', 0);
 						03=CustomInterfaceText('ChoosedAcryn_Weapons', CT('FormInfo.AutoSearchWeaponAcrynNone'));
 					}
-					17=else if(GItemsToSearchArr[requestNum,33]==-1)
+					17=else if(GItemsToSearchArr[requestNum, 33] == -1)
 					18 ^{
-						01=if(GItemsToSearchArr[requestNum,34])CustomInterfaceText('AcrynLevel_Weapons',GItemsToSearchArr[requestNum,34]);
+						01=if(GItemsToSearchArr[requestNum, 34]) CustomInterfaceText('AcrynLevel_Weapons', GItemsToSearchArr[requestNum, 34]);
 						02=CustomInterfaceText('ChoosedAcryn_Weapons', CT('FormInfo.AutoSearchWeaponAcrynAny'));
 					}
 					19=else
 					20 ^{
-						01=serie_name=CT('MicroModuls.'+GItemsToSearchArr[requestNum,33]+'.AcrynSerie');
-						02=if(serie_name=='')
+						01=serie_name = CT('MicroModuls.' + GItemsToSearchArr[requestNum, 33] + '.AcrynSerie');
+						02=if(serie_name == '')
 						03 ^{
-							01=tstr=CT('MicroModuls.'+GItemsToSearchArr[requestNum,33]+'.Name');
+							01=tstr = CT('MicroModuls.' + GItemsToSearchArr[requestNum, 33] + '.Name');
 							02=CustomInterfaceState('AcrynLevel_Weapons', 0);
 							03=CustomInterfaceState('EditBG_Weapons', 0);
 						}
 						04=else
 						05 ^{
-							01=tstr=serie_name;
-							02=if(GItemsToSearchArr[requestNum,34])CustomInterfaceText('AcrynLevel_Weapons',GItemsToSearchArr[requestNum,34]);
+							01=tstr = serie_name;
+							02=if(GItemsToSearchArr[requestNum, 34]) CustomInterfaceText('AcrynLevel_Weapons', GItemsToSearchArr[requestNum, 34]);
 						}
-						06=CustomInterfaceText('ChoosedAcryn_Weapons',DeleteTags(Format(tstr, CT('FormInfo.DoubleQuote'),'')));
+						06=CustomInterfaceText('ChoosedAcryn_Weapons', DeleteTags(Format(tstr, CT('FormInfo.DoubleQuote'), '')));
 					}
 					//Переключаемся на экран настройки запроса поиска оружия
 					21=CustomInterfaceState('PanelChoose_Main', 0);
-					22=CustomInterfaceState('PanelChoose_Weapons',1);
-					23=CustomInterfaceState('ButConfirm',3);
-					24=CustomInterfaceState('ButDelete',1);
-					25=CustomInterfaceState('ButPrev',3);
-					26=CustomInterfaceState('ButNext',2);
-					27=SetFocus('','DamageMin_Weapons');
-					28=CustomInterfaceText('PanelState','Weapons');
+					22=CustomInterfaceState('PanelChoose_Weapons', 1);
+					23=CustomInterfaceState('ButConfirm', 3);
+					24=CustomInterfaceState('ButDelete', 1);
+					25=CustomInterfaceState('ButPrev', 3);
+					26=CustomInterfaceState('ButNext', 2);
+					27=SetFocus('', 'DamageMin_Weapons');
+					28=CustomInterfaceText('PanelState', 'Weapons');
 				}
-				34=else if(requestType=='Engines')
+				34=else if(requestType == 'Engines')
 				35 ^{
 					01=if(GItemsToSearchArr[requestNum,12])CustomInterfaceText('Speed_Engines',GItemsToSearchArr[requestNum,12]);
 					02=if(GItemsToSearchArr[requestNum,13])CustomInterfaceText('JumpRange_Engines',GItemsToSearchArr[requestNum,13]);
@@ -335,12 +329,12 @@ ML ^{
 					05 ^{
 						01=CustomInterfaceState('AcrynLevel_Engines', 0);
 						02=CustomInterfaceState('EditBG_Engines', 0);
-						03=CustomInterfaceText('ChoosedAcryn_Engines', CT('FormInfo.AutoSearchWeaponAcrynNone'));
+						03=CustomInterfaceText('ChoosedAcryn_Engines', CT('FormInfo.AutoSearchAcrynNone'));
 					}
 					06=else if(GItemsToSearchArr[requestNum,33]==-1)
 					07 ^{
 						01=if(GItemsToSearchArr[requestNum,34])CustomInterfaceText('AcrynLevel_Engines',GItemsToSearchArr[requestNum,34]);
-						02=CustomInterfaceText('ChoosedAcryn_Engines', CT('FormInfo.AutoSearchWeaponAcrynAny'));
+						02=CustomInterfaceText('ChoosedAcryn_Engines', CT('FormInfo.AutoSearchAcrynAny'));
 					}
 					08=else
 					09 ^{
@@ -377,26 +371,26 @@ ML ^{
 					04 ^{
 						01=CustomInterfaceState('AcrynLevel_FuelTanks', 0);
 						02=CustomInterfaceState('EditBG_FuelTanks', 0);
-						03=CustomInterfaceText('ChoosedAcryn_FuelTanks', CT('FormInfo.AutoSearchWeaponAcrynNone'));
+						03=CustomInterfaceText('ChoosedAcryn_FuelTanks', CT('FormInfo.AutoSearchAcrynNone'));
 					}
 					05=else if(GItemsToSearchArr[requestNum,33]==-1)
 					06 ^{
 						01=if(GItemsToSearchArr[requestNum,34])CustomInterfaceText('AcrynLevel_FuelTanks',GItemsToSearchArr[requestNum,34]);
-						02=CustomInterfaceText('ChoosedAcryn_FuelTanks', CT('FormInfo.AutoSearchWeaponAcrynAny'));
+						02=CustomInterfaceText('ChoosedAcryn_FuelTanks', CT('FormInfo.AutoSearchAcrynAny'));
 					}
 					07=else
 					08 ^{
-						01=serie_name=CT('MicroModuls.'+GItemsToSearchArr[requestNum,33]+'.AcrynSerie');
-						02=if(serie_name=='')
+						01=serie_name = CT('MicroModuls.' + GItemsToSearchArr[requestNum, 33] + '.AcrynSerie');
+						02=if(serie_name == '')
 						03 ^{
-							01=tstr=CT('MicroModuls.'+GItemsToSearchArr[requestNum,33]+'.Name');
+							01=tstr = CT('MicroModuls.' + GItemsToSearchArr[requestNum, 33] + '.Name');
 							02=CustomInterfaceState('AcrynLevel_FuelTanks', 0);
 							03=CustomInterfaceState('EditBG_FuelTanks', 0);
 						}
 						04=else
 						05 ^{
-							01=tstr=serie_name;
-							02=if(GItemsToSearchArr[requestNum,34])CustomInterfaceText('AcrynLevel_FuelTanks',GItemsToSearchArr[requestNum,34]);
+							01=tstr = serie_name;
+							02=if(GItemsToSearchArr[requestNum, 34]) CustomInterfaceText('AcrynLevel_FuelTanks', GItemsToSearchArr[requestNum, 34]);
 						}
 						06=CustomInterfaceText('ChoosedAcryn_FuelTanks',DeleteTags(Format(tstr,' '+CT('FormInfo.WordFuelTankLowercase'),'')));
 					}
@@ -419,12 +413,12 @@ ML ^{
 					04 ^{
 						01=CustomInterfaceState('AcrynLevel_Radars', 0);
 						02=CustomInterfaceState('EditBG_Radars', 0);
-						03=CustomInterfaceText('ChoosedAcryn_Radars', CT('FormInfo.AutoSearchWeaponAcrynNone'));
+						03=CustomInterfaceText('ChoosedAcryn_Radars', CT('FormInfo.AutoSearchAcrynNone'));
 					}
 					05=else if(GItemsToSearchArr[requestNum,33]==-1)
 					06 ^{
 						01=if(GItemsToSearchArr[requestNum,34])CustomInterfaceText('AcrynLevel_Radars',GItemsToSearchArr[requestNum,34]);
-						02=CustomInterfaceText('ChoosedAcryn_Radars', CT('FormInfo.AutoSearchWeaponAcrynAny'));
+						02=CustomInterfaceText('ChoosedAcryn_Radars', CT('FormInfo.AutoSearchAcrynAny'));
 					}
 					07=else
 					08 ^{
@@ -461,12 +455,12 @@ ML ^{
 					04 ^{
 						01=CustomInterfaceState('AcrynLevel_Scanners', 0);
 						02=CustomInterfaceState('EditBG_Scanners', 0);
-						03=CustomInterfaceText('ChoosedAcryn_Scanners', CT('FormInfo.AutoSearchWeaponAcrynNone'));
+						03=CustomInterfaceText('ChoosedAcryn_Scanners', CT('FormInfo.AutoSearchAcrynNone'));
 					}
 					05=else if(GItemsToSearchArr[requestNum,33]==-1)
 					06 ^{
 						01=if(GItemsToSearchArr[requestNum,34])CustomInterfaceText('AcrynLevel_Scanners',GItemsToSearchArr[requestNum,34]);
-						02=CustomInterfaceText('ChoosedAcryn_Scanners', CT('FormInfo.AutoSearchWeaponAcrynAny'));
+						02=CustomInterfaceText('ChoosedAcryn_Scanners', CT('FormInfo.AutoSearchAcrynAny'));
 					}
 					07=else
 					08 ^{
@@ -503,12 +497,12 @@ ML ^{
 					04 ^{
 						01=CustomInterfaceState('AcrynLevel_Droids', 0);
 						02=CustomInterfaceState('EditBG_Droids', 0);
-						03=CustomInterfaceText('ChoosedAcryn_Droids', CT('FormInfo.AutoSearchWeaponAcrynNone'));
+						03=CustomInterfaceText('ChoosedAcryn_Droids', CT('FormInfo.AutoSearchAcrynNone'));
 					}
 					05=else if(GItemsToSearchArr[requestNum,33]==-1)
 					06 ^{
 						01=if(GItemsToSearchArr[requestNum,34])CustomInterfaceText('AcrynLevel_Droids',GItemsToSearchArr[requestNum,34]);
-						02=CustomInterfaceText('ChoosedAcryn_Droids', CT('FormInfo.AutoSearchWeaponAcrynAny'));
+						02=CustomInterfaceText('ChoosedAcryn_Droids', CT('FormInfo.AutoSearchAcrynAny'));
 					}
 					07=else
 					08 ^{
@@ -545,12 +539,12 @@ ML ^{
 					04 ^{
 						01=CustomInterfaceState('AcrynLevel_Grippers', 0);
 						02=CustomInterfaceState('EditBG_Grippers', 0);
-						03=CustomInterfaceText('ChoosedAcryn_Grippers', CT('FormInfo.AutoSearchWeaponAcrynNone'));
+						03=CustomInterfaceText('ChoosedAcryn_Grippers', CT('FormInfo.AutoSearchAcrynNone'));
 					}
 					05=else if(GItemsToSearchArr[requestNum,33]==-1)
 					06 ^{
 						01=if(GItemsToSearchArr[requestNum,34])CustomInterfaceText('AcrynLevel_Grippers',GItemsToSearchArr[requestNum,34]);
-						02=CustomInterfaceText('ChoosedAcryn_Grippers', CT('FormInfo.AutoSearchWeaponAcrynAny'));
+						02=CustomInterfaceText('ChoosedAcryn_Grippers', CT('FormInfo.AutoSearchAcrynAny'));
 					}
 					07=else
 					08 ^{
@@ -587,12 +581,12 @@ ML ^{
 					04 ^{
 						01=CustomInterfaceState('AcrynLevel_ShieldGenerators', 0);
 						02=CustomInterfaceState('EditBG_ShieldGenerators', 0);
-						03=CustomInterfaceText('ChoosedAcryn_ShieldGenerators', CT('FormInfo.AutoSearchWeaponAcrynNone'));
+						03=CustomInterfaceText('ChoosedAcryn_ShieldGenerators', CT('FormInfo.AutoSearchAcrynNone'));
 					}
 					05=else if(GItemsToSearchArr[requestNum,33]==-1)
 					06 ^{
 						01=if(GItemsToSearchArr[requestNum,34])CustomInterfaceText('AcrynLevel_ShieldGenerators',GItemsToSearchArr[requestNum,34]);
-						02=CustomInterfaceText('ChoosedAcryn_ShieldGenerators', CT('FormInfo.AutoSearchWeaponAcrynAny'));
+						02=CustomInterfaceText('ChoosedAcryn_ShieldGenerators', CT('FormInfo.AutoSearchAcrynAny'));
 					}
 					07=else
 					08 ^{

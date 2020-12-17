@@ -39,6 +39,11 @@ FormInfo ^{
         QualityGrade4=низкая
         QualityGrade5=очень низкая
         QualityGrade6=ужасная
+		MaxAmmo=Боезапас: #MaxCount#
+		EnergyType=энергетическое
+		SplinterType=осколочное
+		MissileType=ракетное
+		SusceptibilitySearch=Стойкость:  Э:#1#%  О:#2#%  Р:#3#%
 	}
 }
 Script ^{
@@ -86,6 +91,7 @@ Script ^{
 					03 ^{
 						01=GAcrynListTempArr[1] = type;
 						02=type = 'Hull';
+						03=add_type = 't_Hull';
 					}
 					04=else if(type >= t_Weapon1 && type <= t_Weapon18)
 					05 ^{
@@ -311,7 +317,7 @@ Script ^{
 		CreateNewRequest=Создать новый запрос
 		ChangeExistedRequest=Изменить существующий запрос
 		GetBack=Назад
-		RequestAnswer=Запрос на поиск #0#<br><clr> <clrEnd><clr> <clrEnd><clr> <clrEnd><clr> <clrEnd>[раз в #1# дн.]
+		RequestAnswer=Запрос на поиск #0#<br><clr> <clrEnd><clr> <clrEnd><clr> <clrEnd><clr> <clrEnd>(раз в #1# дн.)
 		NoMoneyForRequest=Уважаемый клиент, на вашем счету недостаточно средств для оплаты стоимости запланированного запроса автопоиска. Стандартная стоимость данной операции составляет #0# cr.
 		NoSuccessfulResults=Уважаемый клиент, по вашему запросу поиска #0# ничего не найдено. Однако не огорчайтесь, в другой раз вам непременно повезёт.
 		NoBKLeft=Все бизнес-центры уничтожены. Ваши <color=255,240,100>поисковые запросы</color> временно заморожены.
