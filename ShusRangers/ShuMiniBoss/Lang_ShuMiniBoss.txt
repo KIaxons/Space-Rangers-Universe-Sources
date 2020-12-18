@@ -408,13 +408,13 @@ ShipInfo ^{
 					05=if(ItemName(s)=='ฬเม๎ส่า-79')ShipCustomShipInfoData(0,CurInfo(),1,ShipCustomShipInfoData(0,CurInfo(),1)+1);
 					06=if(ShipCustomShipInfoData(0,CurInfo(),1)>=7 && ShipGetBad(k))
 					07 ^{
-						01=m=SpawnMissile(ShipStar(k),ShipGetBad(k),CoordX(k),CoordY(k),Angle(k,ShipGetBad(k)),MissileMinDamage(a),MissileMaxDamage(a),800,'SS');
+						01=m=SpawnMissile(ShipStar(k),ShipGetBad(k),CoordX(k),CoordY(k),Angle(k,ShipGetBad(k)),MissileMinDamage(a),MissileMaxDamage(a),800,'Mabokit');
 						02=MissileOwner(m,k);
-						03=m=SpawnMissile(ShipStar(k),ShipGetBad(k),CoordX(k),CoordY(k),Angle(k,ShipGetBad(k)),MissileMinDamage(a),MissileMaxDamage(a),800,'SS');
+						03=m=SpawnMissile(ShipStar(k),ShipGetBad(k),CoordX(k),CoordY(k),Angle(k,ShipGetBad(k)),MissileMinDamage(a),MissileMaxDamage(a),800,'Mabokit');
 						04=MissileOwner(m,k);
-						05=m=SpawnMissile(ShipStar(k),ShipGetBad(k),CoordX(k),CoordY(k),Angle(k,ShipGetBad(k)),MissileMinDamage(a),MissileMaxDamage(a),800,'SS');
+						05=m=SpawnMissile(ShipStar(k),ShipGetBad(k),CoordX(k),CoordY(k),Angle(k,ShipGetBad(k)),MissileMinDamage(a),MissileMaxDamage(a),800,'Mabokit');
 						06=MissileOwner(m,k);
-						07=m=SpawnMissile(ShipStar(k),ShipGetBad(k),CoordX(k),CoordY(k),Angle(k,ShipGetBad(k)),MissileMinDamage(a),MissileMaxDamage(a),800,'SS');
+						07=m=SpawnMissile(ShipStar(k),ShipGetBad(k),CoordX(k),CoordY(k),Angle(k,ShipGetBad(k)),MissileMinDamage(a),MissileMaxDamage(a),800,'Mabokit');
 						08=MissileOwner(m,k);
 						09=ShipCustomShipInfoData(0,CurInfo(),1,0);
 					}
