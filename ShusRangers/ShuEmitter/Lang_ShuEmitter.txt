@@ -488,15 +488,41 @@ Items ^{
     }
 }
 MicroModuls ^{
-    ShuEmitter_BallBeam ^{
-        Equipments=laser_gun
-        Name=Бол-луч
-        Owner=PirateClan
-        Priority=45
-        RacialRestriction=1
-        Text=Микромодуль второго уровня. Судя по его названию, разработчикам из <clr>пиратского<clrEnd> клана был хорошо знаком принцип: "Больше - лучше": он повышает скорострельность <clr>бластера Е-11<clrEnd>, заставляя его производить на один выстрел за сутки больше.
-        bonAttacks=1
+    ShuEmitter_Penny ^{
+        Cost=10
+        Equipments=photon_gun,photon_gun2,photon_gun3
+        Fragility=200
+        Name=Копейка
+        Owner=NonKling
+        Priority=90
+        Size=60
+        Text=Микромодуль третьего уровня. Превращает <clr>фотонную пушку<clrEnd> в очень хлипкий, компактный и дешевый для корабельных пушек агрегат - аналог мощного, но очень недальнобойного малокского ховерлетного орудия "Копейка", получившего свое название от самой дешевой древнебуржуйской монеты.
+        Text=<clr><clrEnd>
+		Text=Сила энергетического оружия: <bonWEnergy> ед.
+		Text=Надёжность: <clr>-50%<clrEnd>
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Стоимость: <clr>-90%<clrEnd>
+        Text=Размер: <clr>-40%<clrEnd>
+        bonWEnergy=20
+        bonWRadius=-100
     }
+    // ShuEmitter_Repairer ^{
+        // Equipments=splash_faser
+        // Name=Ремонтник
+        // Owner=Peleng,Fei,Gaal,PirateClan
+        // Priority=75
+        // Text=Микромодуль третьего уровня. Добавляет <clr>сплэшевому лазеру<clrEnd> возможность мощным лучом поглощать структуру цели, ремонтируя корабль за счет наносимого урона. Запрещен к использованию <clr>малоками<clrEnd> и <clr>фэянами<clrEnd> по причине частого использования в межрасовых стычках, что не мешает <clr>пиратам<clrEnd>, игнорирующим любые дипломатические решения.
+        // WeaponMods=Drain
+    // }
+    // ShuEmitter_BallBeam ^{
+        // Equipments=laser_gun
+        // Name=Бол-луч
+        // Owner=PirateClan
+        // Priority=45
+        // RacialRestriction=1
+        // Text=Микромодуль второго уровня. Судя по его названию, разработчикам из <clr>пиратского<clrEnd> клана был хорошо знаком принцип: "Больше - лучше": он повышает скорострельность <clr>бластера Е-11<clrEnd>, заставляя его производить на один выстрел за сутки больше.
+        // bonAttacks=1
+    // }
     ShuEmitter_ElephantGun ^{
         Cost=200
         Equipments=slow_gun
@@ -506,16 +532,118 @@ MicroModuls ^{
         RacialRestriction=1
         Size=120
         Text=Микромодуль второго уровня. Комплект <clrEnd>пеленгских<clrEnd> модификаций, превращающих <clr>ретрактор<clrEnd> в страшное оружие дальнего боя, предназначенное для борьбы с грозными противниками даже при отсутствии тяжелой защиты. Редкий случай, когда пеленгские инженеры не "распилили" бюджет.
-        Text=Сила ретрактора: <bonWEnergy> ед.
+        Text=<clr><clrEnd>
+		Text=Сила энергетического оружия: <bonWEnergy> ед.
         Text=Дальность стрельбы: <bonWRadius> ед.
         Text=Стоимость: <clr>+100%<clrEnd>
         Text=Размер: <clr>+20%<clrEnd>
-        Text=<clr>Наносит на 15% больше урона при превышении сканером защиты цели<clrEnd>
         Text=<clr>Ослабляет броню цели<clrEnd>
-        WeaponMods=ScanBonus,Acid
+        WeaponMods=Acid
         bonWEnergy=15
         bonWRadius=60
     }
+    ShuEmitter_Shotgan ^{
+        Equipments=frag_gun
+        Name=Шотган
+        Owner=Maloc,NonKling
+        Priority=40
+        RacialRestriction=1
+        Text=Микромодуль второго уровня. Заменяет осколочные снаряды <clr>разрывного орудия<clrEnd> <clr>малокской<clrEnd> сборки зажигательными, обладающими более внушительной огневой мощью, разрушающими вражеское оборудование и ослабляющими броню.
+		Text=<clr><clrEnd>
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=<clr>Ослабляет вражескую броню<clrEnd>
+        Text=<clr>Разрушает оборудование противника<clrEnd>
+        WeaponMods=Acid,Destruct
+        bonWSplinter=10
+    }
+    ShuEmitter_Unlocker3000 ^{
+        Cost=150
+        Equipments=W17
+        Fragility=150
+        Name=Анлокер-3000
+        Owner=PirateClan,NonKling
+        Priority=40
+        RacialRestriction=1
+        Text=Микромодуль второго уровня. Снимает системные ограничения с любого <clr>пиратского кафаситора<clrEnd>, что приводит к резкому возрастанию его урона и дальности, снижая при этом его надежность. Стоимость такого оружия возрастает.
+        Text=<clr><clrEnd>
+		Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Стоимость: <clr>+50%<clrEnd>
+        Text=Надежность: <clr>-33%<clrEnd>
+        bonWEnergy=30
+        bonWRadius=65
+    }
+    ShuEmitter_Gunfire ^{
+        Equipments=maloc_laser,maloc_laser2
+        Fragility=80
+        Name=Ганфаер
+        Owner=Maloc,Peleng
+        Priority=40
+        RacialRestriction=1
+        Size=85
+        Text=Микромодуль второго уровня. Совместная разработка <clr>малоков<clrEnd> и <clr>пеленгов<clrEnd>. Реинкарнация <clr>боевого лазера ТБ<clrEnd>, превращающая его в конкурентоспособное лёгкое и прочное орудие, приспособленное для ведения боя на дальних дистанциях. По слухам, проект был выкраден из фэянских лабораторий.
+        Text=<clr><clrEnd>
+		Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Прочность: <clr>+25%<clrEnd>
+        Text=Размер: <clr>-15%<clrEnd>
+        bonWEnergy=5
+        bonWRadius=100
+    }
+    ShuEmitter_Striker ^{
+        Equipments=sphere_gun
+        Name=Страйкер
+        Owner=PirateClan
+        Priority=30
+        Text=Микромодуль первого уровня. Вдохновленные доминаторской оружейной модификацией, <clr>пираты<clrEnd> разработали модуль, улучшающий одно из самых сильных их орудий - <clr>прожектор вихря<clrEnd> - по схожему принципу, значительно увеличивая максимальный урон в зависимости от повреждений цели.
+        Text=<clr><clrEnd>
+		Text=Бонус урона: <clr>15%<clrEnd>
+        Text=Бонус к урону: до <clr>33%<clrEnd>
+        WeaponMods=ScanBonus,BonusToDamaged
+    }
+    ShuEmitter_MRI ^{
+        Equipments=sub_gun
+        Name=МРТ
+        Owner=People
+        Priority=30
+        RacialRestriction=1
+        Text=Микромодуль первого уровня. Добавляет <clr>Х-дефибриллятору<clrEnd> блок генерации магнитно-резонансных тетраэдров - пирамидообразных снарядов, вызывающих перебои в работе всего оборудования цели. Также снаряды имеют шанс заблокировать работу дроида или оружия. По патриотическим соображениям совместим лишь с орудиями <clr>людской<clrEnd> расы.
+        WeaponMods=Magnetic,BlockWeapon,BlockDroid
+    }
+    ShuEmitter_LiPacific ^{
+        Cost=60
+        Equipments=gaal_vision
+        Name=Лай-пацифик
+        Owner=Gaal,NonKling
+        Priority=30
+        RacialRestriction=1
+        Size=70
+        Text=Микромодуль первого уровня. Удаляет часть боевых компонентов <clr>аннигилятора поля<clrEnd>, взамен устанавливая более компактный и дешёвый модуль замедления противника. Поскольку все прочие расы признали подобный подход малоэффективным, данный микромодуль совместим лишь с орудиями <clr>гаальской<clrEnd> конструкции.
+        Text=<clr><clrEnd>
+		Text=Размер: <clr>-30%<clrEnd>
+        Text=Стоимость: <clr>-40%<clrEnd>
+		Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=<clr>Добавляет эффект замедления<clrEnd>
+        WeaponMods=Decelerate
+        bonWEnergy=-7
+    }
+    ShuEmitter_PulseBlockR2 ^{
+        Cost=350
+        Equipments=pulse_gun
+        Name=ПульсБлок R2
+        Owner=Fei
+        Priority=5
+        RacialRestriction=1
+        Text=Микромодуль первого уровня. Подключает к <clr>пульсгану<clrEnd>, проиведенному по <clr>фэянской<clrEnd> технологии, экспериментальный блок генерации энергетических сгустков, создающий куда более смертоносный снаряд, нежели обыкновенный модуль. Существенным недостатком конструкции, из-за которого она и не попала в массовое производство, является сложность в эксплуатации, в разы увеличивающая стоимость ремонта.
+        Text=<clr><clrEnd>
+		Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Cтоимость: <clr>+250%<clrEnd>
+        bonWEnergy=40
+        bonWRadius=15
+    }
+	//Конец ММ
+	//Начало оружейных акринов (модификаций)
     ShuEmitter_ZipgunPrototype ^{
         Cost=175
         CustomTag=ShuEmitter_ZipgunPrototype
@@ -544,22 +672,6 @@ MicroModuls ^{
         Special=1
         Text=<color=248,252,248>Этот прототип - утеряннная разработка <clr>фэянских<clrEnd> ученых. Ранняя версия гравитонного лучемета отличается от базовой большей компактностью, но и меньшей износостойкостью. Кроме того, починка орудия обходится значительно дороже в связи с нестандартной конструкцией прототипа.</color>
     }
-    ShuEmitter_Gunfire ^{
-        Equipments=maloc_laser,maloc_laser2
-        Fragility=80
-        Name=Ганфаер
-        Owner=Maloc,Peleng
-        Priority=40
-        RacialRestriction=1
-        Size=85
-        Text=Микромодуль второго уровня. Совместная разработка <clr>малоков<clrEnd> и <clr>пеленгов<clrEnd>. Реинкарнация <clr>боевого лазера ТБ<clrEnd>, превращающая его в конкурентоспособное лёгкое и прочное орудие, приспособленное для ведения боя на дальних дистанциях. По слухам, проект был выкраден из фэянских лабораторий.
-        Text=Сила энергетического оружия: <bonWEnergy> ед.
-        Text=Дальность стрельбы: <bonWRadius> ед.
-        Text=Прочность: <clr>+25%<clrEnd>
-        Text=Размер: <clr>-15%<clrEnd>
-        bonWEnergy=5
-        bonWRadius=100
-    }
     ShuEmitter_BlasterPrototype ^{
         Cost=140
         CustomTag=ShuEmitter_BlasterPrototype
@@ -573,83 +685,6 @@ MicroModuls ^{
         Text=<color=248,252,248>Этот прототип - утеряннная разработка <clr>пиратских<clrEnd> ученых. Ранняя версия лазера E-11 отличается от базовой меньшей дальностью. Кроме того, починка орудия обходится дороже в связи с нестандартной конструкцией прототипа.</color>
         bonWRadius=-40
     }
-    ShuEmitter_LiPacific ^{
-        Cost=60
-        Equipments=gaal_vision
-        Name=Лай-пацифик
-        Owner=Gaal,NonKling
-        Priority=30
-        RacialRestriction=1
-        Size=70
-        Text=Микромодуль первого уровня. Удаляет часть боевых компонентов <clr>аннигилятора поля<clrEnd>, взамен устанавливая более компактный и дешёвый модуль замедления противника. Поскольку все прочие расы признали подобный подход малоэффективным, данный микромодуль совместим лишь с орудиями <clr>гаальской<clrEnd> конструкции.
-        Text=Размер: <clr>-30%<clrEnd>
-        Text=Стоимость: <clr>-40%<clrEnd>
-        Text=Сила аннигилятора: <bonWEnergy> ед.
-        Text=<clr>Добавляет эффект замедления<clrEnd>
-        WeaponMods=Decelerate
-        bonWEnergy=-7
-    }
-    ShuEmitter_MRI ^{
-        Equipments=sub_gun
-        Name=МРТ
-        Owner=People
-        Priority=30
-        RacialRestriction=1
-        Text=Микромодуль первого уровня. Добавляет <clr>Х-дефибриллятору<clrEnd> блок генерации магнитно-резонансных тетраэдров - пирамидообразных снарядов, вызывающих перебои в работе всего оборудования цели. Также снаряды имеют шанс заблокировать работу дроида или оружия. По патриотическим соображениям совместим лишь с орудиями <clr>людской<clrEnd> расы.
-        WeaponMods=Magnetic,BlockWeapon,BlockDroid
-    }
-    ShuEmitter_Penny ^{
-        Cost=10
-        Equipments=photon_gun,photon_gun2,photon_gun3
-        Fragility=200
-        Name=Копейка
-        Owner=NonKling
-        Priority=90
-        Size=60
-        Text=Микромодуль третьего уровня. Превращает <clr>фотонную пушку<clrEnd> в очень хлипкий, компактный и дешевый для корабельных пушек агрегат - аналог мощного, но очень недальнобойного малокского ховерлетного орудия "Копейка", получившего свое название от самой дешевой древнебуржуйской монеты.
-        Text=Сила фотонной пушки: <bonWEnergy> ед.
-        Text=Дальность стрельбы: <bonWRadius> ед.
-        Text=Стоимость: <clr>-90%<clrEnd>
-        Text=Прочность: <clr>-50%<clrEnd>
-        Text=Размер: <clr>-40%<clrEnd>
-        bonWEnergy=20
-        bonWRadius=-100
-    }
-    ShuEmitter_PulseBlockR2 ^{
-        Cost=350
-        Equipments=pulse_gun
-        Name=ПульсБлок R2
-        Owner=Fei
-        Priority=5
-        RacialRestriction=1
-        Text=Микромодуль первого уровня. Подключает к <clr>пульсгану<clrEnd>, проиведенному по <clr>фэянской<clrEnd> технологии, экспериментальный блок генерации энергетических сгустков, создающий куда более смертоносный снаряд, нежели обыкновенный модуль. Существенным недостатком конструкции, из-за которого она и не попала в массовое производство, является сложность в эксплуатации, в разы увеличивающая стоимость ремонта.
-        Text=Сила пульсгана: <bonWEnergy> ед.
-        Text=Дальность стрельбы: <bonWRadius> ед.
-        Text=Cтоимость: <clr>+250%<clrEnd>
-        bonWEnergy=40
-        bonWRadius=15
-    }
-    ShuEmitter_Repairer ^{
-        Equipments=splash_faser
-        Name=Ремонтник
-        Owner=Peleng,Fei,Gaal,PirateClan
-        Priority=75
-        Text=Микромодуль третьего уровня. Добавляет <clr>сплэшевому лазеру<clrEnd> возможность мощным лучом поглощать структуру цели, ремонтируя корабль за счет наносимого урона. Запрещен к использованию <clr>малоками<clrEnd> и <clr>фэянами<clrEnd> по причине частого использования в межрасовых стычках, что не мешает <clr>пиратам<clrEnd>, игнорирующим любые дипломатические решения.
-        WeaponMods=Drain
-    }
-    ShuEmitter_Shotgan ^{
-        Equipments=frag_gun
-        Name=Шотган
-        Owner=Maloc,NonKling
-        Priority=40
-        RacialRestriction=1
-        Text=Микромодуль второго уровня. Заменяет осколочные снаряды <clr>разрывного орудия<clrEnd> <clr>малокской<clrEnd> сборки зажигательными, обладающими более внушительной огневой мощью, разрушающими вражеское оборудование и ослабляющими броню.
-        Text=Урон орудия: <bonWSplinter> ед.
-        Text=<clr>Ослабляет вражескую броню<clrEnd>
-        Text=<clr>Разрушает оборудование противника<clrEnd>
-        WeaponMods=Acid,Destruct
-        bonWSplinter=10
-    }
     ShuEmitter_RetractorPrototype ^{
         Cost=155
         CustomTag=ShuEmitter_RetractorPrototype
@@ -662,32 +697,6 @@ MicroModuls ^{
         ShotVisual=7
         Special=1
         Text=<color=248,252,248>Этот прототип - утеряннная разработка <clr>пеленгских<clrEnd> ученых. Ранняя версия ретрактора отличается от базовой куда меньшей износостойкостью. Кроме того, починка орудия обходится дороже в связи с нестандартной конструкцией прототипа.</color>
-    }
-    ShuEmitter_Striker ^{
-        Equipments=sphere_gun
-        Name=Страйкер
-        Owner=PirateClan
-        Priority=30
-        Text=Микромодуль первого уровня. Вдохновленные доминаторской оружейной модификацией, <clr>пираты<clrEnd> разработали модуль, улучшающий одно из самых сильных их орудий - <clr>прожектор вихря<clrEnd> - по схожему принципу, значительно увеличивая максимальный урон в зависимости от повреждений цели.
-        Text=Бонус урона: <clr>15%<clrEnd>
-        Text=Бонус к урону: до <clr>33%<clrEnd>
-        WeaponMods=ScanBonus,BonusToDamaged
-    }
-    ShuEmitter_Unlocker3000 ^{
-        Cost=150
-        Equipments=W17
-        Fragility=150
-        Name=Анлокер-3000
-        Owner=PirateClan,NonKling
-        Priority=40
-        RacialRestriction=1
-        Text=Микромодуль второго уровня. Снимает системные ограничения с любого <clr>пиратского кафаситора<clrEnd>, что приводит к резкому возрастанию его урона и дальности, снижая при этом его надежность. Стоимость такого оружия возрастает.
-        Text=Сила кафаситора: <bonWEnergy> ед.
-        Text=Дальность кафаситора: <bonWRadius> ед.
-        Text=Стоимость: <clr>+50%<clrEnd>
-        Text=Надежность: <clr>-33%<clrEnd>
-        bonWEnergy=30
-        bonWRadius=65
     }
 }
 ShipInfo ^{
