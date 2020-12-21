@@ -1,5 +1,5 @@
 Script ^{
-    Mod_EvoMC ~{
+    Mod_EvoMC ^{
 		141=1 января
         126=Закупиться медикаментами
         120=<br>
@@ -378,13 +378,13 @@ ShipInfo ^{
                 OnActCodeTypes=t_OnStep
 				OnActStepTypes=11
 				OnActCode ^{
-					01=dword cur_info=CurInfo();
+					01=dword cur_info = CurInfo();
 					//Снимаем с игрока штрафы к навыкам, если действие уринового дебафа завершено
-					02=if(ShipCustomShipInfoData(0,cur_info,1)<=CurTurn())
+					02=if(ShipCustomShipInfoData(0, cur_info,1) <= CurTurn())
 					03 ^{
-						01=ShipSpecialBonuses(Player(),bonSkill5,ShipSpecialBonuses(Player(),bonSkill5)+ShipCustomShipInfoData(0,cur_info,2));
-						02=ShipSpecialBonuses(Player(),bonSkill6,ShipSpecialBonuses(Player(),bonSkill6)+ShipCustomShipInfoData(0,cur_info,3));
-						03=ShipDeleteCustomShipInfo(Player(),'EvoMC_UrineCurse');
+						01=ShipSpecialBonuses(Player(), bonSkill5, ShipSpecialBonuses(Player(), bonSkill5) + ShipCustomShipInfoData(0, cur_info, 2));
+						02=ShipSpecialBonuses(Player(), bonSkill6, ShipSpecialBonuses(Player(), bonSkill6) + ShipCustomShipInfoData(0, cur_info, 3));
+						03=ShipDeleteCustomShipInfo(Player(), 'EvoMC_UrineCurse');
 					}
 				}
 			}
