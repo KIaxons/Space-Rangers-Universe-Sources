@@ -361,27 +361,6 @@ MicroModuls ^{
         bonWEnergy=-10
         bonWSplinter=-14
     }
-    ShuMM_BiogeneticDroid ^{
-        Equipments=Droid
-        KindGraph=BiogeneticDroid
-        Name=Биогенетический дроид
-        Owner=Peleng
-        Priority=30
-        Ruins=PB,MB,Manaan
-        Special=1
-		BioEquip=1
-        Text=<color=248,252,248>Уникальный случай, когда роль оборудования выполняют живые организмы. Особые мозговые волны, вырабатываемые этими червями, положительно влияют на работу навигационных систем, но вот оставляемая ими слизь плохо сказывалась на оборудовании, что никак не устраивало <color=255,240,100>пеленгских</color> учёных. В конце концов, выделение слизи удалось остановить, однако в результате подобного надругательства над природой, здоровье животных серьёзно пошатнулось.</color>
-		Text=<clr><clrEnd>
-        Text=Дальность прыжка: <bonJump> пк.
-        Text=Дальность радара: <bonRadar> млн. км.
-        Text=Мощность сканера: <bonScan> ед.
-        Fragility=370
-        Cost=200
-		Size=100
-        bonJump=3
-        bonRadar=250
-        bonScan=2
-    }
     ShuMM_BipolarRadar1 ^{
         Equipments=Radar
         KindGraph=BipolarRadar
@@ -944,6 +923,84 @@ MicroModuls ^{
         Cost=250
         Size=100
         bonScan=8
+    }
+    ShuMM_BiogeneticDroid1 ^{
+        Equipments=Droid
+        KindGraph=BiogeneticDroid
+        Name=Биогенетический дроид I
+		AcrynLevel=1
+		SerieLevel1=ShuMM_BiogeneticDroid1
+		SerieLevel2=ShuMM_BiogeneticDroid2
+		SerieLevel3=ShuMM_BiogeneticDroid3
+		LevelsCount=3
+        Owner=PirateClan
+        Priority=10
+        Ruins=PB,MB,Manaan
+        Special=1
+		BioEquip=1
+        Text=<color=248,252,248>Уникальный случай, когда роль оборудования выполняют живые организмы. Особые мозговые волны, вырабатываемые этими червями, положительно влияют на работу навигационных систем, но вот оставляемая ими слизь плохо сказывалась на оборудовании, что никак не устраивало <color=255,240,100>пиратских</color> учёных. В конце концов, выделение слизи удалось остановить, однако в результате подобного надругательства над природой, здоровье животных оказалось критически подорвано.</color>
+		Text=<clr><clrEnd>
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan> ед.
+        Fragility=270
+        Cost=150
+		Size=100
+        bonJump=2
+        bonRadar=200
+        bonScan=1
+    }
+    ShuMM_BiogeneticDroid2 ^{
+        Equipments=Droid
+        KindGraph=BiogeneticDroid
+        Name=Биогенетический дроид II
+		AcrynLevel=2
+		SerieLevel1=ShuMM_BiogeneticDroid1
+		SerieLevel2=ShuMM_BiogeneticDroid2
+		SerieLevel3=ShuMM_BiogeneticDroid3
+		LevelsCount=3
+        Owner=PirateClan
+        Priority=30
+        Ruins=PB,MB,Manaan
+        Special=1
+		BioEquip=1
+        Text=<color=248,252,248>Уникальный случай, когда роль оборудования выполняют живые организмы. Особые мозговые волны, вырабатываемые этими червями, положительно влияют на работу навигационных систем, но вот оставляемая ими слизь плохо сказывалась на оборудовании, что никак не устраивало <color=255,240,100>пиратских</color> учёных. В конце концов, выделение слизи удалось остановить, однако в результате подобного надругательства над природой, здоровье животных оказалось критически подорвано.</color>
+		Text=<clr><clrEnd>
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan> ед.
+        Fragility=370
+        Cost=200
+		Size=100
+        bonJump=3
+        bonRadar=250
+        bonScan=2
+    }
+    ShuMM_BiogeneticDroid3 ^{
+        Equipments=Droid
+        KindGraph=BiogeneticDroid
+        Name=Биогенетический дроид III
+		AcrynLevel=3
+		SerieLevel1=ShuMM_BiogeneticDroid1
+		SerieLevel2=ShuMM_BiogeneticDroid2
+		SerieLevel3=ShuMM_BiogeneticDroid3
+		LevelsCount=3
+        Owner=PirateClan
+        Priority=50
+        Ruins=PB,MB,Manaan
+        Special=1
+		BioEquip=1
+        Text=<color=248,252,248>Уникальный случай, когда роль оборудования выполняют живые организмы. Особые мозговые волны, вырабатываемые этими червями, положительно влияют на работу навигационных систем, но вот оставляемая ими слизь плохо сказывалась на оборудовании, что никак не устраивало <color=255,240,100>пиратских</color> учёных. В конце концов, выделение слизи удалось остановить, однако в результате подобного надругательства над природой, здоровье животных оказалось критически подорвано.</color>
+		Text=<clr><clrEnd>
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan> ед.
+        Fragility=450
+        Cost=250
+		Size=100
+        bonJump=4
+        bonRadar=300
+        bonScan=3
     }
     ShuMM_ElectrogenicHook1 ^{
         Equipments=Hook

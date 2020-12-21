@@ -52,46 +52,56 @@ Items ^{
 }
 MicroModuls ~{
     ExpTC_DyshotEnergy ^{
-        Cost=400
         CustomTag=ExpTC_DyshotEnergy
         Equipments=W01,W03,W05,W06,W08,W10,W11,W12,W17,sub_gun,grav_beam,splash_faser,gaal_vision,slow_gun,sphere_gun,pulse_gun,pulse_gun2,maloc_laser,maloc_laser2,photon_gun,photon_gun2,photon_gun3
-        Fragility=133
         Name="Дишот"
         OnPlanets=1
         Priority=10
         Ruins=Any
-        Size=200
         Special=1
         Text=<color=248,252,248>На это орудие установлен дополнительный энергомодуль, который вводится в строй, пока основной находится на перезарядке. Синхронизировав циклы их работы, инженеры смогли добиться впечатляющего прироста скорострельности установки. Недостатком же данного подхода явился возросший вес и стоимость орудия, а также ускоренный износ главных проводящих контуров устройства.</color>
         Text=<clr><clrEnd>
         Text=Скорострельность: <clr>+1<clrEnd>
+        Fragility=133
+        Cost=400
+        Size=200
         bonAttacks=1
     }
     ExpTC_DyshotSplinter ^{
-        Cost=400
-        CustomTag=ExpTC_DyshotSplinter,frag_gun,laser_gun
+        CustomTag=ExpTC_DyshotSplinter,frag_gun
         Equipments=W02,W07,W09,W16
-        Fragility=133
         Name="Дишот"
         OnPlanets=1
         Priority=10
         Ruins=Any
-        Size=200
         Special=1
         Text=<color=248,252,248>На данном орудии установлена продвинутая система подачи снарядов. Материалы нулевого трения и дополнительные системы охлаждения позволили существенно сократить время, необходимое для полной перезарядки и, соответственно, снизить нежелательную задержку перед выстрелом. К сожалению, полностью устранить фактор ускоренного износа инженеры так и не смогли, а применение более плотных и дорогих деталей привело к увеличению конечного веса всей конструкции.</color>
         Text=<clr><clrEnd>
         Text=Скорострельность: <clr>+1<clrEnd>
+        Fragility=133
+        Cost=400
+        Size=200
+        bonAttacks=1
+    }
+    ExpTC_TryshotLaserGun ^{
+        Equipments=laser_gun
+        Name="Тришот"
+        OnPlanets=1
+        Priority=10
+        ShotVisual=3
+        Special=1
+        Text=<color=248,252,248>На данном орудии установлена продвинутая система подачи снарядов. Материалы нулевого трения и дополнительные системы охлаждения позволили существенно сократить время, необходимое для полной перезарядки и, соответственно, снизить нежелательную задержку перед выстрелом. К сожалению, полностью устранить фактор ускоренного износа инженеры так и не смогли, а применение более плотных и дорогих деталей привело к увеличению конечного веса всей конструкции.</color>
+        Fragility=133
+        Cost=400
+        Size=200
         bonAttacks=1
     }
     ExpTC_MagnetronEnergy ^{
-        Cost=180
         Equipments=W01,W03,W05,W06,W08,W10,W11,W12,W17,PlasmaGun,sub_gun,grav_beam,splash_faser,gaal_vision,slow_gun,pulse_gun,pulse_gun2,maloc_laser,maloc_laser2,photon_gun,photon_gun2,photon_gun3
-        Fragility=133
         Name="Магнетрон"
         OnPlanets=1
         Priority=10
         Ruins=Any
-        Size=110
         Special=1
         Text=<color=248,252,248>Источник мощного магнитного поля, установленный на данном орудии, значительно увеличивает пробивную силу любого энергетического импульса. При этом вызываемые магнитным полем помехи отрицательно сказываются на надёжности установки, а также ощутимо снижают эффективность работы бортового оборудования как атакующего, так и его цели.</color>
         Text=<clr><clrEnd>
@@ -99,20 +109,20 @@ MicroModuls ~{
         Text=Накладывает на цель: <clr>ЭМ-помехи<clrEnd>
         Text=Дальность радара: <bonRadar> млн. км.
         Text=Мощность сканера: <bonScan> ед.
+        Fragility=133
+        Cost=180
+        Size=110
         WeaponMods=Magnetic
         bonRadar=-100
         bonScan=-2
         bonWEnergy=15
     }
     ExpTC_MagnetronSplinter ^{
-        Cost=180
         Equipments=W02,W07,W09,W16,frag_gun,laser_gun
-        Fragility=133
         Name="Магнетрон"
         OnPlanets=1
         Priority=10
         Ruins=Any
-        Size=110
         Special=1
         Text=<color=248,252,248>Источник мощного магнитного поля, установленный на данном орудии, значительно увеличивает пробивную силу любого кинетического боеприпаса. При этом вызываемые магнитным полем помехи отрицательно сказываются на надёжности установки, а также ощутимо снижают эффективность работы бортового оборудования как атакующего, так и его цели.</color>
         Text=<clr><clrEnd>
@@ -120,6 +130,9 @@ MicroModuls ~{
         Text=Накладывает на цель: <clr>ЭМ-помехи<clrEnd>
         Text=Дальность радара: <bonRadar> млн. км.
         Text=Мощность сканера: <bonScan> ед.
+        Fragility=133
+        Cost=180
+        Size=110
         WeaponMods=Magnetic
         bonRadar=-100
         bonScan=-2
