@@ -506,23 +506,14 @@ MicroModuls ^{
         bonWEnergy=20
         bonWRadius=-100
     }
-    // ShuEmitter_Repairer ^{
-        // Equipments=splash_faser
-        // Name=Ремонтник
-        // Owner=Peleng,Fei,Gaal,PirateClan
-        // Priority=75
-        // Text=Микромодуль третьего уровня. Добавляет <clr>сплэшевому лазеру<clrEnd> возможность мощным лучом поглощать структуру цели, ремонтируя корабль за счет наносимого урона. Запрещен к использованию <clr>малоками<clrEnd> и <clr>фэянами<clrEnd> по причине частого использования в межрасовых стычках, что не мешает <clr>пиратам<clrEnd>, игнорирующим любые дипломатические решения.
-        // WeaponMods=Drain
-    // }
-    // ShuEmitter_BallBeam ^{
-        // Equipments=laser_gun
-        // Name=Бол-луч
-        // Owner=PirateClan
-        // Priority=45
-        // RacialRestriction=1
-        // Text=Микромодуль второго уровня. Судя по его названию, разработчикам из <clr>пиратского<clrEnd> клана был хорошо знаком принцип: "Больше - лучше": он повышает скорострельность <clr>бластера Е-11<clrEnd>, заставляя его производить на один выстрел за сутки больше.
-        // bonAttacks=1
-    // }
+    ShuEmitter_Repairer ^{
+        Equipments=splash_faser
+        Name=Ремонтник
+        Owner=Peleng,Fei,Gaal,PirateClan
+        Priority=75
+        Text=Микромодуль третьего уровня. Добавляет <clr>сплэшевому лазеру<clrEnd> возможность мощным лучом поглощать структуру цели, ремонтируя корабль за счёт наносимого урона. Запрещен к использованию <clr>малоками<clrEnd> и <clr>фэянами<clrEnd> по причине частого использования в межрасовых стычках, что не мешает <clr>пиратам<clrEnd>, игнорирующим любые дипломатические решения.
+        WeaponMods=Drain
+    }
     ShuEmitter_ElephantGun ^{
         Cost=200
         Equipments=slow_gun
@@ -641,98 +632,5 @@ MicroModuls ^{
         Text=Cтоимость: <clr>+250%<clrEnd>
         bonWEnergy=40
         bonWRadius=15
-    }
-	//Конец ММ
-	//Начало оружейных акринов (модификаций)
-    ShuEmitter_ZipgunPrototype ^{
-        Cost=175
-        CustomTag=ShuEmitter_ZipgunPrototype
-        Fragility=85
-        KindGraph=old
-        LockedAcryn=3
-        Name=прототип
-        NonSearchable=1
-        Owner=Maloc,Peleng,People,Fei,Gaal,PirateClan
-        Priority=0
-        ShotVisual=5
-        Special=1
-        Text=<color=248,252,248>Этот прототип - утеряннная разработка <clr>малокских<clrEnd> ученых. Ранняя версия разрывного орудия отличается от базовой повышенной прочностью и большим весом. Кроме того, починка орудия обходится значительно дороже в связи с нестандартной конструкцией прототипа.</color>
-    }
-    ShuEmitter_GravitonBeamerPrototype ^{
-        Cost=175
-        CustomTag=ShuEmitter_GravitonBeamerPrototype
-        Fragility=120
-        KindGraph=old
-        LockedAcryn=3
-        Name=прототип
-        NonSearchable=1
-        Owner=Maloc,Peleng,People,Fei,Gaal,PirateClan
-        Priority=0
-        ShotVisual=5
-        Special=1
-        Text=<color=248,252,248>Этот прототип - утеряннная разработка <clr>фэянских<clrEnd> ученых. Ранняя версия гравитонного лучемета отличается от базовой большей компактностью, но и меньшей износостойкостью. Кроме того, починка орудия обходится значительно дороже в связи с нестандартной конструкцией прототипа.</color>
-    }
-    ShuEmitter_BlasterPrototype ^{
-        Cost=140
-        CustomTag=ShuEmitter_BlasterPrototype
-        LockedAcryn=3
-        Name=прототип
-        NonSearchable=1
-        Owner=Maloc,Peleng,People,Fei,Gaal,PirateClan
-        Priority=0
-        ShotVisual=3
-        Special=1
-        Text=<color=248,252,248>Этот прототип - утеряннная разработка <clr>пиратских<clrEnd> ученых. Ранняя версия лазера E-11 отличается от базовой меньшей дальностью. Кроме того, починка орудия обходится дороже в связи с нестандартной конструкцией прототипа.</color>
-        bonWRadius=-40
-    }
-    ShuEmitter_RetractorPrototype ^{
-        Cost=155
-        CustomTag=ShuEmitter_RetractorPrototype
-        Fragility=135
-        LockedAcryn=3
-        Name=прототип
-        NonSearchable=1
-        Owner=Maloc,Peleng,People,Fei,Gaal,PirateClan
-        Priority=0
-        ShotVisual=7
-        Special=1
-        Text=<color=248,252,248>Этот прототип - утеряннная разработка <clr>пеленгских<clrEnd> ученых. Ранняя версия ретрактора отличается от базовой куда меньшей износостойкостью. Кроме того, починка орудия обходится дороже в связи с нестандартной конструкцией прототипа.</color>
-    }
-}
-ShipInfo ^{
-    AddInfo ^{
-        CustomInfos ^{
-            ShuEmitter ^{
-                Icon=1
-                Name=ShuEmitter
-                OnActCodeTypes=t_OnWeaponShot
-                OnActCode ^{
-					01=dword s=ScriptItemActObject1();
-					02=if(ObjectType(s)!=4 && ObjectType(s)!=5)exit;
-					03=dword i=ScriptItemActObject2();
-					04=int dmg=100;
-					05=if(ItemName(i)=='Пульсган R20' && ShipOwner(s)==5)dmg=150;
-					06=else if(ItemName(i)=='Пульсган R21' && ShipOwner(s)==5)dmg=150;
-					07=else if(ItemName(i)=='Бластер Е-11' && ShipTypeN(s)==t_Warrior)dmg=150;
-					08=else if(ItemName(i)=='Бластер Е-11' && ShipType(s)=='Ranger')dmg=150;
-					09=else if(ItemName(i)=='Ретрактор' && ShipTypeN(s)==t_Transport && ShipOwner(s)<7)dmg=150;
-					10=if(ShipInScript(s) && !IsPlayer(s))
-					11 ^{
-						01=if(ShipCustomFaction(s)=='Klissan')
-						02 ^{
-							01=if(ItemName(i)=='Ретрактор')dmg=150;
-							02=else if(ItemName(i)=='Фотонная пушка М2')dmg=150;
-							03=else if(ItemName(i)=='Фотонная пушка М3')dmg=150;
-							04=else if(ItemName(i)=='Фотонная пушка М4')dmg=150;
-							05=else if(ItemName(i)=='Х-дефибриллятор')dmg=150;
-							06=else if(ItemName(i)=='Гравитонный лучемет')dmg=150;
-							07=else if(ItemName(i)=='Разрывное орудие')dmg=150;
-							08=else if(ItemName(i)=='Аннигилятор поля')dmg=150;
-						}
-					}
-					12=ScriptItemActParam((ScriptItemActParam()*dmg)/100);
-                }
-            }
-        }
     }
 }
