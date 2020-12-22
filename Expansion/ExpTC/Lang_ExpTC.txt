@@ -41,7 +41,7 @@ Items ^{
             }
             38 ^{
                 Name=Астероид
-                Text=Желтый астероид
+                Text=Жёлтый астероид
             }
             39 ^{
                 Name=Астероид
@@ -50,7 +50,143 @@ Items ^{
         }
     }
 }
-MicroModuls ~{
+MicroModuls ^{
+    // ExpTC_Diphrode ^{
+        // Equipments=Nothing
+        // Name="Дифрод"
+        // OnPlanets=1
+        // Owner=Maloc,Peleng,People,Fei,Gaal
+        // Priority=10
+        // Ruins=Any
+        // ShotVisual=1
+        // Special=1
+        // Text=<color=248,252,248>Серийный комплект модифицированных узлов орудия и программных доработок "Дифрод", увеличивающий мощность оружия любого типа.</color>
+        // Text=<clr><clrEnd>
+        // Text=Бонус к урону: <clr>+15%<clrEnd>
+        // Text=Мощность сканера: <bonScan> ед.
+        // Text=(для применения бонуса требуется превышение<br>мощности сканера над защитой цели)
+        // Fragility=100
+        // Cost=120
+        // Size=110
+        // WeaponMods=ScanBonus
+        // bonScan=-1
+    // }
+    // ExpTC_Liphocarus ^{
+        // Equipments=Nothing
+        // Name="Лифокар"
+        // OnPlanets=1
+        // Priority=10
+        // Ruins=Any
+        // ShotVisual=1
+        // Special=1
+        // Text=<color=248,252,248>Модернизированное по проекту "Лифокар" вооружение наносит дополнительный урон повреждённым целям, используя механизм последовательной сверхточной стрельбы в пробоины корпуса.</color>
+        // Text=<clr><clrEnd>
+        // Text=Бонус к урону: <clr>до +33%<clrEnd>
+        // Text=Мощность сканера: <bonScan> ед.
+        // Text=(для применения бонуса требуется превышение<br>мощности сканера над защитой цели)
+        // Fragility=100
+        // Cost=120
+        // Size=110
+        // WeaponMods=BonusToDamaged
+        // bonScan=-1
+    // }
+    // ExpTC_Javitor ^{
+        // Equipments=Nothing
+        // Name="Джавитор"
+        // OnPlanets=1
+        // Priority=10
+        // Ruins=Any
+        // ShotVisual=2
+        // Special=1
+        // Text=<color=248,252,248>Разработанное для прицельного отстрела ремонтных роботов, вооружение с модификацией "Джавитор" позволяет вести огонь по траектории движения дроида, тем самым получая шанс блокировать вражескому кораблю проведение ремонта во время битвы.</color>
+        // Text=<clr><clrEnd>
+        // Text=Шанс блокировки <clr>дроида<clrEnd> обратно пропорционален размеру корпуса цели
+        // Text=Мощность сканера: <bonScan> ед.
+        // Text=(для применения бонуса требуется превышение<br>мощности сканера над защитой цели)
+        // Fragility=100
+        // Cost=120
+        // Size=110
+        // WeaponMods=BlockDroid
+        // bonScan=-1
+    // }
+    // ExpTC_Armoloc ^{
+        // Equipments=Nothing
+        // Name="Армолок"
+        // OnPlanets=1
+        // Owner=Maloc,Peleng,People,Fei,Gaal
+        // Priority=10
+        // Ruins=Any
+        // ShotVisual=2
+        // Special=1
+        // Text=<color=248,252,248>Оружие в модификации "Армолок" способно высокоточными выстрелами выводить из строя концентратор каналов управления вооружением цели, на некоторое время отнимая у противника способность вести ответный огонь.</color>
+        // Text=<clr><clrEnd>
+        // Text=Шанс блокировки <clr>вооружения<clrEnd> обратно пропорционален размеру корпуса цели
+        // Text=Мощность сканера: <bonScan> ед.
+        // Text=(для применения бонуса требуется превышение<br>мощности сканера над защитой цели)
+        // Fragility=100
+        // Cost=120
+        // Size=110
+        // WeaponMods=BlockWeapon
+        // bonScan=-1
+    // }
+    // ExpTC_Stylermain ^{
+        // Equipments=Nothing
+        // Name="Стилермейн"
+        // OnPlanets=1
+        // Owner=PirateClan
+        // Priority=10
+        // Ruins=Any
+        // ShotVisual=3
+        // Special=1
+        // Text=<color=248,252,248>"Стилермейн" - модификация, монтируемая на корпусе орудийной установки. Во время боя она пытается одновременно со стрельбой транслировать в центральную систему управления вражеского судна аварийную команду на сброс груза. Вероятность успешного срабатывания невелика, однако это может дать пилоту тактическое преимущество в бою и возможность поживиться лёгкой добычей.</color>
+        // Text=<clr><clrEnd>
+        // Text=Шанс сброса товаров из трюма: <clr>+5%<clrEnd>
+        // Text=Мощность сканера: <bonScan> ед.
+        // Text=(для применения бонуса требуется превышение<br>мощности сканера над защитой цели)
+        // Fragility=100
+        // Cost=120
+        // Size=110
+        // WeaponMods=DropCargo
+        // bonScan=-1
+    // }
+    // ExpTC_Inveiter ^{
+        // Equipments=Nothing
+        // Name="Инвейтер"
+        // OnPlanets=1
+        // Owner=PirateClan
+        // Priority=10
+        // Ruins=Any
+        // ShotVisual=4
+        // Special=1
+        // Text=<color=248,252,248>Оружие модификации "Инвейтер" параллельно с нанесением урона подавляет работу системы зажигания цели, повреждая тем самым её <clr>двигатель<clrEnd>.</color>
+        // Text=<clr><clrEnd>
+        // Text=Мощность сканера: <bonScan> ед.
+        // Text=(для применения бонуса требуется превышение<br>мощности сканера над защитой цели)
+        // Fragility=100
+        // Cost=120
+        // Size=110
+        // WeaponMods=ReduceEngine
+        // bonScan=-1
+    // }
+    // ExpTC_Adropter ^{
+        // Equipments=Nothing
+        // Name="Адроптер"
+        // OnPlanets=1
+        // Owner=PirateClan
+        // Priority=10
+        // Ruins=Any
+        // ShotVisual=3
+        // Special=1
+        // Text=<color=248,252,248>Оружие с комплексом дополнительного оборудования "Адроптер" работает по принципу <clr>локализатора взрывной волны<clrEnd>. Пиратская технология далека от совершенства, но всё же повышает вероятность сохранения ценных трофеев после уничтожения вражеского судна.</color>
+        // Text=<clr><clrEnd>
+        // Text=Мощность сканера: <bonScan> ед.
+        // Text=(для применения бонуса требуется превышение<br>мощности сканера над защитой цели)
+        // Fragility=100
+        // Cost=120
+        // Size=110
+        // WeaponMods=MoreDrop
+        // bonScan=-1
+    // }
     ExpTC_DyshotEnergy ^{
         CustomTag=ExpTC_DyshotEnergy
         Equipments=W01,W03,W05,W06,W08,W10,W11,W12,W17,sub_gun,grav_beam,splash_faser,gaal_vision,slow_gun,sphere_gun,pulse_gun,pulse_gun2,maloc_laser,maloc_laser2,photon_gun,photon_gun2,photon_gun3
