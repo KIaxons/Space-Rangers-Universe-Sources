@@ -7,89 +7,76 @@ Asteroid ^{
     kAsteroidMinDamagePercentDef=10
 }
 MicroModuls ^{
-    498 ^{
-        CustomTag=AkrinAmplifier
-        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
-        Name=Акринатор
-        Priority=0
-        Special=1
-        Text=Уникальный микромодуль первого уровня ручной работы. Новейшая экспериментальная разработка техников Коалиции в области акриновых технологий, произведённая в единственном экземпляре. Увеличивает все особые эффекты <clr>акринового<clrEnd> оборудования в <clr>три раза<clrEnd> и нейтрализует все его негативные эффекты. Размер и стоимость оборудования при этом увеличиваются в два раза. Из-за конфликта устаревших разъёмов, установка <clr>Акринатора<clrEnd> в корпус не представляется возможной.
-        Text=<clr><clrEnd>
-		Text=Акриновые бонусы: <clr>+200%<clrEnd>
-		Text=Акриновые штрафы: <clr>-100%<clrEnd>
-		Text=Размер: <clr>+100%<clrEnd>
-        Text=Стоимость: <clr>+100%<clrEnd>
-        Cost=200
-        Size=200
-        bonExtraAkrinEff=200
-        bonExtraAkrinPenalty=-99.99
-    }
-    ShuAsteroids_AstrohullDefGenerator ^{
-        Cost=60
+    ShuAsteroids_AstrohullDefGenerator1 ^{
         CustomTag=ShuAsteroids_AstrohullDefGenerator
         Equipments=DefGenerator
-        Fragility=70
         KindGraph=Aster
-        LockedAcryn=3
-        Name=</color>Астрокорпусный генератор защиты
-        BlockImp=1
+        Name=Астрокорпусный генератор защиты I
+		AcrynSerie=Астрокорпусный генератор защиты I-III
+		AcrynLevel=1
+		SerieLevel1=ShuAsteroids_AstrohullDefGenerator1
+		SerieLevel2=ShuAsteroids_AstrohullDefGenerator2
+		SerieLevel3=ShuAsteroids_AstrohullDefGenerator3
+		LevelsCount=3
         Priority=10
         Ruins=Any
-        Size=75
         Special=1
-        Text=<color=248,252,248>Главным недостатком астрокорпусного генератора является полное <clr>отсутствие защиты<clrEnd> от корабельного вооружения.</color>
+        Text=<color=248,252,248>Данный генератор был разработан с целью защиты кораблей, часто совершающих рейды сквозь крупные скопления <color=255,239,99>астероидов</color>. Встроенный в него астрокорбулятор создаёт антикинетическое поле, снижающее силу удара в момент столкновения корабля с другим космическим телом. В качестве побочного эффекта устройством генерируются частицы, заметно облегчающие корабль, что может оказаться крайне полезным для пилотов, ценящих своё время.</color>
         Text=<clr><clrEnd>
-        Text=Скорость двигателя: <bonSpeed> ед.
+		Text=Урон от попадания астероида: <clr>-40%<clrEnd>
         Text=Масса корабля: <bonMass><clr>%<clrEnd>
-        TextReplace=<color=248,252,248>Данный генератор был разработан с целью защиты кораблей, часто совершающих рейды сквозь крупные скопления <color=255,239,99>астероидов</color>. Отличаясь компактностью, прочностью и дешевизной, этот аппарат создаёт антикинетическое поле, снижающее силу удара в момент столкновения корабля с другим космическим телом. В качестве побочного эффекта устройством генерируются частицы, значительно <color=255,239,99>облегчающие корабль</color>, что может оказаться крайне полезным для пилотов, ценящих своё время.</color>
-        bonDef=-500000000
-        bonMass=-20
-        bonSpeed=50
+        Fragility=100
+        Cost=150
+        Size=104
+		bonResistAsteroid=40
+        bonMass=-6
     }
-    ShuAsteroids_AstrohullDefGeneratorPR4 ^{
-        Cost=80
-        CustomTag=ShuAsteroids_AstrohullDefGeneratorPR4
+    ShuAsteroids_AstrohullDefGenerator2 ^{
+        CustomTag=ShuAsteroids_AstrohullDefGenerator
         Equipments=DefGenerator
-        Fragility=70
         KindGraph=Aster
-        LockedAcryn=3
-        Name=Астрокорпусный генератор защиты PR-4
-        BlockImp=1
-        Priority=50
-        Ruins=CB,MB,Manaan
-        Size=85
+        Name=Астрокорпусный генератор защиты II
+		AcrynSerie=Астрокорпусный генератор защиты I-III
+		AcrynLevel=2
+		SerieLevel1=ShuAsteroids_AstrohullDefGenerator1
+		SerieLevel2=ShuAsteroids_AstrohullDefGenerator2
+		SerieLevel3=ShuAsteroids_AstrohullDefGenerator3
+		LevelsCount=3
+        Priority=30
+        Ruins=Any
         Special=1
-        Text=<color=248,252,248>Главным, но частично компенсированным <clr>пиратами<clrEnd>, недостатком астрокорпусного генератора является полное <clr>отсутствие защиты<clrEnd> от корабельного вооружения. Грубо вмонтированный в устройство генератор помех, позволил незначительно повысить <clr>защищённость<clrEnd> судна от вражеских радаров, что, надо сказать, помогло не сильно.</color>
+        Text=<color=248,252,248>Данный генератор был разработан с целью защиты кораблей, часто совершающих рейды сквозь крупные скопления <color=255,239,99>астероидов</color>. Встроенный в него астрокорбулятор создаёт антикинетическое поле, снижающее силу удара в момент столкновения корабля с другим космическим телом. В качестве побочного эффекта устройством генерируются частицы, заметно облегчающие корабль, что может оказаться крайне полезным для пилотов, ценящих своё время.</color>
         Text=<clr><clrEnd>
-        Text=Скорость двигателя: <bonSpeed> ед.
+		Text=Урон от попадания астероида: <clr>-60%<clrEnd>
         Text=Масса корабля: <bonMass><clr>%<clrEnd>
-        Text=Навык манёвренности: <bonSkill2>
-        TextReplace=<color=248,252,248>Данный генератор был разработан с целью защиты кораблей, часто совершающих рейды сквозь крупные скопления <color=255,239,99>астероидов</color>. Отличаясь компактностью, прочностью и дешевизной, этот аппарат создаёт антикинетическое поле, снижающее силу удара в момент столкновения корабля с другим космическим телом. В качестве побочного эффекта устройством генерируются частицы, значительно <color=255,239,99>облегчающие корабль</color>, что может оказаться крайне полезным для пилотов, ценящих своё время.</color>
-        bonDef=-500000000
-        bonMass=-20
-        bonSkill2=1
-        bonSpeed=50
+        Fragility=100
+        Cost=200
+        Size=102
+		bonResistAsteroid=60
+        bonMass=-8
     }
-    ShuAsteroids_AstrohullDefGeneratorM2 ^{
-        Cost=125
-        CustomTag=ShuAsteroids_AstrohullDefGeneratorM2
+    ShuAsteroids_AstrohullDefGenerator3 ^{
+        CustomTag=ShuAsteroids_AstrohullDefGenerator
         Equipments=DefGenerator
-        Fragility=70
         KindGraph=Aster
-        LockedAcryn=3
-        Name=Астрокорпусный генератор защиты M2
-        BlockImp=1
+        Name=Астрокорпусный генератор защиты III
+		AcrynSerie=Астрокорпусный генератор защиты I-III
+		AcrynLevel=3
+		SerieLevel1=ShuAsteroids_AstrohullDefGenerator1
+		SerieLevel2=ShuAsteroids_AstrohullDefGenerator2
+		SerieLevel3=ShuAsteroids_AstrohullDefGenerator3
+		LevelsCount=3
         Priority=50
-        Ruins=SB,MB,Manaan
-        Size=75
+        Ruins=Any
         Special=1
-        Text=<color=248,252,248>Главным, но частично компенсированным учёными <clr>Коалиции<clrEnd>, недостатком астрокорпусного генератора является полное <clr>отсутствие защиты<clrEnd> от корабельного вооружения. Значительное <clr>усиление<clrEnd> антикинетического поля стало долгожданным ответом на многочисленные просьбы пилотов о качественном улучшении данного устройства.</color>
+        Text=<color=248,252,248>Данный генератор был разработан с целью защиты кораблей, часто совершающих рейды сквозь крупные скопления <color=255,239,99>астероидов</color>. Встроенный в него астрокорбулятор создаёт антикинетическое поле, снижающее силу удара в момент столкновения корабля с другим космическим телом. В качестве побочного эффекта устройством генерируются частицы, заметно облегчающие корабль, что может оказаться крайне полезным для пилотов, ценящих своё время.</color>
         Text=<clr><clrEnd>
-        Text=Скорость двигателя: <bonSpeed> ед.
+		Text=Урон от попадания астероида: <clr>-80%<clrEnd>
         Text=Масса корабля: <bonMass><clr>%<clrEnd>
-        TextReplace=<color=248,252,248>Данный генератор был разработан с целью защиты кораблей, часто совершающих рейды сквозь крупные скопления <color=255,239,99>астероидов</color>. Отличаясь компактностью, прочностью и дешевизной, этот аппарат создаёт антикинетическое поле, снижающее силу удара в момент столкновения корабля с другим космическим телом. В качестве побочного эффекта устройством генерируются частицы, значительно <color=255,239,99>облегчающие корабль</color>, что может оказаться крайне полезным для пилотов, ценящих своё время.</color>
-        bonDef=-500000000
-        bonMass=-40
-        bonSpeed=100
+        Fragility=100
+        Cost=250
+        Size=100
+		bonResistAsteroid=80
+        bonMass=-10
     }
 }

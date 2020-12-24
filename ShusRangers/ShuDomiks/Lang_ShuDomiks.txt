@@ -1,6 +1,6 @@
 Items ^{
     Weapon ^{
-		OriginalWeaponType ~{
+		OriginalWeaponType ^{
 			Industrial_Laser=1
 			Fragmentation_Cannon=2
 			Flux=3
@@ -21,18 +21,18 @@ Items ^{
 			Lirecron=18
 		}
         Name ^{
-            Railgun=банхаммер
+            Railgun=Клопобойка
         }
         Text ^{
-            Railgun=Разрушает молекулярные связи материи, нанося цели <MinDamage>-<MaxDamage><Bonus> ед. ущерба. Максимальная дальность поражения цели: <Radius>.
+            Railgun=Разрушает логику повествования в посредственных рассказах, наполняя сюжет внезапными <color=255,240,100>"ВОТЭТОПОВОРОТ!"</color>, тем самым делая его ещё менее удобоваримым говном.
         }
-		CustomWeapon ~{
+		CustomWeapon ^{
 			StatsVersion ^{
 				ShuDomiks=26.10.20
 			}
 			ShuDomiks ~{
 				1=Railgun
-				Count=1
+				Count=0
 			}
 			Railgun ~{
 				BaseGun=Disintegrator
@@ -66,663 +66,97 @@ Items ^{
 }
 Artefacts ^{
     CustomArtefacts ^{
-        DomScannerCustomizer ^{
-            Broken=(сбиты частоты)
-            BrokenInBattle=
-            BrokenInUse=
+        TechDirector ^{
+			Name=Тех-директор
+			Broken=(расфокусирован)
+            BrokenInBattle=(расфокусирован)
+            BrokenInUse=(расфокусирован)
+            Size=5
+			Cost=2500
+            Text=Позволяет перенастраивать доминаторский <color=255,240,100>тех-детектор</color> на частоту доминаторов <color=255,240,100>любой</color> серии.
+			OnActCodeTypes=t_OnCheckingUsability,t_OnAnotherItem
             OnActCode ^{
-                01=if(ScriptItemActionType(t_OnAnotherItem))
-                02 ^{
-                    01=dword item=ScriptItemActObject1();
-                    02=if(ItemType(item)==t_Scaner && ItemOwner(item)==Kling && ItemDurability(CurItem()))
-                    03 ^{
-                        01=int rand=Rnd(1,5);
-                        02=int kel=0;
-                        03=int blaz=0;
-                        04=int ter=0;
-                        05=str temp_str='';
-                        06=if(rand==1)
-                        07 ^{
-                            01=kel=2;
-                            02=blaz=3;
-                            03=ter=1;
-                        }
-                        08=else if(rand==2)
-                        09 ^{
-                            01=kel=4;
-                            02=blaz=1;
-                            03=ter=2;
-                        }
-                        10=else if(rand==3)
-                        11 ^{
-                            01=kel=1;
-                            02=blaz=3;
-                            03=ter=4;
-                        }
-                        12=else if(rand==4)
-                        13 ^{
-                            01=kel=1;
-                            02=blaz=2;
-                            03=ter=3;
-                        }
-                        14=else if(rand==5)
-                        15 ^{
-                            01=kel=3;
-                            02=blaz=4;
-                            03=ter=2;
-                        }
-                        16=int value=CountBox('Bm.Items.2ScanerKling0s','Выберите частоту',1,4);
-                        17=if(value==blaz)
-                        18 ^{
-                            01=ItemSubrace(item,0);
-                            02=temp_str='блазероидную';
-                        }
-                        19=else if(value==kel)
-                        20 ^{
-                            01=ItemSubrace(item,1);
-                            02=temp_str='келлероидную';
-                        }
-                        21=else if(value==ter)
-                        22 ^{
-                            01=ItemSubrace(item,2);
-                            02=temp_str='терроноидную';
-                        }
-                        23=if(value==ter || value==kel || value==blaz)
-                        24 ^{
-                            01=Sound('Sound.Repair');
-                            02=MessageBox(Format('Сканер настроился на NAME частоту','NAME',temp_str));
-                            03=ScriptItemActParam(1);
-                        }
-                        25=else
-                        26 ^{
-                            01=Sound('Sound.NoSize');
-                            02=int iznos=Rnd(5,20);
-                            03=ItemDurability(item,ItemDurability(item)-iznos);
-                            04=if(ItemDurability(item)<=0)
-                            05 ^{
-                                01=MessageBox('Выбрана некорректная частота. Артефакт вышел из строя');
-                                02=ItemDurability(item,0);
-                            }
-                            06=MessageBox(Format('Выбрана некорректная частота. Артефакт повредился на IZNOS%','IZNOS',iznos));
-                            07=ScriptItemActParam(1);
-                        }
-                    }
-                    04=else ScriptItemActParam(2);
-                }
+				01=dword cur_item = CurItem();
+				02=dword scaner = ScriptItemActObject1();
+				//Если тех-директор не слишком изношен
+				03=if(ItemDurability(cur_item) < 10)
+				04 ^{
+					01=if(ItemType(scaner) == t_Scaner)
+					02 ^{
+						01=if(ItemOwner(scaner) == Kling)
+						02 ^{
+							01=if(ScriptItemActionType(t_OnCheckingUsability))
+							02 ^{
+								01=ScriptItemActParam(1);
+								02=exit;
+							}
+							03=else
+							04 ^{
+								01=unknown tarr = newarray(2);
+								02=int sub_race = ItemSubrace(scaner);
+								03=int serie_set = 0;
+								04=if(sub_race != 0)
+								05 ^{
+									01=tarr[0] = '<color=220,0,0>Блазероидная</color>';
+									02=serie_set = serie_set + 1;
+								}
+								06=if(sub_race != 1)
+								07 ^{
+									01=if(!serie_set) tarr[0] = '<color=0,140,220>Келлероидная</color>';
+									02=else tarr[1] = '<color=0,140,220>Келлероидная</color>';
+									03=serie_set = serie_set + 2;
+								}
+								08=if(sub_race != 2)
+								09 ^{
+									01=tarr[1] = '<color=50,140,15>Терроноидная</color>';
+									02=serie_set = serie_set + 4;
+								}
+								10=int chosen_serie = ListBox('Выберите желаемую частоту:', tarr);
+								11=if(chosen_serie > -1)
+								12 ^{
+									01=str serie_name;
+									02=if(!chosen_serie)
+									03 ^{
+										01=if((serie_set & 1)) serie_name = 'блазероидную';
+										02=else
+										03 ^{
+											01=serie_name = 'келлероидную';
+											02=chosen_serie = 1;
+										}
+									}
+									04=else
+									05 ^{
+										01=if((serie_set & 2)) serie_name = 'келлероидную';
+										02=else
+										03 ^{
+											01=serie_name = 'терроноидную';
+											02=chosen_serie = 2;
+										}
+									}
+									06=ItemSubrace(scaner, chosen_serie);
+									07=Sound('Sound.SaveLoadLoop');
+									08=ItemDurability(cur_item, ItemDurability(cur_item) - Rnd(10, 20));
+									09=if(ItemDurability(cur_item) < 0) ItemDurability(cur_item, 0);
+									10=MessageBox(Format('<color=0,50,200>Тех-детектор</color> перенастроен на #0# частоту.', '#0#', serie_name));
+								}
+							}
+						}
+						03=else if(ScriptItemActionType(t_OnAnotherItem)) ScriptItemActParam(2);
+					}
+					03=else if(ScriptItemActionType(t_OnAnotherItem)) ScriptItemActParam(2);
+				}
+				05=MessageBox('<color=0,50,200>Тех-директор</color> расфокусирован, перенастройка сканера невозможна.');
             }
-            Size=10
-            Text=Позволяет настроить доминаторский тех-детектор на частоту любой серии доминаторов, что, в свою очередь, дает возможность сканировать доминаторов вне зависимости от их серии.
         }
     }
 }
-MicroModuls ~{
+MicroModuls ^{
     ShuDomiks_MMBlockAcryn ^{
-        Fragility=500
         Priority=0
         Special=1
 		BlockMM=1
         LockedAcryn=3
         NonSearchable=1
-    }
-    ShuDomiks_EnergizeEqDomModLocked ^{
-        Cost=120
-        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
-        KindGraph=DomMod
-        NonSearchable=1
-        Owner=Kling
-        Priority=0
-        RacialRestriction=1
-        Size=120
-        Special=1
-        Text=<color=248,252,248>Неизвестная модификация оборудования </color>доминаторов<color=248,252,248>. Особые свойства модификации заблокированы. Для разблокировки обратитесь на научную базу или доминион.</color>
-        bonDef=4
-        bonMass=7
-		LockedAcryn=3
-    }
-    ShuDomiks_EnergizeEqDomModUnlocked ^{
-        Cost=115
-        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
-        Fragility=80
-        KindGraph=DomMod
-        NonSearchable=1
-        Owner=Kling
-        Priority=0
-        Special=1
-        Text=<color=248,252,248>Уникальная модификация оборудования <clr>доминаторов<clrEnd> под названием </color>"Энерджайз"<color=248,252,248>. К оборудованию подключён дополнительный генератор силового поля, защищающий корабль от повреждений и увеличивающий его массу.</color>
-		Text=<br><clr><clrEnd><br>
-        Text=Генератор поля: <bonDef> ед.
-        Text=Масса корабля: <bonMass><clr>%<clrEnd>
-        bonDef=4
-        bonMass=7
-		LockedAcryn=3
-    }
-    ShuDomiks_GlueEqDomModLocked ^{
-        Cost=120
-        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
-        KindGraph=DomMod
-        NonSearchable=1
-        Owner=Kling
-        Priority=0
-        RacialRestriction=1
-        Size=110
-        Special=1
-        Text=<color=248,252,248>Неизвестная модификация оборудования </color>доминаторов<color=248,252,248>. Особые свойства модификации заблокированы. Для разблокировки обратитесь на научную базу или доминион.</color>
-        bonDroid=10
-        bonSkill3=1
-        bonSpeed=-25
-		LockedAcryn=3
-    }
-    ShuDomiks_GlueEqDomModUnlocked ^{
-        Cost=115
-        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
-        Fragility=80
-        KindGraph=DomMod
-        NonSearchable=1
-        Owner=Kling
-        Priority=0
-        Special=1
-        Text=<color=248,252,248>Уникальная модификация оборудования <clr>доминаторов<clrEnd> под названием </color>"Глю"<color=248,252,248>. Помимо основной функции вырабатывает быстрозатвердевающее клейкое вещество, повышающее прочность оборудования и использующееся дроидом для починки корпуса. К сожалению, клейкость этого вещества сковывает движения корабля.</color>
-		Text=<br><clr><clrEnd><br>
-        Text=Эффективность дроида: <bonDroid> ед.
-        Text=Навык техники: <bonSkill3>
-        Text=Навык маневренности: <bonSkill2>
-        Text=Скорость двигателя: <bonSpeed> ед.
-        bonDroid=10
-        bonSkill2=-1
-        bonSkill3=1
-        bonSpeed=-25
-		LockedAcryn=3
-    }
-    ShuDomiks_DetrimentEqDomModLocked ^{
-        Cost=120
-        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
-        KindGraph=DomMod
-        NonSearchable=1
-        Owner=Kling
-        Priority=0
-        RacialRestriction=1
-        Size=115
-        Special=1
-        Text=<color=248,252,248>Неизвестная модификация оборудования </color>доминаторов<color=248,252,248>. Особые свойства модификации заблокированы. Для разблокировки обратитесь на научную базу или доминион.</color>
-        bonRadar=-150
-        bonScan=1
-        bonWEnergy=5
-        bonWMissile=3
-        bonWRadius=-10
-        bonWSplinter=6
-		LockedAcryn=3
-    }
-    ShuDomiks_DetrimentEqDomModUnlocked ^{
-        Cost=115
-        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
-        Fragility=80
-        KindGraph=DomMod
-        NonSearchable=1
-        Owner=Kling
-        Priority=0
-        Size=115
-        Special=1
-        Text=<color=248,252,248>Уникальная модификация оборудования <clr>доминаторов<clrEnd> под названием </color>"Дитраймент"<color=248,252,248>. Оборудование с этой модификацией изменяет систему наведения, увеличивая точность стрельбы на меньших дистанциях.</color>
-		Text=<br><clr><clrEnd><br>
-        Text=Сила энергетического оружия: <bonWEnergy> ед.
-        Text=Сила осколочного оружия: <bonWSplinter> ед.
-        Text=Мощность сканера: <bonScan> ед.
-        Text=Дальность стрельбы: <bonWRadius> ед.
-        Text=Дальность радара: <bonRadar> ед.
-        bonRadar=-150
-        bonScan=1
-        bonWEnergy=4
-        bonWMissile=2
-        bonWRadius=-10
-        bonWSplinter=5
-		LockedAcryn=3
-    }
-    ShuDomiks_RocketLauncherEqDomModLocked ^{
-        Cost=120
-        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
-        KindGraph=DomMod
-        NonSearchable=1
-        Owner=Kling
-        Priority=0
-        RacialRestriction=1
-        Size=115
-        Special=1
-        Text=<color=248,252,248>Неизвестная модификация оборудования </color>доминаторов<color=248,252,248>. Особые свойства модификации заблокированы. Для разблокировки обратитесь на научную базу или доминион.</color>
-        bonMissileSpeed=100
-        bonSpeed=65
-		LockedAcryn=3
-    }
-    ShuDomiks_RocketLauncherEqDomModUnlocked ^{
-        Cost=115
-        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
-        Fragility=130
-        KindGraph=DomMod
-        NonSearchable=1
-        Owner=Kling
-        Priority=0
-        Special=1
-        Text=<color=248,252,248>Уникальная модификация оборудования <clr>доминаторов<clrEnd> под названием </color>"Рокет-ланчер"<color=248,252,248>. Вырабатывает топливо для двигателя и ускорителей ракетного оружия, увеличивая скорость полета корабля и ракет. Негативный эффект заключается в том, что ядерное топливо делает оборудование-производитель значительно менее долговечным.</color>
-		Text=<br><clr><clrEnd><br>
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Скорость ракет: <bonMissileSpeed> ед.
-        bonMissileSpeed=75
-        bonSpeed=50
-		LockedAcryn=3
-    }
-    ShuDomiks_DoubleshotWDomModLocked ^{
-        Cost=175
-        Equipments=WEnergy,WSplinter,WMissile
-        Fragility=160
-        KindGraph=drop
-        Name=неизвестно
-        NonSearchable=1
-        Owner=Kling
-        Priority=0
-		RacialRestriction=1
-        ShotVisual=1
-        Size=200
-        Special=1
-        Text=<color=248,252,248>Неизвестная модификация оружия </color>доминаторов<color=248,252,248>. Из-за конфликтов с оборудованием Коалиции быстро выходит из строя. Уникальные свойства неизвестны. Для устранения неполадок с совместимостью обратитесь на научную базу или доминион.</color>
-        WeaponMods=MoreDrop
-        bonAttacks=1
-        bonWEnergy=-10
-        bonWMissile=-15
-        bonWRadius=-20
-        bonWSplinter=-10
-		LockedAcryn=3
-    }
-    ShuDomiks_DoubleshotWDomModUnlocked ^{
-        Cost=160
-        Equipments=WEnergy,WSplinter,WMissile
-        Fragility=115
-        KindGraph=drop
-        Name="Даблшот"
-        NonSearchable=1
-        Owner=Kling
-        Priority=0
-        ShotVisual=1
-        Special=1
-        Text=<color=248,252,248>Уникальная модификация оружия <clr>доминаторов<clrEnd> под названием </color>"Даблшот"<color=248,252,248>. Скорострельность такого орудия повышается вдвое за счет громоздкости, малой прочности и сниженной огневой мощи, но последнее, в свою очередь, компенсируется лучшей сохранностью ценных вещей.</color>
-		Text=<br><clr><clrEnd><br>
-        Text=Сила орудия: <clr>-10<clrEnd> ед.
-        Text=Сила ракет: <clr>-20<clrEnd> ед.
-        Text=Дальность стрельбы: <clr>-30<clrEnd> ед.
-        Text=Скорость ракет: <clr>-350<clrEnd> ед.
-        WeaponMods=MoreDrop
-        bonAttacks=1
-        bonMissileSpeed=-350
-		LockedAcryn=3
-    }
-    ShuDomiks_DoubleshotCWDomModLocked ^{
-        Cost=175
-        Equipments=WEnergy,WSplinter,WMissile
-        Fragility=160
-        KindGraph=drop
-        Name=неизвестно
-        NonSearchable=1
-        Owner=Kling
-        Priority=0
-		RacialRestriction=1
-        ShotVisual=7
-        Size=200
-        Special=1
-        Text=<color=248,252,248>Неизвестная модификация оружия </color>доминаторов<color=248,252,248>. Из-за конфликтов с оборудованием Коалиции быстро выходит из строя. Уникальные свойства неизвестны. Для устранения неполадок с совместимостью обратитесь на научную базу или доминион.</color>
-        WeaponMods=MoreDrop
-        bonAttacks=1
-        bonWEnergy=-10
-        bonWMissile=-20
-        bonWRadius=-20
-        bonWSplinter=-10
-		LockedAcryn=3
-    }
-    ShuDomiks_DoubleshotCWDomModUnlocked ^{
-        Cost=160
-        Equipments=WEnergy,WSplinter,WMissile
-        Fragility=115
-        KindGraph=drop
-        Name="Даблшот"
-        NonSearchable=1
-        Owner=Kling
-        Priority=0
-        ShotVisual=7
-        Special=1
-        Text=<color=248,252,248>Уникальная модификация оружия <clr>доминаторов<clrEnd> под названием </color>"Даблшот"<color=248,252,248>. Скорострельность такого орудия повышается вдвое за счет громоздкости, малой прочности и сниженной огневой мощи, но последнее, в свою очередь, компенсируется лучшей сохранностью ценных вещей.</color>
-		Text=<br><clr><clrEnd><br>
-        Text=Сила орудия: <clr>-10<clrEnd> ед.
-        Text=Сила ракет: <clr>-20<clrEnd> ед.
-        Text=Дальность стрельбы: <clr>-30<clrEnd> ед.
-        Text=Скорость ракет: <clr>-350<clrEnd> ед.
-        WeaponMods=MoreDrop
-        bonAttacks=1
-        bonMissileSpeed=350
-		LockedAcryn=3
-    }
-    ShuDomiks_StrikeWDomModLocked ^{
-        Cost=120
-        Equipments=WEnergy,WSplinter,WMissile
-        Fragility=135
-        KindGraph=dmg
-        Name=неизвестно
-        NonSearchable=1
-        Owner=Kling
-        Priority=0
-		RacialRestriction=1
-        ShotVisual=2
-        Size=135
-        Special=1
-        Text=<color=248,252,248>Неизвестная модификация оружия </color>доминаторов<color=248,252,248>. Из-за конфликтов с оборудованием Коалиции быстро выходит из строя. Уникальные свойства неизвестны. Для устранения неполадок с совместимостью обратитесь на научную базу или доминион.</color>
-        WeaponMods=ScanBonus,BonusToDamaged
-		LockedAcryn=3
-    }
-    ShuDomiks_StrikeWDomModUnlocked ^{
-        Cost=110
-        Equipments=WEnergy,WSplinter,WMissile
-        Fragility=80
-        KindGraph=dmg
-        Name="Страйк"
-        NonSearchable=1
-        Owner=Kling
-        Priority=0
-        ShotVisual=2
-        Special=1
-        Text=<color=248,252,248>Уникальная модификация оружия <clr>доминаторов<clrEnd> под названием </color>"Страйк"<color=248,252,248>. Наносит больший ущерб всем целям в зоне выстрела, в особенности поврежденным. Обратным эффектом является массивность самой конструкции, приводящая к увеличению массы корабля.</color>
-		Text=<br><clr><clrEnd><br>
-        Text=Бонус урона: <clr>15%<clrEnd>
-        Text=Бонус к урону: до <clr>33%<clrEnd>
-        Text=Масса корабля: <bonMass><clr>%<clrEnd>
-        Text=(необходимо превышение мощности сканера над защитой цели)
-        WeaponMods=ScanBonus,BonusToDamaged
-        bonMass=5
-		LockedAcryn=3
-    }
-    ShuDomiks_StrikeCWDomModLocked ^{
-        Cost=120
-        Equipments=WEnergy,WSplinter,WMissile
-        Fragility=135
-        KindGraph=dmg
-        Name=неизвестно
-        NonSearchable=1
-        Owner=Kling
-        Priority=0
-		RacialRestriction=1
-        ShotVisual=8
-        Size=135
-        Special=1
-        Text=<color=248,252,248>Неизвестная модификация оружия </color>доминаторов<color=248,252,248>. Из-за конфликтов с оборудованием Коалиции быстро выходит из строя. Уникальные свойства неизвестны. Для устранения неполадок с совместимостью обратитесь на научную базу или доминион.</color>
-        WeaponMods=ScanBonus,BonusToDamaged
-		LockedAcryn=3
-    }
-    ShuDomiks_StrikeCWDomModUnlocked ^{
-        Cost=110
-        Equipments=WEnergy,WSplinter,WMissile
-        Fragility=80
-        KindGraph=dmg
-        Name="Страйк"
-        NonSearchable=1
-        Owner=Kling
-        Priority=0
-        ShotVisual=8
-        Special=1
-        Text=<color=248,252,248>Уникальная модификация оружия <clr>доминаторов<clrEnd> под названием </color>"Страйк"<color=248,252,248>. Наносит больший ущерб всем целям в зоне выстрела, в особенности поврежденным. Обратным эффектом является массивность самой конструкции, приводящая к увеличению массы корабля.</color>
-		Text=<br><clr><clrEnd><br>
-        Text=Бонус урона: <clr>15%<clrEnd>
-        Text=Бонус к урону: до <clr>33%<clrEnd>
-        Text=Масса корабля: <bonMass><clr>%<clrEnd>
-        Text=(необходимо превышение мощности сканера над защитой цели)
-        WeaponMods=ScanBonus,BonusToDamaged
-        bonMass=5
-		LockedAcryn=3
-    }
-    ShuDomiks_SpeedDropWDomModLocked ^{
-        Cost=120
-        Equipments=WEnergy,WSplinter,WMissile
-        Fragility=135
-        KindGraph=overheat
-        Name=неизвестно
-        NonSearchable=1
-        Owner=Kling
-        Priority=0
-		RacialRestriction=1
-        ShotVisual=3
-        Size=120
-        Special=1
-        Text=<color=248,252,248>Неизвестная модификация оружия </color>доминаторов<color=248,252,248>. Из-за конфликтов с оборудованием Коалиции быстро выходит из строя. Уникальные свойства неизвестны. Для устранения неполадок с совместимостью обратитесь на научную базу или доминион.</color>
-        WeaponMods=Decelerate,ReduceEngine
-		LockedAcryn=3
-    }
-    ShuDomiks_SpeedDropWDomModUnlocked ^{
-        Cost=110
-        Equipments=WEnergy,WSplinter,WMissile
-        Fragility=80
-        KindGraph=overheat
-        Name="Спид-дроп"
-        NonSearchable=1
-        Owner=Kling
-        Priority=0
-        ShotVisual=3
-        Special=1
-        Text=<color=248,252,248>Уникальная модификация оружия <clr>доминаторов<clrEnd> под названием </color>"Спид-дроп"<color=248,252,248>. Оружие данной модификации зажигательными снарядами повреждает двигатель цели и снижает скорость ее полета.</color>
-        WeaponMods=Decelerate,ReduceEngine
-		LockedAcryn=3
-    }
-    ShuDomiks_SpeedDropCWDomModLocked ^{
-        Cost=120
-        Equipments=WEnergy,WSplinter,WMissile
-        Fragility=135
-        KindGraph=overheat
-        Name=неизвестно
-        NonSearchable=1
-        Owner=Kling
-        Priority=0
-		RacialRestriction=1
-        ShotVisual=9
-        Size=120
-        Special=1
-        Text=<color=248,252,248>Неизвестная модификация оружия </color>доминаторов<color=248,252,248>. Из-за конфликтов с оборудованием Коалиции быстро выходит из строя. Уникальные свойства неизвестны. Для устранения неполадок с совместимостью обратитесь на научную базу или доминион.</color>
-        WeaponMods=Decelerate,ReduceEngine
-		LockedAcryn=3
-    }
-    ShuDomiks_SpeedDropCWDomModUnlocked ^{
-        Cost=110
-        Equipments=WEnergy,WSplinter,WMissile
-        Fragility=80
-        KindGraph=overheat
-        Name="Спид-дроп"
-        NonSearchable=1
-        Owner=Kling
-        Priority=0
-        ShotVisual=9
-        Special=1
-        Text=<color=248,252,248>Уникальная модификация оружия <clr>доминаторов<clrEnd> под названием </color>"Спид-дроп"<color=248,252,248>. Оружие данной модификации зажигательными снарядами повреждает двигатель цели и снижает скорость ее полета.</color>
-        WeaponMods=Decelerate,ReduceEngine
-		LockedAcryn=3
-    }
-    ShuDomiks_BlazerMassacre ^{
-        Cost=500
-        Fragility=0
-        KindGraph=dmg
-        LockedAcryn=3
-        Name="Массакри"
-        NonSearchable=1
-		Equipments=W12
-        Owner=Kling
-        Priority=0
-        ShotVisual=3
-        Size=84
-        Special=1
-        Text=<color=248,252,248>Уникальный турбогравир <clr>Блазера<clrEnd>, окрещенный исследователями не иначе как </color><color=255,0,0>"Массакри"</color><color=248,252,248>, является мечтой любого воина или коллекционера. Данный турбогравир представляет собой оружие ужасающей силы, способное ликвидировать даже самого опасного противника. Помимо колоссальной мощности, экземпляр отличается поразительной точностью - даже при серьезном разгоне он сохраняет нулевой разброс. По легендам, турбогравир подпитывается от практически неограниченного источника энергии и способен работать вечно, но проверить это пока никому не удавалось.</color>
-		Text=<br><clr><clrEnd><br>
-        Text=Бонус урона: до <clr>33%<clrEnd>
-        Text=Навык обаяния: <bonSkill5> ед.
-        Text=Навык лидерства: <bonSkill6> ед.
-        Text=<clr>Замедляет цель при попадании<clrEnd>
-        Text=(необходимо превышение мощности сканера над защитой цели)
-        WeaponMods=NoDelta,BonusToDamaged,Decelerate
-        bonSkill5=1
-        bonSkill6=1
-        bonWEnergy=81
-        bonWRadius=50
-    }
-    ShuDomiks_KellerJavelin ^{
-        Cost=200
-        KindGraph=overheat
-        LockedAcryn=3
-        Name="Жавелин"
-        NonSearchable=1
-		Equipments=W15
-        Owner=Kling
-        Priority=0
-        ShotVisual=3
-        Size=200
-        Special=1
-        Text=<color=248,252,248>Уникальный торпедный аппарат <clr>Келлера<clrEnd>, поэтически называемый </color><color=0,0,255>"Жавелин"</color><color=248,252,248>, получил дурную славу в среде рейнджеров. Обладая чудовищной скорострельностью, аппарат запускает три стремительные ионизирующие торпеды, не оставляя противнику шансов вернуться невредимым. Кроме того, возросший расход снарядов с лихвой компенсируется гигантским боезапасом, позволяя вести длительный обстрел.</color>
-		Text=<br><clr><clrEnd><br>
-        Text=Количество залпов: <bonAttacks> ед.
-        Text=Скорость ракет: <clr>+500<clrEnd> ед.
-        Text=Боезапас: <bonAmmo> ед.
-        Text=Навык обаяния: <bonSkill5> ед.
-        Text=Навык лидерства: <bonSkill6> ед.
-        Text=<clr>Ионизирует цель<clrEnd>
-        Text=<clr>Повреждает оборудование цели<clrEnd>
-        WeaponMods=Shock,Destruct
-        bonAmmo=435
-        bonAttacks=2
-        bonMissileSpeed=500
-        bonSkill5=1
-        bonSkill6=1
-        bonWMissile=-46
-    }
-    ShuDomiks_TerronRailgun ^{
-        Cost=400
-        Fragility=70
-        KindGraph=block
-        LockedAcryn=3
-        Name="Рейлган"
-        NonSearchable=1
-		Equipments=W11
-        Owner=Kling
-        Priority=0
-        ShotVisual=266
-        Special=1
-		BlockMM=1
-        Text=<color=248,252,248>Уникальный дезинтегратор <clr>Террона<clrEnd>, получивший в среде борцов с доминаторами название </color><color=0,255,0>"Рейлган"</color><color=248,252,248>, уже давно стал кошмаром всех гралгарских охотников за ошметками. Благодаря феноменальной точности и гигантской дальности стрельбы, владелец способен эффективно и быстро обстреливать бронированные цели, сохраняя безопасную дистанцию.</color>
-		Text=<br><clr><clrEnd><br>
-        Text=Навык обаяния: <bonSkill5> ед.
-        Text=Навык лидерства: <bonSkill6> ед.
-        Text=<clr>Игнорирует защиту цели<clrEnd>
-        Text=<clr>Повреждает двигатель цели<clrEnd>
-        WeaponMods=ReduceEngine,NoDelta
-        bonSkill5=1
-        bonSkill6=1
-    }
-    ShuDomiks_KligDomHull ^{
-        Cost=50
-		Equipments=Hull
-		Owner=Kling
-        FragilityEnergy=125
-        FragilityMissile=120
-        FragilitySplinter=130
-        LockedAcryn=3
-        Name=</color><Type> корпус доминатора
-        NonSearchable=1
-        Priority=0
-        Special=1
-        Text=<color=248,252,248><clr>Клиг<clrEnd> - маленький, дешевый и хрупкий корабль-камикадзе, взрывающий себя, нанося значительный урон противнику.</color>
-    }
-    ShuDomiks_ShtipDomHull ^{
-        Cost=85
-		Equipments=Hull
-		Owner=Kling
-        LockedAcryn=3
-        Name=</color><Type> корпус доминатора
-        NonSearchable=1
-        Priority=0
-        Special=1
-        Text=<color=248,252,248><clr>Штип<clrEnd> - быстрый и маневренный доминаторский корабль, используемый для нанесения противнику молниеносных ударов.</color>
-    }
-    ShuDomiks_MenocDomHull ^{
-        Cost=90
-		Equipments=Hull
-		Owner=Kling
-        LockedAcryn=3
-        Name=</color><Type> корпус доминатора
-        NonSearchable=1
-        Priority=0
-        Special=1
-        Text=<color=248,252,248><clr>Менок<clrEnd> - компактный многоцелевой доминаторский корабль, эффективный при использовании как ракетного оружия, так и осколочного.</color>
-    }
-    ShuDomiks_SmershDomHull ^{
-        Cost=105
-		Equipments=Hull
-		Owner=Kling
-        LockedAcryn=3
-        Name=</color><Type> корпус доминатора
-        NonSearchable=1
-        Priority=0
-        Special=1
-        Text=<color=248,252,248><clr>Смерш<clrEnd> - доминаторский корабль, прекрасно подходящий для ведения боя на дальних дистанциях.</color>
-    }
-    ShuDomiks_UrgantDomHull ^{
-        Cost=120
-		Equipments=Hull
-		Owner=Kling
-        LockedAcryn=3
-        Name=</color><Type> корпус доминатора
-        NonSearchable=1
-        Priority=0
-        Special=1
-        Text=<color=248,252,248><clr>Ургант<clrEnd> - мощный доминаторский корабль, предназначенный для ближнего боя.</color>
-    }
-    ShuDomiks_EquantorDomHull ^{
-        Cost=130
-		Equipments=Hull
-		Owner=Kling
-        Fragility=90
-        LockedAcryn=3
-        Name=</color><Type> корпус доминатора
-        NonSearchable=1
-        Priority=0
-        Special=1
-        Text=<color=248,252,248><clr>Эквентор<clrEnd> - защищенный доминаторский корабль, специализирующийся на энергетическом вооружении.</color>
-    }
-    ShuDomiks_BertorDomHull ^{
-        Cost=200
-		Equipments=Hull
-		Owner=Kling
-        LockedAcryn=3
-        Name=</color><Type> корпус доминатора
-        NonSearchable=1
-        Priority=0
-        Special=1
-        Text=<color=248,252,248><clr>Бертор<clrEnd> - гигантский бронированный доминаторский корабль с монтированной на него мобильной фабрикой по производству доминаторов типа "клиг".</color>
-    }
-    ShuDomiks_BoomerDomHull ^{
-        Cost=300
-		Equipments=Hull
-		Owner=Kling
-        CustomTag=TerronKling
-        Fragility=115
-        LockedAcryn=3
-        Name=</color><Type> корпус доминатора
-        NonSearchable=1
-        Priority=0
-        Special=1
-        Text=<color=248,252,248><clr>Буммер<clrEnd> - колоссальный терроноидный корабль, занимающийся сбором и перевозкой необходимых для размножения ресурсов, летающий под эскортом из доминаторов классов "штип" и "менок".</color>
-    }
-    ShuDomiks_ConverterDomHull ^{
-        Cost=1000
-		Equipments=Hull
-		Owner=Kling
-        CustomTag=Devastator
-        Fragility=150
-		LockedAcryn=3
-		NonSearchable=1
-        HullGraphSize=170
-        KindGraph=Devastator
-        Name=</color><Type> корпус доминатора <color=165,0,105>"Конвертор"</color>
-        Priority=0
-        Special=1
-        Text=<color=248,252,248><color=165,0,105>Конвертор<clrEnd> - уникальный класс доминаторского корабля, представляющий из себя гигантскую и уязвимую на первый взгляд боевую машину. Однако, с первым же боевым вылетом доминаторский флагман показал свою эффективность: несколько мелкокалиберных орудий и мощнейший турбогравир, питающий все корабельные системы, за несколько дней ликвидировали целую группу коалиционных кораблей. Единственная слабость флагмана - это несовершенный фаерволл, позволивший коалиционным ученым взломать его.</color>
     }
     ShuDomiks_InhibitorOff ^{
         HullGraphSize=145
@@ -749,6 +183,474 @@ MicroModuls ~{
         NonSearchable=1
         Priority=0
         Special=1
+    }
+	//Все доминаторские акрины считаются акринами 4-го уровня
+    ShuDomiks_EnergizeEqDomModLocked ^{
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        KindGraph=DomMod
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+        Text=<color=248,252,248>Неизвестная модификация оборудования <clr>доминаторов<clrEnd>. Особые свойства модификации заблокированы. Для разблокировки обратитесь на <clr>научную базу<clrEnd> или <clr>доминион<clrEnd>.</color>
+		Fragility=100
+        Cost=300
+        Size=107
+        bonDef=5
+        bonMass=7
+    }
+    ShuDomiks_EnergizeEqDomModUnlocked ^{
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        KindGraph=DomMod
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        Special=1
+		LockedAcryn=3
+        Text=<color=248,252,248>Уникальная модификация оборудования <clr>доминаторов<clrEnd> под названием </color>"Энерджайз"<color=248,252,248>. К оборудованию подключён дополнительный генератор бризонного поля, защищающий корабль от повреждений, но также и увеличивающий его массу.</color>
+		Text=<clr><clrEnd>
+        Text=Генератор поля: <bonDef> ед.
+        Text=Масса корабля: <bonMass><clr>%<clrEnd>
+        Fragility=117
+        Cost=300
+		Size=107
+        bonDef=5
+        bonMass=7
+    }
+    ShuDomiks_GlueEqDomModLocked ^{
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        KindGraph=DomMod
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+        Text=<color=248,252,248>Неизвестная модификация оборудования <clr>доминаторов<clrEnd>. Особые свойства модификации заблокированы. Для разблокировки обратитесь на <clr>научную базу<clrEnd> или <clr>доминион<clrEnd>.</color>
+        Fragility=74
+        Cost=300
+        Size=100
+        bonSkill3=1
+        bonDroid=12
+        bonSkill2=-1
+        bonSpeed=-20
+    }
+    ShuDomiks_GlueEqDomModUnlocked ^{
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        KindGraph=DomMod
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        Special=1
+		LockedAcryn=3
+        Text=<color=248,252,248>Уникальная модификация оборудования <clr>доминаторов<clrEnd> под названием </color>"Глю"<color=248,252,248>. Помимо своей основной функции, это устройство вырабатывает быстрозатвердевающее клейкое вещество, повышающее прочность оборудования и использующееся дроидом для починки корпуса. К сожалению, повышенная клейкость этого вещества также сковывает маневровые двигатели судна.</color>
+		Text=<clr><clrEnd>
+        Text=Навык техники: <bonSkill3>
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Навык манёвренности: <bonSkill2>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Fragility=83
+        Cost=300
+        Size=100
+        bonSkill3=1
+        bonDroid=12
+        bonSkill2=-1
+        bonSpeed=-20
+    }
+    ShuDomiks_DetrimentEqDomModLocked ^{
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        KindGraph=DomMod
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+        Text=<color=248,252,248>Неизвестная модификация оборудования <clr>доминаторов<clrEnd>. Особые свойства модификации заблокированы. Для разблокировки обратитесь на <clr>научную базу<clrEnd> или <clr>доминион<clrEnd>.</color>
+		Fragility=100
+        Size=300
+        Cost=100
+        bonWEnergy=8
+        bonWSplinter=10
+        bonWMissile=6
+        bonWRadius=-10
+        bonRadar=-150
+    }
+    ShuDomiks_DetrimentEqDomModUnlocked ^{
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        KindGraph=DomMod
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        Special=1
+		LockedAcryn=3
+        Text=<color=248,252,248>Уникальная модификация оборудования <clr>доминаторов<clrEnd> под названием </color>"Дитраймент"<color=248,252,248>. Оборудование с данной модификацией фокусирует систему наведения орудий, повышая общую точность стрельбы на малых дистанциях.</color>
+		Text=<clr><clrEnd>
+		Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Сила ракетного оружия: <bonWMissile> ед.
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Fragility=117
+        Cost=300
+        Size=100
+        bonWEnergy=8
+        bonWSplinter=10
+        bonWMissile=6
+        bonWRadius=-10
+        bonRadar=-150
+    }
+    ShuDomiks_RocketLauncherEqDomModLocked ^{
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        KindGraph=DomMod
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+        Text=<color=248,252,248>Неизвестная модификация оборудования <clr>доминаторов<clrEnd>. Особые свойства модификации заблокированы. Для разблокировки обратитесь на <clr>научную базу<clrEnd> или <clr>доминион<clrEnd>.</color>
+        Fragility=133
+        Cost=300
+		Size=100
+        bonSpeed=75
+        bonMissileSpeed=100
+    }
+    ShuDomiks_RocketLauncherEqDomModUnlocked ^{
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
+        KindGraph=DomMod
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        Special=1
+		LockedAcryn=3
+        Text=<color=248,252,248>Уникальная модификация оборудования <clr>доминаторов<clrEnd> под названием </color>"Рокет-ланчер"<color=248,252,248>. Вырабатывает особую нобелиевую присадку к топливу, тем самым повышая скорость двигателя и всех видов ракет. Негативный же эффект заключается в том, что избыточная радиоактивность присадки делает такое оборудование значительно менее долговечным.</color>
+		Text=<clr><clrEnd>
+        Fragility=166
+        Cost=300
+		Size=100
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Скорость ракет: <bonMissileSpeed> ед.
+        bonSpeed=75
+        bonMissileSpeed=100
+    }
+    ShuDomiks_QuickshotWDomModLocked ^{
+        Equipments=WEnergy,WSplinter,WMissile
+        KindGraph=drop
+        Name=неизвестно
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+		RacialRestriction=1
+        ShotVisual=1
+        Special=1
+		LockedAcryn=3
+        Text=<color=248,252,248>Неизвестная модификация оружия <clr>доминаторов<clrEnd>. Из-за конфликтов с оборудованием Коалиции быстро выходит из строя. Уникальные свойства неизвестны. Для устранения неполадок с совместимостью обратитесь на <clr>научную базу<clrEnd> или <clr>доминион<clrEnd>.</color>
+        Fragility=133
+        Cost=300
+        Size=150
+        bonAttacks=1
+        bonWEnergy=-12
+        bonWSplinter=-18
+        bonWMissile=-10
+        bonWRadius=-25
+    }
+    ShuDomiks_QuickshotWDomModUnlocked ^{
+        Equipments=WEnergy,WSplinter,WMissile
+        KindGraph=drop
+        Name="Квикшот"
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        ShotVisual=1
+        Special=1
+		LockedAcryn=3
+        Text=<color=248,252,248>Уникальная модификация оружия <clr>доминаторов<clrEnd> под названием </color>"Квикшот"<color=248,252,248>. Скорострельность такого орудия была существенно увеличена, однако его итоговая надёжность и огневая мощь явно оставляют желать лучшего.</color>
+		Text=<clr><clrEnd>
+		Text=Скорострельность: <bonAttacks>
+		Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Сила ракетного оружия: <bonWMissile> ед.
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        Fragility=166
+        Cost=300
+        Size=150
+        bonAttacks=1
+        bonWEnergy=-12
+        bonWSplinter=-18
+        bonWMissile=-10
+        bonWRadius=-25
+    }
+    ShuDomiks_QuickshotCWDomModLocked ^{
+        Equipments=WEnergy,WSplinter,WMissile
+        KindGraph=drop
+        Name=неизвестно
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+		RacialRestriction=1
+        ShotVisual=7
+        Special=1
+		LockedAcryn=3
+        Text=<color=248,252,248>Неизвестная модификация оружия <clr>доминаторов<clrEnd>. Из-за конфликтов с оборудованием Коалиции быстро выходит из строя. Уникальные свойства неизвестны. Для устранения неполадок с совместимостью обратитесь на <clr>научную базу<clrEnd> или <clr>доминион<clrEnd>.</color>
+        Fragility=133
+        Cost=300
+        Size=150
+        bonAttacks=1
+        bonWEnergy=-12
+        bonWSplinter=-18
+        bonWMissile=-10
+        bonWRadius=-25
+    }
+    ShuDomiks_QuickshotCWDomModUnlocked ^{
+        Equipments=WEnergy,WSplinter,WMissile
+        KindGraph=drop
+        Name="Квикшот"
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        ShotVisual=7
+        Special=1
+		LockedAcryn=3
+        Text=<color=248,252,248>Уникальная модификация оружия <clr>доминаторов<clrEnd> под названием </color>"Квикшот"<color=248,252,248>. Скорострельность такого орудия была существенно увеличена, однако его итоговая надёжность и огневая мощь явно оставляют желать лучшего.</color>
+		Text=<clr><clrEnd>
+		Text=Скорострельность: <bonAttacks>
+		Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Сила ракетного оружия: <bonWMissile> ед.
+        Text=Дальность стрельбы: <bonWRadius> ед.
+        Fragility=166
+        Cost=300
+        Size=150
+        bonAttacks=1
+        bonWEnergy=-12
+        bonWSplinter=-18
+        bonWMissile=-10
+        bonWRadius=-25
+    }
+    ShuDomiks_StrikeWDomModLocked ^{
+        Equipments=WEnergy,WSplinter,WMissile
+        KindGraph=dmg
+        Name=неизвестно
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+		RacialRestriction=1
+        ShotVisual=2
+        Special=1
+		LockedAcryn=3
+        Text=<color=248,252,248>Неизвестная модификация оружия <clr>доминаторов<clrEnd>. Из-за конфликтов с оборудованием Коалиции быстро выходит из строя. Уникальные свойства неизвестны. Для устранения неполадок с совместимостью обратитесь на <clr>научную базу<clrEnd> или <clr>доминион<clrEnd>.</color>
+        Fragility=100
+        Cost=200
+        Size=120
+        WeaponMods=ScanBonus,BonusToDamaged
+        bonScan=-1
+    }
+    ShuDomiks_StrikeWDomModUnlocked ^{
+        Equipments=WEnergy,WSplinter,WMissile
+        KindGraph=dmg
+        Name="Страйк"
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        ShotVisual=2
+        Special=1
+		LockedAcryn=3
+        Text=<color=248,252,248>Уникальная модификация оружия <clr>доминаторов<clrEnd> под названием </color>"Страйк"<color=248,252,248>. Наносит повышенный ущерб всем целям на траектории выстрела, в особенности повреждённым. Недостатком же является то, что для усиления урона бортовой компьютер должен сперва получить подробную информацию обо всех уязвимых местах в конструкции цели.</color>
+		Text=<clr><clrEnd>
+        Text=Бонус к урону: <clr>+15%<clrEnd>
+        Text=Бонус к урону по повреждённым целям: <clr>до +33%<clrEnd>
+        Text=Мощность сканера: <bonScan> ед.
+        Text=(для применения бонусов требуется превышение<br>мощности сканера над защитой цели)
+        Fragility=117
+        Cost=200
+        Size=120
+        WeaponMods=ScanBonus,BonusToDamaged
+        bonScan=-1
+    }
+    ShuDomiks_StrikeCWDomModLocked ^{
+        Equipments=WEnergy,WSplinter,WMissile
+        KindGraph=dmg
+        Name=неизвестно
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+		RacialRestriction=1
+        ShotVisual=8
+        Special=1
+		LockedAcryn=3
+        Text=<color=248,252,248>Неизвестная модификация оружия <clr>доминаторов<clrEnd>. Из-за конфликтов с оборудованием Коалиции быстро выходит из строя. Уникальные свойства неизвестны. Для устранения неполадок с совместимостью обратитесь на <clr>научную базу<clrEnd> или <clr>доминион<clrEnd>.</color>
+        Fragility=100
+        Cost=200
+        Size=120
+        WeaponMods=ScanBonus,BonusToDamaged
+        bonScan=-1
+    }
+    ShuDomiks_StrikeCWDomModUnlocked ^{
+        Equipments=WEnergy,WSplinter,WMissile
+        KindGraph=dmg
+        Name="Страйк"
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        ShotVisual=8
+        Special=1
+		LockedAcryn=3
+        Text=<color=248,252,248>Уникальная модификация оружия <clr>доминаторов<clrEnd> под названием </color>"Страйк"<color=248,252,248>. Наносит повышенный ущерб всем целям на траектории выстрела, в особенности повреждённым. Недостатком же является то, что для усиления урона бортовой компьютер должен сперва получить подробную информацию обо всех уязвимых местах в конструкции цели.</color>
+		Text=<clr><clrEnd>
+        Text=Бонус к урону: <clr>+15%<clrEnd>
+        Text=Бонус к урону по повреждённым целям: <clr>до +33%<clrEnd>
+        Text=Мощность сканера: <bonScan> ед.
+        Text=(для применения бонусов требуется превышение<br>мощности сканера над защитой цели)
+        Fragility=117
+        Cost=200
+        Size=120
+        WeaponMods=ScanBonus,BonusToDamaged
+        bonScan=-1
+    }
+    ShuDomiks_SpeedDropWDomModLocked ^{
+        Equipments=WEnergy,WSplinter,WMissile
+        KindGraph=overheat
+        Name=неизвестно
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+		RacialRestriction=1
+        ShotVisual=3
+        Special=1
+		LockedAcryn=3
+        Text=<color=248,252,248>Неизвестная модификация оружия <clr>доминаторов<clrEnd>. Из-за конфликтов с оборудованием Коалиции быстро выходит из строя. Уникальные свойства неизвестны. Для устранения неполадок с совместимостью обратитесь на <clr>научную базу<clrEnd> или <clr>доминион<clrEnd>.</color>
+        Fragility=100
+        Cost=200
+        Size=120
+        WeaponMods=Decelerate,DecelerateA,DecelerateAEx,ReduceEngine
+    }
+    ShuDomiks_SpeedDropWDomModUnlocked ^{
+        Equipments=WEnergy,WSplinter,WMissile
+        KindGraph=overheat
+        Name="Спид-дроп"
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        ShotVisual=3
+        Special=1
+		LockedAcryn=3
+        Text=<color=248,252,248>Уникальная модификация оружия <clr>доминаторов<clrEnd> под названием </color>"Спид-дроп"<color=248,252,248>. Оружие данной модификации перегружает двигатель цели, тем самым постепенно выводя его из строя и ощутимо замедляя корабль.</color>
+        Fragility=117
+        Cost=200
+        Size=120
+        WeaponMods=Decelerate,DecelerateA,DecelerateAEx,ReduceEngine
+    }
+    ShuDomiks_SpeedDropCWDomModLocked ^{
+        Equipments=WEnergy,WSplinter,WMissile
+        KindGraph=overheat
+        Name=неизвестно
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+		RacialRestriction=1
+        ShotVisual=9
+        Special=1
+		LockedAcryn=3
+        Text=<color=248,252,248>Неизвестная модификация оружия <clr>доминаторов<clrEnd>. Из-за конфликтов с оборудованием Коалиции быстро выходит из строя. Уникальные свойства неизвестны. Для устранения неполадок с совместимостью обратитесь на <clr>научную базу<clrEnd> или <clr>доминион<clrEnd>.</color>
+        Fragility=100
+        Cost=200
+        Size=120
+        WeaponMods=Decelerate,DecelerateA,DecelerateAEx,ReduceEngine
+    }
+    ShuDomiks_SpeedDropCWDomModUnlocked ^{
+        Equipments=WEnergy,WSplinter,WMissile
+        KindGraph=overheat
+        Name="Спид-дроп"
+        NonSearchable=1
+        Owner=Kling
+        Priority=0
+        ShotVisual=9
+        Special=1
+		LockedAcryn=3
+        Text=<color=248,252,248>Уникальная модификация оружия <clr>доминаторов<clrEnd> под названием </color>"Спид-дроп"<color=248,252,248>. Оружие данной модификации перегружает двигатель цели, тем самым постепенно выводя его из строя и ощутимо замедляя корабль.</color>
+        Fragility=117
+        Cost=200
+        Size=120
+        WeaponMods=Decelerate,DecelerateA,DecelerateAEx,ReduceEngine
+    }
+    ShuDomiks_BlazerMassacre ^{
+        KindGraph=dmg
+        Name="Массакри"
+		Equipments=W12
+        Owner=Kling
+        Priority=0
+        ShotVisual=3
+        Special=1
+		BlockImp=1
+		BlockMM=1
+        LockedAcryn=3
+        NonSearchable=1
+        Text=<color=248,252,248>Легендарный турбогравир <clr>Блазера<clrEnd>, окрещённый исследователями не иначе как </color><color=255,25,25>"Массакри"</color><color=248,252,248>. Является голубой мечтой любого воина или коллекционера и представляет собой оружие ужасающей силы, способное в считанные секунды аннигилировать даже самого грозного врага. Ходит слух, что помимо своей колоссальной мощи, данный экземпляр получает энергию из неограниченного источника, а потому способен работать практически вечно, но проверить это на деле до сих пор не удавалось ещё никому.</color>
+		Text=<clr><clrEnd>
+        Text=Дополнительный эффект: <clr>замедление<clrEnd>
+        Text=Навык лидерства: <bonSkill6> ед.
+        Text=Навык обаяния: <bonSkill5> ед.
+        Fragility=0
+        Cost=800
+        Size=150
+        WeaponMods=Decelerate,DecelerateA,NoDelta
+        bonSkill6=1
+        bonSkill5=-2
+    }
+    ShuDomiks_KellerJavelin ^{
+        KindGraph=overheat
+        Name="Жавелин"
+		Equipments=W15
+        Owner=Kling
+        Priority=0
+        ShotVisual=3
+        Special=1
+		BlockImp=1
+		BlockMM=1
+        LockedAcryn=3
+        NonSearchable=1
+        Text=<color=248,252,248>Легендарный торпедный аппарат <clr>Келлера<clrEnd>, поэтически называемый учёными <color=60,182,230>"Жавелин"</color><color=248,252,248>. Обладая чудовищной скорострельностью, аппарат выпускает три стремительные ионизирующие торпеды, не оставляя противнику никаких шансов уклониться от столь нежеланного "подарка". Кроме того, возросший расход торпед с лихвой компенсируется огромным боезапасом, позволяя владельцу вести непрерывный обстрел до победного конца.</color>
+		Text=<clr><clrEnd>
+		Text=Скорострельность: <bonAttacks>
+        Text=Скорость торпед: <clr><bonMissileSpeed><clrEnd> ед.
+        Text=Дополнительный эффект: <clr>ионизация<clrEnd>
+        Text=Навык лидерства: <bonSkill6> ед.
+        Text=Навык обаяния: <bonSkill5> ед.
+        Fragility=100
+        Cost=400
+        Size=200
+        WeaponMods=Destruct,Shock
+        bonAttacks=2
+        bonMissileSpeed=500
+        bonSkill6=1
+        bonSkill5=-2
+    }
+    ShuDomiks_TerronRailgun ^{
+        KindGraph=block
+        Name="Рейлган"
+		Equipments=W11
+        Owner=Kling
+        Priority=0
+        ShotVisual=266
+        Special=1
+		BlockImp=1
+		BlockMM=1
+        LockedAcryn=3
+        NonSearchable=1
+        Text=<color=248,252,248>Легендарный дезинтегратор <clr>Террона<clrEnd>, получивший в среде борцов с доминаторами прозвище </color><color=156,240,10>"Рейлган"</color><color=248,252,248>. Это ужасающее орудие уже давно стало ночным кошмаром всех гралгарских охотников за ошмётками. Благодаря феноменальной точности и умопомрачительной дальности, владелец способен быстро и эффективно испепелять даже самые тяжелобронированные цели, сохраняя при этом безопасную дистанцию.</color>
+		Text=<clr><clrEnd>
+        Text=Навык лидерства: <bonSkill6>
+        Text=Навык обаяния: <bonSkill5>
+        Text=<clr>(Полностью игнорирует любую защиту цели)<clrEnd>
+        Fragility=71
+        Cost=400
+		Size=150
+        WeaponMods=Undefendable,NoDelta
+		bonSkill6=1
+		bonSkill5=-2
     }
 }
 Script ^{
@@ -853,6 +755,23 @@ Script ^{
 ShipInfo ^{
     AddInfo ^{
         CustomInfos ^{
+            Minigun ^{
+                Icon=1
+                Name=Minigun
+                OnActCodeTypes=t_OnWeaponShot
+                OnActCode ^{
+					01=dword gun=ScriptItemActObject2();
+					02=if(ItemType(gun)!=t_CustomWeapon)exit;
+					03=if(CustomWeaponType(gun)!='Dom_minigun')exit;
+					04=dword ship=ScriptItemActShip();
+					05=dword target=ScriptItemActObject1();
+					06=if(ObjectType(target)!=4 && ObjectType(target)!=5)exit;
+					07=int dmg=Rnd(4,5);
+					08=if(ArtefactTypeInUse(ship,t_ArtSplinter))dmg=dmg+1;
+					09=if(ShipOwner(target)!=5)dmg=dmg*2;
+					10=ScriptItemActParam(dmg);
+                }
+            }
 			FirstInhibitorJoinsGroup ^{
                 Description=Скрытая костыльная инфошка для добавления стартового ингибитора в скриптовую группу
                 Icon=1
@@ -860,36 +779,16 @@ ShipInfo ^{
                 OnActCodeTypes=t_OnStep
 				OnActStepTypes=0
 				OnActCode ^{
-					01=dword ship=ScriptItemActShip();
-					02=if(!ship)exit;
-					03=GShuDomiksTempDwd=ship;
-					04=dword crutch=GetItemFromVault('ShuDomiks_Semerenka');
+					01=dword ship = ScriptItemActShip();
+					02=if(!ship) exit;
+					03=GShuDomiksTempDwd = ship;
+					04=dword crutch = GetItemFromVault('ShuDomiks_Semerenka');
 					//Запускаем акткод в "костыльной семерёнке", чтобы записать ингибитор в нужную скриптовую группу
-					05=CreateActCodeEvent(0,crutch);
-					06=PutItemInVault('ShuDomiks_Semerenka',crutch);
-					07=ShipDeleteCustomShipInfo(ship,'FirstInhibitorJoinsGroup');
+					05=CreateActCodeEvent(0, crutch);
+					06=PutItemInVault('ShuDomiks_Semerenka', crutch);
+					07=ShipDeleteCustomShipInfo(ship, 'FirstInhibitorJoinsGroup');
 				}
 			}
-            BossResist ^{
-                Description=
-                Icon=1
-                Name=ShuDomiks_check
-                OnActCodeTypes=t_OnTakingDamageEn,t_OnTakingDamageMi,t_OnTakingDamageSp
-                OnActCode ^{
-                    01=dword source=ScriptItemActObject1();
-                    02=if(ObjectType(source)!=5)exit;
-                    03=if(ShipOwner(source)==6)ScriptItemActParam(ScriptItemActParam()/3);
-                }
-            }
-            FlagshipShot ^{
-                Icon=1
-                Name=FlagshipShot
-                OnActCodeTypes=t_OnDealingDamage
-                OnActCode ^{
-                    01=if(ShipType(ScriptItemActShip())=='UB' || ShipType(ScriptItemActShip())=='KB')exit;
-                    02=ScriptItemActParam(ScriptItemActParam()*2);
-                }
-            }
             KellerLastWishInfo ^{
                 Description=При смерти Келлера создаёт транка с копией обвеса самого Келлера. Данный транк нужен для последующего создания клона Келлера.
                 Icon=1
@@ -958,114 +857,6 @@ ShipInfo ^{
 						01=if(!ShipCustomShipInfoData(0,cur_info,3))Ether(4,'KellerCloneTask',Format(CT('Script.Mod_ShuDomiks.KellerCloneTask'),'#0#',Name(ShipStar(cur_ship))));
 					}
                 }
-            }
-            KlingFollow ^{
-                Description=???
-                Icon=1
-                Name=k_follow
-            }
-            Kvinkgun ^{
-                Icon=1
-                Name=Kvinkgun
-                OnActCodeTypes=t_OnWeaponShot
-                OnActCode ^{
-					01=if(ItemName(ScriptItemActObject2())!='Квинкган')exit;
-                    02=int dmg=Rnd(8,10);
-					03=if(ObjectType(ScriptItemActObject1())!=4 && ObjectType(ScriptItemActObject1())!=5)exit;
-                    04=ScriptItemActParam(dmg);
-                }
-            }
-            MilitaryDamage ^{
-                Icon=1
-                Name=MilitaryDamage
-                OnActCodeTypes=t_OnDealingDamage
-                OnActCode ^{
-					01=int dmg=ScriptItemActParam();
-					02=dword target=ScriptItemActObject1();
-					03=if(ObjectType(target)!=5)exit;
-					04=if(ShipTypeN(target)==t_Kling && ShipType(target)!='Superdominator')
-					05 ^{
-						01=if(ShipInScript(target))
-						02 ^{
-							01=if(ShipCustomFaction(target)=='Klissan')
-							02 ^{
-								01=if(ShipFindCustomShipInfoByType(Player(),'Klissan_research'))dmg=dmg*150/100;
-							}
-							03=else dmg=dmg*150/100;
-						}
-						03=else dmg=dmg*150/100;
-					}
-					06=if(ShipTypeN(target)==t_Pirate || ShipTypeN(target)==t_Ranger)dmg=dmg*85/100;
-					07=ScriptItemActParam(dmg);
-                }
-            }
-            MilitaryDodge ^{
-                Icon=1
-                Name=MilitaryDodge
-            }
-            Minigun ^{
-                Icon=1
-                Name=Minigun
-                OnActCodeTypes=t_OnWeaponShot
-                OnActCode ^{
-					01=dword gun=ScriptItemActObject2();
-					02=if(ItemType(gun)!=t_CustomWeapon)exit;
-					03=if(CustomWeaponType(gun)!='Dom_minigun')exit;
-					04=dword ship=ScriptItemActShip();
-					05=dword target=ScriptItemActObject1();
-					06=if(ObjectType(target)!=4 && ObjectType(target)!=5)exit;
-					07=int dmg=Rnd(4,5);
-					08=if(ArtefactTypeInUse(ship,t_ArtSplinter))dmg=dmg+1;
-					09=if(ShipOwner(target)!=5)dmg=dmg*2;
-					10=ScriptItemActParam(dmg);
-                }
-            }
-            PirateDamage ^{
-                Icon=1
-                Name=PirateDamage
-                OnActCodeTypes=t_OnDealingDamage
-                OnActCode ^{
-					01=dword target=ScriptItemActObject1();
-					02=if(ObjectType(target)!=5)exit;
-					03=int dmg=ScriptItemActParam();
-					04=if(ShipTypeN(target)==t_Kling)dmg=(dmg*115)/100;
-					05=else if(ShipTypeN(target)==t_Transport || ShipTypeN(target)==t_Warrior)dmg=(dmg*125)/100;
-					06=ScriptItemActParam(dmg);
-                }
-            }
-            PirateDodge ^{
-                Icon=1
-                Name=PirateDodge
-            }
-            RuinsShot ^{
-                Icon=1
-                Name=RuinsShot
-                OnActCodeTypes=t_OnDealingDamage
-                OnActCode ^{
-					01=dword ship=ScriptItemActShip();
-					02=if(ShipType(ship)=='UB' || ShipType(ship)=='KB')exit;
-					03=ScriptItemActParam(ScriptItemActParam()*2);
-                }
-            }
-            ShuDomiks_check ^{
-                Description=
-                Icon=1
-                Name=ShuDomiks_check
-            }
-            ShuDomiks_check2 ^{
-                Description=
-                Icon=1
-                Name=ShuDomiks_check2
-            }
-            TerronDroid ^{
-                Description=
-                Icon=1
-                Name=terron_droid
-            }
-            reinforcement ^{
-                Description=
-                Icon=1
-                Name=reinforcement
             }
             DomRuinsAutoUpgrade ^{
                 Description=Скрытая инфошка для автоперезарядки и автоулучшения верфей
