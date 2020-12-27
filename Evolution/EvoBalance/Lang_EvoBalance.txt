@@ -218,7 +218,8 @@ MicroModuls ^{
         Equipments=Engine,Radar
         Name=Аппер
         Priority=80
-        Text=Микромодуль третьего уровня. Наращивает мощность двигателя и радара, за счет увеличения эффективности преобразования энергии.
+        Text=Микромодуль третьего уровня. Наращивает мощность <clr>двигателя<clrEnd> или <clr>радара<clrEnd>, за счёт увеличения эффективности преобразования энергии.
+        Text=<clr><clrEnd>
         Text=Скорость двигателя: <bonSpeed> ед.
         Text=Дальность радара: <bonRadar> млн. км.
         bonRadar=400
@@ -228,7 +229,7 @@ MicroModuls ^{
         Equipments=WEnergy
         Name=Электро
         Priority=100
-        Text=Микромодуль третьего уровня. Воздействует на силу энергетического оружия, используя принцип умножения мощности генератора импульса.
+        Text=Микромодуль третьего уровня. Воздействует на силу <clr>энергетического оружия<clrEnd>, используя принцип умножения мощности генератора импульса.
         Text=<clr><clrEnd>
 		Text=Сила энергетического оружия: <bonWEnergy> ед.
         bonWEnergy=5
@@ -237,7 +238,7 @@ MicroModuls ^{
         Equipments=WEnergy,WMissile
         Name=Ракетон
         Priority=100
-        Text=Микромодуль третьего уровня, содержащий ненаправленные бета-проводники. Значительно увеличивает силу ракетного оружия, частично - энергетического.
+        Text=Микромодуль третьего уровня, содержащий ненаправленные бета-проводники. Значительно увеличивает силу любого <clr>ракетного оружия<clrEnd> или частично - <clr>энергетического<clrEnd>.
         Text=<clr><clrEnd>
 		Text=Сила энергетического оружия: <bonWEnergy> ед.
         Text=Сила ракетного оружия: <bonWMissile> ед.
@@ -248,29 +249,29 @@ MicroModuls ^{
         Equipments=Hull,DefGenerator
         Name=Бронд
         Priority=100
-        Text=Микромодуль третьего уровня. Способен с большой скоростью генерировать сверхплотные частицы, используемые в защите корабля. Совместим с корпусом и генератором поля.
+        Text=Микромодуль третьего уровня. Способен с большой скоростью генерировать сверхплотные частицы, используемые в защите корабля. Совместим с <clr>корпусом<clrEnd> и <clr>генератором защитного поля<clrEnd>.
         Text=<clr><clrEnd>
         Text=Броня корпуса: <bonHull> ед.
         Text=Генератор поля: <bonDef> ед.
-        bonDef=3
         bonHull=2
+        bonDef=3
     }
     4 ^{
         Equipments=FuelTank
         Name=Ресиз
         Priority=100
-        Size=120
-        Text=Микромодуль третьего уровня. Размягчает и деформирует стенки топливного бака, увеличивая его объём.
+        Text=Микромодуль третьего уровня. Размягчает и деформирует стенки <clr>топливного бака<clrEnd>, увеличивая его внутренний объём.
         Text=<clr><clrEnd>
         Text=Объём бака: <bonFuel> ед.
         Text=Размер: <clr>+20%<clrEnd>
+        Size=120
         bonFuel=10
     }
     5 ^{
         Equipments=Scaner
         Name=Поточный
         Priority=100
-        Text=Микромодуль третьего уровня. Встраивается в поточный блок сканера и позволяет увеличивать спектр принимаемых волн.
+        Text=Микромодуль третьего уровня. Встраивается в поточный блок <clr>сканера<clrEnd> и частично расширяет спектр принимаемых им волн.
         Text=<clr><clrEnd>
         Text=Мощность сканера: <bonScan> ед.
         bonScan=3
@@ -288,20 +289,20 @@ MicroModuls ^{
     }
     7 ^{
         Equipments=Droid
-        Fragility=60
         Name=Боттер
         Owner=Fei
         Priority=70
-        Text=Микромодуль третьего уровня. Обновляет программу ремонтного дроида, благодаря чему его действия становятся более точными и эффективными, а также на <clr>67%<clrEnd> повышается надежность. Совместим только с <clr>фэянскими<clrEnd> типами дроидов.
+        Text=Микромодуль третьего уровня. Обновляет программу <clr>ремонтного дроида<clrEnd>, благодаря чему его действия становятся более точными и эффективными, а также на <clr>67%<clrEnd> возрастает надёжность. Совместим только с <clr>фэянскими<clrEnd> типами дроидов.
         Text=<clr><clrEnd>
         Text=Эффективность дроида: <bonDroid> ед.
+        Fragility=60
         bonDroid=8
     }
     8 ^{
         Equipments=WEnergy,WSplinter,WMissile
         Name=Дальномет
         Priority=100
-        Text=Микромодуль третьего уровня. Снижает инерционность корректирующих систем орудия, повышая дальность стрельбы.
+        Text=Микромодуль третьего уровня. Снижает инерционность корректирующих систем орудия, повышая <clr>дальность стрельбы<clrEnd>.
         Text=<clr><clrEnd>
         Text=Дальность стрельбы: <bonWRadius> ед.
         bonWRadius=25
@@ -1151,469 +1152,6 @@ MicroModuls ^{
     }
 	//Конец ММ
 	//Начало акринов
-    350 ^{
-        CustomTag=SuperHullPB
-        Equipments=Hull
-        KindGraph=1
-        Name=Корпус "Убийца"
-        Special=1
-        Text=Сила энергетического оружия: <bonWEnergy> ед.
-        Text=Сила осколочного оружия: <bonWSplinter> ед.
-        Text=Сила ракетного оружия: <bonWMissile> ед.
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Навык точности: <bonSkill1>
-        Text=Навык манёвренности: <bonSkill2>
-        Text=Навык торговли: <bonSkill4>
-        Text=Навык обаяния: <bonSkill5>
-		Fragility=100
-        Cost=600
-		Size=100
-        bonSkill1=1
-        bonSkill2=-1
-        bonSkill4=-1
-        bonSkill5=-1
-        bonSpeed=150
-        bonWEnergy=15
-        bonWMissile=12
-        bonWSplinter=21
-    }
-    351 ^{
-        CustomTag=SuperHullWB
-        Equipments=Hull
-        KindGraph=2
-        Name=Корпус "Скала"
-        Special=1
-        Text=Навык манёвренности: <bonSkill2>
-        Text=Навык техники: <bonSkill3>
-        Text=Броня корпуса: <bonHull> ед.
-        Text=Эффективность дроида: <bonDroid> ед.
-        Text=Навык торговли: <bonSkill4>
-        Text=Навык обаяния: <bonSkill5>
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Дальность радара: <bonRadar> млн. км.
-        Text=Мощность сканера: <bonScan> ед.
-        Fragility=90
-        Cost=600
-        Size=100
-        bonDroid=30
-        bonHull=5
-        bonSkill2=1
-        bonSkill3=1
-        bonScan=-6
-        bonRadar=-1000
-        bonSkill4=-1
-        bonSkill5=-1
-        bonSpeed=-150
-    }
-    352 ^{
-        CustomTag=SuperHullSB
-        Equipments=Hull
-        KindGraph=3
-        Name=Корпус "Болид"
-        Special=1
-        Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Дальность прыжка: <bonJump> пк.
-        Text=Дальность радара: <bonRadar> млн. км.
-        Text=Броня корпуса: <bonHull> ед.
-        Fragility=105
-        Cost=600
-        Size=100
-        bonHull=-4
-        bonJump=10
-        bonRadar=800
-        bonSpeed=250
-    }
-    353 ^{
-        Cost=200
-        Equipments=Hull
-        KindGraph=A
-        Name=Быстрый корпус I
-        Priority=10
-        Ruins=SB,BK
-        Special=1
-		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>То, что этот корпус сконструирован обтекаемым, вовсе не влияет на его скорость, ведь в космосе нет сопротивления воздуха. Это лишь дань моде. На самом деле, прибавка в скорости достигается за счёт удачного расположения двигателя и усиленного впрыска топлива.</color>
-        Text=<clr><clrEnd>
-		Text=Скорость двигателя: <bonSpeed> ед.
-		Fragility=100
-		Size=83
-        bonSlotArt=-2
-        bonSlotWeapon=-2
-        bonSpeed=200
-    }
-    354 ^{
-        Cost=300
-        Equipments=Hull
-        KindGraph=A
-        Name=Быстрый корпус II
-        Priority=30
-        Ruins=SB,BK
-        Special=1
-		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>То, что этот корпус сконструирован обтекаемым, вовсе не влияет на его скорость, ведь в космосе нет сопротивления воздуха. Это лишь дань моде. На самом деле, прибавка в скорости достигается за счёт удачного расположения двигателя и усиленного впрыска топлива.</color>
-        Text=<clr><clrEnd>
-		Text=Скорость двигателя: <bonSpeed> ед.
-		Fragility=100
-		Size=90
-        bonSlotArt=-2
-        bonSlotWeapon=-1
-        bonSpeed=200
-    }
-    355 ^{
-        Cost=400
-        Equipments=Hull
-        KindGraph=A
-        Name=Быстрый корпус III
-        Priority=50
-        Ruins=SB,BK
-        Special=1
-		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>То, что этот корпус сконструирован обтекаемым, вовсе не влияет на его скорость, ведь в космосе нет сопротивления воздуха. Это лишь дань моде. На самом деле, прибавка в скорости достигается за счёт удачного расположения двигателя и усиленного впрыска топлива.</color>
-        Text=<clr><clrEnd>
-		Text=Скорость двигателя: <bonSpeed> ед.
-		Fragility=100
-		Size=105
-        bonSlotArt=-1
-        bonSlotWeapon=-1
-        bonSpeed=200
-    }
-    356 ^{
-        Cost=500
-        Equipments=Hull
-        KindGraph=A
-        Name=Быстрый корпус IV
-        Priority=70
-        Ruins=SB,BK
-        Special=1
-		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>То, что этот корпус сконструирован обтекаемым, вовсе не влияет на его скорость, ведь в космосе нет сопротивления воздуха. Это лишь дань моде. На самом деле, прибавка в скорости достигается за счёт удачного расположения двигателя и усиленного впрыска топлива.</color>
-        Text=<clr><clrEnd>
-		Text=Скорость двигателя: <bonSpeed> ед.
-		Fragility=100
-		Size=100
-        bonSpeed=200
-    }
-    357 ^{
-        Cost=200
-        Equipments=Hull
-        KindGraph=B
-        Name=Неуязвимый корпус I
-        Priority=10
-        Ruins=RC
-        Special=1
-		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>Разработанный фэянскими спецами корпус с усиленной защитой. Специальная акриновая прослойка между бронелистами корпуса позволяет добиться большей эффективности от работы генератора защитного поля.</color>
-        Text=<clr><clrEnd>
-		Text=Генератор поля: <bonDef> ед.
-        FragilityEnergy=90
-        FragilityMissile=90
-        FragilitySplinter=90
-		Size=115
-        bonDef=4
-        bonSlotArt=-2
-        bonSlotWeapon=-2
-    }
-    358 ^{
-        Cost=300
-        Equipments=Hull
-        KindGraph=B
-        Name=Неуязвимый корпус II
-        Priority=30
-        Ruins=RC
-        Special=1
-		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>Разработанный фэянскими спецами корпус с усиленной защитой. Специальная акриновая прослойка между бронелистами корпуса позволяет добиться большей эффективности от работы генератора защитного поля.</color>
-        Text=<clr><clrEnd>
-		Text=Генератор поля: <bonDef> ед.
-		Fragility=100
-		Size=120
-        bonDef=6
-        bonSlotArt=-2
-        bonSlotWeapon=-1
-    }
-    359 ^{
-        Cost=400
-        Equipments=Hull
-        KindGraph=B
-        Name=Неуязвимый корпус III
-        Priority=50
-        Ruins=RC
-        Special=1
-		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>Разработанный фэянскими спецами корпус с усиленной защитой. Специальная акриновая прослойка между бронелистами корпуса позволяет добиться большей эффективности от работы генератора защитного поля.</color>
-        Text=<clr><clrEnd>
-		Text=Генератор поля: <bonDef> ед.
-		Fragility=100
-		Size=105
-        bonDef=9
-        bonSlotArt=-2
-        bonSlotForsage=-1
-    }
-    360 ^{
-        Cost=500
-        Equipments=Hull
-        KindGraph=B
-        Name=Неуязвимый корпус IV
-        Priority=70
-        Ruins=RC
-        Special=1
-		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>Разработанный фэянскими спецами корпус с усиленной защитой. Специальная акриновая прослойка между бронелистами корпуса позволяет добиться большей эффективности от работы генератора защитного поля.</color>
-        Text=<clr><clrEnd>
-		Fragility=100
-		Size=100
-		Text=Генератор поля: <bonDef> ед.
-        bonDef=6
-    }
-    361 ^{
-        Cost=200
-        Equipments=Hull
-        KindGraph=C
-        Name=Ремонтный корпус I
-        Priority=10
-        Ruins=MC
-        Special=1
-		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>Данный корпус был разработан специально для обеспечения лучшей работоспособности ремонтного дроида. Его гнездо расположено максимально удобно, а ко всем уязвимым деталям имеется лёгкий доступ. Вследствие этого в данном корпусе дроид работает с большей эффективностью, чем на остальных кораблях.</color>
-		Text=<clr><clrEnd>
-        Text=Эффективность дроида: <bonDroid> ед.
-        FragilityEnergy=95
-        FragilityMissile=95
-        FragilitySplinter=95
-		Size=117
-        bonDroid=20
-        bonSlotArt=-2
-        bonSlotWeapon=-2
-    }
-    362 ^{
-        Cost=300
-        Equipments=Hull
-        KindGraph=C
-        Name=Ремонтный корпус II
-        Priority=30
-        Ruins=MC
-        Special=1
-		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>Данный корпус был разработан специально для обеспечения лучшей работоспособности ремонтного дроида. Его гнездо расположено максимально удобно, а ко всем уязвимым деталям имеется лёгкий доступ. Вследствие этого в данном корпусе дроид работает с большей эффективностью, чем на остальных кораблях.</color>
-        Text=<clr><clrEnd>
-		Text=Эффективность дроида: <bonDroid> ед.
-		Fragility=100
-		Size=105
-        bonDroid=30
-        bonSlotArt=-2
-        bonSlotWeapon=-1
-    }
-    363 ^{
-        Cost=400
-        Equipments=Hull
-        KindGraph=C
-        Name=Ремонтный корпус III
-        Priority=50
-        Ruins=MC
-        Special=1
-		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>Данный корпус был разработан специально для обеспечения лучшей работоспособности ремонтного дроида. Его гнездо расположено максимально удобно, а ко всем уязвимым деталям имеется лёгкий доступ. Вследствие этого в данном корпусе дроид работает с большей эффективностью, чем на остальных кораблях.</color>
-        Text=<clr><clrEnd>
-		Text=Эффективность дроида: <bonDroid> ед.
-		Fragility=100
-		Size=100
-        bonDroid=40
-        bonSlotArt=-1
-        bonSlotWeapon=-2
-    }
-    364 ^{
-        Cost=500
-        Equipments=Hull
-        KindGraph=C
-        Name=Ремонтный корпус IV
-        Priority=70
-        Ruins=MC
-        Special=1
-		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-		Text=<color=248,252,248>Данный корпус был разработан специально для обеспечения лучшей работоспособности ремонтного дроида. Его гнездо расположено максимально удобно, а ко всем уязвимым деталям имеется лёгкий доступ. Вследствие этого в данном корпусе дроид работает с большей эффективностью, чем на остальных кораблях.</color>
-        Text=<clr><clrEnd>
-		Fragility=100
-		Size=110
-		Text=Эффективность дроида: <bonDroid> ед.
-        bonDroid=30
-    }
-    365 ^{
-        Cost=200
-        Equipments=Hull
-        KindGraph=D
-        Name=Миоплазменный корпус I
-        Priority=10
-        Ruins=WB
-        Special=1
-		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>Миоплазменное оборудование работает за счёт особых акриновых присадок, которые встраиваются в энергетическую систему корабля и перенаправляют силовые потоки на усиление мощности выстрелов осколочного и энергетического оружия. Как побочный эффект, возможно снижение скорости корабля.</color>
-		Text=<clr><clrEnd>
-        Text=Сила энергетического оружия: <bonWEnergy> ед.
-        Text=Сила осколочного оружия: <bonWSplinter> ед.
-        Text=Скорость двигателя: <bonSpeed> ед.
-        FragilityEnergy=95
-        FragilityMissile=95
-        FragilitySplinter=95
-		Size=120
-        bonSlotArt=-1
-        bonSlotWeapon=-2
-        bonSpeed=-20
-        bonWEnergy=7
-        bonWSplinter=10
-    }
-    366 ^{
-        Cost=300
-        Equipments=Hull
-        KindGraph=D
-        Name=Миоплазменный корпус II
-        Priority=30
-        Ruins=WB
-        Special=1
-		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>Миоплазменное оборудование работает за счёт особых акриновых присадок, которые встраиваются в энергетическую систему корабля и перенаправляют силовые потоки на усиление мощности выстрелов осколочного и энергетического оружия. Как побочный эффект, возможно снижение скорости корабля.</color>
-		Text=<clr><clrEnd>
-        Text=Сила энергетического оружия: <bonWEnergy> ед.
-        Text=Сила осколочного оружия: <bonWSplinter> ед.
-        Text=Скорость двигателя: <bonSpeed> ед.
-		Fragility=100
-		Size=115
-        bonSlotArt=-1
-        bonSlotWeapon=-1
-        bonSpeed=-40
-        bonWEnergy=11
-        bonWSplinter=15
-    }
-    367 ^{
-        Cost=400
-        Equipments=Hull
-        KindGraph=D
-        Name=Миоплазменный корпус III
-        Priority=50
-        Ruins=WB
-        Special=1
-		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>Миоплазменное оборудование работает за счёт особых акриновых присадок, которые встраиваются в энергетическую систему корабля и перенаправляют силовые потоки на усиление мощности выстрелов осколочного и энергетического оружия. Как побочный эффект, возможно снижение скорости корабля.</color>
-		Text=<clr><clrEnd>
-        Text=Сила энергетического оружия: <bonWEnergy> ед.
-        Text=Сила осколочного оружия: <bonWSplinter> ед.
-        Text=Скорость двигателя: <bonSpeed> ед.
-		Fragility=100
-		Size=110
-        bonSlotScaner=-1
-        bonSpeed=-60
-        bonWEnergy=15
-        bonWSplinter=20
-    }
-    368 ^{
-        Cost=500
-        Equipments=Hull
-        KindGraph=D
-        Name=Миоплазменный корпус IV
-        Priority=70
-        Ruins=WB
-        Special=1
-		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>Миоплазменное оборудование работает за счёт особых акриновых присадок, которые встраиваются в энергетическую систему корабля и перенаправляют силовые потоки на усиление мощности выстрелов осколочного и энергетического оружия. Как побочный эффект, возможно снижение скорости корабля.</color>
-		Text=<clr><clrEnd>
-        Text=Сила энергетического оружия: <bonWEnergy> ед.
-        Text=Сила осколочного оружия: <bonWSplinter> ед.
-        Text=Скорость двигателя: <bonSpeed> ед.
-		Fragility=100
-		Size=100
-        bonSpeed=-40
-        bonWEnergy=15
-        bonWSplinter=20
-    }
-    369 ^{
-        Equipments=Hull
-        KindGraph=E
-        Name=Пигамарный корпус I
-        Priority=10
-        Ruins=WB
-        Special=1
-		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>Пигамарная серия была первой из всех серий акриновых разработок. Единственный её плюс - это экономия энергии, излишки которой перенаправляются для усиления ракетных установок. Среди минусов же частые сбои в работе и системные ошибки. Они отрицательно влияют на работу генератора защиты и радара, которые вынуждены постоянно перезапускаться.</color>
-		Text=<clr><clrEnd>
-        Text=Сила ракетного оружия: <bonWMissile> ед.
-        Text=Дальность радара: <bonRadar> млн. км.
-        Text=Генератор поля: <bonDef> ед.
-        FragilityEnergy=95
-        FragilityMissile=95
-        FragilitySplinter=95
-        Cost=200
-		Size=120
-        bonDef=-3
-        bonRadar=-300
-        bonSlotArt=-1
-        bonSlotWeapon=-2
-        bonWMissile=13
-    }
-    370 ^{
-        Equipments=Hull
-        KindGraph=E
-        Name=Пигамарный корпус II
-        Priority=30
-        Ruins=WB
-        Special=1
-		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>Пигамарная серия была первой из всех серий акриновых разработок. Единственный её плюс - это экономия энергии, излишки которой перенаправляются для усиления ракетных установок. Среди минусов же частые сбои в работе и системные ошибки. Они отрицательно влияют на работу генератора защиты и радара, которые вынуждены постоянно перезапускаться.</color>
-		Text=<clr><clrEnd>
-        Text=Сила ракетного оружия: <bonWMissile> ед.
-        Text=Дальность радара: <bonRadar> млн. км.
-        Text=Генератор поля: <bonDef> ед.
-        FragilityEnergy=95
-        FragilityMissile=95
-        FragilitySplinter=95
-        Cost=300
-		Size=110
-        bonDef=-5
-        bonRadar=-450
-        bonSlotArt=-1
-        bonSlotWeapon=-1
-        bonWMissile=19
-    }
-    371 ^{
-        Equipments=Hull
-        KindGraph=E
-        Name=Пигамарный корпус III
-        Priority=50
-        Ruins=WB
-        Special=1
-		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>Пигамарная серия была первой из всех серий акриновых разработок. Единственный её плюс - это экономия энергии, излишки которой перенаправляются для усиления ракетных установок. Среди минусов же частые сбои в работе и системные ошибки. Они отрицательно влияют на работу генератора защиты и радара, которые вынуждены постоянно перезапускаться.</color>
-		Text=<clr><clrEnd>
-        Text=Сила ракетного оружия: <bonWMissile> ед.
-        Text=Дальность радара: <bonRadar> млн. км.
-        Text=Генератор поля: <bonDef> ед.
-		Fragility=100
-        Cost=400
-		Size=100
-        bonDef=-7
-        bonRadar=-600
-        bonSlotScaner=-1
-		bonSlotWeapon=-1
-        bonWMissile=26
-    }
-    372 ^{
-        Equipments=Hull
-        KindGraph=E
-        Name=Пигамарный корпус IV
-        Priority=70
-        Ruins=WB
-        Special=1
-		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>Пигамарная серия была первой из всех серий акриновых разработок. Единственный её плюс - это экономия энергии, излишки которой перенаправляются для усиления ракетных установок. Среди минусов же частые сбои в работе и системные ошибки. Они отрицательно влияют на работу генератора защиты и радара, которые вынуждены постоянно перезапускаться.</color>
-		Text=<clr><clrEnd>
-        Text=Сила ракетного оружия: <bonWMissile> ед.
-        Text=Дальность радара: <bonRadar> млн. км.
-        Text=Генератор поля: <bonDef> ед.
-		Fragility=100
-        Cost=500
-		Size=100
-        bonDef=-5
-        bonRadar=-450
-        bonWMissile=21
-    }
     373 ^{
         Cost=150
         Equipments=FuelTank
@@ -3468,7 +3006,490 @@ MicroModuls ^{
         bonSpeed=75
         bonJump=5
     }
-	//Начинаются корпусные акрины из КР:HD
+	//Начинаются корпусные акрины
+    350 ^{
+        CustomTag=SuperHullPB
+        Equipments=Hull
+        KindGraph=1
+        Name=Корпус "Убийца"
+        Special=1
+        Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Сила ракетного оружия: <bonWMissile> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Навык точности: <bonSkill1>
+        Text=Навык манёвренности: <bonSkill2>
+        Text=Навык торговли: <bonSkill4>
+        Text=Навык обаяния: <bonSkill5>
+		Fragility=100
+        Cost=600
+		Size=100
+        bonSkill1=1
+        bonSkill2=-1
+        bonSkill4=-1
+        bonSkill5=-1
+        bonSpeed=150
+        bonWEnergy=15
+        bonWMissile=12
+        bonWSplinter=21
+    }
+    351 ^{
+        CustomTag=SuperHullWB
+        Equipments=Hull
+        KindGraph=2
+        Name=Корпус "Скала"
+        Special=1
+        Text=Навык манёвренности: <bonSkill2>
+        Text=Навык техники: <bonSkill3>
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Навык торговли: <bonSkill4>
+        Text=Навык обаяния: <bonSkill5>
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan> ед.
+        Fragility=90
+        Cost=600
+        Size=100
+        bonDroid=30
+        bonHull=5
+        bonSkill2=1
+        bonSkill3=1
+        bonScan=-6
+        bonRadar=-1000
+        bonSkill4=-1
+        bonSkill5=-1
+        bonSpeed=-150
+    }
+    352 ^{
+        CustomTag=SuperHullSB
+        Equipments=Hull
+        KindGraph=3
+        Name=Корпус "Болид"
+        Special=1
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Дальность прыжка: <bonJump> пк.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Броня корпуса: <bonHull> ед.
+        Fragility=105
+        Cost=600
+        Size=100
+        bonHull=-4
+        bonJump=10
+        bonRadar=800
+        bonSpeed=250
+    }
+    353 ^{
+        Cost=200
+        Equipments=Hull
+        KindGraph=A
+        Name=Быстрый корпус I
+        Priority=10
+        Ruins=SB,BK
+        Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Trader,Pirate
+        Text=<color=248,252,248>То, что этот корпус сконструирован обтекаемым, вовсе не влияет на его скорость, ведь в космосе нет сопротивления воздуха. Это лишь дань моде. На самом деле, прибавка в скорости достигается за счёт удачного расположения двигателя и усиленного впрыска топлива.</color>
+        Text=<clr><clrEnd>
+		Text=Скорость двигателя: <bonSpeed> ед.
+		Fragility=100
+		Size=83
+        bonSlotArt=-2
+        bonSlotWeapon=-2
+        bonSpeed=200
+    }
+    354 ^{
+        Cost=300
+        Equipments=Hull
+        KindGraph=A
+        Name=Быстрый корпус II
+        Priority=30
+        Ruins=SB,BK
+        Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Trader,Pirate
+        Text=<color=248,252,248>То, что этот корпус сконструирован обтекаемым, вовсе не влияет на его скорость, ведь в космосе нет сопротивления воздуха. Это лишь дань моде. На самом деле, прибавка в скорости достигается за счёт удачного расположения двигателя и усиленного впрыска топлива.</color>
+        Text=<clr><clrEnd>
+		Text=Скорость двигателя: <bonSpeed> ед.
+		Fragility=100
+		Size=90
+        bonSlotArt=-2
+        bonSlotWeapon=-1
+        bonSpeed=200
+    }
+    355 ^{
+        Cost=400
+        Equipments=Hull
+        KindGraph=A
+        Name=Быстрый корпус III
+        Priority=50
+        Ruins=SB,BK
+        Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Trader,Pirate
+        Text=<color=248,252,248>То, что этот корпус сконструирован обтекаемым, вовсе не влияет на его скорость, ведь в космосе нет сопротивления воздуха. Это лишь дань моде. На самом деле, прибавка в скорости достигается за счёт удачного расположения двигателя и усиленного впрыска топлива.</color>
+        Text=<clr><clrEnd>
+		Text=Скорость двигателя: <bonSpeed> ед.
+		Fragility=100
+		Size=105
+        bonSlotArt=-1
+        bonSlotWeapon=-1
+        bonSpeed=200
+    }
+    356 ^{
+        Cost=500
+        Equipments=Hull
+        KindGraph=A
+        Name=Быстрый корпус IV
+        Priority=70
+        Ruins=SB,BK
+        Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Trader,Pirate
+        Text=<color=248,252,248>То, что этот корпус сконструирован обтекаемым, вовсе не влияет на его скорость, ведь в космосе нет сопротивления воздуха. Это лишь дань моде. На самом деле, прибавка в скорости достигается за счёт удачного расположения двигателя и усиленного впрыска топлива.</color>
+        Text=<clr><clrEnd>
+		Text=Скорость двигателя: <bonSpeed> ед.
+		Fragility=100
+		Size=100
+        bonSpeed=200
+    }
+    357 ^{
+        Cost=200
+        Equipments=Hull
+        KindGraph=B
+        Name=Неуязвимый корпус I
+        Priority=10
+        Ruins=RC
+        Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Warrior,Trader
+        Text=<color=248,252,248>Разработанный фэянскими спецами корпус с усиленной защитой. Специальная акриновая прослойка между бронелистами корпуса позволяет добиться большей эффективности от работы генератора защитного поля.</color>
+        Text=<clr><clrEnd>
+		Text=Генератор поля: <bonDef> ед.
+        FragilityEnergy=90
+        FragilityMissile=90
+        FragilitySplinter=90
+		Size=115
+        bonDef=4
+        bonSlotArt=-2
+        bonSlotWeapon=-2
+    }
+    358 ^{
+        Cost=300
+        Equipments=Hull
+        KindGraph=B
+        Name=Неуязвимый корпус II
+        Priority=30
+        Ruins=RC
+        Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Warrior,Trader
+        Text=<color=248,252,248>Разработанный фэянскими спецами корпус с усиленной защитой. Специальная акриновая прослойка между бронелистами корпуса позволяет добиться большей эффективности от работы генератора защитного поля.</color>
+        Text=<clr><clrEnd>
+		Text=Генератор поля: <bonDef> ед.
+		Fragility=100
+		Size=120
+        bonDef=6
+        bonSlotArt=-2
+        bonSlotWeapon=-1
+    }
+    359 ^{
+        Cost=400
+        Equipments=Hull
+        KindGraph=B
+        Name=Неуязвимый корпус III
+        Priority=50
+        Ruins=RC
+        Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Warrior,Trader
+        Text=<color=248,252,248>Разработанный фэянскими спецами корпус с усиленной защитой. Специальная акриновая прослойка между бронелистами корпуса позволяет добиться большей эффективности от работы генератора защитного поля.</color>
+        Text=<clr><clrEnd>
+		Text=Генератор поля: <bonDef> ед.
+		Fragility=100
+		Size=105
+        bonDef=9
+        bonSlotArt=-2
+        bonSlotForsage=-1
+    }
+    360 ^{
+        Cost=500
+        Equipments=Hull
+        KindGraph=B
+        Name=Неуязвимый корпус IV
+        Priority=70
+        Ruins=RC
+        Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Warrior,Trader
+        Text=<color=248,252,248>Разработанный фэянскими спецами корпус с усиленной защитой. Специальная акриновая прослойка между бронелистами корпуса позволяет добиться большей эффективности от работы генератора защитного поля.</color>
+        Text=<clr><clrEnd>
+		Fragility=100
+		Size=100
+		Text=Генератор поля: <bonDef> ед.
+        bonDef=6
+    }
+    361 ^{
+        Cost=200
+        Equipments=Hull
+        KindGraph=C
+        Name=Ремонтный корпус I
+        Priority=10
+        Ruins=MC
+        Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Trader
+        Text=<color=248,252,248>Данный корпус был разработан специально для обеспечения лучшей работоспособности ремонтного дроида. Его гнездо расположено максимально удобно, а ко всем уязвимым деталям имеется лёгкий доступ. Вследствие этого в данном корпусе дроид работает с большей эффективностью, чем на остальных кораблях.</color>
+		Text=<clr><clrEnd>
+        Text=Эффективность дроида: <bonDroid> ед.
+        FragilityEnergy=95
+        FragilityMissile=95
+        FragilitySplinter=95
+		Size=117
+        bonDroid=20
+        bonSlotArt=-2
+        bonSlotWeapon=-2
+    }
+    362 ^{
+        Cost=300
+        Equipments=Hull
+        KindGraph=C
+        Name=Ремонтный корпус II
+        Priority=30
+        Ruins=MC
+        Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Trader
+        Text=<color=248,252,248>Данный корпус был разработан специально для обеспечения лучшей работоспособности ремонтного дроида. Его гнездо расположено максимально удобно, а ко всем уязвимым деталям имеется лёгкий доступ. Вследствие этого в данном корпусе дроид работает с большей эффективностью, чем на остальных кораблях.</color>
+        Text=<clr><clrEnd>
+		Text=Эффективность дроида: <bonDroid> ед.
+		Fragility=100
+		Size=105
+        bonDroid=30
+        bonSlotArt=-2
+        bonSlotWeapon=-1
+    }
+    363 ^{
+        Cost=400
+        Equipments=Hull
+        KindGraph=C
+        Name=Ремонтный корпус III
+        Priority=50
+        Ruins=MC
+        Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Trader
+        Text=<color=248,252,248>Данный корпус был разработан специально для обеспечения лучшей работоспособности ремонтного дроида. Его гнездо расположено максимально удобно, а ко всем уязвимым деталям имеется лёгкий доступ. Вследствие этого в данном корпусе дроид работает с большей эффективностью, чем на остальных кораблях.</color>
+        Text=<clr><clrEnd>
+		Text=Эффективность дроида: <bonDroid> ед.
+		Fragility=100
+		Size=100
+        bonDroid=40
+        bonSlotArt=-1
+        bonSlotWeapon=-2
+    }
+    364 ^{
+        Cost=500
+        Equipments=Hull
+        KindGraph=C
+        Name=Ремонтный корпус IV
+        Priority=70
+        Ruins=MC
+        Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Trader
+		Text=<color=248,252,248>Данный корпус был разработан специально для обеспечения лучшей работоспособности ремонтного дроида. Его гнездо расположено максимально удобно, а ко всем уязвимым деталям имеется лёгкий доступ. Вследствие этого в данном корпусе дроид работает с большей эффективностью, чем на остальных кораблях.</color>
+        Text=<clr><clrEnd>
+		Fragility=100
+		Size=110
+		Text=Эффективность дроида: <bonDroid> ед.
+        bonDroid=30
+    }
+    365 ^{
+        Cost=200
+        Equipments=Hull
+        KindGraph=D
+        Name=Миоплазменный корпус I
+        Priority=10
+        Ruins=WB
+        Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Warrior,Pirate
+        Text=<color=248,252,248>Миоплазменное оборудование работает за счёт особых акриновых присадок, которые встраиваются в энергетическую систему корабля и перенаправляют силовые потоки на усиление мощности выстрелов осколочного и энергетического оружия. Как побочный эффект, возможно снижение скорости корабля.</color>
+		Text=<clr><clrEnd>
+        Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        FragilityEnergy=95
+        FragilityMissile=95
+        FragilitySplinter=95
+		Size=120
+        bonSlotArt=-1
+        bonSlotWeapon=-2
+        bonSpeed=-20
+        bonWEnergy=7
+        bonWSplinter=10
+    }
+    366 ^{
+        Cost=300
+        Equipments=Hull
+        KindGraph=D
+        Name=Миоплазменный корпус II
+        Priority=30
+        Ruins=WB
+        Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Warrior,Pirate
+        Text=<color=248,252,248>Миоплазменное оборудование работает за счёт особых акриновых присадок, которые встраиваются в энергетическую систему корабля и перенаправляют силовые потоки на усиление мощности выстрелов осколочного и энергетического оружия. Как побочный эффект, возможно снижение скорости корабля.</color>
+		Text=<clr><clrEnd>
+        Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+		Fragility=100
+		Size=115
+        bonSlotArt=-1
+        bonSlotWeapon=-1
+        bonSpeed=-40
+        bonWEnergy=11
+        bonWSplinter=15
+    }
+    367 ^{
+        Cost=400
+        Equipments=Hull
+        KindGraph=D
+        Name=Миоплазменный корпус III
+        Priority=50
+        Ruins=WB
+        Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Warrior,Pirate
+        Text=<color=248,252,248>Миоплазменное оборудование работает за счёт особых акриновых присадок, которые встраиваются в энергетическую систему корабля и перенаправляют силовые потоки на усиление мощности выстрелов осколочного и энергетического оружия. Как побочный эффект, возможно снижение скорости корабля.</color>
+		Text=<clr><clrEnd>
+        Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+		Fragility=100
+		Size=110
+        bonSlotScaner=-1
+        bonSpeed=-60
+        bonWEnergy=15
+        bonWSplinter=20
+    }
+    368 ^{
+        Cost=500
+        Equipments=Hull
+        KindGraph=D
+        Name=Миоплазменный корпус IV
+        Priority=70
+        Ruins=WB
+        Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Warrior,Pirate
+        Text=<color=248,252,248>Миоплазменное оборудование работает за счёт особых акриновых присадок, которые встраиваются в энергетическую систему корабля и перенаправляют силовые потоки на усиление мощности выстрелов осколочного и энергетического оружия. Как побочный эффект, возможно снижение скорости корабля.</color>
+		Text=<clr><clrEnd>
+        Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+		Fragility=100
+		Size=100
+        bonSpeed=-40
+        bonWEnergy=15
+        bonWSplinter=20
+    }
+    369 ^{
+        Equipments=Hull
+        KindGraph=E
+        Name=Пигамарный корпус I
+        Priority=10
+        Ruins=WB
+        Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Warrior,Pirate
+        Text=<color=248,252,248>Пигамарная серия была первой из всех серий акриновых разработок. Единственный её плюс - это экономия энергии, излишки которой перенаправляются для усиления ракетных установок. Среди минусов же частые сбои в работе и системные ошибки. Они отрицательно влияют на работу генератора защиты и радара, которые вынуждены постоянно перезапускаться.</color>
+		Text=<clr><clrEnd>
+        Text=Сила ракетного оружия: <bonWMissile> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Генератор поля: <bonDef> ед.
+        FragilityEnergy=95
+        FragilityMissile=95
+        FragilitySplinter=95
+        Cost=200
+		Size=120
+        bonDef=-3
+        bonRadar=-300
+        bonSlotArt=-1
+        bonSlotWeapon=-2
+        bonWMissile=13
+    }
+    370 ^{
+        Equipments=Hull
+        KindGraph=E
+        Name=Пигамарный корпус II
+        Priority=30
+        Ruins=WB
+        Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Warrior,Pirate
+        Text=<color=248,252,248>Пигамарная серия была первой из всех серий акриновых разработок. Единственный её плюс - это экономия энергии, излишки которой перенаправляются для усиления ракетных установок. Среди минусов же частые сбои в работе и системные ошибки. Они отрицательно влияют на работу генератора защиты и радара, которые вынуждены постоянно перезапускаться.</color>
+		Text=<clr><clrEnd>
+        Text=Сила ракетного оружия: <bonWMissile> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Генератор поля: <bonDef> ед.
+        FragilityEnergy=95
+        FragilityMissile=95
+        FragilitySplinter=95
+        Cost=300
+		Size=110
+        bonDef=-5
+        bonRadar=-450
+        bonSlotArt=-1
+        bonSlotWeapon=-1
+        bonWMissile=19
+    }
+    371 ^{
+        Equipments=Hull
+        KindGraph=E
+        Name=Пигамарный корпус III
+        Priority=50
+        Ruins=WB
+        Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Warrior,Pirate
+        Text=<color=248,252,248>Пигамарная серия была первой из всех серий акриновых разработок. Единственный её плюс - это экономия энергии, излишки которой перенаправляются для усиления ракетных установок. Среди минусов же частые сбои в работе и системные ошибки. Они отрицательно влияют на работу генератора защиты и радара, которые вынуждены постоянно перезапускаться.</color>
+		Text=<clr><clrEnd>
+        Text=Сила ракетного оружия: <bonWMissile> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Генератор поля: <bonDef> ед.
+		Fragility=100
+        Cost=400
+		Size=100
+        bonDef=-7
+        bonRadar=-600
+        bonSlotScaner=-1
+		bonSlotWeapon=-1
+        bonWMissile=26
+    }
+    372 ^{
+        Equipments=Hull
+        KindGraph=E
+        Name=Пигамарный корпус IV
+        Priority=70
+        Ruins=WB
+        Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Warrior,Pirate
+        Text=<color=248,252,248>Пигамарная серия была первой из всех серий акриновых разработок. Единственный её плюс - это экономия энергии, излишки которой перенаправляются для усиления ракетных установок. Среди минусов же частые сбои в работе и системные ошибки. Они отрицательно влияют на работу генератора защиты и радара, которые вынуждены постоянно перезапускаться.</color>
+		Text=<clr><clrEnd>
+        Text=Сила ракетного оружия: <bonWMissile> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Генератор поля: <bonDef> ед.
+		Fragility=100
+        Cost=500
+		Size=100
+        bonDef=-5
+        bonRadar=-450
+        bonWMissile=21
+    }
     460 ^{
         Cost=200
         Equipments=Hull
@@ -3833,7 +3854,8 @@ MicroModuls ^{
         Ruins=SB,BK
         Special=1
 		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>Агрессивный внешне спецкорпус для тех, кто любит путешествовать по Галактике, предпочитая торговые операции и правительственные задания кровопролитным космическим перестрелкам.</color>
+		ForCharacterTypes=Trader
+        Text=<color=248,252,248>Агрессивный внешне спецкорпус для тех, кто любит путешествовать по Галактике, предпочитая торговые операции и правительственные задания ожесточённым космическим перестрелкам.</color>
 		Text=<clr><clrEnd>
 		Text=Дальность прыжка: <bonJump> пк.
         Text=Дальность радара: <bonRadar> млн. км.
@@ -3857,7 +3879,8 @@ MicroModuls ^{
         Ruins=SB,BK
         Special=1
 		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>Агрессивный внешне спецкорпус для тех, кто любит путешествовать по Галактике, предпочитая торговые операции и правительственные задания кровопролитным космическим перестрелкам.</color>
+		ForCharacterTypes=Trader
+        Text=<color=248,252,248>Агрессивный внешне спецкорпус для тех, кто любит путешествовать по Галактике, предпочитая торговые операции и правительственные задания ожесточённым космическим перестрелкам.</color>
 		Text=<clr><clrEnd>
 		Text=Дальность прыжка: <bonJump> пк.
         Text=Дальность радара: <bonRadar> млн. км.
@@ -3881,7 +3904,8 @@ MicroModuls ^{
         Ruins=SB,BK
         Special=1
 		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>Агрессивный внешне спецкорпус для тех, кто любит путешествовать по Галактике, предпочитая торговые операции и правительственные задания кровопролитным космическим перестрелкам.</color>
+		ForCharacterTypes=Trader
+        Text=<color=248,252,248>Агрессивный внешне спецкорпус для тех, кто любит путешествовать по Галактике, предпочитая торговые операции и правительственные задания ожесточённым космическим перестрелкам.</color>
 		Text=<clr><clrEnd>
 		Text=Дальность прыжка: <bonJump> пк.
         Text=Дальность радара: <bonRadar> млн. км.
@@ -3906,7 +3930,8 @@ MicroModuls ^{
         Ruins=SB,BK
         Special=1
 		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
-        Text=<color=248,252,248>Агрессивный внешне спецкорпус для тех, кто любит путешествовать по Галактике, предпочитая торговые операции и правительственные задания кровопролитным космическим перестрелкам.</color>
+		ForCharacterTypes=Trader
+        Text=<color=248,252,248>Агрессивный внешне спецкорпус для тех, кто любит путешествовать по Галактике, предпочитая торговые операции и правительственные задания ожесточённым космическим перестрелкам.</color>
 		Text=<clr><clrEnd>
 		Text=Дальность прыжка: <bonJump> пк.
         Text=Дальность радара: <bonRadar> млн. км.
@@ -3951,6 +3976,8 @@ MicroModuls ^{
         Priority=10
         Ruins=RC
         Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Warrior
         Text=<color=248,252,248>Военная серия акриновых корпусов, предназначенная для проведения боевых операций по принципу: "Прилетел, перестрелял всех вокруг, победил". В народе получила неофициальное прозвище "Утюг", из-за характерного внешнего вида и крайней неповоротливости при манёврах.</color>
 		Text=<clr><clrEnd>
         Text=Сила энергетического оружия: <bonWEnergy> ед.
@@ -3978,6 +4005,8 @@ MicroModuls ^{
         Priority=30
         Ruins=RC
         Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Warrior
         Text=<color=248,252,248>Военная серия акриновых корпусов, предназначенная для проведения боевых операций по принципу: "Прилетел, перестрелял всех вокруг, победил". В народе получила неофициальное прозвище "Утюг", из-за характерного внешнего вида и крайней неповоротливости при манёврах.</color>
 		Text=<clr><clrEnd>
         Text=Сила энергетического оружия: <bonWEnergy> ед.
@@ -4005,6 +4034,8 @@ MicroModuls ^{
         Priority=50
         Ruins=RC
         Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Warrior
         Text=<color=248,252,248>Военная серия акриновых корпусов, предназначенная для проведения боевых операций по принципу: "Прилетел, перестрелял всех вокруг, победил". В народе получила неофициальное прозвище "Утюг", из-за характерного внешнего вида и крайней неповоротливости при манёврах.</color>
 		Text=<clr><clrEnd>
         Text=Сила энергетического оружия: <bonWEnergy> ед.
@@ -4031,6 +4062,8 @@ MicroModuls ^{
         Priority=70
         Ruins=RC
         Special=1
+		ForNPCTypes=Ranger,RangerExplorer,RangerPirateExplorer
+		ForCharacterTypes=Warrior
         Text=<color=248,252,248>Военная серия акриновых корпусов, предназначенная для проведения боевых операций по принципу: "Прилетел, перестрелял всех вокруг, победил". В народе получила неофициальное прозвище "Утюг", из-за характерного внешнего вида и крайней неповоротливости при манёврах.</color>
 		Text=<clr><clrEnd>
         Text=Сила энергетического оружия: <bonWEnergy> ед.
