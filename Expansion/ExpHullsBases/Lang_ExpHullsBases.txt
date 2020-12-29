@@ -1,48 +1,29 @@
 MicroModuls ^{
-	ExpHullsBases_EvaluationScaner ^{
-		Cost=150
-		Equipments=Scaner
-		KindGraph=14
-		Name=Оценочный сканер
-		Priority=30
-		Ruins=RC,BK,TC
-		Special=1
-		Text=<color=248,252,248>Инструмент настоящего <clr>бизнесмена<clrEnd>. Особые оценочные модули позволяют сканировать различные товары и выявлять их дефекты, а идущее в комплекте приложение уведомляет владельца о последних трендах на галактической бирже. К сожалению, программное обеспечение серьёзно загружает процессор, вследствие чего страдает общая производительность сканера.</color>
-		Text=<clr><clrEnd>
-		Text=Навык торговли: <bonSkill4>
-		Text=Навык точности: <bonSkill1>
-		Text=Мощность сканера: <bonScan> ед.
-		bonSkill4=2
-		bonSkill1=-1
-		bonScan=-4
-	}
 	ExpHullsBases_Hurricane ^{
 		CustomTag=ExpHullsBases_Hurricane
-		Cost=125
 		Equipments=Hull
 		Name=Корпус Ураган
 		Priority=50
-		Size=100
 		Special=1
 		LockedAcryn=3
 		NonSearchable=1
 		Text=<color=248,252,248>Модифицированный корпус станции. Новейшая система наведения заменяет стандартный радар и корректирует работу орудий, также помогая наводчикам вести прицельный огонь. За счёт этого существенно возрастает дальность стрельбы и точность станционного вооружения.</color>
 		Text=<clr><clrEnd>
-		Text=Дальнобойность орудий: <bonWRadius>
 		Text=Навык точности: <bonSkill1>
+        Text=Дальность стрельбы: <bonWRadius> ед.
+		Cost=125
+		Size=100
 		bonSkill1=2
+		bonWRadius=60
 		bonSlotArt=-2
 		bonSlotForsage=-1
 		bonSlotRadar=-1
-		bonWRadius=60
 	}
 	ExpHullsBases_GSOM ^{
 		CustomTag=ExpHullsBases_GSOM
-		Cost=125
 		Equipments=Hull
 		Name=Корпус ГСОМ-1
 		Priority=50
-		Size=100
 		Special=1
 		LockedAcryn=3
 		NonSearchable=1
@@ -51,27 +32,29 @@ MicroModuls ^{
 		Text=Сила энергетического оружия: <bonWEnergy> ед.
 		Text=Сила осколочного оружия: <bonWSplinter> ед.
 		Text=Генератор поля: <bonDef> ед.
+		Cost=125
+		Size=100
+		bonWEnergy=20
+		bonWSplinter=20
 		bonDef=7
 		bonSlotArt=-2
 		bonSlotForsage=-1
 		bonSlotHook=-1
-		bonWEnergy=20
-		bonWSplinter=20
 	}
 	ExpHullsBases_Polyxen ^{
 		CustomTag=ExpHullsBases_Polyxen
-		Cost=60
 		CountMicroModuls=600
 		Equipments=Hull
 		Name=Поликсенатный корпус
 		Priority=50
-		Size=90
 		Special=1
 		LockedAcryn=3
 		NonSearchable=1
 		Text=<color=248,252,248>Модифицированный корпус станции. Металл в броне и несущих конструкциях заменён на поликсенат - прочный и недорогой полимер, для обслуживания которого требуется гораздо меньше усилий и финансовых затрат.</color>
 		Text=<clr><clrEnd>
 		Text=Эффективность дроида: <bonDroid> ед.
+		Cost=60
+		Size=90
 		bonDroid=10
 		bonSlotForsage=-1
 	}
@@ -80,7 +63,7 @@ FormInfo ^{
 	br=<br>
 }
 Script ^{
-	Mod_ExpHullsBases ~{
+	Mod_ExpHullsBases ^{
 		213=Я прекращаю спонсирование этой станции
 		479=Я желаю улучшить корпус вашей станции
 		478=Мне нужен подробный отчёт о состоянии станции

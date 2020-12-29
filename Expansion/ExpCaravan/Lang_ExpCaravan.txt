@@ -39,30 +39,30 @@ ShipInfo ^{
 				OnActCodeTypes=t_OnStep
 				OnActStepTypes=3,4,5,6,7,8,9
 				OnActCode ^{
-					01=dword cur_ship=ScriptItemActShip();
+					01=dword cur_ship = ScriptItemActShip();
 					02=if(cur_ship)
 					03 ^{
 						01=if(ShipInNormalSpace(cur_ship))
 						02 ^{
-							01=dword cur_info=CurInfo();
-							02=dword container=ShipCustomShipInfoData(0,cur_info,1);
+							01=dword cur_info = CurInfo();
+							02=dword container = ShipCustomShipInfoData(0, cur_info, 1);
 							03=if(container)
 							04 ^{
-								01=container=IdToItem(container);
+								01=container = IdToItem(container);
 								//Проверяем, что контейнер ещё цел
 								02=if(container)
 								03 ^{
 									//Проверяем, что контейнер ещё болтается в системе (если его подобрали, то попытка выстрелить по нему закончится крашем)
-									01=if(ItemIn(GetValueFromScript('Mod_ExpCaravan','Cargo_'+ShipCustomShipInfoData(0,cur_info,2)),ShipStar(cur_ship)))
+									01=if(ItemIn(GetValueFromScript('Mod_ExpCaravan', 'Cargo_' + ShipCustomShipInfoData(0, cur_info, 2)), ShipStar(cur_ship)))
 									02 ^{
-										01=int i=1;
-										02=dword gun=0;
+										01=int i = 1;
+										02=dword gun = 0;
 										03=while(!gun)
 										04 ^{
-											01=gun=ShipEqInSlot(cur_ship,t_Weapon1,i);
-											02=i=i+1;
+											01=gun = ShipEqInSlot(cur_ship, t_Weapon1, i);
+											02=i = i + 1;
 										}
-										05=FireWeapon(cur_ship,container,gun);
+										05=FireWeapon(cur_ship, container, gun);
 									}
 								}
 							}

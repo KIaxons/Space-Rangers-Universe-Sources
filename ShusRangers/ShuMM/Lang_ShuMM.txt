@@ -90,53 +90,47 @@ MicroModuls ^{
     }
 	//ММ из мода
     ShuMM_Khataber ^{
-        Cost=70
         Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
-        Fragility=85
         Name=Хатабер
         Owner=PirateClan
         Priority=80
         RacialRestriction=1
-        Size=90
         Text=Микромодуль третьего уровня. Патчит нелицензионное программное обеспечение <clr>пиратского<clrEnd> оборудования до последней версии, исправляет поврежденные файлы реестра и чистит кэш системы, таким образом обеспечивая лучшее качество работы и простоту ремонта.
-        Text=Стоимость: <clr>-30%<clrEnd>
-        Text=Размер: <clr>-10%<clrEnd>
+        Text=<clr><clrEnd>
         Text=Надежность: <clr>+15%<clrEnd>
+		Text=Стоимость: <clr>-30%<clrEnd>
+        Text=Размер: <clr>-10%<clrEnd>
+        Fragility=85
+        Cost=70
+        Size=90
     }
     ShuMM_Downgrade ^{
-        Cost=40
         Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
-        Fragility=150
         Name=Даунгрейд
         Owner=Fei,Gaal
         Priority=70
-        Size=70
-        Text=Микромодуль третьего уровня. Заменяет часть дорогих и громоздких <clr>фэянских и гаальских<clrEnd> деталей более компактными и низкокачественными пеленгскими, также удаляя все декоративные и малофункциональные элементы. Не используется для корпуса и оружия.
-        Text=Стоимость: <clr>-60%<clrEnd>
-        Text=Размер: <clr>-30%<clrEnd>
+        Text=Микромодуль третьего уровня. Заменяет часть дорогих и громоздких <clr>фэянских и гаальских<clrEnd> деталей более компактными и низкокачественными пеленгскими, также удаляя все декоративные и малофункциональные элементы. Не применим для оружия и корпуса.
+        Text=<clr><clrEnd>
+		Text=Стоимость: <clr>-60%<clrEnd>
         Text=Надежность: <clr>-33%<clrEnd>
-    }
-    ShuMM_Berserker ^{
-        Equipments=Hull
-        Fragility=120
-        Name=Берсеркер
-        Owner=Maloc,Peleng,People,Fei
-        Priority=60
-        Text=Микромодуль второго уровня. Снимает часть брони корпуса, размещая вместо нее два орудийных отсека. По требованиям <clr>гаальских<clrEnd> пацифистов, запрещен к применению в корпусах этой расы.
-        bonSlotWeapon=2
+        Text=Размер: <clr>-30%<clrEnd>
+        Fragility=150
+        Cost=40
+        Size=70
     }
     ShuMM_TEDB ^{
         Equipments=Engine
-        Fragility=66
         Name=ТЕДБ
         Owner=People
         Priority=55
-        Size=120
         Text=Микромодуль второго уровня. Устанавливает на двигатель <clr>человеческого<clrEnd> производства модификатор "ТЕДБ" (что значит "Тише едешь - дальше будешь"), перенаправляющий энергию из основных систем на гипердвигатель, что приводит к увеличению дальности гиперпрыжка взамен скорости и повышению надежности двигателя.
+        Text=<clr><clrEnd>
         Text=Дальность прыжка: <bonJump> пк.
+        Text=Надежность: <clr>+50%<clrEnd>
         Text=Скорость двигателя: <bonSpeed> ед.
         Text=Размер: <clr>+20%<clrEnd>
-        Text=Надежность: <clr>+50%<clrEnd>
+        Fragility=66
+        Size=120
         bonJump=10
         bonSpeed=-75
     }
@@ -145,8 +139,9 @@ MicroModuls ^{
         Name=ЭМ-генератор
         Owner=Fei
         Priority=50
-        Size=110
         Text=Микромодуль второго уровня. Монтирует на <clr>энергетическое<clrEnd> вооружение <clr>фэянского<clrEnd> производства генератор электромагнитных импульсов, вызывающий перебои в работе вражеского оборудования.
+        Text=<clr><clrEnd>
+        Text=Дополнительный эффект: <clr>ЭМ-помехи<clrEnd>
         WeaponMods=Magnetic
     }
     ShuMM_FragUp ^{
@@ -154,123 +149,192 @@ MicroModuls ^{
         Name=Фраг-ап
         Owner=Maloc,Peleng
         Priority=50
-        Size=80
         Text=Микромодуль второго уровня. Заменяет старую систему подачи <clr>осколочных<clrEnd> снарядов более эффективным и компактным аналогом. Применяется только для замены старых <clr>пеленгских<clrEnd> и <clr>малокских<clrEnd> компонентов, по неизвестной причине конфликтует с <clr>доминаторским<clrEnd> программным обеспечением.
+        Text=<clr><clrEnd>
         Text=Сила осколочного оружия: <bonWSplinter> ед.
         Text=Дальность стрельбы: <bonWRadius> ед.
         Text=Размер: <clr>-20%<clrEnd>
-        bonWRadius=20
+        Size=80
         bonWSplinter=12
+        bonWRadius=20
     }
     ShuMM_Upgrade ^{
-        Cost=175
         Equipments=Engine,Radar,Scaner,Droid,Hook,DefGenerator
-        Fragility=66
         Name=Апгрейд
         Owner=Keller
         Priority=45
         RacialRestriction=1
         Text=Микромодуль второго уровня. Обновляет программное обеспечение <clr>келлероидного<clrEnd> оборудования, повышая его надежность и характеристики. Не применяется для корпуса, топливного бака и орудийных систем.
-        Text=Надежность: <clr>+50%<clrEnd>
+        Text=<clr><clrEnd>
         Text=Скорость двигателя: <bonSpeed> ед.
         Text=Дальность прыжка: <bonJump> пк.
         Text=Дальность радара: <bonRadar> млн. км.
-        Text=Генератор поля: <bonDef> ед.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата:<bonHookRadius> ед.
-        Text=Эффективность дроида: <bonDroid> ед.
-        Text=Мощность сканера: <bonScan> ед.
-        bonDef=5
-        bonDroid=15
-        bonHook=45
-        bonHookRadius=45
+        Text=Генератор поля: <bonDef> ед.
+        Text=Надежность: <clr>+50%<clrEnd>
+        Fragility=66
+        Cost=175
+        bonSpeed=75
         bonJump=8
         bonRadar=750
         bonScan=6
-        bonSpeed=75
+        bonDroid=15
+        bonHook=45
+        bonHookRadius=45
+        bonDef=5
     }
     ShuMM_Elephant ^{
         Equipments=Hull
-        Fragility=160
         Name=Слонопотам
         Owner=Peleng,People
         Priority=42
-        Size=135
         Text=Микромодуль второго уровня. Увеличивает расстояние между атомами корпуса корабля, повышая его размер. Отрицательным эффектом является уменьшение прочности таких кораблей, в связи с большей удаленностью атомов друг от друга. Применяется к <clr>человеческим и пеленгским<clrEnd> корпусам.
-        Text=Размер: <clr>+35%<clrEnd>
+        Text=<clr><clrEnd>
+		Text=Размер: <clr>+35%<clrEnd>
         Text=Броня корпуса: <bonHull> ед.
-        Text=Прочность: <clr>-37%<clrEnd>
+		Text=Восприимчивость к урону: <clr>+60%<clrEnd>
+        Fragility=160
+        Size=135
         bonHull=-1
     }
     ShuMM_BlockerV217 ^{
-        Cost=200
         Equipments=DefGenerator
-        Fragility=80
         Name=Блокиратор v2.1.7
         Owner=Terron
         Priority=30
         RacialRestriction=1
-        Size=350
         Text=Микромодуль первого уровня. Подключает к <clr>терроноидному<clrEnd> генератору защитного поля четыре огромные батареи, увеличивающие его мощность до предела.
+        Text=<clr><clrEnd>
         Text=Генератор поля: <bonDef> ед.
-        Text=Стоимость: <clr>+100%<clrEnd>
-        Text=Размер: <clr>+250%<clrEnd>
         Text=Надежность: <clr>+25%<clrEnd>
+		Text=Стоимость: <clr>+100%<clrEnd>
+        Text=Размер: <clr>+250%<clrEnd>
+        Fragility=80
+        Cost=200
+        Size=350
         bonDef=15
     }
     ShuMM_Autocannon ^{
-        Cost=175
         Equipments=WEnergy
         Name=Автопушка
         Owner=Blazer
         Priority=25
         RacialRestriction=1
-        Size=125
         Text=Микромодуль первого уровня. Подключает к <clr>энергетическому<clrEnd> вооружению <clr>блазероидов<clrEnd> продвинутую систему наведения, производящую выстрел без участия пилота. Для корректной работы система потребляет энергию из запасов оружия.
-        Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=<clr><clrEnd>
+		Text=Сила энергетического оружия: <bonWEnergy> ед.
         Text=Дальность оружия: <bonWRadius> ед.
         Text=Стоимость: <clr>+75%<clrEnd>
         Text=Размер: <clr>+25%<clrEnd>
-        Text=<clr>Оружие наносит максимальный возможный урон вне зависимости от случая и навыков пилота<clrEnd>
+        Text=<clr>Оружие наносит максимально возможный урон вне зависимости от навыков пилота<clrEnd>
+        Cost=175
+        Size=125
         WeaponMods=NoDelta
         bonWEnergy=-7
         bonWRadius=-15
     }
     ShuMM_Minigun ^{
-        Equipments=W02
+        Equipments=W02,frag_gun
         Name=Миниган
         Owner=PirateClan
 		RacialRestriction=1
         Priority=15
-		Fragility=285
-		Cost=250
-        Size=200
         Text=Микромодуль первого уровня. Уникальная разработка <clr>пиратского клана<clrEnd>. Модифицирует <clr>осколочное орудие<clrEnd>, невероятно увеличивая его <clr>скорострельность<clrEnd>, но взамен существенно ухудшая все прочие ключевые характеристики.
 		Text=<clr><clrEnd>
-		Text=Число выстрелов за ход: <bonAttacks>
+		Text=Скорострельность: <bonAttacks>
         Text=Сила осколочного оружия: <bonWSplinter> ед.
 		Text=Дальность стрельбы: <bonWRadius> ед.
         Text=Надёжность: <clr>-75%<clrEnd>
         Text=Стоимость: <clr>+150%<clrEnd>
         Text=Размер: <clr>+100%<clrEnd>
+		Fragility=400
+		Cost=250
+        Size=200
         bonAttacks=5
         bonWSplinter=-18
         bonWRadius=-30
     }
     ShuMM_ExtremeFly ^{
         Equipments=Engine
-        Fragility=200
         Name=Экстрим-флай
         Owner=PirateClan
         Priority=15
         RacialRestriction=1
         Text=Микромодуль первого уровня. Снимает скоростные ограничения двигателей <clr>пиратского<clrEnd> производства, увеличивая скорость полета и повышая износ вдвое.
+		Text=<clr><clrEnd>
         Text=Скорость двигателя: <bonSpeed> ед.
-        Text=Надежность: <clr>-50%<clrEnd>
+        Text=Надёжность: <clr>-60%<clrEnd>
+        Fragility=250
         bonSpeed=270
     }
 	//Конец ММ
 	//Начало акринов из мода
+	ShuMM_EvaluationScaner1 ^{
+		Equipments=Scaner
+		KindGraph=14
+		Name=Оценочный сканер I
+		AcrynSerie=Оценочный сканер I-III
+		AcrynLevel=1
+		SerieLevel1=ShuMM_EvaluationScaner1
+		SerieLevel2=ShuMM_EvaluationScaner2
+		SerieLevel3=ShuMM_EvaluationScaner3
+		LevelsCount=3
+		Priority=10
+		Ruins=BK
+		Special=1
+		Text=<color=248,252,248>Инструмент настоящего <clr>бизнесмена<clrEnd>. Особые оценочные модули позволяют сканировать различные товары и выявлять их дефекты, а идущее в комплекте приложение уведомляет владельца о последних трендах на галактической бирже. К сожалению, программное обеспечение серьёзно загружает процессор, вследствие чего страдает общая производительность сканера.</color>
+		Text=<clr><clrEnd>
+		Text=Навык торговли: <bonSkill4>
+		Text=Мощность сканера: <bonScan> ед.
+		Cost=150
+		bonSkill4=2
+		bonScan=-8
+	}
+	ShuMM_EvaluationScaner2 ^{
+		Equipments=Scaner
+		KindGraph=14
+		Name=Оценочный сканер II
+		AcrynSerie=Оценочный сканер I-III
+		AcrynLevel=2
+		SerieLevel1=ShuMM_EvaluationScaner1
+		SerieLevel2=ShuMM_EvaluationScaner2
+		SerieLevel3=ShuMM_EvaluationScaner3
+		LevelsCount=3
+		Priority=30
+		Ruins=BK
+		Special=1
+		Text=<color=248,252,248>Инструмент настоящего <clr>бизнесмена<clrEnd>. Особые оценочные модули позволяют сканировать различные товары и выявлять их дефекты, а идущее в комплекте приложение уведомляет владельца о последних трендах на галактической бирже. К сожалению, программное обеспечение серьёзно загружает процессор, вследствие чего страдает общая производительность сканера.</color>
+		Text=<clr><clrEnd>
+		Text=Навык торговли: <bonSkill4>
+		Text=Мощность сканера: <bonScan> ед.
+		Cost=200
+		bonSkill4=2
+		bonScan=-5
+	}
+	ShuMM_EvaluationScaner3 ^{
+		Equipments=Scaner
+		KindGraph=14
+		Name=Оценочный сканер III
+		AcrynSerie=Оценочный сканер I-III
+		AcrynLevel=3
+		SerieLevel1=ShuMM_EvaluationScaner1
+		SerieLevel2=ShuMM_EvaluationScaner2
+		SerieLevel3=ShuMM_EvaluationScaner3
+		LevelsCount=3
+		Priority=50
+		Ruins=BK
+		Special=1
+		Text=<color=248,252,248>Инструмент настоящего <clr>бизнесмена<clrEnd>. Особые оценочные модули позволяют сканировать различные товары и выявлять их дефекты, а идущее в комплекте приложение уведомляет владельца о последних трендах на галактической бирже. К сожалению, программное обеспечение серьёзно загружает процессор, вследствие чего страдает общая производительность сканера.</color>
+		Text=<clr><clrEnd>
+		Text=Навык торговли: <bonSkill4>
+		Text=Мощность сканера: <bonScan> ед.
+		Cost=250
+		bonSkill4=2
+		bonScan=-3
+	}
     ShuMM_ArmoriteDroid1 ^{
         Equipments=Droid
         KindGraph=ArmoriteDroid

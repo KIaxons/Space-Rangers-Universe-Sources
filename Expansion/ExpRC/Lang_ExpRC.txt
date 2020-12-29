@@ -52,22 +52,21 @@ MicroModuls ^{
 		UniqueMM=1
 		LockedAcryn=3
 		NonSearchable=1
-        Text=Новейшая экспериментальная разработка в области создания микромодулей. Модифицирует системы наведения <clr>любого оружия<clrEnd>, тем самым значительно увеличивая наносимый им урон и повышая максимальную дальность.
+        Text=Новейшая экспериментальная разработка в области создания микромодулей. Модифицирует системы наведения <clr>любого оружия<clrEnd>, тем самым значительно увеличивая наносимый ими урон и повышая максимальную дальность.
 		Text=<clr><clrEnd>
-		Text=Сила энергетического оружия: <clr>+40<clrEnd> ед.
-        Text=Сила осколочного оружия: <clr>+40<clrEnd> ед.
-		Text=Сила ракетного оружия: <clr>+40<clrEnd> ед.
-		Text=Дальность стрельбы: <clr>+50<clrEnd> ед.
-        bonWEnergy=40
-		bonWSplinter=40
-		bonWMissile=40
+        Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Сила ракетного оружия: <bonWMissile> ед.
+        Text=Дальность стрельбы: <bonWRadius> ед.
+		bonWEnergy=40
+		bonWSplinter=50 
+		bonWMissile=60
 		bonWRadius=50
     }
     ExpRC_Absoluten ^{
         CustomTag=Mod_ExpRC1
 		KindGraph=Exp
         Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
-        Fragility=80
         Name=Абсолютень
 		Color=41,125,222
         Priority=0
@@ -82,31 +81,29 @@ MicroModuls ^{
 		Text=Вместимость бака: <bonFuel> ед.
         Text=Дальность радара: <bonRadar> млн. км.
         Text=Мощность сканера: <bonScan> ед.
-		Text=Генератор поля: <bonDef> ед.
         Text=Эффективность дроида: <bonDroid> ед.
         Text=Мощность захвата: <bonHook> ед.
         Text=Дальность захвата: <bonHookRadius> ед.
         Text=Скорость захвата: <bonHookMaxSpeed> ед.
-        Text=Надёжность оборудования: <clr>+25%<clrEnd>
-        bonDef=12
-        bonDroid=40
-        bonFuel=70
-        bonHook=150
-        bonHookMaxSpeed=10
-        bonHookMinSpeed=10
-        bonHookRadius=30
-        bonJump=15
-        bonRadar=2000
-        bonScan=20
-        bonSpeed=200
+		Text=Генератор поля: <bonDef> ед.
+        Text=Надёжность: <clr>+25%<clrEnd>
+        Fragility=80
+        bonSpeed=140
+        bonJump=9
+        bonFuel=40
+        bonRadar=1850
+        bonScan=18
+        bonDroid=45
+        bonHook=75
+        bonHookMaxSpeed=3
+        bonHookMinSpeed=3
+        bonHookRadius=20
+        bonDef=11
     }
     ExpRC_Invisiby ^{
         CustomTag=Mod_ExpRC2
 		KindGraph=Exp
         Equipments=Hull
-        FragilityEnergy=77
-        FragilityMissile=77
-        FragilitySplinter=77
         Name=Инвизиби
 		Color=41,125,222
         Priority=0
@@ -114,9 +111,12 @@ MicroModuls ^{
 		UniqueMM=1
 		LockedAcryn=3
 		NonSearchable=1
-        Text=Новейшая экспериментальная разработка в области создания микромодулей. Меняет материал обшивки <clr>корпуса<clrEnd> на атомарном уровне, значительно повышая его отражающие свойства. Данное улучшение делает корабль намного менее заметным для радара, что серьёзно затрудняет работу любых систем наведения.
+        Text=Новейшая экспериментальная разработка в области создания микромодулей. Меняет материал обшивки <clr>корпуса<clrEnd> на атомарном уровне, значительно повышая его отражающие свойства. Данное улучшение делает корабль намного менее заметным для радара, что серьёзно затрудняет работу любых систем наведения противника.
 		Text=<clr><clrEnd>
-		Text=Восприимчивость к урону: <clr>-30%<clrEnd>
+		Text=Восприимчивость к урону: <clr>-40%<clrEnd>
+        FragilityEnergy=60
+        FragilityMissile=60
+        FragilitySplinter=60
     }
     ExpRC_Mumakil ^{
         CustomTag=Mod_ExpRC3
@@ -129,13 +129,13 @@ MicroModuls ^{
 		UniqueMM=1
 		LockedAcryn=3
 		NonSearchable=1
-        Text=Новейшая экспериментальная разработка в области создания микромодулей. Сжимает материал обшивки <clr>корпуса<clrEnd>, делая его очень плотным, прочным и тяжёлым. За счёт снижения толщины обшивки, расширяется внутреннее пространство корабля, однако и вес изменённого корпуса также<br>ощутимо возрастает.
+        Text=Новейшая экспериментальная разработка в области создания микромодулей. Сжимает материал обшивки <clr>корпуса<clrEnd>, делая его очень плотным, прочным и тяжёлым. За счёт снижения толщины обшивки, расширяется внутреннее пространство корабля, однако и вес изменённого корпуса также<br>существенно возрастает.
 		Text=<clr><clrEnd>
-		Text=Размер корпуса: <clr>+50%<clrEnd>
 		Text=Броня корпуса: <bonHull> ед.
+		Text=Размер корпуса: <clr>+25%<clrEnd>
 		Text=Масса корабля: <bonMass><clr>%<clrEnd>
-		Size=150
-		bonHull=12
+		bonHull=3
+		Size=125
 		bonMass=20
     }
     ExpRC_Maximus ^{
@@ -149,12 +149,12 @@ MicroModuls ^{
 		UniqueMM=1
 		LockedAcryn=3
 		NonSearchable=1
-		Text=Новейшая экспериментальная разработка в области создания микромодулей. Точный принцип работы <clr>Максимуса<clrEnd> пока не смог постичь даже его собственный изобретатель. <clr>Оружие<clrEnd>, оснащённое этим микромодулем, всегда будет наносить исключительно <clr>максимальный урон<clrEnd>.
+		Text=Новейшая экспериментальная разработка в области создания микромодулей. Точный принцип работы <clr>Максимуса<clrEnd> пока не смог постичь даже его собственный изобретатель. <clr>Любое оружие<clrEnd>, оснащённое этим микромодулем, всегда будет наносить исключительно <clr>максимально возможный урон<clrEnd>.
 		WeaponMods=NoDelta
     }
 }
 Script ^{
-	Mod_ExpRC ~{
+	Mod_ExpRC ^{
 		54=Уважаемый <Player>! Все центры рейнджеров уничтожены.<br>Ваше личное <clr>хранилище микромодулей<clrEnd> потеряно.
 		11=Я бы хотел кое-что узнать
 		49=</color><br><br>Желаете узнать что-нибудь ещё?
