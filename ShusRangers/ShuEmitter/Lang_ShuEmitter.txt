@@ -489,7 +489,7 @@ Items ^{
 }
 MicroModuls ^{
     ShuEmitter_Penny ^{
-        Cost=10
+        Cost=50
         Equipments=photon_gun,photon_gun2,photon_gun3
         Fragility=200
         Name=Копейка
@@ -501,10 +501,10 @@ MicroModuls ^{
 		Text=Сила энергетического оружия: <bonWEnergy> ед.
 		Text=Надёжность: <clr>-50%<clrEnd>
         Text=Дальность стрельбы: <bonWRadius> ед.
-        Text=Стоимость: <clr>-90%<clrEnd>
+        Text=Стоимость: <clr>-50%<clrEnd>
         Text=Размер: <clr>-40%<clrEnd>
-        bonWEnergy=20
-        bonWRadius=-100
+        bonWEnergy=15
+        bonWRadius=-70
     }
     ShuEmitter_Repairer ^{
         Equipments=splash_faser
@@ -518,7 +518,7 @@ MicroModuls ^{
         Cost=200
         Equipments=slow_gun
         Name=Слонобой
-        Owner=Peleng,NonKling
+        Owner=NonKling
         Priority=45
         RacialRestriction=1
         Size=120
@@ -531,12 +531,12 @@ MicroModuls ^{
         Text=<clr>Ослабляет броню цели<clrEnd>
         WeaponMods=Acid
         bonWEnergy=15
-        bonWRadius=60
+        bonWRadius=40
     }
     ShuEmitter_Shotgan ^{
         Equipments=frag_gun
         Name=Шотган
-        Owner=Maloc,NonKling
+        Owner=NonKling
         Priority=40
         RacialRestriction=1
         Text=Микромодуль второго уровня. Заменяет осколочные снаряды <clr>разрывного орудия<clrEnd> <clr>малокской<clrEnd> сборки зажигательными, обладающими более внушительной огневой мощью, разрушающими вражеское оборудование и ослабляющими броню.
@@ -550,9 +550,10 @@ MicroModuls ^{
     ShuEmitter_Unlocker3000 ^{
         Cost=150
         Equipments=W17
-        Fragility=150
+        Fragility=125
+	Size=150
         Name=Анлокер-3000
-        Owner=PirateClan,NonKling
+        Owner=NonKling
         Priority=40
         RacialRestriction=1
         Text=Микромодуль второго уровня. Снимает системные ограничения с любого <clr>пиратского кафаситора<clrEnd>, что приводит к резкому возрастанию его урона и дальности, снижая при этом его надежность. Стоимость такого оружия возрастает.
@@ -560,26 +561,27 @@ MicroModuls ^{
 		Text=Сила энергетического оружия: <bonWEnergy> ед.
         Text=Дальность стрельбы: <bonWRadius> ед.
         Text=Стоимость: <clr>+50%<clrEnd>
-        Text=Надежность: <clr>-33%<clrEnd>
-        bonWEnergy=30
-        bonWRadius=65
+        Text=Надежность: <clr>-20%<clrEnd>
+	Text=Размер: <clr>+50%<clrEnd>
+        bonWEnergy=20
+        bonWRadius=35
     }
     ShuEmitter_Gunfire ^{
         Equipments=maloc_laser,maloc_laser2
-        Fragility=80
         Name=Ганфаер
-        Owner=Maloc,Peleng
+        Owner=NonKling
         Priority=40
+	Cost=140
         RacialRestriction=1
         Size=85
         Text=Микромодуль второго уровня. Совместная разработка <clr>малоков<clrEnd> и <clr>пеленгов<clrEnd>. Реинкарнация <clr>боевого лазера ТБ<clrEnd>, превращающая его в конкурентоспособное лёгкое и прочное орудие, приспособленное для ведения боя на дальних дистанциях. По слухам, проект был выкраден из фэянских лабораторий.
         Text=<clr><clrEnd>
 		Text=Сила энергетического оружия: <bonWEnergy> ед.
         Text=Дальность стрельбы: <bonWRadius> ед.
-        Text=Прочность: <clr>+25%<clrEnd>
+	Text=Стоимость: <clr>+40%<clrEnd>
         Text=Размер: <clr>-15%<clrEnd>
-        bonWEnergy=5
-        bonWRadius=100
+        bonWEnergy=10
+        bonWRadius=30
     }
     ShuEmitter_Striker ^{
         Equipments=sphere_gun
@@ -605,32 +607,31 @@ MicroModuls ^{
         Cost=60
         Equipments=gaal_vision
         Name=Лай-пацифик
-        Owner=Gaal,NonKling
-        Priority=30
+        Owner=NonKling
+        Priority=25
         RacialRestriction=1
-        Size=70
+        Size=65
         Text=Микромодуль первого уровня. Удаляет часть боевых компонентов <clr>аннигилятора поля<clrEnd>, взамен устанавливая более компактный и дешёвый модуль замедления противника. Поскольку все прочие расы признали подобный подход малоэффективным, данный микромодуль совместим лишь с орудиями <clr>гаальской<clrEnd> конструкции.
         Text=<clr><clrEnd>
-		Text=Размер: <clr>-30%<clrEnd>
+		Text=Размер: <clr>-35%<clrEnd>
         Text=Стоимость: <clr>-40%<clrEnd>
 		Text=Сила энергетического оружия: <bonWEnergy> ед.
         Text=<clr>Добавляет эффект замедления<clrEnd>
         WeaponMods=Decelerate
-        bonWEnergy=-7
     }
     ShuEmitter_PulseBlockR2 ^{
-        Cost=350
+        Cost=150
         Equipments=pulse_gun
         Name=ПульсБлок R2
-        Owner=Fei
+        Owner=Fei,NonKling
         Priority=5
         RacialRestriction=1
         Text=Микромодуль первого уровня. Подключает к <clr>пульсгану<clrEnd>, проиведенному по <clr>фэянской<clrEnd> технологии, экспериментальный блок генерации энергетических сгустков, создающий куда более смертоносный снаряд, нежели обыкновенный модуль. Существенным недостатком конструкции, из-за которого она и не попала в массовое производство, является сложность в эксплуатации, в разы увеличивающая стоимость ремонта.
         Text=<clr><clrEnd>
 		Text=Сила энергетического оружия: <bonWEnergy> ед.
         Text=Дальность стрельбы: <bonWRadius> ед.
-        Text=Cтоимость: <clr>+250%<clrEnd>
-        bonWEnergy=40
-        bonWRadius=15
+        Text=Cтоимость: <clr>+50%<clrEnd>
+        bonWEnergy=25
+        bonWRadius=30
     }
 }

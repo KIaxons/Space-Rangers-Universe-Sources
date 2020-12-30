@@ -1,9 +1,7 @@
 MicroModuls ^{
     EvoMMUnique_Droiser ^{
-        Cost=135
         CustomTag=UnMM_MC
         Equipments=Droid,DefGenerator
-        Fragility=70
         KindGraph=Un
 		Color=0,150,0
         Name=Дроизатор
@@ -19,11 +17,12 @@ MicroModuls ^{
         Text=Прочность: <clr>+30%<clrEnd>
         Text=Стоимость: <clr>+35%<clrEnd>
         Text=<clr>Выдаётся медицинским центром за особые заслуги<clrEnd>
-        bonDef=10
-        bonDroid=35
+        Fragility=70
+        Cost=135
+        bonDef=12
+        bonDroid=45
     }
     EvoMMUnique_Structurizer ^{
-        Cost=125
         CustomTag=UnMM_RC
         Equipments=Hull
         KindGraph=Un
@@ -31,7 +30,6 @@ MicroModuls ^{
         Name=Структуризатор
         Owner=People
         Priority=0
-        Size=110
         Special=1
 		UniqueMM=1
 		LockedAcryn=3
@@ -44,7 +42,9 @@ MicroModuls ^{
         Text=Броня: <bonHull> ед.
         Text=Стоимость: <clr>+25%<clrEnd>
         Text=<clr>Выдаётся центром рейнджеров за особые заслуги<clrEnd>
-        bonHull=9
+        Cost=125
+        Size=110
+        bonHull=3
         bonMass=-10
         bonSlotArt=4
         bonSlotDef=1
@@ -55,10 +55,8 @@ MicroModuls ^{
         bonSlotWeapon=4
     }
     EvoMMUnique_Enricher ^{
-        Cost=50
         CustomTag=UnMM_BK
         Equipments=Engine
-        Fragility=85
         KindGraph=Un
 		Color=0,150,0
         Name=Обогащатель
@@ -71,20 +69,20 @@ MicroModuls ^{
         Text=Уникальный микромодуль. Просто создан для скорейшего обогащения. Совместим с оборудованием <clr>человеческой<clrEnd> и <clr>неизвестной<clrEnd> рас.
 		Text=<clr><clrEnd>
         Text=Прочность: <clr>+15%<clrEnd>
-        Text=Стоимость: <clr>-50%<clrEnd>
+        Text=Стоимость: <clr>+50%<clrEnd>
         Text=Скорость: <bonSpeed> ед.
         Text=Прыжок: <bonJump> ед.
         Text=Навык торговли: <clr>+1<clrEnd>
         Text=<clr>Выдаётся бизнесс центром за особые заслуги<clrEnd>
-        bonJump=15
+        Fragility=85
+        Cost=150
+        bonJump=10
         bonSkill4=1
-        bonSpeed=190
+        bonSpeed=150
     }
     EvoMMUnique_Destroyer ^{
-        Cost=125
         CustomTag=UnMM_PB
         Equipments=WEnergy,WSplinter
-        Fragility=70
         KindGraph=Un
 		Color=0,150,0
         Name=Разрушитель
@@ -102,13 +100,14 @@ MicroModuls ^{
         Text=Стоимость: <clr>+25%<clrEnd>
         Text=Дроп предметов (необходимо превышение мощности сканера над защитой цели)
         Text=<clr>Выдаётся пиратской базой за особые заслуги<clrEnd>
+        Fragility=70
+        Cost=125
         WeaponMods=Destruct,MoreDrop
-        bonWEnergy=30
-        bonWRadius=20
-        bonWSplinter=35
+        bonWEnergy=35
+        bonWRadius=50
+        bonWSplinter=45
     }
     EvoMMUnique_Relicter ^{
-        Cost=125
         CustomTag=UnMM_WB
         Equipments=WMissile
         KindGraph=Un
@@ -125,11 +124,11 @@ MicroModuls ^{
         Text=Стоимость: <clr>+25%<clrEnd>
         Text=Замедление цели
         Text=<clr>Выдаётся военной базой за особые заслуги<clrEnd>
+        Cost=125
         WeaponMods=Decelerate,MoreDrop
-        bonWMissile=30
+        bonWMissile=50
     }
     EvoMMUnique_Researcher ^{
-        Cost=125
         CustomTag=UnMM_SB
         Equipments=FuelTank,Engine,Radar,Scaner
         KindGraph=Un
@@ -149,10 +148,11 @@ MicroModuls ^{
         Text=Дальность радара: <bonRadar> ед.
         Text=Стоимость: <clr>+25%<clrEnd>
         Text=<clr>Выдаётся научной базой за особые заслуги<clrEnd>
-        bonFuel=35
-        bonJump=25
-        bonRadar=1850
-        bonScan=13
+        Cost=125
+        bonFuel=40
+        bonJump=20
+        bonRadar=2100
+        bonScan=20
     }
 }
 Script ^{

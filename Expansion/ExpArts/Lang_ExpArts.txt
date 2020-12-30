@@ -346,7 +346,7 @@ MicroModuls ^{
         Owner=Any
         Priority=50
         Size=100
-        Text=Микромодуль второго уровня. Модифицирует механизм заряжания ракетного оружия так, что в результате каждая ракета при попадании производит ионизацию поверхности<br>корпуса цели, тем самым увеличивая<br>наносимый ей урон.
+        Text=Микромодуль второго уровня. Модифицирует механизм заряжания <clr>ракетного орудия<clrEnd> так, что в результате каждая ракета при попадании производит ионизацию поверхности<br>корпуса цели, тем самым увеличивая<br>наносимый ей урон.
 		Text=<clr><clrEnd>
         Text=Дополнительный эффект: <clr>ионизация<clrEnd>
         Text=Надёжность: <clr>-15%<clrEnd>
@@ -590,29 +590,29 @@ ShipInfo ^{
 				OnActCodeTypes=t_OnEnteringForm,t_OnStep
 				OnActStepTypes=0,11
                 OnActCode ^{
-                    01=dword infos=CurInfo();
-					02=dword ship=ScriptItemActShip();
-                    03=if(ScriptItemActionType(t_OnStep,0))
+                    01=dword infos = CurInfo();
+					02=dword ship = ScriptItemActShip();
+                    03=if(ScriptItemActionType(t_OnStep, 0))
                     04 ^{
                         01=int i;
 						02=OrderNone(ship);
-						03=for(i=1;i<=ShipCntWeapon(ship);i=i+1)
+						03=for(i = 1; i <= ShipCntWeapon(ship); i = i + 1)
 						04 ^{
-							01=WeaponTarget(ShipWeapon(ship,i),0);
+							01=WeaponTarget(ShipWeapon(ship, i), 0);
 						}
-						05=float angle=pi*(ShipAngle(ship)+90.0)/Rnd(179,181);
-						06=OrderMove(ship,cos(angle)*10.0+CoordX(ship),sin(angle)*10.0+CoordY(ship));
+						05=float angle = pi * (ShipAngle(ship) + 90.0) / Rnd(179, 181);
+						06=OrderMove(ship, cos(angle) * 10.0 + CoordX(ship), sin(angle) * 10.0 + CoordY(ship));
                     }
 					//Обработчики для конца хода
-					05=if(ScriptItemActionType(t_OnStep,11))
+					05=if(ScriptItemActionType(t_OnStep, 11))
                     06 ^{
-					    01=int infos_var=ShipCustomShipInfoData(0,infos,1);
+					    01=int infos_var=ShipCustomShipInfoData(0, infos, 1);
                         //Снятие "оглушения"
 						02=if(!infos_var)
                         03 ^{
-                            01=OrderLock(ship,0);
-							02=ShipSpecialBonuses(ship,bonHook,ShipSpecialBonuses(ship,bonHook)+50000);
-							03=if(ship==Player())
+                            01=OrderLock(ship, 0);
+							02=ShipSpecialBonuses(ship, bonHook, ShipSpecialBonuses(ship, bonHook) + 50000);
+							03=if(ship == Player())
 							04 ^{
 								//Восстанавливаем энергию, если корпус - ТИ
 								01=if(HullSpecial(Player())>-1)
