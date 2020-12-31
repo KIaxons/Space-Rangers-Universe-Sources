@@ -2516,31 +2516,31 @@ ShipInfo ^{
 														08=int tint3=85;
 														09=if(tstr2 == 'Ranger' || target == Player())
 														10 ^{
-															//Если рейнджер более пират, нежели воин
-															01=if(ShipStatus(target,1)>ShipStatus(target,2))tint3=80;
-															//Если рейнджер более воин, нежели пират
-															02=else if(ShipStatus(target,1)<ShipStatus(target,2))tint3=100;
-															//Если рейнджер в равной степени пират и воин
-															03=else if(ShipStatus(target,1)==ShipStatus(target,2))tint3=90;
+															//Если рейнджер больше торговец
+															01=if(RangerStatus(target) == 0) tint3 = 90;
+															//Если рейнджер больше пират
+															02=else if(RangerStatus(target) == 1) tint3 = 80;
+															//Если рейнджер больше воин
+															03=else tint3 = 100;
 														}
-														11=else if(tstr2=='Warrior' || tstr2=='Militiaman1' || tstr2=='Militiaman2' || tstr2=='Militiaman3' || tstr2=='EliteWarrior' || tstr2=='RangerExplorer' || tstr2=='RangerPirateExplorer')tint3=100;
-														12=else if(tstr2=='Pirate' || tstr2=='PirateRunner' || tstr2=='Rebel' || tstr2=='RangerPirate')tint3=80;
-														13=else if(tstr2=='Transport' || tstr2=='Liner' || tstr2=='Diplomat' || tstr2=='Smuggler')tint3=40;
-														14=else if(tstr2=='Merc' || tstr2=='Freelancer')tint3=90;
-														15=else if(tstr2=='RedLeader' || tstr2=='AtlantLeader' || tstr2=='FeiLeader')tint3=125;
+														11=else if(tstr2=='Warrior' || tstr2=='Militiaman1' || tstr2=='Militiaman2' || tstr2=='Militiaman3' || tstr2=='EliteWarrior' || tstr2=='RangerExplorer' || tstr2=='RangerPirateExplorer') tint3 = 100;
+														12=else if(tstr2=='Pirate' || tstr2=='PirateRunner' || tstr2=='Rebel' || tstr2=='RangerPirate') tint3 = 80;
+														13=else if(tstr2=='Transport' || tstr2=='Liner' || tstr2=='Diplomat' || tstr2=='Smuggler') tint3 = 40;
+														14=else if(tstr2=='Merc' || tstr2=='Freelancer') tint3 = 90;
+														15=else if(tstr2=='RedLeader' || tstr2=='AtlantLeader' || tstr2=='FeiLeader') tint3 = 125;
 														//Определяем штраф к шансу напугать цель в зависимости от расы пилота-цели
-														16=if(ShipPilotRace(target)==0)tint3=(tint3*14)/10;
-														17=else if(ShipPilotRace(target)==1)tint3=(tint3*6)/10;
-														18=else if(ShipPilotRace(target)==3)tint3=(tint3*6)/10;
-														19=else if(ShipPilotRace(target)==4)tint3=(tint3*9)/10;
+														16=if(ShipPilotRace(target) == 0) tint3 = (tint3 * 14) / 10;
+														17=else if(ShipPilotRace(target) == 1) tint3 = (tint3 * 6) / 10;
+														18=else if(ShipPilotRace(target) == 3) tint3 = (tint3 * 6) / 10;
+														19=else if(ShipPilotRace(target) == 4) tint3 = (tint3 * 9) / 10;
 														//Формула для определения "пугливости" цели
-														20=int tint4=ShipSkill(ship,4)*20+Rnd(1,100)-tint3;
+														20=int tint4 = ShipSkill(ship, 'CharmCur') * 25 + Rnd(1, 100) - tint3;
 														//Применяем дополнительный штраф к шансу напугать цель (если цель уже была недавно напугана)
-														21=if(tint2>1)tint4=tint4-(tint4*20*tint2)/100;
+														21=if(tint2 > 1) tint4 = tint4 - (tint4 * 20 * tint2) / 100;
 														//Добавляем дополнительный бонус к шансу напугать цель, если у пугающего есть гипностимулятор "Одноглазый Хамас"
-														22=if(ShipHealthFactor(ship,14))tint4=tint4+20;
+														22=if(ShipHealthFactor(ship, 14)) tint4 = tint4 + 30;
 														//Устрашение не подействовало на цель, выводится соответствующий ответ
-														23=if(tint4<51)
+														23=if(tint4 < 51)
 														24 ^{
 															01=if(target==Player())
 															02 ^{
