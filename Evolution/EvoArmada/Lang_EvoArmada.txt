@@ -156,6 +156,48 @@ ShipInfo ^{
 					}
                 }
 			}
+			GunBatteryLabelsSwitcher ^{
+				Icon=0
+				Name=
+				Description=NoShow
+				OnActCodeTypes=t_OnEnteringForm,t_OnReEnteringForm,t_OnScan
+                OnActCode ^{
+					01=str form = CurrentForm();
+					02=if(form == 'Ship' || form == 'Scaner')
+					03 ^{
+						//Если нужно, то включаем индикаторы батарей при заходе/обновлении формы
+						01=dword ship = FormCurShip();
+						02=int attacks_count = ShipSpecialBonuses(ship, bonAttacks);
+						03=if(attacks_count > 0)
+						04 ^{
+							01=for(int i = 1; i <= 5; i = i + 1)
+							02 ^{
+								01=if(ShipEqInSlot(ship, t_Weapon1, i))
+								02 ^{
+									01=InterfaceText(form, 'GunBatteryLabelUpSlot' + i, 'x' + (attacks_count + 1));
+									02=InterfaceText(form, 'GunBatteryLabelDownSlot' + i, 'x' + (attacks_count + 1));
+									03=InterfaceState(form, 'GunBatteryLabelUpSlot' + i, 1);
+									04=InterfaceState(form, 'GunBatteryLabelDownSlot' + i, 1);
+								}
+								03=else
+								04 ^{
+									01=InterfaceState(form, 'GunBatteryLabelUpSlot' + i, 0);
+									02=InterfaceState(form, 'GunBatteryLabelDownSlot' + i, 0);
+								}
+							}
+						}
+						05=else
+						06 ^{
+							//Выключаем все индикаторы батарей при уходе с формы
+							01=for(i = 1; i <= 5; i = i + 1)
+							02 ^{
+								01=InterfaceState(form, 'GunBatteryLabelUpSlot' + i, 0);
+								02=InterfaceState(form, 'GunBatteryLabelDownSlot' + i, 0);
+							}
+						}
+					}
+                }
+			}
         }
     }
 }
