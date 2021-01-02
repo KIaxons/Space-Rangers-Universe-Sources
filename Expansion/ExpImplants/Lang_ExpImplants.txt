@@ -37,7 +37,7 @@ Galapedia ^{
 	}
 }
 Script ^{
-	Mod_ExpImplants ~{
+	Mod_ExpImplants ^{
 		Brain=Мозг:
 		Hand=Рука:
 		Eye=Глаз:
@@ -56,9 +56,9 @@ Script ^{
 		85=</color>К сожалению, базовое сканирование показало, что ваш организм и так трудится <clr>на пределе<clrEnd> своих возможностей.<br>Мы вынуждены <clr>отказать<clrEnd> вам в установке новых биомодулей. Более того, мы бы рекомендовали <clr>удалить<clrEnd> один или несколько из уже имеющихся, дабы снизить нагрузку и избежать возможных осложнений.
 		8=<br>
 		158=<clrEnd>Требует выносливости:<clr>
-		86=<clrEnd>Имплантируется в: <clr>Глаз
-		87=<clrEnd>Имплантируется в: <clr>Руку
-		88=<clrEnd>Имплантируется в: <clr>Мозг
+		86=<clrEnd>Имплантируется в: <clr>глаз
+		87=<clrEnd>Имплантируется в: <clr>руку
+		88=<clrEnd>Имплантируется в: <clr>мозг
 		103=<clrEnd>Описание:
 		104=<clrEnd>Биомодуль: <clr>
 		165=</color>Извините, но биомодуль <clr>
@@ -1799,7 +1799,7 @@ ShipInfo ^{
 							17=for(h=0; h<ShipCustomShipInfosCount(Player()); h=h+1)
 							18 ^{
 								01=temp_str=ShipCustomShipInfoTextData(Player(),h,2);
-								02=if(substr(temp_str,0,7) == 'Biomodules')
+								02=if(substr(temp_str, 0, 10) == 'Biomodules')
 								03 ^{
 									//Добавляем к строке конкретного биомодуля название части тела, в которой он установлен
 									01=str bodyPartCheck=CT(temp_str+DeleteTags('.Slot'));
@@ -1847,7 +1847,7 @@ ShipInfo ^{
 									09 ^{
 										01=temp_str=ShipCustomShipInfoTextData(Player(),h,2);
 										02=if(temp_str=='')continue;
-										03=if(substr(temp_str,0,7)=='Biomodules')ArrayAdd(ArrayForBMActcode,h);
+										03=if(substr(temp_str, 0, 10) == 'Biomodules') ArrayAdd(ArrayForBMActcode, h);
 									}
 									10=for(h=1; h<ArrayDim(ArrayForBMActcode); h=h+1)
 									11 ^{
