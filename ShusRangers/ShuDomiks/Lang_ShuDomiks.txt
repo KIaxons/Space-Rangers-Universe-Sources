@@ -578,7 +578,7 @@ MicroModuls ^{
     }
     ShuDomiks_BlazerMassacre ^{
         KindGraph=dmg
-        Name="Массакри"
+        Name=Массакри
 		Equipments=W12
         Owner=Kling
         Priority=0
@@ -602,7 +602,7 @@ MicroModuls ^{
     }
     ShuDomiks_KellerJavelin ^{
         KindGraph=overheat
-        Name="Жавелин"
+        Name=Жавелин
 		Equipments=W15
         Owner=Kling
         Priority=0
@@ -630,7 +630,7 @@ MicroModuls ^{
     }
     ShuDomiks_TerronRailgun ^{
         KindGraph=block
-        Name="Рейлган"
+        Name=Рейлган
 		Equipments=W11
         Owner=Kling
         Priority=0
@@ -697,7 +697,7 @@ MicroModuls ^{
         Special=1
         Text=<color=248,252,248>Тяжёлый доминаторский перехватчик, специализирующийся на дальнобойном вооружении. Обладает серьёзной огневой мощью, но слабой защищённостью, а потому стремится сохранять дистанцию и не подпускать противника на расстояние точного выстрела.</color>
 		Fragility=120
-        Cost=125
+        Cost=100
     }
     ShuDomiks_UrgantDomHull ^{
 		Equipments=Hull
@@ -707,9 +707,10 @@ MicroModuls ^{
         NonSearchable=1
         Priority=0
         Special=1
-        Text=<color=248,252,248>Крупный ударный доминаторский корабль, сопоставимый по огневой мощи и защищённости с судами класса "фрегат". Стремится как можно скорее сократить расстояние до противника и навязать ему бой на ближних дистанциях.</color>
+        Text=<color=248,252,248>Крупный ударный доминаторский корабль, сопоставимый по огневой мощи и защищённости с судами класса "корвет". Стремится как можно скорее сократить расстояние до противника и навязать ему бой на ближних дистанциях.</color>
 		Fragility=80
-        Cost=150
+        Cost=125
+		Size=125
     }
     ShuDomiks_EquantorDomHull ^{
 		Equipments=Hull
@@ -722,6 +723,7 @@ MicroModuls ^{
         Text=<color=248,252,248>Тяжёлый артиллерийский доминаторский корабль, сопоставимый по огневой мощи и защищённости с судами класса "крейсер". Специализируется на энергетическом вооружении и ведении боя на дальних дистанциях.</color>
 		Fragility=90
         Cost=200
+		Size=200
     }
     ShuDomiks_BertorDomHull ^{
 		Equipments=Hull
@@ -732,15 +734,99 @@ MicroModuls ^{
         Priority=0
         Special=1
         Text=<color=248,252,248>Огромная тяжелобронированная авианесущая платформа, сопоставимая по огневой мощи и защищённости с судами класса "линкор". Помимо воспроизводства лёгких брандеров типа "клиг", занимается ремонтом и усилением всех окружающих доминаторов, входящих в состав группы прикрытия.</color>
-		Fragility=70
+		Fragility=80
         Cost=250
+		Size=250
+    }
+    ShuDomiks_ExtraSpecialsLineBreak ^{
+		Equipments=Any
+		Special=1
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        ExText=<clr><clrEnd>
+    }
+    ShuDomiks_bonWEnergy ^{
+		Equipments=Any
+		Special=1
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        ExText=Сила энергетического оружия: <bonWEnergy> ед.
+		bonWEnergy=1
+    }
+	ShuDomiks_bonWSplinter ^{
+		Equipments=Any
+		Special=1
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        ExText=Сила осколочного оружия: <bonWSplinter> ед.
+		bonWSplinter=1
+    }
+    ShuDomiks_bonWMissile ^{
+		Equipments=Any
+		Special=1
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        ExText=Сила ракетного оружия: <bonWMissile> ед.
+		bonWMissile=1
+    }
+    ShuDomiks_bonWRadius ^{
+		Equipments=Any
+		Special=1
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        ExText=Дальность стрельбы: <bonWRadius> ед.
+		bonWRadius=1
+    }
+    ShuDomiks_bonHull ^{
+		Equipments=Any
+		Special=1
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        ExText=Броня корпуса: <bonHull> ед.
+		bonHull=1
+    }
+    ShuDomiks_bonSpeed ^{
+		Equipments=Any
+		Special=1
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        ExText=Скорость двигателя: <bonSpeed> ед.
+		bonSpeed=1
+    }
+    ShuDomiks_bonDroid ^{
+		Equipments=Any
+		Special=1
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        ExText=Эффективность дроида: <bonDroid> ед.
+		bonDroid=1
+    }
+    ShuDomiks_bonDef ^{
+		Equipments=Any
+		Special=1
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        ExText=Генератор поля: <bonDef> ед.
+		bonDef=1
     }
 }
 Script ^{
     Mod_ShuDomiks ^{
-		BlazerMassacre=<color=255,25,25>"Массакри"</color>
-		KellerJavelin=<color=60,182,230>"Жавелин"</color>
-		TerronRailgun=<color=156,240,10>"Рейлган"</color>
+		BlazerHull=Корпус Блазера
+		KellerHull=Корпус Келлера
+		TerronHull=Корпус Террона
+		BlazerMassacre=<color=255,25,25>Массакри</color>
+		KellerJavelin=<color=60,182,230>Жавелин</color>
+		TerronRailgun=<color=156,240,10>Рейлган</color>
         KellerCloneTask=В системе #0# обнаружена сигнатура, практически идентичная сигнатуре Келлера. Рекомендуется лично проверить сигнал.
 		157=Ирина
 		32=Марина

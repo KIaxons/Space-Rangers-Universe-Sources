@@ -1,32 +1,20 @@
 MicroModuls ^{
-	EvoArmada_XXX ^{
-		ExText=One
-        Special=1
-        LockedAcryn=3
-		NonSearchable=1
-	}
-	EvoArmada_YYY ^{
-		ExText=Two
-        Special=1
-        LockedAcryn=3
-		NonSearchable=1
-	}
 	EvoArmada_DreadnoughtMaloc ^{
-        Cost=300
         CustomTag=EvoArmada_DreadnoughtMaloc
         Equipments=Hull
 		HullGraphSize=230
-        Fragility=60
         KindGraph=DreadnoughtMaloc
         Name=</color><Type> корпус дредноута
-        Owner=Maloc
+        Owner=Maloc,NonKling
         Priority=0
-        Size=220
         Text=<color=248,252,248>Один из крупнейших боевых кораблей Коалиции, гордость Объединённого Галактического флота. Заслуженно вселяет благоговейный трепет в сердца экипажа и ужас в души врагов.</color>
 		Text=<clr><clrEnd>
 		Text=Броня корпуса: <bonHull> ед.
 		Text=Генератор поля: <bonDef> ед.
 		Text=Эффективность дроида: <bonDroid> ед.
+        Fragility=70
+        Cost=300
+        Size=450
 		bonHull=15
         bonDef=15
 		bonDroid=50
@@ -37,21 +25,21 @@ MicroModuls ^{
 		NonSearchable=1
 	}
 	EvoArmada_DreadnoughtPeleng ^{
-        Cost=300
         CustomTag=EvoArmada_DreadnoughtPeleng
         Equipments=Hull
 		HullGraphSize=230
-        Fragility=60
         KindGraph=DreadnoughtPeleng
         Name=</color><Type> корпус дредноута
-        Owner=Peleng
+        Owner=Peleng,NonKling
         Priority=0
-        Size=220
         Text=<color=248,252,248>Один из крупнейших боевых кораблей Коалиции, гордость Объединённого Галактического флота. Заслуженно вселяет благоговейный трепет в сердца экипажа и ужас в души врагов.</color>
 		Text=<clr><clrEnd>
 		Text=Броня корпуса: <bonHull> ед.
 		Text=Генератор поля: <bonDef> ед.
 		Text=Эффективность дроида: <bonDroid> ед.
+        Fragility=70
+        Cost=300
+        Size=450
 		bonHull=15
         bonDef=15
 		bonDroid=50
@@ -62,21 +50,21 @@ MicroModuls ^{
 		NonSearchable=1
 	}
 	EvoArmada_DreadnoughtPeople ^{
-        Cost=300
         CustomTag=EvoArmada_DreadnoughtPeople
         Equipments=Hull
 		HullGraphSize=230
-        Fragility=60
         KindGraph=DreadnoughtPeople
         Name=</color><Type> корпус дредноута
-        Owner=People
+        Owner=People,NonKling
         Priority=0
-        Size=220
         Text=<color=248,252,248>Один из крупнейших боевых кораблей Коалиции, гордость Объединённого Галактического флота. Заслуженно вселяет благоговейный трепет в сердца экипажа и ужас в души врагов.</color>
 		Text=<clr><clrEnd>
 		Text=Броня корпуса: <bonHull> ед.
 		Text=Генератор поля: <bonDef> ед.
 		Text=Эффективность дроида: <bonDroid> ед.
+        Fragility=70
+        Cost=300
+        Size=450
 		bonHull=15
         bonDef=15
 		bonDroid=50
@@ -87,21 +75,21 @@ MicroModuls ^{
 		NonSearchable=1
 	}
 	EvoArmada_DreadnoughtFei ^{
-        Cost=250
         CustomTag=EvoArmada_DreadnoughtFei
         Equipments=Hull
 		HullGraphSize=215
-        Fragility=70
         KindGraph=DreadnoughtFei
         Name=</color><Type> корпус дредноута
-        Owner=Fei
+        Owner=Fei,NonKling
         Priority=0
-        Size=170
         Text=<color=248,252,248>Один из крупнейших боевых кораблей Коалиции, гордость Объединённого Галактического флота. Заслуженно вселяет благоговейный трепет в сердца экипажа и ужас в души врагов.</color>
 		Text=<clr><clrEnd>
 		Text=Броня корпуса: <bonHull> ед.
 		Text=Генератор поля: <bonDef> ед.
 		Text=Эффективность дроида: <bonDroid> ед.
+        Fragility=80
+        Cost=300
+        Size=400
 		bonHull=10
         bonDef=20
 		bonDroid=60
@@ -112,21 +100,21 @@ MicroModuls ^{
 		NonSearchable=1
 	}
 	EvoArmada_DreadnoughtGaal ^{
-        Cost=250
         CustomTag=EvoArmada_DreadnoughtGaal
         Equipments=Hull
 		HullGraphSize=215
-        Fragility=70
         KindGraph=DreadnoughtGaal
         Name=</color><Type> корпус дредноута
-        Owner=Gaal
+        Owner=Gaal,NonKling
         Priority=0
-        Size=170
         Text=<color=248,252,248>Один из крупнейших боевых кораблей Коалиции, гордость Объединённого Галактического флота. Заслуженно вселяет благоговейный трепет в сердца экипажа и ужас в души врагов.</color>
 		Text=<clr><clrEnd>
 		Text=Броня корпуса: <bonHull> ед.
 		Text=Генератор поля: <bonDef> ед.
 		Text=Эффективность дроида: <bonDroid> ед.
+        Fragility=80
+        Cost=300
+        Size=400
 		bonHull=10
         bonDef=20
 		bonDroid=60
@@ -136,6 +124,230 @@ MicroModuls ^{
         LockedAcryn=3
 		NonSearchable=1
 	}
+    EvoArmada_BattleshipHull ^{
+		Equipments=Hull
+		Name=</color><Type> корпус линкора
+		Owner=Maloc,Peleng,People,Fei,Gaal,NonKling
+		Special=1
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+		Text=<color=248,252,248>Могучий боевой корабль, предназначенный для ведения ожесточённых артиллерийских перестрелок на больших дистанциях. Постройка такого обходится истощённому военному бюджету Коалиции очень дорого, а его потеря - ещё дороже.</color>
+        Fragility=90
+		Cost=250
+		Size=300
+    }
+    EvoArmada_KligDomHull ^{
+		Equipments=Hull
+		Owner=Kling
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Небольшой и крайне проворный доминаторский корабль-брандер. В случае явного превосходства противника постарается как можно скорее сократить дистанцию и активировать устройство самоуничтожения, чем способен наносить серьёзные повреждения, несмотря на свою крайне незначительную огневую мощь. По совместительству является основной ударной силой боевых авианесущих платформ типа "бертор".</color>
+		Fragility=85
+        Cost=75
+    }
+    EvoArmada_ShtipDomHull ^{
+		Equipments=Hull
+		Owner=Kling
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Быстрый доминаторский корабль-разведчик, как правило, первым вступающий в боевое столкновение с противником. Несмотря на малые размеры и незначительную огневую мощь, в определённых ситуациях может представлять серьёзную угрозу.</color>
+		Fragility=90
+        Cost=100
+    }
+    EvoArmada_MenocDomHull ^{
+		Equipments=Hull
+		Owner=Kling
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Лёгкий универсальный доминаторский перехватчик, в чьи задачи входит как можно скорее завязать бой с противником, и не дать ему покинуть систему до прибытия основных ударных сил.</color>
+        Cost=100
+    }
+    EvoArmada_SmershDomHull ^{
+		Equipments=Hull
+		Owner=Kling
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Тяжёлый доминаторский перехватчик, специализирующийся на дальнобойном вооружении. Обладает серьёзной огневой мощью, но слабой защищённостью, а потому стремится сохранять дистанцию и не подпускать противника на расстояние точного выстрела.</color>
+		Fragility=120
+        Cost=100
+    }
+    EvoArmada_UrgantDomHull ^{
+		Equipments=Hull
+		Owner=Kling
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Крупный ударный доминаторский корабль, сопоставимый по огневой мощи и защищённости с судами класса "корвет". Стремится как можно скорее сократить расстояние до противника и навязать ему бой на ближних дистанциях.</color>
+		Fragility=80
+        Cost=125
+		Size=125
+    }
+    EvoArmada_EquantorDomHull ^{
+		Equipments=Hull
+		Owner=Kling
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Тяжёлый артиллерийский доминаторский корабль, сопоставимый по огневой мощи и защищённости с судами класса "крейсер". Специализируется на энергетическом вооружении и ведении боя на дальних дистанциях.</color>
+		Fragility=90
+        Cost=200
+		Size=200
+    }
+    EvoArmada_BertorDomHull ^{
+		Equipments=Hull
+		Owner=Kling
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Огромная тяжелобронированная авианесущая платформа, сопоставимая по огневой мощи и защищённости с судами класса "линкор". Помимо воспроизводства лёгких брандеров типа "клиг", занимается ремонтом и усилением всех окружающих доминаторов, входящих в состав группы прикрытия.</color>
+		Fragility=80
+        Cost=250
+		Size=250
+    }
+    EvoArmada_CorvettePirateClan ^{
+		Equipments=Hull
+		Owner=PirateClan,NonKling
+        LockedAcryn=3
+		HullGraphSize=125
+        KindGraph=PirateCorvette
+        Name=</color><Type> корпус корвета
+        NonSearchable=1
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Огромная тяжелобронированная авианесущая платформа, сопоставимая по огневой мощи и защищённости с судами класса "линкор". Помимо воспроизводства лёгких брандеров типа "клиг", занимается ремонтом и усилением всех окружающих доминаторов, входящих в состав группы прикрытия.</color>
+		Fragility=80
+        Cost=125
+		Size=125
+    }	
+    EvoArmada_FrigatePirateClan ^{
+		Equipments=Hull
+		Owner=PirateClan,NonKling
+        LockedAcryn=3
+		HullGraphSize=150
+        KindGraph=PirateFrigate
+        Name=</color><Type> корпус фрегата
+        NonSearchable=1
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Огромная тяжелобронированная авианесущая платформа, сопоставимая по огневой мощи и защищённости с судами класса "линкор". Помимо воспроизводства лёгких брандеров типа "клиг", занимается ремонтом и усилением всех окружающих доминаторов, входящих в состав группы прикрытия.</color>
+		Fragility=80
+        Cost=150
+		Size=150
+    }	
+    EvoArmada_GalleonPirateClan ^{
+		Equipments=Hull
+		Owner=PirateClan,NonKling
+        LockedAcryn=3
+		HullGraphSize=175
+        KindGraph=PirateGalleon
+        Name=</color><Type> корпус галеона
+        NonSearchable=1
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Огромная тяжелобронированная авианесущая платформа, сопоставимая по огневой мощи и защищённости с судами класса "линкор". Помимо воспроизводства лёгких брандеров типа "клиг", занимается ремонтом и усилением всех окружающих доминаторов, входящих в состав группы прикрытия.</color>
+		Fragility=80
+        Cost=200
+		Size=200
+    }
+    EvoArmada_ExtraSpecialsLineBreak ^{
+		Equipments=Any
+		Special=1
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        ExText=<clr><clrEnd>
+    }
+    EvoArmada_bonWEnergy ^{
+		Equipments=Any
+		Special=1
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        ExText=Сила энергетического оружия: <bonWEnergy> ед.
+		bonWEnergy=1
+    }
+	EvoArmada_bonWSplinter ^{
+		Equipments=Any
+		Special=1
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        ExText=Сила осколочного оружия: <bonWSplinter> ед.
+		bonWSplinter=1
+    }
+    EvoArmada_bonWMissile ^{
+		Equipments=Any
+		Special=1
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        ExText=Сила ракетного оружия: <bonWMissile> ед.
+		bonWMissile=1
+    }
+    EvoArmada_bonWRadius ^{
+		Equipments=Any
+		Special=1
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        ExText=Дальность стрельбы: <bonWRadius> ед.
+		bonWRadius=1
+    }
+    EvoArmada_bonHull ^{
+		Equipments=Any
+		Special=1
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        ExText=Броня корпуса: <bonHull> ед.
+		bonHull=1
+    }
+    EvoArmada_bonSpeed ^{
+		Equipments=Any
+		Special=1
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        ExText=Скорость двигателя: <bonSpeed> ед.
+		bonSpeed=1
+    }
+    EvoArmada_bonDroid ^{
+		Equipments=Any
+		Special=1
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        ExText=Эффективность дроида: <bonDroid> ед.
+		bonDroid=1
+    }
+    EvoArmada_bonDef ^{
+		Equipments=Any
+		Special=1
+        LockedAcryn=3
+        NonSearchable=1
+        Priority=0
+        ExText=Генератор поля: <bonDef> ед.
+		bonDef=1
+    }
 }
 Script ^{
 	Mod_EvoArmada ^{
@@ -216,20 +428,39 @@ ShipInfo ^{
 ShipType ^{
     Fei ^{
         Dreadnought=Экелефар
+		PirateCorvette=Корвет
+		PirateFrigate=Фрегат
+		PirateGalleon=Галеон
     }
     Gaal ^{
         Dreadnought=Ноозикар
+		PirateCorvette=Корвет
+		PirateFrigate=Фрегат
+		PirateGalleon=Галеон
     }
     Maloc ^{
         Dreadnought=Рагнардум
+		PirateCorvette=Корвет
+		PirateFrigate=Фрегат
+		PirateGalleon=Галеон
     }
     Peleng ^{
         Dreadnought=Ушичванк
+		PirateCorvette=Корвет
+		PirateFrigate=Фрегат
+		PirateGalleon=Галеон
     }
     People ^{
         Dreadnought=Дредноут
+		PirateCorvette=Корвет
+		PirateFrigate=Фрегат
+		PirateGalleon=Галеон
     }
     TypeName ^{
 		Dreadnought=Дредноут
+		WarriorBig=Линкор
+		PirateCorvette=Корвет
+		PirateFrigate=Фрегат
+		PirateGalleon=Галеон
     }
 }
