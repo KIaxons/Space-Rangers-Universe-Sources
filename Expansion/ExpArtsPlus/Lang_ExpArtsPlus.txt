@@ -575,14 +575,16 @@ Artefacts ^{
 					01=if(MessageBoxYesNo('Вы действительно хотите активировать а\'Эгис?'))
 					02 ^{
 						01=int i;
-						02=dword ship;
-						03=dword tdw;
-						04=dword mTarget;
-						05=int dur_sub;
-						06=int m_count = 0;
-						07=int dist_ship=5000;
-						08=for(i = 0; i < StarShips(ShipStar(Player())); i = i + 1)
-						09 ^{
+						02=int j;
+						03=dword ship;
+						04=dword tdw;
+						05=dword tdw2;
+						06=dword mTarget;
+						07=int dur_sub;
+						08=int m_count = 0;
+						09=int dist_ship=5000;
+						10=for(i = 0; i < StarShips(ShipStar(Player())); i = i + 1)
+						11 ^{
 							01=tdw = StarShips(ShipStar(Player()), i);
 							02=if(Dist(Player(), tdw) <= dist_ship && RelationToRanger(tdw,Player()) < 10)
 							03 ^{
@@ -590,13 +592,13 @@ Artefacts ^{
 								02=dist_ship = Dist(Player(), tdw);
 							}
 						}
-						10=if(!ship)
-						11 ^{
+						12=if(!ship)
+						13 ^{
 							01=MessageBox('В системе не обнаружено вражеских кораблей. а\'Эгису  некуда перенаправлять ракеты');
 							02=m_count=-1;
 						}
-						12=else
-						13 ^{
+						14=else
+						15 ^{
 							01=for(i = 0; i < StarMissiles(ShipStar(Player())); i = i + 1)
 							02 ^{
 								01=tdw = StarMissiles(ShipStar(Player()), i);
@@ -610,25 +612,33 @@ Artefacts ^{
 								09=if(MissileType(tdw) == t_Weapon18) dur_sub = 1;
 								10=else dur_sub = 2;
 								11=mTarget = MissileTarget(tdw);
-								12=if(mTarget == Player())redirect = 1;
-								13=if(ShipIsPartner(mTarget) == Player()) redirect = 1;
-								14=if(ShipTypeN(mTarget) == 5)
+								12=if(!mTarget) continue;
+								13=if(mTarget == Player()) redirect = 1;
+								14=if(ShipPartners(Player()))
 								15 ^{
+									01=for(j=0;j<ShipPartners(Player());j=j+1)
+									02 ^{
+										01=tdw2 = ShipPartners(Player(),j);
+										02=if(mTarget==tdw2) redirect = 1;
+									}
+								}
+								16=if(ShipTypeN(mTarget) == 5)
+								17 ^{
 									01=if(TranclucatorData(mTarget, 0) == Player()) redirect = 1;
 								}
-								16=if(redirect)
-								17 ^{
+								18=if(redirect)
+								19 ^{
 									01=MissileTarget(tdw, ship);
 									02=MissileOwner(tdw, Player());
 									03=ItemDurability(CurItem(), ItemDurability(CurItem()) - dur_sub);
 									04=if(ItemDurability(CurItem()) < 0) ItemDurability(CurItem(), 0);
-									04=m_count = m_count + 1;
-									05=if(!ItemDurability(CurItem()) && m_count) MessageBox('а\'Эгис вышел из строя успев перенаправить ' + m_count + ' ракет');
+									05=m_count = m_count + 1;
+									06=if(!ItemDurability(CurItem()) && m_count) MessageBox('а\'Эгис вышел из строя успев перенаправить ' + m_count + ' ракет');
 								}
 							}
 						}
-						14=if(!m_count) MessageBox('В зоне действия не обнаружено вражеских ракет');
-						15=if(ItemDurability(CurItem()) && m_count) MessageBox('а\'Эгис перенаправил ' + m_count + ' ракет');
+						16=if(!m_count) MessageBox('В зоне действия не обнаружено вражеских ракет');
+						17=if(ItemDurability(CurItem()) && m_count>0) MessageBox('а\'Эгис перенаправил ' + m_count + ' ракет');
 					}
 				}
 			}
@@ -920,6 +930,7 @@ MicroModuls ^{
 	ExpArtsPlus_AddSlotWeapon ^{
 		Equipments=Hull
 		LockedAcryn=3
+		ExText=<clr><clrEnd>
 		ExText=<color=248,252,248>Улучшение:</color> <clr>Дополнительная турель<clrEnd>
 		ExText=<color=248,252,248>Встроенный в корпус протон дал возможность установить дополнительную орудийную турель.</color>
 		bonSlotWeapon=1
@@ -930,6 +941,7 @@ MicroModuls ^{
 	ExpArtsPlus_ArtBonusHookNormal1 ^{
 		Equipments=Hook
 		LockedAcryn=3
+		ExText=<clr><clrEnd>
 		ExText=<color=248,252,248>Улучшение:</color> <clr>Сфокусированный луч I<clrEnd>
 		ExText=<color=248,252,248>Интегрированный эриметр незначительно увеличивает характеристики захвата.</color>
 		ExText=<clr><clrEnd>
@@ -943,6 +955,7 @@ MicroModuls ^{
 		Equipments=Hook
 		LockedAcryn=3
 		Name=add_hook_boosted1
+		ExText=<clr><clrEnd>
 		ExText=<color=248,252,248>Улучшение:</color> <clr>Сфокусированный луч I<clrEnd>
 		ExText=<color=248,252,248>Интегрированный эриметр незначительно увеличивает характеристики захвата. Модификация более эффективна за счет использования в оборудовании неизвестного производства.</color>
 		ExText=<clr><clrEnd>
@@ -956,6 +969,7 @@ MicroModuls ^{
 		Equipments=Hook
 		LockedAcryn=3
 		Name=add_hook_normal2
+		ExText=<clr><clrEnd>
 		ExText=<color=248,252,248>Улучшение:</color> <clr>Сфокусированный луч II<clrEnd>
 		ExText=<color=248,252,248>Пара интегрированных эриметров увеличивает характеристики захвата.</color>
 		ExText=<clr><clrEnd>
@@ -969,6 +983,7 @@ MicroModuls ^{
 		Equipments=Hook
 		LockedAcryn=3
 		Name=add_hook_boosted2
+		ExText=<clr><clrEnd>
 		ExText=<color=248,252,248>Улучшение:</color> <clr>Сфокусированный луч II<clrEnd>
 		ExText=<color=248,252,248>Пара интегрированных эриметров увеличивает характеристики захвата. Модификация более эффективна за счет использования в оборудовании неизвестного производства.</color>
 		ExText=<clr><clrEnd>
@@ -982,6 +997,7 @@ MicroModuls ^{
 		Equipments=Hook
 		LockedAcryn=3
 		Name=add_hook_normal3
+		ExText=<clr><clrEnd>
 		ExText=<color=248,252,248>Улучшение:</color> <clr>Сфокусированный луч III<clrEnd>
 		ExText=<color=248,252,248>Несколько интегрированных эриметров резко увеличивают характеристики захвата.</color>
 		ExText=<clr><clrEnd>
@@ -996,6 +1012,7 @@ MicroModuls ^{
 		Equipments=Hook
 		LockedAcryn=3
 		Name=add_hook_boosted1
+		ExText=<clr><clrEnd>
 		ExText=<color=248,252,248>Улучшение:</color> <clr>Сфокусированный луч III<clrEnd>
 		ExText=<color=248,252,248>Несколько интегрированных эриметров резко увеличивают характеристики захвата. Модификация более эффективна за счет использования в оборудовании неизвестного производства.</color>
 		ExText=<clr><clrEnd>
@@ -1010,6 +1027,7 @@ MicroModuls ^{
 		Equipments=Hull
 		LockedAcryn=3
 		Name=add_hull_armor1
+		ExText=<clr><clrEnd>
 		ExText=<color=248,252,248>Улучшение:</color> <clr>Небольшая колония жупий<clrEnd>
 		ExText=<color=248,252,248>Поверхность этого корпуса облюбовала немногочисленная колония жупий. Броня корпуса незначительно увеличена.</color>
 		ExText=<clr><clrEnd>
@@ -1022,6 +1040,7 @@ MicroModuls ^{
 		Equipments=Hull
 		LockedAcryn=3
 		Name=add_hull_armor2
+		ExText=<clr><clrEnd>
 		ExText=<color=248,252,248>Улучшение:</color> <clr>Колония жупий<clrEnd>
 		ExText=<color=248,252,248>Поверхность этого корпуса облюбовала колония жупий. Броня корпуса увеличена.</color>
 		ExText=<clr><clrEnd>
@@ -1034,6 +1053,7 @@ MicroModuls ^{
 		Equipments=Hull
 		LockedAcryn=3
 		Name=add_hull_armor3
+		ExText=<clr><clrEnd>
 		ExText=<color=248,252,248>Улучшение:</color> <clr>Большая колония жупий<clrEnd>
 		ExText=<color=248,252,248>Поверхность этого корпуса облюбовала крупная колония жупий. Броня корпуса значительно увеличена.</color>
 		ExText=<clr><clrEnd>
@@ -1046,6 +1066,7 @@ MicroModuls ^{
 		Equipments=Engine
 		LockedAcryn=3
 		Name=add_speed_normal1
+		ExText=<clr><clrEnd>
 		ExText=<color=248,252,248>Улучшение:</color> <clr>Дополнительные ускорители I<clrEnd>
 		ExText=<color=248,252,248>Интегрированный сопланатор увеличивает скорость двигателя.</color>
 		ExText=<clr><clrEnd>
@@ -1058,6 +1079,7 @@ MicroModuls ^{
 		Equipments=Engine
 		LockedAcryn=3
 		Name=add_speed_boosted1
+		ExText=<clr><clrEnd>
 		ExText=<color=248,252,248>Улучшение:</color> <clr>Дополнительные ускорители I<clrEnd>
 		ExText=<color=248,252,248>Интегрированный сопланатор увеличивает скорость двигателя. Модификация более эффективна за счет использования в оборудовании неизвестного производства.</color>
 		ExText=<clr><clrEnd>
@@ -1070,6 +1092,7 @@ MicroModuls ^{
 		Equipments=Engine
 		LockedAcryn=3
 		Name=add_speed_normal2
+		ExText=<clr><clrEnd>
 		ExText=<color=248,252,248>Улучшение:</color> <clr>Дополнительные ускорители II<clrEnd>
 		ExText=<color=248,252,248>Несколько интегрированных сопланаторов увеличивает скорость двигателя. увеличивает скорость двигателя.</color>
 		ExText=<clr><clrEnd>
@@ -1082,6 +1105,7 @@ MicroModuls ^{
 		Equipments=Engine
 		LockedAcryn=3
 		Name=add_speed_boosted2
+		ExText=<clr><clrEnd>
 		ExText=<color=248,252,248>Улучшение:</color> <clr>Дополнительные ускорители II<clrEnd>
 		ExText=<color=248,252,248>Несколько интегрированных сопланаторов увеличивает скорость двигателя. Модификация более эффективна за счет использования в оборудовании неизвестного производства.</color>
 		ExText=<clr><clrEnd>
@@ -1094,6 +1118,7 @@ MicroModuls ^{
 		Equipments=Engine
 		LockedAcryn=3
 		Name=add_speed_normal3
+		ExText=<clr><clrEnd>
 		ExText=<color=248,252,248>Улучшение:</color> <clr>Дополнительные ускорители III<clrEnd>
 		ExText=<color=248,252,248>Ряд интегрированных сопланаторов увеличивают скорость двигателя.</color>
 		ExText=<clr><clrEnd>
@@ -1106,6 +1131,7 @@ MicroModuls ^{
 		Equipments=Engine
 		LockedAcryn=3
 		Name=add_speed_boosted3
+		ExText=<clr><clrEnd>
 		ExText=<color=248,252,248>Улучшение:</color> <clr>Дополнительные ускорители III<clrEnd>
 		ExText=<color=248,252,248>Ряд интегрированных сопланаторов увеличивают скорость двигателя. Модификация более эффективна за счет использования в оборудовании неизвестного производства.</color>
 		ExText=<clr><clrEnd>

@@ -24,7 +24,7 @@ Items ^{
             Railgun=Клопобойка
         }
         Text ^{
-            Railgun=Разрушает логику повествования в посредственных рассказах, наполняя сюжет внезапными <color=255,240,100>"ВОТЭТОПОВОРОТ!"</color>, тем самым делая его ещё менее удобоваримым говном.
+            Railgun=Разрушает логику повествования в посредственных рассказах, наполняя сюжет внезапными <color=255,240,100>"ВОТЭТОПОВОРОТ!"</color>, тем самым превращая его в ещё менее удобоваримое говно.
         }
 		CustomWeapon ^{
 			StatsVersion ^{
@@ -652,6 +652,89 @@ MicroModuls ^{
 		bonSkill6=1
 		bonSkill5=-2
     }
+    ShuDomiks_KligDomHull ^{
+		Equipments=Hull
+		Owner=Kling
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Небольшой и крайне проворный доминаторский корабль-брандер. В случае явного превосходства противника постарается как можно скорее сократить дистанцию и активировать устройство самоуничтожения, чем способен наносить серьёзные повреждения, несмотря на свою крайне незначительную огневую мощь. По совместительству является основной ударной силой боевых авианесущих платформ типа "бертор".</color>
+		Fragility=85
+        Cost=75
+    }
+    ShuDomiks_ShtipDomHull ^{
+		Equipments=Hull
+		Owner=Kling
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Быстрый доминаторский корабль-разведчик, как правило, первым вступающий в боевое столкновение с противником. Несмотря на малые размеры и незначительную огневую мощь, в определённых ситуациях может представлять серьёзную угрозу.</color>
+		Fragility=90
+        Cost=100
+    }
+    ShuDomiks_MenocDomHull ^{
+		Equipments=Hull
+		Owner=Kling
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Лёгкий универсальный доминаторский перехватчик, в чьи задачи входит как можно скорее завязать бой с противником, и не дать ему покинуть систему до прибытия основных ударных сил.</color>
+        Cost=100
+    }
+    ShuDomiks_SmershDomHull ^{
+		Equipments=Hull
+		Owner=Kling
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Тяжёлый доминаторский перехватчик, специализирующийся на дальнобойном вооружении. Обладает серьёзной огневой мощью, но слабой защищённостью, а потому стремится сохранять дистанцию и не подпускать противника на расстояние точного выстрела.</color>
+		Fragility=120
+        Cost=125
+    }
+    ShuDomiks_UrgantDomHull ^{
+		Equipments=Hull
+		Owner=Kling
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Крупный ударный доминаторский корабль, сопоставимый по огневой мощи и защищённости с судами класса "фрегат". Стремится как можно скорее сократить расстояние до противника и навязать ему бой на ближних дистанциях.</color>
+		Fragility=80
+        Cost=150
+    }
+    ShuDomiks_EquantorDomHull ^{
+		Equipments=Hull
+		Owner=Kling
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Тяжёлый артиллерийский доминаторский корабль, сопоставимый по огневой мощи и защищённости с судами класса "крейсер". Специализируется на энергетическом вооружении и ведении боя на дальних дистанциях.</color>
+		Fragility=90
+        Cost=200
+    }
+    ShuDomiks_BertorDomHull ^{
+		Equipments=Hull
+		Owner=Kling
+        LockedAcryn=3
+        Name=</color><Type> корпус доминатора
+        NonSearchable=1
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Огромная тяжелобронированная авианесущая платформа, сопоставимая по огневой мощи и защищённости с судами класса "линкор". Помимо воспроизводства лёгких брандеров типа "клиг", занимается ремонтом и усилением всех окружающих доминаторов, входящих в состав группы прикрытия.</color>
+		Fragility=70
+        Cost=250
+    }
 }
 Script ^{
     Mod_ShuDomiks ^{
@@ -1028,9 +1111,6 @@ ShipType ^{
     }
 }
 ShuKlissan ^{
-    Compatibility=True
-}
-ShuRangerAcryns ^{
     Compatibility=True
 }
 ShuWarriors ^{
