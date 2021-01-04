@@ -6,6 +6,9 @@ MicroModuls ^{
         KindGraph=DreadnoughtMaloc
         Name=</color><Type> корпус дредноута
         Owner=Maloc,NonKling
+        Special=1
+        LockedAcryn=3
+		NonSearchable=1
         Priority=0
         Text=<color=248,252,248>Один из крупнейших боевых кораблей Коалиции, гордость Объединённого Галактического флота. Заслуженно вселяет благоговейный трепет в сердца экипажа и ужас в души врагов.</color>
 		Text=<clr><clrEnd>
@@ -15,14 +18,8 @@ MicroModuls ^{
         Fragility=70
         Cost=300
         Size=450
-		bonHull=15
-        bonDef=15
-		bonDroid=50
 		bonSlotForsage=-1
 		bonSpeed=-150
-        Special=1
-        LockedAcryn=3
-		NonSearchable=1
 	}
 	EvoArmada_DreadnoughtPeleng ^{
         CustomTag=EvoArmada_DreadnoughtPeleng
@@ -31,6 +28,9 @@ MicroModuls ^{
         KindGraph=DreadnoughtPeleng
         Name=</color><Type> корпус дредноута
         Owner=Peleng,NonKling
+        Special=1
+        LockedAcryn=3
+		NonSearchable=1
         Priority=0
         Text=<color=248,252,248>Один из крупнейших боевых кораблей Коалиции, гордость Объединённого Галактического флота. Заслуженно вселяет благоговейный трепет в сердца экипажа и ужас в души врагов.</color>
 		Text=<clr><clrEnd>
@@ -40,14 +40,8 @@ MicroModuls ^{
         Fragility=70
         Cost=300
         Size=450
-		bonHull=15
-        bonDef=15
-		bonDroid=50
 		bonSlotForsage=-1
 		bonSpeed=-150
-        Special=1
-        LockedAcryn=3
-		NonSearchable=1
 	}
 	EvoArmada_DreadnoughtPeople ^{
         CustomTag=EvoArmada_DreadnoughtPeople
@@ -56,6 +50,9 @@ MicroModuls ^{
         KindGraph=DreadnoughtPeople
         Name=</color><Type> корпус дредноута
         Owner=People,NonKling
+        Special=1
+        LockedAcryn=3
+		NonSearchable=1
         Priority=0
         Text=<color=248,252,248>Один из крупнейших боевых кораблей Коалиции, гордость Объединённого Галактического флота. Заслуженно вселяет благоговейный трепет в сердца экипажа и ужас в души врагов.</color>
 		Text=<clr><clrEnd>
@@ -65,14 +62,8 @@ MicroModuls ^{
         Fragility=70
         Cost=300
         Size=450
-		bonHull=15
-        bonDef=15
-		bonDroid=50
 		bonSlotForsage=-1
 		bonSpeed=-150
-        Special=1
-        LockedAcryn=3
-		NonSearchable=1
 	}
 	EvoArmada_DreadnoughtFei ^{
         CustomTag=EvoArmada_DreadnoughtFei
@@ -81,6 +72,9 @@ MicroModuls ^{
         KindGraph=DreadnoughtFei
         Name=</color><Type> корпус дредноута
         Owner=Fei,NonKling
+        Special=1
+        LockedAcryn=3
+		NonSearchable=1
         Priority=0
         Text=<color=248,252,248>Один из крупнейших боевых кораблей Коалиции, гордость Объединённого Галактического флота. Заслуженно вселяет благоговейный трепет в сердца экипажа и ужас в души врагов.</color>
 		Text=<clr><clrEnd>
@@ -90,14 +84,8 @@ MicroModuls ^{
         Fragility=80
         Cost=300
         Size=400
-		bonHull=10
-        bonDef=20
-		bonDroid=60
 		bonSlotForsage=-1
-		bonSpeed=-50
-        Special=1
-        LockedAcryn=3
-		NonSearchable=1
+		bonSpeed=-150
 	}
 	EvoArmada_DreadnoughtGaal ^{
         CustomTag=EvoArmada_DreadnoughtGaal
@@ -106,6 +94,9 @@ MicroModuls ^{
         KindGraph=DreadnoughtGaal
         Name=</color><Type> корпус дредноута
         Owner=Gaal,NonKling
+        Special=1
+        LockedAcryn=3
+		NonSearchable=1
         Priority=0
         Text=<color=248,252,248>Один из крупнейших боевых кораблей Коалиции, гордость Объединённого Галактического флота. Заслуженно вселяет благоговейный трепет в сердца экипажа и ужас в души врагов.</color>
 		Text=<clr><clrEnd>
@@ -115,16 +106,10 @@ MicroModuls ^{
         Fragility=80
         Cost=300
         Size=400
-		bonHull=10
-        bonDef=20
-		bonDroid=60
 		bonSlotForsage=-1
-		bonSpeed=-50
-        Special=1
-        LockedAcryn=3
-		NonSearchable=1
+		bonSpeed=-150
 	}
-    EvoArmada_BattleshipHull ^{
+    EvoArmada_CoalitionBattleshipHull ^{
 		Equipments=Hull
 		Name=</color><Type> корпус линкора
 		Owner=Maloc,Peleng,People,Fei,Gaal,NonKling
@@ -136,6 +121,55 @@ MicroModuls ^{
         Fragility=90
 		Cost=250
 		Size=300
+		bonSlotForsage=-1
+    }
+    EvoArmada_CorvettePirateClan ^{
+		Equipments=Hull
+		Owner=PirateClan,NonKling
+        LockedAcryn=3
+		HullGraphSize=125
+        KindGraph=PirateCorvette
+        Name=</color><Type> корпус корвета
+        NonSearchable=1
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Огромная тяжелобронированная авианесущая платформа, сопоставимая по огневой мощи и защищённости с судами класса "линкор". Помимо воспроизводства лёгких брандеров типа "клиг", занимается ремонтом и усилением всех окружающих доминаторов, входящих в состав группы прикрытия.</color>
+		Fragility=80
+        Cost=125
+		Size=125
+		bonSlotForsage=-1
+    }	
+    EvoArmada_FrigatePirateClan ^{
+		Equipments=Hull
+		Owner=PirateClan,NonKling
+        LockedAcryn=3
+		HullGraphSize=150
+        KindGraph=PirateFrigate
+        Name=</color><Type> корпус фрегата
+        NonSearchable=1
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Огромная тяжелобронированная авианесущая платформа, сопоставимая по огневой мощи и защищённости с судами класса "линкор". Помимо воспроизводства лёгких брандеров типа "клиг", занимается ремонтом и усилением всех окружающих доминаторов, входящих в состав группы прикрытия.</color>
+		Fragility=80
+        Cost=150
+		Size=150
+		bonSlotForsage=-1
+    }	
+    EvoArmada_GalleonPirateClan ^{
+		Equipments=Hull
+		Owner=PirateClan,NonKling
+        LockedAcryn=3
+		HullGraphSize=175
+        KindGraph=PirateGalleon
+        Name=</color><Type> корпус галеона
+        NonSearchable=1
+        Priority=0
+        Special=1
+        Text=<color=248,252,248>Огромная тяжелобронированная авианесущая платформа, сопоставимая по огневой мощи и защищённости с судами класса "линкор". Помимо воспроизводства лёгких брандеров типа "клиг", занимается ремонтом и усилением всех окружающих доминаторов, входящих в состав группы прикрытия.</color>
+		Fragility=80
+        Cost=200
+		Size=200
+		bonSlotForsage=-1
     }
     EvoArmada_KligDomHull ^{
 		Equipments=Hull
@@ -223,51 +257,6 @@ MicroModuls ^{
         Cost=250
 		Size=250
     }
-    EvoArmada_CorvettePirateClan ^{
-		Equipments=Hull
-		Owner=PirateClan,NonKling
-        LockedAcryn=3
-		HullGraphSize=125
-        KindGraph=PirateCorvette
-        Name=</color><Type> корпус корвета
-        NonSearchable=1
-        Priority=0
-        Special=1
-        Text=<color=248,252,248>Огромная тяжелобронированная авианесущая платформа, сопоставимая по огневой мощи и защищённости с судами класса "линкор". Помимо воспроизводства лёгких брандеров типа "клиг", занимается ремонтом и усилением всех окружающих доминаторов, входящих в состав группы прикрытия.</color>
-		Fragility=80
-        Cost=125
-		Size=125
-    }	
-    EvoArmada_FrigatePirateClan ^{
-		Equipments=Hull
-		Owner=PirateClan,NonKling
-        LockedAcryn=3
-		HullGraphSize=150
-        KindGraph=PirateFrigate
-        Name=</color><Type> корпус фрегата
-        NonSearchable=1
-        Priority=0
-        Special=1
-        Text=<color=248,252,248>Огромная тяжелобронированная авианесущая платформа, сопоставимая по огневой мощи и защищённости с судами класса "линкор". Помимо воспроизводства лёгких брандеров типа "клиг", занимается ремонтом и усилением всех окружающих доминаторов, входящих в состав группы прикрытия.</color>
-		Fragility=80
-        Cost=150
-		Size=150
-    }	
-    EvoArmada_GalleonPirateClan ^{
-		Equipments=Hull
-		Owner=PirateClan,NonKling
-        LockedAcryn=3
-		HullGraphSize=175
-        KindGraph=PirateGalleon
-        Name=</color><Type> корпус галеона
-        NonSearchable=1
-        Priority=0
-        Special=1
-        Text=<color=248,252,248>Огромная тяжелобронированная авианесущая платформа, сопоставимая по огневой мощи и защищённости с судами класса "линкор". Помимо воспроизводства лёгких брандеров типа "клиг", занимается ремонтом и усилением всех окружающих доминаторов, входящих в состав группы прикрытия.</color>
-		Fragility=80
-        Cost=200
-		Size=200
-    }
     EvoArmada_ExtraSpecialsLineBreak ^{
 		Equipments=Any
 		Special=1
@@ -351,6 +340,7 @@ MicroModuls ^{
 }
 Script ^{
 	Mod_EvoArmada ^{
+		RuinSizeModPerDiffLevel=0.2
 		DreadnoughtWasLaunched0=Недавно власти планеты #0# системы #1# отрапортовали о введении в строй нового <color=0,50,200>рагнардума</color> #2#. Честь и слава <color=0,50,200>малокским</color> войнам, за чьими широкими спинами отныне будет надёжно укрыт от врага весь галактический сектор #3#!
 		DreadnoughtWasLaunched1=Срочное донесение из системы #1#! С планеты #0# был только что запущен <color=0,50,200>ушичванк</color> #2#. Пожелаем удачи нашим <color=0,50,200>пеленгским</color> коллегам в привнесении толики настоящего правосудия в жизни обитателей сектора #3#!
 		DreadnoughtWasLaunched2=Сегодня с верфей планеты #0# системы #1# был спущен <color=0,50,200>дредноут</color> #2#. Пожелаем же удачи бравым защитникам <color=0,50,200>человечества</color>, в их руках отныне находится безопасность и процветание всего галактического сектора #3#!
@@ -412,7 +402,49 @@ ShipInfo ^{
 						}
 						05=else
 						06 ^{
-							//Выключаем все индикаторы батарей при уходе с формы
+							//Выключаем все индикаторы батарей при заходе на форму, т.к. при уходе событие t_OnScan не работает
+							01=for(i = 1; i <= 5; i = i + 1)
+							02 ^{
+								01=InterfaceState(form, 'GunBatteryLabelUpSlot' + i, 0);
+								02=InterfaceState(form, 'GunBatteryLabelDownSlot' + i, 0);
+							}
+						}
+					}
+                }
+			}
+			GunBatteryLabelsSwitcherForRuinsBlyat ^{
+				Icon=0
+				Name=Потому что события открытия/закрытия формы срабатывают только для того корабля, на котором они висят, иначе бы было слишком просто
+				Description=NoShow
+				OnActCodeTypes=t_OnEnteringForm,t_OnReEnteringForm
+                OnActCode ^{
+					01=str form = CurrentForm();
+					02=if(form == 'Ship')
+					03 ^{
+						//Если нужно, то включаем индикаторы батарей при заходе/обновлении формы
+						01=dword ship = FormCurShip();
+						02=int attacks_count = ShipSpecialBonuses(ship, bonAttacks);
+						03=if(attacks_count > 0)
+						04 ^{
+							01=for(int i = 1; i <= 5; i = i + 1)
+							02 ^{
+								01=if(ShipEqInSlot(ship, t_Weapon1, i))
+								02 ^{
+									01=InterfaceText(form, 'GunBatteryLabelUpSlot' + i, 'x' + (attacks_count + 1));
+									02=InterfaceText(form, 'GunBatteryLabelDownSlot' + i, 'x' + (attacks_count + 1));
+									03=InterfaceState(form, 'GunBatteryLabelUpSlot' + i, 1);
+									04=InterfaceState(form, 'GunBatteryLabelDownSlot' + i, 1);
+								}
+								03=else
+								04 ^{
+									01=InterfaceState(form, 'GunBatteryLabelUpSlot' + i, 0);
+									02=InterfaceState(form, 'GunBatteryLabelDownSlot' + i, 0);
+								}
+							}
+						}
+						05=else
+						06 ^{
+							//Выключаем все индикаторы батарей при заходе на форму, т.к. при уходе событие t_OnScan не работает
 							01=for(i = 1; i <= 5; i = i + 1)
 							02 ^{
 								01=InterfaceState(form, 'GunBatteryLabelUpSlot' + i, 0);
