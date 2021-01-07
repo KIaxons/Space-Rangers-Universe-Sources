@@ -84,19 +84,9 @@ MicroModuls ^{
 		LockedAcryn=3
 		NonSearchable=1
     }
-    ExpAcryn_DomMalocAcryn ^{
-        CustomTag=ExpAcryn_ship_maloc
-		Cost=350
-        Owner=Kling
-        Priority=0
-        RacialRestriction=1
-        Special=1
-		LockedAcryn=3
-		NonSearchable=1
-        Text=<color=248,252,248>Неизвестная модификация оборудования <color=255,240,100>доминаторов</color>. Для активации дополнительных свойств необходим колоссальный источник питания, имеющийся на борту лишь у <color=255,240,100>берторов</color>.</color>
-    }
     ExpAcryn_DomAcryn ^{
         CustomTag=Akrin_dom_ship
+		Cost=350
         Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator
         Owner=Kling
         Priority=0
@@ -114,15 +104,25 @@ MicroModuls ^{
         Text=Дальность радара: <bonRadar> млн. км.
         Text=Эффективность дроида: <bonDroid> ед.
 		Text=Генератор поля: <bonDef> ед.
-		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+        bonDef=2
+        bonDroid=5
+        bonRadar=300
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
+    }
+    ExpAcryn_DomMalocAcryn ^{
+        CustomTag=ExpAcryn_ship_maloc
+		Cost=350
+        Owner=Kling
+        Priority=0
+        RacialRestriction=1
+        Special=1
+		LockedAcryn=3
+		NonSearchable=1
+        Text=<color=248,252,248>Неизвестная модификация оборудования <color=255,240,100>доминаторов</color>. Для активации дополнительных свойств необходим колоссальный источник питания, имеющийся на борту лишь у <color=255,240,100>берторов</color>.</color>
     }
     ExpAcryn_MalocFuelTank ^{
         CustomTag=Fakrin_0_0
@@ -147,15 +147,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык торговли: <bonSkill4>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill4=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill4=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_MalocEngine ^{
         CustomTag=Fakrin_0_1
@@ -180,15 +180,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык торговли: <bonSkill4>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill4=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill4=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_MalocRadar ^{
         CustomTag=Fakrin_0_2
@@ -213,15 +213,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык торговли: <bonSkill4>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill4=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill4=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_MalocScaner ^{
         CustomTag=Fakrin_0_3
@@ -246,15 +246,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык торговли: <bonSkill4>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill4=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill4=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_MalocDroid ^{
         CustomTag=Fakrin_0_4
@@ -279,15 +279,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык торговли: <bonSkill4>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill4=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill4=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_MalocHook ^{
         CustomTag=Fakrin_0_5
@@ -312,15 +312,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык торговли: <bonSkill4>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill4=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill4=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_MalocDefGenerator1 ^{
         CustomTag=Fakrin_0_6
@@ -345,15 +345,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык торговли: <bonSkill4>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill4=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill4=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_MalocDefGenerator2 ^{
         CustomTag=Fakrin_0_6_2
@@ -378,15 +378,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык торговли: <bonSkill4>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill4=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill4=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PelengFuelTank ^{
         CustomTag=Fakrin_1_0
@@ -411,15 +411,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык лидерства: <bonSkill6>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill6=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill6=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PelengEngine ^{
         CustomTag=Fakrin_1_1
@@ -444,15 +444,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык лидерства: <bonSkill6>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill6=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill6=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PelengRadar ^{
         CustomTag=Fakrin_1_2
@@ -477,15 +477,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык лидерства: <bonSkill6>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill6=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill6=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PelengScaner ^{
         CustomTag=Fakrin_1_3
@@ -510,15 +510,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык лидерства: <bonSkill6>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill6=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill6=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PelengDroid ^{
         CustomTag=Fakrin_1_4
@@ -543,15 +543,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык лидерства: <bonSkill6>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill6=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill6=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PelengHook ^{
         CustomTag=Fakrin_1_5
@@ -576,15 +576,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык лидерства: <bonSkill6>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill6=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill6=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PelengDefGenerator1 ^{
         CustomTag=Fakrin_1_6
@@ -609,15 +609,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык лидерства: <bonSkill6>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill6=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill6=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PelengDefGenerator2 ^{
         CustomTag=Fakrin_1_6_2
@@ -642,15 +642,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык лидерства: <bonSkill6>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill6=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill6=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PeopleFuelTank ^{
         CustomTag=Fakrin_2_0
@@ -675,15 +675,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык техники: <bonSkill3>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill3=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill3=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PeopleEngine ^{
         CustomTag=Fakrin_2_1
@@ -708,15 +708,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык техники: <bonSkill3>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill3=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill3=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PeopleRadar ^{
         CustomTag=Fakrin_2_2
@@ -741,15 +741,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык техники: <bonSkill3>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill3=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill3=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PeopleScaner ^{
         CustomTag=Fakrin_2_3
@@ -774,15 +774,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык техники: <bonSkill3>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill3=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill3=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PeopleDroid ^{
         CustomTag=Fakrin_2_4
@@ -807,15 +807,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык техники: <bonSkill3>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill3=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill3=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PeopleHook ^{
         CustomTag=Fakrin_2_5
@@ -840,15 +840,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык техники: <bonSkill3>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill3=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill3=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PeopleDefGenerator1 ^{
         CustomTag=Fakrin_2_6
@@ -873,15 +873,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык техники: <bonSkill3>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill3=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill3=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PeopleDefGenerator2 ^{
         CustomTag=Fakrin_2_6_2
@@ -906,15 +906,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык техники: <bonSkill3>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill3=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill3=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_FeiFuelTank ^{
         CustomTag=Fakrin_3_0
@@ -939,15 +939,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык манёвренности: <bonSkill2>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill2=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill2=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_FeiEngine ^{
         CustomTag=Fakrin_3_1
@@ -972,15 +972,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык манёвренности: <bonSkill2>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill2=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill2=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_FeiRadar ^{
         CustomTag=Fakrin_3_2
@@ -1005,15 +1005,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык манёвренности: <bonSkill2>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill2=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill2=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_FeiScaner ^{
         CustomTag=Fakrin_3_3
@@ -1038,15 +1038,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык манёвренности: <bonSkill2>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill2=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill2=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_FeiDroid ^{
         CustomTag=Fakrin_3_4
@@ -1071,15 +1071,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык манёвренности: <bonSkill2>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill2=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill2=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_FeiHook ^{
         CustomTag=Fakrin_3_5
@@ -1104,15 +1104,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык манёвренности: <bonSkill2>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill2=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill2=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_FeiDefGenerator1 ^{
         CustomTag=Fakrin_3_6
@@ -1137,15 +1137,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык манёвренности: <bonSkill2>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill2=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill2=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_FeiDefGenerator2 ^{
         CustomTag=Fakrin_3_6_2
@@ -1170,15 +1170,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык манёвренности: <bonSkill2>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill2=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill2=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_GaalFuelTank ^{
         CustomTag=Fakrin_4_0
@@ -1203,15 +1203,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык точности: <bonSkill1>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill1=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill1=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_GaalEngine ^{
         CustomTag=Fakrin_4_1
@@ -1236,15 +1236,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык точности: <bonSkill1>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill1=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill1=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_GaalRadar ^{
         CustomTag=Fakrin_4_2
@@ -1269,15 +1269,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык точности: <bonSkill1>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill1=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill1=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_GaalScaner ^{
         CustomTag=Fakrin_4_3
@@ -1302,15 +1302,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык точности: <bonSkill1>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill1=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill1=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_GaalDroid ^{
         CustomTag=Fakrin_4_4
@@ -1335,15 +1335,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык точности: <bonSkill1>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill1=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill1=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_GaalHook ^{
         CustomTag=Fakrin_4_5
@@ -1368,15 +1368,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык точности: <bonSkill1>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill1=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill1=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_GaalDefGenerator1 ^{
         CustomTag=Fakrin_4_6
@@ -1401,15 +1401,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык точности: <bonSkill1>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill1=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill1=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_GaalDefGenerator2 ^{
         CustomTag=Fakrin_4_6_2
@@ -1434,15 +1434,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык точности: <bonSkill1>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill1=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill1=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PirateClanFuelTank ^{
         CustomTag=Fakrin_5_0
@@ -1467,15 +1467,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык обаяния: <bonSkill5>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill5=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill5=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PirateClanEngine ^{
         CustomTag=Fakrin_5_1
@@ -1500,15 +1500,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык обаяния: <bonSkill5>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill5=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill5=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PirateClanRadar ^{
         CustomTag=Fakrin_5_2
@@ -1533,15 +1533,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык обаяния: <bonSkill5>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill5=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill5=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PirateClanScaner ^{
         CustomTag=Fakrin_5_3
@@ -1566,15 +1566,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык обаяния: <bonSkill5>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill5=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill5=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PirateClanDroid ^{
         CustomTag=Fakrin_5_4
@@ -1599,15 +1599,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык обаяния: <bonSkill5>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill5=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill5=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PirateClanHook ^{
         CustomTag=Fakrin_5_5
@@ -1632,15 +1632,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык обаяния: <bonSkill5>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill5=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill5=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PirateClanDefGenerator1 ^{
         CustomTag=Fakrin_5_6
@@ -1665,15 +1665,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык обаяния: <bonSkill5>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill5=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill5=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
     ExpAcryn_PirateClanDefGenerator2 ^{
         CustomTag=Fakrin_5_6_2
@@ -1698,15 +1698,15 @@ MicroModuls ^{
 		Text=Генератор поля: <bonDef> ед.
         Text=Навык обаяния: <bonSkill5>
 		Cost=350
-        bonWEnergy=6
-        bonWSplinter=8
-        bonWMissile=8
+		bonDef=2
+        bonDroid=5
+        bonRadar=300
+        bonSkill5=-1
         bonSpeed=50
 		bonJump=3
-        bonRadar=300
-        bonDroid=5
-		bonDef=2
-        bonSkill5=-1
+        bonWEnergy=5
+        bonWMissile=4
+        bonWSplinter=7
     }
 }
 Script ^{
