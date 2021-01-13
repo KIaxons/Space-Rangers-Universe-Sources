@@ -206,7 +206,7 @@ MicroModuls ^{
         Text=<color=248,252,248>Крупный ударный доминаторский корабль, сопоставимый по огневой мощи и защищённости с судами класса "корвет". Стремится как можно скорее сократить расстояние до противника и навязать ему бой на малой дистанции.</color>
 		Fragility=80
         Cost=1250
-		Size=125
+		Size=150
     }
     EvoArmada_EquantorDomHull ^{
 		Equipments=Hull
@@ -219,7 +219,7 @@ MicroModuls ^{
         Text=<color=248,252,248>Тяжёлый артиллерийский доминаторский корабль, сопоставимый по огневой мощи и защищённости с судами класса "крейсер". Специализируется на энергетическом вооружении и ведении боя на дальних дистанциях.</color>
 		Fragility=90
         Cost=3500
-		Size=200
+		Size=225
     }
     EvoArmada_BertorDomHull ^{
 		Equipments=Hull
@@ -232,7 +232,7 @@ MicroModuls ^{
         Text=<color=248,252,248>Огромная тяжелобронированная авианесущая платформа, сопоставимая по огневой мощи и защищённости с судами класса "линкор". Помимо воспроизводства лёгких брандеров типа "клиг", занимается ремонтом и усилением всех окружающих доминаторов, входящих в состав группы прикрытия.</color>
 		Fragility=80
         Cost=5500
-		Size=250
+		Size=300
     }
     EvoArmada_ExtraSpecialsLineBreak ^{
 		Equipments=Any
@@ -343,6 +343,63 @@ ShipInfo ^{
 							03=GDreadnoughtArray[0] = GDreadnoughtArray[0] - 1;
 							04=break;
 						}
+					}
+                }
+			}
+			EvoArmada_CapitalShipInfos ^{
+				Icon=0
+				Name=
+				Description=Инфошка для пересчёта числа доп. залпов при стрельбе крупных кораблей по более мелким судам
+				OnActCodeTypes=t_OnStep
+				OnActStepTypes=0,11
+                OnActCode ^{
+					01=dword ship = ScriptItemActShip();
+					02=if(!ScriptItemActParam())
+					03 ^{
+						01=if(ShipInNormalSpace(ship))
+						02 ^{
+							//Делаем проверку, что данный корабль атакует другой корабль и что другой корабль не имеет доп. залпов, то есть является небольшим по размеру
+							01=dword cur_info = 0;
+							02=for(int i = 1; i <= 5; i = i + 1)
+							03 ^{
+								01=dword gun = ShipWeapon(ship, i);
+								02=if(gun)
+								03 ^{
+									01=dword target = WeaponTarget(gun);
+									02=if(target)
+									03 ^{
+										01=if(ObjectType(target) == 5)
+										02 ^{
+											01=int target_attacks = ShipSpecialBonuses(target, bonAttacks);
+											02=if(!target_attacks)
+											03 ^{
+												01=cur_info = CurInfo();
+												02=break;
+											}
+										}
+									}
+								}
+								04=else break;
+							}
+							//Если проверка успешна, то снижаем число залпов, которые сможет произвести атакующий
+							04=if(cur_info)
+							05 ^{
+								01=int add_attacks = ShipCustomShipInfoData(0, cur_info, 1);
+								02=int attacks_penalty = ShipSkill(ship, 'AccuracyCur') - ShipSkill(target, 'MobilityCur');
+								03=if(attacks_penalty < 0)
+								04 ^{
+									01=add_attacks = add_attacks + attacks_penalty;
+									02=if(add_attacks < 0) add_attacks = 0;
+								}
+								05=ShipSpecialBonuses(ship, bonAttacks, add_attacks);
+							}
+						}
+					}
+					//В конце хода сбрасываем число дополнительных залпов на стандартное для корабля значение
+					04=else
+					05 ^{
+						01=add_attacks = ShipCustomShipInfoData(0, CurInfo(), 1);
+						02=ShipSpecialBonuses(ship, bonAttacks, add_attacks);
 					}
                 }
 			}
