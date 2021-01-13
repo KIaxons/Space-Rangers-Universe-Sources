@@ -65,13 +65,13 @@ UselessItems ^{
     }
     Usl_Drug04 ^{
         Cost=Average
-        Name=Штамм вируса "Великий малосус"
+        Name=Штамм вируса "Великий малососус"
         OnUseCode ^{
-            01=if(MessageBoxYesNo('Вы точно хотите заразить себя лёгкой формой <color=0,50,200>Великого малосуса</color>?'))
+            01=if(MessageBoxYesNo('Вы точно хотите заразить себя лёгкой формой <color=0,50,200>Великого малососуса</color>?'))
             02 ^{
                 01=ShipHealthFactor(Player(),9,30);
-                02=Ether(0,'','Штамм вируса <clr>Великий малосус<clrEnd> успешно введен в ваш организм.');
-                03=if (FindItemInShip(Player(),CurItem())>0) FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),CurItem())));
+                02=Ether(0,'','Штамм вируса <clr>Великий малососус<clrEnd> успешно введен в ваш организм.');
+                03=if (FindItemInShip(Player(),CurItem()) > -1) FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),CurItem())));
                 04=else FreeItem(GetItemFromStorage(FindItemInStorage(CurItem())));
             }
         }
@@ -81,12 +81,12 @@ UselessItems ^{
     }
     Usl_Drug05 ^{
         Cost=Average
-        Name=Гормон "Новый молизион"
+        Name=Гормон "Новый молизон"
         OnUseCode ^{
-            01=if(MessageBoxYesNo('Вы точно хотите принять <color=0,50,200>Новый молизион</color>?'))
+            01=if(MessageBoxYesNo('Вы точно хотите принять <color=0,50,200>Новый молизон</color>?'))
             02 ^{
                 01=ShipHealthFactor(Player(),12,30);
-                02=Ether(0,'','Гормон <clr>Новый молизион<clrEnd> успешно введен в ваш организм.');
+                02=Ether(0,'','Гормон <clr>Новый молизон<clrEnd> успешно введен в ваш организм.');
                 03=if (FindItemInShip(Player(),CurItem())>0) FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),CurItem())));
                 04=else FreeItem(GetItemFromStorage(FindItemInStorage(CurItem())));
             }
