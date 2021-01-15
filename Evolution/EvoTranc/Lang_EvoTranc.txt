@@ -2717,13 +2717,14 @@ ShipInfo ^{
 					//’оз€ин подобрал нового транка в космосе и у него ещЄ имеетс€ свободное место в списке транков
 					07=else if(ScriptItemActionType(t_OnItemPickUp))
 					08 ^{
-						01=tranc=ScriptItemActObject1();
+						01=tranc = ScriptItemActObject1();
 						02=if(ItemType(tranc) == t_ArtefactTranclucator)
 						03 ^{
-							//01=if(ShipFreeSpace(ScriptItemActShip()) >= ItemSize(tranc))
-							//02 ^{
-								01=cur_info=CurInfo();
-								02=quant=ShipCustomShipInfoData(0,cur_info,3);
+							01=ShipCalcParam(ScriptItemActShip());
+							02=if(ShipFreeSpace(ScriptItemActShip()) > 0)
+							03 ^{
+								01=cur_info = CurInfo();
+								02=quant = ShipCustomShipInfoData(0, cur_info, 3);
 								03=if(quant < 6)
 								04 ^{
 									01=NoDropItem(tranc,1);
@@ -2736,21 +2737,21 @@ ShipInfo ^{
 									07=if(ShipFindCustomShipInfoByType(tranc,'TrancModAddInfo')>-1)ShipDeleteCustomShipInfo(tranc,'TrancModAddInfo');
 									08=if(ShipFindCustomShipInfoByType(tranc,'TrancNavComputerInfo')>-1)
 									09 ^{
-										01=ShipDeleteCustomShipInfo(tranc,'TrancNavComputerInfo');
-										02=ShipAddCustomShipInfo(tranc,'TrancFakeNavComputerInfo');
+										01=ShipDeleteCustomShipInfo(tranc, 'TrancNavComputerInfo');
+										02=ShipAddCustomShipInfo(tranc, 'TrancFakeNavComputerInfo');
 									}
-									10=quant=quant+1;
-									11=ShipCustomShipInfoData(0,cur_info,3,quant);
-									12=allId=allId+Id(tranc)+'*'+(quant+1)+'*';
-									13=ShipCustomShipInfoTextData(0,cur_info,1,allId);
-									14=launched=launched+'N';
-									15=ShipCustomShipInfoTextData(0,cur_info,2,launched);
-									16=status=status+'U';
-									17=ShipCustomShipInfoTextData(0,cur_info,3,status);
-									18=TranclucatorData(tranc,'Proprietor',ScriptItemActShip());
-									19=TranclucatorData(tranc,'AutoArrange',1);
+									10=quant = quant + 1;
+									11=ShipCustomShipInfoData(0, cur_info, 3, quant);
+									12=allId = allId + Id(tranc) + '*' + (quant + 1) + '*';
+									13=ShipCustomShipInfoTextData(0, cur_info, 1, allId);
+									14=launched = launched + 'N';
+									15=ShipCustomShipInfoTextData(0, cur_info, 2, launched);
+									16=status = status + 'U';
+									17=ShipCustomShipInfoTextData(0, cur_info, 3, status);
+									18=TranclucatorData(tranc, 'Proprietor', ScriptItemActShip());
+									19=TranclucatorData(tranc, 'AutoArrange', 1);
 								}
-							//}
+							}
 						}
 					}
 					//’оз€ин погибает, расставл€ем шансы дропа транков из трюма и удал€ем хоз€ина из информации запущенных транков
