@@ -104,48 +104,51 @@ MicroModuls ^{
 		Equipments=Hull
 		Owner=PirateClan,NonKling
         LockedAcryn=3
-		HullGraphSize=110
+		HullGraphSize=133
         KindGraph=PirateCorvette
         Name=</color><Type> корпус корвета
         NonSearchable=1
         Priority=0
         Special=1
-        Text=<color=248,252,248>Огромная тяжелобронированная авианесущая платформа, сопоставимая по огневой мощи и защищённости с судами класса "линкор". Помимо воспроизводства лёгких брандеров типа "клиг", занимается ремонтом и усилением всех окружающих доминаторов, входящих в состав группы прикрытия.</color>
+        Text=<color=248,252,248>Достаточно мощный для уничтожения любого небольшого судна, корвет, однако, слишком мал для ведения полномасштабных линейных сражений. В то же время "стая" таких кораблей вполне может стать неприятным сюрпризом для любого местного флота, не обладающего значительными силами для отражения внезапной пиратской атаки.</color>
 		Fragility=80
         Cost=1500
-		Size=125
+		Size=190
+		bonMass=40
 		bonSlotForsage=-1
-    }	
+    }
     EvoArmada_FrigatePirateClan ^{
 		Equipments=Hull
 		Owner=PirateClan,NonKling
         LockedAcryn=3
-		HullGraphSize=130
+		HullGraphSize=185
         KindGraph=PirateFrigate
         Name=</color><Type> корпус фрегата
         NonSearchable=1
         Priority=0
         Special=1
-        Text=<color=248,252,248>Огромная тяжелобронированная авианесущая платформа, сопоставимая по огневой мощи и защищённости с судами класса "линкор". Помимо воспроизводства лёгких брандеров типа "клиг", занимается ремонтом и усилением всех окружающих доминаторов, входящих в состав группы прикрытия.</color>
+        Text=<color=248,252,248>Крупный многопушечный корабль, который, при соблюдении некоторых условий, вполне способен дать достойный отпор даже в линейном артиллерийском бою. Ограниченность ресурсов братства, правда, не позволяет производить такие в серийных масштабах, а потому и суммарная боевая эффективность данных судов не слишком велика.</color>
 		Fragility=80
         Cost=2500
-		Size=150
+		Size=550
+		bonMass=80
 		bonSlotForsage=-1
-    }	
+    }
     EvoArmada_GalleonPirateClan ^{
 		Equipments=Hull
 		Owner=PirateClan,NonKling
         LockedAcryn=3
-		HullGraphSize=150
+		HullGraphSize=220
         KindGraph=PirateGalleon
         Name=</color><Type> корпус галеона
         NonSearchable=1
         Priority=0
         Special=1
-        Text=<color=248,252,248>Огромная тяжелобронированная авианесущая платформа, сопоставимая по огневой мощи и защищённости с судами класса "линкор". Помимо воспроизводства лёгких брандеров типа "клиг", занимается ремонтом и усилением всех окружающих доминаторов, входящих в состав группы прикрытия.</color>
+        Text=<color=248,252,248>Массивный тяжелобронированный корабль с прекрасным (по пиратским меркам) вооружением. Лучшее, что способно предложить своему импровизированному флоту разобщённое пиратское "адмиралтейство".</color>
 		Fragility=80
         Cost=3500
-		Size=200
+		Size=800
+		bonMass=110
 		bonSlotForsage=-1
     }
     EvoArmada_KligDomHull ^{
@@ -377,40 +380,43 @@ ShipInfo ^{
 					03 ^{
 						01=if(ShipInNormalSpace(ship))
 						02 ^{
-							//Делаем проверку, что данный корабль атакует другой корабль и что другой корабль не имеет доп. залпов, то есть является небольшим по размеру
-							01=dword cur_info = 0;
-							02=for(int i = 1; i <= 5; i = i + 1)
-							03 ^{
-								01=dword gun = ShipWeapon(ship, i);
-								02=if(gun)
+							01=if(ShipGetBad(ship))
+							02 ^{
+								//Делаем проверку, что данный корабль атакует другой корабль и что другой корабль не имеет доп. залпов, то есть является небольшим по размеру
+								01=dword cur_info = 0;
+								02=for(int i = 1; i <= 5; i = i + 1)
 								03 ^{
-									01=dword target = WeaponTarget(gun);
-									02=if(target)
+									01=dword gun = ShipWeapon(ship, i);
+									02=if(gun)
 									03 ^{
-										01=if(ObjectType(target) == 5)
-										02 ^{
-											01=int target_attacks = ShipSpecialBonuses(target, bonAttacks);
-											02=if(!target_attacks)
-											03 ^{
-												01=cur_info = CurInfo();
-												02=break;
+										01=dword target = WeaponTarget(gun);
+										02=if(target)
+										03 ^{
+											01=if(ObjectType(target) == 5)
+											02 ^{
+												01=int target_attacks = ShipSpecialBonuses(target, bonAttacks);
+												02=if(!target_attacks)
+												03 ^{
+													01=cur_info = CurInfo();
+													02=break;
+												}
 											}
 										}
 									}
+									04=else break;
 								}
-								04=else break;
-							}
-							//Если проверка успешна, то снижаем число залпов, которые сможет произвести атакующий
-							04=if(cur_info)
-							05 ^{
-								01=int add_attacks = ShipCustomShipInfoData(0, cur_info, 1);
-								02=int attacks_penalty = ShipSkill(ship, 'AccuracyCur') - ShipSkill(target, 'MobilityCur');
-								03=if(attacks_penalty < 0)
-								04 ^{
-									01=add_attacks = add_attacks + attacks_penalty;
-									02=if(add_attacks < 0) add_attacks = 0;
+								//Если проверка успешна, то снижаем число залпов, которые сможет произвести атакующий
+								04=if(cur_info)
+								05 ^{
+									01=int add_attacks = ShipCustomShipInfoData(0, cur_info, 1);
+									02=int attacks_penalty = ShipSkill(ship, 'AccuracyCur') - ShipSkill(target, 'MobilityCur');
+									03=if(attacks_penalty < 0)
+									04 ^{
+										01=add_attacks = add_attacks + attacks_penalty;
+										02=if(add_attacks < 0) add_attacks = 0;
+									}
+									05=ShipSpecialBonuses(ship, bonAttacks, add_attacks);
 								}
-								05=ShipSpecialBonuses(ship, bonAttacks, add_attacks);
 							}
 						}
 					}
