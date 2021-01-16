@@ -346,6 +346,25 @@ ShipInfo ^{
 					}
                 }
 			}
+			PirateGalleon_Infos ^{
+				Icon=0
+				Name=
+				Description=NoShow
+				OnActCodeTypes=t_OnDeath
+                OnActCode ^{
+					01=dword cur_ship = ScriptItemActShip();
+                    02=for(int i = 1; i < ArrayDim(GGalleonArray); i = i + 1)
+					03 ^{
+						01=if(Id(StarToCon(ShipStar(cur_ship))) == GGalleonArray[i])
+						02 ^{
+							01=ArrayDelete(GGalleonArray, i);
+							02=arraychange(GGalleonArray, 5);
+							03=GGalleonArray[0] = GGalleonArray[0] - 1;
+							04=break;
+						}
+					}
+                }
+			}
 			EvoArmada_CapitalShipInfos ^{
 				Icon=0
 				Name=
