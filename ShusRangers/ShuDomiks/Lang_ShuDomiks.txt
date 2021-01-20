@@ -1007,8 +1007,8 @@ ShipInfo ^{
 					15=TransferShip(clone_ship,StarPlanets(GalaxyStar(2),0));
                 }
             }
-			InhibBeaconDestroyAbort ^{
-                Description=Отменяет "экранирующее" уничтожение маяка вызова ингибитора
+			InhibBeaconDestroy ^{
+                Description=Отменяет "экранирующее" уничтожение маяка вызова ингибитора, после чего скрытно удаляет его без взрыва
                 Icon=1
                 Name=
                 OnActCodeTypes=t_OnStep
@@ -1020,14 +1020,8 @@ ShipInfo ^{
 						01=if(!ScriptItemActParam()) ItemDestroy(item, 0);
 						02=else
 						03 ^{
-							01=dword ruin = StarRuins(ShipStar(Player()), 'Inhibitor');
-							02=if(ruin)
-							03 ^{
-								01=CoordX(item, 0);
-								02=CoordY(item, 0);
-								03=FireWeapon(ruin, item, 0);
-							}
-							04=ShipDeleteCustomShipInfo(ScriptItemActShip(), 'InhibBeaconDestroyAbort');
+							01=FreeItem(GetItemFromStar(GalaxyStar(ShipCustomShipInfoData(0, CurInfo(), 2)), item));
+							02=ShipDeleteCustomShipInfo(ScriptItemActShip(), 'InhibBeaconDestroy');
 						}
 					}
                 }
@@ -1038,17 +1032,17 @@ ShipInfo ^{
                 Name=
                 OnActCodeTypes=t_OnDealingDamage,t_OnDeath
                 OnActCode ^{
-					01=dword cur_ship=ScriptItemActShip();
-					02=dword cur_info=CurInfo();
+					01=dword cur_ship = ScriptItemActShip();
+					02=dword cur_info = CurInfo();
 					03=if(ScriptItemActionType(t_OnDealingDamage))
 					04 ^{
-						01=int proc=ShipCustomShipInfoData(0,cur_info,1);
-						02=if(ShipOwner(ScriptItemActObject1())==5)exit;
-						03=ScriptItemActParam(ScriptItemActParam()*proc/100);
+						01=int proc = ShipCustomShipInfoData(0, cur_info, 1);
+						02=if(ShipOwner(ScriptItemActObject1()) == 5) exit;
+						03=ScriptItemActParam(ScriptItemActParam() * proc / 100);
 					}
 					05=else
 					06 ^{
-						01=if(!ShipCustomShipInfoData(0,cur_info,3))Ether(4,'KellerCloneTask',Format(CT('Script.Mod_ShuDomiks.KellerCloneTask'),'#0#',Name(ShipStar(cur_ship))));
+						01=if(!ShipCustomShipInfoData(0, cur_info, 3)) Ether(4, 'KellerCloneTask', Format(CT('Script.Mod_ShuDomiks.KellerCloneTask'), '#0#', Name(ShipStar(cur_ship))));
 					}
                 }
             }
@@ -1336,24 +1330,25 @@ UselessItems ^{
 			//Запускаем акткод в "костыльной семерёнке", чтобы записать ингибитор в нужную скриптовую группу
 			39=CreateActCodeEvent(0, crutch);
 			40=PutItemInVault('ShuDomiks_Semerenka', crutch);
-			//Телепортируем ингибитор по нужным нам координатам
-			41=MakeShipEnterStar(inhib, star, star, 0);
-			42=OrderTeleport(inhib, star, CoordX(ship) - 75, CoordY(ship) - 75);
-			43=ShipOrderData1(inhib, 0);
-			44=ShipAngle(inhib, 0);
-			45=Sound('Sound.Repair');
-			46=MessageBox('Ингибитор успешно отправлен в указанные координаты.');
+			41=Sound('Sound.Repair');
+			42=MessageBox('Ингибитор успешно отправлен в указанные координаты.');
 			//Выбрасываем установочный под местоположение игрока
-			47=if(FindItemInShip(ship, cur_item) > -1) GetItemFromShip(ship, FindItemInShip(ship, cur_item));
-			48=else GetItemFromStorage(FindItemInStorage(cur_item));
-			49=DropItemInSystem(star, cur_item, CoordX(ship) - 75, CoordY(ship) - 75, CoordX(ship) - 75, CoordY(ship) - 75);
-			50=StopMovingItem(star, cur_item);
+			43=if(FindItemInShip(ship, cur_item) > -1) GetItemFromShip(ship, FindItemInShip(ship, cur_item));
+			44=else GetItemFromStorage(FindItemInStorage(cur_item));
+			45=DropItem(ship, cur_item);
+			//Телепортируем ингибитор по координатам дропнутого предмета
+			46=MakeShipEnterStar(inhib, star, star, 0);
+			47=OrderTeleport(inhib, star, CoordX(cur_item) - 11, CoordY(cur_item) + 3);
+			48=ShipOrderData1(inhib, 0);
+			49=ShipAngle(inhib, 0);
 			//"Активируем" маяк
-			51=UselessItemData(cur_item, 1, 1);
+			50=UselessItemData(cur_item, 1, 1);
 			//Выставляем маяку маркер на уничтожение, чтобы его нельзя было подобрать назад в трюм
-			52=ItemDestroy(cur_item, 1);
+			51=ItemDestroy(cur_item, 1);
+			//Отдельно выставляем запрет на подбор для игрока
+			52=ShipPicksItem(Player(), cur_item, -1);
 			//После чего вешаем на игрока инфошку отмены уничтожения маяка, чтобы он не пропал из виду раньше времени
-			53=ShipAddCustomShipInfo(ship, 'InhibBeaconDestroyAbort', 'NoShow', Id(cur_item));
+			53=ShipAddCustomShipInfo(ship, 'InhibBeaconDestroy', 'NoShow', Id(cur_item), Id(star) - 1);
         }
     }
 }
