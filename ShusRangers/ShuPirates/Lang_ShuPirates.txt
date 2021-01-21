@@ -1,3 +1,23 @@
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            PlayerInHoleTurnBlock ^{
+                Description=Невидимая инфошка для блокировки возможного лишнего исполнения тернкода при залёте игрока в ЧД следом за другим кораблём
+                Icon=0
+                Name=
+				OnActCodeTypes=t_OnStep
+				OnActStepTypes=11
+                OnActCode ^{
+					01=if(ShipInHole(Player()))
+					02 ^{
+						01=dword cur_hole = ShipOrderObj(Player());
+						02=if(cur_hole) HoleMap(cur_hole, 'SkipAB');
+					}
+				}
+			}
+		}
+	}
+}
 ShipType ^{
     TypeName ^{
         Thug=Головорез
