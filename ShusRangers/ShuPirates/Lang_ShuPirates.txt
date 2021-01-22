@@ -11,7 +11,22 @@ ShipInfo ^{
 					01=if(ShipInHole(Player()))
 					02 ^{
 						01=dword cur_hole = ShipOrderObj(Player());
-						02=if(cur_hole) HoleMap(cur_hole, 'SkipAB');
+						02=if(cur_hole)
+						03 ^{
+							01=if(HoleMap(cur_hole) != 'SkipAB')
+							02 ^{
+								01=dword cur_star = ShipStar(Player());
+								02=for(int i = 0; i < StarShips(cur_star); i = i + 1)
+								03 ^{
+									01=dword cur_ship = StarShips(cur_star, i);
+									02=if(IsPlayer(cur_ship)) continue;
+									03=if(!ShipInHole(cur_ship)) continue;
+									04=if(HoleStar1(ShipOrderObj(cur_ship)) != HoleStar1(cur_hole)) continue;
+									05=HoleMap(cur_hole, 'SkipAB');
+									06=break;
+								}
+							}
+						}
 					}
 				}
 			}
