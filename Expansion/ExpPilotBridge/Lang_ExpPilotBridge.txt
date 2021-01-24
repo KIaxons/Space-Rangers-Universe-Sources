@@ -621,46 +621,46 @@ Galapedia ^{
 }
 ShipInfo ^{
 	AddInfo ^{
-		CustomInfos ~{
+		CustomInfos ^{
 			PlayerBridgeHV_infos ^{
 				Description=ѕосто€нна€ невидима€ инфошка дл€ добавлени€ мостика и прочих акткодовых операций
 				Icon=0
 				Name=
-				OnActCodeTypes=t_OnPlayerChangeHull,t_OnEnteringForm,t_OnReEnteringForm,t_OnLeavingForm,t_OnStep
+				OnActCodeTypes=t_OnStep,t_OnPlayerChangeHull,t_OnEnteringForm,t_OnReEnteringForm,t_OnLeavingForm
 				OnActStepTypes=0
 				OnActCode ^{
-					01=if(ScriptItemActionType(t_OnStep,0))
+					01=if(ScriptItemActionType(t_OnStep, 0))
 					02 ^{
 						//¬ыводим уведомлени€ о корабл€х-похитител€х корпуса(ов)
-						01=if(TLegUpCount>-1)
+						01=if(TLegUpCount > -1)
 						02 ^{
-							01=if(TLegUpCount==0)
+							01=if(TLegUpCount == 0)
 							02 ^{
-								01=CustomEther('User',7,'ThiefInfoEther1',GetValueFromScript('Mod_ExpPilotBridge','TForLegUp'));
+								01=CustomEther('User', 7, 'ThiefInfoEther1', GetValueFromScript('Mod_ExpPilotBridge', 'TForLegUp'));
 								02=Sound('Sound.NewMsg');
-								03=TLegUpCount=-1;
+								03=TLegUpCount = -1;
 							}
-							03=else TLegUpCount=TLegUpCount-1;
+							03=else TLegUpCount = TLegUpCount - 1;
 						}
-						03=if(TLegUpCount2>-1)
+						03=if(TLegUpCount2 > -1)
 						04 ^{
-							01=if(TLegUpCount2==0)
-							02={
-								01=CustomEther('User',7,'ThiefInfoEther2',GetValueFromScript('Mod_ExpPilotBridge','TForLegUp2'));
+							01=if(TLegUpCount2 == 0)
+							02 ^{
+								01=CustomEther('User', 7, 'ThiefInfoEther2', GetValueFromScript('Mod_ExpPilotBridge', 'TForLegUp2'));
 								02=Sound('Sound.NewMsg');
-								03=TLegUpCount2=-1;
+								03=TLegUpCount2 = -1;
 							}
-							03=else TLegUpCount2=TLegUpCount2-1;
+							03=else TLegUpCount2 = TLegUpCount2 - 1;
 						}
 						//¬звод болезни из событи€, но с некоторой задержкой
-						05=if(GTempGlobalVar>0 && ShipInNormalSpace(Player()))
+						05=if(GTempGlobalVar > 0 && ShipInNormalSpace(Player()))
 						06 ^{
 							//—вер€ем расы и тип болезни (т.к. некоторые расы устойчивы к некоторым болезн€м, заражать их ими насильно было бы глупо)
-							01=if(GTempGlobalVar==2 && ShipPilotRace(Player())!=0)GTempGlobalVar=2;
-							02=if(GTempGlobalVar==2 && ShipPilotRace(Player())==0)GTempGlobalVar=3;
-							03=if(GTempGlobalVar==3 && ShipPilotRace(Player())<3)GTempGlobalVar=3;
-							04=if(GTempGlobalVar==3 && ShipPilotRace(Player())>2)GTempGlobalVar=2;
-							05=if(ShipHealthFactorStatus(Player(),GTempGlobalVar)<90)ShipHealthFactorStatus(Player(),GTempGlobalVar,90);
+							01=if(GTempGlobalVar == 2 && ShipPilotRace(Player()) != 0) GTempGlobalVar = 2;
+							02=if(GTempGlobalVar == 2 && ShipPilotRace(Player()) == 0) GTempGlobalVar = 3;
+							03=if(GTempGlobalVar == 3 && ShipPilotRace(Player()) < 3) GTempGlobalVar = 3;
+							04=if(GTempGlobalVar == 3 && ShipPilotRace(Player()) > 2) GTempGlobalVar = 2;
+							05=if(ShipHealthFactorStatus(Player(), GTempGlobalVar) < 90) ShipHealthFactorStatus(Player(), GTempGlobalVar, 90);
 						}
 						// аждый ход провер€ем наличие корпусов в их доставочных хранилищах (если нет, то трЄм корпус из списка и пересобираем массив)
 						//—труктура записи данных в элементы массива (тип всегда str):
@@ -668,7 +668,7 @@ ShipInfo ^{
 						//2 - планета/станци€ на которой он находитс€ (Id) + '*'
 						//3 - тип хранилища (планета или станци€) + '&'
 						//4 - тип событи€ в виде 9 числовых символов
-						07=if(ArrayDim(GHullsWaitArray)>1)
+						07=if(ArrayDim(GHullsWaitArray) > 1)
 						08 ^{
 							01=dword LHull=0;
 							02=dword LStor=0;

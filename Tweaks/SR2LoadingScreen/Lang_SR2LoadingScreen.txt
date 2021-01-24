@@ -1,0 +1,19 @@
+ShipInfo ^{
+	AddInfo ^{
+		CustomInfos ^{
+			LoadBarProgressionInfos ^{
+				Description=
+				Icon=0
+				Name=
+				OnActCodeTypes=t_OnStep
+				OnActCode ^{
+					01=if(CurrentForm() == 'Jump')
+					02 ^{
+						01=InterfaceState('Jump', 'PLProgress', 0);
+						//PLProgress
+					}
+				}
+			}
+		}
+	}
+}
