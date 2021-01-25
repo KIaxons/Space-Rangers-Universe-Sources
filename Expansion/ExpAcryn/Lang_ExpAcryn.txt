@@ -2016,13 +2016,13 @@ ShipInfo ^{
 				OnActStepTypes=11
 				OnActCode ^{
 					//Автоматически снимаем блокиратор через полгода после его добавления
-					01=if(ScriptItemActionType(t_OnStep,11))
+					01=if(ScriptItemActionType(t_OnStep, 11))
 					02 ^{
-						01=if(!ShipCustomShipInfoData(0,CurInfo(),1))ShipCustomShipInfoData(0,CurInfo(),1,CurTurn()+182);
-						02=if(ShipCustomShipInfoData(0,CurInfo(),1)<CurTurn())
+						01=if(!ShipCustomShipInfoData(0, CurInfo(), 1)) ShipCustomShipInfoData(0, CurInfo(), 1, CurTurn() + 182);
+						02=if(ShipCustomShipInfoData(0, CurInfo(), 1) < CurTurn())
 						03 ^{
-							01=NoTalkToShip(ScriptItemActShip(),0);
-							02=ShipDeleteCustomShipInfo(ScriptItemActShip(),'ExpAcryn_block_infos');
+							01=NoTalkToShip(ScriptItemActShip(), 0);
+							02=ShipDeleteCustomShipInfo(ScriptItemActShip(), 'ExpAcryn_block_infos');
 						}
 					}
 				}
@@ -2034,43 +2034,43 @@ ShipInfo ^{
 				OnActCodeTypes=t_OnStep,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnDeath
 				OnActStepTypes=0,11
                 OnActCode ^{
-                    01=if(ScriptItemActionType(t_OnStep,0))
+                    01=if(ScriptItemActionType(t_OnStep, 0))
                     02 ^{
-                        01=ShipCustomShipInfoTextData(0,CurInfo(),3,'');
+                        01=ShipCustomShipInfoTextData(0, CurInfo(), 3, '');
                     }
-                    03=if(ScriptItemActionType(t_OnStep,11))
+                    03=if(ScriptItemActionType(t_OnStep, 11))
                     04 ^{
-                        01=if(HullDamage(ScriptItemActShip())<40)ShipDeleteCustomShipInfo(ScriptItemActShip(),'ExpAcryn_maloc_q_infos');
+                        01=if(HullDamage(ScriptItemActShip()) < 40) ShipDeleteCustomShipInfo(ScriptItemActShip(), 'ExpAcryn_maloc_q_infos');
                     }
                     05=if(ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi))
                     06 ^{
-						01=dword attacker=ScriptItemActObject1();
-                        02=if(ScriptItemActObject1()!=Player())
+						01=dword attacker = ScriptItemActObject1();
+                        02=if(ScriptItemActObject1() != Player())
 						03 ^{
-							01=if(ObjectType(attacker)!=7)exit;
-							02=if(MissileOwner(attacker)!=Player())exit;
+							01=if(ObjectType(attacker) != 7) exit;
+							02=if(MissileOwner(attacker) != Player()) exit;
 						}
-                        04=if(ScriptItemActParam()<HullHP(ScriptItemActShip()))exit;
-                        05=ShipCustomShipInfoTextData(0,CurInfo(),3,'Drop');
+                        04=if(ScriptItemActParam() < HullHP(ScriptItemActShip())) exit;
+                        05=ShipCustomShipInfoTextData(0, CurInfo(), 3, 'Drop');
                     }
                     07=if(ScriptItemActionType(t_OnDeath))
                     08 ^{
-						01=if(ShipCustomShipInfoTextData(0,CurInfo(),3)=='Drop')
+						01=if(ShipCustomShipInfoTextData(0, CurInfo(), 3) == 'Drop')
 						02 ^{
-							01=int i=0;
-							02=int bon=FindBonusByCustomTag('Akrin_dom_ship');
-							03=dword item=0;
-							04=dword ship=ScriptItemActShip();
-							05=for(i=ShipItems(ship)-1;i>0;i=i-1)
+							01=int i = 0;
+							02=int bon = FindBonusByCustomTag('Akrin_dom_ship');
+							03=dword item = 0;
+							04=dword ship = ScriptItemActShip();
+							05=for(i = ShipItems(ship) - 1; i > 0; i = i - 1)
 							06 ^{
-								01=item=ShipItems(ship,i);
-								02=if(EqSpecial(item)==-1)continue;
-								03=if(EqSpecial(item)!=bon)continue;
-								04=GetItemFromShip(ship,FindItemInShip(ship,item));
-								05=str item_name=Name(item);
-								06=EqSpecial(item,FindBonusByCustomTag('ExpAcryn_ship_maloc'));
-								07=SetName(item,item_name);
-								08=ShipAddDropItem(ship,item);
+								01=item = ShipItems(ship, i);
+								02=if(EqSpecial(item) == -1) continue;
+								03=if(EqSpecial(item) != bon) continue;
+								04=GetItemFromShip(ship, FindItemInShip(ship, item));
+								05=str item_name = Name(item);
+								06=EqSpecial(item, FindBonusByCustomTag('ExpAcryn_ship_maloc'));
+								07=SetName(item, item_name);
+								08=ShipAddDropItem(ship, item);
 								09=break;
 							}
 						}
@@ -2087,58 +2087,56 @@ ShipInfo ^{
 					02=dword tdwd2;
 					03=dword tdwd3;
 					04=dword tdwd4;
-					05=if(ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi))
+					05=if(ScriptItemActionType(t_OnDeath))
 					06 ^{
-						01=tdwd3=CurInfo();
-						02=tdwd4=ScriptItemActObject1();
-						//Записываем урон, полученный от разных кораблей
-						//Попал выстрел от корабля
-						03=if(ObjectType(tdwd4)==5)
-						04 ^{
-							01=if(ShipTypeN(tdwd4)==t_Kling)ShipCustomShipInfoData(0,tdwd3,1,ShipCustomShipInfoData(0,tdwd3,1)+ScriptItemActParam());
-							02=else ShipCustomShipInfoData(0,tdwd3,2,ShipCustomShipInfoData(0,tdwd3,2)+ScriptItemActParam());
-							03=if(tdwd4==Player())ShipCustomShipInfoData(0,tdwd3,1,ShipCustomShipInfoData(0,tdwd3,1)+(ScriptItemActParam()*3));
-						}
-						//Попала ракета
-						05=else if(ObjectType(tdwd4)==7)
-						06 ^{
-							01=if(MissileOwner(tdwd4))
-							02 ^{
-								01=if(ShipTypeN(MissileOwner(tdwd4))==t_Kling)ShipCustomShipInfoData(0,tdwd3,1,ShipCustomShipInfoData(0,tdwd3,1)+ScriptItemActParam());
-								02=else ShipCustomShipInfoData(0,tdwd3,2,ShipCustomShipInfoData(0,tdwd3,2)+ScriptItemActParam());
-								03=if(MissileOwner(tdwd4)==Player())ShipCustomShipInfoData(0,tdwd3,1,ShipCustomShipInfoData(0,tdwd3,1)+(ScriptItemActParam()*3));
-							}
-						}
-					}
-					07=if(ScriptItemActionType(t_OnDeath))
-					08 ^{
-						01=tdwd3=CurInfo();
-						02=tdwd4=ScriptItemActShip();
-						03=dword star=ShipStar(tdwd4);
-						04=if(ShipStar(Player())==star)
+						01=tdwd3 = CurInfo();
+						02=tdwd4 = ScriptItemActShip();
+						03=dword star = ShipStar(tdwd4);
+						04=if(ShipStar(Player()) == star)
 						05 ^{
-							01=if(StarCustomFaction(star)=='')
+							01=if(StarCustomFaction(star) == '')
 							02 ^{
-								01=if(PlayerChameleonCurType()==StarSeries(star))
+								01=if(PlayerChameleonCurType() == StarSeries(star))
 								02 ^{
 									01=if(!PlayerChameleonDetected(StarSeries(star)))
 									02 ^{
-										//Урона от доминаторов должно прийти больше, чем от игрока или прочих судов и, как минимум, на половину от всей полоски HP бертора
-										01=if(ShipCustomShipInfoData(0,tdwd3,1)>ShipCustomShipInfoData(0,tdwd3,2) && ShipCustomShipInfoData(0,tdwd3,1)>ItemSize(ShipItems(tdwd4,0))/2)
+										//Урона от доминаторов или игрока должно прийти больше, чем от всех прочих судов и, как минимум, на половину от всей полоски HP бертора
+										01=if(ShipCustomShipInfoData(0, tdwd3, 1) > ShipCustomShipInfoData(0, tdwd3, 2) && ShipCustomShipInfoData(0, tdwd3, 1) > ItemSize(ShipItems(tdwd4, 0)) / 2)
 										02 ^{
-											01=GFlagGaalTempVar=5;
-											02=tdwd=CreateQuestItem('ExpAcryn_BertorMemoryBlock_'+ItemSubrace(ShipItems(tdwd4,0)));
+											01=GFlagGaalTempVar = 5;
+											02=tdwd = CreateQuestItem('ExpAcryn_BertorMemoryBlock_' + ItemSubrace(ShipItems(tdwd4, 0)));
 											//Заносим блок памяти в скриптовый объект (чтобы домики сразу не подзорвали)
-											03=LinkItemToScript(tdwd,GetValueFromScript('Mod_ExpAcryn','Q_item2'));
-											04=if(ItemOnActCode(tdwd)!='')ItemOnActCode(tdwd,'');
-											05=if(ItemOnUseCode(tdwd)!='')ItemOnUseCode(tdwd,'');
-											06=ItemSize(tdwd,3);
-											07=ItemOwner(tdwd,Kling);
-											08=ItemSubrace(tdwd,ItemSubrace(ShipItems(tdwd4,0)));
-											09=ShipAddDropItem(tdwd4,tdwd);
+											03=LinkItemToScript(tdwd, GetValueFromScript('Mod_ExpAcryn', 'Q_item2'));
+											04=if(ItemOnActCode(tdwd) != '') ItemOnActCode(tdwd, '');
+											05=if(ItemOnUseCode(tdwd) != '') ItemOnUseCode(tdwd, '');
+											06=ItemSize(tdwd, 3);
+											07=ItemOwner(tdwd, Kling);
+											08=ItemSubrace(tdwd, ItemSubrace(ShipItems(tdwd4, 0)));
+											09=ShipAddDropItem(tdwd4, tdwd);
 										}
 									}
 								}
+							}
+						}
+					}
+					07=else
+					08 ^{
+						01=tdwd3 = CurInfo();
+						02=tdwd4 = ScriptItemActObject1();
+						//Записываем урон, полученный от разных кораблей
+						//Попал выстрел от корабля
+						03=if(ObjectType(tdwd4) == 5)
+						04 ^{
+							01=if(ShipTypeN(tdwd4) == t_Kling || tdwd4 == Player()) ShipCustomShipInfoData(0, tdwd3, 1, ShipCustomShipInfoData(0, tdwd3, 1) + ScriptItemActParam());
+							02=else ShipCustomShipInfoData(0, tdwd3, 2, ShipCustomShipInfoData(0, tdwd3, 2) + ScriptItemActParam());
+						}
+						//Попала ракета
+						05=else if(ObjectType(tdwd4) == 7)
+						06 ^{
+							01=if(MissileOwner(tdwd4))
+							02 ^{
+								01=if(ShipTypeN(MissileOwner(tdwd4)) == t_Kling || MissileOwner(tdwd4) == Player()) ShipCustomShipInfoData(0, tdwd3, 1, ShipCustomShipInfoData(0, tdwd3, 1) + ScriptItemActParam());
+								02=else ShipCustomShipInfoData(0, tdwd3, 2, ShipCustomShipInfoData(0, tdwd3, 2) + ScriptItemActParam());
 							}
 						}
 					}
@@ -2158,11 +2156,11 @@ Artefacts ^{
             OnActCode ^{
                 01=if(ScriptItemActionType(t_OnWeaponShot2) || ScriptItemActionType(t_OnMissileShot2))
                 02 ^{
-                    01=if(!ItemDurability(CurItem()))exit;
-                    02=dword ship=ScriptItemActObject1();
-                    03=if(ShipTypeN(ship)!=t_Kling)exit;
-                    04=if(ShipSubType(ship)!=6)exit;
-                    05=if(HullDamage(ship)>=60)ShipAddCustomShipInfo(ship,'ExpAcryn_maloc_q_infos','NoShow');
+                    01=if(!ItemDurability(CurItem())) exit;
+                    02=dword ship = ScriptItemActObject1();
+                    03=if(ShipTypeN(ship) != t_Kling) exit;
+                    04=if(ShipSubType(ship) != 6) exit;
+                    05=if(HullDamage(ship) >= 60) ShipAddCustomShipInfo(ship, 'ExpAcryn_maloc_q_infos', 'NoShow');
                 }
             }
             Size=10
@@ -2503,32 +2501,32 @@ UselessItems ^{
         Name=Асинхронный конвектор
 		OnActCodeTypes=t_OnItemDestroy
 		OnActCode ^{
-			01=if(HullHP(Player())>0)
+			01=if(HullHP(Player()) > 0)
             02 ^{
 				01=if(ItemInScript(CurItem()))
 				02 ^{
 					//Асинхронный конвектор уничтожен - все задания флагманов провалены до конца партии
-					01=if(EtherState('ExpAcryn_quest_4')>-1)
+					01=if(EtherState('ExpAcryn_quest_4') > -1)
 					02 ^{
-						01=str missionNum='';
-						02=if(GetValueFromScript('Mod_ExpAcryn','fl_array',ExpAcrynQuestStatus,1)!=1)missionNum='2';
-						03=Ether(5,'ExpAcryn_quest_4',CT('Script.Mod_ExpAcryn.MissionFailed')+Format(CT('Script.Mod_ExpAcryn.GaalMission'+missionNum),'#ItemName#',GetValueFromScript('Mod_ExpAcryn','addItemName')));
+						01=str missionNum = '';
+						02=if(GetValueFromScript('Mod_ExpAcryn','fl_array',ExpAcrynQuestStatus, 1) != 1) missionNum = '2';
+						03=Ether(5, 'ExpAcryn_quest_4', CT('Script.Mod_ExpAcryn.MissionFailed') + Format(CT('Script.Mod_ExpAcryn.GaalMission' + missionNum), '#ItemName#', GetValueFromScript('Mod_ExpAcryn', 'addItemName')));
 					}
 					//Также снижаем репутацию на всех гаальских планетах
-					03=for(int i=0;i<GalaxyStars();i=i+1)
+					03=for(int i = 0; i < GalaxyStars(); i = i + 1)
 					04 ^{
-						01=dword tdwd=GalaxyStar(i);
-						02=if(StarOwner(tdwd)!=0)continue;
-						03=for(int j=0;j<StarPlanets(tdwd);j=j+1)
+						01=dword tdwd = GalaxyStar(i);
+						02=if(StarOwner(tdwd) != 0) continue;
+						03=for(int j = 0; j < StarPlanets(tdwd); j = j + 1)
 						04 ^{
-							01=dword tdwd2=StarPlanets(tdwd,j);
-							02=if(PlanetOwner(tdwd2)!=ExpAcrynQuestStatus)continue;
-							03=RelationToRanger(tdwd2,Player(),RelationToRanger(tdwd2,Player())-75);
-							04=if(RelationToRanger(tdwd2,Player())<10)RelationToRanger(tdwd2,Player(),10);
+							01=dword tdwd2 = StarPlanets(tdwd, j);
+							02=if(PlanetOwner(tdwd2) != ExpAcrynQuestStatus) continue;
+							03=RelationToRanger(tdwd2, Player(), RelationToRanger(tdwd2, Player()) - 75);
+							04=if(RelationToRanger(tdwd2, Player()) < 10) RelationToRanger(tdwd2, Player(), 10);
 						}
 					}
-					05=GFlagGaalTempVar=0;
-					06=ExpAcrynQuestStatus=7;
+					05=GFlagGaalTempVar = 0;
+					06=ExpAcrynQuestStatus = 7;
 				}
 			}
 		}
@@ -2550,19 +2548,19 @@ UselessItems ^{
 		OnActCodeTypes=t_OnStep
 		OnActStepTypes=11
 		OnActCode ^{
-			01=if(ExpAcrynQuestStatus==4)
+			01=if(ExpAcrynQuestStatus == 4)
 			02 ^{
-				01=dword cur_item=CurItem();
+				01=dword cur_item = CurItem();
 				02=dword tdwd;
 				//Загружаем блок памяти бертора в конвектор в конце хода
-				03=if(!UselessItemData(cur_item,1))
+				03=if(!UselessItemData(cur_item, 1))
 				04 ^{
-					01=if(FindItemInShip(Player(),cur_item)>-1)
+					01=if(FindItemInShip(Player(), cur_item) > -1)
 					02 ^{
-						01=if(ItemIn(GetValueFromScript('Mod_ExpAcryn','Q_item'),Player()))
+						01=if(ItemIn(GetValueFromScript('Mod_ExpAcryn', 'Q_item'), Player()))
 						02 ^{
-							01=tdwd=ScriptItemToItem(GetValueFromScript('Mod_ExpAcryn','Q_item'));
-							02=if(UselessItemData(tdwd,1)<100)
+							01=tdwd = ScriptItemToItem(GetValueFromScript('Mod_ExpAcryn', 'Q_item'));
+							02=if(UselessItemData(tdwd, 1) < 100)
 							03 ^{
 								//Память конвектора заполняется с каждым подобранным блоком памяти
 								01=UselessItemData(tdwd,1,UselessItemData(tdwd,1)+20);

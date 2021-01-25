@@ -3007,7 +3007,9 @@ ImportAll - производит автоматическое объявление и загрузку в переменные всех фу
 		01=int LibInit = 1;
 		02=ImportAll('LibName');
 	}
-ImportedFunction - производит упрощённое объявление новой функции из dll, при условии предварительного указания библиотеки и нужной функции из неё в Main.dat: 1 - название объявленной в Main библиотеки строкой, 2 - название конкретной функции строкой (пример: unknown PortionInDiapason=ImportedFunction('UtilityFunctions','PortionInDiapason'));
+ImportedFunction - производит упрощённое объявление новой функции из dll, при условии предварительного указания библиотеки и нужной функции из неё в Main.dat:
+	1 - название объявленной в Main библиотеки строкой;
+	2 - название конкретной функции строкой (пример: unknown PortionInDiapason = ImportedFunction('UtilityFunctions', 'PortionInDiapason'));
   Пример объявления dll с функциями в Main.dat:
 	Data {
 		ScriptLibs ^{
