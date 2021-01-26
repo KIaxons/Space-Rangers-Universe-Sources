@@ -908,9 +908,9 @@ ShipInfo ^{
                     10 ^{
 						//Вешаем мостик при смене корпуса
 						01=dword newHull=ScriptItemActObject1();
-                        02=if(CapitalShipStats(newHull)==0)
+                        02=if(!CapitalShipStats(newHull))
 						03 ^{
-							01=if(EqSpecial(newHull)>-1)
+							01=if(EqSpecial(newHull) > -1)
 							02 ^{
 								01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(newHull))+'.NoBridge')!=1)CapitalShipStats(ScriptItemActObject1(),3);
 							}
