@@ -370,7 +370,7 @@ Biomodules ^{
             }
 			PlayerText=[Использовать Вспышку]
 			BlindPlayerSuccess=[Неожиданно в ваши широко раскрытые глаза ударил ослепительно яркий свет]
-			BlindPlayerFailed=[На экране коммуникатора словно бы промелькнула некая вспышка, но разглядеть точнее вам не удалось]
+			BlindPlayerFailed=[На экране коммуникатора словно бы промелькнула какая-то вспышка, но разглядеть точнее вам не удалось]
             Bonus_1=0
             Bonus_1_var=0
             Bonus_count=0
@@ -1508,7 +1508,7 @@ Biomodules ^{
                 Text_7=Взгляни в глаза самого ужаса
                 Text_8=Встреться лицом к лицу со своим страхом
                 Text_9=Твои ночные кошмары станут явью...
-				Text_10=Ужас ждёт тебя
+				Text_10=Ужас ждёт тебя!
 				Text_11=И станет всё сущее зловещей клоакой...
                 Text_count=11
             }
@@ -2479,37 +2479,39 @@ ShipInfo ^{
 				OnActCodeTypes=t_OnStep
 				OnActStepTypes=0
                 OnActCode ^{
-					01=dword infos=CurInfo();
-					02=if(ShipCustomShipInfoData(0,infos,1)<CurTurn())
+					01=dword infos = CurInfo();
+					02=if(ShipCustomShipInfoData(0,infos,1) < CurTurn())
 					03 ^{
-						01=dword ship=ScriptItemActShip();
+						01=dword ship = ScriptItemActShip();
 						//Если корабль с кем-то ведёт бой
-						02=if(ShipOrder(ship)==6)
+						02=if(ShipOrder(ship) == 6)
 						03 ^{
-							01=if(ShipOrderData1(ship)==1)
+							01=if(ShipOrderData1(ship) == 1)
 							02 ^{
-								01=dword target=ShipGetBad(ship);
+								01=dword target = ShipGetBad(ship);
 								02=if(target)
 								03 ^{
 									//Если хватает дальности радара
-									01=if(Dist(ship,target)<=ShipRadarRange(ship))
+									01=if(Dist(ship, target) <= ShipRadarRange(ship))
 									02 ^{
 										//Если цель не имеет кастомной фракции
-										01=if(ShipCustomFaction(target)=='')
+										01=if(ShipCustomFaction(target) == '')
 										02 ^{
 											//Если цель и так уже не находится в состоянии активного испуга
-											01=if(ShipFindCustomShipInfoByType(target,'bioMM_FS_Visible')==-1)
+											01=if(ShipFindCustomShipInfoByType(target, 'bioMM_FS_Visible') == -1)
 											02 ^{
-												01=if(ShipTypeN(target)!=t_Tranclucator && ShipType(target)!='Pillager' && ShipOwner(target)!=5 && ShipOwner(target)!=6)
-												02 ^{
-													01=if(ShipTypeN(target)!=t_Warrior || ShipSubType(target)!=1)
+												01=int typeN = ShipTypeN(target);
+												02=int own = ShipOwner(target);
+												03=if(typeN != t_Tranclucator && ShipType(target) != 'Pillager' && own != 5 && own != 6)
+												04 ^{
+													01=if(typeN != t_Warrior || !ShipSubType(target))
 													02 ^{
-														01=int tint=CT('Biomodules.8_gtu.9.FearStart.Text_count');
-														02=str tstr=CT('Biomodules.8_gtu.9.FearStart.Text_'+Rnd(1,tint));
+														01=int tint = CT('Biomodules.8_gtu.9.FearStart.Text_count');
+														02=str tstr = CT('Biomodules.8_gtu.9.FearStart.Text_' + Rnd(1, tint));
 														//Задаём время кулдауна до следующей активации "Фобоса"
-														03=ShipCustomShipInfoData(0,infos,1,CurTurn()+Rnd(15,30));
-														04=int tint2=0;
-														05=int target_infos=ShipFindCustomShipInfoByType(target,'bioMM_FS');
+														03=ShipCustomShipInfoData(0, infos, 1, CurTurn() + Rnd(15, 30));
+														04=int tint2 = 0;
+														05=int target_infos = ShipFindCustomShipInfoByType(target, 'bioMM_FS');
 														//Дополнительный множитель штрафа к шансу напугать цель, если цель уже была недавно напугана (в ближайшие полгода)
 														06=if(target_infos>-1)tint2=ShipCustomShipInfoData(target,target_infos,3);
 														//Определяем штраф к шансу напугать цель в зависимости от типа корабля-цели
@@ -2550,7 +2552,7 @@ ShipInfo ^{
 																03=tint=CT('Biomodules.8_gtu.9.FearFailed.Text_count');
 																04=tstr=CT('Biomodules.8_gtu.9.FearFailed.Text_'+Rnd(1,tint));
 																05=ShipCustomShipInfoTextData(0,infos,2,tstr);
-																06=GExpImplantsDialog=2;
+																06=GExpImplantsDialog = 2;
 																07=Dialog(ship);
 															}
 															03=else
@@ -2574,12 +2576,12 @@ ShipInfo ^{
 														25=else
 														26 ^{
 															//Обновляем таймеры инфошки испуга цели, если удалось напугать уже недавно напуганный корабль
-															01=if(target_infos>-1)
+															01=if(target_infos > -1)
 															02 ^{
-																01=ShipCustomShipInfoData(target,target_infos,2,ShipCustomShipInfoData(target,target_infos,2)+120);
-																02=ShipCustomShipInfoData(target,target_infos,3,ShipCustomShipInfoData(target,target_infos,3)+1);
-																03=if(target==Player())ShipAddCustomShipInfo(target,'bioMM_FS_Visible',CT('ShipInfo.AddInfo.CustomInfos.bioMM_FS_Visible.DescriptionPlayer'));
-																04=else ShipAddCustomShipInfo(target,'bioMM_FS_Visible');
+																01=ShipCustomShipInfoData(target,target_infos, 2, ShipCustomShipInfoData(target, target_infos, 2) + 120);
+																02=ShipCustomShipInfoData(target,target_infos, 3, ShipCustomShipInfoData(target, target_infos, 3) + 1);
+																03=if(target == Player()) ShipAddCustomShipInfo(target, 'bioMM_FS_Visible', CT('ShipInfo.AddInfo.CustomInfos.bioMM_FS_Visible.DescriptionPlayer'));
+																04=else ShipAddCustomShipInfo(target, 'bioMM_FS_Visible');
 															}
 															//Иначе добавляем инфошку испуга
 															03=else
@@ -2590,8 +2592,8 @@ ShipInfo ^{
 															}
 															05=int i;
 															06=dword dwd1;
-															07=if(tint4>=51 && tint4<70)tint=1;//Выбираем тип поведения 1
-															08=else if(tint4>=70 && tint4<90)
+															07=if(tint4 >= 51 && tint4 < 70) tint = 1;//Выбираем тип поведения 1
+															08=else if(tint4 >= 70 && tint4 < 90)
 															09 ^{
 																//Цель просто сбросит имеющийся в трюме груз
 																01=tint=1;
@@ -2679,46 +2681,46 @@ ShipInfo ^{
 																		02=tint4=Dist(target,dwd1);
 																	}
 																}
-																06=ShipCustomShipInfoTextData(target,target_infos,2,Id(tdwd2));
-																07=dwd1=0;
+																06=ShipCustomShipInfoTextData(target, target_infos, 2, Id(tdwd2));
+																07=dwd1 = 0;
 																//Наводим орудия цели на ближайший корабль/станцию, если тот находится в зоне досягаемости
-																08=for(i=1;i<6;i=i+1)
+																08=for(i = 1; i < 6; i = i + 1)
 																09 ^{
-																	01=dwd1=ShipEqInSlot(target,t_Weapon1,i);
+																	01=dwd1 = ShipEqInSlot(target, t_Weapon1, i);
 																	02=if(dwd1)
 																	03 ^{
-																		01=if(Dist(target,tdwd2)<=GetEquipmentStats(dwd1,2))WeaponTarget(dwd1,tdwd2);
+																		01=if(Dist(target, tdwd2) <= GetEquipmentStats(dwd1, 2)) WeaponTarget(dwd1, tdwd2);
 																	}
 																}
-																10=OrderFollowShip(target,tdwd2,0,10);
-																11=OrderLock(target,1);
+																10=OrderFollowShip(target, tdwd2, 0, 10);
+																11=OrderLock(target, 1);
 															}
-															20=if(target==Player())
+															20=if(target == Player())
 															21 ^{
 																01=NoTalkToShip(1);
-																02=NoTalkToShip(target,1);
-																03=tstr=tstr+CT('FormInfo.br')+CT('Biomodules.8_gtu.9.FearPlayerSuccess');
-																04=ShipCustomShipInfoTextData(0,infos,1,tstr);
-																05=tint=CT('Biomodules.8_gtu.9.FearSuccess.Text_count');
-																06=tstr=CT('Biomodules.8_gtu.9.FearSuccess.Text_'+Rnd(1,tint));
-																07=ShipCustomShipInfoTextData(0,infos,2,tstr);
-																08=GExpImplantsDialog=1;
+																02=NoTalkToShip(target, 1);
+																03=tstr = tstr + CT('FormInfo.br') + CT('Biomodules.8_gtu.9.FearPlayerSuccess');
+																04=ShipCustomShipInfoTextData(0, infos, 1, tstr);
+																05=tint = CT('Biomodules.8_gtu.9.FearSuccess.Text_count');
+																06=tstr = CT('Biomodules.8_gtu.9.FearSuccess.Text_' + Rnd(1, tint));
+																07=ShipCustomShipInfoTextData(0, infos, 2, tstr);
+																08=GExpImplantsDialog = 2;
 																09=Dialog(ship);
 																//Автопропуск дальнейшего фильма для игрока
-																10=FilmFlags(3,1);
+																10=FilmFlags(3, 1);
 															}
 															22=else
 															23 ^{
 																01=if(ShipInNormalSpace(Player()))
 																02 ^{
-																	01=if(ShipStar(ship)==ShipStar(Player()))
+																	01=if(ShipStar(ship) == ShipStar(Player()))
 																	02 ^{
-																		01=if(ShipRadarRange(Player())>=Dist(Player(),ship))
+																		01=if(ShipRadarRange(Player()) >= Dist(Player(), ship))
 																		02 ^{
-																			01=tstr='<color=255,240,100>'+Name(ship)+'</color>'+'-->'+'<color=255,240,100>'+Name(target)+'</color>'+CT('FormInfo.br')+'- '+tstr;
-																			02=tint=CT('Biomodules.8_gtu.9.FearSuccess.Text_count');
-																			03=tstr=tstr+CT('FormInfo.br')+'- '+CT('Biomodules.8_gtu.9.FearSuccess.Text_'+Rnd(1,tint));
-																			04=Ether(1,'',tstr,ship,target);
+																			01=tstr = '<color=255,240,100>' + Name(ship) + '</color>' + '-->' + '<color=255,240,100>' + Name(target) + '</color>' + CT('FormInfo.br') + '- ' + tstr;
+																			02=tint = CT('Biomodules.8_gtu.9.FearSuccess.Text_count');
+																			03=tstr = tstr + CT('FormInfo.br') + '- ' + CT('Biomodules.8_gtu.9.FearSuccess.Text_' + Rnd(1, tint));
+																			04=Ether(1, '', tstr, ship, target);
 																		}
 																	}
 																}
@@ -2782,23 +2784,23 @@ ShipInfo ^{
                     }
                     10=else
                     11 ^{
-						01=if(CurTurn()>=ShipCustomShipInfoData(0,infos,2))ShipDeleteCustomShipInfo(cur_ship,'bioMM_FS');
-                        02=else if(order_data>CurTurn())
+						01=if(CurTurn() >= ShipCustomShipInfoData(0, infos, 2)) ShipDeleteCustomShipInfo(cur_ship, 'bioMM_FS');
+                        02=else if(order_data > CurTurn())
                         03 ^{
-							01=if(Rnd(1,4)==1)
+							01=if(Rnd(1, 4) == 1)
 							02 ^{
-								01=if(cur_ship!=Player())
+								01=if(cur_ship != Player())
 								02 ^{
-									01=if(ShipRadarRange(Player())>=Dist(Player(),cur_ship))
+									01=if(ShipRadarRange(Player()) >= Dist(Player(), cur_ship))
 									02 ^{
-										01=i=CT('Biomodules.8_gtu.9.FearSuccess.Text_count');
-										02=temp_str=ShipCustomShipInfoTextData(0,infos,3)+'</color>'+CT('Biomodules.8_gtu.9.FearSuccess.Text_'+Rnd(1,i));
-										03=Ether(1,'',temp_str,cur_ship);
+										01=i = CT('Biomodules.8_gtu.9.FearSuccess.Text_count');
+										02=temp_str = ShipCustomShipInfoTextData(0, infos, 3) + '</color>' + CT('Biomodules.8_gtu.9.FearSuccess.Text_' + Rnd(1, i));
+										03=Ether(1,'', temp_str, cur_ship);
 									}
 								}
 							}
 							//Автопропуск фильма для игрока
-							03=if(cur_ship==Player())FilmFlags(3,1);
+							03=if(cur_ship == Player()) FilmFlags(3, 1);
                         }
                         04=else
                         05 ^{
@@ -2825,58 +2827,60 @@ ShipInfo ^{
 				OnActCodeTypes=t_OnStep
 				OnActStepTypes=0
                 OnActCode ^{
-					01=dword infos=CurInfo();
-					02=if(ShipCustomShipInfoData(0,infos,1)<CurTurn())
+					01=dword infos = CurInfo();
+					02=if(ShipCustomShipInfoData(0, infos, 1) < CurTurn())
 					03 ^{
-						01=dword ship=ScriptItemActShip();
+						01=dword ship = ScriptItemActShip();
 						//Если корабль с кем-то ведёт бой
-						02=if(ShipOrder(ship)==6)
+						02=if(ShipOrder(ship) == 6)
 						03 ^{
-							01=if(ShipOrderData1(ship)==1)
+							01=if(ShipOrderData1(ship) == 1)
 							02 ^{
-								01=dword target=ShipGetBad(ship);
+								01=dword target = ShipGetBad(ship);
 								02=if(target)
 								03 ^{
 									//Если хватает дальности радара
-									01=if(Dist(ship,target)<=ShipRadarRange(ship))
+									01=if(Dist(ship, target) <= ShipRadarRange(ship))
 									02 ^{
 										//Если цель не имеет кастомной фракции
-										01=if(ShipCustomFaction(target)=='')
+										01=if(ShipCustomFaction(target) == '')
 										02 ^{
 											//Если цель ещё не ослеплена
-											01=if(!ShipHealthFactor(target,1))
+											01=if(!ShipHealthFactor(target, 1))
 											02 ^{
-												01=if(ShipTypeN(target)!=t_Tranclucator && ShipType(target)!='Pillager' && ShipOwner(target)!=5 && ShipOwner(target)!=6)
-												02 ^{
-													01=if(ShipTypeN(target)==t_Warrior && ShipSubType(target)==1)
+												01=int typeN = ShipTypeN(target);
+												02=int own = ShipOwner(target);
+												03=if(typeN != t_Tranclucator && ShipType(target) != 'Pillager' && own != 5 && own != 6)
+												04 ^{
+													01=if(typeN != t_Warrior || !ShipSubType(target))
 													02 ^{
-														01=int tint=CT('Biomodules.1_gtu.9.BlindStart.Text_count');
-														02=str tstr=CT('Biomodules.1_gtu.9.BlindStart.Text_'+Rnd(1,tint));
-														//Цель попросту проморгала вспышку (вероятность 20%)
-														03=if(Rnd(1,100)>80)
+														01=int tint = CT('Biomodules.1_gtu.9.BlindStart.Text_count');
+														02=str tstr = CT('Biomodules.1_gtu.9.BlindStart.Text_' + Rnd(1, tint));
+														//Цель попросту "проморгала" вспышку (вероятность 20%)
+														03=if(Rnd(1, 100) <= 20)
 														04 ^{
-															01=if(target==Player())
+															01=if(target == Player())
 															02 ^{
-																01=tstr=tstr+CT('FormInfo.br')+CT('Biomodules.1_gtu.9.BlindPlayerFailed');
-																02=ShipCustomShipInfoTextData(0,infos,1,tstr);
-																03=tint=CT('Biomodules.1_gtu.9.BlindFailed.Text_count');
-																04=tstr=CT('Biomodules.1_gtu.9.BlindFailed.Text_'+Rnd(1,tint));
-																05=ShipCustomShipInfoTextData(0,infos,2,tstr);
-																06=GExpImplantsDialog=1;
+																01=tstr = tstr + CT('FormInfo.br') + CT('Biomodules.1_gtu.9.BlindPlayerFailed');
+																02=ShipCustomShipInfoTextData(0, infos, 1, tstr);
+																03=tint = CT('Biomodules.1_gtu.9.BlindFailed.Text_count');
+																04=tstr = CT('Biomodules.1_gtu.9.BlindFailed.Text_'+Rnd(1,tint));
+																05=ShipCustomShipInfoTextData(0, infos, 2, tstr);
+																06=GExpImplantsDialog = 1;
 																07=Dialog(ship);
 															}
 															03=else
 															04 ^{
 																01=if(ShipInNormalSpace(Player()))
 																02 ^{
-																	01=if(ShipStar(ship)==ShipStar(Player()))
+																	01=if(ShipStar(ship) == ShipStar(Player()))
 																	02 ^{
-																		01=if(ShipRadarRange(Player())>=Dist(Player(),ship))
+																		01=if(ShipRadarRange(Player()) >= Dist(Player(), ship))
 																		02 ^{
-																			01=tstr='<color=255,240,100>'+Name(ship)+'</color>'+'-->'+'<color=255,240,100>'+Name(target)+'</color>'+CT('FormInfo.br')+'- '+tstr;
-																			02=tint=CT('Biomodules.1_gtu.9.BlindFailed.Text_count');
-																			03=tstr=tstr+CT('FormInfo.br')+'- '+CT('Biomodules.1_gtu.9.BlindFailed.Text_'+Rnd(1,tint));
-																			04=Ether(1,'',tstr,ship,target);
+																			01=tstr = '<color=255,240,100>' + Name(ship) + '</color>' + '-->' + '<color=255,240,100>' + Name(target) + '</color>' + CT('FormInfo.br') + '- ' + tstr;
+																			02=tint = CT('Biomodules.1_gtu.9.BlindFailed.Text_count');
+																			03=tstr = tstr + CT('FormInfo.br') + '- ' + CT('Biomodules.1_gtu.9.BlindFailed.Text_' + Rnd(1, tint));
+																			04=Ether(1, '', tstr, ship, target);
 																		}
 																	}
 																}
@@ -2885,37 +2889,37 @@ ShipInfo ^{
 														//Вспышка ударила точно в глаза цели
 														05=else
 														06 ^{
-															01=if(target==Player())
+															01=if(target == Player())
 															02 ^{
-																01=tstr=tstr+CT('FormInfo.br')+CT('Biomodules.1_gtu.9.BlindPlayerSuccess');
-																02=ShipCustomShipInfoTextData(0,infos,1,tstr);
-																03=tint=CT('Biomodules.1_gtu.9.BlindSuccess.Text_count');
-																04=tstr=CT('Biomodules.1_gtu.9.BlindSuccess.Text_'+Rnd(1,tint));
-																05=ShipCustomShipInfoTextData(0,infos,2,tstr);
-																06=GExpImplantsDialog=2;
+																01=tstr = tstr + CT('FormInfo.br') + CT('Biomodules.1_gtu.9.BlindPlayerSuccess');
+																02=ShipCustomShipInfoTextData(0, infos, 1, tstr);
+																03=tint = CT('Biomodules.1_gtu.9.BlindSuccess.Text_count');
+																04=tstr = CT('Biomodules.1_gtu.9.BlindSuccess.Text_' + Rnd(1, tint));
+																05=ShipCustomShipInfoTextData(0, infos, 2, tstr);
+																06=GExpImplantsDialog = 1;
 																07=Dialog(ship);
 															}
 															03=else
 															04 ^{
 																01=if(ShipInNormalSpace(Player()))
 																02 ^{
-																	01=if(ShipStar(ship)==ShipStar(Player()))
+																	01=if(ShipStar(ship) == ShipStar(Player()))
 																	02 ^{
-																		01=if(ShipRadarRange(Player())>=Dist(Player(),ship))
+																		01=if(ShipRadarRange(Player()) >= Dist(Player(), ship))
 																		02 ^{
-																			01=tstr='<color=255,240,100>'+Name(ship)+'</color>'+'-->'+'<color=255,240,100>'+Name(target)+'</color>'+CT('FormInfo.br')+'- '+tstr;
-																			02=tint=CT('Biomodules.1_gtu.9.BlindSuccess.Text_count');
-																			03=tstr=tstr+CT('FormInfo.br')+'- '+CT('Biomodules.1_gtu.9.BlindSuccess.Text_'+Rnd(1,tint));
-																			04=Ether(1,'',tstr,ship,target);
+																			01=tstr = '<color=255,240,100>' + Name(ship) + '</color>' + '-->' + '<color=255,240,100>' + Name(target) + '</color>' + CT('FormInfo.br') + '- ' + tstr;
+																			02=tint = CT('Biomodules.1_gtu.9.BlindSuccess.Text_count');
+																			03=tstr = tstr + CT('FormInfo.br') + '- ' + CT('Biomodules.1_gtu.9.BlindSuccess.Text_' + Rnd(1, tint));
+																			04=Ether(1, '', tstr, ship, target);
 																		}
 																	}
 																}
 															}
-															05=ShipHealthFactor(target,1,Rnd(10,20));
+															05=ShipHealthFactor(target, 1, Rnd(10, 20));
 															//За это цель на обидчика обидится
-															06=ShipSetBad(target,ship);
+															06=ShipSetBad(target, ship);
 														}
-														07=ShipCustomShipInfoData(0,infos,1,CurTurn()+Rnd(3,6));
+														07=ShipCustomShipInfoData(0, infos, 1, CurTurn() + Rnd(3, 6));
 													}
 												}
 											}
