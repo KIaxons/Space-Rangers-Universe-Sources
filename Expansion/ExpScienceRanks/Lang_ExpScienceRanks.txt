@@ -5,13 +5,11 @@ FormRuinsSB ^{
 }
 MicroModuls ^{
     ExpScienceRanks_TickAttackMode ^{
-        Cost=100
         CustomTag=ExpScienceRanks_TickAttackMode
         Equipments=Hull
         KindGraph=MA
         Name=Клещ: боевой режим
         Priority=100
-        Size=100
         Special=1
 		LockedAcryn=3
 		NonSearchable=1
@@ -24,23 +22,23 @@ MicroModuls ^{
         Text=Сила ракетного оружия: <bonWMissile> ед.
         Text=Дальность стрельбы: <bonWRadius> ед.
         Text=Скорость двигателя: <bonSpeed> ед.
-        bonWEnergy=10
-        bonWSplinter=14
-        bonWMissile=8
+        FragilityEnergy=100
+        FragilityMissile=100
+        FragilitySplinter=100
+        Size=100
+        Cost=100
+        bonWEnergy=8
+        bonWSplinter=12
+        bonWMissile=12
         bonWRadius=50
         bonSpeed=-150
     }
     ExpScienceRanks_TickDefenseMode ^{
-        Cost=100
         CustomTag=ExpScienceRanks_TickDefenseMode
         Equipments=Hull
-        FragilityEnergy=70
-        FragilityMissile=70
-        FragilitySplinter=70
         KindGraph=MD
         Name=Клещ: защитный режим
         Priority=100
-        Size=100
         Special=1
 		LockedAcryn=3
 		NonSearchable=1
@@ -54,24 +52,24 @@ MicroModuls ^{
         Text=Сила осколочного оружия: <bonWSplinter> ед.
         Text=Сила ракетного оружия: <bonWMissile> ед.
         Text=Дальность стрельбы: <bonWRadius> ед.
+        FragilityEnergy=70
+        FragilityMissile=70
+        FragilitySplinter=70
+        Cost=100
+        Size=100
         bonHull=3
         bonDroid=25
-        bonWEnergy=-10
-        bonWSplinter=-14
-        bonWMissile=-8	
+        bonWEnergy=-8
+        bonWSplinter=-12
+        bonWMissile=-12
         bonWRadius=-50
     }
     ExpScienceRanks_TickSpeedMode ^{
-        Cost=100
         CustomTag=ExpScienceRanks_TickSpeedMode
         Equipments=Hull
-        FragilityEnergy=125
-        FragilityMissile=125
-        FragilitySplinter=125
         KindGraph=MG
         Name=Клещ: скоростной режим
         Priority=100
-        Size=100
         Special=1
 		LockedAcryn=3
 		NonSearchable=1
@@ -81,6 +79,11 @@ MicroModuls ^{
         Text=<clr><clrEnd>
 		Text=Скорость двигателя: <bonSpeed> ед.
         Text=Дальность прыжка: <bonJump> пк.
+        FragilityEnergy=125
+        FragilityMissile=125
+        FragilitySplinter=125
+        Cost=100
+        Size=100
         bonSpeed=150
 		bonJump=12
     }

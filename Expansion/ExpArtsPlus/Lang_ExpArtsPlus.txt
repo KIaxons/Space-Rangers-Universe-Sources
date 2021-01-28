@@ -97,8 +97,8 @@ Artefacts ^{
 						01=spNum=ItemExtraSpecials(item,i);
 						02=spName=BonusNumInCfg(spNum);
 						03=if(spName == 'ExpArtsPlus_AddSlotWeapon')flag=1;
-						}
 					}
+				}
 				06=if(!flag)ScriptItemActParam(1);
 			}
 			02=if(ScriptItemActionType(t_OnAnotherItem))
