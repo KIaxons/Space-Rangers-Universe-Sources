@@ -8,7 +8,7 @@ ShipInfo ^{
 				OnActStepTypes=0
                 OnActCode ^{
 					//Зануляем список проданных ММ в ход обновления всех цепочек
-					01=if(CurTurn() % 57)
+					01=if(!(CurTurn() % 57))
 					02 ^{
 						01=dword cur_info = CurInfo();
 						02=ShipCustomShipInfoData(0, cur_info, 1, 0);
