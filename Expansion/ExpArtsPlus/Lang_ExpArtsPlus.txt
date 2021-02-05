@@ -691,7 +691,7 @@ Artefacts ^{
 						10=for(i = 0; i < StarShips(ShipStar(Player())); i = i + 1)
 						11 ^{
 							01=tdw = StarShips(ShipStar(Player()), i);
-							02=if(Dist(Player(), tdw) <= dist_ship && RelationToRanger(tdw,Player()) < 10)
+							02=if(Dist(Player(), tdw) <= dist_ship && (RelationToRanger(tdw,Player()) < 10 || ShipGetBad(tdw)==Player()))
 							03 ^{
 								01=ship = tdw;
 								02=dist_ship = Dist(Player(), tdw);
@@ -720,7 +720,7 @@ Artefacts ^{
 								12=if(!mTarget) continue;
 								13=if(mTarget == Player()) redirect = 1;
 								14=if(ShipPartners(Player()))
-								15 ^{									
+								15 ^{
 									01=if(ShipIsPartner(mTarget)==Player())redirect=1;
 								}
 								16=if(ShipTypeN(mTarget) == 5)
