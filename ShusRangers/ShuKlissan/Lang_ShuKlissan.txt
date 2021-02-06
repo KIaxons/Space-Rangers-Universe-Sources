@@ -1547,51 +1547,56 @@ ShipInfo ^{
 				Description=ѕри наложении на неклисанский корабль шанс считаетс€ по формуле [5 + %количество пушек% * 3 + *навык техники*].
 				Icon=1
 				Name= онтратака эгемона
+				OnActCodeTypes=t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
 				OnActCode ^{
-					01=if(ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi))
-					02 ^{
-						01=dword s=ScriptItemActObject1();
-						02=if(ObjectType(s)!=4 && ObjectType(s)!=5)exit;
-						03=dword k=ScriptItemActShip();
-						04=int dmg=ScriptItemActParam();
-						05=int chance=ShipCntWeapon(k)*8+10;
-						06=if(HullDamage(k)<20)chance=(chance*50)/100;
-						07=else if(HullDamage(k)<40)chance=(chance*70)/100;
-						08=else if(HullDamage(k)<75)chance=(chance*100)/100;
-						09=else chance=chance*150/100;
-						10=chance=chance*dmg/50;
-						11=if(chance<15)chance=15;
-						12=else if(chance>75)chance=75;
-						13=if(Rnd(1,100)<=chance)
-						14 ^{
-							01=if(ShipInScript(s) && !IsPlayer(s))
-							02 ^{
-								01=if(ShipCustomFaction(s)=='Klissan')exit;
+					01=dword s=ScriptItemActObject1();
+					02=if(ObjectType(s)!=4 && ObjectType(s)!=5)exit;
+					03=dword k=ScriptItemActShip();
+					04=int dmg=ScriptItemActParam();
+					05=int chance=ShipCntWeapon(k)*8+10;
+					06=if(HullDamage(k)<20)chance=(chance*50)/100;
+					07=else if(HullDamage(k)<40)chance=(chance*70)/100;
+					08=else if(HullDamage(k)<75)chance=(chance*100)/100;
+					09=else chance=chance*150/100;
+					10=chance=chance*dmg/50;
+					11=if(chance<15)chance=15;
+					12=else if(chance>75)chance=75;
+					13=if(Rnd(1,100)<=chance)
+					14 ^{
+						01=if(ShipInScript(s) && !IsPlayer(s))
+						02 ^{
+							01=if(ShipCustomFaction(s)=='Klissan')exit;
+						}
+						03=dword i=0;
+						04=int cnt=0;
+						05=while(1)
+						06 ^{
+							01=cnt=cnt+1;
+							02=i=ShipWeapon(k,Rnd(1,ShipCntWeapon(k)));
+							03=if(GetEquipmentStats(i,2)>=Dist(k,s))
+							04 {
+								01=i=0;
+								02=break;
 							}
-							03=dword i=0;
-							04=int cnt=0;
-							05=while(1)
+							05=else if (ItemIsBroken(i))
 							06 ^{
-								01=cnt=cnt+1;
-								02=i=ShipWeapon(k,Rnd(1,ShipCntWeapon(k)));
-								03=if(GetEquipmentStats(i,2)>=Dist(k,s))break;
-								04=else if (ItemDurability(i)<1)break;
-								05=else if(cnt==15)
-								06 ^{
-									01=i=0;
-									02=break;
-								}
+								01=i=0;
+								02=break;
 							}
-							07=if(HullHP(s)>100 && i)
+							07=else if(cnt==15)
 							08 ^{
-								01=int was_hp=HullHP(s);
-								02=if(HullHP(s))FireWeapon(k,s,i);
-								03=if(was_hp && !HullHP(s))HullHP(s,1);
+								01=i=0;
+								02=break;
 							}
+						}
+						07=if(HullHP(s)>100 && i)
+						08 ^{
+							01=int was_hp=HullHP(s);
+							02=if(HullHP(s))FireWeapon(k,s,i);
+							03=if(was_hp && !HullHP(s))HullHP(s,1);
 						}
 					}
 				}
-				OnActCodeTypes=t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
 			}
             Immortal ^{
                 Description=--
