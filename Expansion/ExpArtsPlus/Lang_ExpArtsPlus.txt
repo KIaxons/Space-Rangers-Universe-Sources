@@ -586,31 +586,28 @@ Artefacts ^{
 			08 ^{
 				01=if(EqModule(cur_item) > -1)
 				02 ^{
+					00=flag = 0;
 					01=if(!ArtefactTypeBoosted(ship, t_ArtefactNano))
 					02 ^{
 						01=for(int i = 1; i < 6; i = i + 1)
 						02 ^{
-							00=flag = 0;
 							01=dword tdwd = ShipEqInSlot(ship, t_Weapon1, i);
-							02=if((ItemType(tdwd) < t_Weapon13 || ItemType(tdwd) > t_Weapon15) && ItemType(tdwd)!=t_CustomWeapon) continue;
+							02=if((ItemType(tdwd) < t_Weapon13 || ItemType(tdwd) > t_Weapon15) && ItemType(tdwd) != t_CustomWeapon) continue;
 							03=else if(ItemType(tdwd) == t_CustomWeapon)
 							04 ^{
 								01=if(GetCustomWeaponData(CustomWeaponType(tdwd), 'Availability') != 'NotSoldAndNodeRepair') continue;
 							}
-							05=else
-							06 ^{
-								01=if(GetNodesFromShip(ship) < 1) break;
-								02=if(flag) break;
-								03=if(ItemDurability(tdwd) < 61)
-								04 ^{
-									01=if(!ItemDurability(tdwd)) Ether(2, '', Format(CT('Artefacts.ArtNano.RepairItem'), '<Name>', Name(tdwd)));
-									02=rand = Rnd(2, 5);
-									03=ItemDurability(tdwd, ItemDurability(tdwd) + rand);
-									04=GetNodesFromShip(ship, Rnd(rand, rand * 2));
-									05=flag = 1;
-									06=if(Rnd(1, 100) <= 33) ItemDurability(cur_item, ItemDurability(cur_item) - 1);
-								}
-							}							
+							05=if(GetNodesFromShip(ship) < 1) break;
+							06=if(flag) break;
+							07=if(ItemDurability(tdwd) < 61)
+							08 ^{
+								01=if(ItemIsBroken(tdwd)) Ether(2, '', Format(CT('Artefacts.ArtNano.RepairItem'), '<Name>', Name(tdwd)));
+								02=rand = Rnd(2, 5);
+								03=ItemDurability(tdwd, ItemDurability(tdwd) + rand);
+								04=GetNodesFromShip(ship, Rnd(rand, rand * 2));
+								05=flag = 1;
+								06=if(Rnd(1, 100) <= 33) ItemDurability(cur_item, ItemDurability(cur_item) - 1);
+							}
 						}
 					}
 					03=else
@@ -618,25 +615,22 @@ Artefacts ^{
 						01=for(int j = 1; j<ShipItems(ship); j = j + 1)
 						02 ^{
 							01=dword tdwd2 = ShipItems(ship, j);
-							02=if((ItemType(tdwd2) < t_Weapon13 || ItemType(tdwd2) > t_Weapon15) && ItemType(tdwd2)!=t_CustomWeapon) continue;
+							02=if((ItemType(tdwd2) < t_Weapon13 || ItemType(tdwd2) > t_Weapon15) && ItemType(tdwd2) != t_CustomWeapon) continue;
 							03=else if(ItemType(tdwd2) == t_CustomWeapon)
 							04 ^{
 								01=if(GetCustomWeaponData(CustomWeaponType(tdwd2), 'Availability') != 'NotSoldAndNodeRepair') continue;
 							}
-							05=else
-							06 ^{
-								01=if(GetNodesFromShip(ship) < 1) break;
-								02=if(flag) break;
-								03=if(ItemDurability(tdwd2) < 61)
-								04 ^{
-									01=if(!ItemDurability(tdwd2)) Ether(2, '', Format(CT('Artefacts.ArtNano.RepairItem'), '<Name>', Name(tdwd2)));
-									02=rand = Rnd(2, 5);
-									03=ItemDurability(tdwd2, ItemDurability(tdwd2) + rand);
-									04=GetNodesFromShip(ship, Rnd(rand, rand * 2));
-									05=flag = 1;
-									06=if(Rnd(1, 100) <= 33) ItemDurability(cur_item, ItemDurability(cur_item) - 1);
-								}
-							}							
+							01=if(GetNodesFromShip(ship) < 1) break;
+							02=if(flag) break;
+							03=if(ItemDurability(tdwd2) < 61)
+							04 ^{
+								01=if(ItemIsBroken(tdwd2)) Ether(2, '', Format(CT('Artefacts.ArtNano.RepairItem'), '<Name>', Name(tdwd2)));
+								02=rand = Rnd(2, 5);
+								03=ItemDurability(tdwd2, ItemDurability(tdwd2) + rand);
+								04=GetNodesFromShip(ship, Rnd(rand, rand * 2));
+								05=flag = 1;
+								06=if(Rnd(1, 100) <= 33) ItemDurability(cur_item, ItemDurability(cur_item) - 1);
+							}
 						}
 					}
 				}
