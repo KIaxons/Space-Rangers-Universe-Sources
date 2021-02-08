@@ -1336,7 +1336,7 @@ Script ^{
 		86=Рейнджер <Player>, убедительно прошу вас в самые кратчайшие сроки прибыть на объект <clr>Хандлер<clrEnd>. К вам, как к новому Верховному Барону, у меня есть один разговор.
 		87=Приветствуем вас, <Player>, на борту центра рейнджеров <0>. И у нас для вас порция отличных новостей - план удался! Именно сегодняшняя дата будет значится официальным днем победы над возвращением клисанской угрозы, а ваше имя, рейнджер, останется в истории навеки. После того, как вы, убедив Алакая, что ему ничего не угрожает, грамотно применили плоды его неэтичных экспериментов в борьбе с последними врагами Коалиции, наши военные разработали и реализовали план с захватом ученого, который был только что блистательно реализован.
 		54=
-		88=208=Вы посылаете запрос состояния клисанского флота на <clr>Хандлер<clrEnd>. Спустя полминуты в бортовом компьютере появляется следующий отчет:<br><br>ЗАРЯД СУБПОРТАЛЬНОГО ГЕНЕРАТОРА: <0> / 100<br>СОСТОЯНИЕ: <1><br>ФАЗА АТАКИ: <2><br>МЕСТОНАХОЖДЕНИЕ: <3><br>ЦЕЛЕВАЯ СИСТЕМА: <4><br>МЕСТОНАХОЖДЕНИЕ МАХПЕЛЛЫ: <5><br>
+		350=Вы посылаете запрос состояния клисанского флота на <clr>Хандлер<clrEnd>. Спустя полминуты в бортовом компьютере появляется следующий отчет:<br><br>ЗАРЯД СУБПОРТАЛЬНОГО ГЕНЕРАТОРА: <0> / <clr>100<clrEnd><br>СОСТОЯНИЕ: <1><br>ФАЗА АТАКИ: <2><br>МЕСТОНАХОЖДЕНИЕ: <3><br>ЦЕЛЕВАЯ СИСТЕМА: <4><br>МЕСТОНАХОЖДЕНИЕ МАХПЕЛЛЫ: <5><br>
 		89=Укажите систему для атаки.
 		90=Запрос ретранслирован на <clr>Хандлер<clrEnd>. Ответ положительный. Флот клисан отправлен в указанную систему.
 		91=Рейнджер <Player>, вражеская научная станция <clr>Хандлер<clrEnd> уходит у нас из-под носа! Немедленно взорвите объект, кого возможно - возьмите в плен.
@@ -1486,39 +1486,28 @@ ShipInfo ^{
     AddInfo ^{
         CustomInfos ^{
             BlockDamage ^{
-                Description=Акткод на уклонение клисан. Для мутят шанс 40%, для рогитов - 30%, для катаури - 22%, для нондусов - 14%, для эгемонов - 10%.
-                Description=При наложении на неклисанский корабль шанс равняется навыку маневренности, умноженному на три, т.е. при маневренности 2 шанс будет 6%, а при 6 - 18%.
+                Description=NoShow
                 Icon=1
-                Name=Уклонение
-                OnActCode ^{
-                    01=if(ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi))
-                    02 ^{
-                        01=if(ScriptItemActParam()>1000)ScriptItemActParam(1000);
-                    }
-                }
-                OnActCodeTypes=t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
+                Name=Можно удалить это через пару недель после 08.02.2021
             }
             Dodge ^{
                 Description=Акткод на уклонение клисан. Для мутят шанс 40%, для рогитов - 30%, для катаури - 22%, для нондусов - 14%, для эгемонов - 10%.
                 Description=При наложении на неклисанский корабль шанс равняется навыку маневренности, умноженному на три, т.е. при маневренности 2 шанс будет 6%, а при 6 - 18%.
                 Icon=1
                 Name=Уклонение
-                OnActCode ^{
-                    01=if(ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi))
-                    02 ^{
-                        01=dword k=ScriptItemActShip();
-                        02=int chance=0;
-                        03=if(ShipSubType(k)==1)chance=10;
-                        04=else if(ShipSubType(k)==2)chance=13;
-                        05=else if(ShipSubType(k)==3)chance=17;
-                        06=else if(ShipSubType(k)==4)chance=22;
-                        07=else if(ShipSubType(k)==5)chance=30;
-                        08=int bonus=40+GalaxyTechLevel()*12;
-                        09=chance=(chance*bonus)/100;
-                        10=if(Rnd(1,100)<=chance)ScriptItemActParam(0);
-                    }
-                }
                 OnActCodeTypes=t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
+                OnActCode ^{
+					01=dword k = ScriptItemActShip();
+					02=int chance = 0;
+					03=if(ShipSubType(k) == 1) chance = 10;
+					04=else if(ShipSubType(k) == 2) chance = 13;
+					05=else if(ShipSubType(k) == 3) chance = 17;
+					06=else if(ShipSubType(k) == 4) chance = 22;
+					07=else if(ShipSubType(k) == 5) chance = 30;
+					08=int bonus = 40 + GalaxyTechLevel() * 12;
+					09=chance = (chance * bonus) / 100;
+					10=if(Rnd(1, 100) <= chance) ScriptItemActParam(0);
+                }
             }
             Dodge_bonus ^{
                 Description=Акткод на уклонение клисан. Для мутят шанс 40%, для рогитов - 30%, для катаури - 22%, для нондусов - 14%, для эгемонов - 10%.
