@@ -2171,25 +2171,32 @@ ShipInfo ^{
 					//TextData1 - ???
 					//TextData2 - ???
 					//TextData3 - маркер о начале приступа;
-					01=dword infos=CurInfo();
-					02=if(ScriptItemActionType(t_OnStep,0))
+					01=dword infos = CurInfo();
+					02=if(ScriptItemActionType(t_OnStep, 0))
 					03 ^{
-						01=if(ShipCustomShipInfoTextData(0,infos,3)=='ill_attack')
+						//Если у игрока в данный момент приступ (накладываем дебаф)
+						01=if(ShipCustomShipInfoTextData(0, infos, 3) == 'ill_attack')
 						02 ^{
-							01=for(int i=1;i<=ShipCntWeapon(Player());i=i+1)
+							01=for(int i = 1; i <= ShipCntWeapon(Player()); i = i + 1)
 							02 ^{
-								01=WeaponTarget(ShipWeapon(Player(),i),0);
+								01=WeaponTarget(ShipWeapon(Player(), i), 0);
 							}
+							03=ShipSpecialBonuses(Player(), bonSpeed, ShipSpecialBonuses(Player(), bonSpeed) - 400000);
 						}
 					}
                     04=else
                     05 ^{
-                        01=int ill_data=ShipCustomShipInfoData(0,infos,1);
-                        02=int Tstama_count=ShipCustomShipInfoData(0,infos,3);
-                        03=int cur_stama=ShipCustomShipInfoData(0,infos,2)-Tstama_count;
+						//Если у игрока в данный момент приступ (снимаем дебаф)
+						01=if(ShipCustomShipInfoTextData(0, infos, 3) == 'ill_attack')
+						02 ^{
+							01=ShipSpecialBonuses(Player(), bonSpeed, ShipSpecialBonuses(Player(), bonSpeed) + 400000);
+						}
+                        03=int ill_data=ShipCustomShipInfoData(0,infos,1);
+                        04=int Tstama_count=ShipCustomShipInfoData(0,infos,3);
+                        05=int cur_stama=ShipCustomShipInfoData(0,infos,2)-Tstama_count;
 						//Если срок действия лихорадки истёк
-                        04=if(ill_data <= CurTurn())
-                        05 ^{
+                        06=if(ill_data <= CurTurn())
+                        07 ^{
 							//Если выносливость уже вышла из минуса, то снимаем лихорадку совсем
                             01=if(cur_stama >= 0)
                             02 ^{
@@ -2211,19 +2218,15 @@ ShipInfo ^{
                             }
                         }
 						//Если ещё не истёк, то проверяем, не начался ли у игрока приступ
-                        06=else
-                        07 ^{
+                        08=else
+                        09 ^{
                             01=int chance=0;
                             02=str temp_str=ShipCustomShipInfoTextData(0,infos,1);
                             03=int stun_data=temp_str;
 							//Отключение приступа, если игрок находится на планете
 							04=if(GetShipPlanet(Player()) || GetShipRuins(Player()))
                             05 ^{
-								01=if(ShipCustomShipInfoTextData(0,infos,3) == 'ill_attack')
-								02 ^{
-									01=ShipSpecialBonuses(Player(),bonSpeed,ShipSpecialBonuses(Player(),bonSpeed)+400000);
-								}
-								03=ShipCustomShipInfoTextData(0,infos,3,'no_ill_attack');
+								01=if(ShipCustomShipInfoTextData(0, infos, 3) == 'ill_attack') ShipCustomShipInfoTextData(0, infos, 3, 'no_ill_attack');
                             }
 							//Начало обработчика, активирующего приступ лихорадки
                             06=if(cur_stama<0 && stun_data<=0)
@@ -2269,7 +2272,7 @@ ShipInfo ^{
 									02=else if(cur_stama < -15)chance=100;
 								}
 								//Отладочная строка
-								//22=NewsAdd('Шанс словить приступ: <color=255,240,100>'+chance+'%');
+								//22=NewsAdd('Шанс словить приступ: <color=255,240,100>' + chance + '%');
 								23=if(ShipInNormalSpace(Player()))
 								24 ^{
 									//Проверка на успешность шанса начала приступа
@@ -2277,9 +2280,8 @@ ShipInfo ^{
 									02 ^{
 										01=if(ShipCustomShipInfoTextData(0,infos,3)=='no_ill_attack')
 										02 ^{
-											01=stun_data=Rnd(1,5);
-											02=ShipSpecialBonuses(Player(),bonSpeed,ShipSpecialBonuses(Player(),bonSpeed)-400000);
-											03=NewsAdd(CT('Script.Mod_ExpImplants.AugmentationFeverAttackStart'));
+											01=stun_data = Rnd(1, 5); //Длительность приступа
+											02=NewsAdd(CT('Script.Mod_ExpImplants.AugmentationFeverAttackStart'));
 										}
 										03=else if(ShipCustomShipInfoTextData(0,infos,3)=='ill_attack')
 										04 ^{
@@ -2289,12 +2291,11 @@ ShipInfo ^{
 										06=ShipCustomShipInfoTextData(0,infos,3,'ill_attack');
 									}
 									//Проверка на то, что шанс приступа оказался отрицательным если до того уже случился приступ
-									03=else if(ShipCustomShipInfoTextData(0,infos,3)=='ill_attack')
+									03=else if(ShipCustomShipInfoTextData(0, infos, 3) == 'ill_attack')
 									04 ^{
-										01=stun_data=Rnd(4,8);
-										02=ShipSpecialBonuses(Player(),bonSpeed,ShipSpecialBonuses(Player(),bonSpeed)+400000);
-										03=ShipCustomShipInfoTextData(0,infos,3,'no_ill_attack');
-										04=NewsAdd(CT('Script.Mod_ExpImplants.AugmentationFeverAttackEnd'));
+										01=stun_data = Rnd(4, 8); //Длительность приступа
+										02=ShipCustomShipInfoTextData(0,infos,3,'no_ill_attack');
+										03=NewsAdd(CT('Script.Mod_ExpImplants.AugmentationFeverAttackEnd'));
 									}
 									//Проверка на то, что шанс приступа оказался отрицательным если до того приступа не было
 									05=else if(ShipCustomShipInfoTextData(0,infos,3)=='no_ill_attack')
@@ -2303,7 +2304,7 @@ ShipInfo ^{
 									}
 								}
                             }
-                            08=if(stun_data>0)ShipCustomShipInfoTextData(0,infos,1,stun_data-1);
+                            08=if(stun_data > 0) ShipCustomShipInfoTextData(0,infos,1,stun_data-1);
                         }
                     }
                 }
