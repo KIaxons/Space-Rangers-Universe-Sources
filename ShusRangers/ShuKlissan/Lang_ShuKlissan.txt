@@ -2221,12 +2221,11 @@ UselessItems ^{
     secret_loot4 ^{
         Cost=Huge
         Description=
-        Name=Фросткорн
+        Name=Айскорн
+		OnActCodeTypes=t_OnStep
+		OnActStepTypes=11
         OnActCode ^{
-            01=if(ScriptItemActionType(t_OnStep,11))
-            02 ^{
-                01=if(FindItemInShip(Player(),CurItem())>-1)PlayerImmunity(0);
-            }
+			01=if(~FindItemInShip(Player(), CurItem())) PlayerImmunity(0);
         }
         Owner=None
         Size=1
@@ -2235,7 +2234,7 @@ UselessItems ^{
     secret_loot5 ^{
         Cost=Big
         Description=
-        Name=Череп Гоол-дана
+        Name=Череп Гаал-кардана
         Owner=None
         Size=1
         Text=Останки древнего гаальского шамана.
