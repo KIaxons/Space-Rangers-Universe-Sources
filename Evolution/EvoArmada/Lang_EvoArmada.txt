@@ -434,8 +434,9 @@ ShipInfo ^{
 				OnActStepTypes=0,11
                 OnActCode ^{
 					01=dword ship = ScriptItemActShip();
-					02=if(!ScriptItemActParam())
-					03 ^{
+					02=if(!ship) exit;
+					03=if(!ScriptItemActParam())
+					04 ^{
 						01=if(ShipInNormalSpace(ship))
 						02 ^{
 							01=if(ShipGetBad(ship))
@@ -479,8 +480,8 @@ ShipInfo ^{
 						}
 					}
 					//В конце хода сбрасываем число дополнительных залпов на стандартное для корабля значение
-					04=else
-					05 ^{
+					05=else
+					06 ^{
 						01=add_attacks = ShipCustomShipInfoData(0, CurInfo(), 1);
 						02=ShipSpecialBonuses(ship, bonAttacks, add_attacks);
 					}
