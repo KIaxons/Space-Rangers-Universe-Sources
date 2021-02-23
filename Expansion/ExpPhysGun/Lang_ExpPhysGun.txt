@@ -604,6 +604,7 @@ Script ^{
 		68=Столкновение с Астероидом -<0>- произойдёт в течении дня. Паника на планете <1> достигла пика!
 		27=Поступила информация, что в системе <0> обнаружен астероид рекордных размеров. К несчастью, траектория полета астероида с большой вероятностью пересечется с планетой <1>, на которой сейчас объявлен режим чрезвычайного положения. В случае столкновения ни системы планетарной защиты, ни подземные убежища не смогут уберечь жителей планеты. Галактический Совет обратился с убедительной просьбой к каждому пилоту прибыть в систему и помочь с эвакуацией, либо с уничтожением астероида.
 		139=Требуется помощь всех свободных пилотов! СРОЧНО! ВСЕМ КОРАБЛЯМ!<br>Чрезвычайная ситуация в системе <0>! Планета <1> в большой опасности!<br>Повторяю: Требуется помощь всех свободных пилотов! СРОЧНО! ВСЕМ КОРАБЛЯМ! Чрезвычайная ситуация в системе...
+		140=Рейнджер, <Player>, от лица всего спасённого вами населения планеты <0>, позвольте пригласить вас на торжественную церемонию награждения. Мы все вас очень ждём.
 		62=Сегодня, благодаря слаженным действиям пилотов в системе <0>, а также личному героизму рейнджера с позывным <Player>, была предотвращена, возможно, самая крупная катастрофа за всю историю Коалиции. Астероид рекордных размеров чуть было не уничтожил всю жизнь на планете <1>, но трагедии удалось избежать. Власти спасенной планеты уже изъявили желание по-королевски наградить рейнджера.
 		135=Мощный взрыв сотряс корабль и выбил вас из кресла пилота. Физган взорвался и чуть было не уничтожил ваш корабль. Не совсем, правда, понятно, что стало тому причиной... Может быть, пыль попала? Или он не выдержал полётных нагрузок? Так или иначе, теперь от этой игрушки пользы нет.
 		22=Похоже, обычные пушки его не берут. Мне прислали сообщение с технологического центра <0>, возможно, они чем-то смогут помочь.
@@ -698,19 +699,10 @@ ActCodeBlocksList ^{
 				01=if(FindItemInShip(Player(), physGun) == -1 && FormShipCurItem() != physGun)
 				02 ^{
 					01=WeaponAmmunition(physGun, 0);
-					02=SpecialToEquipment(FindBonusByNameInCfg('ExpPhysGun_PhysGunEmpty'), physGun);
-					03=exit;
+					02=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('ShipInfo.AddInfo.CustomInfos.ActCodes.PhysGunUseCode'));
+					03=SpecialToEquipment(FindBonusByNameInCfg('ExpPhysGun_PhysGunEmpty'), physGun);
+					04=exit;
 				}
-				//Иначе просто очищаем его юзкод (типа и так заряжен)
-				03=else
-				04 ^{
-					01=if(ItemOnUseCode(physGun)) ItemOnUseCode(physGun, '');
-				}
-			}
-			//Если физган разряжен, включаем обратно его юзкод
-			03=else
-			04 ^{
-				01=if(ItemOnUseCode(physGun) == '') ItemOnUseCode(physGun, GenerateCodeStringFromBlock('ShipInfo.AddInfo.CustomInfos.ActCodes.PhysGunUseCode'));
 			}
 		}
 		//Игрок кликнул по физгану предметом, который решил в него зарядить
@@ -815,7 +807,8 @@ ActCodeBlocksList ^{
 						18=else SetCustomWeaponShotData(physGunConf, 'Rocket', 5000, 800, 0); //Выставляем обычный ракетный урон
 						19=SpecialToEquipment(FindBonusByNameInCfg(text), physGun); //Вешаем акрин в зависимости от заряженного предмета
 						20=WeaponAmmunition(physGun, 1); //Заряжаем физган для совершения выстрела
-						21=ScriptItemActParam(1); //Удаляем "заряженный" предмет
+						21=ItemOnUseCode(physGun, '');
+						22=ScriptItemActParam(1); //Удаляем "заряженный" предмет
 					}
 					07=else exit;
 				}
@@ -841,7 +834,8 @@ ActCodeBlocksList ^{
 			//Разряжаем физган после выстрела и накидываем ему немного износа
 			10=SpecialToEquipment(FindBonusByNameInCfg('ExpPhysGun_PhysGunEmpty'), physGun);
 			11=WeaponAmmunition(physGun, 0);
-			12=ItemDurability(physGun, ItemDurability(physGun) - Rnd(1, 4));
+			12=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCode'));
+			13=ItemDurability(physGun, ItemDurability(physGun) - Rnd(1, 4));
 		}
 		//Снаряд физгана (или любая другая ракета игрока) попал по кораблю/станции
 		10=else if(ScriptItemActionType(t_OnMissileShot2))
@@ -895,7 +889,7 @@ ActCodeBlocksList ^{
 					04 ^{
 						01=damage = 0;
 						02=str str_type = ShipType(target);
-						03=if(str_type == 'Blazer' || str_type == 'Keller' || str_type == 'Terron' || str_type == 'Machpella') damage = Rnd(185, 315, sqr(CurTurn()) + CurTurn());
+						03=if(str_type == 'Blazer' || str_type == 'Keller' || str_type == 'Terron' || str_type == 'Machpella') damage = Rnd(185, 315, sqr(CurTurn()) + CurTurn() + 42);
 						04=else
 						05 ^{
 							01=item = ShipItems(target, 0);
@@ -973,19 +967,10 @@ ActCodeBlocksList ^{
 				01=if(FindItemInShip(Player(), physGun) == -1 && FormShipCurItem() != physGun)
 				02 ^{
 					01=WeaponAmmunition(physGun, 0);
-					02=SpecialToEquipment(FindBonusByNameInCfg('ExpPhysGun_PhysGunEmpty'), physGun);
-					03=exit;
+					02=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('ShipInfo.AddInfo.CustomInfos.ActCodes.PhysGunUseCode'));
+					03=SpecialToEquipment(FindBonusByNameInCfg('ExpPhysGun_PhysGunEmpty'), physGun);
+					04=exit;
 				}
-				//Иначе просто очищаем его юзкод (типа и так заряжен)
-				03=else
-				04 ^{
-					01=if(ItemOnUseCode(physGun)) ItemOnUseCode(physGun, '');
-				}
-			}
-			//Если физган разряжен, включаем обратно его юзкод
-			03=else
-			04 ^{
-				01=if(ItemOnUseCode(physGun) == '') ItemOnUseCode(physGun, GenerateCodeStringFromBlock('ShipInfo.AddInfo.CustomInfos.ActCodes.PhysGunUseCode'));
 			}
 		}
 		05=if(!ItemIsInUse(physGun)) exit; //Если физган не экипирован
@@ -1008,8 +993,9 @@ ActCodeBlocksList ^{
 			09=else MissileTarget(missile, 0);
 			10=SpecialToEquipment(FindBonusByNameInCfg('ExpPhysGun_PhysGunEmpty'), physGun);
 			11=WeaponAmmunition(physGun, 0);
+			12=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCode'));
 			//Также за каждый выстрел физган получает серьёзный износ
-			12=ItemDurability(physGun, ItemDurability(physGun) - 15);
+			13=ItemDurability(physGun, ItemDurability(physGun) - 15);
 		}
 		//Снаряд физгана (или любая другая ракета игрока) попал по кораблю/станции
 		08=else if(ScriptItemActionType(t_OnMissileShot2))
@@ -1031,18 +1017,14 @@ UseCodeBlocksList ^{
 		01=dword physGun = CurItem();
 		02=if(!ItemInScript(physGun)) exit;
 		03=if(ItemIsBroken(physGun)) exit;
-		04=if(!ShipHookRange(Player()))
+		04=if(!ShipInNormalSpace(Player()))
 		05 ^{
-			01=MessageBox('Для корректной работы физгана вам необходим захват');
-			02=exit;
-		}
-		06=if(!ShipInNormalSpace(Player()))
-		07 ^{
 			01=MessageBox(CT('FormShip.UseOnlyInSpace')); //"Этот предмет может быть использован только в открытом космосе"
 			02=exit;
 		}
-		08=if(!WeaponAmmunition(physGun))
-		09 ^{
+		//Если физган разряжен
+		06=if(!WeaponAmmunition(physGun))
+		07 ^{
 			//Ищем ближайший к игроку астероид
 			01=dword dwd1 = 0;
 			02=dword closest_asteroid = 0;
@@ -1050,7 +1032,7 @@ UseCodeBlocksList ^{
 			04=for(int i = 0; i < StarAsteroids(ShipStar(Player())); i = i + 1)
 			05 ^{
 				01=dwd1 = StarAsteroids(ShipStar(Player()), i);
-				02=if(Dist(Player(), dwd1) <= ShipHookRange(Player()))
+				02=if(Dist(Player(), dwd1) <= 200)
 				03 ^{
 					01=if(Dist(Player(), dwd1) < closest_dist)
 					02 ^{
@@ -1061,7 +1043,7 @@ UseCodeBlocksList ^{
 			}
 			06=if(!closest_asteroid)
 			07 ^{
-				01=MessageBox('Астероидов поблизости не обнаружено');
+				01=MessageBox('В радиусе <color=0,50,200>200</color> ед. вокруг корабля астероидов не обнаружено');
 				02=exit;
 			}
 			//И "заряжаем" его в физган
@@ -1073,9 +1055,13 @@ UseCodeBlocksList ^{
 			12=dwd1 = GetCustomWeaponInfo('PhysGun');
 			13=SetCustomWeaponShotData(dwd1, 'Rocket', 5000, 800, 0);
 			14=SetCustomWeaponDamageData(dwd1, 1, 1, 4+2048);
-			15=MessageBox('Ближайший астероид успешно захвачен физганом');
+			//Слегка изнашиваем физган за каждый успешный захват астероида
+			15=ItemDurability(physGun, ItemDurability(physGun) - Rnd(2, 5));
+			16=if(!ItemDurability(physGun)) ItemDurability(physGun, 0);
+			17=ItemOnUseCode(physGun, '');
+			18=MessageBox('Ближайший астероид успешно захвачен физганом');
 		}
-		10=else MessageBox('Физган уже заряжен');
+		08=else MessageBox('Физган уже заряжен');
 	}
 }
 ShipInfo ^{
@@ -1099,16 +1085,16 @@ ShipInfo ^{
                         02 ^{
 							01=dword ship = ScriptItemActShip();
 							//Считаем полученный астероидом урон
-                            02=ScriptItemActParam(round(1.0 * ItemSize(ShipItems(ship, 0)) / (0.1 * Rnd(34, 43))));
-							//Если данное попадание уничтожило астероид, вываливаем из него самородки (4, 6 штук)
+                            02=ScriptItemActParam(round(0.01 * Rnd(34, 43) * ItemSize(ShipItems(ship, 0))));
+							//Если данное попадание уничтожило астероид, вываливаем из него ценные самородки (9-15 штук)
                             03=if(Hitpoints(ship) - ScriptItemActParam() <= 0)
                             04 ^{
                                 01=float angle;
                                 02=dword nugget;
-                                04=for(int i = 1; i <= Rnd(4, 7, sqr(CurTurn()) + CurTurn() + 7); i = i + 1)
+                                04=for(int i = 1; i <= Rnd(9, 15, sqr(CurTurn()) + CurTurn() + 7); i = i + 1)
                                 05 ^{
                                     01=angle = (Rnd(0, 360) * pi) / 180.0;
-                                    02=nugget = CreateCustomCountableItem('NuggetAsteroid', Rnd(50, 100), 1);
+                                    02=nugget = CreateCustomCountableItem('NuggetAsteroid', Rnd(40, 90, sqr(CurTurn()) + CurTurn() + 115), 1);
                                     03=ItemCost(nugget, ItemSize(nugget) * 50);
                                     04=DropItemInSystem(ShipStar(Player()), nugget, CoordX(ship), CoordY(ship), CoordX(ship) + 150.0 * sin(angle), CoordY(ship) - 150.0 * cos(angle));
                                 }
