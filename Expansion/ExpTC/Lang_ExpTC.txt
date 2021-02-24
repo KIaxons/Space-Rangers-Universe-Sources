@@ -1214,40 +1214,40 @@ ShipInfo ^{
                 OnActCode ^{
                     01=if(ScriptItemActionType(t_OnDeath))
                     02 ^{
-                        01=dword ship=ScriptItemActShip();
-                        02=dword star=ShipStar(ship);
+                        01=dword ship = ScriptItemActShip();
+                        02=dword star = ShipStar(ship);
                         03=dword item;
-                        04=int tX=CoordX(ship);
-                        05=int tY=CoordY(ship);
+                        04=int tX = CoordX(ship);
+                        05=int tY = CoordY(ship);
                         06=float angle;
                         07=int rad;
                         08=int i;
-                        09=int tId=Id(ship);
-                        10=for(i=ShipCustomShipInfoData(0,CurInfo(),1);i>0;i=i-1)
+                        09=int tId = Id(ship);
+                        10=for(i = ShipCustomShipInfoData(0, CurInfo(), 1); i > 0; i = i - 1)
                         11 ^{
-                            01=item=GetItemFromVault('RNDbomb_1_'+tId+'_'+i);
-                            02=AddItemToShip(ship,item);
+                            01=item = GetItemFromVault('RNDbomb_1_' + tId + '_' + i);
+                            02=AddItemToShip(ship, item);
                         }
-                        12=for(i=ShipItems(ship);i>0;i=i-1)
+                        12=for(i = ShipItems(ship); i > 0; i = i - 1)
                         13 ^{
-                            01=item=ShipItems(ship,i);
-                            02=if(ItemIsInUse(item))continue;
-                            03=if(ItemType(item)==t_UselessItem)DropItem(ship,t_UselessItem);
+                            01=item = ShipItems(ship, i);
+                            02=if(ItemIsInUse(item)) continue;
+                            03=if(ItemType(item)==t_UselessItem) DropItem(ship, t_UselessItem);
                             04=else
                             05 ^{
-                                01=angle=0.01*Rnd(0,200)*3.141592653;
-                                02=rad=Rnd(100,200);
-                                03=if(ItemInScript(item))DropItemInSystem(star,GetItemFromShip(ship,i),tX,tY,round(cos(angle)*rad)+tX,round(sin(angle)*rad)+tY);
-                                04=else if(ItemType(item)==t_UselessItem)DropItemInSystem(star,GetItemFromShip(ship,i),tX,tY,round(cos(angle)*rad)+tX,round(sin(angle)*rad)+tY);
-                                05=else if(Rnd(1,100)<=15)DropItemInSystem(star,GetItemFromShip(ship,i),tX,tY,round(cos(angle)*rad)+tX,round(sin(angle)*rad)+tY);
+                                01=angle = 0.01 * Rnd(0, 200) * pi;
+                                02=rad = Rnd(100, 200);
+                                03=if(ItemInScript(item)) DropItemInSystem(star, GetItemFromShip(ship, i), tX, tY, round(cos(angle) * rad) + tX, round(sin(angle) * rad) + tY);
+                                04=else if(ItemType(item) == t_UselessItem) DropItemInSystem(star, GetItemFromShip(ship, i), tX, tY, round(cos(angle) * rad) + tX, round(sin(angle) * rad) + tY);
+                                05=else if(Rnd(1, 100) <= 15) DropItemInSystem(star, GetItemFromShip(ship, i), tX, tY, round(cos(angle) * rad) + tX,round(sin(angle) * rad) + tY);
                             }
                         }
-                        14=for(i=ShipArts(ship);i>=0;i=i-1)
+                        14=for(i = ShipArts(ship); i >= 0; i = i - 1)
                         15 ^{
-                            01=item=ShipArts(ship,i);
-                            02=angle=0.01*Rnd(0,200)*3.141592653;
-                            03=rad=Rnd(100,200);
-                            04=DropItemInSystem(star,GetArtFromShip(ship,i),tX,tY,round(cos(angle)*rad)+tX,round(sin(angle)*rad)+tY);
+                            01=item = ShipArts(ship,i);
+                            02=angle = 0.01 * Rnd(0, 200) * pi;
+                            03=rad = Rnd(100, 200);
+                            04=DropItemInSystem(star, GetArtFromShip(ship, i), tX, tY, round(cos(angle) * rad) + tX, round(sin(angle) * rad) + tY);
                         }
                     }
                     03=else
