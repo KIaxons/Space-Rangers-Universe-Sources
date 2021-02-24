@@ -900,53 +900,55 @@ UselessItems ^{
 					}
 					06=if(!ShipInNormalSpace(ship))continue;
 					//Вычисляем урон по формуле round(BombPowerMax-(BombPowerMax-BombPowerMin)*dist2/BombRadius2), где 2 - квадрат
-					07=Tdamage=round(800.0-(400.0*(Tdist*Tdist)/62500));
+					07=Tdamage = round(800.0 - (400.0 * (Tdist * Tdist) / 62500));
 					//Добавляем визуального дамага для подобравшего бомбу корабля, чтобы как бы гарантированно его уничтожить
-					08=if(ship==pick_ship)
+					08=if(ship == pick_ship)
 					09 ^{
-						01=if(HullHP(pick_ship)>Tdamage)Tdamage=HullHP(pick_ship)+Rnd(43,157);
+						01=if(HullHP(pick_ship) > Tdamage) Tdamage = HullHP(pick_ship) + Rnd(43, 157);
 					}
+					//Огромный астероид из ExpPhysGun дамага от бомбы не получит
+					10=if(ShipType(ship) == 'KillerAsteroid') Tdamage = 0;
 					//Перед активацией эффекта обязательно делаем проверку на нахождение в пространстве системы игрока (!!!)
-					10=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))ShowEffect('Weapon.NoGraph',0,ship,ship,Tdamage,0,0,255,0,0);
+					11=if(ShipStar(Player()) == bomb_star && ShipInNormalSpace(Player())) ShowEffect('Weapon.NoGraph', 0, ship, ship, Tdamage, 0, 0, 255, 0, 0);
 					//Применяем урон
-					11=if(HullHP(ship)>Tdamage)HullHP(ship,HullHP(ship)-Tdamage);
-					12=else
-					13 ^{
+					12=if(HullHP(ship) > Tdamage) HullHP(ship, HullHP(ship) - Tdamage);
+					13=else
+					14 ^{
 						//Проверяем, не установлена ли на корабле спасательная шлюпка и если да, то говорим ему не отображать над собой урон посредством маркера в инфошке
-						01=if(targetInfo==-2)targetInfo=ShipFindCustomShipInfoByType(ship,'LifeboatLaunchInfo');
-						02=if(targetInfo>-1)
+						01=if(targetInfo == -2) targetInfo = ShipFindCustomShipInfoByType(ship,'LifeboatLaunchInfo');
+						02=if(targetInfo > -1)
 						03 ^{
-							01=ShipCustomShipInfoTextData(ship,targetInfo,3,bomb);
-							02=DealDamageToShip(ship,bomb,100000,0);
+							01=ShipCustomShipInfoTextData(ship, targetInfo, 3, bomb);
+							02=DealDamageToShip(ship, bomb, 100000, 0);
 						}
 						//Уничтожение корабля через функцию нужно для корректного отображения взрыва, ведь ебаная функция DealDamageToShip взрыв не рисует, СУКА!!!
-						04=else if(ShipFindCustomShipInfoByType(ship,'AbandonedShipInfo')==-1)ShipDestroy(ship,1);
+						04=else if(ShipFindCustomShipInfoByType(ship, 'AbandonedShipInfo') == -1) ShipDestroy(ship, 1);
 						05=OrderNone(ship);
 					}
 					//Отдельно прописываем невидимый выстрел по бомбе от любого корабля, попавшего в зону поражения
 					//Необходимо, чтобы гарантированно уничтожить объект бомбы на OnStep 11
 				}
 				//Уничтожаем предметы в радиусе взрыва
-				17=for(k=0;k<StarItems(bomb_star);k=k+1)
+				17=for(k = 0; k < StarItems(bomb_star); k = k + 1)
 				18 ^{
-					01=item=StarItems(bomb_star,k);
-					02=if(item==bomb)continue;
+					01=item = StarItems(bomb_star, k);
+					02=if(item == bomb) continue;
 					03=if(ScriptItemActionType(t_OnItemPickUp))
 					04 ^{
-						01=if(Dist(pick_ship,item)>250)continue;
-						02=else Tdist=Dist(pick_ship,item);
+						01=if(Dist(pick_ship, item) > 250) continue;
+						02=else Tdist = Dist(pick_ship, item);
 					}
 					05=else
 					06 ^{
-						01=if(Dist(bomb,item)>250)continue;
-						02=else Tdist=Dist(bomb,item);
+						01=if(Dist(bomb, item) > 250) continue;
+						02=else Tdist = Dist(bomb, item);
 					}
-					//Вычисляем шанс уничтожения по формуле round(20-20*dist2/BombRadius2), где 2 - квадрат
-					07=Tdamage=round(20.0-(20.0*(Tdist*Tdist)/62500));//Максимальный шанс уничтожения предмета составляет 20%
+					//Вычисляем шанс уничтожения по формуле round(20 - 20 * dist2 / BombRadius2), где 2 - квадрат
+					07=Tdamage = round(20.0 - (20.0 * (Tdist * Tdist) / 62500)); //Максимальный шанс уничтожения предмета составляет 20%
 					//Применяем полученный шанс
-					08=if(Rnd(1,100)<=Tdamage)
+					08=if(Rnd(1, 100) <= Tdamage)
 					09 ^{
-						01=if(ItemType(item)==t_ArtefactBomb)
+						01=if(ItemType(item) == t_ArtefactBomb)
 						02 ^{
 							//Отрисовываем взрыв кварки обычной кварке, т.к. при ItemDestroy 1 "родного" визуального эффекта у неё не будет 
 							01=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))ShowStaticEffect('RNDbomb_1BAM',CoordX(item),CoordY(item));
@@ -1090,84 +1092,86 @@ UselessItems ^{
 				}
 			}
 			//Происходит активация бомбы
-            13=if(ScriptItemActionType(t_OnItemDestroy))boom_flag=(primer_type<=-4);
-			14=else if(ScriptItemActionType(t_OnItemPickUp))boom_flag=(ScriptItemActObject1()==bomb && primer_type<=-5);
+            13=if(ScriptItemActionType(t_OnItemDestroy)) boom_flag=(primer_type<=-4);
+			14=else if(ScriptItemActionType(t_OnItemPickUp)) boom_flag=(ScriptItemActObject1()==bomb && primer_type<=-5);
 			15=if(boom_flag)
             16 ^{
 				01=dword ship;
-				02=dword pick_ship=0;
-				03=dword bomb_star=GalaxyStar(UselessItemData(bomb,3));
-				04=int k=0;
-				05=int i=0;
-				06=int Tdist=0;
-				07=int DayLong=0;
+				02=dword pick_ship = 0;
+				03=dword bomb_star = GalaxyStar(UselessItemData(bomb, 3));
+				04=int k;
+				05=int i;
+				06=int Tdist = 0;
+				07=int DayLong = 0;
 				08=if(ScriptItemActionType(t_OnItemPickUp))
 				09 ^{
-					01=pick_ship=ScriptItemActShip();
+					01=pick_ship = ScriptItemActShip();
 					02=OrderNone(pick_ship);
 					//Перед активацией эффекта обязательно делаем проверку на нахождение в пространстве системы игрока (!!!)
-					03=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))
+					03=if(ShipStar(Player()) == bomb_star && ShipInNormalSpace(Player()))
 					04 ^{
-						01=ShowStaticEffect('RNDbomb_2BAM',CoordX(pick_ship),CoordY(pick_ship));
-						02=FilmSound('Sound.RndHole03',pick_ship);
+						01=ShowStaticEffect('RNDbomb_2BAM', CoordX(pick_ship), CoordY(pick_ship));
+						02=FilmSound('Sound.RndHole03', pick_ship);
 					}
 				}
 				10=else
 				11 ^{
 					//Перед активацией эффекта обязательно делаем проверку на нахождение в пространстве системы игрока (!!!)
-					01=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))
+					01=if(ShipStar(Player()) == bomb_star && ShipInNormalSpace(Player()))
 					02 ^{
-						01=ShowStaticEffect('RNDbomb_2BAM',CoordX(bomb),CoordY(bomb));
-						02=FilmSound('Sound.RndHole03',bomb);
+						01=ShowStaticEffect('RNDbomb_2BAM', CoordX(bomb), CoordY(bomb));
+						02=FilmSound('Sound.RndHole03', bomb);
 					}
 				}
-				12=for(k=0;k<StarShips(bomb_star);k=k+1)
+				12=for(k = 0; k < StarShips(bomb_star); k = k + 1)
 				13 ^{
-					01=ship=StarShips(bomb_star,k);
+					01=ship = StarShips(bomb_star, k);
 					02=if(ScriptItemActionType(t_OnItemPickUp))
 					03 ^{
-						01=if(Dist(pick_ship,ship)>250)continue;
-						02=else Tdist=Dist(pick_ship,ship);
+						01=if(Dist(pick_ship, ship) > 250) continue;
+						02=else Tdist = Dist(pick_ship, ship);
 					}
 					04=else
 					05 ^{
-						01=if(Dist(bomb,ship)>250)continue;
-						02=else Tdist=Dist(bomb,ship);
+						01=if(Dist(bomb, ship) > 250) continue;
+						02=else Tdist = Dist(bomb, ship);
 					}
-					06=if(!ShipInNormalSpace(ship))continue;
-					07=if(ObjectType(ship)==4 || ShipType(ship)=='DomRuins')continue;
-					08=if(ship==Keller() || ship==Terron() || ship==Blazer() || ShipType(ship)=='Machpella')continue;
-					//Вычисляем урон по формуле round(BombPowerMax-(BombPowerMax-BombPowerMin)*dist2/BombRadius2), где 2 - квадрат
-					09=DayLong=round(15.0-(10.0*(Tdist*Tdist)/62500));//Линейная формула без квадрата DayLong=15-round(0.04*Tdist);
+					06=if(!ShipInNormalSpace(ship)) continue;
+					//На станции и боссов оглушение не подействует
+					07=if(ObjectType(ship) == 4 || ShipType(ship) == 'DomRuins') continue;
+					08=str tempType = ShipType(ship);
+					09=if(ship == Keller() || ship == Terron() || ship == Blazer() || tempType == 'Machpella' || tempType == 'KillerAsteroid') continue;
+					//Вычисляем урон по формуле round(BombPowerMax - (BombPowerMax-BombPowerMin) * dist2 / BombRadius2), где 2 - квадрат
+					10=DayLong=round(15.0 - (10.0 * (Tdist * Tdist) / 62500));//Линейная формула без квадрата DayLong = 15 - round(0.04 * Tdist);
 					//Вешаем на корабль вращение на месте (если взлетает, то вращение откладывается до следующего хода)
-					10=OrderLock(ship,1);
-					11=if(!ShipIsTakeoff(ship))
-					12 ^{
-						01=float angle=pi*(ShipAngle(ship)+90.0)/Rnd(179,181);
-						02=OrderMove(ship,cos(angle)*10.0+CoordX(ship),sin(angle)*10.0+CoordY(ship));
+					11=OrderLock(ship, 1);
+					12=if(!ShipIsTakeoff(ship))
+					13 ^{
+						01=float angle = pi * (ShipAngle(ship) + 90.0) / Rnd(179, 181);
+						02=OrderMove(ship, cos(angle) * 10.0 + CoordX(ship), sin(angle) * 10.0 + CoordY(ship));
 					}
 					//Отключаем прерывание фильма хода (прервать может только сам игрок)
-					13=if(ship==Player())FilmFlags(3,1);
-					14=int targ_infos=ShipFindCustomShipInfoByType(ship,'RNDbomb_2_infos');
-					15=if(targ_infos==-1)
-					16 ^{
-						01=if(ship==Player())ShipAddCustomShipInfo(ship,'RNDbomb_2_infos','Вы подверглись воздействию неизвестного излучения и временно утратили контроль над собственными действиями.',DayLong);
-						02=else ShipAddCustomShipInfo(ship,'RNDbomb_2_infos','',DayLong);
+					14=if(ship == Player()) FilmFlags(3, 1);
+					15=int targ_infos = ShipFindCustomShipInfoByType(ship, 'RNDbomb_2_infos');
+					16=if(targ_infos == -1)
+					17 ^{
+						01=if(ship == Player()) ShipAddCustomShipInfo(ship, 'RNDbomb_2_infos', 'Вы подверглись воздействию неизвестного излучения и временно утратили контроль над собственными действиями.', DayLong);
+						02=else ShipAddCustomShipInfo(ship, 'RNDbomb_2_infos', '', DayLong);
 						//"Отключаем" кораблю захват
-						03=ShipSpecialBonuses(ship,bonHook,ShipSpecialBonuses(ship,bonHook)-50000);
+						03=ShipSpecialBonuses(ship, bonHook, ShipSpecialBonuses(ship, bonHook) - 50000);
 						//Вешаем запрет на разговор, но только если корабль не имел его ранее
 						04=if(!NoTalkToShip(ship))
 						05 ^{
-							01=NoTalkToShip(ship,1);
-							02=ShipCustomShipInfoData(ship,ShipFindCustomShipInfoByType(ship,'RNDbomb_2_infos'),3,1);
+							01=NoTalkToShip(ship, 1);
+							02=ShipCustomShipInfoData(ship, ShipFindCustomShipInfoByType(ship, 'RNDbomb_2_infos'), 3, 1);
 						}
 					}
 					//Если корабль уже и так был оглушён, то просто продляем действие
-					17=else ShipCustomShipInfoData(ship,targ_infos,1,ShipCustomShipInfoData(ship,targ_infos,1)+DayLong);
+					18=else ShipCustomShipInfoData(ship, targ_infos, 1, ShipCustomShipInfoData(ship, targ_infos, 1) + DayLong);
 					//Вешаем разговорный и сканерный запрет на все корабли системы, если под оглушение попал сам игрок
-					18=if(ship==Player())
-					19 ^{
-						01=for(i=0;i<StarShips(ShipStar(Player()));i=i+1)
+					19=if(ship == Player())
+					20 ^{
+						01=for(i = 0; i < StarShips(ShipStar(Player())); i = i + 1)
 						02 ^{
 							01=if(!NoTalkToShip(StarShips(ShipStar(Player()),i)) || !NoScanToShip(StarShips(ShipStar(Player()),i)))
 							02 ^{
@@ -1383,30 +1387,30 @@ UselessItems ^{
 						02=FilmSound('Sound.Zamknulo',bomb);
 					}
 				}
-				13=for(k=0;k<StarShips(bomb_star);k=k+1)
+				13=for(k = 0; k < StarShips(bomb_star); k = k + 1)
 				14 ^{
-					01=ship=StarShips(bomb_star,k);
+					01=ship = StarShips(bomb_star, k);
 					02=if(ScriptItemActionType(t_OnItemPickUp))
 					03 ^{
-						01=if(Dist(pick_ship,ship)>250)continue;
-						02=else Tdist=Dist(pick_ship,ship);
+						01=if(Dist(pick_ship, ship) > 250) continue;
+						02=else Tdist = Dist(pick_ship, ship);
 					}
 					04=else
 					05 ^{
-						01=if(Dist(bomb,ship)>250)continue;
-						02=else Tdist=Dist(bomb,ship);
+						01=if(Dist(bomb, ship) > 250) continue;
+						02=else Tdist = Dist(bomb, ship);
 					}
-					06=if(!ShipInNormalSpace(ship))continue;
+					06=if(!ShipInNormalSpace(ship)) continue;
 					//Клисане урона не получают вообще, т.к. являются псевдобиологическими конструктами
-					07=str tempType=ShipType(ship);
-					08=if(tempType=='Klissan' || tempType=='Klissan1' || tempType=='Klissan2' || tempType=='Klissan3' || tempType=='Klissan4' || tempType=='Klissan5' || tempType=='KB' || tempType=='Machpella')continue;
+					07=str tempType = ShipType(ship);
+					08=if(tempType == 'Klissan' || tempType == 'Klissan1' || tempType == 'Klissan2' || tempType == 'Klissan3' || tempType == 'Klissan4' || tempType == 'Klissan5' || tempType == 'KB' || tempType == 'Machpella' || tempType == 'KillerAsteroid') continue;
 					//Ломаем экипированное оборудование
-					09=for(j=1;j<ShipItems(ship);j=j+1)
+					09=for(j = 1; j < ShipItems(ship); j = j + 1)
 					10 ^{
-						01=item=ShipItems(ship,j);
-						02=if(!ItemIsInUse(item))continue;
+						01=item = ShipItems(ship, j);
+						02=if(!ItemIsInUse(item)) continue;
 						//Исключаем биогенных дроидов
-						03=if(EqSpecial(item)>-1)
+						03=if(~EqSpecial(item))
 						04 ^{
 							01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BioEquip')==1)continue;
 						}
