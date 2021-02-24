@@ -1239,7 +1239,7 @@ ShipInfo ^{
                                 02=rad = Rnd(100, 200);
                                 03=if(ItemInScript(item)) DropItemInSystem(star, GetItemFromShip(ship, i), tX, tY, round(cos(angle) * rad) + tX, round(sin(angle) * rad) + tY);
                                 04=else if(ItemType(item) == t_UselessItem) DropItemInSystem(star, GetItemFromShip(ship, i), tX, tY, round(cos(angle) * rad) + tX, round(sin(angle) * rad) + tY);
-                                05=else if(Rnd(1, 100) <= 15) DropItemInSystem(star, GetItemFromShip(ship, i), tX, tY, round(cos(angle) * rad) + tX,round(sin(angle) * rad) + tY);
+                                05=else if(Rnd(1, 100) <= 15) DropItemInSystem(star, GetItemFromShip(ship, i), tX, tY, round(cos(angle) * rad) + tX, round(sin(angle) * rad) + tY);
                             }
                         }
                         14=for(i = ShipArts(ship); i >= 0; i = i - 1)

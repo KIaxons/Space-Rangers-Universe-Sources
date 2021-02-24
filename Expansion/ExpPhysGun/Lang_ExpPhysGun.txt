@@ -70,9 +70,9 @@ Items ^{
 				Speed=5000
 				AverageRadius=800
 				SecondaryDamageRadius=0
-				MissileRadius=1000
-				MissileMinSpeed=3000
-				MissileMaxSpeed=3000
+				MissileRadius=20000
+				MissileMinSpeed=5000
+				MissileMaxSpeed=5000
 				MissileChanceToBeHit=0
 				mWeaponDamage=1.00,1.15,1.30,1.45,1.60,1.75,1.90,2.05
 				ShotsPerTurn=1
@@ -693,24 +693,9 @@ ActCodeBlocksList ^{
 	PhysGunActCode ^{
 		01=dword physGun = CurItem();
 		02=if(!ItemInScript(physGun)) exit;
-		03=if(CurrentForm() == 'Ship')
-		04 ^{
-			//Если физган заряжен
-			01=if(WeaponAmmunition(physGun))
-			02 ^{
-				//Если игрок выложил физган, то разряжаем его
-				01=if(FindItemInShip(Player(), physGun) == -1 && FormShipCurItem() != physGun)
-				02 ^{
-					01=WeaponAmmunition(physGun, 0);
-					02=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('ShipInfo.AddInfo.CustomInfos.ActCodes.PhysGunUseCode'));
-					03=SpecialToEquipment(FindBonusByNameInCfg('ExpPhysGun_PhysGunEmpty'), physGun);
-					04=exit;
-				}
-			}
-		}
 		//Игрок кликнул по физгану предметом, который решил в него зарядить
-		05=if(ScriptItemActionType(t_OnAnotherItem2))
-		06 ^{
+		03=if(ScriptItemActionType(t_OnAnotherItem2))
+		04 ^{
 			01=if(ItemIsBroken(physGun)) exit;
 			02=if(!WeaponAmmunition(physGun))
 			03 ^{
@@ -769,7 +754,7 @@ ActCodeBlocksList ^{
 						11 ^{
 							01=text = 'ExpPhysGun_PhysGunMissileFuelTank';
 							02=int damage = item_size / 3;
-							03=tempActCodeData2 = ContainerFuel(loaded_item); //Запоминаем объём топлива в цистерне
+							03=tempActCodeData3 = ContainerFuel(loaded_item); //Запоминаем объём топлива в цистерне
 							04=SetCustomWeaponDamageData(physGunConf, 1, 1, 4+2048);
 						}
 						//Во всех остальных случаях используется стандартная графика контейнеров
@@ -810,7 +795,7 @@ ActCodeBlocksList ^{
 						18=else SetCustomWeaponShotData(physGunConf, 'Rocket', 5000, 800, 0); //Выставляем обычный ракетный урон
 						19=SpecialToEquipment(FindBonusByNameInCfg(text), physGun); //Вешаем акрин в зависимости от заряженного предмета
 						20=WeaponAmmunition(physGun, 1); //Заряжаем физган для совершения выстрела
-						21=ItemOnUseCode(physGun, '');
+						21=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCodeLoaded'));
 						22=ScriptItemActParam(1); //Удаляем "заряженный" предмет
 					}
 					07=else exit;
@@ -818,16 +803,16 @@ ActCodeBlocksList ^{
 			}
 			04=else exit;
 		}
-		07=if(!ItemIsInUse(physGun)) exit; //Если физган не экипирован
+		05=if(!ItemIsInUse(physGun)) exit; //Если физган не экипирован
 		//Игрок выстрелил из физгана или любого другого ракетного оружия (снаряд вылетает)
-		08=if(ScriptItemActionType(t_OnMissileShot))
-		09 ^{
+		06=if(ScriptItemActionType(t_OnMissileShot))
+		07 ^{
 			01=dword missile = ScriptItemActObject1();
 			02=if(CustomMissileType(missile) != 'PhysGun') exit; //Если данное событие сработало не от физгана
 			03=float angle = Angle(WeaponTarget(physGun), missile);
 			04=MissileAngle(missile, angle);
-			05=MissileLive(missile, 400);
-			06=MissileSpeed(missile, 3000);
+			05=MissileLive(missile, 200);
+			06=MissileSpeed(missile, 5000);
 			//Вплоть до апгрейда точности на ТЦ физган будет очень часто промахиваться
 			07=if(ScriptItemData(physGun, 3) == -1)
 			08 ^{
@@ -837,91 +822,101 @@ ActCodeBlocksList ^{
 			//Разряжаем физган после выстрела и накидываем ему немного износа
 			10=SpecialToEquipment(FindBonusByNameInCfg('ExpPhysGun_PhysGunEmpty'), physGun);
 			11=WeaponAmmunition(physGun, 0);
-			12=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCode'));
-			13=ItemDurability(physGun, ItemDurability(physGun) - Rnd(1, 4));
+			//Снаряд вылетел, "облегчаем" физган
+			12=ItemSize(physGun, ItemSize(physGun) - GetEquipmentStats(physGun, 0));
+			13=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCodeEmpty'));
+			14=ItemDurability(physGun, ItemDurability(physGun) - Rnd(1, 4));
 		}
 		//Снаряд физгана (или любая другая ракета игрока) попал по кораблю/станции
-		10=else if(ScriptItemActionType(t_OnMissileShot2))
-		11 ^{
+		08=else if(ScriptItemActionType(t_OnMissileShot2))
+		09 ^{
 			01=if(CustomMissileType(ScriptItemActObject2()) != 'PhysGun') exit; //Если данное событие сработало не от физгана
 			02=dword target = ScriptItemActObject1();
-			03=str acryn_name = BonusNumInCfg(EqSpecial(ScriptItemActObject2()));
+			03=acryn_name = BonusNumInCfg(EqSpecial(ScriptItemActObject2()));
 			04=if(acryn_name == 'ExpPhysGun_PhysGunMissileQuarkBomb')
 			05 ^{
 				01=dword item = CreateArt(t_ArtefactBomb, tempActCodeData);
-				02=DropItemInSystem(ShipStar(Player()), item, CoordX(target), CoordY(target), CoordX(target), CoordY(target));
-				03=StopMovingItem(ShipStar(Player()), item);
-				04=FireWeapon(Player(), item, 0);
+				02=DropItemInSystem(ShipStar(target), item, CoordX(target), CoordY(target), CoordX(target), CoordY(target));
+				03=StopMovingItem(ShipStar(target), item);
+				04=FireWeapon(target, item, 0);
 			}
 			06=else if(acryn_name == 'ExpPhysGun_PhysGunMissileStunBomb')
 			07 ^{
 				01=item = CreateQuestItem('RNDbomb_2', tempActCodeData);
 				02=UselessItemData(item, 2, -4);
-				03=DropItemInSystem(ShipStar(Player()), item, CoordX(target), CoordY(target), CoordX(target), CoordY(target));
-				04=StopMovingItem(ShipStar(Player()), item);
-				05=FireWeapon(Player(), item, 0);
+				03=DropItemInSystem(ShipStar(target), item, CoordX(target), CoordY(target), CoordX(target), CoordY(target));
+				04=StopMovingItem(ShipStar(target), item);
+				05=FireWeapon(target, item, 0);
 			}
 			08=else if(acryn_name == 'ExpPhysGun_PhysGunMissileEMPBomb')
 			09 ^{
 				01=item = CreateQuestItem('RNDbomb_3', tempActCodeData);
 				02=UselessItemData(item, 2, -4);
-				03=DropItemInSystem(ShipStar(Player()), item, CoordX(target), CoordY(target), CoordX(target), CoordY(target));
-				04=StopMovingItem(ShipStar(Player()), item);
-				05=FireWeapon(Player(), item, 0);
+				03=DropItemInSystem(ShipStar(target), item, CoordX(target), CoordY(target), CoordX(target), CoordY(target));
+				04=StopMovingItem(ShipStar(target), item);
+				05=FireWeapon(target, item, 0);
 			}
 			10=else if(acryn_name == 'ExpPhysGun_PhysGunMissileFuelTank')
 			11 ^{
-				01=item = CreateEquipment(t_Cistern, MissileMaxDamage(ScriptItemActObject2()), tempActCodeData2, tempActCodeData);
-				02=DropItemInSystem(ShipStar(Player()), item, CoordX(target), CoordY(target), CoordX(target), CoordY(target));
-				03=StopMovingItem(ShipStar(Player()), item);
-				04=FireWeapon(Player(), item, 0);
+				01=item = CreateEquipment(t_Cistern, MissileMaxDamage(ScriptItemActObject2()), tempActCodeData3, tempActCodeData);
+				02=DropItemInSystem(ShipStar(target), item, CoordX(target), CoordY(target), CoordX(target), CoordY(target));
+				03=StopMovingItem(ShipStar(target), item);
+				04=FireWeapon(target, item, 0);
 			}
 			12=else
 			13 ^{
-				//Если игрок стрелял по цели астероидом
+				//Если игрок (или другой корабль с физганом) стрелял по цели астероидом
 				01=if(~findsubstr(acryn_name, 'Asteroid'))
 				02 ^{
-					//Разбрасываем минералы на месте попадания астероида в цель
-					01=for(int i = 1; i < Rnd(3, 5, sqr(CurTurn()) + CurTurn() + 7); i = i + 1)
-					02 ^{
-						01=angle = (Rnd(0, 360) * pi) / 180.0;
-						02=DropItemInSystem(ShipStar(Player()), CreateGoods(4, Rnd(5, 15), 1), CoordX(target), CoordY(target), CoordX(target) + 100.0 * sin(angle), CoordY(target) - 100.0 * cos(angle));
+					//Раскидываем вокруг места попадания минералы, которые имелись в запущенном из физгана астероиде
+					01=int size_minerals = round(0.80 * GetEquipmentStats(physGun, 0) / 1.5); //-20% исходного содержания минералов
+					02=if(count_minerals)
+					03 ^{
+						01=int minerals_dropped = 0;
+						02=while(size_minerals)
+						03 ^{
+							01=int part_size = 0;
+							02=if(size_minerals < 10 || minerals_dropped >= 3) part_size = size_minerals;
+							03=else part_size = round((0.2 * (0.1 * Rnd(0, 10)) + 0.55) * size_minerals);
+							04=size_minerals = size_minerals - part_size;
+							05=minerals_dropped = minerals_dropped = 1;
+							06=dword minerals = CreateGoods(t_Minerals, part_size, 1);
+							07=angle = 0.01 * Rnd(0, 200) * pi;
+							08=int rad = Rnd(50, 150);
+							09=DropItemInSystem(ShipStar(target), minerals, CoordX(target), CoordY(target), round(cos(angle) * rad) + CoordX(target), round(sin(angle) * rad) + CoordY(target));
+						}
 					}
-					//Если игрок стрелял по кораблю/станции
-					03=if(ObjectType(target) == 4 || ObjectType(target) == 5)
-					04 ^{
-						01=damage = 0;
-						02=str str_type = ShipType(target);
-						03=if(target == Blazer() || target == Keller() || target == Terron() || str_type == 'Machpella') damage = Rnd(185, 315, sqr(CurTurn()) + CurTurn() + 42);
+					04=damage = 0;
+					05=str str_type = ShipType(target);
+					06=if(target == Blazer() || target == Keller() || target == Terron() || str_type == 'Machpella') damage = Rnd(185, 315, sqr(CurTurn()) + CurTurn() + 42);
+					07=else
+					08 ^{
+						01=item = ShipItems(target, 0);
+						02=if(!ShipProtectability(target))
+						03 ^{
+							01=if(ItemSize(item) <= 150) damage = ItemSize(item) + 20;
+							02=else if(ItemSize(item) < 300) damage = 80 * ItemSize(item) / 100;
+							03=else damage = Rnd(30, 50, sqr(CurTurn()) + CurTurn() + 3) * ItemSize(item) / 100;
+						}
 						04=else
 						05 ^{
-							01=item = ShipItems(target, 0);
-							02=if(!ShipProtectability(target))
-							03 ^{
-								01=if(ItemSize(item) <= 150) damage = ItemSize(item) + 20;
-								02=else if(ItemSize(item) < 300) damage = 80 * ItemSize(item) / 100;
-								03=else damage = Rnd(30, 50, sqr(CurTurn()) + CurTurn() + 3) * ItemSize(item) / 100;
-							}
-							04=else
-							05 ^{
-								01=if(ItemSize(item) <= 150) damage = 50 * ItemSize(item) / 100;
-								02=else if(ItemSize(item) < 300) damage = 40 * ItemSize(item) / 100;
-								03=else damage = Rnd(15, 25, sqr(CurTurn()) + CurTurn() - 3) * ItemSize(item) / 100;
-							}
-							06=int hull_dam = HullDamageSuspectibility(target, 2);
-							07=damage = damage * 100;
-							08=damage = round(damage / hull_dam, 1);
-							//Нужно ещё добавить сюда учёт защиты от астероидов у цели bonResistAsteroid
+							01=if(ItemSize(item) <= 150) damage = 50 * ItemSize(item) / 100;
+							02=else if(ItemSize(item) < 300) damage = 40 * ItemSize(item) / 100;
+							03=else damage = Rnd(15, 25, sqr(CurTurn()) + CurTurn() - 3) * ItemSize(item) / 100;
 						}
-						06=MissileMinDamage(ScriptItemActObject2(), damage - 1);
-						07=MissileMaxDamage(ScriptItemActObject2(), damage);
+						06=int hull_dam = HullDamageSuspectibility(target, 2);
+						07=damage = damage * 100;
+						08=damage = round(damage / hull_dam, 1);
+						//Нужно ещё добавить сюда учёт защиты от астероидов у цели bonResistAsteroid
 					}
+					09=MissileMinDamage(ScriptItemActObject2(), damage - 1);
+					10=MissileMaxDamage(ScriptItemActObject2(), damage);
 				}
 			}
 		}
 		//Снаряд физгана (или любая другая ракета игрока) попал по предмету/астероиду
-		12=else if(ScriptItemActionType(t_OnMissileHittingObject))
-		13 ^{
+		10=else if(ScriptItemActionType(t_OnMissileHittingObject))
+		11 ^{
 			01=if(CustomMissileType(ScriptItemActObject2()) != 'PhysGun') exit; //Если данное событие сработало не от физгана
 			02=target = ScriptItemActObject1();
 			03=acryn_name = BonusNumInCfg(EqSpecial(ScriptItemActObject2()));
@@ -950,10 +945,31 @@ ActCodeBlocksList ^{
 			}
 			10=else if(acryn_name == 'ExpPhysGun_PhysGunMissileFuelTank')
 			11 ^{
-				01=item = CreateEquipment(t_Cistern, MissileMaxDamage(ScriptItemActObject2()), tempActCodeData2, tempActCodeData);
+				01=item = CreateEquipment(t_Cistern, MissileMaxDamage(ScriptItemActObject2()), tempActCodeData3, tempActCodeData);
 				02=DropItemInSystem(ShipStar(Player()), item, CoordX(target), CoordY(target), CoordX(target), CoordY(target));
 				03=StopMovingItem(ShipStar(Player()), item);
 				04=FireWeapon(Player(), item, 0);
+			}
+			12=if(ShipInNormalSpace(Player()))
+			13 ^{
+				//Раскидываем вокруг места попадания минералы, которые имелись в запущенном из физгана астероиде
+				01=size_minerals = round(0.90 * GetEquipmentStats(physGun, 0) / 1.5); //-10% исходного содержания минералов
+				02=if(size_minerals)
+				03 ^{
+					01=int minerals_dropped = 0;
+					02=while(size_minerals)
+					03 ^{
+						01=part_size = 0;
+						02=if(size_minerals < 10 || minerals_dropped >= 3) part_size = size_minerals;
+						03=else part_size = round((0.2 * (0.1 * Rnd(0, 10)) + 0.55) * size_minerals);
+						04=size_minerals = size_minerals - part_size;
+						05=minerals_dropped = minerals_dropped = 1;
+						06=minerals = CreateGoods(t_Minerals, part_size, 1);
+						07=angle = 0.01 * Rnd(0, 200) * pi;
+						08=rad = Rnd(50, 150);
+						09=DropItemInSystem(ShipStar(Player()), minerals, CoordX(target), CoordY(target), round(cos(angle) * rad) + CoordX(target), round(sin(angle) * rad) + CoordY(target));
+					}
+				}
 			}
 		}
 	}
@@ -961,31 +977,16 @@ ActCodeBlocksList ^{
 	PhysGunActCodeQuest ^{
 		01=dword physGun = CurItem();
 		02=if(!ItemInScript(physGun)) exit;
-		03=if(CurrentForm() == 'Ship')
-		04 ^{
-			//Если физган заряжен
-			01=if(WeaponAmmunition(physGun))
-			02 ^{
-				//Если игрок выложил физган, то разряжаем его
-				01=if(FindItemInShip(Player(), physGun) == -1 && FormShipCurItem() != physGun)
-				02 ^{
-					01=WeaponAmmunition(physGun, 0);
-					02=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('ShipInfo.AddInfo.CustomInfos.ActCodes.PhysGunUseCode'));
-					03=SpecialToEquipment(FindBonusByNameInCfg('ExpPhysGun_PhysGunEmpty'), physGun);
-					04=exit;
-				}
-			}
-		}
-		05=if(!ItemIsInUse(physGun)) exit; //Если физган не экипирован
+		03=if(!ItemIsInUse(physGun)) exit; //Если физган не экипирован
 		//Игрок выстрелил из физгана или любого другого ракетного оружия (снаряд вылетает)
-		06=if(ScriptItemActionType(t_OnMissileShot))
-		07 ^{
+		04=if(ScriptItemActionType(t_OnMissileShot))
+		05 ^{
 			01=dword missile = ScriptItemActObject1();
 			02=if(CustomMissileType(missile) != 'PhysGun') exit; //Если данное событие сработало не от физгана
 			03=float angle = Angle(WeaponTarget(physGun), missile);
 			04=MissileAngle(missile, angle);
-			05=MissileLive(missile, 400);
-			06=MissileSpeed(missile, 3000);
+			05=MissileLive(missile, 200);
+			06=MissileSpeed(missile, 5000);
 			//Если игрок стреляет по нужному "астероиду", то всё ок
 			07=if(ObjectType(WeaponTarget(physGun)) == 5)
 			08 ^{
@@ -996,27 +997,43 @@ ActCodeBlocksList ^{
 			09=else MissileTarget(missile, 0);
 			10=SpecialToEquipment(FindBonusByNameInCfg('ExpPhysGun_PhysGunEmpty'), physGun);
 			11=WeaponAmmunition(physGun, 0);
-			12=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCode'));
+			//Астероид вылетел, "облегчаем" физган
+			12=ItemSize(physGun, ItemSize(physGun) - GetEquipmentStats(physGun, 0));
+			13=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCodeEmpty'));
 			//Также за каждый выстрел физган получает серьёзный износ
-			13=ItemDurability(physGun, ItemDurability(physGun) - 21);
+			14=ItemDurability(physGun, ItemDurability(physGun) - 21);
 		}
-		//Снаряд физгана (или любая другая ракета игрока) попал по кораблю/станции
-		08=else if(ScriptItemActionType(t_OnMissileShot2))
-		09 ^{
-			01=if(CustomMissileType(ScriptItemActObject2()) != 'PhysGun') exit; //Если данное событие сработало не от физгана
-			02=dword target = ScriptItemActObject1();
-			03=if(ObjectType(target) == 5)
-			04 ^{
-				01=if(ShipType(target) == 'KillerAsteroid') ScriptItemData(physGun, 1, ScriptItemData(physGun, 1) + 1);
+		//Снаряд физгана (или любая другая ракета игрока) попал по кораблю
+		06=else if(ScriptItemActionType(t_OnMissileShot2))
+		07 ^{
+			01=missile = ScriptItemActObject2();
+			02=if(CustomMissileType(missile) != 'PhysGun') exit; //Если данное событие сработало не от физгана
+			03=dword target = ScriptItemActObject1();
+			04=ScriptItemData(physGun, 1, ScriptItemData(physGun, 1) + 1);
+			//Раскидываем вокруг места попадания минералы, которые имелись в запущенном из физгана астероиде
+			05=int size_minerals = round(0.90 * GetEquipmentStats(physGun, 0) / 1.5); //-10% исходного содержания минералов
+			06=if(size_minerals)
+			07 ^{
+				01=int minerals_dropped = 0;
+				02=while(size_minerals)
+				03 ^{
+					01=int part_size = 0;
+					02=if(size_minerals < 10 || minerals_dropped >= 3) part_size = size_minerals;
+					03=else part_size = round((0.2 * (0.1 * Rnd(0, 10)) + 0.55) * size_minerals);
+					04=size_minerals = size_minerals - part_size;
+					05=minerals_dropped = minerals_dropped = 1;
+					06=dword minerals = CreateGoods(t_Minerals, part_size, 1);
+					07=angle = 0.01 * Rnd(0, 200) * pi;
+					08=int rad = Rnd(50, 150);
+					09=DropItemInSystem(ShipStar(target), minerals, CoordX(target), CoordY(target), round(cos(angle) * rad) + CoordX(target), round(sin(angle) * rad) + CoordY(target));
+				}
 			}
-			05=MissileMinDamage(ScriptItemActObject2(), 1);
-			06=MissileMaxDamage(ScriptItemActObject2(), 10);
 		}
 	}
 }
 UseCodeBlocksList ^{
 	//Юзкод любой версии физгана, нужен для подбора астероидов
-	PhysGunUseCode ^{
+	PhysGunUseCodeEmpty ^{
 		01=dword physGun = CurItem();
 		02=if(!ItemInScript(physGun)) exit;
 		03=if(ItemIsBroken(physGun)) exit;
@@ -1049,22 +1066,43 @@ UseCodeBlocksList ^{
 				01=MessageBox('В радиусе <color=0,50,200>200</color> ед. вокруг корабля астероидов не обнаружено');
 				02=exit;
 			}
+			07=int ast_size = round(1.5 * AsteroidMinerals(closest_asteroid));
+			//08=if(ast_size > ItemSize(ShipItems(Player(), 0)) / 2)
+			//09 ^{
+			//	01=MessageBox('Ближайший к кораблю астероид слишком большой и не может быть захвачен физганом');
+			//	02=exit;
+			//}
 			//И "заряжаем" его в физган
-			07=WeaponAmmunition(physGun, 1);
-			08=SetEquipmentStats(physGun, 1, 0);
-			09=SetEquipmentStats(physGun, 1, 1);
-			10=SpecialToEquipment(FindBonusByNameInCfg(CT('Script.Mod_ExpPhysGun.AsteroidToMissileList.' + Format(AsteroidGraph(closest_asteroid), 'Asteroid.', '', '') + '.AcrynNumInCfg')), physGun);
-			11=AsteroidRespawn(closest_asteroid);
-			12=dwd1 = GetCustomWeaponInfo('PhysGun');
-			13=SetCustomWeaponShotData(dwd1, 'Rocket', 5000, 800, 0);
-			14=SetCustomWeaponDamageData(dwd1, 1, 1, 4+2048);
+			08=WeaponAmmunition(physGun, 1);
+			//Минимальный урон
+			09=SetEquipmentStats(physGun, ast_size - 1, 1);
+			//Максимальный урон
+			10=SetEquipmentStats(physGun, ast_size, 0);
+			//Физган становится тяжелее на "вес" захваченного астероида
+			11=ItemSize(physGun, ItemSize(physGun) + ast_size);
+			12=SpecialToEquipment(FindBonusByNameInCfg(CT('Script.Mod_ExpPhysGun.AsteroidToMissileList.' + Format(AsteroidGraph(closest_asteroid), 'Asteroid.', '', '') + '.AcrynNumInCfg')), physGun);
+			13=AsteroidRespawn(closest_asteroid);
+			14=dwd1 = GetCustomWeaponInfo('PhysGun');
+			15=SetCustomWeaponShotData(dwd1, 'Rocket', 5000, 800, 0);
+			16=SetCustomWeaponDamageData(dwd1, 1, 1, 4+2048);
 			//Слегка изнашиваем физган за каждый успешный захват астероида
-			15=ItemDurability(physGun, ItemDurability(physGun) - Rnd(2, 5));
-			16=if(!ItemDurability(physGun)) ItemDurability(physGun, 0);
-			17=ItemOnUseCode(physGun, '');
-			18=MessageBox('Ближайший астероид успешно захвачен физганом');
+			17=ItemDurability(physGun, ItemDurability(physGun) - Rnd(2, 5));
+			18=if(!ItemDurability(physGun)) ItemDurability(physGun, 0);
+			19=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCodeLoaded'));
+			20=MessageBox('Ближайший астероид успешно захвачен физганом');
 		}
 		08=else MessageBox('Физган уже заряжен');
+	}
+	PhysGunUseCodeLoaded ^{
+		01=if(MessageBoxYesNo('Вы уверены, что хотите разрядить физган? Заряженный в него предмет будет уничтожен.'))
+		02 ^{
+			01=dword physGun = CurItem();
+			02=SpecialToEquipment(FindBonusByNameInCfg('ExpPhysGun_PhysGunEmpty'), physGun);
+			03=WeaponAmmunition(physGun, 0);
+			//Заряд извлечён, "облегчаем" физган
+			04=ItemSize(physGun, ItemSize(physGun) - GetEquipmentStats(physGun, 0));
+			05=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCodeEmpty'));
+		}
 	}
 }
 ShipInfo ^{
