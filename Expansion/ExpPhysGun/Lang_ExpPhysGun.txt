@@ -998,7 +998,7 @@ ActCodeBlocksList ^{
 			11=WeaponAmmunition(physGun, 0);
 			12=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCode'));
 			//Также за каждый выстрел физган получает серьёзный износ
-			13=ItemDurability(physGun, ItemDurability(physGun) - 15);
+			13=ItemDurability(physGun, ItemDurability(physGun) - 21);
 		}
 		//Снаряд физгана (или любая другая ракета игрока) попал по кораблю/станции
 		08=else if(ScriptItemActionType(t_OnMissileShot2))
@@ -1076,19 +1076,20 @@ ShipInfo ^{
                 Name=
 				OnActCodeTypes=t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
                 OnActCode ^{
-					//Если в "астероид" попал другой случайный астероид, он таки получит урон, но не слишком большой
+					//Если в "астероид" попал другой случайный астероид, он таки получит урон, но всего в 10% от общей структуры
                     01=if(ScriptItemActionType(t_OnTakingDamage))
                     02 ^{
-                        01=if(ObjectType(ScriptItemActObject1()) == 8) ScriptItemActParam(Rnd(33, 88));
+                        01=if(ObjectType(ScriptItemActObject1()) == 8) ScriptItemActParam(round(0.10 * ItemSize(ShipItems(ship, 0))));
                         02=else ScriptItemActParam(0);
                     }
+					//Если же в "астероид" запустил астероид игрок, то он получит урон в 34-41% от общей структуры
                     03=else if(ScriptItemActionType(t_OnTakingDamageMi))
                     04 ^{
                         01=if(CustomMissileType(ScriptItemActObject1()) == 'PhysGun')
                         02 ^{
 							01=dword ship = ScriptItemActShip();
 							//Считаем полученный астероидом урон
-                            02=ScriptItemActParam(round(0.01 * Rnd(34, 43) * ItemSize(ShipItems(ship, 0))));
+                            02=ScriptItemActParam(round(0.01 * Rnd(34, 41) * ItemSize(ShipItems(ship, 0))));
                         }
                         03=else ScriptItemActParam(0);
                     }
