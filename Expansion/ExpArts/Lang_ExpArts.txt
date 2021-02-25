@@ -736,7 +736,7 @@ UselessItems ^{
 		OnActStepTypes=1,2,3,4,5,6,7,8,9,10,11
         OnActCode ^{
 			01=dword bomb=CurItem();
-			02=dword primer_type=UselessItemData(bomb,2);
+			02=int primer_type=UselessItemData(bomb,2);
 			03=int boom_flag=0;
 			04=if(primer_type==1)exit;//Бомба уже детонировала и не может бахнуть повторно
             05=if(ScriptItemActionType(t_OnStep))
@@ -839,72 +839,73 @@ UselessItems ^{
 				}
 			}
 			//Происходит детонация бомбы
-			11=if(ScriptItemActionType(t_OnItemHit))boom_flag=(ItemType(ScriptItemActObject1())==t_Weapon16 || ObjectType(ScriptItemActObject1())==7);
-			12=else if(ScriptItemActionType(t_OnItemDestroy))boom_flag=(primer_type<=-4);
-			13=else if(ScriptItemActionType(t_OnItemPickUp))boom_flag=(ScriptItemActObject1()==bomb && primer_type<=-5);
+			11=if(ScriptItemActionType(t_OnItemHit)) boom_flag = (ItemType(ScriptItemActObject1()) == t_Weapon16 || ObjectType(ScriptItemActObject1()) == 7);
+			12=else if(ScriptItemActionType(t_OnItemDestroy)) boom_flag = (primer_type <= -4);
+			13=else if(ScriptItemActionType(t_OnItemPickUp)) boom_flag = (ScriptItemActObject1() == bomb && primer_type <= -5);
 			14=if(boom_flag)
             15 ^{
 				01=dword ship;
 				02=dword item;
-				03=dword pick_ship=0;
-				04=dword bomb_star=GalaxyStar(UselessItemData(bomb,3));
-				05=int k=0;
-				06=int Tdist=0;
-				07=int Tdamage=0;
-				08=int Edamage=0;
-				09=int targetInfo=-2;
-				10=if(ScriptItemActionType(t_OnItemHit))ItemDestroy(bomb,0);
+				03=dword pick_ship = 0;
+				04=dword bomb_star = GalaxyStar(UselessItemData(bomb, 3));
+				05=int k;
+				06=int Tdist = 0;
+				07=int Tdamage = 0;
+				08=int Edamage = 0;
+				09=int targetInfo = -2;
+				10=if(ScriptItemActionType(t_OnItemHit))ItemDestroy(bomb, 0);
 				11=if(ScriptItemActionType(t_OnItemPickUp))
 				12 ^{
-					01=pick_ship=ScriptItemActShip();
+					01=pick_ship = ScriptItemActShip();
 					02=OrderNone(pick_ship);
 					//Перед активацией эффекта обязательно делаем проверку на нахождение в пространстве системы игрока (!!!)
-					03=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))
+					03=if(ShipStar(Player()) == bomb_star && ShipInNormalSpace(Player()))
 					04 ^{
-						01=targetInfo=ShipFindCustomShipInfoByType(pick_ship,'LifeboatLaunchInfo');
-						02=if(targetInfo==-1)ShowStaticEffect('RNDbomb_1BAM',CoordX(pick_ship),CoordY(pick_ship));
-						03=else ShipCustomShipInfoTextData(pick_ship,targetInfo,2,'ShowBAMEffect');
+						01=targetInfo = ShipFindCustomShipInfoByType(pick_ship, 'LifeboatLaunchInfo');
+						02=if(targetInfo == -1) ShowStaticEffect('RNDbomb_1BAM', CoordX(pick_ship), CoordY(pick_ship));
+						03=else ShipCustomShipInfoTextData(pick_ship, targetInfo, 2, 'ShowBAMEffect');
 					}
 				}
 				13=else
 				14 ^{
 					//Перед активацией эффекта обязательно делаем проверку на нахождение в пространстве системы игрока (!!!)
-					01=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))
+					01=if(ShipStar(Player()) == bomb_star && ShipInNormalSpace(Player()))
 					02 ^{
 						01=if(ScriptItemActionType(t_OnItemHit))
 						02 ^{
-							01=if(ItemType(ScriptItemActObject1())==t_Weapon16 || ObjectType(ScriptItemActObject1())==7)
+							01=if(ItemType(ScriptItemActObject1()) == t_Weapon16 || ObjectType(ScriptItemActObject1()) == 7)
 							02 ^{
 								//Отдельная анимация (по длительности) для эсодафера
-								01=if(ItemType(ScriptItemActObject1())==t_Weapon16)ShowStaticEffect('RNDbomb_1SlowBAM',CoordX(bomb),CoordY(bomb));
+								01=if(ItemType(ScriptItemActObject1()) == t_Weapon16) ShowStaticEffect('RNDbomb_1SlowBAM', CoordX(bomb), CoordY(bomb));
 								//Отдельная анимация (по длительности) для попадания ракеты/торпеды
-								02=if(ObjectType(ScriptItemActObject1())==7)ShowStaticEffect('RNDbomb_1FastBAM',CoordX(bomb),CoordY(bomb));
+								02=if(ObjectType(ScriptItemActObject1()) == 7) ShowStaticEffect('RNDbomb_1FastBAM', CoordX(bomb), CoordY(bomb));
 							}
 						}
 						03=else ShowStaticEffect('RNDbomb_1BAM',CoordX(bomb),CoordY(bomb));
 					}
 				}
 				//Дамажим корабли в радиусе взрыва
-				15=for(k=0;k<StarShips(bomb_star);k=k+1)
+				15=for(k = 0; k < StarShips(bomb_star); k = k + 1)
 				16 ^{
-					01=ship=StarShips(bomb_star,k);
+					01=ship = StarShips(bomb_star, k);
 					02=if(ScriptItemActionType(t_OnItemPickUp))
 					03 ^{
-						01=if(Dist(pick_ship,ship)>250)continue;
-						02=else Tdist=Dist(pick_ship,ship);
+						01=if(Dist(pick_ship, ship) > 250) continue;
+						02=else Tdist = Dist(pick_ship, ship);
 					}
 					04=else
 					05 ^{
-						01=if(Dist(bomb,ship)>250)continue;
-						02=else Tdist=Dist(bomb,ship);
+						01=if(Dist(bomb, ship) > 250) continue;
+						02=else Tdist = Dist(bomb, ship);
 					}
-					06=if(!ShipInNormalSpace(ship))continue;
-					//Вычисляем урон по формуле round(BombPowerMax-(BombPowerMax-BombPowerMin)*dist2/BombRadius2), где 2 - квадрат
+					06=if(!ShipInNormalSpace(ship)) continue;
+					//Вычисляем урон по формуле round(BombPowerMax - (BombPowerMax - BombPowerMin) * dist2 / BombRadius2), где 2 - квадрат
 					07=Tdamage = round(800.0 - (400.0 * (Tdist * Tdist) / 62500));
 					//Добавляем визуального дамага для подобравшего бомбу корабля, чтобы как бы гарантированно его уничтожить
 					08=if(ship == pick_ship)
 					09 ^{
-						01=if(HullHP(pick_ship) > Tdamage) Tdamage = HullHP(pick_ship) + Rnd(43, 157);
+						01=if(ScriptItemActObject2()) Tdamage = 800; //Для вызова данного акткода из ExpPhysGun
+						02=else if(HullHP(pick_ship) > Tdamage) Tdamage = HullHP(pick_ship) + Rnd(43, 157);
 					}
 					//Огромный астероид из ExpPhysGun дамага от бомбы не получит
 					10=if(ShipType(ship) == 'KillerAsteroid') Tdamage = 0;
@@ -915,8 +916,8 @@ UselessItems ^{
 					13=else
 					14 ^{
 						//Проверяем, не установлена ли на корабле спасательная шлюпка и если да, то говорим ему не отображать над собой урон посредством маркера в инфошке
-						01=if(targetInfo == -2) targetInfo = ShipFindCustomShipInfoByType(ship,'LifeboatLaunchInfo');
-						02=if(targetInfo > -1)
+						01=if(targetInfo == -2) targetInfo = ShipFindCustomShipInfoByType(ship, 'LifeboatLaunchInfo');
+						02=if(~targetInfo)
 						03 ^{
 							01=ShipCustomShipInfoTextData(ship, targetInfo, 3, bomb);
 							02=DealDamageToShip(ship, bomb, 100000, 0);
@@ -951,23 +952,23 @@ UselessItems ^{
 						01=if(ItemType(item) == t_ArtefactBomb)
 						02 ^{
 							//Отрисовываем взрыв кварки обычной кварке, т.к. при ItemDestroy 1 "родного" визуального эффекта у неё не будет 
-							01=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))ShowStaticEffect('RNDbomb_1BAM',CoordX(item),CoordY(item));
-							02=ItemDestroy(item,1);
+							01=if(ShipStar(Player()) == bomb_star && ShipInNormalSpace(Player())) ShowStaticEffect('RNDbomb_1BAM', CoordX(item), CoordY(item));
+							02=ItemDestroy(item, 1);
 						}
-						03=else ItemDestroy(item,1);
+						03=else ItemDestroy(item, 1);
 					}
 					10=else continue;
 				}
-				19=UselessItemData(bomb,2,1);
-				20=if(ScriptItemActionType(t_OnStep,11))
+				19=UselessItemData(bomb, 2, 1);
+				20=if(ScriptItemActionType(t_OnStep, 11))
 				21 ^{
 					01=if(StarShips(bomb_star))
 					02 ^{
-						01=FireWeapon(StarShips(bomb_star,0),bomb,0);
+						01=FireWeapon(StarShips(bomb_star, 0), bomb, 0);
 					}
-					03=else ItemDestroy(bomb,1);
+					03=else ItemDestroy(bomb, 1);
 				}
-				22=else ItemDestroy(bomb,1);
+				22=else ItemDestroy(bomb, 1);
             }
         }
         Owner=PirateClan
@@ -980,57 +981,57 @@ UselessItems ^{
 		OnActCodeTypes=t_OnStep,t_OnDropItem,t_OnDropItemFixed,t_OnItemPickUp,t_OnItemHit,t_OnItemDestroy
 		OnActStepTypes=1,2,3,4,5,6,7,8,9,10,11
         OnActCode ^{
-			01=dword bomb=CurItem();
-			02=dword primer_type=UselessItemData(bomb,2);
-			03=int boom_flag=0;
-			04=if(primer_type==1)exit;//Бомба уже детонировала и не может бахнуть повторно
+			01=dword bomb = CurItem();
+			02=int primer_type = UselessItemData(bomb, 2);
+			03=int boom_flag = 0;
+			04=if(primer_type == 1) exit;//Бомба уже детонировала и не может бахнуть повторно
             05=if(ScriptItemActionType(t_OnStep))
             06 ^{//Считаем дни до детонации
-				01=if(ScriptItemActParam()==5)
+				01=if(ScriptItemActParam() == 5)
 				02 ^{
-					01=if(primer_type==-5 || primer_type<=-7)
+					01=if(primer_type == -5 || primer_type <= -7)
 					02 ^{
-						01=if(UselessItemData(bomb,1)>0)
+						01=if(UselessItemData(bomb, 1) > 0)
 						02 ^{
-							01=if(UselessItemData(bomb,1)==1)boom_flag=1;
-							//UselessItemData(bomb,1,UselessItemData(bomb,1)-2);
-							02=else UselessItemData(bomb,1,UselessItemData(bomb,1)-1);
+							01=if(UselessItemData(bomb, 1) == 1) boom_flag = 1;
+							//UselessItemData(bomb, 1, UselessItemData(bomb, 1) - 2);
+							02=else UselessItemData(bomb, 1, UselessItemData(bomb, 1) - 1);
 						}
-						03=if(primer_type==-5)
+						03=if(primer_type == -5)
 						04 ^{
-							01=primer_type=-6;
-							02=UselessItemData(bomb,2,-6);
+							01=primer_type = -6;
+							02=UselessItemData(bomb, 2, -6);
 						}
-						05=else if(primer_type==-7)
+						05=else if(primer_type == -7)
 						06 ^{
-							01=primer_type=-9;
-							02=UselessItemData(bomb,2,-9);
+							01=primer_type = -9;
+							02=UselessItemData(bomb, 2, -9);
 						}
 					}
 				}
 				//Проверяем все корабли и станции в системе, сверяем расстояние до бомбы и если они подошли слишком близко - активируем взрыватель
-				03=if(primer_type==-6 || primer_type==-9)
+				03=if(primer_type == -6 || primer_type == -9)
 				04 ^{
 					01=if(!boom_flag)
 					02 ^{
-						01=bomb_star=ScriptItemActObject1();
-						02=for(k=0;k<StarShips(bomb_star);k=k+1)
+						01=bomb_star = ScriptItemActObject1();
+						02=for(k = 0; k < StarShips(bomb_star); k = k + 1)
 						03 ^{
-							01=ship=StarShips(bomb_star,k);
-							02=if(Dist(bomb,ship)<=70)
+							01=ship = StarShips(bomb_star, k);
+							02=if(Dist(bomb, ship) <= 70)
 							03 ^{
-								01=boom_flag=2;
+								01=boom_flag = 2;
 								02=break;
 							}
 						}
 						04=if(!boom_flag)
 						05 ^{
-							01=for(k=0;k<StarRuins(bomb_star);k=k+1)
+							01=for(k = 0; k < StarRuins(bomb_star); k = k + 1)
 							02 ^{
-								01=ship=StarRuins(bomb_star,k);
-								02=if(Dist(bomb,ship)<=70)
+								01=ship = StarRuins(bomb_star, k);
+								02=if(Dist(bomb, ship) <= 70)
 								03 ^{
-									01=boom_flag=2;
+									01=boom_flag = 2;
 									02=break;
 								}
 							}
@@ -1040,60 +1041,60 @@ UselessItems ^{
             }
 			07=else if(ScriptItemActionType(t_OnDropItem) || ScriptItemActionType(t_OnDropItemFixed))
             08 ^{
-				01=if(ScriptItemActObject1()==bomb)
+				01=if(ScriptItemActObject1() == bomb)
 				02 ^{
 					//Запоминаем систему, в которой выкинули бомбу
-					01=UselessItemData(bomb,3,Id(ShipStar(ScriptItemActShip()))-1);
+					01=UselessItemData(bomb, 3, Id(ShipStar(ScriptItemActShip())) - 1);
 					//Включаем возможность детонации (выбросили в космос)
-					02=if(primer_type==0)
+					02=if(primer_type == 0)
 					03 ^{
-						01=primer_type=-4;
-						02=UselessItemData(bomb,2,-4);
+						01=primer_type = -4;
+						02=UselessItemData(bomb, 2, -4);
 					}
 					//Активируем контактный взрыватель
-					04=else if(primer_type==-1)
+					04=else if(primer_type == -1)
 					05 ^{
-						01=primer_type=-5;
-						02=UselessItemData(bomb,2,-5);
+						01=primer_type = -5;
+						02=UselessItemData(bomb, 2, -5);
 					}
 					//Активируем таймер
-					06=else if(primer_type==-2)
+					06=else if(primer_type == -2)
 					07 ^{
-						01=UselessItemText(bomb,CT('UselessItems.'+EquipmentImageName(bomb)+'.Text')+substr(CT('Cheat.Ok'),0,2)+'<br><clr><clrEnd><br>'+CT('Script.Mod_ExpArts.WillBeActivatedIn'));
-						02=primer_type=-8;
-						03=UselessItemData(bomb,2,-8);
+						01=UselessItemText(bomb, CT('UselessItems.' + EquipmentImageName(bomb) + '.Text') + substr(CT('Cheat.Ok'), 0, 2) + '<br><clr><clrEnd><br>' + CT('Script.Mod_ExpArts.WillBeActivatedIn'));
+						02=primer_type = -8;
+						03=UselessItemData(bomb, 2, -8);
 					}
 					//Активируем таймер и контактный взрыватель
-					08=else if(primer_type==-3)
+					08=else if(primer_type == -3)
 					09 ^{
-						01=UselessItemText(bomb,CT('UselessItems.'+EquipmentImageName(bomb)+'.Text')+substr(CT('Cheat.Ok'),0,2)+'<br><clr><clrEnd><br>'+CT('Script.Mod_ExpArts.WillBeActivatedIn'));
-						02=primer_type=-7;
-						03=UselessItemData(bomb,2,-7);
+						01=UselessItemText(bomb, CT('UselessItems.' + EquipmentImageName(bomb) + '.Text') + substr(CT('Cheat.Ok'), 0, 2) + '<br><clr><clrEnd><br>' + CT('Script.Mod_ExpArts.WillBeActivatedIn'));
+						02=primer_type = -7;
+						03=UselessItemData(bomb, 2, -7);
 					}
 				}
 			}
 			09=else if(ScriptItemActionType(t_OnItemPickUp))
             10 ^{//Выключаем возможность детонации (чтобы не бахала в трюме)
-				01=if(ScriptItemActObject1()==bomb)
+				01=if(ScriptItemActObject1() == bomb)
 				02 ^{
-					01=if(primer_type==-4)
+					01=if(primer_type == -4)
 					02 ^{
-						01=primer_type=0;
-						02=UselessItemData(bomb,2,0);
+						01=primer_type = 0;
+						02=UselessItemData(bomb, 2, 0);
 					}
 				}
 			}
 			//Отдельно даём команду проиграть звук активации бомбы при попадании ракеты/торпеды, поскольку по событию ItemDestroy этот звук почему-то не воспроизводится
 			11=else if(ScriptItemActionType(t_OnItemHit))
 			12 ^{
-				01=if(ObjectType(ScriptItemActObject1())==7)
+				01=if(ObjectType(ScriptItemActObject1()) == 7)
 				02 ^{
-					01=if(ShipStar(Player())==GalaxyStar(UselessItemData(bomb,3)-1) && ShipInNormalSpace(Player()))FilmSound('Sound.RndHole03',bomb);
+					01=if(ShipStar(Player()) == GalaxyStar(UselessItemData(bomb, 3) - 1) && ShipInNormalSpace(Player())) FilmSound('Sound.RndHole03', bomb);
 				}
 			}
 			//Происходит активация бомбы
-            13=if(ScriptItemActionType(t_OnItemDestroy)) boom_flag=(primer_type<=-4);
-			14=else if(ScriptItemActionType(t_OnItemPickUp)) boom_flag=(ScriptItemActObject1()==bomb && primer_type<=-5);
+            13=if(ScriptItemActionType(t_OnItemDestroy)) boom_flag = (primer_type <= -4);
+			14=else if(ScriptItemActionType(t_OnItemPickUp)) boom_flag = (ScriptItemActObject1() == bomb && primer_type <= -5);
 			15=if(boom_flag)
             16 ^{
 				01=dword ship;
@@ -1142,7 +1143,7 @@ UselessItems ^{
 					08=str tempType = ShipType(ship);
 					09=if(ship == Keller() || ship == Terron() || ship == Blazer() || tempType == 'Machpella' || tempType == 'KillerAsteroid') continue;
 					//Вычисляем урон по формуле round(BombPowerMax - (BombPowerMax-BombPowerMin) * dist2 / BombRadius2), где 2 - квадрат
-					10=DayLong=round(15.0 - (10.0 * (Tdist * Tdist) / 62500));//Линейная формула без квадрата DayLong = 15 - round(0.04 * Tdist);
+					10=DayLong = round(15.0 - (10.0 * (Tdist * Tdist) / 62500)); //Линейная формула без квадрата DayLong = 15 - round(0.04 * Tdist);
 					//Вешаем на корабль вращение на месте (если взлетает, то вращение откладывается до следующего хода)
 					11=OrderLock(ship, 1);
 					12=if(!ShipIsTakeoff(ship))
@@ -1244,57 +1245,57 @@ UselessItems ^{
 		OnActCodeTypes=t_OnStep,t_OnDropItem,t_OnDropItemFixed,t_OnItemPickUp,t_OnItemHit,t_OnItemDestroy
 		OnActStepTypes=1,2,3,4,5,6,7,8,9,10,11
         OnActCode ^{
-			01=dword bomb=CurItem();
-			02=dword primer_type=UselessItemData(bomb,2);
-			03=int boom_flag=0;
-			04=if(primer_type==1)exit;//Бомба уже детонировала и не может бахнуть повторно
+			01=dword bomb = CurItem();
+			02=int primer_type = UselessItemData(bomb, 2);
+			03=int boom_flag = 0;
+			04=if(primer_type == 1) exit; //Эта бомба уже детонировала и не может бахнуть повторно
             05=if(ScriptItemActionType(t_OnStep))
-            06 ^{//Считаем дни до детонации
-				01=if(ScriptItemActParam()==5)
+            06 ^{ //Считаем дни до детонации
+				01=if(ScriptItemActParam() == 5)
 				02 ^{
-					01=if(primer_type==-5 || primer_type<=-7)
+					01=if(primer_type == -5 || primer_type <= -7)
 					02 ^{
-						01=if(UselessItemData(bomb,1)>0)
+						01=if(UselessItemData(bomb, 1) > 0)
 						02 ^{
-							01=if(UselessItemData(bomb,1)==1)boom_flag=1;
-							//UselessItemData(bomb,1,UselessItemData(bomb,1)-2);
-							02=else UselessItemData(bomb,1,UselessItemData(bomb,1)-1);
+							01=if(UselessItemData(bomb, 1) == 1) boom_flag = 1;
+							//UselessItemData(bomb, 1, UselessItemData(bomb, 1) - 2);
+							02=else UselessItemData(bomb, 1, UselessItemData(bomb, 1) - 1);
 						}
-						03=if(primer_type==-5)
+						03=if(primer_type == -5)
 						04 ^{
-							01=primer_type=-6;
-							02=UselessItemData(bomb,2,-6);
+							01=primer_type = -6;
+							02=UselessItemData(bomb, 2, -6);
 						}
-						05=else if(primer_type==-7)
+						05=else if(primer_type == -7)
 						06 ^{
-							01=primer_type=-9;
-							02=UselessItemData(bomb,2,-9);
+							01=primer_type = -9;
+							02=UselessItemData(bomb, 2, -9);
 						}
 					}
 				}
 				//Проверяем все корабли и станции в системе, сверяем расстояние до бомбы и если они подошли слишком близко - активируем взрыватель
-				03=if(primer_type==-6 || primer_type==-9)
+				03=if(primer_type == -6 || primer_type == -9)
 				04 ^{
 					01=if(!boom_flag)
 					02 ^{
-						01=bomb_star=ScriptItemActObject1();
-						02=for(k=0;k<StarShips(bomb_star);k=k+1)
+						01=bomb_star = ScriptItemActObject1();
+						02=for(k = 0; k < StarShips(bomb_star); k = k + 1)
 						03 ^{
-							01=ship=StarShips(bomb_star,k);
-							02=if(Dist(bomb,ship)<=70)
+							01=ship = StarShips(bomb_star, k);
+							02=if(Dist(bomb, ship) <= 70)
 							03 ^{
-								01=boom_flag=2;
+								01=boom_flag = 2;
 								02=break;
 							}
 						}
 						04=if(!boom_flag)
 						05 ^{
-							01=for(k=0;k<StarRuins(bomb_star);k=k+1)
+							01=for(k = 0; k < StarRuins(bomb_star); k = k + 1)
 							02 ^{
-								01=ship=StarRuins(bomb_star,k);
-								02=if(Dist(bomb,ship)<=70)
+								01=ship = StarRuins(bomb_star, k);
+								02=if(Dist(bomb, ship) <= 70)
 								03 ^{
-									01=boom_flag=2;
+									01=boom_flag = 2;
 									02=break;
 								}
 							}
@@ -1304,87 +1305,87 @@ UselessItems ^{
             }
 			07=else if(ScriptItemActionType(t_OnDropItem) || ScriptItemActionType(t_OnDropItemFixed))
             08 ^{
-				01=if(ScriptItemActObject1()==bomb)
+				01=if(ScriptItemActObject1() == bomb)
 				02 ^{
 					//Запоминаем систему, в которой выкинули бомбу
-					01=UselessItemData(bomb,3,Id(ShipStar(ScriptItemActShip()))-1);
+					01=UselessItemData(bomb, 3, Id(ShipStar(ScriptItemActShip())) - 1);
 					//Включаем возможность детонации (выбросили в космос)
-					02=if(primer_type==0)
+					02=if(primer_type == 0)
 					03 ^{
-						01=primer_type=-4;
-						02=UselessItemData(bomb,2,-4);
+						01=primer_type = -4;
+						02=UselessItemData(bomb, 2, -4);
 					}
 					//Активируем контактный взрыватель
-					04=else if(primer_type==-1)
+					04=else if(primer_type == -1)
 					05 ^{
-						01=primer_type=-5;
-						02=UselessItemData(bomb,2,-5);
+						01=primer_type = -5;
+						02=UselessItemData(bomb, 2, -5);
 					}
 					//Активируем таймер
-					06=else if(primer_type==-2)
+					06=else if(primer_type == -2)
 					07 ^{
-						01=UselessItemText(bomb,CT('UselessItems.'+EquipmentImageName(bomb)+'.Text')+substr(CT('Cheat.Ok'),0,2)+'<br><clr><clrEnd><br>'+CT('Script.Mod_ExpArts.WillBeActivatedIn'));
-						02=primer_type=-8;
-						03=UselessItemData(bomb,2,-8);
+						01=UselessItemText(bomb, CT('UselessItems.' + EquipmentImageName(bomb) + '.Text') + substr(CT('Cheat.Ok'), 0, 2) + '<br><clr><clrEnd><br>' + CT('Script.Mod_ExpArts.WillBeActivatedIn'));
+						02=primer_type = -8;
+						03=UselessItemData(bomb, 2, -8);
 					}
 					//Активируем таймер и контактный взрыватель
-					08=else if(primer_type==-3)
+					08=else if(primer_type == -3)
 					09 ^{
-						01=UselessItemText(bomb,CT('UselessItems.'+EquipmentImageName(bomb)+'.Text')+substr(CT('Cheat.Ok'),0,2)+'<br><clr><clrEnd><br>'+CT('Script.Mod_ExpArts.WillBeActivatedIn'));
-						02=primer_type=-7;
-						03=UselessItemData(bomb,2,-7);
+						01=UselessItemText(bomb, CT('UselessItems.' + EquipmentImageName(bomb) + '.Text') + substr(CT('Cheat.Ok'), 0, 2) + '<br><clr><clrEnd><br>' + CT('Script.Mod_ExpArts.WillBeActivatedIn'));
+						02=primer_type = -7;
+						03=UselessItemData(bomb, 2, -7);
 					}
 				}
 			}
 			09=else if(ScriptItemActionType(t_OnItemPickUp))
-            10 ^{//Выключаем возможность детонации (чтобы не бахала в трюме)
-				01=if(ScriptItemActObject1()==bomb)
+            10 ^{ //Выключаем возможность детонации (чтобы не бахала в трюме)
+				01=if(ScriptItemActObject1() == bomb)
 				02 ^{
-					01=if(primer_type==-4)
+					01=if(primer_type == -4)
 					02 ^{
-						01=primer_type=0;
-						02=UselessItemData(bomb,2,0);
+						01=primer_type = 0;
+						02=UselessItemData(bomb, 2, 0);
 					}
 				}
 			}
 			//Отдельно даём команду проиграть звук активации бомбы при попадании ракеты/торпеды, поскольку по событию ItemDestroy этот звук почему-то не воспроизводится
 			11=else if(ScriptItemActionType(t_OnItemHit))
 			12 ^{
-				01=if(ObjectType(ScriptItemActObject1())==7)
+				01=if(ObjectType(ScriptItemActObject1()) == 7)
 				02 ^{
-					01=if(ShipStar(Player())==GalaxyStar(UselessItemData(bomb,3)-1) && ShipInNormalSpace(Player()))FilmSound('Sound.Zamknulo',bomb);
+					01=if(ShipStar(Player()) == GalaxyStar(UselessItemData(bomb, 3) - 1) && ShipInNormalSpace(Player())) FilmSound('Sound.Zamknulo', bomb);
 				}
 			}
-            13=if(ScriptItemActionType(t_OnItemDestroy))boom_flag=(primer_type<=-4);
-			14=else if(ScriptItemActionType(t_OnItemPickUp))boom_flag=(ScriptItemActObject1()==bomb && primer_type<=-5);
+            13=if(ScriptItemActionType(t_OnItemDestroy)) boom_flag = (primer_type <= -4);
+			14=else if(ScriptItemActionType(t_OnItemPickUp)) boom_flag = (ScriptItemActObject1() == bomb && primer_type <= -5);
 			15=if(boom_flag)
             16 ^{
-				01=dword ship=0;
-				02=dword pick_ship=0;
-				03=dword bomb_star=GalaxyStar(UselessItemData(bomb,3));
-				04=int k=0;
-				05=int j=0;
-				06=int reduce=0;
-				07=int Tdist=0;
-				08=dword item=0;
+				01=dword ship = 0;
+				02=dword pick_ship = 0;
+				03=dword bomb_star = GalaxyStar(UselessItemData(bomb, 3));
+				04=int k;
+				05=int j;
+				06=int reduce = 0;
+				07=int Tdist = 0;
+				08=dword item = 0;
 				09=if(ScriptItemActionType(t_OnItemPickUp))
 				10 ^{
-					01=pick_ship=ScriptItemActShip();
+					01=pick_ship = ScriptItemActShip();
 					02=OrderNone(pick_ship);
 					//Перед активацией эффекта обязательно делаем проверку на нахождение в пространстве системы игрока (!!!)
-					03=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))
+					03=if(ShipStar(Player()) == bomb_star && ShipInNormalSpace(Player()))
 					04 ^{
-						01=ShowStaticEffect('RNDbomb_3BAM',CoordX(pick_ship),CoordY(pick_ship));
-						02=FilmSound('Sound.Zamknulo',pick_ship);
+						01=ShowStaticEffect('RNDbomb_3BAM', CoordX(pick_ship), CoordY(pick_ship));
+						02=FilmSound('Sound.Zamknulo', pick_ship);
 					}
 				}
 				11=else
 				12 ^{
 					//Перед активацией эффекта обязательно делаем проверку на нахождение в пространстве системы игрока (!!!)
-					01=if(ShipStar(Player())==bomb_star && ShipInNormalSpace(Player()))
+					01=if(ShipStar(Player()) == bomb_star && ShipInNormalSpace(Player()))
 					02 ^{
-						01=ShowStaticEffect('RNDbomb_3BAM',CoordX(bomb),CoordY(bomb));
-						02=FilmSound('Sound.Zamknulo',bomb);
+						01=ShowStaticEffect('RNDbomb_3BAM', CoordX(bomb), CoordY(bomb));
+						02=FilmSound('Sound.Zamknulo', bomb);
 					}
 				}
 				13=for(k = 0; k < StarShips(bomb_star); k = k + 1)
@@ -1404,66 +1405,67 @@ UselessItems ^{
 					//Клисане урона не получают вообще, т.к. являются псевдобиологическими конструктами
 					07=str tempType = ShipType(ship);
 					08=if(tempType == 'Klissan' || tempType == 'Klissan1' || tempType == 'Klissan2' || tempType == 'Klissan3' || tempType == 'Klissan4' || tempType == 'Klissan5' || tempType == 'KB' || tempType == 'Machpella' || tempType == 'KillerAsteroid') continue;
+					09=int is_the_boss = (ship == Keller() || ship == Terron() || ship == Blazer());
 					//Ломаем экипированное оборудование
-					09=for(j = 1; j < ShipItems(ship); j = j + 1)
-					10 ^{
+					10=for(j = 1; j < ShipItems(ship); j = j + 1)
+					11 ^{
 						01=item = ShipItems(ship, j);
 						02=if(!ItemIsInUse(item)) continue;
 						//Исключаем биогенных дроидов
 						03=if(~EqSpecial(item))
 						04 ^{
-							01=if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(item))+'.BioEquip')==1)continue;
+							01=if(CT('MicroModuls.' + BonusNumInCfg(EqSpecial(item)) + '.BioEquip') == 1) continue;
 						}
 						//Исключаем клисанское оборудование и пушки
-						05=if(EqCustomFaction(item)=='Klissan')continue;
-						//Вычисляем урон по формуле round(BombPowerMax-(BombPowerMax-BombPowerMin)*dist2/BombRadius2), где 2 - квадрат
-						06=reduce=round(75.0-(45.0*(Tdist*Tdist)/62500));//Линейная формула без квадрата reduce=75-round(0.24*Tdist);
-						07=if(!ShipProtectability(ship))reduce=reduce*2;
-						08=if(ship==pick_ship)reduce=100;
+						05=if(EqCustomFaction(item) == 'Klissan') continue;
+						//Вычисляем урон по формуле round(BombPowerMax - (BombPowerMax - BombPowerMin) * dist2 / BombRadius2), где 2 - квадрат
+						06=reduce = round(75.0 - (45.0 * (Tdist * Tdist) / 62500)); //Линейная формула без квадрата reduce = 75 - round(0.24 * Tdist);
+						07=if(!ShipProtectability(ship)) reduce = reduce * 2;
+						08=if(ship == pick_ship) reduce = 100;
 						//Боссы доминаторов получают крайне малый урон
-						09=if(ship==Keller() || ship==Terron() || ship==Blazer())reduce=reduce/10;
-						10=if(ItemDurability(item)-reduce<0)ItemDurability(item,0);
-						11=else ItemDurability(item,ItemDurability(item)-reduce);
+						09=if(is_the_boss) reduce = reduce / 10;
+						10=if(ItemDurability(item) - reduce < 0) ItemDurability(item, 0);
+						11=else ItemDurability(item, ItemDurability(item) - reduce);
 						//Ломай двигатели полностью! (но только не боссам)
-						12=if(ship==Keller() || ship==Terron() || ship==Blazer())continue;
-						13=ItemDurability(ShipEqInSlot(ship,t_Engine),0);
+						12=if(is_the_boss) continue;
+						13=ItemDurability(ShipEqInSlot(ship, t_Engine), 0);
 						//Также накладываем на все корабли в радиусе поражения ЭМ-помехи
 						//DealDamageToShip игнорирует броню, но игровая функция накладывающая эффект об этом не знает, а потому плюсует броню к реально полученному урону
 						//Таким образом, сила брони корабля, по сути, задаёт силу накладываемого ниже эффекта
-						14=int memHP=HullHP(ship);
-						15=HullHP(ship,HullHP(ship)+100);
-						16=ShipSpecialBonuses(ship,bonHull,ShipSpecialBonuses(ship,bonHull)+reduce*15);
-						17=DealDamageToShip(ship,0,10,256);
-						18=ShipSpecialBonuses(ship,bonHull,ShipSpecialBonuses(ship,bonHull)-reduce*15);
-						19=if(HullHP(ship)!=memHP)HullHP(ship,memHP);
+						14=int memHP = HullHP(ship);
+						15=HullHP(ship, HullHP(ship) + 100);
+						16=ShipSpecialBonuses(ship, bonHull, ShipSpecialBonuses(ship, bonHull) + reduce * 15);
+						17=DealDamageToShip(ship, 0, 10, 256);
+						18=ShipSpecialBonuses(ship, bonHull, ShipSpecialBonuses(ship, bonHull) - reduce * 15);
+						19=if(HullHP(ship) != memHP) HullHP(ship, memHP);
 					}
 					//Ломаем экипированные артефакты
-					11=for(j=1;j<=4;j=j+1)
-					12 ^{
-						01=item=ShipEqInSlot(ship,t_Artefact,j);
-						02=if(ItemType(item)>t_Artefact && ItemType(item)<t_ArtefactRadar)continue;
-						//Вычисляем урон по формуле round(BombPowerMax-(BombPowerMax-BombPowerMin)*dist2/BombRadius2), где 2 - квадрат
-						03=reduce=round(75.0-(45.0*(Tdist*Tdist)/62500));//Линейная формула без квадрата reduce=75-round(0.24*Tdist);
-						04=if(!ShipProtectability(ship))reduce=reduce*2;
-						05=if(ship==pick_ship)reduce=100;
+					12=for(j = 1; j <= 4; j = j + 1)
+					13 ^{
+						01=item = ShipEqInSlot(ship, t_Artefact, j);
+						02=if(ItemType(item) > t_Artefact && ItemType(item) < t_ArtefactRadar) continue;
+						//Вычисляем урон по формуле round(BombPowerMax - (BombPowerMax - BombPowerMin) * dist2 / BombRadius2), где 2 - квадрат
+						03=reduce = round(75.0 - (45.0 * (Tdist * Tdist) / 62500)); //Линейная формула без квадрата reduce = 75 - round(0.24 * Tdist);
+						04=if(!ShipProtectability(ship)) reduce = reduce * 2;
+						05=if(ship == pick_ship) reduce = 100;
 						//Боссы доминаторов получают крайне малый урон
-						06=if(ship==Keller() || ship==Terron() || ship==Blazer())reduce=reduce/10;
-						07=if(ItemDurability(item)-reduce<0)ItemDurability(item,0);
-						08=else ItemDurability(item,ItemDurability(item)-reduce);
+						06=if(is_the_boss) reduce = reduce / 10;
+						07=if(ItemDurability(item) - reduce < 0) ItemDurability(item, 0);
+						08=else ItemDurability(item, ItemDurability(item) - reduce);
 					}
 				}
-				15=if(primer_type<=-5 && primer_type!=-8)
+				15=if(primer_type <= -5 && primer_type != -8)
 				16 ^{
-					01=SetName(bomb,CT('Script.Mod_ExpArts.DepletedEMPBomb'));
-					02=UselessItemText(bomb,CT('Script.Mod_ExpArts.BombIsDepleted'));
+					01=SetName(bomb, CT('Script.Mod_ExpArts.DepletedEMPBomb'));
+					02=UselessItemText(bomb, CT('Script.Mod_ExpArts.BombIsDepleted'));
 				}
 				17=else
 				18 ^{
-					01=SetName(bomb,CT('Script.Mod_ExpArts.DepletedEMPMine'));
-					02=UselessItemText(bomb,CT('Script.Mod_ExpArts.MineIsDepleted'));
+					01=SetName(bomb, CT('Script.Mod_ExpArts.DepletedEMPMine'));
+					02=UselessItemText(bomb, CT('Script.Mod_ExpArts.MineIsDepleted'));
 				}
-				19=ItemCost(bomb,Rnd(15,21)*ItemSize(bomb));
-				20=UselessItemData(bomb,2,1);
+				19=ItemCost(bomb, Rnd(15, 21) * ItemSize(bomb));
+				20=UselessItemData(bomb, 2, 1);
 			}
         }
         Owner=PirateClan
@@ -1474,50 +1476,50 @@ UselessItems ^{
         Cost=Big
         Name=Контейнер с бомбами
         OnUseCode ^{
-            01=if(FindItemInShip(Player(),CurItem())==-1)exit;
+            01=if(FindItemInShip(Player(), CurItem()) == -1) exit;
 			02=if(MessageBoxYesNo('Вы уверены, что хотите открыть этот контейнер?'))
 			03 ^{
-				01=dword Titem=0;
-				02=str Ttype=0;
-				03=int Tquant=0;
+				01=dword Titem = 0;
+				02=str Ttype = 0;
+				03=int Tquant = 0;
 				//Определяем количество выпавших таймеров (от 0 до 3)
-				04=if(UselessItemData(CurItem(),1)>30)Tquant=1;//Вероятность в 70%
-				05=if(UselessItemData(CurItem(),1)>70)Tquant=2;//Вероятность в 30%
-				06=if(UselessItemData(CurItem(),1)>95)Tquant=3;//Вероятность в 5%
-				07=while(Tquant>0)
+				04=if(UselessItemData(CurItem(), 1) > 30) Tquant = 1;//Вероятность в 70%
+				05=if(UselessItemData(CurItem(), 1) > 70) Tquant = 2;//Вероятность в 30%
+				06=if(UselessItemData(CurItem(), 1) > 95) Tquant = 3;//Вероятность в 5%
+				07=while(Tquant > 0)
 				08 ^{
-					01=Titem=CreateQuestItem('RNDtimer',PirateClan);
-					02=ItemSize(Titem,1);
-					03=AddItemToShip(Player(),Titem);
-					04=Tquant=Tquant-1;
+					01=Titem = CreateQuestItem('RNDtimer', PirateClan);
+					02=ItemSize(Titem, 1);
+					03=AddItemToShip(Player(), Titem);
+					04=Tquant = Tquant - 1;
 				}
 				//Определяем количество выпавших бомб (от 1 до 4)
-				09=Tquant=1;//1 бомба гарантирована в любом случае
-				10=if(UselessItemData(CurItem(),2)>35)Tquant=2;//Вероятность в 65%
-				11=if(UselessItemData(CurItem(),2)>75)Tquant=3;//Вероятность в 25%
-				12=if(UselessItemData(CurItem(),2)>90)Tquant=4;//Вероятность в 10%
+				09=Tquant = 1; //1 бомба гарантирована в любом случае
+				10=if(UselessItemData(CurItem(), 2) > 35) Tquant = 2; //Вероятность в 65%
+				11=if(UselessItemData(CurItem(), 2) > 75) Tquant = 3; //Вероятность в 25%
+				12=if(UselessItemData(CurItem(), 2) > 90) Tquant = 4; //Вероятность в 10%
 				//Узнаём тип каждой из 4 возможных выпавших бомб и добавляем бомбы на корабль
-				13=while(Tquant>0)
+				13=while(Tquant > 0)
 				14 ^{
-					01=Ttype=UselessItemData(CurItem(),3)+'';
-					02=Ttype=substr(Ttype,Tquant-1,1);
-					03=if(Ttype!='1')
+					01=Ttype = UselessItemData(CurItem(), 3) + '';
+					02=Ttype = substr(Ttype, Tquant - 1, 1);
+					03=if(Ttype != '1')
 					04 ^{
-						01=Titem=CreateQuestItem('RNDbomb_'+Ttype,PirateClan);
-						02=ItemSize(Titem,ItemSize(Titem)+Rnd(-2,2));
-						03=ItemCost(Titem,ItemCost(Titem)+Rnd(-297,303));
-						04=AddItemToShip(Player(),Titem);
+						01=Titem = CreateQuestItem('RNDbomb_' + Ttype, PirateClan);
+						02=ItemSize(Titem, ItemSize(Titem) + Rnd(-2, 2));
+						03=ItemCost(Titem, ItemCost(Titem) + Rnd(-297, 303));
+						04=AddItemToShip(Player(), Titem);
 					}
 					05=else
 					06 ^{
-						01=Titem=CreateArt(t_ArtefactBomb,PirateClan);
-						02=ItemSize(Titem,ItemSize(Titem)+Rnd(-2,2));
-						03=ItemCost(Titem,ItemCost(Titem)+Rnd(-297,303));
-						04=AddItemToShip(Player(),Titem);
+						01=Titem = CreateArt(t_ArtefactBomb, PirateClan);
+						02=ItemSize(Titem, ItemSize(Titem) + Rnd(-2, 2));
+						03=ItemCost(Titem, ItemCost(Titem) + Rnd(-297, 303));
+						04=AddItemToShip(Player(), Titem);
 					}
-					07=Tquant=Tquant-1;
+					07=Tquant = Tquant - 1;
 				}
-				15=FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),CurItem())));
+				15=FreeItem(GetItemFromShip(Player(), FindItemInShip(Player(), CurItem())));
 			}
         }
         Owner=PirateClan
@@ -2693,22 +2695,22 @@ UselessItems ^{
         OnActCode ^{
             01=if(ScriptItemActionType(t_OnAnotherItem))
             02 ^{
-                01=dword item=ScriptItemActObject1();
-                02=if(ItemType(item)!=t_UselessItem && ItemType(item)!=t_ArtefactBomb)exit;
-				03=if(EquipmentImageName(item)!='RNDbomb_1' && EquipmentImageName(item)!='RNDbomb_2' && EquipmentImageName(item)!='RNDbomb_3' && ItemType(item)!=t_ArtefactBomb)exit;
-				04=if(UselessItemData(item,2)==1)exit;
-				05=if(UselessItemData(item,2)<=-1)
+                01=dword item = ScriptItemActObject1();
+                02=if(ItemType(item) != t_UselessItem && ItemType(item) != t_ArtefactBomb) exit;
+				03=if(EquipmentImageName(item) != 'RNDbomb_1' && EquipmentImageName(item) != 'RNDbomb_2' && EquipmentImageName(item) != 'RNDbomb_3' && ItemType(item) != t_ArtefactBomb) exit;
+				04=if(UselessItemData(item, 2) == 1) exit;
+				05=if(UselessItemData(item, 2) <= -1)
 				06 ^{
-					01=MessageBox(CT('Script.Mod_ExpArts.DetonatorIsAlreadySet'),34);
+					01=MessageBox(CT('Script.Mod_ExpArts.DetonatorIsAlreadySet'), 34);
 					02=ScriptItemActParam(2);
 					03=exit;
 				}
-				07=unknown optionsArr=newarray(3);
-				08=optionsArr[0]=CT('Script.Mod_ExpArts.ContactFuse');
-				09=optionsArr[1]=CT('Script.Mod_ExpArts.TimerWithDelay');
-				10=optionsArr[2]=CT('Script.Mod_ExpArts.ContactFuseAndTimer');
-				11=int choosed_fuse=ListBox(CT('Script.Mod_ExpArts.SelectFuseType'),optionsArr);
-                12=if(choosed_fuse>-1)
+				07=unknown optionsArr = newarray(3);
+				08=optionsArr[0] = CT('Script.Mod_ExpArts.ContactFuse');
+				09=optionsArr[1] = CT('Script.Mod_ExpArts.TimerWithDelay');
+				10=optionsArr[2] = CT('Script.Mod_ExpArts.ContactFuseAndTimer');
+				11=int choosed_fuse = ListBox(CT('Script.Mod_ExpArts.SelectFuseType'), optionsArr);
+                12=if(choosed_fuse > -1)
                 13 ^{
                     01=int blow_turn=0;
                     02=dword item_2=0;
