@@ -3514,6 +3514,29 @@ BlackMarketShopList ~{
 		Count=15
 	}
 }
+ActCodeBlocksList ^{
+	//Скриптовый акткод астероида, чтобы выставлять маркеры в скрипте непосредственно из акткода
+	SmugglersCompartmentQuestActCode ^{
+		//Код для защиты скриптового отсека контрабандиста от случайных попаданий ракет NPC
+		01=if(ScriptItemActionType(t_OnItemHit))
+		02 ^{
+			01=dword dealer = ScriptItemActObject1();
+			02=if(ObjectType(dealer) == 7)
+			03 ^{
+				01=ship = MissileOwner(dealer);
+				02=if(ship != Player()) ItemDestroy(CurItem(), 0);
+			}
+		}
+		03=else if(ScriptItemActionType(t_OnItemPickUp))
+		04 ^{
+			01=if(ScriptItemActShip() == Player())
+			02 ^{
+				//Очищаем акткод, после подбора контейнера игроком
+				01=ItemOnActCode(CurItem(), '');
+			}
+		}
+	}
+}
 ShipInfo ^{
     AddInfo ^{
         CustomInfos ^{

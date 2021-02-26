@@ -1089,7 +1089,7 @@ UselessItems ^{
 			12 ^{
 				01=if(ObjectType(ScriptItemActObject1()) == 7)
 				02 ^{
-					01=if(ShipStar(Player()) == GalaxyStar(UselessItemData(bomb, 3) - 1) && ShipInNormalSpace(Player())) FilmSound('Sound.RndHole03', bomb);
+					01=if(ShipStar(Player()) == GalaxyStar(UselessItemData(bomb, 3)) && ShipInNormalSpace(Player())) FilmSound('Sound.RndHole03', bomb);
 				}
 			}
 			//Происходит активация бомбы
@@ -1353,7 +1353,7 @@ UselessItems ^{
 			12 ^{
 				01=if(ObjectType(ScriptItemActObject1()) == 7)
 				02 ^{
-					01=if(ShipStar(Player()) == GalaxyStar(UselessItemData(bomb, 3) - 1) && ShipInNormalSpace(Player())) FilmSound('Sound.Zamknulo', bomb);
+					01=if(ShipStar(Player()) == GalaxyStar(UselessItemData(bomb, 3)) && ShipInNormalSpace(Player())) FilmSound('Sound.Zamknulo', bomb);
 				}
 			}
             13=if(ScriptItemActionType(t_OnItemDestroy)) boom_flag = (primer_type <= -4);
