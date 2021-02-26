@@ -2481,7 +2481,7 @@ ShipInfo ^{
 				OnActStepTypes=0
                 OnActCode ^{
 					01=dword infos = CurInfo();
-					02=if(ShipCustomShipInfoData(0,infos,1) < CurTurn())
+					02=if(ShipCustomShipInfoData(0, infos, 1) < CurTurn())
 					03 ^{
 						01=dword ship = ScriptItemActShip();
 						//Если корабль с кем-то ведёт бой

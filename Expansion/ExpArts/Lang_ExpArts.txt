@@ -735,57 +735,57 @@ UselessItems ^{
 		OnActCodeTypes=t_OnStep,t_OnDropItem,t_OnDropItemFixed,t_OnItemPickUp,t_OnItemHit,t_OnItemDestroy
 		OnActStepTypes=1,2,3,4,5,6,7,8,9,10,11
         OnActCode ^{
-			01=dword bomb=CurItem();
-			02=int primer_type=UselessItemData(bomb,2);
-			03=int boom_flag=0;
-			04=if(primer_type==1)exit;//Бомба уже детонировала и не может бахнуть повторно
+			01=dword bomb = CurItem();
+			02=int primer_type = UselessItemData(bomb, 2);
+			03=int boom_flag = 0;
+			04=if(primer_type == 1) exit; //Бомба уже детонировала и не может бахнуть повторно
             05=if(ScriptItemActionType(t_OnStep))
-            06 ^{//Считаем дни до детонации
-				01=if(ScriptItemActParam()==5)
+            06 ^{ //Считаем дни до детонации
+				01=if(ScriptItemActParam() == 5)
 				02 ^{
-					01=if(primer_type==-5 || primer_type<=-7)
+					01=if(primer_type == -5 || primer_type <= -7)
 					02 ^{
-						01=if(UselessItemData(bomb,1)>0)
+						01=if(UselessItemData(bomb, 1) > 0)
 						02 ^{
-							01=if(UselessItemData(bomb,1)==1)boom_flag=1;
-							//UselessItemData(bomb,1,UselessItemData(bomb,1)-2);
-							02=else UselessItemData(bomb,1,UselessItemData(bomb,1)-1);
+							01=if(UselessItemData(bomb, 1) == 1) boom_flag = 1;
+							//UselessItemData(bomb, 1, UselessItemData(bomb, 1) - 2);
+							02=else UselessItemData(bomb, 1, UselessItemData(bomb, 1) - 1);
 						}
-						03=if(primer_type==-5)
+						03=if(primer_type == -5)
 						04 ^{
-							01=primer_type=-6;
-							02=UselessItemData(bomb,2,-6);
+							01=primer_type = -6;
+							02=UselessItemData(bomb, 2, -6);
 						}
-						05=else if(primer_type==-7)
+						05=else if(primer_type == -7)
 						06 ^{
-							01=primer_type=-9;
-							02=UselessItemData(bomb,2,-9);
+							01=primer_type = -9;
+							02=UselessItemData(bomb, 2, -9);
 						}
 					}
 				}
 				//Проверяем все корабли и станции в системе, сверяем расстояние до бомбы и если они подошли слишком близко - активируем взрыватель
-				03=if(primer_type==-6 || primer_type==-9)
+				03=if(primer_type == -6 || primer_type == -9)
 				04 ^{
 					01=if(!boom_flag)
 					02 ^{
-						01=bomb_star=ScriptItemActObject1();
-						02=for(k=0;k<StarShips(bomb_star);k=k+1)
+						01=bomb_star = ScriptItemActObject1();
+						02=for(k = 0; k < StarShips(bomb_star); k = k + 1)
 						03 ^{
-							01=ship=StarShips(bomb_star,k);
-							02=if(Dist(bomb,ship)<=70)
+							01=ship = StarShips(bomb_star, k);
+							02=if(Dist(bomb,ship) <= 70)
 							03 ^{
-								01=boom_flag=2;
+								01=boom_flag = 2;
 								02=break;
 							}
 						}
 						04=if(!boom_flag)
 						05 ^{
-							01=for(k=0;k<StarRuins(bomb_star);k=k+1)
+							01=for(k = 0; k < StarRuins(bomb_star); k = k + 1)
 							02 ^{
-								01=ship=StarRuins(bomb_star,k);
-								02=if(Dist(bomb,ship)<=70)
+								01=ship = StarRuins(bomb_star, k);
+								02=if(Dist(bomb,ship) <= 70)
 								03 ^{
-									01=boom_flag=2;
+									01=boom_flag = 2;
 									02=break;
 								}
 							}
@@ -795,46 +795,46 @@ UselessItems ^{
             }
 			07=else if(ScriptItemActionType(t_OnDropItem) || ScriptItemActionType(t_OnDropItemFixed))
             08 ^{
-				01=if(ScriptItemActObject1()==bomb)
+				01=if(ScriptItemActObject1() == bomb)
 				02 ^{
 					//Запоминаем систему, в которой выкинули бомбу
-					01=UselessItemData(bomb,3,Id(ShipStar(ScriptItemActShip()))-1);
+					01=UselessItemData(bomb, 3, Id(ShipStar(ScriptItemActShip())) - 1);
 					//Включаем возможность детонации (выбросили в космос)
-					02=if(primer_type==0)
+					02=if(primer_type == 0)
 					03 ^{
-						01=primer_type=-4;
-						02=UselessItemData(bomb,2,-4);
+						01=primer_type = -4;
+						02=UselessItemData(bomb, 2, -4);
 					}
 					//Активируем контактный взрыватель
-					04=else if(primer_type==-1)
+					04=else if(primer_type == -1)
 					05 ^{
-						01=primer_type=-5;
-						02=UselessItemData(bomb,2,-5);
+						01=primer_type = -5;
+						02=UselessItemData(bomb, 2, -5);
 					}
 					//Активируем таймер
-					06=else if(primer_type==-2)
+					06=else if(primer_type == -2)
 					07 ^{
-						01=UselessItemText(bomb,CT('UselessItems.'+EquipmentImageName(bomb)+'.Text')+substr(CT('Cheat.Ok'),0,2)+'<br><clr><clrEnd><br>'+CT('Script.Mod_ExpArts.WillExplodeIn'));
-						02=primer_type=-8;
-						03=UselessItemData(bomb,2,-8);
+						01=UselessItemText(bomb,CT('UselessItems.' + EquipmentImageName(bomb) + '.Text') + substr(CT('Cheat.Ok'), 0, 2) + '<br><clr><clrEnd><br>' + CT('Script.Mod_ExpArts.WillExplodeIn'));
+						02=primer_type = -8;
+						03=UselessItemData(bomb, 2, -8);
 					}
 					//Активируем таймер и контактный взрыватель
-					08=else if(primer_type==-3)
+					08=else if(primer_type == -3)
 					09 ^{
-						01=UselessItemText(bomb,CT('UselessItems.'+EquipmentImageName(bomb)+'.Text')+substr(CT('Cheat.Ok'),0,2)+'<br><clr><clrEnd><br>'+CT('Script.Mod_ExpArts.WillExplodeIn'));
-						02=primer_type=-7;
-						03=UselessItemData(bomb,2,-7);
+						01=UselessItemText(bomb, CT('UselessItems.' + EquipmentImageName(bomb) + '.Text') + substr(CT('Cheat.Ok'), 0, 2) + '<br><clr><clrEnd><br>' + CT('Script.Mod_ExpArts.WillExplodeIn'));
+						02=primer_type = -7;
+						03=UselessItemData(bomb, 2, -7);
 					}
 				}
 			}
 			09=else if(ScriptItemActionType(t_OnItemPickUp))
             10 ^{//Выключаем возможность детонации (чтобы не бахала в трюме)
-				01=if(ScriptItemActObject1()==bomb)
+				01=if(ScriptItemActObject1() == bomb)
 				02 ^{
-					01=if(primer_type==-4)
+					01=if(primer_type == -4)
 					02 ^{
-						01=primer_type=0;
-						02=UselessItemData(bomb,2,0);
+						01=primer_type = 0;
+						02=UselessItemData(bomb, 2, 0);
 					}
 				}
 			}
@@ -853,11 +853,14 @@ UselessItems ^{
 				07=int Tdamage = 0;
 				08=int Edamage = 0;
 				09=int targetInfo = -2;
-				10=if(ScriptItemActionType(t_OnItemHit))ItemDestroy(bomb, 0);
-				11=if(ScriptItemActionType(t_OnItemPickUp))
-				12 ^{
+				10=int fuel_tank_imitation = ScriptItemActParam();
+				11=if(ScriptItemActionType(t_OnItemHit))ItemDestroy(bomb, 0);
+				12=if(ScriptItemActionType(t_OnItemPickUp))
+				13 ^{
 					01=pick_ship = ScriptItemActShip();
-					02=OrderNone(pick_ship);
+					//Если акткод был вызван из ExpPhysGun (типа бомбу запустили из физгана)
+					//Не перепутать! ScriptItemActObject2() по умолчанию пуста только для события t_OnItemPickUp, а для остальных там будет записано что-то другое
+					02=if(!ScriptItemActObject2()) OrderNone(pick_ship);
 					//Перед активацией эффекта обязательно делаем проверку на нахождение в пространстве системы игрока (!!!)
 					03=if(ShipStar(Player()) == bomb_star && ShipInNormalSpace(Player()))
 					04 ^{
@@ -866,8 +869,8 @@ UselessItems ^{
 						03=else ShipCustomShipInfoTextData(pick_ship, targetInfo, 2, 'ShowBAMEffect');
 					}
 				}
-				13=else
-				14 ^{
+				14=else
+				15 ^{
 					//Перед активацией эффекта обязательно делаем проверку на нахождение в пространстве системы игрока (!!!)
 					01=if(ShipStar(Player()) == bomb_star && ShipInNormalSpace(Player()))
 					02 ^{
@@ -885,8 +888,8 @@ UselessItems ^{
 					}
 				}
 				//Дамажим корабли в радиусе взрыва
-				15=for(k = 0; k < StarShips(bomb_star); k = k + 1)
-				16 ^{
+				16=for(k = 0; k < StarShips(bomb_star); k = k + 1)
+				17 ^{
 					01=ship = StarShips(bomb_star, k);
 					02=if(ScriptItemActionType(t_OnItemPickUp))
 					03 ^{
@@ -899,13 +902,21 @@ UselessItems ^{
 						02=else Tdist = Dist(bomb, ship);
 					}
 					06=if(!ShipInNormalSpace(ship)) continue;
+					//Имитируем взрыв и урон от попадания топливного бака/цистерны
+					07=if(fuel_tank_imitation && !ScriptItemActionType(t_OnStep)) Tdamage = fuel_tank_imitation;
+					//Нормальный расчёт для кварки
 					//Вычисляем урон по формуле round(BombPowerMax - (BombPowerMax - BombPowerMin) * dist2 / BombRadius2), где 2 - квадрат
-					07=Tdamage = round(800.0 - (400.0 * (Tdist * Tdist) / 62500));
-					//Добавляем визуального дамага для подобравшего бомбу корабля, чтобы как бы гарантированно его уничтожить
-					08=if(ship == pick_ship)
+					08=else
 					09 ^{
-						01=if(ScriptItemActObject2()) Tdamage = 800; //Для вызова данного акткода из ExpPhysGun
-						02=else if(HullHP(pick_ship) > Tdamage) Tdamage = HullHP(pick_ship) + Rnd(43, 157);
+						01=Tdamage = round(800.0 - (400.0 * (Tdist * Tdist) / 62500));
+						//Добавляем визуального дамага для подобравшего бомбу корабля, чтобы как бы гарантированно его уничтожить
+						02=if(ship == pick_ship)
+						03 ^{
+							//Если акткод был вызван из ExpPhysGun (типа кварку запустили из физгана)
+							//Не перепутать! ScriptItemActObject2() по умолчанию пуста только для события t_OnItemPickUp, а для остальных там будет записано что-то другое
+							01=if(ScriptItemActObject2()) Tdamage = 800;
+							02=else if(HullHP(pick_ship) > Tdamage) Tdamage = HullHP(pick_ship) + Rnd(43, 157);
+						}
 					}
 					//Огромный астероид из ExpPhysGun дамага от бомбы не получит
 					10=if(ShipType(ship) == 'KillerAsteroid') Tdamage = 0;
@@ -930,8 +941,8 @@ UselessItems ^{
 					//Необходимо, чтобы гарантированно уничтожить объект бомбы на OnStep 11
 				}
 				//Уничтожаем предметы в радиусе взрыва
-				17=for(k = 0; k < StarItems(bomb_star); k = k + 1)
-				18 ^{
+				18=for(k = 0; k < StarItems(bomb_star); k = k + 1)
+				19 ^{
 					01=item = StarItems(bomb_star, k);
 					02=if(item == bomb) continue;
 					03=if(ScriptItemActionType(t_OnItemPickUp))
@@ -959,16 +970,16 @@ UselessItems ^{
 					}
 					10=else continue;
 				}
-				19=UselessItemData(bomb, 2, 1);
-				20=if(ScriptItemActionType(t_OnStep, 11))
-				21 ^{
+				20=UselessItemData(bomb, 2, 1);
+				21=if(ScriptItemActionType(t_OnStep, 11))
+				22 ^{
 					01=if(StarShips(bomb_star))
 					02 ^{
 						01=FireWeapon(StarShips(bomb_star, 0), bomb, 0);
 					}
 					03=else ItemDestroy(bomb, 1);
 				}
-				22=else ItemDestroy(bomb, 1);
+				23=else ItemDestroy(bomb, 1);
             }
         }
         Owner=PirateClan
@@ -1107,7 +1118,9 @@ UselessItems ^{
 				08=if(ScriptItemActionType(t_OnItemPickUp))
 				09 ^{
 					01=pick_ship = ScriptItemActShip();
-					02=OrderNone(pick_ship);
+					//Если акткод был вызван из ExpPhysGun (типа бомбу запустили из физгана)
+					//Не перепутать! ScriptItemActObject2() по умолчанию пуста только для события t_OnItemPickUp, а для остальных там будет записано что-то другое
+					02=if(!ScriptItemActObject2()) OrderNone(pick_ship);
 					//Перед активацией эффекта обязательно делаем проверку на нахождение в пространстве системы игрока (!!!)
 					03=if(ShipStar(Player()) == bomb_star && ShipInNormalSpace(Player()))
 					04 ^{
@@ -1371,7 +1384,9 @@ UselessItems ^{
 				09=if(ScriptItemActionType(t_OnItemPickUp))
 				10 ^{
 					01=pick_ship = ScriptItemActShip();
-					02=OrderNone(pick_ship);
+					//Если акткод был вызван из ExpPhysGun (типа бомбу запустили из физгана)
+					//Не перепутать! ScriptItemActObject2() по умолчанию пуста только для события t_OnItemPickUp, а для остальных там будет записано что-то другое
+					02=if(!ScriptItemActObject2()) OrderNone(pick_ship);
 					//Перед активацией эффекта обязательно делаем проверку на нахождение в пространстве системы игрока (!!!)
 					03=if(ShipStar(Player()) == bomb_star && ShipInNormalSpace(Player()))
 					04 ^{
