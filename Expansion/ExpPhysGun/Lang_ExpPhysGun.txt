@@ -2,56 +2,76 @@ Items ^{
     Weapon ^{
         Missile ^{
             Missile_Quark_bomb ^{
-                Name=Кварковый заряд
-                Text=Нестабильная кварковая бомба
+                Name=Выпущенная из физгана кварковая бомба
+                Text=Взведённая кварковая бомба
             }
             Missile_Stun_bomb ^{
-                Name=Оглушающий заряд
-                Text=Нестабильная оглушающая бомба
+                Name=Выпущенная из физгана оглушающая бомба
+                Text=Взведённая оглушающая бомба
             }
             Missile_EMP_bomb ^{
-                Name=ЭМП заряд
-                Text=Нестабильная ЭМП бомба
+                Name=Выпущенная из физгана ЭМП бомба
+                Text=Взведённая ЭМП бомба
+            }
+            Missile_Discharged_Stun_bomb ^{
+                Name=Выпущенная из физгана разряженная оглушающая бомба
+                Text=Не взорвётся, но может больно дать по лбу
+            }
+            Missile_Discharged_EMP_bomb ^{
+                Name=Выпущенная из физгана разряженная ЭМП бомба
+                Text=Не взорвётся, но может больно дать по лбу
             }
             Missile_Fuel_tank ^{
-                Name=Ёмкость с топливом
+                Name=Выпущенная из физгана ёмкость с топливом
                 Text=Ёмкость с взрывоопасным веществом
             }
+            Missile_Urine_tank ^{
+                Name=Выпущенная из физгана ёмкость с уриной
+                Text=Пояснения излишни
+            }
+            Missile_Maloq_stool ^{
+                Name=Выпущенный из физгана малокский табурет
+                Text=Непоколебимый и гордый
+            }
+            Missile_Escape_pod ^{
+                Name=Выпущенная из физгана спасательная капсула
+                Text=Навстречу приключениям!
+            }
             Missile_Small_item ^{
-                Name=Мусорный заряд
-                Text=Небольшой кусок мусора
+                Name=Выпущенный из физгана небольшой контейнер
+                Text=Бесполезная трата ценных ресурсов
             }
             Missile_Average_item ^{
-                Name=Мусорный заряд
-                Text=Средний кусок мусора
+                Name=Выпущенный из физгана средний контейнер
+                Text=Бесполезная трата ценных ресурсов
             }
             Missile_Big_item ^{
-                Name=Мусорный заряд
-                Text=Большой кусок мусора
+                Name=Выпущенный из физгана крупный контейнер
+                Text=Бесполезная трата ценных ресурсов
             }
             Missile_Asteroid_white ^{
-                Name=Астероид
-                Text=Белый астероид
+                Name=Выпущенный из физгана астероид
+                Text=Главное, не вставать у него на пути...
             }
             Missile_Asteroid_red ^{
-                Name=Астероид
-                Text=Красный астероид
+                Name=Выпущенный из физгана астероид
+                Text=Главное, не вставать у него на пути...
             }
             Missile_Asteroid_yellow ^{
-                Name=Астероид
-                Text=Желтый астероид
+                Name=Выпущенный из физгана астероид
+                Text=Главное, не вставать у него на пути...
             }
             Missile_Asteroid_green ^{
-                Name=Астероид
-                Text=Зелёный астероид
+                Name=Выпущенный из физгана астероид
+                Text=Главное, не вставать у него на пути...
             }
             Missile_Asteroid_blue ^{
-                Name=Астероид
-                Text=Синий астероид
+                Name=Выпущенный из физгана астероид
+                Text=Главное, не вставать у него на пути...
             }
             Missile_Asteroid_violet ^{
-                Name=Астероид
-                Text=Фиолетовый астероид
+                Name=Выпущенный из физгана астероид
+                Text=Главное, не вставать у него на пути...
             }
         }
         Name ^{
@@ -116,7 +136,6 @@ MicroModuls ^{
         Cost=100
         Equipments=PhysGun
         MissileGraph=Missile_Quark_bomb
-        Name=из бортового физгана
         Owner=Any
         Priority=0
         Size=100
@@ -127,14 +146,11 @@ MicroModuls ^{
 		BlockMM=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Заряд: <color=255,240,100>отсутствует</color>
-        bonMissileSpeed=10000
-        bonShots=-2
     }
     ExpPhysGun_PhysGunMissileQuarkBomb ^{
         Cost=100
         Equipments=PhysGun
         MissileGraph=Missile_Quark_bomb
-        Name=из бортового физгана
         Owner=Any
         Priority=0
         Size=100
@@ -145,15 +161,11 @@ MicroModuls ^{
 		BlockMM=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Заряд: <color=255,240,100>кварковая бомба</color>
-        WeaponMods=NoDelta
-        bonMissileSpeed=10000
-        bonShots=-2
     }
     ExpPhysGun_PhysGunMissileStunBomb ^{
         Cost=100
         Equipments=PhysGun
         MissileGraph=Missile_Stun_bomb
-        Name=из бортового физгана
         Owner=Any
         Priority=0
         Size=100
@@ -164,15 +176,11 @@ MicroModuls ^{
 		BlockMM=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Заряд: <color=255,240,100>оглушающая бомба</color>
-        WeaponMods=NoDelta
-        bonMissileSpeed=10000
-        bonShots=-2
     }
     ExpPhysGun_PhysGunMissileEMPBomb ^{
         Cost=100
         Equipments=PhysGun
         MissileGraph=Missile_EMP_bomb
-        Name=из бортового физгана
         Owner=Any
         Priority=0
         Size=100
@@ -183,15 +191,41 @@ MicroModuls ^{
 		BlockMM=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Заряд: <color=255,240,100>ЭМП бомба</color>
-        WeaponMods=NoDelta
-        bonMissileSpeed=10000
-        bonShots=-2
+    }
+    ExpPhysGun_PhysGunMissileDischargedStunBomb ^{
+        Cost=100
+        Equipments=PhysGun
+        MissileGraph=Missile_Discharged_Stun_bomb
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        LockedAcryn=3
+        NonSearchable=1
+		BlockImp=1
+		BlockMM=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>разряженная оглушающая бомба</color>
+    }
+    ExpPhysGun_PhysGunMissileDischargedEMPBomb ^{
+        Cost=100
+        Equipments=PhysGun
+        MissileGraph=Missile_Discharged_EMP_bomb
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        LockedAcryn=3
+        NonSearchable=1
+		BlockImp=1
+		BlockMM=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>разряженная ЭМП бомба</color>
     }
     ExpPhysGun_PhysGunMissileFuelTank ^{
         Cost=100
         Equipments=PhysGun
         MissileGraph=Missile_Fuel_tank
-        Name=из бортового физгана
         Owner=Any
         Priority=0
         Size=100
@@ -202,15 +236,57 @@ MicroModuls ^{
 		BlockMM=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Заряд: <color=255,240,100>ёмкость с топливом</color>
-        WeaponMods=NoDelta
-        bonMissileSpeed=10000
+    }
+    ExpPhysGun_PhysGunMissileUrineTank ^{
+        Cost=100
+        Equipments=PhysGun
+        MissileGraph=Missile_Urine_tank
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        LockedAcryn=3
+        NonSearchable=1
+		BlockImp=1
+		BlockMM=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>ёмкость с уриной</color>
         bonShots=-2
+    }
+    ExpPhysGun_PhysGunMissileMaloqStool ^{
+        Cost=100
+        Equipments=PhysGun
+        MissileGraph=Missile_Maloq_stool
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        LockedAcryn=3
+        NonSearchable=1
+		BlockImp=1
+		BlockMM=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>малокский табурет</color>
+    }
+    ExpPhysGun_PhysGunMissileEscapePod ^{
+        Cost=100
+        Equipments=PhysGun
+        MissileGraph=Missile_Escape_pod
+        Owner=Any
+        Priority=0
+        Size=100
+        Special=1
+        LockedAcryn=3
+        NonSearchable=1
+		BlockImp=1
+		BlockMM=1
+        TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
+        TextReplace=Заряд: <color=255,240,100>спасательная капсула</color>
     }
     ExpPhysGun_PhysGunMissileSmallItem ^{
         Cost=100
         Equipments=PhysGun
         MissileGraph=Missile_Small_item
-        Name=из бортового физгана
         Owner=Any
         Priority=0
         Size=100
@@ -221,15 +297,11 @@ MicroModuls ^{
 		BlockMM=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Заряд: <color=255,240,100>небольшой предмет</color>
-        WeaponMods=NoDelta
-        bonMissileSpeed=10000
-        bonShots=-2
     }
     ExpPhysGun_PhysGunMissileAverageItem ^{
         Cost=100
         Equipments=PhysGun
         MissileGraph=Missile_Average_item
-        Name=из бортового физгана
         Owner=Any
         Priority=0
         Size=100
@@ -240,15 +312,11 @@ MicroModuls ^{
 		BlockMM=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Заряд: <color=255,240,100>средний предмет</color>
-        WeaponMods=NoDelta
-        bonMissileSpeed=10000
-        bonShots=-2
     }
     ExpPhysGun_PhysGunMissileBigItem ^{
         Cost=100
         Equipments=PhysGun
         MissileGraph=Missile_Big_item
-        Name=из бортового физгана
         Owner=Any
         Priority=0
         Size=100
@@ -259,15 +327,11 @@ MicroModuls ^{
 		BlockMM=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Заряд: <color=255,240,100>большой предмет</color>
-        WeaponMods=NoDelta
-        bonMissileSpeed=10000
-        bonShots=-2
     }
     ExpPhysGun_PhysGunMissileAsteroidWhite ^{
         Cost=100
         Equipments=PhysGun
         MissileGraph=Missile_Asteroid_white
-        Name=из бортового физгана
         Owner=Any
         Priority=0
         Size=100
@@ -278,15 +342,11 @@ MicroModuls ^{
 		BlockMM=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Заряд: <color=255,240,100>астероид</color>
-        WeaponMods=NoDelta
-        bonMissileSpeed=10000
-        bonShots=-2
     }
     ExpPhysGun_PhysGunMissileAsteroidRed ^{
         Cost=100
         Equipments=PhysGun
         MissileGraph=Missile_Asteroid_red
-        Name=из бортового физгана
         Owner=Any
         Priority=0
         Size=100
@@ -297,15 +357,11 @@ MicroModuls ^{
 		BlockMM=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Заряд: <color=255,240,100>астероид</color>
-        WeaponMods=NoDelta
-        bonMissileSpeed=10000
-        bonShots=-2
     }
     ExpPhysGun_PhysGunMissileAsteroidYellow ^{
         Cost=100
         Equipments=PhysGun
         MissileGraph=Missile_Asteroid_yellow
-        Name=из бортового физгана
         Owner=Any
         Priority=0
         Size=100
@@ -316,15 +372,11 @@ MicroModuls ^{
 		BlockMM=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Заряд: <color=255,240,100>астероид</color>
-        WeaponMods=NoDelta
-        bonMissileSpeed=10000
-        bonShots=-2
     }
     ExpPhysGun_PhysGunMissileAsteroidGreen ^{
         Cost=100
         Equipments=PhysGun
         MissileGraph=Missile_Asteroid_green
-        Name=из бортового физгана
         Owner=Any
         Priority=0
         Size=100
@@ -335,15 +387,11 @@ MicroModuls ^{
 		BlockMM=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Заряд: <color=255,240,100>астероид</color>
-        WeaponMods=NoDelta
-        bonMissileSpeed=10000
-        bonShots=-2
     }
     ExpPhysGun_PhysGunMissileAsteroidBlue ^{
         Cost=100
         Equipments=PhysGun
         MissileGraph=Missile_Asteroid_blue
-        Name=из бортового физгана
         Owner=Any
         Priority=0
         Size=100
@@ -354,15 +402,11 @@ MicroModuls ^{
 		BlockMM=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Заряд: <color=255,240,100>астероид</color>
-        WeaponMods=NoDelta
-        bonMissileSpeed=10000
-        bonShots=-2
     }
     ExpPhysGun_PhysGunMissileAsteroidViolet ^{
         Cost=100
         Equipments=PhysGun
         MissileGraph=Missile_Asteroid_violet
-        Name=из бортового физгана
         Owner=Any
         Priority=0
         Size=100
@@ -373,9 +417,6 @@ MicroModuls ^{
 		BlockMM=1
         TextReplace=Физган - ручное устройство направленной антигравитации, изобретённое знаменитым гаальским доктором Рее-Кляйном, высокотехнологичный инструмент, предназначенный для использования при погрузочных работах на складах, в строительстве и для выполнения других подобных операций.
         TextReplace=Заряд: <color=255,240,100>астероид</color>
-        WeaponMods=NoDelta
-        bonMissileSpeed=10000
-        bonShots=-2
     }
 }
 Script ^{
@@ -774,17 +815,63 @@ ActCodeBlocksList ^{
 								//Заряжаем в физган оглушающую бомбу
 								04=if(text == 'RNDbomb_2')
 								05 ^{
-									01=text = 'ExpPhysGun_PhysGunMissileStunBomb';
-									02=damage = item_size;
-									03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
-									04=break;
+									//Если эта бомба ещё не детонировала
+									01=if(UselessItemData(loaded_item, 2) != 1)
+									02 ^{
+										01=text = 'ExpPhysGun_PhysGunMissileStunBomb';
+										02=damage = item_size;
+										03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+										04=break;
+									}
+									03=else
+									04 ^{
+										01=text = 'ExpPhysGun_PhysGunMissileDischargedStunBomb';
+										02=damage = item_size;
+										03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+										04=break;
+									}
 								}
 								//Заряжаем в физган ЭМП бомбу
 								06=if(text == 'RNDbomb_3')
 								07 ^{
-									01=text = 'ExpPhysGun_PhysGunMissileEMPBomb';
+									//Если эта бомба ещё не детонировала
+									01=if(UselessItemData(loaded_item, 2) != 1)
+									02 ^{
+										01=text = 'ExpPhysGun_PhysGunMissileEMPBomb';
+										02=damage = item_size;
+										03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+										04=break;
+									}
+									03=else
+									04 ^{
+										01=text = 'ExpPhysGun_PhysGunMissileDischargedEMPBomb';
+										02=damage = item_size;
+										03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+										04=break;
+									}
+								}
+								//Заряжаем в физган баночку с уриной
+								08=if(text == 'Usl_Urine')
+								09 ^{
+									01=text = 'ExpPhysGun_PhysGunMissileUrineTank';
 									02=damage = item_size;
 									03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+									04=break;
+								}
+								//Заряжаем в физган малокский табурет
+								10=if(text == 'Usl_64')
+								11 ^{
+									01=text = 'ExpPhysGun_PhysGunMissileMaloqStool';
+									02=damage = Rnd(100, 200);
+									03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+8+512+1024+2048+1048576);
+									04=break;
+								}
+								//Заряжаем в физган спасательную капсулу
+								12=if(text == 'Usl_EscapePod')
+								13 ^{
+									01=text = 'ExpPhysGun_PhysGunMissileEscapePod';
+									02=damage = item_size;
+									03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+8+512+1024+2048+1048576);
 									04=break;
 								}
 							}
@@ -821,7 +908,7 @@ ActCodeBlocksList ^{
 								02=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
 								03=break;
 							}
-							//Если заряжаем в физган что-то ещё
+							//Если заряжаем в физган что-либо ещё
 							14=damage = item_size;
 							15=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
 							16=break;

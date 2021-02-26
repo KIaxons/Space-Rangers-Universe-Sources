@@ -152,7 +152,7 @@ UselessItems ^{
         Size=1
         Text=Дорогостоящие кристаллы, подходящие для использования в ювелирном деле. Особый интерес представляют для сети <color=255,240,100>бизнес-центров</color>.
     }
-    ShuCapsule ^{
+    Usl_EscapePod ^{
         Cost=Average
         Description=
         Name=Спасательная капсула
@@ -162,10 +162,10 @@ UselessItems ^{
     }
     Usl_72 ^{
         OnUseCode ^{
-            01=ShipMoney(Player(),ShipMoney(Player())+ItemCost(CurItem()));
-            02=Sound('Sound.Buy');
-            03=FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),CurItem())));
-            04=FreeItem(GetItemFromStorage(FindItemInStorage(CurItem())));
+            01=if(~FindItemInStorage(CurItem())) FreeItem(GetItemFromStorage(FindItemInStorage(CurItem())));
+            02=else FreeItem(GetItemFromShip(Player(), CurItem()));
+            03=ShipMoney(Player(), ShipMoney(Player()) + ItemCost(CurItem()));
+            04=Sound('Sound.Buy');
         }
     }
 }
