@@ -2514,10 +2514,10 @@ ShipInfo ^{
 														04=int tint2 = 0;
 														05=int target_infos = ShipFindCustomShipInfoByType(target, 'bioMM_FS');
 														//Дополнительный множитель штрафа к шансу напугать цель, если цель уже была недавно напугана (в ближайшие полгода)
-														06=if(target_infos>-1)tint2=ShipCustomShipInfoData(target,target_infos,3);
+														06=if(target_infos > -1) tint2 = ShipCustomShipInfoData(target, target_infos, 3);
 														//Определяем штраф к шансу напугать цель в зависимости от типа корабля-цели
-														07=str tstr2=ShipType(target);
-														08=int tint3=85;
+														07=str tstr2 = ShipType(target);
+														08=int tint3 = 85;
 														09=if(tstr2 == 'Ranger' || target == Player())
 														10 ^{
 															//Если рейнджер больше торговец
@@ -2526,33 +2526,50 @@ ShipInfo ^{
 															02=else if(RangerStatus(target) == 1) tint3 = 80;
 															//Если рейнджер больше воин
 															03=else tint3 = 100;
+															04=float race_fear_coef = 1.0;
 														}
-														11=else if(tstr2=='Warrior' || tstr2=='Militiaman1' || tstr2=='Militiaman2' || tstr2=='Militiaman3' || tstr2=='EliteWarrior' || tstr2=='RangerExplorer' || tstr2=='RangerPirateExplorer') tint3 = 100;
-														12=else if(tstr2=='Pirate' || tstr2=='PirateRunner' || tstr2=='Rebel' || tstr2=='RangerPirate') tint3 = 80;
-														13=else if(tstr2=='Transport' || tstr2=='Liner' || tstr2=='Diplomat' || tstr2=='Smuggler') tint3 = 40;
-														14=else if(tstr2=='Merc' || tstr2=='Freelancer') tint3 = 90;
-														15=else if(tstr2=='RedLeader' || tstr2=='AtlantLeader' || tstr2=='FeiLeader') tint3 = 125;
-														//Определяем штраф к шансу напугать цель в зависимости от расы пилота-цели
-														16=if(ShipPilotRace(target) == 0) tint3 = (tint3 * 14) / 10;
-														17=else if(ShipPilotRace(target) == 1) tint3 = (tint3 * 6) / 10;
-														18=else if(ShipPilotRace(target) == 3) tint3 = (tint3 * 6) / 10;
-														19=else if(ShipPilotRace(target) == 4) tint3 = (tint3 * 9) / 10;
+														11=else if(tstr2 == 'Warrior' || tstr2 == 'Militiaman1' || tstr2 == 'Militiaman2' || tstr2 == 'Militiaman3' || tstr2=='EliteWarrior' || tstr2 == 'RangerExplorer' || tstr2 == 'RangerPirateExplorer') tint3 = 100;
+														12=else if(tstr2 == 'Pirate' || tstr2 == 'PirateRunner' || tstr2 == 'Rebel' || tstr2 == 'RangerPirate') tint3 = 80;
+														13=else if(tstr2 == 'Transport' || tstr2 == 'Liner' || tstr2 == 'Diplomat' || tstr2 == 'Smuggler') tint3 = 40;
+														14=else if(tstr2 == 'Merc' || tstr2 == 'Freelancer') tint3 = 90;
+														15=else if(tstr2 == 'RedLeader' || tstr2 == 'AtlantLeader' || tstr2 == 'FeiLeader') tint3 = 125;
+														//Определяем штраф к шансу напугать цель в зависимости от расы пилота-цели (по умолчанию задан человек)
+														16=if(ShipPilotRace(target) == Maloc)
+														17 ^{
+															01=tint3 = (tint3 * 14) / 10;
+															02=race_fear_coef = 2.0;
+														}
+														18=else if(ShipPilotRace(target) == Peleng)
+														19 ^{
+															01=tint3 = (tint3 * 6) / 10;
+															02=race_fear_coef = 1.5;
+														}
+														20=else if(ShipPilotRace(target) == Fei)
+														21 ^{
+															01=tint3 = (tint3 * 6) / 10;
+															02=race_fear_coef = 0.8;
+														}
+														22=else if(ShipPilotRace(target) == Gaal)
+														23 ^{
+															01=tint3 = (tint3 * 9) / 10;
+															02=race_fear_coef = 0.5;
+														}
 														//Формула для определения "пугливости" цели
-														20=int tint4 = ShipSkill(ship, 'CharmCur') * 25 + Rnd(1, 100) - tint3;
+														24=int tint4 = ShipSkill(ship, 'CharmCur') * 25 + Rnd(1, 100) - tint3;
 														//Применяем дополнительный штраф к шансу напугать цель (если цель уже была недавно напугана)
-														21=if(tint2 > 1) tint4 = tint4 - (tint4 * 20 * tint2) / 100;
+														25=if(tint2 > 1) tint4 = tint4 - (tint4 * 20 * tint2) / 100;
 														//Добавляем дополнительный бонус к шансу напугать цель, если у пугающего есть гипностимулятор "Одноглазый Хамас"
-														22=if(ShipHealthFactor(ship, 14)) tint4 = tint4 + 30;
+														26=if(ShipHealthFactor(ship, 14)) tint4 = tint4 + 30;
 														//Устрашение не подействовало на цель, выводится соответствующий ответ
-														23=if(tint4 < 51)
-														24 ^{
-															01=if(target==Player())
+														27=if(tint4 < 51)
+														28 ^{
+															01=if(target == Player())
 															02 ^{
-																01=tstr=tstr+CT('FormInfo.br')+CT('Biomodules.8_gtu.9.FearPlayerFailed');
-																02=ShipCustomShipInfoTextData(0,infos,1,tstr);
-																03=tint=CT('Biomodules.8_gtu.9.FearFailed.Text_count');
-																04=tstr=CT('Biomodules.8_gtu.9.FearFailed.Text_'+Rnd(1,tint));
-																05=ShipCustomShipInfoTextData(0,infos,2,tstr);
+																01=tstr = tstr + CT('FormInfo.br') + CT('Biomodules.8_gtu.9.FearPlayerFailed');
+																02=ShipCustomShipInfoTextData(0, infos, 1, tstr);
+																03=tint = CT('Biomodules.8_gtu.9.FearFailed.Text_count');
+																04=tstr = CT('Biomodules.8_gtu.9.FearFailed.Text_' + Rnd(1, tint));
+																05=ShipCustomShipInfoTextData(0, infos, 2, tstr);
 																06=GExpImplantsDialog = 2;
 																07=Dialog(ship);
 															}
@@ -2560,126 +2577,126 @@ ShipInfo ^{
 															04 ^{
 																01=if(ShipInNormalSpace(Player()))
 																02 ^{
-																	01=if(ShipStar(ship)==ShipStar(Player()))
+																	01=if(ShipStar(ship) == ShipStar(Player()))
 																	02 ^{
-																		01=if(ShipRadarRange(Player())>=Dist(Player(),ship))
+																		01=if(ShipRadarRange(Player()) >= Dist(Player(), ship))
 																		02 ^{
-																			01=tstr='<color=255,240,100>'+Name(ship)+'</color>'+'-->'+'<color=255,240,100>'+Name(target)+'</color>'+CT('FormInfo.br')+'- '+tstr;
-																			02=tint=CT('Biomodules.8_gtu.9.FearFailed.Text_count');
-																			03=tstr=tstr+CT('FormInfo.br')+'- '+CT('Biomodules.8_gtu.9.FearFailed.Text_'+Rnd(1,tint));
-																			04=Ether(1,'',tstr,ship,target);
+																			01=tstr = '<color=255,240,100>'+Name(ship) + '</color>' + '-->' + '<color=255,240,100>'+Name(target) + '</color>' + CT('FormInfo.br') + '- ' + tstr;
+																			02=tint = CT('Biomodules.8_gtu.9.FearFailed.Text_count');
+																			03=tstr = tstr + CT('FormInfo.br') + '- ' + CT('Biomodules.8_gtu.9.FearFailed.Text_' + Rnd(1, tint));
+																			04=Ether(1, '', tstr, ship, target);
 																		}
 																	}
 																}
 															}
 														}
 														//Устрашение подействовало на цель, выбираем варианты её поведения
-														25=else
-														26 ^{
+														29=else
+														30 ^{
 															//Обновляем таймеры инфошки испуга цели, если удалось напугать уже недавно напуганный корабль
-															01=if(target_infos > -1)
+															01=if(~target_infos)
 															02 ^{
-																01=ShipCustomShipInfoData(target,target_infos, 2, ShipCustomShipInfoData(target, target_infos, 2) + 120);
-																02=ShipCustomShipInfoData(target,target_infos, 3, ShipCustomShipInfoData(target, target_infos, 3) + 1);
+																01=ShipCustomShipInfoData(target, target_infos, 2, ShipCustomShipInfoData(target, target_infos, 2) + round(race_fear_coef * 120));
+																02=ShipCustomShipInfoData(target, target_infos, 3, ShipCustomShipInfoData(target, target_infos, 3) + 1);
 																03=if(target == Player()) ShipAddCustomShipInfo(target, 'bioMM_FS_Visible', CT('ShipInfo.AddInfo.CustomInfos.bioMM_FS_Visible.DescriptionPlayer'));
 																04=else ShipAddCustomShipInfo(target, 'bioMM_FS_Visible');
 															}
 															//Иначе добавляем инфошку испуга
 															03=else
 															04 ^{
-																01=ShipAddCustomShipInfo(target,'bioMM_FS','NoShow',0,CurTurn()+120,2,0,0,'<color=255,240,100>'+Name(target)+'</color>'+CT('FormInfo.br')+'<clr><clrEnd>'+CT('FormInfo.br'));
-																02=if(target==Player())ShipAddCustomShipInfo(target,'bioMM_FS_Visible',CT('ShipInfo.AddInfo.CustomInfos.bioMM_FS_Visible.DescriptionPlayer'));
-																03=else ShipAddCustomShipInfo(target,'bioMM_FS_Visible');
+																01=ShipAddCustomShipInfo(target, 'bioMM_FS', 'NoShow', 0, CurTurn() + round(race_fear_coef * 120), 2, 0, 0,'<color=255,240,100>' + Name(target) + '</color>' + CT('FormInfo.br') + '<clr><clrEnd>' + CT('FormInfo.br'));
+																02=if(target == Player()) ShipAddCustomShipInfo(target, 'bioMM_FS_Visible', CT('ShipInfo.AddInfo.CustomInfos.bioMM_FS_Visible.DescriptionPlayer'));
+																03=else ShipAddCustomShipInfo(target, 'bioMM_FS_Visible');
 															}
 															05=int i;
 															06=dword dwd1;
-															07=if(tint4 >= 51 && tint4 < 70) tint = 1;//Выбираем тип поведения 1
+															07=if(tint4 >= 51 && tint4 < 70) tint = 1; //Выбираем тип поведения 1
 															08=else if(tint4 >= 70 && tint4 < 90)
 															09 ^{
 																//Цель просто сбросит имеющийся в трюме груз
-																01=tint=1;
-																02=for(i=ShipItems(target)-1;i>0;i=i-1);
+																01=tint = 1;
+																02=for(i = ShipItems(target) - 1; i > 0; i = i - 1);
 																03 ^{
-																	01=dwd1=ShipItems(target,i);
-																	02=if(ItemType(dwd1)>=t_Food && ItemType(dwd1)<=t_Narcotics)
+																	01=dwd1 = ShipItems(target, i);
+																	02=if(ItemType(dwd1) >= t_Food && ItemType(dwd1) <= t_Narcotics)
 																	03 ^{
-																		01=GoodsDrop(target,ItemType(dwd1),(GoodsCount(target,ItemType(dwd1))*30)/100);
+																		01=GoodsDrop(target, ItemType(dwd1), (GoodsCount(target, ItemType(dwd1)) * 30) / 100);
 																	}
-																	04=if(ItemType(dwd1)==t_Protoplasm)
+																	04=if(ItemType(dwd1) == t_Protoplasm)
 																	05 ^{
-																		01=tint2=(GetNodesFromShip(target)*30)/100;
-																		02=GetNodesFromShip(target,GetNodesFromShip(target)-tint2);
-																		03=temp_float=(Rnd(0,360)*pi)/180.0;
-																		04=DropItemInSystem(ShipStar(target),CreateNodes(tint2,Rnd(0,2),1),CoordX(target),CoordY(target),CoordX(target)+100.0*sin(temp_float),CoordY(target)-100.0*cos(temp_float));
+																		01=tint2 = (GetNodesFromShip(target) * 30) / 100;
+																		02=GetNodesFromShip(target, GetNodesFromShip(target) - tint2);
+																		03=temp_float = (Rnd(0, 360) * pi) / 180.0;
+																		04=DropItemInSystem(ShipStar(target), CreateNodes(tint2, Rnd(0, 2), 1), CoordX(target), CoordY(target), CoordX(target) + 100.0 * sin(temp_float), CoordY(target) - 100.0 * cos(temp_float));
 																	}
 																}
 															}
-															10=else if(tint4>=90 && tint4<100)tint=1;//Выбираем тип поведения 1
-															11=else if(tint4>=100)tint=2;//Выбираем тип поведения 2
+															10=else if(tint4 >= 90 && tint4 < 100) tint = 1; //Выбираем тип поведения 1
+															11=else if(tint4 >= 100) tint = 2; //Выбираем тип поведения 2
 															//Цель сбросит одно своё рандомное оборудование
-															12=if(tint4>=90)
+															12=if(tint4 >= 90)
 															13 ^{
-																01=unknown temp_array=newarray(1);
-																02=for(i=ShipItems(target)-1;i>0;i=i-1)
+																01=unknown temp_array = newarray(1);
+																02=for(i = ShipItems(target) - 1; i > 0; i = i - 1)
 																03 ^{
-																	01=dwd1=ShipItems(target,i);
-																	02=if(ItemType(dwd1)>t_CustomWeapon)continue;
-																	03=if(ItemInScript(dwd1))continue;
+																	01=dwd1 = ShipItems(target, i);
+																	02=if(ItemType(dwd1) > t_CustomWeapon) continue;
+																	03=if(ItemInScript(dwd1)) continue;
 																	//Кроме корпуса, установленного двигателя, установленного бака или единственного установленного орудия
-																	04=if(ItemType(dwd1)<=t_Engine)
+																	04=if(ItemType(dwd1) <= t_Engine)
 																	05 ^{
-																		01=if(ItemIsInUse(dwd1))continue;
+																		01=if(ItemIsInUse(dwd1)) continue;
 																	}
-																	06=if(ShipCntWeapon(target)<=1)
+																	06=if(ShipCntWeapon(target) <= 1)
 																	07 ^{
-																		01=if(ItemType(dwd1)>=t_Weapon1)
+																		01=if(ItemType(dwd1) >= t_Weapon1)
 																		02 ^{
-																			01=if(ItemIsInUse(dwd1))continue;
+																			01=if(ItemIsInUse(dwd1)) continue;
 																		}
 																	}
-																	08=ArrayAdd(temp_array,dwd1);
+																	08=ArrayAdd(temp_array, dwd1);
 																}
 																//Проверка на случай, если корабль летает с самым минимальным набором оборудки
-																04=if(ArrayDim(temp_array)>1)
+																04=if(ArrayDim(temp_array) > 1)
 																05 ^{
-																	01=dwd1=temp_array[Rnd(1,ArrayDim(temp_array)-1)];
-																	02=if(ItemIsInUse(dwd1))DropItem(target,ItemType(dwd1),1);
-																	03=else DropItem(target,ItemType(dwd1),0);
+																	01=dwd1=temp_array[Rnd(1, ArrayDim(temp_array) - 1)];
+																	02=if(ItemIsInUse(dwd1)) DropItem(target, ItemType(dwd1), 1);
+																	03=else DropItem(target, ItemType(dwd1), 0);
 																}
 															}
-															14=ShipCustomShipInfoTextData(target,target_infos,1,tint);
+															14=ShipCustomShipInfoTextData(target, target_infos, 1, tint);
 															//Вешается таймер активного испуга
-															15=ShipCustomShipInfoData(target,target_infos,1,CurTurn()+10);
+															15=ShipCustomShipInfoData(target, target_infos, 1, CurTurn() + round(race_fear_coef * 10));
 															//Испуганная цель замирает на месте (тип поведения 1)
-															16=if(tint==1)
+															16=if(tint == 1)
 															17 ^{
-																01=NoTalkToShip(target,1);
-																02=ShipSetBad(target,ship);
+																01=NoTalkToShip(target, 1);
+																02=ShipSetBad(target, ship);
 																03=OrderNone(target);
-																04=OrderLock(target,1);
-																05=dwd1=0;
+																04=OrderLock(target, 1);
+																05=dwd1 = 0;
 																//Снимаем наведение с орудий цели
-																06=for(i=1;i<6;i=i+1)
+																06=for(i = 1; i < 6; i = i + 1)
 																07 ^{
-																	01=dwd1=ShipEqInSlot(target,t_Weapon1,i);
-																	02=if(dwd1)WeaponTarget(dwd1,0);
+																	01=dwd1 = ShipEqInSlot(target, t_Weapon1, i);
+																	02=if(dwd1) WeaponTarget(dwd1, 0);
 																}
 															}
 															//Испуганная цель начинает следовать за ближайшим кораблём в системе, попутно его атакуя (тип поведения 2)
-															18=if(tint==2)
+															18=if(tint == 2)
 															19 ^{
-																01=NoTalkToShip(target,1);
-																02=ShipSetBad(target,ship);
-																03=tint4=200000;
+																01=NoTalkToShip(target, 1);
+																02=ShipSetBad(target, ship);
+																03=tint4 = 200000;
 																//Определяем ближайший к цели корабль
-																04=for(i=0;i<StarShips(ShipStar(target));i=i+1)
+																04=for(i = 0; i < StarShips(ShipStar(target)); i = i + 1)
 																05 ^{
-																	01=dwd1=StarShips(ShipStar(target),i);
-																	02=if(dwd1==target)continue;
-																	03=if(Dist(target,dwd1)<tint4)
+																	01=dwd1 = StarShips(ShipStar(target), i);
+																	02=if(dwd1 == target) continue;
+																	03=if(Dist(target, dwd1) < tint4)
 																	04 ^{
-																		01=dword tdwd2=dwd1;
-																		02=tint4=Dist(target,dwd1);
+																		01=dword tdwd2 = dwd1;
+																		02=tint4 = Dist(target, dwd1);
 																	}
 																}
 																06=ShipCustomShipInfoTextData(target, target_infos, 2, Id(tdwd2));
@@ -2746,47 +2763,46 @@ ShipInfo ^{
 				OnActStepTypes=0,11
                 OnActCode ^{
 					//ShipCustomShipInfoData1 - время активного затупа корабля
-					//ShipCustomShipInfoData2 - время до полного снятия этой инфошки (обычно CurTurn()+120)
+					//ShipCustomShipInfoData2 - время до полного снятия этой инфошки (обычно CurTurn() + 120)
 					//ShipCustomShipInfoData3 - множитель к штрафу на шанс повторно напугать цель (не может быть менее 2)
-					01=dword cur_ship=ScriptItemActShip();
-                    02=dword infos=CurInfo();
-                    03=str temp_str=ShipCustomShipInfoTextData(0,infos,1);
-                    04=int order=temp_str;
-                    05=int order_data=ShipCustomShipInfoData(0,infos,1);
-                    06=int i;
-                    07=dword gun;
-                    08=if(ScriptItemActionType(t_OnStep,0))
-                    09 ^{
-						01=if(order_data>=CurTurn())
+					01=dword cur_ship = ScriptItemActShip();
+                    02=dword infos = CurInfo();
+                    03=int behave_type = ShipCustomShipInfoTextData(0, infos, 1);
+                    04=int fear_count = ShipCustomShipInfoData(0, infos, 1);
+                    05=int i;
+                    06=dword gun;
+                    07=if(ScriptItemActionType(t_OnStep, 0))
+                    08 ^{
+						01=if(CurTurn() < fear_count)
 						02 ^{
-							01=if(order==1)
+							01=if(behave_type == 1)
 							02 ^{
-								01=for(i=1;i<6;i=i+1)
+								01=for(i = 1; i < 6; i = i + 1)
 								02 ^{
-									01=gun=ShipEqInSlot(cur_ship,t_Weapon1,i);
-									02=if(gun)WeaponTarget(gun,0);
+									01=gun = ShipEqInSlot(cur_ship, t_Weapon1, i);
+									02=if(gun) WeaponTarget(gun, 0);
 								}
 							}
-							03=else if(order==2)
+							03=else if(behave_type == 2)
 							04 ^{
-								01=temp_str=ShipCustomShipInfoTextData(0,infos,2);
-								02=dword ship=IdToShip(temp_str);
-								03=for(i=1;i<6;i=i+1)
+								01=str temp_str = ShipCustomShipInfoTextData(0, infos, 2);
+								02=dword ship = IdToShip(temp_str);
+								03=for(i = 1; i < 6; i = i + 1)
 								04 ^{
-									01=gun=ShipEqInSlot(cur_ship,t_Weapon1,i);
+									01=gun = ShipEqInSlot(cur_ship, t_Weapon1, i);
 									02=if(gun)
 									03 ^{
-										01=if(Dist(cur_ship,ship)<=GetEquipmentStats(gun,2))WeaponTarget(gun,ship);
-										02=if(Dist(cur_ship,ship)>GetEquipmentStats(gun,2))WeaponTarget(gun,ship);
+										01=if(Dist(cur_ship, ship) <= GetEquipmentStats(gun, 2)) WeaponTarget(gun, ship);
+										02=else WeaponTarget(gun, ship);
 									}
 								}
 							}
 						}
                     }
-                    10=else
-                    11 ^{
+                    09=else
+                    10 ^{
 						01=if(CurTurn() >= ShipCustomShipInfoData(0, infos, 2)) ShipDeleteCustomShipInfo(cur_ship, 'bioMM_FS');
-                        02=else if(order_data > CurTurn())
+                        02=else if(CurTurn() < fear_count)
                         03 ^{
 							01=if(Rnd(1, 4) == 1)
 							02 ^{
@@ -2805,12 +2821,12 @@ ShipInfo ^{
                         }
                         04=else
                         05 ^{
-                            01=OrderLock(cur_ship,0);
-                            02=ShipCustomShipInfoTextData(0,infos,1,'');
-                            03=ShipCustomShipInfoData(0,infos,1,0);
-                            04=if(cur_ship==Player())NoTalkToShip(0);
-							05=NoTalkToShip(cur_ship,0);
-							06=ShipDeleteCustomShipInfo(cur_ship,'bioMM_FS_Visible');
+                            01=OrderLock(cur_ship, 0);
+                            02=ShipCustomShipInfoTextData(0, infos, 1, '');
+                            03=ShipCustomShipInfoData(0, infos, 1, 0);
+                            04=if(cur_ship == Player()) NoTalkToShip(0);
+							05=NoTalkToShip(cur_ship, 0);
+							06=ShipDeleteCustomShipInfo(cur_ship, 'bioMM_FS_Visible');
                         }
                     }
                 }
