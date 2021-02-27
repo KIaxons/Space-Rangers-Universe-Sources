@@ -786,7 +786,7 @@ ActCodeBlocksList ^{
 					}
 					03=int size_limit = round(ItemSize(ShipItems(Player(), 0)) / 2, 100);
 					04=if(item_size > size_limit) MessageBox('Данный предмет имеет размер более <color=0,50,200>' + size_limit + '</color> ед. и не может быть заряжен в физган.');
-					05=if(MessageBoxYesNo('Вы точно хотите зарядить <color=0,50,200>' + Name(loaded_item) + '</color> в физган? Вытащить предмет обратно будет невозможно.'))
+					05=if(MessageBoxYesNo('Вы точно хотите зарядить <color=0,50,200>' + Name(loaded_item) + '</color> в физган?'))
 					06 ^{
 						01=str text;
 						02=dword physGunConf = GetCustomWeaponInfo('PhysGun');
@@ -923,7 +923,8 @@ ActCodeBlocksList ^{
 						13=tempActCodeData3 = ItemSize(loaded_item);
 						14=ItemSize(physGun, ItemSize(physGun) + tempActCodeData3);
 						15=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCodeLoaded'));
-						16=ScriptItemActParam(1); //Удаляем "заряженный" предмет
+						16=PutItemInVault('PhysGunChamber', FormShipCurItem('Detach'));
+						//16=ScriptItemActParam(1); //Удаляем "заряженный" предмет
 					}
 					07=else
 					08 ^{
@@ -964,6 +965,24 @@ ActCodeBlocksList ^{
 			14=ItemSize(physGun, ItemSize(physGun) - tempActCodeData3);
 			15=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCodeEmpty'));
 			16=ItemDurability(physGun, ItemDurability(physGun) - Rnd(4, 8));
+			17=str acryn_name = BonusNumInCfg(EqSpecial(missile));
+			18=if(findsubstr(acryn_name, 'Asteroid') == -1)
+			19 ^{
+				01=FreeItem(GetItemFromVault('PhysGunChamber'));
+				//Игрок запустил в цель спасательную капсулу с гуманоидом, портим ему репутацию в системе
+				02=if(acryn_name == 'ExpPhysGun_PhysGunMissileEscapePod')
+				03 ^{
+					01=if(MissileOwner(missile) == Player())
+					02 ^{
+						01=dword cur_star = MissileStar(missile);
+						02=for(int i = 0; i < StarPlanets(cur_star); i = i + 1)
+						03 ^{
+							01=dword planet = StarPlanets(cur_star, i);
+							02=if(PlanetOwner(planet) != 6) RelationToRanger(planet, Player(), RelationToRanger(planet, Player()) - 15);
+						}
+					}
+				}
+			}
 		}
 		//Снаряд физгана (или любая другая ракета стреляющего корабля) попал по кораблю/станции
 		09=else if(ScriptItemActionType(t_OnMissileShot2))
@@ -971,8 +990,8 @@ ActCodeBlocksList ^{
 			01=missile = ScriptItemActObject2();
 			02=if(CustomMissileType(missile) != 'PhysGun') exit; //Если данное событие сработало не от физгана
 			03=dword target = ScriptItemActObject1();
-			04=dword cur_star = MissileStar(missile);
-			05=str acryn_name = BonusNumInCfg(EqSpecial(missile));
+			04=cur_star = MissileStar(missile);
+			05=acryn_name = BonusNumInCfg(EqSpecial(missile));
 			06=if(acryn_name == 'ExpPhysGun_PhysGunMissileQuarkBomb')
 			07 ^{
 				//Если подключён ExpArts, то производим взрыв кварки из акткода (более проработанный в деталях)
@@ -1326,7 +1345,7 @@ UseCodeBlocksList ^{
 		08=else MessageBox('Физган уже заряжен');
 	}
 	PhysGunUseCodeLoaded ^{
-		01=if(MessageBoxYesNo('Вы уверены, что хотите разрядить физган? Заряженный в него предмет будет уничтожен.'))
+		01=if(MessageBoxYesNo('Вы уверены, что хотите разрядить физган?'))
 		02 ^{
 			01=dword physGun = CurItem();
 			02=SpecialToEquipment(FindBonusByNameInCfg('ExpPhysGun_PhysGunEmpty'), physGun);
@@ -1334,6 +1353,11 @@ UseCodeBlocksList ^{
 			//Заряд извлечён, "облегчаем" физган
 			04=ItemSize(physGun, ItemSize(physGun) - tempActCodeData3);
 			05=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCodeEmpty'));
+			06=str acryn_name = BonusNumInCfg(EqSpecial(physGun));
+			07=if(findsubstr(acryn_name, 'Asteroid') == -1)
+			08 ^{
+				01=AddItemToShip(Player(), GetItemFromVault('PhysGunChamber'));
+			}
 		}
 	}
 }
