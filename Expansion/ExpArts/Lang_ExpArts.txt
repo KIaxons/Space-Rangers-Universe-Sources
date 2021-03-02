@@ -854,7 +854,7 @@ UselessItems ^{
 				08=int Edamage = 0;
 				09=int targetInfo = -2;
 				10=int fuel_tank_imitation = ScriptItemActParam();
-				11=if(ScriptItemActionType(t_OnItemHit))ItemDestroy(bomb, 0);
+				11=if(ScriptItemActionType(t_OnItemHit)) ItemDestroy(bomb, 0);
 				12=if(ScriptItemActionType(t_OnItemPickUp))
 				13 ^{
 					01=pick_ship = ScriptItemActShip();
@@ -920,7 +920,7 @@ UselessItems ^{
 					}
 					//Огромный астероид из ExpPhysGun дамага от бомбы не получит
 					10=if(ShipType(ship) == 'KillerAsteroid') Tdamage = 0;
-					//Перед активацией эффекта обязательно делаем проверку на нахождение в пространстве системы игрока (!!!)
+					//Перед отрисовкой эффекта цифр нанесённого урона, обязательно делаем проверку на нахождение в пространстве системы игрока (!!!)
 					11=if(ShipStar(Player()) == bomb_star && ShipInNormalSpace(Player())) ShowEffect('Weapon.NoGraph', 0, ship, ship, Tdamage, 0, 0, 255, 0, 0);
 					//Применяем урон
 					12=if(HullHP(ship) > Tdamage) HullHP(ship, HullHP(ship) - Tdamage);
@@ -931,7 +931,7 @@ UselessItems ^{
 						02=if(~targetInfo)
 						03 ^{
 							01=ShipCustomShipInfoTextData(ship, targetInfo, 3, bomb);
-							02=DealDamageToShip(ship, bomb, 100000, 0);
+							02=DealDamageToShip(ship, bomb, 1000000, 0);
 						}
 						//Уничтожение корабля через функцию нужно для корректного отображения взрыва, ведь ебаная функция DealDamageToShip взрыв не рисует, СУКА!!!
 						04=else if(ShipFindCustomShipInfoByType(ship, 'AbandonedShipInfo') == -1) ShipDestroy(ship, 1);
@@ -1185,67 +1185,68 @@ UselessItems ^{
 					//Вешаем разговорный и сканерный запрет на все корабли системы, если под оглушение попал сам игрок
 					19=if(ship == Player())
 					20 ^{
-						01=for(i = 0; i < StarShips(ShipStar(Player())); i = i + 1)
-						02 ^{
-							01=if(!NoTalkToShip(StarShips(ShipStar(Player()),i)) || !NoScanToShip(StarShips(ShipStar(Player()),i)))
+						01=dword player_star = ShipStar(Player());
+						02=for(i = 0; i < StarShips(player_star); i = i + 1)
+						03 ^{
+							01=if(!NoTalkToShip(StarShips(player_star, i)) || !NoScanToShip(StarShips(player_star, i)))
 							02 ^{
-								01=ShipAddCustomShipInfo(StarShips(ShipStar(Player()),i),'RNDbomb_2_PlayerInfos','NoShow',1);
-								02=if(!NoTalkToShip(StarShips(ShipStar(Player()),i)))
+								01=ShipAddCustomShipInfo(StarShips(player_star, i), 'RNDbomb_2_PlayerInfos', 'NoShow', 1);
+								02=if(!NoTalkToShip(StarShips(player_star, i)))
 								03 ^{
-									01=NoTalkToShip(StarShips(ShipStar(Player()),i),1);
-									02=ShipCustomShipInfoData(StarShips(ShipStar(Player()),i),ShipFindCustomShipInfoByType(StarShips(ShipStar(Player()),i),'RNDbomb_2_PlayerInfos'),2,1);
+									01=NoTalkToShip(StarShips(player_star, i), 1);
+									02=ShipCustomShipInfoData(StarShips(player_star, i), ShipFindCustomShipInfoByType(StarShips(player_star, i), 'RNDbomb_2_PlayerInfos'), 2, 1);
 								}
-								04=if(!NoScanToShip(StarShips(ShipStar(Player()),i)))
+								04=if(!NoScanToShip(StarShips(player_star, i)))
 								05 ^{
-									01=NoScanToShip(StarShips(ShipStar(Player()),i),1);
-									02=ShipCustomShipInfoTextData(StarShips(ShipStar(Player()),i),ShipFindCustomShipInfoByType(StarShips(ShipStar(Player()),i),'RNDbomb_2_PlayerInfos'),1,'1');
+									01=NoScanToShip(StarShips(player_star, i), 1);
+									02=ShipCustomShipInfoTextData(StarShips(player_star, i), ShipFindCustomShipInfoByType(StarShips(player_star, i), 'RNDbomb_2_PlayerInfos'), 1, '1');
 								}
 							}
 						}
 						//Временно снимаем энергию в 0, если корпус - ТИ
-						03=if(HullSpecial(Player())>-1)
-						04 ^{
-							01=if(BonusNumInCfg(HullSpecial(Player()))==490)CapitalShipStats(ShipItems(Player(),0),1,0);
+						04=if(HullSpecial(Player()) > -1)
+						05 ^{
+							01=if(BonusNumInCfg(HullSpecial(Player())) == 490) CapitalShipStats(ShipItems(Player(), 0), 1, 0);
 						}
 						//Скрываем некоторые рабочие элементы из ExpPanel
-						05=if(GetMainData('Data.Script.Mod_ExpPanel')=='1,Script.Mod_ExpPanel')
-						06 ^{
-							01=ShipCustomShipInfoData(Player(),ShipFindCustomShipInfoByType(Player(),'RNDbomb_2_infos'),3,0);
-							02=int v=9;
+						06=if(GetMainData('Data.Script.Mod_ExpPanel') == '1,Script.Mod_ExpPanel')
+						07 ^{
+							01=ShipCustomShipInfoData(Player(), ShipFindCustomShipInfoByType(Player(), 'RNDbomb_2_infos'), 3, 0);
+							02=int v = 9;
 							03=while(v)
 							04 ^{
-								01=if(InterfaceState('StarMap','set_button_'+v+'_c')==1)
+								01=if(InterfaceState('StarMap', 'set_button_' + v + '_c') == 1)
 								02 ^{
-									01=InterfaceState('StarMap','set_button_'+v+'_c',0);
-									02=ShipCustomShipInfoData(Player(),ShipFindCustomShipInfoByType(Player(),'RNDbomb_2_infos'),3,ShipCustomShipInfoData(Player(),ShipFindCustomShipInfoByType(Player(),'RNDbomb_2_infos'),3)+1);
+									01=InterfaceState('StarMap', 'set_button_' + v + '_c', 0);
+									02=ShipCustomShipInfoData(Player(), ShipFindCustomShipInfoByType(Player(), 'RNDbomb_2_infos'), 3, ShipCustomShipInfoData(Player(), ShipFindCustomShipInfoByType(Player(), 'RNDbomb_2_infos'), 3) + 1);
 								}
-								03=v=v-1;
+								03=v = v - 1;
 							}
-							05=if(InterfaceState('StarMap','Klesh_panel')==1)
+							05=if(InterfaceState('StarMap', 'Klesh_panel') == 1)
 							06 ^{
-								01=InterfaceState('StarMap','Klesh_panel',0);
-								02=ShipCustomShipInfoData(Player(),ShipFindCustomShipInfoByType(Player(),'RNDbomb_2_infos'),3,ShipCustomShipInfoData(Player(),ShipFindCustomShipInfoByType(Player(),'RNDbomb_2_infos'),3)+10);
+								01=InterfaceState('StarMap', 'Klesh_panel', 0);
+								02=ShipCustomShipInfoData(Player(), ShipFindCustomShipInfoByType(Player(), 'RNDbomb_2_infos'), 3, ShipCustomShipInfoData(Player(), ShipFindCustomShipInfoByType(Player(),'RNDbomb_2_infos'), 3) + 10);
 							}
-							07=if(InterfaceState('StarMap','ppb_panel')==1)
+							07=if(InterfaceState('StarMap', 'ppb_panel') == 1)
 							08 ^{
-								01=InterfaceState('StarMap','ppb_panel',0);
-								02=ShipCustomShipInfoData(Player(),ShipFindCustomShipInfoByType(Player(),'RNDbomb_2_infos'),3,ShipCustomShipInfoData(Player(),ShipFindCustomShipInfoByType(Player(),'RNDbomb_2_infos'),3)+10);
+								01=InterfaceState('StarMap', 'ppb_panel', 0);
+								02=ShipCustomShipInfoData(Player(), ShipFindCustomShipInfoByType(Player(), 'RNDbomb_2_infos'), 3, ShipCustomShipInfoData(Player(), ShipFindCustomShipInfoByType(Player(), 'RNDbomb_2_infos'), 3) + 10);
 							}
 						}
 					}
 				}
-				14=if(primer_type<=-5 && primer_type!=-8)
+				14=if(primer_type <= -5 && primer_type != -8)
 				15 ^{
-					01=SetName(bomb,CT('Script.Mod_ExpArts.DepletedStunBomb'));
-					02=UselessItemText(bomb,CT('Script.Mod_ExpArts.BombIsDepleted'));
+					01=SetName(bomb, CT('Script.Mod_ExpArts.DepletedStunBomb'));
+					02=UselessItemText(bomb, CT('Script.Mod_ExpArts.BombIsDepleted'));
 				}
 				16=else
 				17 ^{
-					01=SetName(bomb,CT('Script.Mod_ExpArts.DepletedStunMine'));
-					02=UselessItemText(bomb,CT('Script.Mod_ExpArts.MineIsDepleted'));
+					01=SetName(bomb, CT('Script.Mod_ExpArts.DepletedStunMine'));
+					02=UselessItemText(bomb, CT('Script.Mod_ExpArts.MineIsDepleted'));
 				}
-				18=ItemCost(bomb,Rnd(15,21)*ItemSize(bomb));
-				19=UselessItemData(bomb,2,1);
+				18=ItemCost(bomb, Rnd(15, 21) * ItemSize(bomb));
+				19=UselessItemData(bomb, 2, 1);
             }
         }
         Owner=PirateClan
@@ -1620,7 +1621,7 @@ UselessItems ^{
                     05 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				08=if(EqSpecial(item)>-1)
@@ -1646,7 +1647,7 @@ UselessItems ^{
                     04 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				08=if(EqSpecial(item)>-1)
@@ -1698,7 +1699,7 @@ UselessItems ^{
                     05 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				08=if(EqSpecial(item)>-1)
@@ -1724,7 +1725,7 @@ UselessItems ^{
                     04 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				08=if(EqSpecial(item)>-1)
@@ -1776,7 +1777,7 @@ UselessItems ^{
                     05 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				08=if(EqSpecial(item)>-1)
@@ -1802,7 +1803,7 @@ UselessItems ^{
                     04 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				08=if(EqSpecial(item)>-1)
@@ -1852,7 +1853,7 @@ UselessItems ^{
                     05 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				08=if(EqSpecial(item)>-1)
@@ -1878,7 +1879,7 @@ UselessItems ^{
                     04 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				08=if(EqSpecial(item)>-1)
@@ -1928,7 +1929,7 @@ UselessItems ^{
                     05 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				08=if(EqSpecial(item)>-1)
@@ -1956,7 +1957,7 @@ UselessItems ^{
                     04 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				08=if(EqSpecial(item)>-1)
@@ -2007,7 +2008,7 @@ UselessItems ^{
                     05 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				07=if(EqSpecial(item)>-1)
@@ -2032,7 +2033,7 @@ UselessItems ^{
                     04 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				07=if(EqSpecial(item)>-1)
@@ -2084,7 +2085,7 @@ UselessItems ^{
                     05 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				07=if(EqSpecial(item)>-1)
@@ -2109,7 +2110,7 @@ UselessItems ^{
                     04 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				07=if(EqSpecial(item)>-1)
@@ -2167,7 +2168,7 @@ UselessItems ^{
                     05 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				07=if(EqSpecial(item)>-1)
@@ -2192,7 +2193,7 @@ UselessItems ^{
                     04 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				07=if(EqSpecial(item)>-1)
@@ -2244,7 +2245,7 @@ UselessItems ^{
                     05 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				07=if(EqSpecial(item)>-1)
@@ -2273,7 +2274,7 @@ UselessItems ^{
                     04 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				07=if(EqSpecial(item)>-1)
@@ -2337,7 +2338,7 @@ UselessItems ^{
                     05 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				07=if(EqSpecial(item)>-1)
@@ -2362,7 +2363,7 @@ UselessItems ^{
                     04 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				07=if(EqSpecial(item)>-1)
@@ -2413,7 +2414,7 @@ UselessItems ^{
                     05 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				07=if(EqSpecial(item)>-1)
@@ -2438,7 +2439,7 @@ UselessItems ^{
                     04 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				07=if(EqSpecial(item)>-1)
@@ -2489,7 +2490,7 @@ UselessItems ^{
                     05 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				07=if(EqSpecial(item)>-1)
@@ -2514,7 +2515,7 @@ UselessItems ^{
                     04 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				07=if(EqSpecial(item)>-1)
@@ -2564,7 +2565,7 @@ UselessItems ^{
                     05 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
 				//Отправляем команду о необходимости подсветить пригодный для установки предмет
@@ -2583,7 +2584,7 @@ UselessItems ^{
                     04 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
                     }
                 }
                 06=if(!sp)
@@ -2627,7 +2628,7 @@ UselessItems ^{
                     05 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
 					}
 				}
 				07=if(EqSpecial(item)>-1)
@@ -2653,7 +2654,7 @@ UselessItems ^{
                     05 ^{
                         01=sp_num=ItemExtraSpecials(item,i);
                         02=sp_name=CT('MicroModuls.'+BonusNumInCfg(sp_num)+'.Name');
-                        03=if(findsubstr(sp_name,'dt_Modify')==0)sp=1;
+                        03=if(!findsubstr(sp_name,'dt_Modify'))sp=1;
 					}
 				}
 				07=if(EqSpecial(item)>-1)

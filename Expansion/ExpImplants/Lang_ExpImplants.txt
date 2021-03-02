@@ -1551,43 +1551,43 @@ ShipInfo ^{
 				OnActCodeTypes=t_OnStep,t_OnEnteringForm,t_OnReEnteringForm
 				OnActStepTypes=11
                 OnActCode ^{
-					01=dword cur_ship=ScriptItemActShip();
-                    02=if(ScriptItemActionType(t_OnStep,11))
+					01=dword cur_ship = ScriptItemActShip();
+                    02=if(ScriptItemActionType(t_OnStep, 11))
                     03 ^{
-                        01=int infos=ShipFindCustomShipInfoByType(cur_ship,'Vaccination');
-                        02=int cure_data=0;
-                        03=int cure_num=0;
+                        01=int infos = ShipFindCustomShipInfoByType(cur_ship, 'Vaccination');
+                        02=int cure_data = 0;
+                        03=int cure_num = 0;
                         04=int i;
-                        05=int del_check=0;
+                        05=int del_check = 0;
 						//Перебираем все сделанные игроком прививки
-                        06=for(i=3; i>0; i=i-1)
+                        06=for(i = 3; i > 0; i = i - 1)
                         07 ^{
 							//Проверяем срок действия данной прививки
-                            01=cure_data=ShipCustomShipInfoData(cur_ship,infos,i);
-                            02=if(!cure_data)continue;
+                            01=cure_data = ShipCustomShipInfoData(cur_ship, infos, i);
+                            02=if(!cure_data) continue;
 							//Откручиваем таймер её срока действия
-                            03=ShipCustomShipInfoData(cur_ship,infos,i,cure_data-1);
+                            03=ShipCustomShipInfoData(cur_ship, infos, i, cure_data - 1);
 							//Проверяем, против какой болезни была сделана данная прививка
-                            04=cure_num=ShipCustomShipInfoTextData(cur_ship,infos,i);
-                            05=cure_num=cure_num+1;
+                            04=cure_num = ShipCustomShipInfoTextData(cur_ship, infos, i);
+                            05=cure_num = cure_num + 1;
 							//Снимаем болезни, против которых была сделана данная прививка
-                            06=if(ShipHealthFactor(cur_ship,cure_num))ShipHealthFactor(cur_ship,cure_num,0);
-                            07=if(ShipHealthFactorStatus(cur_ship,cure_num))ShipHealthFactorStatus(cur_ship,cure_num,0);
+                            06=if(ShipHealthFactor(cur_ship, cure_num)) ShipHealthFactor(cur_ship, cure_num, 0);
+                            07=if(ShipHealthFactorStatus(cur_ship, cure_num)) ShipHealthFactorStatus(cur_ship, cure_num, 0);
 							//Проверяем, не истекла ли ещё данная прививка
-                            08=if(cure_data-1 <= 0)NewsAdd('Срок действия прививки от болезни <color=255,240,100>\"'+CT('Illness.Illness.'+(cure_num-1)+'.Name')+'\"</color> истёк. Рекомендуется как можно скорее обратиться в ближайший медцентр для повторной вакцинации.');
-							09=else del_check=del_check+1;
+                            08=if(cure_data - 1 <= 0) NewsAdd('Срок действия прививки от болезни <color=255,240,100>\"' + CT('Illness.Illness.' + (cure_num - 1) + '.Name') + '\"</color> истёк. Рекомендуется как можно скорее обратиться в ближайший медцентр для повторной вакцинации.');
+							09=else del_check = del_check + 1;
                         }
 						//Удаляём инфошку, если все прививки истекли
-						08=if(!del_check)ShipDeleteCustomShipInfo(cur_ship,'Vaccination');
+						08=if(!del_check) ShipDeleteCustomShipInfo(cur_ship, 'Vaccination');
                     }
                     04=else
                     05 ^{
 						01=if(CurrentForm() == 'Ship')// || CurrentForm() == 'Scaner'
 						02 ^{
-							01=infos=ShipFindCustomShipInfoByType(cur_ship,'Vaccination');
+							01=infos = ShipFindCustomShipInfoByType(cur_ship, 'Vaccination');
 							//Делаем проверку на установленный Биомир (либо его нахождение в трюме при установленном Артефакторе)
 							02=int artBioCheck=0;
-							03=if(ArtefactTypeInUse(cur_ship,t_ArtBio))artBioCheck=1;
+							03=if(ArtefactTypeInUse(cur_ship,t_ArtBio)) artBioCheck=1;
 							04=str temp_str;
 							//Сбрасываем описание инфошки в "стоковый" вид
 							05=ShipCustomShipInfoDescription(cur_ship,infos,CT('ShipInfo.AddInfo.CustomInfos.Vaccination.Description'));
@@ -1694,23 +1694,24 @@ ShipInfo ^{
                             22=if(ShipHealthFactor(Player(),10))stama_koef=stama_koef-2;
                             23=if(ShipHealthFactor(Player(),11))stama_koef=stama_koef-2;
                             24=if(ShipHealthFactor(Player(),12))stama_koef=stama_koef-4;
+							25=stama_koef = stama_koef + GlobalImplantsEnduranceBonus;
 							//Лихорадочный штраф (вместо штрафа к нагрузке)
-							25=if(infos_2>-1)stama_koef=stama_koef-3;
-							26=pilot_stama=ShipPilotRace(Player());
+							26=if(~infos_2) stama_koef = stama_koef - 3;
+							27=pilot_stama = ShipPilotRace(Player());
                             //Малоки
-							27=if(pilot_stama == 0)pilot_stama=10;
+							28=if(pilot_stama == 0) pilot_stama = 10;
 							//Пеленги
-                            28=else if(pilot_stama == 1)pilot_stama=7;
+                            29=else if(pilot_stama == 1) pilot_stama = 7;
 							//Люди
-                            29=else if(pilot_stama == 2)pilot_stama=7;
+                            30=else if(pilot_stama == 2) pilot_stama = 7;
 							//Фэяне
-                            30=else if(pilot_stama == 3)pilot_stama=5;
+                            31=else if(pilot_stama == 3) pilot_stama = 5;
 							//Гаальцы
-                            31=else pilot_stama=6;
+                            32=else pilot_stama = 6;
 							//Общий предел выносливости с учётом всех бонусов
-                            32=total_stama=round(art_koef*pilot_stama+stama_koef);
+                            33=total_stama=round(art_koef*pilot_stama+stama_koef);
 							//Текущая доступная выносливость: общая выносливость минус нагрузка от биомодулей
-                            33=cur_stama=total_stama-Tstama_count;
+                            34=cur_stama=total_stama-Tstama_count;
                         }
 						//Если таймер начала лихорадки дошёл до нуля
                         10=if(ill_data <= CurTurn())
@@ -1772,24 +1773,24 @@ ShipInfo ^{
 								//Если пилот не малок
 								02=if(pilot_stama != 10)
 								03 ^{
-									01=if(cur_stama < -13)stamaCheck='уже виден свет';
-									02=else if(cur_stama < -11)stamaCheck='ходячий труп';
-									03=else if(cur_stama < -9)stamaCheck='трудно даже дышать';
-									04=else if(cur_stama < -7)stamaCheck='вам нужна помощь';
-									05=else if(cur_stama < -5)stamaCheck='вы еле держитесь на ногах';
-									06=else if(cur_stama < -3)stamaCheck='серьёзное истощение';
-									07=else if(cur_stama < -1)stamaCheck='вы истощены';
+									01=if(cur_stama < -13) stamaCheck='уже виден свет';
+									02=else if(cur_stama < -11) stamaCheck='ходячий труп';
+									03=else if(cur_stama < -9) stamaCheck='трудно даже дышать';
+									04=else if(cur_stama < -7) stamaCheck='вам нужна помощь';
+									05=else if(cur_stama < -5) stamaCheck='вы еле держитесь на ногах';
+									06=else if(cur_stama < -3) stamaCheck='серьёзное истощение';
+									07=else if(cur_stama < -1) stamaCheck='вы истощены';
 								}
 								//Если малок
 								04=else
 								05 ^{
-									01=if(cur_stama < -17)stamaCheck='уже виден свет';
-									02=else if(cur_stama < -15)stamaCheck='ходячий труп';
-									03=else if(cur_stama < -13)stamaCheck='трудно даже дышать';
-									04=else if(cur_stama < -10)stamaCheck='вам нужна помощь';
-									05=else if(cur_stama < -8)stamaCheck='вы еле держитесь на ногах';
-									06=else if(cur_stama < -5)stamaCheck='серьёзное истощение';
-									07=else if(cur_stama < -2)stamaCheck='вы истощены';
+									01=if(cur_stama < -17) stamaCheck='уже виден свет';
+									02=else if(cur_stama < -15) stamaCheck='ходячий труп';
+									03=else if(cur_stama < -13) stamaCheck='трудно даже дышать';
+									04=else if(cur_stama < -10) stamaCheck='вам нужна помощь';
+									05=else if(cur_stama < -8) stamaCheck='вы еле держитесь на ногах';
+									06=else if(cur_stama < -5) stamaCheck='серьёзное истощение';
+									07=else if(cur_stama < -2) stamaCheck='вы истощены';
 								}
 							}
 							14=stama_text=stama_text+'Врождённая выносливость: PS'+brs+'Нагрузка от биомодулей: WS'+brs+'Прочие факторы: AS'+brs+'Запас выносливости: IS';
@@ -1836,7 +1837,7 @@ ShipInfo ^{
 							02 ^{
 								01=if(ShipPilotRace(Player())!=player_race)
 								02 ^{
-									01=int count2=0;
+									01=int j=0;
 									02=int temp_int=0;
 									03=int temp_int_1=0;
 									04=int temp_int_2=0;
@@ -1855,7 +1856,7 @@ ShipInfo ^{
 										02=temp_int=temp_str;
 										03=if(temp_int)
 										04 ^{
-											01=for(count2=1; count2<=temp_int; count2=count2+1)
+											01=for(j=1; j<=temp_int; j=j+1)
 											02 ^{
 												01=int bonus=GetValueFromScript('',temp_str);
 												02=ShipSpecialBonuses(Player(),bonus,ShipSpecialBonuses(Player(),bonus)+temp_int_1);
@@ -1907,9 +1908,9 @@ ShipInfo ^{
 										16 ^{
 											01=if(ArtefactTypeInUse(Player(),t_ArtArtefactor))
 											02 ^{
-												01=for(count2=0;count2<ShipArts(Player());count2=count2+1)
+												01=for(j=0;j<ShipArts(Player());j=j+1)
 												02 ^{
-													01=temp_dword=ShipArts(Player(),count2);
+													01=temp_dword=ShipArts(Player(),j);
 													02=if(ItemType(temp_dword)==t_ArtBio)
 													03 ^{
 														01=if(ItemDurability(temp_dword))
@@ -1935,14 +1936,15 @@ ShipInfo ^{
 										28=if(ShipHealthFactor(Player(),10))temp_int_1=temp_int_1-2;
 										29=if(ShipHealthFactor(Player(),11))temp_int_1=temp_int_1-2;
 										30=if(ShipHealthFactor(Player(),12))temp_int_1=temp_int_1-4;
-										31=if(ShipPilotRace(Player())==0)cur_stama=round(temp_float*10+temp_int_1-stama_count);
-										32=else if(ShipPilotRace(Player())==1)cur_stama=round(temp_float*7+temp_int_1-stama_count);
-										33=else if(ShipPilotRace(Player())==2)cur_stama=round(temp_float*7+temp_int_1-stama_count);
-										34=else if(ShipPilotRace(Player())==3)cur_stama=round(temp_float*5+temp_int_1-stama_count);
-										35=else if(ShipPilotRace(Player())==4)cur_stama=round(temp_float*6+temp_int_1-stama_count);
-										36=temp_int=ShipFindCustomShipInfoByType(Player(),'bioMM_ILL');
-										37=if(temp_int>-1)
-										38 ^{
+										31=temp_int_1 = temp_int_1 + GlobalImplantsEnduranceBonus;
+										32=if(ShipPilotRace(Player())==0)cur_stama=round(temp_float*10+temp_int_1-stama_count);
+										33=else if(ShipPilotRace(Player())==1)cur_stama=round(temp_float*7+temp_int_1-stama_count);
+										34=else if(ShipPilotRace(Player())==2)cur_stama=round(temp_float*7+temp_int_1-stama_count);
+										35=else if(ShipPilotRace(Player())==3)cur_stama=round(temp_float*5+temp_int_1-stama_count);
+										36=else if(ShipPilotRace(Player())==4)cur_stama=round(temp_float*6+temp_int_1-stama_count);
+										37=temp_int=ShipFindCustomShipInfoByType(Player(),'bioMM_ILL');
+										38=if(temp_int>-1)
+										39 ^{
 											01=if(cur_stama>=0)
 											02 ^{
 												01=ShipDeleteCustomShipInfo(Player(),'bioMM_ILL');
@@ -1959,14 +1961,14 @@ ShipInfo ^{
 											05=ShipCustomShipInfoTextData(Player(),temp_int_2,1,temp_int);
 											06=ShipCustomShipInfoTextData(Player(),temp_int_2,3,stama_count);
 										}
-										39=temp_str=CT(ShipCustomShipInfoTextData(Player(),ArrayForBMActcode[h],2)+DeleteTags('.Uni_code'));
-										40=ShipDeleteCustomShipInfo(Player(),ArrayForBMActcode[h]);
-										41=temp_int=temp_str;
-										42=if(temp_int==19)king_will=king_will-1;
-										43=if(temp_int==10)ultra=ultra-1;
-										44=if(temp_int==11)broot=broot-1;
-										45=if(temp_int==12)
-										46 ^{
+										40=temp_str=CT(ShipCustomShipInfoTextData(Player(),ArrayForBMActcode[h],2)+DeleteTags('.Uni_code'));
+										41=ShipDeleteCustomShipInfo(Player(),ArrayForBMActcode[h]);
+										42=temp_int=temp_str;
+										43=if(temp_int==19)king_will=king_will-1;
+										44=if(temp_int==10)ultra=ultra-1;
+										45=if(temp_int==11)broot=broot-1;
+										46=if(temp_int==12)
+										47 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_BM');
 											02=if(temp_int_2>=0)
 											03 ^{
@@ -1975,8 +1977,8 @@ ShipInfo ^{
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										47=if(temp_int==13)
-										48 ^{
+										48=if(temp_int==13)
+										49 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_KM');
 											02=if(temp_int_2>-1)
 											03 ^{
@@ -1985,8 +1987,8 @@ ShipInfo ^{
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										49=if(temp_int==14)
-										50 ^{
+										50=if(temp_int==14)
+										51 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_TM');
 											02=if(temp_int_2>=0)
 											03 ^{
@@ -1995,12 +1997,12 @@ ShipInfo ^{
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										51=if(temp_int==15)
-										52 ^{
+										52=if(temp_int==15)
+										53 ^{
 											01=temp_int=temp_int;//Свободный номер
 										}
-										53=if(temp_int==16)
-										54 ^{
+										54=if(temp_int==16)
+										55 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_AD');
 											02=if(temp_int_2>=0)
 											03 ^{
@@ -2009,8 +2011,8 @@ ShipInfo ^{
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										55=if(temp_int==17)
-										56 ^{
+										56=if(temp_int==17)
+										57 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_MR');
 											02=if(temp_int_2>=0)
 											03 ^{
@@ -2026,8 +2028,8 @@ ShipInfo ^{
 												04=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										57=if(temp_int==18)
-										58 ^{
+										58=if(temp_int==18)
+										59 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_BS');
 											02=if(temp_int_2>=0)
 											03 ^{
@@ -2036,9 +2038,9 @@ ShipInfo ^{
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										59=if(temp_int==20)open_hole=open_hole-1;
-										60=if(temp_int==22)
-										61 ^{
+										60=if(temp_int==20)open_hole=open_hole-1;
+										61=if(temp_int==22)
+										62 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_RT');
 											02=if(temp_int_2>=0)
 											03 ^{
@@ -2047,8 +2049,8 @@ ShipInfo ^{
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										62=if(temp_int==23)
-										63 ^{
+										63=if(temp_int==23)
+										64 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_IC');
 											02=if(temp_int_2>=0)
 											03 ^{
@@ -2057,19 +2059,19 @@ ShipInfo ^{
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 											//Зачищаем массив с измененной длительностью болезней/стимуляторов при удалении Иммунокорректора
-											04=for(count2=0;count2<=24;count2=count2+1)
+											04=for(j=0;j<=24;j=j+1)
 											05 ^{
-												01=if(immun_array[count2])
+												01=if(immun_array[j])
 												02 ^{
 													//Возвращаем болезни/стимулятору их изначальную продолжительность
-													01=if(ShipHealthFactor(Player(),count2))ShipHealthFactor(Player(),count2,ShipHealthFactor(Player(),count2)+immun_array[count2]);
-													02=immun_array[count2]=0;
+													01=if(ShipHealthFactor(Player(),j))ShipHealthFactor(Player(),j,ShipHealthFactor(Player(),j)+immun_array[j]);
+													02=immun_array[j]=0;
 												}
 											}
 											06=immun_array[29]=0;
 										}
-										64=if(temp_int==24)
-										65 ^{
+										65=if(temp_int==24)
+										66 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_ND');
 											02=if(temp_int_2>=0)
 											03 ^{
@@ -2078,23 +2080,23 @@ ShipInfo ^{
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 											//Зачищаем массив с измененной длительностью болезней/стимуляторов при удалении Иглы
-											04=for(count2=0; count2<=24; count2=count2+1)
+											04=for(j=0; j<=24; j=j+1)
 											05 ^{
-												01=if(immun_array[count2])
+												01=if(immun_array[j])
 												02 ^{
 													//Возвращаем болезни/стимулятору их изначальную продолжительность
-													01=if(ShipHealthFactor(Player(),count2))
+													01=if(ShipHealthFactor(Player(),j))
 													02 ^{
-														01=if(ShipHealthFactor(Player(),count2)>immun_array[count2])ShipHealthFactor(Player(),count2,ShipHealthFactor(Player(),count2)-immun_array[count2]);
-														02=else ShipHealthFactor(Player(),count2,1);
+														01=if(ShipHealthFactor(Player(),j)>immun_array[j])ShipHealthFactor(Player(),j,ShipHealthFactor(Player(),j)-immun_array[j]);
+														02=else ShipHealthFactor(Player(),j,1);
 													}
-													03=immun_array[count2]=0;
+													03=immun_array[j]=0;
 												}
 											}
 											06=immun_array[29]=0;
 										}
-										66=if(temp_int==25)
-										67 ^{
+										67=if(temp_int==25)
+										68 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_BZ');
 											02=if(temp_int_2>=0)
 											03 ^{
@@ -2103,14 +2105,14 @@ ShipInfo ^{
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										68=if(temp_int==26)
-										69 ^{
+										69=if(temp_int==26)
+										70 ^{
 											01=temp_int=temp_int;//Свободный номер
 										}
-										70=if(temp_int==28)add_dialog[2]=add_dialog[2]-1;
-										71=if(temp_int==29)add_dialog[1]=add_dialog[1]-1;
-										72=if(temp_int==27)
-										73 ^{
+										71=if(temp_int==28)add_dialog[2]=add_dialog[2]-1;
+										72=if(temp_int==29)add_dialog[1]=add_dialog[1]-1;
+										73=if(temp_int==27)
+										74 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_DH');
 											02=if(temp_int_2>=0)
 											03 ^{
@@ -2119,8 +2121,8 @@ ShipInfo ^{
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										74=if(temp_int==30)
-										75 ^{
+										75=if(temp_int==30)
+										76 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_NS');
 											02=if(temp_int_2>=0)
 											03 ^{
@@ -2129,8 +2131,8 @@ ShipInfo ^{
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										76=if(temp_int==31)
-										77 ^{
+										77=if(temp_int==31)
+										78 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_LS');
 											02=if(temp_int_2>=0)
 											03 ^{
@@ -2139,17 +2141,17 @@ ShipInfo ^{
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										78=temp_int=ShipFindCustomShipInfoByType(Player(),'bioMM');
-										79=temp_int_2=ShipCustomShipInfoData(Player(),temp_int,1)+ShipCustomShipInfoData(Player(),temp_int,2)+ShipCustomShipInfoData(Player(),temp_int,3);
-										80=if(temp_int_2==0)ShipDeleteCustomShipInfo(Player(),'bioMM');
+										79=temp_int=ShipFindCustomShipInfoByType(Player(),'bioMM');
+										80=temp_int_2=ShipCustomShipInfoData(Player(),temp_int,1)+ShipCustomShipInfoData(Player(),temp_int,2)+ShipCustomShipInfoData(Player(),temp_int,3);
+										81=if(temp_int_2==0)ShipDeleteCustomShipInfo(Player(),'bioMM');
 									}
 									//Также удаляем все болезни и стимуляторы
-									12=for(count2=0;count2<=24;count2=count2+1)
+									12=for(j = 0; j <= 24; j = j + 1)
 									13 ^{
-										01=if(ShipHealthFactor(Player(),count2))
+										01=if(ShipHealthFactor(Player(),j))
 										02 ^{
-											01=if(count2==6)ShipHealthFactor(Player(),count2,round(1.0*ShipHealthFactor(Player(),count2)/(0.1*Rnd(-5,7)+2)));
-											02=else ShipHealthFactor(Player(),count2,0);
+											01=if(j==6)ShipHealthFactor(Player(),j,round(1.0*ShipHealthFactor(Player(),j)/(0.1*Rnd(-5,7)+2)));
+											02=else ShipHealthFactor(Player(),j,0);
 										}
 									}
 								}

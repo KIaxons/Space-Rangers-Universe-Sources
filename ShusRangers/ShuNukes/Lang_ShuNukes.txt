@@ -2,21 +2,21 @@ Artefacts ^{
     ArtScaner ^{
         OnUseCode ^{
             01=dword s;
-            02=dword first=0;
-            03=dword second=0;
-            04=dword third=0;
-            05=str stroka='В системе обнаружены следующие корабли с ядерным оружием:';
-            06=for(int i=0;i<StarShips(ShipStar(Player()));i=i+1)
+            02=dword first = 0;
+            03=dword second = 0;
+            04=dword third = 0;
+            05=str stroka = 'В системе обнаружены следующие корабли с ядерным оружием:';
+            06=for(int i = 0; i < StarShips(ShipStar(Player())); i = i + 1)
             07 ^{
-                01=s=StarShips(ShipStar(Player()),i);
-                02=if(ShipFindCustomShipInfoByType(s,'NpcNuke')<0)continue;
-                03=stroka=stroka+CT('Script2.perenos')+'<clr>'+Name(s)+'<clrEnd>';
-                04=if(!first)first=s;
-                05=else if(!second)second=s;
-                06=else if(!third)third=s;
+                01=s = StarShips(ShipStar(Player()), i);
+                02=if(ShipFindCustomShipInfoByType(s, 'NpcNuke') == -1) continue;
+                03=stroka = stroka + CT('Script2.perenos') + '<clr>' + Name(s) + '<clrEnd>';
+                04=if(!first) first = s;
+                05=else if(!second) second = s;
+                06=else if(!third) third = s;
             }
-            08=if(first)Ether(7,'ArtScaner',stroka,first,second,third);
-            09=else Ether(7,'ArtScaner','В системе не обнаружено кораблей с ядерным оружием.');
+            08=if(first) Ether(7, 'ArtScaner', stroka, first, second, third);
+            09=else Ether(7, 'ArtScaner', 'В системе не обнаружено кораблей с ядерным оружием.');
             10=Sound('Sound.NewMsg');
         }
         Text=Программный усилитель вычислительной мощности сканера на <clr>10%<clrEnd>. Увеличивает объём получаемой информации о кораблях.
