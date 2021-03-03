@@ -304,61 +304,65 @@ UselessItems ^{
             01=if(MessageBoxYesNo('Вы точно хотите <color=0,50,200>хлебнуть урины</color>?'))
             02 ^{
                 01=dword num_ill;
-                02=dword num_med=0;
+                02=dword num_med = 0;
                 03=str text;
-                04=unknown array;
-                05=array=newarray(1);
-                06=for(num_ill=1;num_ill<13;num_ill=num_ill+1)
-                07 ^{
-                    01=if(ShipHealthFactor(Player(),num_ill)>0)
+                04=unknown array = newarray(1);
+                05=for(num_ill = 1; num_ill < 13; num_ill = num_ill + 1)
+                06 ^{
+                    01=if(ShipHealthFactor(Player(), num_ill))
                     02 ^{
-                        01=ArrayAdd(array,num_ill);
-                        02=num_med=num_med+1;
+                        01=ArrayAdd(array, num_ill);
+                        02=num_med = num_med + 1;
                     }
                 }
-                08=if(num_med==0)Ether(0,'','Вы ощутили неприятную горечь во рту и чувство сожаления о растраченном впустую медикаменте, ведь никаких симптомов болезней у вас не было.');
-                09=else
-                10 ^{
-                    01=num_ill=Rnd(1,num_med);
-                    02=text='Illness.Illness.'+(array[num_ill]-1)+'.Name';
-                    03=if(UselessItemData(CurItem(),2)==0)
+                07=if(!num_med) Ether(0, '', 'Вы ощутили неприятную горечь во рту и чувство сожаления о растраченном впустую медикаменте, ведь никаких симптомов болезней у вас не было.');
+                08=else
+                09 ^{
+                    01=num_ill = Rnd(1, num_med);
+                    02=text = 'Illness.Illness.' + (array[num_ill] - 1) + '.Name';
+                    03=if(UselessItemData(CurItem(), 2) == 0)
                     04 ^{
-                        01=ShipHealthFactor(Player(),array[num_ill],0);
-                        02=Ether(0,'','Настойка урины положительно подействовала на вас, полностью избавив от недуга <clr>'+CT(text)+'<clrEnd>!');
+                        01=ShipHealthFactor(Player(), array[num_ill], 0);
+                        02=Ether(0, '', 'Настойка урины положительно подействовала на вас, полностью избавив от недуга <clr>' + CT(text) + '<clrEnd>!');
                     }
-                    05=if(UselessItemData(CurItem(),2)==1)
+                    05=if(UselessItemData(CurItem(), 2) == 1)
                     06 ^{
-                        01=num_med=ShipHealthFactor(Player(),array[num_ill])/2;
-                        02=ShipHealthFactor(Player(),array[num_ill],num_med);
-                        03=Ether(0,'','Настойка урины положительно подействовала на вас, уменьшив срок действия недуга <clr>'+CT(text)+'<clrEnd> в два раза!');
+                        01=num_med=ShipHealthFactor(Player(), array[num_ill]) / 2;
+                        02=ShipHealthFactor(Player(), array[num_ill], num_med);
+                        03=Ether(0, '', 'Настойка урины положительно подействовала на вас, уменьшив срок действия недуга <clr>' + CT(text) + '<clrEnd> в два раза!');
                     }
-                    07=if(UselessItemData(CurItem(),2)==2)
+                    07=if(UselessItemData(CurItem(), 2) == 2)
                     08 ^{
-                        01=num_med=ShipHealthFactor(Player(),array[num_ill])+ShipHealthFactor(Player(),array[num_ill])/2;
-                        02=ShipHealthFactor(Player(),array[num_ill],num_med);
-                        03=Ether(0,'','Настойка урины отрицательно подействовала на вас, увеличив срок действия недуга <clr>'+CT(text)+'<clrEnd> в полтора раза!');
+                        01=num_med = ShipHealthFactor(Player(), array[num_ill]) + ShipHealthFactor(Player(), array[num_ill]) / 2;
+                        02=ShipHealthFactor(Player(), array[num_ill], num_med);
+                        03=Ether(0, '', 'Настойка урины отрицательно подействовала на вас, увеличив срок действия недуга <clr>'+CT(text)+'<clrEnd> в полтора раза!');
                     }
-                    09=if(UselessItemData(CurItem(),2)==3)Ether(0,'','<clr>Настойка урины<clrEnd> не смогла избавить вас от болезни <clr>'+CT(text)+'<clrEnd>!');
+                    09=if(UselessItemData(CurItem(), 2) == 3) Ether(0, '', '<clr>Настойка урины<clrEnd> не смогла избавить вас от болезни <clr>' + CT(text) + '<clrEnd>!');
                 }
-                11=if(FindItemInShip(Player(),CurItem())>-1)FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),CurItem())));
-                12=else FreeItem(GetItemFromStorage(FindItemInStorage(CurItem())));
-				13=if(1)
-				14 ^{
+                10=if(~FindItemInShip(Player(),CurItem())) FreeItem(GetItemFromShip(Player(), FindItemInShip(Player(), CurItem())));
+                11=else FreeItem(GetItemFromStorage(FindItemInStorage(CurItem())));
+				12=if(1)
+				13 ^{
 					//Игрок хлебнул урины
-					01=if(ShipFindCustomShipInfoByType(Player(),'EvoMC_UrineCurse')==-1)
+					01=if(ShipFindCustomShipInfoByType(Player(), 'EvoMC_UrineCurse') == -1)
 					02 ^{
-						01=ShipSpecialBonuses(Player(),bonSkill5,ShipSpecialBonuses(Player(),bonSkill5)-3);
-						02=ShipSpecialBonuses(Player(),bonSkill6,ShipSpecialBonuses(Player(),bonSkill6)-3);
-						03=ShipAddCustomShipInfo(Player(),'EvoMC_UrineCurse','',CurTurn()+Rnd(93,124),3,3);
+						01=ShipSpecialBonuses(Player(), bonSkill5,ShipSpecialBonuses(Player(), bonSkill5) - 3);
+						02=ShipSpecialBonuses(Player(), bonSkill6,ShipSpecialBonuses(Player(), bonSkill6) - 3);
+						03=ShipAddCustomShipInfo(Player(), 'EvoMC_UrineCurse', '', CurTurn() + Rnd(93, 124), 3, 3);
+						//Вешаем штраф к выносливости имплантов
+						04=if(IsScriptActive('Mod_ExpImplants'))
+						05 ^{
+							01=GlobalImplantsEnduranceBonus = GlobalImplantsEnduranceBonus - 2;
+						}
 					}
 					//Игрок хлебнул урины, пока действовал предыдущий дебаф
 					03=else
 					04 ^{
-						01=ShipSpecialBonuses(Player(),bonSkill5,ShipSpecialBonuses(Player(),bonSkill5)-1);
-						02=ShipSpecialBonuses(Player(),bonSkill6,ShipSpecialBonuses(Player(),bonSkill6)-1);
-						03=ShipCustomShipInfoData(Player(),'EvoMC_UrineCurse',1,CurTurn()+Rnd(124,186));
-						04=ShipCustomShipInfoData(Player(),'EvoMC_UrineCurse',2,ShipCustomShipInfoData(Player(),'EvoMC_UrineCurse',2)+1);
-						05=ShipCustomShipInfoData(Player(),'EvoMC_UrineCurse',3,ShipCustomShipInfoData(Player(),'EvoMC_UrineCurse',3)+1);
+						01=ShipSpecialBonuses(Player(), bonSkill5, ShipSpecialBonuses(Player(), bonSkill5) - 1);
+						02=ShipSpecialBonuses(Player(), bonSkill6, ShipSpecialBonuses(Player(), bonSkill6) - 1);
+						03=ShipCustomShipInfoData(Player(), 'EvoMC_UrineCurse', 1, CurTurn() + Rnd(124, 186));
+						04=ShipCustomShipInfoData(Player(), 'EvoMC_UrineCurse', 2, ShipCustomShipInfoData(Player(), 'EvoMC_UrineCurse', 2) + 1);
+						05=ShipCustomShipInfoData(Player(), 'EvoMC_UrineCurse', 3, ShipCustomShipInfoData(Player(), 'EvoMC_UrineCurse', 3) + 1);
 					}
 				}
             }
@@ -385,6 +389,11 @@ ShipInfo ^{
 						01=ShipSpecialBonuses(Player(), bonSkill5, ShipSpecialBonuses(Player(), bonSkill5) + ShipCustomShipInfoData(0, cur_info, 2));
 						02=ShipSpecialBonuses(Player(), bonSkill6, ShipSpecialBonuses(Player(), bonSkill6) + ShipCustomShipInfoData(0, cur_info, 3));
 						03=ShipDeleteCustomShipInfo(Player(), 'EvoMC_UrineCurse');
+						//Снимаем штраф к выносливости имплантов
+						04=if(IsScriptActive('Mod_ExpImplants'))
+						05 ^{
+							01=GlobalImplantsEnduranceBonus = GlobalImplantsEnduranceBonus + 2;
+						}
 					}
 				}
 			}
