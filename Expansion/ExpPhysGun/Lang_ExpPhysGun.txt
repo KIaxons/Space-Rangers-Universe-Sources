@@ -941,30 +941,35 @@ ActCodeBlocksList ^{
 			}
 			04=else exit;
 		}
-		//Игрок кликнул по физгану товаром, который решил в него зарядить
+		//Игрок кликнул по физгану товаром (продукты, минералы и т.д.), который решил в него зарядить
 		08=else if(ScriptItemActionType(t_OnAnotherGoods))
 		09 ^{
 			01=if(ItemIsBroken(physGun)) exit;
 			02=if(WeaponAmmunition(physGun)) exit;
-			03=item_size = ScriptItemActObject2();
-			04=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
-			05=SetEquipmentStats(physGun, item_size - 1, 1); //Задаём минимальный урон физгана
-			06=SetEquipmentStats(physGun, item_size, 0); //Задаём максимальный урон физгана
-			07=SetCustomWeaponShotData(physGunConf, 'Rocket', 5000, 800, 0); //Выставляем обычный ракетный урон
-			08=if(item_size <= 20) text = 'ExpPhysGun_PhysGunMissileSmallItem';
-			09=else if(item_size <= 75) text = 'ExpPhysGun_PhysGunMissileAverageItem';
-			10=else text = 'ExpPhysGun_PhysGunMissileBigItem';
-			11=SpecialToEquipment(FindBonusByNameInCfg(text), physGun); //Вешаем акрин в зависимости от заряженного предмета
-			12=WeaponAmmunition(physGun, 1); //Заряжаем физган для совершения выстрела
-			13=tempActCodeData3 = item_size;
-			14=ItemSize(physGun, ItemSize(physGun) + tempActCodeData3);
-			15=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCodeLoaded'));
-			//Создаём и помещаем в хранилище "заряженный" в физган товар в виде предмета
-			16=loaded_item = CreateGoods(ScriptItemActObject1(), item_size);
-			17=ItemCost(loaded_item, FormShipCurItem('StackableCost'));
-			18=PutItemInVault('PhysGunChamber', loaded_item);
-			//Удаляем из руки весь "заряженный" товар
-			19=ScriptItemActParam(item_size);
+			03=item_type = ScriptItemActObject1();
+			04=if(MessageBoxYesNo('Вы точно хотите зарядить <color=0,50,200>' + lowercase(CT('Items.Goods.NameBuy.' + (item_type + 1))) + '</color> в физган?'))
+			05 ^{
+				01=item_size = ScriptItemActObject2();
+				02=physGunConf = GetCustomWeaponInfo('PhysGun');
+				03=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+				04=SetEquipmentStats(physGun, item_size - 1, 1); //Задаём минимальный урон физгана
+				05=SetEquipmentStats(physGun, item_size, 0); //Задаём максимальный урон физгана
+				06=SetCustomWeaponShotData(physGunConf, 'Rocket', 5000, 800, 0); //Выставляем обычный ракетный урон
+				07=if(item_size <= 20) text = 'ExpPhysGun_PhysGunMissileSmallItem';
+				08=else if(item_size <= 75) text = 'ExpPhysGun_PhysGunMissileAverageItem';
+				09=else text = 'ExpPhysGun_PhysGunMissileBigItem';
+				10=SpecialToEquipment(FindBonusByNameInCfg(text), physGun); //Вешаем акрин в зависимости от размера заряженного товара
+				11=WeaponAmmunition(physGun, 1); //Заряжаем физган для совершения выстрела
+				12=tempActCodeData3 = item_size;
+				13=ItemSize(physGun, ItemSize(physGun) + tempActCodeData3);
+				14=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCodeLoaded'));
+				//Создаём и помещаем в хранилище "заряженный" в физган товар в виде предмета
+				15=loaded_item = CreateGoods(item_type, item_size);
+				16=ItemCost(loaded_item, FormShipCurItem('StackableCost'));
+				17=PutItemInVault('PhysGunChamber', loaded_item);
+				//Удаляем из руки весь "заряженный" товар
+				18=ScriptItemActParam(item_size);
+			}
 		}
 		10=if(!ItemIsInUse(physGun)) exit; //Если физган не экипирован
 		//Игрок выстрелил из физгана или любого другого ракетного оружия (снаряд вылетает)
