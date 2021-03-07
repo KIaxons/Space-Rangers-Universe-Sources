@@ -1,16 +1,14 @@
 FormInfo ^{
 	br=<br>
-    align_close=</aligh>
-    align_right=<align=right>
-    td_otstup_230=<td=230>
+	align_close=</aligh>
+	align_right=<align=right>
+	td_otstup_230=<td=230>
 	td_otstup_240=<td=240>
 	td_otstup_CargoList=<td=35>
 	td_otstup_HullCargoList0=<td=45>
 	td_otstup_HullCargoList1=<td=56>
 	td_otstup_HullCargoList2=<td=65>
 	td_otstup_HullCargoList3=<td=64>
-	MoreRewards=Увеличить число отображаемых наград
-	LessRewards=Уменьшить число отображаемых наград
 }
 Script ^{
 	Mod_ExpPilotBridge ^{
@@ -858,7 +856,7 @@ ShipInfo ^{
 						}
 					}
 					07=else if(ScriptItemActionType(t_OnLeavingForm))
-                    08 ^{
+					08 ^{
 						01=if(GetShipRuins(Player()))
 						02 ^{
 							//Возвращаемся обратно в Галанет при закрытии инфоцентра на мостике
@@ -904,11 +902,11 @@ ShipInfo ^{
 							}
 						}
 					}
-                    09=else if(ScriptItemActionType(t_OnPlayerChangeHull))
-                    10 ^{
+					09=else if(ScriptItemActionType(t_OnPlayerChangeHull))
+					10 ^{
 						//Вешаем мостик при смене корпуса
 						01=dword newHull=ScriptItemActObject1();
-                        02=if(!CapitalShipStats(newHull))
+						02=if(!CapitalShipStats(newHull))
 						03 ^{
 							01=if(EqSpecial(newHull) > -1)
 							02 ^{
@@ -1296,9 +1294,9 @@ ShipInfo ^{
 								07=ArrayClear(GAddTArray2);
 							}
 						}
-                    }
-                }
-            }
+					}
+				}
+			}
 			PlayerBridge_ThiefInfo ^{
 				Description=Невидимая инфошка для чуваков, тырящих корпуса игрока
 				Icon=0
@@ -1381,7 +1379,7 @@ ShipInfo ^{
 						}
 					}
 				}
-            }
+			}
 			PlayerBridge_ThiefShipOutInfo ^{
 				Description=Невидимая инфошка для воров-фрилансеров, чтобы выводить их из скрипта не раньше, чем они окажутся на планете
 				Icon=0
@@ -1439,7 +1437,7 @@ ShipInfo ^{
 						}
 					}
 				}
-            }
+			}
 			PlayerBridge_PiratesPursue ^{
 				Description=Невидимая инфошка для пиратов-преследователей
 				Icon=0
@@ -1602,70 +1600,70 @@ ShipInfo ^{
 						}
 					}
 				}
-            }
-        }
-    }
+			}
+		}
+	}
 }
 ShipCharacterFreelancer ^{
-    0=34, 33, 33, Фрилансер
+	0=34, 33, 33, Фрилансер
 }
 ShipType ^{
-    Fei ^{
-        Rebel=Кайдзю
-        Militiaman1=Онама
-        Militiaman2=Ариандель
-        Militiaman3=Алиона
-        Freelancer=Фрилансер
+	Fei ^{
+		Rebel=Кайдзю
+		Militiaman1=Онама
+		Militiaman2=Ариандель
+		Militiaman3=Алиона
+		Freelancer=Фрилансер
 		PirateRunner=Фантом
-    }
-    Gaal ^{
-        Rebel=Гремори
-        Militiaman1=Гаалифрей
-        Militiaman2=Лаанеш
+	}
+	Gaal ^{
+		Rebel=Гремори
+		Militiaman1=Гаалифрей
+		Militiaman2=Лаанеш
 		Militiaman3=Аораан
-        Freelancer=Фрилансер
+		Freelancer=Фрилансер
 		PirateRunner=Ренегал
-    }
-    Maloc ^{
-        Rebel=Молгаар
-        Militiaman1=Грондарм
-        Militiaman2=Андалор
-        Militiaman3=Тарон-кар
-        Freelancer=Фрилансер
+	}
+	Maloc ^{
+		Rebel=Молгаар
+		Militiaman1=Грондарм
+		Militiaman2=Андалор
+		Militiaman3=Тарон-кар
+		Freelancer=Фрилансер
 		PirateRunner=Бамбай
-    }
-    Peleng ^{
-        Rebel=Эгир
-        Militiaman1=Рагобам
-        Militiaman2=Щайк
-        Militiaman3=Ахих
-        Freelancer=Фрилансер
+	}
+	Peleng ^{
+		Rebel=Эгир
+		Militiaman1=Рагобам
+		Militiaman2=Щайк
+		Militiaman3=Ахих
+		Freelancer=Фрилансер
 		PirateRunner=Лякуша
-    }
-    People ^{
-        Rebel=Зеро
-        Militiaman1=Арес
-        Militiaman2=Ликантроп
-        Militiaman3=Росомаха
-        Freelancer=Фрилансер
+	}
+	People ^{
+		Rebel=Зеро
+		Militiaman1=Арес
+		Militiaman2=Ликантроп
+		Militiaman3=Росомаха
+		Freelancer=Фрилансер
 		PirateRunner=Корсар
-    }
-    TypeName ^{
-        Rebel=Повстанец
-        Militiaman1=Ополченец
-        Militiaman2=Ополченец
-        Militiaman3=Ополченец
-        Freelancer=Фрилансер
+	}
+	TypeName ^{
+		Rebel=Повстанец
+		Militiaman1=Ополченец
+		Militiaman2=Ополченец
+		Militiaman3=Ополченец
+		Freelancer=Фрилансер
 		PirateRunner=Пират-загонщик
-    }
+	}
 }
 Items ^{
-    CustomCountables ^{
-        ExpPilotBridge_Letters ^{
-            Name=Письма
-            Text=Самые обыкновенные несекретные письма от одного гуманоида другому в типовых бумажных конвертах. Удивительно только, что кто-то до сих пор пользуется столь архаичным способом передачи информации.
-        }
-    }
+	CustomCountables ^{
+		ExpPilotBridge_Letters ^{
+			Name=Письма
+			Text=Самые обыкновенные несекретные письма от одного гуманоида другому в типовых бумажных конвертах. Удивительно только, что кто-то до сих пор пользуется столь архаичным способом передачи информации.
+		}
+	}
 }
 MicroModuls ^{
 	ExpPilotBridge_Wheatley_MM ^{
@@ -1690,7 +1688,7 @@ MicroModuls ^{
 		Text=Сила ракетного оружия: <color=0,153,255>+60</color> ед.
 		Text=Дальность стрельбы: <color=0,153,255>+50</color> ед.
 		Text=Броня корпуса: <color=0,153,255>+5</color> ед.
-        Text=Скорость двигателя: <color=0,153,255>+150</color> ед.
+		Text=Скорость двигателя: <color=0,153,255>+150</color> ед.
 		Text=Дальность прыжка: <color=0,153,255>+10</color> пк.
 		Text=Объём бака: <color=0,153,255>+40</color> ед.
 		Text=Дальность радара: <color=0,153,255>+2000</color> млн. км.
@@ -1705,7 +1703,7 @@ MicroModuls ^{
 		bonWSplinter=40
 		bonWMissile=60
 		bonWRadius=50
-		bonHull=5
+		bonHull=10
 		bonSpeed=150
 		bonJump=10
 		bonFuel=40
@@ -1726,22 +1724,22 @@ UselessItems ^{
 		OnActCodeTypes=t_OnCheckingUsability,t_OnAnotherItem
 		OnActCode ^{
 			01=if(ScriptItemActionType(t_OnCheckingUsability))
-            02 ^{
+			02 ^{
 				01=dword item=ScriptItemActObject1();
-                02=if(ItemOwner(item)!=2)exit;
+				02=if(ItemOwner(item)!=2)exit;
 				03=if(EqModule(item)>-1)exit;
-                04=int sp=0;
+				04=int sp=0;
 				//Отправляем команду о необходимости подсветить пригодный для установки предмет
 				05=if(!sp)ScriptItemActParam(1);
 			}
-            03=if(ScriptItemActionType(t_OnAnotherItem))
-            04 ^{
+			03=if(ScriptItemActionType(t_OnAnotherItem))
+			04 ^{
 				01=item=ScriptItemActObject1();
-                02=if(ItemOwner(item)!=2)exit;
+				02=if(ItemOwner(item)!=2)exit;
 				03=if(EqModule(item)>-1)exit;
-                04=sp=0;
+				04=sp=0;
 				05=if(!sp)
-                06 ^{
+				06 ^{
 					01=str text_q='Вы уверены, что хотите установить <color=0,50,200>Уитли</color> в ItemName?';
 					02=text_q=Format(text_q,'ItemName',DeleteTags(Name(item)));
 					03=if(MessageBoxYesNo(text_q))
@@ -1749,80 +1747,80 @@ UselessItems ^{
 						01=ModuleToEquipment(FindBonusByCustomTag('Wheatley_MM'),item);
 						02=ScriptItemActParam(1);
 					}
-                }
-            }
-        }
+				}
+			}
+		}
 		Owner=None
 		Size=2
 		Text=Необычайный артефакт, представляющий<br>собой исключительный образец древней<br><color=0,153,255>земной</color> технологии.
 		Text=<clr><clrEnd>
 		Text=За длительное время пребывания в открытом космосе динамики устройства пришли в полную негодность, так что вам остаётся лишь гадать, какие тайны мог бы поведать этот<br>удивительный прибор.
 	}
-    ExpPilotBridge_UselessProbe ^{
-        Cost=Small
-        Name=Пеленгский зонд-шпион
-        Owner=Peleng
-        Size=30
-        Text=Устаревший зонд-шпион пеленгского производства. Ввиду относительной дешевизны и массовой доступности на всевозможных чёрных (и не очень) рынках Галактики, такие зонды часто применяют для корпоративных, и прочих, не требующих привлечения новейшего оборудования, видов шпионажа.
-    }
+	ExpPilotBridge_UselessProbe ^{
+		Cost=Small
+		Name=Пеленгский зонд-шпион
+		Owner=Peleng
+		Size=30
+		Text=Устаревший зонд-шпион пеленгского производства. Ввиду относительной дешевизны и массовой доступности на всевозможных чёрных (и не очень) рынках Галактики, такие зонды часто применяют для корпоративных, и прочих, не требующих привлечения новейшего оборудования, видов шпионажа.
+	}
 	ExpPilotBridge_Flute ^{
-        Cost=Mini
-        Name=Флейта
+		Cost=Mini
+		Name=Флейта
 		OnUseCode ^{
 			01=Sound('Sound.ExpPilotBridge_Flute_'+(rnd(3)+1));
 		}
-        Owner=People
-        Size=1
-        Text=Старинный духовой инструмент, особенно почитаемый среди гаальцев. После многочисленных инцидентов, связанных со сбоем искусственного интеллекта у некоторых моделей человекоподобных андроидов, дальнейший выпуск и оборот флейт пришлось поставить на жёсткий контроль со стороны специального ведомства при Галактическом Совете.
+		Owner=People
+		Size=1
+		Text=Старинный духовой инструмент, особенно почитаемый среди гаальцев. После многочисленных инцидентов, связанных со сбоем искусственного интеллекта у некоторых моделей человекоподобных андроидов, дальнейший выпуск и оборот флейт пришлось поставить на жёсткий контроль со стороны специального ведомства при Галактическом Совете.
 	}
 	ExpPilotBridge_Drum ^{
-        Cost=Mini
-        Name=Джембе
+		Cost=Mini
+		Name=Джембе
 		OnUseCode ^{
 			01=Sound('Sound.ExpPilotBridge_Drum_'+(rnd(3)+1));
 		}
-        Owner=Maloc
-        Size=3
-        Text=Традиционный музыкальный инструмент западноафриканских народов планеты Земля. Благодаря своей простоте, этот древний барабан быстро обрёл широкую популярность среди всех рас Коалиции.<br>В особенности среди малоков.
+		Owner=Maloc
+		Size=3
+		Text=Традиционный музыкальный инструмент западноафриканских народов планеты Земля. Благодаря своей простоте, этот древний барабан быстро обрёл широкую популярность среди всех рас Коалиции.<br>В особенности среди малоков.
 	}
 	ExpPilotBridge_Maracas ^{
-        Cost=Mini
-        Name=Мараки
+		Cost=Mini
+		Name=Мараки
 		OnUseCode ^{
 			01=Sound('Sound.ExpPilotBridge_Maracas_'+(rnd(3)+1));
 		}
-        Owner=Maloc
-        Size=2
-        Text=Вопреки укоренившемуся за этим ударно-шумовым инструментом земному названию <color=255,240,100>"марака"</color>, большинство современных марак изготавливаются по малокской технологии малокскими же мастерами. Представители самой милитаризованной расы Коалиции до сих пор пытаются вернуть своему традиционному строевому инструменту его оригинальное название - <color=255,240,100>"громодрыга"</color>, однако всем прочим расам земной вариант пришёлся уж<br>слишком по душе.
+		Owner=Maloc
+		Size=2
+		Text=Вопреки укоренившемуся за этим ударно-шумовым инструментом земному названию <color=255,240,100>"марака"</color>, большинство современных марак изготавливаются по малокской технологии малокскими же мастерами. Представители самой милитаризованной расы Коалиции до сих пор пытаются вернуть своему традиционному строевому инструменту его оригинальное название - <color=255,240,100>"громодрыга"</color>, однако всем прочим расам земной вариант пришёлся уж<br>слишком по душе.
 	}
-    ExpPilotBridge_ElectricGuitar ^{
-        Cost=Mini
-        Name=Электрогитара
+	ExpPilotBridge_ElectricGuitar ^{
+		Cost=Mini
+		Name=Электрогитара
 		OnUseCode ^{
 			01=Sound('Sound.ExpPilotBridge_E_Guitar_'+(rnd(3)+1));
 		}
-        Owner=People
-        Size=3
-        Text=Настоящая икона рок-музыки - классическая шестиструнная электрогитара. Пользуется огромной популярностью даже спустя <color=255,240,100>1370</color> лет после своего изобретения. Больше здесь добавить нечего.
-    }
+		Owner=People
+		Size=3
+		Text=Настоящая икона рок-музыки - классическая шестиструнная электрогитара. Пользуется огромной популярностью даже спустя <color=255,240,100>1370</color> лет после своего изобретения. Больше здесь добавить нечего.
+	}
 	ExpPilotBridge_AcousticGuitar ^{
-        Cost=Mini
-        Name=Акустическая гитара
+		Cost=Mini
+		Name=Акустическая гитара
 		OnUseCode ^{
 			01=Sound('Sound.ExpPilotBridge_Guitar_'+(rnd(3)+1));
 		}
-        Owner=People
-        Size=3
-        Text=Едва взяв такую в руки, где-то в глубине души у каждого космического пилота просыпается неудержимое желание присесть у плазменного костерка, да затянуть старинную рейнджерскую: <color=255,240,100>"О-о-уо! На мою девушку упал космодесантник!"</color>
+		Owner=People
+		Size=3
+		Text=Едва взяв такую в руки, где-то в глубине души у каждого космического пилота просыпается неудержимое желание присесть у плазменного костерка, да затянуть старинную рейнджерскую: <color=255,240,100>"О-о-уо! На мою девушку упал космодесантник!"</color>
 	}
 	ExpPilotBridge_GrandPiano ^{
-        Cost=Average
-        Name=Белый рояль
+		Cost=Average
+		Name=Белый рояль
 		OnUseCode ^{
 			01=Sound('Sound.ExpPilotBridge_Piano_'+(rnd(3)+1));
 		}
-        Owner=People
-        Size=30
-        Text=Роскошный старинный инструмент, а по совместительству ещё и украшение любой гостиной. Непонятно только, кому и зачем такой мог понадобиться<br>в космосе.
+		Owner=People
+		Size=30
+		Text=Роскошный старинный инструмент, а по совместительству ещё и украшение любой гостиной. Непонятно только, кому и зачем такой мог понадобиться<br>в космосе.
 	}
 }

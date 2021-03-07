@@ -755,9 +755,15 @@ ActCodeBlocksList ^{
 			}
 			07=ScriptItemActParam(1);
 		}
-		//Игрок кликнул по физгану предметом, который решил в него зарядить
-		04=else if(ScriptItemActionType(t_OnAnotherItem2))
+		//Подсвечиваем пикнутый товар (продукты, минералы и т.д.)
+		04=if(ScriptItemActionType(t_OnCheckingUsabilityGoods))
 		05 ^{
+			01=if(WeaponAmmunition(physGun)) exit;
+			02=ScriptItemActParam(1);
+		}
+		//Игрок кликнул по физгану предметом, который решил в него зарядить
+		06=else if(ScriptItemActionType(t_OnAnotherItem2))
+		07 ^{
 			01=if(ItemIsBroken(physGun)) exit;
 			02=if(!WeaponAmmunition(physGun))
 			03 ^{
@@ -920,7 +926,7 @@ ActCodeBlocksList ^{
 						10=else SetCustomWeaponShotData(physGunConf, 'Rocket', 5000, 800, 0); //Выставляем обычный ракетный урон
 						11=SpecialToEquipment(FindBonusByNameInCfg(text), physGun); //Вешаем акрин в зависимости от заряженного предмета
 						12=WeaponAmmunition(physGun, 1); //Заряжаем физган для совершения выстрела
-						13=tempActCodeData3 = ItemSize(loaded_item);
+						13=tempActCodeData3 = item_size;
 						14=ItemSize(physGun, ItemSize(physGun) + tempActCodeData3);
 						15=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCodeLoaded'));
 						16=PutItemInVault('PhysGunChamber', FormShipCurItem('Detach'));
@@ -935,10 +941,35 @@ ActCodeBlocksList ^{
 			}
 			04=else exit;
 		}
-		06=if(!ItemIsInUse(physGun)) exit; //Если физган не экипирован
+		//Игрок кликнул по физгану товаром, который решил в него зарядить
+		08=else if(ScriptItemActionType(t_OnAnotherGoods))
+		09 ^{
+			01=if(ItemIsBroken(physGun)) exit;
+			02=if(WeaponAmmunition(physGun)) exit;
+			03=item_size = ScriptItemActObject2();
+			04=SetCustomWeaponDamageData(physGunConf, 1, 1, 2+2048+1048576);
+			05=SetEquipmentStats(physGun, item_size - 1, 1); //Задаём минимальный урон физгана
+			06=SetEquipmentStats(physGun, item_size, 0); //Задаём максимальный урон физгана
+			07=SetCustomWeaponShotData(physGunConf, 'Rocket', 5000, 800, 0); //Выставляем обычный ракетный урон
+			08=if(item_size <= 20) text = 'ExpPhysGun_PhysGunMissileSmallItem';
+			09=else if(item_size <= 75) text = 'ExpPhysGun_PhysGunMissileAverageItem';
+			10=else text = 'ExpPhysGun_PhysGunMissileBigItem';
+			11=SpecialToEquipment(FindBonusByNameInCfg(text), physGun); //Вешаем акрин в зависимости от заряженного предмета
+			12=WeaponAmmunition(physGun, 1); //Заряжаем физган для совершения выстрела
+			13=tempActCodeData3 = item_size;
+			14=ItemSize(physGun, ItemSize(physGun) + tempActCodeData3);
+			15=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCodeLoaded'));
+			//Создаём и помещаем в хранилище "заряженный" в физган товар в виде предмета
+			16=loaded_item = CreateGoods(ScriptItemActObject1(), item_size);
+			17=ItemCost(loaded_item, FormShipCurItem('StackableCost'));
+			18=PutItemInVault('PhysGunChamber', loaded_item);
+			//Удаляем из руки весь "заряженный" товар
+			19=ScriptItemActParam(item_size);
+		}
+		10=if(!ItemIsInUse(physGun)) exit; //Если физган не экипирован
 		//Игрок выстрелил из физгана или любого другого ракетного оружия (снаряд вылетает)
-		07=if(ScriptItemActionType(t_OnMissileShot))
-		08 ^{
+		11=if(ScriptItemActionType(t_OnMissileShot))
+		12 ^{
 			01=dword missile = ScriptItemActObject1();
 			02=if(CustomMissileType(missile) != 'PhysGun') exit; //Если данное событие сработало не от физгана
 			03=float angle = Angle(WeaponTarget(physGun), missile);
@@ -985,8 +1016,8 @@ ActCodeBlocksList ^{
 			}
 		}
 		//Снаряд физгана (или любая другая ракета стреляющего корабля) попал по кораблю/станции
-		09=else if(ScriptItemActionType(t_OnMissileShot2))
-		10 ^{
+		13=else if(ScriptItemActionType(t_OnMissileShot2))
+		14 ^{
 			01=missile = ScriptItemActObject2();
 			02=if(CustomMissileType(missile) != 'PhysGun') exit; //Если данное событие сработало не от физгана
 			03=dword target = ScriptItemActObject1();
@@ -1115,8 +1146,8 @@ ActCodeBlocksList ^{
 			}
 		}
 		//Снаряд физгана (или любая другая ракета стреляющего корабля) попал по предмету/астероиду
-		11=else if(ScriptItemActionType(t_OnMissileHittingObject))
-		12 ^{
+		16=else if(ScriptItemActionType(t_OnMissileHittingObject))
+		17 ^{
 			01=missile = ScriptItemActObject2();
 			02=if(CustomMissileType(missile) != 'PhysGun') exit; //Если данное событие сработало не от физгана
 			03=target = ScriptItemActObject1();
