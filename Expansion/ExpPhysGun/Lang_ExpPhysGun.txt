@@ -930,7 +930,7 @@ ActCodeBlocksList ^{
 						14=ItemSize(physGun, ItemSize(physGun) + tempActCodeData3);
 						15=ItemOnUseCode(physGun, GenerateCodeStringFromBlock('UseCodeBlocksList.PhysGunUseCodeLoaded'));
 						16=PutItemInVault('PhysGunChamber', FormShipCurItem('Detach'));
-						//16=ScriptItemActParam(1); //Удаляем "заряженный" предмет
+						17=ScriptItemActParam(2); //Предотвращаем возможный краш из-за удаления предмета из руки
 					}
 					07=else
 					08 ^{
