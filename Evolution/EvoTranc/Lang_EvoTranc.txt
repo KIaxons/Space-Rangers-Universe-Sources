@@ -1078,8 +1078,8 @@ ShipInfo ^{
                 Name=Дефлектор "Мангуст"
 				OnActCodeTypes=t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
                 OnActCode ^{
-					01=if(ShipCustomShipInfoTextData(0,CurInfo(),3)=='Lock')exit;
-					02=ScriptItemActParam(round(0.75*ScriptItemActParam()));
+					01=if(ShipCustomShipInfoTextData(0, CurInfo(), 3) == 'Lock') exit;
+					02=ScriptItemActParam(round(0.75 * ScriptItemActParam()));
                 }
             }
             TrancInvincibilityInfo ^{

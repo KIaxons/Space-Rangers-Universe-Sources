@@ -45,33 +45,29 @@ Items ^{
 }
 MicroModuls ~{
     ShuNukes_Nuke ^{
-        Cost=100
         CustomTag=NukeAcryn
         Equipments=W15
-        KindGraph=fizgun_main
         MissileGraph=Nuke
         Name=“¿—-16
         Owner=Any
         Priority=0
         ShotVisual=15
-        Size=100
         Special=1
-        Text=
+		LockedAcryn=3
+		NonSearchable=1
         WeaponMods=Shock,Magnetic,Destruct,BlockWeapon,BlockDroid,DropCargo,Decelerate,BonusToDamaged
     }
     ShuNukes_Nova ^{
-        Cost=100
         CustomTag=NovaAcryn
         Equipments=W15
-        KindGraph=fizgun_main
         MissileGraph=Nova
         Name=
         Owner=Any
         Priority=0
         ShotVisual=15
-        Size=100
         Special=1
-        Text=
+		LockedAcryn=3
+		NonSearchable=1
         WeaponMods=Acid,Destruct,BlockWeapon,BlockDroid,DropCargo,Decelerate,BonusToDamaged,Magnetic,ReduceEngine,ScanBonus
     }
 }
@@ -196,7 +192,7 @@ ShipInfo ^{
 						}
 						07=if(HullDamage(k)<50)exit;
 						08=ShipCustomShipInfoData(0,info,1,CurTurn()+Rnd(4,6));
-						09=dword rocket=SpawnMissile(ShipStar(k),target,CoordX(k),CoordY(k),Angle(target,k),200+65*GalaxyTechLevel(),300+85*GalaxyTechLevel(),700+GalaxyTechLevel()*50,t_Weapon15,-1,FindBonusByCustomTag('NukeAcryn'));
+						09=dword rocket=SpawnMissile(ShipStar(k),target,CoordX(k),CoordY(k),Angle(target,k),200+65*GalaxyTechLevel(),300+85*GalaxyTechLevel(),700+GalaxyTechLevel()*50,t_Weapon15,-1,FindBonusByNameInCfg('ShuNukes_Nuke'));
 						10=MissileOwner(rocket,k);
 					}
                 }
@@ -222,7 +218,7 @@ ShipInfo ^{
 						}
 						07=if(HullDamage(k)<75)exit;
 						08=ShipCustomShipInfoData(0,info,1,CurTurn()+Rnd(3,6));
-						09=dword rocket=SpawnMissile(ShipStar(k),target,CoordX(k),CoordY(k),Angle(target,k),200+65*GalaxyTechLevel(),300+85*GalaxyTechLevel(),700+GalaxyTechLevel()*50,t_Weapon15,-1,FindBonusByCustomTag('NukeAcryn'));
+						09=dword rocket=SpawnMissile(ShipStar(k),target,CoordX(k),CoordY(k),Angle(target,k),200+65*GalaxyTechLevel(),300+85*GalaxyTechLevel(),700+GalaxyTechLevel()*50,t_Weapon15,-1,FindBonusByNameInCfg('ShuNukes_Nuke'));
 						10=MissileOwner(rocket,k);
 					}
                 }
@@ -286,7 +282,7 @@ ShipInfo ^{
 							01=if(allow==1)ShipCustomShipInfoData(0,info,1,CurTurn()+20);
 							02=else if(allow==2)ShipCustomShipInfoData(0,info,1,CurTurn()+10);
 							03=else if(allow==3)ShipCustomShipInfoData(0,info,1,CurTurn()+5);
-							04=dword rocket=SpawnMissile(ShipStar(k),target,CoordX(k),CoordY(k),Angle(target,k),200+65*GalaxyTechLevel(),300+85*GalaxyTechLevel(),700+GalaxyTechLevel()*50,t_Weapon15,-1,FindBonusByCustomTag('NukeAcryn'));
+							04=dword rocket=SpawnMissile(ShipStar(k),target,CoordX(k),CoordY(k),Angle(target,k),200+65*GalaxyTechLevel(),300+85*GalaxyTechLevel(),700+GalaxyTechLevel()*50,t_Weapon15,-1,FindBonusByNameInCfg('ShuNukes_Nuke'));
 							05=MissileOwner(rocket,k);
 						}
 					}
@@ -313,7 +309,7 @@ ShipInfo ^{
 							01=if(allow==1)ShipCustomShipInfoData(0,info,1,CurTurn()+20);
 							02=if(allow==2)ShipCustomShipInfoData(0,info,1,CurTurn()+10);
 							03=if(allow==3)ShipCustomShipInfoData(0,info,1,CurTurn()+5);
-							04=dword rocket=SpawnMissile(ShipStar(k),target,CoordX(k),CoordY(k),Angle(target,k),200+65*GalaxyTechLevel(),300+85*GalaxyTechLevel(),700+GalaxyTechLevel()*50,t_Weapon15,-1,FindBonusByCustomTag('NukeAcryn'));
+							04=dword rocket=SpawnMissile(ShipStar(k),target,CoordX(k),CoordY(k),Angle(target,k),200+65*GalaxyTechLevel(),300+85*GalaxyTechLevel(),700+GalaxyTechLevel()*50,t_Weapon15,-1,FindBonusByNameInCfg('ShuNukes_Nuke'));
 							05=MissileOwner(rocket,k);
 						}
 					}
@@ -363,7 +359,7 @@ UselessItems ^{
                 }
                 09=if(ne_tsel==-1)exit;
                 10=target=ships[ne_tsel];
-                11=dword rocket=SpawnMissile(ShipStar(Player()),target,CoordX(Player()),CoordY(Player()),Angle(target,Player()),4000,5000,400,'nova',-1,FindBonusByCustomTag('NovaAcryn'));
+                11=dword rocket=SpawnMissile(ShipStar(Player()),target,CoordX(Player()),CoordY(Player()),Angle(target,Player()),4000,5000,400,'nova',-1,FindBonusByNameInCfg('ShuNukes_Nova'));
                 12=MissileOwner(rocket,Player());
                 13=UselessItemData(CurItem(),1,UselessItemData(CurItem(),1)-1);
                 14=UselessItemData(CurItem(),2,0);
@@ -412,7 +408,7 @@ UselessItems ^{
                 }
                 13=if(ne_tsel==-1)exit;
                 14=target=ships[ne_tsel];
-                15=dword rocket=SpawnMissile(ShipStar(Player()),target,CoordX(Player()),CoordY(Player()),Angle(target,Player()),200+65*GalaxyTechLevel(),300+85*GalaxyTechLevel(),700+GalaxyTechLevel()*50,t_Weapon15,-1,FindBonusByCustomTag('NukeAcryn'));
+                15=dword rocket=SpawnMissile(ShipStar(Player()),target,CoordX(Player()),CoordY(Player()),Angle(target,Player()),200+65*GalaxyTechLevel(),300+85*GalaxyTechLevel(),700+GalaxyTechLevel()*50,t_Weapon15,-1,FindBonusByNameInCfg('ShuNukes_Nuke'));
                 16=MissileOwner(rocket,Player());
                 17=UselessItemData(CurItem(),1,UselessItemData(CurItem(),1)-1); UselessItemData(CurItem(),2,0);
             }
@@ -461,7 +457,7 @@ UselessItems ^{
                 }
                 13=if(ne_tsel==-1)exit;
                 14=target=ships[ne_tsel];
-                15=dword rocket=SpawnMissile(ShipStar(Player()),target,CoordX(Player()),CoordY(Player()),Angle(target,Player()),200+65*GalaxyTechLevel(),300+85*GalaxyTechLevel(),700+GalaxyTechLevel()*50,t_Weapon15,-1,FindBonusByCustomTag('NukeAcryn'));
+                15=dword rocket=SpawnMissile(ShipStar(Player()),target,CoordX(Player()),CoordY(Player()),Angle(target,Player()),200+65*GalaxyTechLevel(),300+85*GalaxyTechLevel(),700+GalaxyTechLevel()*50,t_Weapon15,-1,FindBonusByNameInCfg('ShuNukes_Nuke'));
                 16=MissileOwner(rocket,Player());
                 17=UselessItemData(CurItem(),1,UselessItemData(CurItem(),1)-1); UselessItemData(CurItem(),2,0);
             }
