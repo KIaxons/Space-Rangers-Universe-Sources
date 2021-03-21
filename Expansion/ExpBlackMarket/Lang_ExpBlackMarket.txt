@@ -3705,18 +3705,18 @@ ShipInfo ^{
 							01=InterfaceState('Ship','PM_EndTurn',0);
 							02=InterfaceState('Ship','RT_EndTurn_Block',1);
 							//Перебираем галасобытия, ищем свежекупленные предметы
-							03=for(int i=GalaxyEvents()-1;i>=0;i=i-1)
+							03=for(int i = GalaxyEvents() - 1; i >= 0; i = i - 1)
 							04 ^{
-								01=if(i<=ShipCustomShipInfoData(0,CurInfo(),2))break;
-								02=if(GalaxyEventDate(i)<CurTurn())break;
-								03=if(GalaxyEventType(i)=='PlayerBuysEquipment')
+								01=if(i <= ShipCustomShipInfoData(0, CurInfo(), 2)) break;
+								02=if(GalaxyEventDate(i) < CurTurn()) break;
+								03=if(GalaxyEventType(i) == 'PlayerBuysEquipment')
 								04 ^{
-									01=if(GalaxyEventData(i,5)==ShipCustomShipInfoData(0,CurInfo(),1))
+									01=if(GalaxyEventData(i, 5) == ShipCustomShipInfoData(0, CurInfo(), 1))
 									02 ^{
 										01=dword item;
-										02=int type=GalaxyEventData(i,0);
-										03=float flt=0;
-										04=if(type>=t_FuelTanks && type<=t_DefGenerator)
+										02=int type = GalaxyEventData(i, 0);
+										03=float flt = 0;
+										04=if(type >= t_FuelTanks && type <= t_DefGenerator)
 										05 ^{
 											01=item=IdToItem(GalaxyEventData(i,3));
 											02=if(ItemOwner(item)==6)
@@ -3784,8 +3784,8 @@ ShipInfo ^{
 										}
 										12=if(!ShopItems(GetShipRuins(Player())))
 										13 ^{
-											01=InterfaceState('RuinsTalk','PR_Shop',0);
-											02=InterfaceState('RuinsTalk','PR_BMShopBlock',1);
+											01=InterfaceState('RuinsTalk', 'PR_Shop', 0);
+											02=InterfaceState('RuinsTalk', 'PR_BMShopBlock', 1);
 										}
 									}
 								}
@@ -3838,13 +3838,13 @@ ShipInfo ^{
 							03=InterfaceState('RuinsTalk','PM_EndTurn',0);
 							04=InterfaceState('RuinsTalk','RT_EndTurn_Block',1);
 							//Перебираем галасобытия, ищем свежекупленные предметы
-							05=for(i=GalaxyEvents()-1;i>=0;i=i-1)
+							05=for(i = GalaxyEvents() - 1; i >= 0; i = i - 1)
 							06 ^{
-								01=if(i<=ShipCustomShipInfoData(0,CurInfo(),2))break;
-								02=if(GalaxyEventDate(i)<CurTurn())break;
-								03=if(GalaxyEventType(i)=='PlayerBuysEquipment')
+								01=if(i <= ShipCustomShipInfoData(0, CurInfo(), 2)) break;
+								02=if(GalaxyEventDate(i) < CurTurn()) break;
+								03=if(GalaxyEventType(i) == 'PlayerBuysEquipment')
 								04 ^{
-									01=if(GalaxyEventData(i,5)==ShipCustomShipInfoData(0,CurInfo(),1))
+									01=if(GalaxyEventData(i, 5) == ShipCustomShipInfoData(0, CurInfo(), 1))
 									02 ^{
 										01=type=GalaxyEventData(i,0);
 										02=flt=0;
