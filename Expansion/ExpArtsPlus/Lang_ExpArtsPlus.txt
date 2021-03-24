@@ -290,111 +290,72 @@ Artefacts ^{
 				}
 				04=else exit;
 			}
-			05=if(ItemExtraSpecials(item))
-			06 ^{
+			05=int status=0;
+			06=if(ItemExtraSpecials(item))
+			07 ^{
 				01=for(int i = 0; i < ItemExtraSpecials(item); i = i + 1)
 				02 ^{
 					01=int spNum = ItemExtraSpecials(item, i);
 					02=str spName = BonusNumInCfg(spNum);
-					03=if(spName == 'ExpArtsPlus_ArtBonusHookNormal3' || spName == 'ExpArtsPlus_ArtBonusHookBoosted3')
-					04 ^{
-						01=if(ScriptItemActionType(t_OnAnotherItem)) MessageBox('Достигнуто предельное увеличение характеристик захвата.');
-						02=exit;
-					}
-					05=if(spName == 'ExpArtsPlus_ArtBonusHookNormal2' || spName == 'ExpArtsPlus_ArtBonusHookBoosted2')
-					06 ^{
-						01=if(ScriptItemActionType(t_OnCheckingUsability))
-						02 ^{
-							01=ScriptItemActParam(1);
-							02=exit;
-						}
-						03=if(MessageBoxYesNo('Вы уверены, что хотите навсегда встроить эриметр в захват?'))
-						04 ^{
-							01=ItemExtraSpecialsDeleteByType(item, spNum);
-							02=if(ItemOwner(item) != 6)
-							03 ^{
-								01=ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_ArtBonusHookNormal3'), 1);
-								02=SetEquipmentStats(item, GetEquipmentStats(item, 0) + 20, 0);
-								03=SetEquipmentStats(item, GetEquipmentStats(item, 1) + 20, 1);
-								04=SetEquipmentStats(item, GetEquipmentStats(item, 2) + 1.0, 2);
-								05=SetEquipmentStats(item, GetEquipmentStats(item, 3) + 1.0, 3);
-							}
-							04=else
-							05 ^{
-								01=ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_ArtBonusHookBoosted3'), 1);
-								02=SetEquipmentStats(item, GetEquipmentStats(item, 0) + 25, 0);
-								03=SetEquipmentStats(item, GetEquipmentStats(item, 1) + 25, 1);
-								04=SetEquipmentStats(item, GetEquipmentStats(item, 2) + 2.0, 2);
-								05=SetEquipmentStats(item, GetEquipmentStats(item, 3) + 2.0, 3);
-							}
-							06=ItemSize(item, ItemSize(item) + ItemSize(CurItem()));
-							07=ItemCost(item, ItemCost(item) + ItemCost(CurItem()));
-							08=ScriptItemActParam(1);
-							09=Sound('Sound.Repair');
-							10=exit;
-						}
-					}
-					07=if(spName == 'ExpArtsPlus_ArtBonusHookNormal1' || spName == 'ExpArtsPlus_ArtBonusHookBoosted1')
-					08 ^{
-						01=if(ScriptItemActionType(t_OnCheckingUsability))
-						02 ^{
-							01=ScriptItemActParam(1);
-							02=exit;
-						}
-						03=if(MessageBoxYesNo('Вы уверены, что хотите навсегда встроить эриметр в захват?'))
-						04 ^{
-							01=ItemExtraSpecialsDeleteByType(item, spNum);
-							02=if(ItemOwner(item) != 6)
-							03 ^{
-								01=ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_ArtBonusHookNormal2'), 1);
-								02=SetEquipmentStats(item, GetEquipmentStats(item, 0) + 15, 0);
-								03=SetEquipmentStats(item, GetEquipmentStats(item, 1) + 15, 1);
-							}
-							04=else
-							05 ^{
-								01=ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_ArtBonusHookBoosted2'), 1);
-								02=SetEquipmentStats(item, GetEquipmentStats(item, 0) + 25, 0);
-								03=SetEquipmentStats(item, GetEquipmentStats(item, 1) + 25, 1);
-							}
-							06=ItemSize(item, ItemSize(item) + ItemSize(CurItem()));
-							07=ItemCost(item, ItemCost(item) + ItemCost(CurItem()));
-							08=ScriptItemActParam(1);
-							09=Sound('Sound.Repair');
-							10=exit;
-						}
-					}
+					03=if(spName=='ExpArtsPlus_ArtBonusHookNormal3' || spName=='ExpArtsPlus_ArtBonusHookBoosted3') status=-1;				
+					04=else if(spName=='ExpArtsPlus_ArtBonusHookNormal2' || spName=='ExpArtsPlus_ArtBonusHookBoosted2') status=2;
+					05=else if(spName=='ExpArtsPlus_ArtBonusHookNormal1' || spName=='ExpArtsPlus_ArtBonusHookBoosted1') status=1;
 				}
 			}
-			07=if(ScriptItemActionType(t_OnCheckingUsability))
-			08 ^{
-				01=ScriptItemActParam(1);
+			08=if(ScriptItemActionType(t_OnCheckingUsability))
+			09 ^{
+				01=if(~status) ScriptItemActParam(1);
 				02=exit;
 			}
-			09=str tStr;
-			10=if(!ItemImprovement(item)) tStr = ' Улучшить такой захват на научной базе будет невозможно.';
-			11=if(MessageBoxYesNo('Вы уверены, что хотите навсегда встроить эриметр в захват?' + tStr))
+			10=str tStr;
+			11=if(status<0)
 			12 ^{
-				01=if(ItemOwner(item) != 6)
-				02 ^{
-					01=ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_ArtBonusHookNormal1'), 1);
-					02=SetEquipmentStats(item, GetEquipmentStats(item, 0) + 15, 0);
-					03=SetEquipmentStats(item, GetEquipmentStats(item, 1) + 15, 1);
+				01=MessageBox('Достигнуто предельное увеличение характеристик захвата.');
+				02=exit;
+			}
+			13=if(!ItemImprovement(item)) tStr=' Улучшить такой захват на научной базе будет невозможно.';
+			14=else tStr='';
+			15=if(MessageBoxYesNo('Вы уверены, что хотите навсегда встроить эриметр в захват?' + tStr))
+			16 ^{
+				01=dword eqNone;
+				02=if(ItemOwner(item)!= 6) eqNone=0;
+				03=else eqNone=1;
+				04=if(status>0) ItemExtraSpecialsDeleteByType(item,spNum);
+				05=if(eqNone) 
+				06 ^{
+					01=if(status==2) 
+					02 ^{
+						01=ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_ArtBonusHookBoosted3'),1);
+						02=SetEquipmentStats(item, GetEquipmentStats(item, 2) + 2.0, 2);
+						03=SetEquipmentStats(item, GetEquipmentStats(item, 3) + 2.0, 3);
+					}
+					03=else if(status==1) ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_ArtBonusHookBoosted2'),1);
+					04=else ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_ArtBonusHookBoosted1'),1);
+					05=SetEquipmentStats(item, GetEquipmentStats(item, 0) + 25, 0);
+					06=SetEquipmentStats(item, GetEquipmentStats(item, 1) + 25, 1);
 				}
-				03=else
-				04 ^{
-					01=ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_ArtBonusHookBoosted1'), 1);
-					02=SetEquipmentStats(item, GetEquipmentStats(item, 0) + 25, 0);
-					03=SetEquipmentStats(item, GetEquipmentStats(item, 1) + 25, 1);
+				07=else
+				08 ^{
+					01=if(status==2)
+					02 ^{
+						01=ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_ArtBonusHookNormal3'),1);
+						02=SetEquipmentStats(item, GetEquipmentStats(item, 2) + 1.0, 2);
+						03=SetEquipmentStats(item, GetEquipmentStats(item, 3) + 1.0, 3);
+					}
+					03=else if(status==1) ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_ArtBonusHookNormal2'),1);
+					04=else ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_ArtBonusHookNormal1'),1);
+					05=SetEquipmentStats(item, GetEquipmentStats(item, 0) + 15, 0);
+					06=SetEquipmentStats(item, GetEquipmentStats(item, 1) + 15, 1);
 				}
-				05=ItemSize(item, ItemSize(item) + ItemSize(CurItem()));
-				06=ItemCost(item, ItemCost(item) + ItemCost(CurItem()));
-				07=ScriptItemActParam(1);
-				08=Sound('Sound.Repair');
+				09=ItemSize(item,ItemSize(item)+ItemSize(CurItem()));
+				10=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
+				11=ScriptItemActParam(1);
+				12=Sound('Sound.Repair');
 			}
 		}
 		Text=Позволяет лучу захвата притягивать предметы с массой больше расчётной на <clr>50<clrEnd> единиц. Повышает скорость притягивания вещей и радиус захвата.
 		Text=<clr><clrEnd>
-		Text=При совмещении с захватом навсегда увеличивает его дальность.
+		Text=При совмещении с захватом навсегда увеличивает его дальность (Эффект усиливается на неизвестном оборудовании).
 	}
 	ArtHull ^{
 		Name=Железные жупи
@@ -413,75 +374,43 @@ Artefacts ^{
 				}
 				04=else exit;
 			}
-			05=if(ItemExtraSpecials(item))
-			06 ^{
+			05=int status=0;
+			06=if(ItemExtraSpecials(item))
+			07 ^{
 				01=for(int i = 0; i < ItemExtraSpecials(item); i = i + 1)
 				02 ^{
 					01=int spNum = ItemExtraSpecials(item, i);
 					02=str spName = BonusNumInCfg(spNum);
-					03=if(spName=='ExpArtsPlus_AddHullArmor3')
-					04 ^{
-						01=if(ScriptItemActionType(t_OnAnotherItem)) MessageBox('Колония жупи на этом корпусе уже достигла максимально возможного размера');
-						02=exit;
-					}
-					05=if(spName=='ExpArtsPlus_AddHullArmor2')
-					06 ^{
-						01=if(ScriptItemActionType(t_OnCheckingUsability))
-						02 ^{
-							01=ScriptItemActParam(1);
-							02=exit;
-						}
-						03=if(MessageBoxYesNo('Вы уверены, что хотите навсегда переселить колонию в этот корпус?'))
-						04 ^{
-							01=ItemExtraSpecialsDeleteByType(item,spNum);
-							02=ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_AddHullArmor3'),1);
-							03=SetEquipmentStats(item,GetEquipmentStats(item,0)+1,0);
-							04=ItemSize(item,ItemSize(item)-ItemSize(CurItem()));
-							05=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
-							06=if(HullHP(item)>ItemSize(item))HullHP(item,ItemSize(item));
-							07=ScriptItemActParam(1);
-							08=Sound('Sound.Repair');
-							09=exit;
-						}
-					}
-					07=if(spName=='ExpArtsPlus_AddHullArmor1')
-					08 ^{
-						01=if(ScriptItemActionType(t_OnCheckingUsability))
-						02 ^{
-							01=ScriptItemActParam(1);
-							02=exit;
-						}
-						03=if(MessageBoxYesNo('Вы уверены, что хотите навсегда переселить колонию в этот корпус?'))
-						04 ^{
-							01=ItemExtraSpecialsDeleteByType(item,spNum);
-							02=ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_AddHullArmor2'),1);
-							03=SetEquipmentStats(item,GetEquipmentStats(item,0)+1,0);
-							04=ItemSize(item,ItemSize(item)-ItemSize(CurItem()));
-							05=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
-							06=if(HullHP(item)>ItemSize(item))HullHP(item,ItemSize(item));
-							07=ScriptItemActParam(1);
-							08=Sound('Sound.Repair');
-							09=exit;
-						}
-					}
+					03=if(spName=='ExpArtsPlus_AddHullArmor3') status=-1;				
+					04=else if(spName=='ExpArtsPlus_AddHullArmor2') status=2;
+					05=else if(spName=='ExpArtsPlus_AddHullArmor1') status=1;
 				}
 			}
-			07=if(ScriptItemActionType(t_OnCheckingUsability))
-			08 ^{
-				01=ScriptItemActParam(1);
+			08=if(ScriptItemActionType(t_OnCheckingUsability))
+			09 ^{
+				01=if(~status) ScriptItemActParam(1);
 				02=exit;
 			}
-			09=str tStr;
-			10=if(!ItemImprovement(item)) tStr=' Улучшить такой корпус на научной базе будет невозможно.';
-			11=if(MessageBoxYesNo('Вы уверены, что хотите навсегда переселить колонию в этот корпус?'+tStr))
+			10=str tStr;
+			11=if(status<0)
 			12 ^{
-				01=ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_AddHullArmor1'),1);
-				02=SetEquipmentStats(item,GetEquipmentStats(item,0)+1,0);
-				03=ItemSize(item,ItemSize(item)-ItemSize(CurItem()));
-				04=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
-				05=if(HullHP(item)>ItemSize(item))HullHP(item,ItemSize(item));
-				06=ScriptItemActParam(1);
-				07=Sound('Sound.Repair');
+				01=MessageBox('Колония жупи на этом корпусе уже достигла максимально возможного размера');
+				02=exit;
+			}
+			13=if(!ItemImprovement(item)) tStr=' Улучшить такой корпус на научной базе будет невозможно.';
+			14=else tStr='';
+			15=if(MessageBoxYesNo('Вы уверены, что хотите навсегда переселить колонию в этот корпус?'+tStr))
+			16 ^{
+				01=if(status>0) ItemExtraSpecialsDeleteByType(item,spNum);
+				02=if(status==2) ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_AddHullArmor3'),1);
+				03=else if(status==1) ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_AddHullArmor2'),1);
+				04=else ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_AddHullArmor1'),1);
+				05=SetEquipmentStats(item,GetEquipmentStats(item,0)+1,0);
+				06=ItemSize(item,ItemSize(item)-ItemSize(CurItem()));
+				07=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
+				08=if(HullHP(item)>ItemSize(item))HullHP(item,ItemSize(item));
+				09=ScriptItemActParam(1);
+				10=Sound('Sound.Repair');
 			}
 		}
 		Text=Колония железных жупи, во главе с маткой, увеличивает защиту корпуса на <clr>5<clrEnd> единиц.
@@ -490,6 +419,7 @@ Artefacts ^{
 	ArtMiniExpl ^{
 		Description=При попадании локализатор отводит энергию выстрела на внешнюю поверхность вражеского корабля, чтобы при возможном взрыве пострадало как можно меньше оборудования.
 		Name=Локализатор взрывной волны
+		OnActCodeTypes=t_OnWeaponShot,t_OnMissileHittingObject,t_OnTakingDamage
 		OnActCode ^{
 			01=if(!IsScriptActive('Mod_ExpTC')) exit;
 			02=if(ItemIsInUse(CurItem()) && !ItemIsBroken(CurItem()))
@@ -514,7 +444,6 @@ Artefacts ^{
 				}
 			}
 		}
-		OnActCodeTypes=t_OnWeaponShot,t_OnMissileHittingObject,t_OnTakingDamage
 		Text=Сохраняет много ценного оборудования врага при его ликвидации, а также ценную руду из астероидов.
 	}
 	ArtMissileDef ^{
@@ -756,96 +685,55 @@ Artefacts ^{
 				}
 				04=else exit;
 			}
-			05=if(ItemExtraSpecials(item))
-			06 ^{
+			05=int status=0;
+			06=if(ItemExtraSpecials(item))
+			07 ^{
 				01=for(int i = 0; i < ItemExtraSpecials(item); i = i + 1)
 				02 ^{
 					01=int spNum = ItemExtraSpecials(item, i);
 					02=str spName = BonusNumInCfg(spNum);
-					03=if(spName == 'ExpArtsPlus_ArtWeaponToSpeedNormal3' || spName == 'ExpArtsPlus_ArtWeaponToSpeedBoosted3')
-					04 ^{
-						01=if(ScriptItemActionType(t_OnAnotherItem)) MessageBox('Достигнуто предельное увеличение скорости');
-						02=exit;
-					}
-					05=if(spName == 'ExpArtsPlus_ArtWeaponToSpeedNormal2' || spName == 'ExpArtsPlus_ArtWeaponToSpeedBoosted2')
-					06 ^{
-						01=if(ScriptItemActionType(t_OnCheckingUsability))
-						02 ^{
-							01=ScriptItemActParam(1);
-							02=exit;
-						}
-						03=if(MessageBoxYesNo('Вы уверены, что хотите навсегда встроить сопланатор в двигатель?'))
-						04 ^{
-							01=ItemExtraSpecialsDeleteByType(item,spNum);
-							02=if(ItemOwner(item) != 6)
-							03 ^{
-								01=ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_ArtWeaponToSpeedNormal3'),1);
-								02=SetEquipmentStats(item,GetEquipmentStats(item,0)+40,0);
-							}
-							04=else
-							05 ^{
-								01=ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_ArtWeaponToSpeedBoosted3'),1);
-								02=SetEquipmentStats(item,GetEquipmentStats(item,0)+60,0);
-							}
-							06=ItemSize(item,ItemSize(item)+ItemSize(CurItem()));
-							07=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
-							08=ScriptItemActParam(1);
-							09=Sound('Sound.Repair');
-							10=exit;
-						}
-					}
-					07=if(spName=='ExpArtsPlus_ArtWeaponToSpeedNormal1' || spName=='ExpArtsPlus_ArtWeaponToSpeedBoosted1')
-					08 ^{
-						01=if(ScriptItemActionType(t_OnCheckingUsability))
-						02 ^{
-							01=ScriptItemActParam(1);
-							02=exit;
-						}
-						03=if(MessageBoxYesNo('Вы уверены, что хотите навсегда встроить сопланатор в двигатель?'))
-						04 ^{
-							01=ItemExtraSpecialsDeleteByType(item,spNum);
-							02=if(ItemOwner(item) != 6)
-							03 ^{
-								01=ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_ArtWeaponToSpeedNormal2'),1);
-								02=SetEquipmentStats(item,GetEquipmentStats(item,0)+40,0);
-							}
-							04=else
-							05 ^{
-								01=ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_ArtWeaponToSpeedBoosted2'),1);
-								02=SetEquipmentStats(item,GetEquipmentStats(item,0)+60,0);
-							}
-							06=ItemSize(item,ItemSize(item)+ItemSize(CurItem()));
-							07=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
-							08=ScriptItemActParam(1);
-							09=Sound('Sound.Repair');
-							10=exit;
-						}
-					}
+					03=if(spName=='ExpArtsPlus_ArtWeaponToSpeedNormal3' || spName=='ExpArtsPlus_ArtWeaponToSpeedBoosted3') status=-1;				
+					04=else if(spName=='ExpArtsPlus_ArtWeaponToSpeedNormal2' || spName=='ExpArtsPlus_ArtWeaponToSpeedBoosted2') status=2;
+					05=else if(spName=='ExpArtsPlus_ArtWeaponToSpeedNormal1' || spName=='ExpArtsPlus_ArtWeaponToSpeedBoosted1') status=1;
 				}
 			}
-			07=if(ScriptItemActionType(t_OnCheckingUsability))
-			08 ^{
-				01=ScriptItemActParam(1);
+			08=if(ScriptItemActionType(t_OnCheckingUsability))
+			09 ^{
+				01=if(~status) ScriptItemActParam(1);
 				02=exit;
 			}
-			09=str tStr;
-			10=if(!ItemImprovement(item)) tStr = ' Улучшить такой двигатель на научной базе будет невозможно.';
-			11=if(MessageBoxYesNo('Вы уверены, что хотите навсегда встроить сопланатор в двигатель?' + tStr))
+			10=str tStr;
+			11=if(status<0)
 			12 ^{
-				01=if(ItemOwner(item) != 6)
-				02 ^{
-					01=ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_ArtWeaponToSpeedNormal1'), 1);
-					02=SetEquipmentStats(item, GetEquipmentStats(item, 0) + 40,0);
+				01=MessageBox('Достигнуто предельное увеличение скорости');
+				02=exit;
+			}
+			13=if(!ItemImprovement(item)) tStr=' Улучшить такой двигатель на научной базе будет невозможно.';
+			14=else tStr='';
+			15=if(MessageBoxYesNo('Вы уверены, что хотите навсегда встроить сопланатор в двигатель?'+tStr))
+			16 ^{
+				01=dword eqNone;
+				02=if(ItemOwner(item)!= 6) eqNone=0;
+				03=else eqNone=1;
+				04=if(status>0) ItemExtraSpecialsDeleteByType(item,spNum);
+				05=if(eqNone) 
+				06 ^{
+					01=if(status==2) ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_ArtWeaponToSpeedBoosted3'),1);
+					02=else if(status==1) ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_ArtWeaponToSpeedBoosted2'),1);
+					03=else ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_ArtWeaponToSpeedBoosted1'),1);
+					04=SetEquipmentStats(item, GetEquipmentStats(item, 0) + 60,0);
 				}
-				03=else
-				04 ^{
-					01=ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('ExpArtsPlus_ArtWeaponToSpeedBoosted1'), 1);
-					02=SetEquipmentStats(item, GetEquipmentStats(item, 0) + 60, 0);
+				07=else
+				08 ^{
+					01=if(status==2) ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_ArtWeaponToSpeedNormal3'),1);
+					02=else if(status==1) ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_ArtWeaponToSpeedNormal2'),1);
+					03=else ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('ExpArtsPlus_ArtWeaponToSpeedNormal1'),1);
+					04=SetEquipmentStats(item, GetEquipmentStats(item, 0) + 40,0);
 				}
-				05=ItemSize(item, ItemSize(item) + ItemSize(CurItem()));
-				06=ItemCost(item, ItemCost(item) + ItemCost(CurItem()));
-				07=ScriptItemActParam(1);
-				08=Sound('Sound.Repair');
+				09=ItemSize(item,ItemSize(item)+ItemSize(CurItem()));
+				10=ItemCost(item,ItemCost(item)+ItemCost(CurItem()));
+				11=ScriptItemActParam(1);
+				12=Sound('Sound.Repair');
 			}
 		}
 		Text=На <clr>100<clrEnd> единиц увеличивает скорость двигателя за счет установки дополнительных сопел на базе одного <clr>орудийного<clrEnd> отсека.
@@ -1110,8 +998,8 @@ MicroModuls ^{
 		ExText=<color=248,252,248>Улучшение:</color> <clr>Сфокусированный луч III<clrEnd>
 		ExText=<color=248,252,248>Несколько интегрированных эриметров резко увеличивают характеристики захвата.</color>
 		ExText=<clr><clrEnd>
-		ExText=Мощность захвата: <clr>+50<clrEnd> ед.
-		ExText=Радиус захвата: <clr>+50<clrEnd> ед.
+		ExText=Мощность захвата: <clr>+45<clrEnd> ед.
+		ExText=Радиус захвата: <clr>+45<clrEnd> ед.
 		ExText=Скорость притягивания: <clr>+1<clrEnd> ед.
 		LockedAcryn=3
 		Name=add_hook_normal3
@@ -1205,12 +1093,12 @@ ShipInfo ^{
 				Description=
 				Icon=0
 				Name=
+				OnActCodeTypes=t_OnStep,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
+				OnActStepTypes=11
 				OnActCode ^{
 					01=if(ScriptItemActionType(t_OnStep, 11)) ShipDeleteCustomShipInfo(ScriptItemActShip(), 'ArtEnergyDef_infos');
 					02=else ScriptItemActParam(0);
 				}
-				OnActCodeTypes=t_OnStep,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
-				OnActStepTypes=11
 			}
 		}
 	}
