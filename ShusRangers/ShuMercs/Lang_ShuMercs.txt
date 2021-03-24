@@ -1,3 +1,6 @@
+FormInfo ^{
+	br=<br>
+}
 MicroModuls ~{
     ShuMercs_MercMalocHull ^{
         Cost=110
@@ -682,60 +685,63 @@ Script ^{
 				}
 				PirateClan ^{
 					1 ^{
-						StartPlanetOwner=People
-						ShipType=t_Transport
-						ShipSubType=0
-						ShipCustomType=Smuggler
-						ShipOwner=PirateClan
+						StartPlanetRace=People
+						TargetStarOwner=Any
+						TargetShipType=t_Transport
+						TargetShipSubType=0
+						TargetShipStringType=Smuggler
+						TargetShipOwner=PirateClan
+						//Чем дальше целевая система, тем больше дают времени
 						MinStarParsecRange=30
 						MaxStarParsecRange=55
 						MinTime=45
 						MaxTime=75
-						
 						QuestIntro=А вот это уже другой разговор.
 						QuestIntro=Месяц назад уважаемый атаман <clr>Узвар<clrEnd> заказал у нашего постоянного поставщика новенькую партию штурмовых бластеров. И всё бы ничего, но какая-то муха укусила <clr>Сидоровича<clrEnd>, и он толкнул <clr>Узвару<clrEnd> пластмассовую туфту. Обычно, такие вещи нас не касаются, это внутренние тёрки братства. Но атаман призвал к ответственности моих начальников, так как <clr>Сидорович<clrEnd> родом с планеты <StartPlanet>.
 						QuestIntro=Мне было приказано устранить <clr>Сидоровича<clrEnd>, иначе вместо его головы полетит моя. Короче говоря, тебе, <Player>, нужно грохнуть <clr>Сидоровича<clrEnd>, который сейчас скрывается на судне <TargetShipName> до <EndDate>, иначе вместо него грохнут меня. А мне бы очень не хотелось чтобы до этого дошло.
 						QuestIntro=Ну так что, жмём руки и я иду готовить бумаги к твоему возвращению?
-						QuestTakeYesP=Я берусь за это
+						QuestTakeYesP=Я берусь за это дело
 						QuestTakeNoP=Поговорим на другую тему
 						QuestComplete=Отлично, <Player>. Ты выполнил свою часть сделки, а я выполнил свою - вот твоё разрешение. Попутного ветра.
 						QuestCompleteP=Спасибо
 					}
 					2 ^{
-						StartPlanetOwner=Any
-						ShipType=t_Ranger
-						ShipSubType=Any
-						ShipCustomType=RangerPirate,RangerPirateExplorer
-						ShipOwner=PirateClan
+						StartPlanetRace=Any
+						TargetStarOwner=Any
+						TargetShipType=t_Ranger
+						TargetShipSubType=Any
+						TargetShipStringType=RangerPirate,RangerPirateExplorer
+						TargetShipOwner=PirateClan
+						//Чем дальше целевая система, тем больше дают времени
 						MinStarParsecRange=30
 						MaxStarParsecRange=55
 						MinTime=45
 						MaxTime=75
-						
 						QuestIntro=Присаживайся, <Player>. Есть для тебя одно дельце.
 						QuestIntro=Наши информаторы сообщили, что в братстве завёлся стукачёк, звать которого <TargetShipName>. Этот гадёныш сливает Коалиции инфу про наши военные планы и секретные разработки. По последним данным, он сейчас находится в системе <TargetStar>. Он уже заподозрил что его спалили, и начал вести себя крайне осторожно. Твоя задача устранить его. Сделать это нужно до <EndDate>, иначе он с якорями заляжет на дно.
 						QuestIntro=Вопросы?
-						QuestTakeYesP=Я берусь за это
+						QuestTakeYesP=Я берусь за это дело
 						QuestTakeNoP=Поговорим на другую тему
 						QuestComplete=Отлично, <Player>. Ты выполнил свою часть сделки, а я выполнил свою - вот твоё разрешение. Попутного ветра.
 						QuestCompleteP=Спасибо
 					}
 					3 ^{
-						StartPlanetOwner=Any
-						ShipType=t_Pirate
-						ShipSubType=0
-						ShipCustomType=Any
-						ShipOwner=Maloc,Peleng,People,Fei,Gaal
+						StartPlanetRace=Any
+						TargetStarOwner=Any
+						TargetShipType=t_Pirate
+						TargetShipSubType=0
+						TargetShipStringType=Any
+						TargetShipOwner=Maloc,Peleng,People,Fei,Gaal
+						//Чем дальше целевая система, тем больше дают времени
 						MinStarParsecRange=30
-						MaxStarParsecRange=45
+						MaxStarParsecRange=55
 						MinTime=45
 						MaxTime=75
-						
 						QuestIntro=Тогда перейдём сразу к делу.
 						QuestIntro=Как раз вчера состоялось очередное заседание правления клана. Были рассмотрены кандидатуры на повышение в иерархии братства, приставлены к награде отличившиеся пираты, а также награждены орденами особо умелые рейдеры.
 						QuestIntro=В то же время, были рассмотрены кандидатуры штрафников. В список приговорённых попал <TargetShipName>. Твоя задача ликвидировать цель. Крайний срок - <EndDate>, после чего, в случае неудачи, наш договор будет аннулирован и уже твоё собственное имя окажется в штрафном списке.
 						QuestIntro=Ну что, заключаем сделку или как?
-						QuestTakeYesP=Я берусь за это
+						QuestTakeYesP=Я берусь за это дело
 						QuestTakeNoP=Поговорим на другую тему
 						QuestComplete=Отлично, <Player>. Ты выполнил свою часть сделки, а я выполнил свою - вот твоё разрешение. Попутного ветра.
 						QuestCompleteP=Спасибо
@@ -749,12 +755,192 @@ Script ^{
 				}
 				PirateClan ^{
 					1 ^{
+						StartPlanetRace=Any
+						TargetStarOwner=0
+						TargetShipType=t_Transport
+						TargetShipSubType=0
+						TargetShipStringType=Transport
+						TargetShipOwner=Maloc,Peleng,People,Fei,Gaal
+						//Чем дальше целевая система, тем больше дают времени
+						MinStarParsecRange=30
+						MaxStarParsecRange=55
+						MinTime=65
+						MaxTime=95
+						QuestIntro=Тут такое дело, <Player>. Тебе нужно будет... защищать мирный транспортник. Что ты на меня так смотришь? Да, да, мы на пиратской планете и я прекрасно понимаю, как абсурдно это звучит. Дело в том, что наши агенты немного обос... облажались. Кхм, понимаешь, у нас есть свой человек в компании грузоперевозок <clr>LGL<clrEnd>, который под видом обычного транспортника собирает для нас данные о перемещении военных Коалиции. И так получилось, что перед отлётом с нашей планеты мы забыли внести опознавательную сигнатуру его корабля в списки агентов под прикрытием.
+						QuestIntro=Твоё задание, <Player>, заключается в обеспечении безопасности транспортного судна <TargetShipName> до тех пор, пока список агентов не будет обновлен, то есть до <EndDate>, после чего можешь смело возвращаться за нужными тебе бумагами.
+						QuestIntro=Ну что, по рукам?
+						QuestTakeYesP=Я берусь за это дело
+						QuestTakeNoP=Поговорим на другую тему
+						QuestComplete=Отлично, <Player>. Ты выполнил свою часть сделки, а я выполнил свою - вот твоё разрешение. Попутного ветра.
+						QuestCompleteP=Спасибо
 					}
-					Count=1
+					2 ^{
+						StartPlanetRace=Any
+						TargetStarOwner=Any
+						TargetShipType=t_Pirate
+						TargetShipSubType=0
+						TargetShipStringType=Any
+						TargetShipOwner=Maloc,Peleng,People,Fei,Gaal
+						//Чем дальше целевая система, тем больше дают времени
+						MinStarParsecRange=30
+						MaxStarParsecRange=55
+						MinTime=65
+						MaxTime=95
+						QuestIntro=Нет, <Player>, у нас всё хорошо. Никаких проблем не наблюдается. Контрабанда возится, торгаши грабятся, лепота одним словом. Так что придётся тебе... так, одну секунду, отвечу на звонок:
+						QuestIntro=- Ало? Да. Что? Как улетел? А дурь есть? И дурь пропала?! Только не снова... Так, я перезвоню.
+						QuestIntro=Похоже что сегодня твой день, <Player>. Мне сообщили, что только что охрана загородной виллы босса нашла записку на его столе со словами "АУЕ" и "Всех убью, один останусь". Также, обнаружилась пропажа целого мешка "звёздной пыли", а это может значить только одно - шеф решил вспомнить молодость... третий раз за год.
+						QuestIntro=В общем, <Player>, тебе нужно проследить, чтобы никто не сбил его корабль <TargetShipName>, на борту которого находится шеф с его личным пилотом. Охранять тебе его нужно до тех пор, пока он не выкурит всю дурь, которую прихватил с собой, то есть до <EndDate>. И не беспокойся, если его повяжут - нам не впервой его вытаскивать с зоны, да и там он уже как свой. Главное проследи, чтобы с ним всё было в порядке, а уж мы в долгу не останемся.
+						QuestTakeYesP=Я берусь за это дело
+						QuestTakeNoP=Поговорим на другую тему
+						QuestComplete=Отлично, <Player>. Ты выполнил свою часть сделки, а я выполнил свою - вот твоё разрешение. Попутного ветра.
+						QuestCompleteP=Спасибо
+					}
+					3 ^{
+						StartPlanetRace=People
+						TargetStarOwner=Any
+						TargetShipType=t_Transport
+						TargetShipSubType=0
+						TargetShipStringType=Smuggler
+						TargetShipOwner=PirateClan
+						//Чем дальше целевая система, тем больше дают времени
+						MinStarParsecRange=30
+						MaxStarParsecRange=55
+						MinTime=45
+						MaxTime=75
+						QuestIntro=Хорошо. Нет времени объяснять, но на борту корабля <TargetShipName> сейчас перевозят один очень ценный товар. Обеспечь сохранность корабля до <EndDate>, после чего получишь своё разрешение. По рукам?
+						QuestTakeYesP=Я берусь за это дело
+						QuestTakeNoP=Поговорим на другую тему
+						QuestComplete=Отлично, <Player>. Ты выполнил свою часть сделки, а я выполнил свою - вот твоё разрешение. Попутного ветра.
+						QuestCompleteP=Спасибо
+					}
+					Count=3
 				}
 			}
-			PackageDeliver ^{
-			
+			Delivery ^{
+				Coalition ^{
+					1 ^{
+						StartPlanetRace=Maloc,People,Fei,Gaal
+						TargetPlanetRace=Peleng
+						TargetPlanetOwner=Any
+						TargetStarOwner=Any
+						//Чем дальше целевая система, тем больше дают времени
+						MinStarParsecRange=20
+						MaxStarParsecRange=40
+						MinTime=45
+						MaxTime=60
+						ItemCost=0
+						ItemName=ShuMercs_HugeBrilliant
+						ItemOwner=AsStartPlanet
+						QuestIntro=Есть одно поручение, <Player>, но только исключительно личное.
+						QuestIntro=Дело в том, что несколько месяцев назад у меня появилась девушка. Правда, я с ней еще не виделся, мы только переписываемся через приложение Ка Цап, но это не мешает нашим чувствам. Представляете, ей нравится всё то же, что и мне: начиная от человеческой рок музыки прошлого тысячелетия и заканчивая сборкой карточек по мотивам легендарной VRMMORPG "Иике-Бааны"! Я чувствую как сильно мы близки, будто сама судьба связывает нас сквозь тёмные просторы космоса!
+						QuestIntro=Рейнджер <Player>, вам поручается ответственное задание: доставить этот бриллиант в <clr>1000<clrEnd> карат моей любимой принцессе, которая живёт на планете <TargetPlanet>. Однако не медлите! Иначе моя возлюбленная останется недовольна столь долгим отсутствием подарков, а если недовольна она - значит, недоволен и я. А если недоволен я... ну, думаю, дальше объяснять не нужно.
+						QuestTakeYesP=Я берусь за это дело
+						QuestTakeNoP=Поговорим на другую тему
+						QuestDeliveredP=У меня для вас посылка
+						QuestOutro=Какую такую посылку? Ого, ничего себе. Вот это бриллиант. Для девушки, говорите? Так я и есть его "девушка", хе-хе. Он вам наверняка говорил, как мы с ним похожи, что мне нравится слушать рок музыку, что мы созданы друг для друга. По правде говоря, я сам не понимаю как в наш век всеобщего галактического пиратства и "звёздной пыли" остались ещё такие самородки, которые ведутся на поддельную фотографию в Ка Цапе и басне про одинаковые интересы. Да он же сам о них написал в профиле!
+						QuestOutro=Только рейнджер, вы же не расскажете ему о том, что узнали, верно? А я поставлю тут аккуратную подпись о том, что получил подарок вовремя. Как говорится, и гобзавры сыты, и пенчекряки целы.
+						QuestDeliveredEndP=Пока
+						QuestComplete=Отлично, <Player>. Вы выполнили вашу часть сделки, а я выполнил свою - вот ваше разрешение. Всего хорошего.
+						QuestCompleteP=Спасибо
+					}
+					2 ^{
+						StartPlanetRace=Any
+						TargetPlanetRace=Any
+						TargetPlanetOwner=Any
+						TargetStarOwner=Any
+						//Чем дальше целевая система, тем больше дают времени
+						MinStarParsecRange=20
+						MaxStarParsecRange=40
+						MinTime=45
+						MaxTime=60
+						ItemName=ShuMercs_RadioactiveWaste
+						ItemOwner=AsStartPlanet
+						QuestIntro=Да, <Player>, ваша помощь будет как раз кстати.
+						QuestIntro=Ваш корабль сейчас в космопорте? Впрочем, где же ему ещё быть. Так, одну секунду...
+						QuestIntro="Ало! Да, это я! Подготовьте всё к погрузке на корабль рейнджера <Player>. Что значит нет подписи под согласием? Да он у меня прямо сейчас в кабинете сидит и подписывает накладную. Скоро всё вам пришлю".
+						QuestIntro=Ну что, подписали? Как это не знаете что это? Это накладная на груз, который вам необходимо перевезти моему партнеру на планету <TargetPlanet>. Только вот управиться вам нужно до <EndDate>, иначе истечёт срок секретного договора об обмене товарами и его попросту никто не захочет у вас отгружать.
+						QuestIntro=Если всё сделаете вовремя, обещаю помочь с вашим вопросом.
+						QuestTakeYesP=Я берусь за это дело
+						QuestTakeNoP=Поговорим на другую тему
+						QuestDeliveredP=У меня для вас посылка
+						QuestOutro=Да какая нахрен посылка, <Player>!? Прямо сейчас охрана моего особняка сообщила, что возле него выгружают целую гору радиоактивных отходов!
+						QuestOutro=ЧТО?! ЭТО И ЕСТЬ ВАША ПОСЫЛКА!? ДА Я ВАС СЕЙЧАС... От кого? С планеты <StartPlanet>? Чёртов шутник, да я ему эту свалку запихаю в... а не важно...
+						QuestOutro=Мой вам совет, <Player>, НИКОГДА не играйте в карты! Ибо закончится... ну, сами всё видите. Давайте, распишусь вам о получении, и летите своей дорогой.
+						QuestDeliveredEndP=Пока
+						QuestComplete=Отлично, <Player>. Вы выполнили вашу часть сделки, а я выполнил свою - вот ваше разрешение. Всего хорошего.
+						QuestCompleteP=Спасибо
+					}
+					3 ^{
+						StartPlanetRace=Any
+						TargetPlanetRace=Any
+						TargetPlanetOwner=Any
+						TargetStarOwner=Any
+						//Чем дальше целевая система, тем больше дают времени
+						MinStarParsecRange=20
+						MaxStarParsecRange=40
+						MinTime=45
+						MaxTime=60
+						ItemName=ShuMercs_DurableAluminumCase
+						ItemOwner=AsStartPlanet
+						QuestIntro=Раз вы так решительно настроены, <Player>, тогда возьмите вот этот кейс и, не открывая его, доставьте на планету <TargetPlanet> в систему <TargetStar>.
+						QuestIntro=Доставить кейс нужно до <EndDate>, иначе не станет как нашего второго разговора, так и вашего будущего штаба.
+						QuestTakeYesP=Я берусь за это дело
+						QuestTakeNoP=Поговорим на другую тему
+						QuestDeliveredP=У меня для вас посылка
+						QuestOutro=Отлично, давайте её сюда. Я передам отправителю, что посылка доставлена. Вы свободны.
+						QuestDeliveredEndP=Пока
+						QuestComplete=Отлично, <Player>. Вы выполнили вашу часть сделки, а я выполнил свою - вот ваше разрешение. Всего хорошего.
+						QuestCompleteP=Спасибо
+					}
+					Count=3
+				}
+				PirateClan ^{
+					1 ^{
+						StartPlanetRace=Any
+						TargetPlanetRace=AsStartPlanet
+						TargetPlanetOwner=Any
+						TargetStarOwner=Any
+						//Чем дальше целевая система, тем больше дают времени
+						MinStarParsecRange=20
+						MaxStarParsecRange=40
+						MinTime=45
+						MaxTime=60
+						ItemName=ShuMercs_Geniusphone
+						QuestIntro=Хорошо, <Player>, раз уж тебе так сильно нужно это разрешение...
+						QuestIntro=Мой начальник очень занятой человек. Недавно к нему приезжал на выходных представитель планеты <TargetPlanet>. Они долгое время обсуждали какой-то важный совместный проект, но потом у посла появились неотложные дела и он вернулся на родину.
+						QuestIntro=Тебе нужно отвезти на планету <TargetPlanet> вот этот передатчик и вручить его лично представителю правительства. Сделать это необходимо до <EndDate>, иначе переговоры могут провалиться, что негативно отразится на планах моего босса.
+						QuestTakeYesP=Я берусь за это дело
+						QuestTakeNoP=Поговорим на другую тему
+						QuestDeliveredP=У меня для вас посылка
+						QuestOutro=Покажите, что там у вас. Джиниусфон? Так, дайте-ка сюда... О, входящий вызов: "Ало... Кто? Папа? Ты что? Постой... да не кричи ты... ну да, мои друзья немного навели беспорядок в доме... да не сбегал я ни от какой ответственности! Что значит заблокируешь мои счета!?"
+						QuestOutro=Так, <Player>, вы ещё что-то хотели? Ах да, подпись. У меня тут срочный разговор государственной важности, поэтому прошу простить. Вот, всего доброго.
+						QuestDeliveredEndP=Пока
+						QuestComplete=Отлично, <Player>. Ты выполнил свою часть сделки, а я выполнил свою - вот твоё разрешение. Попутного ветра.
+						QuestCompleteP=Спасибо
+					}
+					2 ^{
+						StartPlanetRace=Any
+						TargetPlanetRace=Any
+						TargetPlanetOwner=PirateClan
+						TargetStarOwner=Any
+						//Чем дальше целевая система, тем больше дают времени
+						MinStarParsecRange=20
+						MaxStarParsecRange=40
+						MinTime=45
+						MaxTime=60
+						ItemName=ShuMercs_SuspiciousEnvelope
+						QuestIntro=Да, и впрямь есть одна непыльная работёнка как раз для тебя.
+						QuestIntro=Нужно доставить вот этот конверт в здание правительства планеты <TargetPlanet> и оставить его в камере хранения. Успеть доставить конверт нужно до <EndDate>. По возвращении тебя уже будут ждать подписанные бумаги. Идёт?
+						QuestTakeYesP=Я берусь за это дело
+						QuestTakeNoP=Поговорим на другую тему
+						QuestDeliveredP=У меня для вас письмо
+						QuestOutro=Очень хорошо, <Player>. Давай я распишусь о выполненной доставке, а само письмо оставь в камере хранения.
+						QuestDeliveredEndP=Пока
+						QuestComplete=Отлично, <Player>. Ты выполнил свою часть сделки, а я выполнил свою - вот твоё разрешение. Попутного ветра.
+						QuestCompleteP=Спасибо
+					}
+					Count=2
+				}
 			}
 		}
 		BuildOwnBase_QuestTitle=Создание собственной организации наёмников
@@ -982,6 +1168,57 @@ UselessItems ^{
 		TextCoalitionPermNo=Разрешение Совета Коалиции: <color=255,0,0>Не получено</color>
 		TextPiratePermYes=Разрешение Совета клана: <color=0,255,0>Получено</color>
 		TextPiratePermNo=Разрешение Совета клана: <color=255,0,0>Не получено</color>
+	}
+	ShuMercs_HugeBrilliant ^{
+		Cost=Mini
+		Name=Огромный бриллиант
+		Owner=None
+		Size=1
+		Text=Бриллиант весом <color=255,240,100>1000</color> карат. Вы действительно хотите знать, сколько он стоит?
+	}
+	ShuMercs_RadioactiveWaste ^{
+		Cost=Small
+		Name=Радиоактивные отходы
+		Owner=None
+		Size=50
+		Text=Фоняют так, что нос отваливается.
+		OnActCodeTypes=t_OnStep
+		OnActStepTypes=11
+		OnActCode ^{
+			01=dword waste = CurItem();
+			//Если отходы на борту корабля игрока, каждый день навешиваем на него лучевую болезнь
+			02=if(~FindItemInShip(Player(), waste))
+			03 ^{
+				01=ShipHealthFactor(Player(), 0, ShipHealthFactor(Player(), 0) + 5);
+			}
+		}
+	}
+	ShuMercs_DurableAluminumCase ^{
+		Cost=Big
+		Name=Надёжный алюминиевый кейс
+		Owner=None
+		Size=5
+		Text=Кажется, заказчик просил его не открывать.
+		OnUseCode ^{
+			01=dword case = CurItem();
+			//Если игрок попытается открыть ящик, то будет убит бомбой
+			02=MessageBox('Ваше любопытство уже не раз сослужило вам хорошую службу, так что вы без особых раздумий распахнули кейс и сперва даже не поверили собственным глазам...' + CT('FormInfo.br') + '<clr><clrEnd>' + CT('FormInfo.br') + 'Сотнями аккуратных штабелей в кейсе были уложены тысячи и даже миллионы кредитов! Примерно <color=0,50,200>10.000.000</color> cr. вам удалось насчитать, прежде чем ваш взгляд упал на странный продолговатый предмет в самом углу контейнера.' + CT('FormInfo.br') + '<clr><clrEnd>' + CT('FormInfo.br') + '\"Это что, бом...\" - успело пронестись в вашей голове, прежде чем мощный взрыв навсегда оборвал жизнь великого, но не в меру любопытного рейнджера-простофили.');
+			03=CustomLose(CT('FormGameEnd.Loss'));
+		}
+	}
+	ShuMercs_Geniusphone ^{
+		Cost=Huge
+		Name=Geniusphone Feifung Universy S189.09 Plus+
+		Owner=Fei
+		Size=1
+		Text=Лимитированное издание с алмазным экраном.
+	}
+	ShuMercs_SuspiciousEnvelope ^{
+		Cost=Average
+		Name=Подозрительный конверт
+		Owner=PirateClan
+		Size=1
+		Text=Хорошо запечатанный конверт с неизвестным содержимым.
 	}
 }
 ShipType ^{

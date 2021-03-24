@@ -636,8 +636,8 @@ UselessItems ^{
 			//UselessItemData1 - сколько дней игрок таскал попугая с собой в трюме;
 			//UselessItemData2 - размер бонуса к обаянию игрока;
 			//UselessItemData3 - начислен ли бонус обаяния игроку: -1 - начислен, -2 - не начислен, -3 - попугая выкинули в открытый космос;
-			01=dword bird=CurItem();
-			02=if(UselessItemData(bird,3)==-3)exit;
+			01=dword bird = CurItem();
+			02=if(UselessItemData(bird, 3) == -3) exit;
 			03=if(ScriptItemActionType(t_OnStep))
 			04 ^{
 				//Попугай не на борту
