@@ -723,9 +723,11 @@ ActCodeBlocksList ^{
 				02 ^{
 					01=if(ShipInNormalSpace(Player()) && ShipStar(Player()) == ScriptStar) ShowEffect('Weapon.MissileHit', 4, TargetPlanet, TargetPlanet, 0, 0, 0, 0, 0, 0);
 					02=moveState = 7;
-					03=ShipDestroy(GroupToShip(Asteroid), 1);
-					04=for(i = 0; i < StarShips(ScriptStar); i = i + 1)
-					05 ^{
+					//Маркер, что астероид врезался в планету и все погибли
+					03=GExpPhysGunGlobalState = -4;
+					04=ShipDestroy(GroupToShip(Asteroid), 1);
+					05=for(i = 0; i < StarShips(ScriptStar); i = i + 1)
+					06 ^{
 						01=dwd0 = StarShips(ScriptStar, i);
 						02=if(ShipGetBad(dwd0) == GroupToShip(Asteroid)) TruceBetweenShips(dwd0, GroupToShip(Asteroid));
 					}
