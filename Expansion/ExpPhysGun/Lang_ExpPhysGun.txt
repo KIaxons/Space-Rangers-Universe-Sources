@@ -1006,7 +1006,7 @@ ActCodeBlocksList ^{
 			18=if(findsubstr(acryn_name, 'Asteroid') == -1)
 			19 ^{
 				01=FreeItem(GetItemFromVault('PhysGunChamber'));
-				//Игрок запустил в цель спасательную капсулу с гуманоидом, портим ему репутацию в системе
+				//Игрок запустил в цель спасательную капсулу с гуманоидом, портим ему репутацию в текущей системе
 				02=if(acryn_name == 'ExpPhysGun_PhysGunMissileEscapePod')
 				03 ^{
 					01=if(MissileOwner(missile) == Player())
