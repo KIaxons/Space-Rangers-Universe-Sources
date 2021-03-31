@@ -1099,10 +1099,9 @@ Script ^{
 		BuildOwnBase_MBGovAnswerAgainOkRank=Как только определитесь, сообщите нам через бортовой компьютер какую систему вы выбрали, а мы начнем подготавливать нужные бумаги к вашему возвращению.
 		BuildOwnBase_MBGovAnswerAgainOkRank=Привезите нам необходимые разрешения, <Player>, и мы с радостью зарегистрируем вашу новую организацию а также, в качестве бонуса, поможем вам с постройкой личного штаба. Вся процедура обойдётся вам примерно в <Cost> cr.
 		BuildOwnBase_TwiceIntro=До нас дошли слухи, что штаб вашей организации был уничтожен. За определённую плату мы можем помочь вам с его восстановлением.
-		BuildOwnBase_MBPlayerAskTwice1=Я хочу заново построить свой штаб
-		BuildOwnBase_MBGovAnswerTwice1=Это можно устроить. Цена постройки штаба будет составлять <Cost> cr., так как повторную регистрацию вам проходить не нужно.
-		BuildOwnBase_MBGovAnswerTwice1=Однако, нам всё так же необходимы разрешения от представителей правительств планет, равно как и разрешения военного руководства Коалиции или Правления клана, если у вас таковых не имеется.
-		BuildOwnBase_MBGovAnswerTwice1=И чтобы вы знали, выданные ранее разрешения уже не действительны. Советуем вам обратиться туда же, где вам выдавали разрешения в прошлый раз. Получить их повторно должно быть гораздо легче.
+		BuildOwnBase_MBPlayerAskTwice1=Я хочу построить новый штаб
+		BuildOwnBase_MBGovAnswerTwice1=Да, мы слышали про нападение. Печальная история. Рад, что хоть вы целы.
+		BuildOwnBase_MBGovAnswerTwice1=Мы готовы построить для вас новый штаб в кратчайшие сроки, однако, как и в прошлый раз, нам необходимы разрешения, ведь выданные вам ранее уже не действительны. Советуем обратиться туда же, где вам выдавали разрешения в прошлый раз. Получить их повторно должно быть гораздо проще.
 		BuildOwnBase_MBPlayerTwiceYes=Так и быть, привезу вам ещё раз эти бумажки
 		BuildOwnBase_MBPlayerTwiceNo=Что-то я передумал, может потом
 		BuildOwnBase_BridgePlayerCall1=Связаться с <color=0,50,200>центром наёмников Обмен</color>
@@ -1241,6 +1240,11 @@ Script ^{
 		BuildOwnBase_MBPlayerAskBuildAgain=Насчёт организации и штаба
 		BuildOwnBase_MBGovAnswerBuildAgain=Я знал, что вы решитесь! По глазам вижу, как вам не терпится опробовать себя в роли большого босса!
 		BuildOwnBase_MBGovAnswerBuildAgain=И так, условия те же - за регистрацию и постройку штаба с вас причитается <Cost> cr. Что скажете?
+		BuildOwnBase_MBPlayerAskBuildTwice=Я получил все необходимые разрешения на строительство
+		BuildOwnBase_MBGovAnswerBuildTwice=Отлично, <Player>, я в вас не сомневался. Новенький штаб уже почти готов к запуску. Вам осталось лишь внести оплату, после чего я передам вам коды доступа к контролю станции.
+		BuildOwnBase_MBGovAnswerBuildTwice=Итого, за постройку новой станции с вас причитается <Cost> cr. Что скажете?
+		BuildOwnBase_MBGovAnswerBuildDoneTwice=Поздравляю, <Player>. Ваш новый штаб уже ждёт своего счастливого владельца в системе <PlayerOrgStar>. Искренне надеюсь, что его не постигнет судьба предшественника. Всего доброго.
+		BuildOwnBase_GalaxyNewsTwice=Организация <PlayerOrgName> довольно быстро смогла оправиться после понесённых потерь. Свидетельством тому служит новый штаб, недавно возведённый в системе <PlayerOrgStar>.
 		BuildOwnBase_QuestTitle=Создание собственной организации наёмников
 		BuildOwnBase_QuestStage1=Вам необходимо выбрать подходящую для строительства вашего штаба систему, после чего связаться с <color=255,240,100>центром наёмников</color>, используя коммуникатор на <color=255,240,100>мостике</color>.
 		BuildOwnBase_QuestStage2_Coalition=Вы выбрали систему <Star> местом расположения вашего будущего штаба. Перед началом постройки вам необходимо получить одобрение правителей всех местных планет, а также получить разрешение от <color=255,240,100>Совета Коалиции</color>.
@@ -1418,12 +1422,6 @@ Script ^{
         186=Фрилансеры
     }
 }
-ShipCharacterFreelancer ^{
-    0=34, 33, 33, Фрилансер
-}
-ShipCharacterMerc ^{
-    0=34, 33, 33, Наемник
-}
 ShipInfo ^{
     AddInfo ^{
         CustomInfos ^{
@@ -1523,29 +1521,43 @@ UselessItems ^{
 		Text=Хорошо запечатанный конверт с неизвестным содержимым.
 	}
 }
+ShipCharacterFreelancer ^{
+    0=34, 33, 33, Фрилансер
+}
+ShipCharacterMerc ^{
+    0=34, 33, 33, Наемник
+}
+ShipCharacterPlayerMerc ^{
+    0=34, 33, 33, Наемник
+}
 ShipType ^{
     Fei ^{
         FeiLeader=
         Freelancer=Фрилансер
         Merc=Фэй
+		PlayerMerc=Наемник
     }
     Gaal ^{
         Freelancer=Фрилансер
         Merc=
+		PlayerMerc=Наемник
     }
     Maloc ^{
         Freelancer=Фрилансер
         Merc=Топор
         RedLeader=
+		PlayerMerc=Наемник
     }
     Peleng ^{
         Freelancer=Фрилансер
         Merc=Атлант
+		PlayerMerc=Наемник
     }
     People ^{
         AtlantLeader=
         Freelancer=Фрилансер
         Merc=Атлант
+		PlayerMerc=Наемник
     }
     TypeName ^{
         AtlantLeader=Лидер
@@ -1553,11 +1565,14 @@ ShipType ^{
         Freelancer=Фрилансер
         MB=Центр наемников
         MBSmall=ЦН
-		PlayerMB=Штаб организации наёмников
+		PlayerMB=Штаб наёмников
 		PlayerMBSmall=ЦН
+		PlayerMB_licensed=Штаб наёмников
+		PlayerMBSmall_licensed=ЦН
         Manaan=Свободный порт
         ManaanSmall=СП
         Merc=Наемник
+		PlayerMerc=Наемник
         RedLeader=Варлорд
     }
 }

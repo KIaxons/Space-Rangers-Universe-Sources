@@ -38,7 +38,7 @@ ShipInfo ^{
 								01=cur_item = ShipItems(cur_ship, j);
 								02=if(!ItemIsInUse(cur_item)) continue;
 								03=int item_type = ItemType(cur_item);
-								04=if(item_type < t_Hull || item_type > t_CustomWeapon) continue;
+								04=if(item_type < t_FuelTanks || item_type > t_CustomWeapon) continue;
 								05=if(ItemDurability(cur_item) < 100)
 								06 ^{
 									//Чиним всю оборудку, кроме нестандартных орудий, которые чиним, только если станция умеет это делать
