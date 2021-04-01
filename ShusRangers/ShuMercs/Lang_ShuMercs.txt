@@ -310,6 +310,22 @@ MicroModuls ~{
 		bonHookMaxSpeed=-3
 		bonHookMinSpeed=-3
     }
+    ShuMercs_PlayerMercGaalHull ^{
+		Equipments=Hull
+		Owner=Gaal
+        KindGraph=PlayerMercGaal
+        LockedAcryn=3
+		NonSearchable=2
+		ImitatedHullType=Ranger,Warrior
+        Name=</color><Type> корпус наемника
+        Special=1
+        Cost=110
+		Size=100
+        Fragility=110
+        bonSlotArt=-4
+        bonSlotHook=-1
+        bonSlotWeapon=-1
+    }
     353 ^{
         Ruins=SB,BK,TC,MB,Manaan
     }
@@ -1059,6 +1075,11 @@ Script ^{
 		   6=Хан
 		   7=Барон
 		}
+		PlayerMercsParams ^{
+			FreeMercsSpawnTimer=14
+			ReturnToBaseTimerMin=60
+			ReturnToBaseTimerMax=90
+		}
 		BuildOwnBase_MBPlayerAsk1=А могу ли я сам стать наёмником?
 		BuildOwnBase_MBGovAnswer1=Что случилось, <Player>, тяжело приходится на вольных хлебах?
 		BuildOwnBase_MBPlayerAsk2=С "хлебами" у меня полный порядок, но хорошие деньги никогда лишними не бывают
@@ -1228,7 +1249,7 @@ Script ^{
 		BuildOwnBase_MBGovAnswerBuild=За регистрацию организации, а также за постройку штаба с вас причитается <Cost> cr. Поверьте, лучшей цены вы не найдете нигде. Почему я так уверен? Ну хотя бы потому, что у нас нет конкурентов.
 		BuildOwnBase_MBPlayerBuildPayYes=Что ж, хорошо, вот ваши деньги <color=0,50,200>[Заплатить]</color>
 		BuildOwnBase_MBGovAnswerBuildName=Отлично, а теперь выберите название для вашей организации...
-		BuildOwnBase_MBGovPlayerBuildName=<color=0,50,200>[Выбрать название]</color>
+		BuildOwnBase_MBGovPlayerBuildName=[Выбрать название]
 		BuildOwnBase_TextBoxName=Введите название:
 		BuildOwnBase_MBGovAnswerBuildDone=Замечательное название! Тааак-с... это сюда... тут отметим... а вот тут не надо...
 		BuildOwnBase_MBGovAnswerBuildDone=...
@@ -1245,6 +1266,10 @@ Script ^{
 		BuildOwnBase_MBGovAnswerBuildTwice=Итого, за постройку новой станции с вас причитается <Cost> cr. Что скажете?
 		BuildOwnBase_MBGovAnswerBuildDoneTwice=Поздравляю, <Player>. Ваш новый штаб уже ждёт своего счастливого владельца в системе <PlayerOrgStar>. Искренне надеюсь, что его не постигнет судьба предшественника. Всего доброго.
 		BuildOwnBase_GalaxyNewsTwice=Организация <PlayerOrgName> довольно быстро смогла оправиться после понесённых потерь. Свидетельством тому служит новый штаб, недавно возведённый в системе <PlayerOrgStar>.
+		OwnBase_PlayerAskRename=Я хочу сменить название своей организации
+		OwnBase_MBAnswerRename=Услуга повторной регистрации названия организации не бесплатна и будет стоить <Cost> cr. Если вы не передумали, заполните, пожалуйста, вот эти бланки, подпись ставить здесь, а тут вписываете новое название. Всё просто.
+		OwnBase_PlayerAskRenameYes=Я согласен <color=0,50,200>[Заплатить и выбрать название]</color>
+		OwnBase_PlayerAskRenameNo=Я передумал
 		BuildOwnBase_QuestTitle=Создание собственной организации наёмников
 		BuildOwnBase_QuestStage1=Вам необходимо выбрать подходящую для строительства вашего штаба систему, после чего связаться с <color=255,240,100>центром наёмников</color>, используя коммуникатор на <color=255,240,100>мостике</color>.
 		BuildOwnBase_QuestStage2_Coalition=Вы выбрали систему <Star> местом расположения вашего будущего штаба. Перед началом постройки вам необходимо получить одобрение правителей всех местных планет, а также получить разрешение от <color=255,240,100>Совета Коалиции</color>.
@@ -1522,42 +1547,42 @@ UselessItems ^{
 	}
 }
 ShipCharacterFreelancer ^{
-    0=34, 33, 33, Фрилансер
+    00=34, 33, 33, Фрилансер
 }
 ShipCharacterMerc ^{
-    0=34, 33, 33, Наемник
+    00=34, 33, 33, Наемник
 }
 ShipCharacterPlayerMerc ^{
-    0=34, 33, 33, Наемник
+    00=34, 33, 33, Наемник
 }
 ShipType ^{
     Fei ^{
         FeiLeader=
         Freelancer=Фрилансер
         Merc=Фэй
-		PlayerMerc=Наемник
+		PlayerMerc=
     }
     Gaal ^{
         Freelancer=Фрилансер
         Merc=
-		PlayerMerc=Наемник
+		PlayerMerc=
     }
     Maloc ^{
         Freelancer=Фрилансер
         Merc=Топор
         RedLeader=
-		PlayerMerc=Наемник
+		PlayerMerc=
     }
     Peleng ^{
         Freelancer=Фрилансер
         Merc=Атлант
-		PlayerMerc=Наемник
+		PlayerMerc=
     }
     People ^{
         AtlantLeader=
         Freelancer=Фрилансер
         Merc=Атлант
-		PlayerMerc=Наемник
+		PlayerMerc=
     }
     TypeName ^{
         AtlantLeader=Лидер
