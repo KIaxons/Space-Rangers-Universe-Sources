@@ -331,11 +331,12 @@ MicroModuls ~{
 		ImitatedHullType=Ranger,Warrior
         Name=</color><Type> корпус наемника
         Special=1
-        Cost=125
+        Cost=200
 		Size=100
-        FragilityEnergy=95
-		FragilitySplinter=95
-		FragilityMissile=95
+		Priority=0
+        FragilityEnergy=85
+		FragilitySplinter=85
+		FragilityMissile=85
         bonSlotArt=-3
         bonSlotWeapon=-1
     }
@@ -350,11 +351,12 @@ MicroModuls ~{
 		ImitatedHullType=Ranger,Warrior
         Name=</color><Type> корпус наемника
         Special=1
-        Cost=125
+        Cost=200
 		Size=100
-        FragilityEnergy=95
-		FragilitySplinter=95
-		FragilityMissile=95
+		Priority=0
+        FragilityEnergy=85
+		FragilitySplinter=85
+		FragilityMissile=85
         bonSlotArt=-3
         bonSlotWeapon=-1
     }
@@ -369,11 +371,12 @@ MicroModuls ~{
 		ImitatedHullType=Ranger,Warrior
         Name=</color><Type> корпус наемника
         Special=1
-        Cost=125
+        Cost=200
 		Size=100
-        FragilityEnergy=95
-		FragilitySplinter=95
-		FragilityMissile=95
+		Priority=0
+        FragilityEnergy=85
+		FragilitySplinter=85
+		FragilityMissile=85
         bonSlotArt=-3
         bonSlotWeapon=-1
     }
@@ -388,11 +391,12 @@ MicroModuls ~{
 		ImitatedHullType=Ranger,Warrior
         Name=</color><Type> корпус наемника
         Special=1
-        Cost=125
+        Cost=200
 		Size=100
-        FragilityEnergy=95
-		FragilitySplinter=95
-		FragilityMissile=95
+		Priority=0
+        FragilityEnergy=85
+		FragilitySplinter=85
+		FragilityMissile=85
         bonSlotArt=-3
         bonSlotWeapon=-1
     }
@@ -407,43 +411,34 @@ MicroModuls ~{
 		ImitatedHullType=Ranger,Warrior
         Name=</color><Type> корпус наемника
         Special=1
-        Cost=125
+        Cost=200
 		Size=100
-        FragilityEnergy=95
-		FragilitySplinter=95
-		FragilityMissile=95
+		Priority=0
+        FragilityEnergy=85
+		FragilitySplinter=85
+		FragilityMissile=85
         bonSlotArt=-3
         bonSlotWeapon=-1
     }
     ShuMercs_PlayerMercSpecialHull ^{
 		Equipments=Hull
 		Owner=Fei
-		Ruins=PlayerMB,PlayerMB_licensed
+		Ruins=
         KindGraph=PlayerMercSpecial
 		CustomTag=PlayerMercSpecial
         LockedAcryn=3
 		NonSearchable=2
-		ImitatedHullType=Ranger,Warrior
         Name=</color><Type> корпус наемника
         Special=1
-        Cost=125
+        Cost=200
 		Size=100
-        FragilityEnergy=95
-		FragilitySplinter=95
-		FragilityMissile=95
+		Priority=0
+        FragilityEnergy=85
+		FragilitySplinter=85
+		FragilityMissile=85
         bonSlotArt=-3
         bonSlotWeapon=-1
     }
-	ShuMercs_PlayerMercSuspectibilityPerLevel ^{
-		Equipments=Hull
-		Owner=Any
-		Special=1
-        LockedAcryn=3
-		NonSearchable=1
-        FragilityEnergy=93
-		FragilitySplinter=93
-		FragilityMissile=93
-	}
     353 ^{
         Ruins=SB,BK,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
@@ -1206,7 +1201,7 @@ Script ^{
 		PlayerMercsTalks ^{
 			GreetingWhileAttack1=Салют, <Player>! Я тут работаю в поте лица, пытаюсь задушить <TargetShipFull>. Ну или он пытается задушить меня, пока что не разобрался... А ты чего хотел-то?
 			GreetingWhileAttack2=Выставить фланговые щиты, тягу в реверс, главному орудию огонь! О, хорошо пошла... Да кто там ещё маячит?! А, это ты босс. Прости, у меня сейчас бой с <TargetShipFull>. У тебя что-то срочное?
-			GreetingWhileEarning1=Здорова, начальник! Какими судьбами? Я вот тут минеральчики тягаю, лохов выискиваю, контрактики закрываю... Работа кипит, в общем. А ты по делу или так, потрещать?
+			GreetingWhileEarning1=Здорова, начальник! Какими судьбами? Я вот тут минеральчики подбираю, за обстановкой наблюдаю, клиентов подыскиваю... Работа кипит, в общем. А ты по делу или так, потрещать?
 			GreetingWhileEarning2=Привет, босс! Видал последний сезон сериала "Забава табуретов"? Ужас просто! Как можно было так бездарно концовку слить?! Все ждали, что Седой ходунец перелупит всех в Вестеркроссе, а вышло такое уныние... Так что ты хотел-то?
 			GreetingWhileEarning3=Тооолькооо, рюмка водки на столеее!
 			GreetingWhileEarning3=Эх, душевные песни у людей были, не то, что сейчас. Всякие Блэндершмэрны и Гааги заполонили радио, аж слушать противно! Ну вот разве я не прав, шеф?
@@ -1225,7 +1220,6 @@ Script ^{
 			GreetingWhileReturning=Уфф, ну и намотался я. Наконец-то лечу на базу, хоть немного отдохну. Что-то случилось, босс?
 			GreetingWhileDefending=В системе замечены вражеские корабли, босс. Я готовлюсь занять позицию для обороны штаба. Битва обещает быть жаркой!
 			GreetingWhileReturningReserve=Врагов на горизонте не видно, так что я возвращаюсь в штаб на дежурство. Если тебе нужно с чем-то помочь, босс, обратись к другим бойцам.
-		
 			PlayerCallForHelp=Мне нужна твоя помощь в бою
 			PlayerCallForHelpWith=Мне нужна твоя помощь в бою с <TargetShip>
 			HelpWhoToShootAt=С кем тебе нужно помочь?
@@ -1234,7 +1228,6 @@ Script ^{
 			IsItGroupHelpOrder=Это приказ лично мне или всем нашим?
 			PlayerHelpYesItsForGroup=Это приказ для всех, с каждым отдельно я общаться не намерен
 			PlayerHelpNoItsPersonal=Нет, это персональный приказ
-		
 			SalaryIncrease1=Э, я дико извиняюсь что побеспокоил, шеф. Но у меня небольшая просьба - ты не мог бы подкинуть пару кредитов? Жена вчера звонила, говорит, что сынишка уже с памперсов вырос, ему горшок купить надо... с подогревом и вентиляцией. Ну, в общем, если не в напряг... мне немного надо, всего <Payment> cr. Буду очень признателен.
 			SalaryIncreasePlayerYes1=Ну раз на горшок - грех не помочь. Вот твои <Payment> cr.
 			SalaryIncreaseYes1=Спасибо тебе огромное, шеф! Сынишка теперь всегда тебя вспоминать будет, когда ну... это... спасибо, в общем!
@@ -1780,7 +1773,7 @@ ShipCharacterMerc ^{
     00=34, 33, 33, Наемник
 }
 ShipCharacterPlayerMerc ^{
-    00=0, 65, 35, Наемник
+    00=15, 50, 35, Наемник
 }
 ShipType ^{
     Fei ^{
