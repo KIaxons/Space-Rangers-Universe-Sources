@@ -6,6 +6,7 @@ MicroModuls ~{
         Cost=110
         CustomTag=Merc0
 		Equipments=Hull
+		Ruins=MB
         Fragility=90
         KindGraph=MercMaloc
         LockedAcryn=3
@@ -21,6 +22,7 @@ MicroModuls ~{
         Cost=110
         CustomTag=Merc1
 		Equipments=Hull
+		Ruins=MB
         Fragility=110
         KindGraph=MercPeleng
         LockedAcryn=3
@@ -36,6 +38,7 @@ MicroModuls ~{
         Cost=110
         CustomTag=Merc2
 		Equipments=Hull
+		Ruins=MB
         Fragility=110
         KindGraph=MercPeople
         LockedAcryn=3
@@ -51,6 +54,7 @@ MicroModuls ~{
         Cost=110
         CustomTag=Merc3
 		Equipments=Hull
+		Ruins=MB
         Fragility=70
         KindGraph=MercFei
         LockedAcryn=3
@@ -65,6 +69,7 @@ MicroModuls ~{
         Cost=110
         CustomTag=Free0
         Equipments=Hull
+		Ruins=MB,Manaan
         KindGraph=FreeMercMaloc
         LockedAcryn=3
 		NonSearchable=2
@@ -79,6 +84,7 @@ MicroModuls ~{
         Cost=110
         CustomTag=Free1
         Equipments=Hull
+		Ruins=MB,Manaan
         KindGraph=FreeMercPeleng
         LockedAcryn=3
 		NonSearchable=2
@@ -93,6 +99,7 @@ MicroModuls ~{
         Cost=110
         CustomTag=Free2
         Equipments=Hull
+		Ruins=MB,Manaan
         KindGraph=FreeMercPeople
         LockedAcryn=3
 		NonSearchable=2
@@ -106,6 +113,7 @@ MicroModuls ~{
         Cost=110
         CustomTag=Free3
         Equipments=Hull
+		Ruins=MB,Manaan
         KindGraph=FreeMercFei
         LockedAcryn=3
 		NonSearchable=2
@@ -118,6 +126,7 @@ MicroModuls ~{
         Cost=110
         CustomTag=Free4
         Equipments=Hull
+		Ruins=MB,Manaan
         KindGraph=FreeMercGaal
         LockedAcryn=3
 		NonSearchable=2
@@ -314,6 +323,7 @@ MicroModuls ~{
     ShuMercs_PlayerMercMalocHull ^{
 		Equipments=Hull
 		Owner=Maloc
+		Ruins=PlayerMB,PlayerMB_licensed
         KindGraph=PlayerMercMaloc
 		CustomTag=PlayerMerc_Race0
         LockedAcryn=3
@@ -321,16 +331,18 @@ MicroModuls ~{
 		ImitatedHullType=Ranger,Warrior
         Name=</color><Type> корпус наемника
         Special=1
-        Cost=110
+        Cost=125
 		Size=100
-        Fragility=110
-        bonSlotArt=-4
-        bonSlotHook=-1
+        FragilityEnergy=95
+		FragilitySplinter=95
+		FragilityMissile=95
+        bonSlotArt=-3
         bonSlotWeapon=-1
     }
     ShuMercs_PlayerMercPelengHull ^{
 		Equipments=Hull
 		Owner=Peleng
+		Ruins=PlayerMB,PlayerMB_licensed
         KindGraph=PlayerMercPeleng
 		CustomTag=PlayerMerc_Race1
         LockedAcryn=3
@@ -338,16 +350,18 @@ MicroModuls ~{
 		ImitatedHullType=Ranger,Warrior
         Name=</color><Type> корпус наемника
         Special=1
-        Cost=110
+        Cost=125
 		Size=100
-        Fragility=110
-        bonSlotArt=-4
-        bonSlotHook=-1
+        FragilityEnergy=95
+		FragilitySplinter=95
+		FragilityMissile=95
+        bonSlotArt=-3
         bonSlotWeapon=-1
     }
     ShuMercs_PlayerMercPeopleHull ^{
 		Equipments=Hull
 		Owner=People
+		Ruins=PlayerMB,PlayerMB_licensed
         KindGraph=PlayerMercPeople
 		CustomTag=PlayerMerc_Race2
         LockedAcryn=3
@@ -355,16 +369,18 @@ MicroModuls ~{
 		ImitatedHullType=Ranger,Warrior
         Name=</color><Type> корпус наемника
         Special=1
-        Cost=110
+        Cost=125
 		Size=100
-        Fragility=110
-        bonSlotArt=-4
-        bonSlotHook=-1
+        FragilityEnergy=95
+		FragilitySplinter=95
+		FragilityMissile=95
+        bonSlotArt=-3
         bonSlotWeapon=-1
     }
     ShuMercs_PlayerMercFeiHull ^{
 		Equipments=Hull
 		Owner=Fei
+		Ruins=PlayerMB,PlayerMB_licensed
         KindGraph=PlayerMercFei
 		CustomTag=PlayerMerc_Race3
         LockedAcryn=3
@@ -372,16 +388,18 @@ MicroModuls ~{
 		ImitatedHullType=Ranger,Warrior
         Name=</color><Type> корпус наемника
         Special=1
-        Cost=110
+        Cost=125
 		Size=100
-        Fragility=110
-        bonSlotArt=-4
-        bonSlotHook=-1
+        FragilityEnergy=95
+		FragilitySplinter=95
+		FragilityMissile=95
+        bonSlotArt=-3
         bonSlotWeapon=-1
     }
     ShuMercs_PlayerMercGaalHull ^{
 		Equipments=Hull
 		Owner=Gaal
+		Ruins=PlayerMB,PlayerMB_licensed
         KindGraph=PlayerMercGaal
 		CustomTag=PlayerMerc_Race4
         LockedAcryn=3
@@ -389,16 +407,18 @@ MicroModuls ~{
 		ImitatedHullType=Ranger,Warrior
         Name=</color><Type> корпус наемника
         Special=1
-        Cost=110
+        Cost=125
 		Size=100
-        Fragility=110
-        bonSlotArt=-4
-        bonSlotHook=-1
+        FragilityEnergy=95
+		FragilitySplinter=95
+		FragilityMissile=95
+        bonSlotArt=-3
         bonSlotWeapon=-1
     }
     ShuMercs_PlayerMercSpecialHull ^{
 		Equipments=Hull
 		Owner=Fei
+		Ruins=PlayerMB,PlayerMB_licensed
         KindGraph=PlayerMercSpecial
 		CustomTag=PlayerMercSpecial
         LockedAcryn=3
@@ -406,234 +426,245 @@ MicroModuls ~{
 		ImitatedHullType=Ranger,Warrior
         Name=</color><Type> корпус наемника
         Special=1
-        Cost=110
+        Cost=125
 		Size=100
-        Fragility=110
-        bonSlotArt=-4
-        bonSlotHook=-1
+        FragilityEnergy=95
+		FragilitySplinter=95
+		FragilityMissile=95
+        bonSlotArt=-3
         bonSlotWeapon=-1
     }
+	ShuMercs_PlayerMercSuspectibilityPerLevel ^{
+		Equipments=Hull
+		Owner=Any
+		Special=1
+        LockedAcryn=3
+		NonSearchable=1
+        FragilityEnergy=93
+		FragilitySplinter=93
+		FragilityMissile=93
+	}
     353 ^{
-        Ruins=SB,BK,TC,MB,Manaan
+        Ruins=SB,BK,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     354 ^{
-        Ruins=SB,BK,TC,MB,Manaan
+        Ruins=SB,BK,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     355 ^{
-        Ruins=SB,BK,TC,MB,Manaan
+        Ruins=SB,BK,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     356 ^{
-        Ruins=SB,BK,TC,MB,Manaan
+        Ruins=SB,BK,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     357 ^{
-        Ruins=RC,MB,Manaan
+        Ruins=RC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     358 ^{
-        Ruins=RC,MB,Manaan
+        Ruins=RC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     359 ^{
-        Ruins=RC,MB,Manaan
+        Ruins=RC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     360 ^{
-        Ruins=RC,MB,Manaan
+        Ruins=RC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     361 ^{
-        Ruins=MC,MB,Manaan
+        Ruins=MC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     362 ^{
-        Ruins=MC,MB,Manaan
+        Ruins=MC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     363 ^{
-        Ruins=MC,MB,Manaan
+        Ruins=MC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     364 ^{
-        Ruins=MC,MB,Manaan
+        Ruins=MC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     365 ^{
-        Ruins=WB,TC,MB,Manaan
+        Ruins=WB,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     366 ^{
-        Ruins=WB,TC,MB,Manaan
+        Ruins=WB,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     367 ^{
-        Ruins=WB,TC,MB,Manaan
+        Ruins=WB,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     368 ^{
-        Ruins=WB,TC,MB,Manaan
+        Ruins=WB,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     369 ^{
-        Ruins=WB,MB,Manaan
+        Ruins=WB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     370 ^{
-        Ruins=WB,MB,Manaan
+        Ruins=WB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     371 ^{
-        Ruins=WB,MB,Manaan
+        Ruins=WB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     372 ^{
-        Ruins=WB,MB,Manaan
+        Ruins=WB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     418 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     419 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     420 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     421 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     422 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     423 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     424 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     425 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     426 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     427 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     428 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     429 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     430 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     431 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     432 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     433 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     434 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     435 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     436 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     437 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     438 ^{
-        Ruins=PB,CB,MB,Manaan
+        Ruins=PB,CB,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     439 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     440 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     441 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     442 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     443 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     444 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     445 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     446 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     447 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     448 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     449 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     450 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     451 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     452 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     453 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     454 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     455 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     456 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     457 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     458 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     459 ^{
-        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan
+        Ruins=RC,WB,SB,BK,MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     472 ^{
-        Ruins=SB,BK,MB,Manaan
+        Ruins=SB,BK,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     473 ^{
-        Ruins=SB,BK,MB,Manaan
+        Ruins=SB,BK,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     474 ^{
-        Ruins=SB,BK,MB,Manaan
+        Ruins=SB,BK,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     475 ^{
-        Ruins=SB,BK,MB,Manaan
+        Ruins=SB,BK,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     476 ^{
-        Ruins=RC,MB,Manaan
+        Ruins=RC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     477 ^{
-        Ruins=RC,MB,Manaan
+        Ruins=RC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     478 ^{
-        Ruins=RC,MB,Manaan
+        Ruins=RC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     479 ^{
-        Ruins=RC,MB,Manaan
+        Ruins=RC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     480 ^{
-        Ruins=MC,TC,MB,Manaan
+        Ruins=MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     481 ^{
-        Ruins=MC,TC,MB,Manaan
+        Ruins=MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     482 ^{
-        Ruins=MC,TC,MB,Manaan
+        Ruins=MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
     483 ^{
-        Ruins=MC,TC,MB,Manaan
+        Ruins=MC,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
     }
 }
 Quest ^{
@@ -1173,6 +1204,37 @@ Script ^{
 			ReturnToBaseTimerMax=90
 		}
 		PlayerMercsTalks ^{
+			GreetingWhileAttack1=Салют, <Player>! Я тут работаю в поте лица, пытаюсь задушить <TargetShipFull>. Ну или он пытается задушить меня, пока что не разобрался... А ты чего хотел-то?
+			GreetingWhileAttack2=Выставить фланговые щиты, тягу в реверс, главному орудию огонь! О, хорошо пошла... Да кто там ещё маячит?! А, это ты босс. Прости, у меня сейчас бой с <TargetShipFull>. У тебя что-то срочное?
+			GreetingWhileEarning1=Здорова, начальник! Какими судьбами? Я вот тут минеральчики тягаю, лохов выискиваю, контрактики закрываю... Работа кипит, в общем. А ты по делу или так, потрещать?
+			GreetingWhileEarning2=Привет, босс! Видал последний сезон сериала "Забава табуретов"? Ужас просто! Как можно было так бездарно концовку слить?! Все ждали, что Седой ходунец перелупит всех в Вестеркроссе, а вышло такое уныние... Так что ты хотел-то?
+			GreetingWhileEarning3=Тооолькооо, рюмка водки на столеее!
+			GreetingWhileEarning3=Эх, душевные песни у людей были, не то, что сейчас. Всякие Блэндершмэрны и Гааги заполонили радио, аж слушать противно! Ну вот разве я не прав, шеф?
+			GreetingWhileEarning4=Стоять бояться, это служба галанаркоконтроля! Выкидываем всё из трюма на проверку, или я за себя не руч... Ууупс, ошибочка вышла.
+			GreetingWhileEarning4=Приношу свои извинения, босс, не правильно сигнатуру корабля прочитал. Эээ... чем могу быть полезен?
+			GreetingWhileGuarding1=О, давно не виделись, начальник. Как жизнь молодая? Что нового расскажешь? Я вот сопровождаю <TargetShipFull>. Не знаю, зачем ему понадобилась охрана, но деньги платит хорошие, таких клиентов сейчас мало.
+			GreetingWhileGuarding2=Здарова, шеф. Видишь вооон того лошка, которого я пасу? Да, я про <TargetShip>. Представляешь, хотел его на бабки развести, "охрану" ему предложить, так сказать. А он воспринял буквально и заплатил как за нормальный эскорт. Так что я теперь прямо "почётный караул", хе-хе.
+			GreetingWhileDelivery1=Отвези туда, принеси то, подай это... Э-эх, неужели у них работы никакой больше не было, кроме как везти вот эту ерунду? Посмотри на меня, босс. Я теперь вовсе не крутой наёмник, который одним своим видом распугивает всю пиратскую шпану, которого облетают торгаши, едва завидев на радаре, или которого берут на прицел военные патрули - нет! Я теперь - курьер! Боевой почтальон, чтоб им пусто было!
+			GreetingWhileDelivery1=Но ты не обращай внимания, это я так, за между прочим. Чего случилось то?
+			GreetingWhileDelivery2=Слушай, там далеко-далеко есть земля
+			GreetingWhileDelivery2=Там новый год, ты не поверишь,
+			GreetingWhileDelivery2=Там новый год два раза в год. Вот.
+			GreetingWhileDelivery2=<clr><clrEnd>
+			GreetingWhileDelivery2=Ой, шеф, прошу прощения, не заметил твой входящий. Вспомнился что-то сериал из детства, там два дальнобойщика летали по разным системам и попадали в такие передряги, ух. Аж дух захватывало! Вот и мне сейчас дали задание довезти одну безделушку на планету <TargetPlanet>, а я так хочу какого-нибудь приключения! Ну, чтобы какой-нибудь пират попытался меня грабануть, или затеряться в гипере в поисках точки выхода...
+			GreetingWhileDelivery2=Ну а как у тебя дела?
+			GreetingWhileReturning=Уфф, ну и намотался я. Наконец-то лечу на базу, хоть немного отдохну. Что-то случилось, босс?
+			GreetingWhileDefending=В системе замечены вражеские корабли, босс. Я готовлюсь занять позицию для обороны штаба. Битва обещает быть жаркой!
+			GreetingWhileReturningReserve=Врагов на горизонте не видно, так что я возвращаюсь в штаб на дежурство. Если тебе нужно с чем-то помочь, босс, обратись к другим бойцам.
+		
+			PlayerCallForHelp=Мне нужна твоя помощь в бою
+			PlayerCallForHelpWith=Мне нужна твоя помощь в бою с <TargetShip>
+			HelpWhoToShootAt=С кем тебе нужно помочь?
+			HelpIHaveQuest=Босс, при всём уважении, я сейчас на задании. Ты уверен, что моя помощь необходима?
+			HelpRogerRoger=Так точно, босс! Выполняю приказ.
+			IsItGroupHelpOrder=Это приказ лично мне или всем нашим?
+			PlayerHelpYesItsForGroup=Это приказ для всех, с каждым отдельно я общаться не намерен
+			PlayerHelpNoItsPersonal=Нет, это персональный приказ
+		
 			SalaryIncrease1=Э, я дико извиняюсь что побеспокоил, шеф. Но у меня небольшая просьба - ты не мог бы подкинуть пару кредитов? Жена вчера звонила, говорит, что сынишка уже с памперсов вырос, ему горшок купить надо... с подогревом и вентиляцией. Ну, в общем, если не в напряг... мне немного надо, всего <Payment> cr. Буду очень признателен.
 			SalaryIncreasePlayerYes1=Ну раз на горшок - грех не помочь. Вот твои <Payment> cr.
 			SalaryIncreaseYes1=Спасибо тебе огромное, шеф! Сынишка теперь всегда тебя вспоминать будет, когда ну... это... спасибо, в общем!
@@ -1196,6 +1258,8 @@ Script ^{
 			SalaryIncreaseNo4=Эх... не думал я, что ты такой скупердяй, босс. Ну да ладно, мои проблемы. Прости, что потревожил.
 			MercAskAttack1=Шеф, у меня тут беда - <TargetShip> не хочет решать конфликт мирным путём. Подсобишь немного?
 			MercAskAttack2=Начальник, прости что тревожу, но у меня возникли проблемы с <TargetShip>. Помоги осилить, а то чувствую, что один не справлюсь.
+			GuardingQuestOverByPlayer=Шеф, вижу у тебя какие-то тёрки с <GuardedShip>. В таком случае я прекращаю сопровождение и разрываю контракт. Если нужна будет помощь - вызывай.
+			AreLeavingByPlayerHit=Ты совсем из ума выжил? Я на тебя горбачусь, а ты решил меня грохнуть? Ай, да иди-ка ты подальше со своей организацией, у меня теперь своя дорога!
 		}
 		BuildOwnBase_MBPlayerAsk1=А могу ли я сам стать наёмником?
 		BuildOwnBase_MBGovAnswer1=Что случилось, <Player>, тяжело приходится на вольных хлебах?
@@ -1617,6 +1681,24 @@ ShipInfo ^{
 					}
 				}
 			}
+			ShuMercs_MercTalksBlock ^{
+                Description=Запрещает наёмнику вести переговоры во время нападения на цель по приказу игрока.
+                Icon=0
+                Name=
+				OnActCodeTypes=t_OnStep
+				OnActStepTypes=0,11
+				OnActCode ^{
+					01=dword ship = ScriptItemActShip();
+					02=if(!ScriptItemActParam())
+					03 ^{
+						01=NoTalkToShip(ship, 1);
+					}
+					04=else
+					05 ^{
+						01=NoTalkToShip(ship, 0);
+					}
+				}
+			}
         }
     }
 }
@@ -1698,7 +1780,7 @@ ShipCharacterMerc ^{
     00=34, 33, 33, Наемник
 }
 ShipCharacterPlayerMerc ^{
-    00=15, 50, 35, Наемник
+    00=0, 65, 35, Наемник
 }
 ShipType ^{
     Fei ^{
