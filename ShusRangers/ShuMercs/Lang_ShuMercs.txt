@@ -1206,6 +1206,26 @@ Script ^{
 			ReturnToBaseTimerMin=60
 			ReturnToBaseTimerMax=90
 		}
+		PlayerHQBridgeDialog ^{
+			PlayerCallHQ=Связаться со штабом <color=0,50,200>"<PlayerOrgName>"<color>
+			HQDialogStart=На экране появился <clr>Бластер Ципцилот<clrEnd>, покуривающий бдзонк и листающий картинки не совсем одетых пеленгш на своём планшете:
+			HQDialogStart=<clr><clrEnd>
+			HQDialogStart=Уф, ну и напугал ты меня, босс. Никогда к этому звонку не привыкну. И так, что от меня требуется?
+			PlayerAskGroup=Мне нужна ударная группа
+			GroupConfirm=Так-с, маяк, установленный на твоём корабле, показывает, что ты сейчас в системе <PlayerStar>. Группа ориентировочно прибудет по месту назначения через <TimeToArrive> дн. Отдавать команду на взлёт?
+			PlayerConfirmYes=Высылай их
+			GroupWasSent=Парни, шеф отдал приказ. По коням, бегом-бегом!
+			PlayerConfirmNo=Нет, отбой, сам справлюсь
+			GroupDecline=Парни, отбой, можете пока расслабиться. Только далеко не уходите, я вам ща такую цыпу покажу...
+			GroupDecline=А, босс, ты ещё тут? Что-то ещё хотел?
+			GroupIsOut=Прости, шеф, но парни ещё не вернулись с прошлого вылета. Я дам знать, как только они будут готовы.
+			PlayerGroupIsOut=Понятно
+			HQDialogReask=Хочешь, чтобы я подсобил с чем-нибудь ещё?
+			PlayerCallHQOut=Конец связи
+		}
+		PlayerMercsGroup ^{
+		
+		}
 		PlayerMercsTalks ^{
 			GreetingWhileAttack1=Салют, <Player>! Я тут работаю в поте лица, пытаюсь задушить <TargetShipFull>. Ну или он пытается задушить меня, пока что не разобрался... А ты чего хотел-то?
 			GreetingWhileAttack2=Выставить фланговые щиты, тягу в реверс, главному орудию огонь! О, хорошо пошла... Да кто там ещё маячит?! А, это ты босс. Прости, у меня сейчас бой с <TargetShipFull>. У тебя что-то срочное?
@@ -1214,6 +1234,8 @@ Script ^{
 			GreetingWhileEarning3=Тооолькооо, рюмка водки на столеее!
 			GreetingWhileEarning3=Эх, душевные песни у людей были, не то, что сейчас. Всякие Блэндершмэрны и Гааги заполонили радио, аж слушать противно! Ну вот разве я не прав, шеф?
 			GreetingWhileEarning4=Стоять бояться, это служба галанаркоконтроля! Выкидываем всё из трюма на проверку, или я за себя не руч... Ууупс, ошибочка вышла.
+			GreetingWhilePartner=Босс, согласно контракту я нахожусь под командованием рейнджера <TargetShip>. До тех пор, пока я подчиняюсь его приказам, помочь вам я не смогу.
+			//GreetingWhilePartner=Босс, согласно контракту я нахожусь под командованием рейнджера <TargetShip> до <EndPartnerDate>. До тех пор я подчиняюсь только его приказам, а потому заранее прошу меня простить - помочь вам не могу.
 			GreetingWhileEarning4=Приношу свои извинения, босс, не правильно сигнатуру корабля прочитал. Эээ... чем могу быть полезен?
 			GreetingWhileGuarding1=О, давно не виделись, начальник. Как жизнь молодая? Что нового расскажешь? Я вот сопровождаю <TargetShipFull>. Не знаю, зачем ему понадобилась охрана, но деньги платит хорошие, таких клиентов сейчас мало.
 			GreetingWhileGuarding2=Здарова, шеф. Видишь вооон того лошка, которого я пасу? Да, я про <TargetShip>. Представляешь, хотел его на бабки развести, "охрану" ему предложить, так сказать. А он воспринял буквально и заплатил как за нормальный эскорт. Так что я теперь прямо "почётный караул", хе-хе.
@@ -1663,21 +1685,49 @@ ShipInfo ^{
                 Name=
 				OnActCodeTypes=t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
 				OnActCode ^{
-					01=dword obj = ScriptItemActObject1();
-					02=if(obj)
+					01=dword ship = ScriptItemActShip();
+					02=if(ScriptItemActionType(t_OnStep))
 					03 ^{
-						01=if(ObjectType(obj) != 7)
-						02 ^{
-							01=if(obj == Player())
+						01=dword guard = IdToShip(ShipCustomShipInfoData(0, CurInfo(), 1));
+						02=if(guard)
+						03 ^{
+							//Если охраняющий наёмник завершил своё задание, либо забил на него
+							01=if(GetData(1) != Id(ship))
 							02 ^{
-								01=SetData(-1, 0, IdToShip(ShipCustomShipInfoData(0, CurInfo(), 1)));
-								02=ShipDeleteCustomShipInfo(ScriptItemActShip(), 'ShuMercs_GuardedShip');
+								//Снимаем запрет на рэкет охраняемого корабля
+								01=NoTargetToShip(ship, 0);
+								//И удаляем с него данную инфошку
+								02=ShipDeleteCustomShipInfo(ship, 'ShuMercs_GuardedShip');
 							}
 						}
-						03=else if(MissileOwner(obj) == Player())
-						04 ^{
-							01=SetData(-1, 0, IdToShip(ShipCustomShipInfoData(0, CurInfo(), 1)));
-							02=ShipDeleteCustomShipInfo(ScriptItemActShip(), 'ShuMercs_GuardedShip');
+						//Если охраняющий наёмник погиб
+						04=else
+						05 ^{
+							01=NoTargetToShip(ship, 0);
+							02=ShipDeleteCustomShipInfo(ship, 'ShuMercs_GuardedShip');
+						}
+					}
+					//Игрок напал на охраняемый транспорт
+					04=else
+					05 ^{
+						01=dword obj = ScriptItemActObject1();
+						02=if(obj)
+						03 ^{
+							01=if(ObjectType(obj) != 7)
+							02 ^{
+								01=if(obj == Player())
+								02 ^{
+									01=SetData(-1, 0, IdToShip(ShipCustomShipInfoData(0, CurInfo(), 1)));
+									02=NoTargetToShip(ship, 0);
+									03=ShipDeleteCustomShipInfo(ship, 'ShuMercs_GuardedShip');
+								}
+							}
+							03=else if(MissileOwner(obj) == Player())
+							04 ^{
+								01=SetData(-1, 0, IdToShip(ShipCustomShipInfoData(0, CurInfo(), 1)));
+								02=NoTargetToShip(ship, 0);
+								03=ShipDeleteCustomShipInfo(ship, 'ShuMercs_GuardedShip');
+							}
 						}
 					}
 				}
