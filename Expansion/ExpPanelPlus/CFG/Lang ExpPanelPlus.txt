@@ -17,30 +17,30 @@ Artefacts ^{
     ArtTransmitter ^{
         OnUseCode ^{
             0=OnUseCodeTransmitter();
-			01=if(ShipInNormalSpace(Player()) && CurrentForm()=='Ship')
+			01=if(ShipInNormalSpace(Player()) && CurrentForm() == 'Ship')
 			02 ^{
-				01=if(FormCurShip()==Player())
+				01=if(FormCurShip() == Player())
 				02 ^{
 					01=ArrayClear(ReadyTrans);
-					02=dword TCount=0;
-					03=for(dword j=0;j<ShipArts(Player());j=j+1)
+					02=dword TCount = 0;
+					03=for(int j = 0; j < ShipArts(Player()); j = j + 1)
 					04 ^{
-						01=if(ItemType(ShipArts(Player(),j))==t_ArtefactTransmitter)
+						01=if(ItemType(ShipArts(Player(), j)) == t_ArtefactTransmitter)
 						02 ^{
-							01=if(ItemCharge(ShipArts(Player(),j))>=100)
+							01=if(ItemCharge(ShipArts(Player(), j)) >= 100)
 							02 ^{
-								01=ArrayAdd(ReadyTrans,ShipArts(Player(),j));
-								02=InterfaceState('Ship','UseTransmitters',1);
-								03=InterfaceState('Ship','UseTransmittersButtonHitBox',1);
-								04=TCount=TCount+1;
+								01=ArrayAdd(ReadyTrans, ShipArts(Player(), j));
+								02=InterfaceState('Ship', 'UseTransmitters', 1);
+								03=InterfaceState('Ship', 'UseTransmittersButtonHitBox', 1);
+								04=TCount = TCount + 1;
 							}
 						}
 					}
 					//Удаляем кнопку и хитбокс
 					05=if(!TCount)
 					06 ^{
-						01=InterfaceState('Ship','UseTransmitters',0);
-						02=InterfaceState('Ship','UseTransmittersButtonHitBox',0);
+						01=InterfaceState('Ship', 'UseTransmitters', 0);
+						02=InterfaceState('Ship', 'UseTransmittersButtonHitBox', 0);
 					}
 				}
 			}
@@ -59,21 +59,21 @@ ShipInfo ^{
 					//Проверяем трюм на наличие маяков при заходе на форму корабля в открытом космосе
                     01=if(ScriptItemActionType(t_OnEnteringForm))
                     02 ^{
-						01=if(ShipInNormalSpace(Player()) && CurrentForm()=='Ship')
+						01=if(ShipInNormalSpace(Player()) && CurrentForm() == 'Ship')
 						02 ^{
-							01=if(FormCurShip()==Player())
+							01=if(FormCurShip() == Player())
 							02 ^{
 								01=ArrayClear(ReadyTrans);
-								02=for(dword i=0;i<ShipArts(Player());i=i+1)
+								02=for(int i = 0; i < ShipArts(Player()); i = i + 1)
 								03 ^{
-									01=if(ItemType(ShipArts(Player(),i))==t_ArtefactTransmitter)
+									01=if(ItemType(ShipArts(Player(), i)) == t_ArtefactTransmitter)
 									02 ^{
-										01=if(ItemCharge(ShipArts(Player(),i))>=100)
+										01=if(ItemCharge(ShipArts(Player(), i)) >= 100)
 										02 ^{
-											01=ArrayAdd(ReadyTrans,ShipArts(Player(),i));
+											01=ArrayAdd(ReadyTrans, ShipArts(Player(), i));
 											//Подстановка кнопки и хитбокса (второе, чтобы кнопка не прокликивалась "насквозь")
-											02=InterfaceState('Ship','UseTransmitters',1);
-											03=InterfaceState('Ship','UseTransmittersButtonHitBox',1);
+											02=InterfaceState('Ship', 'UseTransmitters', 1);
+											03=InterfaceState('Ship', 'UseTransmittersButtonHitBox', 1);
 										}
 									}
 								}
@@ -81,46 +81,46 @@ ShipInfo ^{
 						}
                     }
 					//На всякий случай отключаем кнопку при уходе с формы корабля
-					03=if(ScriptItemActionType(t_OnLeavingForm))
+					03=else if(ScriptItemActionType(t_OnLeavingForm))
 					04 ^{
-						01=if(ShipInNormalSpace(Player()) && CurrentForm()=='Ship')
+						01=if(ShipInNormalSpace(Player()) && CurrentForm() == 'Ship')
 						02 ^{
-							01=if(FormCurShip()==Player())
+							01=if(FormCurShip() == Player())
 							02 ^{
-								01=InterfaceState('Ship','UseTransmitters',-1);
-								02=InterfaceState('Ship','UseTransmittersButtonHitBox',-1);
+								01=InterfaceState('Ship', 'UseTransmitters', -1);
+								02=InterfaceState('Ship', 'UseTransmittersButtonHitBox', -1);
 							}
 						}
 					}
 					//Перепроверяем трюм, если маяк был выброшен в космос
-                    05=if(ScriptItemActionType(t_OnDropItem) || ScriptItemActionType(t_OnDropItemFixed))
+                    05=else
                     06 ^{
-						01=if(ShipInNormalSpace(Player()) && CurrentForm()=='Ship')
+						01=if(ShipInNormalSpace(Player()) && CurrentForm() == 'Ship')
 						02 ^{
-							01=if(FormCurShip()==Player())
+							01=if(FormCurShip() == Player())
 							02 ^{
-								01=if(ItemType(ScriptItemActObject1())==t_ArtefactTransmitter)
+								01=if(ItemType(ScriptItemActObject1()) == t_ArtefactTransmitter)
 								02 ^{
 									01=ArrayClear(ReadyTrans);
-									02=dword TCount=0;
-									03=for(dword j=0;j<ShipArts(Player());j=j+1)
+									02=dword TCount = 0;
+									03=for(int j = 0; j < ShipArts(Player()); j = j + 1)
 									04 ^{
-										01=if(ItemType(ShipArts(Player(),j))==t_ArtefactTransmitter)
+										01=if(ItemType(ShipArts(Player(), j)) == t_ArtefactTransmitter)
 										02 ^{
-											01=if(ItemCharge(ShipArts(Player(),j))>=100)
+											01=if(ItemCharge(ShipArts(Player(), j)) >= 100)
 											02 ^{
-												01=ArrayAdd(ReadyTrans,ShipArts(Player(),j));
-												02=InterfaceState('Ship','UseTransmitters',1);
-												03=InterfaceState('Ship','UseTransmittersButtonHitBox',1);
-												04=TCount=TCount+1;
+												01=ArrayAdd(ReadyTrans, ShipArts(Player(), j));
+												02=InterfaceState('Ship', 'UseTransmitters', 1);
+												03=InterfaceState('Ship', 'UseTransmittersButtonHitBox', 1);
+												04=TCount = TCount + 1;
 											}
 										}
 									}
 									//Удаляем кнопку и хитбокс
 									05=if(!TCount)
 									06 ^{
-										01=InterfaceState('Ship','UseTransmitters',0);
-										02=InterfaceState('Ship','UseTransmittersButtonHitBox',0);
+										01=InterfaceState('Ship', 'UseTransmitters', 0);
+										02=InterfaceState('Ship', 'UseTransmittersButtonHitBox', 0);
 									}
 								}
 							}
