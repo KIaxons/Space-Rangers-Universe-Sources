@@ -1,6 +1,13 @@
 FormInfo ^{
 	DoubleQuote="
 }
+Items ^{
+    Hull ^{
+        Text=Стойкость корпуса: <Size> (<MaxSize>) единиц, обшивка блокирует до <HitProtect> единиц ущерба.
+		Text=<clr><clrEnd>
+		Text=Восприимчивость к урону:<br>Э:<FragilityE>%  О:<FragilityS>%  Р:<FragilityM>%
+	}
+}
 MicroModuls ^{
 	ExpHulls_Killer1 ^{
 		Equipments=Hull
@@ -410,6 +417,13 @@ MicroModuls ^{
 		bonJump=7
 		bonRadar=550
 	}
+}
+HullType ^{
+    98 ^{
+		//В HD зачем-то поменяли дату с 3302 на 3299, хотя серия появляется как бы не с самого начала игры
+		Name=Гугол
+        Text=Быстрый рейнджерский корпус. Согласно опросам, был признан лучшим корпусом 3302 года.
+    }
 }
 Script ^{
 	Mod_ExpHulls ^{
