@@ -1731,8 +1731,9 @@ ShipInfo ^{
 				OnActCodeTypes=t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
 				OnActCode ^{
 					01=dword ship = ScriptItemActShip();
-					02=if(ScriptItemActionType(t_OnStep))
-					03 ^{
+					02=if(ShipInScript(ship, 0)) exit;
+					03=if(ScriptItemActionType(t_OnStep))
+					04 ^{
 						01=dword guard = IdToShip(ShipCustomShipInfoData(0, CurInfo(), 1));
 						02=if(guard)
 						03 ^{
@@ -1753,8 +1754,8 @@ ShipInfo ^{
 						}
 					}
 					//Игрок напал на охраняемый транспорт
-					04=else
-					05 ^{
+					05=else
+					06 ^{
 						01=dword obj = ScriptItemActObject1();
 						02=if(obj)
 						03 ^{

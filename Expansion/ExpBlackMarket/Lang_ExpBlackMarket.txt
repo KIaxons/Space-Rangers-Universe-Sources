@@ -3605,7 +3605,7 @@ ShipInfo ^{
 							08 ^{
 								01=int penalty = ShipStatistic(cur_ship, 9);
 								//Если на игроке не висит "торговое пенальти"
-								02=if(!penalty)ShipCustomShipInfoData(0, cur_info, 3, ShipCustomShipInfoData(0, cur_info, 3) + profit);
+								02=if(!penalty) ShipCustomShipInfoData(0, cur_info, 3, ShipCustomShipInfoData(0, cur_info, 3) + profit);
 								//Если таки висит
 								03=else
 								04 ^{
