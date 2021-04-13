@@ -153,13 +153,7 @@ ShipInfo ^{
                         03=if(typeN == t_Warrior || typeN == t_Ranger || typeN == t_Pirate)
 						04 ^{
 							01=str type = ShipType(temp_dword);
-							02=if(type != 'Merc' &&
-								  type != 'PlayerMerc' &&
-								  type != 'Freelancer' &&
-								  type != 'RedLeader' &&
-								  type != 'AtlantLeader' &&
-								  type != 'FeiLeader'
-								 ) InterfaceState('Scaner', 'RankWndCustom', 1);
+							02=if(type != 'Merc' && type != 'PlayerMerc' && type != 'Freelancer' && type != 'RedLeader' && type != 'AtlantLeader' && type != 'FeiLeader') InterfaceState('Scaner', 'RankWndCustom', 1);
 							03=else InterfaceState('Scaner', 'RankWndCustom', 0);
 						}
                         05=else InterfaceState('Scaner', 'RankWndCustom', 0);
