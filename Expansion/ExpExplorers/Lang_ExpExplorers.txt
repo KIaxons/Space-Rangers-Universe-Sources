@@ -164,67 +164,67 @@ ShipInfo ^{
 											04=else if(!Tequip4)Tequip4=Tart;
 										}
 									}
-									22=int max_arts_types=ArrayDim(GgiveArtsArray)-1;
-									23=dword TrndArt=0;
+									22=int max_arts_types = ArrayDim(GgiveArtsArray) - 1;
+									23=dword TrndArt = 0;
 									//Если нашли у рейнджера инфошку хозяина транклюкаторов, то даём ему шанс на получение нового транка
 									24=int TrndCount=ShipFindCustomShipInfoByType(ship,'TrancNPCOwnerInfo');
 									25=if(TrndCount > -1)
 									26 ^{
 										//Транклюкатор выпадет рейнджеру-хозяину с вероятностью в 15%
-										01=if(Rnd(1,100) <= 15)
+										01=if(Rnd(1, 100) <= 15)
 										02 ^{
 											//Если число транклюкаторов у этого рейнджера ещё не максимально
-											01=if(ShipCustomShipInfoData(ship,TrndCount,3) < 6)
+											01=if(ShipCustomShipInfoData(ship, TrndCount, 3) < 6)
 											02 ^{
-												01=TrndArt=CreateArt(t_ArtefactTranclucator, 6);
+												01=TrndArt = CreateArt(t_ArtefactTranclucator, 6);
 												//Если у рейнджера хватает места в трюме под нового транклюкатора
 												02=if(ShipFreeSpace(ship) >= ItemSize(TrndArt))
 												03 ^{
 													01=AddItemToShip(ship, TrndArt);
 													02=CreateActCodeEvent(t_OnItemPickUp, ship, ship, TrndArt, 0, 0);
-													03=TrndArt=0;
+													03=TrndArt = 0;
 													//Маркер, что свой артефакт рейнджер уже получил
-													04=TrndCount=-1;
+													04=TrndCount = -1;
 												}
 												04=else
 												05 ^{
 													01=FreeItem(TrndArt);
-													02=TrndArt=0;
-													03=TrndCount=0;
+													02=TrndArt = 0;
+													03=TrndCount = 0;
 												}
 											}
-											03=else TrndCount=0;
+											03=else TrndCount = 0;
 										}
-										03=else TrndCount=0;
+										03=else TrndCount = 0;
 									}
 									//Выбираем артефакт и убеждаемся, что выбранный тип артефакта ещё не стоит ни в одном из слотов рейнджера
-									27=if(TrndCount > -1)while(1)
+									27=if(TrndCount > -1) while(1)
 									28 ^{
-										01=if(IsScriptActive('Mod_ExpArts'))TrndArt=Rnd(1,max_arts_types);//+4 дополнительных артефакта из ExpArts
-										02=else TrndArt=Rnd(1,27);//Иначе только оригинальные экипируемые
+										01=if(IsScriptActive('Mod_ExpArts')) TrndArt = Rnd(1, max_arts_types); //+4 дополнительных артефакта из ExpArts
+										02=else TrndArt = Rnd(1, 27); //Иначе только оригинальные экипируемые
 										//В рандоме выпал оригинальный артефакт
-										03=if(TrndArt<=27)
+										03=if(TrndArt <= 27)
 										04 ^{
-											01=if(GgiveArtsArray[TrndArt] != ItemType(Tequip1))break;
-											02=else if(GgiveArtsArray[TrndArt] != ItemType(Tequip2))break;
-											03=else if(GgiveArtsArray[TrndArt] != ItemType(Tequip3))break;
-											04=else if(GgiveArtsArray[TrndArt] != ItemType(Tequip4))break;
+											01=if(GgiveArtsArray[TrndArt] != ItemType(Tequip1)) break;
+											02=else if(GgiveArtsArray[TrndArt] != ItemType(Tequip2)) break;
+											03=else if(GgiveArtsArray[TrndArt] != ItemType(Tequip3)) break;
+											04=else if(GgiveArtsArray[TrndArt] != ItemType(Tequip4)) break;
 											//Если выпавший артефакт в слоте рейнджера уже есть, то продолжаем крутить рандомизатор по количеству возможных типов артов в принципе, авось чего выпадет
 											05=else
 											06 ^{
-												01=TrndArt=0;
-												02=TrndCount=TrndCount+1;
+												01=TrndArt = 0;
+												02=TrndCount = TrndCount + 1;
 												03=if(IsScriptActive('Mod_ExpArts'))
 												04 ^{
 													01=if(TrndCount == max_arts_types)
 													02 ^{
-														01=TrndArt=0;
+														01=TrndArt = 0;
 														02=break;
 													}
 												}
 												05=else if(TrndCount == 27)
 												06 ^{
-													01=TrndArt=0;
+													01=TrndArt = 0;
 													02=break;
 												}
 											}
@@ -232,18 +232,18 @@ ShipInfo ^{
 										//В рандоме выпал кастомный артефакт
 										05=else
 										06 ^{
-											01=if(GgiveArtsArray[TrndArt] != EquipmentImageName(Tequip1))break;
-											02=else if(GgiveArtsArray[TrndArt] != EquipmentImageName(Tequip2))break;
-											03=else if(GgiveArtsArray[TrndArt] != EquipmentImageName(Tequip3))break;
-											04=else if(GgiveArtsArray[TrndArt] != EquipmentImageName(Tequip4))break;
+											01=if(GgiveArtsArray[TrndArt] != EquipmentImageName(Tequip1)) break;
+											02=else if(GgiveArtsArray[TrndArt] != EquipmentImageName(Tequip2)) break;
+											03=else if(GgiveArtsArray[TrndArt] != EquipmentImageName(Tequip3)) break;
+											04=else if(GgiveArtsArray[TrndArt] != EquipmentImageName(Tequip4)) break;
 											//Если выпавший артефакт в слоте рейнджера уже есть, то продолжаем крутить рандомизатор по количеству возможных типов артов в принципе, авось чего выпадет
 											05=else
 											06 ^{
-												01=TrndArt=0;
-												02=TrndCount=TrndCount+1;
-												03=if(TrndCount==max_arts_types)
+												01=TrndArt = 0;
+												02=TrndCount = TrndCount + 1;
+												03=if(TrndCount == max_arts_types)
 												04 ^{
-													01=TrndArt=0;
+													01=TrndArt = 0;
 													02=break;
 												}
 											}
@@ -252,10 +252,10 @@ ShipInfo ^{
 									29=if(TrndArt)
 									30 ^{
 										//Создаём оригинальный артефакт
-										01=if(TrndArt<=27)
+										01=if(TrndArt <= 27)
 										02 ^{
-											01=TrndArt=CreateArt(GgiveArtsArray[TrndArt],6);
-											02=if(ShipFreeSpace(ship) >= ItemSize(TrndArt))AddItemToShip(ship,TrndArt);
+											01=TrndArt = CreateArt(GgiveArtsArray[TrndArt], 6);
+											02=if(ShipFreeSpace(ship) >= ItemSize(TrndArt)) AddItemToShip(ship, TrndArt);
 											03=else FreeItem(TrndArt);
 										}
 										//Создаём кастомный артефакт из ExpArts
@@ -263,12 +263,12 @@ ShipInfo ^{
 										04 ^{
 											01=if(!FunsInit)
 											02 ^{
-												01=int FunsInit=1;
-												02=unknown CustomArtSizeCalc=ImportedFunction('UtilityFunctions','CustomArtSizeCalc');
-												03=unknown CustomArtCostCalc=ImportedFunction('UtilityFunctions','CustomArtCostCalc');
+												01=int FunsInit = 1;
+												02=unknown CustomArtSizeCalc = ImportedFunction('UtilityFunctions', 'CustomArtSizeCalc');
+												03=unknown CustomArtCostCalc = ImportedFunction('UtilityFunctions', 'CustomArtCostCalc');
 											}
-											03=TrndArt=CreateCustomArt(GgiveArtsArray[TrndArt],CustomArtSizeCalc(0+CT('Artefacts.CustomArtefacts.'+GgiveArtsArray[TrndArt]+'.Size'),GalaxyDiffLevels(4)),CustomArtCostCalc(0+CT('Artefacts.CustomArtefacts.'+GgiveArtsArray[TrndArt]+'.Cost'),GalaxyDiffLevels(1),GalaxyTechLevel()),6);
-											04=if(ShipFreeSpace(ship) >= ItemSize(TrndArt))AddItemToShip(ship,TrndArt);
+											03=TrndArt = CreateCustomArt(GgiveArtsArray[TrndArt], CustomArtSizeCalc(0 + CT('Artefacts.CustomArtefacts.' + GgiveArtsArray[TrndArt] + '.Size'), GalaxyDiffLevels(4)), CustomArtCostCalc(0 + CT('Artefacts.CustomArtefacts.' + GgiveArtsArray[TrndArt] + '.Cost'), GalaxyDiffLevels(1), GalaxyTechLevel()), 6);
+											04=if(ShipFreeSpace(ship) >= ItemSize(TrndArt)) AddItemToShip(ship, TrndArt);
 											05=else FreeItem(TrndArt);
 										}
 									}
@@ -279,39 +279,39 @@ ShipInfo ^{
 						08=if(!ShipInNormalSpace(ship))
 						09 ^{
 							//Убираем маркер о готовности к прыжку/совершаемом прыжке, если рейнджер ушёл в гипер или сел на планету/станцию
-							01=ShipCustomShipInfoData(0,cur_info,1,0);//Маркер о готовности/совершаемом прыжке
-							02=ShipCustomShipInfoData(0,cur_info,2,0);//Id ЧД
+							01=ShipCustomShipInfoData(0, cur_info, 1, 0); //Маркер о готовности/совершаемом прыжке
+							02=ShipCustomShipInfoData(0, cur_info, 2, 0); //Id ЧД
 							03=exit;
 						}
-						10=dword TCurStar=ShipStar(ship);
+						10=dword TCurStar = ShipStar(ship);
 						//Ищем ЧД в системе, если её ещё не обнаружили
 						11=if(ShipInNormalSpace(ship))
 						12 ^{
-							01=if(ShipCustomShipInfoData(0,cur_info,1)<=0)
+							01=if(ShipCustomShipInfoData(0, cur_info, 1) <= 0)
 							02 ^{
-								01=for(i=0;i<GalaxyHoles();i=i+1)
+								01=for(i = 0; i < GalaxyHoles(); i = i + 1)
 								02 ^{
-									01=dword THole=GalaxyHoles(i);
+									01=dword THole = GalaxyHoles(i);
 									//Нашли ЧД в системе, триггер в положение 1
-									02=if(HoleStar1(THole)==TCurStar || HoleStar2(THole)==TCurStar)
+									02=if(HoleStar1(THole) == TCurStar || HoleStar2(THole) == TCurStar)
 									03 ^{
 										//Проверка на кастомные ЧД (оригинальные будут всегда возвращать '')
-										01=if(HoleMap(THole)=='')
+										01=if(HoleMap(THole) == '')
 										02 ^{
 											//Проверка на ЧД Келлера (если её вход и выход находятся в одной системе)
 											01=if(Keller())
 											02 ^{
-												01=if(HoleStar1(THole)!=HoleStar2(THole))
+												01=if(HoleStar1(THole) != HoleStar2(THole))
 												02 ^{
-													01=ShipCustomShipInfoData(0,cur_info,1,1);
-													02=ShipCustomShipInfoData(0,cur_info,2,Id(THole));
+													01=ShipCustomShipInfoData(0, cur_info, 1, 1);
+													02=ShipCustomShipInfoData(0, cur_info, 2, Id(THole));
 													03=break;
 												}
 											}
 											03=else
 											04 ^{
-												01=ShipCustomShipInfoData(0,cur_info,1,1);
-												02=ShipCustomShipInfoData(0,cur_info,2,Id(THole));
+												01=ShipCustomShipInfoData(0, cur_info, 1, 1);
+												02=ShipCustomShipInfoData(0, cur_info, 2, Id(THole));
 												03=break;
 											}
 										}
@@ -320,7 +320,7 @@ ShipInfo ^{
 							}
 						}
 						//Перебираем условия для возможности залёта рейнджера в ЧД
-						13=if(ShipCustomShipInfoData(0,cur_info,1) == 1)
+						13=if(ShipCustomShipInfoData(0, cur_info, 1) == 1)
 						14 ^{
 							01=if(ShipOrder(ship)!=1 && ShipOrder(ship)!=3 && ShipOrder(ship)!=6)exit;//Рейнджер выполняет что-то важное
 							02=if(ShipOrder(ship)==6 && ShipGetBad(ship)>0)exit;//Рейнджер с кем-то воюет
@@ -693,8 +693,8 @@ ShipInfo ^{
 							02 ^{
 								01=if(ShipTypeN(ship) != t_Tranclucator)
 								02 ^{
-									01=OrderLock(ship,0);
-									02=ShipDeleteCustomShipInfo(ship,'OrderJumpHole_ForCompanion');
+									01=OrderLock(ship, 0);
+									02=ShipDeleteCustomShipInfo(ship, 'OrderJumpHole_ForCompanion');
 									03=ShipFreeFlight(ship);
 									04=exit;
 								}
@@ -702,17 +702,17 @@ ShipInfo ^{
 								04 ^{
 									//Если игрок приказал транклюкатору делать что-то ещё, проверяем заодно и всех остальных активных транклюкаторов
 									//Мог быть отдан групповой приказ
-									01=for(i=0; i<PlayerTranclucators(); i=i+1)
+									01=for(i = 0; i < PlayerTranclucators(); i = i + 1)
 									02 ^{
-										01=ship=PlayerTranclucators(i);
-										02=if(ShipFindCustomShipInfoByType(ship,'OrderJumpHole_ForCompanion') == -1)continue;
+										01=ship = PlayerTranclucators(i);
+										02=if(ShipFindCustomShipInfoByType(ship, 'OrderJumpHole_ForCompanion') == -1) continue;
 										03=if(ShipOrder(ship) == 1)
 										04 ^{
-											01=OrderLock(ship,1);
+											01=OrderLock(ship, 1);
 											02=continue;
 										}
-										05=ShipDeleteCustomShipInfo(ship,'OrderJumpHole_ForCompanion');
-										06=OrderLock(ship,0);
+										05=ShipDeleteCustomShipInfo(ship, 'OrderJumpHole_ForCompanion');
+										06=OrderLock(ship, 0);
 									}
 								}
 							}
@@ -720,34 +720,34 @@ ShipInfo ^{
 							04 ^{
 								//Если игрок приказал партнёру делать что-то ещё, проверяем заодно и всех остальных партнёров
 								//Так как игроком мог быть отдан групповой приказ
-								01=for(i=0; i<ShipPartners(Player()); i=i+1)
+								01=for(i = 0; i < ShipPartners(Player()); i = i + 1)
 								02 ^{
-									01=ship=ShipPartners(Player(),i);
-									02=if(ShipFindCustomShipInfoByType(ship,'OrderJumpHole_ForCompanion') == -1)continue;
+									01=ship = ShipPartners(Player(), i);
+									02=if(ShipFindCustomShipInfoByType(ship, 'OrderJumpHole_ForCompanion') == -1) continue;
 									03=if(ShipOrder(ship) == 1)
 									04 ^{
-										01=OrderLock(ship,1);
+										01=OrderLock(ship, 1);
 										02=continue;
 									}
 									05=ShipDeleteCustomShipInfo(ship,'OrderJumpHole_ForCompanion');
 									06=OrderLock(ship,0);
 								}
-								03=for(i=0; i<PlayerPirates(); i=i+1)
+								03=for(i = 0; i < PlayerPirates(); i = i + 1)
 								04 ^{
-									01=ship=PlayerPirates(i);
-									02=if(ShipFindCustomShipInfoByType(ship,'OrderJumpHole_ForCompanion') == -1)continue;
+									01=ship = PlayerPirates(i);
+									02=if(ShipFindCustomShipInfoByType(ship, 'OrderJumpHole_ForCompanion') == -1) continue;
 									03=if(ShipOrder(ship) == 1)
 									04 ^{
-										01=OrderLock(ship,1);
+										01=OrderLock(ship, 1);
 										02=continue;
 									}
-									05=ShipDeleteCustomShipInfo(ship,'OrderJumpHole_ForCompanion');
-									06=OrderLock(ship,0);
+									05=ShipDeleteCustomShipInfo(ship, 'OrderJumpHole_ForCompanion');
+									06=OrderLock(ship, 0);
 								}
 								05=exit;
 							}
 							//Удаляем все возможные оверрайды с кнопки закрытия формы диалога
-							05=InterfaceState('Talk','Close',-1);
+							05=InterfaceState('Talk', 'Close', -1);
 						}
 					}
 					//По кораблю ведут огонь
