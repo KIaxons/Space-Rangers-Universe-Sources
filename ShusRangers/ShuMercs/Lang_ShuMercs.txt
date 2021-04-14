@@ -1798,6 +1798,57 @@ UselessItems ^{
     Usl_24 ^{
         Text=Куб размером <color=255,240,100>20</color> на <color=255,240,100>20</color> см. Если верить инструкции, он способен трансформироваться в настоящий дворец.
     }
+    ShuMercs_GoodsImitation3 ^{
+		Cost=Average
+		Name=Роскошь
+		Owner=None
+		Size=1
+        Text=Драгоценности, произведения искусства и другие предметы роскоши.
+		OnActCodeTypes=t_OnItemPickUp
+		OnActCode ^{
+			01=if(IsPlayer(ScriptItemActShip()))
+			02 ^{
+				01=dword goods = CreateGoods(t_Luxury, ItemSize(CurItem()));
+				02=ItemCost(goods, ItemCost(CurItem()));
+				03=FreeItem(GetItemFromShip(Player(), CurItem()));
+				04=AddItemToShip(Player(), goods);
+			}
+		}
+    }
+    ShuMercs_GoodsImitation6 ^{
+		Cost=Average
+		Name=Оружие
+		Owner=None
+		Size=1
+        Text=Всевозможные виды оружия: холодное, ручное, ядерное, психотропное и прочее.
+		OnActCodeTypes=t_OnItemPickUp
+		OnActCode ^{
+			01=if(IsPlayer(ScriptItemActShip()))
+			02 ^{
+				01=dword goods = CreateGoods(t_Arms, ItemSize(CurItem()));
+				02=ItemCost(goods, ItemCost(CurItem()));
+				03=FreeItem(GetItemFromShip(Player(), CurItem()));
+				04=AddItemToShip(Player(), goods);
+			}
+		}
+    }
+    ShuMercs_GoodsImitation7 ^{
+		Cost=Average
+		Name=Наркотики
+		Owner=None
+		Size=1
+        Text=Запрещенные гаостимуляторы и прочая наркотическая продукция.
+		OnActCodeTypes=t_OnItemPickUp
+		OnActCode ^{
+			01=if(IsPlayer(ScriptItemActShip()))
+			02 ^{
+				01=dword goods = CreateGoods(t_Narcotics, ItemSize(CurItem()));
+				02=ItemCost(goods, ItemCost(CurItem()));
+				03=FreeItem(GetItemFromShip(Player(), CurItem()));
+				04=AddItemToShip(Player(), goods);
+			}
+		}
+    }
 	ShuMercs_ApprovalDocuments ^{
 		Cost=Mini
 		Name=Документы на утверждение строительства
