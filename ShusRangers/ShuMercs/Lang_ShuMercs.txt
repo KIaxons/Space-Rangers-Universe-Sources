@@ -681,12 +681,25 @@ Quest ^{
 				Type=Private
 				FirstStarMaxRange=55
 				SecondStarMaxRange=55
-				
+				QuestNoteTitle=Контракт на охрану судна <TargetName>
+				QuestNoteTitleReward=Награда за выполнение: <Cost> cr.
+				QuestNoteStageOne=Контракт в процессе выполнения. Посол ожидает встречи с наёмниками в системе <Star>.
+				QuestNoteStageTwo=Контракт в процессе выполнения. Посол направляется к месту встречи на планету <Planet>.
+				QuestNoteStageTwoWait=Контракт в процессе выполнения. Посол на аудиенции с пиратским ханом на планете <Planet>.
+				QuestNoteStageThree=Контракт в процессе выполнения. Посол успешно завершил встречу, и теперь возвращается обратно на планету <Planet>.
+				QuestNoteSuccess=Контракт выполнен. Посол успешно вернулся на планету <Planet>. Оплата в размере <Cost> cr. переведена на счёт вашей организации.
+				QuestNoteFailedByTime=Контракт провален. Посол не дождался встречи и отменил заказ.
+				QuestNoteFailed=Контракт провален. Посол погиб.
+				TargetGreeting=А, это ты главный в вашей банде? Впрочем, не важно. Будь рядом, держи стволы наготове и задавай поменьше вопросов - я не за разговоры вам плачу.
+				TargetTakeOffStart=Наконец-то я вас дождался. Не будем терять ни минуты, я уже и так опаздываю. Охраняйте меня, пока не доберёмся до планеты <Planet>.
+				TargetLanding=Встреча продлиться примерно <Wait> дн. Рекомендую вам также посетить планету <Planet>, здесь можно раздобыть отменную звёздную пыль!
+				TargetTakeOffEnd=Фух, всё прошло как по маслу. Теперь летим домой. После того как я приземлюсь в космопорте планеты <Planet>, вы получите обещанную награду.
 			}
 			2 ^{
 				Type=Private
 				FirstStarMaxRange=55
 				SecondStarMaxRange=55
+				MinWarriorsCount=3+2 //3 в системе +2 с доспавном, итого 5 (не подставлять цифры более 9!)
 			}
 			3 ^{
 				Type=Private
@@ -1365,6 +1378,7 @@ Script ^{
 			HQStarIsUnderAttackDom=Шеф, тут на нашу систему <Star> невероломно напали поганые <color=255,240,100>электроники</color>. Мы им, конечно, сейчас отсыпем на орехи, но не уведомить тебя было бы как-то неправильно, так что держим в курсе.
 			HQStarIsUnderAttack=<color=255,240,100>Донесение из штаба:</color>
 			HQStarIsUnderAttack=Шеф, тут на нашу систему <Star> невероломно напали какие-то <color=255,240,100>кудлатые черти</color>. Мы им, конечно, сейчас отсыпем на орехи, но не уведомить тебя было бы как-то неправильно, так что держим в курсе.
+			QuestNoteHQDestroyed=Ваш штаб был уничтожен, выполнение контракта более невозможно.
 		}
 		BuildOwnBase_MBPlayerAsk1=А могу ли я сам стать наёмником?
 		BuildOwnBase_MBGovAnswer1=Что случилось, <Player>, тяжело приходится на вольных хлебах?
@@ -1846,7 +1860,8 @@ UselessItems ^{
 		Owner=None
 		Size=1
         Text=Драгоценности, произведения искусства и другие предметы роскоши.
-		OnActCodeTypes=t_OnItemPickUp
+		OnActCodeTypes=t_OnStep
+		OnActStepTypes=11
 		OnActCode ^{
 			01=if(IsPlayer(ScriptItemActShip()))
 			02 ^{
@@ -1863,7 +1878,8 @@ UselessItems ^{
 		Owner=None
 		Size=1
         Text=Всевозможные виды оружия: холодное, ручное, ядерное, психотропное и прочее.
-		OnActCodeTypes=t_OnItemPickUp
+		OnActCodeTypes=t_OnStep
+		OnActStepTypes=11
 		OnActCode ^{
 			01=if(IsPlayer(ScriptItemActShip()))
 			02 ^{
@@ -1880,7 +1896,8 @@ UselessItems ^{
 		Owner=None
 		Size=1
         Text=Запрещенные гаостимуляторы и прочая наркотическая продукция.
-		OnActCodeTypes=t_OnItemPickUp
+		OnActCodeTypes=t_OnStep
+		OnActStepTypes=11
 		OnActCode ^{
 			01=if(IsPlayer(ScriptItemActShip()))
 			02 ^{

@@ -2606,7 +2606,7 @@ ShipInfo ^{
 															//Иначе добавляем инфошку испуга
 															03=else
 															04 ^{
-																01=ShipAddCustomShipInfo(target, 'bioMM_FS', 'NoShow', 0, CurTurn() + round(race_fear_coef * 120), 2, 0, 0,'<color=255,240,100>' + Name(target) + '</color>' + CT('FormInfo.br') + '<clr><clrEnd>' + CT('FormInfo.br'));
+																01=ShipAddCustomShipInfo(target, 'bioMM_FS', 'NoShow', 0, CurTurn() + round(race_fear_coef * 120), 2, 0, 0, '<color=255,240,100>' + Name(target) + '</color>' + CT('FormInfo.br') + '<clr><clrEnd>' + CT('FormInfo.br'));
 																02=if(target == Player()) ShipAddCustomShipInfo(target, 'bioMM_FS_Visible', CT('ShipInfo.AddInfo.CustomInfos.bioMM_FS_Visible.DescriptionPlayer'));
 																03=else ShipAddCustomShipInfo(target, 'bioMM_FS_Visible');
 															}
