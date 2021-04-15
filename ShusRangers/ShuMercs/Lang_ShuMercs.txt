@@ -445,13 +445,11 @@ MicroModuls ~{
     ShuMercs_QuestTargetDebuff ^{
 		Equipments=Hull
 		Owner=Any
-		Ruins=
         LockedAcryn=3
-		NonSearchable=2
+		NonSearchable=1
         Special=1
-		Fragility=101
 		Priority=0
-        bonMass=1
+		Fragility=101
     }
     353 ^{
         Ruins=SB,BK,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
@@ -678,6 +676,38 @@ MicroModuls ~{
 }
 Quest ^{
 	ShuMercs ^{
+		QuestsHQ ^{
+			1 ^{
+				Type=Private
+				FirstStarMaxRange=55
+				SecondStarMaxRange=55
+				
+			}
+			2 ^{
+				Type=Private
+				FirstStarMaxRange=55
+				SecondStarMaxRange=55
+			}
+			3 ^{
+				Type=Private
+			}
+			4 ^{
+				Type=Private
+			}
+			5 ^{
+				Type=Coalition
+			}
+			6 ^{
+				Type=Coalition
+			}
+			7 ^{
+				Type=PirateClan
+			}
+			8 ^{
+				Type=PirateClan
+			}
+			Count=8
+		}
 		//Для кораблей можно использовать тэги <TargetShipFull>, либо <TargetShip> для подстановки полного и, соответственно, сокращённого имени
 		KillShip ^{
 			Coalition ^{
@@ -1283,6 +1313,7 @@ Script ^{
 			GreetingWhileReturning=Уфф, ну и намотался я. Наконец-то лечу на базу, хоть немного отдохну. Что-то случилось, босс?
 			GreetingWhileDefending=В системе замечены вражеские корабли, босс. Я готовлюсь занять позицию для обороны штаба. Битва обещает быть жаркой!
 			GreetingWhileReturningReserve=Врагов на горизонте не видно, так что я возвращаюсь в штаб на дежурство. Если тебе нужно с чем-то помочь, босс, обратись к другим бойцам.
+			GreetingWhileOnQuestHQ=Прямо сейчас я на задании, шеф, а потому никак не могу помочь. Свяжись с кем-нибудь ещё из наших, если тебе требуется поддержка.
 			PlayerCallForHelp=Мне нужна твоя помощь в бою
 			PlayerCallForHelpWith=Мне нужна твоя помощь в бою с <TargetShip>
 			HelpWhoToShootAt=С кем тебе нужно помочь?
