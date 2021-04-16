@@ -1040,19 +1040,19 @@ ShipInfo ^{
                 Description=Скрытая инфошка для автоперезарядки и автоулучшения верфей
                 Icon=0
                 Name=
-				OnActCodeTypes=t_OnStep
+				OnActCodeTypes=t_OnStep,t_OnDeath
 				OnActStepTypes=11
                 OnActCode ^{
-                    01=if(ScriptItemActionType(t_OnStep, 11))
-                    02 ^{
-                        01=dword cur_ship = ScriptItemActShip();
-                        02=int cur_info = CurInfo();
+					01=dword cur_ship = ScriptItemActShip();
+                    02=if(ScriptItemActionType(t_OnStep))
+                    03 ^{
+                        01=int cur_info = CurInfo();
 						//Таймер до автоматической перезарядки ракетных орудий
-                        03=int RepairTime = ShipCustomShipInfoData(cur_ship, cur_info, 2);
+                        02=int RepairTime = ShipCustomShipInfoData(cur_ship, cur_info, 2);
 						//Таймер до автообновления
-						04=int AutoUpdateTime = ShipCustomShipInfoData(cur_ship, cur_info, 3);
-						05=if(RepairTime <= CurTurn())
-						06 ^{
+						03=int AutoUpdateTime = ShipCustomShipInfoData(cur_ship, cur_info, 3);
+						04=if(RepairTime <= CurTurn())
+						05 ^{
 							01=dword cur_item;
 							//Если подключён мод EvoArmada, то чиним вещи станции чаще, поскольку увеличивается износ орудий
 							02=ShipCustomShipInfoData(cur_ship, cur_info, 2, CurTurn() + Rnd(50,80));
@@ -1097,8 +1097,8 @@ ShipInfo ^{
 								}
 							}
 						}
-                        07=if(AutoUpdateTime <= CurTurn())
-                        08 ^{
+                        06=if(AutoUpdateTime <= CurTurn())
+                        07 ^{
 							01=dword cur_star = ShipStar(cur_ship);
 							//Если станция находится в прямой видимости игрока, то откладываем её обновление на один день
 							02=if(ShipStar(Player()) == cur_star)
@@ -1187,6 +1187,13 @@ ShipInfo ^{
                             }
                         }
                     }
+					//Если верфь была уничтожена
+					04=else
+					05 ^{
+						//Удаляем инфошку верфи из системы
+						01=int infos_num = StarFindCustomStarInfoByType(ShipStar(cur_ship), 'DomRuins_' + Id(cur_ship));
+						02=if(~infos_num) StarDeleteCustomStarInfo(ShipStar(cur_ship), infos_num);
+					}
                 }
             }
         }
@@ -1199,6 +1206,9 @@ ShipType ^{
         }
         DomRuins ^{
             1=Верфь
+			StarInfoSuffixBlazer=блазероидная боевая станция
+			StarInfoSuffixKeller=келлероидная боевая станция
+			StarInfoSuffixTerron=терроноидная боевая станция
         }
         Keller ^{
             Shtip=Штип
