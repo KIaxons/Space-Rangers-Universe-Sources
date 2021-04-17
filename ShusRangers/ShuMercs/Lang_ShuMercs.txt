@@ -1968,9 +1968,8 @@ ShipInfo ^{
 										02=ShipDeleteCustomShipInfo(ship, 'ShuMercs_QuestTargetAttackMark');
 										03=RelationToRanger(ship, Player(), 0);
 									}
-									//Не раскомментировать, а то StarToCon может крушнуть при получении 0
-									//09=dword offended_con = StarToCon(GalaxyStar(ShipCustomShipInfoData(0, cur_info, 1)));
-									//10=if(offended_con) ConChangeRelationToRanger(offended_con, Player(), -100);
+									09=dword offended_sector = GalaxySectors(ShipCustomShipInfoData(0, cur_info, 1) - 1);
+									10=if(offended_sector) ConChangeRelationToRanger(offended_sector, Player(), -100);
 									11=dword offended_planet = IdToPlanet(ShipCustomShipInfoData(0, cur_info, 2));
 									12=if(offended_planet) RelationToRanger(offended_planet, Player(), 0);
 									13=dword offended_ship = IdToPlanet(ShipCustomShipInfoData(0, cur_info, 3));
