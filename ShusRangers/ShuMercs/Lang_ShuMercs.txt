@@ -1922,6 +1922,65 @@ ShipInfo ^{
 					}
 				}
 			}
+			ShuMercs_QuestTargetAttackMark ^{
+                Description=NoShow
+                Icon=0
+                Name=Автоматически выводит уведомление и портит отношение с напавшими наёмниками и игроком, в случае получения урона конкретной целью или кораблями её группы
+				OnActCodeTypes=t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
+				OnActCode ^{
+					01=dword ship = ScriptItemActShip();
+					02=dword attacker = ScriptItemActObject1();
+					03=if(ObjectType(attacker) == 7) attacker = MissileOwner(attacker);
+					04=if(!attacker) exit;
+					05=if(ObjectType(attacker) == 5)
+					06 ^{
+						01=if(ShipType(attacker) == 'PlayerMerc' || attacker == Player())
+						02 ^{
+							01=if(ShipInScript(attacker))
+							02 ^{
+								01=dword cur_info = CurInfo();
+								02=unknown GetParFromString = ImportedFunction('UtilityFunctions', 'GetParFromString');
+								03=str ships_id = ShipCustomShipInfoTextData(0, cur_info, 1);
+								04=dword head_ship = GetParFromString(ships_id, ',', 0, 0);
+								05=if(GetData(3, attacker) == head_ship || attacker == Player())
+								06 ^{
+									01=head_ship = IdToShip(head_ship);
+									02=if(ShipStar(Player()) == ShipStar(head_ship) && ShipInNormalSpace(Player()))
+									03 ^{
+										01=if(Dist(Player(), head_ship) <= ShipRadarRange(Player()))
+										02 ^{
+											01=str ether_text = ShipCustomShipInfoTextData(0, cur_info, 2);
+											02=if(ether_text != '')
+											03 ^{
+												01=str ether_icon = GetParFromString(ether_text, ',', 0, 0);
+												02=int ether_type = GetParFromString(ether_text, ',', 1, 0);
+												03=ether_text = GetParFromString(ether_text, ',', 2, 0);
+												04=CustomEther(ether_icon, ether_type, '', ether_text, head_ship);
+											}
+										}
+									}
+									04=ShipDeleteCustomShipInfo(head_ship, 'ShuMercs_QuestTargetAttackMark');
+									05=RelationToRanger(head_ship, Player(), 0);
+									06=unknown ParsCountFromString = ImportedFunction('UtilityFunctions', 'ParsCountFromString');
+									07=for(int i = 1; i < ParsCountFromString(ships_id, ','); i = i + 1)
+									08 ^{
+										01=dword ship = IdToShip(GetParFromString(ships_id, ',', i, 0));
+										02=ShipDeleteCustomShipInfo(ship, 'ShuMercs_QuestTargetAttackMark');
+										03=RelationToRanger(ship, Player(), 0);
+									}
+									//Не раскомментировать, а то StarToCon может крушнуть при получении 0
+									//09=dword offended_con = StarToCon(GalaxyStar(ShipCustomShipInfoData(0, cur_info, 1)));
+									//10=if(offended_con) ConChangeRelationToRanger(offended_con, Player(), -100);
+									11=dword offended_planet = IdToPlanet(ShipCustomShipInfoData(0, cur_info, 2));
+									12=if(offended_planet) RelationToRanger(offended_planet, Player(), 0);
+									13=dword offended_ship = IdToPlanet(ShipCustomShipInfoData(0, cur_info, 3));
+									14=if(offended_ship) RelationToRanger(offended_ship, Player(), 0);
+								}
+							}
+						}
+					}
+				}
+			}
         }
     }
 }

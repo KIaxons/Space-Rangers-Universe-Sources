@@ -1283,27 +1283,6 @@ MicroModuls ~{
         Special=1
     }
 }
-OnActCodes ^{
-    KlissanEq ^{
-        01=if(ScriptItemActionType(t_OnStep))
-        02 ^{
-            01=dword i=CurItem();
-            02=if(ItemIsInUse(i))
-            03 ^{
-                01=if(ShipType(ScriptItemActShip())=='Klissan')
-                02 ^{
-                    01=ItemDurability(i,Rnd(1,100));
-                    02=if(ItemType(i)==t_CustomWeapon)
-                    03 ^{
-                        01=if(GetCustomWeaponData(GetCustomWeaponInfo(i),'TechLevel')==8)WeaponAmmunition(i,Rnd(3,WeaponMaxAmmunition(i)));
-                    }
-                }
-            }
-        }
-    }
-    KlissanLoot ^{
-    }
-}
 Planet ^{
     Klissan ^{
         Info ^{
