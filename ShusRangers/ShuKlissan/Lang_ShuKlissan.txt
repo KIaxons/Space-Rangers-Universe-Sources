@@ -938,6 +938,48 @@ MicroModuls ~{
         //LockedAcryn=2
         //NonSearchable=1
     }
+    ShuKlissan_Shuclopia ^{
+        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator,Hull
+        KindGraph=Spore
+        Name=Шуклопия
+		NamePrefix=Споровая колония
+		Color=93,182,93
+        Owner=Klissan,NonKling
+        Priority=35
+        RacialRestriction=1
+		BMSpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
+        Text=Клисанская споровая колония. Раскрывает особый потенциал любого <clr>клисанского<clrEnd> оборудования, увеличивая эффективность.
+		Text=<clr><clrEnd>
+		Fragility=100
+		Cost=100
+		Size=100
+        Text=Сила энергетического оружия: <bonWEnergy> ед.
+        Text=Сила осколочного оружия: <bonWSplinter> ед.
+        Text=Сила ракетного оружия: <bonWMissile> ед.
+        Text=Броня корпуса: <bonHull> ед.
+        Text=Скорость двигателя: <bonSpeed> ед.
+        Text=Объём бака: <bonFuel> ед.
+        Text=Дальность радара: <bonRadar> млн. км.
+        Text=Мощность сканера: <bonScan> ед.
+        Text=Эффективность дроида: <bonDroid> ед.
+        Text=Мощность захвата: <bonHook> ед.
+        Text=Генератор поля: <bonDef> ед.
+        bonWEnergy=15
+        bonWSplinter=20
+        bonWMissile=20
+        bonHull=5
+        bonSpeed=50
+        bonFuel=15
+        bonRadar=600
+        bonScan=5
+        bonDroid=20
+        bonHook=50
+        bonDef=6
+        //Special=1
+		//UniqueMM=2
+        //LockedAcryn=2
+        //NonSearchable=1
+    }
     ShuKlissan_Bubble ^{
         Equipments=Engine
         KindGraph=Spore
@@ -1296,17 +1338,18 @@ Script ^{
     Mod_ShuKlissan ^{
 		SporesGiveList ^{
 			1=ShuKlissan_Potentia
-			2=ShuKlissan_Bubble
-			3=ShuKlissan_Chasia
-			4=ShuKlissan_Velhmust
-			5=ShuKlissan_Nivelia
-			6=ShuKlissan_Askia
-			7=ShuKlissan_Fungusia
-			8=ShuKlissan_Plasmalemma
-			9=ShuKlissan_Regenerative
-			10=ShuKlissan_Combishell
-			11=ShuKlissan_Recapacit
-			Count=11
+			2=ShuKlissan_Shuclopia
+			3=ShuKlissan_Bubble
+			4=ShuKlissan_Chasia
+			5=ShuKlissan_Velhmust
+			6=ShuKlissan_Nivelia
+			7=ShuKlissan_Askia
+			8=ShuKlissan_Fungusia
+			9=ShuKlissan_Plasmalemma
+			10=ShuKlissan_Regenerative
+			11=ShuKlissan_Combishell
+			12=ShuKlissan_Recapacit
+			Count=12
 		}
 		248= Гигас
 		329=Немедленно посетить ближайшую пиратскую базу.
