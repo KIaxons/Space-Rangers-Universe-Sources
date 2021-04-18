@@ -767,8 +767,8 @@ Quest ^{
 				QuestIntro=Следовательно, мировому папаше нужно срочно помочь потеряться до <EndDate>, после чего он будет переведён на штабную работу, откуда мы его уже точно никак не достанем. За наше скромное содействие эти кровожадные фурии предлагают выплатить аж <Cost> cr. Что мне им ответить?
 				QuestAcceptedPlayer=Принимай контракт
 				QuestAccepted=Понял, босс. Я уведомлю заказчика, что мы берёмся за дело, и отдам ребятам приказ на взлёт.
-				QuestDeclinedPlayer=Откажи ему
-				QuestDeclined=Как скажешь, босс. Я передам заказчику наш официальный отказ. Что-нибудь ещё?
+				QuestDeclinedPlayer=Откажи им
+				QuestDeclined=Как скажешь, босс. Я передам дамочкам наш официальный отказ. Что-нибудь ещё?
 				QuestSkippedPlayer=Мне надо подумать
 				QuestNoteTitle=Контракт на устранение судна <TargetName>
 				QuestNoteTitleReward=Награда за выполнение: <Cost> cr.
@@ -776,12 +776,13 @@ Quest ^{
 				QuestNoteSuccess=Контракт выполнен. Цель была успешно уничтожена. Оплата в размере <Cost> cr. переведена на счёт вашей организации.
 				QuestNoteFailed=Контракт провален. Ваша организация не уложилась в установленный срок.
 				TargetGreetingNormal=А? Шо? Тебе чего тут надо? Это частный военный канал. А ну быстро свалил с монитора, пока не выписал тебе штраф за превышение сверхсветовой!
-				TargetGreetingFoe=Эх, я тут с такой цыпой по Галанету общался, и вдруг ты нарисовался. Вали-ка лучше отсюда, пока цел!
+				TargetGreetingFoe=Эх, я тут с такой цыпой по Галанету общался, и вдруг ты нарисовался! Вали-ка лучше отсюда, пока цел!
 				AttackersGreetingNormal=В данный момент я нахожусь при исполнении и не намерен тратить время на разговоры с наёмниками вроде тебя.
 				AttackersGreetingFoe=За нападение на военное судно при исполнении им служебных обязанностей ваш корабль подлежит немедленному и безоговорочному уничтожению! Разговор окончен.
 				TargetOnAttack=<Warrior>
 				TargetOnAttack=<clr><clrEnd>
-				TargetOnAttack=Э, вы чё творите-то? Вы вообще хоть соображаете башкой на кого напали? Я тут вообще-то при исполнении! Группа - открыть огонь по врагу!
+				TargetOnAttack=Э, вы чё творите-то? Вы вообще хоть соображаете башкой на кого напали? Я тут вообще-то при исполнении!
+				TargetOnAttack=Группа - открыть огонь по врагу!
 			}
 			5 ^{
 				Type=Coalition
@@ -1945,8 +1946,11 @@ ShipInfo ^{
 								02=unknown GetParFromString = ImportedFunction('UtilityFunctions', 'GetParFromString');
 								03=str ships_id = ShipCustomShipInfoTextData(0, cur_info, 1);
 								04=dword head_ship = GetParFromString(ships_id, ',', 0, 0);
-								05=if(GetData(3, attacker) == head_ship || attacker == Player())
-								06 ^{
+								//Попытка запросить данные из группы игрока в акткоде приведёт к крашу, поэтому пишу проверку как мудак
+								05=int check = (attacker == Player());
+								06=if(!check) check = (GetData(3, attacker) == head_ship);
+								07=if(check)
+								08 ^{
 									01=head_ship = IdToShip(head_ship);
 									02=if(ShipStar(Player()) == ShipStar(head_ship) && ShipInNormalSpace(Player()))
 									03 ^{
@@ -1955,9 +1959,9 @@ ShipInfo ^{
 											01=str ether_text = ShipCustomShipInfoTextData(0, cur_info, 2);
 											02=if(ether_text != '')
 											03 ^{
-												01=str ether_icon = GetParFromString(ether_text, ',', 0, 0);
-												02=int ether_type = GetParFromString(ether_text, ',', 1, 0);
-												03=ether_text = GetParFromString(ether_text, ',', 2, 0);
+												01=str ether_icon = GetParFromString(ether_text, ',,,', 0, 0);
+												02=int ether_type = GetParFromString(ether_text, ',,,', 1, 0);
+												03=ether_text = GetParFromString(ether_text, ',,,', 2, 0);
 												04=CustomEther(ether_icon, ether_type, '', ether_text, head_ship);
 											}
 										}
@@ -1967,7 +1971,7 @@ ShipInfo ^{
 									06=unknown ParsCountFromString = ImportedFunction('UtilityFunctions', 'ParsCountFromString');
 									07=for(int i = 1; i < ParsCountFromString(ships_id, ','); i = i + 1)
 									08 ^{
-										01=dword ship = IdToShip(GetParFromString(ships_id, ',', i, 0));
+										01=ship = IdToShip(GetParFromString(ships_id, ',', i, 0));
 										02=ShipDeleteCustomShipInfo(ship, 'ShuMercs_QuestTargetAttackMark');
 										03=RelationToRanger(ship, Player(), 0);
 									}
