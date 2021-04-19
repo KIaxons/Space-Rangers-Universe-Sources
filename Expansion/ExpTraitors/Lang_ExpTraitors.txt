@@ -625,173 +625,186 @@ UselessItems ^{
         Cost=Average
         Name=Говорящий попугай
 		OnUseCode ^{
-			01=if(Name(CurItem())=='Говорящий попугай')
+			01=if(Name(CurItem()) == 'Говорящий попугай')
 			02 ^{
-				01=str TempName=TextBox('Выберите имя для вашего питомца:','',50);
-				02=if(TempName=='')exit;
-				03=else SetName(CurItem(),TempName);
+				01=str TempName = TextBox('Выберите имя для вашего питомца:', '', 50);
+				02=if(TempName == '') exit;
+				03=else SetName(CurItem(), TempName);
 			}
-			03=else Sound('Sound.ParrotPhrase'+(rnd(6)+1));
+			03=else Sound('Sound.ParrotPhrase' + (rnd(6) + 1));
 		}
 		OnActCodeTypes=t_OnStep,t_OnEnteringForm,t_OnReEnteringForm,t_OnWeaponShot,t_OnMissileShot,t_OnGettingWeaponHit,t_OnGettingMissileHit,t_OnDealingDamage,t_OnTakingDamage,t_OnItemPickUp,t_OnDropItemFixed,t_OnDropItem,t_OnPlayerChangeHull,t_OnItemEquip,t_OnItemDeEquip,t_OnShowingItemInfo,t_OnItemDestroy
-		OnActStepTypes=0
+		OnActStepTypes=0,11
 		OnActCode ^{
 			//UselessItemData1 - сколько дней игрок таскал попугая с собой в трюме;
-			//UselessItemData2 - размер бонуса к обаянию игрока;
+			//UselessItemData2 - размер текущего бонуса к обаянию игрока;
 			//UselessItemData3 - начислен ли бонус обаяния игроку: -1 - начислен, -2 - не начислен, -3 - попугая выкинули в открытый космос;
 			01=dword bird = CurItem();
 			02=if(UselessItemData(bird, 3) == -3) exit;
-			03=if(ScriptItemActionType(t_OnStep))
+			03=if(ScriptItemActionType(t_OnStep, 1))
 			04 ^{
 				//Попугай не на борту
-				01=if(FindItemInShip(Player(),bird)==-1)
+				01=if(FindItemInShip(Player(), bird) == -1)
 				02 ^{
-					01=if(UselessItemData(bird,3)==-1)
+					01=if(UselessItemData(bird, 3) == -1)
 					02 ^{
 						//Снимаем бонус, если ранее попугай как-то покинул корабль нестандартным путём
-						01=ShipSpecialBonuses(Player(),bonSkill5,ShipSpecialBonuses(Player(),bonSkill5)-UselessItemData(bird,2));
-						02=UselessItemData(bird,3,-2);
+						01=ShipSpecialBonuses(Player(), bonSkill5, ShipSpecialBonuses(Player(), bonSkill5) - UselessItemData(bird, 2));
+						02=UselessItemData(bird, 3, -2);
 					}
 				}
 				//Попугай на борту
 				03=else
 				04 ^{
-					01=if(UselessItemData(bird,3)==-2)
+					01=if(UselessItemData(bird, 3) == -2)
 					02 ^{
 						//Начисляем бонус, если ранее попугай как-то попал на корабль нестандартным путём
-						01=ShipSpecialBonuses(Player(),bonSkill5,ShipSpecialBonuses(Player(),bonSkill5)+UselessItemData(bird,2));
-						02=UselessItemData(bird,3,-1);
+						01=ShipSpecialBonuses(Player(), bonSkill5, ShipSpecialBonuses(Player(), bonSkill5) + UselessItemData(bird, 2));
+						02=UselessItemData(bird, 3, -1);
 					}
 					//Крутим счётчик дней, проведённых вместе с попугаем на борту
-					03=UselessItemData(bird,1,UselessItemData(bird,1)+1);
+					03=UselessItemData(bird, 1, UselessItemData(bird, 1) + 1);
 				}
 			}
-			05=else if(ScriptItemActionType(t_OnReEnteringForm))
+			//Снимаем маркер рандомного крика попугая, если он есть (маркер записан в имени, т.к. больше негде, блять)
+			05=if(ScriptItemActionType(t_OnStep, 11))
 			06 ^{
+				01=if(substr(Name(bird), 0, 3) == '<M>')
+				02 ^{
+					01=SetName(bird, substr(Name(bird), 3));
+				}
+			}
+			07=else if(ScriptItemActionType(t_OnReEnteringForm))
+			08 ^{
 				//Попугай на борту
-				01=if(UselessItemData(bird,3)==-2)
+				01=if(UselessItemData(bird, 3) == -2)
 				02 ^{
 					//Начисляем бонус
-					01=ShipSpecialBonuses(Player(),bonSkill5,ShipSpecialBonuses(Player(),bonSkill5)+UselessItemData(bird,2));
-					02=UselessItemData(bird,3,-1);
+					01=ShipSpecialBonuses(Player(), bonSkill5, ShipSpecialBonuses(Player(), bonSkill5) + UselessItemData(bird, 2));
+					02=UselessItemData(bird, 3, -1);
 				}
 				//Добавляем доп. инфошку для детекта извлечения попугая из трюма
-				03=if(ShipFindCustomShipInfoByType(Player(),'ExpTraitors_ParrotChange')==-1)ShipAddCustomShipInfo(Player(),'ExpTraitors_ParrotChange','NoShow',Id(bird));
+				03=if(ShipFindCustomShipInfoByType(Player(), 'ExpTraitors_ParrotChange') == -1) ShipAddCustomShipInfo(Player(), 'ExpTraitors_ParrotChange', 'NoShow', Id(bird));
 			}
-			07=else if(ScriptItemActionType(t_OnEnteringForm))
-			08 ^{
-				01=if(CurrentForm()=='Ship')
+			09=else if(ScriptItemActionType(t_OnEnteringForm))
+			10 ^{
+				01=if(CurrentForm() == 'Ship')
 				02 ^{
-					01=if(FormCurShip()==Player())
+					01=if(FormCurShip() == Player())
 					02 ^{
 						//Проверка на выключенный бонус
-						01=if(UselessItemData(bird,3)==-2)
+						01=if(UselessItemData(bird, 3) == -2)
 						02 ^{
 							//Включаем его, если выключен
-							01=ShipSpecialBonuses(Player(),bonSkill5,ShipSpecialBonuses(Player(),bonSkill5)+UselessItemData(bird,2));
-							02=UselessItemData(bird,3,-1);
+							01=ShipSpecialBonuses(Player(), bonSkill5, ShipSpecialBonuses(Player(), bonSkill5) + UselessItemData(bird, 2));
+							02=UselessItemData(bird, 3, -1);
 						}
 						//Проверки на лояльность попугая
-						03=if(UselessItemData(bird,2)==1)
+						03=if(UselessItemData(bird, 2) == 1)
 						04 ^{
-							01=if(UselessItemData(bird,1)>=2555)//7 лет вместе
+							01=if(UselessItemData(bird, 1) >= 2555) //7 лет вместе
 							02 ^{
 								//Снимаем старый бонус (если он активен)
-								01=if(UselessItemData(bird,3)==-1)ShipSpecialBonuses(Player(),bonSkill5,ShipSpecialBonuses(Player(),bonSkill5)-UselessItemData(bird,2));
+								01=if(UselessItemData(bird, 3) == -1) ShipSpecialBonuses(Player(), bonSkill5, ShipSpecialBonuses(Player(), bonSkill5) - UselessItemData(bird, 2));
 								//Запоминаем новый бонус
-								02=UselessItemData(bird,2,2);
+								02=UselessItemData(bird, 2, 2);
 								//И вешаем его
-								03=ShipSpecialBonuses(Player(),bonSkill5,ShipSpecialBonuses(Player(),bonSkill5)+2);
-								04=MessageBox(Format(CT('UselessItems.ExpTraitors_PirateParrot.ParrotLoyalty1'),'<Name>',Name(bird)));
-								05=UselessItemText(bird,CT('UselessItems.ExpTraitors_PirateParrot.ParrotLoyaltyText1'));
+								03=ShipSpecialBonuses(Player(), bonSkill5, ShipSpecialBonuses(Player(), bonSkill5) + 2);
+								04=MessageBox(Format(CT('UselessItems.ExpTraitors_PirateParrot.ParrotLoyalty1'), '<Name>', Name(bird)));
+								05=UselessItemText(bird, CT('UselessItems.ExpTraitors_PirateParrot.ParrotLoyaltyText1'));
 							}
 						}
-						05=else if(UselessItemData(bird,2)==2)
+						05=else if(UselessItemData(bird, 2) == 2)
 						06 ^{
-							01=if(UselessItemData(bird,1)>=7665)//21 год вместе
+							01=if(UselessItemData(bird, 1) >= 7665) //21 год вместе
 							02 ^{
 								//Снимаем старый бонус (если он активен)
-								01=if(UselessItemData(bird,3)==-1)ShipSpecialBonuses(Player(),bonSkill5,ShipSpecialBonuses(Player(),bonSkill5)-UselessItemData(bird,2));
+								01=if(UselessItemData(bird, 3) == -1) ShipSpecialBonuses(Player(), bonSkill5, ShipSpecialBonuses(Player(), bonSkill5) - UselessItemData(bird, 2));
 								//Запоминаем новый бонус
-								02=UselessItemData(bird,2,3);
+								02=UselessItemData(bird, 2, 3);
 								//И вешаем его
-								03=ShipSpecialBonuses(Player(),bonSkill5,ShipSpecialBonuses(Player(),bonSkill5)+3);
-								04=MessageBox(Format(CT('UselessItems.ExpTraitors_PirateParrot.ParrotLoyalty2'),'<Name>',Name(bird)));
-								05=UselessItemText(bird,CT('UselessItems.ExpTraitors_PirateParrot.ParrotLoyaltyText2'));
+								03=ShipSpecialBonuses(Player(), bonSkill5, ShipSpecialBonuses(Player(), bonSkill5) + 3);
+								04=MessageBox(Format(CT('UselessItems.ExpTraitors_PirateParrot.ParrotLoyalty2'), '<Name>', Name(bird)));
+								05=UselessItemText(bird, CT('UselessItems.ExpTraitors_PirateParrot.ParrotLoyaltyText2'));
 							}
 						}
 					}
 				}
 			}
 			//При "смерти" попугая
-			09=else if(ScriptItemActionType(t_OnItemDestroy))
-			10 ^{
+			11=else if(ScriptItemActionType(t_OnItemDestroy))
+			12 ^{
 				//Снимаем бонус, если он висит на игроке
-				01=if(UselessItemData(bird,3)==-1)
+				01=if(UselessItemData(bird, 3) == -1)
 				02 ^{
-					01=ShipSpecialBonuses(Player(),bonSkill5,ShipSpecialBonuses(Player(),bonSkill5)-UselessItemData(bird,2));
-					02=UselessItemData(bird,3,-2);
+					01=ShipSpecialBonuses(Player(), bonSkill5, ShipSpecialBonuses(Player(), bonSkill5) - UselessItemData(bird, 2));
+					02=UselessItemData(bird, 3, -2);
 				}
-				03=if(CurrentForm()=='Ship')
+				03=if(CurrentForm() == 'Ship')
 				04 ^{
-					01=if(UselessItemData(bird,3)!=-3)
+					01=if(UselessItemData(bird, 3) != -3)
 					02 ^{
-						01=int sellCheck=0;
-						02=for(int i=GalaxyEvents()-1;i>=0;i=i-1)
+						01=int sellCheck = 0;
+						02=for(int i = GalaxyEvents() - 1; i >= 0; i = i - 1)
 						03 ^{
-							01=if(GalaxyEventDate(i)<CurTurn())break;
-							02=if(GalaxyEventType(i)=='PlayerSellsEquipment')
+							01=if(GalaxyEventDate(i) < CurTurn()) break;
+							02=if(GalaxyEventType(i) == 'PlayerSellsEquipment')
 							03 ^{
 								//Узнаём, что попугай был продан
-								01=if(GalaxyEventData(i,3)==Id(bird))
+								01=if(GalaxyEventData(i, 3) == Id(bird))
 								02 ^{
-									01=sellCheck=1;
+									01=sellCheck = 1;
 									02=break;
 								}
 							}
 						}
 						//Попугай погиб
-						04=if(!sellCheck)Sound('Sound.ParrotPhrase2');
+						04=if(!sellCheck) Sound('Sound.ParrotPhrase2');
 						//Попугай был продан
 						05=else Sound('Sound.ParrotPhrase6');
 					}
 				}
 			}
-			11=else if(ScriptItemActionType(t_OnDropItemFixed) || ScriptItemActionType(t_OnDropItem))
-			12 ^{
+			13=else if(ScriptItemActionType(t_OnDropItemFixed) || ScriptItemActionType(t_OnDropItem))
+			14 ^{
 				//Если попугая выкинули в космос
-				01=if(ScriptItemActObject1()==bird)
+				01=if(ScriptItemActObject1() == bird)
 				02 ^{
-					01=if(UselessItemData(bird,3)==-1)
+					01=if(UselessItemData(bird, 3) == -1)
 					02 ^{
-						01=ShipSpecialBonuses(Player(),bonSkill5,ShipSpecialBonuses(Player(),bonSkill5)-UselessItemData(bird,2));
+						01=ShipSpecialBonuses(Player(), bonSkill5, ShipSpecialBonuses(Player(), bonSkill5) - UselessItemData(bird, 2));
 					}
 					03=Sound('Sound.ParrotPhrase2');
-					04=UselessItemData(bird,3,-3);
-					05=CoordX(bird,0);
-					06=CoordY(bird,0);
+					04=UselessItemData(bird, 3, -3);
+					05=CoordX(bird, 0);
+					06=CoordY(bird, 0);
 				}
-				03=else if(rnd(100)+1<=4)Sound('Sound.ParrotPhrase1');
-				04=else if(rnd(100)+1<=4)Sound('Sound.ParrotPhrase4');
+				03=else if(rnd(100) + 1 <= 4) Sound('Sound.ParrotPhrase1');
+				04=else if(rnd(100) + 1 <= 4) Sound('Sound.ParrotPhrase4');
 			}
 			//Говорилка
-			13=else if(ScriptItemActionType(t_OnItemEquip) || ScriptItemActionType(t_OnItemDeEquip))
-			14 ^{
-				01=if(rnd(100)+1<=4)Sound('Sound.ParrotPhrase3');
-			}
-			15=else if(ScriptItemActionType(t_OnShowingItemInfo))
+			15=else if(ScriptItemActionType(t_OnItemEquip) || ScriptItemActionType(t_OnItemDeEquip))
 			16 ^{
-				01=if(rnd(100)+1<=4)Sound('Sound.ParrotPhrase5');
+				01=if(rnd(100) + 1 <= 4) Sound('Sound.ParrotPhrase3');
 			}
-			17=else if(ScriptItemActionType(t_OnPlayerChangeHull))
+			17=else if(ScriptItemActionType(t_OnShowingItemInfo))
 			18 ^{
-				01=if(rnd(100)+1<=6)Sound('Sound.ParrotPhrase6');
+				01=if(rnd(100) + 1 <= 4) Sound('Sound.ParrotPhrase5');
 			}
-			19=else
+			19=else if(ScriptItemActionType(t_OnPlayerChangeHull))
 			20 ^{
-				01=if(rnd(1000)+1<=25)
+				01=if(rnd(100) + 1 <= 6) Sound('Sound.ParrotPhrase6');
+			}
+			//Попугай вопит в рандомные моменты во время хода
+			21=else
+			22 ^{
+				01=if(rnd(1000) + 1 <= 45)
 				02 ^{
-					01=Sound('Sound.ParrotPhrase'+(rnd(6)+1));
+					01=if(substr(Name(bird), 0, 3) != '<M>')
+					02 ^{
+						01=Sound('Sound.ParrotPhrase' + (rnd(6) + 1));
+						02=SetName(bird, '<M' + '>' + Name(bird));
+					}
 				}
 			}
 		}
