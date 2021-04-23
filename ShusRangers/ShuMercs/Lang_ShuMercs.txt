@@ -828,12 +828,84 @@ Quest ^{
 			Coalition ^{
 				AttackDominators ^{
 					1 ^{
-					
+						FirstStarMaxRange=55
+						SecondStarMaxRange=55
+						MinTime=95
+						MaxTime=140
+						BaseWarriorsCount=3 //Суммируется с макс. числом наёмников, получается примерно 10, плюс по одному военному за каждого доминатора сверх 15 в атакуемой системе
+						PiratesPerDomiks=8,3,2,1,1,1,5,0 //"Прайс" очков за каждый тип корабля доминаторов (сколько примерно военных по силе ему равно), от эквентор для клига
+						PiratesPerDomiksEvoArmada=12,5,3,1,1,1,8,0 //Тот же "прайс", но с учётом подключённого мода EvoArmada
+						MinDomiksCount=15 //Минимальное число доминаторов в атакуемой системе, где каждый корабль считается по своему "прайсу" очков
+						QuestIntro=Шеф, недавно мы получили письмо... Да-да, самое обычное письмо, в бумажном конверте. Я таких за всю жизнь всего штуки три видел, да и то в фильмах. Пишет тебе работяга из генштаба Коалиции. Давай лучше я вскрою и прочту, а то мало ли что там может быть, сейчас много всяких квантовых газов развелось...
+						QuestIntro=Таак-с... Угу... Это не интересно... А тут ещё какая-то ерунда... Ну, в целом ясно.
+						QuestIntro=Если опустить всякие формальности по типу: "Помогите мне, ради бога!!!" и "Если вы не согласитесь, я буду всю жизнь драить генеральские сортиры!", здесь говорится о запланированной атаке на захваченную доминаторами систему <TargetStar>, в которой нас приглашают принять участие за неплохую сумму в <Cost> cr.
+						QuestIntro=Освободить систему обязательно до <EndDate>, иначе атака будет признана неудачной, а мы все окажемся "прокляты до семьсот семьдесят седьмого колена".
+						QuestIntro=Чё-то они все какие-то нервные там, военные эти. Так что мне им ответить?
+						QuestAcceptedPlayer=Отправь им голубя с нашим согласием
+						QuestAccepted=Понял, босс... Отправлю к ним капрала Голубенко, а ребятам передам приказ на взлёт.
+						QuestDeclinedPlayer=Откажи им
+						QuestDeclined=Как скажешь, босс. Я сообщу командованию Коалиции, что мы отказывается от задания. Что-нибудь ещё?
+						QuestNeedToThinkPlayer=Мне надо подумать
+						QuestNoteTitle=Контракт от <color=255,240,100>Коалиции</color> на захват системы <TargetStar> (<color=255,240,100>доминаторы</color>)
+						QuestNoteTitleReward=Награда за выполнение: <Cost> cr. и <Reputation> очков <color=255,240,100>репутации Совета</color>
+						QuestNoteInProcess1=Контракт в процессе выполнения. Необходимо объединиться с военными кораблями на планете <BeginPlanet>, после чего нанести совместный удар по системе <TargetStar>. Захватить систему необходимо до истечения указанного срока.
+						QuestNoteInProcess2=Контракт в процессе выполнения. Необходимо захватить систему <TargetStar> до истечения указанного срока.
+						QuestNoteSuccess=Контракт выполнен. Система <TargetStar> перешла под контроль военных сил <color=255,240,100>Коалиции</color>. Оплата в размере <Cost> cr. переведена на счёт вашей организации. Совет благодарит вас за отличную работу!
+						QuestNoteFailed=Контракт провален. Ваша организация не уложилась в установленный срок. Совет крайне недоволен вашей неудачей.
+						SupportOnMeeting=<Warrior>
+						SupportOnMeeting=<clr><clrEnd>
+						SupportOnMeeting=О, кажется это обещанная подмога. Видать, генералу уж очень приспичило свою виллу отбить, раз даже решил на наёмников раскошелиться. Впрочем, его дело.
+						SupportOnMeeting=Отряд, строимся!
+						SupportGreeting=Сейчас узнаем, из какого теста твои наёмнички, <Player>. Покажите нам, чего вы стоите.
+						SupportGreetingWhileBattle=Делай свою работу и не отвлекай меня!
+						SupportGreetingAfterWin="Отличная" работа, <Player>! Благодаря тебе и твоим парням вилла генерала спасена, так что в скором времени он наверняка порекомендует вашу организацию соседним ведомствам.
+						SupportOnPlayerAttack=<ThisShip>
+						SupportOnPlayerAttack=<clr><clrEnd>
+						SupportOnPlayerAttack=Эй, вы чё, совсем там сдурели? Вам что, доминаторы больше заплатили?
+						SupportOnPlayerAttack=Отряд, перенаправить орудия, цель - наёмники организации <PlayerOrgName>!
 					}
 				}
 				AttackPirateClan ^{
 					1 ^{
-						
+						FirstStarMaxRange=55
+						SecondStarMaxRange=55
+						MinTime=95
+						MaxTime=140
+						BaseWarriorsCount=3 //Суммируется с макс. числом наёмников, получается примерно 10, плюс по одному пирату за каждого военного сверх 10 в атакуемой системе
+						WarriorsPerCapitalShip=3,5 //За какое число военных считается попавший в атакующую группировку флагман (что, в принципе, возможно)
+						PiratesPerCapitalShip=2,4 //Плюс по три военных за каждого флагмана в системе (каждый флагман или станция считается за несколько кораблей)
+						PiratesPerStation=4,6 //значение через запятую берётся в случае, если подключён мод EvoArmada
+						MinPiratesCount=12 //Минимальное число военных в атакуемой системе, где каждый флагман или станция считается сразу за несколько кораблей
+						QuestIntro=Тут какой-то чудик, явно только что сбежавший из дурки, хочет личной аудиенции. Не знаю, что за тип, но говорит, мол, работает на военную разведку, а мы типа не так все поняли. Привести его? Ну как скажешь, босс... Эй, Ржавый! А ну тащи сюда этого клоуна!
+						QuestIntro=<SplitLine>
+						QuestIntro=П-простите пожалуйста, уважаемый <Player>. Скажите вашим подчинённым чтобы не держали меня на мушке, а то б-боюсь немножко!
+						QuestIntro=Я не шпион, а всего лишь простой уборщик в генштабе С-совета Коалиции. И именно меня заставили к вам лететь! Угрожали лишением годовой зарплаты! Что? Почему я в костюме клоуна? Так ради конспирации, конечно! Враги ж повсюду, поэтому начальство принудительно посоветовало мне сменить имидж.
+						QuestIntro=Д-дело в том, что нам стало известно о тайном съезде самых опасных хакеров Галактики, который скоро состоится на планете <TargetPlanet>. Меня послали договориться с вами о проведении полномасштабной совместной операции по захвату системы <TargetStar>.
+						QuestIntro=Если у вас всё получится, командование готово выделить <Cost> cr. из моего... Ой, то есть из военного бюджета. И, пожалуйста, <Player>, управьтесь до <EndDate>, а иначе мы не успеем установить блокаду системы, и все хакеры скроются с радаров.
+						QuestIntro=<SplitLine>
+						QuestIntro=Ну всё, уводите бедолагу, а то смотреть больно... И уберите уже кто-нибудь за ним пол!!! Ну так что скажешь, босс? Деньги-то вроде неплохие предлагают.
+						QuestAcceptedPlayer=Передай ему, что мы согласны
+						QuestAccepted=Понял, босс. Я уведомлю посланника, что мы берёмся за дело, и передам ребятам приказ на взлёт.
+						QuestDeclinedPlayer=Откажи ему
+						QuestDeclined=Как скажешь, босс. Я сообщу посланнику, что мы отказывается от задания. Что-нибудь ещё?
+						QuestNeedToThinkPlayer=Мне надо подумать
+						QuestNoteTitle=Контракт от <color=255,240,100>Коалиции</color> на захват системы <TargetStar> (<color=255,240,100>пиратский клан</color>)
+						QuestNoteTitleReward=Награда за выполнение: <Cost> cr. и <Reputation> очков <color=255,240,100>репутации Совета</color>
+						QuestNoteInProcess1=Контракт в процессе выполнения. Необходимо объединиться с военными кораблями на планете <BeginPlanet>, после чего нанести совместный удар по системе <TargetStar>. Захватить систему необходимо до истечения указанного срока.
+						QuestNoteInProcess2=Контракт в процессе выполнения. Необходимо захватить систему <TargetStar> до истечения указанного срока.
+						QuestNoteSuccess=Контракт выполнен. Система <TargetStar> перешла под контроль военных сил <color=255,240,100>Коалиции</color>. Оплата в размере <Cost> cr. переведена на счёт вашей организации. Совет благодарит вас за отличную работу!
+						QuestNoteFailed=Контракт провален. Ваша организация не уложилась в установленный срок. Совет крайне недоволен вашей неудачей.
+						SupportOnMeeting=<Warrior>
+						SupportOnMeeting=<clr><clrEnd>
+						SupportOnMeeting=Группа, занять позиции! Боевое построение альфа, готовимся к скорому гиперпрыжку!
+						SupportGreeting=Не нарушай режим радиомолчания по пустякам, <Player>. Ты прекрасно знаешь, что нужно делать.
+						SupportGreetingWhileBattle=Делай свою работу и не отвлекай меня!
+						SupportGreetingAfterWin=Верховное командование выражает тебе свою признательность, <Player>, а также всем пилотам организации <PlayerOrgName> за блестяще проведённую военную операцию! Надеемся на дальнейшее сотрудничество.
+						SupportOnPlayerAttack=<ThisShip>
+						SupportOnPlayerAttack=<clr><clrEnd>
+						SupportOnPlayerAttack=Грязные наёмники, да вы хуже пиратов! У тех хотя бы свой кодекс чести есть, а для вас ничего не свято!
+						SupportOnPlayerAttack=Группа, уничтожить предателей!
+						AttackersGreeting=Чёртовы наёмники, только вас-то нам здесь только и не хватало!
 					}
 				}
 				DefendDominators ^{
@@ -850,7 +922,38 @@ Quest ^{
 			PirateClan ^{
 				AttackDominators ^{
 					1 ^{
-						
+						FirstStarMaxRange=55
+						SecondStarMaxRange=55
+						MinTime=95
+						MaxTime=140
+						BasePiratesCount=4 //Суммируется с макс. числом наёмников, получается примерно 10, плюс по одному пирату за каждого доминатора сверх 15 в атакуемой системе
+						PiratesPerDomiks=8,3,2,1,1,1,5,0 //"Прайс" очков за каждый тип корабля доминаторов (сколько примерно пиратов по силе ему равно), от эквентор для клига
+						PiratesPerDomiksEvoArmada=12,5,3,1,1,1,8,0 //Тот же "прайс", но с учётом подключённого мода EvoArmada
+						MinDomiksCount=15 //Минимальное число доминаторов в атакуемой системе, где каждый корабль считается по своему "прайсу" очков
+						QuestIntro=Есть один контракт от пиратского клана. Их умельцы засекли странный сигнал, исходящий из системы <TargetStar>, которая сейчас захвачена доминаторами. Головастики клана считают, что на планете <TargetPlanet> мог остаться один из тайников самого <clr>Рачехана<clrEnd>. Что может быть в том тайнике нам неизвестно. Однако в народе ходит старая пиратская байка, мол, только найдя все тайники <clr>Рачехана<clrEnd>, получится полноценно воссоздать историю становления клана. Это вроде как должно нехило поднять им боевой дух, сплотить вокруг общей цели, да и просто прекратить постоянные споры о том, откуда же они нахрен взялись! Ну короче, не забивай себе всем этим голову.
+						QuestIntro=Обнаруженный сигнал слабеет с каждым днём, и отследить его наверняка возможно будет лишь до <EndDate>, после чего он, предположительно, исчезнет. Клан предлагает нам оплату в размере <Cost> cr. в случае успеха операции. Предварительная встреча с отрядом клана должна состояться в системе <BeginStar>, где наши пилоты смогут дозаправиться и перезарядить пушки.
+						QuestAcceptedPlayer=Принимай контракт
+						QuestAccepted=Понял, босс. Я уведомлю клан, что мы берёмся за дело, и передам ребятам приказ на взлёт.
+						QuestDeclinedPlayer=Откажи им
+						QuestDeclined=Как скажешь, босс. Я сообщу клану, что мы отказывается от задания. Что-нибудь ещё?
+						QuestNeedToThinkPlayer=Мне надо подумать
+						QuestNoteTitle=Контракт от <color=255,240,100>пиратского клана</color> на захват системы <TargetStar> (<color=255,240,100>доминаторы</color>)
+						QuestNoteTitleReward=Награда за выполнение: <Cost> cr. и <Reputation> очков <color=255,240,100>репутации клана</color>
+						QuestNoteInProcess1=Контракт в процессе выполнения. Необходимо объединиться с пиратскими силами на планете <BeginPlanet>, после чего нанести совместный удар по системе <TargetStar>. Захватить систему необходимо до истечения указанного срока.
+						QuestNoteInProcess2=Контракт в процессе выполнения. Необходимо захватить систему <TargetStar> до истечения указанного срока.
+						QuestNoteSuccess=Контракт выполнен. Система <TargetStar> перешла под контроль <color=255,240,100>пиратского клана</color>. Оплата в размере <Cost> cr. переведена на счёт вашей организации. Клан благодарит вас за отличную работу!
+						QuestNoteFailed=Контракт провален. Ваша организация не уложилась в установленный срок. Клан крайне недоволен вашей неудачей.
+						SupportOnMeeting=<Pirate>
+						SupportOnMeeting=<clr><clrEnd>
+						SupportOnMeeting=Ну шо братва, все готовы? Влетели, захватили, и по нарам - приключение на <color=255,240,100>20</color> дней, поехали!
+						SupportGreeting=Ну ты там как, в бизнес-центре страховку-то оплатил? А то <color=255,240,100>10</color> тыщ в наше время уже не деньги... Хе-хе, да шучу я, <Player> - рожа у тебя смешная просто.
+						SupportGreetingWhileBattle=Делай свою работу и не отвлекай меня!
+						SupportGreetingAfterWin=Харош, <Player>! И вояки твои тоже что надо! Надеюсь только, мы не за какую-то очередную туфту головой рисковали.
+						SupportGreetingAfterWin=Кстати, мистер Ву поставил вашей конторе аж целых четыре звезды на <clr>"Мерканавте"<clrEnd>, а это дорогого стоит.
+						SupportOnPlayerAttack=<ThisShip>
+						SupportOnPlayerAttack=<clr><clrEnd>
+						SupportOnPlayerAttack=Мистер <color=255,240,100>Ву</color> будет очень недоволен! Ты ещё пожалеешь о том, что сделал!
+						//GalaxyNewsAfterWin=Бойцы пиратского клана, совместно с наёмниками из организации <PlayerOrgName>, недавно провели блестящую операцию по освобождению системы <TargetStar> от доминаторских агрессоров. Тем не менее, военные аналитики Коалиции выражают обеспокоенность привлечением пиратским кланом дополнительных сил третьей стороны.
 					}
 				}
 				AttackCoalition ^{
@@ -871,24 +974,30 @@ Quest ^{
 						QuestIntro=Захватить систему необходимо строго до <EndDate>. В случае успеха вы получите благодарность клана в размере <Cost> cr., а также мой собственный положительный отзыв. Не задерживайтесь с ответом - Совет очень не любит ждать.
 						QuestIntro=<SplitLine>
 						QuestIntro=Ну и мерзкий же тип, а? Что мне ему ответить, босс?
-						QuestAcceptedPlayer=Принимай контракт
+						QuestAcceptedPlayer=Передай ему, что мы согласны
 						QuestAccepted=Понял, босс. Я уведомлю посланника, что мы берёмся за дело, и передам ребятам приказ на взлёт.
 						QuestDeclinedPlayer=Откажи ему
 						QuestDeclined=Как скажешь, босс. Я сообщу посланнику, что мы отказывается от задания. Что-нибудь ещё?
 						QuestNeedToThinkPlayer=Мне надо подумать
-						QuestNoteTitle=Пиратский контракт на захват системы <TargetStar> (<color=255,240,100>Коалиция</color>)
+						QuestNoteTitle=Контракт от <color=255,240,100>пиратского клана</color> на захват системы <TargetStar> (<color=255,240,100>Коалиция</color>)
 						QuestNoteTitleReward=Награда за выполнение: <Cost> cr. и <Reputation> очков <color=255,240,100>репутации клана</color>
 						QuestNoteInProcess1=Контракт в процессе выполнения. Необходимо объединиться с пиратскими силами на планете <BeginPlanet>, после чего нанести совместный удар по системе <TargetStar>. Захватить систему необходимо до истечения указанного срока.
 						QuestNoteInProcess2=Контракт в процессе выполнения. Необходимо захватить систему <TargetStar> до истечения указанного срока.
-						QuestNoteSuccess=Контракт выполнен. Система <TargetStar> перешла под контроль пиратского клана. Оплата в размере <Cost> cr. переведена на счёт вашей организации. Клан благодарит вас за отличную работу.
+						QuestNoteSuccess=Контракт выполнен. Система <TargetStar> перешла под контроль <color=255,240,100>пиратского клана</color>. Оплата в размере <Cost> cr. переведена на счёт вашей организации. Клан благодарит вас за отличную работу!
 						QuestNoteFailed=Контракт провален. Ваша организация не уложилась в установленный срок. Клан крайне недоволен вашей неудачей.
 						SupportOnMeeting=<Pirate>
 						SupportOnMeeting=<clr><clrEnd>
 						SupportOnMeeting=Хм, вроде ребята матёрые, может чё-то даже и выгорит. Зря, видать, мистер <color=255,240,100>Ву</color> кипеш наводил. Ну чё народ, пушки проверяем - движки прогреваем, а затем вперёд и с песней!
 						SupportGreeting=Начальник, ты не очкуй. Всё путём будет - нам не впервой на это дело ходить.
+						SupportGreetingWhileBattle=Делай свою работу и не отвлекай меня!
 						SupportGreetingAfterWin=Я ж говорил, что всё выгорит, а ты не верил! Знатная заруба вышла - будет теперь чё браткам рассказать.
-						SupportGreetingAfterWin=Кстати, мистер Ву поставил вашей конторе аж целых четыре звезды на <clr>"Мерканавте"<clrEnd>, а это дорогого стоит.
-						GalaxyNewsAfterWin=Источники из военного ведомства Коалиции подтвердили, что сегодня, при поддержке организации <PlayerOrgName>, пиратами была захвачена система <TargetStar>. Совет Коалиции призывает местных жителей не терять надежды и ждать скорейшего освобождения от гнёта проклятых оккупантов, а также выразил обеспокоенность наличию активной поддержки пиратского клана со стороны организации <PlayerOrgName>.
+						SupportGreetingAfterWin=Кстати, мистер <clr>Ву<clrEnd> поставил вашей конторе аж целых четыре звезды на <clr>"Мерканавте"<clrEnd>, а это дорогого стоит.
+						SupportOnPlayerAttack=<ThisShip>
+						SupportOnPlayerAttack=<clr><clrEnd>
+						SupportOnPlayerAttack=Шо?! По своим стрелять!!? Да шли бы вы к девияблу с такими закидонами!
+						SupportOnPlayerAttack=Эй, братва - вали петухов!
+						AttackersGreeting=Чёртовы наёмники, только вас-то нам здесь только и не хватало!
+						//GalaxyNewsAfterWin=Источники из военного ведомства Коалиции подтвердили, что сегодня, при поддержке организации <PlayerOrgName>, пиратами была захвачена система <TargetStar>. Совет Коалиции призывает местных жителей не терять надежды и ждать скорейшего освобождения от гнёта проклятых оккупантов, а также выразил обеспокоенность вооружённым выступлением организации <PlayerOrgName> на стороне пиратского клана.
 					}
 				}
 				DefendDominators ^{
@@ -2068,7 +2177,7 @@ ShipInfo ^{
 								//Попытка запросить данные из группы игрока в акткоде приведёт к крашу, поэтому пишу проверку как мудак
 								05=int check = (attacker == Player());
 								06=if(!check) check = (GetData(3, attacker) == head_ship);
-								07=if(check)
+								07=if(check && head_ship)
 								08 ^{
 									01=head_ship = IdToShip(head_ship);
 									//Выводим заранее записанное уведомление, если в системе с head_ship находится игрок
@@ -2093,8 +2202,9 @@ ShipInfo ^{
 									07=for(int i = 1; i < ParsCountFromString(ships_id, ','); i = i + 1)
 									08 ^{
 										01=ship = IdToShip(GetParFromString(ships_id, ',', i, 0));
-										02=ShipDeleteCustomShipInfo(ship, 'ShuMercs_QuestTargetAttackMark');
-										03=RelationToRanger(ship, Player(), 0);
+										02=if(!ship) continue;
+										03=ShipDeleteCustomShipInfo(ship, 'ShuMercs_QuestTargetAttackMark');
+										04=RelationToRanger(ship, Player(), 0);
 									}
 									//Выставляем head_ship записанные в ShipCustomShipInfoTextData3 команды
 									09=str command_line = ShipCustomShipInfoTextData(0, cur_info, 3);
@@ -2108,6 +2218,77 @@ ShipInfo ^{
 									15=if(offended_planet) RelationToRanger(offended_planet, Player(), 0);
 									16=dword offended_ship = IdToPlanet(ShipCustomShipInfoData(0, cur_info, 3));
 									17=if(offended_ship) RelationToRanger(offended_ship, Player(), 0);
+								}
+							}
+						}
+					}
+				}
+			}
+			ShuMercs_QuestShipsOutOnPlayerAttack ^{
+                Description=NoShow
+                Icon=0
+                Name=Автоматически выводит из группы все указанные корабли, если их атакует игрок (также может выводить записанное уведомление)
+				OnActCodeTypes=t_OnStep,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
+				OnActStepTypes=0
+				OnActCode ^{
+					//ShipCustomShipInfoData1 = ---
+					//ShipCustomShipInfoData2 = ---
+					//ShipCustomShipInfoData3 = ---
+					//ShipCustomShipInfoTextData1 = Id всех кораблей текущей группы, записанные через запятую (первым всегда идёт лидер группы, главная цель)
+					//ShipCustomShipInfoTextData2 = тип и текст уведомления, которое должно быть выведено при получении урона любым из кораблей группы
+					//ShipCustomShipInfoTextData3 = ---
+					01=if(ScriptItemActionType(t_OnStep))
+					02 ^{
+						//По завершении квеста автоматически снимаем данную инфошку
+						01=if(!GetValueFromScript('Mod_ShuMercs', 'ActiveQuestHQ'))
+						02 ^{
+							01=ShipDeleteCustomShipInfo(ScriptItemActShip(), 'ShuMercs_QuestShipsOutOnPlayerAttack');
+						}
+					}
+					03=else
+					04 ^{
+						01=dword cur_ship = ScriptItemActShip();
+						02=dword attacker = ScriptItemActObject1();
+						03=if(ObjectType(attacker) == 7) attacker = MissileOwner(attacker);
+						04=if(!attacker) exit;
+						05=if(ObjectType(attacker) == 5)
+						06 ^{
+							01=if(attacker == Player())
+							02 ^{
+								01=dword cur_info = CurInfo();
+								02=unknown GetParFromString = ImportedFunction('UtilityFunctions', 'GetParFromString');
+								03=str ships_id = ShipCustomShipInfoTextData(0, cur_info, 1);
+								//Выводим заранее записанное уведомление, если в системе с cur_ship находится игрок
+								04=if(ShipStar(Player()) == ShipStar(cur_ship) && ShipInNormalSpace(Player()))
+								05 ^{
+									01=if(Dist(Player(), cur_ship) <= ShipRadarRange(Player()))
+									02 ^{
+										01=str ether_text = ShipCustomShipInfoTextData(0, cur_info, 2);
+										02=if(ether_text != '')
+										03 ^{
+											01=str ether_icon = GetParFromString(ether_text, ',,,', 0, 0);
+											02=int ether_type = GetParFromString(ether_text, ',,,', 1, 0);
+											03=ether_text = Format(GetParFromString(ether_text, ',,,', 2, 0), '<ThisShip' + '>', Name(cur_ship), '255,240,100');
+											04=CustomEther(ether_icon, ether_type, '', ether_text, cur_ship);
+										}
+									}
+								}
+								06=ShipDeleteCustomShipInfo(cur_ship, 'ShuMercs_QuestTargetAttackMark');
+								07=RelationToRanger(cur_ship, Player(), 0);
+								08=RelationToRanger(GetShipHomePlanet(cur_ship), Player(), 0);
+								09=if(ShipOwner(cur_ship) == PirateClan) RelationToRanger(PlanetPirateClan(), Player(), RelationToRanger(PlanetPirateClan(), Player()) - 50);
+								10=if(ShipInScript(cur_ship, 0)) ShipOut(cur_ship);
+								//Удаляем инфошки и портим отношение с игроком у прочих кораблей, указанных в ShipCustomShipInfoTextData2
+								11=unknown ParsCountFromString = ImportedFunction('UtilityFunctions', 'ParsCountFromString');
+								12=for(int i = 0; i < ParsCountFromString(ships_id, ','); i = i + 1)
+								13 ^{
+									01=dword ship = IdToShip(GetParFromString(ships_id, ',', i, 0));
+									02=if(!ship) continue;
+									03=if(ship == cur_ship) continue;
+									04=ShipDeleteCustomShipInfo(ship, 'ShuMercs_QuestTargetAttackMark');
+									05=RelationToRanger(ship, Player(), 0);
+									06=RelationToRanger(GetShipHomePlanet(ship), Player(), 0);
+									07=if(ShipInScript(ship, 0)) ShipOut(ship);
 								}
 							}
 						}
@@ -2153,8 +2334,8 @@ ShipInfo ^{
 						02=ShipCustomShipInfoData(0, cur_info, 2, -1);
 						//03=ShipCustomFaction(Player(), '');
 						//Квест завершён, а игрок покинул целевую систему - можно удалять инфошку
-						04=if(!GetValueFromScript('Mod_ShuMercs', 'ActiveQuestHQ'))
-						05 ^{
+						03=if(!GetValueFromScript('Mod_ShuMercs', 'ActiveQuestHQ'))
+						04 ^{
 							01=ShipDeleteCustomShipInfo(Player(), 'ShuMercs_PlayerOwnerSwitcherInfo');
 						}
 					}
