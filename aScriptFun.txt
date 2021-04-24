@@ -126,9 +126,10 @@ end;
 
 procedure SF_AddPlanetNews(av:array of TVarEC; code:TCodeEC);
 begin
-  if High(av)<>1 then raise Exception.Create('Error.Script AddPlanetNews');
+  if High(av)<1 then raise Exception.Create('Error.Script AddPlanetNews');
 
-  Galaxy.AddPlanetNews(dsGalaxyNews,av[1].VStr);
+  if High(av)>1 then Galaxy.AddPlanetNews(TDifferentSituationInPlanet(av[2].VInt),av[1].VStr)
+  else Galaxy.AddPlanetNews(dsGalaxyNews,av[1].VStr);
 end;
 
 procedure SF_AutoBattle(av:array of TVarEC; code:TCodeEC);
@@ -1250,9 +1251,18 @@ procedure SF_RangerStatus(av:array of TVarEC; code:TCodeEC);
 var
     ship:TObject;
 begin
-    if High(av)<>1 then raise Exception.Create('Error.Script RangerStatus');
-
+    if High(av)<1 then raise Exception.Create('Error.Script RangerStatus');
     ship:=TObject(av[1].VDW);
+
+    if High(av)>1 then
+    begin
+      if      av[2].VStr='EminentWarrior' then av[0].VInt:=ord(ship=Galaxy.FEminentRangers[Warrior])
+      else if av[2].VStr='EminentTrader'  then av[0].VInt:=ord(ship=Galaxy.FEminentRangers[Trader])
+      else if av[2].VStr='EminentPirate'  then av[0].VInt:=ord(ship=Galaxy.FEminentRangers[Pirate])
+      else raise Exception.Create('Error.Script RangerStatus - unknow keyword '+av[2].VStr);
+      exit;
+    end;
+
     if not (ship is TRanger) then raise Exception.Create('Error.Script RangerStatus 2');
 
     av[0].VInt:=integer((ship as TRanger).Status);
@@ -3189,11 +3199,14 @@ procedure SF_StateIs(av:array of TVarEC; code:TCodeEC);
 var
     i,cnt:integer;
     sstate:TScriptState;
+    sship:TScriptShip;
 begin
     if High(av)<2 then raise Exception.Create('Error.Script StateIs');
 
-    sstate:=SctiptGetSS(TShip(av[1].VDW),GScriptCur).FState;
+    sship:=SctiptGetSS(TShip(av[1].VDW),GScriptCur);
+    if sship=nil then begin av[0].VInt:=0; exit; End;
 
+    sstate:=sship.FState;
     if sstate=nil then begin av[0].VInt:=0; exit; End;
 
     cnt:=High(av)+1-2;
@@ -6883,7 +6896,7 @@ begin
 
   if av[2].VType=vtStr then
   begin
-    planet.FGraphName:=av[1].VStr;
+    planet.FGraphName:=av[2].VStr;
     rot:=planet.FGraphPlanet.SpeedRotate;
     DetachFromSE(TObjectSE(planet.FGraphPlanet));
     LinkToSE(TObjectSE(planet.FGraphPlanet),ObjCreateSE('Planet', planet.FGraphName, Point(0, 0)));
@@ -8390,6 +8403,7 @@ end;
 procedure SF_BonusNumInCfg(av:array of TVarEC; code:TCodeEC);
 begin
   if(High(av) < 1) then raise Exception.Create('Error.Script BonusNumInCfg');
+  if av[1].VInt = -1 then begin av[0].VStr:=''; exit; end;
   if(av[1].VInt < 0) or (av[1].VInt >= GCntMicroModuls) then raise Exception.Create('Error.Script BonusNumInCfg - number out of range');
   av[0].VStr{VInt}:=mMicroModuls[av[1].VInt].BlockNameInCfg;//NumInCfg;
 end;
@@ -8397,6 +8411,7 @@ end;
 procedure SF_SeriesNumInCfg(av:array of TVarEC; code:TCodeEC);
 begin
   if(High(av) < 1) then raise Exception.Create('Error.Script SeriesNumInCfg');
+  if av[1].VInt = -1 then begin av[0].VStr:=''; exit; end;
   if(av[1].VInt < 0) or (av[1].VInt >= GCntHullType) then raise Exception.Create('Error.Script SeriesNumInCfg - number out of range');
   av[0].VStr{VInt}:=mHullType[av[1].VInt].BlockNameInCfg;//NumInCfg;
 end;
@@ -9857,7 +9872,14 @@ end;
     dsManyAlcohol, dsNeedAlcohol,
     dsStarTransport, dsStarPiratesMany, dsStarPiratesSome, dsStarPiratesNone,
     dsStarRangers, dsStarBestRanger, dsStarKlingAttack, dsStarKlingLost,
-    dsGroupWarriorLiberator, dsStarPiratesAttack, dsStarPiratesLost}
+    dsGroupWarriorLiberator, dsStarPiratesAttack, dsStarPiratesLost,
+    dsStarNormalsCaptureKlings,dsStarNormalsCapturePirates,
+    dsStarPiratesCaptureKlings,dsStarPiratesCaptureNormals,
+    dsStarKlingsCaptureNormals,dsStarKlingsCapturePirates,
+    dsCoalitionDefeated,dsNewBlackHole,
+    dsEminentWarrior,dsEminentTrader,dsEminentPirate,dsRangerImprisoned,
+    dsNewStation,dsInvestment,dsProgramResearched,dsSpecialShip,
+    dsWBJumpPlanned}
 
 procedure SF_PlanetNewsText(av:array of TVarEC; code:TCodeEC);
 var
@@ -9866,7 +9888,11 @@ begin
   if(High(av) < 1) then raise Exception.Create('Error.Script PlanetNewsText');
   av[0].VStr:='';
   no:=av[1].VInt;
-  if(no >= 0) and (no < Galaxy.FPlanetNews.Count) then av[0].VStr:=PPlanetNews(Galaxy.FPlanetNews.Items[no]).FText;
+  if(no >= 0) and (no < Galaxy.FPlanetNews.Count) then
+  begin
+    av[0].VStr:=PPlanetNews(Galaxy.FPlanetNews.Items[no]).FText;
+    if High(av) > 1 then PPlanetNews(Galaxy.FPlanetNews.Items[no]).FText := av[2].VStr;
+  end;
 end;
 
 
@@ -10510,7 +10536,7 @@ end;
 
 procedure SF_LaunchMissile(av:array of TVarEC; code:TCodeEC);
 var
-  desobj:TObject;
+  desobj,item:TObject;
   souship:TShip;
   weap:TWeapon;
   t:integer;
@@ -10520,7 +10546,10 @@ begin
   if(High(av) < 3) then raise Exception.Create('Error.Script LaunchMissile');
   souship:=TShip(av[1].VDW);
   desobj:=TObject(av[2].VDW);
-  weap:=TWeapon(av[3].VDW);
+  item:=TObject(av[3].VDW);
+
+  if item is TScriptItem then weap:=TWeapon(TScriptItem(item).FItem)
+  else weap:=TWeapon(item);
 
   t:=0; //starting position of missile, 0 - center
   if High(av) > 3 then t:=av[4].VInt;
@@ -11941,6 +11970,13 @@ end;
 //3 - item expended and form closed
 //anything else - same as 0
 
+//t_OnAnotherGoods  when clicking with goods on this item
+//Object1 = goods type, Object2 = goods cnt, ship = CurShip (Player, tranc, ruin)
+//Param - result of action:
+//0 - goods stay in hand / is put in hold (default is 0)
+//N>0 - N cnt will be expended
+//N<0 - |N| cnt will be expended and form closed
+
 
 //t_OnItemHit (called for item)
 //when ship/missile hits item
@@ -11994,6 +12030,9 @@ end;
 //t_OnPlayerChangeHull
 //Object1 - new hull (called just before switch)
 //Object2 - current hull
+//if new hull has actcode it also receives same event but after switch with
+//Object1 - now current hull
+//Object2 - old hull (could be 0 if it was sold)
 
 //t_OnPlayerUseMM
 //CurShip - player/trank/ruin
@@ -12038,6 +12077,11 @@ end;
 //t_OnCheckingUsability2 - another item is picked up, fires for equipped items, if code returns 1 they will be highlighted
 //CurShip - player or ruin/tranc on ship form
 //Object1 - item in hand
+
+//t_OnCheckingUsabilityGoods - goods are picked up, fires for equipped items, if code returns non-zero N, then abs(N) conut of goods will be spent, and, if N is negative, form will close
+//CurShip - player or ruin/tranc on ship form
+//Object1 = goods type
+//Object2 = goods cnt
 
 //t_OnDeath - as name says
 //CurShip - dying ship
