@@ -4,6 +4,16 @@ FormInfo ^{
         Susceptibility=
     }
 }
+Items ^{
+    Weapon ^{
+        Missile ^{
+            EMP_torpedo ^{
+                Name=ЭМП торпеда
+                Text=Оружие, способное на время вывести из строя целый линкор
+            }
+		}
+	}
+}
 MicroModuls ~{
     ShuMercs_MercMalocHull ^{
         Cost=110
@@ -442,6 +452,25 @@ MicroModuls ~{
         bonSlotArt=-3
         bonSlotWeapon=-1
     }
+    ShuMercs_StarCockerelFeiHull ^{
+		Equipments=Hull
+		Owner=Fei
+		Ruins=
+        KindGraph=StarCockerelFei
+        LockedAcryn=3
+		NonSearchable=2
+		ImitatedHullType=Ranger,Warrior
+        Name=</color><Type> корпус наемника
+        Special=1
+        Cost=200
+		Size=100
+		Priority=0
+        FragilityEnergy=80
+		FragilitySplinter=80
+		FragilityMissile=80
+        bonSlotArt=-1
+        bonSlotWeapon=-2
+    }
     ShuMercs_QuestTargetDebuff ^{
 		Equipments=Hull
 		Owner=Any
@@ -450,6 +479,13 @@ MicroModuls ~{
         Special=1
 		Priority=0
 		Fragility=101
+    }
+	ShuMercs_EMPTorpedo ^{
+        MissileGraph=EMP_torpedo
+        Priority=0
+        Special=1
+        LockedAcryn=3
+        NonSearchable=1
     }
     353 ^{
         Ruins=SB,BK,TC,MB,Manaan,PlayerMB,PlayerMB_licensed
@@ -840,7 +876,7 @@ Quest ^{
 						QuestAcceptedPlayer=Отправь им голубя с нашим согласием
 						QuestAccepted=Понял, босс... Отправлю к ним капрала Голубенко, а ребятам передам приказ на взлёт.
 						QuestDeclinedPlayer=Откажи им
-						QuestDeclined=Как скажешь, босс. Я сообщу командованию Коалиции, что мы отказывается от задания. Что-нибудь ещё?
+						QuestDeclined=Как скажешь, босс. Я сообщу командованию Коалиции, что мы отказывается от работы. Что-нибудь ещё?
 						QuestNeedToThinkPlayer=Мне надо подумать
 						QuestNoteTitle=Контракт от <color=255,240,100>Коалиции</color> на захват системы <TargetStar> (<color=255,240,100>доминаторы</color>)
 						QuestNoteTitleReward=Награда за выполнение: <Cost> cr. и <Reputation> очков <color=255,240,100>репутации Совета</color>
@@ -883,7 +919,7 @@ Quest ^{
 						QuestAcceptedPlayer=Передай ему, что мы согласны
 						QuestAccepted=Понял, босс. Я уведомлю посланника, что мы берёмся за дело, и передам ребятам приказ на взлёт.
 						QuestDeclinedPlayer=Откажи ему
-						QuestDeclined=Как скажешь, босс. Я сообщу посланнику, что мы отказывается от задания. Что-нибудь ещё?
+						QuestDeclined=Как скажешь, босс. Я сообщу посланнику, что мы отказывается от работы. Что-нибудь ещё?
 						QuestNeedToThinkPlayer=Мне надо подумать
 						QuestNoteTitle=Контракт от <color=255,240,100>Коалиции</color> на захват системы <TargetStar> (<color=255,240,100>пиратский клан</color>)
 						QuestNoteTitleReward=Награда за выполнение: <Cost> cr. и <Reputation> очков <color=255,240,100>репутации Совета</color>
@@ -907,8 +943,8 @@ Quest ^{
 				DefendFromDominators ^{
 					1 ^{
 						TargetStarMaxRange=60
-						MinTime=115
-						MaxTime=155
+						MinTime=95
+						MaxTime=140
 						MaxWarriorsCount=4
 						DomiksPerWave=3,5
 						WavesFrequency=6,9
@@ -931,8 +967,8 @@ Quest ^{
 				DefendFromPirateClan ^{
 					1 ^{
 						TargetStarMaxRange=60
-						MinTime=115
-						MaxTime=155
+						MinTime=95
+						MaxTime=140
 						MaxWarriorsCount=2
 						PiratesPerWave=3,3
 						WavesFrequency=5,8
@@ -944,7 +980,7 @@ Quest ^{
 						QuestAcceptedPlayer=Передай им, что мы согласны
 						QuestAccepted=Понял, босс. Я уведомлю бюро, что мы берёмся за дело, и передам ребятам приказ на взлёт.
 						QuestDeclinedPlayer=Откажи им
-						QuestDeclined=Как скажешь, босс. Я передам в бюро, что мы отказывается от задания. Что-нибудь ещё?
+						QuestDeclined=Как скажешь, босс. Я передам в бюро, что мы отказывается от работы. Что-нибудь ещё?
 						QuestNeedToThinkPlayer=Мне надо подумать
 						QuestNoteTitle=Контракт на охрану системы <TargetStar> от <color=255,240,100>пиратского</color> налёта
 						QuestNoteTitleReward=Награда за выполнение: <Cost> cr. и <Reputation> очков <color=255,240,100>репутации Совета</color>
@@ -996,7 +1032,7 @@ Quest ^{
 						QuestAcceptedPlayer=Принимай контракт
 						QuestAccepted=Понял, босс. Я уведомлю клан, что мы берёмся за дело, и передам ребятам приказ на взлёт.
 						QuestDeclinedPlayer=Откажи им
-						QuestDeclined=Как скажешь, босс. Я сообщу клану, что мы отказывается от задания. Что-нибудь ещё?
+						QuestDeclined=Как скажешь, босс. Я сообщу клану, что мы отказывается от работы. Что-нибудь ещё?
 						QuestNeedToThinkPlayer=Мне надо подумать
 						QuestNoteTitle=Контракт от <color=255,240,100>пиратского клана</color> на захват системы <TargetStar> (<color=255,240,100>доминаторы</color>)
 						QuestNoteTitleReward=Награда за выполнение: <Cost> cr. и <Reputation> очков <color=255,240,100>репутации клана</color>
@@ -1038,7 +1074,7 @@ Quest ^{
 						QuestAcceptedPlayer=Передай ему, что мы согласны
 						QuestAccepted=Понял, босс. Я уведомлю посланника, что мы берёмся за дело, и передам ребятам приказ на взлёт.
 						QuestDeclinedPlayer=Откажи ему
-						QuestDeclined=Как скажешь, босс. Я сообщу посланнику, что мы отказывается от задания. Что-нибудь ещё?
+						QuestDeclined=Как скажешь, босс. Я сообщу посланнику, что мы отказывается от работы. Что-нибудь ещё?
 						QuestNeedToThinkPlayer=Мне надо подумать
 						QuestNoteTitle=Контракт от <color=255,240,100>пиратского клана</color> на захват системы <TargetStar> (<color=255,240,100>Коалиция</color>)
 						QuestNoteTitleReward=Награда за выполнение: <Cost> cr. и <Reputation> очков <color=255,240,100>репутации клана</color>
@@ -1078,7 +1114,70 @@ Quest ^{
 				}
 				Protect ^{
 					1 ^{
+						FirstStarMaxRange=55
+						SecondStarMaxRange=55
+						MinTime=95
+						MaxTime=140
+						MinWarriorsCount=4,4 //4 в базе и +4 для доспавна
+						Cockerel1=Феникс
+						Cockerel2=Личность
+						Cockerel3=Ципа
+						TargetName1=Разящий
+						TargetName2=Тысячелетний
+						TargetName3=Галактика
+						Malocs=малокской
+						Pelengs=пеленгской
+						Peoples=человеческой
+						Feis=фэянской
+						Gaals=гаальской
+						QuestIntro=На днях к нам залетал один фэяноголовый, мистер <clr>Ву<clrEnd>, кажется? Предлагал необычный контракт. Суть его в следующем...
+						QuestIntro=Как тебе известно, в распоряжении пиратского клана практически нет крупных кораблей, аналогичных по огневой мощи коалиционным махинам. Постройка таких судов требует огромных производственных затрат, а их крайняя медлительность и неуклюжесть противоречит основной пиратской тактике <clr>ПОС<clrEnd> - "Прилетел - обшмонал - сдриснул".
+						QuestIntro=Однако, руководство клана решило, что несколько таких кораблей им всё же не помешают. Вот только зачем строить то, что можно совершенно безапелляционно спереть? Именно поэтому нам и предложили угнать для пиратов новейший коалиционный линкор.
+						QuestIntro=Целью похищения был выбран линкор <TargetShip>. Прямо сейчас он, вместе с остальной группой прикрытия, готовится совершить свой первый патрульный облёт системы <TargetStar>. Этот линкор является шедевром <TargetShipRace> военной машины, и пытаться захватить его в открытом бою было бы сущим самоубийством, однако кое о чём горделивые конструкторы всё же позабыли... Корабль крайне уязвим к направленному электромагнитному импульсу, а, по счастью, как раз такое оружие в распоряжении пиратского клана имеется.
+						QuestIntro=Наша задача - объединиться с элитной диверсионной группой <clr>"Звёздные петушки"<clrEnd> на планете <BeginPlanet> в системе <BeginStar>. После этого мы должны будем сопроводить группу до самого флагмана и обеспечивать её прикрытие, пока диверсанты не произведут абордажную атаку с использованием какой-то новой пиратской разработки, в подробные технические характеристики которой нас решили заблаговременно не посвящать. После успешного захвата цели наша задача будет заключаться лишь в сопровождении захваченного линкора до ближайшего пиратского доминиона, который ненадолго прибудет в систему <BeginStar>, чтобы "подобрать" столь бесценный трофей. Как только линкор совершит стыковку, доминион тут же "сдриснет" в закат, ну а мы получим заслуженные <Cost> cr. и забудем об этом задании, как о страшном сне.
+						QuestIntro=И думать не хочу, сколько военных кораблей отправит Коалиция, чтобы отбить у клана свой линкор, однако последнее нас, как подрядчиков, уже категорически не интересует. Ну, как тебе план?
+						QuestAcceptedPlayer=Ох, чувствую, я ещё об этом пожалею, но всё равно передавай клану, что мы согласны...
+						QuestAccepted=Понял, босс. Я уведомлю клан, что мы берёмся за дело, и передам ребятам приказ на взлёт.
+						QuestDeclinedPlayer=Великолепный план, просто изумительный! Надёжный, мать, как гаальские весы!
+						QuestDeclined=Как скажешь, босс. Я сообщу клану, что мы отказывается от работы. Что-нибудь ещё?
+						QuestNeedToThinkPlayer=Мне надо выпить
 						
+						
+						QuestNoteTitle=Контракт от <color=255,240,100>пиратского клана</color> на захват линкора <TargetShip> в системе <TargetStar>
+						QuestNoteTitleReward=Награда за выполнение: <Cost> cr. и <Reputation> очков <color=255,240,100>репутации клана</color>
+						QuestNoteInProcess1=Контракт в процессе выполнения. Диверсионная группа <color=255,240,100>"Звёздные петушки"</color> ожидает встречи с наёмниками на планете <BeginPlanet>.
+						QuestNoteInProcess2=Контракт в процессе выполнения. Диверсионная группа <color=255,240,100>"Звёздные петушки"</color> направляется на перехват линкора <TargetShip> в системе <TargetStar>.
+						QuestNoteInProcess3=Контракт в процессе выполнения. Диверсионная группа <color=255,240,100>"Звёздные петушки"</color> осуществляет захват линкора <TargetShip> в системе <TargetStar>.
+						QuestNoteInProcess4=Контракт в процессе выполнения. Захваченный линкор направляется на встречу с доминионом в системе <BeginStar>.
+						
+						
+						QuestNoteSuccess=Контракт выполнен. Линкор был успешно захвачен и сопровождён к пиратскому доминиону. Клан благодарит вас за отличную работу!
+						QuestNoteFailedByTarget=Контракт провален. Целевой линкор был уничтожен. Клан крайне недоволен вашей неудачей.
+						QuestNoteFailedByTime=Контракт провален. Диверсионная группа <color=255,240,100>"Звёздные петушки"</color> не дождалась встречи с наёмниками и объявила о провале операции. Клан крайне недоволен вашей неудачей.
+						QuestNoteFailedByMissiles=Контракт провален. Ни одна из запущенных торпед не достигла цели, дальнейшее выполнение операции невозможно. Клан крайне недоволен вашей неудачей.
+						QuestNoteFailedBySupport=Контракт провален. Вся диверсионная <color=255,240,100>"Звёздные петушки"</color> группа была потеряна, дальнейшее выполнение операции невозможно. Клан крайне недоволен вашей неудачей.
+						
+						TargetGreetingNormal=Приветствую, <Player>! Чудесный сегодня денёк, чтобы обкатать эту величественную махину, а? Последний мой боевой вылет, кстати. Всего пара дней до пенсии, а там уж и пожизненный тропический рай не за горами...
+						TargetGreetingNormal=Эх, Пандория!
+						TargetGreetingFoe=Немедленно прекратите сопротивление и сложите оружие! В противном случае вы будете безоговорочно развоплощены!
+						TargetGreeting3=*Статические помехи* ...ем сеанс, системы корабля неисп... *Статические помехи*
+						TargetGreeting4=Линкор полностью в нашем распоряжении, держим курс к месту встречи с пиратским доминионом. Отбой.
+						TargetGreeting5=Линкор полностью в нашем распоряжении, держим курс к месту встречи с пиратским доминионом. Отбой.
+						
+						SupportOnMeeting=<Mercenary>
+						SupportOnMeeting=<clr><clrEnd>
+						SupportOnMeeting=Приветствуем, коллеги! Подкинули нам работёнки эти пираты... Но в наших способностях можете не сомневаться.
+						SupportOnMeeting=Ваша задача - держать вояк как можно дальше, пока мы не захватим цель "Альфа", после чего обеспечить нам свободный коридор до доминиона. Всё остальное мы берём на себя.
+						SupportGreeting=Действуем согласно плану, не откланяйтесь от поставленной задачи. Отбой.
+						SupportGreetingAfterFailed=Даже лучшие порой терпят неудачу, <Player>. Не переживай, в следующий раз непременно повезёт!
+						SupportOnPlayerAttack=<ThisShip>
+						SupportOnPlayerAttack=<clr><clrEnd>
+						SupportOnPlayerAttack=Внимание группа! Нам в прикрытие наняли каких-то конченых уродов, а значит, ни о каком продолжении операции не может идти и речи. Возвращаемся обратно на планету <BeginPlanet>.
+						AttackersGreeting=...
+						SupportOnMissilesLost=<Mercenary>
+						SupportOnMissilesLost=<clr><clrEnd>
+						SupportOnMissilesLost=Что ж, похоже, в этот раз фортуна нам не благоволила. Все наши торпеды уничтожены, возвращаемся обратно на планету <BeginPlanet>.
+
 					}
 				}
 			}
@@ -2209,6 +2308,74 @@ ShipInfo ^{
 					}
 				}
 			}
+			ShuMercs_EMPTorpedoGraph ^{
+                Icon=536
+                Name=ЭМП торпеда
+				Description=Новейшая разработка <color=255,240,100>пиратского клана</color> - массивная <color=255,240,100>ЭМП торпеда</color>, способная на некоторое время вывести из строя целый линкор.
+			}
+			ShuMercs_EMPTorpedo ^{
+                Description=NoShow
+                Icon=0
+                Name=Запускает в указанную цель ЭМП торпеду, после чего самоудаляется
+				OnActCodeTypes=t_OnStep,t_OnMissileShot2
+				OnActStepTypes=4
+				OnActCode ^{
+					//ShipCustomShipInfoData1 - цель, при получении которой эта инфошка тут же запустит торпеду
+					//ShipCustomShipInfoData2 - была ли уже запущена торпеда
+					01=dword cur_info = CurInfo();
+					02=dword cur_ship = ScriptItemActShip();
+					03=if(ScriptItemActionType(t_OnStep))
+					04 ^{
+						01=dword target = ShipCustomShipInfoData(0, cur_info, 1);
+						02=if(target)
+						03 ^{
+							01=dword cur_star = ShipStar(cur_ship);
+							02=target = IdToShip(target);
+							03=if(target)
+							04 ^{
+								01=if(cur_star == ShipStar(target))
+								02 ^{
+									01=dword missile = SpawnMissile(ShipStar(cur_ship), target, CoordX(cur_ship), CoordY(cur_ship), Angle(target, cur_ship), 20, 40, 1200, t_Weapon15, -1, FindBonusByNameInCfg('ShuMercs_EMPTorpedo'));
+									02=MissileOwner(missile, cur_ship);
+									03=MissileLive(missile, 150);
+									04=if(ShipStar(Player()) == cur_star && ShipInNormalSpace(Player()))
+									05 ^{
+										01=FilmSound('Sound.EMP_torpedo_launch', cur_ship);
+									}
+									06=ShipDeleteCustomShipInfo(missile, 'ShuMercs_EMPTorpedoGraph');
+								}
+							}
+						}
+					}
+					05=else
+					06 ^{
+						//Если торпеда с данного корабля уже была запущена
+						01=if(ShipCustomShipInfoData(0, cur_info, 2))
+						02 ^{
+							01=missile = ScriptItemActObject2();
+							02=str acryn_name = BonusNumInCfg(EqSpecial(missile));
+							//Если в цель попала именно ЭМП торпеда, а не что-то ещё
+							03=if(acryn_name == 'ShuMercs_EMPTorpedo')
+							04 ^{
+								01=target = ScriptItemActObject1();
+								02=cur_star = MissileStar(missile);
+								03=dword bomb = CreateQuestItem('RNDbomb_3', 0);
+								04=UselessItemData(bomb, 2, -6);
+								05=UselessItemData(bomb, 3, Id(cur_star) - 1);
+								06=CreateActCodeEvent(t_OnItemPickUp, bomb, target, bomb, 0, 0); //Если 5-м аргументом здесь будет 1, то линкор не остановится сразу же при попадании торпеды
+								07=cur_star = StarNearbyStars(ShipStar(Player()), 1);
+								08=DropItemInSystem(cur_star, bomb, CoordX(0), CoordY(0), CoordX(0), CoordY(0));
+								09=StopMovingItem(cur_star, bomb);
+								10=if(ShipInScript(target, 0))
+								11 ^{
+									01=SetData(0, 0, target);
+								}
+								12=ShipDeleteCustomShipInfo(cur_ship, 'ShuMercs_EMPTorpedo');
+							}
+						}
+					}
+				}
+			}
 			ShuMercs_QuestTargetAttackMark ^{
                 Description=NoShow
                 Icon=0
@@ -2251,7 +2418,7 @@ ShipInfo ^{
 											03 ^{
 												01=str ether_icon = GetParFromString(ether_text, ',,,', 0, 0);
 												02=int ether_type = GetParFromString(ether_text, ',,,', 1, 0);
-												03=ether_text = GetParFromString(ether_text, ',,,', 2, 0);
+												03=ether_text = Format(GetParFromString(ether_text, ',,,', 2, 0), '<ThisShip' + '>', Name(ship), '255,240,100');
 												04=CustomEther(ether_icon, ether_type, '', ether_text, head_ship);
 											}
 										}
@@ -2260,25 +2427,38 @@ ShipInfo ^{
 									05=RelationToRanger(head_ship, Player(), 0);
 									//Удаляем инфошки и портим отношение с игроком у прочих кораблей, указанных в ShipCustomShipInfoTextData2
 									06=unknown ParsCountFromString = ImportedFunction('UtilityFunctions', 'ParsCountFromString');
-									07=for(int i = 1; i < ParsCountFromString(ships_id, ','); i = i + 1)
-									08 ^{
+									07=str command_line = ShipCustomShipInfoTextData(0, cur_info, 3);
+									08=int command_check = 0;
+									09=if(ParsCountFromString(command_line, ',') > 4) command_check = 1;
+									10=for(int i = 1; i < ParsCountFromString(ships_id, ','); i = i + 1)
+									11 ^{
 										01=ship = IdToShip(GetParFromString(ships_id, ',', i, 0));
 										02=if(!ship) continue;
 										03=ShipDeleteCustomShipInfo(ship, 'ShuMercs_QuestTargetAttackMark');
 										04=RelationToRanger(ship, Player(), 0);
+										//Выставляем всем кораблям группы записанные в ShipCustomShipInfoTextData3 команды
+										05=if(command_check)
+										06 ^{
+											01=for(i = 0; i <= 3; i = i + 1)
+											02 ^{
+												01=SetData(0 + GetParFromString(command_line, ',', i, 0), i, ship);
+											}
+										}
 									}
 									//Выставляем head_ship записанные в ShipCustomShipInfoTextData3 команды
-									09=str command_line = ShipCustomShipInfoTextData(0, cur_info, 3);
-									10=for(i = 0; i < ParsCountFromString(command_line, ','); i = i + 1)
-									11 ^{
-										01=SetData(0 + GetParFromString(command_line, ',', i, 0), i, head_ship);
+									12=if(!command_check)
+									13 ^{
+										01=for(i = 0; i <= 3; i = i + 1)
+										02 ^{
+											01=SetData(0 + GetParFromString(command_line, ',', i, 0), i, head_ship);
+										}
 									}
-									12=dword offended_sector = GalaxySectors(ShipCustomShipInfoData(0, cur_info, 1) - 1);
-									13=if(offended_sector) ConChangeRelationToRanger(offended_sector, Player(), -100);
-									14=dword offended_planet = IdToPlanet(ShipCustomShipInfoData(0, cur_info, 2));
-									15=if(offended_planet) RelationToRanger(offended_planet, Player(), 0);
-									16=dword offended_ship = IdToPlanet(ShipCustomShipInfoData(0, cur_info, 3));
-									17=if(offended_ship) RelationToRanger(offended_ship, Player(), 0);
+									14=dword offended_sector = GalaxySectors(ShipCustomShipInfoData(0, cur_info, 1) - 1);
+									15=if(offended_sector) ConChangeRelationToRanger(offended_sector, Player(), -100);
+									16=dword offended_planet = IdToPlanet(ShipCustomShipInfoData(0, cur_info, 2));
+									17=if(offended_planet) RelationToRanger(offended_planet, Player(), 0);
+									18=dword offended_ship = IdToPlanet(ShipCustomShipInfoData(0, cur_info, 3));
+									19=if(offended_ship) RelationToRanger(offended_ship, Player(), 0);
 								}
 							}
 						}
@@ -2544,12 +2724,16 @@ ShipCharacterMerc ^{
 ShipCharacterPlayerMerc ^{
     00=15, 50, 35, Наемник
 }
+ShipCharacterStarCockerel ^{
+    00=34, 33, 33, Наемник
+}
 ShipType ^{
     Fei ^{
         FeiLeader=
         Freelancer=Фрилансер
         Merc=Фэй
 		PlayerMerc=
+		StarCockerel=Петушок
     }
     Gaal ^{
         Freelancer=Фрилансер
@@ -2576,6 +2760,7 @@ ShipType ^{
     TypeName ^{
         AtlantLeader=Лидер
         FeiLeader=Гендир
+        RedLeader=Варлорд
         Freelancer=Фрилансер
         MB=Центр наемников
         MBSmall=ЦН
@@ -2587,6 +2772,6 @@ ShipType ^{
         ManaanSmall=СП
         Merc=Наемник
 		PlayerMerc=Наемник
-        RedLeader=Варлорд
+		StarCockerel=Наемник
     }
 }

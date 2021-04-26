@@ -1259,7 +1259,7 @@ begin
       if      av[2].VStr='EminentWarrior' then av[0].VInt:=ord(ship=Galaxy.FEminentRangers[Warrior])
       else if av[2].VStr='EminentTrader'  then av[0].VInt:=ord(ship=Galaxy.FEminentRangers[Trader])
       else if av[2].VStr='EminentPirate'  then av[0].VInt:=ord(ship=Galaxy.FEminentRangers[Pirate])
-      else raise Exception.Create('Error.Script RangerStatus - unknow keyword '+av[2].VStr);
+      else raise Exception.Create('Error.Script RangerStatus - unknown keyword '+av[2].VStr);
       exit;
     end;
 
@@ -1547,35 +1547,55 @@ var
     obj:TObject;
     i,cnt,cis:integer;
     sship:TScriptShip;
+    skipHyper:boolean;
 begin
-    if (High(av)<1) or (High(av)>2) then raise Exception.Create('Error.Script CountIn');
+    if High(av)<1 then raise Exception.Create('Error.Script CountIn');
     nogroup:=av[1].VInt;
 
+    skipHyper:=(High(av)>1) and (av[2].VInt<>0);
+
     cis:=0;
-    if High(av)=1 then begin
+    if High(av)=1 then
+    begin
         cnt:=GScriptCur.FShips.Count;
-        for i:=0 to cnt-1 do begin
+        for i:=0 to cnt-1 do
+        begin
             sship:=GScriptCur.FShips.Items[i];
             if (sship.FGroup=nogroup) then inc(cis);
         end;
     end else begin
         obj:=TObject(av[2].VDW);
 
-        if obj is TStar then begin
+        if obj is TStar then
+        begin
             cnt:=GScriptCur.FShips.Count;
-            for i:=0 to cnt-1 do begin
+            for i:=0 to cnt-1 do
+            begin
                 sship:=GScriptCur.FShips.Items[i];
+                if skipHyper and sship.FShip.InHyperSpace then continue;
                 if (sship.FGroup=nogroup) and (sship.FShip.FCurStar=obj) then inc(cis);
             end;
-        end else if obj is TPlanet then begin
+        end else if obj is TPlanet then
+        begin
             cnt:=GScriptCur.FShips.Count;
-            for i:=0 to cnt-1 do begin
+            for i:=0 to cnt-1 do
+            begin
                 sship:=GScriptCur.FShips.Items[i];
                 if (sship.FGroup=nogroup) and ((sship.FShip.InPlanet) and (sship.FShip.FCurPlanet=obj)) then inc(cis);
             end;
-        end else if obj is TScriptPlace then begin
+        end else if obj is TRuins then
+        begin
             cnt:=GScriptCur.FShips.Count;
-            for i:=0 to cnt-1 do begin
+            for i:=0 to cnt-1 do
+            begin
+                sship:=GScriptCur.FShips.Items[i];
+                if (sship.FGroup=nogroup) and ((sship.FShip.InShip) and (sship.FShip.FCurShip=obj)) then inc(cis);
+            end;
+        end else if obj is TScriptPlace then
+        begin
+            cnt:=GScriptCur.FShips.Count;
+            for i:=0 to cnt-1 do
+            begin
                 sship:=GScriptCur.FShips.Items[i];
                 if (sship.FGroup=nogroup) and (TScriptPlace(obj).ShipInPlace(sship.FShip)) then inc(cis);
             end;
@@ -2746,7 +2766,7 @@ var
     sship:TScriptShip;
     tcurship:Cardinal;
     v:TVarEC;
-    es:integer;
+    es,stateNo,i:integer;
 begin
     if High(av)<2 then raise Exception.Create('Error.Script ShipJoin');
     ship:=TShip(av[2].VDW);
@@ -2768,10 +2788,36 @@ begin
 
     GScriptCur.AddShip(av[1].VInt,ship);
     sship:=SctiptGetSS(ship,GScriptCur);
-    if High(av)=3 then begin
+
+    if (High(av)>=3) and (av[3].VType=vtStr) then
+    begin
+      stateNo:=-1;
+      if av[3].VStr='' then stateNo:=TScriptGroup(GScriptCur.FGroup.Items[sship.FGroup]).FState
+      else for i:=0 to GScriptCur.FState.Count-1 do
+        if TScriptState(GScriptCur.FState[i]).FName=av[3].VStr then
+        begin
+          stateNo:=i;
+          break;
+        end;
+      if stateNo<0 then  raise Exception.Create('Error.Script ShipJoin cant find state '+av[3].VStr);
+    end
+    else if High(av)>=3 then stateNo:=-1
+    else stateNo:=TScriptGroup(GScriptCur.FGroup.Items[sship.FGroup]).FState;
+    //if (High(av)<3) or (av[3].VType<>vtStr) then stateNo:=TScriptGroup(sship.FScript.FGroup.Items[sship.FGroup]).FState;
+
+    if stateNo>=0 then GScriptCur.ChangeState(sship,TScriptGroup(sship.FScript.FGroup.Items[sship.FGroup]).FState);
+
+    {if High(av)=3 then begin
+
     end else begin
         GScriptCur.ChangeState(sship,TScriptGroup(sship.FScript.FGroup.Items[sship.FGroup]).FState);
-    end;
+    end;}
+
+    if High(av)>=4 then sship.FData[0]:=av[4].VDW;
+    if High(av)>=5 then sship.FData[1]:=av[5].VDW;
+    if High(av)>=6 then sship.FData[2]:=av[6].VDW;
+    if High(av)>=7 then sship.FData[3]:=av[7].VDW;
+
     GScriptCur.FCodeInit.LocalVar.GetVar('CurShip').VDW:=Cardinal(tcurship);
     GScriptCur.FCurShip:=TShip(tcurship);
     v.VInt:=es;
@@ -6584,27 +6630,35 @@ var
   scriptorder: byte;
   ship: TShip;
 begin
-  if(High(av) < 3) then raise Exception.Create('Error.Script OrderMove');
-  absolut:=false;
-  if(High(av) > 3) then absolut:=(av[4].VInt <> 0);
-  des.X:=av[2].VInt;
-  des.Y:=av[3].VInt;
-
+  if(High(av) < 2) then raise Exception.Create('Error.Script OrderMove');
   ship:=TShip(av[1].VDW);
-  if(ship <> nil) then
+  if ship = nil then exit;
+
+  scriptorder:=ship.FScriptOrderAbsolute;
+  ship.FScriptOrderAbsolute:=0;
+
+  if (av[2].VType = vtDW) and (TObject(av[2].VDW) is TScriptPlace) then
   begin
-    scriptorder:=ship.FScriptOrderAbsolute;
-    ship.FScriptOrderAbsolute:=0;
+    absolut:=false;
+    if(High(av) > 2) then absolut:=(av[3].VInt <> 0);
+    ship.OrderMove(TScriptPlace(av[2].VDW).GetPos((ship.FRnd+ship.FCurStar.FRnd)*Galaxy.FTurn), absolut);
+
+  end else begin
+    absolut:=false;
+    if(High(av) > 3) then absolut:=(av[4].VInt <> 0);
+    des.X:=av[2].VInt;
+    des.Y:=av[3].VInt;
     ship.OrderMove(des, absolut);
-    ship.FScriptOrderAbsolute:=scriptorder;
+  end;
 
-    if ship=Player then AutoBattleShip:=nil;
+  ship.FScriptOrderAbsolute:=scriptorder;
 
-    if (ship=Player) and (GetCurrentML = GFormStarMap) and (GFormStarMap.FMode = fsmm_Control) then
-    begin
-      GFormStarMap.ShipPathHide;
-      GFormStarMap.ShipPathShow(ship);
-    end;
+  if ship=Player then AutoBattleShip:=nil;
+
+  if (ship=Player) and (GetCurrentML = GFormStarMap) and (GFormStarMap.FMode = fsmm_Control) then
+  begin
+    GFormStarMap.ShipPathHide;
+    GFormStarMap.ShipPathShow(ship);
   end;
 end;
 
@@ -7705,6 +7759,21 @@ begin
   ru:=TShipType(no);
   if not (ru in SetShipTypeRuinsAll) then exit;
   ruin.FShipType:=ru;
+end;
+
+procedure SF_ShipStanding(av:array of TVarEC; code:TCodeEC);
+var
+  ship: TShip;
+  ruins: TRuins;
+begin
+  if High(av) < 1 then raise Exception.Create('Error.Script ShipStanding');
+  ship:=TShip(av[1].VDW);
+  if(ship <> nil) then
+  begin
+    av[0].VInt:=integer(ship.FCurStanding);
+    if High(av) > 1 then ship.FCurStanding:=TStanding(av[2].VInt)
+  end;
+
 end;
 
 procedure SF_ShipSlots(av:array of TVarEC; code:TCodeEC);
@@ -9266,7 +9335,11 @@ begin
   if(ship <> nil) then begin
     av[0].VInt:=integer(ship.FFlag_NoTarget);
     if(High(av) > 1) then ship.FFlag_NoTarget:=TTargeting(av[2].VInt);
-  end;//0 - normal, 1 - no attack (except between hostile factions), 2 - no attack from AI including assists, 3 - no robbing from pirates and rangers
+  end;
+  //0 - normal,
+  //1 - no attack (except between hostile factions), 2 - no attack from AI including assists,
+  //3 - no robbing from pirates and rangers, 4 - no robbing from rangers, 5 - no robbing from pirates
+  //6 - attract pirates and ranger-pirates
 end;
 
 procedure SF_NoTalkToShip(av:array of TVarEC; code:TCodeEC);
@@ -14253,6 +14326,7 @@ begin
   va.Add('BuildCustomRuins',vtExternFun).VExternFun:=SF_BuildCustomRuins;
   va.Add('RuinsChangeType',vtExternFun).VExternFun:=SF_RuinsChangeType;
 
+  va.Add('ShipStanding',vtExternFun).VExternFun:=SF_ShipSlots;
   va.Add('ShipSlots',vtExternFun).VExternFun:=SF_ShipSlots;
 
   va.Add('MissileStar',vtExternFun).VExternFun:=SF_MissileStar;
