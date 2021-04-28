@@ -1330,6 +1330,7 @@ Script ^{
 			12=ShuKlissan_Recapacit
 			Count=12
 		}
+		KlissanRemainsCount=16
 		248= Гигас
 		329=Немедленно посетить ближайшую пиратскую базу.
 		330=Поработить Галактику
@@ -2030,7 +2031,6 @@ ShipType ^{
     }
 }
 UselessItems ^{
-    CntKlissanRemains=15
     Usl_108 ^{
         Cost=Average
         Description=
@@ -2095,7 +2095,7 @@ UselessItems ^{
         Size=10
         Text=Данное устройство использует искусственную систему соединенных нервных центров и двигательных оснований Клисанов и позволяет имитировать используемые ими подпространственные импульсы, приводящие к стабилизации инициированной червоточины с фиксированными портальными характеристиками.
     }
-    kRem0 ^{
+    KlissanRemains1 ^{
         Cost=Big
         Description=
         Name=Физионасос
@@ -2103,7 +2103,7 @@ UselessItems ^{
         Size=12
         Text=Насос для перегонки протоплазмы, у клисан служит в качестве сердца.
     }
-    kRem1 ^{
+    KlissanRemains2 ^{
         Cost=Small
         Description=
         Name=Мегазобатор
@@ -2111,55 +2111,7 @@ UselessItems ^{
         Size=10
         Text=Служит для переработки и распределения запасов питательных веществ клисан.
     }
-    kRem10 ^{
-        Cost=Average
-        Description=
-        Name=Биорегенератор
-        Owner=None
-        Size=8
-        Text=Амебообразный сгусток кристальной протоплазмы, регенерирующий поврежденные ткани.
-    }
-    kRem11 ^{
-        Cost=Small
-        Description=
-        Name=Плазмонить
-        Owner=None
-        Size=10
-        Text=Плазменная струя частиц с обратным тяготением, помогающая клисанам собирать добычу.
-    }
-    kRem12 ^{
-        Cost=Average
-        Description=
-        Name=Плазмощит
-        Owner=None
-        Size=15
-        Text=Упорядоченный веер плазменных частиц, способный поглощать часть энергии от внешних источников.
-    }
-    kRem13 ^{
-        Cost=Small
-        Description=
-        Name=Радиосенсоры
-        Owner=None
-        Size=9
-        Text=Группа органов, насыщенных электромагнитными рецепторами, служит подспорьем радару у клисан.
-    }
-    kRem14 ^{
-        Cost=Average
-        Description=
-        Name=Нейрощуп
-        Owner=None
-        Size=7
-        Text=Сложно устроенный орган, позволяющий сканировать неживые объекты.
-    }
-    kRem15 ^{
-        Cost=Small
-        Description=
-        Name=Протопузырь
-        Owner=None
-        Size=12
-        Text=Емкость с толстыми мускульными стенками, в которой хранится запасное топливо на случай пробития бака.
-    }
-    kRem2 ^{
+    KlissanRemains3 ^{
         Cost=Small
         Description=
         Name=Макрообонятор
@@ -2167,7 +2119,7 @@ UselessItems ^{
         Size=8
         Text=Чувствительный орган клисан, служащий для анализа химического состава окружающей среды.
     }
-    kRem3 ^{
+    KlissanRemains4 ^{
         Cost=Average
         Description=
         Name=Термосвинги
@@ -2175,7 +2127,7 @@ UselessItems ^{
         Size=3
         Text=Органы зрения клисанских кораблей, улавливающие излучение Жабродюз других кораблей.
     }
-    kRem4 ^{
+    KlissanRemains5 ^{
         Cost=Mini
         Description=
         Name=Рогост
@@ -2183,7 +2135,7 @@ UselessItems ^{
         Size=4
         Text=Остатки клисанской брони, представляющие собой ороговевший слой особых клеток-рефлекторов.
     }
-    kRem5 ^{
+    KlissanRemains6 ^{
         Cost=Big
         Description=
         Name=Нейроцентр
@@ -2191,7 +2143,7 @@ UselessItems ^{
         Size=5
         Text=Выполняет роль мозгового центра, отвечает за принятие клисаном решений.
     }
-    kRem6 ^{
+    KlissanRemains7 ^{
         Cost=Average
         Description=
         Name=Аэрофильтры
@@ -2199,7 +2151,7 @@ UselessItems ^{
         Size=15
         Text=Заборники и накопители сжатого воздуха, выполняют роль легких у клисан.
     }
-    kRem7 ^{
+    KlissanRemains8 ^{
         Cost=Huge
         Description=
         Name=Биослоты
@@ -2207,7 +2159,7 @@ UselessItems ^{
         Size=25
         Text=Углубления в мегапанцире, которые клисаны могут заращивать различным оружием.
     }
-    kRem8 ^{
+    KlissanRemains9 ^{
         Cost=Average
         Description=
         Name=Жабродюзы
@@ -2215,7 +2167,55 @@ UselessItems ^{
         Size=14
         Text=Фрагмент корпуса клисана с расположенными на нем жаберными щелями, выталкивающими плазменные потоки. Служит маневровым двигателем.
     }
-    kRem9 ^{
+    KlissanRemains10 ^{
+        Cost=Small
+        Description=
+        Name=Протопузырь
+        Owner=None
+        Size=12
+        Text=Емкость с толстыми мускульными стенками, в которой хранится запасное топливо на случай пробития бака.
+    }
+    KlissanRemains11 ^{
+        Cost=Average
+        Description=
+        Name=Биорегенератор
+        Owner=None
+        Size=8
+        Text=Амебообразный сгусток кристальной протоплазмы, регенерирующий поврежденные ткани.
+    }
+    KlissanRemains12 ^{
+        Cost=Small
+        Description=
+        Name=Плазмонить
+        Owner=None
+        Size=10
+        Text=Плазменная струя частиц с обратным тяготением, помогающая клисанам собирать добычу.
+    }
+    KlissanRemains13 ^{
+        Cost=Average
+        Description=
+        Name=Плазмощит
+        Owner=None
+        Size=15
+        Text=Упорядоченный веер плазменных частиц, способный поглощать часть энергии от внешних источников.
+    }
+    KlissanRemains14 ^{
+        Cost=Small
+        Description=
+        Name=Радиосенсоры
+        Owner=None
+        Size=9
+        Text=Группа органов, насыщенных электромагнитными рецепторами, служит подспорьем радару у клисан.
+    }
+    KlissanRemains15 ^{
+        Cost=Average
+        Description=
+        Name=Нейрощуп
+        Owner=None
+        Size=7
+        Text=Сложно устроенный орган, позволяющий сканировать неживые объекты.
+    }
+    KlissanRemains16 ^{
         Cost=Small
         Description=
         Name=Протопузырь
