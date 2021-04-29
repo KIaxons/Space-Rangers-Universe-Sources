@@ -17,22 +17,20 @@ ShipInfo ^{
 					05=if(RepairAndReloadTime <= CurTurn())
 					06 ^{
 						01=dword cur_item;
-						//Если подключён мод EvoArmada, то чиним вещи станции чаще, поскольку увеличивается износ орудий
-						02=if(!BlockExist('Script.Mod_EvoArmada')) ShipCustomShipInfoData(cur_ship, cur_info, 2, CurTurn() + Rnd(24,31));
-						03=else ShipCustomShipInfoData(cur_ship, cur_info, 2, CurTurn() + Rnd(10,15));
+						02=ShipCustomShipInfoData(cur_ship, cur_info, 2, CurTurn() + Rnd(25, 35));
 						//Перезаряжаем ракетные орудия
-						04=for(int j = 1; j <= ShipCntWeapon(cur_ship); j = j + 1)
-						05 ^{
+						03=for(int j = 1; j <= ShipCntWeapon(cur_ship); j = j + 1)
+						04 ^{
 							01=dword cur_gun = ShipEqInSlot(ScriptItemActShip(), t_Weapon1, j);
 							02=if(MissilesToRearm(cur_gun)) MissilesToRearm(cur_gun, MissilesToRearm(cur_gun));
 						}
 						//Проверяем, умеет ли база чинить нестандартное оборудование
-						06=int perm = 0;
-						07=str str_type = ShipType(cur_ship);
-						08=if(str_type == 'SB' || str_type == 'PB' || str_type == 'TC' || str_type == 'SSB') perm = 1;
+						05=int perm = 0;
+						06=str str_type = ShipType(cur_ship);
+						07=if(str_type == 'SB' || str_type == 'PB' || str_type == 'TC' || str_type == 'SSB') perm = 1;
 						//Чиним оборудование и артефакты базы
-						09=for(j = 0; j < ShipItems(cur_ship); j = j + 1)
-						10 ^{
+						08=for(j = 0; j < ShipItems(cur_ship); j = j + 1)
+						09 ^{
 							01=cur_item = ShipItems(cur_ship, j);
 							02=if(!ItemIsInUse(cur_item)) continue;
 							03=int item_type = ItemType(cur_item);
@@ -60,8 +58,8 @@ ShipInfo ^{
 							}
 						}
 						//Чиним экипированные арты, но только если база умеет их чинить
-						11=if(perm)
-						12 ^{
+						10=if(perm)
+						11 ^{
 							01=for(j = 0; j < ShipArts(cur_ship); j = j + 1)
 							02 ^{
 								01=cur_item = ShipArts(cur_ship, j);
