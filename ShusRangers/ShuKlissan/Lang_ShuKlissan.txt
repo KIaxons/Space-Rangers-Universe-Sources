@@ -918,7 +918,7 @@ MicroModuls ~{
         //NonSearchable=1
     }
     ShuKlissan_Shuclopia ^{
-        Equipments=FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator,Hull
+        Equipments=WEnergy,WSplinter,WMissile,FuelTank,Engine,Radar,Scaner,Droid,Hook,DefGenerator,Hull
         KindGraph=Spore
         Name=Шуклопия
 		NamePrefix=Споровая колония
@@ -1065,34 +1065,30 @@ MicroModuls ~{
         //LockedAcryn=2
         //NonSearchable=1
     }
-    ShuKlissan_Askia ^{
-        Equipments=wMissile
+    ShuKlissan_Plasmalemma ^{
+        Equipments=WEnergy
         KindGraph=Spore
-        Name=Аския
+        Name=Плазмалемма
 		NamePrefix=Споровая колония
 		Color=93,182,93
         Owner=Klissan,NonKling
         Priority=55
         RacialRestriction=1
 		BMSpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
-        Text=Клисанская споровая колония. При размещении на <clr>клисанском<clrEnd> ракетном вооружении продуцирует споровые мешки, помещаемые на каждый выстреливаемый боеприпас. При детонации, мешки выпускают наружу активные биоэлементы, увеличивающие урон и ослабляющие броню. В то же время, дополнительная масса, переносимая боеприпасами, может сказаться на их способности к манёвру.
+        Text=Клисанская споровая колония. Преобразовывает часть неээфективно использованного питания <clr>клисанского<clrEnd> энергетического вооружения, максимально усиливая его показатели.
 		Text=<clr><clrEnd>
-		Text=Дополнительный эффект: <clr>ослабление брони<clrEnd>
-        Text=Сила ракетного оружия: <bonWMissile> ед.
-        Text=Скорость ракет: <bonMissileSpeed> ед.
+        Text=Сила энергетического оружия: <bonWEnergy> ед.
         Fragility=100
 		Cost=100
 		Size=100
-        WeaponMods=Acid
-        bonWMissile=35
-        bonMissileSpeed=-300
+        bonWEnergy=37
         //Special=1
 		//UniqueMM=2
         //LockedAcryn=2
         //NonSearchable=1
     }
     ShuKlissan_Fungusia ^{
-        Equipments=wSplinter
+        Equipments=WSplinter
         KindGraph=Spore
         Name=Фунгусия
 		NamePrefix=Споровая колония
@@ -1113,23 +1109,27 @@ MicroModuls ~{
         //LockedAcryn=2
         //NonSearchable=1
     }
-    ShuKlissan_Plasmalemma ^{
-        Equipments=wEnergy
+    ShuKlissan_Askia ^{
+        Equipments=WMissile
         KindGraph=Spore
-        Name=Плазмалемма
+        Name=Аския
 		NamePrefix=Споровая колония
 		Color=93,182,93
         Owner=Klissan,NonKling
         Priority=55
         RacialRestriction=1
 		BMSpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
-        Text=Клисанская споровая колония. Преобразовывает часть неээфективно использованного питания <clr>клисанского<clrEnd> энергетического вооружения, максимально усиливая его показатели.
+        Text=Клисанская споровая колония. При размещении на <clr>клисанском<clrEnd> ракетном вооружении продуцирует споровые мешки, помещаемые на каждый выстреливаемый боеприпас. При детонации, мешки выпускают наружу активные биоэлементы, увеличивающие урон и ослабляющие броню. В то же время, дополнительная масса, переносимая боеприпасами, может сказаться на их способности к манёвру.
 		Text=<clr><clrEnd>
-        Text=Сила энергетического оружия: <bonWEnergy> ед.
+		Text=Дополнительный эффект: <clr>ослабление брони<clrEnd>
+        Text=Сила ракетного оружия: <bonWMissile> ед.
+        Text=Скорость ракет: <bonMissileSpeed> ед.
         Fragility=100
 		Cost=100
 		Size=100
-        bonWEnergy=37
+        WeaponMods=Acid
+        bonWMissile=35
+        bonMissileSpeed=-300
         //Special=1
 		//UniqueMM=2
         //LockedAcryn=2
