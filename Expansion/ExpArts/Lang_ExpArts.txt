@@ -34,22 +34,22 @@ Artefacts ^{
 		OnActCodeTypes=t_OnPlayerTalkedWithShip,t_OnShipTalkedWithPlayer,t_OnStep
 		OnActStepTypes=11
 		OnActCode ^{
-			01=if(!ItemIsInUse(CurItem()))exit;
-			02=dword ship=ScriptItemActShip();
-			03=if(!ship)exit;
-			04=if(!ItemDurability(CurItem()))exit;
-			05=if(ArtefactTypeInUse(ship,'RNDart_03'))exit;
-			06=int hasker_check=0;
-			07=for(int i=0;i<ShipArts(ship);i=i+1)
+			01=if(!ItemIsInUse(CurItem())) exit;
+			02=dword ship = ScriptItemActShip();
+			03=if(!ship) exit;
+			04=if(ItemIsBroken(CurItem())) exit;
+			05=if(ArtefactTypeInUse(ship, 'RNDart_03')) exit;
+			06=int hasker_check = 0;
+			07=for(int i = 0; i < ShipArts(ship); i = i + 1)
 			08 ^{
-				01=dword art=ShipArts(ship,i);
-				02=if(ItemType(art)==t_Artefact)
+				01=dword art = ShipArts(ship, i);
+				02=if(ItemType(art) == t_Artefact)
 				03 ^{
-					01=if(EquipmentImageName(art)=='RNDart_03')
+					01=if(EquipmentImageName(art) == 'RNDart_03')
 					02 ^{
-						01=if(ItemDurability(art))
+						01=if(!ItemIsBroken(art))
 						02 ^{
-							01=hasker_check=1;
+							01=hasker_check = 1;
 							02=break;
 						}
 					}
@@ -82,7 +82,7 @@ Artefacts ^{
             OnActCode ^{
 				01=if(!ItemIsInUse(CurItem()))exit;
 				02=if(!ScriptItemActShip())exit;
-                03=if(!ItemDurability(CurItem()))exit;
+                03=if(ItemIsBroken(CurItem()))exit;
 				04=dword target = ScriptItemActObject1();
 				05=if(ObjectType(target) != 4 && ObjectType(target) != 5)exit;
 				06=int damage_set = GetEquipmentStats(ScriptItemActObject2(), 6);
@@ -100,7 +100,7 @@ Artefacts ^{
 					02=damag = damag / (100 - ShipProtectability(target));
 					03=ScriptItemActParam(damag);
 				}
-				13=if(!ItemDurability(CurItem()) && ScriptItemActShip() == Player())Ether(8, '', CT('Artefacts.CustomArtefacts.RNDart_01.BrokenInUse'));
+				13=if(ItemIsBroken(CurItem()) && ScriptItemActShip() == Player())Ether(8, '', CT('Artefacts.CustomArtefacts.RNDart_01.BrokenInUse'));
             }
             Size=7
 			Cost=2100
@@ -116,15 +116,16 @@ Artefacts ^{
 			SharedEffect=0
 			OnActCodeTypes=t_OnTakingDamage,t_OnTakingDamageEn
             OnActCode ^{
-				01=dword cur_item=CurItem();
-				02=if(!ItemDurability(cur_item))exit;
-			    03=if(!ItemIsInUse(cur_item))exit;
-				04=dword cur_ship=ScriptItemActShip();
-				05=if(!cur_ship)exit;
+				01=dword cur_item = CurItem();
+				02=if(ItemIsBroken(cur_item)) exit;
+			    03=if(!ItemIsInUse(cur_item)) exit;
+				04=dword cur_ship = ScriptItemActShip();
+				05=if(!cur_ship) exit;
 				//Отражаем урон от звезды
                 06=if(ScriptItemActionType(t_OnTakingDamage))
 				07 ^{
-					01=if(ObjectType(ScriptItemActObject1())==1 && ItemDurability(cur_item))//Убеждаемся, что урон был нанесён звездой
+					//Убеждаемся, что урон был нанесён звездой
+					01=if(ObjectType(ScriptItemActObject1()) == 1)
 					02 ^{
 						01=ItemDurability(cur_item,ItemDurability(cur_item)-3);
 						02=int i=0;
@@ -151,18 +152,15 @@ Artefacts ^{
 								08=if(ShipStar(Player())==ShipStar(cur_ship) && ShipInNormalSpace(Player()))ShowEffect('Weapon.NoGraph',0,ship,cur_ship,damag,0,0,255,255,255);
 							}
 						}
-						09=if(!ItemDurability(cur_item) && cur_ship == Player())Ether(8, '', CT('Artefacts.CustomArtefacts.RNDart_02.BrokenInUse'));
+						09=if(ItemIsBroken(cur_item) && cur_ship == Player())Ether(8, '', CT('Artefacts.CustomArtefacts.RNDart_02.BrokenInUse'));
 						10=ScriptItemActParam(0);
 					}
 				}
                 08=else
                 09 ^{
-					01=if(ItemDurability(cur_item))
-					02 ^{
-						01=ScriptItemActParam(ScriptItemActParam() - ScriptItemActParam() / 5);
-						02=if(Rnd(1, 100) <= 20)ItemDurability(cur_item,ItemDurability(cur_item) - 1);
-						03=if(!ItemDurability(cur_item) && cur_ship == Player())Ether(8, '', CT('Artefacts.CustomArtefacts.RNDart_02.BrokenInUse'));
-					}
+					01=ScriptItemActParam(ScriptItemActParam() - ScriptItemActParam() / 5);
+					02=if(Rnd(1, 100) <= 20)ItemDurability(cur_item,ItemDurability(cur_item) - 1);
+					03=if(ItemIsBroken(cur_item) && cur_ship == Player())Ether(8, '', CT('Artefacts.CustomArtefacts.RNDart_02.BrokenInUse'));
                 }
             }
             Size=12
@@ -187,7 +185,7 @@ Artefacts ^{
 					01=CustomArtData(cur_item,1,0);
 					02=CustomArtData(cur_item,2,0);
 				}
-				04=if(!ItemDurability(cur_item))exit;
+				04=if(ItemIsBroken(cur_item))exit;
 				05=dword cur_ship=ScriptItemActShip();
 				06=if(!cur_ship)exit;
 				07=if(CustomArtData(cur_item,3) >= CurTurn())exit;
@@ -273,7 +271,7 @@ Artefacts ^{
                             }
                         }
                     }
-                    10=if(!ItemDurability(cur_item) && cur_ship==Player())Ether(8,'',CT('Artefacts.CustomArtefacts.RNDart_03.BrokenInUse'));
+                    10=if(ItemIsBroken(cur_item) && cur_ship==Player())Ether(8,'',CT('Artefacts.CustomArtefacts.RNDart_03.BrokenInUse'));
                 }
 				12=if(!ItemIsInUse(cur_item))
 				13 ^{
@@ -298,7 +296,7 @@ Artefacts ^{
 			OnActCode ^{
 				01=dword ship=ScriptItemActShip();
 				02=if(!ship)exit;
-                03=if(!ItemDurability(CurItem()))exit;
+                03=if(ItemIsBroken(CurItem()))exit;
 				04=if(EqModule(ScriptItemActObject2()) > -1)
 				05 ^{
 					01=if(EqModule(ScriptItemActObject2()) == FindBonusByCustomTag('empty_mm'))exit;
@@ -307,7 +305,7 @@ Artefacts ^{
 				07=MissileAngle(missile, Angle(WeaponTarget(ScriptItemActObject2()), missile));
 				08=MissileLive(missile, Rnd(500, 600));
 				09=MissileSpeed(missile, MissileSpeed(missile) + Rnd(900, 1400));
-				10=if(!ItemDurability(CurItem()) && ship == Player())Ether(8, '', CT('Artefacts.CustomArtefacts.RNDart_04.BrokenInUse'));
+				10=if(ItemIsBroken(CurItem()) && ship == Player())Ether(8, '', CT('Artefacts.CustomArtefacts.RNDart_04.BrokenInUse'));
             }
             Size=18
 			Cost=2500

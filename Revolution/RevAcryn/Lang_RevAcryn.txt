@@ -10,7 +10,7 @@ ActCodeBlocksList ^{
 			03=if(!ship) exit;
 			04=if(!item) exit;
 			05=if(!ItemIsInUse(item)) exit;
-			06=if(!ItemDurability(item)) exit;
+			06=if(ItemIsBroken(item)) exit;
 			07=if(ObjectType(ship) != 4)
 			08 ^{
 				01=for(int i = 1; i <= ShipCntWeapon(ship); i = i + 1)
