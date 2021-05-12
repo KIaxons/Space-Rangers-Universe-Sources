@@ -2764,7 +2764,7 @@ ShipInfo ^{
 							01=item=ShipArts(owner,i);
 							02=if(ItemType(item)==t_ArtefactTranclucator)
 							03 ^{
-								01=if(Rnd(1,100)<=12)
+								01=if(Rnd(1,100)<=6)
 								02 ^{
 									01=NoDropItem(item,0);
 									02=TranclucatorData(ArtTranclucatorToShip(item),'AutoArrange',0);
