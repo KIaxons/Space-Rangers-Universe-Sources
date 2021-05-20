@@ -355,7 +355,13 @@ Biomodules ^{
             BlindFailed ~{
                 Text_1=Вот это астероид! Прости, ты что-то сказал?
 				Text_2=Извини, не вижу что ты там показываешь, у меня экран барахлит.
-                Text_count=2
+				Сount=2
+                TextVisor_1=Чего? Не вижу, что ты там показываешь, мне визор весь экран загородил.
+                СountVisor=1
+				TextGlasses_1=Извини, в очках ничего не видно. Можешь ещё раз повторить?
+				СountGlasses=1
+				TextHelmet_1=Чёрт, сквозь стекло шлема не не разглядел. Ты что-то интересное там показывал?
+				СountHelmet=1
             }
             BlindStart ~{
                 Text_1=Улыбочку!
@@ -380,9 +386,9 @@ Biomodules ^{
 			AddNPCInfo=bioMM_FL_NPC
             Stama_pirate=3
             Uni_code=28
-			Ranger=10
+			Ranger=8
 			Warrior=0
-			Pirate=15
+			Pirate=10
 			Transport=0
 			Liner=0
 			Diplomat=8
@@ -1524,12 +1530,12 @@ Biomodules ^{
 			AddNPCInfo=bioMM_FS_NPC
             Stama_pirate=6
             Uni_code=29
-			Ranger=18
+			Ranger=14
 			Warrior=0
-			Pirate=24
+			Pirate=20
 			Transport=0
 			Liner=0
-			Diplomat=5
+			Diplomat=6
 			Maloc=18
 			Peleng=25
 			People=15
@@ -2875,18 +2881,52 @@ ShipInfo ^{
 													02 ^{
 														01=int tint = CT('Biomodules.1_gtu.9.BlindStart.Text_count');
 														02=str tstr = CT('Biomodules.1_gtu.9.BlindStart.Text_' + Rnd(1, tint));
-														//Цель попросту "проморгала" вспышку (вероятность 20%)
-														03=if(Rnd(1, 100) <= 20)
-														04 ^{
+														//Вычисляем дополнительный шанс защититься от "Вспышки" за счёт того, что навешено на лице портрета NPC
+														03=int target_race = ShipPilotRace(target);
+														04=str tstr2;
+														05=if(!target_race) tstr2 = GetMainData('Data.StyleFaceMaloc.' + ShipFace(target, 'Path'));
+														06=else if(target_race == Peleng) tstr2 = GetMainData('Data.StyleFacePeleng.' + ShipFace(target, 'Path'));
+														07=else if(target_race == People) tstr2 = GetMainData('Data.StyleFacePeople.' + ShipFace(target, 'Path'));
+														08=else if(target_race == Fei) tstr2 = GetMainData('Data.StyleFaceFei.' + ShipFace(target, 'Path'));
+														09=else tstr2 = GetMainData('Data.StyleFaceGaal.' + ShipFace(target, 'Path'));
+														10=int extra_chance = 0;
+														11=if(~findsubstr(tstr2, 'visor'))
+														12 ^{
+															01=tstr2 = 'Visor';
+															02=extra_chance = 10;
+														}
+														13=else if(~findsubstr(tstr2, 'glasses'))
+														14 ^{
+															01=tstr2 = 'Glasses';
+															02=extra_chance = 15;
+														}
+														15=else if(~findsubstr(tstr2, 'helmet'))
+														16 ^{
+															01=tstr2 = 'Helmet';
+															02=extra_chance = 20;
+														}
+														//Цель попросту проморгала вспышку (вероятность 20%), либо получила резист за счёт визора, очков или шлема
+														17=int rand = Rnd(1, 100);
+														18=if(rand <= 20 + extra_chance)
+														19 ^{
 															01=if(target == Player())
 															02 ^{
 																01=tstr = tstr + CT('FormInfo.br') + CT('Biomodules.1_gtu.9.BlindPlayerFailed');
 																02=ShipCustomShipInfoTextData(0, infos, 1, tstr);
-																03=tint = CT('Biomodules.1_gtu.9.BlindFailed.Text_count');
-																04=tstr = CT('Biomodules.1_gtu.9.BlindFailed.Text_'+Rnd(1,tint));
-																05=ShipCustomShipInfoTextData(0, infos, 2, tstr);
-																06=GExpImplantsDialog = 1;
-																07=Dialog(ship);
+																//Определяем, что именно залочило "Вспышку" (меняется текст)
+																03=if(rand <= 20)
+																04 ^{
+																	01=tint = CT('Biomodules.1_gtu.9.BlindFailed.Count');
+																	02=tstr = '</color>' + CT('Biomodules.1_gtu.9.BlindFailed.Text_' + Rnd(1, tint));
+																}
+																05=else
+																06 ^{
+																	01=tint = CT('Biomodules.1_gtu.9.BlindFailed.Count' + tstr2);
+																	02=tstr = '</color>' + CT('Biomodules.1_gtu.9.BlindFailed.Text' + tstr2 + '_' + Rnd(1, tint));
+																}
+																07=ShipCustomShipInfoTextData(0, infos, 2, tstr);
+																08=GExpImplantsDialog = 1;
+																09=Dialog(ship);
 															}
 															03=else
 															04 ^{
@@ -2897,17 +2937,26 @@ ShipInfo ^{
 																		01=if(ShipRadarRange(Player()) >= Dist(Player(), ship))
 																		02 ^{
 																			01=tstr = '<color=255,240,100>' + Name(ship) + '</color>' + '-->' + '<color=255,240,100>' + Name(target) + '</color>' + CT('FormInfo.br') + '- ' + tstr;
-																			02=tint = CT('Biomodules.1_gtu.9.BlindFailed.Text_count');
-																			03=tstr = tstr + CT('FormInfo.br') + '- ' + CT('Biomodules.1_gtu.9.BlindFailed.Text_' + Rnd(1, tint));
-																			04=Ether(1, '', tstr, ship, target);
+																			//Определяем, что именно залочило "Вспышку" (меняется текст)
+																			02=if(rand <= 20)
+																			03 ^{
+																				01=tint = CT('Biomodules.1_gtu.9.BlindFailed.Count');
+																				02=tstr = '</color>' + CT('Biomodules.1_gtu.9.BlindFailed.Text_' + Rnd(1, tint));
+																			}
+																			04=else
+																			05 ^{
+																				01=tint = CT('Biomodules.1_gtu.9.BlindFailed.Count' + tstr2);
+																				02=tstr = '</color>' + CT('Biomodules.1_gtu.9.BlindFailed.Text' + tstr2 + '_' + Rnd(1, tint));
+																			}
+																			06=Ether(1, '', tstr, ship, target);
 																		}
 																	}
 																}
 															}
 														}
 														//Вспышка ударила точно в глаза цели
-														05=else
-														06 ^{
+														20=else
+														21 ^{
 															01=if(target == Player())
 															02 ^{
 																01=tstr = tstr + CT('FormInfo.br') + CT('Biomodules.1_gtu.9.BlindPlayerSuccess');
@@ -2938,7 +2987,7 @@ ShipInfo ^{
 															//За это цель на обидчика обидится
 															06=ShipSetBad(target, ship);
 														}
-														07=ShipCustomShipInfoData(0, infos, 1, CurTurn() + Rnd(3, 6));
+														22=ShipCustomShipInfoData(0, infos, 1, CurTurn() + Rnd(3, 6));
 													}
 												}
 											}

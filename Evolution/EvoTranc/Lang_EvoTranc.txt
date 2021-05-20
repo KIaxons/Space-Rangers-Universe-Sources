@@ -160,39 +160,39 @@ Artefacts ^{
 					}
 					06=if(activeTrancs == 1)
 					07 ^{
-						01=InterfacePos('StarMap','Tranc_panel_sigment_2',2,0,0);
+						01=InterfacePos('StarMap', 'Tranc_panel_sigment_2', 2, 0, 0);
 					}
 					08=else if(activeTrancs == 2)
 					09 ^{
-						01=InterfacePos('StarMap','Tranc_panel_sigment_2',-16,0,0);
+						01=InterfacePos('StarMap', 'Tranc_panel_sigment_2', -16, 0, 0);
 					}
 					10=else if(activeTrancs == 3)
 					11 ^{
-						01=InterfacePos('StarMap','Tranc_panel_sigment_2',-34,0,0);
+						01=InterfacePos('StarMap', 'Tranc_panel_sigment_2', -34, 0, 0);
 					}
 					12=else if(activeTrancs == 4)
 					13 ^{
-						01=InterfacePos('StarMap','Tranc_panel_sigment_2',-52,0,0);
+						01=InterfacePos('StarMap', 'Tranc_panel_sigment_2', -52, 0, 0);
 					}
 					14=else if(activeTrancs == 5)
 					15 ^{
-						01=InterfacePos('StarMap','Tranc_panel_sigment_2',-70,0,0);
+						01=InterfacePos('StarMap', 'Tranc_panel_sigment_2', -70, 0, 0);
 					}
 					16=else if(activeTrancs == 6)
 					17 ^{
-						01=InterfacePos('StarMap','Tranc_panel_sigment_2',-88,0,0);
+						01=InterfacePos('StarMap', 'Tranc_panel_sigment_2', -88, 0, 0);
 					}
 					18=if(!ShipPartners(Player()) && !PlayerPirates())
 					19 ^{
-						01=InterfacePos('StarMap','Tranc_panel_Pos',0,-35,0);
-						02=InterfaceImage('StarMap','Tranc_panel_sigment_2','Alpha,Bm.PanelSpace2.2TranclucatorPanel');
-						03=InterfaceState('StarMap','zaglushka_tranc_ms_blk',-1);
+						01=InterfacePos('StarMap', 'Tranc_panel_Pos', 0, -35, 0);
+						02=InterfaceImage('StarMap', 'Tranc_panel_sigment_2', 'Alpha,Bm.PanelSpace2.2TranclucatorPanel');
+						03=InterfaceState('StarMap', 'zaglushka_tranc_ms_blk', -1);
 					}
 					20=else
 					21 ^{
-						01=InterfacePos('StarMap','Tranc_panel_Pos',0,0,0);
-						02=InterfaceImage('StarMap','Tranc_panel_sigment_2','Alpha,Bm.PanelSpace2.2TranclucatorPanelPartners');
-						03=InterfaceState('StarMap','zaglushka_tranc_ms_blk',1);
+						01=InterfacePos('StarMap', 'Tranc_panel_Pos', 0, 0, 0);
+						02=InterfaceImage('StarMap', 'Tranc_panel_sigment_2', 'Alpha,Bm.PanelSpace2.2TranclucatorPanelPartners');
+						03=InterfaceState('StarMap', 'zaglushka_tranc_ms_blk', 1);
 					}
 				}
 			}
@@ -201,10 +201,10 @@ Artefacts ^{
         OnActCode ^{
 			01=if(ScriptItemActionType(t_OnAnotherItem2))
 			02 ^{
-				01=dword item=ScriptItemActObject1(t_OnAnotherItem2);
+				01=dword item = ScriptItemActObject1(t_OnAnotherItem2);
 				02=if(item)
 				03 ^{
-					01=if(ItemType(item)==t_FuelTanks || ItemType(item)==t_Cistern)
+					01=if(ItemType(item) == t_FuelTanks || ItemType(item) == t_Cistern)
 					02 ^{
 						01=dword tranc=ArtTranclucatorToShip(CurItem());
 						02=dword tank=ShipEqInSlot(tranc,t_FuelTanks);
@@ -230,18 +230,18 @@ Artefacts ^{
 										02=Sound('Sound.Repair');
 										03=if(count(Name(tranc))>=16 && count(Name(tranc))<=17)MessageBox('<color=0,50,200>'+Name(tranc)+'</color>'+CT('FormInfo.br')+'заправлен на <color=0,50,200>'+ContainerFuel(item)+'</color> ед.');
 										04=else MessageBox('<color=0,50,200>'+Name(tranc)+'</color> заправлен на <color=0,50,200>'+ContainerFuel(item)+'</color> ед.');
-										05=ContainerFuel(item,0);
+										05=ContainerFuel(item, 0);
 										06=ScriptItemActParam(2);
 									}
 								}
 							}
 							03=else
 							04 ^{
-								01=if(ItemType(item)==t_FuelTanks)MessageBox('Топливный бак пуст, заправить <color=0,50,200>'+Name(tranc)+'</color> из него невозможно');
-								02=else MessageBox('Цистерна пуста, заправить <color=0,50,200>'+Name(tranc)+'</color> из неё невозможно');
+								01=if(ItemType(item) == t_FuelTanks) MessageBox('Топливный бак пуст, заправить <color=0,50,200>' + Name(tranc) + '</color> из него невозможно');
+								02=else MessageBox('Цистерна пуста, заправить <color=0,50,200>' + Name(tranc) + '</color> из неё невозможно');
 							}
 						}
-						05=else MessageBox('<color=0,50,200>'+Name(tranc)+'</color> в заправке не нуждается');
+						05=else MessageBox('<color=0,50,200>' + Name(tranc) + '</color> в заправке не нуждается');
 					}
 				}
 			}
@@ -259,17 +259,17 @@ ShipInfo ^{
 				OnActStepTypes=11
                 OnActCode ^{
 					//Код, перекрашивающий все кнопки транклюкаторов в недоступные, сразу же после перехода игрока в гипер
-                    01=if(ScriptItemActionType(t_OnStep,11))
+                    01=if(ScriptItemActionType(t_OnStep, 11))
                     02 ^{
 						01=if(ShipInHyperSpace(Player()))
 						02 ^{
-							01=for(int j=1;j<=6;j=j+1)
+							01=for(int j = 1; j <= 6; j = j + 1)
 							02 ^{
-								01=if(PlayerTranclucators()>=j)
+								01=if(PlayerTranclucators() >= j)
 								02 ^{
-									01=dword curTrancT=PlayerTranclucators(j-1);
-									02=if(!IsChameleon(curTrancT))InterfaceImage('StarMap','TP_but_'+j,'Alpha,Bm.PanelSpace2.2TranclucatorH');
-									03=else InterfaceImage('StarMap','TP_but_'+j,'Alpha,Bm.PanelSpace2.2'+DeleteTags(Format(EquipmentImageName(curTrancT),'Art',''))+'H');
+									01=dword curTrancT = PlayerTranclucators(j - 1);
+									02=if(!IsChameleon(curTrancT)) InterfaceImage('StarMap', 'TP_but_' + j, 'Alpha,Bm.PanelSpace2.2TranclucatorH');
+									03=else InterfaceImage('StarMap', 'TP_but_' + j, 'Alpha,Bm.PanelSpace2.2' + DeleteTags(Format(EquipmentImageName(curTrancT), 'Art', '')) + 'H');
 								}
 							}
 						}
@@ -288,7 +288,7 @@ ShipInfo ^{
 							07=InterfaceState('StarMap','TrancActive_butWhite',-1);
 							08=for(int k=1;k<=PlayerTranclucators();k=k+1)
 							09 ^{
-								01=if(InterfaceState('StarMap','TP_but_'+k)<1)InterfaceState('StarMap','TP_but_'+k,1);
+								01=if(InterfaceState('StarMap','TP_but_'+k)<1) InterfaceState('StarMap','TP_but_'+k,1);
 							}
 							10=InterfaceState('StarMap','InfoShipTranc',-1);
 							11=InterfaceState('StarMap','InfoTrancOutOfRange',-1);
@@ -332,7 +332,7 @@ ShipInfo ^{
 						01=if(ScriptItemActionType(t_OnStep,11))
 						02 ^{
 							01=infos=CurInfo();
-							02=if(OrderForsage(cur_Tranc))ShipCustomShipInfoTextData(0,infos,3,'turn');
+							02=if(OrderForsage(cur_Tranc)) ShipCustomShipInfoTextData(0,infos,3,'turn');
 						}
 						03=exit;
 					}
@@ -2183,65 +2183,66 @@ ShipInfo ^{
 														01=ItemSize(item,ItemSize(item)+Rnd(21,37));
 														02=HullHP(tranc,ItemSize(item));
 													}
-													30=ShipMoney(tranc,ShipMoney(owner)*2);
+													30=ShipMoney(tranc, ShipMoney(owner) * 2);
 													31=ShipRefit(tranc);
 													32=ShipRefit(tranc);
 													33=ShipMoney(tranc,0);
-													34=int roll=Rnd(1,3);
-													35=ShipImproveItems(tranc,roll);
-													//Перекраска транка (на всякий случай, если он был найден и имеет неверный цвет)
+													34=int roll=Rnd(1, 3);
+													35=ShipImproveItems(tranc, roll);
+													//Перекраска транка (на всякий случай, если он был подобран ботом и имеет неверный цвет)
 													36=if(1)
 													37 ^{
-														01=if(ShipPilotRace(owner)==0)roll=2;
-														02=else if(ShipPilotRace(owner)==1)roll=4;
-														03=else if(ShipPilotRace(owner)==2)roll=5;
-														04=else if(ShipPilotRace(owner)==3)roll=6;
-														05=else if(ShipPilotRace(owner)==4)roll=3;
-														06=if(ShipOwner(owner)==7)roll=7;
-														07=if(roll==2)
-														08 ^{
-															01=Chameleon(tranc,'Ship.TranclucatorRed');
-															02=TranclucatorData(tranc,'ArtSysName','ArtTranclucatorRed');
+														01=int owner_race = ShipPilotRace(owner);
+														02=if(!owner_race) roll = 2;
+														03=else if(owner_race == 1) roll = 4;
+														04=else if(owner_race == 2) roll = 5;
+														05=else if(owner_race == 3) roll = 6;
+														06=else if(owner_race == 4) roll = 3;
+														07=if(owner_race == 7) roll = 7;
+														08=if(roll == 2)
+														09 ^{
+															01=Chameleon(tranc, 'Ship.TranclucatorRed');
+															02=TranclucatorData(tranc, 'ArtSysName', 'ArtTranclucatorRed');
 														}
-														09=else if(roll==3)
-														10 ^{
-															01=Chameleon(tranc,'Ship.TranclucatorYellow');
-															02=TranclucatorData(tranc,'ArtSysName','ArtTranclucatorYellow');
+														10=else if(roll == 3)
+														11 ^{
+															01=Chameleon(tranc, 'Ship.TranclucatorYellow');
+															02=TranclucatorData(tranc, 'ArtSysName', 'ArtTranclucatorYellow');
 														}
-														11=else if(roll==4)
-														12 ^{
-															01=Chameleon(tranc,'Ship.TranclucatorGreen');
-															02=TranclucatorData(tranc,'ArtSysName','ArtTranclucatorGreen');
+														12=else if(roll == 4)
+														13 ^{
+															01=Chameleon(tranc, 'Ship.TranclucatorGreen');
+															02=TranclucatorData(tranc, 'ArtSysName', 'ArtTranclucatorGreen');
 														}
-														13=else if(roll==5)
-														14 ^{
-															01=Chameleon(tranc,'Ship.TranclucatorBlue');
-															02=TranclucatorData(tranc,'ArtSysName','ArtTranclucatorBlue');
+														14=else if(roll == 5)
+														15 ^{
+															01=Chameleon(tranc, 'Ship.TranclucatorBlue');
+															02=TranclucatorData(tranc, 'ArtSysName', 'ArtTranclucatorBlue');
 														}
-														15=else if(roll==6)
-														16 ^{
-															01=Chameleon(tranc,'Ship.TranclucatorViolet');
-															02=TranclucatorData(tranc,'ArtSysName','ArtTranclucatorViolet');
+														16=else if(roll == 6)
+														17 ^{
+															01=Chameleon(tranc, 'Ship.TranclucatorViolet');
+															02=TranclucatorData(tranc, 'ArtSysName', 'ArtTranclucatorViolet');
 														}
-														17=else if(roll==7)
-														18 ^{
-															01=Chameleon(tranc,'Ship.TranclucatorWhite');
-															02=TranclucatorData(tranc,'ArtSysName','ArtTranclucatorWhite');
+														18=else if(roll == 7)
+														19 ^{
+															01=Chameleon(tranc, 'Ship.TranclucatorWhite');
+															02=TranclucatorData(tranc, 'ArtSysName', 'ArtTranclucatorWhite');
 														}
 													}
 													38=if(IsScriptActive('Mod_ExpExplorers'))
 													39 ^{
-														01=if(Rnd(1,100)<=15 && ShipArts(tranc)<=4)
+														01=if(Rnd(1, 100) <= 15 && ShipArts(tranc) <= 4)
 														02 ^{
 															01=dword artNum=0;
-															02=if(IsScriptActive('Mod_ExpArts'))while(!artNum || artNum==6 || artNum==11 || artNum==12 || artNum==20 || artNum==24 || artNum==25 || artNum==30)artNum=Rnd(1,31);//+4 дополнительных артефакта из ExpArts
-															03=else while(!artNum || artNum==6 || artNum==11 || artNum==12 || artNum==20 || artNum==24 || artNum==25)artNum=Rnd(1,27);//Иначе только оригинальные экипируемые
+															02=if(IsScriptActive('Mod_ExpArts'))while(!artNum || artNum==6 || artNum==11 || artNum==12 || artNum==20 || artNum==24 || artNum==25 || artNum==30) artNum=Rnd(1,31); //+4 дополнительных артефакта из ExpArts
+															03=else while(!artNum || artNum==6 || artNum==11 || artNum==12 || artNum==20 || artNum==24 || artNum==25) artNum=Rnd(1,27);//Иначе только оригинальные экипируемые
 															//Создаём оригинальный артефакт
 															04=if(artNum<=27)
 															05 ^{
-																01=if(Rnd(1,100)<=10)artNum=CreateArt(GgiveArtsArray[artNum],6);
+																01=if(Rnd(1,100)<=10) artNum=CreateArt(GgiveArtsArray[artNum],6);
 																02=else artNum=CreateArt(GgiveArtsArray[artNum],Rnd(0,4));
-																03=if(ShipFreeSpace(tranc)<ItemSize(artNum))ItemSize(item,ItemSize(item)+(ItemSize(artNum)-ShipFreeSpace(tranc)));
+																03=if(ShipFreeSpace(tranc)<ItemSize(artNum)) ItemSize(item,ItemSize(item)+(ItemSize(artNum)-ShipFreeSpace(tranc)));
 																04=AddItemToShip(tranc,artNum);
 																05=ItemIsInUse(artNum,tranc,1);
 															}
@@ -2254,7 +2255,7 @@ ShipInfo ^{
 																	02=unknown CustomArtSizeCalc=ImportedFunction('UtilityFunctions','CustomArtSizeCalc');
 																	03=unknown CustomArtCostCalc=ImportedFunction('UtilityFunctions','CustomArtCostCalc');
 																}
-																03=if(Rnd(1,100)<=10)int t_race=6;
+																03=if(Rnd(1,100)<=10) int t_race=6;
 																04=else t_race=Rnd(0,4);
 																05=artNum=CreateCustomArt(GgiveArtsArray[artNum],CustomArtSizeCalc(0+CT('Artefacts.CustomArtefacts.'+GgiveArtsArray[artNum]+'.Size'),GalaxyDiffLevels(4)),CustomArtCostCalc(0+CT('Artefacts.CustomArtefacts.'+GgiveArtsArray[artNum]+'.Cost'),GalaxyDiffLevels(1),GalaxyTechLevel()),t_race);
 																06=if(ShipFreeSpace(tranc)<ItemSize(artNum))ItemSize(item,ItemSize(item)+(ItemSize(artNum)-ShipFreeSpace(tranc)));
@@ -2265,16 +2266,16 @@ ShipInfo ^{
 													}
 													40=HullHP(tranc,ItemSize(item));
 												}
-												//Ремонт (если надо)
+												//Ремонт (если необходимо)
 												07=if(repCheck)
 												08 ^{
 													01=HullHP(tranc,ItemSize(ShipItems(tranc,0)));
-													02=for(j=1;j<ShipItems(tranc);j=j+1)
+													02=for(j=1; j<ShipItems(tranc); j=j+1)
 													03 ^{
 														01=item=ShipItems(tranc,j);
 														02=ItemDurability(item,100);
 													}
-													04=for(j=0;j<ShipArts(tranc);j=j+1)
+													04=for(j=0; j<ShipArts(tranc); j=j+1)
 													05 ^{
 														01=item=ShipArts(tranc,j);
 														02=ItemDurability(item,100);
