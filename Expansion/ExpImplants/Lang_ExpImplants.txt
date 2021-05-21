@@ -1292,6 +1292,8 @@ Biomodules ^{
             Bonus_count=0
             Description=Мощный аналитический блок, подключаемый к мозгу и помогающий ему обрабатывать любую поступающую информацию. Серьёзно повышает IQ и аналитические способности пользователя.<br><br>Получаемый опыт: <clr>+25%<clrEnd>
             Name=Знайка
+			AddExpPercent=25
+			AddNPCInfo=bioMM_Doono
             Slot=B
             Stama=3
             Stama_pirate=4
@@ -1970,21 +1972,30 @@ ShipInfo ^{
 										40=temp_str=CT(ShipCustomShipInfoTextData(Player(),ArrayForBMActcode[h],2)+DeleteTags('.Uni_code'));
 										41=ShipDeleteCustomShipInfo(Player(),ArrayForBMActcode[h]);
 										42=temp_int=temp_str;
-										43=if(temp_int==19)king_will=king_will-1;
-										44=if(temp_int==10)ultra=ultra-1;
-										45=if(temp_int==11)broot=broot-1;
-										46=if(temp_int==12)
-										47 ^{
+										43=if(temp_int==19) king_will=king_will-1;
+										44=if(temp_int==10)
+										45 ^{
+											01=temp_int_2 = ShipFindCustomShipInfoByType(Player(), 'bioMM_Doono');
+											02=if(~temp_int_2)
+											03 ^{
+												01=temp_int_1 = ShipCustomShipInfoData(Player(), temp_int_2, 1);
+												02=if(temp_int_1 == 1) ShipDeleteCustomShipInfo(Player(), 'bioMM_Doono');
+												03=if(temp_int_1 >= 2) ShipCustomShipInfoData(Player(), temp_int_2, 1, temp_int_1 - 1);
+											}
+										}
+										46=if(temp_int==11) broot=broot-1;
+										47=if(temp_int==12)
+										48 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_BM');
-											02=if(temp_int_2>=0)
+											02=if(~temp_int_2)
 											03 ^{
 												01=temp_int_1=ShipCustomShipInfoData(Player(),temp_int_2,1);
 												02=if(temp_int_1==1)ShipDeleteCustomShipInfo(Player(),'bioMM_BM');
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										48=if(temp_int==13)
-										49 ^{
+										49=if(temp_int==13)
+										50 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_KM');
 											02=if(temp_int_2>-1)
 											03 ^{
@@ -1993,34 +2004,34 @@ ShipInfo ^{
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										50=if(temp_int==14)
-										51 ^{
+										51=if(temp_int==14)
+										52 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_TM');
-											02=if(temp_int_2>=0)
+											02=if(~temp_int_2)
 											03 ^{
 												01=temp_int_1=ShipCustomShipInfoData(Player(),temp_int_2,1);
 												02=if(temp_int_1==1)ShipDeleteCustomShipInfo(Player(),'bioMM_TM');
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										52=if(temp_int==15)
-										53 ^{
+										53=if(temp_int==15)
+										54 ^{
 											01=temp_int=temp_int;//Свободный номер
 										}
-										54=if(temp_int==16)
-										55 ^{
+										55=if(temp_int==16)
+										56 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_AD');
-											02=if(temp_int_2>=0)
+											02=if(~temp_int_2)
 											03 ^{
 												01=temp_int_1=ShipCustomShipInfoData(Player(),temp_int_2,1);
 												02=if(temp_int_1==1)ShipDeleteCustomShipInfo(Player(),'bioMM_AD');
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										56=if(temp_int==17)
-										57 ^{
+										57=if(temp_int==17)
+										58 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_MR');
-											02=if(temp_int_2>=0)
+											02=if(~temp_int_2)
 											03 ^{
 												01=temp_int_1=ShipCustomShipInfoData(Player(),temp_int_2,1);
 												02=if(temp_int_1==1)
@@ -2034,31 +2045,31 @@ ShipInfo ^{
 												04=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										58=if(temp_int==18)
-										59 ^{
+										59=if(temp_int==18)
+										60 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_BS');
-											02=if(temp_int_2>=0)
+											02=if(~temp_int_2)
 											03 ^{
 												01=temp_int_1=ShipCustomShipInfoData(Player(),temp_int_2,1);
 												02=if(temp_int_1==1)ShipDeleteCustomShipInfo(Player(),'bioMM_BS');
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										60=if(temp_int==20)open_hole=open_hole-1;
-										61=if(temp_int==22)
-										62 ^{
+										61=if(temp_int==20)open_hole=open_hole-1;
+										62=if(temp_int==22)
+										63 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_RT');
-											02=if(temp_int_2>=0)
+											02=if(~temp_int_2)
 											03 ^{
 												01=temp_int_1=ShipCustomShipInfoData(Player(),temp_int_2,1);
 												02=if(temp_int_1==1)ShipDeleteCustomShipInfo(Player(),'bioMM_RT');
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										63=if(temp_int==23)
-										64 ^{
+										64=if(temp_int==23)
+										65 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_IC');
-											02=if(temp_int_2>=0)
+											02=if(~temp_int_2)
 											03 ^{
 												01=temp_int_1=ShipCustomShipInfoData(Player(),temp_int_2,1);
 												02=if(temp_int_1==1)ShipDeleteCustomShipInfo(Player(),'bioMM_IC');
@@ -2076,10 +2087,10 @@ ShipInfo ^{
 											}
 											06=immun_array[29]=0;
 										}
-										65=if(temp_int==24)
-										66 ^{
+										66=if(temp_int==24)
+										67 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_ND');
-											02=if(temp_int_2>=0)
+											02=if(~temp_int_2)
 											03 ^{
 												01=temp_int_1=ShipCustomShipInfoData(Player(),temp_int_2,1);
 												02=if(temp_int_1==1)ShipDeleteCustomShipInfo(Player(),'bioMM_ND');
@@ -2101,55 +2112,55 @@ ShipInfo ^{
 											}
 											06=immun_array[29]=0;
 										}
-										67=if(temp_int==25)
-										68 ^{
+										68=if(temp_int==25)
+										69 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_BZ');
-											02=if(temp_int_2>=0)
+											02=if(~temp_int_2)
 											03 ^{
 												01=temp_int_1=ShipCustomShipInfoData(Player(),temp_int_2,1);
 												02=if(temp_int_1==1)ShipDeleteCustomShipInfo(Player(),'bioMM_BZ');
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										69=if(temp_int==26)
-										70 ^{
+										70=if(temp_int==26)
+										71 ^{
 											01=temp_int=temp_int;//Свободный номер
 										}
-										71=if(temp_int==28)add_dialog[2]=add_dialog[2]-1;
-										72=if(temp_int==29)add_dialog[1]=add_dialog[1]-1;
-										73=if(temp_int==27)
-										74 ^{
+										72=if(temp_int==28)add_dialog[2]=add_dialog[2]-1;
+										73=if(temp_int==29)add_dialog[1]=add_dialog[1]-1;
+										74=if(temp_int==27)
+										75 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_DH');
-											02=if(temp_int_2>=0)
+											02=if(~temp_int_2)
 											03 ^{
 												01=temp_int_1=ShipCustomShipInfoData(Player(),temp_int_2,1);
 												02=if(temp_int_1==1)ShipDeleteCustomShipInfo(Player(),'bioMM_DH');
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										75=if(temp_int==30)
-										76 ^{
+										76=if(temp_int==30)
+										77 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_NS');
-											02=if(temp_int_2>=0)
+											02=if(~temp_int_2)
 											03 ^{
 												01=temp_int_1=ShipCustomShipInfoData(Player(),temp_int_2,1);
 												02=if(temp_int_1==1)ShipDeleteCustomShipInfo(Player(),'bioMM_NS');
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										77=if(temp_int==31)
-										78 ^{
+										78=if(temp_int==31)
+										79 ^{
 											01=temp_int_2=ShipFindCustomShipInfoByType(Player(),'bioMM_LS');
-											02=if(temp_int_2>=0)
+											02=if(~temp_int_2)
 											03 ^{
 												01=temp_int_1=ShipCustomShipInfoData(Player(),temp_int_2,1);
 												02=if(temp_int_1==1)ShipDeleteCustomShipInfo(Player(),'bioMM_LS');
 												03=if(temp_int_1>=2)ShipCustomShipInfoData(Player(),temp_int_2,1,temp_int_1-1);
 											}
 										}
-										79=temp_int=ShipFindCustomShipInfoByType(Player(),'bioMM');
-										80=temp_int_2=ShipCustomShipInfoData(Player(),temp_int,1)+ShipCustomShipInfoData(Player(),temp_int,2)+ShipCustomShipInfoData(Player(),temp_int,3);
-										81=if(temp_int_2==0)ShipDeleteCustomShipInfo(Player(),'bioMM');
+										80=temp_int=ShipFindCustomShipInfoByType(Player(),'bioMM');
+										81=temp_int_2=ShipCustomShipInfoData(Player(),temp_int,1)+ShipCustomShipInfoData(Player(),temp_int,2)+ShipCustomShipInfoData(Player(),temp_int,3);
+										82=if(!temp_int_2) ShipDeleteCustomShipInfo(Player(), 'bioMM');
 									}
 									//Также удаляем все болезни и стимуляторы
 									12=for(j = 0; j <= 24; j = j + 1)
@@ -2422,7 +2433,7 @@ ShipInfo ^{
 					02=int i;
 					03=dword rocket;
 					04=int msl_live;
-					05=for(i=0;i<StarMissiles(ShipStar(ship));i=i+1)
+					05=for(i=0; i<StarMissiles(ShipStar(ship)); i=i+1)
 					06 ^{
 						01=rocket=StarMissiles(ShipStar(ship),i);
 						02=if(MissileOwner(rocket)!=ship)continue;
@@ -3041,27 +3052,27 @@ ShipInfo ^{
 				OnActCodeTypes=t_OnStep
 				OnActStepTypes=11
                 OnActCode ^{
-					01=int infos=ShipFindCustomShipInfoByType(Player(),'bioMM_NS');
-					02=int count_num=ShipCustomShipInfoData(Player(),infos,3);
+					01=int infos = ShipFindCustomShipInfoByType(Player(), 'bioMM_NS');
+					02=int count_num = ShipCustomShipInfoData(Player(), infos, 3);
 					03=int n_count;
 					04=if(!count_num)
 					05 ^{
-						//Случайный выбор номера сообщения
-						01=n_count=Rnd(1,8);
-						02=if(n_count==1)NewsAdd('NBnfd<LahOESl6a75gBNELkFjB5@62CAFkygfЦРjdПол91юсsdjkМираBr 321LaunchNGb;fktrickORthreat;i8420FblJeUYesDdLkgZvn+lbflkjglB-KGHsd AfteradgAnfgWhileKNGriCA!5090VK-SOuqIIIYrDEFiKCnbjn3851Bg637skdlb dEh1vAZCreatedFtkBfkP+DL2019July18r@l54+3=57aTreYlrКоманда:Fas395 MiB@gjnlLoveGnArLmachinea.k.a.superMaxKHbdf62mlE@CA!$FgRig31thMtV...');
-						03=else if(n_count==2)NewsAdd('GbjaBestld42a@bdDaysKhfJ3BKfIn-a-fogpahCloseBNd7jB-TheFaD8akThrottlet nhpjaH@K26LBHleftznkfeltВыполняется:temp_str1bBDFBerh71GBdawabe4946li kebNbob&dylan@MDBlMyDarlingbmgl67*92BNmdsNlDq239nBLflriNBiLWFkLnbLJZ Полная_проверка:EndforRIPbdASmlfXUP7+68%Eer...');
-						04=else if(n_count==3)NewsAdd('YTraMPLong@mfdkl&LiveJbIJAspectusRpozHAcris*bnTg6200subRtBscribes Проверяется_наличие:TekMB8TvriRI@Klot@NvorkZoomBut399Slow Актуален:45-934=-889@nbJKRM<FrG%MrShu(Работоспособность=-1) Stand696ForJBjCountBZjlgNHruOR7cjseuAHdfK1812KFjvsQA JOfgjpdsj5I#RgjAsbmk13gfAlwaysНе_обнаружено...');
-						05=else if(n_count==4)NewsAdd('StartbWarsRombko1999LJar+JarPMay@eR2002kIO-TheZmb2005XImForceKo V*BembO%1977#Ek+WithQv1980Z&M~YouEc1983X-Wing>V=Lucas+EwokZ IDSiB9SkuVKbJfОшибка!51NFvMlfdiПерезапуск_процедуры_конвертации PvsmeuSj-=_GiGaHaCkEr-4000_PRO_=-doneBymsk4s3=01gThatvrRtg...');
-						06=else if(n_count==5)NewsAdd('JrUign<OR#Hogwarts1998EV:SDoneAETvldsroROGhI#IXOExpgMnkDS841k MXsdVEvskОперация=Ы@OvKtS:R1965tMr+DjGvnKDdiMeMsfpc304ml0Qdopa FKbIR75nLiJS09jkFgSLОшибка_база_данных: Здравствуйте, дорогой Мартин Алексеевич15*bflROnNBmalfunction666=aaaaaaaa');
-						07=else if(n_count==6)NewsAdd('G-7urd@kgIRLbkigreatEVILanswer=42NAkvaQBhrobmkВычисляюdEI12 #VErNizqsaMnEodjMoYtq2007V!FBIm!k!biRFrwA9Vb56+99meti@dlfRlb+RIg NA+OwringQeoMEc356AEsfGaalsThingBlsir-Yes*SIR1987nvnEcDfReady737quO <W94S:ro$+kKsoBMkpFrJustABBAprilr80wnDOIT12!5!sdkIOEIv&ОберD:jbm StringRvmZDetectlseБезумие56=Terminated...');
-						08=else if(n_count==7)NewsAdd('ForAReaso@nsgjkiSNUflittyO689data47sdMkDFpdCfjk590gkLmb Код_принят:569+198=hdsf%Hk546s*Zhs-Huk-jF@hOutOfOrder76jf-DAB-jkl Исполнение:Tr&Rjnflms32DirectX91%r561nsiSHhFn@vKTn;lsdnfie Rides*Like003vnEvExOnlineotrX-FilesmlshffoRОшибка!Kl798MDgStringb MkfReady=RUSb3lTdVideoErVDgameORKtrainIndustryBNjFK*rMJ -IS31mzgnStilleqtebxfLive2003WortИсполнено...');
-						09=else if(n_count==8)NewsAdd('SpyBP#ERsOfiBee*KsFiT986bJGWhat81vDKTime-AoeIsMqZ+It12?N NG&sWpUlp#19*94#fIctiOnMvfJeSuis1917-1789=128FieRdone*@ByWHO? vNsYReadyVtSKfoR+5YImoreRtG?NMEfj-Lol_kEk^26^LGqeF=roCCatV FKLs-duEshowUf19H+klSDaMUSTuE=sHgoGzx*sDP91suONwZthankU=FM');
+						//Выбор случайного номера уведомления
+						01=n_count = Rnd(1, 8);
+						02=if(n_count == 1) NewsAdd('NBnfd<LahOESl6a75gBNELkFjB5@62CAFkygfЦРjdПол91юсsdjkМираBr 321LaunchNGb;fktrickORthreat;i8420FblJeUYesDdLkgZvn+lbflkjglB-KGHsd AfteradgAnfgWhileKNGriCA!5090VK-SOuqIIIYrDEFiKCnbjn3851Bg637skdlb dEh1vAZCreatedFtkBfkP+DL2019July18r@l54+3=57aTreYlrКоманда:Fas395 MiB@gjnlLoveGnArLmachinea.k.a.superMaxKHbdf62mlE@CA!$FgRig31thMtV...');
+						03=else if(n_count == 2) NewsAdd('GbjaBestld42a@bdDaysKhfJ3BKfIn-a-fogpahCloseBNd7jB-TheFaD8akThrottlet nhpjaH@K26LBHleftznkfeltВыполняется:temp_str1bBDFBerh71GBdawabe4946li kebNbob&dylan@MDBlMyDarlingbmgl67*92BNmdsNlDq239nBLflriNBiLWFkLnbLJZ Полная_проверка:EndforRIPbdASmlfXUP7+68%Eer...');
+						04=else if(n_count == 3) NewsAdd('YTraMPLong@mfdkl&LiveJbIJAspectusRpozHAcris*bnTg6200subRtBscribes Проверяется_наличие:TekMB8TvriRI@Klot@NvorkZoomBut399Slow Актуален:45-934=-889@nbJKRM<FrG%MrShu(Работоспособность=-1) Stand696ForJBjCountBZjlgNHruOR7cjseuAHdfK1812KFjvsQA JOfgjpdsj5I#RgjAsbmk13gfAlwaysНе_обнаружено...');
+						05=else if(n_count == 4) NewsAdd('StartbWarsRombko1999LJar+JarPMay@eR2002kIO-TheZmb2005XImForceKo V*BembO%1977#Ek+WithQv1980Z&M~YouEc1983X-Wing>V=Lucas+EwokZ IDSiB9SkuVKbJfОшибка!51NFvMlfdiПерезапуск_процедуры_конвертации PvsmeuSj-=_GiGaHaCkEr-4000_PRO_=-doneBymsk4s3=01gThatvrRtg...');
+						06=else if(n_count == 5) NewsAdd('JrUign<OR#Hogwarts1998EV:SDoneAETvldsroROGhI#IXOExpgMnkDS841k MXsdVEvskОперация=Ы@OvKtS:R1965tMr+DjGvnKDdiMeMsfpc304ml0Qdopa FKbIR75nLiJS09jkFgSLОшибка_база_данных: Здравствуйте, дорогой Мартин Алексеевич15*bflROnNBmalfunction666=aaaaaaaa');
+						07=else if(n_count == 6) NewsAdd('G-7urd@kgIRLbkigreatEVILanswer=42NAkvaQBhrobmkВычисляюdEI12 #VErNizqsaMnEodjMoYtq2007V!FBIm!k!biRFrwA9Vb56+99meti@dlfRlb+RIg NA+OwringQeoMEc356AEsfGaalsThingBlsir-Yes*SIR1987nvnEcDfReady737quO <W94S:ro$+kKsoBMkpFrJustABBAprilr80wnDOIT12!5!sdkIOEIv&ОберD:jbm StringRvmZDetectlseБезумие56=Terminated...');
+						08=else if(n_count == 7) NewsAdd('ForAReaso@nsgjkiSNUflittyO689data47sdMkDFpdCfjk590gkLmb Код_принят:569+198=hdsf%Hk546s*Zhs-Huk-jF@hOutOfOrder76jf-DAB-jkl Исполнение:Tr&Rjnflms32DirectX91%r561nsiSHhFn@vKTn;lsdnfie Rides*Like003vnEvExOnlineotrX-FilesmlshffoRОшибка!Kl798MDgStringb MkfReady=RUSb3lTdVideoErVDgameORKtrainIndustryBNjFK*rMJ -IS31mzgnStilleqtebxfLive2003WortИсполнено...');
+						09=else NewsAdd('SpyBP#ERsOfiBee*KsFiT986bJGWhat81vDKTime-AoeIsMqZ+It12?N NG&sWpUlp#19*94#fIctiOnMvfJeSuis1917-1789=128FieRdone*@ByWHO? vNsYReadyVtSKfoR+5YImoreRtG?NMEfj-Lol_kEk^26^LGqeF=roCCatV FKLs-duEshowUf19H+klSDaMUSTuE=sHgoGzx*sDP91suONwZthankU=FM');
 						//Случайный интервал вывода сообщений
-						10=count_num=Rnd(28,47);
+						10=count_num = Rnd(28, 47);
 						//Запись полученного интервала в третью числовую ячейку инфошки
-						11=ShipCustomShipInfoData(Player(),infos,3,count_num);
+						11=ShipCustomShipInfoData(Player(), infos, 3, count_num);
 					}
-					06=ShipCustomShipInfoData(Player(),infos,3,count_num-1);
+					06=ShipCustomShipInfoData(Player(), infos, 3, count_num - 1);
 				}
 			}
 			bioMM_IC ^{
@@ -3071,9 +3082,9 @@ ShipInfo ^{
 				OnActCodeTypes=t_OnStep
 				OnActStepTypes=1
                 OnActCode ^{
-					01=if(PlayerImmunity()<30)PlayerImmunity(30);
+					01=if(PlayerImmunity() < 30) PlayerImmunity(30);
 					//Блокируем развитие комплексного иммуноцида
-					02=if(ShipHealthFactorStatus(Player(),4))ShipHealthFactorStatus(Player(),4,0);
+					02=if(ShipHealthFactorStatus(Player(), 4)) ShipHealthFactorStatus(Player(), 4, 0);
                 }
             }
             bioMM_KM ^{
@@ -3083,16 +3094,16 @@ ShipInfo ^{
 				OnActCodeTypes=t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnStep
 				OnActStepTypes=0
                 OnActCode ^{
-					01=if(ScriptItemActionType(t_OnStep,0))
+					01=if(ScriptItemActionType(t_OnStep, 0))
 					02 ^{
-						01=int immunVar=75;
-						02=if(ShipFindCustomShipInfoByType(Player(),'bioMM_LS')>-1)immunVar=immunVar-25;
-						03=if(ShipFindCustomShipInfoByType(Player(),'bioMM_ND')>-1)immunVar=immunVar-40;
-						04=if(PlayerImmunity()>immunVar)PlayerImmunity(immunVar);
+						01=int immunVar = 75;
+						02=if(~ShipFindCustomShipInfoByType(Player(), 'bioMM_LS')) immunVar = immunVar - 25;
+						03=if(~ShipFindCustomShipInfoByType(Player(), 'bioMM_ND')) immunVar = immunVar - 40;
+						04=if(PlayerImmunity() > immunVar) PlayerImmunity(immunVar);
 					}
                     03=else
                     04 ^{
-                        01=ScriptItemActParam(round(1.2*ScriptItemActParam()));
+                        01=ScriptItemActParam(round(1.2 * ScriptItemActParam()));
                     }
                 }
             }
@@ -3102,7 +3113,7 @@ ShipInfo ^{
                 Name=Бьорнсерк
 				OnActCodeTypes=t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
                 OnActCode ^{
-					01=ScriptItemActParam(round(1.2*ScriptItemActParam()));
+					01=ScriptItemActParam(round(1.2 * ScriptItemActParam()));
                 }
             }
 			bioMM_LS ^{
@@ -3155,7 +3166,7 @@ ShipInfo ^{
                     03 ^{
                         01=if(ObjectType(target)==5)
                         02 ^{
-                            01=if(ShipType(target)=='Warrior')ScriptItemActParam(ScriptItemActParam()+(ScriptItemActParam()*25)/100);
+                            01=if(ShipType(target)=='Warrior') ScriptItemActParam(ScriptItemActParam()+(ScriptItemActParam()*25)/100);
                         }
                     }
                     04=else
@@ -3172,6 +3183,37 @@ ShipInfo ^{
                     }
                 }
             }
+			bioMM_Doono ^{
+                Icon=2
+                Name=Знайка (англ. Doono)
+				Description=Акткод биомодуля "Знайка" (скрытая)
+				OnActCodeTypes=t_OnStep
+				OnActStepTypes=11
+				OnActCode ^{
+					//Data1 - типо место под счётчик установленных биомодулей данного вида (но фактически больше одного поставить всё равно нельзя)
+					//Data2 - количество общего опыта корабля, за которое биомодулем уже был начислен баф
+					//TextData1 - процент увеличения опыта в виде double
+					01=dword cur_info = CurInfo();
+					02=dword cur_ship = ScriptItemActShip();
+					03=if(ScriptItemActionType(t_OnStep))
+					04 ^{
+						01=int old_exp = ShipCustomShipInfoData(0, cur_info, 2);
+						02=int cur_exp = GetShipExpByType(cur_ship);
+						03=if(cur_exp > old_exp)
+						04 ^{
+							//Определяем часть опыта, которую корабль получил недавно
+							01=int new_exp = cur_exp - old_exp;
+							//Вычисляем % бафа стимулятора от недавно полученного опыта
+							02=float percent = ShipCustomShipInfoTextData(0, cur_info, 1);
+							03=new_exp = round(percent * ShipCustomShipInfoData(0, cur_info, 1) * new_exp);
+							//Прибавляем бонус к нераспределённому опыту корабля
+							04=ShipFreeExp(cur_ship, ShipFreeExp(cur_ship) + new_exp);
+							//Запоминаем значение уже полученного кораблём опыта, чтобы не начислять за него бонус повторно
+							05=old_exp = cur_exp;
+						}
+					}
+				}
+			}
             bioMM_brain_1 ^{
                 Description=Вариативная скрытая инфошка для одного мозгового импланта
                 Icon=61
