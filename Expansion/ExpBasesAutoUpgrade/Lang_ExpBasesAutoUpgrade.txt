@@ -16,22 +16,21 @@ ShipInfo ^{
 					04=int AutoUpdateTime = ShipCustomShipInfoData(cur_ship, cur_info, 3);
 					05=if(RepairAndReloadTime <= CurTurn())
 					06 ^{
-						01=dword cur_item;
-						02=ShipCustomShipInfoData(cur_ship, cur_info, 2, CurTurn() + Rnd(25, 35));
+						01=ShipCustomShipInfoData(cur_ship, cur_info, 2, CurTurn() + Rnd(25, 35));
 						//Перезаряжаем ракетные орудия
-						03=for(int j = 1; j <= ShipCntWeapon(cur_ship); j = j + 1)
-						04 ^{
-							01=dword cur_gun = ShipEqInSlot(ScriptItemActShip(), t_Weapon1, j);
+						02=for(int j = 1; j <= ShipCntWeapon(cur_ship); j = j + 1)
+						03 ^{
+							01=dword cur_gun = ShipEqInSlot(cur_ship, t_Weapon1, j);
 							02=if(MissilesToRearm(cur_gun)) MissilesToRearm(cur_gun, MissilesToRearm(cur_gun));
 						}
 						//Проверяем, умеет ли база чинить нестандартное оборудование
-						05=int perm = 0;
-						06=str str_type = ShipType(cur_ship);
-						07=if(str_type == 'SB' || str_type == 'PB' || str_type == 'TC' || str_type == 'SSB') perm = 1;
+						04=int perm = 0;
+						05=str str_type = ShipType(cur_ship);
+						06=if(str_type == 'SB' || str_type == 'PB' || str_type == 'TC' || str_type == 'SSB') perm = 1;
 						//Чиним оборудование и артефакты базы
-						08=for(j = 0; j < ShipItems(cur_ship); j = j + 1)
-						09 ^{
-							01=cur_item = ShipItems(cur_ship, j);
+						07=for(j = 0; j < ShipItems(cur_ship); j = j + 1)
+						08 ^{
+							01=dword cur_item = ShipItems(cur_ship, j);
 							02=if(!ItemIsInUse(cur_item)) continue;
 							03=int item_type = ItemType(cur_item);
 							04=if(item_type < t_FuelTanks || item_type > t_CustomWeapon) continue;
@@ -58,8 +57,8 @@ ShipInfo ^{
 							}
 						}
 						//Чиним экипированные арты, но только если база умеет их чинить
-						10=if(perm)
-						11 ^{
+						09=if(perm)
+						10 ^{
 							01=for(j = 0; j < ShipArts(cur_ship); j = j + 1)
 							02 ^{
 								01=cur_item = ShipArts(cur_ship, j);

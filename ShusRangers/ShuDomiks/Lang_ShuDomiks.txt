@@ -1047,20 +1047,18 @@ ShipInfo ^{
                     02=if(ScriptItemActionType(t_OnStep))
                     03 ^{
                         01=int cur_info = CurInfo();
-						//Таймер до автоматической перезарядки ракетных орудий
+						//Таймер до автоматического ремонта оборудования
                         02=int RepairTime = ShipCustomShipInfoData(cur_ship, cur_info, 2);
 						//Таймер до автообновления
 						03=int AutoUpdateTime = ShipCustomShipInfoData(cur_ship, cur_info, 3);
 						04=if(RepairTime <= CurTurn())
 						05 ^{
-							01=dword cur_item;
-							//Если подключён мод EvoArmada, то чиним вещи станции чаще, поскольку увеличивается износ орудий
-							02=ShipCustomShipInfoData(cur_ship, cur_info, 2, CurTurn() + Rnd(50,80));
-							03=int perm = 1;
+							01=ShipCustomShipInfoData(cur_ship, cur_info, 2, CurTurn() + Rnd(50, 80));
+							02=int perm = 1;
 							//Чиним оборудование и артефакты базы
-                            04=for(int j = 0; j < ShipItems(cur_ship); j = j + 1)
-                            05 ^{
-                                01=cur_item = ShipItems(cur_ship, j);
+                            03=for(j = 0; j < ShipItems(cur_ship); j = j + 1)
+                            04 ^{
+                                01=dword cur_item = ShipItems(cur_ship, j);
                                 02=if(!ItemIsInUse(cur_item)) continue;
 								03=int item_type = ItemType(cur_item);
 								04=if(item_type < t_Hull || item_type > t_CustomWeapon) continue;
@@ -1087,8 +1085,8 @@ ShipInfo ^{
 								}
                             }
 							//Чиним экипированные арты, но только если база умеет их чинить
-							06=if(perm)
-							07 ^{
+							05=if(perm)
+							06 ^{
 								01=for(j = 0; j < ShipArts(cur_ship); j = j + 1)
 								02 ^{
 									01=cur_item = ShipArts(cur_ship, j);
