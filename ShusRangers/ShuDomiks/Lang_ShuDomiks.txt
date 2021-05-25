@@ -1056,7 +1056,7 @@ ShipInfo ^{
 							01=ShipCustomShipInfoData(cur_ship, cur_info, 2, CurTurn() + Rnd(50, 80));
 							02=int perm = 1;
 							//Чиним оборудование и артефакты базы
-                            03=for(j = 0; j < ShipItems(cur_ship); j = j + 1)
+                            03=for(int j = 0; j < ShipItems(cur_ship); j = j + 1)
                             04 ^{
                                 01=dword cur_item = ShipItems(cur_ship, j);
                                 02=if(!ItemIsInUse(cur_item)) continue;
