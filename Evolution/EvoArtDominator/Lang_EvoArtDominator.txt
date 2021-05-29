@@ -30,7 +30,7 @@ Artefacts ^{
 				03=dword cur_item=CurItem();
                 04=if(ScriptItemActionType(t_OnStep))
                 05 ^{
-                    01=if(ScriptItemActParam()==0)
+                    01=if(!ScriptItemActParam())
                     02 ^{
                         01=if(ItemIsInUse(cur_item))
                         02 ^{
@@ -43,7 +43,7 @@ Artefacts ^{
                                 05=dword synchr=0;
                                 06=dword pow=1;
                                 07=dword equip=CT('Artefacts.CustomArtefacts.'+EquipmentImageName(cur_item)+'.Equipments');
-                                08=for(i=t_FuelTanks;i<t_FuelTanks+7;i=i+1)
+                                08=for(i=t_FuelTanks; i<=t_DefGenerator; i=i+1)
                                 09 ^{
                                     01=pow=pow*2;
                                     02=if((equip & pow/2)==pow/2)
