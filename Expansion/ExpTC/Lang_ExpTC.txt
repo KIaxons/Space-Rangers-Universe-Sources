@@ -1034,221 +1034,258 @@ ShipInfo ^{
                 Description=Инфошка спасательной шлюпки
                 Icon=0
                 Name=
-                OnActCodeTypes=t_OnStep,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
+                OnActCodeTypes=t_OnStep,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnEnteringForm,t_OnReEnteringForm,t_OnScan
                 OnActStepTypes=0,9,11
                 OnActCode ^{
-                    01=dword cur_ship = ScriptItemActShip();
-                    02=int bon = FindBonusByCustomTag('ExpTC_SecondLife');
-                    03=if(!ItemExtraSpecialsCountByType(ShipItems(cur_ship, 0), bon)) exit;
-                    04=int i;
-                    05=int infos = CurInfo();
-                    06=int infos_var_2;
-                    07=if(ScriptItemActionType(t_OnTakingDamage) || ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi))
-                    08 ^{
-                        01=infos_var_2=ShipCustomShipInfoData(0,infos,2);
-                        02=if(infos_var_2)ScriptItemActParam(0);
-                        03=if(ScriptItemActParam()>=HullHP(cur_ship) && !infos_var_2)
-                        04 ^{
-                            01=int effectCheck=(ShipStar(cur_ship)==ShipStar(Player()) && ShipInNormalSpace(Player()));
-                            02=dword dealer=ScriptItemActObject1();
-                            03=int dealerType=ObjectType(dealer);
-                            04=int saveItemsCheck=1;
-                            05=unknown itemsArr=newarray(1);
-                            06=for(i=ShipItems(cur_ship)-1;i>0;i=i-1)ArrayAdd(itemsArr,GetItemFromShip(cur_ship,i));
-                            07=unknown artsArr=newarray(1);
-                            08=for(i=ShipArts(cur_ship)-1;i>=0;i=i-1)ArrayAdd(artsArr,GetArtFromShip(cur_ship,i));
-                            09=dword ejectship=BuyTransport(StarPlanets(GalaxyStar(0),3),1);
-                            10=for(i=ShipItems(ejectship)-1;i>0;i=i-1)FreeItem(GetItemFromShip(ejectship,i));
-                            11=for(i=ShipArts(ejectship)-1;i>=0;i=i-1)FreeItem(GetArtFromShip(ejectship,i));
-                            12=dword hullOld=GetItemFromShip(ejectship,0);
-                            13=dword hull=GetItemFromShip(cur_ship,0);
-                            14=AddItemToShip(ejectship,hull);
-                            15=ItemIsInUse(hull,ejectship,1);
-                            16=if(1)
-                            17 ^{
-                                01=ShipSpecialBonuses(ejectship,bonSlotRadar,-1);
-                                02=ShipSpecialBonuses(ejectship,bonSlotScaner,-1);
-                                03=ShipSpecialBonuses(ejectship,bonSlotDroid,-1);
-                                04=ShipSpecialBonuses(ejectship,bonSlotHook,-1);
-                                05=ShipSpecialBonuses(ejectship,bonSlotDef,-1);
-                                06=ShipSpecialBonuses(ejectship,bonSlotWeapon,-4);
-                                07=ShipSpecialBonuses(ejectship,bonSlotArt,-4);
-                                08=ShipSpecialBonuses(ejectship,bonSkill1,-300);
-                                09=ShipSpecialBonuses(ejectship,bonSkill2,-300);
-                                10=ShipSpecialBonuses(ejectship,bonSkill3,-300);
-                                11=ShipSpecialBonuses(ejectship,bonSkill4,-300);
-                                12=ShipSpecialBonuses(ejectship,bonSkill5,-300);
-                                13=ShipSpecialBonuses(ejectship,bonSkill6,-300);
-                                14=ShipSpecialBonuses(ejectship,bonSpeed,-10000);
-                                15=dword add_item;
-                                16=add_item=CreateEquipment(t_FuelTanks,0,1,0);
-                                17=AddItemToShip(ejectship,add_item);
-                                18=ItemIsInUse(add_item,ejectship,1);
-                                19=NoDropItem(add_item,1);
-                                20=add_item=CreateEquipment(t_Engine,0,1,0);
-                                21=SetEquipmentStats(add_item,0,0);
-                                22=AddItemToShip(ejectship,add_item);
-                                23=ItemIsInUse(add_item,ejectship,1);
-                                24=NoDropItem(add_item,1);
-                                25=add_item=CreateEquipment(t_Weapon1,0,1,0);
-                                26=ItemDurability(add_item,0);
-                                27=AddItemToShip(ejectship,add_item);
-                                28=ItemIsInUse(add_item,ejectship,1);
-                                29=NoDropItem(add_item,1);
-                                30=ShipAddCustomShipInfo(ejectship,'AbandonedShipInfo','NoShow');
-                                31=if(effectCheck)
-                                32 ^{
-                                    01=int NoEffectCheck=ShipCustomShipInfoTextData(0,infos,3);
-                                    02=if(NoEffectCheck!=dealer)
-                                    03 ^{
-                                        01=if(dealerType==1)
-                                        02 ^{
-                                            01=ShowEffect('Weapon.NoGraph',1,cur_ship,0,ScriptItemActParam(),0,0,255,255,255);
-                                        }
-                                        03=else if(dealerType==6)
-                                        04 ^{
-                                            01=ShowEffect('Weapon.NoGraph',1,cur_ship,0,ScriptItemActParam(),0,0,255,0,0);
-                                        }
-                                        05=else ShowEffect('Weapon.NoGraph',1,cur_ship,0,ScriptItemActParam(),0,0);
-                                    }
-                                }
-                                33=if(dealerType==1 || dealerType==6)saveItemsCheck=0;
-                                34=int RNDbomb_1_Num=0;
-                                35=if(saveItemsCheck)
-                                36 ^{
-                                    01=for(i=ArrayDim(itemsArr)-1;i;i=i-1)
-                                    02 ^{
-                                        01=if(ItemType(itemsArr[i])==t_UselessItem)
-                                        02 ^{
-                                            01=str itemSysName=EquipmentImageName(itemsArr[i]);
-                                            02=if(findsubstr(itemSysName,'RNDbomb')>-1)
-                                            03 ^{
-                                                01=if(itemSysName=='RNDbomb_1')
-                                                02 ^{
-                                                    01=if(UselessItemData(itemsArr[i],2)==-2)
-                                                    02 ^{
-                                                        01=DropItemInSystem(StarNearbyStars(ShipStar(Player()),1),itemsArr[i],30000,30000,30000,30000);
-                                                        02=ItemDestroy(itemsArr[i],1);
-                                                    }
-                                                    03=else
-                                                    04 ^{
-                                                        01=RNDbomb_1_Num=RNDbomb_1_Num+1;
-                                                        02=PutItemInVault('RNDbomb_1_'+Id(ejectship)+'_'+RNDbomb_1_Num,itemsArr[i]);
-                                                    }
-                                                }
-                                                03=else AddItemToShip(ejectship,itemsArr[i]);
-                                            }
-                                            04=else AddItemToShip(ejectship,itemsArr[i]);
-                                        }
-                                        03=else AddItemToShip(ejectship,itemsArr[i]);
-                                    }
-                                    03=for(i=ArrayDim(artsArr)-1;i;i=i-1)
-                                    04 ^{
-                                        01=AddItemToShip(ejectship,artsArr[i]);
-                                    }
-                                }
-                                37=else
-                                38 ^{
-                                    01=for(i=ArrayDim(itemsArr)-1;i;i=i-1)
-                                    02 ^{
-                                        01=DropItemInSystem(StarNearbyStars(ShipStar(Player()),1),itemsArr[i],30000,30000,30000,30000);
-                                        02=ItemDestroy(itemsArr[i],1);
-                                    }
-                                    02=for(i=ArrayDim(artsArr)-1;i;i=i-1)FreeItem(artsArr[i]);
-                                }
-                            }
-                            18=Chameleon(ejectship);
-                            19=ShipCustomShipInfoData(ejectship,'AbandonedShipInfo',1,RNDbomb_1_Num);
-                            20=FreeItem(hullOld);
-                            21=SetName(ejectship,'<color=57,239,255>'+CT('MicroModuls.ExpTC_Lifeboat.AbandonedShipName')+'</color>');
-                            22=ShipType(ejectship,'AbandonedShip');
-                            23=ShipOwner(ejectship,ShipOwner(cur_ship));
-                            24=RelationToRanger(ejectship,Player(),50);
-                            25=NoTalkToShip(ejectship,1);
-                            26=NoScanToShip(ejectship,1);
-                            27=OrderNone(ejectship);
-                            28=OrderLock(ejectship,1);
-                            29=ShipAngle(ejectship,ShipAngle(cur_ship));
-                            30=TransferShip(ejectship,ShipStar(cur_ship));
-                            31=ShipSetCoords(ejectship,CoordX(cur_ship),CoordY(cur_ship));
-                            32=ShipCustomShipInfoData(0,infos,1,Id(ejectship));
-                            33=dword hullBoat=CreateHull(t_Ranger,100,1,3,-1);
-                            34=SetEquipmentStats(hullBoat,0,0);
-                            35=AddItemToShip(cur_ship,hullBoat);
-                            36=ItemIsInUse(hullBoat,cur_ship,1);
-                            37=SpecialToEquipment(FindBonusByCustomTag('ExpTC_Lifeboat'),hullBoat);
-                            38=ShipCustomShipInfoData(0,infos,2,1);
-                            39=add_item=CreateEquipment(t_FuelTanks,10,1,ItemOwner(hullBoat));
-                            40=AddItemToShip(cur_ship,add_item);
-                            41=ItemIsInUse(add_item,cur_ship,1);
-                            42=add_item=CreateEquipment(t_Engine,15,1,ItemOwner(hullBoat));
-                            43=AddItemToShip(cur_ship,add_item);
-                            44=ItemIsInUse(add_item,cur_ship,1);
-                            45=add_item=CreateEquipment(t_Weapon1,15,1,ItemOwner(hullBoat));
-                            46=AddItemToShip(cur_ship,add_item);
-                            47=ItemExtraSpecialsAddByType(ShipItems(cur_ship,0),bon);
-                            48=ItemIsInUse(add_item,cur_ship,1);
-                            49=Chameleon(cur_ship);
-                            50=AutoBattle(0);
-                            51=if(GetMainData('Data.Script.Mod_ExpPanel')=='1,Script.Mod_ExpPanel')
-                            52 ^{
-                                01=if(InterfaceState('StarMap','Klesh_panel'))
-                                02 ^{
-                                    01=InterfaceState('StarMap','Klesh_panel',0);
-                                }
-                            }
-                            53=HullHP(ejectship,1);
-                            54=ScriptItemActParam(0);
-                        }
-                    }
-                    09=if(ScriptItemActionType(t_OnStep,9))
-                    10 ^{
-                        01=if(ShipCustomShipInfoData(0,infos,2)==1)OrderNone(cur_ship);
-                    }
-                    11=if(ScriptItemActionType(t_OnStep,11))
-                    12 ^{
-                        01=infos_var_2=ShipCustomShipInfoData(0,infos,2);
-                        02=if(infos_var_2==1)
-                        03 ^{
-                            01=ShipCustomShipInfoData(0,infos,2,2);
-                            02=Chameleon(cur_ship);
-                            03=if(IsPlayer(cur_ship))ForceNextDay();
-                        }
-                        04=else if(infos_var_2==3)
-                        05 ^{
-                            01=if(!IsPlayer(cur_ship))ShipDeleteCustomShipInfo(cur_ship,'LifeboatLaunchInfo');
-                            02=ItemExtraSpecialsDeleteByType(ShipItems(cur_ship,0),bon);
-                            03=ShipCustomShipInfoData(0,infos,1,0);
-                            04=ShipCustomShipInfoData(0,infos,2,0);
-                        }
-                    }
-                    13=if(ScriptItemActionType(t_OnStep,0))
-                    14 ^{
-                        01=if(ShipCustomShipInfoData(0,infos,2)==2)
-                        02 ^{
-                            01=if(!ShipInHyperSpace(cur_ship))
-                            02 ^{
-                                01=ejectship=IdToShip(ShipCustomShipInfoData(0,infos,1));
-                                02=float angle=(ShipAngle(cur_ship)*3.141592653)/180.0;
-                                03=OrderMove(cur_ship,CoordX(cur_ship)+700.0*sin(angle),CoordY(cur_ship)-700.0*cos(angle),1);
-                                04=ShipCustomShipInfoData(0,infos,2,3);
-                                05=ShipAngle(ejectship,ShipAngle(cur_ship));
-                                06=ShipSetCoords(ejectship,CoordX(cur_ship),CoordY(cur_ship));
-                                07=ShipDestroy(ejectship,1);
-                                08=if(ShipCustomShipInfoTextData(0,infos,2)=='ShowBAMEffect')
-                                09 ^{
-                                    01=if(effectCheck)ShowStaticEffect('RNDbomb_1BAM',CoordX(ejectship),CoordY(ejectship));
-                                }
-                            }
-                            03=else if(cur_ship==Player())CustomLose(CT('Script.Mod_ExpTC.HyperDeath'));
-                            04=else
-                            05 ^{
-                                01=ShipDestroy(IdToShip(ShipCustomShipInfoData(0,infos,1)),1);
-                                02=ShipDestroy(cur_ship,1);
-                            }
-                        }
-                    }
-                }
+					01=if(ScriptItemActionType(t_OnEnteringForm) || ScriptItemActionType(t_OnReEnteringForm))
+					02 ^{
+						01=if(CurrentForm() == 'Ship')
+						02 ^{
+							01=dword cur_ship = FormCurShip();
+							//Если у корабля экипирована спасательная шлюпка
+							02=if(BonusNumInCfg(EqSpecial(ShipItems(cur_ship, 0))) == 'ExpTC_Lifeboat')
+							03 ^{
+								01=InterfaceState('Ship', 'BlockWeaponSlot1', 1);
+								02=InterfaceState('Ship', 'BlockWeaponSlot1', 2);
+								//Если игрок надел на себя пушку по клику правой кнопкой - снимаем её
+								03=if(ShipCntWeapon(cur_ship))
+								04 ^{
+									01=ItemIsInUse(ShipWeapon(cur_ship, 1), cur_ship, 0);
+								}
+							}
+							04=else
+							05 ^{
+								01=InterfaceState('Ship', 'BlockWeaponSlot1', 0);
+							}
+						}
+					}
+					03=else if(ScriptItemActionType(t_OnScan))
+					04 ^{
+						01=cur_ship = ScriptItemActObject1();
+						//Если игрок просканировал корабль, использующий спасательную шлюпку
+						02=if(BonusNumInCfg(EqSpecial(ShipItems(cur_ship, 0))) == 'ExpTC_Lifeboat')
+						03 ^{
+							01=InterfaceState('Scaner', 'BlockWeaponSlot1', 1);
+							02=InterfaceState('Scaner', 'BlockWeaponSlot1', 2);
+						}
+						04=else
+						05 ^{
+							01=InterfaceState('Scaner', 'BlockWeaponSlot1', 0);
+						}
+					}
+					05=else
+					06 ^{
+						01=cur_ship = ScriptItemActShip();
+						02=int bon = FindBonusByCustomTag('ExpTC_SecondLife');
+						03=if(!ItemExtraSpecialsCountByType(ShipItems(cur_ship, 0), bon)) exit;
+						04=int infos = CurInfo();
+						05=int infos_var_2;
+						06=if(!ScriptItemActionType(t_OnStep))
+						07 ^{
+							01=infos_var_2 = ShipCustomShipInfoData(0, infos, 2);
+							02=if(infos_var_2) ScriptItemActParam(0);
+							03=if(ScriptItemActParam() >= HullHP(cur_ship) && !infos_var_2)
+							04 ^{
+								01=int effectCheck = (ShipStar(cur_ship) == ShipStar(Player()) && ShipInNormalSpace(Player()));
+								02=dword dealer = ScriptItemActObject1();
+								03=int dealerType = ObjectType(dealer);
+								04=int saveItemsCheck = 1;
+								05=unknown itemsArr = newarray(1);
+								06=for(int i = ShipItems(cur_ship) - 1; i > 0; i = i - 1) ArrayAdd(itemsArr, GetItemFromShip(cur_ship, i));
+								07=unknown artsArr = newarray(1);
+								08=for(i = ShipArts(cur_ship) - 1; i >= 0; i = i - 1) ArrayAdd(artsArr, GetArtFromShip(cur_ship, i));
+								09=dword ejectship = BuyTransport(StarPlanets(GalaxyStar(0), 3), 1);
+								10=for(i = ShipItems(ejectship) - 1; i > 0; i = i - 1) FreeItem(GetItemFromShip(ejectship, i));
+								11=for(i = ShipArts(ejectship) - 1; i >= 0; i = i - 1) FreeItem(GetArtFromShip(ejectship, i));
+								12=dword hullOld = GetItemFromShip(ejectship, 0);
+								13=dword hull = GetItemFromShip(cur_ship, 0);
+								14=AddItemToShip(ejectship, hull);
+								15=ItemIsInUse(hull, ejectship, 1);
+								16=if(1)
+								17 ^{
+									01=ShipSpecialBonuses(ejectship, bonSlotRadar, -1);
+									02=ShipSpecialBonuses(ejectship, bonSlotScaner, -1);
+									03=ShipSpecialBonuses(ejectship, bonSlotDroid, -1);
+									04=ShipSpecialBonuses(ejectship, bonSlotHook, -1);
+									05=ShipSpecialBonuses(ejectship, bonSlotDef, -1);
+									06=ShipSpecialBonuses(ejectship, bonSlotWeapon, -4);
+									07=ShipSpecialBonuses(ejectship, bonSlotArt, -4);
+									08=ShipSpecialBonuses(ejectship, bonSkill1, -300);
+									09=ShipSpecialBonuses(ejectship, bonSkill2, -300);
+									10=ShipSpecialBonuses(ejectship, bonSkill3, -300);
+									11=ShipSpecialBonuses(ejectship, bonSkill4, -300);
+									12=ShipSpecialBonuses(ejectship, bonSkill5, -300);
+									13=ShipSpecialBonuses(ejectship, bonSkill6, -300);
+									14=ShipSpecialBonuses(ejectship, bonSpeed, -10000);
+									15=dword add_item = CreateEquipment(t_FuelTanks, 0, 1, 0);
+									16=AddItemToShip(ejectship, add_item);
+									17=ItemIsInUse(add_item, ejectship, 1);
+									18=NoDropItem(add_item, 1);
+									19=add_item = CreateEquipment(t_Engine, 0, 1, 0);
+									20=SetEquipmentStats(add_item, 0, 0);
+									21=AddItemToShip(ejectship, add_item);
+									22=ItemIsInUse(add_item, ejectship, 1);
+									23=NoDropItem(add_item, 1);
+									// 24=add_item = CreateEquipment(t_Weapon1, 0, 1, 0);
+									// 25=ItemDurability(add_item, 0);
+									// 26=AddItemToShip(ejectship, add_item);
+									// 27=ItemIsInUse(add_item, ejectship, 1);
+									// 28=NoDropItem(add_item, 1);
+									24=ShipAddCustomShipInfo(ejectship, 'AbandonedShipInfo', 'NoShow');
+									25=if(effectCheck)
+									26 ^{
+										01=int NoEffectCheck = ShipCustomShipInfoTextData(0, infos, 3);
+										02=if(NoEffectCheck != dealer)
+										03 ^{
+											01=if(dealerType == 1)
+											02 ^{
+												01=ShowEffect('Weapon.NoGraph', 1, cur_ship, 0, ScriptItemActParam(), 0, 0, 255, 255, 255);
+											}
+											03=else if(dealerType == 6)
+											04 ^{
+												01=ShowEffect('Weapon.NoGraph', 1, cur_ship, 0, ScriptItemActParam(), 0, 0, 255, 0, 0);
+											}
+											05=else ShowEffect('Weapon.NoGraph', 1, cur_ship, 0, ScriptItemActParam(), 0, 0);
+										}
+									}
+									27=if(dealerType == 1 || dealerType == 6) saveItemsCheck = 0;
+									28=int RNDbomb_1_Num = 0;
+									29=if(saveItemsCheck)
+									30 ^{
+										01=for(i = ArrayDim(itemsArr) - 1; i; i = i - 1)
+										02 ^{
+											01=if(ItemType(itemsArr[i]) == t_UselessItem)
+											02 ^{
+												01=str itemSysName = EquipmentImageName(itemsArr[i]);
+												02=if(~findsubstr(itemSysName, 'RNDbomb'))
+												03 ^{
+													01=if(itemSysName == 'RNDbomb_1')
+													02 ^{
+														01=if(UselessItemData(itemsArr[i], 2) == -2)
+														02 ^{
+															01=DropItemInSystem(StarNearbyStars(ShipStar(Player()), 1), itemsArr[i], 30000, 30000, 30000, 30000);
+															02=ItemDestroy(itemsArr[i], 1);
+														}
+														03=else
+														04 ^{
+															01=RNDbomb_1_Num = RNDbomb_1_Num + 1;
+															02=PutItemInVault('RNDbomb_1_' + Id(ejectship) + '_' + RNDbomb_1_Num, itemsArr[i]);
+														}
+													}
+													03=else AddItemToShip(ejectship, itemsArr[i]);
+												}
+												04=else AddItemToShip(ejectship, itemsArr[i]);
+											}
+											03=else AddItemToShip(ejectship, itemsArr[i]);
+										}
+										03=for(i = ArrayDim(artsArr) - 1; i; i = i - 1)
+										04 ^{
+											01=AddItemToShip(ejectship, artsArr[i]);
+										}
+									}
+									31=else
+									32 ^{
+										01=for(i = ArrayDim(itemsArr) - 1; i; i = i - 1)
+										02 ^{
+											01=DropItemInSystem(StarNearbyStars(ShipStar(Player()), 1), itemsArr[i], 30000, 30000, 30000, 30000);
+											02=ItemDestroy(itemsArr[i], 1);
+										}
+										02=for(i = ArrayDim(artsArr) - 1; i; i = i - 1) FreeItem(artsArr[i]);
+									}
+								}
+								18=Chameleon(ejectship);
+								19=ShipCustomShipInfoData(ejectship, 'AbandonedShipInfo', 1, RNDbomb_1_Num);
+								20=FreeItem(hullOld);
+								21=SetName(ejectship, '<color=57,239,255>' + CT('MicroModuls.ExpTC_Lifeboat.AbandonedShipName') + '</color>');
+								22=ShipType(ejectship, 'AbandonedShip');
+								23=ShipOwner(ejectship, ShipOwner(cur_ship));
+								24=RelationToRanger(ejectship, Player(), 50);
+								25=NoTalkToShip(ejectship, 1);
+								26=NoScanToShip(ejectship, 1);
+								27=OrderNone(ejectship);
+								28=OrderLock(ejectship, 1);
+								29=ShipAngle(ejectship, ShipAngle(cur_ship));
+								30=TransferShip(ejectship, ShipStar(cur_ship));
+								31=ShipSetCoords(ejectship, CoordX(cur_ship), CoordY(cur_ship));
+								32=ShipCustomShipInfoData(0, infos, 1, Id(ejectship));
+								33=dword hullBoat = CreateHull(t_Ranger, 100, 1, 3, -1);
+								34=SetEquipmentStats(hullBoat, 0, 0);
+								35=AddItemToShip(cur_ship, hullBoat);
+								36=ItemIsInUse(hullBoat, cur_ship, 1);
+								37=SpecialToEquipment(FindBonusByCustomTag('ExpTC_Lifeboat'), hullBoat);
+								38=ShipCustomShipInfoData(0, infos, 2, 1);
+								39=add_item = CreateEquipment(t_FuelTanks, 10, 1, ItemOwner(hullBoat));
+								40=AddItemToShip(cur_ship,add_item);
+								41=ItemIsInUse(add_item,cur_ship,1);
+								42=add_item = CreateEquipment(t_Engine, 15, 1, ItemOwner(hullBoat));
+								43=AddItemToShip(cur_ship, add_item);
+								44=ItemIsInUse(add_item, cur_ship, 1);
+								// 45=add_item = CreateEquipment(t_Weapon1, 15, 1, ItemOwner(hullBoat));
+								// 46=AddItemToShip(cur_ship, add_item);
+								// 47=ItemExtraSpecialsAddByType(ShipItems(cur_ship, 0), bon);
+								// 48=ItemIsInUse(add_item, cur_ship, 1);
+								45=Chameleon(cur_ship);
+								46=AutoBattle(0);
+								47=if(GetMainData('Data.Script.Mod_ExpPanel') == '1,Script.Mod_ExpPanel')
+								48 ^{
+									01=if(InterfaceState('StarMap', 'Klesh_panel'))
+									02 ^{
+										01=InterfaceState('StarMap', 'Klesh_panel', 0);
+									}
+								}
+								49=HullHP(ejectship, 1);
+								50=ScriptItemActParam(0);
+							}
+						}
+						08=if(ScriptItemActionType(t_OnStep, 9))
+						09 ^{
+							01=if(ShipCustomShipInfoData(0, infos, 2) == 1) OrderNone(cur_ship);
+						}
+						10=if(ScriptItemActionType(t_OnStep, 11))
+						11 ^{
+							01=infos_var_2 = ShipCustomShipInfoData(0, infos, 2);
+							02=if(infos_var_2 == 1)
+							03 ^{
+								01=ShipCustomShipInfoData(0, infos, 2, 2);
+								02=Chameleon(cur_ship);
+								03=if(IsPlayer(cur_ship)) ForceNextDay();
+							}
+							04=else if(infos_var_2 == 3)
+							05 ^{
+								01=if(!IsPlayer(cur_ship)) ShipDeleteCustomShipInfo(cur_ship, 'LifeboatLaunchInfo');
+								02=ItemExtraSpecialsDeleteByType(ShipItems(cur_ship, 0), bon);
+								03=ShipCustomShipInfoData(0, infos, 1, 0);
+								04=ShipCustomShipInfoData(0, infos, 2, 0);
+							}
+						}
+						12=if(ScriptItemActionType(t_OnStep, 0))
+						13 ^{
+							01=if(ShipCustomShipInfoData(0, infos, 2) == 2)
+							02 ^{
+								01=if(!ShipInHyperSpace(cur_ship))
+								02 ^{
+									01=ejectship = IdToShip(ShipCustomShipInfoData(0, infos, 1));
+									02=float angle = (ShipAngle(cur_ship) * pi) / 180.0;
+									03=OrderMove(cur_ship, CoordX(cur_ship) + 700.0 * sin(angle), CoordY(cur_ship) - 700.0 * cos(angle), 1);
+									04=ShipCustomShipInfoData(0, infos, 2, 3);
+									05=ShipAngle(ejectship, ShipAngle(cur_ship));
+									06=ShipSetCoords(ejectship, CoordX(cur_ship), CoordY(cur_ship));
+									07=ShipDestroy(ejectship, 1);
+									08=if(ShipCustomShipInfoTextData(0, infos, 2) == 'ShowBAMEffect')
+									09 ^{
+										01=if(effectCheck) ShowStaticEffect('RNDbomb_1BAM', CoordX(ejectship), CoordY(ejectship));
+									}
+								}
+								03=else if(cur_ship == Player()) CustomLose(CT('Script.Mod_ExpTC.HyperDeath'));
+								04=else
+								05 ^{
+									01=ShipDestroy(IdToShip(ShipCustomShipInfoData(0, infos, 1)), 1);
+									02=ShipDestroy(cur_ship, 1);
+								}
+							}
+						}
+					}
+				}
             }
             AbandonedShipInfo ^{
                 Description=Инфошка для покинутого корабля (без зануления урона будет крашить)

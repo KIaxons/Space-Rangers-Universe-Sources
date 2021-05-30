@@ -3217,7 +3217,7 @@ ShipInfo ^{
 							//ѕрибавл€ем бонус к нераспределЄнному опыту корабл€
 							04=ShipFreeExp(cur_ship, ShipFreeExp(cur_ship) + new_exp);
 							//«апоминаем значение уже полученного кораблЄм опыта, чтобы не начисл€ть за него бонус повторно
-							05=old_exp = cur_exp;
+							05=ShipCustomShipInfoData(0, cur_info, 2, cur_exp);
 						}
 					}
 				}
