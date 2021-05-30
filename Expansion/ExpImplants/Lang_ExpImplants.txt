@@ -368,7 +368,7 @@ Biomodules ^{
                 СountVisor=1
 				TextGlasses_1=Извини, в очках ничего не видно. Можешь ещё раз повторить?
 				СountGlasses=1
-				TextHelmet_1=Чёрт, сквозь стекло шлема не не разглядел. Ты что-то интересное там показывал?
+				TextHelmet_1=Чёрт, сквозь стекло шлема не разглядеть. Ты что-то интересное там показывал?
 				СountHelmet=1
             }
             BlindStart ~{
@@ -2902,32 +2902,33 @@ ShipInfo ^{
 														02=str tstr = CT('Biomodules.1_gtu.9.BlindStart.Text_' + Rnd(1, tint));
 														//Вычисляем дополнительный шанс защититься от "Вспышки" за счёт того, что навешено на лице портрета NPC
 														03=int target_race = ShipPilotRace(target);
-														04=str tstr2;
-														05=if(!target_race) tstr2 = GetMainData('Data.StyleFaceMaloc.' + ShipFace(target, 'Path'));
-														06=else if(target_race == Peleng) tstr2 = GetMainData('Data.StyleFacePeleng.' + ShipFace(target, 'Path'));
-														07=else if(target_race == People) tstr2 = GetMainData('Data.StyleFacePeople.' + ShipFace(target, 'Path'));
-														08=else if(target_race == Fei) tstr2 = GetMainData('Data.StyleFaceFei.' + ShipFace(target, 'Path'));
-														09=else tstr2 = GetMainData('Data.StyleFaceGaal.' + ShipFace(target, 'Path'));
-														10=int extra_chance = 0;
-														11=if(~findsubstr(tstr2, 'visor'))
-														12 ^{
+														04=str tstr2 = ShipFace(target, 'Init');
+														05=if(0 + tstr2 < 10) tstr2 = '0' + tstr2;
+														06=if(!target_race) tstr2 = GetMainData('Data.StyleFaceMaloc.' + tstr2);
+														07=else if(target_race == Peleng) tstr2 = GetMainData('Data.StyleFacePeleng.' + tstr2);
+														08=else if(target_race == People) tstr2 = GetMainData('Data.StyleFacePeople.' + tstr2);
+														09=else if(target_race == Fei) tstr2 = GetMainData('Data.StyleFaceFei.' + tstr2);
+														10=else tstr2 = GetMainData('Data.StyleFaceGaal.' + tstr2);
+														11=int extra_chance = 0;
+														12=if(~findsubstr(tstr2, 'visor'))
+														13 ^{
 															01=tstr2 = 'Visor';
 															02=extra_chance = 10;
 														}
-														13=else if(~findsubstr(tstr2, 'glasses'))
-														14 ^{
+														14=else if(~findsubstr(tstr2, 'glasses'))
+														15 ^{
 															01=tstr2 = 'Glasses';
 															02=extra_chance = 15;
 														}
-														15=else if(~findsubstr(tstr2, 'helmet'))
-														16 ^{
+														16=else if(~findsubstr(tstr2, 'helmet'))
+														17 ^{
 															01=tstr2 = 'Helmet';
 															02=extra_chance = 20;
 														}
 														//Цель попросту проморгала вспышку (вероятность 20%), либо получила резист за счёт визора, очков или шлема
-														17=int rand = Rnd(1, 100);
-														18=if(rand <= 20 + extra_chance)
-														19 ^{
+														18=int rand = Rnd(1, 100);
+														19=if(rand <= 20 + extra_chance)
+														20 ^{
 															01=if(target == Player())
 															02 ^{
 																01=tstr = tstr + CT('FormInfo.br') + CT('Biomodules.1_gtu.9.BlindPlayerFailed');
@@ -2936,12 +2937,12 @@ ShipInfo ^{
 																03=if(rand <= 20)
 																04 ^{
 																	01=tint = CT('Biomodules.1_gtu.9.BlindFailed.Count');
-																	02=tstr = '</color>' + CT('Biomodules.1_gtu.9.BlindFailed.Text_' + Rnd(1, tint));
+																	02=tstr = CT('Biomodules.1_gtu.9.BlindFailed.Text_' + Rnd(1, tint));
 																}
 																05=else
 																06 ^{
 																	01=tint = CT('Biomodules.1_gtu.9.BlindFailed.Count' + tstr2);
-																	02=tstr = '</color>' + CT('Biomodules.1_gtu.9.BlindFailed.Text' + tstr2 + '_' + Rnd(1, tint));
+																	02=tstr = CT('Biomodules.1_gtu.9.BlindFailed.Text' + tstr2 + '_' + Rnd(1, tint));
 																}
 																07=ShipCustomShipInfoTextData(0, infos, 2, tstr);
 																08=GExpImplantsDialog = 1;
@@ -2960,12 +2961,12 @@ ShipInfo ^{
 																			02=if(rand <= 20)
 																			03 ^{
 																				01=tint = CT('Biomodules.1_gtu.9.BlindFailed.Count');
-																				02=tstr = '</color>' + CT('Biomodules.1_gtu.9.BlindFailed.Text_' + Rnd(1, tint));
+																				02=tstr = CT('Biomodules.1_gtu.9.BlindFailed.Text_' + Rnd(1, tint));
 																			}
 																			04=else
 																			05 ^{
 																				01=tint = CT('Biomodules.1_gtu.9.BlindFailed.Count' + tstr2);
-																				02=tstr = '</color>' + CT('Biomodules.1_gtu.9.BlindFailed.Text' + tstr2 + '_' + Rnd(1, tint));
+																				02=tstr = CT('Biomodules.1_gtu.9.BlindFailed.Text' + tstr2 + '_' + Rnd(1, tint));
 																			}
 																			06=Ether(1, '', tstr, ship, target);
 																		}
@@ -2974,8 +2975,8 @@ ShipInfo ^{
 															}
 														}
 														//Вспышка ударила точно в глаза цели
-														20=else
-														21 ^{
+														21=else
+														22 ^{
 															01=if(target == Player())
 															02 ^{
 																01=tstr = tstr + CT('FormInfo.br') + CT('Biomodules.1_gtu.9.BlindPlayerSuccess');
@@ -3006,7 +3007,7 @@ ShipInfo ^{
 															//За это цель на обидчика обидится
 															06=ShipSetBad(target, ship);
 														}
-														22=ShipCustomShipInfoData(0, infos, 1, CurTurn() + Rnd(3, 6));
+														23=ShipCustomShipInfoData(0, infos, 1, CurTurn() + Rnd(3, 6));
 													}
 												}
 											}
