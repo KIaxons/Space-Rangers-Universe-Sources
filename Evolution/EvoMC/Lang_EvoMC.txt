@@ -14,6 +14,87 @@ Script ^{
         132=Уйти из магазина медикаментов
     }
 }
+Artefacts ^{
+    CustomArtefacts ^{
+		UrineTincture ^{
+            Broken=(просрочена)
+            BrokenInBattle=---
+            BrokenInUse=---
+			NoWear=1
+            Name=Настойка урины
+            Size=1
+			Cost=1000
+			Owner=None
+            Text=Может излечить вас от болезни или снизить её длительность.
+			Text=Хорошее, но малоэффективное средство против любой хвори.
+			OnUseCode ^{
+				01=if(MessageBoxYesNo('Вы точно хотите <color=0,50,200>хлебнуть урины</color>?'))
+				02 ^{
+					01=dword num_ill;
+					02=dword num_med = 0;
+					03=str text;
+					04=unknown array = newarray(1);
+					05=for(num_ill = 1; num_ill < 13; num_ill = num_ill + 1)
+					06 ^{
+						01=if(ShipHealthFactor(Player(), num_ill))
+						02 ^{
+							01=ArrayAdd(array, num_ill);
+							02=num_med = num_med + 1;
+						}
+					}
+					07=if(!num_med) Ether(0, '', 'Вы ощутили неприятную горечь во рту и чувство сожаления о растраченном впустую медикаменте, ведь никаких симптомов болезней у вас не было.');
+					08=else
+					09 ^{
+						01=num_ill = Rnd(1, num_med);
+						02=text = 'Illness.Illness.' + (array[num_ill] - 1) + '.Name';
+						03=int rand = Rnd(0, 3, sqr(sqr(CurTurn()) + 42));
+						04=if(!rand)
+						05 ^{
+							01=ShipHealthFactor(Player(), array[num_ill], 0);
+							02=Ether(0, '', 'Настойка урины положительно подействовала на вас, полностью избавив от недуга <clr>' + CT(text) + '<clrEnd>!');
+						}
+						06=else if(rand == 1)
+						07 ^{
+							01=num_med=ShipHealthFactor(Player(), array[num_ill]) / 2;
+							02=ShipHealthFactor(Player(), array[num_ill], num_med);
+							03=Ether(0, '', 'Настойка урины положительно подействовала на вас, уменьшив срок действия недуга <clr>' + CT(text) + '<clrEnd> в два раза!');
+						}
+						08=else if(rand == 2)
+						09 ^{
+							01=num_med = ShipHealthFactor(Player(), array[num_ill]) + ShipHealthFactor(Player(), array[num_ill]) / 2;
+							02=ShipHealthFactor(Player(), array[num_ill], num_med);
+							03=Ether(0, '', 'Настойка урины отрицательно подействовала на вас, увеличив срок действия недуга <clr>' + CT(text) + '<clrEnd> в полтора раза!');
+						}
+						10=else Ether(0, '', '<clr>Настойка урины<clrEnd> не смогла избавить вас от болезни <clr>' + CT(text) + '<clrEnd>!');
+					}
+					10=if(~FindItemInShip(Player(), CurItem())) FreeItem(GetItemFromShip(Player(), FindItemInShip(Player(), CurItem())));
+					11=else FreeItem(GetItemFromStorage(FindItemInStorage(CurItem())));
+					//Если игрок хлебнул урины
+					12=if(ShipFindCustomShipInfoByType(Player(), 'EvoMC_UrineCurse') == -1)
+					13 ^{
+						01=ShipSpecialBonuses(Player(), bonSkill5,ShipSpecialBonuses(Player(), bonSkill5) - 3);
+						02=ShipSpecialBonuses(Player(), bonSkill6,ShipSpecialBonuses(Player(), bonSkill6) - 3);
+						03=ShipAddCustomShipInfo(Player(), 'EvoMC_UrineCurse', '', CurTurn() + Rnd(93, 124), 3, 3);
+						//Вешаем штраф к выносливости имплантов
+						04=if(IsScriptActive('Mod_ExpImplants'))
+						05 ^{
+							01=GlobalImplantsEnduranceBonus = GlobalImplantsEnduranceBonus - 2;
+						}
+					}
+					//Игрок хлебнул урины, пока действовал предыдущий дебаф
+					14=else
+					15 ^{
+						01=ShipSpecialBonuses(Player(), bonSkill5, ShipSpecialBonuses(Player(), bonSkill5) - 1);
+						02=ShipSpecialBonuses(Player(), bonSkill6, ShipSpecialBonuses(Player(), bonSkill6) - 1);
+						03=ShipCustomShipInfoData(Player(), 'EvoMC_UrineCurse', 1, CurTurn() + Rnd(124, 186));
+						04=ShipCustomShipInfoData(Player(), 'EvoMC_UrineCurse', 2, ShipCustomShipInfoData(Player(), 'EvoMC_UrineCurse', 2) + 1);
+						05=ShipCustomShipInfoData(Player(), 'EvoMC_UrineCurse', 3, ShipCustomShipInfoData(Player(), 'EvoMC_UrineCurse', 3) + 1);
+					}
+				}
+			}
+		}
+	}
+}
 UselessItems ^{
     Usl_Drug01 ^{
         Cost=Average
@@ -290,83 +371,71 @@ UselessItems ^{
     Usl_Urine ^{
         Cost=Average
         Name=Народное средство "Настойка урины"
-		OnActCodeTypes=t_OnStep
-		OnActStepTypes=11
-        OnActCode ^{
-			01=UselessItemData(CurItem(),1,UselessItemData(CurItem(),1)+1);
-			02=if(UselessItemData(CurItem(),1)==Rnd(14,17))
-			03 ^{
-				01=UselessItemData(CurItem(),2,Rnd(0,3));
-				02=UselessItemData(CurItem(),1,0);
-			}
-        }
-        OnUseCode ^{
-            01=if(MessageBoxYesNo('Вы точно хотите <color=0,50,200>хлебнуть урины</color>?'))
-            02 ^{
-                01=dword num_ill;
-                02=dword num_med = 0;
-                03=str text;
-                04=unknown array = newarray(1);
-                05=for(num_ill = 1; num_ill < 13; num_ill = num_ill + 1)
-                06 ^{
-                    01=if(ShipHealthFactor(Player(), num_ill))
-                    02 ^{
-                        01=ArrayAdd(array, num_ill);
-                        02=num_med = num_med + 1;
-                    }
-                }
-                07=if(!num_med) Ether(0, '', 'Вы ощутили неприятную горечь во рту и чувство сожаления о растраченном впустую медикаменте, ведь никаких симптомов болезней у вас не было.');
-                08=else
-                09 ^{
-                    01=num_ill = Rnd(1, num_med);
-                    02=text = 'Illness.Illness.' + (array[num_ill] - 1) + '.Name';
-                    03=if(UselessItemData(CurItem(), 2) == 0)
-                    04 ^{
-                        01=ShipHealthFactor(Player(), array[num_ill], 0);
-                        02=Ether(0, '', 'Настойка урины положительно подействовала на вас, полностью избавив от недуга <clr>' + CT(text) + '<clrEnd>!');
-                    }
-                    05=if(UselessItemData(CurItem(), 2) == 1)
-                    06 ^{
-                        01=num_med=ShipHealthFactor(Player(), array[num_ill]) / 2;
-                        02=ShipHealthFactor(Player(), array[num_ill], num_med);
-                        03=Ether(0, '', 'Настойка урины положительно подействовала на вас, уменьшив срок действия недуга <clr>' + CT(text) + '<clrEnd> в два раза!');
-                    }
-                    07=if(UselessItemData(CurItem(), 2) == 2)
-                    08 ^{
-                        01=num_med = ShipHealthFactor(Player(), array[num_ill]) + ShipHealthFactor(Player(), array[num_ill]) / 2;
-                        02=ShipHealthFactor(Player(), array[num_ill], num_med);
-                        03=Ether(0, '', 'Настойка урины отрицательно подействовала на вас, увеличив срок действия недуга <clr>'+CT(text)+'<clrEnd> в полтора раза!');
-                    }
-                    09=if(UselessItemData(CurItem(), 2) == 3) Ether(0, '', '<clr>Настойка урины<clrEnd> не смогла избавить вас от болезни <clr>' + CT(text) + '<clrEnd>!');
-                }
-                10=if(~FindItemInShip(Player(),CurItem())) FreeItem(GetItemFromShip(Player(), FindItemInShip(Player(), CurItem())));
-                11=else FreeItem(GetItemFromStorage(FindItemInStorage(CurItem())));
-				12=if(1)
-				13 ^{
-					//Игрок хлебнул урины
-					01=if(ShipFindCustomShipInfoByType(Player(), 'EvoMC_UrineCurse') == -1)
+		OnUseCode ^{
+			01=if(MessageBoxYesNo('Вы точно хотите <color=0,50,200>хлебнуть урины</color>?'))
+			02 ^{
+				01=dword num_ill;
+				02=dword num_med = 0;
+				03=str text;
+				04=unknown array = newarray(1);
+				05=for(num_ill = 1; num_ill < 13; num_ill = num_ill + 1)
+				06 ^{
+					01=if(ShipHealthFactor(Player(), num_ill))
 					02 ^{
-						01=ShipSpecialBonuses(Player(), bonSkill5,ShipSpecialBonuses(Player(), bonSkill5) - 3);
-						02=ShipSpecialBonuses(Player(), bonSkill6,ShipSpecialBonuses(Player(), bonSkill6) - 3);
-						03=ShipAddCustomShipInfo(Player(), 'EvoMC_UrineCurse', '', CurTurn() + Rnd(93, 124), 3, 3);
-						//Вешаем штраф к выносливости имплантов
-						04=if(IsScriptActive('Mod_ExpImplants'))
-						05 ^{
-							01=GlobalImplantsEnduranceBonus = GlobalImplantsEnduranceBonus - 2;
-						}
-					}
-					//Игрок хлебнул урины, пока действовал предыдущий дебаф
-					03=else
-					04 ^{
-						01=ShipSpecialBonuses(Player(), bonSkill5, ShipSpecialBonuses(Player(), bonSkill5) - 1);
-						02=ShipSpecialBonuses(Player(), bonSkill6, ShipSpecialBonuses(Player(), bonSkill6) - 1);
-						03=ShipCustomShipInfoData(Player(), 'EvoMC_UrineCurse', 1, CurTurn() + Rnd(124, 186));
-						04=ShipCustomShipInfoData(Player(), 'EvoMC_UrineCurse', 2, ShipCustomShipInfoData(Player(), 'EvoMC_UrineCurse', 2) + 1);
-						05=ShipCustomShipInfoData(Player(), 'EvoMC_UrineCurse', 3, ShipCustomShipInfoData(Player(), 'EvoMC_UrineCurse', 3) + 1);
+						01=ArrayAdd(array, num_ill);
+						02=num_med = num_med + 1;
 					}
 				}
-            }
-        }
+				07=if(!num_med) Ether(0, '', 'Вы ощутили неприятную горечь во рту и чувство сожаления о растраченном впустую медикаменте, ведь никаких симптомов болезней у вас не было.');
+				08=else
+				09 ^{
+					01=num_ill = Rnd(1, num_med);
+					02=text = 'Illness.Illness.' + (array[num_ill] - 1) + '.Name';
+					03=int rand = Rnd(0, 3, sqr(sqr(CurTurn()) + 42));
+					04=if(!rand)
+					05 ^{
+						01=ShipHealthFactor(Player(), array[num_ill], 0);
+						02=Ether(0, '', 'Настойка урины положительно подействовала на вас, полностью избавив от недуга <clr>' + CT(text) + '<clrEnd>!');
+					}
+					06=else if(rand == 1)
+					07 ^{
+						01=num_med=ShipHealthFactor(Player(), array[num_ill]) / 2;
+						02=ShipHealthFactor(Player(), array[num_ill], num_med);
+						03=Ether(0, '', 'Настойка урины положительно подействовала на вас, уменьшив срок действия недуга <clr>' + CT(text) + '<clrEnd> в два раза!');
+					}
+					08=else if(rand == 2)
+					09 ^{
+						01=num_med = ShipHealthFactor(Player(), array[num_ill]) + ShipHealthFactor(Player(), array[num_ill]) / 2;
+						02=ShipHealthFactor(Player(), array[num_ill], num_med);
+						03=Ether(0, '', 'Настойка урины отрицательно подействовала на вас, увеличив срок действия недуга <clr>' + CT(text) + '<clrEnd> в полтора раза!');
+					}
+					10=else Ether(0, '', '<clr>Настойка урины<clrEnd> не смогла избавить вас от болезни <clr>' + CT(text) + '<clrEnd>!');
+				}
+				10=if(~FindItemInShip(Player(), CurItem())) FreeItem(GetItemFromShip(Player(), FindItemInShip(Player(), CurItem())));
+				11=else FreeItem(GetItemFromStorage(FindItemInStorage(CurItem())));
+				//Если игрок хлебнул урины
+				12=if(ShipFindCustomShipInfoByType(Player(), 'EvoMC_UrineCurse') == -1)
+				13 ^{
+					01=ShipSpecialBonuses(Player(), bonSkill5,ShipSpecialBonuses(Player(), bonSkill5) - 3);
+					02=ShipSpecialBonuses(Player(), bonSkill6,ShipSpecialBonuses(Player(), bonSkill6) - 3);
+					03=ShipAddCustomShipInfo(Player(), 'EvoMC_UrineCurse', '', CurTurn() + Rnd(93, 124), 3, 3);
+					//Вешаем штраф к выносливости имплантов
+					04=if(IsScriptActive('Mod_ExpImplants'))
+					05 ^{
+						01=GlobalImplantsEnduranceBonus = GlobalImplantsEnduranceBonus - 2;
+					}
+				}
+				//Игрок хлебнул урины, пока действовал предыдущий дебаф
+				14=else
+				15 ^{
+					01=ShipSpecialBonuses(Player(), bonSkill5, ShipSpecialBonuses(Player(), bonSkill5) - 1);
+					02=ShipSpecialBonuses(Player(), bonSkill6, ShipSpecialBonuses(Player(), bonSkill6) - 1);
+					03=ShipCustomShipInfoData(Player(), 'EvoMC_UrineCurse', 1, CurTurn() + Rnd(124, 186));
+					04=ShipCustomShipInfoData(Player(), 'EvoMC_UrineCurse', 2, ShipCustomShipInfoData(Player(), 'EvoMC_UrineCurse', 2) + 1);
+					05=ShipCustomShipInfoData(Player(), 'EvoMC_UrineCurse', 3, ShipCustomShipInfoData(Player(), 'EvoMC_UrineCurse', 3) + 1);
+				}
+			}
+		}
         Owner=None
         Size=1
         Text=Может излечить вас от болезни или снизить её длительность.<br>Хорошее, но малоэффективное средство против любой хвори.
