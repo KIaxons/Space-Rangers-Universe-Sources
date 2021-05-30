@@ -1045,17 +1045,19 @@ ShipInfo ^{
 							//Если у корабля экипирована спасательная шлюпка
 							02=if(BonusNumInCfg(EqSpecial(ShipItems(cur_ship, 0))) == 'ExpTC_Lifeboat')
 							03 ^{
-								01=InterfaceState('Ship', 'BlockWeaponSlot1', 1);
+								01=InterfaceState('Ship', 'BlockWeaponSlot1', -1);
 								02=InterfaceState('Ship', 'BlockWeaponSlot1', 2);
+								03=InterfaceState('Ship', 'S_Weapon_0z', 0);
 								//Если игрок надел на себя пушку по клику правой кнопкой - снимаем её
-								03=if(ShipCntWeapon(cur_ship))
-								04 ^{
+								04=if(ShipCntWeapon(cur_ship))
+								05 ^{
 									01=ItemIsInUse(ShipWeapon(cur_ship, 1), cur_ship, 0);
 								}
 							}
 							04=else
 							05 ^{
 								01=InterfaceState('Ship', 'BlockWeaponSlot1', 0);
+								02=InterfaceState('Ship', 'S_Weapon_0z', 1);
 							}
 						}
 					}
@@ -1082,6 +1084,7 @@ ShipInfo ^{
 						05=int infos_var_2;
 						06=if(!ScriptItemActionType(t_OnStep))
 						07 ^{
+							01=NewsAdd('ddd');
 							01=infos_var_2 = ShipCustomShipInfoData(0, infos, 2);
 							02=if(infos_var_2) ScriptItemActParam(0);
 							03=if(ScriptItemActParam() >= HullHP(cur_ship) && !infos_var_2)
@@ -1222,27 +1225,32 @@ ShipInfo ^{
 								44=ItemIsInUse(add_item, cur_ship, 1);
 								// 45=add_item = CreateEquipment(t_Weapon1, 15, 1, ItemOwner(hullBoat));
 								// 46=AddItemToShip(cur_ship, add_item);
-								// 47=ItemExtraSpecialsAddByType(ShipItems(cur_ship, 0), bon);
 								// 48=ItemIsInUse(add_item, cur_ship, 1);
-								45=Chameleon(cur_ship);
-								46=AutoBattle(0);
-								47=if(GetMainData('Data.Script.Mod_ExpPanel') == '1,Script.Mod_ExpPanel')
-								48 ^{
+								45=ItemExtraSpecialsAddByType(ShipItems(cur_ship, 0), bon);
+								46=Chameleon(cur_ship);
+								47=AutoBattle(0);
+								48=if(GetMainData('Data.Script.Mod_ExpPanel') == '1,Script.Mod_ExpPanel')
+								49 ^{
 									01=if(InterfaceState('StarMap', 'Klesh_panel'))
 									02 ^{
 										01=InterfaceState('StarMap', 'Klesh_panel', 0);
 									}
 								}
-								49=HullHP(ejectship, 1);
-								50=ScriptItemActParam(0);
+								50=HullHP(ejectship, 1);
+								51=ScriptItemActParam(0);
 							}
 						}
-						08=if(ScriptItemActionType(t_OnStep, 9))
+						08=else if(ScriptItemActionType(t_OnStep, 9))
 						09 ^{
-							01=if(ShipCustomShipInfoData(0, infos, 2) == 1) OrderNone(cur_ship);
+							01=NewsAdd(9);
+							01=if(ShipCustomShipInfoData(0, infos, 2) == 1)
+							02 ^{
+								01=OrderNone(cur_ship);
+							}
 						}
-						10=if(ScriptItemActionType(t_OnStep, 11))
+						10=else if(ScriptItemActionType(t_OnStep, 11))
 						11 ^{
+							01=NewsAdd(11);
 							01=infos_var_2 = ShipCustomShipInfoData(0, infos, 2);
 							02=if(infos_var_2 == 1)
 							03 ^{
@@ -1258,7 +1266,8 @@ ShipInfo ^{
 								04=ShipCustomShipInfoData(0, infos, 2, 0);
 							}
 						}
-						12=if(ScriptItemActionType(t_OnStep, 0))
+						//Исполняется в последнюю очередь, на следующий ход после вылета капсулы
+						12=else if(ScriptItemActionType(t_OnStep, 0))
 						13 ^{
 							01=if(ShipCustomShipInfoData(0, infos, 2) == 2)
 							02 ^{
