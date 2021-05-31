@@ -2964,12 +2964,12 @@ ShipInfo ^{
 																			02=if(rand <= 20)
 																			03 ^{
 																				01=tint = CT('Biomodules.1_gtu.9.BlindFailed.Count');
-																				02=tstr = CT('Biomodules.1_gtu.9.BlindFailed.Text_' + Rnd(1, tint));
+																				02=tstr = tstr + CT('FormInfo.br') + '- ' + CT('Biomodules.1_gtu.9.BlindFailed.Text_' + Rnd(1, tint));
 																			}
 																			04=else
 																			05 ^{
 																				01=tint = CT('Biomodules.1_gtu.9.BlindFailed.Count' + tstr2);
-																				02=tstr = CT('Biomodules.1_gtu.9.BlindFailed.Text' + tstr2 + '_' + Rnd(1, tint));
+																				02=tstr = tstr + CT('FormInfo.br') + '- ' + CT('Biomodules.1_gtu.9.BlindFailed.Text' + tstr2 + '_' + Rnd(1, tint));
 																			}
 																			06=Ether(1, '', tstr, ship, target);
 																		}
