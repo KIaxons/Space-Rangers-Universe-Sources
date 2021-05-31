@@ -67,7 +67,7 @@ Artefacts ^{
 						}
 						10=else Ether(0, '', '<clr>Настойка урины<clrEnd> не смогла избавить вас от болезни <clr>' + CT(text) + '<clrEnd>!');
 					}
-					10=if(~FindItemInShip(Player(), CurItem())) FreeItem(GetItemFromShip(Player(), FindItemInShip(Player(), CurItem())));
+					10=if(~FindItemInShip(Player(), CurItem())) FreeItem(GetArtFromShip(CurItem()));
 					11=else FreeItem(GetItemFromStorage(FindItemInStorage(CurItem())));
 					//Если игрок хлебнул урины
 					12=if(ShipFindCustomShipInfoByType(Player(), 'EvoMC_UrineCurse') == -1)
