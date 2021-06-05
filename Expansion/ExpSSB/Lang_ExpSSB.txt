@@ -26,10 +26,10 @@ Artefacts ^{
 						02 ^{
 							01=if(FindItemInStorage(CurItem())<0)
 							02 ^{
-								01=for(int i=0;i<CurTurn()-charge;i=i+1)CustomArtData(CurItem(),1,CustomArtData(CurItem(),1)+Rnd(0,10));
-								02=if(CustomArtData(CurItem(),1)>2500)CustomArtData(CurItem(),1,2500);
+								01=for(int i = 0; i < CurTurn() - charge; i = i + 1) CustomArtData(CurItem(), 1, CustomArtData(CurItem(), 1) + Rnd(0, 10));
+								02=if(CustomArtData(CurItem(), 1) > 2500) CustomArtData(CurItem(), 1,2500);
 							}
-							03=charge=CurTurn();
+							03=charge = CurTurn();
 						}
 					}
 				}
@@ -124,8 +124,8 @@ Artefacts ^{
 						02 ^{
 							01=if(FindItemInStorage(CurItem())<0)
 							02 ^{
-								01=for(int i=0;i<CurTurn()-charge;i=i+1)CustomArtData(CurItem(),1,CustomArtData(CurItem(),1)+Rnd(0,5));
-								02=if(CustomArtData(CurItem(),1)>1000)CustomArtData(CurItem(),1,1000);
+								01=for(int i=0; i<CurTurn()-charge; i=i+1) CustomArtData(CurItem(),1,CustomArtData(CurItem(),1)+Rnd(0,5));
+								02=if(CustomArtData(CurItem(),1)>1000) CustomArtData(CurItem(),1,1000);
 							}
 							03=charge=CurTurn();
 						}
@@ -169,8 +169,8 @@ Artefacts ^{
 							14 ^{
 								01=temp_dword=ShipItems(curship,j);
 								02=if(ItemType(temp_dword)==t_Engine) SetEquipmentStats(temp_dword,GetEquipmentStats(ShipEqInSlot(Player(),t_Engine),0),0);
-								03=if(ItemType(temp_dword)==t_Hull) SetEquipmentStats(temp_dword,GetEquipmentStats(ShipItems(Player(),0),0),0);
-								04=if(ItemType(temp_dword)==t_DefGenerator) SetEquipmentStats(temp_dword,GetEquipmentStats(ShipEqInSlot(Player(),t_DefGenerator),0),0);
+								03=else if(ItemType(temp_dword)==t_Hull) SetEquipmentStats(temp_dword,GetEquipmentStats(ShipItems(Player(),0),0),0);
+								04=else if(ItemType(temp_dword)==t_DefGenerator) SetEquipmentStats(temp_dword,GetEquipmentStats(ShipEqInSlot(Player(),t_DefGenerator),0),0);
 							}
 							15=Chameleon(curship,Chameleon(Player(),'GraphName'));
 							16=TransferShip(curship,ShipStar(Player()));
@@ -178,9 +178,9 @@ Artefacts ^{
 							18=ShipAddCustomShipInfo(curship,'SelfDestroy','NoShow',temp_int_2+Rnd(1,temp_int_2));
 							19=ShipAngle(curship,ShipAngle(Player()));
 							20=ShipRepairEq(curship);
-							21=if((i+2)%2==0)ShipSetCoords(curship,CoordX(Player())-temp_float*20.0*sin(((ShipAngle(Player())+30.0)*pi)/180.0),CoordY(Player())+temp_float*20.0*cos(((ShipAngle(Player())+30.0)*pi)/180.0));
-							22=if((i+2)%2==1)ShipSetCoords(curship,CoordX(Player())-temp_float*20.0*sin(((ShipAngle(Player())-30.0)*pi)/180.0),CoordY(Player())+temp_float*20.0*cos(((ShipAngle(Player())-30.0)*pi)/180.0));
-							23=if((i+2)%2==1)temp_float=temp_float+2;
+							21=if((i + 2) % 2 == 0) ShipSetCoords(curship,CoordX(Player())-temp_float*20.0*sin(((ShipAngle(Player())+30.0)*pi)/180.0),CoordY(Player())+temp_float*20.0*cos(((ShipAngle(Player())+30.0)*pi)/180.0));
+							22=if((i + 2) % 2 == 1) ShipSetCoords(curship,CoordX(Player())-temp_float*20.0*sin(((ShipAngle(Player())-30.0)*pi)/180.0),CoordY(Player())+temp_float*20.0*cos(((ShipAngle(Player())-30.0)*pi)/180.0));
+							23=if((i + 2) % 2 == 1) temp_float=temp_float+2;
 							24=OrderMove(curship,CoordX(curship)+300.0*sin((ShipAngle(curship)*pi)/180.0),CoordY(curship)-300.0*cos((ShipAngle(curship)*pi)/180.0),1);
 						}
 						15=for(i=0;i<StarShips(ShipStar(Player()));i=i+1)
@@ -205,78 +205,26 @@ Artefacts ^{
 			Text=При использовании в космосе, создаёт копии корабля-родителя, которые служат для отвлечения противника. Время жизни голограмм и их количество зависит от заряда.
 			Text=Накоплено заряда: <Data1> / <color=255,240,100>1000</color>
 		}
+		//Это больше не нужно, модно удалить
 		ppb_caller_art ^{
-			Broken=(требует ремонта)
-			BrokenInBattle=В пылу битвы вышел из строя подпространственный коммуникатор.
-			BrokenInUse=Подпространственный коммуникатор износился и нуждается в починке.
+			Broken=(необходимо техобслуживание)
+			BrokenInBattle=В пылу битвы свалился с полки и вышел из строя подпространственный коммуникатор.
+			BrokenInUse=Подпространственный коммуникатор потерял гиперчастоту и нуждается в перенастройке.
 			Name=Подпространственный коммуникатор
-			OnActCode ^{
-				01=dword charge;
-				02=if(!charge) charge=CurTurn();
-				03=if(ScriptItemActionType(t_OnStep,11))
-				04 ^{
-					01=if(ItemDurability(CurItem()) && CustomArtData(CurItem(),1)<100)
-					02 ^{
-						01=if(ItemIsInUse(CurItem()))CustomArtData(CurItem(),1,CustomArtData(CurItem(),1)+1);
-						02=if(CustomArtData(CurItem(),1)>100)CustomArtData(CurItem(),1,100);
-					}
-				}
-				05=else if(ScriptItemActionType(t_OnShowingItemInfo))
-				06 ^{
-					01=if(ItemDurability(CurItem()))
-					02 ^{
-						01=if(charge!=CurTurn() && charge) 
-						02 ^{
-							01=if(FindItemInStorage(CurItem())<0)
-							02 ^{
-								01=for(int i=0;i<CurTurn()-charge;i=i+1)CustomArtData(CurItem(),1,CustomArtData(CurItem(),1)+1);
-								02=if(CustomArtData(CurItem(),1)>100)CustomArtData(CurItem(),1,100);
-							}
-							03=charge=CurTurn();
-						}
-					}
-				}
-				07=else if(ScriptItemActionType(t_OnEnteringForm))
-				08 ^{
-					01=if(CurrentForm() == 'StarMap')
-					02 ^{
-						01=if(CustomArtData(CurItem(),2)==1)
-						02 ^{
-							01=CustomArtData(CurItem(),2,0);
-							02=dword temp_dword=BuyPirate(StarPlanets(GalaxyStar(4),0));
-							03=ShipType(temp_dword,'t_Head');
-							04=SetName(temp_dword,'X24 - 0.547');
-							05=ShipFace(temp_dword,1);
-							06=ShipSetCoords(temp_dword,CoordX(Player()),CoordY(Player()));
-							07=Dialog(temp_dword);
-						}
-					}
-				}
-			}
-			OnActCodeTypes=t_OnStep,t_OnEnteringForm,t_OnShowingItemInfo
-			OnActStepTypes=11
-			OnUseCode ^{
-				01=if(!ShipInNormalSpace(Player()))MessageBox(CT('FormShip.UseOnlyInSpace'));
-				02=if(!ShipInNormalSpace(Player()))exit;
-				03=if(CustomArtData(CurItem(),3)>=CurTurn())MessageBox('Нет ответа. Похоже сигналу что-то мешает.');
-				04=if(CustomArtData(CurItem(),3)<CurTurn())
-				05 ^{
-					01=CustomArtData(CurItem(),2,1);
-					02=ScriptItemActParam(1);
-				}
-			}
 			Size=1
-			Text=Мощный передатчик, способный посылать сигнал в подпространство. При установке на корабль заряд пополняется в 2 раза быстрее.
-			Text=При использовании в космосе, открывает гипертуннель по которому перемещается Объект X24 - 0.547  к месту подачи сигнала.
-			Text=Накоплено заряда: <Data1>%
+			Text=Мощный передатчик, способный посылать сигнал в гиперпространство. При установке на корабль заряд пополняется в <color=255,240,100>2</color> раза быстрее.
+			Text=Используется для установления прямой связи с <color=255,240,100>Объектом X24 - 0.547</color>.
+			Text=Накоплено заряда: <Data1><color=255,240,100>%</color>
 		}
 		pulsar ^{
 			Broken=(требует ремонта)
-			BrokenInBattle=Конструкция пульсара не выдержала перегрузок космического боя. Устройство непригодно к использованию и нуждается в починке.
+			BrokenInBattle=Конструкция пульсара не выдержала перегрузок космического боя. Устройство непригодно к использованию и нуждается в ремонте.
 			BrokenInUse=Программное обеспечение пульсара спровоцировало создание побочной временной воронки, вызвавшей в устройстве замкнутый хроноколлапс. Необходимо обновление софта и восстановление нормального темпорального течения.
 			Name=Пульсар
+			OnActCodeTypes=t_OnStep,t_OnItemEquip,t_OnItemDeEquip,t_OnScan,t_OnWeaponShot,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnShowingItemInfo,t_OnEnteringForm 
+			OnActStepTypes=11
 			OnActCode ^{
-				00=dword target_item=0;
+				00=dword target_item = 0;
 				01=dword charge;
 				02=if(!charge) charge=CurTurn();
 				03=if(ScriptItemActionType(t_OnStep,11))
@@ -310,11 +258,11 @@ Artefacts ^{
 						01=if(FormCurShip()==Player())InterfaceState('Ship','pulsar_panel',0);
 						02=if(CustomArtData(CurItem(),3)!=0 && ShipFindCustomShipInfoByType(Player(),'pulsar_infos')>=0)
 						03 ^{
-							00=if(ItemType(target_item)==t_RepairRobot)ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)-CustomArtData(CurItem(),2));
-							01=if(ItemType(target_item)==t_CargoHook)ShipSpecialBonuses(Player(),bonHook,ShipSpecialBonuses(Player(),bonHook)-CustomArtData(CurItem(),2));
-							02=if(ItemType(target_item)==t_Radar)ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar)-CustomArtData(CurItem(),2));
-							03=if(ItemType(target_item)==t_Scaner)ShipSpecialBonuses(Player(),bonScan,ShipSpecialBonuses(Player(),bonScan)-CustomArtData(CurItem(),2));
-							04=if(ItemType(target_item)==t_DefGenerator)ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef)-CustomArtData(CurItem(),2));
+							00=if(ItemType(target_item)==t_RepairRobot) ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)-CustomArtData(CurItem(),2));
+							01=else if(ItemType(target_item)==t_CargoHook) ShipSpecialBonuses(Player(),bonHook,ShipSpecialBonuses(Player(),bonHook)-CustomArtData(CurItem(),2));
+							02=else if(ItemType(target_item)==t_Radar) ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar)-CustomArtData(CurItem(),2));
+							03=else if(ItemType(target_item)==t_Scaner) ShipSpecialBonuses(Player(),bonScan,ShipSpecialBonuses(Player(),bonScan)-CustomArtData(CurItem(),2));
+							04=else if(ItemType(target_item)==t_DefGenerator) ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef)-CustomArtData(CurItem(),2));
 							05=InterfaceState('Ship',CustomArtTextData(CurItem(),3)+'_A',0);
 							06=InterfaceState('Ship',CustomArtTextData(CurItem(),3),1);
 							07=CustomArtData(CurItem(),2,0);
@@ -330,11 +278,11 @@ Artefacts ^{
 						00=if(ShipFindCustomShipInfoByType(Player(),'pulsar_infos')>=0)
 						01 ^{
 							00=if(!ItemIsInUse(CurItem()))InterfaceState('Ship','pulsar_panel',0);
-							01=if(ItemType(target_item)==t_RepairRobot)ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)-CustomArtData(CurItem(),2));
-							02=if(ItemType(target_item)==t_CargoHook)ShipSpecialBonuses(Player(),bonHook,ShipSpecialBonuses(Player(),bonHook)-CustomArtData(CurItem(),2));
-							03=if(ItemType(target_item)==t_Radar)ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar)-CustomArtData(CurItem(),2));
-							04=if(ItemType(target_item)==t_Scaner)ShipSpecialBonuses(Player(),bonScan,ShipSpecialBonuses(Player(),bonScan)-CustomArtData(CurItem(),2));
-							05=if(ItemType(target_item)==t_DefGenerator)ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef)-CustomArtData(CurItem(),2));
+							01=if(ItemType(target_item)==t_RepairRobot) ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)-CustomArtData(CurItem(),2));
+							02=else if(ItemType(target_item)==t_CargoHook) ShipSpecialBonuses(Player(),bonHook,ShipSpecialBonuses(Player(),bonHook)-CustomArtData(CurItem(),2));
+							03=else if(ItemType(target_item)==t_Radar) ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar)-CustomArtData(CurItem(),2));
+							04=else if(ItemType(target_item)==t_Scaner) ShipSpecialBonuses(Player(),bonScan,ShipSpecialBonuses(Player(),bonScan)-CustomArtData(CurItem(),2));
+							05=else if(ItemType(target_item)==t_DefGenerator) ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef)-CustomArtData(CurItem(),2));
 							06=InterfaceState('Ship',CustomArtTextData(CurItem(),3)+'_A',0);
 							07=InterfaceState('Ship',CustomArtTextData(CurItem(),3),1);
 							08=CustomArtData(CurItem(),2,0);
@@ -358,7 +306,7 @@ Artefacts ^{
 				12=int offer=0;
 				13=if(CustomArtData(CurItem(),3)==1 && ItemDurability(CurItem())>12)
 				14 ^{
-					01=if(CurrentForm()!='Ship')
+					01=if(CurrentForm() != 'Ship')
 					02 ^{
 						01=target_item=IdToItem(CustomArtTextData(CurItem(),2));
 						02=if(target_item)
@@ -367,11 +315,11 @@ Artefacts ^{
 							02 ^{
 								01=CustomArtData(CurItem(),2,GetEquipmentStats(target_item,0)/2);
 								02=CustomArtData(CurItem(),3,10);
-								03=if(ItemType(target_item)==t_RepairRobot)ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)+CustomArtData(CurItem(),2));
-								04=if(ItemType(target_item)==t_CargoHook)ShipSpecialBonuses(Player(),bonHook,ShipSpecialBonuses(Player(),bonHook)+CustomArtData(CurItem(),2));
-								05=if(ItemType(target_item)==t_Radar)ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar)+CustomArtData(CurItem(),2));
-								06=if(ItemType(target_item)==t_Scaner)ShipSpecialBonuses(Player(),bonScan,ShipSpecialBonuses(Player(),bonScan)+CustomArtData(CurItem(),2));
-								07=if(ItemType(target_item)==t_DefGenerator)ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef)+CustomArtData(CurItem(),2));
+								03=if(ItemType(target_item)==t_RepairRobot) ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)+CustomArtData(CurItem(),2));
+								04=else (ItemType(target_item)==t_CargoHook) ShipSpecialBonuses(Player(),bonHook,ShipSpecialBonuses(Player(),bonHook)+CustomArtData(CurItem(),2));
+								05=else if(ItemType(target_item)==t_Radar) ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar)+CustomArtData(CurItem(),2));
+								06=else if(ItemType(target_item)==t_Scaner) ShipSpecialBonuses(Player(),bonScan,ShipSpecialBonuses(Player(),bonScan)+CustomArtData(CurItem(),2));
+								07=else if(ItemType(target_item)==t_DefGenerator) ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef)+CustomArtData(CurItem(),2));
 							}
 						}
 					}
@@ -478,8 +426,6 @@ Artefacts ^{
 					15=ShipDeleteCustomShipInfo(Player(),'pulsar_infos');
 				}
 			}
-			OnActCodeTypes=t_OnStep,t_OnItemEquip,t_OnItemDeEquip,t_OnScan,t_OnWeaponShot,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnShowingItemInfo,t_OnEnteringForm 
-			OnActStepTypes=11
 			OnUseCode ^{
 				01=int temp_int=0;
 				02=if(ShipFindCustomShipInfoByType(Player(),'pulsar_infos')>=0)
@@ -620,70 +566,140 @@ Script ^{
 		64=Совместить оборудование с микромодулем
 	}
 }
+UselessItems ^{
+	SubspaceCommunicator ^{
+		Name=Подпространственный коммуникатор
+		Size=1
+		Cost=Average
+		Owner=None
+		Text=Мощный передатчик, способный посылать сигнал в гиперпространство. Используется для установления прямой связи с <color=255,240,100>Объектом X24 - 0.547</color>.
+		Text=<clr><clrEnd>
+		Text=Мощность заряда: <ChargePercent><color=255,240,100>%</color>
+		OnActCodeTypes=t_OnStep,t_OnEnteringForm,t_OnShowingItemInfo
+		OnActStepTypes=11
+		OnActCode ^{
+			//Data1 - счётчик заряда (1 - 1000), переводим в % при вызове окна предмета
+			//Data2 - маркер (0/1) активации коммуникатора (будет снят при выходе на форму StarMap)
+			//Data3 - маркер (дата) невозможности вызова ППБ (если > CurTurn()), выставляется во время разговора с ППБ и после вызова базы
+			01=dword cur_item = CurItem();
+			02=dword charge;
+			03=if(!charge) charge = CurTurn();
+			04=if(ScriptItemActionType(t_OnStep))
+			05 ^{
+				01=UselessItemData(cur_item, 1, UselessItemData(cur_item, 1) + Rnd(3, 7));
+			}
+			06=else if(ScriptItemActionType(t_OnEnteringForm))
+			07 ^{
+				01=if(CurrentForm() == 'StarMap')
+				02 ^{
+					01=if(UselessItemData(cur_item, 2))
+					02 ^{
+						01=UselessItemData(cur_item, 2, 0);
+						02=dword object = IdToShip(GetValueFromScript('Mod_ExpSSB', 'id_base'));
+						03=ShipSetCoords(object, CoordX(Player()), CoordY(Player()));
+						04=Dialog(object);
+					}
+				}
+			}
+			08=else //if(ScriptItemActionType(t_OnShowingItemInfo))
+			09 ^{
+				01=int percent = int(UselessItemData(cur_item, 1) / 10);
+				02=UselessItemText(cur_item, 1, Format(CT('UselessItems.SubspaceCommunicator.Text'), '<ChargePercent' + '>', percent, '255,240,100'));
+			}
+		}
+		OnUseCode ^{
+			01=dword cur_item = CurItem();
+			02=if(!ShipInNormalSpace(Player()))
+			03 ^{
+				01=MessageBox(CT('FormShip.UseOnlyInSpace'));
+				02=exit;
+			}
+			04=dword object = IdToShip(GetValueFromScript('Mod_ExpSSB', 'id_base'));
+			05=if(UselessItemData(cur_item, 3) >= CurTurn() || !object)
+			06 ^{
+				01=MessageBox('Абонент не отвечает. Похоже, прохождению сигнала что-то мешает.');
+				02=exit;
+			}
+			//07=if(UselessItemData(cur_item, 1) < 333)
+			//08 ^{
+			//	01=MessageBox('Текущего заряда устройства недостаточно для установления канала связи с гиперпространством.');
+			//	02=exit;
+			//}
+			//Снимаем примерно треть максимального заряда за вызов
+			//09=UselessItemData(cur_item, 1, UselessItemData(cur_item, 1) - 333);
+			07=UselessItemData(cur_item, 2, 1);
+			08=ScriptItemActParam(1);
+		}
+	}	
+}
 ShipInfo ^{
 	AddInfo ^{
 		CustomInfos ^{
 			Immortal ^{
-				Description=
+				Description=Для защиты ППБ (скрытая)
 				Icon=0
 				Name=
+				OnActCodeTypes=t_OnStep,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
+				OnActStepTypes=11
 				OnActCode ^{
-					01=ScriptItemActParam(0);
+					01=if(ScriptItemActionType(t_OnStep)) ShipDestroy(ScriptItemActShip(), 0);
+					02=else ScriptItemActParam(0);
 				}
-				OnActCodeTypes=t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
 			}
 			SelfDestroy ^{
-				Description=Для уничтожения голограмм
+				Description=Для уничтожения голограмм (скрытая)
 				Icon=2
-				Name=Сумоуничтожение
+				Name=
+				OnActCodeTypes=t_OnStep,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
+				OnActStepTypes=1,2,3,4,5,6,7,8,9,10,11
 				OnActCode ^{
-					01=int infos = ShipFindCustomShipInfoByType(ScriptItemActShip(), 'SelfDestroy');
-					02=int infos_var_1 = ShipCustomShipInfoData(ScriptItemActShip(), infos, 1);
-					03=int shot;
+					01=dword cur_ship = ScriptItemActShip();
+					02=int infos = ShipFindCustomShipInfoByType(cur_ship, 'SelfDestroy');
+					03=int infos_var_1 = ShipCustomShipInfoData(cur_ship, infos, 1);
 					04=if(ScriptItemActionType(t_OnStep))
 					05 ^{
 						01=if(ScriptItemActParam() == 11)
 						02 ^{
-							01=if(infos_var_1 == 0)
+							01=if(!infos_var_1)
 							02 ^{
-								01=if(ShipStar(ScriptItemActShip()) == ShipStar(Player()))ShowEffect('Weapon.MissileHit', 5, ScriptItemActShip(), ScriptItemActShip(), 0, 0, 0, 0, 0, 0);
-								02=HullHP(ScriptItemActShip(), 0);
+								01=if(ShipStar(cur_ship) == ShipStar(Player()))
+								02 ^{
+									01=ShowEffect('Weapon.MissileHit', 5, cur_ship, cur_ship, 0, 0, 0, 0, 0, 0);
+								}
+								03=HullHP(cur_ship, 0);
 							}
 							03=else if(infos_var_1 > 0)
 							04 ^{
-								01=ShipCustomShipInfoData(ScriptItemActShip(), infos, 1, infos_var_1 - 1);
+								01=ShipCustomShipInfoData(cur_ship, infos, 1, infos_var_1 - 1);
 							}
 						}
 						03=else
 						04 ^{
-							01=if(ShipOrder(ScriptItemActShip()) == 6)
+							01=if(ShipOrder(cur_ship) == 6)
 							02 ^{
-								01=shot = Rnd(0, 10);
-								02=if(Dist(ScriptItemActShip(), ShipOrderObj(ScriptItemActShip())) <= 300 && ShipStar(ScriptItemActShip()) == ShipStar(Player()) && shot >= 5)ShowEffect('Weapon.0', 1, ShipOrderObj(ScriptItemActShip()), ScriptItemActShip(), 0, 0, 0, 0, 0, 0);
+								01=int shot = Rnd(0, 10);
+								02=if(Dist(cur_ship, ShipOrderObj(cur_ship)) <= 300 && ShipStar(cur_ship) == ShipStar(Player()) && shot >= 5)
+								03 ^{
+									01=ShowEffect('Weapon.0', 1, ShipOrderObj(cur_ship), cur_ship, 0, 0, 0, 0, 0, 0);
+								}
 							}
 						}
 					}
 					06=else ScriptItemActParam(0);
 				}
-				OnActCodeTypes=t_OnStep,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
-				OnActStepTypes=1,2,3,4,5,6,7,8,9,10,11
 			}
 			pulsar_infos ^{
-				Description=--
+				Description=
 				Icon=1
-				Name=--
+				Name=
 			}
 		}
 	}
 }
 ShipType ^{
-	Gaal ^{
-		t_Head=Объект
-	}
 	TypeName ^{
 		SSB=Объект
 		SSBSmall=ППБ
-		t_Head=
 	}
 }
 UselessItems ^{
