@@ -26,6 +26,11 @@ MicroModuls ^{
         Priority=20
         Special=1
     }
+	ShuBK_FullItemCost ^{
+        LockedAcryn=3
+        NonSearchable=1
+        Special=1
+    }
 }
 Script ^{
     Mod_ShuBK ^{
@@ -43,25 +48,73 @@ ShipInfo ^{
                 Description=Скрытая инфошка, отмечает собой бизнес-центр с идущей на нём распродажей
                 Icon=0
                 Name=
-				OnActCodeTypes=t_OnStep
+				OnActCodeTypes=t_OnStep,t_OnDeath
 				OnActStepTypes=11
                 OnActCode ^{
-					//Если время распродажи подошло к концу
-					01=if(CurTurn() >= ShipCustomShipInfoData(0, CurInfo(), 1))
+					01=if(ScriptItemActionType(t_OnStep))
 					02 ^{
-						01=dword cur_ruin = ScriptItemActShip();
-						02=int dis_25 = FindBonusByNameInCfg('ShuBK_Discount25');
-						03=int dis_50 = FindBonusByNameInCfg('ShuBK_Discount50');
-						04=int dis_75 = FindBonusByNameInCfg('ShuBK_Discount75');
-						05=for(int i = 0; i < ShopItems(cur_ruin); i = i + 1)
-						06 ^{
-							01=dword item = ShopItems(cur_ruin, i);
-							02=int cur_MM = EqModule(item);
-							03=if(cur_MM == dis_25) ModuleToEquipment(-1, item);
-							04=else if(cur_MM == dis_50) ModuleToEquipment(-1, item);
-							05=else if(cur_MM == dis_75) ModuleToEquipment(-1, item);
+						//Если время распродажи подошло к концу
+						01=if(CurTurn() >= ShipCustomShipInfoData(0, CurInfo(), 1))
+						02 ^{
+							01=dword cur_ruin = ScriptItemActShip();
+							02=int dis_25 = FindBonusByNameInCfg('ShuBK_Discount25');
+							03=int dis_50 = FindBonusByNameInCfg('ShuBK_Discount50');
+							04=int dis_75 = FindBonusByNameInCfg('ShuBK_Discount75');
+							//Снимаем скидки со всех акционных предметов в магазине
+							05=for(int i = 0; i < ShopItems(cur_ruin); i = i + 1)
+							06 ^{
+								01=dword item = ShopItems(cur_ruin, i);
+								02=int cur_MM = EqModule(item);
+								03=if(cur_MM != dis_75 && cur_MM != dis_50 && cur_MM != dis_25) continue;
+								04=ModuleToEquipment(-1, item);
+							}
+							//Перебираем все акционные предметы игрока и обнуляем их маркеры изначальной цены
+							//(чтобы он не мог починить их по дешёвке на следующей распродаже)
+							08=int true_cost_bon = FindBonusByNameInCfg('ShuBK_FullItemCost');
+							09=for(i = 0; i < ShipItems(Player()); i = i + 1)
+							10 ^{
+								01=item = ShipItems(Player(), i);
+								02=int true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
+								03=if(!true_cost) continue;
+								04=ItemExtraSpecialsDeleteByType(item, true_cost_bon, true_cost);
+							}
+							11=for(i = 0; i < ShipArts(Player()); i = i + 1)
+							12 ^{
+								01=item = ShipArts(Player(), i);
+								02=true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
+								03=if(!true_cost) continue;
+								04=ItemExtraSpecialsDeleteByType(item, true_cost_bon, true_cost);
+							}
+							13=for(i = 0; i < StorageItems(); i = i + 1)
+							14 ^{
+								01=if(StorageItemLocation(i) != cur_ruin) continue;
+								02=item = StorageItems(i);
+								03=true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
+								04=if(!true_cost) continue;
+								05=ItemExtraSpecialsDeleteByType(item, true_cost_bon, true_cost);
+							}
+							15=ShipDeleteCustomShipInfo(cur_ruin, 'ShuBK_SellerBKMarkInfo');
 						}
-						07=ShipDeleteCustomShipInfo(cur_ruin, 'ShuBK_SellerBKMarkInfo');
+					}
+					03=else
+					04 ^{
+						//Перебираем все акционные предметы игрока и обнуляем их маркеры изначальной цены
+						//(чтобы он не мог починить их по дешёвке на следующей распродаже)
+						01=true_cost_bon = FindBonusByNameInCfg('ShuBK_FullItemCost');
+						02=for(i = 0; i < ShipItems(Player()); i = i + 1)
+						03 ^{
+							01=item = ShipItems(Player(), i);
+							02=true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
+							03=if(!true_cost) continue;
+							04=ItemExtraSpecialsDeleteByType(item, true_cost_bon, true_cost);
+						}
+						04=for(i = 0; i < ShipArts(Player()); i = i + 1)
+						05 ^{
+							01=item = ShipArts(Player(), i);
+							02=true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
+							03=if(!true_cost) continue;
+							04=ItemExtraSpecialsDeleteByType(item, true_cost_bon, true_cost);
+						}
 					}
 				}
 			}
@@ -73,16 +126,45 @@ ShipInfo ^{
 				OnActStepTypes=0
                 OnActCode ^{
 					01=dword cur_info = CurInfo();
-					02=if(ScriptItemActionType(t_OnStep, 0))
+					02=if(ScriptItemActionType(t_OnStep))
 					03 ^{
-						01=if(ShipOrder(Player()) == 5) ShipDeleteCustomShipInfo(Player(), 'ShuBK_BKSaleInfo');
-						02=else if(!ShipCustomShipInfoData(0, cur_info, 2))
-						03 ^{
+						//Если игрок покидает БЦ
+						01=if(ShipOrder(Player()) == 5)
+						02 ^{
+							//Перебираем все акционные предметы игрока и возвращаем их оригинальную стоимость
+							01=dword shop = IdToShip(ShipCustomShipInfoData(0, cur_info, 1));
+							02=int true_cost_bon = FindBonusByNameInCfg('ShuBK_FullItemCost');
+							03=for(int i = 0; i < ShipItems(Player()); i = i + 1)
+							04 ^{
+								01=dword item = ShipItems(Player(), i);
+								02=int true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
+								03=if(!true_cost) continue;
+								04=ItemCost(item, true_cost);
+							}
+							05=for(i = 0; i < ShipArts(Player()); i = i + 1)
+							06 ^{
+								01=item = ShipArts(Player(), i);
+								02=true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
+								03=if(!true_cost) continue;
+								04=ItemCost(item, true_cost);
+							}
+							07=for(i = 0; i < StorageItems(); i = i + 1)
+							08 ^{
+								01=if(StorageItemLocation(i) != shop) continue;
+								02=item = StorageItems(i);
+								03=true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
+								04=if(!true_cost) continue;
+								05=ItemCost(item, true_cost);
+							}
+							09=ShipDeleteCustomShipInfo(Player(), 'ShuBK_SaleInfo');
+						}
+						03=else if(!ShipCustomShipInfoData(0, cur_info, 2))
+						04 ^{
 							01=int dis_25 = FindBonusByNameInCfg('ShuBK_Discount25');
 							02=int dis_50 = FindBonusByNameInCfg('ShuBK_Discount50');
 							03=int dis_75 = FindBonusByNameInCfg('ShuBK_Discount75');
 							//Перебираем галасобытия, ищем свежекупленные предметы
-							04=for(int i = GalaxyEvents() - 1; i >= 0; i = i - 1)
+							04=for(i = GalaxyEvents() - 1; i >= 0; i = i - 1)
 							05 ^{
 								01=if(i <= ShipCustomShipInfoData(0, cur_info, 2)) break;
 								02=if(GalaxyEventDate(i) < CurTurn()) break;
@@ -90,19 +172,20 @@ ShipInfo ^{
 								04 ^{
 									01=if(GalaxyEventData(i, 5) == ShipCustomShipInfoData(0, cur_info, 1))
 									02 ^{
-										01=dword item = IdToItem(GalaxyEventData(i, 3));
+										01=item = IdToItem(GalaxyEventData(i, 3));
 										02=int cur_MM = EqModule(item);
-										//Снимаем скидку, если нашли таковую на купленном предмете
-										03=if(cur_MM == dis_75) ModuleToEquipment(-1, item);
-										04=else if(cur_MM == dis_50) ModuleToEquipment(-1, item);
-										05=else if(cur_MM == dis_25) ModuleToEquipment(-1, item);
+										//Снимаем скидку, если нашли таковую на недавно купленном предмете
+										03=if(cur_MM != dis_75 && cur_MM != dis_50 && cur_MM != dis_25) continue;
+										04=int dis_cost = ItemCost(item);
+										05=ModuleToEquipment(-1, item);
+										06=ItemCost(item, dis_cost);
 									}
 								}
 							}
 							//Запоминаем просмотренные номера событий, чтобы не прогонять по ним предметы второй раз
 							06=ShipCustomShipInfoData(0, cur_info, 2, GalaxyEvents() - 1);
 						}
-						04=else ShipCustomShipInfoData(0, cur_info, 2, 0);
+						05=else ShipCustomShipInfoData(0, cur_info, 2, 0);
 					}
 					04=else if(ScriptItemActionType(t_OnEnteringForm) || ScriptItemActionType(t_OnReEnteringForm))
 					05 ^{
@@ -122,15 +205,44 @@ ShipInfo ^{
 									02 ^{
 										01=item = IdToItem(GalaxyEventData(i, 3));
 										02=cur_MM = EqModule(item);
-										//Снимаем скидку, если нашли таковую на купленном предмете
-										03=if(cur_MM == dis_75) ModuleToEquipment(-1, item);
-										04=else if(cur_MM == dis_50) ModuleToEquipment(-1, item);
-										05=else if(cur_MM == dis_25) ModuleToEquipment(-1, item);
+										//Снимаем скидку, если нашли таковую на недавно купленном предмете
+										03=if(cur_MM != dis_75 && cur_MM != dis_50 && cur_MM != dis_25) continue;
+										04=dis_cost = ItemCost(item);
+										05=ModuleToEquipment(-1, item);
+										06=ItemCost(item, dis_cost);
 									}
 								}
 							}
 							//Запоминаем просмотренные номера событий, чтобы не прогонять по ним предметы второй раз
 							06=ShipCustomShipInfoData(0, cur_info, 2, GalaxyEvents() - 1);
+							//Перебираем предметы в магазине и навешиваем им скидки обратно, если игрок решил продать только что купленный на распродаже предмет
+							07=true_cost_bon = FindBonusByNameInCfg('ShuBK_FullItemCost');
+							08=shop = IdToShip(ShipCustomShipInfoData(0, cur_info, 1));
+							09=for(i = 0; i < ShopItems(shop); i = i + 1)
+							10 ^{
+								01=item = ShopItems(shop, i);
+								02=cur_MM = EqModule(item);
+								03=if(cur_MM == dis_75 || cur_MM == dis_50 || cur_MM == dis_25) continue;
+								04=true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
+								05=if(!true_cost) continue;
+								06=ItemCost(item, true_cost);
+								07=ItemExtraSpecialsDeleteByType(item, true_cost_bon, true_cost);
+								//Если распродажа в БЦ всё ещё продолжается
+								08=if(ShipFindCustomShipInfoByType(shop, 'ShuBK_SellerBKMarkInfo') == -1) continue;
+								09=int level = ItemLevel(item);
+								10=if(level < GalaxyTechLevel() - 1)
+								11 ^{
+									01=if(EqModule(item) == -1) ModuleToEquipment(dis_75, item);
+								}
+								12=else if(level < GalaxyTechLevel())
+								13 ^{
+									01=if(EqModule(item) == -1) ModuleToEquipment(dis_50, item);
+								}
+								14=else if(level >= GalaxyTechLevel())
+								15 ^{
+									01=if(EqModule(item) == -1) ModuleToEquipment(dis_25, item);
+								}
+							}
 						}
 					}
 					06=else if(ScriptItemActionType(t_OnLeavingForm))
@@ -151,10 +263,11 @@ ShipInfo ^{
 									02 ^{
 										01=item = IdToItem(GalaxyEventData(i, 3));
 										02=cur_MM = EqModule(item);
-										//Снимаем скидку, если нашли таковую на купленном предмете
-										03=if(cur_MM == dis_75) ModuleToEquipment(-1, item);
-										04=else if(cur_MM == dis_50) ModuleToEquipment(-1, item);
-										05=else if(cur_MM == dis_25) ModuleToEquipment(-1, item);
+										//Снимаем скидку, если нашли таковую на недавно купленном предмете
+										03=if(cur_MM != dis_75 && cur_MM != dis_50 && cur_MM != dis_25) continue;
+										04=dis_cost = ItemCost(item);
+										05=ModuleToEquipment(-1, item);
+										06=ItemCost(item, dis_cost);
 									}
 								}
 							}
