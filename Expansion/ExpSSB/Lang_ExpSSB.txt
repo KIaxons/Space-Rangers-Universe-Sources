@@ -566,72 +566,6 @@ Script ^{
 		64=Совместить оборудование с микромодулем
 	}
 }
-UselessItems ^{
-	SubspaceCommunicator ^{
-		Name=Подпространственный коммуникатор
-		Size=1
-		Cost=Average
-		Owner=None
-		Text=Мощный передатчик, способный посылать сигнал в гиперпространство. Используется для установления прямой связи с <color=255,240,100>Объектом X24 - 0.547</color>.
-		Text=<clr><clrEnd>
-		Text=Мощность заряда: <ChargePercent><color=255,240,100>%</color>
-		OnActCodeTypes=t_OnStep,t_OnEnteringForm,t_OnShowingItemInfo
-		OnActStepTypes=11
-		OnActCode ^{
-			//Data1 - счётчик заряда (1 - 1000), переводим в % при вызове окна предмета
-			//Data2 - маркер (0/1) активации коммуникатора (будет снят при выходе на форму StarMap)
-			//Data3 - маркер (дата) невозможности вызова ППБ (если > CurTurn()), выставляется во время разговора с ППБ и после вызова базы
-			01=dword cur_item = CurItem();
-			02=dword charge;
-			03=if(!charge) charge = CurTurn();
-			04=if(ScriptItemActionType(t_OnStep))
-			05 ^{
-				01=UselessItemData(cur_item, 1, UselessItemData(cur_item, 1) + Rnd(3, 7));
-			}
-			06=else if(ScriptItemActionType(t_OnEnteringForm))
-			07 ^{
-				01=if(CurrentForm() == 'StarMap')
-				02 ^{
-					01=if(UselessItemData(cur_item, 2))
-					02 ^{
-						01=UselessItemData(cur_item, 2, 0);
-						02=dword object = IdToShip(GetValueFromScript('Mod_ExpSSB', 'id_base'));
-						03=ShipSetCoords(object, CoordX(Player()), CoordY(Player()));
-						04=Dialog(object);
-					}
-				}
-			}
-			08=else //if(ScriptItemActionType(t_OnShowingItemInfo))
-			09 ^{
-				01=int percent = int(UselessItemData(cur_item, 1) / 10);
-				02=UselessItemText(cur_item, 1, Format(CT('UselessItems.SubspaceCommunicator.Text'), '<ChargePercent' + '>', percent, '255,240,100'));
-			}
-		}
-		OnUseCode ^{
-			01=dword cur_item = CurItem();
-			02=if(!ShipInNormalSpace(Player()))
-			03 ^{
-				01=MessageBox(CT('FormShip.UseOnlyInSpace'));
-				02=exit;
-			}
-			04=dword object = IdToShip(GetValueFromScript('Mod_ExpSSB', 'id_base'));
-			05=if(UselessItemData(cur_item, 3) >= CurTurn() || !object)
-			06 ^{
-				01=MessageBox('Абонент не отвечает. Похоже, прохождению сигнала что-то мешает.');
-				02=exit;
-			}
-			//07=if(UselessItemData(cur_item, 1) < 333)
-			//08 ^{
-			//	01=MessageBox('Текущего заряда устройства недостаточно для установления канала связи с гиперпространством.');
-			//	02=exit;
-			//}
-			//Снимаем примерно треть максимального заряда за вызов
-			//09=UselessItemData(cur_item, 1, UselessItemData(cur_item, 1) - 333);
-			07=UselessItemData(cur_item, 2, 1);
-			08=ScriptItemActParam(1);
-		}
-	}	
-}
 ShipInfo ^{
 	AddInfo ^{
 		CustomInfos ^{
@@ -703,6 +637,70 @@ ShipType ^{
 	}
 }
 UselessItems ^{
+	SubspaceCommunicator ^{
+		Name=Подпространственный коммуникатор
+		Size=1
+		Cost=Average
+		Owner=None
+		Text=Мощный передатчик, способный посылать сигнал в гиперпространство. Используется для установления прямой связи с <color=255,240,100>Объектом X24 - 0.547</color>.
+		Text=<clr><clrEnd>
+		Text=Мощность заряда: <ChargePercent><color=255,240,100>%</color>
+		OnActCodeTypes=t_OnStep,t_OnEnteringForm,t_OnShowingItemInfo
+		OnActStepTypes=11
+		OnActCode ^{
+			//Data1 - счётчик заряда (1 - 1000), переводим в % при вызове окна предмета
+			//Data2 - маркер (0/1) активации коммуникатора (будет снят при выходе на форму StarMap)
+			//Data3 - маркер (дата) невозможности вызова ППБ (если > CurTurn()), выставляется во время разговора с ППБ и после вызова базы
+			01=dword cur_item = CurItem();
+			02=dword charge;
+			03=if(!charge) charge = CurTurn();
+			04=if(ScriptItemActionType(t_OnStep))
+			05 ^{
+				01=UselessItemData(cur_item, 1, UselessItemData(cur_item, 1) + Rnd(3, 7));
+			}
+			06=else if(ScriptItemActionType(t_OnEnteringForm))
+			07 ^{
+				01=if(CurrentForm() == 'StarMap')
+				02 ^{
+					01=if(UselessItemData(cur_item, 2))
+					02 ^{
+						01=UselessItemData(cur_item, 2, 0);
+						02=dword object = IdToShip(GetValueFromScript('Mod_ExpSSB', 'id_base'));
+						03=ShipSetCoords(object, CoordX(Player()), CoordY(Player()));
+						04=Dialog(object);
+					}
+				}
+			}
+			08=else //if(ScriptItemActionType(t_OnShowingItemInfo))
+			09 ^{
+				01=int percent = int(UselessItemData(cur_item, 1) / 10);
+				02=UselessItemText(cur_item, 1, Format(CT('UselessItems.SubspaceCommunicator.Text'), '<ChargePercent' + '>', percent, '255,240,100'));
+			}
+		}
+		OnUseCode ^{
+			01=dword cur_item = CurItem();
+			02=if(!ShipInNormalSpace(Player()))
+			03 ^{
+				01=MessageBox(CT('FormShip.UseOnlyInSpace'));
+				02=exit;
+			}
+			04=dword object = IdToShip(GetValueFromScript('Mod_ExpSSB', 'id_base'));
+			05=if(UselessItemData(cur_item, 3) >= CurTurn() || !object)
+			06 ^{
+				01=MessageBox('Абонент не отвечает. Похоже, прохождению сигнала что-то мешает.');
+				02=exit;
+			}
+			//07=if(UselessItemData(cur_item, 1) < 333)
+			//08 ^{
+			//	01=MessageBox('Текущего заряда устройства недостаточно для установления канала связи с гиперпространством.');
+			//	02=exit;
+			//}
+			//Снимаем примерно треть максимального заряда за вызов
+			//09=UselessItemData(cur_item, 1, UselessItemData(cur_item, 1) - 333);
+			07=UselessItemData(cur_item, 2, 1);
+			08=ScriptItemActParam(1);
+		}
+	}
 	ExpSSB_UnidentifiedProbesRemains ^{
 		Cost=Huge
 		Name=Останки неопознанных зондов
