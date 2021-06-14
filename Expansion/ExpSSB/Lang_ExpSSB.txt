@@ -205,7 +205,7 @@ Artefacts ^{
 			Text=При использовании в космосе, создаёт копии корабля-родителя, которые служат для отвлечения противника. Время жизни голограмм и их количество зависит от заряда.
 			Text=Накоплено заряда: <Data1> / <color=255,240,100>1000</color>
 		}
-		//Это больше не нужно, модно удалить
+		//Это больше не нужно, можно удалить
 		ppb_caller_art ^{
 			Broken=(необходимо техобслуживание)
 			BrokenInBattle=В пылу битвы свалился с полки и вышел из строя подпространственный коммуникатор.
@@ -224,239 +224,248 @@ Artefacts ^{
 			OnActCodeTypes=t_OnStep,t_OnItemEquip,t_OnItemDeEquip,t_OnScan,t_OnWeaponShot,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnShowingItemInfo,t_OnEnteringForm 
 			OnActStepTypes=11
 			OnActCode ^{
-				00=dword target_item = 0;
-				01=dword charge;
-				02=if(!charge) charge=CurTurn();
-				03=if(ScriptItemActionType(t_OnStep,11))
-				04 ^{
-					01=if(ItemDurability(CurItem()) && CustomArtData(CurItem(),1)<2000)
-					02 ^{
-						01=if(ItemIsInUse(CurItem()))CustomArtData(CurItem(),1,CustomArtData(CurItem(),1)+5);
-						02=if(CustomArtData(CurItem(),1)>2000)CustomArtData(CurItem(),1,2000);						
-					}
-				}
-				05=if(ScriptItemActionType(t_OnShowingItemInfo))
+				01=dword cur_item = CurItem();
+				02=dword target_item;
+				03=int charge;
+				04=if(!charge) charge = CurTurn();
+				05=if(ScriptItemActionType(t_OnStep))
 				06 ^{
-					01=if(ItemDurability(CurItem()))
+					01=if(ItemDurability(cur_item) && CustomArtData(cur_item, 1) < 2000)
 					02 ^{
-						01=if(charge!=CurTurn() && charge)
-						02 ^{
-							01=if(FindItemInStorage(CurItem())<0)
-							02 ^{
-								01=for(int i=0;i<CurTurn()-charge;i=i+1)CustomArtData(CurItem(),1,CustomArtData(CurItem(),1)+Rnd(0,5));
-								02=if(CustomArtData(CurItem(),1)>2000)CustomArtData(CurItem(),1,2000);
-							}
-							03=charge=CurTurn();
-						}
+						01=if(ItemIsInUse(cur_item)) CustomArtData(cur_item, 1, CustomArtData(cur_item, 1) + 5);
+						02=if(CustomArtData(cur_item, 1) > 2000) CustomArtData(cur_item, 1, 2000);						
 					}
 				}
-				07=if(ScriptItemActionType(t_OnItemDeEquip))
+				07=else if(ScriptItemActionType(t_OnShowingItemInfo))
 				08 ^{
-					00=target_item=IdToItem(CustomArtTextData(CurItem(),2));
-					01=if(CurrentForm()=='Ship')
+					01=if(ItemDurability(cur_item))
 					02 ^{
-						01=if(FormCurShip()==Player())InterfaceState('Ship','pulsar_panel',0);
-						02=if(CustomArtData(CurItem(),3)!=0 && ShipFindCustomShipInfoByType(Player(),'pulsar_infos')>=0)
-						03 ^{
-							00=if(ItemType(target_item)==t_RepairRobot) ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)-CustomArtData(CurItem(),2));
-							01=else if(ItemType(target_item)==t_CargoHook) ShipSpecialBonuses(Player(),bonHook,ShipSpecialBonuses(Player(),bonHook)-CustomArtData(CurItem(),2));
-							02=else if(ItemType(target_item)==t_Radar) ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar)-CustomArtData(CurItem(),2));
-							03=else if(ItemType(target_item)==t_Scaner) ShipSpecialBonuses(Player(),bonScan,ShipSpecialBonuses(Player(),bonScan)-CustomArtData(CurItem(),2));
-							04=else if(ItemType(target_item)==t_DefGenerator) ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef)-CustomArtData(CurItem(),2));
-							05=InterfaceState('Ship',CustomArtTextData(CurItem(),3)+'_A',0);
-							06=InterfaceState('Ship',CustomArtTextData(CurItem(),3),1);
-							07=CustomArtData(CurItem(),2,0);
-							08=CustomArtData(CurItem(),3,0);
-							09=CustomArtTextData(CurItem(),1,'');
-							10=CustomArtTextData(CurItem(),2,'');
-							11=CustomArtTextData(CurItem(),3,'');
-							12=ShipDeleteCustomShipInfo(Player(),'pulsar_infos');
-						}
-					}
-					03=if(CurrentForm()=='StarMap')
-					04 ^{
-						00=if(ShipFindCustomShipInfoByType(Player(),'pulsar_infos')>=0)
-						01 ^{
-							00=if(!ItemIsInUse(CurItem()))InterfaceState('Ship','pulsar_panel',0);
-							01=if(ItemType(target_item)==t_RepairRobot) ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)-CustomArtData(CurItem(),2));
-							02=else if(ItemType(target_item)==t_CargoHook) ShipSpecialBonuses(Player(),bonHook,ShipSpecialBonuses(Player(),bonHook)-CustomArtData(CurItem(),2));
-							03=else if(ItemType(target_item)==t_Radar) ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar)-CustomArtData(CurItem(),2));
-							04=else if(ItemType(target_item)==t_Scaner) ShipSpecialBonuses(Player(),bonScan,ShipSpecialBonuses(Player(),bonScan)-CustomArtData(CurItem(),2));
-							05=else if(ItemType(target_item)==t_DefGenerator) ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef)-CustomArtData(CurItem(),2));
-							06=InterfaceState('Ship',CustomArtTextData(CurItem(),3)+'_A',0);
-							07=InterfaceState('Ship',CustomArtTextData(CurItem(),3),1);
-							08=CustomArtData(CurItem(),2,0);
-							09=CustomArtData(CurItem(),3,0);
-							10=CustomArtTextData(CurItem(),1,'');
-							11=CustomArtTextData(CurItem(),2,'');
-							12=CustomArtTextData(CurItem(),3,'');
-							13=ShipDeleteCustomShipInfo(Player(),'pulsar_infos');
+						01=if(charge != CurTurn())
+						02 ^{
+							01=if(FindItemInStorage(cur_item) == -1)
+							02 ^{
+								01=for(int i = 0; i < CurTurn() - charge; i = i + 1) CustomArtData(cur_item, 1, CustomArtData(cur_item, 1) + Rnd(0, 5));
+								02=if(CustomArtData(cur_item, 1) > 2000) CustomArtData(cur_item, 1, 2000);
+							}
+							03=charge = CurTurn();
 						}
 					}
 				}
-				09=if(ScriptItemActionType(t_OnEnteringForm)) 
+				09=else if(ScriptItemActionType(t_OnItemDeEquip))
 				10 ^{
-					00=if((CurrentForm()=='Ship' && FormCurShip()==Player()))
-					01 ^{
-						00=if(!ItemIsInUse(CurItem()))InterfaceState('Ship','pulsar_panel',0);
-						01=else InterfaceState('Ship','pulsar_panel',1);
+					01=target_item = IdToItem(CustomArtTextData(cur_item, 2));
+					02=if(CurrentForm() == 'Ship')
+					03 ^{
+						01=if(IsPlayer(FormCurShip())) InterfaceState('Ship', 'pulsar_panel', 0);
+						02=if(CustomArtData(cur_item, 3) && ~ShipFindCustomShipInfoByType(Player(), 'pulsar_infos'))
+						03 ^{
+							01=int item_type = ItemType(target_item);
+							02=if(item_type == t_RepairRobot) ShipSpecialBonuses(Player(), bonDroid, ShipSpecialBonuses(Player(), bonDroid) - CustomArtData(cur_item, 2));
+							03=else if(item_type == t_CargoHook) ShipSpecialBonuses(Player(), bonHook, ShipSpecialBonuses(Player(), bonHook) - CustomArtData(cur_item, 2));
+							04=else if(item_type == t_Radar) ShipSpecialBonuses(Player(), bonRadar, ShipSpecialBonuses(Player(), bonRadar) - CustomArtData(cur_item, 2));
+							05=else if(item_type == t_Scaner) ShipSpecialBonuses(Player(), bonScan, ShipSpecialBonuses(Player(), bonScan) - CustomArtData(cur_item, 2));
+							06=else if(item_type == t_DefGenerator) ShipSpecialBonuses(Player(), bonDef, ShipSpecialBonuses(Player(), bonDef) - CustomArtData(cur_item, 2));
+							07=InterfaceState('Ship', CustomArtTextData(cur_item, 3) + '_A', 0);
+							08=InterfaceState('Ship', CustomArtTextData(cur_item, 3), 1);
+							09=CustomArtData(cur_item, 2, 0);
+							10=CustomArtData(cur_item, 3, 0);
+							11=CustomArtTextData(cur_item, 1, '');
+							12=CustomArtTextData(cur_item, 2, '');
+							13=CustomArtTextData(cur_item, 3, '');
+							14=ShipDeleteCustomShipInfo(Player(), 'pulsar_infos');
+						}
+					}
+					04=else if(CurrentForm() == 'StarMap')
+					05 ^{
+						01=if(~ShipFindCustomShipInfoByType(Player(), 'pulsar_infos'))
+						02 ^{
+							01=if(!ItemIsInUse(cur_item))
+							02 ^{
+								01=InterfaceState('Ship', 'pulsar_panel', 0);
+							}
+							03=item_type = ItemType(target_item);
+							04=if(item_type == t_RepairRobot) ShipSpecialBonuses(Player(), bonDroid, ShipSpecialBonuses(Player(), bonDroid) - CustomArtData(cur_item, 2));
+							05=else if(item_type == t_CargoHook) ShipSpecialBonuses(Player(), bonHook, ShipSpecialBonuses(Player(), bonHook) - CustomArtData(cur_item, 2));
+							06=else if(item_type == t_Radar) ShipSpecialBonuses(Player(), bonRadar, ShipSpecialBonuses(Player(), bonRadar) - CustomArtData(cur_item, 2));
+							07=else if(item_type == t_Scaner) ShipSpecialBonuses(Player(), bonScan, ShipSpecialBonuses(Player(), bonScan) - CustomArtData(cur_item, 2));
+							08=else if(item_type == t_DefGenerator) ShipSpecialBonuses(Player(), bonDef, ShipSpecialBonuses(Player(), bonDef) - CustomArtData(cur_item, 2));
+							09=InterfaceState('Ship', CustomArtTextData(cur_item, 3) + '_A', 0);
+							10=InterfaceState('Ship', CustomArtTextData(cur_item, 3), 1);
+							11=CustomArtData(cur_item, 2, 0);
+							12=CustomArtData(cur_item, 3, 0);
+							13=CustomArtTextData(cur_item, 1, '');
+							14=CustomArtTextData(cur_item, 2, '');
+							15=CustomArtTextData(cur_item, 3, '');
+							16=ShipDeleteCustomShipInfo(Player(), 'pulsar_infos');
+						}
 					}
 				}
-				11=if(!ItemIsInUse(CurItem()))exit;
-				12=int offer=0;
-				13=if(CustomArtData(CurItem(),3)==1 && ItemDurability(CurItem())>12)
-				14 ^{
+				11=else if(ScriptItemActionType(t_OnEnteringForm)) 
+				12 ^{
+					01=if((CurrentForm() == 'Ship' && IsPlayer(FormCurShip())))
+					02 ^{
+						01=if(!ItemIsInUse(cur_item)) InterfaceState('Ship', 'pulsar_panel', 0);
+						02=else InterfaceState('Ship', 'pulsar_panel', 1);
+					}
+				}
+				13=if(!ItemIsInUse(cur_item)) exit;
+				14=int offer = 0;
+				15=if(CustomArtData(cur_item, 3) == 1 && ItemDurability(cur_item) > 12)
+				16 ^{
 					01=if(CurrentForm() != 'Ship')
 					02 ^{
-						01=target_item=IdToItem(CustomArtTextData(CurItem(),2));
+						01=target_item = IdToItem(CustomArtTextData(cur_item, 2));
 						02=if(target_item)
 						03 ^{
-							01=if(ItemIsInUse(target_item) && ItemDurability(target_item)>=20 && CustomArtData(CurItem(),1)>75)
+							01=if(ItemIsInUse(target_item) && ItemDurability(target_item) >= 20 && CustomArtData(cur_item, 1) > 75)
 							02 ^{
-								01=CustomArtData(CurItem(),2,GetEquipmentStats(target_item,0)/2);
-								02=CustomArtData(CurItem(),3,10);
-								03=if(ItemType(target_item)==t_RepairRobot) ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)+CustomArtData(CurItem(),2));
-								04=else (ItemType(target_item)==t_CargoHook) ShipSpecialBonuses(Player(),bonHook,ShipSpecialBonuses(Player(),bonHook)+CustomArtData(CurItem(),2));
-								05=else if(ItemType(target_item)==t_Radar) ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar)+CustomArtData(CurItem(),2));
-								06=else if(ItemType(target_item)==t_Scaner) ShipSpecialBonuses(Player(),bonScan,ShipSpecialBonuses(Player(),bonScan)+CustomArtData(CurItem(),2));
-								07=else if(ItemType(target_item)==t_DefGenerator) ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef)+CustomArtData(CurItem(),2));
+								01=CustomArtData(cur_item, 2, 0.5 * GetEquipmentStats(target_item, 0));
+								02=CustomArtData(cur_item, 3, 10);
+								03=item_type = ItemType(target_item);
+								04=if(item_type == t_RepairRobot) ShipSpecialBonuses(Player(), bonDroid, ShipSpecialBonuses(Player(), bonDroid) + CustomArtData(cur_item, 2));
+								05=else if(item_type == t_CargoHook) ShipSpecialBonuses(Player(), bonHook, ShipSpecialBonuses(Player(), bonHook) + CustomArtData(cur_item, 2));
+								06=else if(item_type == t_Radar) ShipSpecialBonuses(Player(), bonRadar, ShipSpecialBonuses(Player(), bonRadar) + CustomArtData(cur_item, 2));
+								07=else if(item_type == t_Scaner) ShipSpecialBonuses(Player(), bonScan, ShipSpecialBonuses(Player(), bonScan) + CustomArtData(cur_item, 2));
+								08=else if(item_type == t_DefGenerator) ShipSpecialBonuses(Player(), bonDef, ShipSpecialBonuses(Player(), bonDef) + CustomArtData(cur_item, 2));
 							}
 						}
 					}
 				}
-				15=if(CustomArtData(CurItem(),3)==10)
-				16 ^{					
-					03=if(ScriptItemActionType(t_OnScan))
-					04 ^{
-						01=target_item=IdToItem(CustomArtTextData(CurItem(),2));
-						02=if(target_item)
-						03 ^{
-							01=if(ItemType(target_item)==t_Scaner)
-							02 ^{
-								01=if(ItemIsInUse(target_item) && ItemDurability(target_item)>=20 && CustomArtData(CurItem(),1)>75 && ItemDurability(CurItem())>12)
-								02 ^{
-									01=ItemDurability(target_item,ItemDurability(target_item)-Rnd(10,20));
-									02=ItemDurability(CurItem(),ItemDurability(CurItem())-Rnd(5,10));
-									03=CustomArtData(CurItem(),1,CustomArtData(CurItem(),1)-Rnd(40,75));
-								}
-								03=if(ItemIsInUse(target_item) && (ItemDurability(target_item)<20 || CustomArtData(CurItem(),1)<=75 || ItemDurability(CurItem())<=12))offer=1;
-							}
-						}
-					}
-					05=if(ScriptItemActionType(t_OnWeaponShot))
-					06 ^{
-						01=target_item=IdToItem(CustomArtTextData(CurItem(),2));
-						02=if(target_item==ScriptItemActObject2())
-						03 ^{
-							01=if(ObjectType(ScriptItemActObject1())==5 || ObjectType(ScriptItemActObject1())==4)
-							02 ^{
-								01=if(ItemDurability(target_item)>=20 && CustomArtData(CurItem(),1)>75 && ItemDurability(CurItem())>12)
-								02 ^{
-									01=ItemDurability(target_item,ItemDurability(target_item)-Rnd(10,20));
-									02=ItemDurability(CurItem(),ItemDurability(CurItem())-Rnd(5,10));
-									03=CustomArtData(CurItem(),1,CustomArtData(CurItem(),1)-Rnd(40,75));
-									04=ScriptItemActParam(ScriptItemActParam()+(ScriptItemActParam()*60)/100);
-								}
-							}
-						}
-					}
-				}
-				17=if(CustomArtData(CurItem(),3)==11)
-				18 ^{
-					01=if(ScriptItemActionType(t_OnTakingDamage) || ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi))
+				17=if(CustomArtData(cur_item, 3) == 10)
+				18 ^{				
+					01=if(ScriptItemActionType(t_OnScan))
 					02 ^{
-						01=if(ScriptItemActParam()<=CustomArtData(CurItem(),1) && ItemDurability(CurItem())>5)
-						02 ^{
-							01=CustomArtData(CurItem(),1,CustomArtData(CurItem(),1)-ScriptItemActParam());
-							02=ScriptItemActParam(0);
-							03=ItemDurability(CurItem(),ItemDurability(CurItem())-Rnd(2,5));
-						}
-						03=if(ScriptItemActParam()>CustomArtData(CurItem(),1) && ItemDurability(CurItem())>5)
-						04 ^{
-							01=ScriptItemActParam(ScriptItemActParam()-CustomArtData(CurItem(),1));
-							02=CustomArtData(CurItem(),3,0);
-							03=ItemDurability(CurItem(),ItemDurability(CurItem())-Rnd(2,5));
+						01=target_item = IdToItem(CustomArtTextData(cur_item, 2));
+						02=if(target_item)
+						03 ^{
+							01=if(ItemType(target_item) == t_Scaner)
+							02 ^{
+								01=if(ItemIsInUse(target_item))
+								02 ^{
+									01=if(ItemDurability(target_item) >= 20 && CustomArtData(cur_item, 1) > 75 && ItemDurability(cur_item) > 12)
+									02 ^{
+										01=ItemDurability(target_item, ItemDurability(target_item) - Rnd(10, 20));
+										02=ItemDurability(cur_item, ItemDurability(cur_item) - Rnd(5, 10));
+										03=CustomArtData(cur_item, 1, CustomArtData(cur_item, 1) - Rnd(40, 75));
+									}
+									03=else offer = 1;
+								}
+							}
 						}
 					}
-					03=if(ScriptItemActionType(t_OnStep,11))
+					03=else if(ScriptItemActionType(t_OnWeaponShot))
 					04 ^{
-						01=CustomArtData(CurItem(),3,0);
-						02=ShipDeleteCustomShipInfo(Player(),'pulsar_infos');
+						01=target_item = IdToItem(CustomArtTextData(cur_item, 2));
+						02=if(target_item == ScriptItemActObject2())
+						03 ^{
+							01=if(ObjectType(ScriptItemActObject1()) == 5 || ObjectType(ScriptItemActObject1()) == 4)
+							02 ^{
+								01=if(ItemDurability(target_item) >= 20 && CustomArtData(cur_item, 1) > 75 && ItemDurability(cur_item) > 12)
+								02 ^{
+									01=ItemDurability(target_item, ItemDurability(target_item) - Rnd(10, 20));
+									02=ItemDurability(cur_item, ItemDurability(cur_item) - Rnd(5, 10));
+									03=CustomArtData(cur_item, 1, CustomArtData(cur_item, 1) - Rnd(40, 75));
+									04=ScriptItemActParam(ScriptItemActParam() + 0.6 * ScriptItemActParam());
+								}
+							}
+						}
 					}
 				}
-				19=if(CustomArtData(CurItem(),3)==10)
+				19=if(CustomArtData(cur_item, 3) == 11)
 				20 ^{
-					01=if(ScriptItemActionType(t_OnStep,11))
+					01=if(ScriptItemActionType(t_OnStep))
 					02 ^{
-						01=target_item=IdToItem(CustomArtTextData(CurItem(),2));
-						02=if(ItemType(target_item)<t_Weapon1)
-						03 ^{
-							01=ItemDurability(target_item,ItemDurability(target_item)-Rnd(10,20));
-							02=ItemDurability(CurItem(),ItemDurability(CurItem())-Rnd(5,10));
-							03=CustomArtData(CurItem(),1,CustomArtData(CurItem(),1)-Rnd(40,75));
+						01=CustomArtData(cur_item, 3, 0);
+						02=ShipDeleteCustomShipInfo(Player(), 'pulsar_infos');
+					}
+					03=else if(ScriptItemActionType(t_OnTakingDamage) || ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi))
+					04 ^{
+						01=if(ScriptItemActParam() <= CustomArtData(cur_item, 1) && ItemDurability(cur_item) > 5)
+						02 ^{
+							01=CustomArtData(cur_item, 1, CustomArtData(cur_item, 1) - ScriptItemActParam());
+							02=ScriptItemActParam(0);
+							03=ItemDurability(cur_item,ItemDurability(cur_item) - Rnd(2, 5));
 						}
-						04=if(target_item)
-						05 ^{
-							01=if(!ItemIsInUse(target_item) || ItemDurability(target_item)<20 || CustomArtData(CurItem(),1)<=75)offer=1;
+						03=if(ScriptItemActParam() > CustomArtData(cur_item, 1) && ItemDurability(cur_item) > 5)
+						04 ^{
+							01=ScriptItemActParam(ScriptItemActParam() - CustomArtData(cur_item, 1));
+							02=CustomArtData(cur_item, 3, 0);
+							03=ItemDurability(cur_item, ItemDurability(cur_item) - Rnd(2, 5));
 						}
-						06=if(!target_item)offer=1;
-						07=if(ItemDurability(CurItem())<12)offer=1;
 					}
 				}
-				21=if(ScriptItemActionType(t_OnItemEquip) && CurrentForm()=='Ship')
+				21=if(CustomArtData(cur_item, 3) == 10)
 				22 ^{
-					01=if(FormCurShip()==Player())InterfaceState('Ship','pulsar_panel',1);
+					01=if(ScriptItemActionType(t_OnStep))
+					02 ^{
+						01=target_item = IdToItem(CustomArtTextData(cur_item, 2));
+						02=if(ItemType(target_item) < t_Weapon1)
+						03 ^{
+							01=ItemDurability(target_item, ItemDurability(target_item) - Rnd(10, 20));
+							02=ItemDurability(cur_item, ItemDurability(cur_item) - Rnd(5, 10));
+							03=CustomArtData(cur_item, 1, CustomArtData(cur_item, 1) - Rnd(40, 75));
+						}
+						04=if(ItemDurability(cur_item) < 12) offer = 1;
+						05=else if(target_item)
+						06 ^{
+							01=if(!ItemIsInUse(target_item) || ItemDurability(target_item) < 20 || CustomArtData(cur_item, 1) <= 75) offer = 1;
+						}
+						07=else offer = 1;
+					}
 				}
-				23=if(offer==1)
+				23=if(ScriptItemActionType(t_OnItemEquip) && CurrentForm() == 'Ship')
 				24 ^{
-					01=target_item=IdToItem(CustomArtTextData(CurItem(),2));
-					02=offer=0;
-					03=if(ItemType(target_item)==t_RepairRobot)ShipSpecialBonuses(Player(),bonDroid,ShipSpecialBonuses(Player(),bonDroid)-CustomArtData(CurItem(),2));
-					04=if(ItemType(target_item)==t_CargoHook)ShipSpecialBonuses(Player(),bonHook,ShipSpecialBonuses(Player(),bonHook)-CustomArtData(CurItem(),2));
-					05=if(ItemType(target_item)==t_Radar)ShipSpecialBonuses(Player(),bonRadar,ShipSpecialBonuses(Player(),bonRadar)-CustomArtData(CurItem(),2));
-					06=if(ItemType(target_item)==t_Scaner)ShipSpecialBonuses(Player(),bonScan,ShipSpecialBonuses(Player(),bonScan)-CustomArtData(CurItem(),2));
-					07=if(ItemType(target_item)==t_DefGenerator)ShipSpecialBonuses(Player(),bonDef,ShipSpecialBonuses(Player(),bonDef)-CustomArtData(CurItem(),2));
-					08=InterfaceState('Ship',CustomArtTextData(CurItem(),3)+'_A',0);
-					09=InterfaceState('Ship',CustomArtTextData(CurItem(),3),1);
-					10=CustomArtData(CurItem(),2,0);
-					11=CustomArtData(CurItem(),3,0);
-					12=CustomArtTextData(CurItem(),1,'');
-					13=CustomArtTextData(CurItem(),2,'');
-					14=CustomArtTextData(CurItem(),3,'');
-					15=ShipDeleteCustomShipInfo(Player(),'pulsar_infos');
+					01=if(IsPlayer(FormCurShip())) InterfaceState('Ship', 'pulsar_panel', 1);
+				}
+				25=if(offer)
+				26 ^{
+					01=offer = 0;
+					02=target_item = IdToItem(CustomArtTextData(cur_item, 2));
+					03=item_type = ItemType(target_item);
+					04=if(item_type == t_RepairRobot) ShipSpecialBonuses(Player(), bonDroid, ShipSpecialBonuses(Player(), bonDroid) - CustomArtData(cur_item, 2));
+					05=else if(item_type == t_CargoHook) ShipSpecialBonuses(Player(), bonHook, ShipSpecialBonuses(Player(), bonHook) - CustomArtData(cur_item, 2));
+					06=else if(item_type == t_Radar) ShipSpecialBonuses(Player(), bonRadar, ShipSpecialBonuses(Player(), bonRadar) - CustomArtData(cur_item, 2));
+					07=else if(item_type == t_Scaner) ShipSpecialBonuses(Player(), bonScan, ShipSpecialBonuses(Player(), bonScan) - CustomArtData(cur_item, 2));
+					08=else if(item_type == t_DefGenerator) ShipSpecialBonuses(Player(), bonDef, ShipSpecialBonuses(Player(), bonDef) - CustomArtData(cur_item, 2));
+					09=InterfaceState('Ship', CustomArtTextData(cur_item, 3) + '_A', 0);
+					10=InterfaceState('Ship', CustomArtTextData(cur_item, 3), 1);
+					11=CustomArtData(cur_item, 2, 0);
+					12=CustomArtData(cur_item, 3, 0);
+					13=CustomArtTextData(cur_item, 1, '');
+					14=CustomArtTextData(cur_item, 2, '');
+					15=CustomArtTextData(cur_item, 3, '');
+					16=ShipDeleteCustomShipInfo(Player(), 'pulsar_infos');
 				}
 			}
 			OnUseCode ^{
-				01=int temp_int=0;
-				02=if(ShipFindCustomShipInfoByType(Player(),'pulsar_infos')>=0)
-				03 ^{
-					01=temp_int=1;
-					02=MessageBox('Пульсар синхронизирован с другим оборудованием.');
+				01=if(~ShipFindCustomShipInfoByType(Player(), 'pulsar_infos'))
+				02 ^{
+					01=MessageBox('Пульсар синхронизирован с другим оборудованием.');
+					02=exit;
 				}
-				04=if(CustomArtData(CurItem(),1)<200 && temp_int==0)
-				05 ^{
-					01=temp_int=2;
-					02=MessageBox('Недостаточно заряда.');
+				03=if(CustomArtData(CurItem(), 1) < 200)
+				04 ^{
+					01=MessageBox('Недостаточно заряда.');
+					02=exit;
 				}
-				06=if(ItemDurability(CurItem())<10 && temp_int==0)
-				07 ^{
-					01=temp_int=3;
-					02=MessageBox('Пульсар не выдержит нагрузки, требуется ремонт.');
+				05=if(ItemDurability(CurItem()) < 10)
+				06 ^{
+					01=MessageBox('Пульсар не выдержит нагрузки, требуется ремонт.');
+					02=exit;
 				}
-				08=if(temp_int!=0)exit;
-				09=if(temp_int==0 && CustomArtData(CurItem(),1)>200 && CustomArtData(CurItem(),3)==0)
-				10 ^{
-					00=if(MessageBoxYesNo('Активировать режим защиты?'))
-					01 ^{
-						01=CustomArtData(CurItem(),3,11);
-						02=ShipAddCustomShipInfo(Player(),'pulsar_infos','NoShow');
-					}					
+				07=if(CustomArtData(CurItem(), 1) > 200 && !CustomArtData(CurItem(), 3))
+				08 ^{
+					01=if(MessageBoxYesNo('Активировать режим защиты?'))
+					02 ^{
+						01=CustomArtData(CurItem(), 3, 11);
+						02=ShipAddCustomShipInfo(Player(), 'pulsar_infos', 'NoShow');
+					}
 				}
 			}
 			Size=10
 			Text=Реактор темной энергии, функционирующий по принципу развертывания субпространств и изыскания временных резервов противоречащих хронометражу космоса. Экспериментальный образец ускоряет течение физических процессов в замкнутом объеме, тем самым выводя работу почти любого устройства на качественно новый уровень. При установке на корабль заряд пополняется в 2 раза быстрее.
 			Text=Использование: проецирует структуру корабля в другие вероятностные исходы Вселенной, выбирая наиболее уязвимые части и сканируя их будущее, что позволяет обойти причинно-следственные связи и неестественно увеличить защиту корпуса.
-			Text=Заряд: <Data1> / <color=255,240,100>2000</color>
+			Text=Заряд: <Data1>/<color=255,240,100>2000</color>
 		}
 	}
 }

@@ -3742,46 +3742,49 @@ ShipInfo ^{
 												02=if(flt<=0)flt=1.0;
 												03=ItemCost(item,round(1.0*ItemCost(item)/flt));
 											}
-											04=else if(ItemOwner(item)==5)
+											04=else if(ItemOwner(item) == 5)
 											05 ^{
-												01=flt=CT('BlackMarketShopList.Weapon.DomRaceCostCoef');
-												02=if(flt<=0)flt=1.0;
-												03=ItemCost(item,round(1.0*ItemCost(item)/flt));
+												01=flt = CT('BlackMarketShopList.Weapon.DomRaceCostCoef');
+												02=if(flt <= 0) flt = 1.0;
+												03=ItemCost(item, round(1.0 * ItemCost(item) / flt));
 											}
 										}
-										08=else if(type>=t_Artefact && type<=t_ArtFastRacks)
+										08=else if(type >= t_Artefact && type <= t_ArtFastRacks)
 										09 ^{
-											01=item=IdToItem(GalaxyEventData(i,3));
-											02=flt=CT('BlackMarketShopList.Artefacts.ArtAdditionalCostCoef');
-											03=if(flt<=0)flt=1.0;
-											04=ItemCost(item,round(1.0*ItemCost(item)/flt));
-											05=if(type==t_Artefact || type==t_Artefact2)
+											01=item = IdToItem(GalaxyEventData(i, 3));
+											02=flt = CT('BlackMarketShopList.Artefacts.ArtAdditionalCostCoef');
+											03=if(flt <= 0) flt = 1.0;
+											04=ItemCost(item, round(1.0 * ItemCost(item) / flt));
+											05=if(type == t_Artefact || type == t_Artefact2)
 											06 ^{
-												01=if(findsubstr(CustomArtTextData(item,3),'ReplaceTo: ')==0)
+												01=if(!findsubstr(CustomArtTextData(item, 3), 'ReplaceTo: '))
 												02 ^{
-													01=str path=substr(CustomArtTextData(item,3),11);
+													01=str path = substr(CustomArtTextData(item, 3), 11);
 													02=if(BlockExist(path))
 													03 ^{
-														01=dword new_item=CreateQuestItem(substr(path,13),ItemOwner(item));
-														02=ItemCost(new_item,ItemCost(item));
-														03=ItemSize(new_item,ItemSize(item));
-														04=path=EqCustomFaction(item);
-														05=if(path!='')EqCustomFaction(new_item,path);
-														06=FreeItem(GetArtFromShip(Player(),FindItemInShip(Player(),item)));
-														07=AddItemToShip(Player(),new_item);
+														01=dword new_item = CreateQuestItem(substr(path, 13), ItemOwner(item));
+														02=ItemCost(new_item, ItemCost(item));
+														03=ItemSize(new_item, ItemSize(item));
+														04=path = EqCustomFaction(item);
+														05=if(path != '') EqCustomFaction(new_item, path);
+														06=FreeItem(GetArtFromShip(Player(), FindItemInShip(Player(), item)));
+														07=AddItemToShip(Player(), new_item);
 													}
 												}
 											}
 										}
-										10=else if(type==t_MicroModule)
+										10=else if(type == t_MicroModule)
 										11 ^{
-											01=item=IdToItem(GalaxyEventData(i,3));
-											02=int level=BonusPriority(EqModule(item));
-											03=if(level<=30)flt=CT('BlackMarketShopList.MicroModuls.MMLevelOneCostCoef');
-											04=else if(level<=69)flt=CT('BlackMarketShopList.MicroModuls.MMLevelTwoCostCoef');
-											05=else flt=CT('BlackMarketShopList.MicroModuls.MMLevelThreeCostCoef');
-											06=if(flt<=0)flt=1.0;
-											07=ItemCost(item,round(1.0*ItemCost(item)/flt));
+											01=item = IdToItem(GalaxyEventData(i, 3));
+											02=new_item = CreateMM(EqModule(item));
+											03=FreeItem(GetItemFromShip(Player(), item));
+											04=AddItemToShip(Player(), new_item);
+											// 02=int level = BonusPriority(EqModule(item));
+											// 03=if(level <= 30) flt = CT('BlackMarketShopList.MicroModuls.MMLevelOneCostCoef');
+											// 04=else if(level <= 69) flt = CT('BlackMarketShopList.MicroModuls.MMLevelTwoCostCoef');
+											// 05=else flt = CT('BlackMarketShopList.MicroModuls.MMLevelThreeCostCoef');
+											// 06=if(flt <= 0) flt = 1.0;
+											// 07=ItemCost(item, round(1.0 * ItemCost(item) / flt));
 										}
 										12=if(!ShopItems(GetShipRuins(Player())))
 										13 ^{
@@ -3791,53 +3794,53 @@ ShipInfo ^{
 									}
 								}
 							}
-							05=ShipCustomShipInfoData(0,CurInfo(),2,GalaxyEvents()-1);
+							05=ShipCustomShipInfoData(0, CurInfo(), 2, GalaxyEvents() - 1);
 						}
-						03=else if(CurrentForm()=='EquipmentShop')
+						03=else if(CurrentForm() == 'EquipmentShop')
 						04 ^{
-							01=InterfaceState('EquipmentShop','PM_EndTurn',0);
-							02=InterfaceState('EquipmentShop','RT_EndTurn_Block',1);
+							01=InterfaceState('EquipmentShop', 'PM_EndTurn', 0);
+							02=InterfaceState('EquipmentShop', 'RT_EndTurn_Block', 1);
 						}
-						05=else if(CurrentForm()=='GoodsShop')
+						05=else if(CurrentForm() == 'GoodsShop')
 						06 ^{
-							01=InterfaceState('GoodsShop','PM_EndTurn',0);
-							02=InterfaceState('GoodsShop','RT_EndTurn_Block',1);
+							01=InterfaceState('GoodsShop', 'PM_EndTurn', 0);
+							02=InterfaceState('GoodsShop', 'RT_EndTurn_Block', 1);
 						}
-						07=else if(CurrentForm()=='Info')
+						07=else if(CurrentForm() == 'Info')
 						08 ^{
-							01=InterfaceState('Info','PM_EndTurn',0);
-							02=InterfaceState('Info','RT_EndTurn_Block',1);
+							01=InterfaceState('Info', 'PM_EndTurn', 0);
+							02=InterfaceState('Info', 'RT_EndTurn_Block', 1);
 						}
-						09=else if(CurrentForm()=='Rating')
+						09=else if(CurrentForm() == 'Rating')
 						10 ^{
-							01=InterfaceState('Rating','PM_EndTurn',0);
-							02=InterfaceState('Rating','RT_EndTurn_Block',1);
+							01=InterfaceState('Rating', 'PM_EndTurn', 0);
+							02=InterfaceState('Rating', 'RT_EndTurn_Block', 1);
 						}
-						11=else if(CurrentForm()=='Galaxy')
+						11=else if(CurrentForm() == 'Galaxy')
 						12 ^{
-							01=InterfaceState('Galaxy','PM_EndTurn',0);
-							02=InterfaceState('Galaxy','RT_EndTurn_Block',1);
+							01=InterfaceState('Galaxy', 'PM_EndTurn', 0);
+							02=InterfaceState('Galaxy', 'RT_EndTurn_Block', 1);
 						}
-						13=else if(CurrentForm()=='Hangar')
+						13=else if(CurrentForm() == 'Hangar')
 						14 ^{
-							01=InterfaceState('Hangar','PM_EndTurn',0);
-							02=InterfaceState('Hangar','RT_EndTurn_Block',1);
+							01=InterfaceState('Hangar', 'PM_EndTurn', 0);
+							02=InterfaceState('Hangar', 'RT_EndTurn_Block', 1);
 						}
-						15=else if(CurrentForm()=='RuinsTalk')
+						15=else if(CurrentForm() == 'RuinsTalk')
 						16 ^{
-							01=InterfaceState('RuinsTalk','PM_EndTurn',0);
-							02=InterfaceState('RuinsTalk','RT_EndTurn_Block',1);
-							03=if(PlayerBridge())InterfaceState('RuinsTalk','PanelTalk',-1);
+							01=InterfaceState('RuinsTalk', 'PM_EndTurn', 0);
+							02=InterfaceState('RuinsTalk', 'RT_EndTurn_Block', 1);
+							03=if(PlayerBridge()) InterfaceState('RuinsTalk', 'PanelTalk', -1);
 						}
 					}
 					05=else if(ScriptItemActionType(t_OnLeavingForm))
 					06 ^{
-						01=if(CurrentForm()=='EquipmentShop')
+						01=if(CurrentForm() == 'EquipmentShop')
 						02 ^{
-							01=InterfaceState('EquipmentShop','PM_EndTurn',-1);
-							02=InterfaceState('EquipmentShop','RT_EndTurn_Block',0);
-							03=InterfaceState('RuinsTalk','PM_EndTurn',0);
-							04=InterfaceState('RuinsTalk','RT_EndTurn_Block',1);
+							01=InterfaceState('EquipmentShop', 'PM_EndTurn', -1);
+							02=InterfaceState('EquipmentShop', 'RT_EndTurn_Block', 0);
+							03=InterfaceState('RuinsTalk', 'PM_EndTurn', 0);
+							04=InterfaceState('RuinsTalk', 'RT_EndTurn_Block', 1);
 							//Перебираем галасобытия, ищем свежекупленные предметы
 							05=for(i = GalaxyEvents() - 1; i >= 0; i = i - 1)
 							06 ^{
@@ -3905,66 +3908,69 @@ ShipInfo ^{
 												}
 											}
 										}
-										09=else if(type==t_MicroModule)
+										09=else if(type == t_MicroModule)
 										10 ^{
-											01=item=IdToItem(GalaxyEventData(i,3));
-											02=level=BonusPriority(EqModule(item));
-											03=if(level<=30)flt=CT('BlackMarketShopList.MicroModuls.MMLevelOneCostCoef');
-											04=else if(level<=69)flt=CT('BlackMarketShopList.MicroModuls.MMLevelTwoCostCoef');
-											05=else flt=CT('BlackMarketShopList.MicroModuls.MMLevelThreeCostCoef');
-											06=if(flt<=0)flt=1.0;
-											07=ItemCost(item,round(1.0*ItemCost(item)/flt));
+											01=item = IdToItem(GalaxyEventData(i, 3));
+											02=new_item = CreateMM(EqModule(item));
+											03=FreeItem(GetItemFromShip(Player(), item));
+											04=AddItemToShip(Player(), new_item);
+											// 02=level = BonusPriority(EqModule(item));
+											// 03=if(level <= 30) flt = CT('BlackMarketShopList.MicroModuls.MMLevelOneCostCoef');
+											// 04=else if(level <= 69) flt = CT('BlackMarketShopList.MicroModuls.MMLevelTwoCostCoef');
+											// 05=else flt = CT('BlackMarketShopList.MicroModuls.MMLevelThreeCostCoef');
+											// 06=if(flt <= 0) flt = 1.0;
+											// 07=ItemCost(item, round(1.0 * ItemCost(item) / flt));
 										}
 										11=if(!ShopItems(GetShipRuins(Player())))
 										12 ^{
-											01=InterfaceState('RuinsTalk','PR_Shop',0);
-											02=InterfaceState('RuinsTalk','PR_BMShopBlock',1);
+											01=InterfaceState('RuinsTalk', 'PR_Shop', 0);
+											02=InterfaceState('RuinsTalk', 'PR_BMShopBlock', 1);
 										}
 									}
 								}
 							}
-							07=ShipCustomShipInfoData(0,CurInfo(),2,GalaxyEvents()-1);
+							07=ShipCustomShipInfoData(0, CurInfo(), 2, GalaxyEvents() - 1);
 						}
 						//Смена "заглушки" кнопки пропуска хода
-						03=else if(CurrentForm()=='Ship')
+						03=else if(CurrentForm() == 'Ship')
 						04 ^{
-							25=InterfaceState('Ship','PM_EndTurn',-1);
-							26=InterfaceState('Ship','RT_EndTurn_Block',0);
-							27=InterfaceState('RuinsTalk','PM_EndTurn',0);
-							28=InterfaceState('RuinsTalk','RT_EndTurn_Block',1);
+							25=InterfaceState('Ship', 'PM_EndTurn', -1);
+							26=InterfaceState('Ship', 'RT_EndTurn_Block', 0);
+							27=InterfaceState('RuinsTalk', 'PM_EndTurn', 0);
+							28=InterfaceState('RuinsTalk', 'RT_EndTurn_Block', 1);
 						}
-						05=else if(CurrentForm()=='GoodsShop')
+						05=else if(CurrentForm() == 'GoodsShop')
 						06 ^{
-							01=InterfaceState('GoodsShop','PM_EndTurn',-1);
-							02=InterfaceState('GoodsShop','RT_EndTurn_Block',0);
-							03=InterfaceState('RuinsTalk','PM_EndTurn',0);
-							04=InterfaceState('RuinsTalk','RT_EndTurn_Block',1);
+							01=InterfaceState('GoodsShop', 'PM_EndTurn', -1);
+							02=InterfaceState('GoodsShop', 'RT_EndTurn_Block', 0);
+							03=InterfaceState('RuinsTalk', 'PM_EndTurn', 0);
+							04=InterfaceState('RuinsTalk', 'RT_EndTurn_Block', 1);
 						}
-						07=else if(CurrentForm()=='Info')
+						07=else if(CurrentForm() == 'Info')
 						08 ^{
-							01=InterfaceState('Info','PM_EndTurn',-1);
-							02=InterfaceState('Info','RT_EndTurn_Block',0);
-							03=InterfaceState('RuinsTalk','PM_EndTurn',0);
-							04=InterfaceState('RuinsTalk','RT_EndTurn_Block',1);
+							01=InterfaceState('Info', 'PM_EndTurn', -1);
+							02=InterfaceState('Info', 'RT_EndTurn_Block', 0);
+							03=InterfaceState('RuinsTalk', 'PM_EndTurn', 0);
+							04=InterfaceState('RuinsTalk', 'RT_EndTurn_Block', 1);
 						}
-						09=else if(CurrentForm()=='Rating')
+						09=else if(CurrentForm() == 'Rating')
 						10 ^{
-							01=InterfaceState('Rating','PM_EndTurn',-1);
-							02=InterfaceState('Rating','RT_EndTurn_Block',0);
-							03=InterfaceState('RuinsTalk','PM_EndTurn',0);
-							04=InterfaceState('RuinsTalk','RT_EndTurn_Block',1);
+							01=InterfaceState('Rating', 'PM_EndTurn', -1);
+							02=InterfaceState('Rating', 'RT_EndTurn_Block', 0);
+							03=InterfaceState('RuinsTalk', 'PM_EndTurn', 0);
+							04=InterfaceState('RuinsTalk', 'RT_EndTurn_Block', 1);
 						}
-						11=else if(CurrentForm()=='Galaxy')
+						11=else if(CurrentForm() == 'Galaxy')
 						12 ^{
-							01=InterfaceState('Galaxy','PM_EndTurn',-1);
-							02=InterfaceState('Galaxy','RT_EndTurn_Block',0);
-							03=InterfaceState('RuinsTalk','PM_EndTurn',0);
-							04=InterfaceState('RuinsTalk','RT_EndTurn_Block',1);
+							01=InterfaceState('Galaxy', 'PM_EndTurn', -1);
+							02=InterfaceState('Galaxy', 'RT_EndTurn_Block', 0);
+							03=InterfaceState('RuinsTalk', 'PM_EndTurn', 0);
+							04=InterfaceState('RuinsTalk', 'RT_EndTurn_Block', 1);
 						}
-						13=else if(CurrentForm()=='Hangar')
+						13=else if(CurrentForm() == 'Hangar')
 						14 ^{
-							01=InterfaceState('Hangar','PM_EndTurn',-1);
-							02=InterfaceState('Hangar','RT_EndTurn_Block',0);
+							01=InterfaceState('Hangar', 'PM_EndTurn', -1);
+							02=InterfaceState('Hangar', 'RT_EndTurn_Block', 0);
 						}
 					}
                 }
