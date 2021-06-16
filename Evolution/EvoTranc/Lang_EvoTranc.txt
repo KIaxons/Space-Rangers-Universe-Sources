@@ -277,21 +277,22 @@ ShipInfo ^{
 					//Отключаем все кнопки при уходе с формы космоса на случай редких проблем и крашей с загрузкой
                     03=else if(ScriptItemActionType(t_OnLeavingForm))
                     04 ^{
-						01=if(CurrentForm()=='StarMap')
+						01=if(CurrentForm() == 'StarMap')
 						02 ^{
-							01=InterfaceState('StarMap','TrancActive_but',-1);
-							02=InterfaceState('StarMap','TrancActive_butRed',-1);
-							03=InterfaceState('StarMap','TrancActive_butYellow',-1);
-							04=InterfaceState('StarMap','TrancActive_butGreen',-1);
-							05=InterfaceState('StarMap','TrancActive_butBlue',-1);
-							06=InterfaceState('StarMap','TrancActive_butViolet',-1);
-							07=InterfaceState('StarMap','TrancActive_butWhite',-1);
-							08=for(int k=1;k<=PlayerTranclucators();k=k+1)
-							09 ^{
-								01=if(InterfaceState('StarMap','TP_but_'+k)<1) InterfaceState('StarMap','TP_but_'+k,1);
+							01=InterfaceState('StarMap', 'TrancActive_but', -1);
+							02=InterfaceState('StarMap', 'TrancActive_butRed', -1);
+							03=InterfaceState('StarMap', 'TrancActive_butYellow', -1);
+							04=InterfaceState('StarMap', 'TrancActive_butGreen', -1);
+							05=InterfaceState('StarMap', 'TrancActive_butBlue', -1);
+							06=InterfaceState('StarMap', 'TrancActive_butViolet', -1);
+							07=InterfaceState('StarMap', 'TrancActive_butWhite', -1);
+							08=InterfaceState('StarMap', 'TrancActive_butCyan', -1);
+							09=for(j = 1; j <= PlayerTranclucators(); j = j + 1)
+							10 ^{
+								01=if(InterfaceState('StarMap', 'TP_but_' + j) < 1) InterfaceState('StarMap', 'TP_but_' + j, 1);
 							}
-							10=InterfaceState('StarMap','InfoShipTranc',-1);
-							11=InterfaceState('StarMap','InfoTrancOutOfRange',-1);
+							11=InterfaceState('StarMap', 'InfoShipTranc', -1);
+							12=InterfaceState('StarMap', 'InfoTrancOutOfRange', -1);
 						}
                     }
 					//Код, корректирующий положение панели с кнопками транков при нанимании/увольнении партнёров
@@ -299,17 +300,17 @@ ShipInfo ^{
                     06 ^{
 						01=if(ShipPartners(Player()) || PlayerPirates())
 						02 ^{
-							01=InterfacePos('StarMap','Tranc_panel_Pos',0,0,0);
-							02=InterfaceImage('StarMap','Tranc_panel_sigment_2','Alpha,Bm.PanelSpace2.2TranclucatorPanelPartners');
-							03=InterfaceState('StarMap','zaglushka_tranc_ms_blk',1);
+							01=InterfacePos('StarMap', 'Tranc_panel_Pos', 0, 0, 0);
+							02=InterfaceImage('StarMap', 'Tranc_panel_sigment_2', 'Alpha,Bm.PanelSpace2.2TranclucatorPanelPartners');
+							03=InterfaceState('StarMap', 'zaglushka_tranc_ms_blk', 1);
 						}
 						03=else
 						04 ^{
-							01=InterfacePos('StarMap','Tranc_panel_Pos',0,-35,0);
-							02=InterfaceImage('StarMap','Tranc_panel_sigment_2','Alpha,Bm.PanelSpace2.2TranclucatorPanel');
-							03=InterfaceState('StarMap','zaglushka_tranc_ms_blk',-1);
+							01=InterfacePos('StarMap', 'Tranc_panel_Pos', 0, -35, 0);
+							02=InterfaceImage('StarMap', 'Tranc_panel_sigment_2', 'Alpha,Bm.PanelSpace2.2TranclucatorPanel');
+							03=InterfaceState('StarMap', 'zaglushka_tranc_ms_blk', -1);
 						}
-						05=InterfaceState('Talk','Close',-1);
+						05=InterfaceState('Talk', 'Close', -1);
                     }
                 }
             }
