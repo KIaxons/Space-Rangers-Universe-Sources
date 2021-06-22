@@ -1,0 +1,124 @@
+FormPerks ^{
+    PerkName1=Дополнительный энергетический заряд
+    PerkName10=Чистота и порядок
+    PerkName11=Улучшение систем форсажа
+    PerkName12=Оборудование 9-го поколения
+    PerkName2=Увеличение урона ракет
+    PerkName3=Уменьшение разброса выстрела
+    PerkName4=Точное нацеливание
+    PerkName5=Уменьшение энергоповреждений
+    PerkName6=Уменьшение ракетных повреждений
+    PerkName7=Уменьшение осколочных повреждений
+    PerkName8=Манёвр уклонения
+    PerkName9=Дополнительная защита оборудования
+    PerkText1=Перенаправляет избыточную энергию, из пассивных систем корабля, на системы энергетического оружия в момент выстрела. Урон от энергетического оружия увеличивается на VAR.
+    PerkText10=Бережный уход за состоянием оборудования уменьшает его износ на VAR%, при повседневном использовании. Однако это не относится к повреждениям полученным в бою или иным способом.
+    PerkText11=Усовершенствованная система охлаждения и более тонкая настройка параметров перегрузки двигателя уменьшают его износ на VAR%, при форсированном использовании.
+    PerkText12=Революционная система защиты, с вероятностью VAR%, полностью нейтрализует действия особого оружия противника, при повреждении вашего корабля.
+    PerkText2=Выстрел ракеты под определённым углом, позволяет более эффективно поражать незащищённые части корабля противника. Урон наносимый ракетным оружием увеличивается на VAR.
+    PerkText3=Разброс из орудий осколочного типа уменьшается, в следствии чего, уменьшается и суммарная площадь поражения, но при этом дополнительная пробивная сила увеличивает урон на VAR.
+    PerkText4=При выцеливании повреждённых частей, пробитой обшивки или минимальной концентрации поля генератора защиты, есть вероятность VAR% что нанесённый урон будет увеличен в два раза.
+    PerkText5=Получая энергетические повреждения, вы стараетесь подставить более защищённые и наименее важные части корабля, уменьшая урон, полученный от энергетического оружия, на VAR%.
+    PerkText6=Получая повреждения от ракет и торпед, вы стараетесь подставить более защищённые и наименее важные части корабля, уменьшая урон, полученный от ракетного оружия, на VAR%.
+    PerkText7=Получая осколочные повреждения, вы стараетесь подставить более защищённые и наименее важные части корабля, уменьшая урон, полученный от осколочных орудий, на VAR%.
+    PerkText8=Научившись быстро анализировать обстановку во время боя и угадывать траекторию выстрела, вы, с вероятностью VAR%, уклонитесь от вражеского попадания и не получите повреждений.
+    PerkText9=Усиленная защита в важных местах и дополнительные предохранители энергосистем уменьшают на VAR% износ оборудования, при получении повреждений от выстрелов.
+    PerkTextAdd=<br>Требуется PNT очков опыта для улучшения навыка.
+    PerkTextNoSkill=<br>Требуется навык "SKILL".
+    Title=Доп. навыки
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+            ExpSkillsInfos ^{
+                Description=инфошка перков
+                Icon=1
+                Name=
+				OnActCodeTypes=t_OnPlayerSkillIncrease,t_OnEnteringForm,t_OnLeavingForm,t_OnWeaponShot,t_OnMissileShot2,t_OnTakingDamageEn,t_OnGettingWeaponHit,t_OnGettingMissileHit,t_OnTakingDamageEn,t_OnTakingDamageMi,t_OnReduceEqUse,t_OnReduceEqBattle,t_OnReduceEqForsage
+                OnActCode ^{
+					01=if(CurrentForm() == 'Ship')
+					02 ^{
+						01=if(ScriptItemActionType(t_OnEnteringForm))
+						02 ^{
+							01=if(ShipSkill(Player(), 0) > 5 || ShipSkill(Player(), 1) > 5 || ShipSkill(Player(), 2) > 5)
+							02 ^{
+								01=if(~InterfaceState('Ship', 'PerksUpPanel')) InterfaceState('Ship', 'PerksUpPanel', 1);
+							}
+							03=exit;
+						}
+						03=else if(ScriptItemActionType(t_OnLeavingForm))
+						04 ^{
+							01=InterfaceState('Ship', 'PerksUpPanel', 0);
+							02=exit;
+						}
+					}
+                    03=if(ScriptItemActionType(t_OnTakingDamageEn) || ScriptItemActionType(t_OnTakingDamageSp) || ScriptItemActionType(t_OnTakingDamageMi))
+                    04 ^{
+                        01=if(ScriptItemActionType(t_OnTakingDamageEn) && ExpSkillsArray[5] > 0) ScriptItemActParam((ScriptItemActParam() * (100 - ExpSkillsArray[5] * 3)) / 100);
+                        02=else if(ScriptItemActionType(t_OnTakingDamageSp) && ExpSkillsArray[6] > 0) ScriptItemActParam((ScriptItemActParam() * (100 - ExpSkillsArray[6] * 3)) / 100);
+                        03=else if(ScriptItemActionType(t_OnTakingDamageMi) && ExpSkillsArray[7] > 0) ScriptItemActParam((ScriptItemActParam() * (100 - ExpSkillsArray[7] * 3)) / 100);
+                        04=if(ExpSkillsArray[8] > 0)
+                        05 ^{
+                            01=if(Rnd(0, 100) <= ExpSkillsArray[8] * 2) ScriptItemActParam(0);
+                        }
+                    }
+                    05=else if(ScriptItemActionType(t_OnGettingWeaponHit) || ScriptItemActionType(t_OnGettingMissileHit))
+                    06 ^{
+                        00=if(ExpSkillsArray[12] > 0)
+                        00 ^{
+                            01=if(ScriptItemActionType(t_OnGettingWeaponHit))
+                            02 ^{
+                                01=dword gun = ScriptItemActObject2();
+                                02=if(Rnd(0, 100) <= ExpSkillsArray[12] * 5) ScriptItemActParam(GetEquipmentStats(gun, 3) + 1);
+                            }
+                            03=else
+                            04 ^{
+                                01=if(Rnd(0, 100) <= ExpSkillsArray[12] * 5) ScriptItemActParam(4);
+                            }
+                        }
+                    }
+                    07=else if(ScriptItemActionType(t_OnWeaponShot))
+                    08 ^{
+                        01=if(ExpSkillsArray[4] > 0)
+                        02 ^{
+							01=int obj = ObjectType(ScriptItemActObject1());
+                            02=if(obj == 4 || obj == 5)
+                            03 ^{
+                                01=if(Rnd(0, 100) <= ExpSkillsArray[4] * 2) ScriptItemActParam(ScriptItemActParam() * 2);
+                            }
+                        }
+                    }
+                    09=else if(ScriptItemActionType(t_OnMissileShot2))
+                    10 ^{
+                        01=if(ExpSkillsArray[4] > 0)
+                        02 ^{
+							01=obj = ObjectType(ScriptItemActObject1());
+                            02=if(obj == 4 || obj == 5)
+                            03 ^{
+                                01=if(Rnd(0, 100) <= ExpSkillsArray[4] * 2)
+                                02 ^{
+									01=dword missile = ScriptItemActObject2();
+                                    02=MissileMaxDamage(missile, MissileMaxDamage(missile) * 2);
+                                    03=MissileMinDamage(missile, MissileMinDamage(missile) * 2);
+                                }
+                            }
+						}
+                    }
+                    11=else if(ScriptItemActionType(t_OnPlayerSkillIncrease))
+                    12 ^{
+						01=if(ShipSkill(Player(), 0) > 5 || ShipSkill(Player(), 1) > 5 || ShipSkill(Player(), 2) > 5)
+						02 ^{
+							01=if(~InterfaceState('Ship', 'PerksUpPanel')) InterfaceState('Ship', 'PerksUpPanel', 1);
+						}
+                    }
+                    13=else //if(ScriptItemActionType(t_OnReduceEqUse) || ScriptItemActionType(t_OnReduceEqBattle) || ScriptItemActionType(t_OnReduceEqForsage))
+                    14 ^{
+                        01=if(ScriptItemActionType(t_OnReduceEqUse) && ExpSkillsArray[10] > 0) ScriptItemActParam((ScriptItemActParam() - (ScriptItemActParam() * 5 * ExpSkillsArray[10]) / 100));
+                        02=else if(ScriptItemActionType(t_OnReduceEqBattle) && ExpSkillsArray[9] > 0) ScriptItemActParam((ScriptItemActParam() - (ScriptItemActParam() * 5 * ExpSkillsArray[9]) / 100));
+                        03=else if(ScriptItemActionType(t_OnReduceEqForsage) && ExpSkillsArray[11] > 0) ScriptItemActParam((ScriptItemActParam() - (ScriptItemActParam() * 5 * ExpSkillsArray[11]) / 100));
+                    }
+                }
+            }
+        }
+    }
+}
