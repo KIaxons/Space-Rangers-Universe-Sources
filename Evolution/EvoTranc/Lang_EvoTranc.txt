@@ -107,7 +107,7 @@ Artefacts ^{
 					04 ^{
 						01=cur_tranc = CurItem();
 						02=str temp_str2 = 'Bm.Items.2ArtTranclucator_s';
-						03=if(EquipmentImageName(cur_tranc) != '') temp_str2 = 'Bm.Items.2'+DeleteTags(EquipmentImageName(cur_tranc)) + 's';
+						03=if(EquipmentImageName(cur_tranc) != '') temp_str2 = 'Bm.Items.2' + DeleteTags(EquipmentImageName(cur_tranc)) + 's';
 						04=numTrancs = NumberBox(temp_str2, 'Сколько транклюкаторов вы хотите запустить?', 1, tranc_count,tranc_count);
 						05=if(numTrancs)
 						06 ^{
