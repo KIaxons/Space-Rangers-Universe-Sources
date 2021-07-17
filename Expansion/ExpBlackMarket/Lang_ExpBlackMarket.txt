@@ -22,6 +22,7 @@ AssistantExclusions ^{
 	BM=NoSearch
 }
 BlackMarketShopList ~{
+	Version=17.07.2021
 	BlackMarketTurnDelays ^{
 		MinOpeningAfterStartEventDays=18
 		MaxOpeningAfterStartEventDays=27
@@ -36,7 +37,6 @@ BlackMarketShopList ~{
 		MinRebuildingDays=381
 		MaxRebuildingDays=447
 	}
-	Version=20.04.2021
 	MinEquipmentsInStock=5
 	MaxEquipmentsInStock=9
 	MinWeaponsInStock=4
@@ -1452,237 +1452,76 @@ BlackMarketShopList ~{
             ChangePriorityOn=0
         }
         160 ~{
-            Name=Гвидест I
-            BonusNum=ShuKlissan_Gvidest1
+            Name=Жабродюзы
+            BonusNum=None
             ItemType=Engine
             NoneRaceChance=100
             MinSizeChance=30
             CustomFactionChance=100
             CustomFaction=Klissan
-            ChangePriorityOn=0
 			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
         }
         161 ~{
-            Name=Гвидест II
-            BonusNum=ShuKlissan_Gvidest2
-            ItemType=Engine
+            Name=Протопузырь
+            BonusNum=None
+            ItemType=FuelTank
             NoneRaceChance=100
             MinSizeChance=30
             CustomFactionChance=100
             CustomFaction=Klissan
-            ChangePriorityOn=0
 			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
         }
         162 ~{
-            Name=Гвидест III
-            BonusNum=ShuKlissan_Gvidest3
-            ItemType=Engine
+            Name=Радиосенсоры
+            BonusNum=None
+            ItemType=Radar
             NoneRaceChance=100
             MinSizeChance=30
             CustomFactionChance=100
             CustomFaction=Klissan
-            ChangePriorityOn=0
 			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
         }
         163 ~{
-            Name=Ондест I
-            BonusNum=ShuKlissan_Ondest1
-            ItemType=FuelTank
+            Name=Нейрощуп
+            BonusNum=None
+            ItemType=Scaner
             NoneRaceChance=100
             MinSizeChance=30
             CustomFactionChance=100
             CustomFaction=Klissan
-            ChangePriorityOn=0
 			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
         }
         164 ~{
-            Name=Ондест II
-            BonusNum=ShuKlissan_Ondest2
-            ItemType=FuelTank
+            Name=Биорегенератор
+            BonusNum=None
+            ItemType=Droid
             NoneRaceChance=100
             MinSizeChance=30
             CustomFactionChance=100
             CustomFaction=Klissan
-            ChangePriorityOn=0
 			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
         }
         165 ~{
-            Name=Ондест III
-            BonusNum=ShuKlissan_Ondest3
-            ItemType=FuelTank
+            Name=Плазмонить
+            BonusNum=None
+            ItemType=Hook
             NoneRaceChance=100
             MinSizeChance=30
             CustomFactionChance=100
             CustomFaction=Klissan
-            ChangePriorityOn=0
 			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
         }
         166 ~{
-            Name=Гландест I
-            BonusNum=ShuKlissan_Glandest1
-            ItemType=Radar
+            Name=Плазмощит
+            BonusNum=None
+            ItemType=DefGenerator
             NoneRaceChance=100
             MinSizeChance=30
             CustomFactionChance=100
             CustomFaction=Klissan
-            ChangePriorityOn=0
 			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
         }
         167 ~{
-            Name=Гландест II
-            BonusNum=ShuKlissan_Glandest2
-            ItemType=Radar
-            NoneRaceChance=100
-            MinSizeChance=30
-            CustomFactionChance=100
-            CustomFaction=Klissan
-            ChangePriorityOn=0
-			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
-        }
-        168 ~{
-            Name=Гландест III
-            BonusNum=ShuKlissan_Glandest3
-            ItemType=Radar
-            NoneRaceChance=100
-            MinSizeChance=30
-            CustomFactionChance=100
-            CustomFaction=Klissan
-            ChangePriorityOn=0
-			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
-        }
-        169 ~{
-            Name=Наксест I
-            BonusNum=ShuKlissan_Naksest1
-            ItemType=Scaner
-            NoneRaceChance=100
-            MinSizeChance=30
-            CustomFactionChance=100
-            CustomFaction=Klissan
-            ChangePriorityOn=0
-			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
-        }
-        170 ~{
-            Name=Наксест II
-            BonusNum=ShuKlissan_Naksest2
-            ItemType=Scaner
-            NoneRaceChance=100
-            MinSizeChance=30
-            CustomFactionChance=100
-            CustomFaction=Klissan
-            ChangePriorityOn=0
-			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
-        }
-        171 ~{
-            Name=Наксест III
-            BonusNum=ShuKlissan_Naksest3
-            ItemType=Scaner
-            NoneRaceChance=100
-            MinSizeChance=30
-            CustomFactionChance=100
-            CustomFaction=Klissan
-            ChangePriorityOn=0
-			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
-        }
-        172 ~{
-            Name=Ксифест I
-            BonusNum=ShuKlissan_Xifest1
-            ItemType=Droid
-            NoneRaceChance=100
-            MinSizeChance=30
-            CustomFactionChance=100
-            CustomFaction=Klissan
-            ChangePriorityOn=0
-			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
-        }
-        173 ~{
-            Name=Ксифест II
-            BonusNum=ShuKlissan_Xifest2
-            ItemType=Droid
-            NoneRaceChance=100
-            MinSizeChance=30
-            CustomFactionChance=100
-            CustomFaction=Klissan
-            ChangePriorityOn=0
-			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
-        }
-        174 ~{
-            Name=Ксифест III
-            BonusNum=ShuKlissan_Xifest3
-            ItemType=Droid
-            NoneRaceChance=100
-            MinSizeChance=30
-            CustomFactionChance=100
-            CustomFaction=Klissan
-            ChangePriorityOn=0
-			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
-        }
-        175 ~{
-            Name=Вахтест I
-            BonusNum=ShuKlissan_Vahtest1
-            ItemType=Hook
-            NoneRaceChance=100
-            MinSizeChance=30
-            CustomFactionChance=100
-            CustomFaction=Klissan
-            ChangePriorityOn=0
-			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
-        }
-        176 ~{
-            Name=Вахтест II
-            BonusNum=ShuKlissan_Vahtest2
-            ItemType=Hook
-            NoneRaceChance=100
-            MinSizeChance=30
-            CustomFactionChance=100
-            CustomFaction=Klissan
-            ChangePriorityOn=0
-			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
-        }
-        177 ~{
-            Name=Вахтест III
-            BonusNum=ShuKlissan_Vahtest3
-            ItemType=Hook
-            NoneRaceChance=100
-            MinSizeChance=30
-            CustomFactionChance=100
-            CustomFaction=Klissan
-            ChangePriorityOn=0
-			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
-        }
-        178 ~{
-            Name=Джевлест I
-            BonusNum=ShuKlissan_Jewlest1
-            ItemType=DefGenerator
-            NoneRaceChance=100
-            MinSizeChance=30
-            CustomFactionChance=100
-            CustomFaction=Klissan
-            ChangePriorityOn=0
-			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
-        }
-        179 ~{
-            Name=Джевлест II
-            BonusNum=ShuKlissan_Jewlest2
-            ItemType=DefGenerator
-            NoneRaceChance=100
-            MinSizeChance=30
-            CustomFactionChance=100
-            CustomFaction=Klissan
-            ChangePriorityOn=0
-			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
-        }
-        180 ~{
-            Name=Джевлест III
-            BonusNum=ShuKlissan_Jewlest3
-            ItemType=DefGenerator
-            NoneRaceChance=100
-            MinSizeChance=30
-            CustomFactionChance=100
-            CustomFaction=Klissan
-            ChangePriorityOn=0
-			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
-        }
-        181 ~{
             Name=Торсионный реактор (без акрина)
             BonusNum=None
             ItemType=Engine
@@ -1690,7 +1529,7 @@ BlackMarketShopList ~{
             SubRace=Any
             MinSizeChance=30
         }
-        182 ~{
+        168 ~{
             Name=Стекбарель (без акрина)
             BonusNum=None
             ItemType=FuelTank
@@ -1698,7 +1537,7 @@ BlackMarketShopList ~{
             SubRace=Any
             MinSizeChance=30
         }
-        183 ~{
+        169 ~{
             Name=Сенсотрон (без акрина)
             BonusNum=None
             ItemType=Radar
@@ -1706,7 +1545,7 @@ BlackMarketShopList ~{
             SubRace=Any
             MinSizeChance=30
         }
-        184 ~{
+        170 ~{
             Name=Тех-детектор (без акрина)
             BonusNum=None
             ItemType=Scaner
@@ -1714,7 +1553,7 @@ BlackMarketShopList ~{
             SubRace=Any
             MinSizeChance=30
         }
-        185 ~{
+        171 ~{
             Name=Дианод (без акрина)
             BonusNum=None
             ItemType=Droid
@@ -1722,7 +1561,7 @@ BlackMarketShopList ~{
             SubRace=Any
             MinSizeChance=30
         }
-        186 ~{
+        172 ~{
             Name=Ментощуп (без акрина)
             BonusNum=None
             ItemType=Hook
@@ -1730,7 +1569,7 @@ BlackMarketShopList ~{
             SubRace=Any
             MinSizeChance=30
         }
-        187 ~{
+        173 ~{
             Name=Пикселит (без акрина)
             BonusNum=None
             ItemType=DefGenerator
@@ -1738,7 +1577,7 @@ BlackMarketShopList ~{
             SubRace=Any
             MinSizeChance=30
         }
-        Count=187
+        Count=173
 	}
 	Weapon ~{
 		ReadMe=Параметр Owner (возможно перечисление рас через запятую без пробелов, где значение Coalition трактуется как 5 основных игровых рас) желателен для заполнения только для кастомных пушек (по умолчанию без него будут выбраны все расы, кроме доминаторов и неизвестной), а для оригинальных орудий Owner по умолчанию будет взят из основной игры (3 только доминаторских, 3 только пиратских, остальные для всех). Значение Any в Owner всегда толкуется как все расы, кроме неизвестной. Параметр AverageSize (означает средний вес, где N/2 - минимальный вес, а N*2 - максимальный) сугубо опционален и при его отсутствии вес будет взят из основных параметров пушки. Параметр Owner для модификаций опционален, по умолчанию он будет взят из раздела акрина данной модификации, а при его там отсутствии, наследован от Owner основной пушки. Если в список добавляется кастомное орудие, то в параметре Origin должно быть указано точное название скрипта того мода, в котором объявляется данное орудие. Параметры CustomFactionChance и CustomFaction (возможно перечисление разных фракций через запятую без разрывов) опциональны и не обязательны к добавлению. Все остальные параметры (включая счётчики Count) строго обязательны к заполнению для любой пушки.
