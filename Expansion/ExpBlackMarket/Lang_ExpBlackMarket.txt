@@ -22,7 +22,7 @@ AssistantExclusions ^{
 	BM=NoSearch
 }
 BlackMarketShopList ~{
-	Version=17.07.2021
+	Version=26.07.2021
 	BlackMarketTurnDelays ^{
 		MinOpeningAfterStartEventDays=18
 		MaxOpeningAfterStartEventDays=27
@@ -49,9 +49,9 @@ BlackMarketShopList ~{
 	MaxMicromodulsInStock=6
 	MicroModuls ~{
 		ReadMe=Модификаторы стоимости (CostCoef) могут принимать дробные значения (дробную часть отделять точкой). Перед добавлением в магазин, стоимость микромодуля будет помножена на указанные коэффициенты в зависимости от уровня ММ.
-		MMLevelOneCostCoef=12.0
-		MMLevelTwoCostCoef=7.0
-		MMLevelThreeCostCoef=3.0
+		MMLevelOneCostCoef=8.0
+		MMLevelTwoCostCoef=4.0
+		MMLevelThreeCostCoef=2.0
 	}
 	Hulls ~{
 		ReadMe=Параметр Race читается игрой почти как Owner, за исключением того, что в случае с корпусом можно указать в Race неизвестную расу None. Параметр HullType предусматривает следующие возможные значения (допустимо установить лишь одно значение без перечислений): Ranger, Warrior, Pirate, Transport, Liner, Diplomat, WarriorBig. Параметр HullSerieChance определяет шанс с которым на корпус будет наложена одна из серий, перечисленных в параметре HullSerie (если параметр HullSerieChance не указан, то шанс на наложение серии будет приравнян к 100%). Параметр HullSerie принимает имена разделов с сериями корпусов (доступно перечисление нескольких серий через запятую без пробелов). Если значение OwnerPirateClan (параметр опционален) больше нуля, то корпус получит пиратскую эмблему, даже будучи имея коалиционную расу (эмблема будет иметь цвет соответствующей расы). Параметры CustomFactionChance и CustomFaction (доступно перечисление нескольких фракций через запятую без пробелов) опциональны.
@@ -1452,6 +1452,62 @@ BlackMarketShopList ~{
             ChangePriorityOn=0
         }
         160 ~{
+            Name=Торсионный реактор (без акрина)
+            BonusNum=None
+            ItemType=Engine
+            Owner=Kling
+            SubRace=Any
+            MinSizeChance=30
+        }
+        161 ~{
+            Name=Стекбарель (без акрина)
+            BonusNum=None
+            ItemType=FuelTank
+            Owner=Kling
+            SubRace=Any
+            MinSizeChance=30
+        }
+        162 ~{
+            Name=Сенсотрон (без акрина)
+            BonusNum=None
+            ItemType=Radar
+            Owner=Kling
+            SubRace=Any
+            MinSizeChance=30
+        }
+        163 ~{
+            Name=Тех-детектор (без акрина)
+            BonusNum=None
+            ItemType=Scaner
+            Owner=Kling
+            SubRace=Any
+            MinSizeChance=30
+        }
+        164 ~{
+            Name=Дианод (без акрина)
+            BonusNum=None
+            ItemType=Droid
+            Owner=Kling
+            SubRace=Any
+            MinSizeChance=30
+        }
+        165 ~{
+            Name=Ментощуп (без акрина)
+            BonusNum=None
+            ItemType=Hook
+            Owner=Kling
+            SubRace=Any
+            MinSizeChance=30
+        }
+        166 ~{
+            Name=Пикселит (без акрина)
+            BonusNum=None
+            ItemType=DefGenerator
+            Owner=Kling
+            SubRace=Any
+            MinSizeChance=30
+        }
+        167 ~{
             Name=Жабродюзы
             BonusNum=None
             ItemType=Engine
@@ -1461,7 +1517,7 @@ BlackMarketShopList ~{
             CustomFaction=Klissan
 			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
         }
-        161 ~{
+        168 ~{
             Name=Протопузырь
             BonusNum=None
             ItemType=FuelTank
@@ -1471,7 +1527,7 @@ BlackMarketShopList ~{
             CustomFaction=Klissan
 			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
         }
-        162 ~{
+        169 ~{
             Name=Радиосенсоры
             BonusNum=None
             ItemType=Radar
@@ -1481,7 +1537,7 @@ BlackMarketShopList ~{
             CustomFaction=Klissan
 			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
         }
-        163 ~{
+        170 ~{
             Name=Нейрощуп
             BonusNum=None
             ItemType=Scaner
@@ -1491,7 +1547,7 @@ BlackMarketShopList ~{
             CustomFaction=Klissan
 			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
         }
-        164 ~{
+        171 ~{
             Name=Биорегенератор
             BonusNum=None
             ItemType=Droid
@@ -1501,7 +1557,7 @@ BlackMarketShopList ~{
             CustomFaction=Klissan
 			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
         }
-        165 ~{
+        172 ~{
             Name=Плазмонить
             BonusNum=None
             ItemType=Hook
@@ -1511,7 +1567,7 @@ BlackMarketShopList ~{
             CustomFaction=Klissan
 			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
         }
-        166 ~{
+        173 ~{
             Name=Плазмощит
             BonusNum=None
             ItemType=DefGenerator
@@ -1520,62 +1576,6 @@ BlackMarketShopList ~{
             CustomFactionChance=100
             CustomFaction=Klissan
 			SpawnCondition=CurTurn() > GShuKlissanFirstStart + 93
-        }
-        167 ~{
-            Name=Торсионный реактор (без акрина)
-            BonusNum=None
-            ItemType=Engine
-            Owner=Kling
-            SubRace=Any
-            MinSizeChance=30
-        }
-        168 ~{
-            Name=Стекбарель (без акрина)
-            BonusNum=None
-            ItemType=FuelTank
-            Owner=Kling
-            SubRace=Any
-            MinSizeChance=30
-        }
-        169 ~{
-            Name=Сенсотрон (без акрина)
-            BonusNum=None
-            ItemType=Radar
-            Owner=Kling
-            SubRace=Any
-            MinSizeChance=30
-        }
-        170 ~{
-            Name=Тех-детектор (без акрина)
-            BonusNum=None
-            ItemType=Scaner
-            Owner=Kling
-            SubRace=Any
-            MinSizeChance=30
-        }
-        171 ~{
-            Name=Дианод (без акрина)
-            BonusNum=None
-            ItemType=Droid
-            Owner=Kling
-            SubRace=Any
-            MinSizeChance=30
-        }
-        172 ~{
-            Name=Ментощуп (без акрина)
-            BonusNum=None
-            ItemType=Hook
-            Owner=Kling
-            SubRace=Any
-            MinSizeChance=30
-        }
-        173 ~{
-            Name=Пикселит (без акрина)
-            BonusNum=None
-            ItemType=DefGenerator
-            Owner=Kling
-            SubRace=Any
-            MinSizeChance=30
         }
         Count=173
 	}
@@ -2880,7 +2880,7 @@ BlackMarketShopList ~{
 	Artefacts ~{
 		ReadMe=Параметр SpawnRateChance отвечает за частоту появления артефакта в магазине. Параметр NoneRaceChance отвечает за шанс получения артефактом неизвестной расы. Параметр Onwer (возможно перечисление рас через запятую без пробелов, где значение Coalition трактуется как 5 основных игровых рас) опционален и будет применён, если артефакт не получит неизвестную расу. По умолчанию параметр Owner равен всем коалиционным расам, в остальном работает также, как и в списках выше. Параметр Size обязателен (если вы точно уверены, что в моде с данным артефактом в разделе арта Size прописан, то здесь его можно не писать), но работает только для кастомных артефактов не являющихся юзлесными предметами. Вес кастомных артефактов не юзлесов будет определён по внутренней формуле, которая базируется на значении параметра Size. Аналогичная ситуация с параметром Cost для кастомных артефактов. Если он есть в основном разделе артефакта, то указывать его не обязательно. Параметр Cost напрямую влияет на расчёт конечной стоимости артефакта, при этом учтите, что дешёвым артефактом считается артефакт с Cost=1000, а дорогим с Cost=2500. Выставлять значение Cost сильно ниже или сильно выше указанных значений не рекомендуется. Всем прочим артефактам и предметам данные параметры указывать не нужно (кодом они не учтены не будут).
 		ReadMeMore=Параметры CustomFactionChance и CustomFaction опциональны и могут быть установлены для любых артефактов по желанию. Параметр ArtAdditionalCostCoef обозначает модификатор, на который будет помножена стоимость артефакта после его создания (может принимать дробные значения, дробную часть отделять точкой). Опциональный параметр SubRace обозначает серию доминаторов (применяется только к доминаторским артефактам) и имеет 3 значения Blazer, Keller, Terron или Any (допустимо добавлять значения без пробелов через запятую).
-		ArtAdditionalCostCoef=5.0
+		ArtAdditionalCostCoef=8.0
 		1 ~{
 			Name=Железные жупи
 			TypeStr=t_ArtefactHull
