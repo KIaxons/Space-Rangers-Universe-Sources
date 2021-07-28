@@ -6,9 +6,9 @@ Artefacts ^{
     ArtTranclucator ^{
         Name=Транклюкатор
         OnUseCode ^{
-			0=dword cur_tranc=0;
+			0=dword cur_tranc;
 			01=int i;
-			02=int ship_tranc=0;
+			02=int ship_tranc = 0;
 			03=for(i = 0; i < ShipArts(Player()); i = i + 1)
 			04 ^{
 				01=if(ItemType(ShipArts(Player(), i)) == t_ArtefactTranclucator) ship_tranc = ship_tranc + 1;
@@ -318,7 +318,7 @@ ShipInfo ^{
                 Description=Инфошка для расширения возможностей ИИ транклюкатора игрока (скрытая)
                 Icon=0
                 Name=
-				OnActCodeTypes=t_OnStep,t_OnReduceEqBattle,t_OnReduceEqUse,t_OnReduceEqForce,t_OnReduceEqForsage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnEnteringForm,t_OnLeavingForm
+				OnActCodeTypes=t_OnStep,t_OnReduceEqBattle,t_OnReduceEqUse,t_OnReduceEqForce,t_OnReduceEqForsage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnEnteringForm,t_OnReEnteringForm,t_OnLeavingForm
 				OnActStepTypes=0,11
                 OnActCode ^{
 				//ShipCustomShipInfoData(0,CurInfo(),1) - если не 0, то равно Id планеты, на которую можно совершать посадку при сборе предметов;
@@ -327,27 +327,27 @@ ShipInfo ^{
 				//ShipCustomShipInfoTextData(0,CurInfo(),1) - маркер об инициации транком определённого диалога с игроком;
 				//ShipCustomShipInfoTextData(0,CurInfo(),2) - маркер о том, что транклюкатор совершает посадку для сдачи собранных вещей на склад;
 				//ShipCustomShipInfoTextData(0,CurInfo(),3) - проверка о наличии приказа форсажа, нужна для корректного включения кода, привязанного к стейту (если 'turn', то вкл.);
-					01=dword cur_Tranc=ScriptItemActShip();
-					02=if(ShipFindCustomShipInfoByType(cur_Tranc,'OrderJumpHole_ForCompanion') > -1)
+					01=dword cur_Tranc = ScriptItemActShip();
+					02=if(~ShipFindCustomShipInfoByType(cur_Tranc,'OrderJumpHole_ForCompanion'))
 					03 ^{
-						01=if(ScriptItemActionType(t_OnStep,11))
+						01=if(ScriptItemActionType(t_OnStep, 11))
 						02 ^{
 							01=infos=CurInfo();
-							02=if(OrderForsage(cur_Tranc)) ShipCustomShipInfoTextData(0,infos,3,'turn');
+							02=if(OrderForsage(cur_Tranc)) ShipCustomShipInfoTextData(0, infos, 3, 'turn');
 						}
 						03=exit;
 					}
-					04=if(ScriptItemActionType(t_OnStep,0))
+					04=if(ScriptItemActionType(t_OnStep, 0))
 					05 ^{
-						01=int bonus=FindBonusByCustomTag('EvoTranc_TrancItemAcrin');
-						02=int bonus2=FindBonusByCustomTag('EvoTranc_TrancWeaponAcrin');
-						03=dword infos=CurInfo();
+						01=int bonus = FindBonusByCustomTag('EvoTranc_TrancItemAcrin');
+						02=int bonus2 = FindBonusByCustomTag('EvoTranc_TrancWeaponAcrin');
+						03=dword infos = CurInfo();
 						04=str tempStr;
 						//Если включён сбор вещей
-						05=if(TranclucatorData(cur_Tranc,'SeekItems'))
+						05=if(TranclucatorData(cur_Tranc, 'SeekItems'))
 						06 ^{
 							//Если транклюкатор садится
-							01=if(ShipOrder(cur_Tranc)==2)
+							01=if(ShipOrder(cur_Tranc) == 2)
 							02 ^{
 								01=dword planet=ShipCustomShipInfoData(0,infos,1);
 								02=dword base=ShipCustomShipInfoData(0,infos,2);
@@ -791,36 +791,65 @@ ShipInfo ^{
 							}
 						}
 					}
-					08=else if(ScriptItemActionType(t_OnEnteringForm))
+					08=else if(ScriptItemActionType(t_OnEnteringForm) || ScriptItemActionType(t_OnReEnteringForm))
 					09 ^{
-						01=if(CurrentForm()=='Ship')
+						01=if(CurrentForm() == 'Ship')
 						02 ^{
-							01=if(GetEquipmentStats(ShipItems(cur_Tranc,0),8))
+							01=if(IsScriptActive('Mod_EvoArmada'))
 							02 ^{
-								01=if(ItemDurability(ShipEqInSlot(cur_Tranc,t_Engine))<=1)
+								//Если нужно, то включаем индикаторы батарей при заходе/обновлении формы
+								01=int attacks_count = ShipSpecialBonuses(cur_Tranc, bonAttacks);
+								02=if(attacks_count > 0)
+								03 ^{
+									01=for(i = 1; i <= 5; i = i + 1)
+									02 ^{
+										01=if(ShipEqInSlot(cur_Tranc, t_Weapon1, i))
+										02 ^{
+											01=InterfaceText('Ship', 'GunBatteryLabelSlot' + i, 'x' + (attacks_count + 1));
+											03=InterfaceState('Ship', 'GunBatteryLabelSlot' + i, 1);
+										}
+										03=else
+										04 ^{
+											01=InterfaceState('Ship', 'GunBatteryLabelSlot' + i, 0);
+										}
+									}
+								}
+								04=else
+								05 ^{
+									//Выключаем все индикаторы батарей при заходе на форму, т.к. при уходе событие t_OnScan не работает
+									01=for(i = 1; i <= 5; i = i + 1)
+									02 ^{
+										01=InterfaceState('Ship', 'GunBatteryLabelSlot' + i, 0);
+									}
+								}
+							}
+							03=if(GetEquipmentStats(ShipItems(cur_Tranc, 0), 8))
+							04 ^{
+								//Состояние двигателя транклюкатора может упасть до единицы, но не ниже
+								01=if(ItemDurability(ShipEqInSlot(cur_Tranc, t_Engine)) <= 1)
 								02 ^{
-									01=InterfaceState('Ship','ForsageBut',0);
-									02=InterfaceState('Ship','ForsageLock',1);
+									01=InterfaceState('Ship', 'ForsageBut', 0);
+									02=InterfaceState('Ship', 'ForsageLock', 1);
 								}
 							}
 						}
 						//Сбрасываем OrderLock, чтобы игрок мог отдать транку другой приказ
-						03=if(CurrentForm()=='Talk')
+						03=else if(CurrentForm() == 'Talk')
 						04 ^{
-							01=if(OrderLock(ScriptItemActShip()))OrderLock(ScriptItemActShip(),0);
+							01=if(OrderLock(cur_Tranc)) OrderLock(cur_Tranc, 0);
 						}
 					}
 					10=else if(ScriptItemActionType(t_OnLeavingForm))
 					11 ^{
-						01=infos=CurInfo();
+						01=infos = CurInfo();
 						//Сбрасываем лишние маркеры и восстанавливаем OrderLock, если игрок не отменил транку приказ прыжка
-						02=if(CurrentForm()=='Talk')
+						02=if(CurrentForm() == 'Talk')
 						03 ^{
 							01=if(ShipOrder(cur_Tranc)==6)
 							02 ^{
 								01=if(ShipOrderData1(cur_Tranc)==1)
 								02 ^{
-									01=if(ShipOrderObj(cur_Tranc)==Player())ShipOrderData1(cur_Tranc,0);
+									01=if(ShipOrderObj(cur_Tranc)==Player()) ShipOrderData1(cur_Tranc,0);
 								}
 							}
 							//Восстанавливаем OrderLock, если транк летит к планете или базе, записанной ему по приказу сбора предметов
@@ -854,7 +883,7 @@ ShipInfo ^{
 						02 ^{
 							01=if(ShipCustomShipInfoTextData(0,CurInfo(),1)=='')
 							02 ^{
-								01=if(ShipRadarRange(Player())>=Dist(Player(),cur_Tranc))
+								01=if(ShipRadarRange(Player()) >= Dist(Player(), cur_Tranc))
 								02 ^{
 									01=ShipCustomShipInfoTextData(0,CurInfo(),1,'YouHurtMe!');
 									02=Dialog(cur_Tranc);

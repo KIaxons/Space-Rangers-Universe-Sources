@@ -568,6 +568,22 @@ ShipInfo ^{
         }
     }
 }
+Artefacts ^{
+    ArtTranclucator ^{
+        OnUseCode ^{
+			//Этот кусок актуален только на случай, если не подключён EvoTranc
+			0=dword cur_tranc;
+			00=if(!IsScriptActive('Mod_EvoTranc'))
+			000 ^{
+				01=cur_tranc = OnUseCodeTranclucator();
+				02=if(ShipFindCustomShipInfoByType(cur_tranc, 'GunBatteryLabelsSwitcherForRuinsBlyat') == -1)
+				03 ^{
+					01=ShipAddCustomShipInfo(cur_tranc, 'GunBatteryLabelsSwitcherForRuinsBlyat');
+				}
+			}
+		}
+	}
+}
 ShipType ^{
     Fei ^{
         Dreadnought=Экелефар
