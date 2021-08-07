@@ -89,9 +89,11 @@ ShipInfo ^{
 							14 ^{
 								01=if(StorageItemLocation(i) != cur_ruin) continue;
 								02=item = StorageItems(i);
-								03=true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
-								04=if(!true_cost) continue;
-								05=ItemExtraSpecialsDeleteByType(item, true_cost_bon, true_cost);
+								//ѕропускаем товары, а то будут крашить
+								03=if(ItemType(item) <= t_Narcotics) continue;
+								04=true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
+								05=if(!true_cost) continue;
+								06=ItemExtraSpecialsDeleteByType(item, true_cost_bon, true_cost);
 							}
 							15=ShipDeleteCustomShipInfo(cur_ruin, 'ShuBK_SellerBKMarkInfo');
 						}
@@ -152,9 +154,11 @@ ShipInfo ^{
 							08 ^{
 								01=if(StorageItemLocation(i) != shop) continue;
 								02=item = StorageItems(i);
-								03=true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
-								04=if(!true_cost) continue;
-								05=ItemCost(item, true_cost);
+								//ѕропускаем товары, а то будут крашить
+								03=if(ItemType(item) <= t_Narcotics) continue;
+								04=true_cost = ItemExtraSpecialsCountByType(item, true_cost_bon);
+								05=if(!true_cost) continue;
+								06=ItemCost(item, true_cost);
 							}
 							09=ShipDeleteCustomShipInfo(Player(), 'ShuBK_SaleInfo');
 						}
