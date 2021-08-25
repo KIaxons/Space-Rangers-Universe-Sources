@@ -205,17 +205,6 @@ Artefacts ^{
 			Text=При использовании в космосе, создаёт копии корабля-родителя, которые служат для отвлечения противника. Время жизни голограмм и их количество зависит от заряда.
 			Text=Накоплено заряда: <Data1> / <color=255,240,100>1000</color>
 		}
-		//Это больше не нужно, можно удалить
-		ppb_caller_art ^{
-			Broken=(необходимо техобслуживание)
-			BrokenInBattle=В пылу битвы свалился с полки и вышел из строя подпространственный коммуникатор.
-			BrokenInUse=Подпространственный коммуникатор потерял гиперчастоту и нуждается в перенастройке.
-			Name=Подпространственный коммуникатор
-			Size=1
-			Text=Мощный передатчик, способный посылать сигнал в гиперпространство. При установке на корабль заряд пополняется в <color=255,240,100>2</color> раза быстрее.
-			Text=Используется для установления прямой связи с <color=255,240,100>Объектом X24 - 0.547</color>.
-			Text=Накоплено заряда: <Data1><color=255,240,100>%</color>
-		}
 		pulsar ^{
 			Broken=(требует ремонта)
 			BrokenInBattle=Конструкция пульсара не выдержала перегрузок космического боя. Устройство непригодно к использованию и нуждается в ремонте.
@@ -665,10 +654,11 @@ UselessItems ^{
 			03=if(!charge) charge = CurTurn();
 			04=if(ScriptItemActionType(t_OnStep))
 			05 ^{
-				01=UselessItemData(cur_item, 1, UselessItemData(cur_item, 1) + Rnd(3, 7));
+				01=UselessItemData(cur_item, 1, min(UselessItemData(cur_item, 1) + Rnd(3, 7), 1000));
 			}
 			06=else if(ScriptItemActionType(t_OnEnteringForm))
 			07 ^{
+				//Если игрок вышел из меню 'Ship' после успешной активации коммуникатора
 				01=if(CurrentForm() == 'StarMap')
 				02 ^{
 					01=if(UselessItemData(cur_item, 2))
@@ -683,7 +673,7 @@ UselessItems ^{
 			08=else //if(ScriptItemActionType(t_OnShowingItemInfo))
 			09 ^{
 				01=int percent = int(UselessItemData(cur_item, 1) / 10);
-				02=UselessItemText(cur_item, 1, Format(CT('UselessItems.SubspaceCommunicator.Text'), '<ChargePercent' + '>', percent, '255,240,100'));
+				02=UselessItemText(cur_item, Format(CT('UselessItems.SubspaceCommunicator.Text'), '<ChargePercent' + '>', percent, '255,240,100'));
 			}
 		}
 		OnUseCode ^{

@@ -1084,7 +1084,6 @@ ShipInfo ^{
 						05=int infos_var_2;
 						06=if(!ScriptItemActionType(t_OnStep))
 						07 ^{
-							01=NewsAdd('ddd');
 							01=infos_var_2 = ShipCustomShipInfoData(0, infos, 2);
 							02=if(infos_var_2) ScriptItemActParam(0);
 							03=if(ScriptItemActParam() >= HullHP(cur_ship) && !infos_var_2)
@@ -1242,7 +1241,6 @@ ShipInfo ^{
 						}
 						08=else if(ScriptItemActionType(t_OnStep, 9))
 						09 ^{
-							01=NewsAdd(9);
 							01=if(ShipCustomShipInfoData(0, infos, 2) == 1)
 							02 ^{
 								01=OrderNone(cur_ship);
@@ -1250,7 +1248,6 @@ ShipInfo ^{
 						}
 						10=else if(ScriptItemActionType(t_OnStep, 11))
 						11 ^{
-							01=NewsAdd(11);
 							01=infos_var_2 = ShipCustomShipInfoData(0, infos, 2);
 							02=if(infos_var_2 == 1)
 							03 ^{
