@@ -2683,14 +2683,65 @@ ShipInfo ^{
 									02=tNum = findsubstr(allId, '*' + i + '*') + 3;
 									03=tranc = substr(allId, tNum, findsubstr(allId, '*' + (i + 1) + '*') - tNum);
 									04=tranc = IdToShip(tranc);
-									05=if(ShipStar(tranc) == ShipStar(owner))
+									//blacksun посчитал, что здесь могут быть краши, однако "пересмотр" погибших на вылете транков всегда
+									//происходит в инфошке самих транков по событию t_OnDeath, так что вряд ли здесь что-то может реально сломаться
+									//Предположительно, кораблю изначально могут начисляться несуществующие транки, суть проблемы не ясна
+									05=if(!tranc)
 									06 ^{
-										01=int tint = ShipFindCustomShipInfoByType(tranc, 'TrancNPCAddInfo');
-										02=ShipCustomShipInfoData(tranc,tint, 2, 1);
-										03=ShipCustomShipInfoData(tranc,tint, 3, 2);
-										04=launched = substr(launched, 0, i - 1) + 'R' + substr(launched, i);
-										05=ShipCustomShipInfoTextData(0, cur_info, 2, launched);
+										01=ArrayClear(GEvoTrancTempArray);
+										02=str tempId;
+										03=for(i = 1; i <= quant; i = i + 1)
+										04 ^{
+											01=tNum = findsubstr(allId, '*' + i + '*') + 3;
+											02=tempId = substr(allId, tNum, findsubstr(allId, '*' + (i + 1) + '*') - tNum);
+											03=if(trancId == tempId)
+											04 ^{
+												01=launched = substr(launched, 0, i - 1) + '' + substr(launched, i);
+												02=ShipCustomShipInfoTextData(owner, cur_info, 2, launched);
+												03=status = substr(status, 0, i - 1) + '' + substr(status, i);
+												04=ShipCustomShipInfoTextData(owner, cur_info, 3, status);
+											}
+											05=else ArrayAdd(GEvoTrancTempArray, tempId);
+										}
+										05=quant = quant - 1;
+										06=ShipCustomShipInfoData(owner, cur_info, 3, quant);
+										07=allId = '*1*';
+										08=int temp_size=0;
+										09=for(i = 1; i <= quant; i = i + 1)
+										10 ^{
+											01=allId = allId + GEvoTrancTempArray[i] + '*' + (i + 1) + '*';
+											02=temp_size = temp_size + TranclucatorData(IdToShip(GEvoTrancTempArray[i]), 'ArtSize');
+										}
+										11=ShipCustomShipInfoTextData(owner, cur_info, 1, allId);
+										12=for(i = 1; i < ShipItems(owner); i = i + 1)
+										13 ^{
+											01=item = ShipItems(owner, i);
+											02=if(EquipmentImageName(item) == 'WeightReserve')
+											03 ^{
+												01=ItemSize(item, temp_size);
+												02=break;
+											}
+										}
 									}
+									07=else
+									08 ^{
+										01=if(ShipStar(tranc) == ShipStar(owner))
+										02 ^{
+											01=int tint = ShipFindCustomShipInfoByType(tranc, 'TrancNPCAddInfo');
+											02=ShipCustomShipInfoData(tranc,tint, 2, 1);
+											03=ShipCustomShipInfoData(tranc,tint, 3, 2);
+											04=launched = substr(launched, 0, i - 1) + 'R' + substr(launched, i);
+											05=ShipCustomShipInfoTextData(0, cur_info, 2, launched);
+										}
+									}
+									// 05=if(ShipStar(tranc) == ShipStar(owner))
+									// 06 ^{
+										// 01=int tint = ShipFindCustomShipInfoByType(tranc, 'TrancNPCAddInfo');
+										// 02=ShipCustomShipInfoData(tranc,tint, 2, 1);
+										// 03=ShipCustomShipInfoData(tranc,tint, 3, 2);
+										// 04=launched = substr(launched, 0, i - 1) + 'R' + substr(launched, i);
+										// 05=ShipCustomShipInfoTextData(0, cur_info, 2, launched);
+									// }
 								}
 							}
 						}
@@ -2794,45 +2845,45 @@ ShipInfo ^{
 					//Хозяин погибает, расставляем шансы дропа транков из трюма и удаляем хозяина из информации запущенных транков
 					09=else if(ScriptItemActionType(t_OnDeath))
 					10 ^{
-						01=cur_info=CurInfo();
-						02=owner=ScriptItemActShip();
-						03=for(i=0;i<ShipArts(owner);i=i+1)
+						01=cur_info = CurInfo();
+						02=owner = ScriptItemActShip();
+						03=for(i = 0; i < ShipArts(owner); i = i + 1)
 						04 ^{
-							01=item=ShipArts(owner,i);
-							02=if(ItemType(item)==t_ArtefactTranclucator)
+							01=item = ShipArts(owner, i);
+							02=if(ItemType(item) == t_ArtefactTranclucator)
 							03 ^{
-								01=if(Rnd(1,100)<=6)
+								01=if(Rnd(1, 100) <= 6)
 								02 ^{
-									01=NoDropItem(item,0);
-									02=TranclucatorData(ArtTranclucatorToShip(item),'AutoArrange',0);
+									01=NoDropItem(item, 0);
+									02=TranclucatorData(ArtTranclucatorToShip(item), 'AutoArrange', 0);
 								}
 							}
 						}
-						05=quant=ShipCustomShipInfoData(0,cur_info,3);
-						06=allId=ShipCustomShipInfoTextData(0,cur_info,1);
-						07=launched=ShipCustomShipInfoTextData(0,cur_info,2);
+						05=quant = ShipCustomShipInfoData(0, cur_info, 3);
+						06=allId = ShipCustomShipInfoTextData(0, cur_info, 1);
+						07=launched = ShipCustomShipInfoTextData(0, cur_info, 2);
 						//Удаляем хозяина у всех транков, оставшихся в космосе
-						08=for(i=1;i<=quant;i=i+1)
+						08=for(i = 1; i <= quant; i = i + 1)
 						09 ^{
-							01=if(findsubstr(launched,'Y')==i-1 || findsubstr(launched,'R')==i-1)
+							01=if(findsubstr(launched, 'Y') == i - 1 || findsubstr(launched, 'R') == i - 1)
 							02 ^{
 								//Вытаскиваем Id нужного транка по его номеру
-								01=tNum=findsubstr(allId,'*'+i+'*')+3;
-								02=tranc=substr(allId,tNum,findsubstr(allId,'*'+(i+1)+'*')-tNum);
-								03=tranc=IdToShip(tranc);
-								04=TranclucatorData(tranc,'Proprietor',0);
-								05=ShipCustomShipInfoData(tranc,'TrancNPCAddInfo',2,2);
-								06=ShipCustomShipInfoData(tranc,'TrancNPCAddInfo',3,2);
+								01=tNum = findsubstr(allId, '*' + i + '*') + 3;
+								02=tranc = substr(allId, tNum, findsubstr(allId, '*' + (i + 1) + '*') - tNum);
+								03=tranc = IdToShip(tranc);
+								04=TranclucatorData(tranc, 'Proprietor', 0);
+								05=ShipCustomShipInfoData(tranc, 'TrancNPCAddInfo', 2, 2);
+								06=ShipCustomShipInfoData(tranc, 'TrancNPCAddInfo', 3, 2);
 								07=OrderNone(tranc);
-								08=OrderLock(tranc,1);
-								09=launched=substr(launched,0,i-1)+'D'+substr(launched,i);
+								08=OrderLock(tranc, 1);
+								09=launched = substr(launched, 0, i - 1) + 'D' + substr(launched, i);
 							}
 						}
 						//Уничтожаем корабль наверняка, чтобы хардкод не реснул его в системе смерти
 						//Такое случается и может привести к крашу из-за несброшенной старой инфошки
-						10=ShipDestroy(owner,1);
+						10=ShipDestroy(owner, 1);
 						//До кучи им ещё и инфошку сбрасываем, потому что я рот ебал этих рандомных воскрешений
-						11=ShipDeleteCustomShipInfo(owner,'TrancNPCOwnerInfo');
+						11=ShipDeleteCustomShipInfo(owner, 'TrancNPCOwnerInfo');
 					}
 					11=else if(ScriptItemActionType(t_OnEnteringForm))
 					12 ^{
