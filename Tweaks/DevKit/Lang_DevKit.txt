@@ -1,3 +1,124 @@
+ActCodeBlocksList ^{
+	HybridDroidActCode ^{
+		[t_OnDealingFatalDamage,t_OnStep|5]
+		01=dword cur_item = CurItem();
+		02=dword cur_ship = ScriptItemActShip();
+		03=if(ItemIsInUse(cur_item) && !ItemIsBroken(cur_item))
+		04 ^{
+			01=int att_bonus = ScriptItemData(cur_item, 1);
+			02=int def_bonus = ScriptItemData(cur_item, 2);
+			03=int mov_bonus = ScriptItemData(cur_item, 3);
+			04=int last_bonus = ScriptItemTextData(cur_item, 1);
+			//
+			//—читаем приращение к режиму атаки дроида, если текущий корабль пользовател€ кого-то уничтожил
+			05=if(ScriptItemActionType(t_OnDealingFatalDamage))
+			06 ^{
+				01=att_bonus = att_bonus + 100;
+				02=if((att_bonus + def_bonus + mov_bonus) > 1000)
+				03 ^{
+					01=att_bonus = (99 * att_bonus) / 100;
+					02=def_bonus = (99 * def_bonus) / 100;
+					03=mov_bonus = (99 * mov_bonus) / 100;
+				}
+				//
+				04=ScriptItemData(cur_item, 1, att_bonus);
+				05=ScriptItemData(cur_item, 2, def_bonus);
+				06=ScriptItemData(cur_item, 3, mov_bonus);
+				07=exit;
+			}
+			//
+			//ƒл€ игрока в зачЄт идут также и ассисты
+			07=if(IsPlayer(cur_ship))
+			08 ^{
+				01=int check = GalaxyEvents() - 1;
+				02=while(check >= 0)
+				03 ^{
+					01=if(GalaxyEventDate(check) >= CurTurn())
+					02 ^{
+						// 01=if(GalaxyEventType(check) == 'PlayerKillsShip')
+						// 02 ^{
+							// 01=att_bonus = att_bonus + 100;
+						// }
+						01=if(GalaxyEventType(check) == 'PlayerAssistKillsShip')
+						02 ^{
+							01=att_bonus = att_bonus + 100;
+						}
+					}
+					03=if(GalaxyEventDate(check) < CurTurn())
+					04 ^{
+						01=check = 0;
+					}
+					05=check = check - 1;
+				}
+			}
+			//
+			09=def_bonus = def_bonus + HullDamage(cur_ship);
+			10=mov_bonus = mov_bonus + 30 * PlayerQuestInProgress();
+			//
+			11=check = 0;
+			12=while(check < 8)
+			13 ^{
+				01=mov_bonus = mov_bonus + GoodsCount(cur_ship, check) / 20;
+				02=check = check + 1;
+			}
+			//
+			14=if(ShipGetBad(cur_ship) && ShipSpeed(cur_ship))
+			15 ^{
+				01=if(ShipSpeed(ShipGetBad(cur_ship)) > ShipSpeed(cur_ship))
+				02 ^{
+					01=mov_bonus = mov_bonus + 100 * ShipSpeed(ShipGetBad(cur_ship)) / ShipSpeed(cur_ship);
+				}
+			}
+			//
+			16=if(ShipInHyperSpace(cur_ship))
+			17 ^{
+				01=mov_bonus = mov_bonus + 30;
+			}
+			18=if((att_bonus + def_bonus + mov_bonus) > 1000)
+			19 ^{
+				01=att_bonus = (99 * att_bonus) / 100;
+				02=def_bonus = (99 * def_bonus) / 100;
+				03=mov_bonus = (99 * mov_bonus) / 100;
+			}
+			//
+			20=int sum_bonus = att_bonus + def_bonus + mov_bonus;
+			21=int nearest_bonus_distance = 1000;
+			22=int nearest_bonus = 6;
+			23=check = 0;
+			24=while(check < 7)
+			25 ^{
+				01=int cur_point_distance = abs(GetValueFromScript('PC_fem_rangers', 'points_a', check) - (att_bonus * 100) / sum_bonus);
+				02=cur_point_distance = cur_point_distance + abs(GetValueFromScript('PC_fem_rangers', 'points_d', check) - (def_bonus * 100) / sum_bonus);
+				03=cur_point_distance = cur_point_distance + abs(GetValueFromScript('PC_fem_rangers', 'points_m', check) - (mov_bonus * 100) / sum_bonus);
+				04=if(cur_point_distance < nearest_bonus_distance)
+				05 ^{
+					01=nearest_bonus_distance = cur_point_distance;
+					02=nearest_bonus = check;
+				}
+				06=check = check + 1;
+			}
+			//
+			26=if(nearest_bonus != last_bonus)
+			27 ^{
+				01=if(~FindBonusByCustomTag(GetValueFromScript('PC_fem_rangers', 'points_bonus', nearest_bonus)))
+				02 ^{
+					01=SpecialToEquipment(FindBonusByCustomTag(GetValueFromScript('PC_fem_rangers', points_bonus, nearest_bonus)), cur_item);
+					02=att_bonus = att_bonus / 2 + (sum_bonus * GetValueFromScript('PC_fem_rangers', 'points_a', nearest_bonus)) / 200;
+					03=def_bonus = def_bonus / 2 + (sum_bonus * GetValueFromScript('PC_fem_rangers', 'points_d', nearest_bonus)) / 200;
+					04=mov_bonus = mov_bonus / 2 + (sum_bonus * GetValueFromScript('PC_fem_rangers', 'points_m', nearest_bonus)) / 200;
+				}
+				03=ShipCalcParam(cur_ship);
+				04=last_bonus = nearest_bonus;
+				05=Ether(2, '6E34ABFA-A3A1-4512-B35B-89DD324A99C9', Format(CT('Script.PC_fem_rangers.325'), '<0' + '>', GetValueFromScript('PC_fem_rangers', 'mode_name', nearest_bonus)));
+			}
+			//
+			28=ScriptItemData(cur_item, 1, att_bonus);
+			29=ScriptItemData(cur_item, 2, def_bonus);
+			30=ScriptItemData(cur_item, 3, mov_bonus);
+			31=ScriptItemTextData(cur_item, 1, last_bonus);
+		}
+	}
+}
 Script ^{
     Mod_DevKit ~{
         3=DevKit
