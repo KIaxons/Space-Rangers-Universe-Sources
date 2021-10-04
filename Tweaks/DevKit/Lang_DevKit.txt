@@ -1,6 +1,6 @@
 ActCodeBlocksList ^{
 	HybridDroidActCode ^{
-		[t_OnDealingFatalDamage,t_OnStep|5]
+		00=[t_OnDealingFatalDamage,t_OnStep|5]
 		01=dword cur_item = CurItem();
 		02=dword cur_ship = ScriptItemActShip();
 		03=if(ItemIsInUse(cur_item) && !ItemIsBroken(cur_item))

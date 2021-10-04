@@ -170,34 +170,37 @@ ShipInfo ^{
 				OnActCodeTypes=t_OnStep
 				OnActStepTypes=11
                 OnActCode ^{
-                    01=if(ScriptItemActionType(t_OnStep,11))
-                    02 ^{
-						01=if(Rnd(1,17)==9)
-						02 ^{
-							//Создаём (для обновления) новый зонд и записываем его параметры в инфошку
-							01=dword info=CurInfo();
-							02=int level;
-							03=if(Rnd(1,1000)<=(45*GalaxyTechLevel()))level=GalaxyTechLevel()-1;
-							04=else level=Rnd(1,GalaxyTechLevel())-1;
-							05=dword cur_item=CreateZond(level,Rnd(0,4));
-							//Определяем, к какому конкретно параметру зонд получил бонус (и получил ли его вообще)
-							06=int cost=-1;
-							07=for(int i=0;i<=2;i=i+1)
-							08 ^{
-								01=if(GetEquipmentStats(cur_item,i)!=CT('Items.Satellite.'+level+'.'+i))
-								02 ^{
-									01=cost=i;
-									02=break;
-								}
+					01=dword cur_ship = ScriptItemActShip();
+					02=if(!fun_init)
+					03 ^{
+						01=unknown RndObject = ImportedFunction('UtilityFunctions', 'RndObject');
+						02=int fun_init = 1;
+					}
+					04=if(RndObject(1, 17, cur_ship) == 9)
+					05 ^{
+						//Создаём (для обновления) новый зонд и записываем его параметры в инфошку
+						01=dword info = CurInfo();
+						02=int level;
+						03=if(RndObject(1, 1000, cur_ship) <= (45 * GalaxyTechLevel())) level = GalaxyTechLevel() - 1;
+						04=else level = RndObject(1, GalaxyTechLevel(), cur_ship) - 1;
+						05=dword cur_item = CreateZond(level, RndObject(0, 4, cur_ship));
+						//Определяем, к какому конкретно параметру зонд получил бонус (и получил ли его вообще)
+						06=int cost = -1;
+						07=for(int i = 0; i <= 2; i = i + 1)
+						08 ^{
+							01=if(GetEquipmentStats(cur_item, i) != CT('Items.Satellite.' + level + '.' + i))
+							02 ^{
+								01=cost = i;
+								02=break;
 							}
-							09=ShipCustomShipInfoData(0,info,1,ItemSize(cur_item));
-							10=ShipCustomShipInfoData(0,info,2,ItemCost(cur_item));
-							11=ShipCustomShipInfoData(0,info,3,ItemOwner(cur_item));
-							12=ShipCustomShipInfoTextData(0,info,1,Name(cur_item));
-							13=ShipCustomShipInfoTextData(0,info,2,level);
-							14=ShipCustomShipInfoTextData(0,info,3,cost);
-							15=FreeItem(cur_item);
 						}
+						09=ShipCustomShipInfoData(0, info, 1, ItemSize(cur_item));
+						10=ShipCustomShipInfoData(0, info, 2, ItemCost(cur_item));
+						11=ShipCustomShipInfoData(0, info, 3, ItemOwner(cur_item));
+						12=ShipCustomShipInfoTextData(0, info, 1, Name(cur_item));
+						13=ShipCustomShipInfoTextData(0, info, 2, level);
+						14=ShipCustomShipInfoTextData(0, info, 3, cost);
+						15=FreeItem(cur_item);
 					}
 				}
 			}
