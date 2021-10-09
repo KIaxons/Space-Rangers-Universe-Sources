@@ -63,6 +63,8 @@ ShipInfo ^{
 											02=i = i + 1;
 										}
 										05=FireWeapon(cur_ship, container, gun);
+										//Обнуляем маркер военного как знак, что груз успешно уничтожен
+										06=SetData(0, 0, cur_ship);
 									}
 								}
 							}
