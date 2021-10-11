@@ -32,42 +32,73 @@ UselessItems ^{
 ShipInfo ^{
 	AddInfo ^{
 		CustomInfos ^{
+			ExpCaravan_TransportInfos ^{
+				Description=—крыта€ инфошка дл€ записи последних координат транспорта
+				Icon=0
+				Name=
+				OnActCodeTypes=t_OnDeath
+				OnActCode ^{
+					01=dword cur_ship = ScriptItemActShip();
+					//02=if(!ShipInNormalSpace(cur_ship)) exit;
+					02=g_last_transport_coords[0] = CoordX(cur_ship);
+					03=g_last_transport_coords[1] = CoordY(cur_ship);
+				}
+			}
 			ExpCaravan_WarriorShotInfos ^{
 				Description=—крыта€ инфошка дл€ возможности осуществлени€ выстрела военного по контейнеру
 				Icon=0
 				Name=
-				OnActCodeTypes=t_OnStep
+				OnActCodeTypes=t_OnStep,t_OnDeath
 				OnActStepTypes=3,4,5,6,7,8,9
 				OnActCode ^{
 					01=dword cur_ship = ScriptItemActShip();
-					02=if(cur_ship)
+					02=if(ScriptItemActionType(t_OnStep))
 					03 ^{
-						01=if(ShipInNormalSpace(cur_ship))
+						01=if(cur_ship)
 						02 ^{
-							01=dword cur_info = CurInfo();
-							02=dword container = ShipCustomShipInfoData(0, cur_info, 1);
-							03=if(container)
-							04 ^{
-								01=container = IdToItem(container);
-								//ѕровер€ем, что контейнер ещЄ цел
-								02=if(container)
+							01=if(ShipInNormalSpace(cur_ship))
+							02 ^{
+								01=dword cur_info = CurInfo();
+								02=for(int i = 1; i <= 3; i = i + 1)
 								03 ^{
-									//ѕровер€ем, что контейнер ещЄ болтаетс€ в системе (если его подобрали, то попытка выстрелить по нему закончитс€ крашем)
-									01=if(ItemIn(GetValueFromScript('Mod_ExpCaravan', 'Cargo_' + ShipCustomShipInfoData(0, cur_info, 2)), ShipStar(cur_ship)))
-									02 ^{
-										01=int i = 1;
-										02=dword gun = 0;
-										03=while(!gun)
-										04 ^{
-											01=gun = ShipEqInSlot(cur_ship, t_Weapon1, i);
-											02=i = i + 1;
+									01=dword container = ShipCustomShipInfoData(0, cur_info, i);
+									02=if(container)
+									03 ^{
+										01=container = IdToItem(container);
+										//ѕровер€ем, что контейнер ещЄ цел
+										02=if(container)
+										03 ^{
+											//ѕровер€ем, что контейнер ещЄ болтаетс€ в системе (если его подобрали, то попытка выстрелить по нему закончитс€ крашем)
+											01=if(ItemIn(container, ShipStar(cur_ship)))
+											02 ^{
+												01=int j = i; //—мещение к орудию в зависимости от номера груза, чтобы не получилось, что военный расстреливает все грузы из всего одной пушки за один ход
+												02=dword gun = 0;
+												03=while(!gun)// || GetEquipmentStats(gun, 3) == 2)
+												04 ^{
+													01=gun = ShipEqInSlot(cur_ship, t_Weapon1, j);
+													02=j = j + 1;
+													03=if(j > 5) break;
+												}
+												05=if(gun) FireWeapon(cur_ship, container, gun);
+												//«авершаем цикл после выстрела, чтобы один корабль не мог выстрелить сразу три раза одновременно
+												06=break;
+											}
 										}
-										05=FireWeapon(cur_ship, container, gun);
-										//ќбнул€ем маркер военного как знак, что груз успешно уничтожен
-										06=SetData(0, 0, cur_ship);
+										//ќбнул€ем маркер военного как знак, что груз был успешно уничтожен
+										04=ShipCustomShipInfoData(0, cur_info, i, 0);
+										05=SetData(GetData(1, cur_ship) - (1 << i), 1, cur_ship);
 									}
 								}
 							}
+						}
+					}
+					//¬оенный летел подбирать контейнер, но по пути его убили
+					//—брасываем маркер подбора с контейнера, чтобы другие военные могли перераспределить роли
+					04=else //if(ScriptItemActionType(t_OnDeath))
+					05 ^{
+						01=if(GetData(0, cur_ship))
+						02 ^{
+							01=ScriptItemData(ScriptItemToItem(GetValueFromScript('Mod_ExpCaravan', 'Cargo_' + GetData(0, cur_ship))), 1, 0);
 						}
 					}
 				}
