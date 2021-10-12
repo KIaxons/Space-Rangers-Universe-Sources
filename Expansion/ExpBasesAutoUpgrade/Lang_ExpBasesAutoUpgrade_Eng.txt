@@ -1,8 +1,8 @@
 ShipInfo ^{
 	AddInfo ^{
-		CustomInfos ~{
-			auto_upgr_ruins ^{
-				Description=Скрытая инфошка для автоулучшения баз, вешается турнкодом в скрипте
+		CustomInfos ^{
+			ExpBasesAutoUpgradeInfo ^{
+				Description=Скрытая инфошка для автоулучшения баз, вешается тернкодом в скрипте
 				Icon=0
 				Name=
 				OnActCodeTypes=t_OnStep
@@ -10,13 +10,18 @@ ShipInfo ^{
 				OnActCode ^{
 					01=dword cur_ship = ScriptItemActShip();
 					02=int cur_info = CurInfo();
+					03=if(!fun_init)
+					04 ^{
+						01=unknown RndObject = ImportedFunction('UtilityFunctions', 'RndObject');
+						02=int fun_init = 1;
+					}
 					//Таймер до автоматической перезарядки ракетных орудий
-					03=int RepairAndReloadTime = ShipCustomShipInfoData(cur_ship, cur_info, 2);
+					05=int RepairAndReloadTime = ShipCustomShipInfoData(cur_ship, cur_info, 2);
 					//Таймер до автообновления
-					04=int AutoUpdateTime = ShipCustomShipInfoData(cur_ship, cur_info, 3);
-					05=if(RepairAndReloadTime <= CurTurn())
-					06 ^{
-						01=ShipCustomShipInfoData(cur_ship, cur_info, 2, CurTurn() + Rnd(25, 35));
+					06=int AutoUpdateTime = ShipCustomShipInfoData(cur_ship, cur_info, 3);
+					07=if(RepairAndReloadTime <= CurTurn())
+					08 ^{
+						01=ShipCustomShipInfoData(cur_ship, cur_info, 2, CurTurn() + RndObject(25, 35, cur_ship));
 						//Перезаряжаем ракетные орудия
 						02=for(int j = 1; j <= ShipCntWeapon(cur_ship); j = j + 1)
 						03 ^{
@@ -27,9 +32,10 @@ ShipInfo ^{
 						04=int perm = 0;
 						05=str str_type = ShipType(cur_ship);
 						06=if(str_type == 'SB' || str_type == 'PB' || str_type == 'TC' || str_type == 'SSB') perm = 1;
+						07=else if(~findsubstr(str_type, '_licensed')) perm = 1;
 						//Чиним оборудование и артефакты базы
-						07=for(j = 0; j < ShipItems(cur_ship); j = j + 1)
-						08 ^{
+						08=for(j = 0; j < ShipItems(cur_ship); j = j + 1)
+						09 ^{
 							01=dword cur_item = ShipItems(cur_ship, j);
 							02=if(!ItemIsInUse(cur_item)) continue;
 							03=int item_type = ItemType(cur_item);
@@ -57,8 +63,8 @@ ShipInfo ^{
 							}
 						}
 						//Чиним экипированные арты, но только если база умеет их чинить
-						09=if(perm)
-						10 ^{
+						10=if(perm)
+						11 ^{
 							01=for(j = 0; j < ShipArts(cur_ship); j = j + 1)
 							02 ^{
 								01=cur_item = ShipArts(cur_ship, j);
@@ -67,9 +73,9 @@ ShipInfo ^{
 							}
 						}
 					}
-					07=if(RuinsAllowModernization(cur_ship)) exit;
-					08=if(AutoUpdateTime <= CurTurn())
-					09 ^{
+					09=if(RuinsAllowModernization(cur_ship)) exit;
+					10=if(AutoUpdateTime <= CurTurn())
+					11 ^{
 						01=dword cur_star = ShipStar(cur_ship);
 						//Если станция находится в прямой видимости игрока, то откладываем её обновление на один день
 						02=if(ShipStar(Player()) == cur_star)
@@ -80,7 +86,7 @@ ShipInfo ^{
 								02=exit;
 							}
 						}
-						04=ShipCustomShipInfoData(cur_ship, cur_info, 3, CurTurn() + Rnd(160, 250));
+						04=ShipCustomShipInfoData(cur_ship, cur_info, 3, CurTurn() + RndObject(160, 250, cur_ship));
 						05=for(j = 0; j < ShipItems(cur_ship); j = j + 1)
 						06 ^{
 							01=cur_item = ShipItems(cur_ship, j);
@@ -89,26 +95,26 @@ ShipInfo ^{
 							04=if(item_type < t_Hull || item_type > t_CustomWeapon) continue;
 							05=if(ItemLevel(cur_item) < GalaxyTechLevel()) ItemLevel(cur_item, GalaxyTechLevel() - 2);
 							06=if(!ItemImprovement(cur_item)) ItemImprovement(cur_item, 2, 0);
-							07=if(ItemSize(cur_item) <= 80 && item_type <= t_DefGenerator && item_type != t_Hull) ItemSize(cur_item, Rnd(80, 120));
-							08=if(ItemSize(cur_item) <= 100 && item_type >= t_Weapon1) ItemSize(cur_item, Rnd(100, 150));
+							07=if(ItemSize(cur_item) <= 80 && item_type <= t_DefGenerator && item_type != t_Hull) ItemSize(cur_item, RndObject(80, 120, cur_ship));
+							08=if(ItemSize(cur_item) <= 100 && item_type >= t_Weapon1) ItemSize(cur_item, RndObject(100, 150, cur_ship));
 						}
 						07=if(!ShipEqInSlot(cur_ship,t_RepairRobot))
 						08 ^{
-							01=cur_item = CreateEquipment(t_RepairRobot, Rnd(80, 100), GalaxyTechLevel() - 2, ShipOwner(cur_ship));
+							01=cur_item = CreateEquipment(t_RepairRobot, RndObject(80, 100, cur_ship), GalaxyTechLevel() - 2, ShipOwner(cur_ship));
 							02=ItemImprovement(cur_item, 2, 0);
 							03=AddItemToShip(cur_ship, cur_item);
 							04=ItemIsInUse(cur_item, cur_ship, 1);
 						}
 						09=if(!ShipEqInSlot(cur_ship,t_CargoHook))
 						10 ^{
-							01=cur_item = CreateEquipment(t_CargoHook, Rnd(80, 100), GalaxyTechLevel() - 2, ShipOwner(cur_ship));
+							01=cur_item = CreateEquipment(t_CargoHook, RndObject(80, 100, cur_ship), GalaxyTechLevel() - 2, ShipOwner(cur_ship));
 							02=ItemImprovement(cur_item, 2, 0);
 							03=AddItemToShip(cur_ship, cur_item);
 							04=ItemIsInUse(cur_item, cur_ship, 1);
 						}
 						11=if(!ShipEqInSlot(cur_ship,t_DefGenerator))
 						12 ^{
-							01=cur_item = CreateEquipment(t_DefGenerator, Rnd(80, 100), GalaxyTechLevel() - 2, ShipOwner(cur_ship));
+							01=cur_item = CreateEquipment(t_DefGenerator, RndObject(80, 100, cur_ship), GalaxyTechLevel() - 2, ShipOwner(cur_ship));
 							02=ItemImprovement(cur_item, 2, 0);
 							03=AddItemToShip(cur_ship, cur_item);
 							04=ItemIsInUse(cur_item, cur_ship, 1);
@@ -118,9 +124,9 @@ ShipInfo ^{
 						14 ^{
 							01=for(j = 1; j <= 5 - ShipCntWeapon(cur_ship); j = j + 1)
 							02 ^{
-								01=if(GalaxyTechLevel() < 5) cur_item = CreateEquipment(t_Weapon3,Rnd(80, 100),GalaxyTechLevel(),ShipOwner(cur_ship));
-								02=else if(GalaxyTechLevel() < 7) cur_item = CreateEquipment(t_Weapon7,Rnd(100, 150),GalaxyTechLevel()-2,ShipOwner(cur_ship));
-								03=else cur_item = CreateEquipment(t_Weapon11,Rnd(150, 250),GalaxyTechLevel()-2,ShipOwner(cur_ship));
+								01=if(GalaxyTechLevel() < 5) cur_item = CreateEquipment(t_Weapon3, RndObject(80, 100, cur_ship), GalaxyTechLevel(), ShipOwner(cur_ship));
+								02=else if(GalaxyTechLevel() < 7) cur_item = CreateEquipment(t_Weapon7, RndObject(100, 150, cur_ship), GalaxyTechLevel() - 2,  ShipOwner(cur_ship));
+								03=else cur_item = CreateEquipment(t_Weapon11, RndObject(150, 250, cur_ship), GalaxyTechLevel() - 2, ShipOwner(cur_ship));
 								04=ItemImprovement(cur_item, 2, 0);
 								05=AddItemToShip(cur_ship, cur_item);
 							}
