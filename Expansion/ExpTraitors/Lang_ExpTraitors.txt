@@ -802,7 +802,7 @@ UselessItems ^{
 					01=if(substr(Name(bird), 0, 3) != '<M>')
 					02 ^{
 						01=Sound('Sound.ParrotPhrase' + (rnd(6) + 1));
-						02=SetName(bird, '<M' + '>' + Name(bird));
+						02=if(bird) SetName(bird, '<M' + '>' + Name(bird));
 					}
 				}
 			}

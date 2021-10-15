@@ -1,17 +1,25 @@
 Script ^{
     Mod_EvoMC ^{
+		125=<0>
+        120=<br>
 		141=1 января
         126=Закупиться медикаментами
-        120=<br>
         133=Рейнджер, у вас нет денег для покупки наших медикаментов.
         137=Медикаменты, согласно пункту <clr>18/2<clrEnd> параграфа <clr>744<clrEnd> медицинского кодекса, предписаны исключительно для использования в чрезвычайных ситуаций, когда оказать врачебную помощь медикам в космосе невозможно.<br>Рассматривая данную ситуацию как патологически опасную для наших народов, мы можем допустить продажу <0> различных медикаментов в год.<br>По нашим данным в этом году вы приобрели <1> ед. медикаментов. Итого вы можете купить <2> ед. любого препарата.<br>Вот что у нас есть на данный момент: <3>
         138=По нашим данным в этом году вы приобрели <0> ед. медикаментов. До конца года вы не можете приобрести медикаменты, поскольку исчерпали ваш лимит (<1> ед.).<br>Ждём вас в следующем году.
         136=Отличный выбор.<br>Помните, что медикаменты опасны для здоровья. Они вызывают привыкание, можно и наркоманом стать, да и летальные исходы не редкость.<br>Но еще лучше вести здоровый образ жизни, поддерживать свое тело в хорошей физической форме. Для души читайте устав рейнджеров и занимайтесь медитацией!
         129=Согласно пункту <clr>1/2<clrEnd> параграфа <clr>10<clrEnd> медицинского кодекса, медикаменты отпускаются только при наличии действующего медицинского полиса.
         139=На данный момент у нас закончились медикаменты, которые мы можем вам продать. Дождитесь следующей партии или зайдите в мед. пункт на прием стимулятора.
-        125=<0>
         140=Ну хоть пробничек дайте! Что... не положено... Ну тогда пока
         132=Уйти из магазина медикаментов
+		YellowShroudDialog ^{
+			AngryMalocThreat1=ААААРГХ!!! ВОТ СЕЙЧАС Я ТЕБЕ МОРДУ-ТО РАСКОЛБАШУ, ЗАССАНЕЦ МЕЛКИЙ!
+			AngryPelengThreat1=Уфф, мерзость!!! Такого явного нахальства даже я не стерплю!
+			AngryPeopleThreat1=Ах ты мелкий ссыкунишка!!! Ну сейчас я тебе раздам на орехи!
+			AngryFeiThreat1=Фуу!!! Какая мерзость!
+			AngryFeiThreat1=Ну, сам напросился - сейчас получишь от меня интеллигентного леща!
+			AngryGaalThreat1=Возмутительно! Не позволю так дурно обращаться с наследием моего народа!
+		}
     }
 }
 Artefacts ^{
@@ -446,15 +454,15 @@ ShipInfo ^{
     AddInfo ^{
         CustomInfos ^{
 			EvoMC_UrineCurse ^{
-                Description=Ваши амбулаторные пристрастия разделяют далеко не все представители разумных рас Галактики. На протяжении некоторого времени ваши социальные навыки будут снижены.
                 Icon=1
                 Name=Фанат народной медицины
+                Description=Ваши амбулаторные пристрастия разделяют далеко не все представители разумных рас Галактики. На протяжении некоторого времени ваши социальные навыки будут снижены.
                 OnActCodeTypes=t_OnStep
 				OnActStepTypes=11
 				OnActCode ^{
 					01=dword cur_info = CurInfo();
 					//Снимаем с игрока штрафы к навыкам, если действие уринового дебафа завершено
-					02=if(ShipCustomShipInfoData(0, cur_info,1) <= CurTurn())
+					02=if(ShipCustomShipInfoData(0, cur_info, 1) <= CurTurn())
 					03 ^{
 						01=ShipSpecialBonuses(Player(), bonSkill5, ShipSpecialBonuses(Player(), bonSkill5) + ShipCustomShipInfoData(0, cur_info, 2));
 						02=ShipSpecialBonuses(Player(), bonSkill6, ShipSpecialBonuses(Player(), bonSkill6) + ShipCustomShipInfoData(0, cur_info, 3));
@@ -463,6 +471,82 @@ ShipInfo ^{
 						04=if(IsScriptActive('Mod_ExpImplants'))
 						05 ^{
 							01=GlobalImplantsEnduranceBonus = GlobalImplantsEnduranceBonus + 2;
+						}
+					}
+				}
+			}
+			EvoMC_YellowShroud ^{
+                Icon=2552160
+                Name=Жёлтая пелена
+                Description=Капитан данного корабля себя не контролирует. Его единственное желание в настоящий момент - <clr>жестоко отомстить обидчику<clrEnd>.
+                OnActCodeTypes=t_OnStep,t_OnDealingFatalDamage
+				OnActStepTypes=0
+				OnActCode ^{
+					01=dword cur_info = CurInfo();
+					02=dword cur_ship = ScriptItemActShip();
+					03=dword target = IdToShip(ShipCustomShipInfoData(0, cur_info, 1));
+					04=if(ScriptItemActionType(t_OnStep))
+					05 ^{
+						01=if(~ShipFindCustomShipInfoByType(cur_ship, 'RNDbomb_2_infos')) exit; //Если корабль оглушён
+						//Снимаем с игрока штрафы к навыкам, если действие уринового дебафа завершено
+						02=if(ShipCustomShipInfoData(0, cur_info, 3) <= CurTurn())
+						03 ^{
+							01=ShipDeleteCustomShipInfo(cur_ship, 'EvoMC_YellowShroud');
+							02=NoTalkToShip(cur_ship, 0);
+							03=if(IsPlayer(cur_ship)) NoTalkToShip(0);
+							04=OrderLock(cur_ship, 0);
+						}
+						04=else if(target)
+						05 ^{
+							//Если цель ещё не сбежала из текущей системы
+							01=if(ShipStar(cur_ship) == ShipStar(target))
+							02 ^{
+								01=if(!IsPlayer(cur_ship))
+								02 ^{
+									01=OrderFollowShip(cur_ship, target, 1);
+									02=ShipSetBad(cur_ship, target);
+									03=if(ShipTypeN(target) == t_Ranger)
+									04 ^{
+										01=RelationToRanger(cur_ship, target, 0);
+									}
+								}
+								03=else
+								04 ^{
+									01=OrderFollowShip(cur_ship, target, 1);
+									02=ShipSetBad(cur_ship, target);
+									03=AutoBattle(target);
+								}
+								05=NoTalkToShip(cur_ship, 1);
+								06=if(IsPlayer(cur_ship)) NoTalkToShip(1);
+								07=OrderLock(cur_ship, 1);
+							}
+							//Если всё-таки сбежала
+							03=else
+							04 ^{
+								01=ShipDeleteCustomShipInfo(cur_ship, 'EvoMC_YellowShroud');
+								02=NoTalkToShip(cur_ship, 0);
+								03=if(IsPlayer(cur_ship)) NoTalkToShip(0);
+								04=OrderLock(cur_ship, 0);
+							}
+						}
+						//Если обидчик погиб
+						06=else
+						07 ^{
+							01=ShipDeleteCustomShipInfo(cur_ship, 'EvoMC_YellowShroud');
+							02=NoTalkToShip(cur_ship, 0);
+							03=if(IsPlayer(cur_ship)) NoTalkToShip(0);
+							04=OrderLock(cur_ship, 0);
+						}
+					}
+					//Если корабль уничтожил обидчика
+					06=else //if(ScriptItemActionType(t_OnDealingFatalDamage))
+					07 ^{
+						01=if(ScriptItemActObject1() == target)
+						02 ^{
+							01=ShipDeleteCustomShipInfo(cur_ship, 'EvoMC_YellowShroud');
+							02=NoTalkToShip(cur_ship, 0);
+							03=if(IsPlayer(cur_ship)) NoTalkToShip(0);
+							04=OrderLock(cur_ship, 0);
 						}
 					}
 				}
