@@ -1,23 +1,23 @@
 MicroModuls ^{
     ExpTraitors_RangerPirateHull ^{
-		Cost=90
 		CustomTag=ExpTraitors_RangerPirateHull
 		Equipments=Hull
-		FragilityEnergy=91
-		FragilityMissile=91
-		FragilitySplinter=91
 		KindGraph=RangerP
 		Name=</color><Type> корпус изменника
-		OnPlanets=1
 		Owner=PirateClan
-		Priority=10
+		OnPlanets=1
 		Ruins=PB,CB
-		bonSlotArt=-1
-		bonSlotWeapon=-2
+		Priority=10
 		Special=1
 		LockedAcryn=3
 		NonSearchable=2
 		ImitatedHullType=Ranger,Pirate
+		Cost=90
+		FragilityEnergy=91
+		FragilityMissile=91
+		FragilitySplinter=91
+		bonSlotArt=-1
+		bonSlotWeapon=-2
     }
 }
 FormRuins ^{
@@ -94,6 +94,7 @@ Script ^{
         90=Пока
 	}
 	Mod_ExpTraitors ^{
+		SpecialAgentSearchString=$Олеся$,$Диззи$,$Маша Д-Арк$,$Мира$,$Кореаночка$,$Гроза$,$Аэсонэ$,$Джинс$,$Сансет$,$Летучая$,$Звездочка$,$Анита$,$Линда$,$Кона-чан$,$Неко-Ня$,$Енот$,$Старбак$,$Беатриче$,$Макисе$,$Меркури$,$Анюта$Эклипс$Рейму$Мариса$Джунко$Элизабет$Моека$Хеллфайр$Мику$Чиана$Нова$Луна$Марина$Ирина$
 		29=<Player>, а ты ничего не попутал часом? Топал бы лучше отседа, пока братки не прочухали! У нас тут несчастные случаи, знаешь, случаются с теми, кто авторитет клана признавать отказывается.
 		93=Вах, да вы только поглядите! Это какого же интересного рейнджера к нам тут звёздным ветром занесло!<br>Что, <Player>, попал ты в чёрный список? Да вижу, что попал - не отнекивайся. Ну и что, так прям сразу и решил "на родные берега" якорь закинуть? Думал, что свои прикроют? Что свои своим всегда рады?<br>Так вот знай - не братаны мы тебе больше, понял!!? Вымётывайся отсюда, гнида сраколицая, пока собственными сапогами тебя в мусорный шлюз не затолкал!!!
 		31=Что?!! Проклятый пират, да кто тебе вообще позволил загнать корабль в наши доки!?<br>А ну быстро развернул своё ведро и пулей отсюда, пока я не приказал отправить тебя под военный трибунал!!!
@@ -370,6 +371,38 @@ Talk ^{
 ShipInfo ^{
 	AddInfo ^{
 		CustomInfos ^{
+			ExpTraitors_RuinsRelationsControl ^{
+				Description=Невидимая инфошка для выставления маркера при честном выходе (не побеге) игрока из тюрьмы, по умолчанию Data1 равна -1
+				Icon=0
+				Name=
+				OnActCodeTypes=t_OnDealingDamage,t_OnLeavingForm
+				OnActCode ^{
+					//При каждом попадании по станции игрока, её отношение к игроку будет ухудшаться
+					01=if(ScriptItemActionType(t_OnDealingDamage))
+					02 ^{
+						01=dword target = ScriptItemActObject1();
+						02=if(ObjectType(target) == 4)
+						03 ^{
+							01=if(~findsubstr(',RC,WB,SB,BK,MC,TC,PB,CB,', ',' + ShipType(target) + ','))
+							02 ^{
+								01=RelationToRanger(target, Player(), max(RelationToRanger(target, Player()) - 10, 10));
+							}
+						}
+					}
+					//Игрок покидает тюрьму (выходит честно или сбегает)
+					03=else
+					04 ^{
+						01=if(ShipInPrison(Player()))
+						02 ^{
+							01=if(CurrentForm() == 'PlanetQuest')
+							02 ^{
+								01=ShipCustomShipInfoData(0, CurInfo(), 1, PlanetOwner(GetShipPlanet(Player())));
+								02=GotoGov(2);
+							}
+						}
+					}
+				}
+			}
 			ExpTraitors_RuinsBlock ^{
 				Description=Невидимая инфошка для блокировки станций. Снимается сразу при взлёте со станции, имеющей плохое отношение к игроку.
 				Icon=0
@@ -377,39 +410,39 @@ ShipInfo ^{
 				OnActCodeTypes=t_OnStep,t_OnEnteringForm,t_OnReEnteringForm,t_OnLeavingForm
 				OnActStepTypes=0
 				OnActCode ^{
-					01=if(ScriptItemActionType(t_OnStep, 0))
+					01=if(ScriptItemActionType(t_OnStep))
 					02 ^{
 						01=if(ShipOrder(ScriptItemActShip()) == 5 || RelationToRanger(GetShipRuins(ScriptItemActShip()), ScriptItemActShip()) > 29)
 						02 ^{
-							01=InterfaceState('Ship','LoadRocketsInSlotsBut',-1);
-							02=InterfaceState('Ship','LoadRocketsInSlotsBlock',-1);
-							03=InterfaceState('Ship','LoadRocketsInSlotsButHitBox',-1);
-							04=InterfaceState('Ship','LoadRocketsInHold',-1);
-							05=InterfaceState('Ship','LoadRocketsInHoldBlock',-1);
-							06=InterfaceState('Ship','SellAllFromHold',-1);
-							07=InterfaceState('Ship','SellAllFromHoldBlock',-1);
-							08=InterfaceState('Ship','SC_Slot1_But',-1);
-							09=InterfaceState('Ship','SC_Slot1_ButBlock',-1);
-							10=InterfaceState('Ship','SC_Slot3_But',-1);
-							11=InterfaceState('Ship','SC_Slot3_ButBlock',-1);
-							12=InterfaceState('Ship','SC_Slot2_But',-1);
-							13=InterfaceState('Ship','SC_Slot2_ButBlock',-1);
-							14=InterfaceState('Ship','SC_RepareFull_But',-1);
-							15=InterfaceState('Ship','SC_RepareFull_ButBlock',-1);
-							16=InterfaceState('Ship','SellAllFromStorage',-1);
-							17=InterfaceState('Ship','SellAllFromStorageBlock',-1);
+							01=InterfaceState('Ship', 'LoadRocketsInSlotsBut', -1);
+							02=InterfaceState('Ship', 'LoadRocketsInSlotsBlock', -1);
+							03=InterfaceState('Ship', 'LoadRocketsInSlotsButHitBox', -1);
+							04=InterfaceState('Ship', 'LoadRocketsInHold', -1);
+							05=InterfaceState('Ship', 'LoadRocketsInHoldBlock', -1);
+							06=InterfaceState('Ship', 'SellAllFromHold', -1);
+							07=InterfaceState('Ship', 'SellAllFromHoldBlock', -1);
+							08=InterfaceState('Ship', 'SC_Slot1_But', -1);
+							09=InterfaceState('Ship', 'SC_Slot1_ButBlock', -1);
+							10=InterfaceState('Ship', 'SC_Slot3_But', -1);
+							11=InterfaceState('Ship', 'SC_Slot3_ButBlock', -1);
+							12=InterfaceState('Ship', 'SC_Slot2_But', -1);
+							13=InterfaceState('Ship', 'SC_Slot2_ButBlock', -1);
+							14=InterfaceState('Ship', 'SC_RepareFull_But', -1);
+							15=InterfaceState('Ship', 'SC_RepareFull_ButBlock', -1);
+							16=InterfaceState('Ship', 'SellAllFromStorage', -1);
+							17=InterfaceState('Ship', 'SellAllFromStorageBlock', -1);
 							//Также снимаем блокировку с кнопок в главном меню станции
-							18=InterfaceState('RuinsTalk','PR_Shop',-1);
-							19=InterfaceState('RuinsTalk','PR_ShopBlock',-1);
-							20=InterfaceState('RuinsTalk','PR_Goods',-1);
-							21=InterfaceState('RuinsTalk','PR_GoodsBlock',-1);
-							22=InterfaceState('RuinsTalk','PR_Info',-1);
-							23=InterfaceState('RuinsTalk','PR_InfoBlock',-1);
-							24=InterfaceState('RuinsTalk','PM_EndTurn',-1);
-							25=InterfaceState('RuinsTalk','RT_EndTurn_Block',-1);
-							26=InterfaceState('RuinsTalk','AstAddRuins',-1);
+							18=InterfaceState('RuinsTalk', 'PR_Shop', -1);
+							19=InterfaceState('RuinsTalk', 'PR_ShopBlock', -1);
+							20=InterfaceState('RuinsTalk', 'PR_Goods', -1);
+							21=InterfaceState('RuinsTalk', 'PR_GoodsBlock', -1);
+							22=InterfaceState('RuinsTalk', 'PR_Info', -1);
+							23=InterfaceState('RuinsTalk', 'PR_InfoBlock', -1);
+							24=InterfaceState('RuinsTalk', 'PM_EndTurn', -1);
+							25=InterfaceState('RuinsTalk', 'RT_EndTurn_Block', -1);
+							26=InterfaceState('RuinsTalk', 'AstAddRuins', -1);
 							//Под конец удаляем инфошку
-							27=ShipDeleteCustomShipInfo(ScriptItemActShip(),'ExpTraitors_RuinsBlock');
+							27=ShipDeleteCustomShipInfo(ScriptItemActShip(), 'ExpTraitors_RuinsBlock');
 						}
 					}
 					03=else if(ScriptItemActionType(t_OnEnteringForm) || ScriptItemActionType(t_OnReEnteringForm))
@@ -467,37 +500,37 @@ ShipInfo ^{
 						09=else if(CurrentForm() == 'GoodsShop')
 						10 ^{
 							01=str type = ShipType(GetShipRuins(Player()));
-							02=if(type == 'RC') MessageBox(Format(CT('Script.Mod_ExpTraitors.RC_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
-							03=else if(type == 'WB') MessageBox(Format(CT('Script.Mod_ExpTraitors.WB_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
-							04=else if(type == 'SB') MessageBox(Format(CT('Script.Mod_ExpTraitors.SB_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
-							05=else if(type == 'BK') MessageBox(Format(CT('Script.Mod_ExpTraitors.BK_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
-							06=else if(type == 'TC') MessageBox(Format(CT('Script.Mod_ExpTraitors.TC_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
-							07=else if(type == 'PB') MessageBox(Format(CT('Script.Mod_ExpTraitors.PB_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
-							08=else if(type == 'CB') MessageBox(Format(CT('Script.Mod_ExpTraitors.CB_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
+							02=if(type == 'RC') MessageBox(Format(CT('Script.Mod_ExpTraitors.RC_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
+							03=else if(type == 'WB') MessageBox(Format(CT('Script.Mod_ExpTraitors.WB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
+							04=else if(type == 'SB') MessageBox(Format(CT('Script.Mod_ExpTraitors.SB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
+							05=else if(type == 'BK') MessageBox(Format(CT('Script.Mod_ExpTraitors.BK_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
+							06=else if(type == 'TC') MessageBox(Format(CT('Script.Mod_ExpTraitors.TC_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
+							07=else if(type == 'PB') MessageBox(Format(CT('Script.Mod_ExpTraitors.PB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
+							08=else if(type == 'CB') MessageBox(Format(CT('Script.Mod_ExpTraitors.CB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
 							09=FormChange('RuinsTalk');
 						}
 						11=else if(CurrentForm() == 'EquipmentShop')
 						12 ^{
 							01=type = ShipType(GetShipRuins(Player()));
-							02=if(type == 'RC') MessageBox(Format(CT('Script.Mod_ExpTraitors.RC_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
-							03=else if(type == 'WB') MessageBox(Format(CT('Script.Mod_ExpTraitors.WB_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
-							04=else if(type == 'SB') MessageBox(Format(CT('Script.Mod_ExpTraitors.SB_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
-							05=else if(type == 'BK') MessageBox(Format(CT('Script.Mod_ExpTraitors.BK_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
-							06=else if(type == 'TC') MessageBox(Format(CT('Script.Mod_ExpTraitors.TC_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
-							07=else if(type == 'PB') MessageBox(Format(CT('Script.Mod_ExpTraitors.PB_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
-							08=else if(type == 'CB') MessageBox(Format(CT('Script.Mod_ExpTraitors.CB_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
+							02=if(type == 'RC') MessageBox(Format(CT('Script.Mod_ExpTraitors.RC_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
+							03=else if(type == 'WB') MessageBox(Format(CT('Script.Mod_ExpTraitors.WB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
+							04=else if(type == 'SB') MessageBox(Format(CT('Script.Mod_ExpTraitors.SB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
+							05=else if(type == 'BK') MessageBox(Format(CT('Script.Mod_ExpTraitors.BK_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
+							06=else if(type == 'TC') MessageBox(Format(CT('Script.Mod_ExpTraitors.TC_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
+							07=else if(type == 'PB') MessageBox(Format(CT('Script.Mod_ExpTraitors.PB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
+							08=else if(type == 'CB') MessageBox(Format(CT('Script.Mod_ExpTraitors.CB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
 							09=FormChange('RuinsTalk');
 						}
 						13=else if(CurrentForm() == 'Info')
 						14 ^{
 							01=type = ShipType(GetShipRuins(Player()));
-							02=if(type == 'RC') MessageBox(Format(CT('Script.Mod_ExpTraitors.RC_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
-							03=else if(type == 'WB') MessageBox(Format(CT('Script.Mod_ExpTraitors.WB_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
-							04=else if(type == 'SB') MessageBox(Format(CT('Script.Mod_ExpTraitors.SB_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
-							05=else if(type == 'BK') MessageBox(Format(CT('Script.Mod_ExpTraitors.BK_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
-							06=else if(type == 'TC') MessageBox(Format(CT('Script.Mod_ExpTraitors.TC_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
-							07=else if(type == 'PB') MessageBox(Format(CT('Script.Mod_ExpTraitors.PB_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
-							08=else if(type == 'CB') MessageBox(Format(CT('Script.Mod_ExpTraitors.CB_Block'),'BaseName',ShipName(GetShipRuins(Player()))),10);
+							02=if(type == 'RC') MessageBox(Format(CT('Script.Mod_ExpTraitors.RC_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
+							03=else if(type == 'WB') MessageBox(Format(CT('Script.Mod_ExpTraitors.WB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
+							04=else if(type == 'SB') MessageBox(Format(CT('Script.Mod_ExpTraitors.SB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
+							05=else if(type == 'BK') MessageBox(Format(CT('Script.Mod_ExpTraitors.BK_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
+							06=else if(type == 'TC') MessageBox(Format(CT('Script.Mod_ExpTraitors.TC_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
+							07=else if(type == 'PB') MessageBox(Format(CT('Script.Mod_ExpTraitors.PB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
+							08=else if(type == 'CB') MessageBox(Format(CT('Script.Mod_ExpTraitors.CB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
 							09=FormChange('RuinsTalk');
 						}
 						15=else if(CurrentForm() == 'RuinsTalk')
@@ -506,59 +539,59 @@ ShipInfo ^{
 							02=InterfaceState('RuinsTalk', 'RT_EndTurn_Block', 1);
 						}
 					}
-					05=else if(ScriptItemActionType(t_OnLeavingForm))
+					05=else //if(ScriptItemActionType(t_OnLeavingForm))
 					06 ^{
 						01=if(CurrentForm() == 'Ship')
 						02 ^{
-							01=InterfaceState('RuinsTalk','PR_Shop',-1);
-							02=InterfaceState('RuinsTalk','PR_ShopBlock',-1);
-							03=InterfaceState('RuinsTalk','PR_Goods',-1);
-							04=InterfaceState('RuinsTalk','PR_GoodsBlock',-1);
-							05=InterfaceState('RuinsTalk','PR_Info',-1);
-							06=InterfaceState('RuinsTalk','PR_InfoBlock',-1);
-							07=InterfaceState('Ship','LoadRocketsInSlotsBut',-1);
-							08=InterfaceState('Ship','LoadRocketsInSlotsBlock',-1);
-							09=InterfaceState('Ship','LoadRocketsInSlotsButHitBox',-1);
-							10=InterfaceState('Ship','LoadRocketsInHold',-1);
-							11=InterfaceState('Ship','LoadRocketsInHoldBlock',-1);
-							12=InterfaceState('Ship','SellAllFromHold',-1);
-							13=InterfaceState('Ship','SellAllFromHoldBlock',-1);
-							14=InterfaceState('Ship','SC_Slot1_But',-1);
-							15=InterfaceState('Ship','SC_Slot1_ButBlock',-1);
-							16=InterfaceState('Ship','SC_Slot3_But',-1);
-							17=InterfaceState('Ship','SC_Slot3_ButBlock',-1);
-							18=InterfaceState('Ship','SC_Slot2_But',-1);
-							19=InterfaceState('Ship','SC_Slot2_ButBlock',-1);
-							20=InterfaceState('Ship','SC_RepareFull_ButBlock',-1);
-							21=InterfaceState('Ship','SC_RepareFull_But',-1);
-							22=InterfaceState('Ship','SC_RepareFull_ButBlock',-1);
-							23=InterfaceState('Ship','SellAllFromStorage',-1);
-							24=InterfaceState('Ship','SellAllFromStorageBlock',-1);
+							01=InterfaceState('RuinsTalk', 'PR_Shop', -1);
+							02=InterfaceState('RuinsTalk', 'PR_ShopBlock', -1);
+							03=InterfaceState('RuinsTalk', 'PR_Goods', -1);
+							04=InterfaceState('RuinsTalk', 'PR_GoodsBlock', -1);
+							05=InterfaceState('RuinsTalk', 'PR_Info', -1);
+							06=InterfaceState('RuinsTalk', 'PR_InfoBlock', -1);
+							07=InterfaceState('Ship', 'LoadRocketsInSlotsBut', -1);
+							08=InterfaceState('Ship', 'LoadRocketsInSlotsBlock', -1);
+							09=InterfaceState('Ship', 'LoadRocketsInSlotsButHitBox', -1);
+							10=InterfaceState('Ship', 'LoadRocketsInHold', -1);
+							11=InterfaceState('Ship', 'LoadRocketsInHoldBlock', -1);
+							12=InterfaceState('Ship', 'SellAllFromHold', -1);
+							13=InterfaceState('Ship', 'SellAllFromHoldBlock', -1);
+							14=InterfaceState('Ship', 'SC_Slot1_But', -1);
+							15=InterfaceState('Ship', 'SC_Slot1_ButBlock', -1);
+							16=InterfaceState('Ship', 'SC_Slot3_But', -1);
+							17=InterfaceState('Ship', 'SC_Slot3_ButBlock', -1);
+							18=InterfaceState('Ship', 'SC_Slot2_But', -1);
+							19=InterfaceState('Ship', 'SC_Slot2_ButBlock', -1);
+							20=InterfaceState('Ship', 'SC_RepareFull_ButBlock', -1);
+							21=InterfaceState('Ship', 'SC_RepareFull_But', -1);
+							22=InterfaceState('Ship', 'SC_RepareFull_ButBlock', -1);
+							23=InterfaceState('Ship', 'SellAllFromStorage', -1);
+							24=InterfaceState('Ship', 'SellAllFromStorageBlock', -1);
 							//Смена "заглушки" кнопки пропуска хода
-							25=InterfaceState('Ship','PM_EndTurn',-1);
-							26=InterfaceState('Ship','RT_EndTurn_Block',0);
-							27=InterfaceState('RuinsTalk','PM_EndTurn',0);
-							28=InterfaceState('RuinsTalk','RT_EndTurn_Block',1);
+							25=InterfaceState('Ship', 'PM_EndTurn', -1);
+							26=InterfaceState('Ship', 'RT_EndTurn_Block', 0);
+							27=InterfaceState('RuinsTalk', 'PM_EndTurn', 0);
+							28=InterfaceState('RuinsTalk', 'RT_EndTurn_Block',1);
 						}
 						//Смена "заглушки" кнопки пропуска хода
 						03=else if(CurrentForm() == 'Rating')
 						04 ^{
-							01=InterfaceState('Rating','PM_EndTurn',-1);
-							02=InterfaceState('Rating','RT_EndTurn_Block',0);
-							03=InterfaceState('RuinsTalk','PM_EndTurn',0);
-							04=InterfaceState('RuinsTalk','RT_EndTurn_Block',1);
+							01=InterfaceState('Rating', 'PM_EndTurn', -1);
+							02=InterfaceState('Rating', 'RT_EndTurn_Block', 0);
+							03=InterfaceState('RuinsTalk', 'PM_EndTurn', 0);
+							04=InterfaceState('RuinsTalk', 'RT_EndTurn_Block',1);
 						}
 						05=else if(CurrentForm() == 'Galaxy')
 						06 ^{
-							01=InterfaceState('Galaxy','PM_EndTurn',-1);
-							02=InterfaceState('Galaxy','RT_EndTurn_Block',0);
-							03=InterfaceState('RuinsTalk','PM_EndTurn',0);
-							04=InterfaceState('RuinsTalk','RT_EndTurn_Block',1);
+							01=InterfaceState('Galaxy', 'PM_EndTurn', -1);
+							02=InterfaceState('Galaxy', 'RT_EndTurn_Block', 0);
+							03=InterfaceState('RuinsTalk', 'PM_EndTurn', 0);
+							04=InterfaceState('RuinsTalk', 'RT_EndTurn_Block',1);
 						}
 						07=else if(CurrentForm() == 'Hangar')
 						08 ^{
-							01=InterfaceState('Hangar','PM_EndTurn',-1);
-							02=InterfaceState('Hangar','RT_EndTurn_Block',0);
+							01=InterfaceState('Hangar', 'PM_EndTurn', -1);
+							02=InterfaceState('Hangar', 'RT_EndTurn_Block', 0);
 						}
 					}
 				}
@@ -569,14 +602,14 @@ ShipInfo ^{
 				Name=
 				OnActCodeTypes=t_OnEnteringForm,t_OnReEnteringForm
 				OnActCode ^{
-					01=dword bird=0;
-					02=int birdId=ShipCustomShipInfoData(0,CurInfo(),1);
-					03=for(int i=1;i<ShipItems(Player());i=i+1)
+					01=dword bird = 0;
+					02=int birdId = ShipCustomShipInfoData(0, CurInfo(), 1);
+					03=for(int i = 1; i < ShipItems(Player()); i = i + 1)
 					04 ^{
-						01=dword item=ShipItems(Player(),i);
-						02=if(Id(item)==birdId)
+						01=dword item = ShipItems(Player(), i);
+						02=if(Id(item) == birdId)
 						03 ^{
-							01=bird=item;
+							01=bird = item;
 							02=break;
 						}
 					}
@@ -587,16 +620,16 @@ ShipInfo ^{
 						02 ^{
 							//Снимаем бонус
 							//Сперва ищем попугая в руке
-							01=bird=FormShipCurItem();
+							01=bird = FormShipCurItem();
 							//И если не нашли, то делаем перебор всей Галактики
-							02=if(!bird)bird=IdToItem(birdId);
-							03=if(UselessItemData(bird,3)==-1)
+							02=if(!bird) bird = IdToItem(birdId);
+							03=if(UselessItemData(bird, 3) == -1)
 							04 ^{
 								//Снимаем бонус
-								01=ShipSpecialBonuses(Player(),bonSkill5,ShipSpecialBonuses(Player(),bonSkill5)-UselessItemData(bird,2));
-								02=UselessItemData(bird,3,-2);
+								01=ShipSpecialBonuses(Player(), bonSkill5, ShipSpecialBonuses(Player(), bonSkill5) - UselessItemData(bird, 2));
+								02=UselessItemData(bird, 3, -2);
 							}
-							05=ShipDeleteCustomShipInfo(Player(),CurInfo());
+							05=ShipDeleteCustomShipInfo(Player(), CurInfo());
 						}
 					}
 					07=else
@@ -605,13 +638,13 @@ ShipInfo ^{
 						01=if(!bird)
 						02 ^{
 							//Снимаем бонус, если он по какой-то причине всё ещё висит на игроке
-							01=bird=IdToItem(birdId);
-							02=if(UselessItemData(bird,3)==-1)
+							01=bird = IdToItem(birdId);
+							02=if(UselessItemData(bird, 3) == -1)
 							03 ^{
-								01=ShipSpecialBonuses(Player(),bonSkill5,ShipSpecialBonuses(Player(),bonSkill5)-UselessItemData(bird,2));
-								02=UselessItemData(bird,3,-2);
+								01=ShipSpecialBonuses(Player(), bonSkill5, ShipSpecialBonuses(Player(), bonSkill5) - UselessItemData(bird, 2));
+								02=UselessItemData(bird, 3, -2);
 							}
-							04=ShipDeleteCustomShipInfo(Player(),CurInfo());
+							04=ShipDeleteCustomShipInfo(Player(), CurInfo());
 						}
 					}
 				}

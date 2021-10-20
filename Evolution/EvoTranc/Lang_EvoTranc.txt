@@ -1970,9 +1970,16 @@ ShipInfo ^{
 													01=if(findsubstr(launched, 'N') == i - 1)
 													02 ^{
 														01=tranc = UseTranclucator(owner);
-														//Увеличиваем статы запускаемого транка, если хозяину вживлён биомодуль "Адмирал"
-														02=if(~ShipFindCustomShipInfoByType(owner, 'bioMM_AD_NPC'))
+														//Похоже, что-то "в крысу" тырит сложенных транков из трюма кораблей, надо выяснить
+														02=if(!tranc)
 														03 ^{
+															01=tNum = findsubstr(allId, '*' + i + '*') + 3;
+															02=tranc = substr(allId, tNum, findsubstr(allId, '*' + (i + 1) + '*') - tNum);
+															03=throw 'Tranc #' + i + ' (Id' + tranc + ') is missing in ' + Name(owner) + ' (Id' + Id(owner) + ') hold at launch!';
+														}
+														//Увеличиваем статы запускаемого транка, если хозяину вживлён биомодуль "Адмирал"
+														04=if(~ShipFindCustomShipInfoByType(owner, 'bioMM_AD_NPC'))
+														05 ^{
 															01=ShipSpecialBonuses(tranc, bonSkill1, ShipSpecialBonuses(tranc, bonSkill1) + CT('ShipInfo.AddInfo.CustomInfos.bioMM_AD_NPC.bonSkill1'));
 															02=ShipSpecialBonuses(tranc, bonSkill2, ShipSpecialBonuses(tranc, bonSkill2) + CT('ShipInfo.AddInfo.CustomInfos.bioMM_AD_NPC.bonSkill2'));
 															03=ShipSpecialBonuses(tranc, bonWEnergy, ShipSpecialBonuses(tranc, bonWEnergy) + CT('ShipInfo.AddInfo.CustomInfos.bioMM_AD_NPC.bonWEnergy'));
@@ -1980,13 +1987,13 @@ ShipInfo ^{
 															05=ShipSpecialBonuses(tranc, bonWMissile, ShipSpecialBonuses(tranc, bonWMissile) + CT('ShipInfo.AddInfo.CustomInfos.bioMM_AD_NPC.bonWMissile'));
 															06=ShipAddCustomShipInfo(tranc, 'bioMM_AD_TR_NPC');
 														}
-														04=launched = substr(launched, 0, i - 1) + 'Y' + substr(launched, i);
-														05=ShipCustomShipInfoTextData(0, cur_info, 2, launched);
-														06=status = substr(status, 0, i - 1) + 'Z' + substr(status, i);
-														07=ShipCustomShipInfoTextData(0, cur_info, 3, status);
+														06=launched = substr(launched, 0, i - 1) + 'Y' + substr(launched, i);
+														07=ShipCustomShipInfoTextData(0, cur_info, 2, launched);
+														08=status = substr(status, 0, i - 1) + 'Z' + substr(status, i);
+														09=ShipCustomShipInfoTextData(0, cur_info, 3, status);
 														//Увеличиваем вес предмету, занимающему пространство под вылетевших из трюма транков
-														08=for(j = 1; j < ShipItems(owner); j = j + 1)
-														09 ^{
+														10=for(j = 1; j < ShipItems(owner); j = j + 1)
+														11 ^{
 															01=item = ShipItems(owner, j);
 															02=if(EquipmentImageName(item) == 'WeightReserve')
 															03 ^{
@@ -2683,11 +2690,13 @@ ShipInfo ^{
 									02=tNum = findsubstr(allId, '*' + i + '*') + 3;
 									03=tranc = substr(allId, tNum, findsubstr(allId, '*' + (i + 1) + '*') - tNum);
 									04=tranc = IdToShip(tranc);
+									//Один хрен, нужно ошибку ловить, а не костыли в коде ставить, так что обход краша добавлять не буду
+									//04=SFT(''+allId + ' ');SFT(''+quant + ' ');SFT(''+tranc + ' ');SFT(''+tranc + ' ');
 									//blacksun посчитал, что здесь могут быть краши, однако "пересмотр" погибших на вылете транков всегда
 									//происходит в инфошке самих транков по событию t_OnDeath, так что вряд ли здесь что-то может реально сломаться
 									//Предположительно, кораблю изначально могут начисляться несуществующие транки, но суть проблемы не ясна
 									//Также вероятно, что воскрешающиеся после смерти рандомные рейнджеры (наследие Даба) не вызывают срабатывание t_OnDeath по каким-то причинам, хотя формально должны
-									05=if(!tranc)
+									05=if(0)//!tranc)
 									06 ^{
 										01=ArrayClear(GEvoTrancTempArray);
 										02=str tempId;
