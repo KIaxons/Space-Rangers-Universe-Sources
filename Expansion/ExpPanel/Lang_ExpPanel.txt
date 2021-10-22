@@ -80,6 +80,21 @@ ShipInfo ^{
                         02 ^{
                             01=if(InterfaceState('StarMap', 'fix_info_window') == 1) InterfaceState('StarMap', 'fix_info_window', 0);
 							02=InterfaceState('Ship', 'HideShipRankPanel', 1);
+							03=if(GetShipPlanet(FormCurShip()))
+							04 ^{
+								01=InterfaceState('Ship', 'GateAnim', 0);
+								02=InterfaceState('Ship', 'GateBurnAnim', 1);
+							}
+							05=else if(GetShipRuins(FormCurShip()))
+							06 ^{
+								01=InterfaceState('Ship', 'GateAnim', 0);
+								02=InterfaceState('Ship', 'GateBurnAnim', 1);
+							}
+							07=else
+							08 ^{
+								01=InterfaceState('Ship', 'GateAnim', 1);
+								02=InterfaceState('Ship', 'GateBurnAnim', 0);
+							}
                         }
                         03=if(CurrentForm() == 'StarMap')
                         04 ^{
