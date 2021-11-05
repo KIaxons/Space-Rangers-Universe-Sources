@@ -366,13 +366,13 @@ Biomodules ^{
             BlindFailed ~{
                 Text_1=Вот это астероид! Прости, ты что-то сказал?
 				Text_2=Извини, не вижу что ты там показываешь, у меня экран барахлит.
-				Сount=2
+				Count=2
                 TextVisor_1=Чего? Не вижу, что ты там показываешь, мне визор весь экран загородил.
-                СountVisor=1
+                CountVisor=1
 				TextGlasses_1=Извини, в очках ничего не видно. Можешь ещё раз повторить?
-				СountGlasses=1
+				CountGlasses=1
 				TextHelmet_1=Чёрт, сквозь стекло шлема не разглядеть. Ты что-то интересное там показывал?
-				СountHelmet=1
+				CountHelmet=1
             }
             BlindStart ~{
                 Text_1=Улыбочку!
@@ -2251,56 +2251,56 @@ ShipInfo ^{
 						//Если ещё не истёк, то проверяем, не начался ли у игрока приступ
                         08=else
                         09 ^{
-                            01=int chance=0;
-                            02=str temp_str=ShipCustomShipInfoTextData(0,infos,1);
-                            03=int stun_data=temp_str;
+                            01=int chance = 0;
+                            02=str temp_str = ShipCustomShipInfoTextData(0, infos, 1);
+                            03=int stun_data = temp_str;
 							//Отключение приступа, если игрок находится на планете
 							04=if(GetShipPlanet(Player()) || GetShipRuins(Player()))
                             05 ^{
 								01=if(ShipCustomShipInfoTextData(0, infos, 3) == 'ill_attack') ShipCustomShipInfoTextData(0, infos, 3, 'no_ill_attack');
                             }
 							//Начало обработчика, активирующего приступ лихорадки
-                            06=if(cur_stama<0 && stun_data<=0)
+                            06=if(cur_stama < 0 && stun_data <= 0)
                             07 ^{
-								01=int race_stam=ShipPilotRace(Player());
+								01=int race_stam = ShipPilotRace(Player());
 								//Малоки
-								02=if(race_stam == 0)race_stam=10;
+								02=if(race_stam == 0) race_stam = 10;
 								//Пеленги
-								03=else if(race_stam == 1)race_stam=7;
+								03=else if(race_stam == 1) race_stam = 7;
 								//Люди
-								04=else if(race_stam == 2)race_stam=7;
+								04=else if(race_stam == 2) race_stam = 7;
 								//Фэяне
-								05=else if(race_stam == 3)race_stam=5;
+								05=else if(race_stam == 3) race_stam = 5;
 								//Гаальцы
-								06=else race_stam=6;
+								06=else race_stam = 6;
 								//Нагрузка от биомодулей
-								07=int stress_stam=ShipCustomShipInfoData(0,infos,3);
-								//Если нагрузка ниже 8, равняем до 8 и вычисляем по формуле: (нагрузка от биомодулей*2)-врождённая выносливость
-								08=if(stress_stam<8)stress_stam=8;
-                                09=chance=(stress_stam*2)-race_stam;
+								07=int stress_stam = ShipCustomShipInfoData(0, infos, 3);
+								//Если нагрузка ниже 8, равняем до 8 и вычисляем по формуле: (нагрузка от биомодулей * 2) - врождённая выносливость
+								08=if(stress_stam < 8) stress_stam = 8;
+                                09=chance = (stress_stam * 2) - race_stam;
 								//Снижаем значение шанса в зависимости от фактической нагрузки
-								10=if(stress_stam < 7)chance=chance-1;
-								11=if(stress_stam < 5)chance=chance-1;
-								12=if(stress_stam < 3)chance=chance-1;
-								13=if(stress_stam < 2 && race_stam!=10)chance=chance-1;
+								10=if(stress_stam < 7) chance = chance - 1;
+								11=if(stress_stam < 5) chance = chance - 1;
+								12=if(stress_stam < 3) chance = chance - 1;
+								13=if(stress_stam < 2 && race_stam != 10) chance = chance - 1;
 								//Создаём множитель для шанса и отнимаем от него до -2, чтобы снизить влияние самой аугментационной лихорадки
-								14=int multiplier=-cur_stama;
-								15=if((-cur_stama) > 1)multiplier=multiplier-1;
-								16=if((-cur_stama) > 1)multiplier=multiplier-1;
+								14=int multiplier = -cur_stama;
+								15=if((-cur_stama) > 1) multiplier = multiplier - 1;
+								16=if((-cur_stama) > 1) multiplier = multiplier - 1;
 								//Полученный шанс умножаем на множитель
-								17=chance=chance*multiplier;
+								17=chance = chance * multiplier;
 								//Ограничение максимального шанса
-								18=if(chance > 87)chance=87;
+								18=if(chance > 87) chance = 87;
 								//Постоянный приступ и даже смерть в случае слишком сильной отрицательной выносливости (для малоков бонус)
-								19=if(race_stam!=10)
+								19=if(race_stam != 10)
 								20 ^{
-									01=if(cur_stama < -15)CustomLose(CT('Script.Mod_ExpImplants.AugmentationFeverAttackDeath'));
-									02=else if(cur_stama < -11)chance=100;
+									01=if(cur_stama < -15) CustomLose(CT('Script.Mod_ExpImplants.AugmentationFeverAttackDeath'));
+									02=else if(cur_stama < -11) chance=100;
 								}
 								21=else
 								22 ^{
-									01=if(cur_stama < -20)CustomLose(CT('Script.Mod_ExpImplants.AugmentationFeverAttackDeath'));
-									02=else if(cur_stama < -15)chance=100;
+									01=if(cur_stama < -20) CustomLose(CT('Script.Mod_ExpImplants.AugmentationFeverAttackDeath'));
+									02=else if(cur_stama < -15) chance=100;
 								}
 								//Отладочная строка
 								//22=NewsAdd('Шанс словить приступ: <color=255,240,100>' + chance + '%');
@@ -2902,37 +2902,42 @@ ShipInfo ^{
 												04 ^{
 													01=if(typeN != t_Warrior || !ShipSubType(target))
 													02 ^{
-														01=int tint = CT('Biomodules.1_gtu.9.BlindStart.Text_count');
-														02=str tstr = CT('Biomodules.1_gtu.9.BlindStart.Text_' + Rnd(1, tint));
+														01=if(!fun_init)
+														02 ^{
+															01=int fun_init = 1;
+															02=unknown RndObject = ImportedFunction('UtilityFunctions', 'RndObject');
+														}
+														03=int tint = CT('Biomodules.1_gtu.9.BlindStart.Text_count');
+														04=str tstr = CT('Biomodules.1_gtu.9.BlindStart.Text_' + RndObject(1, tint, ship));
 														//Вычисляем дополнительный шанс защититься от "Вспышки" за счёт того, что навешено на лице портрета NPC
-														03=int target_race = ShipPilotRace(target);
-														04=str tstr2 = ShipFace(target, 'Init');
-														05=if(0 + tstr2 < 10) tstr2 = '0' + tstr2;
-														06=if(!target_race) tstr2 = GetMainData('Data.StyleFaceMaloc.' + tstr2);
-														07=else if(target_race == Peleng) tstr2 = GetMainData('Data.StyleFacePeleng.' + tstr2);
-														08=else if(target_race == People) tstr2 = GetMainData('Data.StyleFacePeople.' + tstr2);
-														09=else if(target_race == Fei) tstr2 = GetMainData('Data.StyleFaceFei.' + tstr2);
-														10=else tstr2 = GetMainData('Data.StyleFaceGaal.' + tstr2);
-														11=int extra_chance = 0;
-														12=if(~findsubstr(tstr2, 'visor'))
-														13 ^{
+														05=int target_race = ShipPilotRace(target);
+														06=str tstr2 = ShipFace(target, 'Init');
+														07=if(0 + tstr2 < 10) tstr2 = '0' + tstr2;
+														08=if(!target_race) tstr2 = GetMainData('Data.StyleFaceMaloc.' + tstr2);
+														09=else if(target_race == Peleng) tstr2 = GetMainData('Data.StyleFacePeleng.' + tstr2);
+														10=else if(target_race == People) tstr2 = GetMainData('Data.StyleFacePeople.' + tstr2);
+														11=else if(target_race == Fei) tstr2 = GetMainData('Data.StyleFaceFei.' + tstr2);
+														12=else tstr2 = GetMainData('Data.StyleFaceGaal.' + tstr2);
+														13=int extra_chance = 0;
+														14=if(~findsubstr(tstr2, 'visor'))
+														15 ^{
 															01=tstr2 = 'Visor';
 															02=extra_chance = 10;
 														}
-														14=else if(~findsubstr(tstr2, 'glasses'))
-														15 ^{
+														16=else if(~findsubstr(tstr2, 'glasses'))
+														17 ^{
 															01=tstr2 = 'Glasses';
 															02=extra_chance = 15;
 														}
-														16=else if(~findsubstr(tstr2, 'helmet'))
-														17 ^{
+														18=else if(~findsubstr(tstr2, 'helmet'))
+														19 ^{
 															01=tstr2 = 'Helmet';
 															02=extra_chance = 20;
 														}
 														//Цель попросту проморгала вспышку (вероятность 20%), либо получила резист за счёт визора, очков или шлема
-														18=int rand = Rnd(1, 100);
-														19=if(rand <= 20 + extra_chance)
-														20 ^{
+														20=int rand = RndObject(1, 100, target);
+														21=if(rand <= 20 + extra_chance)
+														22 ^{
 															01=if(target == Player())
 															02 ^{
 																01=tstr = tstr + CT('FormInfo.br') + CT('Biomodules.1_gtu.9.BlindPlayerFailed');
@@ -2941,12 +2946,12 @@ ShipInfo ^{
 																03=if(rand <= 20)
 																04 ^{
 																	01=tint = CT('Biomodules.1_gtu.9.BlindFailed.Count');
-																	02=tstr = CT('Biomodules.1_gtu.9.BlindFailed.Text_' + Rnd(1, tint));
+																	02=tstr = CT('Biomodules.1_gtu.9.BlindFailed.Text_' + RndObject(1, tint, ship));
 																}
 																05=else
 																06 ^{
 																	01=tint = CT('Biomodules.1_gtu.9.BlindFailed.Count' + tstr2);
-																	02=tstr = CT('Biomodules.1_gtu.9.BlindFailed.Text' + tstr2 + '_' + Rnd(1, tint));
+																	02=tstr = CT('Biomodules.1_gtu.9.BlindFailed.Text' + tstr2 + '_' + RndObject(1, tint, ship));
 																}
 																07=ShipCustomShipInfoTextData(0, infos, 2, tstr);
 																08=GExpImplantsDialog = 1;
@@ -2965,12 +2970,12 @@ ShipInfo ^{
 																			02=if(rand <= 20)
 																			03 ^{
 																				01=tint = CT('Biomodules.1_gtu.9.BlindFailed.Count');
-																				02=tstr = tstr + CT('FormInfo.br') + '- ' + CT('Biomodules.1_gtu.9.BlindFailed.Text_' + Rnd(1, tint));
+																				02=tstr = tstr + CT('FormInfo.br') + '- ' + CT('Biomodules.1_gtu.9.BlindFailed.Text_' + RndObject(1, tint, ship));
 																			}
 																			04=else
 																			05 ^{
 																				01=tint = CT('Biomodules.1_gtu.9.BlindFailed.Count' + tstr2);
-																				02=tstr = tstr + CT('FormInfo.br') + '- ' + CT('Biomodules.1_gtu.9.BlindFailed.Text' + tstr2 + '_' + Rnd(1, tint));
+																				02=tstr = tstr + CT('FormInfo.br') + '- ' + CT('Biomodules.1_gtu.9.BlindFailed.Text' + tstr2 + '_' + RndObject(1, tint, ship));
 																			}
 																			06=Ether(1, '', tstr, ship, target);
 																		}
@@ -2979,14 +2984,14 @@ ShipInfo ^{
 															}
 														}
 														//Вспышка ударила точно в глаза цели
-														21=else
-														22 ^{
+														23=else
+														24 ^{
 															01=if(target == Player())
 															02 ^{
 																01=tstr = tstr + CT('FormInfo.br') + CT('Biomodules.1_gtu.9.BlindPlayerSuccess');
 																02=ShipCustomShipInfoTextData(0, infos, 1, tstr);
 																03=tint = CT('Biomodules.1_gtu.9.BlindSuccess.Text_count');
-																04=tstr = CT('Biomodules.1_gtu.9.BlindSuccess.Text_' + Rnd(1, tint));
+																04=tstr = CT('Biomodules.1_gtu.9.BlindSuccess.Text_' + RndObject(1, tint, ship));
 																05=ShipCustomShipInfoTextData(0, infos, 2, tstr);
 																06=GExpImplantsDialog = 1;
 																07=Dialog(ship);
@@ -3001,17 +3006,18 @@ ShipInfo ^{
 																		02 ^{
 																			01=tstr = '<color=255,240,100>' + Name(ship) + '</color>' + '-->' + '<color=255,240,100>' + Name(target) + '</color>' + CT('FormInfo.br') + '- ' + tstr;
 																			02=tint = CT('Biomodules.1_gtu.9.BlindSuccess.Text_count');
-																			03=tstr = tstr + CT('FormInfo.br') + '- ' + CT('Biomodules.1_gtu.9.BlindSuccess.Text_' + Rnd(1, tint));
+																			03=tstr = tstr + CT('FormInfo.br') + '- ' + CT('Biomodules.1_gtu.9.BlindSuccess.Text_' + RndObject(1, tint, ship));
 																			04=Ether(1, '', tstr, ship, target);
 																		}
 																	}
 																}
 															}
-															05=ShipHealthFactor(target, 1, Rnd(10, 20));
+															05=ShipHealthFactor(target, 1, RndObject(10, 20, target));
 															//За это цель на обидчика обидится
 															06=ShipSetBad(target, ship);
 														}
-														23=ShipCustomShipInfoData(0, infos, 1, CurTurn() + Rnd(3, 6));
+														//Задаём КД до возможности следующего применения "Вспышки"
+														25=ShipCustomShipInfoData(0, infos, 1, CurTurn() + RndObject(3, 6, ship));
 													}
 												}
 											}

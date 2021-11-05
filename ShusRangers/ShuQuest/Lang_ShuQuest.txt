@@ -24,6 +24,7 @@ PlanetQuest ^{
         }
     }
     PlanetQuest ^{
+		46=Mods\ShusRangers\ShuQuest\DATA\Quest\Rus\Colonization.qmm
         110=Mods\ShusRangers\ShuQuest\DATA\Quest\Rus\LongLiveTheRanger.qmm
         111=Mods\ShusRangers\ShuQuest\DATA\Quest\Rus\mark05.qmm
 		//Prison=Mods\ShusRangers\ShuQuest\DATA\Quest\Rus\Prison.qmm
@@ -33,6 +34,124 @@ PlanetQuest ^{
         110=Кто не мечтал в детстве стать королем? У Вас есть уникальная возможность воплотить мечту в жизнь!
         111=Вас ожидает некое специальное задание. Прежде всего нужно выяснить, зачем же им понадобился рейнджер среднего телосложения.
     }
+}
+ShipInfo ^{
+    AddInfo ^{
+        CustomInfos ^{
+			ShuQuest_Colonization ^{
+                Icon=0
+                Name=Превращает незаселенку, заселённую в ходе квеста "Колонизация", в нормальную заселённую планету
+                Description=NoShow
+				OnActCodeTypes=t_OnLeavingForm
+				OnActCode ^{
+					//Игрок успешно завершил текстовый квест "Колонизация", предполагается, что прямо сейчас он переводится на форму незаселёнки
+					01=if(QuestsStatusByNom(2, 46) == 2)
+					02 ^{
+						01=dword planet = GetShipPlanet(Player()); //Якобы колонизированная игроком планета
+						02=if(!planet)
+						03 ^{
+							01=ShipDeleteCustomShipInfo(Player(), 'ShuQuest_Colonization');
+							02=exit;
+						}
+						04=if(PlanetOwner(planet) != None)
+						05 ^{
+							01=ShipDeleteCustomShipInfo(Player(), 'ShuQuest_Colonization');
+							02=exit;
+						}
+						06=if(!fun_init)
+						07 ^{
+							01=int fun_init = 1;
+							02=unknown GetPlanetOrbitProbe = ImportedFunction('UtilityFunctions', 'GetPlanetOrbitProbe');
+						}
+						08=dword star = PlanetToStar(planet);
+						09=PlanetRace(planet, People);
+						10=if(!StarOwner(star)) //Система под контролем Коалиции
+						11 ^{
+							01=PlanetOwner(planet, People);
+							02=RelationToRanger(planet, Player(), 100);
+						}
+						12=else if(StarOwner(star) == 2) //Система под контролем клана
+						13 ^{
+							01=PlanetOwner(planet, PirateClan);
+							02=RelationToRanger(PlanetPirateClan(), Player(), 100);
+						}
+						14=else //Система под контролем ещё какой-то хероты, выгоняем игрока с планеты
+						15 ^{
+							01=ExtremalTakeOff();
+							02=PlanetOwner(planet, Kling);
+							03=RelationToRanger(planet, Player(), 100);
+						}
+						//Все эти глобалки прописаны в скрипте ShuQuest, а также в самом модифицированном квесте "Колонизация"
+						16=PlanetEco(planet, 1); //Тип экономики - смешанная
+						17=PlanetGov(planet, GQuestVarExt_Colonization_PolitRegime); //Устанавливаем планете строй, выбранный игроком в квесте
+						18=PlanetPopulation(planet, round(0.001 * GQuestVarExt_Colonization_Population)); //Население планеты зависит от её населения в квесте
+						19=PlanetInventionLevel(planet, 7, max(GalaxyTechLevel() - 1, 1)); //Общий ТУ планеты выставляем почти вровень с текущим ГТУ
+						20=PlanetBoostInventions(planet, round(0.66 * (CurTurn() - 300))); //Также накидываем планете дневных норм развития, чтобы она отставала от всех прочих развитых планет, но не слишком сильно
+						//Снимаем с орбиты незаселёнки все зонды (если есть) и переносим их на склад
+						21=for(int i = 0; i < GetPlanetOrbitProbe(planet, -1, 0); i = i + 1)
+						22 ^{
+							01=dword probe = GetPlanetOrbitProbe(planet, i, 1);
+							02=if(probe) AddItemToStorage(planet, probe);
+						}
+						23=if(PlanetOwner(planet) == Kling)
+						24 ^{
+							01=ShipDeleteCustomShipInfo(Player(), 'ShuQuest_Colonization');
+							02=exit;
+						}
+						//В зависимости от выбранного в квесте типа планеты генерируем несколько подходящих ему кораблей
+						25=int type = GQuestVarExt_Colonization_PlanetType;
+						26=if(type == 1) //Военный
+						27 ^{
+							01=dword ship = BuyWarrior(planet, 200);
+							02=ShipRefit(ship);
+							03=ship = BuyWarrior(planet, 150);
+							04=ShipRefit(ship);
+							05=ship = BuyWarrior(planet, 100);
+							06=ShipRefit(ship);
+							07=ship = BuyTransport(planet, 0, 100);
+							08=ShipRefit(ship);
+							09=RelationToRanger(ship, Player(), 100);
+						}
+						28=else if(type == 2) //Транспортный
+						29 ^{
+							01=ship = BuyTransport(planet, 0, 200);
+							02=ShipRefit(ship);
+							03=RelationToRanger(ship, Player(), 100);
+							04=ship = BuyTransport(planet, 1, 150);
+							05=ShipRefit(ship);
+							06=RelationToRanger(ship, Player(), 100);
+							07=ship = BuyTransport(planet, 0, 100);
+							08=ShipRefit(ship);
+							09=RelationToRanger(ship, Player(), 100);
+							10=ship = BuyWarrior(planet, 100);
+							11=ShipRefit(ship);
+						}
+						30=else if(type == 3) //Пиратский
+						31 ^{
+							01=ship = BuyPirate(planet, 0, 175);
+							02=ShipRefit(ship);
+							03=RelationToRanger(ship, Player(), 125);
+							04=ship = BuyPirate(planet, 0, 150);
+							05=ShipRefit(ship);
+							06=RelationToRanger(ship, Player(), 100);
+							07=ship = BuyPirate(planet, 0, 75);
+							08=ShipRefit(ship);
+							09=RelationToRanger(ship, Player(), 100);
+						}
+						32=FormChange('Planet'); //Переводим игрока на форму обитаемой планеты, иначе по умолчанию он будет перекинут на форму незаселёнки
+						33=ShipDeleteCustomShipInfo(Player(), 'ShuQuest_Colonization');
+						34=exit;
+					}
+					//Игрок провалил квест, либо, каким-то непонятным образом, скипнул его нормальное завершение
+					03=else if(QuestsStatusByNom(2, 46) > 2)
+					04 ^{
+						01=ShipDeleteCustomShipInfo(Player(), 'ShuQuest_Colonization');
+						02=exit;
+					}
+				}
+			}
+		}	
+	}
 }
 Quest ^{
     SendLetter ^{
