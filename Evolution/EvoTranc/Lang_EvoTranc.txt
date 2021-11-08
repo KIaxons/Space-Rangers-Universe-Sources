@@ -2162,113 +2162,72 @@ ShipInfo ^{
 													14 ^{
 														01=if(level>=4)
 														02 ^{
-															01=if(Rnd(1,100)<=15)ShipAddCustomShipInfo(tranc,'TrancAddGunInfo','',GetValueFromScript('Mod_EvoTranc','MusashiDamageArray',level),GetValueFromScript('Mod_EvoTranc','MusashiRangeArray',level),100,'0');
+															01=if(Rnd(1,100)<=15) ShipAddCustomShipInfo(tranc,'TrancAddGunInfo','',GetValueFromScript('Mod_EvoTranc','MusashiDamageArray',level),GetValueFromScript('Mod_EvoTranc','MusashiRangeArray',level),100,'0');
 														}
 													}
 													//Повышение ТУ на уже установленном "Мусаси"
 													15=else
 													16 ^{
-														01=int infos=ShipFindCustomShipInfoByType(tranc,'TrancAddGunInfo');
-														02=ShipCustomShipInfoData(tranc,infos,1,GetValueFromScript('Mod_EvoTranc','MusashiDamageArray',level));
-														03=ShipCustomShipInfoData(tranc,infos,2,GetValueFromScript('Mod_EvoTranc','MusashiRangeArray',level));
+														01=int infos = ShipFindCustomShipInfoByType(tranc, 'TrancAddGunInfo');
+														02=ShipCustomShipInfoData(tranc,infos, 1, GetValueFromScript('Mod_EvoTranc', 'MusashiDamageArray', level));
+														03=ShipCustomShipInfoData(tranc,infos, 2, GetValueFromScript('Mod_EvoTranc', 'MusashiRangeArray', level));
 													}
 													//Шанс на установку "Джэбэ"
-													17=if(ShipFindCustomShipInfoByType(tranc,'TrancBuffAttackInfo')==-1)
+													17=if(ShipFindCustomShipInfoByType(tranc,'TrancBuffAttackInfo') == -1)
 													18 ^{
-														01=if(level>=5)
+														01=if(level >= 5)
 														02 ^{
-															01=if(Rnd(1,100)<=10)ShipAddCustomShipInfo(tranc,'TrancBuffAttackInfo','',0,0,0,'',CT('Script.Mod_EvoTranc.RedMus'));
+															01=if(Rnd(1, 100) <= 10) ShipAddCustomShipInfo(tranc, 'TrancBuffAttackInfo', '', 0, 0, 0, '', CT('Script.Mod_EvoTranc.RedMus'));
 														}
 													}
 													//Шанс на установку "Мангуста"
-													19=if(ShipFindCustomShipInfoByType(tranc,'TrancDefShieldInfo')==-1)
+													19=if(ShipFindCustomShipInfoByType(tranc, 'TrancDefShieldInfo') == -1)
 													20 ^{
-														01=if(level>=4)
+														01=if(level >= 4)
 														02 ^{
-															01=if(Rnd(1,100)<=15)ShipAddCustomShipInfo(tranc,'TrancDefShieldInfo','',0,0,0,CT('Script.Mod_EvoTranc.RedDef'));
+															01=if(Rnd(1, 100) <= 15) ShipAddCustomShipInfo(tranc, 'TrancDefShieldInfo', '', 0, 0, 0, CT('Script.Mod_EvoTranc.RedDef'));
 														}
 													}
 													//Шанс на установку "Херувима"
-													21=if(ShipFindCustomShipInfoByType(tranc,'TrancInvincibilityInfo')==-1)
+													21=if(ShipFindCustomShipInfoByType(tranc, 'TrancInvincibilityInfo') == -1)
 													22 ^{
-														01=if(level>=6)
+														01=if(level >= 6)
 														02 ^{
-															01=if(Rnd(1,100)<=10)ShipAddCustomShipInfo(tranc,'TrancInvincibilityInfo','',0,0,0,'',CT('Script.Mod_EvoTranc.RedChe'));
+															01=if(Rnd(1, 100) <= 10) ShipAddCustomShipInfo(tranc, 'TrancInvincibilityInfo', '', 0, 0, 0, '', CT('Script.Mod_EvoTranc.RedChe'));
 														}
 													}
 													//Шанс на установку фейкового навигационного компьютера
-													23=if(ShipFindCustomShipInfoByType(tranc,'TrancFakeNavComputerInfo')==-1)
+													23=if(ShipFindCustomShipInfoByType(tranc, 'TrancFakeNavComputerInfo') == -1)
 													24 ^{
-														01=if(level>=3)
+														01=if(level >= 3)
 														02 ^{
-															01=if(Rnd(1,100)<=35)
+															01=if(Rnd(1, 100) <= 35)
 															02 ^{
-																01=ShipAddCustomShipInfo(tranc,'TrancFakeNavComputerInfo');
-																02=ItemCost(item,round(1.15*ItemCost(item)));
+																01=ShipAddCustomShipInfo(tranc, 'TrancFakeNavComputerInfo');
+																02=ItemCost(item, round(1.15 * ItemCost(item)));
 															}
 														}
 													}
 													//Устраняем возможный обвес транклюкатора
 													25=ShipCalcParam(tranc);
-													26=if(ShipFreeSpace(tranc)<0)
+													26=if(ShipFreeSpace(tranc) < 0)
 													27 ^{
-														01=ItemSize(item,ItemSize(item)+abs(ShipFreeSpace(tranc))+Rnd(37,49));
-														02=HullHP(tranc,ItemSize(item));
+														01=ItemSize(item, ItemSize(item) + abs(ShipFreeSpace(tranc)) + Rnd(37, 49));
+														02=HullHP(tranc, ItemSize(item));
 													}
-													28=else if(ShipFreeSpace(tranc)<40)
+													28=else if(ShipFreeSpace(tranc) < 40)
 													29 ^{
-														01=ItemSize(item,ItemSize(item)+Rnd(21,37));
-														02=HullHP(tranc,ItemSize(item));
+														01=ItemSize(item, ItemSize(item) + Rnd(21, 37));
+														02=HullHP(tranc, ItemSize(item));
 													}
 													30=ShipMoney(tranc, ShipMoney(owner) * 2);
 													31=ShipRefit(tranc);
 													32=ShipRefit(tranc);
-													33=ShipMoney(tranc,0);
-													34=int roll=Rnd(1, 3);
+													33=ShipMoney(tranc, 0);
+													34=int roll = Rnd(1, 3);
 													35=ShipImproveItems(tranc, roll);
-													//Перекраска транка (на всякий случай, если он был подобран ботом и имеет неверный цвет)
-													36=if(1)
+													36=if(IsScriptActive('Mod_ExpExplorers'))
 													37 ^{
-														01=int owner_race = ShipPilotRace(owner);
-														02=if(!owner_race) roll = 2;
-														03=else if(owner_race == 1) roll = 4;
-														04=else if(owner_race == 2) roll = 5;
-														05=else if(owner_race == 3) roll = 6;
-														06=else if(owner_race == 4) roll = 3;
-														07=if(owner_race == 7) roll = 7;
-														08=if(roll == 2)
-														09 ^{
-															01=Chameleon(tranc, 'Ship.TranclucatorRed');
-															02=TranclucatorData(tranc, 'ArtSysName', 'ArtTranclucatorRed');
-														}
-														10=else if(roll == 3)
-														11 ^{
-															01=Chameleon(tranc, 'Ship.TranclucatorYellow');
-															02=TranclucatorData(tranc, 'ArtSysName', 'ArtTranclucatorYellow');
-														}
-														12=else if(roll == 4)
-														13 ^{
-															01=Chameleon(tranc, 'Ship.TranclucatorGreen');
-															02=TranclucatorData(tranc, 'ArtSysName', 'ArtTranclucatorGreen');
-														}
-														14=else if(roll == 5)
-														15 ^{
-															01=Chameleon(tranc, 'Ship.TranclucatorBlue');
-															02=TranclucatorData(tranc, 'ArtSysName', 'ArtTranclucatorBlue');
-														}
-														16=else if(roll == 6)
-														17 ^{
-															01=Chameleon(tranc, 'Ship.TranclucatorViolet');
-															02=TranclucatorData(tranc, 'ArtSysName', 'ArtTranclucatorViolet');
-														}
-														18=else if(roll == 7)
-														19 ^{
-															01=Chameleon(tranc, 'Ship.TranclucatorWhite');
-															02=TranclucatorData(tranc, 'ArtSysName', 'ArtTranclucatorWhite');
-														}
-													}
-													38=if(IsScriptActive('Mod_ExpExplorers'))
-													39 ^{
 														01=if(Rnd(1, 100) <= 15 && ShipArts(tranc) <= 4)
 														02 ^{
 															01=dword artNum = 0;
@@ -2283,11 +2242,11 @@ ShipInfo ^{
 															//Создаём оригинальный артефакт
 															06=if(artNum <= 27)
 															07 ^{
-																01=if(Rnd(1,100)<=10) artNum=CreateArt(GgiveArtsArray[artNum],6);
-																02=else artNum=CreateArt(GgiveArtsArray[artNum],Rnd(0,4));
-																03=if(ShipFreeSpace(tranc)<ItemSize(artNum)) ItemSize(item,ItemSize(item)+(ItemSize(artNum)-ShipFreeSpace(tranc)));
-																04=AddItemToShip(tranc,artNum);
-																05=ItemIsInUse(artNum,tranc,1);
+																01=if(Rnd(1, 100) <= 10) artNum = CreateArt(GgiveArtsArray[artNum], 6);
+																02=else artNum = CreateArt(GgiveArtsArray[artNum], Rnd(0, 4));
+																03=if(ShipFreeSpace(tranc) < ItemSize(artNum)) ItemSize(item, ItemSize(item) + (ItemSize(artNum) - ShipFreeSpace(tranc)));
+																04=AddItemToShip(tranc, artNum);
+																05=ItemIsInUse(artNum, tranc, 1);
 															}
 															//Создаём кастомный артефакт из ExpArts
 															08=else
@@ -2298,16 +2257,16 @@ ShipInfo ^{
 																	02=unknown CustomArtSizeCalc = ImportedFunction('UtilityFunctions', 'CustomArtSizeCalc');
 																	03=unknown CustomArtCostCalc = ImportedFunction('UtilityFunctions', 'CustomArtCostCalc');
 																}
-																03=if(Rnd(1,100)<=10) int t_race=6;
-																04=else t_race=Rnd(0,4);
+																03=if(Rnd(1, 100) <= 10) int t_race = 6;
+																04=else t_race = Rnd(0, 4);
 																05=artNum = CreateCustomArt(GgiveArtsArray[artNum], CustomArtSizeCalc(int(CT('Artefacts.CustomArtefacts.' + GgiveArtsArray[artNum] + '.Size'))), CustomArtCostCalc(int(CT('Artefacts.CustomArtefacts.' + GgiveArtsArray[artNum] + '.Cost'))), t_race);
-																06=if(ShipFreeSpace(tranc)<ItemSize(artNum))ItemSize(item,ItemSize(item)+(ItemSize(artNum)-ShipFreeSpace(tranc)));
-																07=AddItemToShip(tranc,artNum);
-																08=ItemIsInUse(artNum,tranc,1);
+																06=if(ShipFreeSpace(tranc) < ItemSize(artNum)) ItemSize(item, ItemSize(item) + (ItemSize(artNum) - ShipFreeSpace(tranc)));
+																07=AddItemToShip(tranc, artNum);
+																08=ItemIsInUse(artNum, tranc, 1);
 															}
 														}
 													}
-													40=HullHP(tranc, ItemSize(item));
+													38=HullHP(tranc, ItemSize(item));
 												}
 												//Ремонт (если необходимо)
 												07=if(repCheck)
@@ -2333,50 +2292,50 @@ ShipInfo ^{
 									//Шанс на получение нового транклюкатора
 									06=if(!ShipCustomShipInfoData(0, cur_info, 1))
 									07 ^{
-										01=if(quant < 6)
+										01=if(quant < 6 && ShipType(owner) != 'PlayerMerc')
 										02 ^{
 											01=int roll2;
-											02=if(!quant)roll2=80+GalaxyTechLevel();
-											03=else if(quant==1)roll2=52+GalaxyTechLevel();
-											04=else if(quant==2)roll2=21+GalaxyTechLevel();
-											05=else if(quant==3)roll2=11+GalaxyTechLevel();
-											06=else if(quant==4)roll2=6+GalaxyTechLevel();
-											07=else if(quant==5)roll2=1+GalaxyTechLevel();
+											02=if(!quant) roll2 = 80 + GalaxyTechLevel();
+											03=else if(quant == 1) roll2 = 52 + GalaxyTechLevel();
+											04=else if(quant == 2) roll2 = 21 + GalaxyTechLevel();
+											05=else if(quant == 3) roll2 = 11 + GalaxyTechLevel();
+											06=else if(quant == 4) roll2 = 6 + GalaxyTechLevel();
+											07=else if(quant == 5) roll2 = 1 + GalaxyTechLevel();
 											//Делаем бросок на полученный шанс
-											08=if(Rnd(1,100)<=roll2)
+											08=if(Rnd(1, 100) <= roll2)
 											09 ^{
-												01=if(Rnd(1,100)<=7) tranc=CreateArt(t_ArtefactTranclucator,6);
-												02=else if(Rnd(1,100)<=75)
+												01=if(Rnd(1, 100) <= 7) tranc = CreateArt(t_ArtefactTranclucator, 6);
+												02=else if(Rnd(1, 100) <= 75)
 												03 ^{
-													01=if(ShipOwner(owner)==7) tranc=CreateArt(t_ArtefactTranclucator,7);
-													02=else tranc=CreateArt(t_ArtefactTranclucator,ShipPilotRace(owner));
+													01=if(ShipOwner(owner) == 7) tranc = CreateArt(t_ArtefactTranclucator, 7);
+													02=else tranc = CreateArt(t_ArtefactTranclucator, ShipPilotRace(owner));
 												}
-												04=else tranc=CreateArt(t_ArtefactTranclucator,Rnd(0,4));
-												05=ItemSize(tranc,ItemSize(tranc)+Rnd(-9,25));
-												06=TranclucatorData(ArtTranclucatorToShip(tranc),'ArtSize',ItemSize(tranc));
-												07=AddItemToShip(owner,tranc);
-												08=NoDropItem(tranc,1);
-												09=item=ShipItems(owner,0);
+												04=else tranc = CreateArt(t_ArtefactTranclucator, Rnd(0, 4));
+												05=ItemSize(tranc, ItemSize(tranc)+Rnd(-9, 25));
+												06=TranclucatorData(ArtTranclucatorToShip(tranc), 'ArtSize', ItemSize(tranc));
+												07=AddItemToShip(owner, tranc);
+												08=NoDropItem(tranc, 1);
+												09=item = ShipItems(owner, 0);
 												//Устраняем возможный обвес хозяина
 												10=ShipCalcParam(owner);
-												11=if(ShipFreeSpace(owner)<0)
+												11=if(ShipFreeSpace(owner) < 0)
 												12 ^{
-													01=ItemSize(item,ItemSize(item)+abs(ShipFreeSpace(owner))+Rnd(1,3));
-													02=HullHP(owner,ItemSize(item));
+													01=ItemSize(item, ItemSize(item) + abs(ShipFreeSpace(owner)) + Rnd(1, 3));
+													02=HullHP(owner, ItemSize(item));
 													03=ShipCalcParam(owner);
 												}
-												13=tranc=ArtTranclucatorToShip(tranc);
-												14=TranclucatorData(tranc,'Proprietor',owner);
-												15=item=ShipItems(tranc,0);
-												16=int level2=ItemLevel(item);
+												13=tranc = ArtTranclucatorToShip(tranc);
+												14=TranclucatorData(tranc, 'Proprietor', owner);
+												15=item = ShipItems(tranc, 0);
+												16=int level2 = ItemLevel(item);
 												//Слот радара (открываем с некоторым шансом)
-												17=if(level2>=3)
+												17=if(level2 >= 3)
 												18 ^{
-													01=if(Rnd(1,100)<=level2+9)//Бросок на шанс
+													01=if(Rnd(1, 100) <= level2 + 9)//Бросок на шанс
 													02 ^{
-														01=ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('EvoTranc_TrancAddSlotRadar'));
-														02=ItemSize(item,ItemSize(item)-25);
-														03=ItemCost(item,round(1.07*ItemCost(item)));
+														01=ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('EvoTranc_TrancAddSlotRadar'));
+														02=ItemSize(item, ItemSize(item) - 25);
+														03=ItemCost(item, round(1.07 * ItemCost(item)));
 													}
 												}
 												//Слот сканера (открываем с некоторым шансом)
@@ -2428,11 +2387,11 @@ ShipInfo ^{
 														}
 													}
 												}
-												31=item=ShipItems(tranc,0);
+												31=item = ShipItems(tranc, 0);
 												//Шанс на установку "Мусаси"
-												32=if(level2>=4)
+												32=if(level2 >= 4)
 												33 ^{
-													01=if(Rnd(1,100)<=level2)ShipAddCustomShipInfo(tranc,'TrancAddGunInfo','',GetValueFromScript('Mod_EvoTranc','MusashiDamageArray',level2),GetValueFromScript('Mod_EvoTranc','MusashiRangeArray',level2),100,'0');
+													01=if(Rnd(1, 100) <= level2) ShipAddCustomShipInfo(tranc,'TrancAddGunInfo','',GetValueFromScript('Mod_EvoTranc','MusashiDamageArray',level2),GetValueFromScript('Mod_EvoTranc','MusashiRangeArray',level2),100,'0');
 												}
 												//Шанс на установку "Джэбэ"
 												34=if(level2>=5)
@@ -2442,12 +2401,12 @@ ShipInfo ^{
 												//Шанс на установку "Мангуста"
 												36=if(level2>=4)
 												37 ^{
-													01=if(Rnd(1,100)<=level2)ShipAddCustomShipInfo(tranc,'TrancDefShieldInfo','',0,0,0,CT('Script.Mod_EvoTranc.RedDef'));
+													01=if(Rnd(1,100)<=level2) ShipAddCustomShipInfo(tranc,'TrancDefShieldInfo','',0,0,0,CT('Script.Mod_EvoTranc.RedDef'));
 												}
 												//Шанс на установку "Херувима"
 												38=if(level2>=6)
 												39 ^{
-													01=if(Rnd(1,100)<=level2-3)ShipAddCustomShipInfo(tranc,'TrancInvincibilityInfo','',0,0,0,'',CT('Script.Mod_EvoTranc.RedChe'));
+													01=if(Rnd(1,100)<=level2-3) ShipAddCustomShipInfo(tranc,'TrancInvincibilityInfo','',0,0,0,'',CT('Script.Mod_EvoTranc.RedChe'));
 												}
 												//Шанс на установку фейкового навигационного компьютера
 												40=if(ShipFindCustomShipInfoByType(tranc,'TrancFakeNavComputerInfo')==-1)
@@ -2463,77 +2422,81 @@ ShipInfo ^{
 												}
 												//Устраняем возможный обвес транклюкатора
 												42=ShipCalcParam(tranc);
-												43=if(ShipFreeSpace(tranc)<0)
+												43=if(ShipFreeSpace(tranc) < 0)
 												44 ^{
-													01=ItemSize(item,ItemSize(item)+(-1*ShipFreeSpace(tranc))+Rnd(37,49));
-													02=HullHP(tranc,ItemSize(item));
+													01=ItemSize(item, ItemSize(item) + (-1 * ShipFreeSpace(tranc)) + Rnd(37, 49));
+													02=HullHP(tranc, ItemSize(item));
 												}
-												45=else if(ShipFreeSpace(tranc)<40)
+												45=else if(ShipFreeSpace(tranc) < 40)
 												46 ^{
-													01=ItemSize(item,ItemSize(item)+Rnd(21,37));
-													02=HullHP(tranc,ItemSize(item));
+													01=ItemSize(item, ItemSize(item) + Rnd(21, 37));
+													02=HullHP(tranc, ItemSize(item));
 												}
 												//Перекраска транка
 												47=if(1)
 												48 ^{
-													01=if(!ShipPilotRace(owner)) roll2=2;
-													02=else if(ShipPilotRace(owner) == 1) roll2 = 4;
-													03=else if(ShipPilotRace(owner) == 2) roll2 = 5;
-													04=else if(ShipPilotRace(owner) == 3) roll2 = 6;
-													05=else if(ShipPilotRace(owner) == 4) roll2 = 3;
-													06=if(ShipOwner(owner) == 7) roll2 = 7;
-													07=if(roll2 == 2)
-													08 ^{
-														01=Chameleon(tranc,'Ship.TranclucatorRed');
-														02=TranclucatorData(tranc,'ArtSysName','ArtTranclucatorRed');
+													01=if(ShipOwner(owner) == PirateClan) roll = 7;
+													02=else
+													03 ^{
+														01=int owner_race = ShipPilotRace(owner);
+														02=if(!owner_race) roll = 2;
+														03=else if(owner_race == Peleng) roll = 4;
+														04=else if(owner_race == People) roll = 5;
+														05=else if(owner_race == Fei) roll = 6;
+														06=else if(owner_race == Gaal) roll = 3;
 													}
-													09=else if(roll2==3)
-													10 ^{
-														01=Chameleon(tranc,'Ship.TranclucatorYellow');
-														02=TranclucatorData(tranc,'ArtSysName','ArtTranclucatorYellow');
+													04=if(roll == 2)
+													05 ^{
+														01=Chameleon(tranc, 'Ship.TranclucatorRed');
+														02=TranclucatorData(tranc, 'ArtSysName', 'ArtTranclucatorRed');
 													}
-													11=else if(roll2==4)
-													12 ^{
-														01=Chameleon(tranc,'Ship.TranclucatorGreen');
-														02=TranclucatorData(tranc,'ArtSysName','ArtTranclucatorGreen');
+													06=else if(roll == 3)
+													07 ^{
+														01=Chameleon(tranc, 'Ship.TranclucatorYellow');
+														02=TranclucatorData(tranc, 'ArtSysName', 'ArtTranclucatorYellow');
 													}
-													13=else if(roll2==5)
-													14 ^{
-														01=Chameleon(tranc,'Ship.TranclucatorBlue');
-														02=TranclucatorData(tranc,'ArtSysName','ArtTranclucatorBlue');
+													08=else if(roll == 4)
+													09 ^{
+														01=Chameleon(tranc, 'Ship.TranclucatorGreen');
+														02=TranclucatorData(tranc, 'ArtSysName', 'ArtTranclucatorGreen');
 													}
-													15=else if(roll2==6)
-													16 ^{
-														01=Chameleon(tranc,'Ship.TranclucatorViolet');
-														02=TranclucatorData(tranc,'ArtSysName','ArtTranclucatorViolet');
+													10=else if(roll == 5)
+													11 ^{
+														01=Chameleon(tranc, 'Ship.TranclucatorBlue');
+														02=TranclucatorData(tranc, 'ArtSysName', 'ArtTranclucatorBlue');
 													}
-													17=else if(roll2==7)
-													18 ^{
-														01=Chameleon(tranc,'Ship.TranclucatorWhite');
-														02=TranclucatorData(tranc,'ArtSysName','ArtTranclucatorWhite');
+													12=else if(roll == 6)
+													13 ^{
+														01=Chameleon(tranc, 'Ship.TranclucatorViolet');
+														02=TranclucatorData(tranc, 'ArtSysName', 'ArtTranclucatorViolet');
+													}
+													14=else if(roll == 7)
+													15 ^{
+														01=Chameleon(tranc, 'Ship.TranclucatorWhite');
+														02=TranclucatorData(tranc, 'ArtSysName', 'ArtTranclucatorWhite');
 													}
 												}
 												//Шанс на переименование транка
-												49=if(Rnd(1,100)<=93)
+												49=if(Rnd(1, 100) <= 93)
 												50 ^{
-													01=int total=CT('TrancNames.Total');
+													01=int total = CT('TrancNames.Total');
 													02=str tempStr;
-													03=str newName='';
+													03=str newName = '';
 													//Делаем перебор по уже заданным именам, выбираем наименее заезженные
-													04=while(newName=='')
+													04=while(newName == '')
 													05 ^{
-														01=tempStr=Rnd(10,total);
-														02=if(findsubstr(GTrancNameRand,'.'+tempStr+'.')==-1)
+														01=tempStr = Rnd(10, total);
+														02=if(findsubstr(GTrancNameRand, '.' + tempStr + '.') == -1)
 														03 ^{
-															01=newName=CT('TrancNames.'+tempStr);
-															02=GTrancNameRand=GTrancNameRand+'.'+tempStr+'.';
-															03=if(count(GTrancNameRand)>180)GTrancNameRand=substr(GTrancNameRand,4,180);
+															01=newName = CT('TrancNames.' + tempStr);
+															02=GTrancNameRand = GTrancNameRand + '.' + tempStr + '.';
+															03=if(count(GTrancNameRand) > 180) GTrancNameRand = substr(GTrancNameRand, 4, 180);
 														}
 													}
 													//Задаём транклюкатору новое имя
-													06=SetName(tranc,newName);
+													06=SetName(tranc, newName);
 												}
-												51=quant=quant+1;
+												51=quant = quant + 1;
 												52=ShipCustomShipInfoData(0,cur_info,3,quant);
 												53=allId=allId+Id(tranc)+'*'+(quant+1)+'*';
 												54=ShipCustomShipInfoTextData(0,cur_info,1,allId);
