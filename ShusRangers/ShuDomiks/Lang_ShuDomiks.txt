@@ -85,13 +85,13 @@ Artefacts ^{
 			OnActCodeTypes=t_OnCheckingUsability,t_OnAnotherItem
             OnActCode ^{
 				01=dword cur_item = CurItem();
-				02=dword scaner = ScriptItemActObject1();
+				02=dword scanner = ScriptItemActObject1();
 				//Если тех-директор не слишком изношен
 				03=if(ItemDurability(cur_item) < 10)
 				04 ^{
-					01=if(ItemType(scaner) == t_Scaner)
+					01=if(ItemType(scanner) == t_Scaner)
 					02 ^{
-						01=if(ItemOwner(scaner) == Kling)
+						01=if(ItemOwner(scanner) == Kling)
 						02 ^{
 							01=if(ScriptItemActionType(t_OnCheckingUsability))
 							02 ^{
@@ -101,7 +101,7 @@ Artefacts ^{
 							03=else
 							04 ^{
 								01=unknown tarr = newarray(2);
-								02=int sub_race = ItemSubrace(scaner);
+								02=int sub_race = ItemSubrace(scanner);
 								03=int serie_set = 0;
 								04=if(sub_race != 0)
 								05 ^{
@@ -141,7 +141,7 @@ Artefacts ^{
 											02=chosen_serie = 2;
 										}
 									}
-									06=ItemSubrace(scaner, chosen_serie);
+									06=ItemSubrace(scanner, chosen_serie);
 									07=Sound('Sound.SaveLoadLoop');
 									08=ItemDurability(cur_item, ItemDurability(cur_item) - Rnd(10, 20));
 									09=if(ItemDurability(cur_item) < 0) ItemDurability(cur_item, 0);
@@ -922,22 +922,10 @@ Script ^{
 ShipInfo ^{
     AddInfo ^{
         CustomInfos ^{
+			//Позже удалить это нахуй (запись от 09.11.2021)
             Minigun ^{
                 Icon=1
                 Name=Minigun
-                OnActCodeTypes=t_OnWeaponShot
-                OnActCode ^{
-					01=dword gun=ScriptItemActObject2();
-					02=if(ItemType(gun)!=t_CustomWeapon)exit;
-					03=if(CustomWeaponType(gun)!='Dom_minigun')exit;
-					04=dword ship=ScriptItemActShip();
-					05=dword target=ScriptItemActObject1();
-					06=if(ObjectType(target)!=4 && ObjectType(target)!=5)exit;
-					07=int dmg=Rnd(4,5);
-					08=if(ArtefactTypeInUse(ship,t_ArtSplinter))dmg=dmg+1;
-					09=if(ShipOwner(target)!=5)dmg=dmg*2;
-					10=ScriptItemActParam(dmg);
-                }
             }
 			FirstInhibitorJoinsGroup ^{
                 Description=Скрытая костыльная инфошка для добавления стартового ингибитора в скриптовую группу
@@ -948,12 +936,13 @@ ShipInfo ^{
 				OnActCode ^{
 					01=dword ship = ScriptItemActShip();
 					02=if(!ship) exit;
-					03=GShuDomiksTempDwd = ship;
-					04=dword crutch = GetItemFromVault('ShuDomiks_Semerenka');
-					//Запускаем акткод в "костыльной семерёнке", чтобы записать ингибитор в нужную скриптовую группу
-					05=CreateActCodeEvent(0, crutch);
-					06=PutItemInVault('ShuDomiks_Semerenka', crutch);
-					07=ShipDeleteCustomShipInfo(ship, 'FirstInhibitorJoinsGroup');
+					03=if(!fun_init)
+					04 ^{
+						01=unknown ShipJoinToScript = ImportedFunction('UtilityFunctions', 'ShipJoinToScript');
+						02=int fun_init = 1;
+					}
+					05=ShipJoinToScript(ship, 'Mod_ShuDomiks.Inhibitor');
+					06=ShipDeleteCustomShipInfo(ship, 'FirstInhibitorJoinsGroup');
 				}
 			}
             KellerLastWishInfo ^{
@@ -968,7 +957,7 @@ ShipInfo ^{
 					04=SetName(clone_ship,'TranclucatorKeller');
 					05=ShipOwner(clone_ship,2);
 					06=OrderLock(clone_ship,1);
-					07=for(int i=ShipItems(clone_ship)-1;i>0;i=i-1)FreeItem(GetItemFromShip(clone_ship,i));
+					07=for(int i = ShipItems(clone_ship) - 1; i > 0; i = i - 1) FreeItem(GetItemFromShip(clone_ship, i));
 					08=ItemSize(ShipItems(clone_ship,0),ItemSize(ShipItems(keller,0)));
 					09=ItemCost(ShipItems(clone_ship,0),ItemCost(ShipItems(keller,0)));
 					10=HullHP(clone_ship,ItemSize(ShipItems(clone_ship,0)));
@@ -987,7 +976,7 @@ ShipInfo ^{
 						10=ItemIsInUse(cloned_item,clone_ship,1);
 					}
 					//Перебираем оружие
-					13=for(i=1;i<=5;i=i+1)
+					13=for(i=1; i<=5; i=i+1)
 					14 ^{
 						01=cur_item=ShipWeapon(keller,i);
 						02=type=ItemType(cur_item);
@@ -1313,6 +1302,7 @@ UselessItems ^{
 			30=ItemCost(ShipItems(inhib, 0), UselessItemData(cur_item, 2));
 			31=ShipSpecialBonuses(inhib, bonSpeed, -10000);
 			32=SetName(inhib, '#' + Rnd(1, 9999));
+			//33=SpecialToEquipment(FindBonusByNameInCfg('ShuDomiks_InhibitorOn'), ShipItems(inhib, 0));
 			33=SpecialToEquipment(FindBonusByNameInCfg('ShuDomiks_InhibitorOff'), ShipItems(inhib, 0));
 			34=Chameleon(inhib);
 			35=if(1)
@@ -1331,30 +1321,31 @@ UselessItems ^{
 				12=ShipSpecialBonuses(inhib, bonDef, 2 * GalaxyTechLevel());
 				13=ShipSpecialBonuses(inhib, bonWRadius, 200);
 			}
-			37=GShuDomiksTempDwd = inhib;
-			38=dword crutch = GetItemFromVault('ShuDomiks_Semerenka');
-			//Запускаем акткод в "костыльной семерёнке", чтобы записать ингибитор в нужную скриптовую группу
-			39=CreateActCodeEvent(0, crutch);
-			40=PutItemInVault('ShuDomiks_Semerenka', crutch);
-			41=Sound('Sound.Repair');
-			42=MessageBox('Ингибитор успешно отправлен в указанные координаты.');
+			37=Sound('Sound.Repair');
+			38=MessageBox('Ингибитор успешно отправлен в указанные координаты.');
 			//Выбрасываем установочный под местоположение игрока
-			43=if(FindItemInShip(ship, cur_item) > -1) GetItemFromShip(ship, FindItemInShip(ship, cur_item));
-			44=else GetItemFromStorage(FindItemInStorage(cur_item));
-			45=DropItem(ship, cur_item);
+			39=if(FindItemInShip(ship, cur_item) > -1) GetItemFromShip(ship, FindItemInShip(ship, cur_item));
+			40=else GetItemFromStorage(FindItemInStorage(cur_item));
+			41=DropItem(ship, cur_item);
 			//Телепортируем ингибитор по координатам дропнутого предмета
-			46=MakeShipEnterStar(inhib, star, star, 0);
-			47=OrderTeleport(inhib, star, CoordX(cur_item) - 11, CoordY(cur_item) + 3);
-			48=ShipOrderData1(inhib, 0);
-			49=ShipAngle(inhib, 0);
+			42=MakeShipEnterStar(inhib, star, star, 0);
+			43=OrderTeleport(inhib, star, CoordX(cur_item) - 11, CoordY(cur_item) + 3);
+			44=ShipOrderData1(inhib, 0);
+			45=ShipAngle(inhib, 0);
+			46=if(!fun_init)
+			47 ^{
+				01=unknown ShipJoinToScript = ImportedFunction('UtilityFunctions', 'ShipJoinToScript');
+				02=int fun_init = 1;
+			}
+			48=ShipJoinToScript(inhib, 'Mod_ShuDomiks.Inhibitor');
 			//"Активируем" маяк
-			50=UselessItemData(cur_item, 1, 1);
+			49=UselessItemData(cur_item, 1, 1);
 			//Выставляем маяку маркер на уничтожение, чтобы его нельзя было подобрать назад в трюм
-			51=ItemDestroy(cur_item, 1);
+			50=ItemDestroy(cur_item, 1);
 			//Отдельно выставляем запрет на подбор для игрока
-			52=ShipPicksItem(Player(), cur_item, -1);
+			51=ShipPicksItem(Player(), cur_item, -1);
 			//После чего вешаем на игрока инфошку отмены уничтожения маяка, чтобы он не пропал из виду раньше времени
-			53=ShipAddCustomShipInfo(ship, 'InhibBeaconDestroy', 'NoShow', Id(cur_item), Id(star) - 1);
+			52=ShipAddCustomShipInfo(ship, 'InhibBeaconDestroy', 'NoShow', Id(cur_item), Id(star) - 1);
         }
     }
 }

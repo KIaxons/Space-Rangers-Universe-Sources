@@ -1,6 +1,7 @@
 ActCodeBlocksList ^{
 	//Код для смены акрина на сборочном дроиде, а также сбросе прицела у всех орудий, если дроид установлен не на станции
 	RevAcrynAssemblyDroidActCode ^{
+		00=[t_OnItemEquip,t_OnItemDeEquip,t_OnItemDestroy,t_OnStep|0]
 		01=dword ship;
 		02=dword item;
 		03=if(ScriptItemActionType(t_OnStep, 0))

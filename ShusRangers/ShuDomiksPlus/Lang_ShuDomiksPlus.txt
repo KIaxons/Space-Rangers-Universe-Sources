@@ -226,3 +226,16 @@ Items ^{
         }
     }
 }
+ActCodeBlocksList ^{
+	ShuDomiksPlus_MinigunShot ^{
+		00=[t_OnWeaponShot]
+		01=if(!ItemIsInUse(CurItem())) exit;
+		02=dword target = ScriptItemActObject1();
+		03=if(ObjectType(target) > 5) exit; //Только если стреляют по станции или кораблю
+		04=dword ship = ScriptItemActShip();
+		05=int dmg = RndObject(4, 5, ship);
+		06=if(ArtefactTypeInUse(ship, t_ArtSplinter)) dmg = dmg + 1; //Если стреляющий корабль экипировал Навинт
+		07=if(ShipOwner(target) != Kling) dmg = dmg * 2; //Двойной урон по не доминаторам и не клисанам
+		08=ScriptItemActParam(dmg);
+	}
+}
