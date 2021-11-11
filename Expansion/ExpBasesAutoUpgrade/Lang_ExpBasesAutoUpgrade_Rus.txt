@@ -98,7 +98,7 @@ ShipInfo ^{
 							05=if(ItemLevel(cur_item) < GTL - 2)
 							06 ^{
 								//Пропорционально повышаем цену предмета
-								01=ItemCost(cur_item, round(1.0 + (0.125 * (max(GTL - 2, 1) - ItemLevel(cur_item))) * ItemCost(cur_item)));
+								01=ItemCost(cur_item, round((1.0 + (0.125 * (max(GTL - 2, 1) - ItemLevel(cur_item)))) * ItemCost(cur_item)));
 								02=ItemLevel(cur_item, max(GTL - 2, 1));
 							}
 							07=if(!ItemImprovement(cur_item)) ItemImprovement(cur_item, 2, 0);
