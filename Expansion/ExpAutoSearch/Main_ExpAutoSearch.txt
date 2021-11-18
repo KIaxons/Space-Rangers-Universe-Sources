@@ -9,10 +9,8 @@ Data ^{
 			DeclareAutoSearchArrays=void,DeclareAutoSearchArrays,int,int,int
 			FillAutoSearchBonusArray=void,FillAutoSearchBonusArray,int,str,str,str,str,int,str,str,int,str,str,str,str,str,str,str,str,int,int,int,int,int,int,int,int,int,str,int
 			FillAutoSearchDamageSetArray=void,FillAutoSearchDamageSetArray,int,int
-			//Используется для последовательного перебора систем, а не начиная от системы игрока (в текущей реализации не используется)
-			//LoadSectorsToAutoSearchLib=void,LoadSectorsToAutoSearchLib,dword
 			FillAutoSearchRequestList=void,FillAutoSearchRequestList,str,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,str,int,int,int,int,int
-			AutoSearchLaunch=int,AutoSearchLaunch,dword,int
+			AutoSearchLaunch=int,AutoSearchLaunch,dword,dword
 			GetAutoSearchResult=dword,GetAutoSearchResult,int,int
 		}
 		Mod_ExpAutoSearch=AutoSearch
@@ -123,7 +121,7 @@ ML ^{
 				04=int requestNum=GAcrynListTempArr[0];
 				05=str requestType=GItemsToSearchArr[requestNum,38];
 				//Выводим информацию о выбранных расах
-				06=if(GItemsToSearchArr[requestNum, 0]>-1)
+				06=if(GItemsToSearchArr[requestNum, 0] > -1)
 				07 ^{
 					01=if(!GItemsToSearchArr[requestNum, 0])UICheckElement('','RaceMalocBut_'+requestType,'IsDown',1);
 				}
@@ -131,7 +129,7 @@ ML ^{
 				09 ^{
 					01=CustomInterfaceState('RaceMalocBut_'+requestType,2);
 				}
-				10=if(GItemsToSearchArr[requestNum,1]>-1)
+				10=if(GItemsToSearchArr[requestNum,1] > -1)
 				11 ^{
 					01=if(!GItemsToSearchArr[requestNum,1])UICheckElement('','RacePelengBut_'+requestType,'IsDown',1);
 				}
@@ -139,7 +137,7 @@ ML ^{
 				13 ^{
 					01=CustomInterfaceState('RacePelengBut_'+requestType,2);
 				}
-				14=if(GItemsToSearchArr[requestNum,2]>-1)
+				14=if(GItemsToSearchArr[requestNum,2] > -1)
 				15 ^{
 					01=if(!GItemsToSearchArr[requestNum,2])UICheckElement('','RacePeopleBut_'+requestType,'IsDown',1);
 				}
@@ -147,7 +145,7 @@ ML ^{
 				17 ^{
 					01=CustomInterfaceState('RacePeopleBut_'+requestType,2);
 				}
-				18=if(GItemsToSearchArr[requestNum,3]>-1)
+				18=if(GItemsToSearchArr[requestNum,3] > -1)
 				19 ^{
 					01=if(!GItemsToSearchArr[requestNum,3])UICheckElement('','RaceFeiBut_'+requestType,'IsDown',1);
 				}
@@ -155,7 +153,7 @@ ML ^{
 				21 ^{
 					01=CustomInterfaceState('RaceFeiBut_'+requestType,2);
 				}
-				22=if(GItemsToSearchArr[requestNum,4]>-1)
+				22=if(GItemsToSearchArr[requestNum,4] > -1)
 				23 ^{
 					01=if(!GItemsToSearchArr[requestNum,4])UICheckElement('','RaceGaalBut_'+requestType,'IsDown',1);
 				}
@@ -163,7 +161,7 @@ ML ^{
 				25 ^{
 					01=CustomInterfaceState('RaceGaalBut_'+requestType,2);
 				}
-				26=if(GItemsToSearchArr[requestNum,7]>-1)
+				26=if(GItemsToSearchArr[requestNum,7] > -1)
 				27 ^{
 					01=if(!GItemsToSearchArr[requestNum,7])UICheckElement('','RacePirateBut_'+requestType,'IsDown',1);
 				}
@@ -2051,7 +2049,7 @@ ML ^{
 							06=CustomInterfaceState('BlockBut',1);
 							07=int hullAcryn=ListBox(CT('Script.Mod_ExpAutoSearch.ChooseAcryn'),tarr);
 							08=CustomInterfaceState('BlockBut', 0);
-							09=if(hullAcryn>-1)
+							09=if(hullAcryn > -1)
 							10 ^{
 								01=str numInCfg=GAcrynListTempArr[hullAcryn+2];
 								02=CustomInterfaceText('ChoosedAcryn_Hulls',tarr[hullAcryn]);
@@ -3236,7 +3234,7 @@ ML ^{
 							06=CustomInterfaceState('BlockBut',1);
 							07=int acryn=ListBox(CT('Script.Mod_ExpAutoSearch.ChooseAcryn'),tarr);
 							08=CustomInterfaceState('BlockBut', 0);
-							09=if(acryn>-1)
+							09=if(acryn > -1)
 							10 ^{
 								01=str numInCfg=GAcrynListTempArr[acryn+2];
 								02=CustomInterfaceText('ChoosedAcryn_Engines',tarr[acryn]);
@@ -3603,7 +3601,7 @@ ML ^{
 							06=CustomInterfaceState('BlockBut',1);
 							07=int acryn=ListBox(CT('Script.Mod_ExpAutoSearch.ChooseAcryn'),tarr);
 							08=CustomInterfaceState('BlockBut', 0);
-							09=if(acryn>-1)
+							09=if(acryn > -1)
 							10 ^{
 								01=str numInCfg=GAcrynListTempArr[acryn+2];
 								02=CustomInterfaceText('ChoosedAcryn_FuelTanks',tarr[acryn]);
@@ -3959,7 +3957,7 @@ ML ^{
 							06=CustomInterfaceState('BlockBut',1);
 							07=int acryn=ListBox(CT('Script.Mod_ExpAutoSearch.ChooseAcryn'),tarr);
 							08=CustomInterfaceState('BlockBut', 0);
-							09=if(acryn>-1)
+							09=if(acryn > -1)
 							10 ^{
 								01=str numInCfg=GAcrynListTempArr[acryn+2];
 								02=CustomInterfaceText('ChoosedAcryn_Radars',tarr[acryn]);
@@ -4315,7 +4313,7 @@ ML ^{
 							06=CustomInterfaceState('BlockBut',1);
 							07=int acryn=ListBox(CT('Script.Mod_ExpAutoSearch.ChooseAcryn'),tarr);
 							08=CustomInterfaceState('BlockBut', 0);
-							09=if(acryn>-1)
+							09=if(acryn > -1)
 							10 ^{
 								01=str numInCfg=GAcrynListTempArr[acryn+2];
 								02=CustomInterfaceText('ChoosedAcryn_Scanners',tarr[acryn]);
@@ -4671,7 +4669,7 @@ ML ^{
 							06=CustomInterfaceState('BlockBut',1);
 							07=int acryn=ListBox(CT('Script.Mod_ExpAutoSearch.ChooseAcryn'),tarr);
 							08=CustomInterfaceState('BlockBut', 0);
-							09=if(acryn>-1)
+							09=if(acryn > -1)
 							10 ^{
 								01=str numInCfg=GAcrynListTempArr[acryn+2];
 								02=CustomInterfaceText('ChoosedAcryn_Droids',tarr[acryn]);
@@ -5027,7 +5025,7 @@ ML ^{
 							06=CustomInterfaceState('BlockBut',1);
 							07=int acryn=ListBox(CT('Script.Mod_ExpAutoSearch.ChooseAcryn'),tarr);
 							08=CustomInterfaceState('BlockBut', 0);
-							09=if(acryn>-1)
+							09=if(acryn > -1)
 							10 ^{
 								01=str numInCfg=GAcrynListTempArr[acryn+2];
 								02=CustomInterfaceText('ChoosedAcryn_Grippers',tarr[acryn]);
@@ -5383,7 +5381,7 @@ ML ^{
 							06=CustomInterfaceState('BlockBut',1);
 							07=int acryn=ListBox(CT('Script.Mod_ExpAutoSearch.ChooseAcryn'),tarr);
 							08=CustomInterfaceState('BlockBut', 0);
-							09=if(acryn>-1)
+							09=if(acryn > -1)
 							10 ^{
 								01=str numInCfg=GAcrynListTempArr[acryn+2];
 								02=CustomInterfaceText('ChoosedAcryn_ShieldGenerators',tarr[acryn]);

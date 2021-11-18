@@ -666,7 +666,7 @@ UselessItems ^{
 			03=else Sound('Sound.ParrotPhrase' + (rnd(6) + 1));
 		}
 		OnActCodeTypes=t_OnStep,t_OnEnteringForm,t_OnReEnteringForm,t_OnWeaponShot,t_OnMissileShot,t_OnGettingWeaponHit,t_OnGettingMissileHit,t_OnDealingDamage,t_OnTakingDamage,t_OnItemPickUp,t_OnDropItemFixed,t_OnDropItem,t_OnPlayerChangeHull,t_OnItemEquip,t_OnItemDeEquip,t_OnShowingItemInfo,t_OnItemDestroy
-		OnActStepTypes=0,11
+		OnActStepTypes=1,11
 		OnActCode ^{
 			//UselessItemData1 - сколько дней игрок таскал попугая с собой в трюме;
 			//UselessItemData2 - размер текущего бонуса к обаянию игрока;
@@ -675,8 +675,8 @@ UselessItems ^{
 			02=if(UselessItemData(bird, 3) == -3) exit;
 			03=if(ScriptItemActionType(t_OnStep, 1))
 			04 ^{
-				//Попугай не на борту
-				01=if(FindItemInShip(Player(), bird) == -1)
+				//Попугай не на борту у игрока
+				01=if(ScriptItemActShip() != Player())
 				02 ^{
 					01=if(UselessItemData(bird, 3) == -1)
 					02 ^{
@@ -685,7 +685,7 @@ UselessItems ^{
 						02=UselessItemData(bird, 3, -2);
 					}
 				}
-				//Попугай на борту
+				//Попугай на борту у игрока
 				03=else
 				04 ^{
 					01=if(UselessItemData(bird, 3) == -2)
