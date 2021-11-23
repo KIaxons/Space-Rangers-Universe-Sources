@@ -2288,12 +2288,12 @@ UselessItems ^{
             }
             05=else
             06 ^{
-				01=if(HullHP(Player())>0)
+				01=if(HullHP(Player()) > 0)
 				02 ^{
 					01=if(ItemInScript(CurItem()))
 					02 ^{
 						//Разведзонд уничтожен - все задания флагманов провалены до конца партии
-						01=if(EtherState('ExpAcryn_quest_1')>-1)
+						01=if(EtherState('ExpAcryn_quest_1') > -1)
 						02 ^{
 							01=str missionNum='';
 							02=if(GetValueFromScript('Mod_ExpAcryn','fl_array',ExpAcrynQuestStatus,1)!=1)missionNum='2';
@@ -2459,12 +2459,12 @@ UselessItems ^{
 		}
 		OnActCodeTypes=t_OnItemDestroy
 		OnActCode ^{
-			01=if(HullHP(Player())>0)
+			01=if(HullHP(Player()) > 0)
             02 ^{
 				01=if(ItemInScript(CurItem()))
 				02 ^{
 					//Р.Д.П.К. уничтожен - все задания флагманов провалены до конца партии
-					01=if(EtherState('ExpAcryn_quest_3')>-1)
+					01=if(EtherState('ExpAcryn_quest_3') > -1)
 					02 ^{
 						01=str missionNum='';
 						02=if(GetValueFromScript('Mod_ExpAcryn','fl_array',ExpAcrynQuestStatus,1)!=1)missionNum='2';
@@ -2570,7 +2570,7 @@ UselessItems ^{
 								05=ItemCost(cur_item,ItemCost(cur_item)/4);
 								06=NewsAdd(CT('UselessItems.'+EquipmentImageName(cur_item)+'.TextLoaded'));
 								07=UselessItemData(cur_item,1,1);
-								08=if(ItemInScript(cur_item))ReleaseItemFromScript(cur_item);
+								08=if(ItemInScript(cur_item)) ReleaseItemFromScript(cur_item);
 							}
 						}
 					}
@@ -2597,12 +2597,12 @@ UselessItems ^{
 				//Загружаем блок памяти бертора в конвектор в конце хода
 				03=if(!UselessItemData(cur_item,1))
 				04 ^{
-					01=if(FindItemInShip(Player(),cur_item)>-1)
+					01=if(~FindItemInShip(Player(),cur_item))
 					02 ^{
 						01=if(ItemIn(GetValueFromScript('Mod_ExpAcryn','Q_item'),Player()))
 						02 ^{
 							01=tdwd=ScriptItemToItem(GetValueFromScript('Mod_ExpAcryn','Q_item'));
-							02=if(UselessItemData(tdwd,1)<100)
+							02=if(UselessItemData(tdwd, 1) < 100)
 							03 ^{
 								//Память конвектора заполняется с каждым подобранным блоком памяти
 								01=UselessItemData(tdwd,1,UselessItemData(tdwd,1)+20);
@@ -2612,7 +2612,7 @@ UselessItems ^{
 								05=ItemCost(cur_item,ItemCost(cur_item)/4);
 								06=NewsAdd(CT('UselessItems.'+EquipmentImageName(cur_item)+'.TextLoaded'));
 								07=UselessItemData(cur_item,1,1);
-								08=if(ItemInScript(cur_item))ReleaseItemFromScript(cur_item);
+								08=if(ItemInScript(cur_item)) ReleaseItemFromScript(cur_item);
 							}
 						}
 					}
@@ -2632,14 +2632,14 @@ UselessItems ^{
 		OnActCodeTypes=t_OnStep
 		OnActStepTypes=11
 		OnActCode ^{
-			01=if(ExpAcrynQuestStatus==4)
+			01=if(ExpAcrynQuestStatus == 4)
 			02 ^{
-				01=dword cur_item=CurItem();
+				01=dword cur_item = CurItem();
 				02=dword tdwd;
 				//Загружаем блок памяти бертора в конвектор в конце хода
 				03=if(!UselessItemData(cur_item,1))
 				04 ^{
-					01=if(FindItemInShip(Player(),cur_item)>-1)
+					01=if(~FindItemInShip(Player(),cur_item))
 					02 ^{
 						01=if(ItemIn(GetValueFromScript('Mod_ExpAcryn','Q_item'),Player()))
 						02 ^{
@@ -2654,7 +2654,7 @@ UselessItems ^{
 								05=ItemCost(cur_item,ItemCost(cur_item)/4);
 								06=NewsAdd(CT('UselessItems.'+EquipmentImageName(cur_item)+'.TextLoaded'));
 								07=UselessItemData(cur_item,1,1);
-								08=if(ItemInScript(cur_item))ReleaseItemFromScript(cur_item);
+								08=if(ItemInScript(cur_item)) ReleaseItemFromScript(cur_item);
 							}
 						}
 					}

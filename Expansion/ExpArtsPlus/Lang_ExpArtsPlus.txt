@@ -87,7 +87,7 @@ Artefacts ^{
 			01=dword item = ScriptItemActObject1();
 			02=if(ItemType(item) != t_Hull) exit;
 			//Исключаем скриптовые
-			03=if(ItemInScript(item))
+			03=if(ItemInScript(item) == 1)
 			04 ^{
 				01=int acryn_num = EqSpecial(item);
 				//Но оставляем корпус с особым параметром в акрине
@@ -280,7 +280,7 @@ Artefacts ^{
 			01=dword item = ScriptItemActObject1();
 			02=if(ItemType(item) != t_CargoHook) exit;
 			//Исключаем скриптовые
-			03=if(ItemInScript(item))
+			03=if(ItemInScript(item) == 1)
 			04 ^{
 				01=int acryn_num = EqSpecial(item);
 				//Но оставляем захват с особым параметром в акрине
@@ -364,7 +364,7 @@ Artefacts ^{
 			01=dword item = ScriptItemActObject1();
 			02=if(ItemType(item) != t_Hull) exit;
 			//Исключаем скриптовые
-			03=if(ItemInScript(item))
+			03=if(ItemInScript(item) == 1)
 			04 ^{
 				01=int acryn_num = EqSpecial(item);
 				//Но оставляем корпус с особым параметром в акрине
@@ -675,7 +675,7 @@ Artefacts ^{
 			01=dword item = ScriptItemActObject1();
 			02=if(ItemType(item) != t_Engine) exit;
 			//Исключаем скриптовые
-			03=if(ItemInScript(item))
+			03=if(ItemInScript(item) == 1)
 			04 ^{
 				01=int acryn_num = EqSpecial(item);
 				//Но оставляем двигатель с особым параметром в акрине
