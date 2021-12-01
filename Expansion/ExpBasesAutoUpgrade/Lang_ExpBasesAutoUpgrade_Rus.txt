@@ -38,10 +38,11 @@ ShipInfo ^{
 						09 ^{
 							01=dword cur_item = ShipItems(cur_ship, j);
 							02=if(!ItemIsInUse(cur_item)) continue;
-							03=int item_type = ItemType(cur_item);
-							04=if(item_type < t_FuelTanks || item_type > t_CustomWeapon) continue;
-							05=if(ItemDurability(cur_item) < 100)
-							06 ^{
+							03=if(!ShipCanRepairEq(cur_ship, cur_item)) continue;
+							04=int item_type = ItemType(cur_item);
+							05=if(item_type < t_FuelTanks || item_type > t_CustomWeapon) continue;
+							06=if(ItemDurability(cur_item) < 100)
+							07 ^{
 								//Чиним всю оборудку, кроме нестандартных орудий, которые чиним, только если станция умеет это делать
 								01=if(item_type <= t_DefGenerator) ItemDurability(cur_item, 100);
 								02=else
