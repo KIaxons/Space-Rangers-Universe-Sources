@@ -1928,26 +1928,51 @@ ShipInfo ^{
 					//1 - Автозапуск транков при атаке
 					//2 - Автообновление/ремонт транков при посадке на планету/станцию (шанс получить нового транка)
 					//3 - Отправление сигнала активным транкам о возврате назад
-					//ShipCustomShipInfoData(0,CurInfo(),1) - таймер до следующего броска на шанс получения нового транклюкатора
-					//ShipCustomShipInfoData(0,CurInfo(),2) - маркер о посещении планеты на текущем ходу: 0/1
-					//ShipCustomShipInfoData(0,CurInfo(),3) - число имеющихся в распоряжении транклюкаторов (до 6 штук)
-					//ShipCustomShipInfoTextData(0,CurInfo(),1) - строка с Id всех имеющихся транклюкаторов, вид: *1*Id*2*Id*3*Id*4*Id*5*Id*6*Id*7*
-					//ShipCustomShipInfoTextData(0,CurInfo(),2) - строка вида NNNRRZ о запущенных транках: Y/N/R (Yes - запущен/No - не запущен/Return - возвращается)
-					//ShipCustomShipInfoTextData(0,CurInfo(),3) - статус всех транков (6 цифр): Z - транка в трюме нет, N - транк в порядке, R - нужен ремонт, U - транк устарел
+					//ShipCustomShipInfoData(0, CurInfo(), 1) - таймер до следующего броска на шанс получения нового транклюкатора
+					//ShipCustomShipInfoData(0, CurInfo(), 2) - маркер о посещении планеты на текущем ходу: 0/1
+					//ShipCustomShipInfoData(0, CurInfo(), 3) - число имеющихся в распоряжении транклюкаторов (до 6 штук)
+					//ShipCustomShipInfoTextData(0, CurInfo(), 1) - строка с Id всех имеющихся транклюкаторов, вид: Id,Id,Id,Id,Id,Id
+					//ShipCustomShipInfoTextData(0, CurInfo(), 2) - строка вида NNNRRZ о запущенных транках: Y/N/R (Yes - запущен/No - не запущен/Return - возвращается)
+					//ShipCustomShipInfoTextData(0, CurInfo(), 3) - статус всех транков (6 цифр): Z - транка в трюме нет, N - транк в порядке, R - нужен ремонт, U - транк устарел
 					01=if(ScriptItemActionType(t_OnStep, 0))
 					02 ^{
 						//Тикает таймер до следующего шанса получить нового транклюкатора
 						01=dword cur_info = CurInfo();
 						02=if(ShipCustomShipInfoData(0, cur_info, 1)) ShipCustomShipInfoData(0, cur_info, 1, ShipCustomShipInfoData(0, cur_info, 1) - 1);
 						03=dword owner = ScriptItemActShip();
-						04=dword tranc;
-						05=dword item;
-						06=int quant = ShipCustomShipInfoData(0, cur_info, 3);
-						07=int i;
-						08=int j;
-						09=dword tNum;
-						10=if(quant)
-						11 ^{
+						04=int quant = ShipCustomShipInfoData(0, cur_info, 3);
+						05=if(!fun_init)
+						06 ^{
+							01=unknown RndObject = ImportedFunction('UtilityFunctions', 'RndObject');
+							02=unknown GetParFromString = ImportedFunction('UtilityFunctions', 'GetParFromString');
+							03=int fun_init = 1;
+						}
+						//Временная херня, просто чтобы старые сейвы не сломались. В начале 2022 года удалить.
+						06=if(owner)
+						06 ^{
+							01=allId = ShipCustomShipInfoTextData(0, cur_info, 1);
+							02=if(~findsubstr(allId, '*'))
+							03 ^{
+								01=quant = ShipCustomShipInfoData(0, cur_info, 3);
+								02=unknown tarr11 = newarray(1);
+								03=for(i = 1; i <= quant; i = i + 1)
+								04 ^{
+									01=dword tNum = findsubstr(allId, '*' + i + '*') + 3;
+									02=dword tempId = substr(allId, tNum, findsubstr(allId, '*' + (i + 1) + '*') - tNum);
+									//Заносим Id каждого транклюкатора во временный массив
+									03=ArrayAdd(tarr11, tempId);
+								}
+								05=allId = '';
+								06=for(i = 1; i <= quant; i = i + 1)
+								07 ^{
+									01=if(i < quant) allId = allId + tarr11[i] + ',';
+									02=else allId = allId + tarr11[i];
+								}
+								08=ShipCustomShipInfoTextData(0, cur_info, 1, allId);
+							}
+						}
+						07=if(quant)
+						08 ^{
 							01=str allId = ShipCustomShipInfoTextData(0, cur_info, 1);
 							02=str launched = ShipCustomShipInfoTextData(0, cur_info, 2);
 							03=str status = ShipCustomShipInfoTextData(0, cur_info, 3);
@@ -1965,17 +1990,16 @@ ShipInfo ^{
 											01=if(~findsubstr(launched, 'N') || ~findsubstr(launched, 'R'))
 											02 ^{
 												//Запускаем транков или возвращаем их на цель в случае, если начался/продолжился бой
-												01=for(i = 1; i <= quant; i = i + 1)
+												01=for(int i = 0; i < quant; i = i + 1)
 												02 ^{
-													01=if(findsubstr(launched, 'N') == i - 1)
+													01=if(findsubstr(launched, 'N') == i)
 													02 ^{
-														01=tranc = UseTranclucator(owner);
+														01=dword tranc = UseTranclucator(owner);
 														//Похоже, что-то "в крысу" тырит сложенных транков из трюма кораблей, надо выяснить
 														02=if(!tranc)
 														03 ^{
-															01=tNum = findsubstr(allId, '*' + i + '*') + 3;
-															02=tranc = substr(allId, tNum, findsubstr(allId, '*' + (i + 1) + '*') - tNum);
-															03=throw 'Tranc #' + i + ' (Id' + tranc + ') is missing in ' + Name(owner) + ' (Id' + Id(owner) + ') hold at launch!';
+															01=tranc = GetParFromString(allId, ',', i, 0);
+															02=throw 'Tranc #' + (i + 1) + ' (Id' + tranc + ') is missing in ' + Name(owner) + ' (Id' + Id(owner) + ') hold at launch!';
 														}
 														//Увеличиваем статы запускаемого транка, если хозяину вживлён биомодуль "Адмирал"
 														04=if(~ShipFindCustomShipInfoByType(owner, 'bioMM_AD_NPC'))
@@ -1987,14 +2011,14 @@ ShipInfo ^{
 															05=ShipSpecialBonuses(tranc, bonWMissile, ShipSpecialBonuses(tranc, bonWMissile) + CT('ShipInfo.AddInfo.CustomInfos.bioMM_AD_NPC.bonWMissile'));
 															06=ShipAddCustomShipInfo(tranc, 'bioMM_AD_TR_NPC');
 														}
-														06=launched = substr(launched, 0, i - 1) + 'Y' + substr(launched, i);
+														06=launched = substr(launched, 0, i) + 'Y' + substr(launched, i + 1);
 														07=ShipCustomShipInfoTextData(0, cur_info, 2, launched);
-														08=status = substr(status, 0, i - 1) + 'Z' + substr(status, i);
+														08=status = substr(status, 0, i) + 'Z' + substr(status, i + 1);
 														09=ShipCustomShipInfoTextData(0, cur_info, 3, status);
 														//Увеличиваем вес предмету, занимающему пространство под вылетевших из трюма транков
-														10=for(j = 1; j < ShipItems(owner); j = j + 1)
+														10=for(int j = 1; j < ShipItems(owner); j = j + 1)
 														11 ^{
-															01=item = ShipItems(owner, j);
+															01=dword item = ShipItems(owner, j);
 															02=if(EquipmentImageName(item) == 'WeightReserve')
 															03 ^{
 																01=ItemSize(item, ItemSize(item) + TranclucatorData(tranc, 'ArtSize'));
@@ -2002,16 +2026,14 @@ ShipInfo ^{
 															}
 														}
 													}
-													03=else if(findsubstr(launched, 'R') == i - 1)
+													03=else if(findsubstr(launched, 'R') == i)
 													04 ^{
 														//Вытаскиваем Id нужного транка по его номеру
-														01=tNum = findsubstr(allId, '*' + i + '*') + 3;
-														02=tranc = substr(allId, tNum, findsubstr(allId, '*' + (i + 1) + '*') - tNum);
-														03=tranc = IdToShip(tranc);
-														04=ShipCustomShipInfoData(tranc, 'TrancNPCAddInfo', 2, 0);
-														05=TranclucatorData(tranc, 'Docking', 0);
-														06=launched = substr(launched, 0, i - 1) + 'Y' + substr(launched, i);
-														07=ShipCustomShipInfoTextData(0, cur_info, 2, launched);
+														01=tranc = IdToShip(GetParFromString(allId, ',', i, 0));
+														02=ShipCustomShipInfoData(tranc, 'TrancNPCAddInfo', 2, 0);
+														03=TranclucatorData(tranc, 'Docking', 0);
+														04=launched = substr(launched, 0, i) + 'Y' + substr(launched, i + 1);
+														05=ShipCustomShipInfoTextData(0, cur_info, 2, launched);
 													}
 												}
 											}
@@ -2024,21 +2046,20 @@ ShipInfo ^{
 								//Если эта проверка ещё не срабатывала за время текущего посещения планеты/станции
 								01=if(!ShipCustomShipInfoData(0, cur_info, 2))
 								02 ^{
-									01=dword place;
-									02=if(GetShipPlanet(owner)) place = GetShipPlanet(owner);
-									03=else place = GetShipRuins(owner);
+									01=if(GetShipPlanet(owner)) dword place = GetShipPlanet(owner);
+									02=else place = GetShipRuins(owner);
 									//Ищем среди имеющихся на борту транков статусы о необходимости ремонта, улучшения или того и другого
-									04=if(~findsubstr(status, 'R') || ~findsubstr(status, 'U'))
-									05 ^{
+									03=if(~findsubstr(status, 'R') || ~findsubstr(status, 'U'))
+									04 ^{
 										01=int repCheck = 0;
 										02=int updCheck = 0;
 										//Проверяем каких транков нужно обновить, а каких починить
-										03=for(i = 1; i <= quant; i = i + 1)
+										03=for(i = 0; i < quant; i = i + 1)
 										04 ^{
 											01=repCheck = 0;
 											02=updCheck = 0;
-											03=if(findsubstr(status, 'R') == i - 1) repCheck = 1;
-											04=else if(findsubstr(status, 'U') == i - 1)
+											03=if(findsubstr(status, 'R') == i) repCheck = 1;
+											04=else if(findsubstr(status, 'U') == i)
 											05 ^{
 												01=updCheck = 1;
 												02=repCheck = 1;
@@ -2046,25 +2067,24 @@ ShipInfo ^{
 											06=if(repCheck || updCheck)
 											07 ^{
 												//Вытаскиваем Id нужного транка по его номеру
-												01=tNum = findsubstr(allId, '*' + i + '*') + 3;
-												02=tranc = substr(allId, tNum, findsubstr(allId, '*' + (i + 1) + '*') - tNum);
+												01=tranc = GetParFromString(allId, ',', i, 0);
 												//Перебором находим на корабле нужного транка
-												03=for(j = 0; j < ShipArts(owner); j = j + 1)
-												04 ^{
-													01=tNum = ShipArts(owner, j);
-													02=if(ItemType(tNum) == t_ArtefactTranclucator)
+												02=for(j = 0; j < ShipArts(owner); j = j + 1)
+												03 ^{
+													01=dword temp_tranc = ShipArts(owner, j);
+													02=if(ItemType(temp_tranc) == t_ArtefactTranclucator)
 													03 ^{
-														01=tNum = ArtTranclucatorToShip(tNum);
-														02=if(tranc == Id(tNum))
+														01=temp_tranc = ArtTranclucatorToShip(temp_tranc);
+														02=if(tranc == Id(temp_tranc))
 														03 ^{
-															01=tranc = tNum;
+															01=tranc = temp_tranc;
 															02=break;
 														}
 													}
 												}
 												//Обновление (если надо)
-												05=if(updCheck)
-												06 ^{
+												04=if(updCheck)
+												05 ^{
 													01=for(j = 1; j < ShipItems(tranc); j = j + 1)
 													02 ^{
 														01=item = ShipItems(tranc, j);
@@ -2160,7 +2180,7 @@ ShipInfo ^{
 													14 ^{
 														01=if(level >= 4)
 														02 ^{
-															01=if(Rnd(1, 100) <= 15) ShipAddCustomShipInfo(tranc, 'TrancAddGunInfo', '', GetValueFromScript('Mod_EvoTranc', 'MusashiDamageArray', level),GetValueFromScript('Mod_EvoTranc','MusashiRangeArray', level), 100, '0');
+															01=if(Rnd(1, 100) <= 15) ShipAddCustomShipInfo(tranc, 'TrancAddGunInfo', '', GetValueFromScript('Mod_EvoTranc', 'MusashiDamageArray', level), GetValueFromScript('Mod_EvoTranc','MusashiRangeArray', level), 100, '0');
 														}
 													}
 													//Повышение ТУ на уже установленном "Мусаси"
@@ -2267,8 +2287,8 @@ ShipInfo ^{
 													38=HullHP(tranc, ItemSize(item));
 												}
 												//Ремонт (если необходимо)
-												07=if(repCheck)
-												08 ^{
+												06=if(repCheck)
+												07 ^{
 													01=HullHP(tranc, ItemSize(ShipItems(tranc, 0)));
 													02=for(j = 1; j < ShipItems(tranc); j = j + 1)
 													03 ^{
@@ -2281,15 +2301,15 @@ ShipInfo ^{
 														02=ItemDurability(item, 100);
 													}
 												}
-												09=status = substr(status, 0, i - 1) + 'N' + substr(status, i);
-												10=ShipCustomShipInfoTextData(0, cur_info, 3, status);
-												11=ShipCustomShipInfoTextData(tranc, ShipFindCustomShipInfoByType(tranc, 'TrancNPCAddInfo'), 3, 'N');
+												08=status = substr(status, 0, i) + 'N' + substr(status, i + 1);
+												09=ShipCustomShipInfoTextData(0, cur_info, 3, status);
+												10=ShipCustomShipInfoTextData(tranc, ShipFindCustomShipInfoByType(tranc, 'TrancNPCAddInfo'), 3, 'N');
 											}
 										}
 									}
 									//Шанс на получение нового транклюкатора
-									06=if(!ShipCustomShipInfoData(0, cur_info, 1))
-									07 ^{
+									05=if(!ShipCustomShipInfoData(0, cur_info, 1))
+									06 ^{
 										01=if(quant < 6 && ShipType(owner) != 'PlayerMerc')
 										02 ^{
 											01=int roll2;
@@ -2309,7 +2329,7 @@ ShipInfo ^{
 													02=else tranc = CreateArt(t_ArtefactTranclucator, ShipPilotRace(owner));
 												}
 												04=else tranc = CreateArt(t_ArtefactTranclucator, Rnd(0, 4));
-												05=ItemSize(tranc, ItemSize(tranc)+Rnd(-9, 25));
+												05=ItemSize(tranc, ItemSize(tranc) + Rnd(-9, 25));
 												06=TranclucatorData(ArtTranclucatorToShip(tranc), 'ArtSize', ItemSize(tranc));
 												07=AddItemToShip(owner, tranc);
 												08=NoDropItem(tranc, 1);
@@ -2337,23 +2357,23 @@ ShipInfo ^{
 													}
 												}
 												//Слот сканера (открываем с некоторым шансом)
-												19=if(level2>=3)
+												19=if(level2 >= 3)
 												20 ^{
-													01=if(Rnd(1,100)<=level2+3)//Бросок на шанс
+													01=if(Rnd(1, 100) <= level2 + 3)//Бросок на шанс
 													02 ^{
-														01=ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('EvoTranc_TrancAddSlotScaner'));
-														02=ItemSize(item,ItemSize(item)-25);
-														03=ItemCost(item,round(1.04*ItemCost(item)));
+														01=ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('EvoTranc_TrancAddSlotScaner'));
+														02=ItemSize(item, ItemSize(item) - 25);
+														03=ItemCost(item, round(1.04 * ItemCost(item)));
 													}
 												}
 												//Слот форсажа (открываем с некоторым шансом)
-												21=if(level2>=4)
+												21=if(level2 >= 4)
 												22 ^{
-													01=if(Rnd(1,100)<=level2-1)//Бросок на шанс
+													01=if(Rnd(1, 100) <= level2 - 1)//Бросок на шанс
 													02 ^{
-														01=ItemExtraSpecialsAddByType(item,FindBonusByNameInCfg('EvoTranc_TrancAddSlotForsage'));
-														02=ItemSize(item,ItemSize(item)-25);
-														03=ItemCost(item,round(1.07*ItemCost(item)));
+														01=ItemExtraSpecialsAddByType(item, FindBonusByNameInCfg('EvoTranc_TrancAddSlotForsage'));
+														02=ItemSize(item, ItemSize(item) - 25);
+														03=ItemCost(item, round(1.07 * ItemCost(item)));
 													}
 												}
 												23=ShipMoney(tranc, ShipMoney(owner) * 2);
@@ -2392,29 +2412,29 @@ ShipInfo ^{
 													01=if(Rnd(1, 100) <= level2) ShipAddCustomShipInfo(tranc,'TrancAddGunInfo','',GetValueFromScript('Mod_EvoTranc','MusashiDamageArray',level2),GetValueFromScript('Mod_EvoTranc','MusashiRangeArray',level2),100,'0');
 												}
 												//Шанс на установку "Джэбэ"
-												34=if(level2>=5)
+												34=if(level2 >= 5)
 												35 ^{
-													01=if(Rnd(1,100)<=level2-2)ShipAddCustomShipInfo(tranc,'TrancBuffAttackInfo','',0,0,0,'',CT('Script.Mod_EvoTranc.RedMus'));
+													01=if(Rnd(1, 100) <= level2 - 2) ShipAddCustomShipInfo(tranc,'TrancBuffAttackInfo','',0,0,0,'',CT('Script.Mod_EvoTranc.RedMus'));
 												}
 												//Шанс на установку "Мангуста"
-												36=if(level2>=4)
+												36=if(level2 >= 4)
 												37 ^{
-													01=if(Rnd(1,100)<=level2) ShipAddCustomShipInfo(tranc,'TrancDefShieldInfo','',0,0,0,CT('Script.Mod_EvoTranc.RedDef'));
+													01=if(Rnd(1, 100) <= level2) ShipAddCustomShipInfo(tranc,'TrancDefShieldInfo','',0,0,0,CT('Script.Mod_EvoTranc.RedDef'));
 												}
 												//Шанс на установку "Херувима"
-												38=if(level2>=6)
+												38=if(level2 >= 6)
 												39 ^{
-													01=if(Rnd(1,100)<=level2-3) ShipAddCustomShipInfo(tranc,'TrancInvincibilityInfo','',0,0,0,'',CT('Script.Mod_EvoTranc.RedChe'));
+													01=if(Rnd(1, 100) <= level2 - 3) ShipAddCustomShipInfo(tranc,'TrancInvincibilityInfo','',0,0,0,'',CT('Script.Mod_EvoTranc.RedChe'));
 												}
 												//Шанс на установку фейкового навигационного компьютера
-												40=if(ShipFindCustomShipInfoByType(tranc,'TrancFakeNavComputerInfo')==-1)
+												40=if(ShipFindCustomShipInfoByType(tranc,'TrancFakeNavComputerInfo') == -1)
 												41 ^{
-													01=if(level2>=3)
+													01=if(level2 >= 3)
 													02 ^{
-														01=if(Rnd(1,100)<=45)
+														01=if(Rnd(1, 100) <= 45)
 														02 ^{
-															01=ShipAddCustomShipInfo(tranc,'TrancFakeNavComputerInfo');
-															02=ItemCost(item,round(1.15*ItemCost(item)));
+															01=ShipAddCustomShipInfo(tranc, 'TrancFakeNavComputerInfo');
+															02=ItemCost(item, round(1.15 * ItemCost(item)));
 														}
 													}
 												}
@@ -2495,31 +2515,31 @@ ShipInfo ^{
 													06=SetName(tranc, newName);
 												}
 												51=quant = quant + 1;
-												52=ShipCustomShipInfoData(0,cur_info,3,quant);
-												53=allId=allId+Id(tranc)+'*'+(quant+1)+'*';
-												54=ShipCustomShipInfoTextData(0,cur_info,1,allId);
-												55=launched=launched+'N';
-												56=ShipCustomShipInfoTextData(0,cur_info,2,launched);
-												57=status=status+'N';
-												58=ShipCustomShipInfoTextData(0,cur_info,3,status);
-												59=HullHP(tranc,ItemSize(item));
+												52=ShipCustomShipInfoData(0, cur_info, 3, quant);
+												53=allId = allId + ',' + Id(tranc);
+												54=ShipCustomShipInfoTextData(0, cur_info, 1, allId);
+												55=launched = launched + 'N';
+												56=ShipCustomShipInfoTextData(0, cur_info, 2, launched);
+												57=status = status + 'N';
+												58=ShipCustomShipInfoTextData(0, cur_info, 3, status);
+												59=HullHP(tranc, ItemSize(item));
 												//Разрешаем транку автоматически менять оборудование
-												60=TranclucatorData(tranc,'AutoArrange',1);
+												60=TranclucatorData(tranc, 'AutoArrange', 1);
 												//Вешаем на транка инфошку подчинённого
-												61=if(level2 < 8) ShipAddCustomShipInfo(tranc,'TrancNPCAddInfo','NoShow',-1,0,0,'','0','N');
-												62=else ShipAddCustomShipInfo(tranc,'TrancNPCAddInfo','NoShow',CurTurn()+Rnd(297,403),0,0,'','','N');
+												61=if(level2 < 8) ShipAddCustomShipInfo(tranc, 'TrancNPCAddInfo', 'NoShow', -1, 0, 0, '', '0', 'N');
+												62=else ShipAddCustomShipInfo(tranc, 'TrancNPCAddInfo', 'NoShow', CurTurn() + Rnd(297, 403), 0, 0, '', '', 'N');
 												//Увеличиваем навык техники корабля, если его недостаточно для владения текущим количеством транклюкаторов
 												63=if(ShipSkill(owner, 'Technical') < quant) ShipSkill(owner, 'Technical', quant);
 												//Обновляем таймер до следующей проверки на получение транка
-												64=ShipCustomShipInfoData(0,cur_info,1,Rnd(207,459));
+												64=ShipCustomShipInfoData(0, cur_info, 1, Rnd(207, 459));
 											}
-											10=else ShipCustomShipInfoData(0,cur_info,1,Rnd(207,459));
+											10=else ShipCustomShipInfoData(0, cur_info, 1, Rnd(207, 459));
 										}
-										03=else ShipCustomShipInfoData(0,cur_info,1,Rnd(207,459));
+										03=else ShipCustomShipInfoData(0, cur_info, 1, Rnd(207, 459));
 									}
 									//Перекрашиваем сложенные артефакты-транклюкаторы в трюме
-									08=for(i = 0; i <= ShipArts(owner); i = i + 1)
-									09 ^{
+									07=for(i = 0; i < ShipArts(owner); i = i + 1)
+									08 ^{
 										01=item = ShipArts(owner, i);
 										02=if(ItemType(item) == t_ArtefactTranclucator)
 										03 ^{
@@ -2527,14 +2547,14 @@ ShipInfo ^{
 										}
 									}
 									//Ставим маркер о посещении планеты/станции на текущем ходу
-									10=ShipCustomShipInfoData(0, cur_info, 2, 1);
+									09=ShipCustomShipInfoData(0, cur_info, 2, 1);
 								}
 							}
 						}
 						//Проверяем наличие обвеса хозяина в гиперпространственные
 						//Может случиться, если транки залетают к нему на борт в ход совершения прыжка, т.к. совпали координаты
-						12=if(ShipInHyperSpace(owner))
-						13 ^{
+						09=if(ShipInHyperSpace(owner))
+						10 ^{
 							01=if(ShipFreeSpace(owner) < 0)
 							02 ^{
 								01=int overload = abs(ShipFreeSpace(owner));
@@ -2636,83 +2656,35 @@ ShipInfo ^{
 						07 ^{
 							01=if(ShipInFear(owner))
 							02 ^{
+								//Если в панике сваливает
 								01=if(ShipOrder(owner) != 6) backCheck = 1;
 								02=else if(ShipOrderData1(owner) != 1) backCheck = 1;
 							}
-							03=else if(!ShipGetBad(owner)) backCheck = 1;
+							//Если никого не преследует
+							03=else if(!(ShipOrder(owner) == 6 && ShipOrderData1(owner) == 1)) backCheck = 1; //!ShipGetBad(owner)
 						}
 						08=if(backCheck)
 						09 ^{
-							01=for(i = 1; i <= quant; i = i + 1)
+							01=for(i = 0; i < quant; i = i + 1)
 							02 ^{
-								01=if(findsubstr(launched, 'Y') == i - 1)
+								01=if(findsubstr(launched, 'Y') == i)
 								02 ^{
 									01=allId = ShipCustomShipInfoTextData(0, cur_info, 1);
-									02=tNum = findsubstr(allId, '*' + i + '*') + 3;
-									03=tranc = substr(allId, tNum, findsubstr(allId, '*' + (i + 1) + '*') - tNum);
-									04=tranc = IdToShip(tranc);
+									02=tranc = IdToShip(GetParFromString(allId, ',', i, 0));
 									//Один хрен, нужно ошибку ловить, а не костыли в коде ставить, так что обход краша добавлять не буду
-									//04=SFT(''+allId + ' ');SFT(''+quant + ' ');SFT(''+tranc + ' ');SFT(''+tranc + ' ');
+									//03=SFT(''+allId + ' ');SFT(''+quant + ' ');SFT(''+tranc + ' ');SFT(''+tranc + ' ');
 									//blacksun посчитал, что здесь могут быть краши, однако "пересмотр" погибших на вылете транков всегда
 									//происходит в инфошке самих транков по событию t_OnDeath, так что вряд ли здесь что-то может реально сломаться
 									//Предположительно, кораблю изначально могут начисляться несуществующие транки, но суть проблемы не ясна
 									//Также вероятно, что воскрешающиеся после смерти рандомные рейнджеры (наследие Даба) не вызывают срабатывание t_OnDeath по каким-то причинам, хотя формально должны
-									05=if(0)//!tranc)
-									06 ^{
-										01=ArrayClear(GEvoTrancTempArray);
-										02=str tempId;
-										03=for(i = 1; i <= quant; i = i + 1)
-										04 ^{
-											01=tNum = findsubstr(allId, '*' + i + '*') + 3;
-											02=tempId = substr(allId, tNum, findsubstr(allId, '*' + (i + 1) + '*') - tNum);
-											03=if(trancId == tempId)
-											04 ^{
-												01=launched = substr(launched, 0, i - 1) + '' + substr(launched, i);
-												02=ShipCustomShipInfoTextData(owner, cur_info, 2, launched);
-												03=status = substr(status, 0, i - 1) + '' + substr(status, i);
-												04=ShipCustomShipInfoTextData(owner, cur_info, 3, status);
-											}
-											05=else ArrayAdd(GEvoTrancTempArray, tempId);
-										}
-										05=quant = quant - 1;
-										06=ShipCustomShipInfoData(owner, cur_info, 3, quant);
-										07=allId = '*1*';
-										08=int temp_size=0;
-										09=for(i = 1; i <= quant; i = i + 1)
-										10 ^{
-											01=allId = allId + GEvoTrancTempArray[i] + '*' + (i + 1) + '*';
-											02=temp_size = temp_size + TranclucatorData(IdToShip(GEvoTrancTempArray[i]), 'ArtSize');
-										}
-										11=ShipCustomShipInfoTextData(owner, cur_info, 1, allId);
-										12=for(i = 1; i < ShipItems(owner); i = i + 1)
-										13 ^{
-											01=item = ShipItems(owner, i);
-											02=if(EquipmentImageName(item) == 'WeightReserve')
-											03 ^{
-												01=ItemSize(item, temp_size);
-												02=break;
-											}
-										}
+									03=if(ShipStar(tranc) == ShipStar(owner))
+									04 ^{
+										01=int tint = ShipFindCustomShipInfoByType(tranc, 'TrancNPCAddInfo');
+										02=ShipCustomShipInfoData(tranc,tint, 2, 1);
+										03=ShipCustomShipInfoData(tranc,tint, 3, 2);
+										04=launched = substr(launched, 0, i) + 'R' + substr(launched, i + 1);
+										05=ShipCustomShipInfoTextData(0, cur_info, 2, launched);
 									}
-									07=else
-									08 ^{
-										01=if(ShipStar(tranc) == ShipStar(owner))
-										02 ^{
-											01=int tint = ShipFindCustomShipInfoByType(tranc, 'TrancNPCAddInfo');
-											02=ShipCustomShipInfoData(tranc,tint, 2, 1);
-											03=ShipCustomShipInfoData(tranc,tint, 3, 2);
-											04=launched = substr(launched, 0, i - 1) + 'R' + substr(launched, i);
-											05=ShipCustomShipInfoTextData(0, cur_info, 2, launched);
-										}
-									}
-									// 05=if(ShipStar(tranc) == ShipStar(owner))
-									// 06 ^{
-										// 01=int tint = ShipFindCustomShipInfoByType(tranc, 'TrancNPCAddInfo');
-										// 02=ShipCustomShipInfoData(tranc,tint, 2, 1);
-										// 03=ShipCustomShipInfoData(tranc,tint, 3, 2);
-										// 04=launched = substr(launched, 0, i - 1) + 'R' + substr(launched, i);
-										// 05=ShipCustomShipInfoTextData(0, cur_info, 2, launched);
-									// }
 								}
 							}
 						}
@@ -2760,14 +2732,13 @@ ShipInfo ^{
 						}
 						19=str tranc_stat = ShipCustomShipInfoTextData(tranc, tint3, 3);
 						20=int trancId = Id(tranc);
-						21=for(i = 1; i <= quant; i = i + 1)
+						21=for(i = 0; i < quant; i = i + 1)
 						22 ^{
-							01=tNum = findsubstr(allId, '*' + i + '*') + 3;
-							02=if(substr(allId, tNum, findsubstr(allId, '*' + (i + 1) + '*') - tNum) == trancId)
-							03 ^{
-								01=launched = substr(launched, 0, i - 1) + 'N' + substr(launched, i);
+							01=if(GetParFromString(allId, ',', i, 0) == trancId)
+							02 ^{
+								01=launched = substr(launched, 0, i) + 'N' + substr(launched, i + 1);
 								02=ShipCustomShipInfoTextData(0, cur_info, 2, launched);
-								03=status = substr(status, 0, i - 1) + tranc_stat + substr(status, i);
+								03=status = substr(status, 0, i) + tranc_stat + substr(status, i + 1);
 								04=ShipCustomShipInfoTextData(0, cur_info, 3, status);
 								05=break;
 							}
@@ -2834,20 +2805,18 @@ ShipInfo ^{
 						06=allId = ShipCustomShipInfoTextData(0, cur_info, 1);
 						07=launched = ShipCustomShipInfoTextData(0, cur_info, 2);
 						//Удаляем у хозяина всех транков, оставшихся в космосе
-						08=for(i = 1; i <= quant; i = i + 1)
+						08=for(i = 0; i < quant; i = i + 1)
 						09 ^{
-							01=if(findsubstr(launched, 'Y') == i - 1 || findsubstr(launched, 'R') == i - 1)
+							01=if(findsubstr(launched, 'Y') == i || findsubstr(launched, 'R') == i)
 							02 ^{
 								//Вытаскиваем Id нужного транка по его номеру
-								01=tNum = findsubstr(allId, '*' + i + '*') + 3;
-								02=tranc = substr(allId, tNum, findsubstr(allId, '*' + (i + 1) + '*') - tNum);
-								03=tranc = IdToShip(tranc);
-								04=TranclucatorData(tranc, 'Proprietor', 0);
-								05=ShipCustomShipInfoData(tranc, 'TrancNPCAddInfo', 2, 2);
-								06=ShipCustomShipInfoData(tranc, 'TrancNPCAddInfo', 3, 2);
-								07=OrderNone(tranc);
-								08=OrderLock(tranc, 1);
-								09=launched = substr(launched, 0, i - 1) + 'D' + substr(launched, i);
+								01=tranc = IdToShip(GetParFromString(allId, ',', i, 0));
+								02=TranclucatorData(tranc, 'Proprietor', 0);
+								03=ShipCustomShipInfoData(tranc, 'TrancNPCAddInfo', 2, 2);
+								04=ShipCustomShipInfoData(tranc, 'TrancNPCAddInfo', 3, 2);
+								05=OrderNone(tranc);
+								06=OrderLock(tranc, 1);
+								07=launched = substr(launched, 0, i) + 'D' + substr(launched, i + 1);
 							}
 						}
 						//Уничтожаем корабль наверняка, чтобы хардкод не реснул его в системе смерти
@@ -2906,75 +2875,105 @@ ShipInfo ^{
                 OnActCode ^{
 					01=if(ScriptItemActionType(t_OnStep, 0))
 					02 ^{
-						01=int i;
-						02=dword cur_info = CurInfo();
-						03=dword tranc = ScriptItemActShip();
-						04=dword owner = TranclucatorData(tranc, 'Proprietor');
-						05=int bonus = FindBonusByCustomTag('EvoTranc_TrancItemAcrin');
-						06=int bonus2 = FindBonusByCustomTag('EvoTranc_TrancWeaponAcrin');
-						07=dword item = ShipItems(tranc, 0);
-						08=if(OrderLock(tranc)) OrderLock(tranc, 0);
-						09=if(owner)
-						10 ^{
+						01=dword cur_info = CurInfo();
+						02=dword tranc = ScriptItemActShip();
+						03=dword owner = TranclucatorData(tranc, 'Proprietor');
+						04=if(!fun_init)
+						05 ^{
+							01=unknown RndObject = ImportedFunction('UtilityFunctions', 'RndObject');
+							02=unknown GetParFromString = ImportedFunction('UtilityFunctions', 'GetParFromString');
+							03=int fun_init = 1;
+						}
+						//Временная херня, просто чтобы старые сейвы не сломались. В начале 2022 года удалить.
+						06=if(owner)
+						06 ^{
+							01=infos = ShipFindCustomShipInfoByType(owner, 'TrancNPCOwnerInfo');
+							02=allId = ShipCustomShipInfoTextData(owner, infos, 1);
+							03=if(~findsubstr(allId, '*'))
+							04 ^{
+								01=quant = ShipCustomShipInfoData(owner, infos, 3);
+								02=unknown tarr11 = newarray(1);
+								03=for(i = 1; i <= quant; i = i + 1)
+								04 ^{
+									01=dword tNum = findsubstr(allId, '*' + i + '*') + 3;
+									02=tempId = substr(allId, tNum, findsubstr(allId, '*' + (i + 1) + '*') - tNum);
+									//Заносим Id каждого транклюкатора во временный массив
+									03=ArrayAdd(tarr11, tempId);
+								}
+								05=allId = '';
+								06=for(i = 1; i <= quant; i = i + 1)
+								07 ^{
+									01=if(i < quant) allId = allId + tarr11[i] + ',';
+									02=else allId = allId + tarr11[i];
+								}
+								08=ShipCustomShipInfoTextData(owner, infos, 1, allId);
+							}
+						}
+						06=int bonus = FindBonusByCustomTag('EvoTranc_TrancItemAcrin');
+						07=int bonus2 = FindBonusByCustomTag('EvoTranc_TrancWeaponAcrin');
+						08=dword item = ShipItems(tranc, 0);
+						09=if(OrderLock(tranc)) OrderLock(tranc, 0);
+						10=if(owner)
+						11 ^{
 							//Автообновление статуса на обновление/ремонт
 							01=str stat = ShipCustomShipInfoTextData(0, cur_info, 3);
 							02=if(stat != 'U')
 							03 ^{
 								01=if(stat!='R')
 								02 ^{
-									01=if(HullDamage(tranc))ShipCustomShipInfoTextData(0,cur_info,3,'R');
+									01=if(HullDamage(tranc)) ShipCustomShipInfoTextData(0, cur_info, 3, 'R');
 								}
-								03=if(ItemLevel(item)<8)
+								03=if(ItemLevel(item) < 8)
 								04 ^{
-									01=if(ItemLevel(item)<GalaxyTechLevel())ShipCustomShipInfoTextData(0,cur_info,3,'U');
+									01=if(ItemLevel(item) < GalaxyTechLevel()) ShipCustomShipInfoTextData(0, cur_info, 3, 'U');
 								}
-								05=else if(ShipCustomShipInfoData(0,cur_info,1)>CurTurn())
+								05=else if(ShipCustomShipInfoData(0, cur_info, 1) > CurTurn())
 								06 ^{
-									01=ShipCustomShipInfoTextData(0,cur_info,3,'U');
-									02=ShipCustomShipInfoData(0,cur_info,1,CurTurn()+Rnd(297,403));
+									01=ShipCustomShipInfoTextData(0, cur_info, 3, 'U');
+									02=ShipCustomShipInfoData(0, cur_info, 1, CurTurn() + Rnd(297, 403));
 								}
 								//Первый раз взводим таймер
-								07=else if(ShipCustomShipInfoData(0,cur_info,1)==-1)ShipCustomShipInfoData(0,cur_info,1,CurTurn()+Rnd(297,403));
+								07=else if(ShipCustomShipInfoData(0, cur_info, 1) == -1) ShipCustomShipInfoData(0, cur_info, 1, CurTurn() + Rnd(297, 403));
 							}
-							04=if(stat=='R')
+							04=if(stat == 'R')
 							05 ^{
-								01=if(!HullDamage(tranc))ShipCustomShipInfoTextData(0,cur_info,3,'N');
+								01=if(!HullDamage(tranc)) ShipCustomShipInfoTextData(0, cur_info, 3, 'N');
 							}
 							//Проверка на получение приказа сворачивания
-							06=dword tranc_star=ShipStar(tranc);
-							07=dword owner_star=ShipStar(owner);
-							08=if(tranc_star==owner_star)
+							06=dword tranc_star = ShipStar(tranc);
+							07=dword owner_star = ShipStar(owner);
+							08=if(tranc_star == owner_star)
 							09 ^{
-								01=if(ShipCustomShipInfoData(0,cur_info,2))
+								01=if(ShipCustomShipInfoData(0, cur_info, 2))
 								02 ^{
-									01=TranclucatorData(tranc,'Docking',1);
-									02=if(!ShipCustomShipInfoData(0,cur_info,3))
+									01=TranclucatorData(tranc, 'Docking', 1);
+									02=if(!ShipCustomShipInfoData(0, cur_info, 3))
 									03 ^{
 										//На возвращении транклюкатор получает бонус к скорости, чтобы она стала в два раза выше, чем у хозяина
-										01=if(ShipSpeed(tranc)<(2.5*ShipSpeed(owner)))
+										01=if(ShipSpeed(tranc) < (2.5 * ShipSpeed(owner)))
 										02 ^{
-											01=int speedBon=(2.5*ShipSpeed(owner))-ShipSpeed(tranc);
-											02=ShipSpecialBonuses(tranc,bonSpeed,ShipSpecialBonuses(tranc,bonSpeed)+speedBon);
-											03=ShipCustomShipInfoTextData(0,cur_info,2,speedBon);
+											01=int speedBon = (2.5 * ShipSpeed(owner)) - ShipSpeed(tranc);
+											02=ShipSpecialBonuses(tranc, bonSpeed, ShipSpecialBonuses(tranc, bonSpeed) + speedBon);
+											03=ShipCustomShipInfoTextData(0, cur_info, 2, speedBon);
 											04=ShipCalcParam(tranc);
 										}
 									}
 									04=else
 									05 ^{
-										01=ShipCustomShipInfoData(0,cur_info,3,ShipCustomShipInfoData(0,cur_info,3)-1);
+										01=ShipCustomShipInfoData(0, cur_info, 3, ShipCustomShipInfoData(0, cur_info, 3) - 1);
 									}
 								}
 							}
 							//Если хозяин бросил транка в другой системе
 							10=else
 							11 ^{
-								01=dword player_star=ShipStar(Player());
+								01=dword player_star = ShipStar(Player());
 								//Если брошенного транка видит игрок, то действуем по усложнённой схеме
-								02=if(tranc_star==player_star || owner_star==player_star)
+								02=if(tranc_star == player_star || owner_star == player_star)
 								03 ^{
-									01=if(ShipFindCustomShipInfoByType(tranc,'TrancFakeNavComputerInfo')>-1)
+									01=if(~ShipFindCustomShipInfoByType(tranc, 'TrancFakeNavComputerInfo'))
 									02 ^{
-										01=OrderJump(tranc,owner_star);
+										01=OrderJump(tranc, owner_star);
 									}
 								}
 								//Иначе он просто мгновенно телепортируется в систему к хозяину
@@ -2982,8 +2981,8 @@ ShipInfo ^{
 								05 ^{
 									01=if(!ShipInHyperSpace(tranc))
 									02 ^{
-										01=OrderTeleport(tranc,owner_star,CoordX(tranc),CoordY(tranc));
-										02=ShipOrderData1(tranc,0);
+										01=OrderTeleport(tranc, owner_star, CoordX(tranc), CoordY(tranc));
+										02=ShipOrderData1(tranc, 0);
 									}
 								}
 							}
@@ -3033,40 +3032,41 @@ ShipInfo ^{
 						02=owner = TranclucatorData(tranc, 'Proprietor');
 						03=if(owner)
 						04 ^{
-							01=ArrayClear(GEvoTrancTempArray);
+							01=unknown tarr = newarray(1);
 							02=int infos = ShipFindCustomShipInfoByType(owner, 'TrancNPCOwnerInfo');
 							03=int quant = ShipCustomShipInfoData(owner, infos, 3);
-							04=dword tNum;
-							05=str tempId;
 							//Тяжелее всего пересобирать грёбанную строку с Id транклюкаторов
-							06=str allId = ShipCustomShipInfoTextData(owner, infos, 1);
-							07=str launched = ShipCustomShipInfoTextData(owner, infos, 2);
-							08=str status = ShipCustomShipInfoTextData(owner, infos, 3);
-							09=dword trancId = Id(tranc);
-							10=for(i = 1; i <= quant; i = i + 1)
-							11 ^{
-								01=tNum = findsubstr(allId, '*' + i + '*') + 3;
-								02=tempId = substr(allId, tNum, findsubstr(allId, '*' + (i + 1) + '*') - tNum);
+							04=str allId = ShipCustomShipInfoTextData(owner, infos, 1);
+							05=str launched = ShipCustomShipInfoTextData(owner, infos, 2);
+							06=str status = ShipCustomShipInfoTextData(owner, infos, 3);
+							07=dword trancId = Id(tranc);
+							08=for(i = 0; i < quant; i = i + 1)
+							09 ^{
+								01=dword tempId = GetParFromString(allId, ',', i, 0);
 								//Если попалось Id уничтоженного транка, то подтираем его статусы из всех прочих строк, кроме строки с Id
-								03=if(trancId == tempId)
-								04 ^{
-									01=launched = substr(launched, 0, i - 1) + '' + substr(launched, i);
+								02=if(trancId == tempId)
+								03 ^{
+									01=launched = substr(launched, 0, i) + '' + substr(launched, i + 1);
 									02=ShipCustomShipInfoTextData(owner, infos, 2, launched);
-									03=status = substr(status, 0, i - 1) + '' + substr(status, i);
+									03=status = substr(status, 0, i) + '' + substr(status, i + 1);
 									04=ShipCustomShipInfoTextData(owner, infos, 3, status);
 								}
 								//Заносим Id каждого живого транклюкатора во временный массив
-								05=else ArrayAdd(GEvoTrancTempArray, tempId);
+								04=else ArrayAdd(tarr, tempId);
 							}
-							12=quant = quant - 1;
-							13=ShipCustomShipInfoData(owner, infos, 3, quant);
+							10=quant = quant - 1;
+							11=ShipCustomShipInfoData(owner, infos, 3, quant);
 							//Заносим Id живых транков из массива в строку и затем обратно в данные инфошки. Наконец-то.
-							14=allId = '*1*';
-							15=for(i = 1; i <= quant; i = i + 1) allId = allId + GEvoTrancTempArray[i] + '*' + (i + 1) + '*';
-							16=ShipCustomShipInfoTextData(owner, infos, 1, allId);
+							12=allId = '';
+							13=for(int i = 1; i <= quant; i = i + 1) //Потому что ебаные дабомассивы
+							14 ^{
+								01=if(i < quant) allId = allId + tarr[i] + ',';
+								02=else allId = allId + tarr[i];
+							}
+							15=ShipCustomShipInfoTextData(owner, infos, 1, allId);
 							//Снижаем вес предмету, занимающему пространство под вылетевших из трюма транков
-							17=for(i = 1; i < ShipItems(owner); i = i + 1)
-							18 ^{
+							16=for(i = 1; i < ShipItems(owner); i = i + 1)
+							17 ^{
 								01=item = ShipItems(owner, i);
 								02=if(EquipmentImageName(item) == 'WeightReserve')
 								03 ^{
@@ -3076,8 +3076,8 @@ ShipInfo ^{
 								}
 							}
 							//Блокируем дроп большей части артефактов
-							19=for(i = 0; i < ShipArts(tranc); i = i + 1)
-							20 ^{
+							18=for(i = 0; i < ShipArts(tranc); i = i + 1)
+							19 ^{
 								01=item = ShipArts(tranc, i);
 								02=if(Rnd(1, 100) > 20) NoDropItem(item, 1);
 							}
