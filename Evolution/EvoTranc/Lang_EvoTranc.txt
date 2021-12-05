@@ -321,12 +321,12 @@ ShipInfo ^{
 				OnActCodeTypes=t_OnStep,t_OnReduceEqBattle,t_OnReduceEqUse,t_OnReduceEqForce,t_OnReduceEqForsage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi,t_OnEnteringForm,t_OnReEnteringForm,t_OnLeavingForm
 				OnActStepTypes=0,11
                 OnActCode ^{
-				//ShipCustomShipInfoData(0,CurInfo(),1) - если не 0, то равно Id планеты, на которую можно совершать посадку при сборе предметов;
-				//ShipCustomShipInfoData(0,CurInfo(),2) - если не 0, то равно Id станции, на которую можно совершать посадку при сборе предметов;
-				//ShipCustomShipInfoData(0,CurInfo(),3) - таймер до завершения приказа форсажа у транка;
-				//ShipCustomShipInfoTextData(0,CurInfo(),1) - маркер об инициации транком определённого диалога с игроком;
-				//ShipCustomShipInfoTextData(0,CurInfo(),2) - маркер о том, что транклюкатор совершает посадку для сдачи собранных вещей на склад;
-				//ShipCustomShipInfoTextData(0,CurInfo(),3) - проверка о наличии приказа форсажа, нужна для корректного включения кода, привязанного к стейту (если 'turn', то вкл.);
+				//ShipCustomShipInfoData(0, CurInfo(), 1) - если не 0, то равно Id планеты, на которую можно совершать посадку при сборе предметов;
+				//ShipCustomShipInfoData(0, CurInfo(), 2) - если не 0, то равно Id станции, на которую можно совершать посадку при сборе предметов;
+				//ShipCustomShipInfoData(0, CurInfo(), 3) - таймер до завершения приказа форсажа у транка;
+				//ShipCustomShipInfoTextData(0, CurInfo(), 1) - маркер об инициации транком определённого диалога с игроком;
+				//ShipCustomShipInfoTextData(0, CurInfo(), 2) - маркер о том, что транклюкатор совершает посадку для сдачи собранных вещей на склад;
+				//ShipCustomShipInfoTextData(0, CurInfo(), 3) - проверка о наличии приказа форсажа, нужна для корректного включения кода, привязанного к стейту (если 'turn', то вкл.);
 					01=dword cur_Tranc = ScriptItemActShip();
 					02=if(~ShipFindCustomShipInfoByType(cur_Tranc,'OrderJumpHole_ForCompanion'))
 					03 ^{
@@ -349,66 +349,68 @@ ShipInfo ^{
 							//Если транклюкатор садится
 							01=if(ShipOrder(cur_Tranc) == 2)
 							02 ^{
-								01=dword planet=ShipCustomShipInfoData(0,infos,1);
-								02=dword base=ShipCustomShipInfoData(0,infos,2);
-								03=dword cur_point=ShipOrderObj(cur_Tranc);
+								01=dword planet = ShipCustomShipInfoData(0, infos, 1);
+								02=dword base = ShipCustomShipInfoData(0, infos, 2);
+								03=dword cur_point = ShipOrderObj(cur_Tranc);
 								//Если установлены конкретные цели для посадки
 								04=if(planet || base)
 								05 ^{
 									//Не делаем проверку, если транклюкатор уже и так летит к одной из указанных ему целей посадки
-									01=if(Id(cur_point)!=planet && Id(cur_point)!=base)
+									01=if(Id(cur_point) != planet && Id(cur_point) != base)
 									02 ^{
 										01=int i;
-										02=int distNear=0;
-										03=dword star=ShipStar(cur_Tranc);
-										04=dword closest_base=0;
+										02=int distNear = 0;
+										03=dword star = ShipStar(cur_Tranc);
+										04=dword closest_base = 0;
 										05=if(planet)
 										06 ^{
-											01=planet=IdToPlanet(planet);
+											01=planet = IdToPlanet(planet);
 											//Если не нашли выбранную планету в системе с транком, очищаем маркер
-											02=if(PlanetToStar(planet)!=star)
+											02=if(PlanetToStar(planet) != star)
 											03 ^{
-												01=planet=0;
-												02=ShipCustomShipInfoData(0,infos,1,0);
+												01=planet = 0;
+												02=ShipCustomShipInfoData(0, infos, 1, 0);
 											}
 										}
 										07=if(base)
 										08 ^{
-											01=base=IdToShip(base);
+											01=base = IdToShip(base);
+											//Если базу уничтожили
+											02=if(!base) ShipCustomShipInfoData(0, infos, 2, 0);
 											//Если не нашли выбранную базу в системе с транком, очищаем маркер
-											02=if(ShipStar(base)!=star)
-											03 ^{
-												01=base=0;
-												02=ShipCustomShipInfoData(0,infos,2,0);
+											03=else if(ShipStar(base) != star)
+											04 ^{
+												01=base = 0;
+												02=ShipCustomShipInfoData(0, infos, 2, 0);
 											}
 										}
 										//Если ограничение включено и для планет и для станций
 										09=if(planet && base)
 										10 ^{
-											01=if(Dist(cur_Tranc,planet)<=Dist(cur_Tranc,base))
+											01=if(Dist(cur_Tranc, planet) <= Dist(cur_Tranc, base))
 											02 ^{
-												01=OrderLanding(cur_Tranc,planet);
-												02=ShipCustomShipInfoTextData(0,infos,2,'landing');
+												01=OrderLanding(cur_Tranc, planet);
+												02=ShipCustomShipInfoTextData(0, infos, 2, 'landing');
 											}
 											03=else
 											04 ^{
-												01=OrderLanding(cur_Tranc,base);
-												02=ShipCustomShipInfoTextData(0,infos,2,'landing');
+												01=OrderLanding(cur_Tranc, base);
+												02=ShipCustomShipInfoTextData(0, infos, 2, 'landing');
 											}
 										}
 										//Ограничение установлено только на планету
 										11=else if(planet)
 										12 ^{
 											//Если транк садится на планету, но планета не та
-											01=if(ObjectType(cur_point)==3)
+											01=if(ObjectType(cur_point) == 3)
 											02 ^{
 												//Если транку разрешено садиться на любые станции
-												01=if(TranclucatorData(cur_Tranc,'LandPermitRuins'))
+												01=if(TranclucatorData(cur_Tranc, 'LandPermitRuins'))
 												02 ^{
 													//Ищем ближайшую станцию
-													01=for(i=0;i<StarRuins(star);i=i+1)
+													01=for(i = 0; i < StarRuins(star); i = i + 1)
 													02 ^{
-														01=dword ruin=StarRuins(star,i);
+														01=dword ruin = StarRuins(star, i);
 														//Исключаем ингибиторы, нейролинки и доминионы, если игрок не пират
 														02=tempStr=ShipType(ruin);
 														03=if(tempStr=='Inhibitor')continue;
@@ -497,47 +499,50 @@ ShipInfo ^{
 						02=ShipCustomShipInfoTextData(0,CurInfo(),1,'');
 						03=if(OrderForsage(cur_Tranc))ShipCustomShipInfoTextData(0,infos,3,'turn');
 						//Если транклюкатор садится для сброса вещей на склад
-						04=if(ShipCustomShipInfoTextData(0,infos,2)=='landing')
+						04=if(ShipCustomShipInfoTextData(0, infos, 2) == 'landing')
 						05 ^{
 							01=OrderNone(cur_Tranc);
 							02=ShipFreeFlight(cur_Tranc);
-							03=if(ShipOrder(cur_Tranc)==2)
+							03=if(ShipOrder(cur_Tranc) == 2)
 							04 ^{
-								01=planet=ShipCustomShipInfoData(0,infos,1);
-								02=base=ShipCustomShipInfoData(0,infos,2);
-								03=cur_point=ShipOrderObj(cur_Tranc);
+								01=planet = ShipCustomShipInfoData(0, infos, 1);
+								02=base = ShipCustomShipInfoData(0, infos, 2);
+								03=cur_point = ShipOrderObj(cur_Tranc);
 								//Если установлены конкретные цели для посадки
 								04=if(planet || base)
 								05 ^{
 									//Не делаем проверку, если транклюкатор уже и так летит к одной из указанных ему целей посадки
-									01=if(Id(cur_point)!=planet && Id(cur_point)!=base)
+									01=if(Id(cur_point) != planet && Id(cur_point) != base)
 									02 ^{
-										01=star=ShipStar(cur_Tranc);
+										01=star = ShipStar(cur_Tranc);
 										02=if(planet)
 										03 ^{
-											01=planet=IdToPlanet(planet);
-											02=for(i=0;i<StarPlanets(star);i=i+1)
+											01=planet = IdToPlanet(planet);
+											02=for(i = 0; i < StarPlanets(star); i = i + 1)
 											03 ^{
-												01=if(StarPlanets(star,i)==planet)break;
+												01=if(StarPlanets(star, i) == planet) break;
 												//Если дошли до конца списка, но не нашли выбранную планету
-												02=if(i==(StarPlanets(star)-1))
+												02=if(i == (StarPlanets(star) - 1))
 												03 ^{
-													01=planet=0;
-													02=ShipCustomShipInfoData(0,infos,1,0);
+													01=planet = 0;
+													02=ShipCustomShipInfoData(0, infos, 1, 0);
 												}
 											}
 										}
 										04=if(base)
 										05 ^{
-											01=base=IdToShip(base);
-											02=for(i=0;i<StarRuins(star);i=i+1)
-											03 ^{
-												01=if(StarRuins(star,i)==base)break;
+											01=base = IdToShip(base);
+											//Если базу уничтожили
+											02=if(!base) ShipCustomShipInfoData(0, infos, 2, 0);
+											//Иначе ищем её в пределах текущей системы
+											03=else for(i = 0; i < StarRuins(star); i = i + 1)
+											04 ^{
+												01=if(StarRuins(star, i) == base) break;
 												//Если дошли до конца списка, но не нашли выбранную станцию
-												02=if(i==(StarRuins(star)-1))
+												02=if(i == (StarRuins(star) - 1))
 												03 ^{
-													01=base=0;
-													02=ShipCustomShipInfoData(0,infos,2,0);
+													01=base = 0;
+													02=ShipCustomShipInfoData(0, infos, 2, 0);
 												}
 											}
 										}
