@@ -1,8 +1,8 @@
 MicroModuls ^{
-    ExpTraitors_RangerPirateHull ^{
-		CustomTag=ExpTraitors_RangerPirateHull
+    ExpTraitors_TraitorHull ^{
+		CustomTag=ExpTraitors_TraitorHull
+		KindGraph=TraitorHull
 		Equipments=Hull
-		KindGraph=RangerP
 		Name=</color><Type> корпус изменника
 		Owner=PirateClan
 		OnPlanets=1
@@ -94,6 +94,10 @@ Script ^{
         90=Пока
 	}
 	Mod_ExpTraitors ^{
+		Jailbreak1=Сегодня из колонии особо строгого режима на планете <Planet> совершил побег опасный рецидивист <Ship>. Планетарное правительство уже объявило награду за поимку преступника, а всех пролетающих через систему <Star> пилотов мы призываем сохранять бдительность.
+		Jailbreak2=Сегодня из под тюремного заключения сбежал <Ship>. Администрация тюрьмы пребывает в лёгком шоке, по их словам <Ship> был образцовым заключённым и вот-вот должен был быть выпущен на поруки. Теперь же злоумышленнику грозит ещё больший срок, а все, кто располагают точной информацией о его текущем местонахождении, должны немедленно связаться с властями планеты <Planet> в системе <Star>.
+		Jailbreak3=Поступили тревожные вести из системы <Star>. Сегодня из тюрьмы строгого режима на планете <Planet> был совершён дерзкий побег. По заключениям тюремных следователей, <Ship> прополз два километра по канализационной трубе и едва успел выбраться до начала очередного банкета, устроенного в честь скорого выхода на волю крупного тюремного авторитета. По словам одного из пострадавших во время банкета заключённых: "Такой реактивной баландой мне обивать кишку ещё не доводилось!".
+
 		SpecialAgentSearchString=$Олеся$,$Диззи$,$Маша Д-Арк$,$Мира$,$Кореаночка$,$Гроза$,$Аэсонэ$,$Джинс$,$Сансет$,$Летучая$,$Звездочка$,$Анита$,$Линда$,$Кона-чан$,$Неко-Ня$,$Енот$,$Старбак$,$Беатриче$,$Макисе$,$Меркури$,$Анюта$Эклипс$Рейму$Мариса$Джунко$Элизабет$Моека$Хеллфайр$Мику$Чиана$Нова$Луна$Марина$Ирина$
 		29=<Player>, а ты ничего не попутал часом? Топал бы лучше отседа, пока братки не прочухали! У нас тут несчастные случаи, знаешь, случаются с теми, кто авторитет клана признавать отказывается.
 		93=Вах, да вы только поглядите! Это какого же интересного рейнджера к нам тут звёздным ветром занесло!<br>Что, <Player>, попал ты в чёрный список? Да вижу, что попал - не отнекивайся. Ну и что, так прям сразу и решил "на родные берега" якорь закинуть? Думал, что свои прикроют? Что свои своим всегда рады?<br>Так вот знай - не братаны мы тебе больше, понял!!? Вымётывайся отсюда, гнида сраколицая, пока собственными сапогами тебя в мусорный шлюз не затолкал!!!
@@ -372,9 +376,9 @@ ShipInfo ^{
 	AddInfo ^{
 		CustomInfos ^{
 			ExpTraitors_RuinsRelationsControl ^{
-				Description=Невидимая инфошка для выставления маркера при честном выходе (не побеге) игрока из тюрьмы, по умолчанию Data1 равна -1
 				Icon=0
-				Name=
+				Name=Невидимая инфошка для порчи отношения станции к игроку, если он решил открыть по ней огонь, а также для выставления маркера при честном выходе (не побеге) игрока из тюрьмы, по умолчанию Data1 равна -1
+				Description=NoShow
 				OnActCodeTypes=t_OnDealingDamage,t_OnLeavingForm
 				OnActCode ^{
 					//При каждом попадании по станции игрока, её отношение к игроку будет ухудшаться
@@ -396,8 +400,10 @@ ShipInfo ^{
 						02 ^{
 							01=if(CurrentForm() == 'PlanetQuest')
 							02 ^{
-								01=ShipCustomShipInfoData(0, CurInfo(), 1, PlanetOwner(GetShipPlanet(Player())));
-								02=GotoGov(2);
+								01=dword planet = GetShipPlanet(Player());
+								02=ShipCustomShipInfoData(0, CurInfo(), 1, PlanetOwner(planet));
+								03=ShipCustomShipInfoData(0, CurInfo(), 2, Id(planet));
+								04=GotoGov(2);
 							}
 						}
 					}
@@ -499,39 +505,42 @@ ShipInfo ^{
 						}
 						09=else if(CurrentForm() == 'GoodsShop')
 						10 ^{
-							01=str type = ShipType(GetShipRuins(Player()));
-							02=if(type == 'RC') MessageBox(Format(CT('Script.Mod_ExpTraitors.RC_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							03=else if(type == 'WB') MessageBox(Format(CT('Script.Mod_ExpTraitors.WB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							04=else if(type == 'SB') MessageBox(Format(CT('Script.Mod_ExpTraitors.SB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							05=else if(type == 'BK') MessageBox(Format(CT('Script.Mod_ExpTraitors.BK_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							06=else if(type == 'TC') MessageBox(Format(CT('Script.Mod_ExpTraitors.TC_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							07=else if(type == 'PB') MessageBox(Format(CT('Script.Mod_ExpTraitors.PB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							08=else if(type == 'CB') MessageBox(Format(CT('Script.Mod_ExpTraitors.CB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							09=FormChange('RuinsTalk');
+							01=dword cur_ruin = GetShipRuins(Player());
+							02=str type = ShipType(cur_ruin);
+							03=if(type == 'RC') MessageBox(Format(CT('Script.Mod_ExpTraitors.RC_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							04=else if(type == 'WB') MessageBox(Format(CT('Script.Mod_ExpTraitors.WB_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							05=else if(type == 'SB') MessageBox(Format(CT('Script.Mod_ExpTraitors.SB_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							06=else if(type == 'BK') MessageBox(Format(CT('Script.Mod_ExpTraitors.BK_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							07=else if(type == 'TC') MessageBox(Format(CT('Script.Mod_ExpTraitors.TC_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							08=else if(type == 'PB') MessageBox(Format(CT('Script.Mod_ExpTraitors.PB_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							09=else if(type == 'CB') MessageBox(Format(CT('Script.Mod_ExpTraitors.CB_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							10=FormChange('RuinsTalk');
 						}
 						11=else if(CurrentForm() == 'EquipmentShop')
 						12 ^{
-							01=type = ShipType(GetShipRuins(Player()));
-							02=if(type == 'RC') MessageBox(Format(CT('Script.Mod_ExpTraitors.RC_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							03=else if(type == 'WB') MessageBox(Format(CT('Script.Mod_ExpTraitors.WB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							04=else if(type == 'SB') MessageBox(Format(CT('Script.Mod_ExpTraitors.SB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							05=else if(type == 'BK') MessageBox(Format(CT('Script.Mod_ExpTraitors.BK_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							06=else if(type == 'TC') MessageBox(Format(CT('Script.Mod_ExpTraitors.TC_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							07=else if(type == 'PB') MessageBox(Format(CT('Script.Mod_ExpTraitors.PB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							08=else if(type == 'CB') MessageBox(Format(CT('Script.Mod_ExpTraitors.CB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							09=FormChange('RuinsTalk');
+							01=cur_ruin = GetShipRuins(Player());
+							02=type = ShipType(cur_ruin);
+							03=if(type == 'RC') MessageBox(Format(CT('Script.Mod_ExpTraitors.RC_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							04=else if(type == 'WB') MessageBox(Format(CT('Script.Mod_ExpTraitors.WB_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							05=else if(type == 'SB') MessageBox(Format(CT('Script.Mod_ExpTraitors.SB_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							06=else if(type == 'BK') MessageBox(Format(CT('Script.Mod_ExpTraitors.BK_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							07=else if(type == 'TC') MessageBox(Format(CT('Script.Mod_ExpTraitors.TC_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							08=else if(type == 'PB') MessageBox(Format(CT('Script.Mod_ExpTraitors.PB_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							09=else if(type == 'CB') MessageBox(Format(CT('Script.Mod_ExpTraitors.CB_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							10=FormChange('RuinsTalk');
 						}
 						13=else if(CurrentForm() == 'Info')
 						14 ^{
-							01=type = ShipType(GetShipRuins(Player()));
-							02=if(type == 'RC') MessageBox(Format(CT('Script.Mod_ExpTraitors.RC_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							03=else if(type == 'WB') MessageBox(Format(CT('Script.Mod_ExpTraitors.WB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							04=else if(type == 'SB') MessageBox(Format(CT('Script.Mod_ExpTraitors.SB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							05=else if(type == 'BK') MessageBox(Format(CT('Script.Mod_ExpTraitors.BK_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							06=else if(type == 'TC') MessageBox(Format(CT('Script.Mod_ExpTraitors.TC_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							07=else if(type == 'PB') MessageBox(Format(CT('Script.Mod_ExpTraitors.PB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							08=else if(type == 'CB') MessageBox(Format(CT('Script.Mod_ExpTraitors.CB_Block'), 'BaseName', ShipName(GetShipRuins(Player()))), 10);
-							09=FormChange('RuinsTalk');
+							01=cur_ruin = GetShipRuins(Player());
+							02=type = ShipType(cur_ruin);
+							03=if(type == 'RC') MessageBox(Format(CT('Script.Mod_ExpTraitors.RC_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							04=else if(type == 'WB') MessageBox(Format(CT('Script.Mod_ExpTraitors.WB_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							05=else if(type == 'SB') MessageBox(Format(CT('Script.Mod_ExpTraitors.SB_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							06=else if(type == 'BK') MessageBox(Format(CT('Script.Mod_ExpTraitors.BK_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							07=else if(type == 'TC') MessageBox(Format(CT('Script.Mod_ExpTraitors.TC_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							08=else if(type == 'PB') MessageBox(Format(CT('Script.Mod_ExpTraitors.PB_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							09=else if(type == 'CB') MessageBox(Format(CT('Script.Mod_ExpTraitors.CB_Block'), 'BaseName', ShipName(cur_ruin)), 10);
+							10=FormChange('RuinsTalk');
 						}
 						15=else if(CurrentForm() == 'RuinsTalk')
 						16 ^{
