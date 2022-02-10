@@ -133,72 +133,75 @@ Artefacts ^{
 				}
 			}
 			OnUseCode ^{
-				01=if(ShipInNormalSpace(Player()) && ItemDurability(CurItem())<=5)MessageBox('Артефакт не выдержит активации, требуется ремонт.');
-				02=if(ShipInNormalSpace(Player()) && ItemDurability(CurItem())>5)
-				03 ^{
-					01=if(CustomArtData(CurItem(),1)<100)MessageBox('Недостаточно заряда.');
-					02=if(CustomArtData(CurItem(),1)>=100)
-					03 ^{
-						01=dword curship=0;
-						02=int i=0;
-						03=int j=0;
-						04=dword temp_dword_2=StarPlanets(GalaxyStar(0),3);
-						05=int temp_int=0;
-						06=int temp_int_2=CustomArtData(CurItem(),1)/100;
-						07=unknown galo_tranc;
-						08=galo_tranc=newarray(1);
-						09=dword temp_dword=0;
-						10=float temp_float=2;
-						11=if(temp_int_2==1)temp_int_2=2;
-						12=if(temp_int_2>=10)temp_int_2=12;
-						13=for(i=0;i<temp_int_2;i=i+1)
-						14 ^{
-							01=curship=BuyTranclucator(temp_dword_2);
-							02=ItemSize(ShipItems(curship,0),ItemSize(ShipItems(Player(),0)));
-							03=SetName(curship,ShipName(Player()));
-							04=ShipType(curship,ShipType(Player()));
-							05=ShipOwner(curship,ShipOwner(Player()));
-							06=ItemOwner(ShipItems(curship,0),ItemOwner(ShipItems(Player(),0)));
-							07=NoTargetToShip(curship,1);
-							08=NoDropToShip(curship);
-							09=NoScanToShip(curship,1);
-							10=NoTalkToShip(curship,1);
-							11=AddItemToShip(curship,CreateEquipment(t_DefGenerator,1,1,1));
-							12=ArrangeItems(curship);
-							13=for(j=0;j<ShipItems(curship);j=j+1)
-							14 ^{
-								01=temp_dword=ShipItems(curship,j);
-								02=if(ItemType(temp_dword)==t_Engine) SetEquipmentStats(temp_dword,GetEquipmentStats(ShipEqInSlot(Player(),t_Engine),0),0);
-								03=else if(ItemType(temp_dword)==t_Hull) SetEquipmentStats(temp_dword,GetEquipmentStats(ShipItems(Player(),0),0),0);
-								04=else if(ItemType(temp_dword)==t_DefGenerator) SetEquipmentStats(temp_dword,GetEquipmentStats(ShipEqInSlot(Player(),t_DefGenerator),0),0);
-							}
-							15=Chameleon(curship,Chameleon(Player(),'GraphName'));
-							16=TransferShip(curship,ShipStar(Player()));
-							17=ArrayAdd(galo_tranc,curship);
-							18=ShipAddCustomShipInfo(curship,'SelfDestroy','NoShow',temp_int_2+Rnd(1,temp_int_2));
-							19=ShipAngle(curship,ShipAngle(Player()));
-							20=ShipRepairEq(curship);
-							21=if((i + 2) % 2 == 0) ShipSetCoords(curship,CoordX(Player())-temp_float*20.0*sin(((ShipAngle(Player())+30.0)*pi)/180.0),CoordY(Player())+temp_float*20.0*cos(((ShipAngle(Player())+30.0)*pi)/180.0));
-							22=if((i + 2) % 2 == 1) ShipSetCoords(curship,CoordX(Player())-temp_float*20.0*sin(((ShipAngle(Player())-30.0)*pi)/180.0),CoordY(Player())+temp_float*20.0*cos(((ShipAngle(Player())-30.0)*pi)/180.0));
-							23=if((i + 2) % 2 == 1) temp_float=temp_float+2;
-							24=OrderMove(curship,CoordX(curship)+300.0*sin((ShipAngle(curship)*pi)/180.0),CoordY(curship)-300.0*cos((ShipAngle(curship)*pi)/180.0),1);
-						}
-						15=for(i=0;i<StarShips(ShipStar(Player()));i=i+1)
-						16 ^{
-							01=curship=StarShips(ShipStar(Player()),i);
-							02=if(RelationToRanger(curship,Player())<10)
-							03 ^{
-								01=temp_int=Rnd(1,ArrayDim(galo_tranc)-1);
-								02=if(ShipOrderObj(curship)==Player()) ShipSetBad(curship,galo_tranc[temp_int]);
-								03=for(j=1;j<ArrayDim(galo_tranc);j=j+1) ShipSetBad(galo_tranc[j],curship);
-							}
-						}
-						17=CustomArtData(CurItem(),1,0);
-						18=ItemDurability(CurItem(),ItemDurability(CurItem())-5);
-						19=ScriptItemActParam(1);
-					}
+				01=if(!ShipInNormalSpace(Player()))
+				02 ^{
+					01=MessageBox(CT('FormShip.UseOnlyInSpace'));
+					02=exit;
 				}
-				04=if(!ShipInNormalSpace(Player()))MessageBox(CT('FormShip.UseOnlyInSpace'));
+				02=else if(ItemDurability(CurItem()) <= 5)
+				03 ^{
+					01=MessageBox('Артефакт не выдержит активации, требуется ремонт.');
+					02=exit;
+				}
+				04=else if(CustomArtData(CurItem(), 1) < 100)
+				05 ^{
+					01=MessageBox('Недостаточно заряда.');
+					02=exit;
+				}
+				05=else
+				06 ^{
+					01=unknown galo_tranc = newarray(1);
+					02=float temp_float = 2;
+					03=int temp_int_2 = max(CustomArtData(CurItem(), 1) / 100, 2);
+					04=if(temp_int_2 >= 10) temp_int_2 = 12;
+					05=dword temp_dword_2 = StarPlanets(GalaxyStar(0), 3);
+					06=for(int i = 0; i < temp_int_2; i = i + 1)
+					07 ^{
+						01=dword curship = BuyTranclucator(temp_dword_2, 0);
+						02=ItemSize(ShipItems(curship, 0), ItemSize(ShipItems(Player(), 0)));
+						03=SetName(curship, ShipName(Player()));
+						04=ShipType(curship, ShipType(Player()));
+						05=ShipOwner(curship, ShipOwner(Player()));
+						06=ItemOwner(ShipItems(curship, 0), ItemOwner(ShipItems(Player(), 0)));
+						07=NoTargetToShip(curship, 1);
+						08=NoDropToShip(curship);
+						09=NoScanToShip(curship, 1);
+						10=NoTalkToShip(curship, 1);
+						11=AddItemToShip(curship, CreateEquipment(t_DefGenerator, 1, 1, 1));
+						12=ArrangeItems(curship);
+						13=for(int j = 0; j < ShipItems(curship); j = j + 1)
+						14 ^{
+							01=dword temp_dword = ShipItems(curship, j);
+							02=if(ItemType(temp_dword)==t_Engine) SetEquipmentStats(temp_dword,GetEquipmentStats(ShipEqInSlot(Player(),t_Engine),0),0);
+							03=else if(ItemType(temp_dword)==t_Hull) SetEquipmentStats(temp_dword,GetEquipmentStats(ShipItems(Player(),0),0),0);
+							04=else if(ItemType(temp_dword)==t_DefGenerator) SetEquipmentStats(temp_dword,GetEquipmentStats(ShipEqInSlot(Player(),t_DefGenerator),0),0);
+						}
+						15=Chameleon(curship, Chameleon(Player(), 'GraphName'));
+						16=TransferShip(curship, ShipStar(Player()));
+						17=ArrayAdd(galo_tranc, curship);
+						18=ShipAddCustomShipInfo(curship, 'ExpSSB_HoloSelfDestroyInfo', 'NoShow', temp_int_2 + Rnd(1, temp_int_2)); //Data1 - сколько ходов проживёт голограмма
+						19=ShipAngle(curship, ShipAngle(Player()));
+						20=ShipRepairEq(curship);
+						21=if((i + 2) % 2 == 0) ShipSetCoords(curship,CoordX(Player())-temp_float*20.0*sin(((ShipAngle(Player())+30.0)*pi)/180.0),CoordY(Player())+temp_float*20.0*cos(((ShipAngle(Player())+30.0)*pi)/180.0));
+						22=if((i + 2) % 2 == 1) ShipSetCoords(curship,CoordX(Player())-temp_float*20.0*sin(((ShipAngle(Player())-30.0)*pi)/180.0),CoordY(Player())+temp_float*20.0*cos(((ShipAngle(Player())-30.0)*pi)/180.0));
+						23=if((i + 2) % 2 == 1) temp_float=temp_float+2;
+						24=OrderMove(curship,CoordX(curship)+300.0*sin((ShipAngle(curship)*pi)/180.0),CoordY(curship)-300.0*cos((ShipAngle(curship)*pi)/180.0),1);
+					}
+					//Все враждебные к игроку корабли в системе агрятся на его случайную "голопроекцию"
+					08=for(i = 0; i < StarShips(ShipStar(Player())); i = i + 1)
+					09 ^{
+						01=curship = StarShips(ShipStar(Player()), i);
+						02=if(RelationToShip(curship, Player()) < 10)
+						03 ^{
+							01=int temp_int = Rnd(1, ArrayDim(galo_tranc) - 1);
+							02=if(ShipOrderObj(curship) == Player()) ShipSetBad(curship, galo_tranc[temp_int]);
+							03=for(j = 1; j < ArrayDim(galo_tranc); j = j + 1) ShipSetBad(galo_tranc[j], curship);
+						}
+					}
+					10=CustomArtData(CurItem(), 1, 0);
+					11=ItemDurability(CurItem(), ItemDurability(CurItem()) - 5);
+					12=ScriptItemActParam(1);
+				}
 			}
 			Size=8
 			Text=Проектор твердых голограмм, оборудованный сверхмощным кванторным сканером. Способен создавать уплотненные голографические копии даже очень крупных объектов. При установке на корабль питается от основного энерго-генератора. При установке на корабль заряд пополняется в 2 раза быстрее.
@@ -578,21 +581,21 @@ ShipInfo ^{
 					02=else ScriptItemActParam(0);
 				}
 			}
-			SelfDestroy ^{
-				Description=Для уничтожения голограмм (скрытая)
+			ExpSSB_HoloSelfDestroyInfo ^{
+				Description=Для автоматического уничтожения транклюкаторов-голограмм (скрытая)
 				Icon=2
 				Name=
 				OnActCodeTypes=t_OnStep,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
 				OnActStepTypes=1,2,3,4,5,6,7,8,9,10,11
 				OnActCode ^{
 					01=dword cur_ship = ScriptItemActShip();
-					02=int infos = ShipFindCustomShipInfoByType(cur_ship, 'SelfDestroy');
-					03=int infos_var_1 = ShipCustomShipInfoData(cur_ship, infos, 1);
-					04=if(ScriptItemActionType(t_OnStep))
-					05 ^{
+					02=int time_to_live = ShipCustomShipInfoData(0, CurInfo(), 1);
+					03=if(ScriptItemActionType(t_OnStep))
+					04 ^{
 						01=if(ScriptItemActParam() == 11)
 						02 ^{
-							01=if(!infos_var_1)
+							//Время жизни голограммы истекло, рисуем на ней эффект взрыва ракеты
+							01=if(!time_to_live)
 							02 ^{
 								01=if(ShipStar(cur_ship) == ShipStar(Player()))
 								02 ^{
@@ -600,24 +603,72 @@ ShipInfo ^{
 								}
 								03=HullHP(cur_ship, 0);
 							}
-							03=else if(infos_var_1 > 0)
-							04 ^{
-								01=ShipCustomShipInfoData(cur_ship, infos, 1, infos_var_1 - 1);
-							}
+							03=else ShipCustomShipInfoData(0, CurInfo(), 1, time_to_live - 1);
 						}
 						03=else
 						04 ^{
+							//Если стоит приказ следования, транк изредка отрисовывает эффект выстрела лазером по цели следования (урона это не наносит)
 							01=if(ShipOrder(cur_ship) == 6)
 							02 ^{
-								01=int shot = Rnd(0, 10);
-								02=if(Dist(cur_ship, ShipOrderObj(cur_ship)) <= 300 && ShipStar(cur_ship) == ShipStar(Player()) && shot >= 5)
-								03 ^{
-									01=ShowEffect('Weapon.0', 1, ShipOrderObj(cur_ship), cur_ship, 0, 0, 0, 0, 0, 0);
+								01=if(Rnd(0, 10) >= 5)
+								02 ^{
+									01=if(ShipStar(cur_ship) == ShipStar(Player()))
+									02 ^{
+										01=if(Dist(cur_ship, ShipOrderObj(cur_ship)) <= 300)
+										02 ^{
+											01=ShowEffect('Weapon.0', 1, ShipOrderObj(cur_ship), cur_ship, 0, 0, 0, 0, 0, 0);
+										}
+									}
 								}
 							}
 						}
 					}
-					06=else ScriptItemActParam(0);
+					05=else ScriptItemActParam(0);
+				}
+			}
+			SelfDestroy ^{
+				Description=Для автоматического уничтожения транклюкаторов-голограмм (скрытая)
+				Icon=2
+				Name=
+				OnActCodeTypes=t_OnStep,t_OnTakingDamage,t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi
+				OnActStepTypes=1,2,3,4,5,6,7,8,9,10,11
+				OnActCode ^{
+					01=dword cur_ship = ScriptItemActShip();
+					02=int time_to_live = ShipCustomShipInfoData(0, CurInfo(), 1);
+					03=if(ScriptItemActionType(t_OnStep))
+					04 ^{
+						01=if(ScriptItemActParam() == 11)
+						02 ^{
+							//Время жизни голограммы истекло, рисуем на ней эффект взрыва ракеты
+							01=if(!time_to_live)
+							02 ^{
+								01=if(ShipStar(cur_ship) == ShipStar(Player()))
+								02 ^{
+									01=ShowEffect('Weapon.MissileHit', 5, cur_ship, cur_ship, 0, 0, 0, 0, 0, 0);
+								}
+								03=HullHP(cur_ship, 0);
+							}
+							03=else ShipCustomShipInfoData(0, CurInfo(), 1, time_to_live - 1);
+						}
+						03=else
+						04 ^{
+							//Если стоит приказ следования, транк изредка отрисовывает эффект выстрела лазером по цели следования (урона это не наносит)
+							01=if(ShipOrder(cur_ship) == 6)
+							02 ^{
+								01=if(Rnd(0, 10) >= 5)
+								02 ^{
+									01=if(ShipStar(cur_ship) == ShipStar(Player()))
+									02 ^{
+										01=if(Dist(cur_ship, ShipOrderObj(cur_ship)) <= 300)
+										02 ^{
+											01=ShowEffect('Weapon.0', 1, ShipOrderObj(cur_ship), cur_ship, 0, 0, 0, 0, 0, 0);
+										}
+									}
+								}
+							}
+						}
+					}
+					05=else ScriptItemActParam(0);
 				}
 			}
 			pulsar_infos ^{
