@@ -1,0 +1,399 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  53,
+  "ViewPos.y":  185,
+  "ScriptName":"spawntransport",
+  "ScriptFileOut":"H:\\spawntransport.scr",
+  "ScriptTextOut":"H:\\spawntransport.txt",
+  "GraphPoint.Count":  17,
+  "GraphLink.Count":  4,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  10,
+  "Stars.Count":  1,
+  "Planets.Count":  1,
+  "Ships.Count":  1,
+  "States.Count":  1,
+  "Groups.Count":  1,
+  "Places.Count":  0,
+  "Items.Count":  0,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  0,
+  "DialogMessages.Count":  0,
+  "DialogAnswers.Count":  0,
+  "Operations.Count":  2,
+  "Statements.Count":  0,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"Lightings",
+          "Pos.x":          520,
+          "Pos.y":          570,
+          "Parent":          -1,
+          "#":          6,
+          "Owner":          62,
+          "Group.Type":          126,
+          "CntShipMin":          0,
+          "CntShipMax":          0,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":false,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          620,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          3,
+          "Total.Lines":          1,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"GRun();"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          620,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          7,
+          "Total.Lines":          73,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(timer <= CurTurn())",
+"{",
+"    if(ControlledSystems(2) >= 30) maxLightings = 24;",
+"    else maxLightings = round(0.5 * ControlledSystems(0) + 2);",
+"    if(GroupCount(Lightings) < maxLightings)",
+"    {",
+"        ArrayClear(planets);",
+"        //Перебираем системы в галактике, ищем коалиционные планеты",
+"        tdw = GalaxyStars();",
+"        for(i = 0; i < tdw; i = i + 1)",
+"        {",
+"            tdw2 = GalaxyStar(i);",
+"            if(!StarOwner(tdw2))",
+"            {",
+"                tdw3 = StarPlanets(tdw2);",
+"                for(j = 0; j < tdw3; j = j + 1)",
+"                {",
+"                    spawnPlanet = StarPlanets(tdw2, j);",
+"                    if(PlanetOwner(spawnPlanet) < 5) ArrayAdd(planets, spawnPlanet);",
+"                }",
+"            }",
+"        }",
+"        //Если подходящих планет слишком мало, никого не спавним",
+"        if(ArrayDim(planets) < 2) exit;",
+"        spawnPlanet = planets[Rnd(1, ArrayDim(planets) - 1)];",
+"        //Создаем транспорт",
+"        for(i = 0; i < Rnd(1, 2); i = i + 1)",
+"        {",
+"            //Создаем транспорт и присоединяем к отдельной группе",
+"            tdw = BuyTransport(spawnPlanet, 0, Rnd(150, 250));",
+"            ShipJoin(Lightings, tdw);",
+"            //Прокачиваем торговлю и обаяние, обновляем снаряжение",
+"            ShipSkill(tdw, 3, Rnd(3, 6));",
+"            ShipSkill(tdw, 4, Rnd(3, 6));",
+"            for(i = 0; i < Rnd(3, 4); i = i + 1) ShipRefit(tdw);",
+"",
+"            //Накладываем акрин \"Молния\"",
+"            if(GalaxyTechLevel() < 5)",
+"            {",
+"                //Молния I",
+"                if(Rnd(1, 100) <= 50) tStr1 = '472';",
+"                //Молния II",
+"                else tStr1 = '473';",
+"            }",
+"            //Молния IV",
+"            else if(GalaxyTechLevel() > 6) tStr1 = '475';",
+"            //Молния III",
+"            else tStr1 = '474';",
+"            SpecialToEquipment(FindBonusByNameInCfg(tStr1), ShipItems(tdw, 0));",
+"            Chameleon(tdw);",
+"            //Если в корпусе открыты слот дроида и ГЗП, но их нет - выдаем",
+"            if(GetEquipmentStats(ShipItems(tdw, 0), 5))",
+"            {",
+"                if(!ShipEqInSlot(tdw, t_RepairRobot))",
+"                {",
+"                    tdw2=CreateEquipment(t_RepairRobot, Rnd(30, 60), GalaxyTechLevel(), 7);",
+"                    AddItemToShip(tdw, tdw2);",
+"                    ItemIsInUse(tdw2, tdw, 1);",
+"                }",
+"            }",
+"            if(GetEquipmentStats(ShipItems(tdw, 0), 7))",
+"            {",
+"                if(!ShipEqInSlot(tdw, t_DefGenerator))",
+"                {",
+"                    tdw2 = CreateEquipment(t_DefGenerator, Rnd(30, 60), GalaxyTechLevel(), 7);",
+"                    AddItemToShip(tdw, tdw2);",
+"                    ItemIsInUse(tdw2, tdw, 1);",
+"                }",
+"            }",
+"        }",
+"    }",
+"    timer=CurTurn() + Rnd(60, 150);",
+"}"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"SpawnPlanet",
+          "Pos.x":          520,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          1,
+          "Race":          62,
+          "Owner":          0,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          520,
+          "Pos.y":          480,
+          "Parent":          -1,
+          "#":          2,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"SpawnStar",
+          "Pos.x":          520,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          0,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":false,
+          "NoComeKling":false        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"StateFree",
+          "Pos.x":          520,
+          "Pos.y":          600,
+          "Parent":          -1,
+          "#":          8,
+          "Move":          5,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":"TVar",
+          "Name":"planets",
+          "Pos.x":          760,
+          "Pos.y":          480,
+          "Parent":          -1,
+          "#":          4,
+          "Var.Type":"Array",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"i",
+          "Pos.x":          720,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          5,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"j",
+          "Pos.x":          720,
+          "Pos.y":          530,
+          "Parent":          -1,
+          "#":          9,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tdw",
+          "Pos.x":          760,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          10,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tdw2",
+          "Pos.x":          760,
+          "Pos.y":          530,
+          "Parent":          -1,
+          "#":          11,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tdw3",
+          "Pos.x":          760,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          12,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tStr1",
+          "Pos.x":          670,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          13,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"timer",
+          "Pos.x":          820,
+          "Pos.y":          530,
+          "Parent":          -1,
+          "#":          14,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"maxLightings",
+          "Pos.x":          820,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          15,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"spawnPlanet",
+          "Pos.x":          820,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          16,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      2,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      1,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      6,
+      "End":      1,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      6,
+      "End":      8,
+      "Nom":      0,
+      "Arrow":true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  0,
+  "BlockPar.EC":  
+  [
+  
+  ]
+}

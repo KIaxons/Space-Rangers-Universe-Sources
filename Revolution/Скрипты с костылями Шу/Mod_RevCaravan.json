@@ -1,0 +1,1070 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  -216,
+  "ViewPos.y":  -71,
+  "ScriptName":"Mod_RevCaravan",
+  "ScriptFileOut":"D:\\Mod_RevCaravan.scr",
+  "ScriptTextOut":"D:\\Mod_RevCaravan.txt",
+  "GraphPoint.Count":  46,
+  "GraphLink.Count":  40,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  2,
+  "Stars.Count":  1,
+  "Planets.Count":  2,
+  "Ships.Count":  2,
+  "States.Count":  5,
+  "Groups.Count":  2,
+  "Places.Count":  1,
+  "Items.Count":  0,
+  "Ethers.Count":  2,
+  "Dialogs.Count":  0,
+  "DialogMessages.Count":  0,
+  "DialogAnswers.Count":  0,
+  "Operations.Count":  17,
+  "Statements.Count":  12,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "Ethers":      
+      [
+        {
+          "Type":"TEther",
+          "Name":"",
+          "Pos.x":          460,
+          "Pos.y":          640,
+          "Parent":          -1,
+          "#":          39,
+          "Ether.Type":          1,
+          "Unique":"80EBBCDC-8ABE-4535-8317-146859B4F06D",
+          "Msg":"<Name(GroupToShip(Trader2))> --> <Name(GroupToShip(Trader1))>\r\n\r\n<ShortName(GroupToShip(Trader1))>, спасибо за информацию, последую твоему совету :-)",
+          "Ship1":"GroupToShip(Trader2)",
+          "Ship2":"GroupToShip(Trader1)",
+          "Ship3":""        
+        },
+        {
+          "Type":"TEther",
+          "Name":"",
+          "Pos.x":          510,
+          "Pos.y":          590,
+          "Parent":          -1,
+          "#":          42,
+          "Ether.Type":          1,
+          "Unique":"D2CDA51D-D53F-4AF5-AB6E-9F3DA32903F7",
+          "Msg":"<Name(GroupToShip(Trader1))> --> <Name(GroupToShip(Trader2))>\r\n\r\nПривет, дружище! Ищешь, где бы заработать? Слетай на <Name(PlanetBuy)> и наркоты купи. А потом на <Name(PlanetTorg)> продай - купаться в деньгах будешь!",
+          "Ship1":"GroupToShip(Trader1)",
+          "Ship2":"GroupToShip(Trader2)",
+          "Ship3":""        
+        }      
+      ],
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"Trader1",
+          "Pos.x":          440,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          3,
+          "Owner":          62,
+          "Group.Type":          17,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          300,
+          "AddPlayer":false,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        },
+        {
+          "Type":"TGroup",
+          "Name":"Trader2",
+          "Pos.x":          360,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          4,
+          "Owner":          62,
+          "Group.Type":          17,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          200,
+          "AddPlayer":false,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          40,
+          "Parent":          -1,
+          "#":          7,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"GRun()"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          720,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          8,
+          "Total.Lines":          1,
+          "Code.Type":"Init",
+          "Code":          
+          [
+"PlanetSetGoods(PlanetBuy,7,500)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          720,
+          "Pos.y":          290,
+          "Parent":          -1,
+          "#":          11,
+          "Total.Lines":          1,
+          "Code.Type":"Init",
+          "Code":          
+          [
+"DecayGoods(PlanetTorg,7)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          720,
+          "Pos.y":          260,
+          "Parent":          -1,
+          "#":          12,
+          "Total.Lines":          1,
+          "Code.Type":"Init",
+          "Code":          
+          [
+"UpsurgeGoods(PlanetBuy,7)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          400,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          17,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipGoods(CurShip,7,300)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          390,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          18,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vStateKaravaN=1"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          340,
+          "Pos.y":          430,
+          "Parent":          -1,
+          "#":          23,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipGoods(CurShip,2,0)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          270,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          26,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipGoods(CurShip,7,200)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          240,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          27,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"PlanetSetGoods(PlanetBuy,7,0)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          240,
+          "Pos.y":          480,
+          "Parent":          -1,
+          "#":          28,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vStateKaravaN=2"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          200,
+          "Pos.y":          600,
+          "Parent":          -1,
+          "#":          31,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipGoods(CurShip,7,0)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          200,
+          "Pos.y":          630,
+          "Parent":          -1,
+          "#":          33,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"PlanetSetGoods(PlanetTorg,7,500)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          480,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          34,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"PlanetSetGoods(PlanetTorg,7,200)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          200,
+          "Pos.y":          660,
+          "Parent":          -1,
+          "#":          35,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipOut()"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          400,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          41,
+          "Total.Lines":          1,
+          "Code.Type":"Init",
+          "Code":          
+          [
+"ShipGoods(CurShip,2,10)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          500,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          43,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vMSG=1"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          380,
+          "Pos.y":          660,
+          "Parent":          -1,
+          "#":          45,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vMSG=2;",
+"AllShipOut();"          
+          ]        
+        }      
+      ],
+      "Places":      
+      [
+        {
+          "Type":"TPlace",
+          "Name":"PlacePl1",
+          "Pos.x":          560,
+          "Pos.y":          190,
+          "Parent":          -1,
+          "#":          37,
+          "Place.Type":          1,
+          "Angle":"0",
+          "Dist":"0,5",
+          "Radius":          200,
+          "Obj1":          5,
+          "Obj2":          -1        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"PlanetTorg",
+          "Pos.x":          510,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          1,
+          "Race":          63,
+          "Owner":          57,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        },
+        {
+          "Type":"TPlanet",
+          "Name":"PlanetBuy",
+          "Pos.x":          400,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          5,
+          "Race":          63,
+          "Owner":          5,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          400,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          2,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        },
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          440,
+          "Pos.y":          110,
+          "Parent":          -1,
+          "#":          20,
+          "Count":          2,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":false,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"StarNew",
+          "Pos.x":          510,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          0,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":false,
+          "NoComeKling":false        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          280,
+          "Pos.y":          40,
+          "Parent":          -1,
+          "#":          6,
+          "Total.Lines":          1,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"GLastTurnRun(GScriptName)+510<CurTurn()"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          420,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          14,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"EndState"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          440,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          16,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"EndState"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          340,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          21,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"EndState"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          490,
+          "Parent":          -1,
+          "#":          24,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vStateKaravaN==1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          300,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          25,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"EndState"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          300,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          29,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vStateKaravaN==2"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          240,
+          "Pos.y":          600,
+          "Parent":          -1,
+          "#":          32,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"EndState"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          440,
+          "Pos.y":          580,
+          "Parent":          -1,
+          "#":          36,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"Dist(PlacePl1,CurShip)>100"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          470,
+          "Pos.y":          580,
+          "Parent":          -1,
+          "#":          38,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vMSG==0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          380,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          40,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          450,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          44,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vMSG==1"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"State1",
+          "Pos.x":          440,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          13,
+          "Move":          4,
+          "MoveObj":          1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"State2",
+          "Pos.x":          440,
+          "Pos.y":          480,
+          "Parent":          -1,
+          "#":          15,
+          "Move":          4,
+          "MoveObj":          5,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"State3",
+          "Pos.x":          360,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          19,
+          "Move":          4,
+          "MoveObj":          1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"State4",
+          "Pos.x":          340,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          22,
+          "Move":          4,
+          "MoveObj":          5,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"StateLandT",
+          "Pos.x":          240,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          30,
+          "Move":          4,
+          "MoveObj":          1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":"TVar",
+          "Name":"vMSG",
+          "Pos.x":          170,
+          "Pos.y":          250,
+          "Parent":          -1,
+          "#":          9,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"vStateKaravaN",
+          "Pos.x":          170,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          10,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      2,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      1,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      5,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      4,
+      "End":      5,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      6,
+      "End":      7,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      13,
+      "End":      14,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      3,
+      "End":      15,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      15,
+      "End":      16,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      16,
+      "End":      13,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      16,
+      "End":      17,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      14,
+      "End":      18,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      4,
+      "End":      19,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      20,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      21,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      21,
+      "End":      23,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      24,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      24,
+      "End":      22,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      22,
+      "End":      25,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      25,
+      "End":      26,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      26,
+      "End":      27,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      27,
+      "End":      28,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      22,
+      "End":      29,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      29,
+      "End":      30,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      30,
+      "End":      32,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      32,
+      "End":      31,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      31,
+      "End":      33,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      16,
+      "End":      34,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      33,
+      "End":      35,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      37,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      13,
+      "End":      36,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      36,
+      "End":      38,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      3,
+      "End":      1,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      40,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      40,
+      "End":      41,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      43,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      36,
+      "End":      44,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      44,
+      "End":      45,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      42,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      44,
+      "End":      39,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      21,
+      "End":      22,
+      "Nom":      0,
+      "Arrow":true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  2,
+  "BlockPar.EC":  
+  [
+    {
+      "#":"4",
+      "String":"<0> --> <1><br><br><2>, спасибо за информацию, последую твоему совету :-)"    
+    },
+    {
+      "#":"5",
+      "String":"<0> --> <1><br><br>Привет, дружище! Ищешь, где бы заработать? Слетай на <2> и наркоты купи. А потом на <3> продай - купаться в деньгах будешь!"    
+    }  
+  ]
+}

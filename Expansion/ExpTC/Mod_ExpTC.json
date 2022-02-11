@@ -1,0 +1,5061 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  -477,
+  "ViewPos.y":  -299,
+  "ScriptName":"Mod_ExpTC",
+  "ScriptFileOut":"H:\\Mod_ExpTC.scr",
+  "ScriptTextOut":"H:\\Mod_ExpTC.txt",
+  "GraphPoint.Count":  209,
+  "GraphLink.Count":  162,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  50,
+  "Stars.Count":  1,
+  "Planets.Count":  1,
+  "Ships.Count":  1,
+  "States.Count":  1,
+  "Groups.Count":  1,
+  "Places.Count":  0,
+  "Items.Count":  0,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  15,
+  "DialogMessages.Count":  31,
+  "DialogAnswers.Count":  24,
+  "Operations.Count":  53,
+  "Statements.Count":  31,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "DialogAnswers":      
+      [
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          480,
+          "Pos.y":          -80,
+          "Parent":          -1,
+          "#":          31,
+          "Msg":"Напыление на корпус",
+          "AMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          390,
+          "Pos.y":          -80,
+          "Parent":          -1,
+          "#":          32,
+          "Msg":"Установка дополнительного оборудования",
+          "AMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          -80,
+          "Parent":          -1,
+          "#":          33,
+          "Msg":"Демонтаж лишнего оборудования",
+          "AMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          510,
+          "Pos.y":          -200,
+          "Parent":          -1,
+          "#":          38,
+          "Msg":"Возможно, а что вы можете предложить?",
+          "AMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          390,
+          "Pos.y":          30,
+          "Parent":          -1,
+          "#":          39,
+          "Msg":"Передумал",
+          "AMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          460,
+          "Pos.y":          30,
+          "Parent":          -1,
+          "#":          41,
+          "Msg":"Один слой, за <(ItemCost(temp_dword)*10)/100+GalaxyMoney(0)> cr",
+          "AMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          480,
+          "Pos.y":          30,
+          "Parent":          -1,
+          "#":          42,
+          "Msg":"Два слоя, за <(ItemCost(temp_dword)*25)/100+GalaxyMoney(0)> cr",
+          "AMsg.Num":"6"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          500,
+          "Pos.y":          30,
+          "Parent":          -1,
+          "#":          43,
+          "Msg":"Три слоя, за <(ItemCost(temp_dword)*50)/100+GalaxyMoney(0)> cr",
+          "AMsg.Num":"7"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          520,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          49,
+          "Msg":"Смешайте все типы равномерно",
+          "AMsg.Num":"8"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          460,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          50,
+          "Msg":"Антиэнергетическое напыление",
+          "AMsg.Num":"9"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          480,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          51,
+          "Msg":"Антиосколочное напыление",
+          "AMsg.Num":"10"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          500,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          52,
+          "Msg":"Антиракетное напыление",
+          "AMsg.Num":"11"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          480,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          59,
+          "Msg":"Спасибо...",
+          "AMsg.Num":"12"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          520,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          60,
+          "Msg":"Передумал",
+          "AMsg.Num":"13"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          -20,
+          "Pos.y":          100,
+          "Parent":          119,
+          "#":          77,
+          "Msg":"Согласиться",
+          "AMsg.Num":"14"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          570,
+          "Pos.y":          -140,
+          "Parent":          -1,
+          "#":          83,
+          "Msg":"Хочу установить спасательную капсулу",
+          "AMsg.Num":"15"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          600,
+          "Pos.y":          -40,
+          "Parent":          -1,
+          "#":          86,
+          "Msg":"Понятно",
+          "AMsg.Num":"16"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          540,
+          "Pos.y":          30,
+          "Parent":          -1,
+          "#":          89,
+          "Msg":"Согласен",
+          "AMsg.Num":"17"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          570,
+          "Pos.y":          0,
+          "Parent":          -1,
+          "#":          90,
+          "Msg":"Отказываюсь",
+          "AMsg.Num":"18"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          600,
+          "Pos.y":          30,
+          "Parent":          -1,
+          "#":          93,
+          "Msg":"Далее",
+          "AMsg.Num":"19"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          600,
+          "Pos.y":          -140,
+          "Parent":          -1,
+          "#":          94,
+          "Msg":"Воспользуюсь услугами других специалистов",
+          "AMsg.Num":"20"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          30,
+          "Pos.y":          20,
+          "Parent":          134,
+          "#":          135,
+          "Msg":"Конечно, забирайте",
+          "AMsg.Num":"21"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          -30,
+          "Pos.y":          20,
+          "Parent":          134,
+          "#":          136,
+          "Msg":"Нет! Не отдам... моя прелесть...",
+          "AMsg.Num":"22"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          660,
+          "Pos.y":          -200,
+          "Parent":          -1,
+          "#":          186,
+          "Msg":"",
+          "AMsg.Num":"23"        
+        }      
+      ],
+      "DialogMessages":      
+      [
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          180,
+          "Pos.y":          -30,
+          "Parent":          -1,
+          "#":          20,
+          "Msg":"Отсутствует подходящее для изменения оборудование.",
+          "DMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          26,
+          "#":          22,
+          "Msg":"Мы можем откатить <ItemFullName(temp_dword)> к стандартным заводским показателям за <cost_deup> cr.\r\n<temp_str>\r\nОднако если у вас найдется \"предмет-донор\", снижение износостойкости не превысит 5%, правда лишь в том случае, если в нём найдутся нужные детали.",
+          "DMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          13,
+          "#":          30,
+          "Msg":"Отлично, работа уже сделана, а ваши деньги уже на нашем счету. Вот так мы быстро работаем! Возможно, вы хотите что-то еще улучшить?",
+          "DMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          0,
+          "Parent":          -1,
+          "#":          36,
+          "Msg":"Наши техники стараются работать качественно и профессионально, но у каждого предмета есть свой предел. Сварные швы, которые образуются в результате этого улучшения будут не такими прочными на разрыв, как заводские, так что в целом устойчивость корпуса к повреждениям снизиться. Кроме того, при улучшении размер корпуса <temp_str>. Также вам следует знать, что снять <clr>ограничения серии<clrEnd> мы никак не можем. Стоимость услуги - <cost> cr.\r\nИтак, какую часть корабля нам изменить?",
+          "DMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          480,
+          "Pos.y":          -200,
+          "Parent":          -1,
+          "#":          37,
+          "Msg":"Сложно выполнять такую работу в сжатые сроки, но наши техники должны успеть вовремя. Не желаете ли заказать что-то ещё?",
+          "DMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          480,
+          "Pos.y":          -40,
+          "Parent":          -1,
+          "#":          40,
+          "Msg":"Наша сеть разработала уникальное напыление на основе акрина. Обработанные корпуса становятся менее восприимчивыми к повреждениям различных типов, однако обычное улучшение обшивки становится невозможным.\r\nСколько слоёв напыления вы желаете нанести?",
+          "DMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          480,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          48,
+          "Msg":"Понятно. Мы можем использовать сбалансированное напыление или специализированное под определенный тип урона. Какую обработку вы хотите заказать?\r\nЕщё, за отдельную плату мы можем нанести винилы. Нет? Может быть, хотите установить хромированные закрылки или неоновую подсветку под днище? Любой каприз за ваши деньги!",
+          "DMsg.Num":"6"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          480,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          57,
+          "Msg":"Это не займёт много времени. Правда новое напыление имеет специфический запах, но не беспокойтесь, через несколько дней вы перестанете его замечать. А пока мы повесим вам в кабину ароматический фарюк. И, заметьте, совершенно бесплатно!",
+          "DMsg.Num":"7"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          140,
+          "#":          62,
+          "Msg":"Так так... Дополнительные детали обойдутся вам в <cost> cr.\r\nКакой параметр улучшить?",
+          "DMsg.Num":"8"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          65,
+          "#":          66,
+          "Msg":"Отлично, работа уже сделана, а ваши деньги уже на нашем счету. Вот так мы быстро работаем! Возможно, вы хотите что-то еще улучшить?",
+          "DMsg.Num":"9"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          570,
+          "Pos.y":          -170,
+          "Parent":          -1,
+          "#":          69,
+          "Msg":"Улучшить корпус можно следующими способами:\r\n-установка спасательной капсулы\r\n-напыление защитного слоя\r\n-изменить функционал корпуса",
+          "DMsg.Num":"10"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          143,
+          "#":          71,
+          "Msg":"Так так... Дополнительные детали обойдутся вам в <cost> cr.\r\nКакой параметр улучшаем?",
+          "DMsg.Num":"11"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          72,
+          "#":          73,
+          "Msg":"Отлично, работа уже сделана, а ваши деньги уже на нашем счету. Вот так мы быстро работаем! Возможно, вы хотите что-то еще улучшить?",
+          "DMsg.Num":"12"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          20,
+          "Pos.y":          70,
+          "Parent":          119,
+          "#":          76,
+          "Msg":"Вероятность успеха крайне мала! Я бы рекомендовал отменить операцию. Вы действительно желаете продолжить?",
+          "DMsg.Num":"13"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          20,
+          "Pos.y":          120,
+          "Parent":          119,
+          "#":          79,
+          "Msg":"<temp_str>",
+          "DMsg.Num":"14"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          40,
+          "Parent":          125,
+          "#":          81,
+          "Msg":"Отлично, работа уже сделана, а ваши деньги уже на нашем счету. Вот так мы быстро работаем! Возможно, вы хотите что-то еще улучшить?",
+          "DMsg.Num":"15"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          600,
+          "Pos.y":          -80,
+          "Parent":          -1,
+          "#":          87,
+          "Msg":"На вашем корабле уже установлена спасательная капсула. Установка второй невозможна из-за технических особенностей капсулы. Да и зачем вам две, в конце концов?",
+          "DMsg.Num":"16"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          540,
+          "Pos.y":          -40,
+          "Parent":          -1,
+          "#":          88,
+          "Msg":"Стандартная спасательная капсула обойдётся вам в <cost> cr.\r\nСистема полностью автоматизирована, никакого ручного контроля. Капсула катапультируется даже если вы потеряете сознание в пылу битвы... С вами на борту разумеется.\r\nОднако, в силу непреодолимых технических сложностей в гиперпространстве, к сожалению, система диагностики корабля отказывает.",
+          "DMsg.Num":"17"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          600,
+          "Pos.y":          50,
+          "Parent":          -1,
+          "#":          91,
+          "Msg":"К концу дня мы закончим установку и подключение.",
+          "DMsg.Num":"18"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          290,
+          "Pos.y":          -40,
+          "Parent":          -1,
+          "#":          97,
+          "Msg":"\"Откатом\" мы называем возвращение оборудованию его заводских параметров. Может показаться, что это простая процедура, но на самом деле сбросить пользовательские настройки бывает не так уж и просто. Разумеется услуга платная.",
+          "DMsg.Num":"19"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          290,
+          "Pos.y":          -20,
+          "Parent":          -1,
+          "#":          98,
+          "Msg":"Удаление микромодулей, до недавнего времени считалось технически невыполнимой задачей, однако нашим инженерам удалось разработать универсальную методику, которая позволяет это сделать. К сожалению, при этом оборудование подвергается серьезным аппаратным и программным нагрузкам, от которых уже не сможет оправиться. Надежность такого оборудование безвозвратно снижается. Этот эффект будет только накапливаться в случае повторных удалений.",
+          "DMsg.Num":"20"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          290,
+          "Pos.y":          0,
+          "Parent":          -1,
+          "#":          99,
+          "Msg":"Сетью наших станций была разработана уникальная методика разгона параметров оборудования. Это наше ноу-хау. Мы можем повысить один из параметров оборудования не затрагивая второй. При этом износостойкость оборудования не измениться. Разумеется это возможно лишь в том случае, если оборудование пригодно для улучшения.\r\nКакое оборудование желаете улучшить?",
+          "DMsg.Num":"21"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          290,
+          "Pos.y":          20,
+          "Parent":          -1,
+          "#":          100,
+          "Msg":"Конечно, поставить микромодуль в оборудование может кто угодно. Для этого хватит даже самого базового технического образования. Однако, только профессионал способен раскрыть весь потенциал микромодуля. Знали ли вы, что при грамотной установке микромодуль может повысить износостойкость оборудования? Наши специалисты с этим легко справятся.",
+          "DMsg.Num":"22"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          290,
+          "Pos.y":          40,
+          "Parent":          -1,
+          "#":          101,
+          "Msg":"Дополнительная услуга сети наших центров. Мы можем оптимизировать работу ваших исследовательских зондов, повысив их эффективность и надежность.",
+          "DMsg.Num":"23"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          290,
+          "Pos.y":          60,
+          "Parent":          -1,
+          "#":          102,
+          "Msg":"Мы ведём учёт каждого установленного улучшения. Техосмотр, какого оборудования вы бы хотели провести?",
+          "DMsg.Num":"24"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          30,
+          "Parent":          116,
+          "#":          117,
+          "Msg":"Выберите оборудование из которого будут извлечены детали. Обращаем ваше внимание на то, что после изъятия деталей ремонт будет невозможен. Оставшиеся запчасти наш центр оставляет за собой в качестве оплаты за демонтаж.",
+          "DMsg.Num":"25"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          -20,
+          "Pos.y":          70,
+          "Parent":          119,
+          "#":          122,
+          "Msg":"Вероятность успеха равна <temp_int>%",
+          "DMsg.Num":"26"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          30,
+          "Parent":          133,
+          "#":          134,
+          "Msg":"Просканировав ваш корабль на предмет редких металлов, мы обнаружили в вашем трюме партию на сумму <temp_int> сr.\r\nБудете продавать?",
+          "DMsg.Num":"27"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          290,
+          "Pos.y":          -60,
+          "Parent":          -1,
+          "#":          172,
+          "Msg":"\"Прошивкой\" мы называем замену ряда модулей в оборудовании на более новые, а также соответствующее обновление программного обеспечения. Сугубо говоря это вовсе не прошивка, а апгрейд, но название прицепилось... Словом, прошивая старое оборудование, мы вполне способны добиться от него результатов на уровне его самых новых аналогов. Износостойкость оборудования <clr>снизится<clrEnd> на <10>%\r\nТак какое оборудование желаете прошить?",
+          "DMsg.Num":"28"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          174,
+          "#":          175,
+          "Msg":"До какого технологического типа будем прошивать?",
+          "DMsg.Num":"29"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          630,
+          "Pos.y":          -200,
+          "Parent":          -1,
+          "#":          185,
+          "Msg":"Извините, но как-либо улучшить спасательную шлюпку не представляется возможным. Купите себе нормальный корпус или перестаньте страдать фигнёй.",
+          "DMsg.Num":"30"        
+        }      
+      ],
+      "Dialogs":      
+      [
+        {
+          "Type":"TDialog",
+          "Name":"item_list_1",
+          "Pos.x":          -180,
+          "Pos.y":          -220,
+          "Parent":          -1,
+          "#":          110        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"choose_up",
+          "Pos.x":          260,
+          "Pos.y":          -180,
+          "Parent":          -1,
+          "#":          112        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"donor_chose",
+          "Pos.x":          610,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          116        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"donor_calc",
+          "Pos.x":          720,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          119        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"TB_smrd",
+          "Pos.x":          40,
+          "Pos.y":          -50,
+          "Parent":          -1,
+          "#":          133        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"hull_imp",
+          "Pos.x":          570,
+          "Pos.y":          -260,
+          "Parent":          -1,
+          "#":          139        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"up_zond",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          142,
+          "#":          148        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"deup_1",
+          "Pos.x":          0,
+          "Pos.y":          -20,
+          "Parent":          23,
+          "#":          149        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"proshiv_Go",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          176,
+          "#":          150        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"AltEqImprov_Go",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          63,
+          "#":          151        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"choose_down",
+          "Pos.x":          240,
+          "Pos.y":          -160,
+          "Parent":          -1,
+          "#":          161        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"probe_up",
+          "Pos.x":          200,
+          "Pos.y":          -120,
+          "Parent":          -1,
+          "#":          162        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"choose_unic",
+          "Pos.x":          220,
+          "Pos.y":          -140,
+          "Parent":          -1,
+          "#":          163        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"Restart",
+          "Pos.x":          -60,
+          "Pos.y":          -210,
+          "Parent":          -1,
+          "#":          180        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"SlotChangeGo",
+          "Pos.x":          450,
+          "Pos.y":          -230,
+          "Parent":          -1,
+          "#":          190        
+        }      
+      ],
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"PlayerGroup",
+          "Pos.x":          -220,
+          "Pos.y":          300,
+          "Parent":          -1,
+          "#":          8,
+          "Owner":          62,
+          "Group.Type":          126,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":true,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          -170,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          1,
+          "Total.Lines":          149,
+          "Code.Type":"Init",
+          "Code":          
+          [
+"cost_new = newarray(1);",
+"i_lvl_koef = newarray(1);",
+"for(i = 1; i < 8; i = i + 1)",
+"{",
+"    ArrayAdd(i_lvl_koef, 0);",
+"    ArrayAdd(cost_new, 0);",
+"}",
+"",
+"temp_array = newarray(1);",
+"bh_item_names = newarray(1);",
+"bh_items = newarray(1);",
+"//Структура массива changed_owner",
+"//1 - сколько систем у Коалиции",
+"//2 - сколько систем у домиков",
+"//3 - сколько систем у пиратов",
+"//4 - через сколько ходов случится следующая проверка на постройку ТЦ",
+"changed_owner = newarray(5);",
+"changed_owner[1] = ControlledSystems(0);",
+"changed_owner[2] = ControlledSystems(1);",
+"changed_owner[3] = ControlledSystems(2);",
+"changed_owner[4] = CurTurn() + 60;",
+"",
+"//Строим первый ТЦ в Галактике (срабатывает только в первые дни от начала партии)",
+"if(CurTurn() <= 315)",
+"{",
+"    j = 0;",
+"    temp_dword_4 = 0;",
+"    temp_dword_2 = ShipStar(Player());",
+"    //Находим БЦ среди систем, ближайших к стартовой системе игрока, и спавним туда ТЦ",
+"    while(!temp_dword_4 && j <= GalaxyStars() - 1)",
+"    {",
+"        j = j + 1;",
+"        if(StarRuins(StarNearbyStars(temp_dword_2, j), 'BK')) temp_dword_4 = StarNearbyStars(temp_dword_2, j);",
+"    }",
+"    if(temp_dword_4)",
+"    {",
+"        //Создаём ТЦ (номерной тип станции кастомный - 13)",
+"        temp_dword_3=BuildCustomRuins(temp_dword_4, 'TC', 5);",
+"        //Если подключён мод ExpBasesAutoUpgrade, то накидываем на ТЦ инфошку для автоулучшения",
+"        if(BlockExist('ShipInfo.AddInfo.CustomInfos.ExpBasesAutoUpgradeInfo')) ShipAddCustomShipInfo(temp_dword_3, 'ExpBasesAutoUpgradeInfo', 'NoShow');",
+"        //Меняем шкурку на ТЦ",
+"        Chameleon(temp_dword_3, 'Ruins.TC');",
+"        //Меняем овнера и расу базы на малоков, заодно, на всякий случай, обновляя лицо капитана",
+"        ShipOwner(temp_dword_3, 0);",
+"        ShipPilotRace(temp_dword_3, 0);",
+"        ShipFace(temp_dword_3, -1);",
+"        //Выбираем имя для нового ТЦ",
+"        temp_int_1 = CT('RuinName.TC.Name_count');",
+"        temp_str = CT('RuinName.TC.' + Rnd(1, temp_int_1));",
+"",
+"        //Устанавливаем имя новому ТЦ",
+"        SetName(temp_dword_3, temp_str);",
+"        //Глобальный счётчик числа ТЦ в Галактике",
+"        GlobalVarTcCount = GlobalVarTcCount + 1;",
+"    }",
+"}",
+"//На всякий случай создаём (или пытаемся создать) ещё один ТЦ, но уже по общим правилам",
+"SpawnNewTC();",
+"",
+"//Функция создания нового ТЦ (запускается из тернкода)",
+"function SpawnNewTC()",
+"{",
+"    //Начинаем выбирать систему для постройки ТЦ, перебираем сектора",
+"    for(i = 0; i < GalaxySectors() - 1; i = i + 1)",
+"    {",
+"        temp_dword = GalaxySectors(i);",
+"        temp_int = 0;",
+"        temp_int_3 = 0;",
+"        //Смотрим сколько не доминаторских систем в секторе, где находится игрок, идёт ли бой, имеется ли уже там ТЦ и т.д.",
+"        for(j = 0; j < ConStars(temp_dword); j = j + 1)",
+"        {",
+"            temp_dword_2 = ConStar(temp_dword, j);",
+"            //Исключающие факторы для одной системы блокируют для постройки ТЦ и весь сектор",
+"            if(StarToCon(temp_dword_2) == StarToCon(PlanetToStar(PlanetPirateClan()))); //Пропускаем скрытый пиратский сектор",
+"            if(StarOwner(temp_dword_2) == 1) continue; //Если система принадлежит доминаторам",
+"            if(StarCustomFaction(temp_dword_2) != '') continue; //Если система принадлежит любой кастомной расе",
+"            if(StarBattle(temp_dword_2)) continue; //Если система находится под атакой",
+"            if(StarRuins(temp_dword_2, 'TC')) continue; //Если в системе (а, следовательно, и во всём секторе) есть ТЦ",
+"            temp_int_3 = temp_int_3 + 1; //Считаем каждую подходящую систему",
+"            temp_int = temp_int + StarRuins(temp_dword_2);",
+"        }",
+"        //Если число баз в данном секторе меньше 5 и все системы сектора пригодны для постройки - добавляем сектор в массив постройки",
+"        if(temp_int < 5 && temp_int_3 == ConStars(temp_dword))",
+"        {",
+"            changed_owner[4] = CurTurn() + Rnd(5, 10);",
+"",
+"            //Составляем массив доступных для постройки ТЦ систем в секторе",
+"            ArrayClear(temp_array);",
+"            for(j = 0; j < ConStars(temp_dword); j = j + 1)",
+"            {",
+"                temp_dword_2 = ConStar(temp_dword, j);",
+"                if(ShipStar(Player()) == temp_dword_2) continue;//Пропускаем систему, если в ней находится игрок",
+"                if(StarRuins(temp_dword_2) > 2) continue;//Пропускаем систему, число баз в которой больше или равно трём",
+"                ArrayAdd(temp_array, temp_dword_2);",
+"            }",
+"            //Проверка на случай, если в секторе имеется всего 2 системы и обе они недоступны",
+"            if(ArrayDim(temp_array) < 2) exit;",
+"            //Рандомно определяем систему, в которой будет построен ТЦ",
+"            temp_int_2 = Rnd(1, ArrayDim(temp_array) - 1);",
+"            temp_dword_4 = temp_array[temp_int_2];",
+"            //Создаём ТЦ (номерной тип станции кастомный - 13)",
+"            temp_dword_3 = BuildCustomRuins(temp_dword_4, 'TC', 5);",
+"            //Если подключён мод ExpBasesAutoUpgrade, то накидываем на ТЦ инфошку для автоулучшения",
+"            if(BlockExist('ShipInfo.AddInfo.CustomInfos.ExpBasesAutoUpgradeInfo')) ShipAddCustomShipInfo(temp_dword_3, 'ExpBasesAutoUpgradeInfo', 'NoShow');",
+"            //Меняем шкурку на ТЦ",
+"            Chameleon(temp_dword_3, 'Ruins.TC');",
+"            //Меняем овнера и расу базы на малоков, заодно, на всякий случай, обновляя лицо капитана",
+"            ShipOwner(temp_dword_3, 0);",
+"            ShipPilotRace(temp_dword_3, 0);",
+"            ShipFace(temp_dword_3, -1);",
+"",
+"            //Выбираем имя для нового ТЦ, ищем неповторяющиеся",
+"            temp_str = '';",
+"            while(temp_str == '')",
+"            {",
+"                temp_int_1 = CT('RuinName.TC.Name_count');",
+"                temp_str_2 = CT('RuinName.TC.' + Rnd(1, temp_int_1));",
+"                temp_int = 0;",
+"                for(j = 0; j < GalaxyStars(); j = j + 1)",
+"                {",
+"                    if(temp_int) break;",
+"                    temp_dword_2 = GalaxyStar(j);",
+"                    if(StarOwner(temp_dword_2) == 1) continue;",
+"                    if(StarCustomFaction(temp_dword_2) != '') continue;",
+"                    if(!StarRuins(temp_dword_2, 'TC')) continue;",
+"                    if(ShipName(StarRuins(temp_dword_2, 'TC')) == temp_str_2) temp_int = 1;",
+"                }",
+"                if(!temp_int) temp_str = temp_str_2;",
+"            }",
+"",
+"            //Устанавливаем имя новому ТЦ",
+"            SetName(temp_dword_3, temp_str);",
+"            //Глобальный счётчик числа ТЦ в Галактике",
+"            GlobalVarTcCount = GlobalVarTcCount + 1;",
+"            //Выводим сообщение о постройке нового ТЦ, если у игрока есть карта этого сектора, а таймер начала партии уже истёк",
+"            if(SectorVisible(StarToCon(temp_dword_4)) && !noteTimer)",
+"            {",
+"                temp_int = Rnd(0, 3);",
+"                if(!temp_int) temp_str_2 = \"Давно мечтали проапгрейдить своё старое ржавое корыто, доставшееся в наследство от прабабушки? Спешите в систему <StarName(temp_dword_4)>, где наши высококвалифицированные специалисты с удовольствием превратят его в настоящую ласточку! Технологический центр <temp_str> - лучшие расценки в секторе <Name(StarToCon(temp_dword_4))>!\";",
+"                else if(temp_int == 1) temp_str_2 = \"Внимание всем пилотам! В системе <StarName(temp_dword_4)> сектора <Name(StarToCon(temp_dword_4))> главный архитектор только что перерезал красную ленточку нового технологического центра <temp_str>! Информация на ваших галактических картах уже обновлена.\";",
+"                else if(temp_int == 2) temp_str_2 = \"Сегодня открылся новый технологический центр <temp_str> в системе <StarName(temp_dword_4)> сектора <Name(StarToCon(temp_dword_4))>. Настоятельно рекомендуем всем небезразличным пилотам в кратчайшие сроки пройти техосмотр своих звездолетов.\";",
+"                else temp_str_2 = \"Мы рады сообщить вам, что наша сеть технологических центров расширяется! Новая сервисная станция <temp_str> ждет пилотов в системе <StarName(temp_dword_4)> сектора <Name(StarToCon(temp_dword_4))>! Не пролетайте мимо! Только у нас вы найдете лучшие технологические услуги во всей Галактике!\";",
+"                NewsAdd(temp_str_2);",
+"                AddPlanetNews(temp_str_2);",
+"            }",
+"            break;",
+"        }",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          -190,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          10,
+          "Total.Lines":          1,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"GRun();"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          150,
+          "#":          13,
+          "Total.Lines":          7,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"new_lvl = GAnswerData;",
+"ShipMoney(Player(), ShipMoney(Player()) - cost_new[GAnswerData]);",
+"ItemLevel(temp_dword, 1 + new_lvl);",
+"ItemExtraSpecialsAddByType(temp_dword, FindBonusByNameInCfg('ExpTC_FragilityMinus10'), 1);",
+"ItemExtraSpecialsAddByType(temp_dword, FindBonusByNameInCfg('ExpTC_FirmwareOn'), 1);",
+"ItemCost(temp_dword, cost_new[GAnswerData]);",
+"Sound('Sound.Repair');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          -30,
+          "Pos.y":          0,
+          "Parent":          81,
+          "#":          23,
+          "Total.Lines":          72,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(ItemType(temp_dword)!=t_CustomWeapon)clon_item=CreateEquipment(ItemType(temp_dword),ItemSize(temp_dword),ItemLevel(temp_dword),ItemOwner(temp_dword));",
+"else clon_item=CreateCustomWeapon(CustomWeaponType(temp_dword),ItemSize(temp_dword),ItemLevel(temp_dword),ItemOwner(temp_dword));",
+"clon_module=-1;",
+"clon_akrin=-1;",
+"if(EqSpecial(temp_dword)!=-1)",
+"{",
+"    clon_akrin=EqSpecial(temp_dword);",
+"    EqSpecial(temp_dword,-1);",
+"}",
+"if(EqModule(temp_dword)>=0)",
+"{",
+"    clon_module=EqModule(temp_dword);",
+"    ModuleToEquipment(-1,temp_dword);",
+"}",
+"if(ItemType(temp_dword)==t_Hull)",
+"{",
+"    SetEquipmentStats(temp_dword,GetEquipmentStats(clon_item,0),0);",
+"}",
+"if(ItemType(temp_dword)==t_FuelTanks)",
+"{",
+"    SetEquipmentStats(temp_dword,GetEquipmentStats(clon_item,0),0);",
+"}",
+"if(ItemType(temp_dword)==t_Engine)",
+"{",
+"    SetEquipmentStats(temp_dword,GetEquipmentStats(clon_item,0),0);",
+"    SetEquipmentStats(temp_dword,GetEquipmentStats(clon_item,1),1);",
+"}",
+"if(ItemType(temp_dword)==t_Radar)",
+"{",
+"    SetEquipmentStats(temp_dword,GetEquipmentStats(clon_item,0),0);",
+"}",
+"if(ItemType(temp_dword)==t_Scaner)",
+"{",
+"    SetEquipmentStats(temp_dword,GetEquipmentStats(clon_item,0),0);",
+"}",
+"if(ItemType(temp_dword)==t_RepairRobot)",
+"{",
+"    SetEquipmentStats(temp_dword,GetEquipmentStats(clon_item,0),0);",
+"}",
+"if(ItemType(temp_dword) == t_CargoHook)",
+"{",
+"    SetEquipmentStats(temp_dword, GetEquipmentStats(clon_item, 0), 0);",
+"    SetEquipmentStats(temp_dword, GetEquipmentStats(clon_item, 1), 1);",
+"}",
+"if(ItemType(temp_dword) == t_DefGenerator)",
+"{",
+"    SetEquipmentStats(temp_dword,GetEquipmentStats(clon_item,0),0);",
+"}",
+"if(ItemType(temp_dword) >= t_Weapon1 && ItemType(temp_dword) <= t_CustomWeapon)",
+"{",
+"    SetEquipmentStats(temp_dword, GetEquipmentStats(clon_item, 0), 0);",
+"    SetEquipmentStats(temp_dword, GetEquipmentStats(clon_item, 1), 1);",
+"    SetEquipmentStats(temp_dword, GetEquipmentStats(clon_item, 2), 2);",
+"}",
+"if(clon_akrin >= 0)",
+"{",
+"    EqSpecial(temp_dword, clon_akrin);",
+"    EqSpecial(clon_item, clon_akrin);",
+"}",
+"if(clon_module >= 0)",
+"{",
+"    ModuleToEquipment(clon_module, temp_dword);",
+"    ModuleToEquipment(clon_module, clon_item);",
+"}",
+"ItemCost(temp_dword, ItemCost(clon_item));",
+"ShipMoney(Player(), (ShipMoney(Player()) - cost_deup));",
+"Sound('Sound.Repair');",
+"FreeItem(clon_item);",
+"",
+"if(!ItemExtraSpecialsCountByType(temp_dword, FindBonusByNameInCfg('ExpTC_FirmwareOff'))) ItemExtraSpecialsAddByType(temp_dword, FindBonusByNameInCfg('ExpTC_FragilityMinus10'), 1);",
+"else ItemExtraSpecialsAddByType(temp_dword, FindBonusByNameInCfg('ExpTC_FragilityMinus30'), 1);",
+"ItemExtraSpecialsAddByType(temp_dword, FindBonusByNameInCfg('ExpTC_FirmwareOff'), 1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          21,
+          "#":          26,
+          "Total.Lines":          27,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ArrayClear(bh_items);",
+"ArrayClear(bh_item_names);",
+"for(i=0;i<ShipItems(Player());i=i+1)",
+"{",
+"    cur_bh_item=ShipItems(Player(),i);",
+"    if(cur_bh_item==temp_dword) continue;",
+"    if(ItemOwner(cur_bh_item)!=ItemOwner(temp_dword))continue;",
+"    if(ItemLevel(cur_bh_item)<ItemLevel(temp_dword))continue;",
+"    if(ItemType(cur_bh_item)!=ItemType(temp_dword))continue;",
+"    if(ItemType(temp_dword) == t_CustomWeapon && CustomWeaponType(temp_dword) != CustomWeaponType(cur_bh_item)) continue;",
+"    //Дополнительная строка для оружия",
+"    if(ItemLevel(cur_bh_item)==1) temp_str='A';",
+"    if(ItemLevel(cur_bh_item)==2) temp_str='B';",
+"    if(ItemLevel(cur_bh_item)==3) temp_str='C';",
+"    if(ItemLevel(cur_bh_item)==4) temp_str='D';",
+"    if(ItemLevel(cur_bh_item)==5) temp_str='E';",
+"    if(ItemLevel(cur_bh_item)==6) temp_str='F';",
+"    if(ItemLevel(cur_bh_item)==7) temp_str='G';",
+"    ArrayAdd(bh_items,cur_bh_item);",
+"    if(ItemType(cur_bh_item) > t_DefGenerator) ArrayAdd(bh_item_names,DeleteTags(Format(ItemFullName(cur_bh_item),'I',''))+' '+temp_str);",
+"    else ArrayAdd(bh_item_names, DeleteTags(Format(ItemFullName(cur_bh_item), 'I', '')));",
+"}",
+"num_bh_items = ArrayDim(bh_items) - 1;",
+"cost_deup = ItemCost(temp_dword) * 3;",
+"temp_str = '';",
+"if(!ItemExtraSpecialsCountByType(temp_dword, FindBonusByNameInCfg('ExpTC_FirmwareOff'))) temp_str = \"<clrEnd>Износостойкость оборудования <clr>снизится<clrEnd> на <10>%\";",
+"else temp_str = \"<clrEnd>Износостойкость оборудования <clr>снизится<clrEnd> на <30>%\";"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          -40,
+          "Parent":          -1,
+          "#":          34,
+          "Total.Lines":          3,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"type=2;",
+"temp_str=\"</color>увеличивается\";",
+"cost=(ItemCost(temp_dword)*10)/100+GalaxyMoney(0);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          390,
+          "Pos.y":          -40,
+          "Parent":          -1,
+          "#":          35,
+          "Total.Lines":          3,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"type=1;",
+"temp_str=\"</color>уменьшается\";",
+"cost=(ItemCost(temp_dword)*50)/100+GalaxyMoney(0);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          460,
+          "Pos.y":          50,
+          "Parent":          -1,
+          "#":          45,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"type = 1;",
+"cost = (ItemCost(temp_dword) * 10) / 100 + GalaxyMoney(0);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          480,
+          "Pos.y":          50,
+          "Parent":          -1,
+          "#":          46,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"type=2;",
+"cost=(ItemCost(temp_dword)*25)/100+GalaxyMoney(0);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          500,
+          "Pos.y":          50,
+          "Parent":          -1,
+          "#":          47,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"type=3;",
+"cost=(ItemCost(temp_dword)*50)/100+GalaxyMoney(0);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          520,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          53,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_str = 'balance';"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          460,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          54,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_str = 'energo';"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          480,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          55,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_str = 'splinter';"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          500,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          56,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_str = 'rocket';"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          480,
+          "Pos.y":          190,
+          "Parent":          -1,
+          "#":          58,
+          "Total.Lines":          18,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"curItem = ShipItems(Player(), 0);",
+"",
+"//В случае если мод, изменяющий улучшение предметов на НБ отключён, изменяем корпусу значение параметра брони",
+"//Таким образом, блокируем его возможное улучшение на НБ",
+"if(!IsScriptActive('Mod_EvoSB'))",
+"{",
+"    temp_int = GetEquipmentStats(curItem, 0) - 1;",
+"    if(type <= 1) SetEquipmentStats(curItem, temp_int, 0);",
+"    else SetEquipmentStats(curItem, temp_int + 2, 0);",
+"}",
+"",
+"//Вешаем на корпус спецакрин, изменяющий его восприимчивость, а также маркерный спецакрин для мода EvoSB",
+"temp_str_2 = 'add_' + temp_str + '_' + type;",
+"ItemExtraSpecialsAddByType(curItem, FindBonusByName(temp_str_2), 1);",
+"ItemExtraSpecialsAddByType(curItem, FindBonusByNameInCfg('ExpTC_HullSpraying'), 1);",
+"",
+"ShipMoney(Player(), ShipMoney(Player()) - cost);",
+"Sound('Sound.Repair');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          62,
+          "#":          63,
+          "Total.Lines":          39,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ArrayClear(temp_array);",
+"",
+"while(1)",
+"{",
+"    //Если физган ещё не был улучшен",
+"    if(!WasPhysGunAccuracyImprove)",
+"    {",
+"        if(CustomWeaponType(temp_dword) == 'PhysGun')",
+"        {",
+"            ArrayAdd(temp_array, '</color>' + \"Уникальное улучшение точности физгана\");",
+"            break;",
+"        }",
+"    }",
+"",
+"    //Проверяем, можно ли улучшить данный предмет",
+"    if(ItemType(temp_dword) == t_Engine)",
+"    {",
+"        ArrayAdd(temp_array, '</color>' + \"Скорость\");",
+"        ArrayAdd(temp_array, '</color>' + \"Дальность прыжка\");",
+"    }",
+"    else if(ItemType(temp_dword) == t_CargoHook)",
+"    {",
+"        ArrayAdd(temp_array, '</color>' + \"Мощность захвата\");",
+"        ArrayAdd(temp_array, '</color>' + \"Дальность захвата\");",
+"    }",
+"    else if(ItemType(temp_dword) >= t_Weapon1 && ItemType(temp_dword) <= t_CustomWeapon)",
+"    {",
+"        ArrayAdd(temp_array, '</color>' + \"Урон\");",
+"        ArrayAdd(temp_array, '</color>' + \"Дальность стрельбы\");",
+"    }",
+"",
+"    break;",
+"}",
+"",
+"if(ArrayDim(temp_array) >= 2 && ShipMoney(Player()) >= cost) InjectAnswer('AltEqImprov_Go', temp_array[1], 0);",
+"if(ArrayDim(temp_array) >= 3 && ShipMoney(Player()) >= cost) InjectAnswer('AltEqImprov_Go', temp_array[2], 1);",
+"",
+"InjectAnswer('choose_unic', \"Выбрать что-то ещё\", 4);",
+"InjectAnswer('Restart', \"Воспользуюсь услугами других специалистов\", 1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          151,
+          "#":          65,
+          "Total.Lines":          65,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"type = GAnswerData;",
+"curItem = temp_dword;",
+"",
+"//Если улучшаем физган, то сразу переставляем соответствующий маркер, увеличивая его точность",
+"if(!WasPhysGunAccuracyImprove)",
+"{",
+"    if(CustomWeaponType(temp_dword) == 'PhysGun')",
+"    {",
+"        WasPhysGunAccuracyImprove = 1;",
+"        ScriptItemData(temp_dword, 3, 0); //Маркер на физгане в ExpPhysGun, изначально равен -1",
+"        ShipMoney(Player(), ShipMoney(Player()) - cost);",
+"        Sound('Sound.Repair');",
+"        exit;",
+"    }",
+"}",
+"",
+"//Определяем реальный Id оригинального предмета (мог быть изменён при реакринации)",
+"//Id потребуется для определения случайного модификатора при улучшении предмета",
+"item_Id = ItemExtraSpecialsCountByType(curItem, FindBonusByNameInCfg('ExpScienceRanks_AcrynId'));",
+"if(!item_Id) item_Id = Id(curItem);",
+"",
+"//Создаём временный предмет, который будет использован для расчётов улучшения",
+"if(item_type != t_CustomWeapon) clonItem = CreateEquipment(ItemType(curItem), ItemSize(curItem), ItemLevel(curItem), ItemOwner(curItem));",
+"else clonItem = CreateCustomWeapon(CustomWeaponType(curItem), ItemSize(curItem), ItemLevel(curItem), ItemOwner(curItem));",
+"",
+"//Производится стандартное (как на НБ) улучшение выбранного игроком параметра для временного предмета",
+"//Далее оно потребуется для расчёта улучшения от ТЦ",
+"//Определяем степень улучшения предмета (стажёры, обычные спецы и т.д.)",
+"temp_int_4 = 2;",
+"ItemImprovement(clonItem, temp_int_4, type + 1, item_Id);",
+"//Сразу запоминаем, что данный предмет был улучшен на ТЦ,",
+"//какой конкретно параметр улучшался, а также степень улучшения в виде сета:",
+"//1 - был улучшен первый параметр",
+"//2 - был улучшен второй параметр",
+"//4 - было выбрано улучшение стажёрами",
+"//8 - было выбрано улучшение обычными спецами",
+"//16 - было выбрано улучшение лучшими спецами",
+"if(temp_int_4 == 0) temp_int_4 = type + 1 + 4;",
+"else if(temp_int_4 == 1) temp_int_4 = type + 1 + 8;",
+"else temp_int_4 = type + 1 + 16;",
+"ItemExtraSpecialsAddByType(curItem, FindBonusByNameInCfg('ExpTC_EquipmentImprovement'), temp_int_4);",
+"",
+"//Также производим установку ММ и наложение акрина (если он(-и) есть) во/на временный предмет",
+"if(EqModule(curItem) > -1) ModuleToEquipment(EqModule(curItem), clonItem);",
+"if(EqSpecial(curItem) > -1) SpecialToEquipment(EqSpecial(curItem), clonItem);",
+"//Специально для оружия при улучшении дальности меняем номер типа запрашиваемого параметра",
+"if(item_type >= t_Weapon1 && item_type <= t_CustomWeapon)",
+"{",
+"    if(type) type = 2;",
+"}",
+"",
+"//Производим улучшение по следующему алгоритму:",
+"//1. С помощью временного предмета вычисляем прибавку к стату от стандартного улучшения на НБ",
+"//2. Увеличиваем эту прибавку на +75%",
+"//3. Записываем полученную в итоге увеличенную прибавку в стат оригинального предмета",
+"temp_int = GetEquipmentStats(clonItem, type) - GetEquipmentStats(curItem, type);",
+"temp_int = GetEquipmentStats(curItem, type) + round(ImprovePercent * temp_int);",
+"SetEquipmentStats(curItem, temp_int, type);",
+"ItemCost(curItem, ItemCost(clonItem));",
+"",
+"//После улучшения удаляем временный предмет",
+"FreeItem(clonItem);",
+"",
+"ShipMoney(Player(), ShipMoney(Player()) - cost);",
+"Sound('Sound.Repair');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          148,
+          "#":          72,
+          "Total.Lines":          23,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"type = GAnswerData;",
+"if(type != 3)",
+"{",
+"    temp_int = GetEquipmentStats(temp_dword, type) + ((GetEquipmentStats(temp_dword, type) * 60) / 100) + Rnd(1, 3);",
+"    SetEquipmentStats(temp_dword, temp_int, type);",
+"}",
+"else",
+"{",
+"    temp_int = GetEquipmentStats(temp_dword, 0) + ((GetEquipmentStats(temp_dword, 0) * 30) / 100) + Rnd(1, 2);",
+"    SetEquipmentStats(temp_dword, temp_int, 0);",
+"    temp_int = GetEquipmentStats(temp_dword, 1) + ((GetEquipmentStats(temp_dword, 1) * 30) / 100) + Rnd(1, 2);",
+"    SetEquipmentStats(temp_dword, temp_int, 1);",
+"    temp_int = GetEquipmentStats(temp_dword, 2) + ((GetEquipmentStats(temp_dword, 2) * 30) / 100) + Rnd(1, 2);",
+"    SetEquipmentStats(temp_dword, temp_int, 2);",
+"}",
+"temp_int = ItemCost(temp_dword) + (ItemCost(temp_dword) * 40) / 100;",
+"ItemCost(temp_dword, temp_int);",
+"temp_int = ItemSize(temp_dword) + ((ItemSize(temp_dword) * 30) / 100);",
+"ItemSize(temp_dword, temp_int);",
+"ItemExtraSpecialsAddByType(temp_dword, FindBonusByNameInCfg('ExpTC_ProbeImprovement'), 1);",
+"ItemExtraSpecialsAddByType(temp_dword, FindBonusByNameInCfg('ExpTC_FragilityPlus10'), 1);",
+"ShipMoney(Player(), ShipMoney(Player()) - cost);",
+"Sound('Sound.Repair');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          30,
+          "Parent":          119,
+          "#":          75,
+          "Total.Lines":          7,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_dword = GAnswerData;",
+"if(ItemSize(temp_dword_2) >= ItemSize(temp_dword)) temp_int=100;",
+"else",
+"{",
+"    temp_int = (ItemSize(temp_dword) * 100) / ItemSize(temp_dword_2);",
+"    if(temp_int <= 199) temp_int = 200 - temp_int;",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          -20,
+          "Pos.y":          120,
+          "Parent":          119,
+          "#":          78,
+          "Total.Lines":          85,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_str='';",
+"temp_int_3=0;",
+"temp_str_2=Id(temp_dword);",
+"if(temp_int<=100)temp_int_3=substr(temp_str_2,0,2);",
+"if(temp_int>100)",
+"{",
+"    temp_int_3=temp_int;",
+"    temp_int=substr(temp_str_2,0,3);",
+"}",
+"temp_str=\"</color>В предмете доноре не нашлось нужных деталей.\";",
+"if(temp_int>=temp_int_3 && s_art==10)//изъятие ММ",
+"{",
+"    temp_str=\"</color>Отлично, работа уже сделана, а ваши деньги уже на нашем счету. Вот так мы быстро работаем!\";",
+"    ModuleToEquipment(-1,temp_dword_2);",
+"    ItemExtraSpecialsAddByType(temp_dword_2,FindBonusByName('de_mm'),1);",
+"    ItemExtraSpecialsAddByType(temp_dword_2,FindBonusByNameInCfg('ExpTC_FragilityMinus5'),1);",
+"    Sound('Sound.Repair');",
+"}",
+"if(temp_int>=temp_int_3 && s_art==9)//прошивка",
+"{",
+"    temp_str=\"</color>Отлично, работа уже сделана, а ваши деньги уже на нашем счету. Вот так мы быстро работаем!\";",
+"    ShipMoney(Player(),(ShipMoney(Player())-cost_now));",
+"    ItemLevel(temp_dword_2,1+new_lvl);",
+"    ItemCost(temp_dword_2,(ItemCost(temp_dword_2)+cost_now));",
+"    ItemExtraSpecialsAddByType(temp_dword_2, FindBonusByNameInCfg('ExpTC_FirmwareOn'), 1);",
+"    ItemExtraSpecialsAddByType(temp_dword_2, FindBonusByNameInCfg('ExpTC_FragilityMinus5'), 1);",
+"    Sound('Sound.Repair');",
+"}",
+"if(temp_int>=temp_int_3 && s_art==11)//снятие улучшения",
+"{",
+"    temp_str=\"</color>Отлично, работа уже сделана, а ваши деньги уже на нашем счету. Вот так мы быстро работаем!\";",
+"    if(ItemType(temp_dword_2)!=t_CustomWeapon)clon_item=CreateEquipment(ItemType(temp_dword_2),ItemSize(temp_dword_2),ItemLevel(temp_dword_2),ItemOwner(temp_dword_2));",
+"    if(ItemType(temp_dword_2)==t_CustomWeapon)clon_item=CreateCustomWeapon(CustomWeaponType(temp_dword_2),ItemSize(temp_dword_2),ItemLevel(temp_dword_2),ItemOwner(temp_dword_2));",
+"    clon_module=-1;",
+"    clon_akrin=-1;",
+"    if(EqSpecial(temp_dword_2)!=-1)",
+"    {",
+"        clon_akrin=EqSpecial(temp_dword_2);",
+"        EqSpecial(temp_dword_2,-1);",
+"    }",
+"    if(EqModule(temp_dword_2)>=0)",
+"    {",
+"        clon_module=EqModule(temp_dword_2);",
+"        ModuleToEquipment(-1,temp_dword_2);",
+"    }",
+"    if(ItemType(temp_dword_2)==t_Hull)SetEquipmentStats(temp_dword_2,GetEquipmentStats(clon_item,0),0);",
+"    if(ItemType(temp_dword_2)==t_FuelTanks)SetEquipmentStats(temp_dword_2,GetEquipmentStats(clon_item,0),0);",
+"    if(ItemType(temp_dword_2)==t_Engine)",
+"    {",
+"        SetEquipmentStats(temp_dword_2,GetEquipmentStats(clon_item,0),0);",
+"        SetEquipmentStats(temp_dword_2,GetEquipmentStats(clon_item,1),1);",
+"    }",
+"    if(ItemType(temp_dword_2)==t_Radar)SetEquipmentStats(temp_dword_2,GetEquipmentStats(clon_item,0),0);",
+"    if(ItemType(temp_dword_2)==t_Scaner)SetEquipmentStats(temp_dword_2,GetEquipmentStats(clon_item,0),0);",
+"    if(ItemType(temp_dword_2)==t_RepairRobot)SetEquipmentStats(temp_dword_2,GetEquipmentStats(clon_item,0),0);",
+"    if(ItemType(temp_dword_2)==t_CargoHook)",
+"    {",
+"        SetEquipmentStats(temp_dword_2,GetEquipmentStats(clon_item,0),0);",
+"        SetEquipmentStats(temp_dword_2,GetEquipmentStats(clon_item,1),1);",
+"    }",
+"    if(ItemType(temp_dword_2)==t_DefGenerator)SetEquipmentStats(temp_dword_2,GetEquipmentStats(clon_item,0),0);",
+"    if(ItemType(temp_dword_2)>=t_Weapon1)",
+"    {",
+"        SetEquipmentStats(temp_dword_2,GetEquipmentStats(clon_item,0),0);",
+"        SetEquipmentStats(temp_dword_2,GetEquipmentStats(clon_item,1),1);",
+"        SetEquipmentStats(temp_dword_2,GetEquipmentStats(clon_item,2),2);",
+"    }",
+"    if(clon_akrin>=0)",
+"    {",
+"        EqSpecial(temp_dword_2,clon_akrin);",
+"        EqSpecial(clon_item,clon_akrin);",
+"    }",
+"    if(clon_module>=0)",
+"    {",
+"        ModuleToEquipment(clon_module,temp_dword_2);",
+"        ModuleToEquipment(clon_module,clon_item);",
+"    }",
+"    ItemCost(temp_dword_2,ItemCost(clon_item));",
+"    ShipMoney(Player(),(ShipMoney(Player())-cost_deup));",
+"    FreeItem(clon_item);",
+"    ItemExtraSpecialsAddByType(temp_dword_2, FindBonusByNameInCfg('ExpTC_FirmwareOff'), 1);",
+"    ItemExtraSpecialsAddByType(temp_dword_2, FindBonusByNameInCfg('ExpTC_FragilityMinus5'), 1);",
+"    Sound('Sound.Repair');",
+"}",
+"FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),temp_dword)));"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          540,
+          "Pos.y":          50,
+          "Parent":          -1,
+          "#":          92,
+          "Total.Lines":          6,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ItemExtraSpecialsAddByType(ShipItems(Player(), 0), FindBonusByCustomTag('ExpTC_SecondLife'), 1);",
+"ItemExtraSpecialsAddByType(ShipItems(Player(), 0), FindBonusByCustomTag('ExpTC_SecondLifeText'), 1);",
+"ShipMoney(Player(), ShipMoney(Player()) - cost);",
+"Sound('Sound.Repair');",
+"temp_int = ShipFindCustomShipInfoByType(Player(), 'LifeboatLaunchInfo');",
+"if(temp_int < 0) ShipAddCustomShipInfo(Player(), 'LifeboatLaunchInfo', 'NoShow', 0, 0, 0, '', '', '0');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          320,
+          "Pos.y":          0,
+          "Parent":          -1,
+          "#":          109,
+          "Total.Lines":          13,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"for(i = 1; i < ArrayDim(bh_items); i = i + 1)",
+"{",
+"    temp_dword = bh_items[i];",
+"    temp_str_2 = bh_item_names[i];",
+"    if(s_art == 2)",
+"    {",
+"        temp_str_2 = bh_item_names[i] + ' ' + \"за\" + ' ' + ItemCost(temp_dword) * 2 + ' cr.';",
+"        if(ShipMoney(Player()) < ItemCost(temp_dword) * 2) AddDialogBlock(temp_str_2, 1);",
+"        else temp_str_2 = bh_item_names[i] + ' ' + \"за <ItemCost(temp_dword)*2> cr.\";",
+"    }",
+"    InjectAnswer('item_list_1', temp_str_2, temp_dword);",
+"}",
+"InjectAnswer('Restart', \"Воспользуюсь услугами других специалистов\", 1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          30,
+          "Parent":          110,
+          "#":          111,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_dword = GAnswerData;",
+"item_type = ItemType(temp_dword);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          220,
+          "Pos.y":          -50,
+          "Parent":          -1,
+          "#":          113,
+          "Total.Lines":          121,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"s_art = GAnswerData;",
+"temp_str = '';",
+"ArrayClear(bh_items);",
+"ArrayClear(bh_item_names);",
+"",
+"for(i = 0; i < ShipItems(Player()); i = i + 1)",
+"{",
+"    cur_bh_item = ShipItems(Player(), i);",
+"    item_type = ItemType(cur_bh_item);",
+"    item_acryn = EqSpecial(cur_bh_item);",
+"",
+"    if(ItemOwner(cur_bh_item) == None) continue;",
+"    if(ItemOwner(cur_bh_item) == Kling) continue;",
+"    //Исключаем скриптовые предметы",
+"    if(ItemInScript(cur_bh_item) == 1)",
+"    {",
+"        if(~item_acryn)",
+"        {",
+"            //Но добавляем в список на улучшение предметы с особым параметром в акрине",
+"            if(!CT('MicroModuls.' + BonusNumInCfg(item_acryn) + '.ScriptItemIgnore')) continue;",
+"        }",
+"        //else continue;",
+"    }",
+"",
+"    //Исключения для прошивки",
+"    if(s_art == 1)",
+"    {",
+"        if(item_type < t_FuelTanks || item_type > t_CustomWeapon) continue;",
+"        temp_int_4 = ItemLevel(cur_bh_item);",
+"",
+"        if(temp_int_4 >= 8) continue;",
+"        if(temp_int_4 >= GalaxyTechLevel()) continue;",
+"",
+"        //Исключаем все уже улучшенные предметы",
+"        if(ItemImprovement(cur_bh_item)) continue;",
+"",
+"        //Также исключаем все акриновые предметы с пометкой \"Не улучшаемый\"",
+"        if(~item_acryn)",
+"        {",
+"            if(CT('MicroModuls.' + BonusNumInCfg(item_acryn) + '.BlockImp')) continue;",
+"        }",
+"",
+"        //Исключаем уже прошитые предметы",
+"        if(ItemExtraSpecialsCountByType(cur_bh_item, FindBonusByNameInCfg('ExpTC_FirmwareOn'))) continue;",
+"    }",
+"    //Исключения для снятия улучшения",
+"    else if(s_art == 2)",
+"    {",
+"        if(item_type < t_Hull || item_type > t_CustomWeapon) continue;",
+"        if(!ItemImprovement(cur_bh_item)) continue;",
+"        if(EqModule(cur_bh_item) == FindBonusByCustomTag('empty_mm')) continue;",
+"        if(EqSpecial(cur_bh_item) > -1)",
+"        {",
+"            if(BonusPriority(EqSpecial(cur_bh_item)) < 10) continue;",
+"        }",
+"    }",
+"    //Исключения для уникального улучшения оборудования и оружия",
+"    else if(s_art == 4)",
+"    {",
+"        if(item_type < t_Engine || item_type > t_CustomWeapon) continue;",
+"        if(item_type == t_Radar || item_type == t_Scaner || item_type == t_RepairRobot || item_type == t_DefGenerator) continue;",
+"",
+"        //Если его точность ещё не улучшалась, добавляем в список на улучшение физган",
+"        if(!WasPhysGunAccuracyImprove)",
+"        {",
+"            if(CustomWeaponType(cur_bh_item) == 'PhysGun')",
+"            {",
+"                //Если по заданию игрок уже спас планету от астероида",
+"                if(!IsScriptActive('Mod_ExpPhysGun'))",
+"                {",
+"                    ArrayAdd(bh_items, cur_bh_item);",
+"                    ArrayAdd(bh_item_names, DeleteTags(ItemFullName(cur_bh_item)));",
+"                    continue;",
+"                }",
+"            }",
+"        }",
+"",
+"        //Исключаются уже улучшенные вещи (статы выше нормы ТУ)",
+"        if(ItemImprovement(cur_bh_item)) continue;",
+"",
+"        //Также исключаем все акриновые предметы с пометкой \"Не улучшаемый\"",
+"        if(~item_acryn)",
+"        {",
+"            if(CT('MicroModuls.' + BonusNumInCfg(item_acryn) + '.BlockImp')) continue;",
+"        }",
+"",
+"        //Исключаем оружие с ракетным типом урона",
+"        if(item_type >= t_Weapon1)",
+"        {",
+"            if(GetEquipmentStats(cur_bh_item, 3) == 2) continue;",
+"        }",
+"",
+"        //Исключаем высокоуровневое нестандартное",
+"        if(!ShipCanRepairEq(Player(), cur_bh_item)) continue;",
+"        if(EqCustomFaction(cur_bh_item) != '' && ItemLevel(cur_bh_item) > GalaxyTechLevel()) continue;",
+"    }",
+"    //Исключения для улучшения зонда",
+"    else if(s_art == 7)",
+"    {",
+"        if(item_type != t_Satellite) continue;",
+"        if(ItemExtraSpecialsCountByType(cur_bh_item, FindBonusByNameInCfg('ExpTC_ProbeImprovement'))) continue;",
+"    }",
+"",
+"    //Дополнительная строка типа для оружия",
+"    if(ItemLevel(cur_bh_item) <= 1) temp_str = 'A';",
+"    else if(ItemLevel(cur_bh_item) == 2) temp_str = 'B';",
+"    else if(ItemLevel(cur_bh_item) == 3) temp_str = 'C';",
+"    else if(ItemLevel(cur_bh_item) == 4) temp_str = 'D';",
+"    else if(ItemLevel(cur_bh_item) == 5) temp_str = 'E';",
+"    else if(ItemLevel(cur_bh_item) == 6) temp_str = 'F';",
+"    else if(ItemLevel(cur_bh_item) == 7) temp_str = 'G';",
+"",
+"    ArrayAdd(bh_items, cur_bh_item);",
+"    temp_str_2 = '';",
+"    if(!ItemIsInUse(cur_bh_item)) temp_str_2 = ' ' + \"(трюм)\";",
+"",
+"    if(item_type > t_DefGenerator) ArrayAdd(bh_item_names, DeleteTags(ItemFullName(cur_bh_item) + ' ' + \"типа <color=0,50,200><temp_str></color>\" + temp_str_2));",
+"    else ArrayAdd(bh_item_names, DeleteTags(ItemFullName(cur_bh_item) + temp_str_2));",
+"}",
+"",
+"num_bh_items = ArrayDim(bh_items) - 1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          -150,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          114,
+          "Total.Lines":          24,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"cur_ruin = GetShipRuins(Player());",
+"if(cur_ruin)",
+"{",
+"    if(ShipType(cur_ruin) == 'TC')",
+"    {",
+"        //Проверяем наличие и считаем ценные минералы и их общую стоимость на корабле игрока",
+"        temp_int = 0;",
+"        for(i = 1; i < ShipItems(Player()); i = i + 1)",
+"        {",
+"            temp_dword = ShipItems(Player(), i);",
+"            if(ItemType(temp_dword) != t_UselessItem && ItemType(temp_dword) != t_UselessCountableItem) continue;",
+"            if(~findsubstr(EquipmentImageName(temp_dword), 'NuggetAsteroid')) temp_int = temp_int + ItemCost(temp_dword);",
+"        }",
+"        //Добавление диалогов в главное меню станции",
+"        AddDialogInject('choose_up', \"Спасибо, что посетили нашу станцию <ShipName(GetShipRuins(Player()))>. Удобно располагайтесь, <ShipName(Player())>, чувствуйте себя здесь как дома. Мы - лучшие специалисты Галактики в области технологического сервиса космических кораблей. В перечень наших услуг входит: улучшение оборудования, закрытие и открытие слотов, изменение восприимчивости к тому или иному типу урона и многое другое! Предлагаю вам в полной мере насладиться нашим вкусным кофе и изучить за это время прейскурант.\", \"Прошивка оборудования\", 50, 1);",
+"        AddDialogInject('choose_down', '', \"Откатить улучшение\", 45);",
+"        if(temp_int) AddDialogInject('TB_smrd', '', \"Сдать редкие минералы\", 35);",
+"        temp_dword = ShipItems(Player(), 0);",
+"        if(ItemOwner(temp_dword) == 5 || ItemOwner(temp_dword) == 6 || EqCustomFaction(temp_dword) != '') AddDialogBlock(\"Улучшить корпус\", 1);",
+"        AddDialogInject('hull_imp', '', \"Улучшить корпус\", 20);",
+"        AddDialogInject('choose_unic', '', \"Произвести уникальные улучшения\", 15);",
+"        AddDialogInject('probe_up', '', \"Улучшить зонд\", 10);",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          30,
+          "#":          115,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"InjectAnswer('choose_up',\"Выбрать что-то ещё\",1);",
+"InjectAnswer('Restart',\"Воспользуюсь услугами других специалистов\",1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          30,
+          "Parent":          117,
+          "#":          118,
+          "Total.Lines":          11,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"s_art = GAnswerData;",
+"temp_dword_2 = temp_dword;",
+"for(i = 1; i < ArrayDim(bh_items); i = i + 1)",
+"{",
+"    temp_dword = bh_items[i];",
+"    InjectAnswer('donor_calc', bh_item_names[i], temp_dword);",
+"}",
+"if(s_art == 1) InjectAnswer('choose_up', \"Выбрать что-то ещё\", 1);",
+"if(s_art == 2) InjectAnswer('choose_down', \"Выбрать что-то ещё\", 2);",
+"if(s_art == 3) InjectAnswer('delete_MM', \"Выбрать что-то ещё\", 3);",
+"InjectAnswer('Restart', \"Воспользуюсь услугами других специалистов\", 1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          20,
+          "Pos.y":          100,
+          "Parent":          119,
+          "#":          123,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"InjectAnswer('Restart', \"Воспользуюсь услугами других специалистов\", 1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          22,
+          "#":          124,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(ShipMoney(Player())>=cost_deup)InjectAnswer('deup_1',\"Откатите без донора\",1);",
+"if(num_bh_items>0 && ShipMoney(Player())>=cost_deup)InjectAnswer('donor_chose',\"Выбрать донор\",11);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          30,
+          "Pos.y":          20,
+          "Parent":          22,
+          "#":          125,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"InjectAnswer('choose_down', \"Выбрать что-то ещё\", 2);",
+"InjectAnswer('Restart', \"Воспользуюсь услугами других специалистов\", 1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          66,
+          "#":          126,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"InjectAnswer('choose_unic',\"Выбрать что-то ещё\",4);",
+"InjectAnswer('Restart',\"Воспользуюсь услугами других специалистов\",1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          73,
+          "#":          127,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"InjectAnswer('probe_up', \"Выбрать что-то ещё\", 7);",
+"InjectAnswer('Restart', \"Воспользуюсь услугами других специалистов\", 1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          180,
+          "Pos.y":          0,
+          "Parent":          -1,
+          "#":          128,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"InjectAnswer('Restart', \"Воспользуюсь услугами других специалистов\", 1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          -130,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          129,
+          "Total.Lines":          38,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Отсчитываем таймер до истечения которого создание новых ТЦ в Галактике не будет сопровождаться уведомлением (ибо на старте партии очень бесит)",
+"if(noteTimer) noteTimer = noteTimer - 1;",
+"",
+"for(i = GalaxyEvents() - 1; i >= 0; i = i - 1)",
+"{",
+"    if(GalaxyEventDate(i) < CurTurn()) break;",
+"    if(GalaxyEventType(i) == 'RuinsDestroyed')",
+"    {",
+"        //При уничтожении станции, следующая плановая проверка на его постройку гарантированно будет положительной",
+"        changed_owner[1] = 120;",
+"        //Также обновляем счётчик общего числа ТЦ в Галактике, если уничтожен был именно ТЦ",
+"        if(GalaxyEventData(i, 0) == 13)",
+"        {",
+"            if(GalaxyEventsTextData(i, 1) == 'TC')",
+"            {",
+"                GlobalVarTcCount = GlobalVarTcCount - 1;",
+"            }",
+"        }",
+"    }",
+"}",
+"//Наступает время проверки на постройку ТЦ",
+"if(CurTurn() >= changed_owner[4])",
+"{",
+"    //Если одна из сторон потеряла систему, то начинаем подготовку к постройке ТЦ",
+"    if(changed_owner[1] != ControlledSystems(0) || changed_owner[2] != ControlledSystems(1) || changed_owner[3] != ControlledSystems(2))",
+"    {",
+"        ArrayClear(temp_array);",
+"        //Запоминаем, сколько было систем у каждой из сторон в момент последней проверки на постройку ТЦ",
+"        changed_owner[1] = ControlledSystems(0);",
+"        changed_owner[2] = ControlledSystems(1);",
+"        changed_owner[3] = ControlledSystems(2);",
+"        //Вызываем функцию спавна ТЦ",
+"        SpawnNewTC();",
+"        changed_owner[4] = CurTurn() + 45;",
+"    }",
+"    //Если системы не захватывались, то новая проверка случится не раньше, чем через 45 ходов",
+"    else changed_owner[4] = CurTurn() + 45;",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          30,
+          "Parent":          135,
+          "#":          137,
+          "Total.Lines":          9,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Удаляем из трюма игрока все ценные минералы и переводим ему на счёт деньги",
+"for(i = ShipItems(Player()) - 1; i > 0; i = i - 1)",
+"{",
+"    temp_dword = ShipItems(Player(), i);",
+"    if(ItemType(temp_dword) != t_UselessItem && ItemType(temp_dword) != t_UselessCountableItem) continue;",
+"    if(~findsubstr(EquipmentImageName(temp_dword), 'NuggetAsteroid')) FreeItem(GetItemFromShip(Player(), i));",
+"}",
+"ShipMoney(Player(), ShipMoney(Player()) + temp_int);",
+"Sound('Sound.Sell');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          61,
+          "#":          140,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost = (ItemCost(temp_dword) * 120) / 100 + GalaxyMoney(0);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          71,
+          "#":          142,
+          "Total.Lines":          9,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(ShipMoney(Player())>=cost)",
+"{",
+"    InjectAnswer('up_zond',\"Исследование водных поверхностей\",0);",
+"    InjectAnswer('up_zond',\"Исследование равнинных поверхностей\",1);",
+"    InjectAnswer('up_zond',\"Исследование горных поверхностей\",2);",
+"    InjectAnswer('up_zond',\"Распределить улучшение равномерно\",3);",
+"}",
+"InjectAnswer('probe_up',\"Выбрать что-то ещё\",7);",
+"InjectAnswer('Restart',\"Воспользуюсь услугами других специалистов\",1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          70,
+          "#":          143,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost = ItemCost(temp_dword) + GalaxyMoney(ItemOwner(temp_dword), 4);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          540,
+          "Pos.y":          -80,
+          "Parent":          -1,
+          "#":          145,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost = (ItemCost(temp_dword) * 20) / 100 + GalaxyMoney(0);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          570,
+          "Pos.y":          -230,
+          "Parent":          -1,
+          "#":          153,
+          "Total.Lines":          9,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"curItem = ShipItems(Player(), 0);",
+"temp_dword = curItem;//Копирую указатель на корпус для старого кода. Потом заменить всё выше на curItem",
+"",
+"if(~EqSpecial(curItem))",
+"{",
+"    if(BonusNumInCfg(EqSpecial(curItem)) == 'ExpTC_Lifeboat') temp_int_4 = 0;",
+"    else temp_int_4 = 1;",
+"}",
+"else temp_int_4 = 1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          480,
+          "Pos.y":          0,
+          "Parent":          -1,
+          "#":          158,
+          "Total.Lines":          3,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(ShipMoney(Player()) < (ItemCost(temp_dword) * 10) / 100 + GalaxyMoney(0)) AddDialogBlock('Один слой, за <(ItemCost(temp_dword) * 10)/100 + GalaxyMoney(0)> cr', 1);",
+"if(ShipMoney(Player()) < (ItemCost(temp_dword) * 25) / 100 + GalaxyMoney(0)) AddDialogBlock('Два слоя, за <(ItemCost(temp_dword) * 25)/100 + GalaxyMoney(0)> cr', 1);",
+"if(ShipMoney(Player()) < (ItemCost(temp_dword) * 50) / 100 + GalaxyMoney(0)) AddDialogBlock('Три слоя, за <(ItemCost(temp_dword) * 50)/100 + GalaxyMoney(0)> cr', 1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          260,
+          "Pos.y":          -90,
+          "Parent":          -1,
+          "#":          164,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"GAnswerData=1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          240,
+          "Pos.y":          -90,
+          "Parent":          -1,
+          "#":          165,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"GAnswerData=2;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          220,
+          "Pos.y":          -90,
+          "Parent":          -1,
+          "#":          166,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"GAnswerData=4;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          200,
+          "Pos.y":          -90,
+          "Parent":          -1,
+          "#":          167,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"GAnswerData=7;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          173,
+          "#":          174,
+          "Total.Lines":          30,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Высчитываем модифицированную цену предмета",
+"if(ItemType(temp_dword)!=t_CustomWeapon)clon_item=CreateEquipment(ItemType(temp_dword),ItemSize(temp_dword),ItemLevel(temp_dword),ItemOwner(temp_dword));",
+"else clon_item=CreateCustomWeapon(CustomWeaponType(temp_dword),ItemSize(temp_dword),ItemLevel(temp_dword),ItemOwner(temp_dword));",
+"if(EqModule(temp_dword)>-1)ModuleToEquipment(EqModule(temp_dword),clon_item);",
+"if(EqSpecial(temp_dword)>-1)SpecialToEquipment(EqSpecial(temp_dword),clon_item);",
+"//costPercent - на сколько процентов отличаются цены",
+"//если не отличаются, то 100",
+"if(abs(ItemCost(temp_dword)-ItemCost(clon_item))>100)",
+"{",
+"    costPercent=ItemCost(temp_dword)*100;",
+"    costPercent=costPercent/ItemCost(clon_item);",
+"    FreeItem(clon_item);",
+"}",
+"else costPercent=100;",
+"//цена прошитого предмета на 30% выше",
+"costPercent=costPercent+30;",
+"for(i=1;i<=7;i=i+1)",
+"{",
+"    i_lvl_koef[i]=0;",
+"    if(ItemType(temp_dword)!=t_CustomWeapon)clon_item=CreateEquipment(ItemType(temp_dword),ItemSize(temp_dword),(1+i),ItemOwner(temp_dword));",
+"    else clon_item=CreateCustomWeapon(CustomWeaponType(temp_dword),ItemSize(temp_dword),(1+i),ItemOwner(temp_dword));",
+"    if(EqModule(temp_dword)>-1)ModuleToEquipment(EqModule(temp_dword),clon_item);",
+"    if(EqSpecial(temp_dword)>-1)SpecialToEquipment(EqSpecial(temp_dword),clon_item);",
+"    cost_new[i]=ItemCost(clon_item)*costPercent;",
+"    cost_new[i]=cost_new[i]/100;",
+"    FreeItem(clon_item);",
+"    if(ItemType(temp_dword)>=t_Weapon1) temp_int_2=3;",
+"    if(ItemType(temp_dword)>t_Hull && ItemType(temp_dword)<t_Weapon1) temp_int_2=2;",
+"    if(i<=ItemLevel(temp_dword)-1+temp_int_2 && i!=ItemLevel(temp_dword)-1 && i>ItemLevel(temp_dword)-1 && GalaxyTechLevel()>i) i_lvl_koef[i]=1;",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          175,
+          "#":          176,
+          "Total.Lines":          26,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"for(i=1;i<=7;i=i+1)",
+"{",
+"    if(i==1)temp_str='B';",
+"    else if(i==2)temp_str='C';",
+"    else if(i==3)temp_str='D';",
+"    else if(i==4)temp_str='E';",
+"    else if(i==5)temp_str='F';",
+"    else if(i==6)temp_str='G';",
+"    else if(i==7)temp_str='H';",
+"    if(i_lvl_koef[i]==1)",
+"    {",
+"        if(ShipMoney(Player())<cost_new[i])",
+"        {",
+"            temp_str_2=\"До типа <color=0,50,200><temp_str></color>, стоимость прошивки:\"+' '+cost_new[i]+' cr.';",
+"            AddDialogBlock(temp_str_2,1);",
+"            InjectAnswer('proshiv_Go',temp_str_2,i);",
+"        }",
+"        else",
+"        {",
+"            temp_str_2=\"До типа <color=0,50,200><temp_str></color>, стоимость прошивки: <cost_new[i]> cr.\";",
+"            InjectAnswer('proshiv_Go',temp_str_2,i);",
+"        }",
+"    }",
+"}",
+"InjectAnswer('choose_up',\"Выбрать что-то ещё\",1);",
+"InjectAnswer('Restart',\"Воспользуюсь услугами других специалистов\",1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          -130,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          179,
+          "Total.Lines":          54,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Повышение технологического уровня рандомных вещей (на 1 уровень) в магазинах ТЦ",
+"if(CurTurn() > TCshop)",
+"{",
+"    TCshop = CurTurn() + 65;",
+"    for(i = 0; i < GalaxyStars(); i = i + 1)",
+"    {",
+"        if(StarRuins(GalaxyStar(i), 'TC'))",
+"        {",
+"            temp_dword_2 = StarRuins(GalaxyStar(i), 'TC');",
+"            //if(GetShipRuins(Player()) == temp_dword_2) continue;//Чтобы шмотка не могла обновиться прямо на глазах игрока",
+"            ArrayClear(temp_array);",
+"            for(j = 0; j < ShopItems(temp_dword_2); j = j + 1)",
+"            {",
+"                //Увеличение уровня может случиться только для обычного (не оружия и не корпуса) оборудования",
+"                temp_dword_3 = ShopItems(temp_dword_2, j);",
+"                //ItemDurability(temp_dword_3, 100);",
+"                if(ItemLevel(temp_dword_3) > 7) continue;",
+"                if(ItemLevel(temp_dword_3) > GalaxyTechLevel()) continue;",
+"                if(ItemType(temp_dword_3) < t_FuelTanks) continue;",
+"                if(ItemType(temp_dword_3) > t_DefGenerator) continue;",
+"                if(ItemExtraSpecials(temp_dword_3) != 0) continue;",
+"                ArrayAdd(temp_array,temp_dword_3);",
+"            }",
+"            //Уровень предмета будет повышен с 25% вероятностью",
+"            if(ArrayDim(temp_array) > 1 && Rnd(1, 100) <= 25)",
+"            {",
+"                //Создаётся дубликат предмета, для которого происходит повышение уровня, чтобы перерассчитать его новую цену",
+"                temp_int = Rnd(1, ArrayDim(temp_array) - 1);",
+"                temp_dword = temp_array[temp_int];",
+"                clon_item = CreateEquipment(ItemType(temp_dword), ItemSize(temp_dword), ItemLevel(temp_dword), ItemOwner(temp_dword));",
+"                if(EqModule(temp_dword) > -1) ModuleToEquipment(EqModule(temp_dword), clon_item);",
+"                if(EqSpecial(temp_dword) > -1) SpecialToEquipment(EqSpecial(temp_dword), clon_item);",
+"                //costPercent - на сколько процентов отличаются цены",
+"                //Если не отличаются, то 100%",
+"                if(abs(ItemCost(temp_dword) - ItemCost(clon_item)) > 100)",
+"                {",
+"                    costPercent=ItemCost(temp_dword) * 100;",
+"                    costPercent=costPercent / ItemCost(clon_item);",
+"                }",
+"                else costPercent = 100;",
+"                FreeItem(clon_item);",
+"                clon_item = CreateEquipment(ItemType(temp_dword), ItemSize(temp_dword), ItemLevel(temp_dword) + 1, ItemOwner(temp_dword));",
+"                if(EqModule(temp_dword) > -1) ModuleToEquipment(EqModule(temp_dword), clon_item);",
+"                if(EqSpecial(temp_dword) > -1) SpecialToEquipment(EqSpecial(temp_dword), clon_item);",
+"                temp_int = ItemCost(clon_item) * costPercent;",
+"                temp_int = temp_int / 100;",
+"                ItemCost(temp_dword, temp_int);",
+"                ItemLevel(temp_dword, ItemLevel(temp_dword) + 1);",
+"                FreeItem(clon_item);",
+"                clon_item = 0;",
+"            }",
+"        }",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          -60,
+          "Pos.y":          -180,
+          "Parent":          -1,
+          "#":          181,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"DAnswer('main');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          90,
+          "Parent":          -1,
+          "#":          187,
+          "Total.Lines":          44,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Создаём проверочную копию оригинального корпуса",
+"clonItem=CreateHull(HullType(curItem),ItemSize(curItem),ItemLevel(curItem),ItemOwner(curItem));",
+"//И переносим от оригинала на копию серию",
+"HullSeries(clonItem,HullSeries(curItem));",
+"//Микромодуль",
+"if(EqModule(curItem)>-1)ModuleToEquipment(EqModule(curItem),clonItem);",
+"//И основной акрин",
+"if(EqSpecial(curItem)>-1)SpecialToEquipment(EqSpecial(curItem),clonItem);",
+"//Экстраакрином открываем копии корпуса сразу все возможные слоты на +1",
+"ItemExtraSpecialsAddByType(clonItem,FindBonusByCustomTag('all_slots_plus'),1);",
+"//Переносим на копию корпуса все возможные экстраакрины (включая их количество)",
+"for(i=0;i<ItemExtraSpecials(curItem);i=i+1)",
+"{",
+"    temp_int_3=ItemExtraSpecials(curItem,i);",
+"    temp_int_4=ItemExtraSpecialsCountByType(curItem,temp_int_3);",
+"    ItemExtraSpecialsAddByType(clonItem,temp_int_3,temp_int_4);",
+"}",
+"//Делаем проверку на слоты, которые нельзя открыть ещё больше",
+"//Добавляем для таких слотов диалоговые блоки",
+"for(i=1;i<=8;i=i+1)",
+"{",
+"    if(i==1)temp_str=\"Оружейные системы\";",
+"    else if(i==2)temp_str=\"Системы дополнительного оборудования\";",
+"    else if(i==3)temp_str=\"Системы радара\";",
+"    else if(i==4)temp_str=\"Системы сканера\";",
+"    else if(i==5)temp_str=\"Ремонтные системы\";",
+"    else if(i==6)temp_str=\"Системы захвата\";",
+"    else if(i==7)temp_str=\"Системы генератора защитного поля\";",
+"    else if(i==8)temp_str=\"Системы форсажа\";",
+"    //Проверяем копию корпуса на число открытых слотов того или иного вида",
+"    //Если по тем или иным причинам слот открыть нельзя, то блокируем данную опцию",
+"    if(GetEquipmentStats(clonItem,i)==GetEquipmentStats(curItem,i))AddDialogBlock(temp_str,1);",
+"}",
+"//Добавляем сами диалоги, часть из которых (возможно) уже заблокирована",
+"InjectAnswer('SlotChangeGo',\"Оружейные системы\",1);",
+"InjectAnswer('SlotChangeGo',\"Системы дополнительного оборудования\",2);",
+"InjectAnswer('SlotChangeGo',\"Системы радара\",3);",
+"InjectAnswer('SlotChangeGo',\"Системы сканера\",4);",
+"InjectAnswer('SlotChangeGo',\"Ремонтные системы\",5);",
+"InjectAnswer('SlotChangeGo',\"Системы захвата\",6);",
+"InjectAnswer('SlotChangeGo',\"Системы генератора защитного поля\",7);",
+"InjectAnswer('SlotChangeGo',\"Системы форсажа\",8);",
+"//Удаляем копию корпуса",
+"FreeItem(clonItem);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          450,
+          "Pos.y":          -200,
+          "Parent":          -1,
+          "#":          191,
+          "Total.Lines":          35,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Определяем, какой именно слот был выбран игроком",
+"if(GAnswerData==1)temp_str='weapon';",
+"else if(GAnswerData==2)temp_str='art';",
+"else if(GAnswerData==3)temp_str='radar';",
+"else if(GAnswerData==4)temp_str='scaner';",
+"else if(GAnswerData==5)temp_str='droid';",
+"else if(GAnswerData==6)temp_str='hook';",
+"else if(GAnswerData==7)temp_str='def';",
+"else if(GAnswerData==8)temp_str='forsage';",
+"//Считаем, на сколько должен измениться размер корпуса",
+"//Для слотов артефакта и форсажа коэффициент изменения ниже",
+"if(GAnswerData==2 || GAnswerData==8)temp_int_3=round(0.05*ItemSize(curItem));",
+"else temp_int_3=round(0.10*ItemSize(curItem));",
+"//Если слот добавлялся, то уменьшаем размер корпуса",
+"if(type==1)",
+"{",
+"    ItemSize(curItem,ItemSize(curItem)-temp_int_3);",
+"    temp_str='add_slot_'+temp_str;",
+"}",
+"//Если слот удалялся, то увеличиваем",
+"else if(type==2)",
+"{",
+"    ItemSize(curItem,ItemSize(curItem)+temp_int_3);",
+"    temp_str='del_slot_'+temp_str;",
+"}",
+"//Проверяем, чтобы размер корпуса не ушёл в минус",
+"if(ItemSize(curItem)<=0)ItemSize(curItem,100);",
+"//И подгоняем его текущую структуру под новый размер",
+"HullHP(curItem,ItemSize(curItem));",
+"//Вешаем необходимые экстраакрины, меняем слот, повышаем восприимчивость корпуса",
+"ItemExtraSpecialsAddByType(curItem,FindBonusByName(temp_str),1);",
+"ItemExtraSpecialsAddByType(curItem,FindBonusByName('del_balance_10'),1);",
+"//Снимаем деньги со счёта игрока",
+"ShipMoney(Player(),ShipMoney(Player())-cost);",
+"Sound('Sound.Sell');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          390,
+          "Pos.y":          90,
+          "Parent":          -1,
+          "#":          193,
+          "Total.Lines":          44,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Создаём проверочную копию оригинального корпуса",
+"clonItem=CreateHull(HullType(curItem),ItemSize(curItem),ItemLevel(curItem),ItemOwner(curItem));",
+"//И переносим от оригинала на копию серию",
+"HullSeries(clonItem,HullSeries(curItem));",
+"//Микромодуль",
+"if(EqModule(curItem)>-1)ModuleToEquipment(EqModule(curItem),clonItem);",
+"//И основной акрин",
+"if(EqSpecial(curItem)>-1)SpecialToEquipment(EqSpecial(curItem),clonItem);",
+"//Экстраакрином открываем копии корпуса сразу все возможные слоты на +1",
+"ItemExtraSpecialsAddByType(clonItem,FindBonusByCustomTag('all_slots_minus'),1);",
+"//Переносим на копию корпуса все возможные экстраакрины (включая их количество)",
+"for(i=0;i<ItemExtraSpecials(curItem);i=i+1)",
+"{",
+"    temp_int_3=ItemExtraSpecials(curItem,i);",
+"    temp_int_4=ItemExtraSpecialsCountByType(curItem,temp_int_3);",
+"    ItemExtraSpecialsAddByType(clonItem,temp_int_3,temp_int_4);",
+"}",
+"//Делаем проверку на слоты, которые нельзя открыть ещё больше",
+"//Добавляем для таких слотов диалоговые блоки",
+"for(i=1;i<=8;i=i+1)",
+"{",
+"    if(i==1)temp_str=\"Оружейные системы\";",
+"    else if(i==2)temp_str=\"Системы дополнительного оборудования\";",
+"    else if(i==3)temp_str=\"Системы радара\";",
+"    else if(i==4)temp_str=\"Системы сканера\";",
+"    else if(i==5)temp_str=\"Ремонтные системы\";",
+"    else if(i==6)temp_str=\"Системы захвата\";",
+"    else if(i==7)temp_str=\"Системы генератора защитного поля\";",
+"    else if(i==8)temp_str=\"Системы форсажа\";",
+"    //Проверяем копию корпуса на число открытых слотов того или иного вида",
+"    //Если по тем или иным причинам слот открыть нельзя, то блокируем данную опцию",
+"    if(GetEquipmentStats(clonItem,i)==GetEquipmentStats(curItem,i))AddDialogBlock(temp_str,1);",
+"}",
+"//Добавляем сами диалоги, часть из которых (возможно) уже заблокирована",
+"InjectAnswer('SlotChangeGo',\"Оружейные системы\",1);",
+"InjectAnswer('SlotChangeGo',\"Системы дополнительного оборудования\",2);",
+"InjectAnswer('SlotChangeGo',\"Системы радара\",3);",
+"InjectAnswer('SlotChangeGo',\"Системы сканера\",4);",
+"InjectAnswer('SlotChangeGo',\"Ремонтные системы\",5);",
+"InjectAnswer('SlotChangeGo',\"Системы захвата\",6);",
+"InjectAnswer('SlotChangeGo',\"Системы генератора защитного поля\",7);",
+"InjectAnswer('SlotChangeGo',\"Системы форсажа\",8);",
+"//Удаляем копию корпуса",
+"FreeItem(clonItem);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          480,
+          "Pos.y":          -170,
+          "Parent":          -1,
+          "#":          200,
+          "Total.Lines":          29,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"check = 0;",
+"while(1)",
+"{",
+"    cur_item = ShipItems(Player(), 0);",
+"    if(ItemImprovement(cur_item)) break;",
+"    if(ItemExtraSpecialsCountByType(cur_item, FindBonusByNameInCfg('ExpTC_HullSpraying'))) break;",
+"",
+"    item_acryn = EqSpecial(cur_item);",
+"",
+"    //Исключаем скриптовые корпуса",
+"    if(ItemInScript(cur_item) == 1)",
+"    {",
+"        if(~item_acryn)",
+"        {",
+"            //Но добавляем в список на улучшение корпуса с особым параметров в акрине",
+"            if(!CT('MicroModuls.' + BonusNumInCfg(item_acryn) + '.ScriptItemIgnore')) break;",
+"        }",
+"        else break;",
+"    }",
+"",
+"    if(~item_acryn)",
+"    {",
+"        tstr1 = BonusNumInCfg(item_acryn);",
+"        //Исключаем акриновые корпуса с пометкой \"Не улучшаемый\"",
+"        if(CT('MicroModuls.' + tstr1 + '.BlockImp')) break;",
+"    }",
+"    check = 1;",
+"    break;",
+"}"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"InitPlanet",
+          "Pos.x":          -220,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          6,
+          "Race":          62,
+          "Owner":          62,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          -220,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          5,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"InitStar",
+          "Pos.x":          -220,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          7,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":false,
+          "NoComeKling":false        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          180,
+          "Pos.y":          -50,
+          "Parent":          -1,
+          "#":          18,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!num_bh_items"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          220,
+          "Pos.y":          0,
+          "Parent":          -1,
+          "#":          19,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"num_bh_items"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          -80,
+          "Pos.y":          30,
+          "Parent":          111,
+          "#":          21,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"s_art==2"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          -210,
+          "Pos.y":          30,
+          "Parent":          111,
+          "#":          61,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"s_art==4"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          100,
+          "Pos.y":          30,
+          "Parent":          111,
+          "#":          70,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"s_art==7"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          480,
+          "Pos.y":          -110,
+          "Parent":          -1,
+          "#":          74,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"check"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          540,
+          "Pos.y":          -110,
+          "Parent":          -1,
+          "#":          84,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!ItemExtraSpecialsCountByType(ShipItems(Player(), 0), FindBonusByCustomTag('ExpTC_SecondLife'))"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          600,
+          "Pos.y":          -110,
+          "Parent":          -1,
+          "#":          85,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ItemExtraSpecialsCountByType(ShipItems(Player(), 0), FindBonusByCustomTag('ExpTC_SecondLife'))"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          260,
+          "Pos.y":          -40,
+          "Parent":          -1,
+          "#":          103,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"s_art==2"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          260,
+          "Pos.y":          -20,
+          "Parent":          -1,
+          "#":          104,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"s_art==3"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          260,
+          "Pos.y":          0,
+          "Parent":          -1,
+          "#":          105,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"s_art==4"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          260,
+          "Pos.y":          20,
+          "Parent":          -1,
+          "#":          106,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"s_art==5"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          260,
+          "Pos.y":          40,
+          "Parent":          -1,
+          "#":          107,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"s_art==7"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          260,
+          "Pos.y":          60,
+          "Parent":          -1,
+          "#":          108,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"s_art==8"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          20,
+          "Pos.y":          50,
+          "Parent":          119,
+          "#":          120,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int > 100"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          -20,
+          "Pos.y":          50,
+          "Parent":          119,
+          "#":          121,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int <= 100"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          40,
+          "Parent":          -1,
+          "#":          144,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player()) >= cost"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          540,
+          "Pos.y":          0,
+          "Parent":          -1,
+          "#":          146,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player()) >= cost"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          480,
+          "Pos.y":          110,
+          "Parent":          -1,
+          "#":          147,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player()) >= cost"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          -130,
+          "Pos.y":          190,
+          "Parent":          -1,
+          "#":          169,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!ShipIsTakeoff(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          260,
+          "Pos.y":          -60,
+          "Parent":          -1,
+          "#":          171,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"s_art==1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          30,
+          "Parent":          111,
+          "#":          173,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"s_art==1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          570,
+          "Pos.y":          -200,
+          "Parent":          -1,
+          "#":          183,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int_4"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          600,
+          "Pos.y":          -200,
+          "Parent":          -1,
+          "#":          184,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!temp_int_4"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          60,
+          "Parent":          -1,
+          "#":          192,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"type == 1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          390,
+          "Pos.y":          60,
+          "Parent":          -1,
+          "#":          194,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"type == 2"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          540,
+          "Pos.y":          -200,
+          "Parent":          -1,
+          "#":          195,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          600,
+          "Pos.y":          0,
+          "Parent":          -1,
+          "#":          205,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          660,
+          "Pos.y":          0,
+          "Parent":          -1,
+          "#":          206,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          660,
+          "Pos.y":          -170,
+          "Parent":          -1,
+          "#":          207,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          -110,
+          "Parent":          -1,
+          "#":          208,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"1"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"PlayerState",
+          "Pos.x":          -220,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          9,
+          "Move":          0,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":"TVar",
+          "Name":"bh_items",
+          "Pos.x":          530,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          0,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_bh_item",
+          "Pos.x":          530,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          2,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_int",
+          "Pos.x":          330,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          3,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_str",
+          "Pos.x":          240,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          4,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"s_art",
+          "Pos.x":          640,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          11,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"item_name",
+          "Pos.x":          420,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          12,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cost_now",
+          "Pos.x":          640,
+          "Pos.y":          420,
+          "Parent":          -1,
+          "#":          14,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cost_new",
+          "Pos.x":          420,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          15,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"new_lvl",
+          "Pos.x":          640,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          16,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"i_lvl_koef",
+          "Pos.x":          420,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          17,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"clon_item",
+          "Pos.x":          530,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          24,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"clon_module",
+          "Pos.x":          640,
+          "Pos.y":          500,
+          "Parent":          -1,
+          "#":          25,
+          "Var.Type":"Int",
+          "Init":"-1",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cost_deup",
+          "Pos.x":          640,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          27,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_int_2",
+          "Pos.x":          330,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          28,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_str_2",
+          "Pos.x":          240,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          29,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"type",
+          "Pos.x":          530,
+          "Pos.y":          480,
+          "Parent":          -1,
+          "#":          44,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_array",
+          "Pos.x":          640,
+          "Pos.y":          480,
+          "Parent":          -1,
+          "#":          64,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"num_bh_items",
+          "Pos.x":          530,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          67,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_dword",
+          "Pos.x":          420,
+          "Pos.y":          420,
+          "Parent":          -1,
+          "#":          68,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_int_3",
+          "Pos.x":          330,
+          "Pos.y":          420,
+          "Parent":          -1,
+          "#":          80,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_int_1",
+          "Pos.x":          330,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          82,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_dword_2",
+          "Pos.x":          420,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          95,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"WasPhysGunAccuracyImprove",
+          "Pos.x":          -390,
+          "Pos.y":          0,
+          "Parent":          -1,
+          "#":          96,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_dword_4",
+          "Pos.x":          420,
+          "Pos.y":          480,
+          "Parent":          -1,
+          "#":          130,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"changed_owner",
+          "Pos.x":          420,
+          "Pos.y":          500,
+          "Parent":          -1,
+          "#":          131,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_dword_3",
+          "Pos.x":          420,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          132,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"bh_item_names",
+          "Pos.x":          530,
+          "Pos.y":          420,
+          "Parent":          -1,
+          "#":          138,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cost",
+          "Pos.x":          640,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          141,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"clon_akrin",
+          "Pos.x":          330,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          152,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"slotType",
+          "Pos.x":          -10,
+          "Pos.y":          -180,
+          "Parent":          -1,
+          "#":          154,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"slotCnt",
+          "Pos.x":          -10,
+          "Pos.y":          -160,
+          "Parent":          -1,
+          "#":          155,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"slotMax",
+          "Pos.x":          -10,
+          "Pos.y":          -140,
+          "Parent":          -1,
+          "#":          156,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"slotMin",
+          "Pos.x":          -10,
+          "Pos.y":          -120,
+          "Parent":          -1,
+          "#":          157,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"j",
+          "Pos.x":          560,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          159,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"i",
+          "Pos.x":          530,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          160,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"noteTimer",
+          "Pos.x":          -100,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          168,
+          "Var.Type":"Int",
+          "Init":"10",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_int_4",
+          "Pos.x":          330,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          170,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"costPercent",
+          "Pos.x":          640,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          177,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"TCshop",
+          "Pos.x":          240,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          178,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"GlobalVarTcCount",
+          "Pos.x":          -220,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          182,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":true        
+        },
+        {
+          "Type":"TVar",
+          "Name":"clonItem",
+          "Pos.x":          420,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          188,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"curItem",
+          "Pos.x":          420,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          189,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"item_type",
+          "Pos.x":          530,
+          "Pos.y":          500,
+          "Parent":          -1,
+          "#":          196,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"item_Id",
+          "Pos.x":          330,
+          "Pos.y":          480,
+          "Parent":          -1,
+          "#":          197,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"ImprovePercent",
+          "Pos.x":          -370,
+          "Pos.y":          -60,
+          "Parent":          -1,
+          "#":          198,
+          "Var.Type":"Float",
+          "Init":"1.75",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_ruin",
+          "Pos.x":          240,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          199,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"check",
+          "Pos.x":          330,
+          "Pos.y":          500,
+          "Parent":          -1,
+          "#":          201,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_item",
+          "Pos.x":          240,
+          "Pos.y":          480,
+          "Parent":          -1,
+          "#":          202,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tstr1",
+          "Pos.x":          240,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          203,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"item_acryn",
+          "Pos.x":          240,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          204,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      8,
+      "End":      9,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      8,
+      "End":      6,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      6,
+      "End":      7,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      5,
+      "End":      7,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      21,
+      "End":      26,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      26,
+      "End":      22,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      13,
+      "End":      30,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      35,
+      "End":      36,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      34,
+      "End":      36,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      37,
+      "End":      38,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      36,
+      "End":      39,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      41,
+      "End":      45,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      42,
+      "End":      46,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      43,
+      "End":      47,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      45,
+      "End":      48,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      46,
+      "End":      48,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      47,
+      "End":      48,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      52,
+      "End":      56,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      51,
+      "End":      55,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      50,
+      "End":      54,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      49,
+      "End":      53,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      58,
+      "End":      57,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      57,
+      "End":      59,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      48,
+      "End":      60,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      62,
+      "End":      63,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      65,
+      "End":      66,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      72,
+      "End":      73,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      76,
+      "End":      77,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      77,
+      "End":      78,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      78,
+      "End":      79,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      23,
+      "End":      81,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      85,
+      "End":      87,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      87,
+      "End":      86,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      88,
+      "End":      90,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      89,
+      "End":      92,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      92,
+      "End":      91,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      91,
+      "End":      93,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      69,
+      "End":      94,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      18,
+      "End":      20,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      103,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      104,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      105,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      106,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      107,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      108,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      108,
+      "End":      102,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      107,
+      "End":      101,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      106,
+      "End":      100,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      105,
+      "End":      99,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      104,
+      "End":      98,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      103,
+      "End":      97,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      97,
+      "End":      109,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      98,
+      "End":      109,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      99,
+      "End":      109,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      100,
+      "End":      109,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      101,
+      "End":      109,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      102,
+      "End":      109,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      110,
+      "End":      111,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      113,
+      "End":      19,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      113,
+      "End":      18,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      111,
+      "End":      21,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      111,
+      "End":      61,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      30,
+      "End":      115,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      116,
+      "End":      117,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      117,
+      "End":      118,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      119,
+      "End":      75,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      75,
+      "End":      121,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      75,
+      "End":      120,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      122,
+      "End":      77,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      79,
+      "End":      123,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      122,
+      "End":      123,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      76,
+      "End":      123,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      22,
+      "End":      124,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      22,
+      "End":      125,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      81,
+      "End":      125,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      66,
+      "End":      126,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      73,
+      "End":      127,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      120,
+      "End":      76,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      121,
+      "End":      122,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      20,
+      "End":      128,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      134,
+      "End":      135,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      134,
+      "End":      136,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      135,
+      "End":      137,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      53,
+      "End":      58,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      54,
+      "End":      58,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      55,
+      "End":      58,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      56,
+      "End":      58,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      61,
+      "End":      140,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      140,
+      "End":      62,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      71,
+      "End":      142,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      111,
+      "End":      70,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      70,
+      "End":      143,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      143,
+      "End":      71,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      69,
+      "End":      83,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      84,
+      "End":      145,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      145,
+      "End":      88,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      88,
+      "End":      146,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      146,
+      "End":      89,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      48,
+      "End":      147,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      147,
+      "End":      49,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      147,
+      "End":      50,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      147,
+      "End":      51,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      147,
+      "End":      52,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      148,
+      "End":      72,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      149,
+      "End":      23,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      150,
+      "End":      13,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      151,
+      "End":      65,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      139,
+      "End":      153,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      40,
+      "End":      158,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      158,
+      "End":      41,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      158,
+      "End":      42,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      158,
+      "End":      43,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      112,
+      "End":      164,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      164,
+      "End":      113,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      161,
+      "End":      165,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      165,
+      "End":      113,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      163,
+      "End":      166,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      166,
+      "End":      113,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      162,
+      "End":      167,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      167,
+      "End":      113,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      171,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      171,
+      "End":      172,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      172,
+      "End":      109,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      111,
+      "End":      173,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      173,
+      "End":      174,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      174,
+      "End":      175,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      175,
+      "End":      176,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      169,
+      "End":      129,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      129,
+      "End":      179,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      180,
+      "End":      181,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      83,
+      "End":      85,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      83,
+      "End":      84,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      153,
+      "End":      183,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      183,
+      "End":      69,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      153,
+      "End":      184,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      184,
+      "End":      185,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      185,
+      "End":      186,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      190,
+      "End":      191,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      191,
+      "End":      37,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      144,
+      "End":      192,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      192,
+      "End":      187,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      144,
+      "End":      194,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      194,
+      "End":      193,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      195,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      195,
+      "End":      153,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      36,
+      "End":      144,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      32,
+      "End":      35,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      33,
+      "End":      34,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      133,
+      "End":      134,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      200,
+      "End":      74,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      74,
+      "End":      31,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      31,
+      "End":      40,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      69,
+      "End":      200,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      86,
+      "End":      205,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      90,
+      "End":      205,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      93,
+      "End":      205,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      206,
+      "End":      207,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      207,
+      "End":      69,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      205,
+      "End":      206,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      74,
+      "End":      208,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      208,
+      "End":      33,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      208,
+      "End":      32,
+      "Nom":      0,
+      "Arrow":true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  94,
+  "BlockPar.EC":  
+  [
+    {
+      "#":"124",
+      "String":"Согласен"    
+    },
+    {
+      "#":"159",
+      "String":"<0>"    
+    },
+    {
+      "#":"275",
+      "String":"Вероятность успеха равна <0>%"    
+    },
+    {
+      "#":"363",
+      "String":"Улучшить зонд"    
+    },
+    {
+      "#":"368",
+      "String":"Откатить улучшение"    
+    },
+    {
+      "#":"381",
+      "String":"</color>увеличивается"    
+    },
+    {
+      "#":"383",
+      "String":"</color>уменьшается"    
+    },
+    {
+      "#":"384",
+      "String":"Оружейные системы"    
+    },
+    {
+      "#":"387",
+      "String":"Ремонтные системы"    
+    },
+    {
+      "#":"388",
+      "String":"Системы захвата"    
+    },
+    {
+      "#":"389",
+      "String":"Системы генератора защитного поля"    
+    },
+    {
+      "#":"390",
+      "String":"Системы сканера"    
+    },
+    {
+      "#":"391",
+      "String":"Системы радара"    
+    },
+    {
+      "#":"392",
+      "String":"Системы дополнительного оборудования"    
+    },
+    {
+      "#":"393",
+      "String":"Системы форсажа"    
+    },
+    {
+      "#":"394",
+      "String":"Возможно, а что вы можете предложить?"    
+    },
+    {
+      "#":"395",
+      "String":"Хочу установить спасательную капсулу"    
+    },
+    {
+      "#":"396",
+      "String":"Понятно"    
+    },
+    {
+      "#":"397",
+      "String":"Отказываюсь"    
+    },
+    {
+      "#":"398",
+      "String":"Далее"    
+    },
+    {
+      "#":"399",
+      "String":"Воспользуюсь услугами других специалистов"    
+    },
+    {
+      "#":"405",
+      "String":"Улучшить корпус можно следующими способами:<br>-установка спасательной капсулы<br>-напыление защитного слоя<br>-изменить функционал корпуса"    
+    },
+    {
+      "#":"418",
+      "String":"Смешайте все типы равномерно"    
+    },
+    {
+      "#":"419",
+      "String":"Антиэнергетическое напыление"    
+    },
+    {
+      "#":"420",
+      "String":"Антиосколочное напыление"    
+    },
+    {
+      "#":"421",
+      "String":"Антиракетное напыление"    
+    },
+    {
+      "#":"422",
+      "String":"Спасибо..."    
+    },
+    {
+      "#":"423",
+      "String":"Передумал"    
+    },
+    {
+      "#":"428",
+      "String":"Выбрать что-то ещё"    
+    },
+    {
+      "#":"429",
+      "String":"Отлично, работа уже сделана, а ваши деньги уже на нашем счету. Вот так мы быстро работаем! Возможно, вы хотите что-то еще улучшить?"    
+    },
+    {
+      "#":"431",
+      "String":"Выбрать донор"    
+    },
+    {
+      "#":"434",
+      "String":"</color>Отлично, работа уже сделана, а ваши деньги уже на нашем счету. Вот так мы быстро работаем!"    
+    },
+    {
+      "#":"435",
+      "String":"</color>В предмете доноре не нашлось нужных деталей."    
+    },
+    {
+      "#":"459",
+      "String":"Исследование водных поверхностей"    
+    },
+    {
+      "#":"460",
+      "String":"Исследование равнинных поверхностей"    
+    },
+    {
+      "#":"461",
+      "String":"Исследование горных поверхностей"    
+    },
+    {
+      "#":"477",
+      "String":"Мы рады сообщить вам, что наша сеть технологических центров расширяется! Новая сервисная станция <0> ждет пилотов в системе <1> сектора <2>! Не пролетайте мимо! Только у нас вы найдете лучшие технологические услуги во всей Галактике!"    
+    },
+    {
+      "#":"478",
+      "String":"Сегодня открылся новый технологический центр <0> в системе <1> сектора <2>. Настоятельно рекомендуем всем небезразличным пилотам в кратчайшие сроки пройти техосмотр своих звездолетов."    
+    },
+    {
+      "#":"479",
+      "String":"Внимание всем пилотам! В системе <0> сектора <1> главный архитектор только что перерезал красную ленточку нового технологического центра <2>! Информация на ваших галактических картах уже обновлена."    
+    },
+    {
+      "#":"480",
+      "String":"Давно мечтали проапгрейдить своё старое ржавое корыто, доставшееся в наследство от прабабушки? Спешите в систему <0>, где наши высококвалифицированные специалисты с удовольствием превратят его в настоящую ласточку! Технологический центр <1> - лучшие расценки в секторе <2>!"    
+    },
+    {
+      "#":"493",
+      "String":"К концу дня мы закончим установку и подключение."    
+    },
+    {
+      "#":"494",
+      "String":"Откатите без донора"    
+    },
+    {
+      "#":"514",
+      "String":"Отсутствует подходящее для изменения оборудование."    
+    },
+    {
+      "#":"515",
+      "String":"Мы можем откатить <0> к стандартным заводским показателям за <1> cr.<br><2><br>Однако если у вас найдется \"предмет-донор\", снижение износостойкости не превысит 5%, правда лишь в том случае, если в нём найдутся нужные детали."    
+    },
+    {
+      "#":"516",
+      "String":"Произвести уникальные улучшения"    
+    },
+    {
+      "#":"517",
+      "String":"Улучшить корпус"    
+    },
+    {
+      "#":"521",
+      "String":"Сложно выполнять такую работу в сжатые сроки, но наши техники должны успеть вовремя. Не желаете ли заказать что-то ещё?"    
+    },
+    {
+      "#":"522",
+      "String":"Наша сеть разработала уникальное напыление на основе акрина. Обработанные корпуса становятся менее восприимчивыми к повреждениям различных типов, однако обычное улучшение обшивки становится невозможным.<br>Сколько слоёв напыления вы желаете нанести?"    
+    },
+    {
+      "#":"523",
+      "String":"Понятно. Мы можем использовать сбалансированное напыление или специализированное под определенный тип урона. Какую обработку вы хотите заказать?<br>Ещё, за отдельную плату мы можем нанести винилы. Нет? Может быть, хотите установить хромированные закрылки или неоновую подсветку под днище? Любой каприз за ваши деньги!"    
+    },
+    {
+      "#":"524",
+      "String":"Это не займёт много времени. Правда новое напыление имеет специфический запах, но не беспокойтесь, через несколько дней вы перестанете его замечать. А пока мы повесим вам в кабину ароматический фарюк. И, заметьте, совершенно бесплатно!"    
+    },
+    {
+      "#":"527",
+      "String":"Распределить улучшение равномерно"    
+    },
+    {
+      "#":"528",
+      "String":"Вероятность успеха крайне мала! Я бы рекомендовал отменить операцию. Вы действительно желаете продолжить?"    
+    },
+    {
+      "#":"529",
+      "String":"На вашем корабле уже установлена спасательная капсула. Установка второй невозможна из-за технических особенностей капсулы. Да и зачем вам две, в конце концов?"    
+    },
+    {
+      "#":"530",
+      "String":"Стандартная спасательная капсула обойдётся вам в <0> cr.<br>Система полностью автоматизирована, никакого ручного контроля. Капсула катапультируется даже если вы потеряете сознание в пылу битвы... С вами на борту разумеется.<br>Однако, в силу непреодолимых технических сложностей в гиперпространстве, к сожалению, система диагностики корабля отказывает."    
+    },
+    {
+      "#":"532",
+      "String":"\"Откатом\" мы называем возвращение оборудованию его заводских параметров. Может показаться, что это простая процедура, но на самом деле сбросить пользовательские настройки бывает не так уж и просто. Разумеется услуга платная."    
+    },
+    {
+      "#":"533",
+      "String":"Удаление микромодулей, до недавнего времени считалось технически невыполнимой задачей, однако нашим инженерам удалось разработать универсальную методику, которая позволяет это сделать. К сожалению, при этом оборудование подвергается серьезным аппаратным и программным нагрузкам, от которых уже не сможет оправиться. Надежность такого оборудование безвозвратно снижается. Этот эффект будет только накапливаться в случае повторных удалений."    
+    },
+    {
+      "#":"534",
+      "String":"Сетью наших станций была разработана уникальная методика разгона параметров оборудования. Это наше ноу-хау. Мы можем повысить один из параметров оборудования не затрагивая второй. При этом износостойкость оборудования не измениться. Разумеется это возможно лишь в том случае, если оборудование пригодно для улучшения.<br>Какое оборудование желаете улучшить?"    
+    },
+    {
+      "#":"535",
+      "String":"Конечно, поставить микромодуль в оборудование может кто угодно. Для этого хватит даже самого базового технического образования. Однако, только профессионал способен раскрыть весь потенциал микромодуля. Знали ли вы, что при грамотной установке микромодуль может повысить износостойкость оборудования? Наши специалисты с этим легко справятся."    
+    },
+    {
+      "#":"536",
+      "String":"Дополнительная услуга сети наших центров. Мы можем оптимизировать работу ваших исследовательских зондов, повысив их эффективность и надежность."    
+    },
+    {
+      "#":"537",
+      "String":"Мы ведём учёт каждого установленного улучшения. Техосмотр, какого оборудования вы бы хотели провести?"    
+    },
+    {
+      "#":"538",
+      "String":"Выберите оборудование из которого будут извлечены детали. Обращаем ваше внимание на то, что после изъятия деталей ремонт будет невозможен. Оставшиеся запчасти наш центр оставляет за собой в качестве оплаты за демонтаж."    
+    },
+    {
+      "#":"539",
+      "String":"Просканировав ваш корабль на предмет редких металлов, мы обнаружили в вашем трюме партию на сумму <0> сr.<br>Будете продавать?"    
+    },
+    {
+      "#":"540",
+      "String":"Напыление на корпус"    
+    },
+    {
+      "#":"541",
+      "String":"Демонтаж лишнего оборудования"    
+    },
+    {
+      "#":"542",
+      "String":"Установка дополнительного оборудования"    
+    },
+    {
+      "#":"543",
+      "String":"Согласиться"    
+    },
+    {
+      "#":"544",
+      "String":"<clrEnd>Износостойкость оборудования <clr>снизится<clrEnd> на <0>%"    
+    },
+    {
+      "#":"545",
+      "String":"Так так... Дополнительные детали обойдутся вам в <0> cr.<br>Какой параметр улучшить?"    
+    },
+    {
+      "#":"546",
+      "String":"Так так... Дополнительные детали обойдутся вам в <0> cr.<br>Какой параметр улучшаем?"    
+    },
+    {
+      "#":"561",
+      "String":"Конечно, забирайте"    
+    },
+    {
+      "#":"562",
+      "String":"Нет! Не отдам... моя прелесть..."    
+    },
+    {
+      "#":"566",
+      "String":"Один слой, за <0> cr"    
+    },
+    {
+      "#":"567",
+      "String":"Два слоя, за <0> cr"    
+    },
+    {
+      "#":"568",
+      "String":"Три слоя, за <0> cr"    
+    },
+    {
+      "#":"580",
+      "String":"Прошивка оборудования"    
+    },
+    {
+      "#":"583",
+      "String":"(трюм)"    
+    },
+    {
+      "#":"587",
+      "String":"за <0> cr."    
+    },
+    {
+      "#":"588",
+      "String":"за"    
+    },
+    {
+      "#":"590",
+      "String":"\"Прошивкой\" мы называем замену ряда модулей в оборудовании на более новые, а также соответствующее обновление программного обеспечения. Сугубо говоря это вовсе не прошивка, а апгрейд, но название прицепилось... Словом, прошивая старое оборудование, мы вполне способны добиться от него результатов на уровне его самых новых аналогов. Износостойкость оборудования <clr>снизится<clrEnd> на <0>%<br>Так какое оборудование желаете прошить?"    
+    },
+    {
+      "#":"591",
+      "String":"До типа <color=0,50,200><0></color>, стоимость прошивки: <1> cr."    
+    },
+    {
+      "#":"592",
+      "String":"До типа <color=0,50,200><0></color>, стоимость прошивки:"    
+    },
+    {
+      "#":"593",
+      "String":"До какого технологического типа будем прошивать?"    
+    },
+    {
+      "#":"596",
+      "String":"типа <color=0,50,200><0></color>"    
+    },
+    {
+      "#":"597",
+      "String":"Сдать редкие минералы"    
+    },
+    {
+      "#":"599",
+      "String":"Извините, но как-либо улучшить спасательную шлюпку не представляется возможным. Купите себе нормальный корпус или перестаньте страдать фигнёй."    
+    },
+    {
+      "#":"600",
+      "String":"Спасибо, что посетили нашу станцию <0>. Удобно располагайтесь, <1>, чувствуйте себя здесь как дома. Мы - лучшие специалисты Галактики в области технологического сервиса космических кораблей. В перечень наших услуг входит: улучшение оборудования, закрытие и открытие слотов, изменение восприимчивости к тому или иному типу урона и многое другое! Предлагаю вам в полной мере насладиться нашим вкусным кофе и изучить за это время прейскурант."    
+    },
+    {
+      "#":"602",
+      "String":"Наши техники стараются работать качественно и профессионально, но у каждого предмета есть свой предел. Сварные швы, которые образуются в результате этого улучшения будут не такими прочными на разрыв, как заводские, так что в целом устойчивость корпуса к повреждениям снизиться. Кроме того, при улучшении размер корпуса <0>. Также вам следует знать, что снять <clr>ограничения серии<clrEnd> мы никак не можем. Стоимость услуги - <1> cr.<br>Итак, какую часть корабля нам изменить?"    
+    },
+    {
+      "#":"603",
+      "String":"Дальность стрельбы"    
+    },
+    {
+      "#":"604",
+      "String":"Урон"    
+    },
+    {
+      "#":"605",
+      "String":"Дальность захвата"    
+    },
+    {
+      "#":"606",
+      "String":"Мощность захвата"    
+    },
+    {
+      "#":"607",
+      "String":"Дальность прыжка"    
+    },
+    {
+      "#":"608",
+      "String":"Скорость"    
+    },
+    {
+      "#":"609",
+      "String":"Уникальное улучшение точности физгана"    
+    }  
+  ]
+}

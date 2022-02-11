@@ -1,0 +1,541 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  -619,
+  "ViewPos.y":  -205,
+  "ScriptName":"Mod_ExpCaravan_PB",
+  "ScriptFileOut":"H:\\Mod_ExpCaravan_PB.scr",
+  "ScriptTextOut":"H:\\Mod_ExpCaravan_PB.txt",
+  "GraphPoint.Count":  23,
+  "GraphLink.Count":  14,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  5,
+  "Stars.Count":  1,
+  "Planets.Count":  1,
+  "Ships.Count":  1,
+  "States.Count":  1,
+  "Groups.Count":  1,
+  "Places.Count":  0,
+  "Items.Count":  0,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  1,
+  "DialogMessages.Count":  3,
+  "DialogAnswers.Count":  4,
+  "Operations.Count":  3,
+  "Statements.Count":  2,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "DialogAnswers":      
+      [
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          210,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          13,
+          "Msg":"Могли бы и больше предложить, но так уж и быть, продам по-братски. Мне всё равно влом куда-то ещё с этой фигнёй переться",
+          "AMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          240,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          14,
+          "Msg":"Пфф! В пираты что, одни нищеброды идут? Да мне это не возместит даже перегрева пушек!",
+          "AMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          270,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          18,
+          "Msg":"",
+          "AMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          150,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          20,
+          "Msg":"",
+          "AMsg.Num":"3"        
+        }      
+      ],
+      "DialogMessages":      
+      [
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          210,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          12,
+          "Msg":"Чего, <Player>, развёл на груз какого-то лошка? А ты, я погляжу, совсем не так прост, хотя по морде лица твоей и не скажешь, что способен на такое. Лады, давай мы с корешами глянем, чего там у тебя трюм коптит.\r\n...\r\nНу, в общем, мы тут с пацанами покумекали и пришли к выводу, что <money> cr. вполне готовы отжалеть за твоё барахло. Но ни кредитом больше, извиняй. Я тебе не внук Роок-Феел'Эра.",
+          "DMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          270,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          17,
+          "Msg":"Э, слышь! Ну ты берега-то свои знай, в натуре! А то ведь мы за такое и обидеть можем.",
+          "DMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          150,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          19,
+          "Msg":"Ну, значит, по рукам! <Ttext> из трюма мы уже отгрузили, а вот и твои денюшки, получите - распишитесь.\r\nИ это, ещё... Уважуха тебе, короче. Всё правильно сделал, клан не забудет.",
+          "DMsg.Num":"2"        
+        }      
+      ],
+      "Dialogs":      
+      [
+        {
+          "Type":"TDialog",
+          "Name":"PB_CargoBox",
+          "Pos.x":          210,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          9        
+        }      
+      ],
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"GroupNew",
+          "Pos.x":          60,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          3,
+          "Owner":          62,
+          "Group.Type":          126,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":true,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          90,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          5,
+          "Total.Lines":          1,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"GRun();"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          210,
+          "Pos.y":          60,
+          "Parent":          -1,
+          "#":          8,
+          "Total.Lines":          19,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"j=0;",
+"money=0;",
+"for(i=0;i<ShipItems(Player());i=i+1)",
+"{",
+"    tdwd=ShipItems(Player(),i);",
+"    if(ItemType(tdwd)!=t_UselessItem)continue;",
+"    if(EquipmentImageName(tdwd)=='ExpCaravan_CargoBox')",
+"    {",
+"        j=j+1;",
+"        money=money+ItemCost(tdwd);",
+"    }",
+"}",
+"if(j)",
+"{",
+"    if(j==1)Ttext='</color>'+\"Контейнер\";",
+"    else Ttext='</color>'+\"Контейнеры\";",
+"    money=money+(money*25)/100;",
+"    AddDialogInject('PB_CargoBox','',\"Слышьте, где тут у вас сбарыжить можно непосильным трудом нажитое?\",1);",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          180,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          16,
+          "Total.Lines":          19,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"for(i=ShipItems(Player())-1;i>=0;i=i-1)",
+"{",
+"    tdwd=ShipItems(Player(),i);",
+"    if(ItemType(tdwd)!=t_UselessItem)continue;",
+"    if(EquipmentImageName(tdwd)=='ExpCaravan_CargoBox')",
+"    {",
+"        FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),tdwd)));",
+"        //Накидываем по 100 очков пиратского звания за каждый сданный контейнер, если игрок состоит в пиратском клане",
+"        //Но всегда оставляем одно очко до звания недополученным, чтобы диалог ПБ не перешёл резко к повышению",
+"        if(ShipOnSidePirateClan(Player()))",
+"        {",
+"            j=ShipNextPirateRankPoints(Player())-ShipPirateRankPoints(Player());",
+"            if(j<=100)ShipPirateRankPoints(Player(),ShipNextPirateRankPoints(Player())-1);",
+"            else ShipPirateRankPoints(Player(),ShipPirateRankPoints(Player())+100);",
+"        }",
+"    }",
+"}",
+"Sound('Sound.Sell');",
+"ShipMoney(Player(),ShipMoney(Player())+money);"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"PlanetNew",
+          "Pos.x":          60,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          2,
+          "Race":          62,
+          "Owner":          62,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          60,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          0,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"StarNew",
+          "Pos.x":          60,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          1,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":false,
+          "NoComeKling":false        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          60,
+          "Pos.y":          60,
+          "Parent":          -1,
+          "#":          6,
+          "Total.Lines":          1,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"GetShipRuins(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          140,
+          "Pos.y":          60,
+          "Parent":          -1,
+          "#":          7,
+          "Total.Lines":          1,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"ShipType(GetShipRuins(Player()))=='PB'"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"StateNew",
+          "Pos.x":          60,
+          "Pos.y":          260,
+          "Parent":          -1,
+          "#":          4,
+          "Move":          0,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":"TVar",
+          "Name":"i",
+          "Pos.x":          140,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          10,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tdwd",
+          "Pos.x":          140,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          11,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"money",
+          "Pos.x":          140,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          15,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"j",
+          "Pos.x":          170,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          21,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"Ttext",
+          "Pos.x":          140,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          22,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      3,
+      "End":      4,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      3,
+      "End":      2,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      2,
+      "End":      1,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      0,
+      "End":      1,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      6,
+      "End":      7,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      8,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      12,
+      "End":      13,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      12,
+      "End":      14,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      9,
+      "End":      12,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      13,
+      "End":      16,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      14,
+      "End":      17,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      17,
+      "End":      18,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      20,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      16,
+      "End":      19,
+      "Nom":      0,
+      "Arrow":true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  8,
+  "BlockPar.EC":  
+  [
+    {
+      "#":"0",
+      "String":"Слышьте, где тут у вас сбарыжить можно непосильным трудом нажитое?"    
+    },
+    {
+      "#":"11",
+      "String":"Могли бы и больше предложить, но так уж и быть, продам по-братски. Мне всё равно влом куда-то ещё с этой фигнёй переться"    
+    },
+    {
+      "#":"14",
+      "String":"Контейнеры"    
+    },
+    {
+      "#":"15",
+      "String":"Контейнер"    
+    },
+    {
+      "#":"16",
+      "String":"Ну, значит, по рукам! <0> из трюма мы уже отгрузили, а вот и твои денюшки, получите - распишитесь.<br>И это, ещё... Уважуха тебе, короче. Всё правильно сделал, клан не забудет."    
+    },
+    {
+      "#":"4",
+      "String":"Чего, <Player>, развёл на груз какого-то лошка? А ты, я погляжу, совсем не так прост, хотя по морде лица твоей и не скажешь, что способен на такое. Лады, давай мы с корешами глянем, чего там у тебя трюм коптит.<br>...<br>Ну, в общем, мы тут с пацанами покумекали и пришли к выводу, что <0> cr. вполне готовы отжалеть за твоё барахло. Но ни кредитом больше, извиняй. Я тебе не внук Роок-Феел'Эра."    
+    },
+    {
+      "#":"6",
+      "String":"Пфф! В пираты что, одни нищеброды идут? Да мне это не возместит даже перегрева пушек!"    
+    },
+    {
+      "#":"9",
+      "String":"Э, слышь! Ну ты берега-то свои знай, в натуре! А то ведь мы за такое и обидеть можем."    
+    }  
+  ]
+}

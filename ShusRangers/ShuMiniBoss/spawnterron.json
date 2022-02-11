@@ -1,0 +1,1080 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  220,
+  "ViewPos.y":  117,
+  "ScriptName":"spawnterron",
+  "ScriptFileOut":"H:\\spawnterron.scr",
+  "ScriptTextOut":"H:\\spawnterron.txt",
+  "GraphPoint.Count":  58,
+  "GraphLink.Count":  14,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  39,
+  "Stars.Count":  1,
+  "Planets.Count":  1,
+  "Ships.Count":  1,
+  "States.Count":  2,
+  "Groups.Count":  2,
+  "Places.Count":  0,
+  "Items.Count":  0,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  1,
+  "DialogMessages.Count":  2,
+  "DialogAnswers.Count":  2,
+  "Operations.Count":  6,
+  "Statements.Count":  1,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "DialogAnswers":      
+      [
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          1010,
+          "Pos.y":          640,
+          "Parent":          -1,
+          "#":          49,
+          "Msg":"",
+          "AMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1040,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          54,
+          "Msg":"Активировать программу: <clr>Сабмодем<clrEnd>",
+          "AMsg.Num":"1"        
+        }      
+      ],
+      "DialogMessages":      
+      [
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          640,
+          "Parent":          -1,
+          "#":          41,
+          "Msg":"Вид объекта не акцептирован. Ожидается ввод данных.",
+          "DMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1070,
+          "Pos.y":          640,
+          "Parent":          -1,
+          "#":          52,
+          "Msg":"Выполняю программу <clr>Сабмодем<clrEnd>...<br>Коды размножения супердоминаторов заблокированы.",
+          "DMsg.Num":"1"        
+        }      
+      ],
+      "Dialogs":      
+      [
+        {
+          "Type":"TDialog",
+          "Name":"dialog",
+          "Pos.x":          900,
+          "Pos.y":          640,
+          "Parent":          -1,
+          "#":          48        
+        }      
+      ],
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"HanPirates",
+          "Pos.x":          540,
+          "Pos.y":          590,
+          "Parent":          -1,
+          "#":          42,
+          "Owner":          62,
+          "Group.Type":          126,
+          "CntShipMin":          0,
+          "CntShipMax":          0,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":false,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        },
+        {
+          "Type":"TGroup",
+          "Name":"thatone",
+          "Pos.x":          540,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          43,
+          "Owner":          62,
+          "Group.Type":          126,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":true,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          500,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          3,
+          "Total.Lines":          1,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"GRun();"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          530,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          4,
+          "Total.Lines":          1,
+          "Code.Type":"Init",
+          "Code":          
+          [
+"pirate_planets = newarray(1)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          590,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          44,
+          "Total.Lines":          154,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(!massiv_ok)",
+"{",
+"    massiv_ok=1;",
+"    massiv=newarray(1);",
+"}",
+"",
+"if(!block_superdominator)",
+"{",
+"    t1=t1+1;",
+"    if(CurTurn()>upg_day)upg=1;",
+"    else upg=0;",
+"    if(t1>=300)",
+"    {",
+"        if(GroupCount(HanPirates)<3)",
+"        {",
+"            ArrayClear(pirate_planets);",
+"            st=GalaxyStars();",
+"            for(st_num=0; st_num<st; st_num=st_num+1)",
+"            {",
+"                cur_star=GalaxyStar(st_num);",
+"                if(StarOwner(cur_star)==1 && StarCustomFaction(cur_star)!='Klissan' && !DomiksDefeated(2))",
+"                {",
+"                    if(StarSeries(cur_star)==2)",
+"                    {",
+"                        pl=StarPlanets(cur_star);",
+"                        for(i=0;i<pl;i=i+1)",
+"                        {",
+"                            cur_pl=StarPlanets(cur_star,i);",
+"                            if(PlanetOwner(cur_pl)==5) ArrayAdd(pirate_planets,cur_pl);",
+"                        }",
+"                    }",
+"                }",
+"            }",
+"            if (ArrayDim(pirate_planets)<=1) exit;",
+"            if (ArrayDim(pirate_planets)<=3) rand=Rnd(0,2);",
+"            if (ArrayDim(pirate_planets)<=6) rand=Rnd(1,3);",
+"            else if (ArrayDim(pirate_planets)<=10) rand=Rnd(2,6);",
+"            else if (ArrayDim(pirate_planets)<=20) rand=Rnd(3,10);",
+"            else if (ArrayDim(pirate_planets)<=30) rand=Rnd(6,15);",
+"            else if (ArrayDim(pirate_planets)<=45) rand=Rnd(10,20);",
+"            else rand=Rnd(13,25);",
+"            if (GalaxyTechLevel()<3) rand=rand*30/100;",
+"            if (GalaxyTechLevel()==3) rand=rand*45/100;",
+"            if (GalaxyTechLevel()==4) rand=rand*60/100;",
+"            if (GalaxyTechLevel()==5) rand=rand*75/100;",
+"            if (GalaxyTechLevel()==6) rand=rand*90/100;",
+"            if (GalaxyTechLevel()==7) rand=rand*110/100;",
+"            if (GalaxyTechLevel()==8) rand=rand*130/100;",
+"            t1=0;",
+"            for(i=0; i<rand; i=i+1)",
+"            {",
+"                cur_pl=pirate_planets[Rnd(1,ArrayDim(pirate_planets)-1)];",
+"                s=BuyDomikExtremal(cur_pl);",
+"                ShipType(s,'Superdominator');",
+"                shu_shit=ShipSubType(s);",
+"                //Штип",
+"                if(shu_shit==5)",
+"                {",
+"                    v2=Rnd(1000,1500);",
+"                    v4=5;",
+"                    v5=15;",
+"                    //Навешивание графических акринов из солянки",
+"                    SpecialToEquipment(FindBonusByNameInCfg('TerronSupDom1'),ShipItems(s,0));",
+"                }",
+"                //Менок",
+"                else if(shu_shit==4)",
+"                {",
+"                    v2=Rnd(1500,2250);",
+"                    v4=10;",
+"                    v5=30;",
+"                    //Навешивание графических акринов из солянки",
+"                    SpecialToEquipment(FindBonusByNameInCfg('TerronSupDom1'),ShipItems(s,0));",
+"                }",
+"                //Смерш",
+"                else if(shu_shit==3)",
+"                {",
+"                    v2=Rnd(2250,3250);",
+"                    v4=13;",
+"                    v5=45;",
+"                    //Навешивание графических акринов из солянки",
+"                    SpecialToEquipment(FindBonusByNameInCfg('TerronSupDom2'),ShipItems(s,0));",
+"                }",
+"                //Ургант",
+"                else if(shu_shit==2)",
+"                {",
+"                    v2=Rnd(3250,4500);",
+"                    v4=16;",
+"                    v5=60;",
+"                    //Навешивание графических акринов из солянки",
+"                    SpecialToEquipment(FindBonusByNameInCfg('TerronSupDom2'),ShipItems(s,0));",
+"                }",
+"                //Эквентор",
+"                else if(shu_shit==1)",
+"                {",
+"                    v2=Rnd(4500,6000);",
+"                    v4=20;",
+"                    v5=75;",
+"                    //Навешивание графических акринов из солянки",
+"                    SpecialToEquipment(FindBonusByNameInCfg('TerronSupDom2'),ShipItems(s,0));",
+"                }",
+"                //Бертор",
+"                else if(shu_shit==6)",
+"                {",
+"                    v2=Rnd(6000,7750);",
+"                    v4=23;",
+"                    v5=90;",
+"                    //Навешивание графических акринов из солянки",
+"                    SpecialToEquipment(FindBonusByNameInCfg('TerronSupDom3'),ShipItems(s,0));",
+"                }",
+"                v2=v2*115/100;",
+"                ItemSize(ShipItems(s,0),v2);",
+"                HullHP(s,ItemSize(ShipItems(s,0)));",
+"                Chameleon(s);",
+"                ShipJoin(HanPirates,s);",
+"                ArrangeItems(s);",
+"                v1=Rnd(10,15);",
+"                for(v3=0; v3<v1; v3=v3+1)",
+"                {",
+"                    if (v3==0) v2=CreateNodes(Rnd(v4*3,v5*3),2,1);",
+"                    else v2=CreateNodes(Rnd(v4,v5),2,1);",
+"                    ShipAddDropItem(s,v2);",
+"                }",
+"                v3=ShipCntWeapon(s);",
+"                for(v2=v3; v2>0; v2=v2-1)",
+"                {",
+"                    v1=ShipWeapon(s,v2);",
+"                    FreeItem(GetItemFromShip(s,FindItemInShip(s,v1)));",
+"                }",
+"                v3=Rnd(2,5);",
+"                for(v2=0; v2<v3; v2=v2+1)",
+"                {",
+"                    v1=CreateCustomWeapon('Dom_minigun',Rnd(55,110),GalaxyTechLevel(),Kling);",
+"                    LinkItemToScript(v1);",
+"                    ItemOnActCode(v1, GenerateCodeStringFromBlock('ActCodeBlocksList.ShuDomiksPlus_MinigunShot'));",
+"                    ItemSubrace(v1,ItemSubrace(ShipItems(s,0)));",
+"                    SpecialToEquipment(FindBonusByNameInCfg('ShuDomiks_MMBlockAcryn'),v1);",
+"                    AddItemToShip(s,v1);",
+"                }",
+"                if(Rnd(0,1))",
+"                {",
+"                    v1=CreateCustomWeapon('Dom_minigun',Rnd(55,110),GalaxyTechLevel(),Kling);",
+"                    LinkItemToScript(v1);",
+"                    ItemOnActCode(v1, GenerateCodeStringFromBlock('ActCodeBlocksList.ShuDomiksPlus_MinigunShot'));",
+"                    ItemSubrace(v1,ItemSubrace(ShipItems(s,0)));",
+"                    SpecialToEquipment(FindBonusByNameInCfg('ShuDomiks_MMBlockAcryn'),v1);",
+"                    ShipAddDropItem(s,v1);",
+"                }",
+"                ArrangeItems(s);",
+"                ShipSpecialBonuses(s,bonSpeed,-100);",
+"                ShipSpecialBonuses(s,bonMass,100);",
+"            }",
+"        }",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          560,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          45,
+          "Total.Lines":          10,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"if(GetTalkShip())",
+"{",
+"    if(!TalkByAI())",
+"    {",
+"        if(ShipType(GetTalkShip()) == 'Superdominator')",
+"        {",
+"            if(ItemSubrace(ShipItems(GetTalkShip(), 0)) == 2) AddDialogOverride('dialog', 50);",
+"        }",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          740,
+          "Pos.y":          590,
+          "Parent":          -1,
+          "#":          47,
+          "Total.Lines":          15,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"NoTalkToShip(CurShip,0);",
+"if (StarRuins(ShipStar(CurShip),'DomRuins')>0 && Rnd(1,365)==1)",
+"{",
+"ArrayClear(massiv);",
+"for (i=1; i<=20; i=i+1)",
+"{",
+"s=StarNearbyStars(ShipStar(CurShip),i);",
+"if (StarOwner(s)==1 && StarSeries(s)==ItemSubrace(ShipItems(CurShip,0))){ ArrayAdd(massiv,s); }",
+"}",
+"if (ArrayDim(massiv)>1)",
+"{",
+"s=massiv[Rnd(1,ArrayDim(massiv)-1)];",
+"OrderJump(CurShip,s);",
+"}",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1070,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          55,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"block_superdominator=1;"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"SpawnPlanet",
+          "Pos.x":          450,
+          "Pos.y":          590,
+          "Parent":          -1,
+          "#":          1,
+          "Race":          62,
+          "Owner":          256,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          2,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"SpawnStar",
+          "Pos.x":          360,
+          "Pos.y":          590,
+          "Parent":          -1,
+          "#":          0,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":false,
+          "NoComeKling":false        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          1010,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          53,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"MS_Terron_Crack && !block_superdominator"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"StateFree",
+          "Pos.x":          640,
+          "Pos.y":          590,
+          "Parent":          -1,
+          "#":          46,
+          "Move":          5,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"notthatone",
+          "Pos.x":          640,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          51,
+          "Move":          0,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":"TVar",
+          "Name":"pirate_planets",
+          "Pos.x":          550,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          5,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"i",
+          "Pos.x":          760,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          6,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"st_num",
+          "Pos.x":          810,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          7,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_star",
+          "Pos.x":          900,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          8,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_pl",
+          "Pos.x":          970,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          9,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"pl",
+          "Pos.x":          1040,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          10,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"st",
+          "Pos.x":          1110,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          11,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a",
+          "Pos.x":          1180,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          12,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a2",
+          "Pos.x":          1250,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          13,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a3",
+          "Pos.x":          1320,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          14,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a4",
+          "Pos.x":          1390,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          15,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a5",
+          "Pos.x":          1460,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          16,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a6",
+          "Pos.x":          1530,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          17,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a7",
+          "Pos.x":          1600,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          18,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a8",
+          "Pos.x":          1660,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          19,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a10",
+          "Pos.x":          1730,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          20,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a9",
+          "Pos.x":          1800,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          21,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a11",
+          "Pos.x":          1870,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          22,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a12",
+          "Pos.x":          550,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          23,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a13",
+          "Pos.x":          620,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          24,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"str_hull",
+          "Pos.x":          1110,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          25,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"str_chameleon",
+          "Pos.x":          1210,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          26,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"rand",
+          "Pos.x":          1330,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          27,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"trank",
+          "Pos.x":          1390,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          28,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"turn",
+          "Pos.x":          1460,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          29,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"s",
+          "Pos.x":          1530,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          30,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"v1",
+          "Pos.x":          1600,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          31,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"v2",
+          "Pos.x":          1660,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          32,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"v3",
+          "Pos.x":          1730,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          33,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"t1",
+          "Pos.x":          1800,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          34,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"v4",
+          "Pos.x":          1870,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          35,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"v5",
+          "Pos.x":          550,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          36,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"it",
+          "Pos.x":          620,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          37,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"massiv_ok",
+          "Pos.x":          670,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          38,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"massiv",
+          "Pos.x":          750,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          39,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"upg_day",
+          "Pos.x":          840,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          40,
+          "Var.Type":"Dword",
+          "Init":"10950",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"upg",
+          "Pos.x":          920,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          50,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"block_superdominator",
+          "Pos.x":          640,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          56,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":true        
+        },
+        {
+          "Type":"TVar",
+          "Name":"shu_shit",
+          "Pos.x":          990,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          57,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      2,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      1,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      42,
+      "End":      1,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      43,
+      "End":      1,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      42,
+      "End":      46,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      46,
+      "End":      47,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      48,
+      "End":      41,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      43,
+      "End":      51,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      41,
+      "End":      53,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      41,
+      "End":      49,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      53,
+      "End":      54,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      52,
+      "End":      49,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      54,
+      "End":      55,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      55,
+      "End":      52,
+      "Nom":      0,
+      "Arrow":true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  3,
+  "BlockPar.EC":  
+  [
+    {
+      "#":"24",
+      "String":"Вид объекта не акцептирован. Ожидается ввод данных."    
+    },
+    {
+      "#":"25",
+      "String":"Выполняю программу <clr>Сабмодем<clrEnd>...<br>Коды размножения супердоминаторов заблокированы."    
+    },
+    {
+      "#":"26",
+      "String":"Активировать программу: <clr>Сабмодем<clrEnd>"    
+    }  
+  ]
+}

@@ -1,0 +1,1074 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  -112,
+  "ViewPos.y":  218,
+  "ScriptName":"Mod_ShuSas",
+  "ScriptFileOut":"H:\\Mod_ShuSas.scr",
+  "ScriptTextOut":"H:\\Mod_ShuSas.txt",
+  "GraphPoint.Count":  49,
+  "GraphLink.Count":  37,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  6,
+  "Stars.Count":  1,
+  "Planets.Count":  2,
+  "Ships.Count":  1,
+  "States.Count":  2,
+  "Groups.Count":  2,
+  "Places.Count":  0,
+  "Items.Count":  1,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  1,
+  "DialogMessages.Count":  5,
+  "DialogAnswers.Count":  10,
+  "Operations.Count":  10,
+  "Statements.Count":  8,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "DialogAnswers":      
+      [
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          680,
+          "Pos.y":          750,
+          "Parent":          -1,
+          "#":          32,
+          "Msg":"",
+          "AMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          680,
+          "Pos.y":          670,
+          "Parent":          -1,
+          "#":          33,
+          "Msg":"Рейнджер <ShipName(Player())> на связи, приём",
+          "AMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          680,
+          "Pos.y":          710,
+          "Parent":          -1,
+          "#":          34,
+          "Msg":"Вечер в хату, вояки",
+          "AMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          770,
+          "Pos.y":          660,
+          "Parent":          -1,
+          "#":          35,
+          "Msg":"Я помогу вам!",
+          "AMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          770,
+          "Pos.y":          700,
+          "Parent":          -1,
+          "#":          36,
+          "Msg":"Я помогу вам!",
+          "AMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          680,
+          "Pos.y":          730,
+          "Parent":          -1,
+          "#":          37,
+          "Msg":"Притвориться, что связь не работает",
+          "AMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          770,
+          "Pos.y":          680,
+          "Parent":          -1,
+          "#":          38,
+          "Msg":"Извините, это не для меня",
+          "AMsg.Num":"6"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          770,
+          "Pos.y":          720,
+          "Parent":          -1,
+          "#":          39,
+          "Msg":"Извините, это не для меня",
+          "AMsg.Num":"7"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          680,
+          "Pos.y":          770,
+          "Parent":          -1,
+          "#":          40,
+          "Msg":"Ладно, помогу вам",
+          "AMsg.Num":"8"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          680,
+          "Pos.y":          800,
+          "Parent":          -1,
+          "#":          41,
+          "Msg":"Нет",
+          "AMsg.Num":"9"        
+        }      
+      ],
+      "DialogMessages":      
+      [
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          630,
+          "Pos.y":          710,
+          "Parent":          -1,
+          "#":          27,
+          "Msg":"Рейнджер <ShipName(Player())>, срочно ответьте, дело первостепенной важности!",
+          "DMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          630,
+          "Pos.y":          750,
+          "Parent":          -1,
+          "#":          28,
+          "Msg":"Давай помогай, не время разговаривать!",
+          "DMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          730,
+          "Pos.y":          670,
+          "Parent":          -1,
+          "#":          29,
+          "Msg":"Наш Космический Военный Флот противостоял доминаторам во время вторжения, во время которого я адекватно оценил численность нашего флота, вследствие чего я приказал флоту отступить и спрятаться на незаселённой планете. Мы много времени провели здесь, пока наши радары не зафиксировали гиперпрыжок в систему. Я решил поднять весь флот, выйти на связь с кораблём и с его помощью попытаться освободить систему. Как видишь, тебе выпала великая честь стать героем, не важно, выживешь ты или умрёшь. Соглашайся!",
+          "DMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          730,
+          "Pos.y":          710,
+          "Parent":          -1,
+          "#":          30,
+          "Msg":"Тебе того же, сиделец. Наш Космический Военный Флот противостоял доминаторам во время вторжения, во время которого я адекватно оценил численность нашего флота, вследствие чего я приказал флоту отступить и спрятаться на незаселённой планете. Мы много времени провели здесь, пока наши радары не зафиксировали гиперпрыжок в систему. Я решил поднять весь флот, выйти на связь с кораблём и с его помощью попытаться освободить систему. Как видишь, тебе выпала великая честь стать героем, не важно, выживешь ты или умрёшь. Соглашайся!",
+          "DMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          630,
+          "Pos.y":          790,
+          "Parent":          -1,
+          "#":          31,
+          "Msg":"Ну так что, ты передумал?",
+          "DMsg.Num":"4"        
+        }      
+      ],
+      "Dialogs":      
+      [
+        {
+          "Type":"TDialog",
+          "Name":"flot",
+          "Pos.x":          540,
+          "Pos.y":          750,
+          "Parent":          -1,
+          "#":          23        
+        }      
+      ],
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"domike",
+          "Pos.x":          400,
+          "Pos.y":          690,
+          "Parent":          -1,
+          "#":          11,
+          "Owner":          65,
+          "Group.Type":          8065,
+          "CntShipMin":          10,
+          "CntShipMax":          14,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":false,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        },
+        {
+          "Type":"TGroup",
+          "Name":"flote",
+          "Pos.x":          490,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          12,
+          "Owner":          9,
+          "Group.Type":          5,
+          "CntShipMin":          5,
+          "CntShipMax":          7,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":true,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          23,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Items":      
+      [
+        {
+          "Type":"TItem",
+          "Name":"gepbmo",
+          "Pos.x":          400,
+          "Pos.y":          750,
+          "Parent":          -1,
+          "#":          10,
+          "Class":          1,
+          "Item.Type":          13,
+          "Size":          45,
+          "Level":          5,
+          "Radius":          120,
+          "Owner":          5,
+          "Useless":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          600,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          15,
+          "Total.Lines":          5,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"for (i=0; i<GroupCount(domike); i=i+1)",
+"{",
+"a=GroupShip(domike,i);",
+"ShipOut(a);",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          620,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          20,
+          "Total.Lines":          4,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"if(GRunFrom==3) {",
+"  GRun();",
+"  script_date=CurTurn()+1500;",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          640,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          21,
+          "Total.Lines":          5,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"for (i=0; i<GroupCount(flote); i=i+1)",
+"{",
+"a=GroupShip(flote,i);",
+"ShipOut(a);",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          660,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          22,
+          "Total.Lines":          8,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(dicky==0) {",
+"  for (i=0; i<GroupCount(domike); i=i+1)",
+"  {",
+"  a=GroupShip(domike,i);",
+"  OrderTeleport(a,ShipStar(a),228,228);",
+"  }",
+"  dicky=1;",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          740,
+          "Pos.y":          770,
+          "Parent":          -1,
+          "#":          42,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"dlg=2;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          820,
+          "Pos.y":          660,
+          "Parent":          -1,
+          "#":          43,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"dlg=2;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          820,
+          "Pos.y":          680,
+          "Parent":          -1,
+          "#":          44,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"dlg=1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          820,
+          "Pos.y":          700,
+          "Parent":          -1,
+          "#":          45,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"dlg=2;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          820,
+          "Pos.y":          720,
+          "Parent":          -1,
+          "#":          46,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"dlg=1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          490,
+          "Pos.y":          500,
+          "Parent":          -1,
+          "#":          47,
+          "Total.Lines":          10,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(ShipStar(GroupToShip(flote))==ShipStar(Player())) {",
+"  if(ShipInNormalSpace(Player())) {",
+"    if(ShipInNormalSpace(GroupToShip(flote))) {",
+"      if(dlg==0) {",
+"        Dialog(flot,flote);",
+"        //SFT('Диалог стартовал - sas mod');",
+"      }",
+"    }",
+"  }",
+"}"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"Planet1",
+          "Pos.x":          400,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          7,
+          "Race":          9,
+          "Owner":          65,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        },
+        {
+          "Type":"TPlanet",
+          "Name":"Planet2",
+          "Pos.x":          490,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          8,
+          "Race":          62,
+          "Owner":          129,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          400,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          9,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"InitStar",
+          "Pos.x":          400,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          6,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":false,
+          "NoComeKling":false        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          600,
+          "Pos.y":          590,
+          "Parent":          -1,
+          "#":          16,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!GroupCount(flote)"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          620,
+          "Pos.y":          590,
+          "Parent":          -1,
+          "#":          17,
+          "Total.Lines":          1,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"CurTurn()>=script_date"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          640,
+          "Pos.y":          590,
+          "Parent":          -1,
+          "#":          18,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!GroupCount(domike)"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          660,
+          "Pos.y":          590,
+          "Parent":          -1,
+          "#":          19,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipStar(GroupToShip(domike))==ShipStar(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          590,
+          "Pos.y":          710,
+          "Parent":          -1,
+          "#":          24,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"dlg==0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          590,
+          "Pos.y":          750,
+          "Parent":          -1,
+          "#":          25,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"dlg==2"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          590,
+          "Pos.y":          790,
+          "Parent":          -1,
+          "#":          26,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"dlg==1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          660,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          48,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"GroupCount(domike) && GroupCount(flote)"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"FloteState",
+          "Pos.x":          490,
+          "Pos.y":          530,
+          "Parent":          -1,
+          "#":          13,
+          "Move":          2,
+          "MoveObj":          11,
+          "Attack.Count":          1,
+          "Attack.Items":          
+          [
+            {
+              "Target.0":              11            
+            }          
+          ],
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"flot",
+          "OnActCode":"flot",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"DomikState",
+          "Pos.x":          310,
+          "Pos.y":          690,
+          "Parent":          -1,
+          "#":          14,
+          "Move":          2,
+          "MoveObj":          12,
+          "Attack.Count":          1,
+          "Attack.Items":          
+          [
+            {
+              "Target.0":              12            
+            }          
+          ],
+          "TakeItem":          -1,
+          "TakeAllItem":true,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":"TVar",
+          "Name":"scrpdgstn",
+          "Pos.x":          400,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          0,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":true        
+        },
+        {
+          "Type":"TVar",
+          "Name":"script_date",
+          "Pos.x":          490,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          1,
+          "Var.Type":"Dword",
+          "Init":"600",
+          "Global":true        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a",
+          "Pos.x":          400,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          2,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"dlg",
+          "Pos.x":          440,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          3,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"dicky",
+          "Pos.x":          490,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          4,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"i",
+          "Pos.x":          550,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          5,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      6,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      8,
+      "End":      6,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      9,
+      "End":      6,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      10,
+      "End":      11,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      12,
+      "End":      13,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      12,
+      "End":      8,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      11,
+      "End":      7,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      11,
+      "End":      14,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      16,
+      "End":      15,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      18,
+      "End":      21,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      22,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      23,
+      "End":      24,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      23,
+      "End":      25,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      23,
+      "End":      26,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      24,
+      "End":      27,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      25,
+      "End":      28,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      26,
+      "End":      31,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      17,
+      "End":      20,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      27,
+      "End":      33,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      27,
+      "End":      34,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      27,
+      "End":      37,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      28,
+      "End":      32,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      31,
+      "End":      40,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      31,
+      "End":      41,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      33,
+      "End":      29,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      34,
+      "End":      30,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      29,
+      "End":      35,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      29,
+      "End":      38,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      30,
+      "End":      36,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      30,
+      "End":      39,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      40,
+      "End":      42,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      35,
+      "End":      43,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      44,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      36,
+      "End":      45,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      39,
+      "End":      46,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      13,
+      "End":      47,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      48,
+      "End":      19,
+      "Nom":      0,
+      "Arrow":true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  12,
+  "BlockPar.EC":  
+  [
+    {
+      "#":"0",
+      "String":"Рейнджер <0>, срочно ответьте, дело первостепенной важности!"    
+    },
+    {
+      "#":"1",
+      "String":"Давай помогай, не время разговаривать!"    
+    },
+    {
+      "#":"10",
+      "String":"Ладно, помогу вам"    
+    },
+    {
+      "#":"11",
+      "String":"Нет"    
+    },
+    {
+      "#":"2",
+      "String":"Наш Космический Военный Флот противостоял доминаторам во время вторжения, во время которого я адекватно оценил численность нашего флота, вследствие чего я приказал флоту отступить и спрятаться на незаселённой планете. Мы много времени провели здесь, пока наши радары не зафиксировали гиперпрыжок в систему. Я решил поднять весь флот, выйти на связь с кораблём и с его помощью попытаться освободить систему. Как видишь, тебе выпала великая честь стать героем, не важно, выживешь ты или умрёшь. Соглашайся!"    
+    },
+    {
+      "#":"3",
+      "String":"Тебе того же, сиделец. Наш Космический Военный Флот противостоял доминаторам во время вторжения, во время которого я адекватно оценил численность нашего флота, вследствие чего я приказал флоту отступить и спрятаться на незаселённой планете. Мы много времени провели здесь, пока наши радары не зафиксировали гиперпрыжок в систему. Я решил поднять весь флот, выйти на связь с кораблём и с его помощью попытаться освободить систему. Как видишь, тебе выпала великая честь стать героем, не важно, выживешь ты или умрёшь. Соглашайся!"    
+    },
+    {
+      "#":"4",
+      "String":"Ну так что, ты передумал?"    
+    },
+    {
+      "#":"5",
+      "String":"Рейнджер <0> на связи, приём"    
+    },
+    {
+      "#":"6",
+      "String":"Вечер в хату, вояки"    
+    },
+    {
+      "#":"7",
+      "String":"Я помогу вам!"    
+    },
+    {
+      "#":"8",
+      "String":"Притвориться, что связь не работает"    
+    },
+    {
+      "#":"9",
+      "String":"Извините, это не для меня"    
+    }  
+  ]
+}

@@ -1,0 +1,975 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  -296,
+  "ViewPos.y":  95,
+  "ScriptName":"Mod_RevCaravan",
+  "ScriptFileOut":"H:\\Mod_RevCaravan.scr",
+  "ScriptTextOut":"H:\\Mod_RevCaravan.txt",
+  "GraphPoint.Count":  38,
+  "GraphLink.Count":  27,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  5,
+  "Stars.Count":  1,
+  "Planets.Count":  2,
+  "Ships.Count":  1,
+  "States.Count":  7,
+  "Groups.Count":  2,
+  "Places.Count":  1,
+  "Items.Count":  0,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  0,
+  "DialogMessages.Count":  0,
+  "DialogAnswers.Count":  0,
+  "Operations.Count":  11,
+  "Statements.Count":  8,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"Trader1",
+          "Pos.x":          400,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          28,
+          "Owner":          62,
+          "Group.Type":          126,
+          "CntShipMin":          0,
+          "CntShipMax":          0,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":false,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        },
+        {
+          "Type":"TGroup",
+          "Name":"Trader2",
+          "Pos.x":          520,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          29,
+          "Owner":          62,
+          "Group.Type":          126,
+          "CntShipMin":          0,
+          "CntShipMax":          0,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":false,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          250,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          4,
+          "Total.Lines":          4,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"if(GLastTurnRun(GScriptName) + 510 < CurTurn())",
+"{",
+"    if(CurTurn() >= 848) GRun();",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          280,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          5,
+          "Total.Lines":          8,
+          "Code.Type":"Init",
+          "Code":          
+          [
+"//Начинаем распродажу наркотиков на продающей планете",
+"UpsurgeGoods(PlanetBuy, 7);",
+"//Выдаём много наркотиков продающей планете (продающей планетой может быть только пеленгская)",
+"PlanetSetGoods(PlanetBuy, 7, Rnd(751, 932));",
+"//Отбираем все наркотики у покупающей планеты (покупающей планетой может быть любая, кроме пеленгской)",
+"PlanetSetGoods(PlanetSell, 7, 0);",
+"//Начинаем дефицит наркотиков на покупающей планете",
+"DecayGoods(PlanetSell, 7);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          520,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          10,
+          "Total.Lines":          19,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Второй транспорт взлетает с планеты продажи и направляется к планете закупа",
+"//Там он сперва опорожняет трюм от всякой ерунды",
+"numGoods=GoodsCount(CurShip,typeGoods);",
+"PlanetSetGoods(PlanetBuy,typeGoods,GoodsAdd(PlanetBuy,typeGoods,0)+numGoods);",
+"ShipGoods(CurShip,typeGoods,-numGoods);",
+"ShipMoney(CurShip,round(1.1*ShipMoney(CurShip)));",
+"//После чего под завязку забивает его наркотой",
+"//Но если до прибытия транспорта кто-то уже успел опорожнить весь склад планеты закупа, то выводим его из скрипта прямо сейчас",
+"if(!GoodsAdd(PlanetBuy,7,0))",
+"{",
+"    ShipOut(CurShip);",
+"    exit;",
+"}",
+"numGoods=round(1.0*ShipFreeSpace(CurShip)/1.7);",
+"if(GoodsAdd(PlanetBuy,7,0)<numGoods)numGoods=GoodsAdd(PlanetBuy,7,0);",
+"PlanetSetGoods(PlanetBuy,7,GoodsAdd(PlanetBuy,7,0)-numGoods);",
+"item=CreateGoods(7,numGoods);",
+"ItemCost(item,GoodsSellPrice(PlanetBuy,7)*numGoods);",
+"AddItemToShip(CurShip,item);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          460,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          11,
+          "Total.Lines":          13,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//После этого второй транспорт возвращается на планету продажи с трюмом, полным наркоты, и реализует её",
+"numGoods=GoodsCount(CurShip,7);",
+"PlanetSetGoods(PlanetSell,7,GoodsAdd(PlanetSell,7,0)+numGoods);",
+"ShipGoods(CurShip,7,-numGoods);",
+"ShipMoney(CurShip,ShipMoney(CurShip)*3);",
+"//Далее, если кто-то уже успел опорожнить весь склад планеты закупа, то транспорт из скрипта прямо сейчас",
+"if(!GoodsAdd(PlanetBuy,7,0))",
+"{",
+"    ShipOut(CurShip);",
+"    exit;",
+"}",
+"//Иначе отправляем транспорт ещё на один закуп",
+"ChangeState('ToPlanetBuy_2_(2)');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          330,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          15,
+          "Total.Lines":          5,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Когда полный наркоты транспорт долетает до планеты продажи, то сбывает там весь свой товар",
+"numGoods=GoodsCount(CurShip,7);",
+"PlanetSetGoods(PlanetSell,7,GoodsAdd(PlanetSell,7,0)+numGoods);",
+"ShipGoods(CurShip,7,-numGoods);",
+"ShipMoney(CurShip,ShipMoney(CurShip)*3);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          270,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          17,
+          "Total.Lines":          15,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//После этого он возвращается обратно на планету закупа и закупает себе полный трюм",
+"//Но если до возвращения транспорта кто-то уже успел опорожнить весь склад планеты закупа, то выводим его из скрипта прямо сейчас",
+"if(!GoodsAdd(PlanetBuy,7,0))",
+"{",
+"    ShipOut(CurShip);",
+"    exit;",
+"}",
+"numGoods=round(1.0*ShipFreeSpace(CurShip)/2.4);",
+"if(GoodsAdd(PlanetBuy,7,0)<numGoods)numGoods=GoodsAdd(PlanetBuy,7,0);",
+"PlanetSetGoods(PlanetBuy,7,GoodsAdd(PlanetBuy,7,0)-numGoods);",
+"item=CreateGoods(7,numGoods);",
+"ItemCost(item,GoodsSellPrice(PlanetBuy,7)*numGoods);",
+"AddItemToShip(CurShip,item);",
+"//Ставим перед транспортом задачу, слетать на планету продажи ещё раз",
+"ChangeState('ToPlanetSell_2_(1)');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          270,
+          "Pos.y":          570,
+          "Parent":          -1,
+          "#":          20,
+          "Total.Lines":          6,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//После того как первый транспорт повторно продал товар, его скрипт завершается окончательно",
+"numGoods=GoodsCount(CurShip,7);",
+"PlanetSetGoods(PlanetSell,7,GoodsAdd(PlanetSell,7,0)+numGoods);",
+"ShipGoods(CurShip,7,-numGoods);",
+"ShipMoney(CurShip,ShipMoney(CurShip)*3);",
+"ShipOut(CurShip);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          460,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          25,
+          "Total.Lines":          18,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//При вероятной встрече двух транспортов в космосе, первый сообщает второму новость о выгодной торговле наркотой",
+"//Но если до встречи транспортов кто-то уже успел опорожнить весь склад планеты закупа, то выводим второй транспорт из скрипта прямо сейчас",
+"if(!GoodsAdd(PlanetBuy,7,0))",
+"{",
+"    ShipOut(CurShip);",
+"    exit;",
+"}",
+"if(ShipInNormalSpace(Player()))",
+"{",
+"    if(ShipStar(Player())==ScriptStar)",
+"    {",
+"        if(ShipRadarRange(Player())>=Dist(Player(),GroupToShip(Trader1)))",
+"        {",
+"            numGoods=Rnd(1,3);",
+"            Ether(1,'',Format(CT('Script.Mod_RevCaravan.BusinessTalks'+numGoods),'#0#',Name(GroupToShip(Trader1)),'#1#',Name(GroupToShip(Trader2)),'#2#',Name(PlanetBuy),'#3#',Name(PlanetSell)),GroupToShip(Trader1),GroupToShip(Trader2));",
+"        }",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          310,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          27,
+          "Total.Lines":          35,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Производим инициализацию с добавлением кораблей в группы в тёрне, т.к. из иниткода корабли в группы, блять, не добавляются",
+"if(!ScriptState)",
+"{",
+"    ScriptState = 1;",
+"    //Создаём первый транспорт (который якобы уже в курсе про ситуацию с выгодной наркоторговлей)",
+"    transport = BuyTransport(PlanetBuy, 0, 150);",
+"    ShipRefit(transport);",
+"    ShipRefit(transport);",
+"    //Первый транспорт до отказа забиваем наркотиками",
+"    item = CreateGoods(7, round(1.0 * ShipFreeSpace(transport) / 2.3));",
+"    ItemCost(item, GoodsSellPrice(PlanetBuy, 7) * ItemSize(item));",
+"    AddItemToShip(transport, item);",
+"    ShipJoin(Trader1, transport);",
+"",
+"    //Создаём второй транспорт (который якобы пока ни о чём не знает)",
+"    transport = BuyTransport(PlanetSell, 0, 150);",
+"    ShipRefit(transport);",
+"    ShipRefit(transport);",
+"    //По приколу закидываем второму транспорту в трюм немного медикаментов, роскоши или техники",
+"    typeGoods = Rnd(1, 3);",
+"    item = CreateGoods(typeGoods, Rnd(12, 21));",
+"    ItemCost(item, GoodsSellPrice(PlanetSell, typeGoods) * ItemSize(item));",
+"    AddItemToShip(transport, item);",
+"    ShipCalcParam(transport);",
+"    //Проверяем, чтобы транспорт случайно не получил перевес",
+"    if(ShipFreeSpace(transport) < 0)",
+"    {",
+"        item = ShipItems(transport, 0);",
+"        ItemSize(item, ItemSize(item) + abs(ShipFreeSpace(transport)) + Rnd(2, 4));",
+"        HullHP(item, ItemSize(item));",
+"    }",
+"    ShipJoin(Trader2, transport);",
+"}",
+"//Если на систему напали - завершаем скрипт",
+"if(StarBattle(ScriptStar)) AllShipOut();"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          520,
+          "Pos.y":          630,
+          "Parent":          -1,
+          "#":          34,
+          "Total.Lines":          13,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Транспорт прибывает обратно на планету закупа и закупает себе полный трюм",
+"//Но если до возвращения транспорта кто-то уже успел опорожнить весь склад планеты закупа, то выводим его из скрипта прямо сейчас",
+"if(!GoodsAdd(PlanetBuy,7,0))",
+"{",
+"    ShipOut(CurShip);",
+"    exit;",
+"}",
+"numGoods=round(1.0*ShipFreeSpace(CurShip)/2.2);",
+"if(GoodsAdd(PlanetBuy,7,0)<numGoods)numGoods=GoodsAdd(PlanetBuy,7,0);",
+"PlanetSetGoods(PlanetBuy,7,GoodsAdd(PlanetBuy,7,0)-numGoods);",
+"item=CreateGoods(7,numGoods);",
+"ItemCost(item,GoodsSellPrice(PlanetBuy,7)*numGoods);",
+"AddItemToShip(CurShip,item);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          460,
+          "Pos.y":          660,
+          "Parent":          -1,
+          "#":          35,
+          "Total.Lines":          7,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//После этого второй транспорт возвращается на планету продажи с трюмом, полным наркоты, и реализует её",
+"numGoods=GoodsCount(CurShip,7);",
+"PlanetSetGoods(PlanetSell,7,GoodsAdd(PlanetSell,7,0)+numGoods);",
+"ShipGoods(CurShip,7,-numGoods);",
+"ShipMoney(CurShip,ShipMoney(CurShip)*3);",
+"//Далее уже наверняка выводим второй транспорт из скрипта",
+"ShipOut(CurShip);"          
+          ]        
+        }      
+      ],
+      "Places":      
+      [
+        {
+          "Type":"TPlace",
+          "Name":"NearTrader1",
+          "Pos.x":          350,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          21,
+          "Place.Type":          5,
+          "Angle":"0",
+          "Dist":"0",
+          "Radius":          400,
+          "Obj1":          28,
+          "Obj2":          -1        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"PlanetSell",
+          "Pos.x":          520,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          1,
+          "Race":          59,
+          "Owner":          59,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        },
+        {
+          "Type":"TPlanet",
+          "Name":"PlanetBuy",
+          "Pos.x":          400,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          3,
+          "Race":          5,
+          "Owner":          5,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          460,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          2,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"ScriptStar",
+          "Pos.x":          460,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          0,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":true,
+          "NoComeKling":true        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          490,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          7,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"EndState"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          520,
+          "Pos.y":          480,
+          "Parent":          -1,
+          "#":          9,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"EndState"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          330,
+          "Pos.y":          480,
+          "Parent":          -1,
+          "#":          13,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"EndState"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          300,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          16,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"EndState"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          300,
+          "Pos.y":          570,
+          "Parent":          -1,
+          "#":          19,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"EndState"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          490,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          24,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"GroupIn(Trader2,NearTrader1)"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          520,
+          "Pos.y":          600,
+          "Parent":          -1,
+          "#":          33,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"EndState"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          490,
+          "Pos.y":          660,
+          "Parent":          -1,
+          "#":          36,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"EndState"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"ToPlanetSell_1_(2)",
+          "Pos.x":          520,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          6,
+          "Move":          4,
+          "MoveObj":          1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"ToPlanetBuy_1_(2)",
+          "Pos.x":          520,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          8,
+          "Move":          4,
+          "MoveObj":          3,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"ToPlanetSell_1_(1)",
+          "Pos.x":          330,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          12,
+          "Move":          4,
+          "MoveObj":          1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"ToPlanetBuy_1_(1)",
+          "Pos.x":          330,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          14,
+          "Move":          4,
+          "MoveObj":          3,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"ToPlanetSell_2_(1)",
+          "Pos.x":          330,
+          "Pos.y":          570,
+          "Parent":          -1,
+          "#":          18,
+          "Move":          4,
+          "MoveObj":          1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"ToPlanetBuy_2_(2)",
+          "Pos.x":          520,
+          "Pos.y":          570,
+          "Parent":          -1,
+          "#":          32,
+          "Move":          4,
+          "MoveObj":          3,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"ToPlanetSell_2_(2)",
+          "Pos.x":          520,
+          "Pos.y":          660,
+          "Parent":          -1,
+          "#":          37,
+          "Move":          4,
+          "MoveObj":          1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":"TVar",
+          "Name":"typeGoods",
+          "Pos.x":          250,
+          "Pos.y":          340,
+          "Parent":          -1,
+          "#":          22,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"transport",
+          "Pos.x":          250,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          23,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"item",
+          "Pos.x":          250,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          26,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"numGoods",
+          "Pos.x":          250,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          30,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"ScriptState",
+          "Pos.x":          250,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          31,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      2,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      1,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      3,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      6,
+      "End":      7,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      8,
+      "End":      9,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      9,
+      "End":      10,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      11,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      12,
+      "End":      13,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      13,
+      "End":      15,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      14,
+      "End":      16,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      18,
+      "End":      19,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      21,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      15,
+      "End":      14,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      10,
+      "End":      6,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      16,
+      "End":      17,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      20,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      8,
+      "End":      24,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      24,
+      "End":      25,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      28,
+      "End":      3,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      28,
+      "End":      12,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      29,
+      "End":      1,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      29,
+      "End":      8,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      32,
+      "End":      33,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      33,
+      "End":      34,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      34,
+      "End":      37,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      37,
+      "End":      36,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      36,
+      "End":      35,
+      "Nom":      0,
+      "Arrow":true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  0,
+  "BlockPar.EC":  
+  [
+  
+  ]
+}

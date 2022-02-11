@@ -1,0 +1,1909 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  -450,
+  "ViewPos.y":  -16,
+  "ScriptName":"Mod_EvoMC",
+  "ScriptFileOut":"H:\\Mod_EvoMC.scr",
+  "ScriptTextOut":"H:\\Mod_EvoMC.txt",
+  "GraphPoint.Count":  82,
+  "GraphLink.Count":  64,
+  "GraphRectText.Count":  7,
+  "Variables.Count":  22,
+  "Stars.Count":  1,
+  "Planets.Count":  1,
+  "Ships.Count":  1,
+  "States.Count":  1,
+  "Groups.Count":  1,
+  "Places.Count":  0,
+  "Items.Count":  0,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  2,
+  "DialogMessages.Count":  7,
+  "DialogAnswers.Count":  10,
+  "Operations.Count":  14,
+  "Statements.Count":  22,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "DialogAnswers":      
+      [
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          400,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          9,
+          "Msg":"<input>",
+          "AMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          400,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          10,
+          "Msg":"<input>",
+          "AMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          400,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          11,
+          "Msg":"<input>",
+          "AMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          400,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          12,
+          "Msg":"<input>",
+          "AMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          400,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          16,
+          "Msg":"Ну хоть пробничек дайте! Что... не положено... Ну тогда пока",
+          "AMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          170,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          27,
+          "Msg":"Уйти из магазина медикаментов",
+          "AMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          490,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          47,
+          "Msg":"",
+          "AMsg.Num":"6"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"block",
+          "Pos.x":          400,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          65,
+          "Msg":"<input>",
+          "AMsg.Num":"7"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          400,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          68,
+          "Msg":"",
+          "AMsg.Num":"8"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"fastexit",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          78,
+          "#":          79,
+          "Msg":"",
+          "AMsg.Num":"9"        
+        }      
+      ],
+      "DialogMessages":      
+      [
+        {
+          "Type":"TDialogMsg",
+          "Name":"no_mo",
+          "Pos.x":          200,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          15,
+          "Msg":"Рейнджер, у вас нет денег для покупки наших медикаментов.",
+          "DMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"mag",
+          "Pos.x":          150,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          26,
+          "Msg":"Медикаменты, согласно пункту <clr>18/2<clrEnd> параграфа <clr>744<clrEnd> медицинского кодекса, предписаны исключительно для использования в чрезвычайных ситуаций, когда оказать врачебную помощь медикам в космосе невозможно.\r\nРассматривая данную ситуацию как патологически опасную для наших народов, мы можем допустить продажу <MaxMed> различных медикаментов в год.\r\nПо нашим данным в этом году вы приобрели <CurMed> ед. медикаментов. Итого вы можете купить <TotalMed> ед. любого препарата.\r\nВот что у нас есть на данный момент: <input>",
+          "DMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"stop",
+          "Pos.x":          310,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          37,
+          "Msg":"По нашим данным в этом году вы приобрели <MaxMed> ед. медикаментов. До конца года вы не можете приобрести медикаменты, поскольку исчерпали ваш лимит (<CurMed> ед.).\r\nЖдём вас в следующем году.",
+          "DMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          450,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          46,
+          "Msg":"Отличный выбор.\r\nПомните, что медикаменты опасны для здоровья. Они вызывают привыкание, можно и наркоманом стать, да и летальные исходы не редкость.\r\nНо еще лучше вести здоровый образ жизни, поддерживать свое тело в хорошей физической форме. Для души читайте устав рейнджеров и занимайтесь медитацией!",
+          "DMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"no_policy",
+          "Pos.x":          310,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          67,
+          "Msg":"Согласно пункту <clr>1/2<clrEnd> параграфа <clr>10<clrEnd> медицинского кодекса, медикаменты отпускаются только при наличии действующего медицинского полиса.",
+          "DMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          170,
+          "Pos.y":          420,
+          "Parent":          -1,
+          "#":          73,
+          "Msg":"На данный момент у нас закончились медикаменты, которые мы можем вам продать. Дождитесь следующей партии или зайдите в мед. пункт на прием стимулятора.",
+          "DMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          77,
+          "#":          78,
+          "Msg":"<tstr1>",
+          "DMsg.Num":"6"        
+        }      
+      ],
+      "Dialogs":      
+      [
+        {
+          "Type":"TDialog",
+          "Name":"DialogMC",
+          "Pos.x":          150,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          7        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"YellowShroudDialog",
+          "Pos.x":          0,
+          "Pos.y":          430,
+          "Parent":          -1,
+          "#":          76        
+        }      
+      ],
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"PlayerGroup",
+          "Pos.x":          350,
+          "Pos.y":          130,
+          "Parent":          -1,
+          "#":          4,
+          "Owner":          62,
+          "Group.Type":          0,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":true,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          20,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          5,
+          "Total.Lines":          1,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"GRun();"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          60,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          6,
+          "Total.Lines":          25,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"cur_ruin = GetShipRuins(Player());",
+"if(cur_ruin)",
+"{",
+"    if(ShipType(cur_ruin) == 'MC')",
+"    {",
+"        MaxMed = 1 + ShipRank(Player()) / 2;",
+"        TotalMed = MaxMed - CurMed;",
+"        AddDialogInject('DialogMC', '', \"Закупиться медикаментами\", 5);",
+"    }",
+"}",
+"else",
+"{",
+"    cur_ship = GetTalkShip();",
+"    if(cur_ship)",
+"    {",
+"        if(TalkByAI())",
+"        {",
+"            //Если игрока вызывает корабль, облитый уриной (ожидаемо, обливал сам игрок), подменяем реплику",
+"            if(~ShipFindCustomShipInfoByType(cur_ship, 'EvoMC_YellowShroud'))",
+"            {",
+"                AddDialogOverride('YellowShroudDialog', 2552160);",
+"            }",
+"        }",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          520,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          17,
+          "Total.Lines":          10,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"urine = urine + 1;",
+"CurMed = CurMed + 1;",
+"cost = 0.8 * GalaxyMoney(2, ShipOwner(GetShipRuins(Player())));",
+"//item = CreateQuestItem('Usl_Urine');",
+"//ItemCost(item, 1);",
+"//ItemSize(item, 1);",
+"item = CreateCustomArt('UrineTincture', 1, 1, None);",
+"AddItemToShip(Player(), item);",
+"ShipMoney(Player(), ShipMoney(Player()) - cost);",
+"Sound('Sound.Buy');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          520,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          18,
+          "Total.Lines":          11,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"usl=5+variable2;",
+"unknown2=variable2;",
+"variable2=-1;",
+"CurMed=CurMed+1;",
+"cost=0.815*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+"item=CreateQuestItem(drugs[usl]);",
+"ItemCost(item,cost);",
+"ItemSize(item,1);",
+"AddItemToShip(Player(),item);",
+"ShipMoney(Player(),ShipMoney(Player())-cost);",
+"Sound('Sound.Buy');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          520,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          20,
+          "Total.Lines":          11,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"usl=11+variable3;",
+"unknown3=variable3;",
+"variable3=-1;",
+"CurMed=CurMed+1;",
+"cost=0.813*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+"item=CreateQuestItem(drugs[usl]);",
+"ItemCost(item,cost);",
+"ItemSize(item,1);",
+"AddItemToShip(Player(),item);",
+"ShipMoney(Player(),ShipMoney(Player())-cost);",
+"Sound('Sound.Buy');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          40,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          21,
+          "Total.Lines":          19,
+          "Code.Type":"Init",
+          "Code":          
+          [
+"drugs = newarray(18);",
+"drugs[0] = 'Usl_Urine';",
+"drugs[1] = 'Usl_Drug01';",
+"drugs[2] = 'Usl_Drug02';",
+"drugs[3] = 'Usl_Drug03';",
+"drugs[4] = 'Usl_Drug04';",
+"drugs[5] = 'Usl_Drug05';",
+"drugs[6] = 'Usl_Drug06';",
+"drugs[7] = 'Usl_Drug07';",
+"drugs[8] = 'Usl_Drug08';",
+"drugs[9] = 'Usl_Drug09';",
+"drugs[10] = 'Usl_Drug10';",
+"drugs[11] = 'Usl_Drug11';",
+"drugs[12] = 'Usl_Drug12';",
+"drugs[13] = 'Usl_Drug13';",
+"drugs[14] = 'Usl_Drug14';",
+"drugs[15] = 'Usl_Drug15';",
+"drugs[16] = 'Usl_Drug16';",
+"drugs[17] = 'Usl_Drug17';"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          520,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          22,
+          "Total.Lines":          11,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"usl=variable1;",
+"unknown1=variable1;",
+"variable1=-1;",
+"CurMed=CurMed+1;",
+"cost=0.81*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+"item=CreateQuestItem(drugs[usl]);",
+"ItemCost(item,cost);",
+"ItemSize(item,1);",
+"AddItemToShip(Player(),item);",
+"ShipMoney(Player(),ShipMoney(Player())-cost);",
+"Sound('Sound.Buy');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          150,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          34,
+          "Total.Lines":          29,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"kov=substr(CT('UselessItems.Usl_Urine.Name'),18,1);",
+"input='';//Очищаем строковую переменную",
+"if(urine==0)input=input+\"<br>\"+'<clrEnd>---'+\"<br>\"+Format(CT('UselessItems.Usl_Urine.Name'),kov,'<clr>')+'<clrEnd><clrEnd>'+\"<br>\"+CT('UselessItems.Usl_Urine.Text');//Настойка урины",
+"if(variable1>0)input=input+\"<br>\"+'<clrEnd>---'+\"<br>\";//Разделитель перед списком болезней",
+"if(variable1==1)input=input+Format(CT('UselessItems.Usl_Drug01.Name'),kov,'<clr>')+'<clrEnd><clrEnd>'+\"<br>\"+CT('UselessItems.Usl_Drug01.Text');//Чекумаш",
+"if(variable1==2)input=input+Format(CT('UselessItems.Usl_Drug02.Name'),kov,'<clr>')+'<clrEnd><clrEnd>'+\"<br>\"+CT('UselessItems.Usl_Drug02.Text');//Святой фанатизм",
+"if(variable1==3)input=input+Format(CT('UselessItems.Usl_Drug03.Name'),kov,'<clr>')+'<clrEnd><clrEnd>'+\"<br>\"+CT('UselessItems.Usl_Drug03.Text');//Загадочая луатанация",
+"if(variable1==4)input=input+Format(CT('UselessItems.Usl_Drug04.Name'),kov,'<clr>')+'<clrEnd><clrEnd>'+\"<br>\"+CT('UselessItems.Usl_Drug04.Text');//Великий малосус",
+"if(variable1==5)input=input+Format(CT('UselessItems.Usl_Drug05.Name'),kov,'<clr>')+'<clrEnd><clrEnd>'+\"<br>\"+CT('UselessItems.Usl_Drug05.Text');//Новый молизон",
+"if(variable2>0)input=input+\"<br>\"+'<clrEnd>---'+\"<br>\";//Разделитель перед списком стимуляторов №1",
+"if(variable2==1)input=input+Format(CT('UselessItems.Usl_Drug06.Name'),kov,'<clr>')+'<clrEnd><clrEnd>'+\"<br>\"+CT('UselessItems.Usl_Drug06.Text');//Малокская сижа",
+"if(variable2==2)input=input+Format(CT('UselessItems.Usl_Drug07.Name'),kov,'<clr>')+'<clrEnd><clrEnd>'+\"<br>\"+CT('UselessItems.Usl_Drug07.Text');//Одноглазый Хамас",
+"if(variable2==3)input=input+Format(CT('UselessItems.Usl_Drug08.Name'),kov,'<clr>')+'<clrEnd><clrEnd>'+\"<br>\"+CT('UselessItems.Usl_Drug08.Text');//Звездная пыль",
+"if(variable2==4)input=input+Format(CT('UselessItems.Usl_Drug09.Name'),kov,'<clr>')+'<clrEnd><clrEnd>'+\"<br>\"+CT('UselessItems.Usl_Drug09.Text');//Супер техник",
+"if(variable2==5)input=input+Format(CT('UselessItems.Usl_Drug10.Name'),kov,'<clr>')+'<clrEnd><clrEnd>'+\"<br>\"+CT('UselessItems.Usl_Drug10.Text');//Гаалистра времени",
+"if(variable2==6)input=input+Format(CT('UselessItems.Usl_Drug11.Name'),kov,'<clr>')+'<clrEnd><clrEnd>'+\"<br>\"+CT('UselessItems.Usl_Drug11.Text');//Кровяной джогар",
+"if(variable3>0)input=input+\"<br>\"+'<clrEnd>---'+\"<br>\";//Разделитель перед списком стимуляторов №2",
+"if(variable3==1)input=input+Format(CT('UselessItems.Usl_Drug12.Name'),kov,'<clr>')+'<clrEnd><clrEnd>'+\"<br>\"+CT('UselessItems.Usl_Drug12.Text');//Рагобамский шепот",
+"if(variable3==2)input=input+Format(CT('UselessItems.Usl_Drug13.Name'),kov,'<clr>')+'<clrEnd><clrEnd>'+\"<br>\"+CT('UselessItems.Usl_Drug13.Text');//Ведущий Шахманду",
+"if(variable3==3)input=input+Format(CT('UselessItems.Usl_Drug14.Name'),kov,'<clr>')+'<clrEnd><clrEnd>'+\"<br>\"+CT('UselessItems.Usl_Drug14.Text');//Психотропный кэш",
+"if(variable3==4)input=input+Format(CT('UselessItems.Usl_Drug15.Name'),kov,'<clr>')+'<clrEnd><clrEnd>'+\"<br>\"+CT('UselessItems.Usl_Drug15.Text');//Торговая маркировка",
+"if(variable3==5)input=input+Format(CT('UselessItems.Usl_Drug16.Name'),kov,'<clr>')+'<clrEnd><clrEnd>'+\"<br>\"+CT('UselessItems.Usl_Drug16.Text');//Дубльплекс",
+"if(variable3==6)input=input+Format(CT('UselessItems.Usl_Drug17.Name'),kov,'<clr>')+'<clrEnd><clrEnd>'+\"<br>\"+CT('UselessItems.Usl_Drug17.Text');//Абсолютный статус",
+"if(urine==0 && variable1>0 && variable2>0 && variable3>0)",
+"{",
+"    unknown1=0;",
+"    unknown2=0;",
+"    unknown3=0;",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          80,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          45,
+          "Total.Lines":          12,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Через каждые 30 ходов доступные для покупки медикаменты меняются на случайные",
+"vDays = vDays + 1;",
+"if(vDays > 30)",
+"{",
+"    variable1 = Rnd(1, 5);",
+"    variable2 = Rnd(1, 6);",
+"    variable3 = Rnd(1, 6);",
+"    urine = 0;",
+"    vDays = 0;",
+"}",
+"//Обнуляем счётчик купленных медикаментов",
+"if(!findsubstr(GameDateTxtByTurn(CurTurn()), \"1 января\")) CurMed = 0;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          270,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          48,
+          "Total.Lines":          3,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost = 0.8 * GalaxyMoney(2, ShipOwner(GetShipRuins(Player())));",
+"//input = '</color>' + Format(CT('UselessItems.Usl_Urine.Name'), kov, '<color=0,50,200>') + '</color> (<cost> cr.)';",
+"input = '</color>' + CT('Artefacts.CustomArtefacts.UrineTincture.NameDialog') + ' (<cost> cr.)';"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          270,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          49,
+          "Total.Lines":          6,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost=0.81*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+"if(variable1==1 || unknown1==1)input='</color>'+Format(CT('UselessItems.Usl_Drug01.Name'),kov,'<color=0,50,200>')+'</color></color> (<cost> </color> cr.)';//Чекумаш",
+"if(variable1==2 || unknown1==2)input='</color>'+Format(CT('UselessItems.Usl_Drug02.Name'),kov,'<color=0,50,200>')+'</color></color> (<cost> </color> cr.)';//Святой фанатизм",
+"if(variable1==3 || unknown1==3)input='</color>'+Format(CT('UselessItems.Usl_Drug03.Name'),kov,'<color=0,50,200>')+'</color></color> (<cost> </color> cr.)';//Загадочая луатанация",
+"if(variable1==4 || unknown1==4)input='</color>'+Format(CT('UselessItems.Usl_Drug04.Name'),kov,'<color=0,50,200>')+'</color></color> (<cost> </color> cr.)';//Великий малосус",
+"if(variable1==5 || unknown1==5)input='</color>'+Format(CT('UselessItems.Usl_Drug05.Name'),kov,'<color=0,50,200>')+'</color></color> (<cost> </color> cr.)';//Новый молизон"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          270,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          50,
+          "Total.Lines":          7,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost=0.815*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+"if(variable2==1 || unknown2==1)input='</color>'+Format(CT('UselessItems.Usl_Drug06.Name'),kov,'<color=0,50,200>')+'</color></color> (<cost> </color> cr.)';//Малокская сижа",
+"if(variable2==2 || unknown2==2)input='</color>'+Format(CT('UselessItems.Usl_Drug07.Name'),kov,'<color=0,50,200>')+'</color></color> (<cost> </color> cr.)';//Одноглазый Хамас",
+"if(variable2==3 || unknown2==3)input='</color>'+Format(CT('UselessItems.Usl_Drug08.Name'),kov,'<color=0,50,200>')+'</color></color> (<cost> </color> cr.)';//Звездная пыль",
+"if(variable2==4 || unknown2==4)input='</color>'+Format(CT('UselessItems.Usl_Drug09.Name'),kov,'<color=0,50,200>')+'</color></color> (<cost> </color> cr.)';//Супер техник",
+"if(variable2==5 || unknown2==5)input='</color>'+Format(CT('UselessItems.Usl_Drug10.Name'),kov,'<color=0,50,200>')+'</color></color> (<cost> </color> cr.)';//Гаалистра времени",
+"if(variable2==6 || unknown2==6)input='</color>'+Format(CT('UselessItems.Usl_Drug11.Name'),kov,'<color=0,50,200>')+'</color></color> (<cost> </color> cr.)';//Кровяной джогар"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          270,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          51,
+          "Total.Lines":          7,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost=0.813*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+"if(variable3==1 || unknown3==1)input='</color>'+Format(CT('UselessItems.Usl_Drug12.Name'),kov,'<color=0,50,200>')+'</color></color> (<cost> </color> cr.)';//Рагобамский шепот",
+"if(variable3==2 || unknown3==2)input='</color>'+Format(CT('UselessItems.Usl_Drug13.Name'),kov,'<color=0,50,200>')+'</color></color> (<cost> </color> cr.)';//Ведущий Шахманду",
+"if(variable3==3 || unknown3==3)input='</color>'+Format(CT('UselessItems.Usl_Drug14.Name'),kov,'<color=0,50,200>')+'</color></color> (<cost> </color> cr.)';//Психотропный кэш",
+"if(variable3==4 || unknown3==4)input='</color>'+Format(CT('UselessItems.Usl_Drug15.Name'),kov,'<color=0,50,200>')+'</color></color> (<cost> </color> cr.)';//Торговая маркировка",
+"if(variable3==5 || unknown3==5)input='</color>'+Format(CT('UselessItems.Usl_Drug16.Name'),kov,'<color=0,50,200>')+'</color></color> (<cost> </color> cr.)';//Дубльплекс",
+"if(variable3==6 || unknown3==6)input='</color>'+Format(CT('UselessItems.Usl_Drug17.Name'),kov,'<color=0,50,200>')+'</color></color> (<cost> </color> cr.)';//Абсолютный статус"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          76,
+          "#":          77,
+          "Total.Lines":          7,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"tstr1 = '</color>';",
+"tint1 = ShipPilotRace(cur_ship);",
+"if(tint1 == Maloc) tstr1 = tstr1 + CT('Script.Mod_EvoMC.YellowShroudDialog.AngryMalocThreat' + RndObject(1, 1, cur_ship));",
+"else if(tint1 == Peleng) tstr1 = tstr1 + CT('Script.Mod_EvoMC.YellowShroudDialog.AngryPelengThreat' + RndObject(1, 1, cur_ship));",
+"else if(tint1 == People) tstr1 = tstr1 + CT('Script.Mod_EvoMC.YellowShroudDialog.AngryPeopleThreat' + RndObject(1, 1, cur_ship));",
+"else if(tint1 == Fei) tstr1 = tstr1 + CT('Script.Mod_EvoMC.YellowShroudDialog.AngryFeiThreat' + RndObject(1, 1, cur_ship));",
+"else if(tint1 == Gaal) tstr1 = tstr1 + CT('Script.Mod_EvoMC.YellowShroudDialog.AngryGaalThreat' + RndObject(1, 1, cur_ship));"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"InitPlanet",
+          "Pos.x":          270,
+          "Pos.y":          130,
+          "Parent":          -1,
+          "#":          1,
+          "Race":          62,
+          "Owner":          62,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          160,
+          "Pos.y":          130,
+          "Parent":          -1,
+          "#":          2,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"InitStar",
+          "Pos.x":          200,
+          "Pos.y":          130,
+          "Parent":          -1,
+          "#":          0,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":false,
+          "NoComeKling":false        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          240,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          8,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!urine || urine == 1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          240,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          28,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"variable1>0 || unknown1>0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          240,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          29,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"variable2>0 || unknown2>0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          240,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          30,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"variable3>0 || unknown3>0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          270,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          38,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost > ShipMoney(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          450,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          39,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player()) >= cost"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          450,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          40,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())>=cost"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          450,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          41,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())>=cost"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          450,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          42,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())>=cost"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          230,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          43,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"PlayerMedPolicy() && MaxMed==CurMed"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          150,
+          "Pos.y":          480,
+          "Parent":          -1,
+          "#":          44,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"PlayerMedPolicy()>0 && (MaxMed-CurMed)>0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          57,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!urine"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          58,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"urine == 1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          59,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"variable1>0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          260,
+          "Parent":          -1,
+          "#":          60,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"unknown1>0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          300,
+          "Parent":          -1,
+          "#":          61,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"unknown2>0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          62,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"variable2>0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          63,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"unknown3>0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          64,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"variable3>0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          230,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          66,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!PlayerMedPolicy()"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          170,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          71,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"urine==1 && variable1==-1 && variable2==-1 && variable3==-1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          150,
+          "Pos.y":          420,
+          "Parent":          -1,
+          "#":          72,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!urine || variable1 > 0 || variable2 > 0 || variable3 > 0"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"PlayerState",
+          "Pos.x":          440,
+          "Pos.y":          130,
+          "Parent":          -1,
+          "#":          3,
+          "Move":          0,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":"TVar",
+          "Name":"cost",
+          "Pos.x":          60,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          13,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"variable1",
+          "Pos.x":          -10,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          14,
+          "Var.Type":"Int",
+          "Init":"1",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"urine",
+          "Pos.x":          -10,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          19,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"variable2",
+          "Pos.x":          -10,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          23,
+          "Var.Type":"Int",
+          "Init":"2",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"variable3",
+          "Pos.x":          -10,
+          "Pos.y":          260,
+          "Parent":          -1,
+          "#":          24,
+          "Var.Type":"Int",
+          "Init":"3",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"vDays",
+          "Pos.x":          60,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          25,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"drugs",
+          "Pos.x":          -10,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          31,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"input",
+          "Pos.x":          -10,
+          "Pos.y":          300,
+          "Parent":          -1,
+          "#":          32,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"usl",
+          "Pos.x":          -10,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          33,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"MaxMed",
+          "Pos.x":          60,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          35,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"CurMed",
+          "Pos.x":          60,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          36,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"item",
+          "Pos.x":          -10,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          52,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"enter",
+          "Pos.x":          60,
+          "Pos.y":          300,
+          "Parent":          -1,
+          "#":          53,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"unknown1",
+          "Pos.x":          60,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          54,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"unknown2",
+          "Pos.x":          60,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          55,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"unknown3",
+          "Pos.x":          60,
+          "Pos.y":          260,
+          "Parent":          -1,
+          "#":          56,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"TotalMed",
+          "Pos.x":          60,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          69,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"kov",
+          "Pos.x":          60,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          70,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_ruin",
+          "Pos.x":          -10,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          74,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_ship",
+          "Pos.x":          -10,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          75,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tstr1",
+          "Pos.x":          -10,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          80,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tint1",
+          "Pos.x":          60,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          81,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      2,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      1,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      4,
+      "End":      1,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      4,
+      "End":      3,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      26,
+      "End":      8,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      26,
+      "End":      28,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      26,
+      "End":      29,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      26,
+      "End":      30,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      9,
+      "End":      39,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      39,
+      "End":      17,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      10,
+      "End":      40,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      11,
+      "End":      41,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      40,
+      "End":      22,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      41,
+      "End":      18,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      12,
+      "End":      42,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      42,
+      "End":      20,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      9,
+      "End":      38,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      10,
+      "End":      38,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      11,
+      "End":      38,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      12,
+      "End":      38,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      44,
+      "End":      34,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      43,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      44,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      17,
+      "End":      46,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      22,
+      "End":      46,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      18,
+      "End":      46,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      20,
+      "End":      46,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      46,
+      "End":      47,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      8,
+      "End":      48,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      28,
+      "End":      49,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      29,
+      "End":      50,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      30,
+      "End":      51,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      48,
+      "End":      57,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      57,
+      "End":      9,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      48,
+      "End":      58,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      58,
+      "End":      65,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      59,
+      "End":      10,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      49,
+      "End":      59,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      49,
+      "End":      60,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      60,
+      "End":      65,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      61,
+      "End":      65,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      62,
+      "End":      11,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      50,
+      "End":      61,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      50,
+      "End":      62,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      51,
+      "End":      63,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      51,
+      "End":      64,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      64,
+      "End":      12,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      63,
+      "End":      65,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      66,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      67,
+      "End":      68,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      43,
+      "End":      37,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      66,
+      "End":      67,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      37,
+      "End":      16,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      34,
+      "End":      72,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      72,
+      "End":      26,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      34,
+      "End":      71,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      71,
+      "End":      73,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      73,
+      "End":      27,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      15,
+      "End":      27,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      26,
+      "End":      27,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      15,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      76,
+      "End":      77,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      77,
+      "End":      78,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      78,
+      "End":      79,
+      "Nom":      0,
+      "Arrow":true    
+    }  
+  ],
+  "Rect.Text":  
+  [
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      133,
+      "Rect.Top":      109,
+      "Rect.Right":      547,
+      "Rect.Bottom":      152,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      0,
+      "AlignY":      0,
+      "AlignRect":false,
+      "Text":"",
+      "Color":      16777215,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    },
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      133,
+      "Rect.Top":      154,
+      "Rect.Right":      547,
+      "Rect.Bottom":      572,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      -1,
+      "AlignY":      1,
+      "AlignRect":false,
+      "Text":" Покупка медикаментов",
+      "Color":      0,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    },
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      -24,
+      "Rect.Top":      109,
+      "Rect.Right":      129,
+      "Rect.Bottom":      573,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      0,
+      "AlignY":      0,
+      "AlignRect":false,
+      "Text":"",
+      "Color":      16777215,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    },
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      225,
+      "Rect.Top":      158,
+      "Rect.Right":      535,
+      "Rect.Bottom":      213,
+      "FStyle":      1,
+      "FColor":      0,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      -1,
+      "AlignY":      1,
+      "AlignRect":false,
+      "Text":" Настойка урины",
+      "Color":      33466,
+      "Font":"Arial",
+      "FontSize":      8,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    },
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      225,
+      "Rect.Top":      219,
+      "Rect.Right":      534,
+      "Rect.Bottom":      274,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      -1,
+      "AlignY":      1,
+      "AlignRect":false,
+      "Text":" Болезни",
+      "Color":      2818255,
+      "Font":"Arial",
+      "FontSize":      8,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    },
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      224,
+      "Rect.Top":      289,
+      "Rect.Right":      534,
+      "Rect.Bottom":      343,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      -1,
+      "AlignY":      -1,
+      "AlignRect":false,
+      "Text":" Стимуляторы часть 1",
+      "Color":      1469470,
+      "Font":"Arial",
+      "FontSize":      8,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    },
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      223,
+      "Rect.Top":      349,
+      "Rect.Right":      534,
+      "Rect.Bottom":      403,
+      "FStyle":      1,
+      "FColor":      2321568,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      -1,
+      "AlignY":      -1,
+      "AlignRect":false,
+      "Text":" Стимуляторы часть 2",
+      "Color":      2852434,
+      "Font":"Arial",
+      "FontSize":      8,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  12,
+  "BlockPar.EC":  
+  [
+    {
+      "#":"120",
+      "String":"<br>"    
+    },
+    {
+      "#":"125",
+      "String":"<0>"    
+    },
+    {
+      "#":"126",
+      "String":"Закупиться медикаментами"    
+    },
+    {
+      "#":"129",
+      "String":"Согласно пункту <clr>1/2<clrEnd> параграфа <clr>10<clrEnd> медицинского кодекса, медикаменты отпускаются только при наличии действующего медицинского полиса."    
+    },
+    {
+      "#":"132",
+      "String":"Уйти из магазина медикаментов"    
+    },
+    {
+      "#":"133",
+      "String":"Рейнджер, у вас нет денег для покупки наших медикаментов."    
+    },
+    {
+      "#":"136",
+      "String":"Отличный выбор.<br>Помните, что медикаменты опасны для здоровья. Они вызывают привыкание, можно и наркоманом стать, да и летальные исходы не редкость.<br>Но еще лучше вести здоровый образ жизни, поддерживать свое тело в хорошей физической форме. Для души читайте устав рейнджеров и занимайтесь медитацией!"    
+    },
+    {
+      "#":"137",
+      "String":"Медикаменты, согласно пункту <clr>18/2<clrEnd> параграфа <clr>744<clrEnd> медицинского кодекса, предписаны исключительно для использования в чрезвычайных ситуаций, когда оказать врачебную помощь медикам в космосе невозможно.<br>Рассматривая данную ситуацию как патологически опасную для наших народов, мы можем допустить продажу <0> различных медикаментов в год.<br>По нашим данным в этом году вы приобрели <1> ед. медикаментов. Итого вы можете купить <2> ед. любого препарата.<br>Вот что у нас есть на данный момент: <3>"    
+    },
+    {
+      "#":"138",
+      "String":"По нашим данным в этом году вы приобрели <0> ед. медикаментов. До конца года вы не можете приобрести медикаменты, поскольку исчерпали ваш лимит (<1> ед.).<br>Ждём вас в следующем году."    
+    },
+    {
+      "#":"139",
+      "String":"На данный момент у нас закончились медикаменты, которые мы можем вам продать. Дождитесь следующей партии или зайдите в мед. пункт на прием стимулятора."    
+    },
+    {
+      "#":"140",
+      "String":"Ну хоть пробничек дайте! Что... не положено... Ну тогда пока"    
+    },
+    {
+      "#":"141",
+      "String":"1 января"    
+    }  
+  ]
+}

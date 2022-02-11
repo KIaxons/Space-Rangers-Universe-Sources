@@ -1,0 +1,1572 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  -282,
+  "ViewPos.y":  -83,
+  "ScriptName":"Mod_RevWarriors&Pirates",
+  "ScriptFileOut":"D:\\Mod_RevWarriors&Pirates.scr",
+  "ScriptTextOut":"D:\\Mod_RevWarriors&Pirates.txt",
+  "GraphPoint.Count":  67,
+  "GraphLink.Count":  59,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  4,
+  "Stars.Count":  1,
+  "Planets.Count":  2,
+  "Ships.Count":  2,
+  "States.Count":  6,
+  "Groups.Count":  3,
+  "Places.Count":  3,
+  "Items.Count":  15,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  1,
+  "DialogMessages.Count":  1,
+  "DialogAnswers.Count":  1,
+  "Operations.Count":  17,
+  "Statements.Count":  11,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "DialogAnswers":      
+      [
+        {
+          "Type":"TDialogAnswer",
+          "Name":"hangar",
+          "Pos.x":          960,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          56,
+          "Msg":"В ангар",
+          "AMsg.Num":"0"        
+        }      
+      ],
+      "DialogMessages":      
+      [
+        {
+          "Type":"TDialogMsg",
+          "Name":"DialogMsgNew",
+          "Pos.x":          1000,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          55,
+          "Msg":"Враги атакуют, а вы тут прохлаждаетесь!",
+          "DMsg.Num":"0"        
+        }      
+      ],
+      "Dialogs":      
+      [
+        {
+          "Type":"TDialog",
+          "Name":"dWB",
+          "Pos.x":          960,
+          "Pos.y":          250,
+          "Parent":          -1,
+          "#":          54        
+        }      
+      ],
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"WarB",
+          "Pos.x":          500,
+          "Pos.y":          300,
+          "Parent":          -1,
+          "#":          6,
+          "Owner":          62,
+          "Group.Type":          1,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":false,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          54,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":"WB"        
+        },
+        {
+          "Type":"TGroup",
+          "Name":"War",
+          "Pos.x":          500,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          7,
+          "Owner":          62,
+          "Group.Type":          5,
+          "CntShipMin":          5,
+          "CntShipMax":          5,
+          "SpeedMin":          100,
+          "SpeedMax":          300,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          700,
+          "AddPlayer":false,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        },
+        {
+          "Type":"TGroup",
+          "Name":"Pirate",
+          "Pos.x":          380,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          8,
+          "Owner":          62,
+          "Group.Type":          9,
+          "CntShipMin":          7,
+          "CntShipMax":          13,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          750,
+          "AddPlayer":false,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Items":      
+      [
+        {
+          "Type":"TItem",
+          "Name":"Def1",
+          "Pos.x":          290,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          21,
+          "Class":          1,
+          "Item.Type":          8,
+          "Size":          175,
+          "Level":          2,
+          "Radius":          150,
+          "Owner":          1,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"Project",
+          "Pos.x":          620,
+          "Pos.y":          310,
+          "Parent":          -1,
+          "#":          22,
+          "Class":          1,
+          "Item.Type":          11,
+          "Size":          500,
+          "Level":          2,
+          "Radius":          150,
+          "Owner":          4,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"Blade",
+          "Pos.x":          600,
+          "Pos.y":          250,
+          "Parent":          -1,
+          "#":          23,
+          "Class":          1,
+          "Item.Type":          10,
+          "Size":          250,
+          "Level":          1,
+          "Radius":          150,
+          "Owner":          4,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"Mult2",
+          "Pos.x":          300,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          26,
+          "Class":          1,
+          "Item.Type":          8,
+          "Size":          175,
+          "Level":          2,
+          "Radius":          150,
+          "Owner":          1,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"Mult3",
+          "Pos.x":          280,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          27,
+          "Class":          1,
+          "Item.Type":          8,
+          "Size":          175,
+          "Level":          2,
+          "Radius":          150,
+          "Owner":          1,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"Mult4",
+          "Pos.x":          290,
+          "Pos.y":          500,
+          "Parent":          -1,
+          "#":          28,
+          "Class":          1,
+          "Item.Type":          8,
+          "Size":          175,
+          "Level":          2,
+          "Radius":          150,
+          "Owner":          1,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"Def",
+          "Pos.x":          440,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          29,
+          "Class":          0,
+          "Item.Type":          6,
+          "Size":          50,
+          "Level":          2,
+          "Radius":          150,
+          "Owner":          1,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"aNNIG",
+          "Pos.x":          540,
+          "Pos.y":          490,
+          "Parent":          -1,
+          "#":          32,
+          "Class":          1,
+          "Item.Type":          9,
+          "Size":          150,
+          "Level":          3,
+          "Radius":          150,
+          "Owner":          2,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"dROID",
+          "Pos.x":          450,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          33,
+          "Class":          0,
+          "Item.Type":          4,
+          "Size":          150,
+          "Level":          4,
+          "Radius":          150,
+          "Owner":          2,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"Item1",
+          "Pos.x":          550,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          34,
+          "Class":          1,
+          "Item.Type":          9,
+          "Size":          150,
+          "Level":          4,
+          "Radius":          150,
+          "Owner":          2,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"Item13",
+          "Pos.x":          550,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          35,
+          "Class":          1,
+          "Item.Type":          9,
+          "Size":          150,
+          "Level":          2,
+          "Radius":          150,
+          "Owner":          6,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"quark",
+          "Pos.x":          540,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          37,
+          "Class":          3,
+          "Item.Type":          14,
+          "Size":          10,
+          "Level":          1,
+          "Radius":          150,
+          "Owner":          0,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"quark2",
+          "Pos.x":          480,
+          "Pos.y":          250,
+          "Parent":          -1,
+          "#":          41,
+          "Class":          3,
+          "Item.Type":          14,
+          "Size":          10,
+          "Level":          1,
+          "Radius":          150,
+          "Owner":          0,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"quark3",
+          "Pos.x":          460,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          42,
+          "Class":          3,
+          "Item.Type":          14,
+          "Size":          10,
+          "Level":          1,
+          "Radius":          150,
+          "Owner":          0,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"quark1",
+          "Pos.x":          560,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          43,
+          "Class":          3,
+          "Item.Type":          14,
+          "Size":          10,
+          "Level":          1,
+          "Radius":          150,
+          "Owner":          0,
+          "Useless":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          380,
+          "Pos.y":          130,
+          "Parent":          -1,
+          "#":          1,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"GRun()"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          730,
+          "Pos.y":          600,
+          "Parent":          -1,
+          "#":          20,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AllShipOut();"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          680,
+          "Pos.y":          370,
+          "Parent":          -1,
+          "#":          39,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"DropScriptItem(CurShip,quark)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          710,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          40,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ItemDestroy(quark,2)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          720,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          44,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"DropScriptItem(CurShip,quark1)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          730,
+          "Pos.y":          420,
+          "Parent":          -1,
+          "#":          45,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"DropScriptItem(CurShip,quark2)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          690,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          46,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"DropScriptItem(CurShip,quark3)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          750,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          47,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ItemDestroy(quark2,2)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          770,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          48,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ItemDestroy(quark3,2)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          730,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          49,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ItemDestroy(quark1,2)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          130,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          50,
+          "Total.Lines":          1,
+          "Code.Type":"Init",
+          "Code":          
+          [
+"AddPlanetNews(\"По непроверенным данным стало известно о диверсионной операции в системе <Name(Sta)>. Группа пиратов готовит нападение на Военную Базу <ShortName(GroupToShip(WarB))>. Возможно, эти сведения были фальсификацией, однако правительство планеты <Name(Planet1)> взялось за повышенное обеспечение охраны базы\")"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          420,
+          "Pos.y":          590,
+          "Parent":          -1,
+          "#":          51,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AddPlanetNews(\"Военная база в системе <Name(Sta)> уничтожена! Дерзкая попытка пиратов уничтожить орбитальную военную базу увенчалась успехом. Однако, буквально в последний момент перед взрывом из базы были выброшены четыре кварковые бомбы, которые от взрыва базы сдетонировали, тем самым уничтожив атакующих ее пиратов. Мы попросили прокомментировать случившееся власти системы <Name(Sta)>, однако в ответ услышали отказ.\")"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          500,
+          "Pos.y":          600,
+          "Parent":          -1,
+          "#":          52,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AddPlanetNews(\"Сегодня была отражена атака пиратов на военную базу <ShortName(GroupToShip(WarB))>! Этот день войдет в историю!\");",
+"AllShipOut();"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          730,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          53,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vState=10"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          910,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          57,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"SkipGreeting()"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          390,
+          "Pos.y":          740,
+          "Parent":          -1,
+          "#":          60,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AllShipOut();"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          740,
+          "Pos.y":          260,
+          "Parent":          -1,
+          "#":          66,
+          "Total.Lines":          11,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"NoDrop=1;",
+"for (i=0; i<GroupCount(Pirate); i=i+1)",
+"{",
+"s=GroupShip(Pirate,i);",
+"NoDropToShip(s,1);",
+"}",
+"for (i=0; i<GroupCount(War); i=i+1)",
+"{",
+"s=GroupShip(War,i);",
+"NoDropToShip(s,1);",
+"}"          
+          ]        
+        }      
+      ],
+      "Places":      
+      [
+        {
+          "Type":"TPlace",
+          "Name":"Pl1",
+          "Pos.x":          360,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          13,
+          "Place.Type":          0,
+          "Angle":"0",
+          "Dist":"0,300000011920929",
+          "Radius":          300,
+          "Obj1":          -1,
+          "Obj2":          -1        
+        },
+        {
+          "Type":"TPlace",
+          "Name":"Place2",
+          "Pos.x":          440,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          14,
+          "Place.Type":          3,
+          "Angle":"0",
+          "Dist":"0,00999999977648258",
+          "Radius":          50,
+          "Obj1":          2,
+          "Obj2":          -1        
+        },
+        {
+          "Type":"TPlace",
+          "Name":"Plac3",
+          "Pos.x":          520,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          15,
+          "Place.Type":          0,
+          "Angle":"240",
+          "Dist":"0,899999976158142",
+          "Radius":          300,
+          "Obj1":          -1,
+          "Obj2":          -1        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"Planet2",
+          "Pos.x":          380,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          3,
+          "Race":          63,
+          "Owner":          63,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        },
+        {
+          "Type":"TPlanet",
+          "Name":"Planet1",
+          "Pos.x":          500,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          4,
+          "Race":          63,
+          "Owner":          63,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          300,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          5,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        },
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          460,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          59,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          1,
+          "Player":false,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":"WB"        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"Sta",
+          "Pos.x":          420,
+          "Pos.y":          300,
+          "Parent":          -1,
+          "#":          2,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":false,
+          "NoComeKling":false        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          180,
+          "Pos.y":          130,
+          "Parent":          -1,
+          "#":          0,
+          "Total.Lines":          1,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"GLastTurnRun(GScriptName)+2230<CurTurn()"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          390,
+          "Pos.y":          630,
+          "Parent":          -1,
+          "#":          10,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!CountIn(WarB)"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          660,
+          "Parent":          -1,
+          "#":          16,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!CountIn(War)"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          500,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          17,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!CountIn(Pirate)"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          730,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          19,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!CountIn(Pirate)"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          330,
+          "Pos.y":          570,
+          "Parent":          -1,
+          "#":          24,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"EndState"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          240,
+          "Pos.y":          660,
+          "Parent":          -1,
+          "#":          30,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!CountIn(War)"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          680,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          38,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"Hitpoints(CurShip)<=300"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          960,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          58,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          740,
+          "Pos.y":          300,
+          "Parent":          -1,
+          "#":          61,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vState==10"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          740,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          65,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!NoDrop"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"StateFB",
+          "Pos.x":          360,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          11,
+          "Move":          2,
+          "MoveObj":          6,
+          "Attack.Count":          1,
+          "Attack.Items":          
+          [
+            {
+              "Target.0":              6            
+            }          
+          ],
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"State2",
+          "Pos.x":          500,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          12,
+          "Move":          2,
+          "MoveObj":          8,
+          "Attack.Count":          1,
+          "Attack.Items":          
+          [
+            {
+              "Target.0":              8            
+            }          
+          ],
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"StateB3",
+          "Pos.x":          610,
+          "Pos.y":          480,
+          "Parent":          -1,
+          "#":          18,
+          "Move":          1,
+          "MoveObj":          15,
+          "Attack.Count":          1,
+          "Attack.Items":          
+          [
+            {
+              "Target.0":              8            
+            }          
+          ],
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"StateWP",
+          "Pos.x":          310,
+          "Pos.y":          610,
+          "Parent":          -1,
+          "#":          25,
+          "Move":          2,
+          "MoveObj":          7,
+          "Attack.Count":          1,
+          "Attack.Items":          
+          [
+            {
+              "Target.0":              7            
+            }          
+          ],
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"Kill!",
+          "Pos.x":          240,
+          "Pos.y":          710,
+          "Parent":          -1,
+          "#":          31,
+          "Move":          2,
+          "MoveObj":          6,
+          "Attack.Count":          1,
+          "Attack.Items":          
+          [
+            {
+              "Target.0":              6            
+            }          
+          ],
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"13",
+          "Pos.x":          390,
+          "Pos.y":          700,
+          "Parent":          -1,
+          "#":          36,
+          "Move":          4,
+          "MoveObj":          3,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":"TVar",
+          "Name":"vState",
+          "Pos.x":          130,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          9,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"s",
+          "Pos.x":          130,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          62,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"i",
+          "Pos.x":          130,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          63,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"NoDrop",
+          "Pos.x":          130,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          64,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      0,
+      "End":      1,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      5,
+      "End":      2,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      3,
+      "End":      2,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      4,
+      "End":      2,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      6,
+      "End":      4,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      4,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      8,
+      "End":      3,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      12,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      13,
+      "End":      2,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      14,
+      "End":      2,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      15,
+      "End":      2,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      16,
+      "End":      10,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      20,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      8,
+      "End":      11,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      18,
+      "End":      19,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      21,
+      "End":      8,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      23,
+      "End":      6,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      22,
+      "End":      6,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      11,
+      "End":      24,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      24,
+      "End":      25,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      25,
+      "End":      16,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      26,
+      "End":      8,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      27,
+      "End":      8,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      28,
+      "End":      8,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      29,
+      "End":      8,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      25,
+      "End":      30,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      30,
+      "End":      31,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      31,
+      "End":      16,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      11,
+      "End":      10,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      32,
+      "End":      7,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      33,
+      "End":      7,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      35,
+      "End":      7,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      34,
+      "End":      7,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      10,
+      "End":      36,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      6,
+      "End":      18,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      37,
+      "End":      6,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      18,
+      "End":      38,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      39,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      43,
+      "End":      6,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      41,
+      "End":      6,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      42,
+      "End":      6,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      44,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      45,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      46,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      10,
+      "End":      51,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      17,
+      "End":      52,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      53,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      58,
+      "End":      57,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      54,
+      "End":      58,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      58,
+      "End":      55,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      55,
+      "End":      56,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      59,
+      "End":      2,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      36,
+      "End":      60,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      61,
+      "End":      40,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      61,
+      "End":      49,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      61,
+      "End":      47,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      61,
+      "End":      48,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      12,
+      "End":      17,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      65,
+      "End":      66,
+      "Nom":      0,
+      "Arrow":true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  5,
+  "BlockPar.EC":  
+  [
+    {
+      "#":"1",
+      "String":"В ангар"    
+    },
+    {
+      "#":"2",
+      "String":"Враги атакуют, а вы тут прохлаждаетесь!"    
+    },
+    {
+      "#":"3",
+      "String":"По непроверенным данным стало известно о диверсионной операции в системе <0>. Группа пиратов готовит нападение на Военную Базу <1>. Возможно, эти сведения были фальсификацией, однако правительство планеты <2> взялось за повышенное обеспечение охраны базы"    
+    },
+    {
+      "#":"4",
+      "String":"Военная база в системе <0> уничтожена! Дерзкая попытка пиратов уничтожить орбитальную военную базу увенчалась успехом. Однако, буквально в последний момент перед взрывом из базы были выброшены четыре кварковые бомбы, которые от взрыва базы сдетонировали, тем самым уничтожив атакующих ее пиратов. Мы попросили прокомментировать случившееся власти системы <1>, однако в ответ услышали отказ."    
+    },
+    {
+      "#":"5",
+      "String":"Сегодня была отражена атака пиратов на военную базу <0>! Этот день войдет в историю!"    
+    }  
+  ]
+}
