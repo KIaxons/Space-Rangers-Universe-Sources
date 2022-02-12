@@ -1,24 +1,10 @@
 Items ^{
-    Hull ^{
-        Text=Стойкость корпуса: <Size> (<MaxSize>) единиц, обшивка блокирует до <HitProtect> единиц ущерба.
-
-		mAlloy=1,2,3,4,5,6,7,8
-
-		mFragilityByLevelEnergy=1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
-		mFragilityByLevelMissile=1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
-		mFragilityByLevelSplinter=1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
-
-		mFragilityByOwnerEnergy=1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
-		mFragilityByOwnerMissile=1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
-		mFragilityByOwnerSplinter=1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
-		
-		mFragilityByShipType=1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
-	}
-
     DefGenerator ^{
-        mDef=0.05,0.10,0.15, 0.20, 0.25, 0.30, 0.35, 0.40
+        mDef=0.05,0.10,0.15,0.20,0.25,0.30,0.35,0.40
     }
-
+    Hull ^{
+        mAlloy=1,3,5,7,9,11,13,15
+    }
     Radar ^{
         mRadius=1200,1500,1800,2400,2700,3100,3500,4000
     }
