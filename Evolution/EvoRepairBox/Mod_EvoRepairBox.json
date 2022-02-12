@@ -1,0 +1,1068 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  -170,
+  "ViewPos.y":  -170,
+  "ScriptName":"Mod_EvoRepairBox",
+  "ScriptFileOut":"C:\\Mod_EvoRepairBox.scr",
+  "ScriptTextOut":"C:\\Mod_EvoRepairBox.txt",
+  "GraphPoint.Count":  52,
+  "GraphLink.Count":  37,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  16,
+  "Stars.Count":  1,
+  "Planets.Count":  1,
+  "Ships.Count":  1,
+  "States.Count":  1,
+  "Groups.Count":  1,
+  "Places.Count":  0,
+  "Items.Count":  0,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  1,
+  "DialogMessages.Count":  3,
+  "DialogAnswers.Count":  7,
+  "Operations.Count":  10,
+  "Statements.Count":  10,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "DialogAnswers":      
+      [
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          470,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          11,
+          "Msg":"Купить набор для ремонта Юный техник",
+          "AMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          380,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          12,
+          "Msg":"Мне не нужны никакие наборы!",
+          "AMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          670,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          15,
+          "Msg":"Спасибо",
+          "AMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          470,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          19,
+          "Msg":"Купить набор для ремонта Умелый техник",
+          "AMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          470,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          20,
+          "Msg":"Купить набор для ремонта Искусный техник",
+          "AMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          470,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          21,
+          "Msg":"Купить набор Прочность забиратор",
+          "AMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          670,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          48,
+          "Msg":"Ну и ладно, за такие деньги сам залатаю дыры!",
+          "AMsg.Num":"6"        
+        }      
+      ],
+      "DialogMessages":      
+      [
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          380,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          10,
+          "Msg":"Мы предлагаем вам наборы для ремонта оборудования прямо в открытом космосе. Но не думайте, что они заменят вам наших квалифицированных работников станции. Стали бы мы создавать то, что будет отнимать у нас нашу же работу!\r\nДанные наборы сделаны исключительно для изменения положений на фронтах в пользу коалиции разумных рас.\r\nИ при продаже данных наборов вам, определённую роль сыграет ваш статус в борьбе с доминаторами и пиратами.\r\n--------------------------------------------------------\r\nНабор для ремонта \"Юный техник\" для Вас доступен в количестве: <cur_count1> ед. по цене: <cost1> cr.\r\n\r\nНабор для ремонта \"Умелый техник\" для Вас доступен в количестве: <cur_count2> ед. по цене: <cost2> cr.\r\n\r\nНабор для ремонта \"Искусный техник\" для Вас доступен в количестве: <cur_count3> ед. по цене: <cost3> cr.\r\n\r\nНабор \"Прочность забиратор\" для Вас доступен в количестве: <cur_count4> ед. по цене: <cost4> cr.\r\n--------------------------------------------------------\r\nДанные наборы для ремонта показывают лучший результат в руках рейнджера знакомого с техникой. А в набор \"Прочность забиратор\" интегрирован алгоритм ремонта даже доминаторского оборудования путём изъятия нужных деталей из предмета донора.\r\nРаз в год в качестве подарка рейнджерам мы возобновляем выдачу наборов даже при превышении лимитов!",
+          "DMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          620,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          14,
+          "Msg":"Удачного ремонта! И не забывайте о сервисных центрах сети наших баз.",
+          "DMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          620,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          43,
+          "Msg":"Недостаточно средств для совершения покупки.",
+          "DMsg.Num":"2"        
+        }      
+      ],
+      "Dialogs":      
+      [
+        {
+          "Type":"TDialog",
+          "Name":"RepairBox",
+          "Pos.x":          250,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          9        
+        }      
+      ],
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"GroupNew",
+          "Pos.x":          140,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          3,
+          "Owner":          62,
+          "Group.Type":          126,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":true,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          180,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          5,
+          "Total.Lines":          1,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"GRun()"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          380,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          8,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AddDialogInject('RepairBox',\"Наши ремонтники изобрели портативные наборы для самостоятельного ремонта. Рейнджер <Player> не желаете на них взглянуть?\",'Купить наборы для ремонта',1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          570,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          13,
+          "Total.Lines":          4,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AddItemToShip(Player(),CreateQuestItem('TechJunior'));",
+"ShipMoney(Player(),ShipMoney(Player())-cost1);",
+"Sound('Sound.Buy');",
+"count1=count1+1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          570,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          16,
+          "Total.Lines":          4,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AddItemToShip(Player(),CreateQuestItem('TechSkillful'));",
+"ShipMoney(Player(),ShipMoney(Player())-cost2);",
+"Sound('Sound.Buy');",
+"count2=count2+1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          570,
+          "Pos.y":          250,
+          "Parent":          -1,
+          "#":          17,
+          "Total.Lines":          4,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AddItemToShip(Player(),CreateQuestItem('TechMaster'));",
+"ShipMoney(Player(),ShipMoney(Player())-cost3);",
+"Sound('Sound.Buy');",
+"count3=count3+1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          570,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          18,
+          "Total.Lines":          4,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AddItemToShip(Player(),CreateQuestItem('TechZabirator'));",
+"ShipMoney(Player(),ShipMoney(Player())-cost4);",
+"Sound('Sound.Buy');",
+"count4=count4+1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          330,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          22,
+          "Total.Lines":          8,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost1=1.1*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+"cost2=1.2*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+"cost3=1.3*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+"cost4=1.0*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+"cur_count1=total1-count1;",
+"cur_count2=total2-count2;",
+"cur_count3=total3-count3;",
+"cur_count4=total4-count4;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          430,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          49,
+          "Total.Lines":          4,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(cur_count1==0)AddDialogBlock('Купить набор для ремонта Юный техник',1);",
+"if(cur_count2==0)AddDialogBlock('Купить набор для ремонта Умелый техник',1);",
+"if(cur_count3==0)AddDialogBlock('Купить набор для ремонта Искусный техник',1);",
+"if(cur_count4==0)AddDialogBlock('Купить набор Прочность забиратор',1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          300,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          50,
+          "Total.Lines":          4,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"total1=2+ShipRank(Player());",
+"total2=1+ShipRank(Player());",
+"total3=ShipRank(Player());",
+"total4=1+ShipRank(Player());"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          250,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          51,
+          "Total.Lines":          5,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(findsubstr(GameDateTxtByTurn(CurTurn()),'1 января')==0)",
+"    {",
+"    count1=0;count2=0;",
+"    count3=0;count4=0;",
+"    }"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"PlanetNew",
+          "Pos.x":          140,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          1,
+          "Race":          62,
+          "Owner":          62,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          140,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          2,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"StarNew",
+          "Pos.x":          140,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          0,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":false,
+          "NoComeKling":false        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          290,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          6,
+          "Total.Lines":          1,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"GetShipRuins(Player())>0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          350,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          7,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipType(GetShipRuins(Player()))=='SB'"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          520,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          39,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost1>ShipMoney(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          520,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          40,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost2>ShipMoney(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          520,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          41,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost3>ShipMoney(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          520,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          42,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost4>ShipMoney(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          490,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          44,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost1<ShipMoney(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          490,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          45,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost2<ShipMoney(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          490,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          46,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost3<ShipMoney(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          490,
+          "Pos.y":          260,
+          "Parent":          -1,
+          "#":          47,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost4<ShipMoney(Player())"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"StateNew",
+          "Pos.x":          140,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          4,
+          "Move":          0,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":"TVar",
+          "Name":"cost1",
+          "Pos.x":          240,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          23,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cost2",
+          "Pos.x":          320,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          24,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cost3",
+          "Pos.x":          400,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          25,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cost4",
+          "Pos.x":          480,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          26,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"count1",
+          "Pos.x":          240,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          27,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"count3",
+          "Pos.x":          400,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          28,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"count2",
+          "Pos.x":          320,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          29,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"count4",
+          "Pos.x":          480,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          30,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"total1",
+          "Pos.x":          240,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          31,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"total2",
+          "Pos.x":          320,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          32,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"total3",
+          "Pos.x":          400,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          33,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"total4",
+          "Pos.x":          480,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          34,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_count1",
+          "Pos.x":          240,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          35,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_count2",
+          "Pos.x":          320,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          36,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_count3",
+          "Pos.x":          400,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          37,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_count4",
+          "Pos.x":          480,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          38,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      1,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      2,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      3,
+      "End":      1,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      3,
+      "End":      4,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      8,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      10,
+      "End":      12,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      14,
+      "End":      15,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      13,
+      "End":      14,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      16,
+      "End":      14,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      17,
+      "End":      14,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      18,
+      "End":      14,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      22,
+      "End":      10,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      11,
+      "End":      39,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      40,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      20,
+      "End":      41,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      21,
+      "End":      42,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      39,
+      "End":      43,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      40,
+      "End":      43,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      41,
+      "End":      43,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      42,
+      "End":      43,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      11,
+      "End":      44,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      45,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      20,
+      "End":      46,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      21,
+      "End":      47,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      47,
+      "End":      18,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      46,
+      "End":      17,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      45,
+      "End":      16,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      44,
+      "End":      13,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      43,
+      "End":      48,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      10,
+      "End":      49,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      49,
+      "End":      11,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      49,
+      "End":      19,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      49,
+      "End":      20,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      49,
+      "End":      21,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      9,
+      "End":      50,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      50,
+      "End":      22,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      6,
+      "End":      7,
+      "Nom":      0,
+      "Arrow":true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  11,
+  "BlockPar.EC":  
+  [
+    {
+      "#":"21",
+      "String":"Мне не нужны никакие наборы!"    
+    },
+    {
+      "#":"25",
+      "String":"Ну и ладно, за такие деньги сам залатаю дыры!"    
+    },
+    {
+      "#":"27",
+      "String":"Купить набор для ремонта Юный техник"    
+    },
+    {
+      "#":"28",
+      "String":"Купить набор для ремонта Умелый техник"    
+    },
+    {
+      "#":"29",
+      "String":"Купить набор для ремонта Искусный техник"    
+    },
+    {
+      "#":"30",
+      "String":"Купить набор Прочность забиратор"    
+    },
+    {
+      "#":"31",
+      "String":"Наши ремонтники изобрели портативные наборы для самостоятельного ремонта. Рейнджер <Player> не желаете на них взглянуть?"    
+    },
+    {
+      "#":"33",
+      "String":"Удачного ремонта! И не забывайте о сервисных центрах сети наших баз."    
+    },
+    {
+      "#":"34",
+      "String":"Недостаточно средств для совершения покупки."    
+    },
+    {
+      "#":"36",
+      "String":"Мы предлагаем вам наборы для ремонта оборудования прямо в открытом космосе. Но не думайте, что они заменят вам наших квалифицированных работников станции. Стали бы мы создавать то, что будет отнимать у нас нашу же работу!<br>Данные наборы сделаны исключительно для изменения положений на фронтах в пользу коалиции разумных рас.<br>И при продаже данных наборов вам, определённую роль сыграет ваш статус в борьбе с доминаторами и пиратами.<br>--------------------------------------------------------<br>Набор для ремонта \"Юный техник\" для Вас доступен в количестве: <0> ед. по цене: <1> cr.<br><br>Набор для ремонта \"Умелый техник\" для Вас доступен в количестве: <2> ед. по цене: <3> cr.<br><br>Набор для ремонта \"Искусный техник\" для Вас доступен в количестве: <4> ед. по цене: <5> cr.<br><br>Набор \"Прочность забиратор\" для Вас доступен в количестве: <6> ед. по цене: <7> cr.<br>--------------------------------------------------------<br>Данные наборы для ремонта показывают лучший результат в руках рейнджера знакомого с техникой. А в набор \"Прочность забиратор\" интегрирован алгоритм ремонта даже доминаторского оборудования путём изъятия нужных деталей из предмета донора.<br>Раз в год в качестве подарка рейнджерам мы возобновляем выдачу наборов даже при превышении лимитов!"    
+    },
+    {
+      "#":"4",
+      "String":"Спасибо"    
+    }  
+  ]
+}

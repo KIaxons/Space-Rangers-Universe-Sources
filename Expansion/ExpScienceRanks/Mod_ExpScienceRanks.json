@@ -1,0 +1,4694 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  12,
+  "ViewPos.y":  -120,
+  "ScriptName":"Mod_ExpScienceRanks",
+  "ScriptFileOut":"H:\\Mod_ExpScienceRanks.scr",
+  "ScriptTextOut":"H:\\Mod_ExpScienceRanks.txt",
+  "GraphPoint.Count":  183,
+  "GraphLink.Count":  119,
+  "GraphRectText.Count":  9,
+  "Variables.Count":  68,
+  "Stars.Count":  1,
+  "Planets.Count":  1,
+  "Ships.Count":  1,
+  "States.Count":  1,
+  "Groups.Count":  1,
+  "Places.Count":  0,
+  "Items.Count":  0,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  10,
+  "DialogMessages.Count":  22,
+  "DialogAnswers.Count":  19,
+  "Operations.Count":  34,
+  "Statements.Count":  25,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "DialogAnswers":      
+      [
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          500,
+          "Pos.y":          110,
+          "Parent":          -1,
+          "#":          13,
+          "Msg":"Рад служить прогрессу!",
+          "AMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          560,
+          "Pos.y":          110,
+          "Parent":          -1,
+          "#":          21,
+          "Msg":"На большее я не мог и рассчитывать!\r\nМечтал об этом с тех пор, как меня первый раз побили в школе и сломали очки",
+          "AMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          890,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          33,
+          "Msg":"Сдать неопознанное оборудование",
+          "AMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          910,
+          "Pos.y":          290,
+          "Parent":          -1,
+          "#":          39,
+          "Msg":"У меня в трюме нет предметов неопознанного происхождения",
+          "AMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          690,
+          "Pos.y":          470,
+          "Parent":          -1,
+          "#":          49,
+          "Msg":"Эксперимент по акринации",
+          "AMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          800,
+          "Pos.y":          430,
+          "Parent":          -1,
+          "#":          68,
+          "Msg":"Далее",
+          "AMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          770,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          77,
+          "Msg":"Выбрать другой предмет для акринации",
+          "AMsg.Num":"6"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          660,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          79,
+          "Msg":"Эксперимент по деакринации",
+          "AMsg.Num":"7"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          600,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          80,
+          "Msg":"Далее",
+          "AMsg.Num":"8"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          730,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          89,
+          "Msg":"Я передумал",
+          "AMsg.Num":"9"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          730,
+          "Pos.y":          310,
+          "Parent":          -1,
+          "#":          97,
+          "Msg":"Отдел акринных технологий",
+          "AMsg.Num":"10"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          770,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          98,
+          "Msg":"В другой раз",
+          "AMsg.Num":"11"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"block",
+          "Pos.x":          890,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          132,
+          "Msg":"Сдать неопознанное оборудование",
+          "AMsg.Num":"12"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          870,
+          "Pos.y":          190,
+          "Parent":          -1,
+          "#":          138,
+          "Msg":"",
+          "AMsg.Num":"13"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          750,
+          "Pos.y":          70,
+          "Parent":          -1,
+          "#":          142,
+          "Msg":"А почему бы и нет? С детства был фанатом науки. В школе на уроке химии как-то раз пытался намешать состав, который бы дал мне суперсилу... В тот раз правда не очень получилось, но теперь то с моими нынешними знаниями и вашим оборудованием...",
+          "AMsg.Num":"14"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          730,
+          "Pos.y":          40,
+          "Parent":          -1,
+          "#":          144,
+          "Msg":"Нет, вы знаете, это не для меня. Я больше по доминаторам специализируюсь, ну на худой конец - по пиратам",
+          "AMsg.Num":"15"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          790,
+          "Pos.y":          40,
+          "Parent":          -1,
+          "#":          147,
+          "Msg":"",
+          "AMsg.Num":"16"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          910,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          153,
+          "Msg":"Выключить",
+          "AMsg.Num":"17"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          910,
+          "Pos.y":          40,
+          "Parent":          -1,
+          "#":          154,
+          "Msg":"Включить",
+          "AMsg.Num":"18"        
+        }      
+      ],
+      "DialogMessages":      
+      [
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          530,
+          "Pos.y":          130,
+          "Parent":          -1,
+          "#":          22,
+          "Msg":"А теперь самое важное.\r\nЭто сверхсекретная информация, но именно благодаря Вам нам удалось добиться таких невероятных успехов в изучении технологий неизвестных кораблей из гиперпространства.\r\nПотому именно Вы удостаиваетесь чести стать пилотом-испытателем корабля, разработанного на основе этих технологий. \r\nСобран он почти полностью из материалов, добытых в чёрных дырах, что позволило добиться <clr>эффекта совместимости<clrEnd> с некоторыми артефактами, ранее недоступного для обычных корпусов.\r\nУникальная особенность этого корабля - подвижная броня. Это корабль <clr>трансформер с продвинутым ИИ<clrEnd>. Он постоянно отслеживает множество параметров и практически моментально реагирует на изменения обстановки.\r\nПредусмотрены <clr>три режима<clrEnd>:\r\n\r\nВ режиме<clr> атаки <clrEnd>листовые пластины брони сдвигаются назад от орудийного отсека, частично перекрывая выходные сопла двигателя, за счет чего происходит небольшое снижение его мощности, но при этом увеличиваются наносимые повреждения.\r\n\r\nВ режиме<clr> защиты <clrEnd>бронепластины сдвигаются вперед, сужая орудийные амбразуры, что сильно затрудняет работу системы наведения, которая уже не способна эффективно находить уязвимости противника, что существенно снижает наносимый урон и немного дальность стрельбы, при этом увеличивая защиту.\r\n\r\nВ <clr>гибридном <clrEnd>режиме бронепластины раздвигаются немного в стороны, что позволяет увеличить скорость двигателя без ущерба работе системы наведения орудий, но при этом затрудняет работу ремонтного дроида.",
+          "DMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          770,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          31,
+          "Msg":"Мы всегда готовы принять за 80% стоимости любое оборудование неизвестного происхождения. Кстати, за артефакты мы платим <clr>в четыре раза больше<clrEnd>, но не можем взять артефакт типа \"Транклюкатор\".\r\nВес сданного оборудования зачисляется на ваш <clr>личный нан-счёт<clrEnd>, с которого вы можете оплачивать эксперименты по <clr>наложению акрина<clrEnd> на оборудование и не только.",
+          "DMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          910,
+          "Pos.y":          310,
+          "Parent":          -1,
+          "#":          34,
+          "Msg":"В вашем трюме находится следующее оборудование неизвестного происхождения, представляющее для нас огромный научный интерес:\r\n\r\n<temp_str>\r\nКакие из этих предметов вы намерены передать нашему отделу?",
+          "DMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          770,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          50,
+          "Msg":"Хорошо, но учтите, что это не услуга, а именно эксперимент. Так что никакие <clr>претензии<clrEnd> по его результатам <clr>не принимаются<clrEnd>. \r\n-----------------------------------------------\r\nСуществует немалая <clr>вероятность<clrEnd>, что при попытке наложения акрина на оборудование оно <clr>может быть уничтожено<clrEnd>. \r\nСейчас мы оцениваем шансы на удачный результат как <100-destruct_chance>%\r\n-----------------------------------------------\r\nТакже <clr>уровень эффекта<clrEnd> не всегда поддаётся прогнозированию<temp_str>.\r\nНа данный момент шансы таковы:\r\nПервый уровень - <acrin_lvl_chance[1]>%\r\nВторой уровень - <acrin_lvl_chance[2]>%\r\nТретий уровень - <acrin_lvl_chance[3]>%\r\n-----------------------------------------------\r\n<clr>Стоимость<clrEnd> одного эксперимента также зависит от нашего прогресса в этой области. Но не обольщайтесь, чем более высокий уровень акрина мы способны наложить на оборудование, тем больше будет списываться с вашего счёта.\r\nСейчас стоимость эксперимента составляет <acrin_lvl_chance[1]+acrin_lvl_chance[2]*3+acrin_lvl_chance[3]*3> нан, а на счету у вас <player_bh_score>.\r\n-----------------------------------------------\r\nВозможно, <clr>со временем<clrEnd> нам удастся вычислить нужные закономерности, и <clr>процесс станет более контролируемым<clrEnd>.\r\n-----------------------------------------------\r\nНа данный момент нами проведено <num_experiments> экспериментов по акринации.\r\n-----------------------------------------------\r\nНе забывайте, что из-за установки новых элементов, вес оборудования и цена <clr>увеличивается на 10%<clrEnd>.",
+          "DMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          870,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          63,
+          "Msg":"Эксперимент оказался неудачным, и <temp_str> был уничтожен.\r\nИ не говорите, что вас не предупреждали о такой возможности.\r\nВ утешение могу сказать, что отрицательный результат - тоже результат. Кое-чему мы всё-таки научились, и в будущем вероятность удачи составит уже <100 - destruct_chance>%.\r\nТакже несколько повысились шансы получить акрин более высокого уровня:\r\nПервый уровень - <acrin_lvl_chance[1]>%\r\nВторой уровень - <acrin_lvl_chance[2]>%\r\nТретий уровень - <acrin_lvl_chance[3]>%",
+          "DMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          870,
+          "Pos.y":          430,
+          "Parent":          -1,
+          "#":          67,
+          "Msg":"Эксперимент оказался удачным, и вы получаете <DeleteTags(Name(cur_item))> <temp_str>.\r\nК тому же мы кое-чему научились, и в будущем вероятность удачи составит уже <100 - destruct_chance>%.\r\nТакже несколько повысились шансы получить акрин более высокого уровня:\r\nПервый уровень - <acrin_lvl_chance[1]>%\r\nВторой уровень - <acrin_lvl_chance[2]>%\r\nТретий уровень - <acrin_lvl_chance[3]>%",
+          "DMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          550,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          81,
+          "Msg":"Эксперимент оказался неудачным, и <temp_str> был уничтожен.\r\nИ не говорите, что вас не предупреждали о такой возможности.\r\nВ утешение могу сказать, что отрицательный результат - тоже результат. Кое-чему мы всё-таки научились, и в будущем вероятность удачи составит уже <100-destruct_chance>%.",
+          "DMsg.Num":"6"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          600,
+          "Pos.y":          470,
+          "Parent":          -1,
+          "#":          82,
+          "Msg":"Эксперимент оказался удачным, вы получаете <ItemFullName(temp_dword)> и ваш личный нан-счёт пополняется  весом снятого акрина: <(akrin_weigth/10)>. \r\nК тому же мы кое-чему научились, и в будущем вероятность удачи составит уже <100-destruct_chance>%.",
+          "DMsg.Num":"7"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          660,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          86,
+          "Msg":"Хорошо, но учтите, что это не услуга, а именно эксперимент. Так что никакие <clr>претензии<clrEnd> по его результатам <clr>не принимаются<clrEnd>. \r\n-----------------------------------------------\r\nСуществует немалая <clr>вероятность<clrEnd>, что при попытке снятия акрина с оборудования оно <clr>может быть уничтожено<clrEnd>. \r\nСейчас мы оцениваем шансы на удачный результат как <100-destruct_chance>%\r\n-----------------------------------------------\r\nВозможно, <clr>со временем<clrEnd> нам удастся вычислить нужные закономерности, и <clr>процесс станет более контролируемым<clrEnd>.\r\n-----------------------------------------------\r\nНе забывайте, что из-за удаления некоторых элементов, вес оборудования и цена <clr>уменьшается на 10%<clrEnd>.",
+          "DMsg.Num":"8"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          730,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          90,
+          "Msg":"Доступные операции:",
+          "DMsg.Num":"9"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          870,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          93,
+          "Msg":"Эксперимент оказался удачным, и вы получаете <temp_str>.\r\nК тому же мы кое-чему научились, и в будущем вероятность удачи составит уже <100 - destruct_chance>%.\r\nТакже несколько повысились шансы получить акрин более высокого уровня:\r\nПервый уровень - <acrin_lvl_chance[1]>%\r\nВторой уровень - <acrin_lvl_chance[2]>%\r\nТретий уровень - <acrin_lvl_chance[3]>%",
+          "DMsg.Num":"10"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          800,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          104,
+          "Msg":"Какой эффект вы хотели бы попробовать наложить на <ItemFullName(cur_item)>?\r\nНа данный момент шансы получить определённый уровень акрина таковы:\r\nПервый уровень - <acrin_lvl_chance[1]>%\r\nВторой уровень - <acrin_lvl_chance[2]>%\r\nТретий уровень - <acrin_lvl_chance[3]>%",
+          "DMsg.Num":"11"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          950,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          120,
+          "Msg":"Благодарим за сотрудничество, <Player>! Нам очень приятно, что вы проявляете интерес к научным изысканиям, примите эти <bh_total_cost> cr. в качестве компенсации за риск. А также, согласно нашему тарифу, после сдачи оборудования на <bh_total_size> тонн ваш личный нан-счет составляет <player_bh_score> нан.\r\nВот список того, что нас еще интересует:\r\n\r\n<temp_str>\r\n",
+          "DMsg.Num":"12"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          290,
+          "Parent":          -1,
+          "#":          128,
+          "Msg":"Благодарим за сотрудничество, <Player>! Нам очень приятно, что вы проявляете интерес к научным изысканиям, примите эти <bh_total_cost> cr. в качестве компенсации за риск. А также, согласно нашему тарифу, после сдачи оборудования на <bh_total_size> тонн ваш личный нан-счет составляет <player_bh_score> нан.",
+          "DMsg.Num":"13"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          870,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          136,
+          "Msg":"Извините, что мы так настойчивы. Спасибо вам, <Player>. Мы всегда рады сотрудничать с вами!",
+          "DMsg.Num":"14"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          890,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          137,
+          "Msg":"Значит, надо их достать, <Player>. Рейнджеры всегда заботились о наших исследованиях. Мы в вас верим.",
+          "DMsg.Num":"15"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          730,
+          "Pos.y":          70,
+          "Parent":          -1,
+          "#":          141,
+          "Msg":"Видите ли, мы сейчас занимаемся исследованием чёрных дыр и... Да-да, я знаю, что у нас идет война с доминаторами и все силы должны быть брошены на исследования этих стальных ребят, но поверьте - все под контролем. Основная часть ученых по-прежнему занимается проблемой доминаторов, а небольшие группы сейчас проводят исследования в других сферах. Такой подход позволяет продолжать идти по пути научно-технического прогресса даже во время глобальной галактической войны. Так вот, как я уже сказал, мы занимаемся изучением чёрных дыр. Коалиция столкнулась с этим феноменом уже довольно давно, еще до клисанской войны, но мы до сих пор практически ничего о них не знаем. А главной причиной этого является практически полное отсутствие материала - нам просто нечего изучать. Никто особенно не горит желанием лезть в дыры, ведь это безумно опасно, там не действуют законы физики нормального мира, гиперпространственные сгустки, а именно в один из них ведет каждая дыра, совершенно непредсказуемое место и мы совсем ничего не знаем о таинственных кораблях, обитающих там. Словом, работёнка не простая. И поэтому мы решили, что самым лучшим способом в данной ситуации будет найм рейнджеров и других свободных пилотов. Они бы привозили нам материал, а мы бы платили вознаграждения, а особенно отличившимся даже можно давать научные степени. Кто знает, может быть, когда-нибудь Галактическую Академию Наук возглавит один из рейнджеров?\r\nТак что? Вы хотите присоединиться к нашей оперативной группе исследователей чёрных дыр?",
+          "DMsg.Num":"16"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          770,
+          "Pos.y":          40,
+          "Parent":          -1,
+          "#":          146,
+          "Msg":"Ну что же... нет, так нет. Однако предложение остается в силе. Если надумаете нам помочь - двери всегда открыты... Это я образно, если что. У нас тут шлюзы и они всегда закрыты, но для вас откроем.",
+          "DMsg.Num":"17"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          790,
+          "Pos.y":          70,
+          "Parent":          -1,
+          "#":          148,
+          "Msg":"Нет, лучше пока обойдемся без подобных экспериментов, хорошо?\r\nЛучше давайте вы нам материал начнете привозить. Чем активнее вы будете исследовать червоточины, тем скорее будете получать научные степени, а вместе с ними и доступ к новым, секретным технологиям, ценные подарки, ну и конечно социальные льготы. Вы не знали? У нас даже стоматолог есть.",
+          "DMsg.Num":"18"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          870,
+          "Pos.y":          60,
+          "Parent":          -1,
+          "#":          152,
+          "Msg":"Ручной режим управления: <temp_str>",
+          "DMsg.Num":"19"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          800,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          166,
+          "Msg":"Извините, но подходящих акринов под данное оборудование мы не нашли. Вероятно, акринировать его попросту невозможно.",
+          "DMsg.Num":"20"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          530,
+          "Pos.y":          50,
+          "Parent":          -1,
+          "#":          175,
+          "Msg":"<temp_str>",
+          "DMsg.Num":"21"        
+        }      
+      ],
+      "Dialogs":      
+      [
+        {
+          "Type":"TDialog",
+          "Name":"black_hole_talk",
+          "Pos.x":          730,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          32        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"rise_sc_rank_1",
+          "Pos.x":          530,
+          "Pos.y":          10,
+          "Parent":          -1,
+          "#":          73        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"acrin_1",
+          "Pos.x":          1030,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          103        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"acrin_2",
+          "Pos.x":          1030,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          106        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"deacrin",
+          "Pos.x":          550,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          114        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"BH_items",
+          "Pos.x":          960,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          116        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"BH_arts",
+          "Pos.x":          1040,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          121        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"BH_all",
+          "Pos.x":          890,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          122        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"black_hole_bgn",
+          "Pos.x":          730,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          149        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"Klesh_sw",
+          "Pos.x":          910,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          151        
+        }      
+      ],
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"PlayerGroup",
+          "Pos.x":          170,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          2,
+          "Owner":          62,
+          "Group.Type":          126,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":true,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          780,
+          "Pos.y":          -50,
+          "Parent":          -1,
+          "#":          5,
+          "Total.Lines":          1,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"GRun();"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          460,
+          "Pos.y":          -70,
+          "Parent":          -1,
+          "#":          6,
+          "Total.Lines":          51,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(EXP_science_status == 1)",
+"{",
+"    if(cur_science_rank < 8)",
+"    {",
+"        if(ShipInHole(Player()))",
+"        {",
+"            //Скипаем ЧД, которые проходятся без боя, но только не клисанские",
+"            cur_hole = ShipOrderObj(Player());",
+"            tstr1 = HoleMap(ShipOrderObj(Player()));",
+"            if(tstr1 != 'SkipAB' || HoleStar1(cur_hole) == GalaxyStar(TortugatzId) || HoleStar2(cur_hole) == GalaxyStar(TortugatzId))",
+"            {",
+"                //Если игрок ещё не получил очко за посещение данной ЧД",
+"                if(!add_complete)",
+"                {",
+"                    add_complete = 1;",
+"                    //Если игрок в данный момент не представлен к новому научному званию",
+"                    if(holes_count < science_ranks_points[cur_science_rank + 1])",
+"                    {",
+"                        //Обновляем переменную об остатке ЧД, необходимых для получения следующего звания",
+"                        holes_count = holes_count + 1;",
+"",
+"                        //Если число посещённых ЧД достаточно, для получения нового звания",
+"                        if(holes_count >= science_ranks_points[cur_science_rank + 1])",
+"                        {",
+"                            holes_left = science_ranks_points[cur_science_rank + 1] - holes_count;",
+"                            ShipCustomShipInfoData(Player(), 'Science_rank_infos', 2, holes_left);",
+"                            //Меняем элемент на форме 'Ship', на плашку с уведомлением о необходимости повысить звание на НБ",
+"                            InterfaceState('Ship', 'CustomRankImage_2_NR', 1);",
+"                            //А также выводим соответствующее уведомление",
+"                            temp_str_2 = CT('RankScientific.' + (cur_science_rank + 1) + '.Name');",
+"                            NewsAdd(\"Вы исследовали уже <holes_count> Чёрных Дыр и потому представлены к новой учёной степени <temp_str_2>.<br>Торжественную церемонию и вручение подарка вам организуют на любой научной базе.<br>До тех пор подсчёт исследованных вами Чёрных Дыр приостановлен.\");",
+"                        }",
+"                        //Если пока ещё нет",
+"                        else",
+"                        {",
+"                            holes_left = science_ranks_points[cur_science_rank + 1] - holes_count;",
+"                            ShipCustomShipInfoData(Player(), 'Science_rank_infos', 2, holes_left);",
+"                        }",
+"                    }",
+"                }",
+"            }",
+"            //Костыль, т.к. маркер 'SkipAB' после первого хода в ЧД сбрасывается на 'NoEntry'",
+"            else add_complete = 1;",
+"        }",
+"    }",
+"}",
+"//Игрок вылетел из ЧД, сбрасывается маркер добавления очка за посещение",
+"if(add_complete)",
+"{",
+"    if(ShipInNormalSpace(Player())) add_complete = 0;",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          800,
+          "Pos.y":          -50,
+          "Parent":          -1,
+          "#":          11,
+          "Total.Lines":          317,
+          "Code.Type":"Init",
+          "Code":          
+          [
+"num_experiments=0;",
+"//Устанавливаем начальный шанс на потерю оборудования при акринации",
+"destruct_chance=70;",
+"//Выставляем значение шансов на получение акрина определённого уровня",
+"acrin_lvl_chance[1]=100;",
+"acrin_lvl_chance[2]=0;",
+"acrin_lvl_chance[3]=0;",
+"//Позиции под 4 и 5 уровни были добавлены \"на всякий случай\"",
+"acrin_lvl_chance[4]=0;",
+"acrin_lvl_chance[5]=0;",
+"",
+"bh_item_indexes=newarray(1);",
+"bh_item_names=newarray(1);",
+"bh_items=newarray(1);",
+"bh_item_costs=newarray(1);",
+"bh_item_types=newarray(1);",
+"bh_item_sizes=newarray(1);",
+"holes_count=0;",
+"cur_science_rank=0;",
+"science_superhulls=newarray(3);",
+"hull_damage=newarray(3);",
+"bonus_text=newarray(3);",
+"bonus_text_dialog=newarray(3);",
+"",
+"science_ranks_points=newarray(9);",
+"science_ranks_points[0]=0+CT('RankScientific.0.BlackHolesCount');",
+"science_ranks_points[1]=0+CT('RankScientific.1.BlackHolesCount');",
+"science_ranks_points[2]=0+CT('RankScientific.2.BlackHolesCount');",
+"science_ranks_points[3]=0+CT('RankScientific.3.BlackHolesCount');",
+"science_ranks_points[4]=0+CT('RankScientific.4.BlackHolesCount');",
+"science_ranks_points[5]=0+CT('RankScientific.5.BlackHolesCount');",
+"science_ranks_points[6]=0+CT('RankScientific.6.BlackHolesCount');",
+"science_ranks_points[7]=0+CT('RankScientific.7.BlackHolesCount');",
+"science_ranks_points[8]=0+CT('RankScientific.8.BlackHolesCount');",
+"",
+"hull_damage[0]=0;",
+"hull_damage[1]=0;",
+"hull_damage[2]=0;",
+"",
+"bonus_text[0]=\"Атаки\";",
+"bonus_text[1]=\"Защиты\";",
+"bonus_text[2]=\"Гибридный\";",
+"",
+"EXP_science_status=-1;",
+"",
+"//Записываем номера Тортугаца и Нифигаца (для удобной читаемости в коде)",
+"TortugatzId = Id(PlanetToStar(PlanetPirateClan())) - 1;",
+"",
+"//Функция повышения шансов на успешное наложение более высокого уровня акрина",
+"function AcrynLevelChancesRaise()",
+"{",
+"    //Первые 10 акринаций идёт понижение шанса акринации на первый уровень",
+"    //И повышение шансов акринации на второй уровень до 70% и на третий до 30%",
+"    if(acrin_lvl_chance[1])",
+"    {",
+"        acrin_lvl_chance[1]=acrin_lvl_chance[1]-10;",
+"        acrin_lvl_chance[2]=acrin_lvl_chance[2]+7;",
+"        acrin_lvl_chance[3]=acrin_lvl_chance[3]+3;",
+"    }",
+"    //В течение следующих 14 акринаций начинается \"перетекание\" шансов из второго уровня в третий",
+"    //До тех пор пока шанс акринации на второй уровень не станет 0%, а на третий 100%",
+"    else",
+"    {",
+"        if(acrin_lvl_chance[2])",
+"        {",
+"            acrin_lvl_chance[2]=acrin_lvl_chance[2]-5;",
+"            acrin_lvl_chance[3]=acrin_lvl_chance[3]+5;",
+"        }",
+"    }",
+"}",
+"//Функция снижения шанса на потерю предмета при его акринации",
+"function ItemLostChanceDecrease()",
+"{",
+"    if(destruct_chance>1 && destruct_chance<=10)destruct_chance=destruct_chance-1;",
+"    else if(destruct_chance>10 && destruct_chance<=20)destruct_chance=destruct_chance-2;",
+"    else if(destruct_chance>20 && destruct_chance<=30)destruct_chance=destruct_chance-3;",
+"    else if(destruct_chance>30 && destruct_chance<=50)destruct_chance=destruct_chance-5;",
+"    else if(destruct_chance>50)destruct_chance=destruct_chance-10;",
+"}",
+"",
+"//Функция для замены указанного предмета на аналогичный предмет, но другого типа (без учёта основного акрина)",
+"function ItemReplaceFromString(dword item, str type_str)",
+"{",
+"    //Получаем старый Id оригинального предмета (если ранее данный предмет уже реакринировался, то старый Id будет записан в акрине)",
+"    dword it_Id = ItemExtraSpecialsCountByType(item, FindBonusByNameInCfg('ExpScienceRanks_AcrynId'));",
+"    if(!it_Id) it_Id = Id(item);",
+"",
+"    //Запоминаем возможный установленный в деакринированном предмете ММ",
+"    int MM = EqModule(item);",
+"    //И удаляем его во избежание некорректного сравнения статов",
+"    if(MM > -1) ModuleToEquipment(-1, item);",
+"",
+"    //Узнаём тип предмета, на который необходимо подменить деакринированный",
+"    int o;",
+"    int m;",
+"    dword new_item;",
+"    int type_num = GetValueFromScript('', GetParFromString(type_str, ',', 0, 1));",
+"    if(type_num != t_CustomWeapon)",
+"    {",
+"        //Создаём и подгоняем статы оборудования/оружия под деакринированный предмет",
+"        new_item = CreateEquipment(type_num, ItemSize(item), ItemLevel(item), ItemOwner(item));",
+"    }",
+"    else",
+"    {",
+"        //Создаём и подгоняем статы кастомного оружия под деакринированный предмет",
+"        new_item = CreateCustomWeapon(GetParFromString(type_str, ',', 1, 1), ItemSize(item), ItemLevel(item), ItemOwner(item));",
+"    }",
+"    ItemCost(new_item, ItemCost(item));",
+"",
+"    //Определяем тип нового оборудования в строчном виде для последующего перебора спецакринов",
+"    str s_type = ItemType(new_item);",
+"    if(s_type == t_Hull) s_type = 'Hull';",
+"    else if(s_type == t_Engine) s_type = 'Engine';",
+"    else if(s_type == t_FuelTanks) s_type = 'FuelTank';",
+"    else if(s_type == t_Radar) s_type = 'Radar';",
+"    else if(s_type == t_Scaner) s_type = 'Scaner';",
+"    else if(s_type == t_RepairRobot) s_type = 'Droid';",
+"    else if(s_type == t_CargoHook) s_type = 'Hook';",
+"    else if(s_type == t_DefGenerator) s_type = 'DefGenerator';",
+"    else",
+"    {",
+"        s_type = GetEquipmentStats(new_item, 3);",
+"        if(s_type == 0) s_type = 'WEnergy';",
+"        else if(s_type == 1) s_type = 'WSplinter';",
+"        else s_type = 'WMissile';",
+"    }",
+"",
+"    //Проверяем, был ли улучшен данный предмет",
+"    //Сперва проверяем на возможное альтернативное улучшение от ТЦ",
+"    dword temp_item;",
+"    int TC_mark = FindBonusByNameInCfg('ExpTC_EquipmentImprovement');",
+"    if(TC_mark > -1) TC_mark = ItemExtraSpecialsCountByType(item, TC_mark);",
+"",
+"    if(TC_mark)",
+"    {",
+"        //По правилам улучшений на ТЦ, улучшение возможно только для предметов с не менее чем двумя параметрами",
+"        o = 0;",
+"        if(s_type == 'Engine') o = 1;",
+"        else if(s_type == 'Hook') o = 1;",
+"        else if(s_type == 'WEnergy') o = 1;",
+"        else if(s_type == 'WSplinter') o = 1;",
+"",
+"        if(o)",
+"        {",
+"            //Создаём временный предмет для перерасчёта улучшения от ТЦ на новом предмете",
+"            if(ItemType(item) != t_CustomWeapon) temp_item = CreateEquipment(ItemType(new_item), ItemSize(new_item), ItemLevel(new_item), ItemOwner(new_item));",
+"            else temp_item = CreateCustomWeapon(CustomWeaponType(new_item), ItemSize(new_item), ItemLevel(new_item), ItemOwner(new_item));",
+"",
+"            //Определяем номер улучшенного параметра и степень улучшения по сету:",
+"            //1 - был улучшен первый параметр",
+"            //2 - был улучшен второй параметр",
+"            //4 - было выбрано улучшение стажёрами",
+"            //8 - было выбрано улучшение обычными спецами",
+"            //16 - было выбрано улучшение лучшими спецами",
+"            m = 0;",
+"            if((TC_mark & 4)) m = 0;",
+"            else if((TC_mark & 8)) m = 1;",
+"            else m = 2;",
+"            if((TC_mark & 1)) TC_mark = 1;",
+"            else TC_mark = 2;",
+"            //Производим улучшение для дальнейшего пересчёта",
+"            ItemImprovement(temp_item, m, TC_mark, it_Id);",
+"",
+"            //В случае, если улучшаем дальность оружия, для дальнейших запросов стата нам потребуется уточнить его номер",
+"            if(s_type == 'WEnergy' || s_type == 'WSplinter')",
+"            {",
+"                if(TC_mark) TC_mark = 2;",
+"            }",
+"",
+"            //Производим улучшение по следующему алгоритму:",
+"            //1. С помощью временного предмета вычисляем прибавку к стату от стандартного улучшения на НБ",
+"            //2. Увеличиваем эту прибавку на +75%",
+"            //3. Записываем полученную в итоге увеличенную прибавку в стат оригинального предмета",
+"            o = GetEquipmentStats(temp_item, TC_mark) - GetEquipmentStats(new_item, TC_mark);",
+"            o = GetEquipmentStats(new_item, TC_mark) + round((0.0 + GetValueFromScript('Mod_ExpTC', 'ImprovePercent')) * o);",
+"            SetEquipmentStats(new_item, o, TC_mark);",
+"",
+"            //Удаляем временный предмет",
+"            FreeItem(temp_item);",
+"        }",
+"        //Если (по какой-либо конченной причине) предмет при реакринации радикально меняет свой тип, убираем с него улучшение от ТЦ",
+"        else ItemExtraSpecialsDeleteByType(item, FindBonusByNameInCfg('ExpTC_EquipmentImprovement'), TC_mark);",
+"    }",
+"    //Затем проверяем на стандартное улучшение от НБ",
+"    else if(ItemImprovement(item))",
+"    {",
+"        //Узнаём, какое число параметров нам необходимо проверить на улучшение",
+"        m = ItemType(item);",
+"        if(m == t_Engine) m = 2;",
+"        else if(m == t_CargoHook) m = 2;",
+"        else if(m >= t_Weapon1)",
+"        {",
+"            //Второй параметр имеют только энергетический и осколочный типы оружия",
+"            m = GetEquipmentStats(item, 3);",
+"            if(m == 0) m = 2;",
+"            else if(m == 1) m = 2;",
+"            else m = 1;",
+"        }",
+"        else m = 1;",
+"",
+"        //Начинаем последовательно применять улучшения к предмету",
+"        //Ищем, какое именно улучшение было применено к нему изначально",
+"        //Перебираем все три возможные степени улучшения (выбранных спецов)",
+"        int t_check = 0;",
+"        for(o = 0; o <= 2; o = o + 1)",
+"        {",
+"            //Перебираем доступные для улучшения параметры",
+"            int n = 1;",
+"            while(n <= m)",
+"            {",
+"                //Проверять улучшение будем на временном предмете",
+"                if(ItemType(item) != t_CustomWeapon) temp_item = CreateEquipment(ItemType(item), ItemSize(item), ItemLevel(item), ItemOwner(item));",
+"                else temp_item = CreateCustomWeapon(CustomWeaponType(item), ItemSize(item), ItemLevel(item), ItemOwner(item));",
+"",
+"                //Улучшаем временный предмет и начинаем проверку, соответствуют ли его статы после улучшения со статами оригинального предмета",
+"                ItemImprovement(temp_item, o, n, it_Id);",
+"",
+"                //Если улучшенный параметр сошёлся по значению с параметром на оригинальном предмете",
+"                if(GetEquipmentStats(temp_item, n - 1) == GetEquipmentStats(item, n - 1))",
+"                {",
+"                    //Если улучшенный предмет имеет второй параметр, то проверяем также и его",
+"                    if(m > 1)",
+"                    {",
+"                        //Если в данный момент был улучшен первый параметр проверяемого предмета",
+"                        if(n == 1)",
+"                        {",
+"                            if(GetEquipmentStats(temp_item, n) == GetEquipmentStats(item, n)) t_check = 1;",
+"                        }",
+"                        //Если был улучшен уже второй параметр проверяемого предмета",
+"                        else",
+"                        {",
+"                            //Если предмет не является оружием",
+"                            if(ItemType(temp_item) <= t_DefGenerator)",
+"                            {",
+"                                if(GetEquipmentStats(temp_item, n - 1) == GetEquipmentStats(item, n - 1)) t_check = 1;",
+"                            }",
+"                            //Иначе делаем проверку с учётом сдвига номера параметра дальности в GetEquipmentStats",
+"                            else",
+"                            {",
+"                                if(GetEquipmentStats(temp_item, n) == GetEquipmentStats(item, n)) t_check = 1;",
+"                            }",
+"                        }",
+"                    }",
+"                    //Иначе делаем отмашку, что нашли нужный параметр и степень его улучшения",
+"                    else t_check = 1;",
+"                }",
+"                //Удаляем временный предмет",
+"                FreeItem(temp_item);",
+"",
+"                if(t_check)",
+"                {",
+"                    //Проверяем, имеется ли у нового предмета второй параметр в случае, если в оригинале улучшен был именно он",
+"                    if(n > 1)",
+"                    {",
+"                        n = 1;",
+"                        if(s_type == 'Engine') n = 2;",
+"                        else if(s_type == 'Hook') n = 2;",
+"                        else if(s_type == 'WEnergy') n = 2;",
+"                        else if(s_type == 'WSplinter') n = 2;",
+"                    }",
+"",
+"                    //Наконец, производим улучшение нового предмета",
+"                    ItemImprovement(new_item, o, n, it_Id);",
+"",
+"                    break;",
+"                }",
+"",
+"                n = n + 1;",
+"            }",
+"",
+"            if(t_check) break;",
+"        }",
+"    }",
+"",
+"    //Переносим на новый предмет все имеющиеся на старом спецакрины",
+"    for(o = 0; o < ItemExtraSpecials(item); o = o + 1)",
+"    {",
+"        int acryn_ext = ItemExtraSpecials(item, o);",
+"        //Пропускаем все не подходящие для данного типа оборудования спецакрины",
+"        if(!MayAddBonusToEq(acryn_ext, new_item)) continue;",
+"",
+"        //str eqs = CT('MicroModuls.' + BonusNumInCfg(acryn_ext) + '.Equipments');",
+"        //if(findsubstr(eqs, s_type) == -1 && eqs != 'Any' && eqs != '') continue;",
+"",
+"        ItemExtraSpecialsAddByType(new_item, acryn_ext, ItemExtraSpecialsCountByType(item, acryn_ext));",
+"    }",
+"",
+"    //Уравниваем максимальное число зарядов в новом и старом ракетном оружии (может быть изменено)",
+"    if(s_type == 'WMissile')",
+"    {",
+"        //Перед этим убеждаемся, что старый предмет также являлся ракетным оружием (а то мало ли)",
+"        if(ItemType(item) >= t_Weapon1)",
+"        {",
+"            if((GetEquipmentStats(item, 6) & 4)) WeaponMaxAmmunition(new_item, WeaponMaxAmmunition(item));",
+"        }",
+"    }",
+"",
+"    //И только теперь переставляем возможный ММ в новый предмет",
+"    if(MM > -1)",
+"    {",
+"        //На всякий случай проверяем, доступна ли установка ММ в новый предмет (т.к. мог измениться его тип)",
+"        if(MayAddBonusToEq(MM, new_item)) ModuleToEquipment(MM, new_item);",
+"    }",
+"",
+"    int slot = 0;",
+"    //Если деакринированный предмет был экипирован на корабль, запоминаем соответствующий слот",
+"    if(ItemIsInUse(item)) slot = ItemIsInUse(item, Player());",
+"    //Удаляем деакринированный предмет и добавляем на корабль его замену",
+"    FreeItem(GetItemFromShip(Player(), FindItemInShip(Player(), item)));",
+"    AddItemToShip(Player(), new_item);",
+"    if(slot) ItemIsInUse(new_item, Player(), 1, slot);",
+"",
+"    //Записываем старый Id оригинального предмета для бросков на улучшение параметров",
+"    ItemExtraSpecialsAddByType(new_item, FindBonusByNameInCfg('ExpScienceRanks_AcrynId'), it_Id);",
+"",
+"    result = new_item;",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          530,
+          "Pos.y":          30,
+          "Parent":          -1,
+          "#":          28,
+          "Total.Lines":          24,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Повышаем ранг",
+"cur_science_rank = cur_science_rank + 1;",
+"science_reward_item_type = Rnd(t_FuelTanks, t_DefGenerator);",
+"if(science_reward_item_type == t_FuelTanks) science_reward_eq_size = 25;",
+"else if(science_reward_item_type == t_Engine) science_reward_eq_size = 20;",
+"else if(science_reward_item_type == t_Radar) science_reward_eq_size = 15;",
+"else if(science_reward_item_type == t_Scaner) science_reward_eq_size = 15;",
+"else if(science_reward_item_type == t_RepairRobot) science_reward_eq_size = 20;",
+"else if(science_reward_item_type == t_CargoHook) science_reward_eq_size = 20;",
+"else if(science_reward_item_type == t_DefGenerator) science_reward_eq_size = 20;",
+"science_reward_item = CreateEquipment(science_reward_item_type, science_reward_eq_size, GalaxyTechLevel(), GetOwner(GetShipRuins(Player())));",
+"science_reward_item_name = Format(ItemFullName(science_reward_item), '<color=255,167,84>','');",
+"AddItemToShip(Player(), science_reward_item);",
+"temp_str_2 = CT('RankScientific.' + cur_science_rank + '.Name');",
+"temp_str_3 = '</color>' + CT('RankScientific.' + cur_science_rank + '.Text');",
+"",
+"//Установка длины \"дефисного разделителя\" в зависимости от выбранного в игре размера шрифта",
+"if(GetGameOptions('FontDialog') == '0') temp_str = '</color>-----------------------------------------------------------';",
+"else if(GetGameOptions('FontDialog') == '1') temp_str = '</color>------------------------------------------';",
+"else if(GetGameOptions('FontDialog') == '2') temp_str = '</color>-------------------------------------------';",
+"else temp_str = '</color>--------------------------------------';",
+"",
+"//Формируем поздравительный текст",
+"temp_str = '</color>' + Format(CT('Script.Mod_ExpScienceRanks.RankRiseCongrats'), '#0#', temp_str_2, '#1#', temp_str_3, '#2#', temp_str, '#3#', science_reward_item_name);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          840,
+          "Pos.y":          -50,
+          "Parent":          -1,
+          "#":          30,
+          "Total.Lines":          48,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"cur_ruin = GetShipRuins(Player());",
+"if(cur_ruin)",
+"{",
+"    if(ShipType(cur_ruin) == 'SB')",
+"    {",
+"        if(~EXP_science_status)",
+"        {",
+"            AddDialogInject('black_hole_talk', '', \"Исследование Чёрных Дыр\", 0);",
+"            //Если игрок посетил достаточно ЧД для получения следующего учёного звания",
+"            if(cur_science_rank < 8)",
+"            {",
+"                if(holes_count >= science_ranks_points[cur_science_rank + 1])",
+"                {",
+"                    AddDialogOverride('rise_sc_rank_1', 11);",
+"                }",
+"            }",
+"        }",
+"        else AddDialogInject('black_hole_bgn', '', \"Так чем же я вам могу помочь в исследовании Чёрных Дыр?\", 0);",
+"    }",
+"}",
+"",
+"//Выводим опции управления режимами \"Клеща\" на панели мостика (если 'ExpPilotBridge' отключён, то с мостика ТИ)",
+"if(IsScriptActive('Mod_ExpPilotBridge'))",
+"{",
+"    if(PlayerBridge() == 12)",
+"    {",
+"        if(~ShipFindCustomShipInfoByType(Player(), 'ExpPanel_infos'))",
+"        {",
+"            if(!findsubstr(BonusNumInCfg(HullSpecial(Player())), 'ExpScienceRanks_Tick'))",
+"            {",
+"                AddDialogInject('Klesh_sw', '', \"Ручное управление режимами Клеща\", 1);",
+"            }",
+"        }",
+"    }",
+"}",
+"else",
+"{",
+"    if(PlayerBridge() == 1 || PlayerBridge() == 2)",
+"    {",
+"        if(~ShipFindCustomShipInfoByType(Player(), 'ExpPanel_infos'))",
+"        {",
+"            if(!findsubstr(BonusNumInCfg(HullSpecial(Player())), 'ExpScienceRanks_Tick'))",
+"            {",
+"                AddDialogInject('Klesh_sw', '', \"Ручное управление режимами Клеща\", 1);",
+"            }",
+"        }",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          770,
+          "Pos.y":          470,
+          "Parent":          -1,
+          "#":          55,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(num_experiments < 10) temp_str = \", впрочем, как и тип эффекта\";",
+"else temp_str = \", но вы можете выбрать тип эффекта\";"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          960,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          60,
+          "Total.Lines":          24,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"seed = 0;",
+"temp_int = FindBonusByCustomTag('ExpScienceRanks_AcrynSeed');",
+"//Проверяем, нет ли на предмете уже записанного зерна",
+"//Если есть, то используем его",
+"j = ItemExtraSpecialsCountByType(cur_item, temp_int);",
+"if(j)",
+"{",
+"    ItemExtraSpecialsDeleteByType(cur_item, temp_int, j);",
+"    seed = abs(j * j * j + j / 10);",
+"    cur_chance = substr(seed, count(seed) - 6);",
+"    while(cur_chance <= 999) cur_chance = abs(cur_chance * cur_chance + 1);",
+"    ItemExtraSpecialsAddByType(cur_item, temp_int, cur_chance);",
+"    cur_chance = abs((j * j * j + j / 10) % 100) + 1;",
+"}",
+"//Если нет (ММ ещё ни разу не извлекались), то используем Id предмета",
+"else",
+"{",
+"    j = Id(cur_item) + 41;",
+"    seed = abs(j * j * j + j / 10);",
+"    cur_chance = substr(cur_chance, count(cur_chance) - 6);",
+"    while(cur_chance <= 999) cur_chance = abs(cur_chance * cur_chance + 1);",
+"    ItemExtraSpecialsAddByType(cur_item, temp_int, cur_chance);",
+"    cur_chance = abs((j * j * j + j / 10) % 100) + 1;",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          960,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          64,
+          "Total.Lines":          29,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Акринируемый предмет был потерян",
+"temp_str = ItemFullName(cur_item);",
+"",
+"j = FindItemInShip(Player(), cur_item);",
+"if(j > -1) FreeItem(GetItemFromShip(Player(), j));",
+"else",
+"{",
+"    for(temp_int = 0; temp_int < ShipArts(Player()); temp_int = temp_int + 1)",
+"    {",
+"        cur_art = ShipArts(Player(), temp_int);",
+"        if(ItemType(cur_art) != t_ArtefactTranclucator) continue;",
+"        if(~FindItemInShip(ArtTranclucatorToShip(cur_art), cur_item))",
+"        {",
+"            FreeItem(GetItemFromShip(Player(), FindItemInShip(ArtTranclucatorToShip(cur_art), cur_item)));",
+"        }",
+"        else continue;",
+"    }",
+"}",
+"ShipCalcParam(Player());",
+"",
+"//Повышается шанс на успешное наложение более высокого уровня акрина",
+"AcrynLevelChancesRaise();",
+"//Снижаем шанс на потерю предметов при акринации/деакринации",
+"ItemLostChanceDecrease();",
+"",
+"num_experiments = num_experiments + 1;",
+"player_bh_score = player_bh_score - bh_score_to_del;",
+"",
+"Sound('Sound.QuestCancel');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          940,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          65,
+          "Total.Lines":          63,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Производим наложение акрина",
+"//Считаем, какой конкретно уровень акрина был наложен, если акрин имеет уровни",
+"if(CT('MicroModuls.' + BonusNumInCfg(chosen_akrin) + '.AcrynSerie') != '')",
+"{",
+"    //По умолчанию выбирается акрин первого уровня",
+"    level = 1;",
+"    //Если шанс на получение акрина первого уровня вышел за диапазон",
+"    if(cur_chance > acrin_lvl_chance[1])",
+"    {",
+"        //То получаем акрин второго уровня",
+"        level = 2;",
+"        //А если шанс на получение акрина второго уровня вышел за диапазон и первого и второго",
+"        //То получаем акрин третьего уровня",
+"        if(cur_chance > acrin_lvl_chance[1] + acrin_lvl_chance[2]) level = 3;",
+"    }",
+"    //На случай акринации оборудования всего с двумя уровнями, сверяем максимальное число уровней в разделе акрина",
+"    j = CT('MicroModuls.' + BonusNumInCfg(chosen_akrin) + '.LevelsCount');",
+"    if(j < level) level = j;",
+"    chosen_akrin = FindBonusByNameInCfg(CT('MicroModuls.' + BonusNumInCfg(chosen_akrin) + '.SerieLevel' + level));",
+"}",
+"//Заранее проверяем оборудование на наличие модификации для транклюкаторов",
+"j = 0;",
+"if(BlockExist('Script.Mod_EvoTranc'))",
+"{",
+"    //Если нашли такую модификацию, то после акринации дополняем название предмета",
+"    if(findsubstr(Name(cur_item), CT('Script.Mod_EvoTranc.ForTrancs')) > -1) j = 1;",
+"}",
+"",
+"//Проверяем акрин на особый параметр, который подразумевает подмену акринируемого предмета",
+"temp_str_3 = CT('MicroModuls.' + BonusNumInCfg(chosen_akrin) + '.ActualEquipType');",
+"//Если требуется подмена предмета, то осуществляем её",
+"if(temp_str_3 != '') cur_item = ItemReplaceFromString(cur_item, temp_str_3);",
+"",
+"//Перед акринацией вытаскиваем ММ, чтобы не исказить статы предмета",
+"i = EqModule(cur_item);",
+"if(~i) ModuleToEquipment(-1, cur_item);",
+"",
+"//Накладываем выбранный акрин",
+"SpecialToEquipment(chosen_akrin, cur_item);",
+"akrin_cost = ItemCost(cur_item);",
+"akrin_weigth = ItemSize(cur_item);",
+"//Повышаем вес и стоимость оборудования на 10% (при деакринации вес и стоимость уменьшаются на 10%)",
+"ItemSize(cur_item, (akrin_weigth + (akrin_weigth / 10)));",
+"ItemCost(cur_item, (akrin_cost + (akrin_cost / 10)));",
+"",
+"if(~i) ModuleToEquipment(i, cur_item);",
+"",
+"//Меняем имя оборудования, если ранее оно было уменьшено для транклюкаторов",
+"if(j) SetName(cur_item, Name(cur_item) + CT('Script.Mod_EvoTranc.ForTrancs'));",
+"",
+"//Повышается шанс на успешное наложение акринов более высокого уровня",
+"AcrynLevelChancesRaise();",
+"//Снижаем шанс на потерю предметов при их акринации",
+"ItemLostChanceDecrease();",
+"",
+"//Повышаем счётчик проведённых экспериментов",
+"num_experiments = num_experiments + 1;",
+"//Начисляем наны на счёт игрока",
+"player_bh_score = player_bh_score - bh_score_to_del;",
+"//Запоминаем имя предмета с наложенным акрином для подстановки в диалог",
+"temp_str = DeleteTags(BonusName(chosen_akrin));",
+"",
+"Sound('Sound.Repair');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          570,
+          "Pos.y":          470,
+          "Parent":          -1,
+          "#":          83,
+          "Total.Lines":          39,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Производим снятие акрина",
+"//Заранее проверяем оборудование на наличие модификации для транклюкаторов",
+"j = 0;",
+"if(BlockExist('Script.Mod_EvoTranc'))",
+"{",
+"    //Если нашли такую модификацию, то после акринации дополняем название предмета",
+"    if(findsubstr(Name(temp_dword), CT('Script.Mod_EvoTranc.ForTrancs')) > -1) j = 1;",
+"}",
+"//Проверяем оборудование на особый акрин, который подразумевает подмену предмета, а не его непосредственную деакринацию",
+"chosen_akrin = EqSpecial(temp_dword);",
+"temp_str_3 = CT('MicroModuls.' + BonusNumInCfg(chosen_akrin) + '.ImitatedEquipType');",
+"",
+"//Перед деакринацией вытаскиваем ММ, чтобы не исказить статы предмета",
+"i = EqModule(temp_dword);",
+"if(~i) ModuleToEquipment(-1, temp_dword);",
+"",
+"//Сперва просто снимаем акрин",
+"SpecialToEquipment(-1, temp_dword);",
+"akrin_cost = ItemCost(temp_dword);",
+"akrin_weigth = ItemSize(temp_dword);",
+"//Снижаем вес и стоимость оборудования на 10% (при акринации через НБ вес и стоимость увеличиваются на 10%)",
+"ItemSize(temp_dword, akrin_weigth - (akrin_weigth / 10));",
+"ItemCost(temp_dword, akrin_cost - (akrin_cost / 10));",
+"",
+"if(~i) ModuleToEquipment(i, temp_dword);",
+"",
+"//Если требуется подмена предмета, то осуществляем её",
+"if(temp_str_3 != '') temp_dword = ItemReplaceFromString(temp_dword, temp_str_3);",
+"",
+"//Меняем имя оборудования, если ранее оно было уменьшено для транклюкаторов",
+"if(j) SetName(temp_dword, Name(temp_dword) + CT('Script.Mod_EvoTranc.ForTrancs'));",
+"",
+"//Начисляем наны на счёт игрока",
+"player_bh_score = player_bh_score + akrin_weigth / 10;",
+"",
+"//Снижаем шанс на потерю предметов при их акринации",
+"ItemLostChanceDecrease();",
+"",
+"Sound('Sound.Repair');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          550,
+          "Pos.y":          470,
+          "Parent":          -1,
+          "#":          84,
+          "Total.Lines":          23,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_str = DeleteTags(ItemFullName(temp_dword));",
+"Sound('Sound.QuestCancel');",
+"Sound('Sound.ExpRobot');",
+"if(FindItemInShip(Player(), temp_dword) > 0) FreeItem(GetItemFromShip(Player(), FindItemInShip(Player(), temp_dword)));",
+"else",
+"{",
+"    for(temp_int = 0; temp_int < ShipArts(Player()); temp_int = temp_int + 1)",
+"    {",
+"        cur_art = ShipArts(Player(),temp_int);",
+"        if(ItemType(cur_art) != t_ArtefactTranclucator) continue;",
+"        if(FindItemInShip(ArtTranclucatorToShip(cur_art), temp_dword) > 0)",
+"        {",
+"            FreeItem(GetItemFromShip(Player(), FindItemInShip(ArtTranclucatorToShip(cur_art), temp_dword)));",
+"        }",
+"        else continue;",
+"    }",
+"}",
+"ShipCalcParam(Player());",
+"",
+"//Снижаем шанс на потерю предметов при акринации/деакринации",
+"ItemLostChanceDecrease();",
+"",
+"Sound('Sound.QuestCancel');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          550,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          85,
+          "Total.Lines":          25,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_dword = GAnswerData;",
+"seed = 0;",
+"temp_int = FindBonusByCustomTag('ExpScienceRanks_AcrynSeed');",
+"//Проверяем, нет ли на предмете уже записанного зерна",
+"//Если есть, то используем его",
+"j = ItemExtraSpecialsCountByType(temp_dword, temp_int);",
+"if(j)",
+"{",
+"    ItemExtraSpecialsDeleteByType(temp_dword, temp_int,j);",
+"    seed = abs(j * j * j + j / 10);",
+"    cur_chance = substr(seed, count(seed) - 6);",
+"    while(cur_chance <= 999) cur_chance = abs(cur_chance * cur_chance + 1);",
+"    ItemExtraSpecialsAddByType(temp_dword, temp_int, cur_chance);",
+"    cur_chance = abs((j * j * j + j / 10) % 100) + 1;",
+"}",
+"//Если нет (ММ ещё ни разу не извлекались), то используем Id предмета",
+"else",
+"{",
+"    j = Id(temp_dword) + 23 + num_experiments;",
+"    seed = abs(j * j * j + j / 10);",
+"    cur_chance = substr(cur_chance, count(cur_chance) - 6);",
+"    while(cur_chance <= 999) cur_chance = abs(cur_chance * cur_chance + 1);",
+"    ItemExtraSpecialsAddByType(temp_dword, temp_int, cur_chance);",
+"    cur_chance = abs((j * j * j + j / 10) % 100) + 1;",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          560,
+          "Pos.y":          90,
+          "Parent":          -1,
+          "#":          99,
+          "Total.Lines":          22,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int_2 = ShipFindCustomShipInfoByType(Player(), 'Science_rank_infos');",
+"temp_int = 4;",
+"ShipCustomShipInfoData(Player(), temp_int_2, 1, temp_int);",
+"ShipCustomShipInfoData(Player(), temp_int_2, 2, -10);",
+"ShipCustomShipInfoData(Player(), temp_int_2, 3, -10);",
+"temp_str = CT('RankScientific.' + cur_science_rank + '.Text');",
+"temp_str_2 = CT('RankScientific.' + cur_science_rank + '.Name');",
+"ShipCustomShipInfoTextData(Player(), temp_int_2, 1, temp_str);",
+"ShipCustomShipInfoTextData(Player(), temp_int_2, 2, temp_str_2);",
+"InterfaceState('Ship', 'CustomRankImage_2_NR', 0);",
+"InterfaceImage('Ship', 'CustomRankImageL_' + temp_int, 'GI,Bm.FormShip2.2SR4_img');",
+"//Также выдаём игроку корпус \"Клещ\"",
+"TickWasTaken = 1;",
+"science_superhulls[0] = FindBonusByNameInCfg('ExpScienceRanks_TickAttackMode');",
+"science_superhulls[1] = FindBonusByNameInCfg('ExpScienceRanks_TickDefenseMode');",
+"science_superhulls[2] = FindBonusByNameInCfg('ExpScienceRanks_TickSpeedMode');",
+"bonus_text_dialog[0] = Format(BonusText(science_superhulls[0]), '<color=248,252,248>', '');",
+"bonus_text_dialog[1] = Format(BonusText(science_superhulls[1]), '<color=248,252,248>', '');",
+"bonus_text_dialog[2] = Format(BonusText(science_superhulls[2]), '<color=248,252,248>', '');",
+"hull_gift = CreateHull(30, 100 + 175 * GalaxyTechLevel(), GalaxyTechLevel(), 6);",
+"SpecialToEquipment(science_superhulls[2], hull_gift);",
+"AddItemToStorage(GetShipRuins(Player()), hull_gift);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          500,
+          "Pos.y":          90,
+          "Parent":          -1,
+          "#":          100,
+          "Total.Lines":          22,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int_2 = ShipFindCustomShipInfoByType(Player(), 'Science_rank_infos');",
+"if(cur_science_rank == 5) temp_int = 5;",
+"else if(cur_science_rank == 0 || cur_science_rank == 7) temp_int = 2;",
+"else if(cur_science_rank == 3 || cur_science_rank == 8) temp_int = 4;",
+"else temp_int = 3;",
+"temp_str = CT('RankScientific.' + cur_science_rank + '.Text');",
+"temp_str_2 = CT('RankScientific.' + cur_science_rank + '.Name');",
+"holes_left = science_ranks_points[cur_science_rank + 1] - holes_count;",
+"ShipCustomShipInfoData(Player(), temp_int_2, 1, temp_int);",
+"ShipCustomShipInfoData(Player(), temp_int_2, 2, holes_left);",
+"temp_str = CT('RankScientific.' + cur_science_rank + '.Text');",
+"temp_str_2 = CT('RankScientific.' + cur_science_rank + '.Name');",
+"ShipCustomShipInfoTextData(Player(), temp_int_2, 1, temp_str);",
+"ShipCustomShipInfoTextData(Player(), temp_int_2, 2, temp_str_2);",
+"InterfaceState('Ship', 'CustomRankImage_2_NR', 0);",
+"if(cur_science_rank == 1) InterfaceImage('Ship', 'CustomRankImageL_' + temp_int, 'GI,Bm.FormShip2.2BH_img');",
+"else if(cur_science_rank == 2) InterfaceImage('Ship', 'CustomRankImageL_' + temp_int, 'GI,Bm.FormShip2.2SR1_img');",
+"else if(cur_science_rank == 3) InterfaceImage('Ship', 'CustomRankImageL_' + temp_int, 'GI,Bm.FormShip2.2SR1_img');",
+"else if(cur_science_rank == 4) InterfaceImage('Ship', 'CustomRankImageL_' + temp_int, 'GI,Bm.FormShip2.2SR2_img');",
+"else if(cur_science_rank == 5) InterfaceImage('Ship', 'CustomRankImageL_' + temp_int, 'GI,Bm.FormShip2.2SR2_img');",
+"else if(cur_science_rank == 6) InterfaceImage('Ship', 'CustomRankImageL_' + temp_int, 'GI,Bm.FormShip2.2SR3_img');",
+"else if(cur_science_rank == 7) InterfaceImage('Ship', 'CustomRankImageL_' + temp_int, 'GI,Bm.FormShip2.2SR3_img');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          820,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          102,
+          "Total.Lines":          53,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Перебираем предметы на корабле, ищем подходящие для акринации",
+"for(i = 0; i < ShipItems(Player()); i = i + 1)",
+"{",
+"    cur_bh_item = ShipItems(Player(), i);",
+"    j = ItemType(cur_bh_item);",
+"",
+"    //Если предмет является оборудованием или оружием",
+"    if(j < t_FuelTanks || j > t_CustomWeapon) continue;",
+"    //Исключение предметов с акрином",
+"    temp_int_3 = EqSpecial(cur_bh_item);",
+"    if(~temp_int_3) continue;",
+"    //Исключение для предметов с ММ, в которых есть параметр \"Запрещено акринировать\" и \"Запрещено акринировать и деакринировать\"",
+"    if((0 + CT('MicroModuls.' + BonusNumInCfg(EqModule(cur_bh_item)) + '.BlockReacryn') & 2)) continue;",
+"    //Исключение доминаторских предметов",
+"    if(ItemOwner(cur_bh_item) == Kling) continue;",
+"    //Исключение предметов неизвестной расы",
+"    if(ItemOwner(cur_bh_item) == None) continue;",
+"    //Исключение предметов с кастомной фракцией",
+"    if(EqCustomFaction(cur_bh_item) != '') continue;",
+"    //Исключение скриптовых предметов",
+"    if(ItemInScript(cur_bh_item) == 1) continue;",
+"    //Исключение особых доминаторских и прочих нестандартных пушек",
+"    if(j == t_Weapon13 || j == t_Weapon14 || j == t_Weapon15) continue;",
+"    if(j == t_CustomWeapon)",
+"    {",
+"        temp_str = GetCustomWeaponData(CustomWeaponType(cur_bh_item), 'Availability');",
+"        if(temp_str == 'NotSold' || temp_str == 'NotSoldAndNodeRepair') continue;",
+"    }",
+"    level = ItemLevel(cur_bh_item);",
+"    if(level <= 1) temp_str = ' A';",
+"    else if(level == 2) temp_str = ' B';",
+"    else if(level == 3) temp_str = ' C';",
+"    else if(level == 4) temp_str = ' D';",
+"    else if(level == 5) temp_str = ' E';",
+"    else if(level == 6) temp_str = ' F';",
+"    else if(level == 7) temp_str = ' G';",
+"    else temp_str=' H';",
+"",
+"    //Если предмет является оборудованием",
+"    if(j <= t_DefGenerator)",
+"    {",
+"        tstr1 = DeleteTags('<ItemFullName(cur_bh_item)>');",
+"        if(ItemIsInUse(cur_bh_item)) tstr1 = tstr1 + ' <color=255,0,0>(экипировано)</color>';",
+"    }",
+"    //Если предмет является оружием",
+"    else",
+"    {",
+"        tstr1 = DeleteTags('<ItemFullName(cur_bh_item)>' + '<temp_str>');",
+"        if(ItemIsInUse(cur_bh_item)) tstr1 = tstr1 + ' <color=255,0,0>(экипировано)</color>';",
+"    }",
+"",
+"    InjectAnswer('acrin_1', tstr1, cur_bh_item);",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          800,
+          "Pos.y":          530,
+          "Parent":          -1,
+          "#":          105,
+          "Total.Lines":          119,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Перебираем акрины, подходящие для выбранного предмета, и собираем их в массив для целевой, либо случайной акринации",
+"ArrayClear(akrin_num_array);",
+"",
+"for(i = 0; i < BonusCount(); i = i + 1)",
+"{",
+"    if(!BonusIsSpecial(i)) continue;",
+"    temp_str_2 = BonusNumInCfg(i);",
+"    //Исключение для акринов с тэгом \"Запрещено накладывать\" и \"Запрещено снимать и накладывать\"",
+"    if((0 + CT('MicroModuls.' + temp_str_2 + '.LockedAcryn') & 2)) continue;",
+"    //Исключение \"биологических\" предметов (например, биогенных дроидов)",
+"    if(CT('MicroModuls.' + temp_str_2 + '.BioEquip')) continue;",
+"    //Исключение акринов, в которые запрещена установка ММ, если в акринируемом предмете ММ уже установлен",
+"    if(CT('MicroModuls.' + temp_str_2 + '.BlockMM'))",
+"    {",
+"        if(EqModule(cur_item) > -1) continue;",
+"        //Если в многоуровневых акринах пометку BlockMM будут иметь не все уровни, то такую фигню эта проверка не отсеет",
+"    }",
+"    //Проверяем соответствие бонуса текущему ГТУ",
+"    temp_int = 0 + CT('MicroModuls.' + temp_str_2 + '.Priority');",
+"    if(8.0 * (0.01 * temp_int) > GalaxyTechLevel()) continue;",
+"",
+"    //Если предмет не произведён неизвестной расой",
+"    if(ItemOwner(cur_item) != None)",
+"    {",
+"        if(!MayAddBonusToEq(i, cur_item))",
+"        {",
+"            //Проверка на соответствие акрина типу данного предмета с учётом замены предмета при акринации",
+"            temp_str_3 = CT('MicroModuls.' + temp_str_2 + '.ImitatedEquipType');",
+"            if(temp_str_3 != '')",
+"            {",
+"                //Узнаём тип предмета, на который необходимо подменить деакринированный",
+"                temp_int_2 = GetValueFromScript('', GetParFromString(temp_str_3, ',', 0, 1));",
+"                if(temp_int_2 == ItemType(cur_item))",
+"                {",
+"                    if(temp_int_2 == t_CustomWeapon)",
+"                    {",
+"                        //Узнаём тип кастомного оружия",
+"                        temp_str_4 = GetParFromString(temp_str_3, ',', 1, 1);",
+"                        if(temp_str_4 != CustomWeaponType(cur_item)) continue;",
+"                    }",
+"                }",
+"                else continue;",
+"            }",
+"            else continue;",
+"        }",
+"    }",
+"    //Если всё-таки произведён неизвестной, то делаем доп. проверки",
+"    else",
+"    {",
+"        //Если бонус можно наложить на предмет с неизвестной расой, то добавляем ответ как обычно",
+"        //А если нельзя, то меняем расу предмета и снова делаем проверку на применимость бонуса",
+"        //Подразумевается, что к предмету с неизвестной расой подойдёт любой другой расовый бонус в принципе",
+"        check = 0;",
+"        for(j = Maloc; j <= PirateClan; j = j + 1)",
+"        {",
+"            ItemOwner(cur_item, j);",
+"            if(MayAddBonusToEq(i, cur_item))",
+"            {",
+"                check = 1;",
+"                break;",
+"            }",
+"        }",
+"        //После перебора возвращаем вещи её изначального владельца",
+"        ItemOwner(cur_item, 6);",
+"",
+"        if(!check)",
+"        {",
+"            //Проверка на соответствие акрина типу данного предмета с учётом замены предмета при акринации",
+"            temp_str_3 = CT('MicroModuls.' + temp_str_2 + '.ImitatedEquipType');",
+"            if(temp_str_3 != '')",
+"            {",
+"                //Узнаём тип предмета, на который необходимо подменить деакринированный",
+"                temp_int_2 = GetValueFromScript('', GetParFromString(temp_str_3, ',', 0, 1));",
+"                if(temp_int_2 == ItemType(cur_item))",
+"                {",
+"                    if(temp_int_2 == t_CustomWeapon)",
+"                    {",
+"                        //Узнаём тип кастомного оружия",
+"                        temp_str_4 = GetParFromString(temp_str_3, ',', 1, 1);",
+"                        if(temp_str_4 != CustomWeaponType(cur_item)) continue;",
+"                    }",
+"                }",
+"                else continue;",
+"            }",
+"            else continue;",
+"        }",
+"    }",
+"",
+"    //Если акрин оказался совместим с данным предметом",
+"    //Если игрок ещё не провёл достаточное число экспериментов и акринация должна быть случайной",
+"    if(num_experiments < 10)",
+"    {",
+"        //Добавляем возможный акрин в массив",
+"        ArrayAdd(akrin_num_array, i);",
+"    }",
+"    //Если игрок уже провёл достаточное число экспериментов и акринация должна быть целевой",
+"    else",
+"    {",
+"        //Выводим опцию акринации данного акрина в ответы",
+"        //Делаем проверку чтобы узнать, имеются ли уровни у данного акрина",
+"        temp_str = CT('MicroModuls.' + temp_str_2 + '.AcrynSerie');",
+"        if(temp_str == '') InjectAnswer('acrin_2', DeleteTags(BonusName(i)), i);",
+"        else",
+"        {",
+"            InjectAnswer('acrin_2', temp_str, i);",
+"            //Добавляем блок, чтобы удалить инжекты всех прочих акринов из той же серии",
+"            AddDialogBlock(temp_str, 2);",
+"        }",
+"    }",
+"}",
+"bh_score_to_del = acrin_lvl_chance[1] + acrin_lvl_chance[2] * 3 + acrin_lvl_chance[3] * 3;",
+"",
+"//Если игрок ещё не провёл достаточное число экспериментов и акринация должна быть случайной",
+"//Случайно определяем акрин, который будет наложен на предмет (если цикл нашёл хоть один подходящий)",
+"if(num_experiments < 10)",
+"{",
+"    if(ArrayDim(akrin_num_array) > 1) chosen_akrin = akrin_num_array[Rnd(1, ArrayDim(akrin_num_array) - 1)];",
+"    else chosen_akrin = -1;",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1030,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          107,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"chosen_akrin = GAnswerData;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          960,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          112,
+          "Total.Lines":          3,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cur_item = GAnswerData;",
+"//На всякий случай обнуляем значение переменной с акрином",
+"chosen_akrin = -1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          660,
+          "Pos.y":          470,
+          "Parent":          -1,
+          "#":          113,
+          "Total.Lines":          68,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Перебираем предметы на корабле, ищем подходящие для деакринации",
+"for(i = 0; i < ShipItems(Player()); i = i + 1)",
+"{",
+"    temp_str = '';",
+"    cur_bh_item = ShipItems(Player(), i);",
+"    j = ItemType(cur_bh_item);",
+"",
+"    //Если предмет является оборудованием или оружием",
+"    if(j < t_FuelTanks || j > t_CustomWeapon) continue;",
+"",
+"    //Исключение предметов без акрина",
+"    temp_int_3 = EqSpecial(cur_bh_item);",
+"    if(temp_int_3 == -1) continue;",
+"    else",
+"    {",
+"        temp_str = CT('MicroModuls.' + BonusNumInCfg(temp_int_3) + '.ImitatedEquipType');",
+"        if(temp_str != '') j = GetValueFromScript('', GetParFromString(temp_str, ',', 0, 1));",
+"    }",
+"    //Исключение для предметов с ММ, в которых есть параметр \"Запрещено деакринировать\" и \"Запрещено акринировать и деакринировать\"",
+"    if((0 + CT('MicroModuls.' + BonusNumInCfg(EqModule(cur_bh_item)) + '.BlockReacryn') & 1)) continue;",
+"",
+"    temp_int_3 = EqSpecial(cur_bh_item);",
+"    //Исключение доминаторских предметов",
+"    if(ItemOwner(cur_bh_item) == Kling) continue;",
+"    //Исключение предметов неизвестной расы",
+"    if(ItemOwner(cur_bh_item) == None) continue;",
+"    //Исключение предметов с кастомной фракцией",
+"    if(EqCustomFaction(cur_bh_item) != '') continue;",
+"    //Исключение скриптовых предметов",
+"    if(ItemInScript(cur_bh_item) == 1) continue;",
+"    //Исключение для акринов с параметром \"Запрещено снимать\" и \"Запрещено снимать и накладывать\"",
+"    if((0 + CT('MicroModuls.' + BonusNumInCfg(temp_int_3) + '.LockedAcryn') & 1)) continue;",
+"    //Исключение \"биологических\" предметов (например, биогенных дроидов)",
+"    if(CT('MicroModuls.' + BonusNumInCfg(temp_int_3) + '.BioEquip')) continue;",
+"    //Исключение особых доминаторских и прочих нестандартных пушек",
+"    if(j == t_Weapon13 || j == t_Weapon14 || j == t_Weapon15) continue;",
+"    if(j == t_CustomWeapon)",
+"    {",
+"        if(temp_str == '') temp_str = GetCustomWeaponData(CustomWeaponType(cur_bh_item), 'Availability');",
+"        else temp_str = GetCustomWeaponData(GetParFromString(temp_str, ',', 1, 1), 'Availability');",
+"        if(temp_str == 'NotSold' || temp_str == 'NotSoldAndNodeRepair') continue;",
+"    }",
+"",
+"    level = ItemLevel(cur_bh_item);",
+"    if(level == 1) temp_str = ' A';",
+"    else if(level == 2) temp_str = ' B';",
+"    else if(level == 3) temp_str = ' C';",
+"    else if(level == 4) temp_str = ' D';",
+"    else if(level == 5) temp_str = ' E';",
+"    else if(level == 6) temp_str = ' F';",
+"    else if(level == 7) temp_str = ' G';",
+"    else if(level == 8) temp_str = ' H';",
+"",
+"    //Если предмет является оборудованием",
+"    if(j <= t_DefGenerator)",
+"    {",
+"        tstr1 = DeleteTags('<ItemFullName(cur_bh_item)>');",
+"        if(ItemIsInUse(cur_bh_item)) tstr1 = tstr1 + ' <color=255,0,0>(экипировано)</color>';",
+"    }",
+"    //Если предмет является оружием",
+"    else",
+"    {",
+"        tstr1 = DeleteTags('<ItemFullName(cur_bh_item) >' + ' ' + BonusName(EqSpecial(cur_bh_item)) + temp_str);",
+"        if(ItemIsInUse(cur_bh_item)) tstr1 = tstr1 + ' <color=255,0,0>(экипировано)</color>';",
+"    }",
+"",
+"    InjectAnswer('deacrin', tstr1, cur_bh_item);",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          600,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          115,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(num_experiments < 10) temp_str = \", впрочем, как и тип эффекта\";",
+"else temp_str = \", но вы можете выбрать тип эффекта\";"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          950,
+          "Pos.y":          310,
+          "Parent":          -1,
+          "#":          117,
+          "Total.Lines":          35,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ArrayClear(bh_items);",
+"ArrayClear(bh_item_costs);",
+"ArrayClear(bh_item_types);",
+"ArrayClear(bh_item_sizes);",
+"if(temp_int_2>1)InjectAnswer('BH_all',DeleteTags('Возьмите всё неизвестное оборудование'),1);",
+"for(i=0; i<ShipArts(Player()); i=i+1)",
+"{",
+"    temp_dword=ShipArts(Player(),i);",
+"    if(ItemType(temp_dword)<t_Artefact || ItemType(temp_dword)>t_ArtFastRacks) continue;",
+"    if(ItemType(temp_dword)==t_ArtefactTranclucator) continue;",
+"    if(ItemOwner(temp_dword)!=None) continue;",
+"    if(EqCustomFaction(temp_dword)!='') continue;",
+"    if(ItemIsInUse(temp_dword)) continue;",
+"    ArrayAdd(bh_items,temp_dword);",
+"    ArrayAdd(bh_item_types,0);",
+"    ArrayAdd(bh_item_costs,ItemCost(temp_dword)*4);",
+"    ArrayAdd(bh_item_sizes,ItemSize(temp_dword)*2);",
+"    InjectAnswer('BH_arts','<clrEnd>Возьмите '+DeleteTags(ItemFullName(temp_dword))+' (<ItemCost(temp_dword)*4> cr)',temp_dword);",
+"}",
+"for(i=0; i<ShipItems(Player()); i=i+1)",
+"{",
+"    temp_dword=ShipItems(Player(),i);",
+"    if(ItemOwner(temp_dword)!=None) continue;",
+"    if(EqCustomFaction(temp_dword)!='') continue;",
+"    if(ItemType(temp_dword)<=t_Hull || ItemType(temp_dword)>=t_Protoplasm) continue;",
+"    if(ItemIsInUse(temp_dword)) continue;",
+"    //Пропускаем настойку урины",
+"    if(EquipmentImageName(temp_dword) == 'UrineTincture') continue;",
+"    ArrayAdd(bh_items,temp_dword);",
+"    ArrayAdd(bh_item_types,1);",
+"    ArrayAdd(bh_item_costs,round(0.8*ItemCost(temp_dword)));",
+"    ArrayAdd(bh_item_sizes,ItemSize(temp_dword));",
+"    InjectAnswer('BH_items','<clrEnd>Возьмите '+DeleteTags(ItemFullName(temp_dword))+' (<round(0.8*ItemCost(temp_dword))> cr)',temp_dword);",
+"}",
+"num_bh_items=ArrayDim(bh_item_types)-1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          118,
+          "Total.Lines":          23,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"i = 1;",
+"bh_total_cost = 0;",
+"bh_total_size = 0;",
+"while(i <= num_bh_items)",
+"{",
+"    bh_total_cost = bh_total_cost + bh_item_costs[i];",
+"    bh_total_size = bh_total_size + bh_item_sizes[i];",
+"    i = i + 1;",
+"}",
+"for(i = 1; i <= num_bh_items; i = i + 1)",
+"{",
+"    temp_dword = bh_items[i];",
+"    if(ItemIsInUse(temp_dword)) continue;",
+"    if(bh_item_types[i]) FreeItem(GetItemFromShip(Player(), temp_dword));",
+"    else FreeItem(GetArtFromShip(Player(), temp_dword));",
+"}",
+"Sound('Sound.Sell');",
+"ShipMoney(Player(), ShipMoney(Player()) + bh_total_cost);",
+"player_bh_score = player_bh_score + bh_total_size;",
+"ArrayClear(bh_items);",
+"ArrayClear(bh_item_costs);",
+"ArrayClear(bh_item_types);",
+"ArrayClear(bh_item_sizes);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          960,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          119,
+          "Total.Lines":          9,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_dword = GAnswerData;",
+"Sound('Sound.Sell');",
+"bh_total_size = 0;",
+"bh_total_cost = 0;",
+"ShipMoney(Player(), ShipMoney(Player()) + round(0.8 * ItemCost(temp_dword)));",
+"player_bh_score = player_bh_score + ItemSize(temp_dword);",
+"bh_total_size = ItemSize(temp_dword);",
+"bh_total_cost = round(0.8 * ItemCost(temp_dword));",
+"FreeItem(GetItemFromShip(Player(), temp_dword));"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1000,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          123,
+          "Total.Lines":          9,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_dword=GAnswerData;",
+"Sound('Sound.Sell');",
+"bh_total_cost=0;",
+"bh_total_size=0;",
+"ShipMoney(Player(),ShipMoney(Player())+ItemCost(temp_dword)*4);",
+"player_bh_score=player_bh_score+ItemSize(temp_dword)*2;",
+"bh_total_size=ItemSize(temp_dword)*2;",
+"bh_total_cost=ItemCost(temp_dword)*4;",
+"FreeItem(GetArtFromShip(Player(), temp_dword));"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          910,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          124,
+          "Total.Lines":          28,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int=0;",
+"temp_str='';",
+"temp_int_2=0;",
+"for(i=0; i<ShipArts(Player()); i=i+1)",
+"{",
+"    temp_dword=ShipArts(Player(),i);",
+"    if(ItemType(temp_dword)<t_Artefact || ItemType(temp_dword)>t_ArtFastRacks) continue;",
+"    if(ItemType(temp_dword)==t_ArtefactTranclucator) continue;",
+"    if(ItemOwner(temp_dword)!=None) continue;",
+"    if(EqCustomFaction(temp_dword)!='') continue;",
+"    if(ItemIsInUse(temp_dword)) continue;",
+"    if(!ItemIsInUse(temp_dword))temp_int_2=temp_int_2+1;",
+"    temp_int=temp_int+1;",
+"    temp_str=temp_str+'</color>'+temp_int+') '+DeleteTags(ItemFullName(temp_dword))+' (<ItemCost(temp_dword)> cr)'+'<clr> х4'+\"<br>\";",
+"}",
+"for(i=0; i<ShipItems(Player()); i=i+1)",
+"{",
+"    temp_dword=ShipItems(Player(),i);",
+"    if(ItemOwner(temp_dword)!=None) continue;",
+"    if(EqCustomFaction(temp_dword)!='') continue;",
+"    if(ItemType(temp_dword)<=t_Hull || ItemType(temp_dword)>=t_Protoplasm) continue;",
+"    if(ItemIsInUse(temp_dword)) continue;",
+"    //Пропускаем настойку урины",
+"    if(EquipmentImageName(temp_dword) == 'UrineTincture') continue;",
+"    if(!ItemIsInUse(temp_dword))temp_int_2=temp_int_2+1;",
+"    temp_int=temp_int+1;",
+"    temp_str=temp_str+'</color>'+temp_int+') '+DeleteTags(ItemFullName(temp_dword))+' (<round(0.8*ItemCost(temp_dword))> cr)'+\"<br>\";",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          960,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          125,
+          "Total.Lines":          25,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int = 0;",
+"temp_str = '';",
+"for(i=0; i<ShipArts(Player()); i=i+1)",
+"{",
+"    temp_dword=ShipArts(Player(),i);",
+"    if(ItemType(temp_dword)<t_Artefact || ItemType(temp_dword)>t_ArtFastRacks) continue;",
+"    if(ItemType(temp_dword)==t_ArtefactTranclucator) continue;",
+"    if(ItemIsInSet(temp_dword)) continue;",
+"    if(ItemOwner(temp_dword)!=None) continue;",
+"    if(EqCustomFaction(temp_dword)!='') continue;",
+"    if(ItemIsInUse(temp_dword)) continue;",
+"    temp_int=temp_int+1;",
+"    temp_str=temp_str+'</color>'+temp_int+') '+DeleteTags(ItemFullName(temp_dword))+' (<ItemCost(temp_dword)> cr)'+'<clr> х4'+\"<br>\";",
+"}",
+"for(i=0; i<ShipItems(Player()); i=i+1)",
+"{",
+"    temp_dword=ShipItems(Player(),i);",
+"    if(ItemOwner(temp_dword)!=None) continue;",
+"    if(EqCustomFaction(temp_dword)!='') continue;",
+"    if(ItemIsInSet(temp_dword) || ItemIsInUse(temp_dword)) continue;",
+"    if(ItemType(temp_dword)<=t_Hull || ItemType(temp_dword)>=t_Protoplasm) continue;",
+"    temp_int=temp_int+1;",
+"    temp_str=temp_str+'</color>'+temp_int+') '+DeleteTags(ItemFullName(temp_dword))+' (<round(0.8*ItemCost(temp_dword))> cr)'+\"<br>\";",
+"}",
+"ShipCalcParam(Player());"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          850,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          129,
+          "Total.Lines":          33,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int = 0;",
+"temp_int_2 = 0;",
+"temp_str = '';",
+"for(i = 0; i < ShipArts(Player()); i = i + 1)",
+"{",
+"    temp_dword = ShipArts(Player(), i);",
+"    //Исключаем скриптовые артефакты",
+"    if(ItemInScript(temp_dword) == 1)",
+"    {",
+"        if(~EqSpecial(temp_dword))",
+"        {",
+"            //Но добавляем в список на сдачу артефакты с особым параметров в акрине (на них можно повесить акрин, да)",
+"            if(!CT('MicroModuls.' + BonusNumInCfg(EqSpecial(temp_dword)) + '.ScriptItemIgnore')) continue;",
+"        }",
+"        else continue;",
+"    }",
+"    if(ItemType(temp_dword) < t_Artefact || ItemType(temp_dword) > t_ArtFastRacks) continue;",
+"    if(ItemType(temp_dword) == t_ArtefactTranclucator) continue;",
+"    if(ItemOwner(temp_dword) != None) continue;",
+"    if(EqCustomFaction(temp_dword) != '') continue;",
+"    temp_int = temp_int + 1;",
+"    temp_str = temp_str + '</color>' + temp_int + ') ' + DeleteTags(ItemFullName(temp_dword)) + ' (<ItemCost(temp_dword)> cr.)' + '<clr> х4' + \"<br>\";",
+"}",
+"for(i = 0; i < ShipItems(Player()); i = i + 1)",
+"{",
+"    temp_dword = ShipItems(Player(), i);",
+"    if(ItemOwner(temp_dword) != None) continue;",
+"    if(EqCustomFaction(temp_dword) != '') continue;",
+"    if(ItemType(temp_dword) < t_FuelTanks || ItemType(temp_dword) > t_CustomWeapon) continue;",
+"    temp_int = temp_int + 1;",
+"    temp_str = temp_str + '</color>' + temp_int+') ' + DeleteTags(ItemFullName(temp_dword)) + ' (<round(0.8 * ItemCost(temp_dword))> cr.)' + \"<br>\";",
+"}",
+"temp_int_2 = temp_int;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          770,
+          "Pos.y":          70,
+          "Parent":          -1,
+          "#":          143,
+          "Total.Lines":          7,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"EXP_science_status = 1;",
+"temp_int = 2;",
+"temp_str = CT('RankScientific.0.Text');",
+"temp_str_2 = CT('RankScientific.0.Name');",
+"holes_left = science_ranks_points[cur_science_rank + 1] - holes_count;",
+"ShipAddCustomShipInfo(Player(), 'Science_rank_infos', 'NoShow', temp_int,holes_left, 0, temp_str, temp_str_2);",
+"InterfaceState('Ship', 'CustomRankImage_2', 1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          820,
+          "Pos.y":          70,
+          "Parent":          -1,
+          "#":          150,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"InjectAnswer('black_hole_talk',\"Далее\",0);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          910,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          155,
+          "Total.Lines":          5,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"Klesh_mon=0;",
+"InterfaceState('StarMap','kl_but_y_a',0);",
+"InterfaceState('StarMap','kl_but_r_a',0);",
+"InterfaceState('StarMap','kl_but_g_a',0);",
+"InterfaceState('StarMap','Klesh_panel',0);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          910,
+          "Pos.y":          20,
+          "Parent":          -1,
+          "#":          156,
+          "Total.Lines":          30,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"Klesh_mon=1;",
+"InterfaceState('StarMap','Klesh_panel',1);",
+"temp_str=BonusCustomTag(HullSpecial(Player()));",
+"if(temp_str=='ExpScienceRanks_TickAttackMode')",
+"{",
+"    InterfaceState('StarMap','kl_but_y_a',0);",
+"    InterfaceState('StarMap','kl_but_r_a',1);",
+"    InterfaceState('StarMap','kl_but_g_a',0);",
+"    InterfaceState('StarMap','kl_but_g',1);",
+"    InterfaceState('StarMap','kl_but_r',0);",
+"    InterfaceState('StarMap','kl_but_y',1);",
+"}",
+"else if(temp_str=='ExpScienceRanks_TickDefenseMode')",
+"{",
+"    InterfaceState('StarMap','kl_but_y_a',0);",
+"    InterfaceState('StarMap','kl_but_r_a',0);",
+"    InterfaceState('StarMap','kl_but_g_a',1);",
+"    InterfaceState('StarMap','kl_but_g',0);",
+"    InterfaceState('StarMap','kl_but_r',1);",
+"    InterfaceState('StarMap','kl_but_y',1);",
+"}",
+"else if(temp_str=='ExpScienceRanks_TickSpeedMode')",
+"{",
+"    InterfaceState('StarMap','kl_but_y_a',1);",
+"    InterfaceState('StarMap','kl_but_r_a',0);",
+"    InterfaceState('StarMap','kl_but_g_a',0);",
+"    InterfaceState('StarMap','kl_but_g',1);",
+"    InterfaceState('StarMap','kl_but_r',1);",
+"    InterfaceState('StarMap','kl_but_y',0);",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          870,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          157,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(Klesh_mon) temp_str = \"включено\";",
+"else temp_str = \"выключено\";"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          168,
+          "#":          167,
+          "Total.Lines":          8,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Каждый ход обновляем информацию о номерах бонусов для Клеща, если игрок уже получил этот корпус",
+"//Необходимо на случай переподключения модов и сбивания нумерации бонусов",
+"if(TickWasTaken)",
+"{",
+"    science_superhulls[0] = FindBonusByNameInCfg('ExpScienceRanks_TickAttackMode');",
+"    science_superhulls[1] = FindBonusByNameInCfg('ExpScienceRanks_TickDefenseMode');",
+"    science_superhulls[2] = FindBonusByNameInCfg('ExpScienceRanks_TickSpeedMode');",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          580,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          182,
+          "Total.Lines":          86,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Автоматическая смена режимов \"Клеща\"",
+"if(ShipInNormalSpace(Player()))",
+"{",
+"    cur_hull_bonus = HullSpecial(Player());",
+"    if(~cur_hull_bonus)",
+"    {",
+"        if(!findsubstr(BonusNumInCfg(cur_hull_bonus), 'ExpScienceRanks_Tick'))",
+"        {",
+"            if(!Klesh_mon)",
+"            {",
+"                if(",
+"                   cur_hull_bonus == science_superhulls[0] ||",
+"                   cur_hull_bonus == science_superhulls[1] ||",
+"                   cur_hull_bonus == science_superhulls[2]",
+"                  )",
+"                {",
+"                    hull_damage[2] = hull_damage[1];",
+"                    hull_damage[1] = hull_damage[0];",
+"                    hull_damage[0] = HullDamage(Player());",
+"                    cur_hull_hp = HullHP(Player());",
+"                    mean_damage = (hull_damage[0] + hull_damage[1] + hull_damage[2]) / 3;",
+"",
+"                    if(mean_damage < 10)",
+"                    {",
+"                        if(cur_hull_bonus != science_superhulls[2])",
+"                        {",
+"                            SwitchToMirrorImage(Player(), science_superhulls[2]);",
+"                            HullHP(Player(), cur_hull_hp);",
+"",
+"                            Ether(2, \"\", \"ИИ вашего корабля оценил текущую обстановку как безопасную и переключился в <bonus_text[2]> режим.\");",
+"                        }",
+"                    }",
+"                    else if(mean_damage < 50)",
+"                    {",
+"                        if(mean_damage >= 10)",
+"                        {",
+"                            if(cur_hull_bonus != science_superhulls[0])",
+"                            {",
+"                                //Сбрасываем приказ игрока, если установлен приказ на прыжок",
+"                                //Необходимо, чтобы устранить возможный абуз бонуса к дальности прыжка от скоростного режима",
+"                                if(cur_hull_bonus == science_superhulls[2])",
+"                                {",
+"                                    if(ShipOrder(Player()) == 3)",
+"                                    {",
+"                                        if(!ShipCanJump(Player(), ShipStar(Player()), ShipOrderObj(Player()), 1))",
+"                                        {",
+"                                            OrderNone(Player());",
+"                                        }",
+"                                    }",
+"                                }",
+"",
+"                                SwitchToMirrorImage(Player(), science_superhulls[0]);",
+"                                HullHP(Player(), cur_hull_hp);",
+"",
+"                                Ether(2, \"\", \"ИИ вашего корабля оценил опасность текущей обстановки как приемлемую и переключился в режим <bonus_text[0]>.\");",
+"                            }",
+"                        }",
+"                    }",
+"                    else //if(mean_damage >= 50)",
+"                    {",
+"                        if(cur_hull_bonus != science_superhulls[1])",
+"                        {",
+"                            //Сбрасываем приказ игрока, если установлен приказ на прыжок",
+"                            //Необходимо, чтобы устранить возможный абуз бонуса к дальности прыжка от скоростного режима",
+"                            if(cur_hull_bonus == science_superhulls[2])",
+"                            {",
+"                                if(ShipOrder(Player()) == 3)",
+"                                {",
+"                                    if(!ShipCanJump(Player(), ShipStar(Player()), ShipOrderObj(Player()), 1))",
+"                                    {",
+"                                        OrderNone(Player());",
+"                                    }",
+"                                }",
+"                            }",
+"",
+"                            SwitchToMirrorImage(Player(), science_superhulls[1]);",
+"                            HullHP(Player(), cur_hull_hp);",
+"",
+"                            Ether(2, \"\", \"ИИ вашего корабля оценил текущую обстановку как близкую к критической и переключился в режим <bonus_text[1]>.\");",
+"                        }",
+"                    }",
+"                }",
+"            }",
+"        }",
+"    }",
+"}"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"InitPlanet",
+          "Pos.x":          170,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          1,
+          "Race":          62,
+          "Owner":          62,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          170,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          4,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"InitStar",
+          "Pos.x":          170,
+          "Pos.y":          150,
+          "Parent":          -1,
+          "#":          0,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":false,
+          "NoComeKling":false        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          870,
+          "Pos.y":          530,
+          "Parent":          -1,
+          "#":          57,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"num_experiments < 10"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          940,
+          "Pos.y":          490,
+          "Parent":          -1,
+          "#":          61,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cur_chance > destruct_chance"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          960,
+          "Pos.y":          490,
+          "Parent":          -1,
+          "#":          62,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cur_chance <= destruct_chance"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          550,
+          "Pos.y":          490,
+          "Parent":          -1,
+          "#":          87,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cur_chance <= destruct_chance"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          570,
+          "Pos.y":          490,
+          "Parent":          -1,
+          "#":          88,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cur_chance > destruct_chance"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          900,
+          "Pos.y":          430,
+          "Parent":          -1,
+          "#":          91,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ItemType(cur_item) >= t_Weapon1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          900,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          92,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ItemType(cur_item) < t_Weapon1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          870,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          108,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"num_experiments >= 10"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          800,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          109,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"acrin_lvl_chance[1] + acrin_lvl_chance[2] * 3 + acrin_lvl_chance[3] * 3 <= player_bh_score"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          950,
+          "Pos.y":          250,
+          "Parent":          -1,
+          "#":          126,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          250,
+          "Parent":          -1,
+          "#":          127,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!temp_int"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          860,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          130,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          850,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          131,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!temp_int"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          890,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          134,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int == temp_int_2"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          870,
+          "Pos.y":          290,
+          "Parent":          -1,
+          "#":          135,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int<temp_int_2 && temp_int!=temp_int_2"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          730,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          139,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cur_science_rank >= 0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          690,
+          "Pos.y":          420,
+          "Parent":          -1,
+          "#":          140,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cur_science_rank >= 2"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          820,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          145,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"EXP_science_status == 1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          890,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          158,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"Klesh_mon"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          890,
+          "Pos.y":          40,
+          "Parent":          -1,
+          "#":          159,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!Klesh_mon"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          820,
+          "Pos.y":          -70,
+          "Parent":          -1,
+          "#":          168,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!ShipIsTakeoff(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          800,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          172,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"chosen_akrin <= -1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          870,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          173,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"~chosen_akrin"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          500,
+          "Pos.y":          70,
+          "Parent":          -1,
+          "#":          176,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cur_science_rank < 8"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          560,
+          "Pos.y":          70,
+          "Parent":          -1,
+          "#":          177,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cur_science_rank == 8"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"PlayerState",
+          "Pos.x":          170,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          3,
+          "Move":          0,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":"TVar",
+          "Name":"holes_count",
+          "Pos.x":          270,
+          "Pos.y":          -20,
+          "Parent":          -1,
+          "#":          7,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"add_complete",
+          "Pos.x":          460,
+          "Pos.y":          -50,
+          "Parent":          -1,
+          "#":          8,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"science_ranks_names",
+          "Pos.x":          270,
+          "Pos.y":          60,
+          "Parent":          -1,
+          "#":          9,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"science_ranks_points",
+          "Pos.x":          270,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          10,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_science_rank",
+          "Pos.x":          270,
+          "Pos.y":          20,
+          "Parent":          -1,
+          "#":          12,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"holes_left",
+          "Pos.x":          270,
+          "Pos.y":          0,
+          "Parent":          -1,
+          "#":          14,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"science_reward_eq_size",
+          "Pos.x":          270,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          15,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"science_reward_item_type",
+          "Pos.x":          270,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          16,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"science_reward_item",
+          "Pos.x":          270,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          17,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"science_reward_item_name",
+          "Pos.x":          270,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          18,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"science_superhulls",
+          "Pos.x":          270,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          19,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"hull_gift",
+          "Pos.x":          270,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          20,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_hull_bonus",
+          "Pos.x":          560,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          23,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"hull_damage",
+          "Pos.x":          560,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          24,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"mean_damage",
+          "Pos.x":          460,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          25,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"bonus_text",
+          "Pos.x":          460,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          26,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_hull_hp",
+          "Pos.x":          460,
+          "Pos.y":          310,
+          "Parent":          -1,
+          "#":          27,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"bonus_text_dialog",
+          "Pos.x":          270,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          29,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"bh_items",
+          "Pos.x":          1040,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          35,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"bh_item_names",
+          "Pos.x":          1040,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          36,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"bh_item_indexes",
+          "Pos.x":          1040,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          37,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"bh_total_cost",
+          "Pos.x":          1160,
+          "Pos.y":          290,
+          "Parent":          -1,
+          "#":          38,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"bh_items_page",
+          "Pos.x":          1040,
+          "Pos.y":          290,
+          "Parent":          -1,
+          "#":          40,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"num_bh_items",
+          "Pos.x":          1040,
+          "Pos.y":          310,
+          "Parent":          -1,
+          "#":          41,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"chosen_num",
+          "Pos.x":          1160,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          42,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"bh_item_costs",
+          "Pos.x":          1160,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          43,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"bh_item_types",
+          "Pos.x":          1160,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          44,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"EXP_science_status",
+          "Pos.x":          270,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          45,
+          "Var.Type":"Int",
+          "Init":"-1",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"player_bh_score",
+          "Pos.x":          1040,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          46,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"bh_item_sizes",
+          "Pos.x":          1160,
+          "Pos.y":          250,
+          "Parent":          -1,
+          "#":          47,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"bh_total_size",
+          "Pos.x":          1160,
+          "Pos.y":          310,
+          "Parent":          -1,
+          "#":          48,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"num_experiments",
+          "Pos.x":          1320,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          51,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"destruct_chance",
+          "Pos.x":          1190,
+          "Pos.y":          430,
+          "Parent":          -1,
+          "#":          52,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"acrin_lvl_chance",
+          "Pos.x":          1320,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          53,
+          "Var.Type":"Array",
+          "Init":"6",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_str",
+          "Pos.x":          270,
+          "Pos.y":          300,
+          "Parent":          -1,
+          "#":          54,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"akrin_num_array",
+          "Pos.x":          1320,
+          "Pos.y":          470,
+          "Parent":          -1,
+          "#":          56,
+          "Var.Type":"Array",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"chosen_akrin",
+          "Pos.x":          1320,
+          "Pos.y":          530,
+          "Parent":          -1,
+          "#":          58,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_chance",
+          "Pos.x":          1320,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          59,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"level",
+          "Pos.x":          1190,
+          "Pos.y":          490,
+          "Parent":          -1,
+          "#":          66,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_bh_item",
+          "Pos.x":          1320,
+          "Pos.y":          430,
+          "Parent":          -1,
+          "#":          69,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_art",
+          "Pos.x":          1190,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          70,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_int",
+          "Pos.x":          270,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          71,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"bh_score_to_del",
+          "Pos.x":          270,
+          "Pos.y":          530,
+          "Parent":          -1,
+          "#":          72,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cikl_new",
+          "Pos.x":          1040,
+          "Pos.y":          250,
+          "Parent":          -1,
+          "#":          74,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"size_added",
+          "Pos.x":          1040,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          75,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"bh_item_chsn",
+          "Pos.x":          1320,
+          "Pos.y":          490,
+          "Parent":          -1,
+          "#":          76,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"pg_akrin",
+          "Pos.x":          1190,
+          "Pos.y":          470,
+          "Parent":          -1,
+          "#":          78,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"akrin_weigth",
+          "Pos.x":          170,
+          "Pos.y":          470,
+          "Parent":          -1,
+          "#":          94,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"akrin_cost",
+          "Pos.x":          170,
+          "Pos.y":          490,
+          "Parent":          -1,
+          "#":          95,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"perc_srch",
+          "Pos.x":          270,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          96,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_str_2",
+          "Pos.x":          270,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          101,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_dword",
+          "Pos.x":          270,
+          "Pos.y":          470,
+          "Parent":          -1,
+          "#":          110,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_dword_2",
+          "Pos.x":          270,
+          "Pos.y":          490,
+          "Parent":          -1,
+          "#":          111,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_int_2",
+          "Pos.x":          270,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          133,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"Klesh_mon",
+          "Pos.x":          900,
+          "Pos.y":          60,
+          "Parent":          -1,
+          "#":          160,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_str_4",
+          "Pos.x":          270,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          161,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"seed",
+          "Pos.x":          1190,
+          "Pos.y":          530,
+          "Parent":          -1,
+          "#":          162,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"i",
+          "Pos.x":          1190,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          163,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_str_3",
+          "Pos.x":          270,
+          "Pos.y":          340,
+          "Parent":          -1,
+          "#":          164,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"j",
+          "Pos.x":          1230,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          165,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"TickWasTaken",
+          "Pos.x":          870,
+          "Pos.y":          -40,
+          "Parent":          -1,
+          "#":          169,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_int_3",
+          "Pos.x":          270,
+          "Pos.y":          420,
+          "Parent":          -1,
+          "#":          170,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"check",
+          "Pos.x":          270,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          171,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_item",
+          "Pos.x":          270,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          174,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tstr1",
+          "Pos.x":          210,
+          "Pos.y":          300,
+          "Parent":          -1,
+          "#":          178,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_ruin",
+          "Pos.x":          170,
+          "Pos.y":          420,
+          "Parent":          -1,
+          "#":          179,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"TortugatzId",
+          "Pos.x":          270,
+          "Pos.y":          580,
+          "Parent":          -1,
+          "#":          180,
+          "Var.Type":"Int",
+          "Init":"70",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_hole",
+          "Pos.x":          170,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          181,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      4,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      1,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      2,
+      "End":      1,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      2,
+      "End":      3,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      34,
+      "End":      39,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      55,
+      "End":      50,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      60,
+      "End":      61,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      60,
+      "End":      62,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      62,
+      "End":      64,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      61,
+      "End":      65,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      64,
+      "End":      63,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      63,
+      "End":      68,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      67,
+      "End":      68,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      32,
+      "End":      31,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      73,
+      "End":      28,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      87,
+      "End":      84,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      84,
+      "End":      81,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      88,
+      "End":      83,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      83,
+      "End":      82,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      82,
+      "End":      80,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      81,
+      "End":      80,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      85,
+      "End":      87,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      85,
+      "End":      88,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      65,
+      "End":      91,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      65,
+      "End":      92,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      92,
+      "End":      93,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      91,
+      "End":      67,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      93,
+      "End":      68,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      86,
+      "End":      89,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      50,
+      "End":      89,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      97,
+      "End":      90,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      89,
+      "End":      31,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      90,
+      "End":      79,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      31,
+      "End":      98,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      99,
+      "End":      21,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      100,
+      "End":      13,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      49,
+      "End":      55,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      104,
+      "End":      105,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      104,
+      "End":      77,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      77,
+      "End":      55,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      107,
+      "End":      60,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      108,
+      "End":      104,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      106,
+      "End":      107,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      50,
+      "End":      109,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      109,
+      "End":      102,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      103,
+      "End":      112,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      112,
+      "End":      108,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      112,
+      "End":      57,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      68,
+      "End":      55,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      86,
+      "End":      113,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      114,
+      "End":      85,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      79,
+      "End":      115,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      115,
+      "End":      86,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      80,
+      "End":      115,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      50,
+      "End":      79,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      34,
+      "End":      117,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      120,
+      "End":      117,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      120,
+      "End":      39,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      122,
+      "End":      118,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      121,
+      "End":      123,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      116,
+      "End":      119,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      33,
+      "End":      124,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      124,
+      "End":      34,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      119,
+      "End":      125,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      123,
+      "End":      125,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      118,
+      "End":      125,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      125,
+      "End":      126,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      126,
+      "End":      120,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      125,
+      "End":      127,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      127,
+      "End":      128,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      128,
+      "End":      39,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      129,
+      "End":      130,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      130,
+      "End":      33,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      129,
+      "End":      131,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      131,
+      "End":      132,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      39,
+      "End":      134,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      39,
+      "End":      135,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      134,
+      "End":      137,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      137,
+      "End":      138,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      135,
+      "End":      136,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      136,
+      "End":      138,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      31,
+      "End":      139,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      139,
+      "End":      97,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      90,
+      "End":      89,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      86,
+      "End":      140,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      90,
+      "End":      140,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      140,
+      "End":      49,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      141,
+      "End":      142,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      142,
+      "End":      143,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      141,
+      "End":      144,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      31,
+      "End":      145,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      145,
+      "End":      129,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      144,
+      "End":      146,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      146,
+      "End":      147,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      143,
+      "End":      148,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      149,
+      "End":      141,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      148,
+      "End":      150,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      151,
+      "End":      157,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      157,
+      "End":      152,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      152,
+      "End":      158,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      152,
+      "End":      159,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      158,
+      "End":      153,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      159,
+      "End":      154,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      153,
+      "End":      155,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      154,
+      "End":      156,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      21,
+      "End":      22,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      22,
+      "End":      13,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      166,
+      "End":      68,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      168,
+      "End":      167,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      57,
+      "End":      105,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      172,
+      "End":      166,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      173,
+      "End":      60,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      57,
+      "End":      173,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      57,
+      "End":      172,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      28,
+      "End":      175,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      175,
+      "End":      177,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      177,
+      "End":      99,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      175,
+      "End":      176,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      176,
+      "End":      100,
+      "Nom":      0,
+      "Arrow":true    
+    }  
+  ],
+  "Rect.Text":  
+  [
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      443,
+      "Rect.Top":      -87,
+      "Rect.Right":      723,
+      "Rect.Bottom":      -34,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      0,
+      "AlignY":      -1,
+      "AlignRect":false,
+      "Text":"Счётчик посещённых ЧД",
+      "Color":      0,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    },
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      442,
+      "Rect.Top":      -27,
+      "Rect.Right":      715,
+      "Rect.Bottom":      184,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      0,
+      "AlignY":      -1,
+      "AlignRect":false,
+      "Text":"Повышение доверия, открытие отделов",
+      "Color":      0,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    },
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      443,
+      "Rect.Top":      187,
+      "Rect.Right":      715,
+      "Rect.Bottom":      364,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      0,
+      "AlignY":      -1,
+      "AlignRect":false,
+      "Text":"ИИ Клеща",
+      "Color":      0,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    },
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      837,
+      "Rect.Top":      144,
+      "Rect.Right":      1148,
+      "Rect.Bottom":      364,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      0,
+      "AlignY":      -1,
+      "AlignRect":false,
+      "Text":"Сдача ЧД-шного оборудования",
+      "Color":      0,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    },
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      717,
+      "Rect.Top":      144,
+      "Rect.Right":      834,
+      "Rect.Bottom":      364,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      0,
+      "AlignY":      -1,
+      "AlignRect":false,
+      "Text":"Диалоги ЧД",
+      "Color":      0,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    },
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      718,
+      "Rect.Top":      -27,
+      "Rect.Right":      835,
+      "Rect.Bottom":      140,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      0,
+      "AlignY":      -1,
+      "AlignRect":false,
+      "Text":"Вкл\\Выкл\r\nсчётчик ЧД",
+      "Color":      0,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    },
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      715,
+      "Rect.Top":      366,
+      "Rect.Right":      1148,
+      "Rect.Bottom":      569,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      0,
+      "AlignY":      -1,
+      "AlignRect":false,
+      "Text":"Акринация  оборудования",
+      "Color":      0,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    },
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      442,
+      "Rect.Top":      366,
+      "Rect.Right":      716,
+      "Rect.Bottom":      569,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      0,
+      "AlignY":      -1,
+      "AlignRect":false,
+      "Text":"Деакринация оборудования",
+      "Color":      0,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    },
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      838,
+      "Rect.Top":      -27,
+      "Rect.Right":      982,
+      "Rect.Bottom":      141,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      0,
+      "AlignY":      -1,
+      "AlignRect":false,
+      "Text":"Ручное управление\r\nКлеща",
+      "Color":      0,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  53,
+  "BlockPar.EC":  
+  [
+    {
+      "#":"137",
+      "String":"ИИ вашего корабля оценил текущую обстановку как безопасную и переключился в <0> режим."    
+    },
+    {
+      "#":"139",
+      "String":"ИИ вашего корабля оценил текущую обстановку как близкую к критической и переключился в режим <0>."    
+    },
+    {
+      "#":"185",
+      "String":"Какой эффект вы хотели бы попробовать наложить на <0>?<br>На данный момент шансы получить определённый уровень акрина таковы:<br>Первый уровень - <1>%<br>Второй уровень - <2>%<br>Третий уровень - <3>%"    
+    },
+    {
+      "#":"196",
+      "String":"Доступные операции:"    
+    },
+    {
+      "#":"228",
+      "String":"Эксперимент по акринации"    
+    },
+    {
+      "#":"229",
+      "String":"Эксперимент по деакринации"    
+    },
+    {
+      "#":"230",
+      "String":"ИИ вашего корабля оценил опасность текущей обстановки как приемлемую и переключился в режим <0>."    
+    },
+    {
+      "#":"235",
+      "String":"Сдать неопознанное оборудование"    
+    },
+    {
+      "#":"241",
+      "String":"Далее"    
+    },
+    {
+      "#":"244",
+      "String":"Выбрать другой предмет для акринации"    
+    },
+    {
+      "#":"297",
+      "String":"<br>"    
+    },
+    {
+      "#":"299",
+      "String":"Эксперимент оказался неудачным, и <0> был уничтожен.<br>И не говорите, что вас не предупреждали о такой возможности.<br>В утешение могу сказать, что отрицательный результат - тоже результат. Кое-чему мы всё-таки научились, и в будущем вероятность удачи составит уже <1>%.<br>Также несколько повысились шансы получить акрин более высокого уровня:<br>Первый уровень - <2>%<br>Второй уровень - <3>%<br>Третий уровень - <4>%"    
+    },
+    {
+      "#":"302",
+      "String":"Эксперимент оказался удачным, и вы получаете <0> <1>.<br>К тому же мы кое-чему научились, и в будущем вероятность удачи составит уже <2>%.<br>Также несколько повысились шансы получить акрин более высокого уровня:<br>Первый уровень - <3>%<br>Второй уровень - <4>%<br>Третий уровень - <5>%"    
+    },
+    {
+      "#":"304",
+      "String":"У меня в трюме нет предметов неопознанного происхождения"    
+    },
+    {
+      "#":"313",
+      "String":"В вашем трюме находится следующее оборудование неизвестного происхождения, представляющее для нас огромный научный интерес:<br><br><0><br>Какие из этих предметов вы намерены передать нашему отделу?"    
+    },
+    {
+      "#":"321",
+      "String":"В другой раз"    
+    },
+    {
+      "#":"322",
+      "String":"Извините, что мы так настойчивы. Спасибо вам, <Player>. Мы всегда рады сотрудничать с вами!"    
+    },
+    {
+      "#":"323",
+      "String":"Значит, надо их достать, <Player>. Рейнджеры всегда заботились о наших исследованиях. Мы в вас верим."    
+    },
+    {
+      "#":"325",
+      "String":"На большее я не мог и рассчитывать!<br>Мечтал об этом с тех пор, как меня первый раз побили в школе и сломали очки"    
+    },
+    {
+      "#":"326",
+      "String":"Я передумал"    
+    },
+    {
+      "#":"333",
+      "String":"Так чем же я вам могу помочь в исследовании Чёрных Дыр?"    
+    },
+    {
+      "#":"342",
+      "String":"Видите ли, мы сейчас занимаемся исследованием чёрных дыр и... Да-да, я знаю, что у нас идет война с доминаторами и все силы должны быть брошены на исследования этих стальных ребят, но поверьте - все под контролем. Основная часть ученых по-прежнему занимается проблемой доминаторов, а небольшие группы сейчас проводят исследования в других сферах. Такой подход позволяет продолжать идти по пути научно-технического прогресса даже во время глобальной галактической войны. Так вот, как я уже сказал, мы занимаемся изучением чёрных дыр. Коалиция столкнулась с этим феноменом уже довольно давно, еще до клисанской войны, но мы до сих пор практически ничего о них не знаем. А главной причиной этого является практически полное отсутствие материала - нам просто нечего изучать. Никто особенно не горит желанием лезть в дыры, ведь это безумно опасно, там не действуют законы физики нормального мира, гиперпространственные сгустки, а именно в один из них ведет каждая дыра, совершенно непредсказуемое место и мы совсем ничего не знаем о таинственных кораблях, обитающих там. Словом, работёнка не простая. И поэтому мы решили, что самым лучшим способом в данной ситуации будет найм рейнджеров и других свободных пилотов. Они бы привозили нам материал, а мы бы платили вознаграждения, а особенно отличившимся даже можно давать научные степени. Кто знает, может быть, когда-нибудь Галактическую Академию Наук возглавит один из рейнджеров?<br>Так что? Вы хотите присоединиться к нашей оперативной группе исследователей чёрных дыр?"    
+    },
+    {
+      "#":"343",
+      "String":"Ну что же... нет, так нет. Однако предложение остается в силе. Если надумаете нам помочь - двери всегда открыты... Это я образно, если что. У нас тут шлюзы и они всегда закрыты, но для вас откроем."    
+    },
+    {
+      "#":"344",
+      "String":"Нет, лучше пока обойдемся без подобных экспериментов, хорошо?<br>Лучше давайте вы нам материал начнете привозить. Чем активнее вы будете исследовать червоточины, тем скорее будете получать научные степени, а вместе с ними и доступ к новым, секретным технологиям, ценные подарки, ну и конечно социальные льготы. Вы не знали? У нас даже стоматолог есть."    
+    },
+    {
+      "#":"345",
+      "String":"Отдел акринных технологий"    
+    },
+    {
+      "#":"346",
+      "String":"А почему бы и нет? С детства был фанатом науки. В школе на уроке химии как-то раз пытался намешать состав, который бы дал мне суперсилу... В тот раз правда не очень получилось, но теперь то с моими нынешними знаниями и вашим оборудованием..."    
+    },
+    {
+      "#":"347",
+      "String":"Нет, вы знаете, это не для меня. Я больше по доминаторам специализируюсь, ну на худой конец - по пиратам"    
+    },
+    {
+      "#":"348",
+      "String":"Исследование Чёрных Дыр"    
+    },
+    {
+      "#":"349",
+      "String":", но вы можете выбрать тип эффекта"    
+    },
+    {
+      "#":"350",
+      "String":", впрочем, как и тип эффекта"    
+    },
+    {
+      "#":"351",
+      "String":"Ручное управление режимами Клеща"    
+    },
+    {
+      "#":"352",
+      "String":"Ручной режим управления: <0>"    
+    },
+    {
+      "#":"353",
+      "String":"Выключить"    
+    },
+    {
+      "#":"354",
+      "String":"Включить"    
+    },
+    {
+      "#":"365",
+      "String":"А теперь самое важное.<br>Это сверхсекретная информация, но именно благодаря Вам нам удалось добиться таких невероятных успехов в изучении технологий неизвестных кораблей из гиперпространства.<br>Потому именно Вы удостаиваетесь чести стать пилотом-испытателем корабля, разработанного на основе этих технологий. <br>Собран он почти полностью из материалов, добытых в чёрных дырах, что позволило добиться <clr>эффекта совместимости<clrEnd> с некоторыми артефактами, ранее недоступного для обычных корпусов.<br>Уникальная особенность этого корабля - подвижная броня. Это корабль <clr>трансформер с продвинутым ИИ<clrEnd>. Он постоянно отслеживает множество параметров и практически моментально реагирует на изменения обстановки.<br>Предусмотрены <clr>три режима<clrEnd>:<br><br>В режиме<clr> атаки <clrEnd>листовые пластины брони сдвигаются назад от орудийного отсека, частично перекрывая выходные сопла двигателя, за счет чего происходит небольшое снижение его мощности, но при этом увеличиваются наносимые повреждения.<br><br>В режиме<clr> защиты <clrEnd>бронепластины сдвигаются вперед, сужая орудийные амбразуры, что сильно затрудняет работу системы наведения, которая уже не способна эффективно находить уязвимости противника, что существенно снижает наносимый урон и немного дальность стрельбы, при этом увеличивая защиту.<br><br>В <clr>гибридном <clrEnd>режиме бронепластины раздвигаются немного в стороны, что позволяет увеличить скорость двигателя без ущерба работе системы наведения орудий, но при этом затрудняет работу ремонтного дроида."    
+    },
+    {
+      "#":"372",
+      "String":"Эксперимент оказался неудачным, и <0> был уничтожен.<br>И не говорите, что вас не предупреждали о такой возможности.<br>В утешение могу сказать, что отрицательный результат - тоже результат. Кое-чему мы всё-таки научились, и в будущем вероятность удачи составит уже <1>%."    
+    },
+    {
+      "#":"373",
+      "String":"Эксперимент оказался удачным, вы получаете <0> и ваш личный нан-счёт пополняется  весом снятого акрина: <1>. <br>К тому же мы кое-чему научились, и в будущем вероятность удачи составит уже <2>%."    
+    },
+    {
+      "#":"374",
+      "String":"Хорошо, но учтите, что это не услуга, а именно эксперимент. Так что никакие <clr>претензии<clrEnd> по его результатам <clr>не принимаются<clrEnd>. <br>-----------------------------------------------<br>Существует немалая <clr>вероятность<clrEnd>, что при попытке снятия акрина с оборудования оно <clr>может быть уничтожено<clrEnd>. <br>Сейчас мы оцениваем шансы на удачный результат как <0>%<br>-----------------------------------------------<br>Возможно, <clr>со временем<clrEnd> нам удастся вычислить нужные закономерности, и <clr>процесс станет более контролируемым<clrEnd>.<br>-----------------------------------------------<br>Не забывайте, что из-за удаления некоторых элементов, вес оборудования и цена <clr>уменьшается на 10%<clrEnd>."    
+    },
+    {
+      "#":"376",
+      "String":"Эксперимент оказался удачным, и вы получаете <0>.<br>К тому же мы кое-чему научились, и в будущем вероятность удачи составит уже <1>%.<br>Также несколько повысились шансы получить акрин более высокого уровня:<br>Первый уровень - <2>%<br>Второй уровень - <3>%<br>Третий уровень - <4>%"    
+    },
+    {
+      "#":"378",
+      "String":"Мы всегда готовы принять за 80% стоимости любое оборудование неизвестного происхождения. Кстати, за артефакты мы платим <clr>в четыре раза больше<clrEnd>, но не можем взять артефакт типа \"Транклюкатор\".<br>Вес сданного оборудования зачисляется на ваш <clr>личный нан-счёт<clrEnd>, с которого вы можете оплачивать эксперименты по <clr>наложению акрина<clrEnd> на оборудование и не только."    
+    },
+    {
+      "#":"379",
+      "String":"Хорошо, но учтите, что это не услуга, а именно эксперимент. Так что никакие <clr>претензии<clrEnd> по его результатам <clr>не принимаются<clrEnd>. <br>-----------------------------------------------<br>Существует немалая <clr>вероятность<clrEnd>, что при попытке наложения акрина на оборудование оно <clr>может быть уничтожено<clrEnd>. <br>Сейчас мы оцениваем шансы на удачный результат как <0>%<br>-----------------------------------------------<br>Также <clr>уровень эффекта<clrEnd> не всегда поддаётся прогнозированию<1>.<br>На данный момент шансы таковы:<br>Первый уровень - <2>%<br>Второй уровень - <3>%<br>Третий уровень - <4>%<br>-----------------------------------------------<br><clr>Стоимость<clrEnd> одного эксперимента также зависит от нашего прогресса в этой области. Но не обольщайтесь, чем более высокий уровень акрина мы способны наложить на оборудование, тем больше будет списываться с вашего счёта.<br>Сейчас стоимость эксперимента составляет <5> нан, а на счету у вас <6>.<br>-----------------------------------------------<br>Возможно, <clr>со временем<clrEnd> нам удастся вычислить нужные закономерности, и <clr>процесс станет более контролируемым<clrEnd>.<br>-----------------------------------------------<br>На данный момент нами проведено <7> экспериментов по акринации.<br>-----------------------------------------------<br>Не забывайте, что из-за установки новых элементов, вес оборудования и цена <clr>увеличивается на 10%<clrEnd>."    
+    },
+    {
+      "#":"380",
+      "String":"Благодарим за сотрудничество, <Player>! Нам очень приятно, что вы проявляете интерес к научным изысканиям, примите эти <0> cr. в качестве компенсации за риск. А также, согласно нашему тарифу, после сдачи оборудования на <1> тонн ваш личный нан-счет составляет <2> нан.<br>Вот список того, что нас еще интересует:<br><br><3><br>"    
+    },
+    {
+      "#":"381",
+      "String":"Благодарим за сотрудничество, <Player>! Нам очень приятно, что вы проявляете интерес к научным изысканиям, примите эти <0> cr. в качестве компенсации за риск. А также, согласно нашему тарифу, после сдачи оборудования на <1> тонн ваш личный нан-счет составляет <2> нан."    
+    },
+    {
+      "#":"383",
+      "String":"Гибридный"    
+    },
+    {
+      "#":"384",
+      "String":"Защиты"    
+    },
+    {
+      "#":"385",
+      "String":"Атаки"    
+    },
+    {
+      "#":"386",
+      "String":"включено"    
+    },
+    {
+      "#":"387",
+      "String":"выключено"    
+    },
+    {
+      "#":"388",
+      "String":"Вы исследовали уже <0> Чёрных Дыр и потому представлены к новой учёной степени <1>.<br>Торжественную церемонию и вручение подарка вам организуют на любой научной базе.<br>До тех пор подсчёт исследованных вами Чёрных Дыр приостановлен."    
+    },
+    {
+      "#":"389",
+      "String":"Извините, но подходящих акринов под данное оборудование мы не нашли. Вероятно, акринировать его попросту невозможно."    
+    },
+    {
+      "#":"390",
+      "String":"<0>"    
+    },
+    {
+      "#":"391",
+      "String":""    
+    },
+    {
+      "#":"40",
+      "String":"Рад служить прогрессу!"    
+    }  
+  ]
+}

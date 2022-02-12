@@ -1,0 +1,607 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  -199,
+  "ViewPos.y":  74,
+  "ScriptName":"Mod_RevRangersArts",
+  "ScriptFileOut":"D:\\Mod_RevRangersArts.scr",
+  "ScriptTextOut":"D:\\Mod_RevRangersArts.txt",
+  "GraphPoint.Count":  23,
+  "GraphLink.Count":  22,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  0,
+  "Stars.Count":  1,
+  "Planets.Count":  2,
+  "Ships.Count":  1,
+  "States.Count":  2,
+  "Groups.Count":  2,
+  "Places.Count":  0,
+  "Items.Count":  9,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  0,
+  "DialogMessages.Count":  0,
+  "DialogAnswers.Count":  0,
+  "Operations.Count":  4,
+  "Statements.Count":  2,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"Ranger1",
+          "Pos.x":          340,
+          "Pos.y":          580,
+          "Parent":          -1,
+          "#":          5,
+          "Owner":          62,
+          "Group.Type":          3,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":false,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        },
+        {
+          "Type":"TGroup",
+          "Name":"Ranger2",
+          "Pos.x":          540,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          12,
+          "Owner":          62,
+          "Group.Type":          3,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":false,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Items":      
+      [
+        {
+          "Type":"TItem",
+          "Name":"iaSpeed",
+          "Pos.x":          210,
+          "Pos.y":          480,
+          "Parent":          -1,
+          "#":          7,
+          "Class":          3,
+          "Item.Type":          2,
+          "Size":          10,
+          "Level":          1,
+          "Radius":          150,
+          "Owner":          4,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"IiDroid",
+          "Pos.x":          300,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          8,
+          "Class":          0,
+          "Item.Type":          4,
+          "Size":          25,
+          "Level":          1,
+          "Radius":          150,
+          "Owner":          1,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"iaDroid",
+          "Pos.x":          200,
+          "Pos.y":          580,
+          "Parent":          -1,
+          "#":          9,
+          "Class":          3,
+          "Item.Type":          6,
+          "Size":          10,
+          "Level":          1,
+          "Radius":          150,
+          "Owner":          4,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"iaAntigr",
+          "Pos.x":          410,
+          "Pos.y":          530,
+          "Parent":          -1,
+          "#":          10,
+          "Class":          3,
+          "Item.Type":          12,
+          "Size":          10,
+          "Level":          1,
+          "Radius":          150,
+          "Owner":          4,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"iaDef",
+          "Pos.x":          600,
+          "Pos.y":          500,
+          "Parent":          -1,
+          "#":          13,
+          "Class":          3,
+          "Item.Type":          9,
+          "Size":          10,
+          "Level":          1,
+          "Radius":          150,
+          "Owner":          4,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"iaHull",
+          "Pos.x":          650,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          14,
+          "Class":          3,
+          "Item.Type":          0,
+          "Size":          10,
+          "Level":          1,
+          "Radius":          150,
+          "Owner":          4,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"iDef",
+          "Pos.x":          480,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          15,
+          "Class":          0,
+          "Item.Type":          6,
+          "Size":          25,
+          "Level":          2,
+          "Radius":          150,
+          "Owner":          2,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"iRocket",
+          "Pos.x":          180,
+          "Pos.y":          530,
+          "Parent":          -1,
+          "#":          17,
+          "Class":          1,
+          "Item.Type":          3,
+          "Size":          10,
+          "Level":          4,
+          "Radius":          150,
+          "Owner":          3,
+          "Useless":""        
+        },
+        {
+          "Type":"TItem",
+          "Name":"iRocket2",
+          "Pos.x":          640,
+          "Pos.y":          590,
+          "Parent":          -1,
+          "#":          18,
+          "Class":          1,
+          "Item.Type":          3,
+          "Size":          10,
+          "Level":          4,
+          "Radius":          150,
+          "Owner":          3,
+          "Useless":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          510,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          1,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"GRun()"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          440,
+          "Pos.y":          790,
+          "Parent":          -1,
+          "#":          20,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipOut(CurShip);",
+"AllShipOut();"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          400,
+          "Pos.y":          690,
+          "Parent":          -1,
+          "#":          21,
+          "Total.Lines":          5,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ReleaseItemFromScript(IiDroid);",
+"ReleaseItemFromScript(iaSpeed);",
+"ReleaseItemFromScript(iRocket);",
+"ReleaseItemFromScript(iaDroid);",
+"ReleaseItemFromScript(iaAntigr);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          480,
+          "Pos.y":          690,
+          "Parent":          -1,
+          "#":          22,
+          "Total.Lines":          4,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ReleaseItemFromScript(iDef);",
+"ReleaseItemFromScript(iaDef);",
+"ReleaseItemFromScript(iaHull);",
+"ReleaseItemFromScript(iRocket2);"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"PlanetCheat",
+          "Pos.x":          370,
+          "Pos.y":          470,
+          "Parent":          -1,
+          "#":          3,
+          "Race":          63,
+          "Owner":          63,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        },
+        {
+          "Type":"TPlanet",
+          "Name":"PlanetCheat2",
+          "Pos.x":          500,
+          "Pos.y":          470,
+          "Parent":          -1,
+          "#":          11,
+          "Race":          63,
+          "Owner":          63,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          250,
+          "Pos.y":          300,
+          "Parent":          -1,
+          "#":          4,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          0,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"StarCheat",
+          "Pos.x":          410,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          2,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":false,
+          "NoComeKling":false        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          330,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          0,
+          "Total.Lines":          1,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"GLastTurnRun(GScriptName)+1050<CurTurn()"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          440,
+          "Pos.y":          720,
+          "Parent":          -1,
+          "#":          19,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!ShipInStar(Player(),StarCheat)"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"State1",
+          "Pos.x":          340,
+          "Pos.y":          650,
+          "Parent":          -1,
+          "#":          6,
+          "Move":          5,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"State2",
+          "Pos.x":          540,
+          "Pos.y":          650,
+          "Parent":          -1,
+          "#":          16,
+          "Move":          5,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      0,
+      "End":      1,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      3,
+      "End":      2,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      4,
+      "End":      2,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      5,
+      "End":      3,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      5,
+      "End":      6,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      5,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      8,
+      "End":      5,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      9,
+      "End":      5,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      10,
+      "End":      5,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      11,
+      "End":      2,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      12,
+      "End":      11,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      13,
+      "End":      12,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      14,
+      "End":      12,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      15,
+      "End":      12,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      12,
+      "End":      16,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      17,
+      "End":      5,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      18,
+      "End":      12,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      20,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      6,
+      "End":      21,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      21,
+      "End":      19,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      16,
+      "End":      22,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      22,
+      "End":      19,
+      "Nom":      0,
+      "Arrow":true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  0,
+  "BlockPar.EC":  
+  [
+  
+  ]
+}

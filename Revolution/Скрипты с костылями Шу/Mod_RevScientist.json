@@ -1,0 +1,1729 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  -259,
+  "ViewPos.y":  -128,
+  "ScriptName":"Mod_RevScientist",
+  "ScriptFileOut":"D:\\Mod_RevScientist.scr",
+  "ScriptTextOut":"D:\\Mod_RevScientist.txt",
+  "GraphPoint.Count":  77,
+  "GraphLink.Count":  67,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  7,
+  "Stars.Count":  1,
+  "Planets.Count":  1,
+  "Ships.Count":  3,
+  "States.Count":  4,
+  "Groups.Count":  3,
+  "Places.Count":  2,
+  "Items.Count":  2,
+  "Ethers.Count":  1,
+  "Dialogs.Count":  1,
+  "DialogMessages.Count":  5,
+  "DialogAnswers.Count":  5,
+  "Operations.Count":  20,
+  "Statements.Count":  22,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "DialogAnswers":      
+      [
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          840,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          44,
+          "Msg":"Нет, мне все это не нужно. У меня капсула спасательная. Распилить надо, а то заклинило ее",
+          "AMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          840,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          46,
+          "Msg":"Много вопросов задаёшь. Пили давай!",
+          "AMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          840,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          48,
+          "Msg":"Доктор, ты как?",
+          "AMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"hangar",
+          "Pos.x":          840,
+          "Pos.y":          820,
+          "Parent":          -1,
+          "#":          50,
+          "Msg":"Смотри не обмани, а то военным быстро тебя сдам",
+          "AMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          980,
+          "Pos.y":          -20,
+          "Parent":          -1,
+          "#":          56,
+          "Msg":"",
+          "AMsg.Num":"4"        
+        }      
+      ],
+      "DialogMessages":      
+      [
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          840,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          43,
+          "Msg":"    Ты, <Player>, находишься на пиратской станции. Тут не действуют никакие законы, и ты можешь спокойно совершать любые сделки купли/продажи, не боясь никого. У нас свободная продажа наркоты и оружия. Можешь взглянуть на наше оборудование, у нас полно всякого хлама.<br>Интересуют особые услуги?<br>За деньги мы изменим твое подданство, и даже снабдим тебя антидоминаторскими программами.",
+          "DMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          840,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          45,
+          "Msg":"Вот эта что ли, в трюме которая? Интересная. И дорогая какая! Может, ее открыть аккуратно?",
+          "DMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          840,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          47,
+          "Msg":"Готово. Вытаскивай \"пленника\" оттуда.",
+          "DMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          840,
+          "Pos.y":          640,
+          "Parent":          -1,
+          "#":          49,
+          "Msg":"Да жив, можно сказать... Ты это, через пару деньков за наградой прилетай. А я пока оклемаюсь да обживусь на новом месте.",
+          "DMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          70,
+          "Parent":          -1,
+          "#":          55,
+          "Msg":"<Player>, это опять я. Собственно, презент готов: я восстановил по памяти ручной фазер, теперь он твой. Я его выброшу в шлюз сейчас, а ты подлети и подбери его около базы.\r\nДо встречи!",
+          "DMsg.Num":"4"        
+        }      
+      ],
+      "Dialogs":      
+      [
+        {
+          "Type":"TDialog",
+          "Name":"dDoctor",
+          "Pos.x":          980,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          40        
+        }      
+      ],
+      "Ethers":      
+      [
+        {
+          "Type":"TEther",
+          "Name":"",
+          "Pos.x":          -30,
+          "Pos.y":          660,
+          "Parent":          -1,
+          "#":          34,
+          "Ether.Type":          1,
+          "Unique":"8E4B1F72-8A0A-441E-9C5F-49AF80B98E36",
+          "Msg":"Ааааааа!!! Я два дня просидел в этой проклятой штуковине, и она, похоже, не открывается ни изнутри ни снаружи! Отвези меня... нет, военные меня посадят или даже расстреляют за то что я сделал... На пиратскую базу меня отвези. За это получишь от меня... Черт, ничего ведь нет... Э-ээ... А, получишь пушку крутую. Черт, черт, черт! В этой жестянке обратной связи нет... Короче, рейнджер, надеюсь на твою жадность - помоги мне, а я помогу тебе... Я в капсуле спасательной. На месте, где Научная База <vNewSBName>... была...",
+          "Ship1":"",
+          "Ship2":"",
+          "Ship3":""        
+        }      
+      ],
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"SBgro",
+          "Pos.x":          380,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          4,
+          "Owner":          62,
+          "Group.Type":          1,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":false,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":"SB"        
+        },
+        {
+          "Type":"TGroup",
+          "Name":"War",
+          "Pos.x":          300,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          25,
+          "Owner":          63,
+          "Group.Type":          5,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          1,
+          "EmptySpace":          0,
+          "AddPlayer":false,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        },
+        {
+          "Type":"TGroup",
+          "Name":"PBgr",
+          "Pos.x":          440,
+          "Pos.y":          300,
+          "Parent":          -1,
+          "#":          35,
+          "Owner":          62,
+          "Group.Type":          1,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":false,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          40,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":"PB"        
+        }      
+      ],
+      "Items":      
+      [
+        {
+          "Type":"TItem",
+          "Name":"iCapsuleP",
+          "Pos.x":          300,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          13,
+          "Class":          4,
+          "Item.Type":          0,
+          "Size":          10,
+          "Level":          1,
+          "Radius":          150,
+          "Owner":          6,
+          "Useless":"Capsule"        
+        },
+        {
+          "Type":"TItem",
+          "Name":"iFazer",
+          "Pos.x":          440,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          38,
+          "Class":          1,
+          "Item.Type":          5,
+          "Size":          65,
+          "Level":          1,
+          "Radius":          150,
+          "Owner":          2,
+          "Useless":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          190,
+          "Pos.y":          310,
+          "Parent":          -1,
+          "#":          6,
+          "Total.Lines":          1,
+          "Code.Type":"Init",
+          "Code":          
+          [
+"SetName(GroupToShip(SBgro),\"Аннигиляции\")"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          -40,
+          "Parent":          -1,
+          "#":          8,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"GRun()"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          190,
+          "Pos.y":          260,
+          "Parent":          -1,
+          "#":          10,
+          "Total.Lines":          1,
+          "Code.Type":"Init",
+          "Code":          
+          [
+"vLastSBName=Name(GroupToShip(SBgro))"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          240,
+          "Pos.y":          260,
+          "Parent":          -1,
+          "#":          11,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AddPlanetNews(\"Новости научного мира:<br> <vLastSBName> в системе <Name(Star)> торжественно была переименована в Научную Базу <vNewSBName>! Однако, ближайшие пару дней ученые собираются посвятить синтезу спиртосодержащих веществ, которые в последствии планируется использовать для протирания сверхточного оборудования, поэтому доминаторские исследования приостановлены. По подсчетам наших аналитиков переименование станции обошлось Межзвездной Коалиции в <GalaxyMoney(2)> cr.\")"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          130,
+          "Pos.y":          340,
+          "Parent":          -1,
+          "#":          17,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vTimer=vTimer+1"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          230,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          18,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"DropScriptItem(CurShip,iCapsuleP)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          260,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          19,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipDestroy(GroupToShip(SBgro))"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          140,
+          "Pos.y":          580,
+          "Parent":          -1,
+          "#":          20,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AddPlanetNews(\"Срочная новость!<br> Сегодня произошел взрыв в системе <Name(Star)>, взорвалась Научная База <vNewSBName>. Предварительной версией произошедшей трагедии эксперты считают взрыв топливного бака.\")"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          90,
+          "Pos.y":          490,
+          "Parent":          -1,
+          "#":          31,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AllShipOut();"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          790,
+          "Pos.y":          820,
+          "Parent":          -1,
+          "#":          51,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vState=2"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          790,
+          "Pos.y":          770,
+          "Parent":          -1,
+          "#":          52,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vTimer=0"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          950,
+          "Pos.y":          -20,
+          "Parent":          -1,
+          "#":          57,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vState=3;",
+"vDoctorGState=1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          460,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          59,
+          "Total.Lines":          10,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"i=CreateEquipment(t_Weapon6,1,GalaxyTechLevel(),PirateClan);",
+"ModuleToEquipment(FindBonusByName(\"Эскалибур\"),i);",
+"SpecialToEquipment(FindBonusByCustomTag('DishotEnergy'),i);",
+"ItemSize(i,10);",
+"SetName(i,'<color=255,167,84>'+\"Ручной фазер\"+'</color>');",
+"AddItemToShip(GroupToShip(PBgr),i);",
+"LinkItemToScript(i,iFazer);",
+"DropScriptItem(CurShip,iFazer);",
+"ReleaseItemFromScript(iFazer);",
+"ReleaseItemFromScript(iCapsuleP);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          460,
+          "Pos.y":          480,
+          "Parent":          -1,
+          "#":          60,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AllShipOut();"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          150,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          61,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vState=1"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          900,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          62,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"SkipGreeting()"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          560,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          65,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"Dialog(dDoctor,PBgr)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          40,
+          "Pos.y":          490,
+          "Parent":          -1,
+          "#":          69,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vDoctorGState=1"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          80,
+          "Pos.y":          630,
+          "Parent":          -1,
+          "#":          73,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vNews=1"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          90,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          75,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipOut()"          
+          ]        
+        }      
+      ],
+      "Places":      
+      [
+        {
+          "Type":"TPlace",
+          "Name":"PlaceSB",
+          "Pos.x":          410,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          23,
+          "Place.Type":          5,
+          "Angle":"0",
+          "Dist":"0,00999999977648258",
+          "Radius":          100,
+          "Obj1":          4,
+          "Obj2":          -1        
+        },
+        {
+          "Type":"TPlace",
+          "Name":"pCapsule",
+          "Pos.x":          430,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          29,
+          "Place.Type":          4,
+          "Angle":"0",
+          "Dist":"0,5",
+          "Radius":          50,
+          "Obj1":          13,
+          "Obj2":          -1        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"Planet",
+          "Pos.x":          330,
+          "Pos.y":          300,
+          "Parent":          -1,
+          "#":          1,
+          "Race":          63,
+          "Owner":          63,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          210,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          2,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          1,
+          "Player":false,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":"SB"        
+        },
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          320,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          3,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        },
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          260,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          36,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          1,
+          "Player":false,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":"PB"        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"Star",
+          "Pos.x":          330,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          0,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":false,
+          "NoComeKling":false        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          180,
+          "Pos.y":          -40,
+          "Parent":          -1,
+          "#":          7,
+          "Total.Lines":          1,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"vDoctorGState==0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          130,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          16,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          230,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          21,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vTimer>=10"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          190,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          22,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"Dist(Player(),PlaceSB)>200"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          80,
+          "Pos.y":          580,
+          "Parent":          -1,
+          "#":          24,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!CountIn(SBgro)"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          220,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          27,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!ItemIn(iCapsuleP,GroupToShip(SBgro))"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          120,
+          "Pos.y":          430,
+          "Parent":          -1,
+          "#":          30,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ItemIn(iCapsuleP,Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          190,
+          "Pos.y":          430,
+          "Parent":          -1,
+          "#":          32,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!ItemExist(iCapsuleP)"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          150,
+          "Pos.y":          490,
+          "Parent":          -1,
+          "#":          33,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ItemIn(iCapsuleP,War)"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          310,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          39,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vState==0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          900,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          41,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vState==1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          840,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          42,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ItemIn(iCapsuleP,Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          53,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vTimer>=5"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          54,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vState==2"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          460,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          58,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vState==3"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          520,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          63,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vState==2"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          540,
+          "Pos.y":          420,
+          "Parent":          -1,
+          "#":          64,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vTimer>=5"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          -30,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          66,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vState==0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          -30,
+          "Pos.y":          600,
+          "Parent":          -1,
+          "#":          67,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!ItemIn(iCapsuleP,SBgro)"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          -30,
+          "Pos.y":          530,
+          "Parent":          -1,
+          "#":          70,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipInStar(Player(),Star)"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          80,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          72,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"vNews==0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          250,
+          "Pos.y":          -40,
+          "Parent":          -1,
+          "#":          74,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"(CurTurn()+1)>900"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"121",
+          "Pos.x":          380,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          5,
+          "Move":          0,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"13",
+          "Pos.x":          220,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          26,
+          "Move":          4,
+          "MoveObj":          1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"StateTake",
+          "Pos.x":          150,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          28,
+          "Move":          1,
+          "MoveObj":          29,
+          "Attack.Count":          0,
+          "TakeItem":          13,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"StateNone",
+          "Pos.x":          440,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          37,
+          "Move":          0,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":"TVar",
+          "Name":"vLastSBName",
+          "Pos.x":          -40,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          9,
+          "Var.Type":"Str",
+          "Init":"Пыщь!",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"vNewSBName",
+          "Pos.x":          -40,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          12,
+          "Var.Type":"Str",
+          "Init":"Аннигиляции",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"vState",
+          "Pos.x":          -40,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          14,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"vTimer",
+          "Pos.x":          -40,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          15,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"vDoctorGState",
+          "Pos.x":          -40,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          68,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":true        
+        },
+        {
+          "Type":"TVar",
+          "Name":"vNews",
+          "Pos.x":          -40,
+          "Pos.y":          300,
+          "Parent":          -1,
+          "#":          71,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"i",
+          "Pos.x":          -40,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          76,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      2,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      1,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      3,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      4,
+      "End":      1,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      4,
+      "End":      5,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      10,
+      "End":      6,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      10,
+      "End":      11,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      13,
+      "End":      4,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      16,
+      "End":      17,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      23,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      21,
+      "End":      22,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      24,
+      "End":      20,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      22,
+      "End":      18,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      25,
+      "End":      1,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      18,
+      "End":      19,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      25,
+      "End":      26,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      27,
+      "End":      28,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      29,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      28,
+      "End":      30,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      28,
+      "End":      32,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      28,
+      "End":      33,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      33,
+      "End":      31,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      36,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      35,
+      "End":      37,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      5,
+      "End":      39,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      39,
+      "End":      21,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      40,
+      "End":      41,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      41,
+      "End":      42,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      42,
+      "End":      43,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      43,
+      "End":      44,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      44,
+      "End":      45,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      45,
+      "End":      46,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      46,
+      "End":      47,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      48,
+      "End":      49,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      50,
+      "End":      51,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      51,
+      "End":      52,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      40,
+      "End":      53,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      53,
+      "End":      54,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      54,
+      "End":      55,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      55,
+      "End":      56,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      56,
+      "End":      57,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      37,
+      "End":      58,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      58,
+      "End":      59,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      59,
+      "End":      60,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      42,
+      "End":      62,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      26,
+      "End":      27,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      47,
+      "End":      48,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      49,
+      "End":      50,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      37,
+      "End":      63,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      63,
+      "End":      64,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      64,
+      "End":      65,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      30,
+      "End":      61,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      33,
+      "End":      61,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      32,
+      "End":      61,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      66,
+      "End":      67,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      67,
+      "End":      34,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      31,
+      "End":      69,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      70,
+      "End":      66,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      72,
+      "End":      24,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      24,
+      "End":      73,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      74,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      74,
+      "End":      8,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      30,
+      "End":      75,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      75,
+      "End":      69,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      32,
+      "End":      75,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      35,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      35,
+      "End":      1,
+      "Nom":      0,
+      "Arrow":true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  15,
+  "BlockPar.EC":  
+  [
+    {
+      "#":"12",
+      "String":"<Player>, это опять я. Собственно, презент готов: я восстановил по памяти ручной фазер, теперь он твой. Я его выброшу в шлюз сейчас, а ты подлети и подбери его около базы.<br>До встречи!"    
+    },
+    {
+      "#":"13",
+      "String":"Нет, мне все это не нужно. У меня капсула спасательная. Распилить надо, а то заклинило ее"    
+    },
+    {
+      "#":"25",
+      "String":"Ааааааа!!! Я два дня просидел в этой проклятой штуковине, и она, похоже, не открывается ни изнутри ни снаружи! Отвези меня... нет, военные меня посадят или даже расстреляют за то что я сделал... На пиратскую базу меня отвези. За это получишь от меня... Черт, ничего ведь нет... Э-ээ... А, получишь пушку крутую. Черт, черт, черт! В этой жестянке обратной связи нет... Короче, рейнджер, надеюсь на твою жадность - помоги мне, а я помогу тебе... Я в капсуле спасательной. На месте, где Научная База <0>... была..."    
+    },
+    {
+      "#":"28",
+      "String":"Да жив, можно сказать... Ты это, через пару деньков за наградой прилетай. А я пока оклемаюсь да обживусь на новом месте."    
+    },
+    {
+      "#":"30",
+      "String":"Доктор, ты как?"    
+    },
+    {
+      "#":"31",
+      "String":"    Ты, <Player>, находишься на пиратской станции. Тут не действуют никакие законы, и ты можешь спокойно совершать любые сделки купли/продажи, не боясь никого. У нас свободная продажа наркоты и оружия. Можешь взглянуть на наше оборудование, у нас полно всякого хлама.<br>Интересуют особые услуги?<br>За деньги мы изменим твое подданство, и даже снабдим тебя антидоминаторскими программами."    
+    },
+    {
+      "#":"32",
+      "String":"Вот эта что ли, в трюме которая? Интересная. И дорогая какая! Может, ее открыть аккуратно?"    
+    },
+    {
+      "#":"33",
+      "String":"Готово. Вытаскивай \"пленника\" оттуда."    
+    },
+    {
+      "#":"34",
+      "String":"Много вопросов задаёшь. Пили давай!"    
+    },
+    {
+      "#":"35",
+      "String":"Смотри не обмани, а то военным быстро тебя сдам"    
+    },
+    {
+      "#":"36",
+      "String":"Аннигиляции"    
+    },
+    {
+      "#":"37",
+      "String":"Новости научного мира:<br> <0> в системе <1> торжественно была переименована в Научную Базу <2>! Однако, ближайшие пару дней ученые собираются посвятить синтезу спиртосодержащих веществ, которые в последствии планируется использовать для протирания сверхточного оборудования, поэтому доминаторские исследования приостановлены. По подсчетам наших аналитиков переименование станции обошлось Межзвездной Коалиции в <3> cr."    
+    },
+    {
+      "#":"38",
+      "String":"Срочная новость!<br> Сегодня произошел взрыв в системе <0>, взорвалась Научная База <1>. Предварительной версией произошедшей трагедии эксперты считают взрыв топливного бака."    
+    },
+    {
+      "#":"40",
+      "String":"Эскалибур"    
+    },
+    {
+      "#":"41",
+      "String":"Ручной фазер"    
+    }  
+  ]
+}

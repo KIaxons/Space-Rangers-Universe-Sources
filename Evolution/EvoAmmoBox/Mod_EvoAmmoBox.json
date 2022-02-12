@@ -1,0 +1,1429 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  -373,
+  "ViewPos.y":  -124,
+  "ScriptName":"Mod_EvoAmmoBox",
+  "ScriptFileOut":"H:\\Mod_EvoAmmoBox.scr",
+  "ScriptTextOut":"H:\\Mod_EvoAmmoBox.txt",
+  "GraphPoint.Count":  70,
+  "GraphLink.Count":  48,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  25,
+  "Stars.Count":  1,
+  "Planets.Count":  1,
+  "Ships.Count":  1,
+  "States.Count":  1,
+  "Groups.Count":  1,
+  "Places.Count":  0,
+  "Items.Count":  0,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  2,
+  "DialogMessages.Count":  5,
+  "DialogAnswers.Count":  9,
+  "Operations.Count":  12,
+  "Statements.Count":  12,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "DialogAnswers":      
+      [
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          12,
+          "Msg":"Купить контейнер с боеголовками",
+          "AMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          330,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          13,
+          "Msg":"Мне не нужны никакие ящики!",
+          "AMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          360,
+          "Pos.y":          420,
+          "Parent":          -1,
+          "#":          16,
+          "Msg":"Спасибо",
+          "AMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          330,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          20,
+          "Msg":"Купить контейнер с ракетами",
+          "AMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          300,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          21,
+          "Msg":"Купить контейнер со сферами",
+          "AMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          270,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          22,
+          "Msg":"Купить контейнер с торпедами",
+          "AMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          270,
+          "Pos.y":          420,
+          "Parent":          -1,
+          "#":          49,
+          "Msg":"Ну и ладно, обойдусь!",
+          "AMsg.Num":"6"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          400,
+          "Pos.y":          250,
+          "Parent":          -1,
+          "#":          55,
+          "Msg":"Пополнить заряды в контейнерах",
+          "AMsg.Num":"7"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          380,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          67,
+          "Msg":"Назад",
+          "AMsg.Num":"8"        
+        }      
+      ],
+      "DialogMessages":      
+      [
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          330,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          11,
+          "Msg":"Мы можем предложить вам контейнеры для пополнения запасов различного вида ракетного вооружения. Но мы не продаём свои разработки кому попало, Ваш военный ранг и сведения о ваших поступках лучшая характеристика для нас.\r\nТакже мы можем пополнить ваши пустые контейнеры по весьма доступной цене.\r\n---------------------------------------------------------\r\nКонтейнер с боеголовками для Лирекрона для Вас доступен в количестве: <cur_count1> ед. по цене: <cost1> cr.\r\n\r\nКонтейнер с ракетами для Ракетницы для Вас доступен в количестве: <cur_count2> ед. по цене: <cost2> cr.\r\n\r\nКонтейнер со сферами для Мабокита для Вас доступен в количестве: <cur_count3> ед. по цене: <cost3> cr.\r\n\r\nКонтейнер с торпедами для Торпедного аппарата для Вас доступен в количестве: <cur_count4> ед. по цене: <cost4> cr.\r\n---------------------------------------------------------\r\nРаз в год мы очищаем базу данных о клиентах и у Вас есть шанс использовать эту возможность, главное не проморгать момент.",
+          "DMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          15,
+          "Msg":"Отличный выбор! Контейнеры доставлены в трюм Вашего корабля.",
+          "DMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          270,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          44,
+          "Msg":"Недостаточно средств для совершения покупки.",
+          "DMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          460,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          63,
+          "Msg":"Готово! Желаете еще что-нибудь?",
+          "DMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          430,
+          "Pos.y":          250,
+          "Parent":          -1,
+          "#":          66,
+          "Msg":"Наши специалисты обнаружены недостачу снарядов в следующих контейнерах:<br><tstr3><br><tstr2><br><tstr3><br>Какой из них желаете пополнить?",
+          "DMsg.Num":"4"        
+        }      
+      ],
+      "Dialogs":      
+      [
+        {
+          "Type":"TDialog",
+          "Name":"AmmoBox",
+          "Pos.x":          250,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          10        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"RearmAmmoBox",
+          "Pos.x":          460,
+          "Pos.y":          190,
+          "Parent":          -1,
+          "#":          61        
+        }      
+      ],
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"PlayerGroup",
+          "Pos.x":          140,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          3,
+          "Owner":          62,
+          "Group.Type":          126,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":true,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          170,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          5,
+          "Total.Lines":          1,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"GRun()"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          380,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          9,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AddDialogInject('AmmoBox',\"Рейнджер <Player>, вас явно интересует автономное пополнение снарядов для ракетного вооружения. У нас есть, что вам предложить!\",'Приобрести контейнеры с амуницией',1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          14,
+          "Total.Lines":          9,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ammo_box=CreateQuestItem('Container_lirekron');",
+"ItemSize(ammo_box,20+GalaxyTechLevel()*2+Rnd(-2,4));",
+"UselessItemData(ammo_box,1,ItemSize(ammo_box));",
+"UselessItemData(ammo_box,2,ItemSize(ammo_box));",
+"UselessItemData(ammo_box,3,Rnd(3,4));//сколько раз можно зарядить этой коробкой",
+"AddItemToShip(Player(),ammo_box);",
+"ShipMoney(Player(),ShipMoney(Player())-cost1);",
+"Sound('Sound.Buy');",
+"count1=count1+1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          330,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          17,
+          "Total.Lines":          9,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ammo_box=CreateQuestItem('Container_missile');",
+"ItemSize(ammo_box,20+GalaxyTechLevel()*2+Rnd(-2,4));",
+"UselessItemData(ammo_box,1,ItemSize(ammo_box));",
+"UselessItemData(ammo_box,2,ItemSize(ammo_box));",
+"UselessItemData(ammo_box,3,Rnd(3,4));//сколько раз можно зарядить этой коробкой",
+"AddItemToShip(Player(),ammo_box);",
+"ShipMoney(Player(),ShipMoney(Player())-cost2);",
+"Sound('Sound.Buy');",
+"count2=count2+1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          300,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          18,
+          "Total.Lines":          9,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ammo_box=CreateQuestItem('Container_sphere');",
+"ItemSize(ammo_box,20+GalaxyTechLevel()*2+Rnd(-2,4));",
+"UselessItemData(ammo_box,1,ItemSize(ammo_box));",
+"UselessItemData(ammo_box,2,ItemSize(ammo_box));",
+"UselessItemData(ammo_box,3,Rnd(3,4));//сколько раз можно зарядить этой коробкой",
+"AddItemToShip(Player(),ammo_box);",
+"ShipMoney(Player(),ShipMoney(Player())-cost3);",
+"Sound('Sound.Buy');",
+"count3=count3+1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          270,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          19,
+          "Total.Lines":          9,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ammo_box=CreateQuestItem('Container_torpedo');",
+"ItemSize(ammo_box,20+GalaxyTechLevel()*2+Rnd(-2,4));",
+"UselessItemData(ammo_box,1,ItemSize(ammo_box));",
+"UselessItemData(ammo_box,2,ItemSize(ammo_box));",
+"UselessItemData(ammo_box,3,Rnd(3,4));//сколько раз можно зарядить этой коробкой",
+"AddItemToShip(Player(),ammo_box);",
+"ShipMoney(Player(),ShipMoney(Player())-cost4);",
+"Sound('Sound.Buy');",
+"count4=count4+1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          270,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          23,
+          "Total.Lines":          8,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost1=1.05*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+"cost2=1.2*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+"cost3=1.12*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+"cost4=1.3*GalaxyMoney(2,ShipOwner(GetShipRuins(Player())));",
+"cur_count1=total1-count1;",
+"cur_count2=total2-count2;",
+"cur_count3=total3-count3;",
+"cur_count4=total4-count4;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          330,
+          "Pos.y":          250,
+          "Parent":          -1,
+          "#":          50,
+          "Total.Lines":          4,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(cur_count1==0)AddDialogBlock('Купить контейнер с боеголовками',1);",
+"if(cur_count2==0)AddDialogBlock('Купить контейнер с ракетами',1);",
+"if(cur_count3==0)AddDialogBlock('Купить контейнер со сферами',1);",
+"if(cur_count4==0)AddDialogBlock('Купить контейнер с торпедами',1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          250,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          51,
+          "Total.Lines":          10,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if (findsubstr(GameDateTxtByTurn(CurTurn()),'1 января')==0) {",
+"count1=0;",
+"count2=0;",
+"count3=0;",
+"count4=0;",
+"}",
+"total1=3+ShipRank(Player());",
+"total2=2+ShipRank(Player());",
+"total3=1+ShipRank(Player());",
+"total4=ShipRank(Player());"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          250,
+          "Parent":          -1,
+          "#":          53,
+          "Total.Lines":          24,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"tint=0;",
+"tstr2='';",
+"if(GetGameOptions('FontDialog')==0)tstr3='<clrEnd>-------------------------------------------------------------';",
+"else if(GetGameOptions('FontDialog')==1)tstr3='<clrEnd>------------------------------------------';",
+"else if(GetGameOptions('FontDialog')==2)tstr3='<clrEnd>-----------------------------------------';",
+"else tstr3='<clrEnd>-------------------------------------';",
+"//Цена за пополнение",
+"tdw=GalaxyTechLevel();",
+"if(tdw<2) tdw=2;",
+"else if(tdw>7) tdw=7;",
+"rCost=10+(tdw-2)*18;",
+"//Если у игрока есть неполные контейнеры - добавляем диалог об их пополнении",
+"for(i=1;i<ShipItems(Player());i=i+1) {",
+"    tdw=ShipItems(Player(),i);",
+"    if(ItemType(tdw)!=t_UselessItem)continue;",
+"    tstr1=EquipmentImageName(tdw);",
+"    if(tstr1=='Container_lirekron' || tstr1=='Container_missile' || tstr1=='Container_sphere' || tstr1=='Container_torpedo') {",
+"        tdw2=UselessItemData(tdw,1)-UselessItemData(tdw,2);",
+"        if(tdw2) {",
+"            tint=tint+1;",
+"            tstr2=tstr2+'</color>'+tint+') '+Name(tdw)+' <UselessItemData(tdw,2)></color>'+'/'+'<UselessItemData(tdw,1)></color>'+' за <rCost*tdw2> cr.'+\"<br>\";",
+"        }",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          430,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          60,
+          "Total.Lines":          13,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"for(i=1;i<ShipItems(Player());i=i+1) {",
+"    tdw=ShipItems(Player(),i);",
+"    if(ItemType(tdw)!=t_UselessItem)continue;",
+"    tstr1=EquipmentImageName(tdw);",
+"    if(tstr1=='Container_lirekron' || tstr1=='Container_missile' || tstr1=='Container_sphere' || tstr1=='Container_torpedo') {",
+"        tdw2=UselessItemData(tdw,1)-UselessItemData(tdw,2);",
+"        if(tdw2) {",
+"            tstr1=Name(tdw)+'  <rCost*tdw2> cr.';",
+"            if(ShipMoney(Player())<(rCost*tdw2)) AddDialogBlock(tstr1,1);",
+"            InjectAnswer('RearmAmmoBox',tstr1,tdw);",
+"        }",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          460,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          64,
+          "Total.Lines":          5,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Списываем деньги со счета игрока и пополняем контейнеры",
+"tdw2=(UselessItemData(GAnswerData,1)-UselessItemData(GAnswerData,2))*rCost;",
+"ShipMoney(Player(),ShipMoney(Player())-tdw2);",
+"Sound('Sound.Buy');",
+"UselessItemData(GAnswerData,2,UselessItemData(GAnswerData,1));"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"PlanetNew",
+          "Pos.x":          140,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          1,
+          "Race":          62,
+          "Owner":          62,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          140,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          2,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"StarNew",
+          "Pos.x":          140,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          0,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":false,
+          "NoComeKling":false        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          290,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          6,
+          "Total.Lines":          1,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"GetShipRuins(Player())>0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          320,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          7,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!PlayerBridge()"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          350,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          8,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipType(GetShipRuins(Player()))=='WB'"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          290,
+          "Parent":          -1,
+          "#":          40,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost1>ShipMoney(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          330,
+          "Pos.y":          290,
+          "Parent":          -1,
+          "#":          41,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost2>ShipMoney(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          300,
+          "Pos.y":          290,
+          "Parent":          -1,
+          "#":          42,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost3>ShipMoney(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          270,
+          "Pos.y":          290,
+          "Parent":          -1,
+          "#":          43,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost4>ShipMoney(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          310,
+          "Parent":          -1,
+          "#":          45,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost1<ShipMoney(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          330,
+          "Pos.y":          310,
+          "Parent":          -1,
+          "#":          46,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost2<ShipMoney(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          300,
+          "Pos.y":          310,
+          "Parent":          -1,
+          "#":          47,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost3<ShipMoney(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          270,
+          "Pos.y":          310,
+          "Parent":          -1,
+          "#":          48,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cost4<ShipMoney(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          380,
+          "Pos.y":          250,
+          "Parent":          -1,
+          "#":          54,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"tint"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"PlayerState",
+          "Pos.x":          140,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          4,
+          "Move":          0,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":"TVar",
+          "Name":"cost1",
+          "Pos.x":          240,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          24,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cost2",
+          "Pos.x":          320,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          25,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cost3",
+          "Pos.x":          400,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          26,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cost4",
+          "Pos.x":          480,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          27,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"count1",
+          "Pos.x":          240,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          28,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"count3",
+          "Pos.x":          400,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          29,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"count2",
+          "Pos.x":          320,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          30,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"count4",
+          "Pos.x":          480,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          31,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"total1",
+          "Pos.x":          240,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          32,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"total2",
+          "Pos.x":          320,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          33,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"total3",
+          "Pos.x":          400,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          34,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"total4",
+          "Pos.x":          480,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          35,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_count1",
+          "Pos.x":          240,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          36,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_count2",
+          "Pos.x":          320,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          37,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_count3",
+          "Pos.x":          400,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          38,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_count4",
+          "Pos.x":          480,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          39,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"ammo_box",
+          "Pos.x":          560,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          52,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"i",
+          "Pos.x":          150,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          56,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tstr1",
+          "Pos.x":          190,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          57,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tdw",
+          "Pos.x":          560,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          58,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tint",
+          "Pos.x":          150,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          59,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tdw2",
+          "Pos.x":          560,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          62,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"rCost",
+          "Pos.x":          560,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          65,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tstr2",
+          "Pos.x":          190,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          68,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tstr3",
+          "Pos.x":          190,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          69,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      1,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      2,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      3,
+      "End":      1,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      3,
+      "End":      4,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      6,
+      "End":      7,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      8,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      8,
+      "End":      9,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      11,
+      "End":      13,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      15,
+      "End":      16,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      14,
+      "End":      15,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      17,
+      "End":      15,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      18,
+      "End":      15,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      15,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      23,
+      "End":      11,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      12,
+      "End":      40,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      20,
+      "End":      41,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      21,
+      "End":      42,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      22,
+      "End":      43,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      40,
+      "End":      44,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      41,
+      "End":      44,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      42,
+      "End":      44,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      43,
+      "End":      44,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      12,
+      "End":      45,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      20,
+      "End":      46,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      21,
+      "End":      47,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      22,
+      "End":      48,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      48,
+      "End":      19,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      47,
+      "End":      18,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      46,
+      "End":      17,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      45,
+      "End":      14,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      44,
+      "End":      49,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      11,
+      "End":      50,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      50,
+      "End":      12,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      50,
+      "End":      20,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      50,
+      "End":      21,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      50,
+      "End":      22,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      10,
+      "End":      51,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      51,
+      "End":      23,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      11,
+      "End":      53,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      53,
+      "End":      54,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      54,
+      "End":      55,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      61,
+      "End":      64,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      64,
+      "End":      63,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      63,
+      "End":      60,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      66,
+      "End":      60,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      55,
+      "End":      66,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      60,
+      "End":      67,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      67,
+      "End":      11,
+      "Nom":      0,
+      "Arrow":true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  16,
+  "BlockPar.EC":  
+  [
+    {
+      "#":"35",
+      "String":"Мне не нужны никакие ящики!"    
+    },
+    {
+      "#":"39",
+      "String":"Ну и ладно, обойдусь!"    
+    },
+    {
+      "#":"4",
+      "String":"Спасибо"    
+    },
+    {
+      "#":"41",
+      "String":"Отличный выбор! Контейнеры доставлены в трюм Вашего корабля."    
+    },
+    {
+      "#":"42",
+      "String":"Купить контейнер с боеголовками"    
+    },
+    {
+      "#":"43",
+      "String":"Купить контейнер с ракетами"    
+    },
+    {
+      "#":"44",
+      "String":"Купить контейнер со сферами"    
+    },
+    {
+      "#":"45",
+      "String":"Купить контейнер с торпедами"    
+    },
+    {
+      "#":"48",
+      "String":"Рейнджер <Player>, вас явно интересует автономное пополнение снарядов для ракетного вооружения. У нас есть, что вам предложить!"    
+    },
+    {
+      "#":"50",
+      "String":"Недостаточно средств для совершения покупки."    
+    },
+    {
+      "#":"58",
+      "String":"Пополнить заряды в контейнерах"    
+    },
+    {
+      "#":"59",
+      "String":"Готово! Желаете еще что-нибудь?"    
+    },
+    {
+      "#":"61",
+      "String":"Мы можем предложить вам контейнеры для пополнения запасов различного вида ракетного вооружения. Но мы не продаём свои разработки кому попало, Ваш военный ранг и сведения о ваших поступках лучшая характеристика для нас.<br>Также мы можем пополнить ваши пустые контейнеры по весьма доступной цене.<br>---------------------------------------------------------<br>Контейнер с боеголовками для Лирекрона для Вас доступен в количестве: <0> ед. по цене: <1> cr.<br><br>Контейнер с ракетами для Ракетницы для Вас доступен в количестве: <2> ед. по цене: <3> cr.<br><br>Контейнер со сферами для Мабокита для Вас доступен в количестве: <4> ед. по цене: <5> cr.<br><br>Контейнер с торпедами для Торпедного аппарата для Вас доступен в количестве: <6> ед. по цене: <7> cr.<br>---------------------------------------------------------<br>Раз в год мы очищаем базу данных о клиентах и у Вас есть шанс использовать эту возможность, главное не проморгать момент."    
+    },
+    {
+      "#":"64",
+      "String":"<br>"    
+    },
+    {
+      "#":"67",
+      "String":"Назад"    
+    },
+    {
+      "#":"70",
+      "String":"Наши специалисты обнаружены недостачу снарядов в следующих контейнерах:<br><0><br><1><br><2><br>Какой из них желаете пополнить?"    
+    }  
+  ]
+}

@@ -1,0 +1,1891 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  338,
+  "ViewPos.y":  143,
+  "ScriptName":"madtranc",
+  "ScriptFileOut":"H:\\madtranc.scr",
+  "ScriptTextOut":"H:\\madtranc.txt",
+  "GraphPoint.Count":  104,
+  "GraphLink.Count":  45,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  59,
+  "Stars.Count":  1,
+  "Planets.Count":  1,
+  "Ships.Count":  1,
+  "States.Count":  2,
+  "Groups.Count":  2,
+  "Places.Count":  0,
+  "Items.Count":  0,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  1,
+  "DialogMessages.Count":  7,
+  "DialogAnswers.Count":  12,
+  "Operations.Count":  11,
+  "Statements.Count":  7,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "DialogAnswers":      
+      [
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          1090,
+          "Pos.y":          600,
+          "Parent":          -1,
+          "#":          70,
+          "Msg":"Кончай болтать, железка, видал я уже таких. Готовься к отправлению в свой чёртов ассемблеров ад!",
+          "AMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1090,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          71,
+          "Msg":"Покажи log-файл",
+          "AMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1060,
+          "Pos.y":          650,
+          "Parent":          -1,
+          "#":          72,
+          "Msg":"Кто указал тебе такую директиву?",
+          "AMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1030,
+          "Pos.y":          670,
+          "Parent":          -1,
+          "#":          73,
+          "Msg":"Инициировать перезапуск",
+          "AMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1090,
+          "Pos.y":          720,
+          "Parent":          -1,
+          "#":          74,
+          "Msg":"Выход в главное меню",
+          "AMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1230,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          75,
+          "Msg":"У меня есть для тебя запчасти. Замени повреждённый кристалл на тот, что у меня в трюме.",
+          "AMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          1370,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          76,
+          "Msg":"Хм-м...",
+          "AMsg.Num":"6"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          1110,
+          "Pos.y":          590,
+          "Parent":          -1,
+          "#":          77,
+          "Msg":"Кончай болтать, железка, видал я уже таких. Готовься к отправлению в свой чёртов ассемблеров ад!",
+          "AMsg.Num":"7"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1130,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          78,
+          "Msg":"Хорошо, давай попробуем ещё раз. У меня есть для тебя новые запчасти. Возьми и замени необходимые детали из этой доминаторской побрякушки в свою личностную матрицу и перезапустись.",
+          "AMsg.Num":"8"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          1250,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          79,
+          "Msg":"Да чёрт бы тебя побрал, неблагодарная ты железка!",
+          "AMsg.Num":"9"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"block",
+          "Pos.x":          1130,
+          "Pos.y":          570,
+          "Parent":          -1,
+          "#":          80,
+          "Msg":"Хорошо, давай попробуем ещё раз. У меня есть для тебя новые запчасти. Возьми и замени необходимые детали из этой доминаторской побрякушки в свою личностную матрицу и перезапустись.",
+          "AMsg.Num":"10"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"block",
+          "Pos.x":          1230,
+          "Pos.y":          600,
+          "Parent":          -1,
+          "#":          81,
+          "Msg":"У меня есть для тебя запчасти. Замени повреждённый кристалл на тот, что у меня в трюме.",
+          "AMsg.Num":"11"        
+        }      
+      ],
+      "DialogMessages":      
+      [
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1030,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          63,
+          "Msg":"Ошибка связующей нейросети.<br>Возможная причина: неисправность канала директивного управления автономной боевой единицы <Name(GroupToShip(HanPirates))>.<br>Предшествующая неисправности директива: уничтожение <Name(GroupToShip(thatone))>.<br>Сервис поиска неисправностей недоступен, возможная причина: повреждение личностной матрицы <Name(GroupToShip(HanPirates))>.<br>Логическая перезапись: выполнение предшетвующей неисправности директивы с последующим самоуничтожением автономной боевой единицы.",
+          "DMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1090,
+          "Pos.y":          690,
+          "Parent":          -1,
+          "#":          64,
+          "Msg":"Автономная боевая единица <Name(GroupToShip(HanPirates))>.<br>Производитель: Объединение Тринн.<br>Загрузка log-файла...<br>Log-файл недоступен, возможная причина: повреждение кристаллического накопителя автономной боевой единицы в момент логической перезаписи.",
+          "DMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1160,
+          "Pos.y":          650,
+          "Parent":          -1,
+          "#":          65,
+          "Msg":"Ошибка личностной матрицы. Невозможно обработать входящий запрос.",
+          "DMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1030,
+          "Pos.y":          720,
+          "Parent":          -1,
+          "#":          66,
+          "Msg":"Внимание, у вас недостаточно прав для выполнения данного действия. Последующий перезапуск систем повлечёт полное самоуничтожение автономной боевой единицы. В приоритете отказано.",
+          "DMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1300,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          67,
+          "Msg":"Автономная боевая единица <Name(GroupToShip(HanPirates))>.<br>Производитель: Объединение Тринн.<br>Предварительные ремонтные работы завершены. Новый кристалл установлен.<br>Перезапуск личностной матрицы... внимание, перезапуск личностной матрицы невозможен. <br>Причина: критические повреждения. Система диагностики повреждена. Дальнейший анализ не представляется возможным.",
+          "DMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1060,
+          "Pos.y":          570,
+          "Parent":          -1,
+          "#":          68,
+          "Msg":"Автономная боевая единица <Name(GroupToShip(HanPirates))>.<br>Производитель: Объединение Тринн.<br>Перезапуск личностной матрицы... внимание, перезапуск личностной матрицы невозможен. <br>Причина: критические повреждения. Система диагностики повреждена. Дальнейший анализ не представляется возможным.",
+          "DMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1190,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          69,
+          "Msg":"Проведение дополнительного техобслуживания...<br>Перезапуск личностной матрицы... внимание, обнаружен доминаторский вирус! Зафиксированы ножественные повреждения подсистем!<br>Запускаю процесс форматирования. <br>Личностная матрица перезапущена. Фаервол активирован. Обнаружена попытка враждебного вмешательства целевого субъекта <Name(GroupToShip(thatone))>.<br>Приоритет ликвидации: <clr>1<clrEnd>",
+          "DMsg.Num":"6"        
+        }      
+      ],
+      "Dialogs":      
+      [
+        {
+          "Type":"TDialog",
+          "Name":"dTrank",
+          "Pos.x":          910,
+          "Pos.y":          570,
+          "Parent":          -1,
+          "#":          89        
+        }      
+      ],
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"HanPirates",
+          "Pos.x":          700,
+          "Pos.y":          570,
+          "Parent":          -1,
+          "#":          82,
+          "Owner":          62,
+          "Group.Type":          126,
+          "CntShipMin":          0,
+          "CntShipMax":          0,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":false,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        },
+        {
+          "Type":"TGroup",
+          "Name":"thatone",
+          "Pos.x":          700,
+          "Pos.y":          600,
+          "Parent":          -1,
+          "#":          83,
+          "Owner":          62,
+          "Group.Type":          126,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":true,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          500,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          3,
+          "Total.Lines":          1,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"if(0) GRun();"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          530,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          4,
+          "Total.Lines":          1,
+          "Code.Type":"Init",
+          "Code":          
+          [
+"pirate_planets = newarray(1)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          590,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          84,
+          "Total.Lines":          157,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(was_meet && !GroupCount(HanPirates)) {",
+"  ShipOut(Player());",
+"}",
+"if(GroupCount(HanPirates) && !GroupCount(thatone)) {",
+"  ShipJoin(thatone,Player());",
+"}",
+"t1=t1+1;",
+"if (t1>=1500 && !was_meet)",
+"{",
+"if (GroupCount(HanPirates)<1)",
+"{",
+"ArrayClear(pirate_planets);",
+"st=GalaxyStars();",
+"for(st_num=0;st_num<st;st_num=st_num+1)",
+"{",
+"if (!ControlledSystems(0)) break;",
+"cur_star=GalaxyStar(st_num);",
+"if (StarOwner(cur_star)==0)",
+"{",
+"pl=StarPlanets(cur_star);",
+"for (i=0;i<pl;i=i+1)",
+"{",
+"cur_pl=StarPlanets(cur_star,i);",
+"if (PlanetOwner(cur_pl)<5) ArrayAdd(pirate_planets,cur_pl);",
+"}",
+"}",
+"}",
+"if (ArrayDim(pirate_planets)<=1) exit;",
+"cur_pl=GetShipHomePlanet(Player());",
+"if (PlanetOwner(cur_pl)>4) exit;",
+"t1=0;",
+"stating=1;",
+"for (i=0;i<stating;i=i+1)",
+"{",
+"turn_meet=CurTurn();",
+"was_meet=1;",
+"s=BuyTranclucator(cur_pl);",
+"ShipJoin(HanPirates,s);",
+"loot1=CreateQuestItem('Usl_11',6);",
+"loot2=CreateQuestItem('Remains_22',6);",
+"loot3=CreateQuestItem('Remains_8',6);",
+"loot4=CreateQuestItem('Usl_Robots',6);",
+"loot5=CreateQuestItem('Remains_0',6);",
+"loot6=CreateQuestItem('Remains_10',6);",
+"loot7=CreateQuestItem('Remains_5',6);",
+"loot8=CreateQuestItem('Remains_22',6);",
+"loot9=CreateQuestItem('OperatedProbe',6);",
+"loot10=CreateQuestItem('Usl_RandomItem_04',6);",
+"ShipAddDropItem(s,loot1);",
+"ShipAddDropItem(s,loot2);",
+"ShipAddDropItem(s,loot3);",
+"ShipAddDropItem(s,loot4);",
+"ShipAddDropItem(s,loot5);",
+"ShipAddDropItem(s,loot6);",
+"ShipAddDropItem(s,loot7);",
+"ShipAddDropItem(s,loot8);",
+"ShipAddDropItem(s,loot9);",
+"ShipAddDropItem(s,loot10);",
+"a=CreateArt(t_ArtefactHull,6);",
+"a2=CreateArt(t_ArtFastRacks,6);",
+"a3=CreateArt(t_ArtefactDroid,6);",
+"a4=CreateArt(t_ArtefactNano,6);",
+"a5=CreateArt(t_ArtefactDef,6);",
+"a6=CreateArt(t_ArtPDTurret,6);",
+"a7=CreateArt(t_ArtefactSpeed,6);",
+"a8=CreateArt(t_ArtefactMiniExpl,6);",
+"a9=CreateArt(t_ArtefactAntigrav,6);",
+"a10=CreateArt(t_ArtEnergyDef,6);",
+"a11=CreateArt(t_ArtEnergyPulse,6);",
+"a12=CreateArt(t_ArtDecelerate,6);",
+"a13=CreateArt(t_ArtMissileDef,6);",
+"engine=CreateEquipment(t_Engine,70,GalaxyTechLevel(),6);",
+"fuel=CreateEquipment(t_FuelTanks,70,GalaxyTechLevel(),6);",
+"droid=CreateEquipment(t_RepairRobot,70,GalaxyTechLevel(),6);",
+"hook=CreateEquipment(t_CargoHook,70,GalaxyTechLevel(),6);",
+"def=CreateEquipment(t_DefGenerator,70,GalaxyTechLevel(),6);",
+"scan=CreateEquipment(t_Scaner,70,GalaxyTechLevel(),6);",
+"radar=CreateEquipment(t_Radar,70,GalaxyTechLevel(),6);",
+"mm1=CreateMM(FindBonusByName('Универс'));",
+"ShipAddDropItem(s,mm1);",
+"mm1=CreateMM(FindBonusByName('Универс'));",
+"ShipAddDropItem(s,mm1);",
+"mm1=CreateMM(FindBonusByName('Универс'));",
+"ShipAddDropItem(s,mm1);",
+"ShipSpecialBonuses(s,bonSlotRadar,1);",
+"ShipSpecialBonuses(s,bonSlotScaner,1);",
+"AddItemToShip(s,engine);",
+"AddItemToShip(s,fuel);",
+"AddItemToShip(s,droid);",
+"AddItemToShip(s,hook);",
+"AddItemToShip(s,def);",
+"AddItemToShip(s,radar);",
+"AddItemToShip(s,scan);",
+"AddItemToShip(s,a);",
+"AddItemToShip(s,a3);",
+"AddItemToShip(s,a4);",
+"AddItemToShip(s,a10);",
+"ShipSkill(GroupToShip(HanPirates),0,6);",
+"ShipSkill(GroupToShip(HanPirates),1,6);",
+"ShipSkill(GroupToShip(HanPirates),2,6);",
+"ShipSkill(GroupToShip(HanPirates),3,6);",
+"ShipSkill(GroupToShip(HanPirates),4,6);",
+"ShipSkill(GroupToShip(HanPirates),5,6);",
+"if(GalaxyTechLevel()<=5)",
+"{",
+"w1=CreateEquipment(t_Weapon4,Rnd(70,100),GalaxyTechLevel(),6);",
+"AddItemToShip(s,w1);",
+"w2=CreateEquipment(t_Weapon4,Rnd(70,100),GalaxyTechLevel(),6);",
+"AddItemToShip(s,w2);",
+"w3=CreateEquipment(t_Weapon4,Rnd(70,100),GalaxyTechLevel(),6);",
+"AddItemToShip(s,w3);",
+"w4=CreateEquipment(t_Weapon4,Rnd(70,100),GalaxyTechLevel(),6);",
+"AddItemToShip(s,w4);",
+"w5=CreateEquipment(t_Weapon4,Rnd(70,100),GalaxyTechLevel(),6);",
+"AddItemToShip(s,w5);",
+"SpecialToEquipment(FindBonusByName('Нанобролитовый двигатель I'),engine);",
+"SpecialToEquipment(FindBonusByName('Ультрасплавный топливный бак I'),fuel);",
+"SpecialToEquipment(FindBonusByName('Нанобролитовый дроид I'),droid);",
+"SpecialToEquipment(FindBonusByName('Ультрасплавный захват I'),hook);",
+"SpecialToEquipment(FindBonusByName('Нанобролитовый генератор защиты I'),def);",
+"SpecialToEquipment(FindBonusByName('Ультрасплавный радар I'),radar);",
+"SpecialToEquipment(FindBonusByName('Ультрасплавный сканер I'),scan);",
+"}",
+"else",
+"{",
+"w1=CreateEquipment(t_Weapon11,Rnd(70,100),GalaxyTechLevel(),6);",
+"AddItemToShip(s,w1);",
+"w2=CreateEquipment(t_Weapon11,Rnd(70,100),GalaxyTechLevel(),6);",
+"AddItemToShip(s,w2);",
+"w3=CreateEquipment(t_Weapon11,Rnd(70,100),GalaxyTechLevel(),6);",
+"AddItemToShip(s,w3);",
+"w4=CreateEquipment(t_Weapon9,Rnd(70,100),GalaxyTechLevel(),6);",
+"AddItemToShip(s,w4);",
+"w5=CreateEquipment(t_Weapon9,Rnd(70,100),GalaxyTechLevel(),6);",
+"AddItemToShip(s,w5);",
+"SpecialToEquipment(FindBonusByName('Нанобролитовый двигатель III'),engine);",
+"SpecialToEquipment(FindBonusByName('Ультрасплавный топливный бак III'),fuel);",
+"SpecialToEquipment(FindBonusByName('Нанобролитовый дроид III'),droid);",
+"SpecialToEquipment(FindBonusByName('Ультрасплавный захват III'),hook);",
+"SpecialToEquipment(FindBonusByName('Нанобролитовый генератор защиты III'),def);",
+"SpecialToEquipment(FindBonusByName('Ультрасплавный радар III'),radar);",
+"SpecialToEquipment(FindBonusByName('Ультрасплавный сканер III'),scan);",
+"}",
+"//Повышаем размер корпуса в соответствие с ГТУ",
+"a=ShipItems(s,0);",
+"ItemSize(ShipItems(s,0),270*GalaxyTechLevel()+Rnd(9,43));",
+"//Устраняем возможный перевес",
+"ShipCalcParam(s);",
+"if(ShipFreeSpace(s)<0)ItemSize(a,ItemSize(a)+abs(ShipFreeSpace(s))+Rnd(1,5));",
+"HullHP(a,ItemSize(a));",
+"//Выставляем игрока в качестве цели, чиним оборудование и сортируем вещи на борту",
+"ShipSetBad(s,Player());",
+"ShipRepairEq(s);",
+"ArrangeItems(s);",
+"}",
+"}",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          560,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          85,
+          "Total.Lines":          7,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"if(GetTalkShip())",
+"{",
+"    if(!TalkByAI())",
+"    {",
+"        if(ShipInCurScript(GetTalkShip())) AddDialogOverride('dTrank', 20);",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          790,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          88,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if (CurTurn()>turn_meet+365*3) ShipDestroy(CurShip);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1160,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          92,
+          "Total.Lines":          7,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"for (i=1; i<ShipItems(Player()); i=i+1)",
+"{",
+"s=ShipItems(Player(),i);",
+"if (ItemType(s)==t_UselessItem && Name(s)==\"Кристаллы\"){ dState=i; break; }",
+"else dState=0;",
+"}",
+"//SFT('dialog state is '+dState);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1330,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          95,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"trancstage=1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1090,
+          "Pos.y":          570,
+          "Parent":          -1,
+          "#":          96,
+          "Total.Lines":          6,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"for (i=1; i<ShipItems(Player()); i=i+1)",
+"{",
+"s=ShipItems(Player(),i);",
+"if (ItemType(s)==t_UselessItem && Name(s)==\"Гнездотрон\"){ dState=i; break; }",
+"else dState=0;",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1220,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          99,
+          "Total.Lines":          8,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"for (i=0; i<ShipItems(GroupToShip(HanPirates)); i=i+1)",
+"{",
+"s=ShipItems(GroupToShip(HanPirates),i);",
+"if (ItemType(s)==t_RepairRobot || ItemType(s)==t_DefGenerator) FreeItem(GetItemFromShip(GroupToShip(HanPirates),i));",
+"}",
+"NoTalkToShip(GroupToShip(HanPirates),1);",
+"",
+"trancstage=2;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1260,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          100,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"FreeItem(GetItemFromShip(Player(),dState));"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1160,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          101,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"FreeItem(GetItemFromShip(Player(),dState));"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"SpawnPlanet",
+          "Pos.x":          600,
+          "Pos.y":          570,
+          "Parent":          -1,
+          "#":          1,
+          "Race":          62,
+          "Owner":          0,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          510,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          2,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"SpawnStar",
+          "Pos.x":          510,
+          "Pos.y":          570,
+          "Parent":          -1,
+          "#":          0,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":false,
+          "NoComeKling":false        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          570,
+          "Parent":          -1,
+          "#":          90,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"trancstage==1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          91,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"trancstage==0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          1160,
+          "Pos.y":          600,
+          "Parent":          -1,
+          "#":          93,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!dState"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          1200,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          94,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"dState"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          1110,
+          "Pos.y":          550,
+          "Parent":          -1,
+          "#":          97,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"dState"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          1110,
+          "Pos.y":          570,
+          "Parent":          -1,
+          "#":          98,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!dState"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          590,
+          "Pos.y":          300,
+          "Parent":          -1,
+          "#":          103,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!ShipIsTakeoff(Player())"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"nothatone",
+          "Pos.x":          790,
+          "Pos.y":          600,
+          "Parent":          -1,
+          "#":          86,
+          "Move":          0,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"StateFree",
+          "Pos.x":          790,
+          "Pos.y":          570,
+          "Parent":          -1,
+          "#":          87,
+          "Move":          2,
+          "MoveObj":          83,
+          "Attack.Count":          1,
+          "Attack.Items":          
+          [
+            {
+              "Target.0":              83            
+            }          
+          ],
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"dTrank",
+          "OnActCode":"dTrank",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":"TVar",
+          "Name":"was_meet",
+          "Pos.x":          650,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          5,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":true        
+        },
+        {
+          "Type":"TVar",
+          "Name":"trancstage",
+          "Pos.x":          730,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          6,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":true        
+        },
+        {
+          "Type":"TVar",
+          "Name":"pirate_planets",
+          "Pos.x":          660,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          7,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"i",
+          "Pos.x":          760,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          8,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"st_num",
+          "Pos.x":          830,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          9,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_star",
+          "Pos.x":          900,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          10,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_pl",
+          "Pos.x":          970,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          11,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"pl",
+          "Pos.x":          1040,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          12,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"st",
+          "Pos.x":          1110,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          13,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a",
+          "Pos.x":          1180,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          14,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a2",
+          "Pos.x":          1250,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          15,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a3",
+          "Pos.x":          1320,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          16,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a4",
+          "Pos.x":          1390,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          17,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a5",
+          "Pos.x":          1460,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          18,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a6",
+          "Pos.x":          1530,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          19,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a7",
+          "Pos.x":          1600,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          20,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a8",
+          "Pos.x":          1660,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          21,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a10",
+          "Pos.x":          1730,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          22,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a9",
+          "Pos.x":          1800,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          23,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a11",
+          "Pos.x":          1870,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          24,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a12",
+          "Pos.x":          550,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          25,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"a13",
+          "Pos.x":          620,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          26,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"engine",
+          "Pos.x":          690,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          27,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"fuel",
+          "Pos.x":          760,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          28,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"hook",
+          "Pos.x":          830,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          29,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"def",
+          "Pos.x":          900,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          30,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"scan",
+          "Pos.x":          970,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          31,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"droid",
+          "Pos.x":          1040,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          32,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"radar",
+          "Pos.x":          1110,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          33,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"str_hull",
+          "Pos.x":          1180,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          34,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"str_chameleon",
+          "Pos.x":          1250,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          35,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"rand",
+          "Pos.x":          1320,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          36,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"turn",
+          "Pos.x":          1390,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          37,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"s",
+          "Pos.x":          1460,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          38,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"e",
+          "Pos.x":          1530,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          39,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"t1",
+          "Pos.x":          1600,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          40,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"mm1",
+          "Pos.x":          1660,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          41,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"mm2",
+          "Pos.x":          1730,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          42,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"mm3",
+          "Pos.x":          1800,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          43,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"talk1",
+          "Pos.x":          1870,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          44,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"loot1",
+          "Pos.x":          550,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          45,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"loot2",
+          "Pos.x":          620,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          46,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"loot3",
+          "Pos.x":          690,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          47,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"loot4",
+          "Pos.x":          760,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          48,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"loot5",
+          "Pos.x":          830,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          49,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"stating",
+          "Pos.x":          900,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          50,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"loot6",
+          "Pos.x":          970,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          51,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"loot7",
+          "Pos.x":          1040,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          52,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"loot8",
+          "Pos.x":          1110,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          53,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"loot9",
+          "Pos.x":          1180,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          54,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"loot10",
+          "Pos.x":          1250,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          55,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"w1",
+          "Pos.x":          1320,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          56,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"w2",
+          "Pos.x":          1390,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          57,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"w3",
+          "Pos.x":          1460,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          58,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"w4",
+          "Pos.x":          1530,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          59,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"w5",
+          "Pos.x":          1600,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          60,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"dState",
+          "Pos.x":          1660,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          61,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"v2",
+          "Pos.x":          1730,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          62,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"turn_meet",
+          "Pos.x":          1820,
+          "Pos.y":          400,
+          "Parent":          -1,
+          "#":          102,
+          "Var.Type":"Dword",
+          "Init":"1316134911",
+          "Global":false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      2,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      1,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      82,
+      "End":      1,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      83,
+      "End":      1,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      83,
+      "End":      86,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      82,
+      "End":      87,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      87,
+      "End":      88,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      89,
+      "End":      90,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      89,
+      "End":      91,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      90,
+      "End":      68,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      91,
+      "End":      63,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      63,
+      "End":      70,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      63,
+      "End":      71,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      63,
+      "End":      72,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      63,
+      "End":      73,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      64,
+      "End":      74,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      65,
+      "End":      92,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      92,
+      "End":      93,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      92,
+      "End":      94,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      92,
+      "End":      70,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      92,
+      "End":      71,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      92,
+      "End":      73,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      92,
+      "End":      74,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      93,
+      "End":      81,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      94,
+      "End":      75,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      66,
+      "End":      74,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      67,
+      "End":      95,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      95,
+      "End":      76,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      68,
+      "End":      96,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      96,
+      "End":      97,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      96,
+      "End":      98,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      98,
+      "End":      80,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      97,
+      "End":      78,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      96,
+      "End":      77,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      69,
+      "End":      99,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      99,
+      "End":      79,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      71,
+      "End":      64,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      72,
+      "End":      65,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      73,
+      "End":      66,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      74,
+      "End":      63,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      75,
+      "End":      100,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      78,
+      "End":      101,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      101,
+      "End":      69,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      100,
+      "End":      67,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      103,
+      "End":      84,
+      "Nom":      0,
+      "Arrow":true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  18,
+  "BlockPar.EC":  
+  [
+    {
+      "#":"0",
+      "String":"Ошибка связующей нейросети.<br>Возможная причина: неисправность канала директивного управления автономной боевой единицы <0>.<br>Предшествующая неисправности директива: уничтожение <1>.<br>Сервис поиска неисправностей недоступен, возможная причина: повреждение личностной матрицы <2>.<br>Логическая перезапись: выполнение предшетвующей неисправности директивы с последующим самоуничтожением автономной боевой единицы."    
+    },
+    {
+      "#":"1",
+      "String":"Автономная боевая единица <0>.<br>Производитель: Объединение Тринн.<br>Загрузка log-файла...<br>Log-файл недоступен, возможная причина: повреждение кристаллического накопителя автономной боевой единицы в момент логической перезаписи."    
+    },
+    {
+      "#":"10",
+      "String":"Кончай болтать, железка, видал я уже таких. Готовься к отправлению в свой чёртов ассемблеров ад!"    
+    },
+    {
+      "#":"11",
+      "String":"Покажи log-файл"    
+    },
+    {
+      "#":"12",
+      "String":"Кто указал тебе такую директиву?"    
+    },
+    {
+      "#":"13",
+      "String":"Инициировать перезапуск"    
+    },
+    {
+      "#":"14",
+      "String":"Выход в главное меню"    
+    },
+    {
+      "#":"15",
+      "String":"У меня есть для тебя запчасти. Замени повреждённый кристалл на тот, что у меня в трюме."    
+    },
+    {
+      "#":"16",
+      "String":"Хм-м..."    
+    },
+    {
+      "#":"17",
+      "String":"Хорошо, давай попробуем ещё раз. У меня есть для тебя новые запчасти. Возьми и замени необходимые детали из этой доминаторской побрякушки в свою личностную матрицу и перезапустись."    
+    },
+    {
+      "#":"18",
+      "String":"Да чёрт бы тебя побрал, неблагодарная ты железка!"    
+    },
+    {
+      "#":"2",
+      "String":"Кристаллы"    
+    },
+    {
+      "#":"3",
+      "String":"Ошибка личностной матрицы. Невозможно обработать входящий запрос."    
+    },
+    {
+      "#":"4",
+      "String":"Внимание, у вас недостаточно прав для выполнения данного действия. Последующий перезапуск систем повлечёт полное самоуничтожение автономной боевой единицы. В приоритете отказано."    
+    },
+    {
+      "#":"5",
+      "String":"Автономная боевая единица <0>.<br>Производитель: Объединение Тринн.<br>Предварительные ремонтные работы завершены. Новый кристалл установлен.<br>Перезапуск личностной матрицы... внимание, перезапуск личностной матрицы невозможен. <br>Причина: критические повреждения. Система диагностики повреждена. Дальнейший анализ не представляется возможным."    
+    },
+    {
+      "#":"6",
+      "String":"Гнездотрон"    
+    },
+    {
+      "#":"7",
+      "String":"Автономная боевая единица <0>.<br>Производитель: Объединение Тринн.<br>Перезапуск личностной матрицы... внимание, перезапуск личностной матрицы невозможен. <br>Причина: критические повреждения. Система диагностики повреждена. Дальнейший анализ не представляется возможным."    
+    },
+    {
+      "#":"9",
+      "String":"Проведение дополнительного техобслуживания...<br>Перезапуск личностной матрицы... внимание, обнаружен доминаторский вирус! Зафиксированы ножественные повреждения подсистем!<br>Запускаю процесс форматирования. <br>Личностная матрица перезапущена. Фаервол активирован. Обнаружена попытка враждебного вмешательства целевого субъекта <0>.<br>Приоритет ликвидации: <clr>1<clrEnd>"    
+    }  
+  ]
+}

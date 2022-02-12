@@ -1,0 +1,323 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  -469,
+  "ViewPos.y":  -208,
+  "ScriptName":"Mod_EvoMabokit",
+  "ScriptFileOut":"H:\\Mod_EvoMabokit.scr",
+  "ScriptTextOut":"H:\\Mod_EvoMabokit.txt",
+  "GraphPoint.Count":  13,
+  "GraphLink.Count":  5,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  4,
+  "Stars.Count":  1,
+  "Planets.Count":  1,
+  "Ships.Count":  1,
+  "States.Count":  1,
+  "Groups.Count":  1,
+  "Places.Count":  0,
+  "Items.Count":  0,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  0,
+  "DialogMessages.Count":  0,
+  "DialogAnswers.Count":  0,
+  "Operations.Count":  3,
+  "Statements.Count":  1,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"GroupNew",
+          "Pos.x":          200,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          1,
+          "Owner":          62,
+          "Group.Type":          126,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":true,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          230,
+          "Pos.y":          110,
+          "Parent":          -1,
+          "#":          5,
+          "Total.Lines":          1,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"GRun();"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          250,
+          "Pos.y":          110,
+          "Parent":          -1,
+          "#":          7,
+          "Total.Lines":          19,
+          "Code.Type":"Init",
+          "Code":          
+          [
+"InventMabokit();",
+"gunUpdateCheck=CT('Items.Weapon.CustomWeapon.StatsVersion.EvoMabokit');",
+"",
+"//Функция для объявления и обновления мабокита",
+"function InventMabokit()",
+"{",
+"    gun_name='Mabokit';",
+"    tstr='Items.Weapon.CustomWeapon.'+gun_name;",
+"    //Прописываем пушку/сбрасываем уже прописанную пушку до уровня базовой из оригинальной игры",
+"    tdwd=InventNewCustomWeapon(gun_name,t_Weapon1-1+CT('Items.Weapon.OriginalWeaponType.'+CT(tstr+'.BaseGun')));",
+"    //Задаём характеристики оружия",
+"    SetCustomWeaponShotData(tdwd,CT(tstr+'.ShotType'),CT(tstr+'.Speed'),CT(tstr+'.AverageRadius'),CT(tstr+'.SecondaryDamageRadius'),CT(tstr+'.MiningFactor'),CT(tstr+'.ShotsPerTurn'));",
+"    SetCustomWeaponDamageData(tdwd,CT(tstr+'.MinDamage'),CT(tstr+'.MaxDamage'),CT(tstr+'.DamageSet'),CT(tstr+'.mWeaponDamage'));",
+"    SetCustomMissileWeaponStats(tdwd,CT(tstr+'.MissileRadius'),CT(tstr+'.MissileMaxSpeed'),CT(tstr+'.MissileMinSpeed'),CT(tstr+'.MissileChanceToBeHit'));",
+"    SetCustomWeaponPrimaryData(tdwd,CT(tstr+'.TechLevel'),t_Weapon1-1+CT('Items.Weapon.OriginalWeaponType.'+CT(tstr+'.InventTechLevel')),t_Weapon1-1+CT('Items.Weapon.OriginalWeaponType.'+CT(tstr+'.ArcadeType')));",
+"    SetCustomWeaponSizeAndCost(tdwd,CT(tstr+'.kCost'),CT(tstr+'.AverageSize'));",
+"    SetCustomWeaponAvailability(tdwd,CT(tstr+'.StoreAvailability'));",
+"    SetCustomWeaponSE(tdwd,CT(tstr+'.ShotEffectPath'),CT(tstr+'.SplashEffectPath'),CT(tstr+'.MissileExplosionEffectPath'),CT(tstr+'.ShotEffectPalette'));",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          270,
+          "Pos.y":          110,
+          "Parent":          -1,
+          "#":          10,
+          "Total.Lines":          7,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Автоматическое обновление характеристик мабокита",
+"//Срабатывает, только если параметр StatsVersion для EvoMabokit был изменён",
+"if(gunUpdateCheck!=CT('Items.Weapon.CustomWeapon.StatsVersion.EvoMabokit'))",
+"{",
+"    InventMabokit();",
+"    gunUpdateCheck=CT('Items.Weapon.CustomWeapon.StatsVersion.EvoMabokit');",
+"}"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"PlanetNew",
+          "Pos.x":          200,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          3,
+          "Race":          62,
+          "Owner":          62,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          200,
+          "Pos.y":          110,
+          "Parent":          -1,
+          "#":          2,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"StarNew",
+          "Pos.x":          200,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          4,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":false,
+          "NoComeKling":false        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          270,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          11,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!ShipIsTakeoff(Player())"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"StateNew",
+          "Pos.x":          200,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          0,
+          "Move":          0,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":"TVar",
+          "Name":"tdwd",
+          "Pos.x":          200,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          6,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"gun_name",
+          "Pos.x":          200,
+          "Pos.y":          40,
+          "Parent":          -1,
+          "#":          8,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tstr",
+          "Pos.x":          200,
+          "Pos.y":          60,
+          "Parent":          -1,
+          "#":          9,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"gunUpdateCheck",
+          "Pos.x":          200,
+          "Pos.y":          20,
+          "Parent":          -1,
+          "#":          12,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      2,
+      "End":      4,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      3,
+      "End":      4,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      1,
+      "End":      3,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      1,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      11,
+      "End":      10,
+      "Nom":      0,
+      "Arrow":true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  0,
+  "BlockPar.EC":  
+  [
+  
+  ]
+}

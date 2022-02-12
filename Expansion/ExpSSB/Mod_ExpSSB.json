@@ -1,0 +1,4737 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  -255,
+  "ViewPos.y":  -238,
+  "ScriptName":"Mod_ExpSSB",
+  "ScriptFileOut":"H:\\Mod_ExpSSB.scr",
+  "ScriptTextOut":"H:\\Mod_ExpSSB.txt",
+  "GraphPoint.Count":  188,
+  "GraphLink.Count":  141,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  43,
+  "Stars.Count":  1,
+  "Planets.Count":  1,
+  "Ships.Count":  1,
+  "States.Count":  2,
+  "Groups.Count":  2,
+  "Places.Count":  0,
+  "Items.Count":  1,
+  "Ethers.Count":  2,
+  "Dialogs.Count":  9,
+  "DialogMessages.Count":  26,
+  "DialogAnswers.Count":  33,
+  "Operations.Count":  42,
+  "Statements.Count":  25,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "DialogAnswers":      
+      [
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          110,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          13,
+          "Msg":"Сдать артефакт на изучение",
+          "AMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          150,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          16,
+          "Msg":"Получить обновлённые данные",
+          "AMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          230,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          18,
+          "Msg":"Отказаться",
+          "AMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          210,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          19,
+          "Msg":"Подтвердить",
+          "AMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          90,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          22,
+          "Msg":"Совместить оборудование с микромодулем",
+          "AMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          150,
+          "Pos.y":          60,
+          "Parent":          -1,
+          "#":          28,
+          "Msg":"Подтвердить",
+          "AMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          120,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          29,
+          "Msg":"Отказаться",
+          "AMsg.Num":"6"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          130,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          49,
+          "Msg":"Улучшить артефакт",
+          "AMsg.Num":"7"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"block",
+          "Pos.x":          130,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          56,
+          "Msg":"Улучшить артефакт",
+          "AMsg.Num":"8"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          210,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          59,
+          "Msg":"",
+          "AMsg.Num":"9"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          160,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          66,
+          "Msg":"Как продвигаются исследования?",
+          "AMsg.Num":"10"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          130,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          67,
+          "Msg":"Спасибо",
+          "AMsg.Num":"11"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          550,
+          "Pos.y":          190,
+          "Parent":          -1,
+          "#":          99,
+          "Msg":"Уйти",
+          "AMsg.Num":"12"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          530,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          102,
+          "Msg":"Тогда я немедленно отправляюсь",
+          "AMsg.Num":"13"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          111,
+          "#":          112,
+          "Msg":"Стоп-стоп-стоп, какое еще вскрытие?!",
+          "AMsg.Num":"14"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          -180,
+          "Pos.y":          -30,
+          "Parent":          -1,
+          "#":          114,
+          "Msg":"Подпространственное перемещение",
+          "AMsg.Num":"15"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          10,
+          "Pos.y":          290,
+          "Parent":          -1,
+          "#":          115,
+          "Msg":"Модернизация Клеща",
+          "AMsg.Num":"16"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          146,
+          "#":          120,
+          "Msg":"Да",
+          "AMsg.Num":"17"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          -30,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          125,
+          "Msg":"Нет",
+          "AMsg.Num":"18"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          10,
+          "Pos.y":          310,
+          "Parent":          -1,
+          "#":          127,
+          "Msg":"Да",
+          "AMsg.Num":"19"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          60,
+          "Pos.y":          60,
+          "Parent":          -1,
+          "#":          129,
+          "Msg":"Понятно",
+          "AMsg.Num":"20"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          420,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          136,
+          "Msg":"Я бы хотел воспользоваться услугами вашей базы",
+          "AMsg.Num":"21"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          400,
+          "Pos.y":          150,
+          "Parent":          -1,
+          "#":          137,
+          "Msg":"Получить информацию о открытых черных дырах",
+          "AMsg.Num":"22"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          450,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          148,
+          "Msg":"Помочь в защите",
+          "AMsg.Num":"23"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          480,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          150,
+          "Msg":"Конец связи",
+          "AMsg.Num":"24"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          153,
+          "#":          154,
+          "Msg":"Не пойду я ни в какую камеру, яйцеголовый! Я не \"чужой\", я самый обычный рейнджер.",
+          "AMsg.Num":"25"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          155,
+          "#":          156,
+          "Msg":"Говорю же вам! Я рейнджер! Меня зовут <ShipName(Player())>, можете рейтинг проверить!",
+          "AMsg.Num":"26"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          157,
+          "#":          158,
+          "Msg":"Ученые коалиции построили этот корпус. Сеть научных баз запустила проект по изучению черных дыр, результатом исследований стал этот корпус. Я получил экспериментальный образец в качестве благодарности за помощь в добыче материалов.",
+          "AMsg.Num":"27"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          159,
+          "#":          160,
+          "Msg":"Вы собирались стереть мне память?!",
+          "AMsg.Num":"28"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          161,
+          "#":          162,
+          "Msg":"Ладно, я согласен на сотрудничество.",
+          "AMsg.Num":"29"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          163,
+          "#":          164,
+          "Msg":"Далее",
+          "AMsg.Num":"30"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          50,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          171,
+          "Msg":"Покинуть базу",
+          "AMsg.Num":"31"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          -160,
+          "Pos.y":          110,
+          "Parent":          -1,
+          "#":          186,
+          "Msg":"Передумал",
+          "AMsg.Num":"32"        
+        }      
+      ],
+      "DialogMessages":      
+      [
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          190,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          0,
+          "Msg":"<temp_str>\r\nКакой артефакт вы желаете сдать на изучение?",
+          "DMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          170,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          15,
+          "Msg":"Благодарим за помощь в изучении неизвестного оборудования, в качестве компенсации получите <add_cr> cr. за утраченный артефакт.",
+          "DMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          230,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          17,
+          "Msg":"Вы выбрали:\r\nНазвание артефакта: <ItemFullName(GAnswerData)>.\r\nВес артефакта: <ItemSize(GAnswerData)> т.\r\nЦена артефакта: <ItemCost(GAnswerData)> cr.\r\nТип артефакта: <srch_type>.",
+          "DMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          80,
+          "Pos.y":          40,
+          "Parent":          -1,
+          "#":          24,
+          "Msg":"Мы не изучили данный тип оборудования. Привозите больше артефактов на исследование.",
+          "DMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          120,
+          "Pos.y":          60,
+          "Parent":          -1,
+          "#":          27,
+          "Msg":"Вы выбрали для совмещения <ItemFullName(temp_dword)> и микромодуль <BonusName(mm_name)>. Всё верно?",
+          "DMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          60,
+          "Pos.y":          20,
+          "Parent":          -1,
+          "#":          31,
+          "Msg":"Какой микромодуль желаете использовать для совмещения?",
+          "DMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          90,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          35,
+          "Msg":"Обычно оборудование неизвестного происхождения не совместимо с микромодулями из-за конфликтов технологий, однако у артефактов конфликт заметно ниже, именно поэтому они частично работают на нашем оборудовании. Чем больше мы изучим привезённых вами артефактов, тем больше сможем предложить.\r\nВыберите оборудование неизвестного происхождения для совмещения с микромодулем.",
+          "DMsg.Num":"6"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          150,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          46,
+          "Msg":"Благодарим за сотрудничество. За <temp_int_2> тонн артефактов вы получаете <add_cr> cr.",
+          "DMsg.Num":"7"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          190,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          50,
+          "Msg":"Мы можем заменить старые детали на более компактные и надёжные, в результате чего вес и износ артефакта уменьшатся, но цена увеличится в два раза.\r\nВот список что мы можем улучшить:\r\n<temp_str>",
+          "DMsg.Num":"8"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          210,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          58,
+          "Msg":"",
+          "DMsg.Num":"9"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          160,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          65,
+          "Msg":"Хорошо. А благодаря вашим поставкам дополнительного материала мы совершили ещё одно открытие. В качестве благодарности позвольте вручить вам уникальный артефакт созданный по новым технологиям.",
+          "DMsg.Num":"10"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          550,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          96,
+          "Msg":"Вы утверждаете, что были в гиперпространстве атакованы зондами? Действительно интересно, обычно там орудуют либо пираты, либо так называемые \"чужие\". Огромное спасибо вам за то, что дали нам новую загадку, рейнджер! Мы приложим все усилия к тому, чтобы разгадать ее. Думаю, сперва интегрально-корпускулярное сканирование, затем...\r\nА, простите, отвлекся. Прилетайте через несколько дней, мы наверняка сможем рассказать вам больше об этом интересном феномене!",
+          "DMsg.Num":"11"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          530,
+          "Pos.y":          190,
+          "Parent":          -1,
+          "#":          98,
+          "Msg":"Да-да, мы вас ждали. К сожалению, узнать нам особо ничего не удалось: аппаратура не пережила квантовой модуляции, которой мы ее подвергли. Однако же у нас получилось восстановить некоторую информацию из блоков памяти зондов. Эти данные наиболее всего похожи на запланированный маршрут, там указаны координаты звездных систем и временные сроки.\r\nПоследние координаты указывают на систему <StarName(temp_dword_2)>, в то время как привязанный к ним временной интервал подходит к концу через несколько недель. Больше мы ничего сообщить вам, <ShipName(Player())>, не можем.\r\nБудь я на вашем месте, обязательно бы посетил эту звездную систему, пока срок не подошел к концу. Что бы там ни находилось, это наверняка представляет огромную научную важность!",
+          "DMsg.Num":"12"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          30,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          110,
+          "Msg":"<temp_str>",
+          "DMsg.Num":"13"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          108,
+          "#":          111,
+          "Msg":"Какой интересный экземпляр. Никакие сканеры, ни биотические, ни ментальные, ни технологические не смогли обнаружить никаких аномалий. Чистейшая работа... Большая удача, что нам удалось захватить объект живым. Возможно, вскрытие сможет показать как Чужим удалось создать столь совершенную систему маскировки.",
+          "DMsg.Num":"14"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          114,
+          "#":          116,
+          "Msg":"Наша станция оснащена гипергенератором рекордного размера, что позволяет почти моментально перемещаться в любую часть галактики. Но мы можем уменьшить размер поля до величины вашего корпуса, что позволит переместить вас туда куда пожелаете. Кстати, куда вам надо?",
+          "DMsg.Num":"15"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          118,
+          "#":          119,
+          "Msg":"Но эта услуга не бесплатна, часть деталей генератора безвозвратно уничтожается в результате эксплуатации. Наши издержки составят примерно <cost> cr.\r\nНу так что, начать подготовку для вашего перемещения? Это не займёт много времени.",
+          "DMsg.Num":"16"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          -30,
+          "Pos.y":          290,
+          "Parent":          -1,
+          "#":          124,
+          "Msg":"Нашими специалистами была разработана модификация вашего уникального корпуса. Изменения состава материала обшивки сделает её более прочной. Также будет произведена переоснастка внутренних систем, в результате чего, изменится объём всего корабля.\r\nА да, новые материалы обойдутся вам в <cost> cr.\r\nВы согласны?",
+          "DMsg.Num":"17"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          450,
+          "Pos.y":          150,
+          "Parent":          -1,
+          "#":          135,
+          "Msg":"Объект <clr>X-24&1/2<clrEnd> на связи.",
+          "DMsg.Num":"18"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          450,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          139,
+          "Msg":"<temp_str>",
+          "DMsg.Num":"19"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          20,
+          "Pos.y":          0,
+          "Parent":          112,
+          "#":          153,
+          "Msg":"Невероятно! Объект способен разговаривать на галалингве! Двойная удача, что он жив! Возможно, нам удастся наладить контакт, сколько же мы сможем от него узнать! Боюсь, коллеги, вскрытие немного откладывается. Охрана, доставьте объект в изоляционную камеру!",
+          "DMsg.Num":"20"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          -20,
+          "Pos.y":          0,
+          "Parent":          154,
+          "#":          155,
+          "Msg":"Рейнджер? Как интересно... Боюсь, ваш корабль говорит об обратном. Материалы из которых он построен и технологии используемые в нем недоступны Коалиции и уж тем более рядовым рейнджерам.",
+          "DMsg.Num":"21"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          20,
+          "Pos.y":          0,
+          "Parent":          156,
+          "#":          157,
+          "Msg":"Хмм... Запись о таком рейнджере действительно существует и ваши биометрические показатели полностью совпадают. Хорошо, предположим, я верю в эту версию, но это не объясняет ваш странный корабль.",
+          "DMsg.Num":"22"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          -20,
+          "Pos.y":          0,
+          "Parent":          158,
+          "#":          159,
+          "Msg":"Интересно, значит, они все-таки решили заняться изучением черных дыр... Ну чтож, рано или поздно это должно было случиться, однако мы рассчитывали что их исследования ни к чему не приведут, поэтому не уделяли этому должного внимания, а оно вот как вышло... Корабль смогли построить... Возможно тут решающим фактором стала помощь таких рейнджеров как вы. Думаю, вы можете быть нам полезны. Это хорошо, терпеть не могу стирать память, пациенты так кричат... Жуть.",
+          "DMsg.Num":"23"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          20,
+          "Pos.y":          0,
+          "Parent":          160,
+          "#":          161,
+          "Msg":"Конечно. Вы хоть представляете, где находитесь? Эта база - секретный правительственный объект, только избранные знают о нашем существовании, даже высшие чины не все в курсе. Мы должны охранять нашу секретность, скажите спасибо, что у нас есть эта технология, иначе пришлось бы устранять всех случайных пилотов. Вам повезло, с вами мы этого делать не будем. Думаю так или иначе вы сможете нам помочь, особенно сейчас, когда большинство наших зондов уничтожено. Вы, кстати, не знаете, что с ними случилось? Нет? Ну ладно, в любом случае наша защита теперь сильно ослабла и в случае нового нападения нам пригодиться любая помощь.",
+          "DMsg.Num":"24"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          -20,
+          "Pos.y":          0,
+          "Parent":          162,
+          "#":          163,
+          "Msg":"Отлично. Мы выдадим вам специальный коммуникатор, с его помощью вы сможете попасть на нашу станцию из любой точки галактики. Хотя ему и требуется некоторое время на перезарядку. В награду за сотрудничество наша станция предоставит вам доступ к ряду уникальных услуг. Будьте уверены, наши специалисты действительно способны творить чудеса, вы не будете разочарованы.\r\nИтак, мы договорились. Самое главное помните: разглашать информацию о нашем существовании строжайше запрещено. Если же утечка все-таки произойдет, нам не останется ничего, кроме как прекратить наше сотрудничество и стереть память вам, а также всем, кто узнает о нашем существовании. Поверьте, нам такой исход нравиться ничуть не больше чем вам.",
+          "DMsg.Num":"25"        
+        }      
+      ],
+      "Dialogs":      
+      [
+        {
+          "Type":"TDialog",
+          "Name":"inject_mm",
+          "Pos.x":          150,
+          "Pos.y":          40,
+          "Parent":          -1,
+          "#":          33        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"chose_eq",
+          "Pos.x":          120,
+          "Pos.y":          20,
+          "Parent":          -1,
+          "#":          37        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"take_art",
+          "Pos.x":          280,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          41        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"take_art_all",
+          "Pos.x":          170,
+          "Pos.y":          260,
+          "Parent":          -1,
+          "#":          44        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"art_improvement",
+          "Pos.x":          230,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          52        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"DialogSB",
+          "Pos.x":          530,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          91        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"DialogGov",
+          "Pos.x":          30,
+          "Pos.y":          -20,
+          "Parent":          -1,
+          "#":          92        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"tp_2",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          117,
+          "#":          93        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"DialogSSB2",
+          "Pos.x":          450,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          134        
+        }      
+      ],
+      "Ethers":      
+      [
+        {
+          "Type":"TEther",
+          "Name":"",
+          "Pos.x":          590,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          101,
+          "Ether.Type":          4,
+          "Unique":"040EDD5D-C8F8-4E10-B3BA-0C8B0AB0FFED",
+          "Msg":"<color=0,255,0>Задание выполнено.</color>\r\nУспешно расправившись с напавшими на вас в гиперпространстве зондами, вы подобрали их уцелевшие части на корабль. Неповрежденное оборудование можно доставить на научную базу с целью выяснения причин агрессии зондов. А можно и распродать на запчасти, чего заморачиваться-то!",
+          "Ship1":"",
+          "Ship2":"",
+          "Ship3":""        
+        },
+        {
+          "Type":"TEther",
+          "Name":"",
+          "Pos.x":          570,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          104,
+          "Ether.Type":          3,
+          "Unique":"C4958375-3412-4E34-9D2D-1DF4A436F608",
+          "Msg":"Да-да, мы вас ждали. К сожалению, узнать нам особо ничего не удалось: аппаратура не пережила квантовой модуляции, которой мы ее подвергли. Однако же у нас получилось восстановить некоторую информацию из блоков памяти зондов. Эти данные наиболее всего похожи на запланированный маршрут, там указаны координаты звездных систем и временные сроки.\r\nПоследние координаты указывают на систему <StarName(GalaxyStar(temp_star-1))>, в то время как привязанный к ним временной интервал подходит к концу через несколько недель. Больше мы ничего сообщить вам, <ShipName(Player())>, не можем.\r\nБудь я на вашем месте, обязательно бы посетил эту звездную систему, пока срок не подошел к концу. Что бы там не находилось, это наверняка представляет огромную научную важность!",
+          "Ship1":"",
+          "Ship2":"",
+          "Ship3":""        
+        }      
+      ],
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"PlayerGroup",
+          "Pos.x":          450,
+          "Pos.y":          260,
+          "Parent":          -1,
+          "#":          10,
+          "Owner":          62,
+          "Group.Type":          126,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":true,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        },
+        {
+          "Type":"TGroup",
+          "Name":"SSBGroup",
+          "Pos.x":          360,
+          "Pos.y":          290,
+          "Parent":          -1,
+          "#":          173,
+          "Owner":          62,
+          "Group.Type":          126,
+          "CntShipMin":          0,
+          "CntShipMax":          0,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":false,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          92,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Items":      
+      [
+        {
+          "Type":"TItem",
+          "Name":"Zond_take",
+          "Pos.x":          480,
+          "Pos.y":          290,
+          "Parent":          -1,
+          "#":          85,
+          "Class":          5,
+          "Item.Type":          0,
+          "Size":          10,
+          "Level":          1,
+          "Radius":          150,
+          "Owner":          6,
+          "Useless":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          190,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          1,
+          "Total.Lines":          126,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(ItemType(GAnswerData)==t_ArtFastRacks || ItemType(GAnswerData)==t_ArtefactHull || ItemType(GAnswerData)==t_ArtefactSpeed || ItemType(GAnswerData)==t_ArtefactDef || ItemType(GAnswerData)==t_ArtefactAntigrav || ItemType(GAnswerData)==t_ArtEnergyPulse || ItemType(GAnswerData)==t_ArtSplinter || ItemType(GAnswerData)==t_ArtDecelerate || ItemType(GAnswerData)==t_ArtMissileDef || ItemType(GAnswerData)==t_ArtForsage || ItemType(GAnswerData)==t_ArtPDTurret)",
+"{",
+"    add_srch=Rnd(8,13);",
+"}",
+"if(ItemType(GAnswerData)==t_ArtefactFuel || ItemType(GAnswerData)==t_ArtefactRadar || ItemType(GAnswerData)==t_ArtefactScaner || ItemType(GAnswerData)==t_ArtefactDroid || ItemType(GAnswerData)==t_ArtefactHook)",
+"{",
+"    add_srch=Rnd(9,16);",
+"}",
+"if(ItemType(GAnswerData)==t_ArtefactPower || ItemType(GAnswerData)==t_ArtEnergyDef || ItemType(GAnswerData)==t_ArtefactNano || ItemType(GAnswerData)==t_ArtefactMiniExpl || ItemType(GAnswerData)==t_ArtDefToEnergy || ItemType(GAnswerData)==t_ArtWeaponToSpeed || ItemType(GAnswerData)==t_ArtGiperJump || ItemType(GAnswerData)==t_ArtefactTranclucator || ItemType(GAnswerData)==t_ArtDefToArms1 || ItemType(GAnswerData)==t_ArtDefToArms2)",
+"{",
+"    add_srch=Rnd(3,8);",
+"}",
+"if(ItemType(GAnswerData)==t_ArtefactAnalyzer || ItemType(GAnswerData)==t_ArtefactTransmitter || ItemType(GAnswerData)==t_ArtArtefactor || ItemType(GAnswerData)==t_ArtBio)",
+"{",
+"    add_srch=Rnd(2,4);",
+"}",
+"if(ItemType(GAnswerData)==t_ArtefactHull || ItemType(GAnswerData)==t_ArtefactAntigrav || ItemType(GAnswerData)==t_ArtefactNano || ItemType(GAnswerData)==t_ArtefactAnalyzer || ItemType(GAnswerData)==t_ArtefactTranclucator || ItemType(GAnswerData)==t_ArtBio)",
+"{",
+"    cur_art_sb2_srch_type[0]=cur_art_sb2_srch_type[0]+add_srch;",
+"}",
+"if(ItemType(GAnswerData)==t_ArtefactSpeed || ItemType(GAnswerData)==t_ArtefactPower || ItemType(GAnswerData)==t_ArtForsage || ItemType(GAnswerData)==t_ArtWeaponToSpeed || ItemType(GAnswerData)==t_ArtefactTranclucator || ItemType(GAnswerData)==t_ArtBio || ItemType(GAnswerData)==t_ArtGiperJump || ItemType(GAnswerData)==t_ArtefactNano || ItemType(GAnswerData)==t_ArtefactAnalyzer)",
+"{",
+"    cur_art_sb2_srch_type[1]=cur_art_sb2_srch_type[1]+add_srch;",
+"}",
+"if(ItemType(GAnswerData)==t_ArtefactFuel || ItemType(GAnswerData)==t_ArtefactNano || ItemType(GAnswerData)==t_ArtefactAnalyzer || ItemType(GAnswerData)==t_ArtefactTranclucator || ItemType(GAnswerData)==t_ArtBio)",
+"{",
+"    cur_art_sb2_srch_type[2]=cur_art_sb2_srch_type[2]+add_srch;",
+"}",
+"if(ItemType(GAnswerData)==t_ArtefactRadar || ItemType(GAnswerData)==t_ArtefactHook || ItemType(GAnswerData)==t_ArtefactNano || ItemType(GAnswerData)==t_ArtefactAnalyzer || ItemType(GAnswerData)==t_ArtefactTranclucator || ItemType(GAnswerData)==t_ArtBio)",
+"{",
+"    cur_art_sb2_srch_type[7]=cur_art_sb2_srch_type[7]+add_srch;",
+"}",
+"if(ItemType(GAnswerData)==t_ArtefactScaner || ItemType(GAnswerData)==t_ArtefactNano || ItemType(GAnswerData)==t_ArtefactAnalyzer || ItemType(GAnswerData)==t_ArtefactTranclucator || ItemType(GAnswerData)==t_ArtBio)",
+"{",
+"    cur_art_sb2_srch_type[6]=cur_art_sb2_srch_type[6]+add_srch;",
+"}",
+"if(ItemType(GAnswerData)==t_ArtefactDroid || ItemType(GAnswerData)==t_ArtArtefactor || ItemType(GAnswerData)==t_ArtefactNano || ItemType(GAnswerData)==t_ArtefactAnalyzer || ItemType(GAnswerData)==t_ArtefactTranclucator || ItemType(GAnswerData)==t_ArtBio)",
+"{",
+"    cur_art_sb2_srch_type[3]=cur_art_sb2_srch_type[3]+add_srch;",
+"}",
+"if(ItemType(GAnswerData)==t_ArtefactHook || ItemType(GAnswerData)==t_ArtefactNano || ItemType(GAnswerData)==t_ArtefactAnalyzer || ItemType(GAnswerData)==t_ArtefactTranclucator || ItemType(GAnswerData)==t_ArtBio)",
+"{",
+"    cur_art_sb2_srch_type[4]=cur_art_sb2_srch_type[4]+add_srch;",
+"}",
+"if(ItemType(GAnswerData)==t_ArtefactDef || ItemType(GAnswerData)==t_ArtefactNano || ItemType(GAnswerData)==t_ArtefactAnalyzer || ItemType(GAnswerData)==t_ArtefactTranclucator || ItemType(GAnswerData)==t_ArtBio)",
+"{",
+"    cur_art_sb2_srch_type[5]=cur_art_sb2_srch_type[5]+add_srch;",
+"}",
+"if(ItemType(GAnswerData)==t_ArtEnergyPulse || ItemType(GAnswerData)==t_ArtEnergyDef || ItemType(GAnswerData)==t_ArtefactNano || ItemType(GAnswerData)==t_ArtefactAnalyzer || ItemType(GAnswerData)==t_ArtefactTranclucator || ItemType(GAnswerData)==t_ArtBio)",
+"{",
+"    cur_art_sb2_srch_type[8]=cur_art_sb2_srch_type[8]+add_srch;",
+"}",
+"if(ItemType(GAnswerData)==t_ArtSplinter || ItemType(GAnswerData)==t_ArtDecelerate || ItemType(GAnswerData)==t_ArtefactNano || ItemType(GAnswerData)==t_ArtefactAnalyzer || ItemType(GAnswerData)==t_ArtefactTranclucator || ItemType(GAnswerData)==t_ArtBio)",
+"{",
+"    cur_art_sb2_srch_type[9]=cur_art_sb2_srch_type[9]+add_srch;",
+"}",
+"if(ItemType(GAnswerData)==t_ArtFastRacks || ItemType(GAnswerData)==t_ArtMissileDef || ItemType(GAnswerData)==t_ArtPDTurret || ItemType(GAnswerData)==t_ArtefactNano || ItemType(GAnswerData)==t_ArtefactAnalyzer || ItemType(GAnswerData)==t_ArtefactTranclucator || ItemType(GAnswerData)==t_ArtBio)",
+"{",
+"    cur_art_sb2_srch_type[10]=cur_art_sb2_srch_type[10]+add_srch;",
+"}",
+"if(ItemType(GAnswerData)==t_ArtefactMiniExpl)",
+"{",
+"    cur_art_sb2_srch_type[8]=cur_art_sb2_srch_type[8]+add_srch;",
+"    cur_art_sb2_srch_type[9]=cur_art_sb2_srch_type[9]+add_srch;",
+"    cur_art_sb2_srch_type[10]=cur_art_sb2_srch_type[10]+add_srch;",
+"}",
+"if(ItemType(GAnswerData)==t_ArtDefToEnergy)",
+"{",
+"    if(add_srch>9 && cur_art_sb2_srch_type[5]<100)",
+"    {",
+"        cur_art_sb2_srch_type[5]=cur_art_sb2_srch_type[5]+add_srch;",
+"    }",
+"    if(add_srch<=9 && cur_art_sb2_srch_type[5]<100)",
+"    {",
+"        cur_art_sb2_srch_type[8]=cur_art_sb2_srch_type[8]+add_srch;",
+"    }",
+"    if(cur_art_sb2_srch_type[5]==100)",
+"    {",
+"        cur_art_sb2_srch_type[8]=cur_art_sb2_srch_type[8]+add_srch;",
+"    }",
+"    if(cur_art_sb2_srch_type[8]==100)",
+"    {",
+"        cur_art_sb2_srch_type[5]=cur_art_sb2_srch_type[5]+add_srch;",
+"    }",
+"}",
+"if(ItemType(GAnswerData)==t_ArtDefToArms1 || ItemType(GAnswerData)==t_ArtDefToArms2)",
+"{",
+"    if(add_srch>9 && cur_art_sb2_srch_type[5]<100)",
+"    {",
+"        cur_art_sb2_srch_type[5]=cur_art_sb2_srch_type[5]+add_srch;",
+"    }",
+"    if(add_srch<=9 && cur_art_sb2_srch_type[5]<100)",
+"    {",
+"        cur_art_sb2_srch_type[8]=cur_art_sb2_srch_type[8]+add_srch;",
+"        cur_art_sb2_srch_type[9]=cur_art_sb2_srch_type[9]+add_srch;",
+"        cur_art_sb2_srch_type[10]=cur_art_sb2_srch_type[10]+add_srch;",
+"    }",
+"    if(cur_art_sb2_srch_type[5]==100)",
+"    {",
+"        cur_art_sb2_srch_type[8]=cur_art_sb2_srch_type[8]+add_srch;",
+"        cur_art_sb2_srch_type[9]=cur_art_sb2_srch_type[9]+add_srch;",
+"        cur_art_sb2_srch_type[10]=cur_art_sb2_srch_type[10]+add_srch;",
+"    }",
+"    if(cur_art_sb2_srch_type[8]==cur_art_sb2_srch_type[9]==cur_art_sb2_srch_type[10]==100)",
+"    {",
+"        cur_art_sb2_srch_type[5]=cur_art_sb2_srch_type[5]+add_srch;",
+"    }",
+"}",
+"for(j=0;j<=10;j=j+1)",
+"{",
+"    if(cur_art_sb2_srch_type[j]>100)",
+"    {",
+"        cur_art_sb2_srch_type[j]=100;",
+"    }",
+"}",
+"for(i=0;i<=29;i=i+1)",
+"{",
+"    if(ItemType(GAnswerData)==cur_art_sb2[i])",
+"    {",
+"        cur_art_sb2_srch[i]=cur_art_sb2_srch[i]+add_srch;",
+"    }",
+"}",
+"add_cr=ItemCost(GAnswerData)*2;",
+"FreeItem(GetArtFromShip(Player(),FindItemInShip(Player(),GAnswerData)));",
+"ShipMoney(Player(),(ShipMoney(Player())+add_cr));",
+"Sound('Sound.Sell');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          630,
+          "Pos.y":          50,
+          "Parent":          -1,
+          "#":          4,
+          "Total.Lines":          37,
+          "Code.Type":"Init",
+          "Code":          
+          [
+"//temp_dword = CreateCustomArt('pulsar', Rnd(15, 35), Rnd(2000, 8000) * GalaxyTechLevel(), 4);",
+"//AddItemToShip(Player(), temp_dword);",
+"//crush_ok = 8;",
+"//temp_dword = CreateCustomArt('ppb_caller_art', Rnd(1, 2) * GalaxyTechLevel(), Rnd(2000, 8000) * GalaxyTechLevel(), 4);",
+"//CustomArtData(temp_dword, 1, 99);",
+"//CustomArtData(temp_dword, 3, CurTurn() - 1);",
+"//AddItemToShip(Player(), temp_dword);",
+"",
+"cur_art_sb2 = newarray(31);",
+"cur_art_sb2_srch = newarray(31);",
+"cur_art_sb2_srch_type_name = newarray(12);",
+"cur_art_sb2_srch_type = newarray(11);",
+"",
+"for(i = 0; i < 11; i = i + 1) cur_art_sb2_srch_type[i] = 0;",
+"temp_int = 0;",
+"for(i = t_ArtefactHull; i < t_Hull; i = i + 1)",
+"{",
+"    if(i != t_ArtefactBomb && i != t_ArtBlackHole)",
+"    {",
+"        cur_art_sb2[temp_int] = i;",
+"        cur_art_sb2_srch[temp_int] = 0;",
+"        temp_int = temp_int + 1;",
+"    }",
+"}",
+"",
+"cur_art_sb2_srch_type_name[0] = 'Корпус';",
+"cur_art_sb2_srch_type_name[1] = 'Двигатель';",
+"cur_art_sb2_srch_type_name[2] = 'Топливный бак';",
+"cur_art_sb2_srch_type_name[3] = 'Ремонтный дроид';",
+"cur_art_sb2_srch_type_name[4] = 'Захват';",
+"cur_art_sb2_srch_type_name[5] = 'Защитный генератор';",
+"cur_art_sb2_srch_type_name[6] = 'Сканер';",
+"cur_art_sb2_srch_type_name[7] = 'Радар';",
+"cur_art_sb2_srch_type_name[8] = 'Энергетическое оружие';",
+"cur_art_sb2_srch_type_name[9] = 'Осколочное оружие';",
+"cur_art_sb2_srch_type_name[10] = 'Ракетное оружие';",
+"cur_art_sb2_srch_type_name[11] = 'Все типы';"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          610,
+          "Pos.y":          50,
+          "Parent":          -1,
+          "#":          14,
+          "Total.Lines":          1,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"GRun();"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          250,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          25,
+          "Total.Lines":          46,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(ItemType(GAnswerData)==t_ArtefactHull || ItemType(GAnswerData)==t_ArtefactAntigrav)srch_type=cur_art_sb2_srch_type_name[0];",
+"if(ItemType(GAnswerData)==t_ArtefactSpeed || ItemType(GAnswerData)==t_ArtefactPower || ItemType(GAnswerData)==t_ArtForsage || ItemType(GAnswerData)==t_ArtWeaponToSpeed || ItemType(GAnswerData)==t_ArtGiperJump)",
+"{",
+"    srch_type=cur_art_sb2_srch_type_name[1];",
+"}",
+"if(ItemType(GAnswerData)==t_ArtefactFuel)srch_type=cur_art_sb2_srch_type_name[2];",
+"if(ItemType(GAnswerData)==t_ArtefactDroid || ItemType(GAnswerData)==t_ArtEnergyPulse)srch_type=cur_art_sb2_srch_type_name[3];",
+"if(ItemType(GAnswerData)==t_ArtefactHook)srch_type=cur_art_sb2_srch_type_name[4];",
+"if(ItemType(GAnswerData)==t_ArtefactDef)srch_type=cur_art_sb2_srch_type_name[5];",
+"if(ItemType(GAnswerData)==t_ArtefactScaner)srch_type=cur_art_sb2_srch_type_name[6];",
+"if(ItemType(GAnswerData)==t_ArtefactRadar || ItemType(GAnswerData)==t_ArtefactTransmitter)srch_type=cur_art_sb2_srch_type_name[7];",
+"if(ItemType(GAnswerData)==t_ArtEnergyPulse || ItemType(GAnswerData)==t_ArtEnergyDef)srch_type=cur_art_sb2_srch_type_name[8];",
+"if(ItemType(GAnswerData)==t_ArtSplinter || ItemType(GAnswerData)==t_ArtDecelerate)srch_type=cur_art_sb2_srch_type_name[9];",
+"if(ItemType(GAnswerData)==t_ArtFastRacks || ItemType(GAnswerData)==t_ArtMissileDef || ItemType(GAnswerData)==t_ArtPDTurret)srch_type=cur_art_sb2_srch_type_name[10];",
+"if(ItemType(GAnswerData)==t_ArtefactNano || ItemType(GAnswerData)==t_ArtefactAnalyzer || ItemType(GAnswerData)==t_ArtefactTranclucator || ItemType(GAnswerData)==t_ArtBio)",
+"{",
+"    srch_type=cur_art_sb2_srch_type_name[11];",
+"}",
+"if(ItemType(GAnswerData)==t_ArtefactMiniExpl)srch_type='Оружие';",
+"if(ItemType(GAnswerData)==t_ArtDefToEnergy)",
+"{",
+"    if(cur_art_sb2_srch_type[8]<100 && cur_art_sb2_srch_type[5]<100)",
+"    {",
+"        srch_type=cur_art_sb2_srch_type_name[5]+', '+cur_art_sb2_srch_type_name[8];",
+"    }",
+"    if(cur_art_sb2_srch_type[8]<100 && cur_art_sb2_srch_type[5]==100)",
+"    {",
+"        srch_type=cur_art_sb2_srch_type_name[8];",
+"    }",
+"    if(cur_art_sb2_srch_type[8]==100 && cur_art_sb2_srch_type[5]<100)",
+"    {",
+"        srch_type=cur_art_sb2_srch_type_name[5];",
+"    }",
+"}",
+"if(ItemType(GAnswerData)==t_ArtDefToArms1 || ItemType(GAnswerData)==t_ArtDefToArms2)",
+"{",
+"    if(cur_art_sb2_srch_type[5]<100 && cur_art_sb2_srch_type[8]<100 && cur_art_sb2_srch_type[9]<100 && cur_art_sb2_srch_type[10]<100)",
+"    {",
+"        srch_type=cur_art_sb2_srch_type_name[5]+', '+'Оружие';",
+"    }",
+"    if(cur_art_sb2_srch_type[5]<100 && cur_art_sb2_srch_type[8]==100 && cur_art_sb2_srch_type[9]==100 && cur_art_sb2_srch_type[10]==100)",
+"    {",
+"        srch_type=cur_art_sb2_srch_type_name[5];",
+"    }",
+"    if(cur_art_sb2_srch_type[5]==100)srch_type='Оружие';",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          150,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          26,
+          "Total.Lines":          3,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ModuleToEquipment(mm_name,temp_dword);",
+"Sound('Sound.Repair');",
+"FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),GAnswerData)));"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          60,
+          "Pos.y":          40,
+          "Parent":          -1,
+          "#":          32,
+          "Total.Lines":          17,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int=FindBonusByCustomTag('AkrinAmplifier');",
+"for(i=0;i<ShipItems(Player());i=i+1)",
+"{",
+"    cur_bh_item=ShipItems(Player(),i);",
+"    if(ItemType(cur_bh_item)!=t_MicroModule) continue;",
+"    if(EqModule(cur_bh_item)==temp_int) continue;",
+"    mm_ok=0;",
+"    for(j=0;j<=7;j=j+1)",
+"    {",
+"        ItemOwner(temp_dword,j);",
+"        if(MayAddBonusToEq(EqModule(cur_bh_item),temp_dword)) mm_ok=1;",
+"    }",
+"    ItemOwner(temp_dword,None);",
+"    if(mm_ok==0) continue;",
+"    InjectAnswer('inject_mm',DeleteTags('<Name(cur_bh_item)>'),cur_bh_item);",
+"}",
+"InjectAnswer('DialogGov',\"Я передумал\",1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          120,
+          "Pos.y":          40,
+          "Parent":          -1,
+          "#":          34,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"mm_name=EqModule(GAnswerData);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          60,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          36,
+          "Total.Lines":          57,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"mod_ok=0;",
+"for(i=1;i<ShipItems(Player());i=i+1)",
+"{",
+"    cur_bh_item=ShipItems(Player(),i);",
+"    if(ItemOwner(cur_bh_item)!=None)continue;",
+"    if(EqCustomFaction(cur_bh_item)!='')continue;",
+"    if(EqModule(cur_bh_item)>=0)continue;",
+"    if(ItemType(cur_bh_item)<=t_Hull || ItemType(cur_bh_item)>=t_Protoplasm)continue;",
+"    if(ItemType(cur_bh_item)<t_Weapon1)",
+"    {",
+"        InjectAnswer('chose_eq',DeleteTags('<Name(cur_bh_item)>'),cur_bh_item);",
+"    }",
+"    if(ItemType(cur_bh_item)>=t_Weapon1)",
+"    {",
+"        if(ItemLevel(cur_bh_item)==1)temp_str=' A';",
+"        else if(ItemLevel(cur_bh_item)==2)temp_str=' B';",
+"        else if(ItemLevel(cur_bh_item)==3)temp_str=' C';",
+"        else if(ItemLevel(cur_bh_item)==4)temp_str=' D';",
+"        else if(ItemLevel(cur_bh_item)==5)temp_str=' E';",
+"        else if(ItemLevel(cur_bh_item)==6)temp_str=' F';",
+"        else if(ItemLevel(cur_bh_item)==7)temp_str=' G';",
+"        else if(ItemLevel(cur_bh_item)==8)temp_str=' H';",
+"        InjectAnswer('chose_eq',DeleteTags('<Name(cur_bh_item)>')+temp_str,cur_bh_item);",
+"    }",
+"}",
+"for(temp_int=0;temp_int<ShipArts(Player());temp_int=temp_int+1)",
+"{",
+"    temp_dword=ShipArts(Player(),temp_int);",
+"    if(ItemType(temp_dword)==t_ArtefactTranclucator)",
+"    {",
+"        for(i=0;i<ShipItems(ArtTranclucatorToShip(temp_dword));i=i+1)",
+"        {",
+"            cur_bh_item=ShipItems(ArtTranclucatorToShip(temp_dword),i);",
+"            if(ItemOwner(cur_bh_item)!=None)continue;",
+"            if(EqCustomFaction(cur_bh_item)!='')continue;",
+"            if(EqModule(cur_bh_item)>=0)continue;",
+"            if(ItemType(cur_bh_item)<=t_Hull || ItemType(cur_bh_item)>=t_Protoplasm)continue;",
+"            if(ItemType(cur_bh_item)<t_Weapon1 )",
+"            {",
+"                InjectAnswer('chose_eq',DeleteTags('<Name(cur_bh_item)> (транк)'),cur_bh_item);",
+"            }",
+"            if(ItemType(cur_bh_item)>=t_Weapon1 )",
+"            {",
+"                if(ItemLevel(cur_bh_item)==1)temp_str=' A';",
+"                else if(ItemLevel(cur_bh_item)==2)temp_str=' B';",
+"                else if(ItemLevel(cur_bh_item)==3)temp_str=' C';",
+"                else if(ItemLevel(cur_bh_item)==4)temp_str=' D';",
+"                else if(ItemLevel(cur_bh_item)==5)temp_str=' E';",
+"                else if(ItemLevel(cur_bh_item)==6)temp_str=' F';",
+"                else if(ItemLevel(cur_bh_item)==7)temp_str=' G';",
+"                else if(ItemLevel(cur_bh_item)==8)temp_str=' H';",
+"                InjectAnswer('chose_eq',DeleteTags('<Name(cur_bh_item)>'+temp_str+\" (транк)\"),cur_bh_item);",
+"            }",
+"        }",
+"    }",
+"}",
+"InjectAnswer('DialogGov',\"Я передумал\",1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          100,
+          "Pos.y":          20,
+          "Parent":          -1,
+          "#":          38,
+          "Total.Lines":          22,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_dword=GAnswerData;",
+"temp_int=ItemCost(temp_dword)/3+GalaxyMoney(1);",
+"if(ItemType(temp_dword)==t_Hull && cur_art_sb2_srch_type[0]==100)mod_ok=1;",
+"if(ItemType(temp_dword)==t_FuelTanks && cur_art_sb2_srch_type[2]==100)mod_ok=1;",
+"if(ItemType(temp_dword)==t_Engine && cur_art_sb2_srch_type[1]==100)mod_ok=1;",
+"if(ItemType(temp_dword)==t_Radar && cur_art_sb2_srch_type[7]==100)mod_ok=1;",
+"if(ItemType(temp_dword)==t_Scaner && cur_art_sb2_srch_type[6]==100)mod_ok=1;",
+"if(ItemType(temp_dword)==t_RepairRobot && cur_art_sb2_srch_type[3]==100)mod_ok=1;",
+"if(ItemType(temp_dword)==t_CargoHook && cur_art_sb2_srch_type[4]==100)mod_ok=1;",
+"if(ItemType(temp_dword)==t_DefGenerator && cur_art_sb2_srch_type[5]==100)mod_ok=1;",
+"if(ItemType(temp_dword)==t_Weapon1 || ItemType(temp_dword)==t_Weapon3 || ItemType(temp_dword)==t_Weapon5 || ItemType(temp_dword)==t_Weapon6 || ItemType(temp_dword)==t_Weapon8 || ItemType(temp_dword)==t_Weapon10 || ItemType(temp_dword)==t_Weapon11 || ItemType(temp_dword)==t_Weapon12 || ItemType(temp_dword)==t_Weapon14 || ItemType(temp_dword)==t_Weapon17)",
+"{",
+"    if(cur_art_sb2_srch_type[8]==100)mod_ok=1;",
+"}",
+"if(ItemType(temp_dword)==t_Weapon2 || ItemType(temp_dword)==t_Weapon7 || ItemType(temp_dword)==t_Weapon9 || ItemType(temp_dword)==t_Weapon13 || ItemType(temp_dword)==t_Weapon16)",
+"{",
+"    if(cur_art_sb2_srch_type[9]==100)mod_ok=1;",
+"}",
+"if(ItemType(temp_dword)==t_Weapon4 || ItemType(temp_dword)==t_Weapon15 || ItemType(temp_dword)==t_Weapon18)",
+"{",
+"    if(cur_art_sb2_srch_type[10]==100)mod_ok=1;",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          190,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          42,
+          "Total.Lines":          116,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(cur_art_sb2_srch_type[0]==100)",
+"{",
+"    cur_art_sb2_srch[0]=100;",
+"    cur_art_sb2_srch[12]=100;",
+"}",
+"if(cur_art_sb2_srch_type[1]==100)",
+"{",
+"    cur_art_sb2_srch[2]=100;",
+"    cur_art_sb2_srch[3]=100;",
+"    cur_art_sb2_srch[21]=100;",
+"    cur_art_sb2_srch[22]=100;",
+"    cur_art_sb2_srch[23]=100;",
+"}",
+"if(cur_art_sb2_srch_type[2]==100)",
+"{",
+"    cur_art_sb2_srch[1]=100;",
+"}",
+"if(cur_art_sb2_srch_type[3]==100)",
+"{",
+"    cur_art_sb2_srch[6]=100;",
+"    cur_art_sb2_srch[26]=100;",
+"}",
+"if(cur_art_sb2_srch_type[4]==100)",
+"{",
+"    cur_art_sb2_srch[8]=100;",
+"}",
+"if(cur_art_sb2_srch_type[5]==100)",
+"{",
+"    cur_art_sb2_srch[9]=100;",
+"}",
+"if(cur_art_sb2_srch_type[6]==100)",
+"{",
+"    cur_art_sb2_srch[5]=100;",
+"}",
+"if(cur_art_sb2_srch_type[7]==100)",
+"{",
+"    cur_art_sb2_srch[4]=100;",
+"    cur_art_sb2_srch[13]=100;",
+"}",
+"if(cur_art_sb2_srch_type[8]==100)",
+"{",
+"    cur_art_sb2_srch[16]=100;",
+"    cur_art_sb2_srch[17]=100;",
+"}",
+"if(cur_art_sb2_srch_type[9]==100)",
+"{",
+"    cur_art_sb2_srch[18]=100;",
+"    cur_art_sb2_srch[19]=100;",
+"}",
+"if(cur_art_sb2_srch_type[10]==100)",
+"{",
+"    cur_art_sb2_srch[20]=100;",
+"    cur_art_sb2_srch[28]=100;",
+"    cur_art_sb2_srch[29]=100;",
+"}",
+"if(cur_art_sb2_srch_type[8]==100 && cur_art_sb2_srch_type[5]==100)",
+"{",
+"    cur_art_sb2_srch[15]=100;",
+"}",
+"if(cur_art_sb2_srch_type[8]==100 && cur_art_sb2_srch_type[9]==100 && cur_art_sb2_srch_type[10]==100)",
+"{",
+"    cur_art_sb2_srch[11]=100;",
+"}",
+"if(cur_art_sb2_srch_type[8]==100 && cur_art_sb2_srch_type[9]==100 && cur_art_sb2_srch_type[5]==100 && cur_art_sb2_srch_type[10]==100)",
+"{",
+"    cur_art_sb2_srch[24]=100;",
+"    cur_art_sb2_srch[25]=100;",
+"}",
+"if(cur_art_sb2_srch_type[0]==100 && cur_art_sb2_srch_type[1]==100 && cur_art_sb2_srch_type[2]==100 && cur_art_sb2_srch_type[3]==100 && cur_art_sb2_srch_type[4]==100 && cur_art_sb2_srch_type[5]==100 && cur_art_sb2_srch_type[6]==100 && cur_art_sb2_srch_type[7]==100 && cur_art_sb2_srch_type[8]==100 && cur_art_sb2_srch_type[9]==100 && cur_art_sb2_srch_type[10]==100)",
+"{",
+"    cur_art_sb2_srch[7]=100;",
+"    cur_art_sb2_srch[10]=100;",
+"    cur_art_sb2_srch[14]=100;",
+"    cur_art_sb2_srch[27]=100;",
+"}",
+"temp_int_3=FindBonusByName('Fragility_20_plus');",
+"temp_int=0;",
+"for(i=0;i<ShipArts(Player());i=i+1)",
+"{",
+"    if(temp_int==2) break;",
+"    cur_bh_item=ShipArts(Player(),i);",
+"    if(ItemIsInUse(cur_bh_item) || ItemIsInSet(cur_bh_item)) continue;",
+"    if(ItemExtraSpecialsCountByType(cur_bh_item,temp_int_3)>0)continue;",
+"    for(j=0;j<=29;j=j+1)",
+"    {",
+"        if(ItemType(cur_bh_item)==cur_art_sb2[j] && cur_art_sb2_srch[j]<100)",
+"        {",
+"            temp_int=temp_int+1;",
+"        }",
+"    }",
+"}",
+"if(temp_int >= 2) InjectAnswer('take_art_all', DeleteTags(\"Возьмите все ненужные артефакты\"), 1);",
+"for(i = 0; i < ShipArts(Player()); i = i + 1)",
+"{",
+"    cur_bh_item = ShipArts(Player(), i);",
+"    //Исключаем скриптовые артефакты",
+"    if(ItemInScript(cur_bh_item) == 1)",
+"    {",
+"        if(~EqSpecial(cur_bh_item))",
+"        {",
+"            //Но добавляем в список на сдачу артефакты с особым параметров в акрине (на них можно повесить акрин, да)",
+"            if(!CT('MicroModuls.' + BonusNumInCfg(EqSpecial(cur_bh_item)) + '.ScriptItemIgnore')) continue;",
+"        }",
+"        else continue;",
+"    }",
+"    //if(ItemIsInUse(cur_bh_item) || ItemIsInSet(cur_bh_item)) continue;",
+"    if(ItemExtraSpecialsCountByType(cur_bh_item,temp_int_3)>0)continue;",
+"    for(j=0;j<=29;j=j+1)",
+"    {",
+"        if(ItemType(cur_bh_item)==cur_art_sb2[j] && cur_art_sb2_srch[j]<100)",
+"        {",
+"            InjectAnswer('take_art',DeleteTags('<ItemFullName(cur_bh_item)>'),cur_bh_item);",
+"        }",
+"    }",
+"}",
+"InjectAnswer('DialogGov',\"У меня нету ненужных артефактов\",1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          130,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          43,
+          "Total.Lines":          13,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_str=\"</color>Тип артефакта:             изучен на:\"+\"<br>\";",
+"temp_int=0;",
+"for(i=0;i<11;i=i+1)",
+"{",
+"    if(cur_art_sb2_srch_type[i]>0)",
+"    {",
+"        temp_int=1;",
+"        if(cur_art_sb2_srch_type[i]<10)temp_str=temp_str+'<cur_art_sb2_srch_type_name[i]>'+CT('FormInfo.td_otstup')+'    <cur_art_sb2_srch_type[i]> %'+\"<br>\";",
+"        if(cur_art_sb2_srch_type[i]>9 && cur_art_sb2_srch_type[i]<100)temp_str=temp_str+'<cur_art_sb2_srch_type_name[i]>'+CT('FormInfo.td_otstup')+'  <cur_art_sb2_srch_type[i]> %'+\"<br>\";",
+"        if(cur_art_sb2_srch_type[i]>=100)temp_str=temp_str+'<cur_art_sb2_srch_type_name[i]>'+CT('FormInfo.td_otstup')+'<cur_art_sb2_srch_type[i]> %'+\"<br>\";",
+"    }",
+"}",
+"if(temp_int==0)temp_str=\"<clrEnd>Вы ещё не помогали в изучении артефактов.\";"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          170,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          45,
+          "Total.Lines":          135,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int_3=FindBonusByName('Fragility_20_plus');",
+"add_cr=0;",
+"temp_int_2=0;",
+"for(i=ShipArts(Player())-1;i>=0;i=i-1)",
+"{",
+"    cur_bh_item=ShipArts(Player(),i);",
+"    if(ItemType(cur_bh_item)<t_ArtefactHull)continue;",
+"    if(ItemIsInUse(cur_bh_item) || ItemIsInSet(cur_bh_item))continue;",
+"    if(ItemExtraSpecialsCountByType(cur_bh_item,temp_int_3)>0)continue;",
+"    add_srch=0;",
+"    for(j=0;j<=29;j=j+1)",
+"    {",
+"        if(ItemType(cur_bh_item)==cur_art_sb2[j] && cur_art_sb2_srch[j]<100)",
+"        {",
+"            if(ItemType(cur_bh_item)==t_ArtFastRacks || ItemType(cur_bh_item)==t_ArtefactHull || ItemType(cur_bh_item)==t_ArtefactSpeed || ItemType(cur_bh_item)==t_ArtefactDef || ItemType(cur_bh_item)==t_ArtefactAntigrav || ItemType(cur_bh_item)==t_ArtEnergyPulse || ItemType(cur_bh_item)==t_ArtSplinter || ItemType(cur_bh_item)==t_ArtDecelerate || ItemType(cur_bh_item)==t_ArtMissileDef || ItemType(cur_bh_item)==t_ArtForsage || ItemType(cur_bh_item)==t_ArtPDTurret)",
+"            {",
+"                add_srch=Rnd(8,13);",
+"            }",
+"            if(ItemType(cur_bh_item)==t_ArtefactFuel || ItemType(cur_bh_item)==t_ArtefactRadar || ItemType(cur_bh_item)==t_ArtefactScaner || ItemType(cur_bh_item)==t_ArtefactDroid || ItemType(cur_bh_item)==t_ArtefactHook)",
+"            {",
+"                add_srch=Rnd(9,16);",
+"            }",
+"            if(ItemType(cur_bh_item)==t_ArtefactPower || ItemType(cur_bh_item)==t_ArtEnergyDef || ItemType(cur_bh_item)==t_ArtefactNano || ItemType(cur_bh_item)==t_ArtefactMiniExpl || ItemType(cur_bh_item)==t_ArtDefToEnergy || ItemType(cur_bh_item)==t_ArtWeaponToSpeed || ItemType(cur_bh_item)==t_ArtGiperJump || ItemType(cur_bh_item)==t_ArtefactTranclucator || ItemType(cur_bh_item)==t_ArtDefToArms1 || ItemType(cur_bh_item)==t_ArtDefToArms2)",
+"            {",
+"                add_srch=Rnd(3,8);",
+"            }",
+"            if(ItemType(cur_bh_item)==t_ArtefactAnalyzer || ItemType(cur_bh_item)==t_ArtefactTransmitter || ItemType(cur_bh_item)==t_ArtArtefactor || ItemType(cur_bh_item)==t_ArtBio)",
+"            {",
+"                add_srch=Rnd(2,4);",
+"            }",
+"            if(ItemType(cur_bh_item)==t_ArtefactHull || ItemType(cur_bh_item)==t_ArtefactAntigrav || ItemType(cur_bh_item)==t_ArtefactNano || ItemType(cur_bh_item)==t_ArtefactAnalyzer || ItemType(cur_bh_item)==t_ArtefactTranclucator || ItemType(cur_bh_item)==t_ArtBio)",
+"            {",
+"                cur_art_sb2_srch_type[0]=cur_art_sb2_srch_type[0]+add_srch;",
+"            }",
+"            if(ItemType(cur_bh_item)==t_ArtefactSpeed || ItemType(cur_bh_item)==t_ArtefactPower || ItemType(cur_bh_item)==t_ArtForsage || ItemType(cur_bh_item)==t_ArtWeaponToSpeed || ItemType(cur_bh_item)==t_ArtefactTranclucator || ItemType(cur_bh_item)==t_ArtBio || ItemType(cur_bh_item)==t_ArtGiperJump || ItemType(cur_bh_item)==t_ArtefactNano || ItemType(cur_bh_item)==t_ArtefactAnalyzer)",
+"            {",
+"                cur_art_sb2_srch_type[1]=cur_art_sb2_srch_type[1]+add_srch;",
+"            }",
+"            if(ItemType(cur_bh_item)==t_ArtefactFuel || ItemType(cur_bh_item)==t_ArtefactNano || ItemType(cur_bh_item)==t_ArtefactAnalyzer || ItemType(cur_bh_item)==t_ArtefactTranclucator || ItemType(cur_bh_item)==t_ArtBio)",
+"            {",
+"                cur_art_sb2_srch_type[2]=cur_art_sb2_srch_type[2]+add_srch;",
+"            }",
+"            if(ItemType(cur_bh_item)==t_ArtefactRadar || ItemType(cur_bh_item)==t_ArtefactHook || ItemType(cur_bh_item)==t_ArtefactNano || ItemType(cur_bh_item)==t_ArtefactAnalyzer || ItemType(cur_bh_item)==t_ArtefactTranclucator || ItemType(cur_bh_item)==t_ArtBio)",
+"            {",
+"                cur_art_sb2_srch_type[7]=cur_art_sb2_srch_type[7]+add_srch;",
+"            }",
+"            if(ItemType(cur_bh_item)==t_ArtefactScaner || ItemType(cur_bh_item)==t_ArtefactNano || ItemType(cur_bh_item)==t_ArtefactAnalyzer || ItemType(cur_bh_item)==t_ArtefactTranclucator || ItemType(cur_bh_item)==t_ArtBio)",
+"            {",
+"                cur_art_sb2_srch_type[6]=cur_art_sb2_srch_type[6]+add_srch;",
+"            }",
+"            if(ItemType(cur_bh_item)==t_ArtefactDroid || ItemType(cur_bh_item)==t_ArtArtefactor || ItemType(cur_bh_item)==t_ArtefactNano || ItemType(cur_bh_item)==t_ArtefactAnalyzer || ItemType(cur_bh_item)==t_ArtefactTranclucator || ItemType(cur_bh_item)==t_ArtBio)",
+"            {",
+"                cur_art_sb2_srch_type[3]=cur_art_sb2_srch_type[3]+add_srch;",
+"            }",
+"            if(ItemType(cur_bh_item)==t_ArtefactHook || ItemType(cur_bh_item)==t_ArtefactNano || ItemType(cur_bh_item)==t_ArtefactAnalyzer || ItemType(cur_bh_item)==t_ArtefactTranclucator || ItemType(cur_bh_item)==t_ArtBio)",
+"            {",
+"                cur_art_sb2_srch_type[4]=cur_art_sb2_srch_type[4]+add_srch;",
+"            }",
+"            if(ItemType(cur_bh_item)==t_ArtefactDef || ItemType(cur_bh_item)==t_ArtefactNano || ItemType(cur_bh_item)==t_ArtefactAnalyzer || ItemType(cur_bh_item)==t_ArtefactTranclucator || ItemType(cur_bh_item)==t_ArtBio)",
+"            {",
+"                cur_art_sb2_srch_type[5]=cur_art_sb2_srch_type[5]+add_srch;",
+"            }",
+"            if(ItemType(cur_bh_item)==t_ArtEnergyPulse || ItemType(cur_bh_item)==t_ArtEnergyDef || ItemType(cur_bh_item)==t_ArtefactNano || ItemType(cur_bh_item)==t_ArtefactAnalyzer || ItemType(cur_bh_item)==t_ArtefactTranclucator || ItemType(cur_bh_item)==t_ArtBio)",
+"            {",
+"                cur_art_sb2_srch_type[8]=cur_art_sb2_srch_type[8]+add_srch;",
+"            }",
+"            if(ItemType(cur_bh_item)==t_ArtSplinter || ItemType(cur_bh_item)==t_ArtDecelerate || ItemType(cur_bh_item)==t_ArtefactNano || ItemType(cur_bh_item)==t_ArtefactAnalyzer || ItemType(cur_bh_item)==t_ArtefactTranclucator || ItemType(cur_bh_item)==t_ArtBio)",
+"            {",
+"                cur_art_sb2_srch_type[9]=cur_art_sb2_srch_type[9]+add_srch;",
+"            }",
+"            if(ItemType(cur_bh_item)==t_ArtFastRacks || ItemType(cur_bh_item)==t_ArtMissileDef || ItemType(cur_bh_item)==t_ArtPDTurret || ItemType(cur_bh_item)==t_ArtefactNano || ItemType(cur_bh_item)==t_ArtefactAnalyzer || ItemType(cur_bh_item)==t_ArtefactTranclucator || ItemType(cur_bh_item)==t_ArtBio)",
+"            {",
+"                cur_art_sb2_srch_type[10]=cur_art_sb2_srch_type[10]+add_srch;",
+"            }",
+"            if(ItemType(cur_bh_item)==t_ArtefactMiniExpl)",
+"            {",
+"                cur_art_sb2_srch_type[8]=cur_art_sb2_srch_type[8]+add_srch;",
+"                cur_art_sb2_srch_type[9]=cur_art_sb2_srch_type[9]+add_srch;",
+"                cur_art_sb2_srch_type[10]=cur_art_sb2_srch_type[10]+add_srch;",
+"            }",
+"            if(ItemType(cur_bh_item)==t_ArtDefToEnergy)",
+"            {",
+"                if(add_srch>9 && cur_art_sb2_srch_type[5]<100)",
+"                {",
+"                    cur_art_sb2_srch_type[5]=cur_art_sb2_srch_type[5]+add_srch;",
+"                }",
+"                if(add_srch<=9 && cur_art_sb2_srch_type[5]<100)",
+"                {",
+"                    cur_art_sb2_srch_type[8]=cur_art_sb2_srch_type[8]+add_srch;",
+"                }",
+"                if(cur_art_sb2_srch_type[5]==100)",
+"                {",
+"                    cur_art_sb2_srch_type[8]=cur_art_sb2_srch_type[8]+add_srch;",
+"                }",
+"                if(cur_art_sb2_srch_type[8]==100)",
+"                {",
+"                    cur_art_sb2_srch_type[5]=cur_art_sb2_srch_type[5]+add_srch;",
+"                }",
+"            }",
+"            if(ItemType(cur_bh_item)==t_ArtDefToArms1 || ItemType(cur_bh_item)==t_ArtDefToArms2)",
+"            {",
+"                if(add_srch>9 && cur_art_sb2_srch_type[5]<100)",
+"                {",
+"                    cur_art_sb2_srch_type[5]=cur_art_sb2_srch_type[5]+add_srch;",
+"                }",
+"                if(add_srch<=9 && cur_art_sb2_srch_type[5]<100)",
+"                {",
+"                    cur_art_sb2_srch_type[8]=cur_art_sb2_srch_type[8]+add_srch;",
+"                    cur_art_sb2_srch_type[9]=cur_art_sb2_srch_type[9]+add_srch;",
+"                    cur_art_sb2_srch_type[10]=cur_art_sb2_srch_type[10]+add_srch;",
+"                }",
+"                if(cur_art_sb2_srch_type[5]==100)",
+"                {",
+"                    cur_art_sb2_srch_type[8]=cur_art_sb2_srch_type[8]+add_srch;",
+"                    cur_art_sb2_srch_type[9]=cur_art_sb2_srch_type[9]+add_srch;",
+"                    cur_art_sb2_srch_type[10]=cur_art_sb2_srch_type[10]+add_srch;",
+"                }",
+"                if(cur_art_sb2_srch_type[8]==cur_art_sb2_srch_type[9]==cur_art_sb2_srch_type[10]==100)",
+"                {",
+"                    cur_art_sb2_srch_type[5]=cur_art_sb2_srch_type[5]+add_srch;",
+"                }",
+"            }",
+"            for(temp_int=0;temp_int<=10;temp_int=temp_int+1)",
+"            {",
+"                if(cur_art_sb2_srch_type[temp_int]>100)cur_art_sb2_srch_type[temp_int]=100;",
+"            }",
+"            cur_art_sb2_srch[j]=cur_art_sb2_srch[j]+add_srch;",
+"            add_cr=add_cr+ItemCost(cur_bh_item)*2;",
+"            temp_int_2=temp_int_2+ItemSize(cur_bh_item);",
+"        }",
+"        if(j==29 && add_srch!=0)FreeItem(GetArtFromShip(Player(),i));",
+"    }",
+"}",
+"ShipMoney(Player(),(ShipMoney(Player())+add_cr));",
+"Sound('Sound.Sell');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          70,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          47,
+          "Total.Lines":          8,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int=0;",
+"for(i=0; i<11; i=i+1)",
+"{",
+"    if(cur_art_sb2_srch_type[i]>=100)",
+"    {",
+"        temp_int=temp_int+1;",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          190,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          51,
+          "Total.Lines":          21,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int_3=FindBonusByName('Fragility_20_plus');",
+"for(i=0;i<ShipArts(Player());i=i+1)",
+"{",
+"    cur_bh_item=ShipArts(Player(),i);",
+"    if(ItemType(cur_bh_item)==t_ArtefactTranclucator)continue;",
+"    if(ItemType(cur_bh_item)==t_ArtefactBomb)continue;",
+"    if(ItemType(cur_bh_item)<t_ArtefactHull)continue;",
+"    if(ItemType(cur_bh_item)==t_ArtefactTransmitter)continue;",
+"    if(ItemType(cur_bh_item)==t_ArtBlackHole)continue;",
+"    if(ItemType(cur_bh_item)==t_ArtDefToArms1)continue;",
+"    if(ItemType(cur_bh_item)==t_ArtDefToArms2)continue;",
+"    if(ItemType(cur_bh_item)==t_ArtArtefactor)continue;",
+"    if(ItemExtraSpecialsCountByType(cur_bh_item,temp_int_3)>0)continue;",
+"    if(ShipMoney(Player())>=ItemCost(cur_bh_item)*3)InjectAnswer('art_improvement',DeleteTags('<ItemFullName(cur_bh_item)> ')+'(<ItemCost(cur_bh_item)*3> cr).',cur_bh_item);",
+"    if(ShipMoney(Player())<ItemCost(cur_bh_item)*3)",
+"    {",
+"        AddDialogBlock(ItemFullName(cur_bh_item)+' ('+ItemCost(cur_bh_item)*3+' cr).',1);",
+"        InjectAnswer('art_improvement',ItemFullName(cur_bh_item)+' ('+ItemCost(cur_bh_item)*3+' cr).',cur_bh_item);",
+"    }",
+"}",
+"InjectAnswer('DialogGov',\"Ничего я улучшать не буду\",1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          90,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          53,
+          "Total.Lines":          20,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int_2 = 0;",
+"temp_int_3 = FindBonusByName('Fragility_20_plus');",
+"for(i = 0; i < ShipArts(Player()); i = i + 1)",
+"{",
+"    cur_bh_item = ShipArts(Player(), i);",
+"    //Исключаем скриптовые артефакты",
+"    if(ItemInScript(cur_bh_item) == 1)",
+"    {",
+"        if(~EqSpecial(cur_bh_item))",
+"        {",
+"            //Но добавляем в список на сдачу артефакты с особым параметров в акрине (на них можно повесить акрин, да)",
+"            if(!CT('MicroModuls.' + BonusNumInCfg(EqSpecial(cur_bh_item)) + '.ScriptItemIgnore')) continue;",
+"        }",
+"        else continue;",
+"    }",
+"    if(ItemType(cur_bh_item) == t_ArtefactTranclucator || ItemType(cur_bh_item) == t_ArtefactBomb || ItemType(cur_bh_item) < t_ArtefactHull || ItemType(cur_bh_item) == t_ArtefactTransmitter || ItemType(cur_bh_item) == t_ArtBlackHole || ItemType(cur_bh_item) == t_ArtDefToArms1 || ItemType(cur_bh_item) == t_ArtDefToArms2 || ItemType(cur_bh_item) == t_ArtArtefactor) continue;",
+"    if(ItemExtraSpecialsCountByType(cur_bh_item, temp_int_3)) continue;",
+"    temp_int_2 = 1;",
+"    break;",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          210,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          60,
+          "Total.Lines":          8,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int_3=FindBonusByName('Fragility_20_plus');",
+"temp_dword=GAnswerData;",
+"ShipMoney(Player(),ShipMoney(Player())-ItemCost(temp_dword)*3);",
+"ItemExtraSpecialsAddByType(temp_dword,temp_int_3);",
+"ItemCost(temp_dword,ItemCost(temp_dword)*2);",
+"ItemSize(temp_dword,(ItemSize(temp_dword)*70)/100);",
+"SetName(temp_dword,Name(temp_dword)+' (^)');",
+"Sound('Sound.Sell');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          160,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          62,
+          "Total.Lines":          12,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int_2=0;",
+"temp_int_3=FindBonusByName('Fragility_20_plus');",
+"temp_str='';",
+"for(i=0;i<ShipArts(Player());i=i+1)",
+"{",
+"    cur_bh_item=ShipArts(Player(),i);",
+"    if(ItemCanBeBroken(cur_bh_item)==0)continue;",
+"    if(ItemType(cur_bh_item)<t_ArtefactHull)continue;",
+"    if(ItemExtraSpecialsCountByType(cur_bh_item,temp_int_3)>0)continue;",
+"    temp_int_2=temp_int_2+1;",
+"    temp_str=temp_str+'</color>'+temp_int_2+'. '+ItemFullName(cur_bh_item)+' (<ItemCost(cur_bh_item)*3> cr).'+\"<br>\";",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          110,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          64,
+          "Total.Lines":          15,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(gift != 6)",
+"{",
+"    temp_int_1 = 0;",
+"    for(i = 0; i < 11; i = i + 1)",
+"    {",
+"        if(cur_art_sb2_srch_type[i] > 0)",
+"        {",
+"            temp_int_1 = temp_int_1 + cur_art_sb2_srch_type[i];",
+"        }",
+"    }",
+"    temp_int_1 = temp_int_1 / 11;",
+"    if(gift == 0 && temp_int_1 >= 33) gift = 1;",
+"    if(gift == 2 && temp_int_1 >= 66) gift = 3;",
+"    if(gift == 4 && temp_int_1 == 100) gift = 5;",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          110,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          68,
+          "Total.Lines":          21,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(gift==1)",
+"{",
+"    temp_dword=CreateCustomArt('blinker',Rnd(5,10),Rnd(2000,8000)*GalaxyTechLevel(),4);",
+"    CustomArtData(temp_dword,1,Rnd(20,90));",
+"    AddItemToShip(Player(),temp_dword);",
+"    gift=2;",
+"}",
+"if(gift==3)",
+"{",
+"    temp_dword=CreateCustomArt('galo',Rnd(5,10),Rnd(2000,8000)*GalaxyTechLevel(),4);",
+"    CustomArtData(temp_dword,1,Rnd(20,90));",
+"    AddItemToShip(Player(),temp_dword);",
+"    gift=4;",
+"}",
+"if(gift==5)",
+"{",
+"    temp_dword=CreateCustomArt('pulsar',Rnd(15,35),Rnd(2000,8000)*GalaxyTechLevel(),4);",
+"    CustomArtData(temp_dword,1,Rnd(100,1500));",
+"    AddItemToShip(Player(),temp_dword);",
+"    gift=6;",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          89,
+          "Total.Lines":          1,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"AddDialogInject('DialogSB','',\"Узнать результаты исследований зондов\",1)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          60,
+          "Parent":          -1,
+          "#":          90,
+          "Total.Lines":          1,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"AddDialogInject('DialogSB','',\"Передать уцелевшие обломки гиперпространственных зондов\",1)"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          530,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          97,
+          "Total.Lines":          15,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_star=-10;",
+"temp_dword_2=ShipStar(Player());",
+"temp_star=Id(temp_dword_2);",
+"for(i=1; i<GalaxyStars(); i=i+1)",
+"{",
+"    if(temp_star!=-10)break;",
+"    temp_dword=StarNearbyStars(temp_dword_2,i);",
+"    temp_int=Dist(temp_dword,temp_dword_2);",
+"    if(temp_int<20)continue;",
+"    if(!SectorVisible(StarToCon(temp_dword))) continue;",
+"    if(StarOwner(temp_dword)) continue;",
+"    if(StarHoles(temp_dword)) continue;",
+"    temp_star=Id(temp_dword);",
+"    temp_dword_2=temp_dword;",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          590,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          100,
+          "Total.Lines":          5,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),Zond_take)));",
+"crush_ok=3;",
+"search_day=CurTurn()+Rnd(10,20);",
+"id_base=Id(GetShipRuins(Player()));",
+"ruin_name=ShipName(GetShipRuins(Player()));"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          530,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          103,
+          "Total.Lines":          10,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cur_hole = HoleCreate2(temp_dword_2, temp_dword_2);",
+"PlayerTransCoordX = HoleX1(cur_hole);",
+"PlayerTransCoordY = HoleY1(cur_hole);",
+"HoleX2(cur_hole, HoleX1(cur_hole));",
+"HoleY2(cur_hole, HoleY1(cur_hole));",
+"hole_id = Id(cur_hole);",
+"HoleMap(cur_hole, 'SkipAB');",
+"crush_ok = 4;",
+"search_day = CurTurn() + 190;",
+"Ether(4, 'SSB_Q_T', \"Сообщение от научной базы <ruin_name>: исследования зондов завершены.\");"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          650,
+          "Pos.y":          50,
+          "Parent":          -1,
+          "#":          105,
+          "Total.Lines":          218,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//if(crush_ok == 8 && CurTurn() - back_4d > 10) crush_ok = 9;",
+"if(crush_ok != 7 && ~crush_ok && crush_ok != 8)",
+"{",
+"    if(!crush_ok)",
+"    {",
+"        if(~HullSpecial(Player()))",
+"        {",
+"            if(!findsubstr(BonusNumInCfg(HullSpecial(Player())), 'ExpScienceRanks_Tick'))",
+"            {",
+"                if(ShipOrder(Player()) == 4 && ShipInHole(Player()))",
+"                {",
+"                    //Прыжок в любую нормальную ЧД, не ту, которая возвращает игрока в ту же самую систему",
+"                    if(!crush_ok && HoleStar1(ShipOrderObj(Player())) != HoleStar2(ShipOrderObj(Player())) && HoleMap(ShipOrderObj(Player())) != 'SkipAB')",
+"                    {",
+"                        HoleMap(ShipOrderObj(Player()), 'NoEntry');",
+"                        for(i = 0; i <= 8; i = i + 1)",
+"                        {",
+"                            if(!crush_ok)",
+"                            {",
+"                                crush_ok = 1;",
+"                                temp_dword = CreateQuestItem('ExpSSB_UnidentifiedProbesRemains');",
+"                                LinkItemToScript(temp_dword, Zond_take);",
+"                                CreateABShip('Ship.Unknown.Zond', 0, 100, 20, '', temp_dword);",
+"                            }",
+"                            if(crush_ok == 1) CreateABShip('Ship.Unknown.Zond', 0, 100, 20);",
+"                        }",
+"                        StartAB('ABMap.map_2', 2);",
+"                    }",
+"                }",
+"            }",
+"        }",
+"    }",
+"    if(crush_ok == 1)",
+"    {",
+"        if(ShipInNormalSpace(Player()))",
+"        {",
+"            crush_ok = 2;",
+"            Ether(3, '040EDD5D-C8F8-4E10-B3BA-0C8B0AB0FFED', \"Успешно расправившись с напавшими на вас в гиперпространстве зондами, вы подобрали их уцелевшие части на корабль. Неповрежденное оборудование можно доставить на научную базу с целью выяснения причин агрессии зондов. А можно и распродать на запчасти, чего заморачиваться-то!\");",
+"        }",
+"    }",
+"    if(crush_ok == 3)",
+"    {",
+"        if(search_day == CurTurn())",
+"        {",
+"            if(IdToShip(id_base)) Ether(3, 'SSB_Q_T', \"Сообщение от научной базы <ruin_name>: исследования зондов завершены.\");",
+"        }",
+"        if(!IdToShip(id_base))",
+"        {",
+"            crush_ok = -1;",
+"            Ether(5, 'SSB_Q_T_C', \"Научная база <ruin_name> уничтожена\");",
+"        }",
+"    }",
+"    if(crush_ok == 4)",
+"    {",
+"        if(search_day <= CurTurn())",
+"        {",
+"            crush_ok = -1;",
+"            Ether(5, 'C4958375-3412-4E34-9D2D-1DF4A436F608', \"<color=255,0,0>Задание провалено.</color>\" + \"<br>\"",
+"                                                              + \"Да-да, мы вас ждали. К сожалению, узнать нам особо ничего не удалось: аппаратура не пережила квантовой модуляции, которой мы ее подвергли. Однако же у нас получилось восстановить некоторую информацию из блоков памяти зондов. Эти данные наиболее всего похожи на запланированный маршрут, там указаны координаты звездных систем и временные сроки.\" + \"<br>\"",
+"                                                              + \"Последние координаты указывают на систему <StarName(GalaxyStar(temp_star))>, в то время как привязанный к ним временной интервал подходит к концу через несколько недель. Больше мы ничего сообщить вам, <ShipName(Player())>, не можем.\" + \"<br>\"",
+"                                                              + \"Будь я на вашем месте, обязательно бы посетил эту звездную систему, пока срок не подошел к концу. Что бы там не находилось, это наверняка представляет огромную научную важность!\");",
+"        }",
+"    }",
+"    if(crush_ok == 4)",
+"    {",
+"        if(Id(ShipStar(Player())) == temp_star && ShipInNormalSpace(Player()))",
+"        {",
+"            crush_ok = 5;",
+"            for(i = 0; i < StarHoles(ShipStar(Player())); i = i + 1)",
+"            {",
+"                temp_dword = StarHoles(ShipStar(Player()), i);",
+"                if(Id(temp_dword) == hole_id) OrderMove(Player(), HoleX1(temp_dword), HoleY1(temp_dword));",
+"            }",
+"        }",
+"    }",
+"    if(crush_ok == 5)",
+"    {",
+"        if(ShipOrder(Player()) == 4)",
+"        {",
+"            if(Id(ShipOrderObj(Player())) == hole_id && ShipInHole(Player()))",
+"            {",
+"                if(crush_ok == 5)",
+"                {",
+"                    for(i = 0; i <= 2; i = i + 1)",
+"                    {",
+"                        CreateABShip('Ship.X.0', 0, 100, 30);",
+"                        CreateABShip('Ship.X.1', 0, 100, 50);",
+"                    }",
+"                    //OrderJumpHole(Player(), ShipOrderObj(Player()), 2);",
+"                    CreateABShip('Ship.X.2', 0, 100, 75);",
+"                    CreateABShip('Ruins.SSB', 1, 300, 100, 'SSB');",
+"                    StartAB('ABMap.map_2', 2);",
+"                    crush_ok = 4;",
+"                }",
+"                if(crush_ok == 4)",
+"                {",
+"                    cur_hole = ShipOrderObj(Player());",
+"                    cur_ruin = BuildRuins(GalaxyStar(temp_star - 1), t_PB);",
+"                    ShipType(cur_ruin, 'SSB');",
+"                    ShipJoin(SSBGroup, cur_ruin);",
+"                    ShipAddCustomShipInfo(cur_ruin, 'Immortal', 'NoShow');",
+"                    ShipSetCoords(cur_ruin, HoleX1(cur_hole), HoleY1(cur_hole));",
+"                    id_base = Id(cur_ruin);",
+"                    Chameleon(cur_ruin, 'Ruins.SSB');",
+"                    SetName(cur_ruin, 'X24 - 0.547');",
+"                    NoTargetToShip(cur_ruin, 1);",
+"                    ShipOwner(cur_ruin, 4);",
+"",
+"                    //Запрещаем автообновление магазинов ППБ",
+"                    NoShopUpdate(cur_ruin, 1);",
+"                    //Очищаем магазины",
+"                    for(i = ShopItems(cur_ruin) - 1; i >= 0; i = i - 1) FreeItem(GetItemFromShop(cur_ruin, i));",
+"                    for(i = t_Food; i <= t_Narcotics; i = i + 1) GoodsAdd(cur_ruin, i, -GoodsAdd(cur_ruin, i, 0));",
+"",
+"                    OrderJumpHole(cur_ruin, cur_hole, 10);",
+"                    ShipOrderData1(cur_ruin, 1);",
+"                    crush_ok = 6;",
+"                }",
+"            }",
+"        }",
+"    }",
+"    if(crush_ok == 6)",
+"    {",
+"        cur_ruin = GroupToShip(SSBGroup);",
+"        if(!AB_base)",
+"        {",
+"            for(i = GalaxyEvents() - 1; i >= 0; i = i - 1)",
+"            {",
+"                if(GalaxyEventDate(i) < CurTurn() - 4) break;",
+"                if(GalaxyEventType(i) == 'LabeledShipKilledInAB')",
+"                {",
+"                    if(GalaxyEventsTextData(i, 0) == 'SSB') AB_base = 1;",
+"                }",
+"            }",
+"            if(AB_base)",
+"            {",
+"                Ether(5, 'C4958375-3412-4E34-9D2D-1DF4A436F608', \"<color=255,0,0>Задание провалено.</color>\"+\"<br>\"+\"Да-да, мы вас ждали. К сожалению, узнать нам особо ничего не удалось: аппаратура не пережила квантовой модуляции, которой мы ее подвергли. Однако же у нас получилось восстановить некоторую информацию из блоков памяти зондов. Эти данные наиболее всего похожи на запланированный маршрут, там указаны координаты звездных систем и временные сроки.'+\"<br>\"+'Последние координаты указывают на систему <StarName(GalaxyStar(temp_star))>, в то время как привязанный к ним временной интервал подходит к концу через несколько недель. Больше мы ничего сообщить вам, <ShipName(Player())>, не можем.'+\"<br>\"+'Будь я на вашем месте, обязательно бы посетил эту звездную систему, пока срок не подошел к концу. Что бы там не находилось, это наверняка представляет огромную научную важность!\");",
+"                //ShipDestroy(IdToShip(id_base), 1);",
+"                TransferShip(cur_ruin, StarPlanets(GalaxyStar(2), 0));",
+"                crush_ok = -1;",
+"            }",
+"        }",
+"",
+"        if(cur_ruin)",
+"        {",
+"            if(ShipInNormalSpace(Player()) && ShipInNormalSpace(cur_ruin) && !AB_base)",
+"            {",
+"                while(ShipFreeSpace(Player()) < 0)",
+"                {",
+"                    temp_float = (Rnd(0, 360) * pi) / 180.0;",
+"                    temp_dword = GetItemFromShip(Player(), ShipItems(Player()) - 1);",
+"                    DropItemInSystem(ShipStar(Player()), temp_dword, CoordX(Player()), CoordY(Player()), CoordX(Player()) + 100.0 * sin(temp_float), CoordY(Player()) - 100.0 * cos(temp_float));",
+"                    ShipCalcParam(Player());",
+"                }",
+"                OrderLanding(Player(), cur_ruin, 10);",
+"                OrderLock(Player(), 1);",
+"                back_4d = CurTurn() + 5;",
+"                crush_ok = 7;",
+"            }",
+"        }",
+"    }",
+"}",
+"if(crush_ok == 8)",
+"{",
+"    cur_ruin = GroupToShip(SSBGroup);",
+"    if(cur_ruin)",
+"    {",
+"        //Пришло время увести ППБ обратно в гипер после первого диалога с игроком",
+"        if(CurTurn() == back_4d)",
+"        {",
+"            cur_hole = HoleCreate2(ShipStar(cur_ruin), ShipStar(cur_ruin));",
+"            HoleX1(cur_hole, CoordX(cur_ruin));",
+"            HoleY1(cur_hole, CoordY(cur_ruin));",
+"            HoleX2(cur_hole, CoordX(cur_ruin));",
+"            HoleY2(cur_hole, CoordY(cur_ruin));",
+"            HoleMap(cur_hole, 'NoEntry');",
+"            OrderJumpHole(cur_ruin, cur_hole, 10);",
+"            OrderLock(cur_ruin, 1);",
+"            NoLanding(cur_ruin, 1);",
+"            blow = 1;",
+"        }",
+"        //Завершение события встречи с игроком",
+"        if(ShipInHole(cur_ruin) && blow)",
+"        {",
+"            //ShipDestroy(cur_ruin, 1);",
+"            TransferShip(cur_ruin, StarPlanets(GalaxyStar(2), 0));",
+"            blow = 0;",
+"            crush_ok = 9;",
+"        }",
+"    }",
+"}",
+"",
+"if(4d_turn)",
+"{",
+"    cur_ruin = GroupToShip(SSBGroup);",
+"    if(CurTurn() >= 4d_turn)",
+"    {",
+"        if(cur_ruin)",
+"        {",
+"            //ShipDestroy(cur_ruin, 1);",
+"            4d_turn = 0;",
+"            HoleTurnCreate(ShipOrderObj(cur_ruin), 0);",
+"            TransferShip(cur_ruin, StarPlanets(GalaxyStar(2), 0));",
+"        }",
+"    }",
+"    if(cur_ruin && 4d_turn)",
+"    {",
+"        if(ShipInHole(cur_ruin))",
+"        {",
+"            if(ShipInHole(Player()) && ShipOrderObj(Player()) == ShipOrderObj(cur_ruin))",
+"            {",
+"                TransferShip(Player(), cur_ruin);",
+"                ShipOrder(cur_ruin, 0);",
+"                4d_turn = 0;",
+"            }",
+"        }",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          20,
+          "Pos.y":          0,
+          "Parent":          164,
+          "#":          113,
+          "Total.Lines":          17,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"crush_ok = 8;",
+"//temp_dword = CreateCustomArt('ppb_caller_art', Rnd(1, 2) * GalaxyTechLevel(), Rnd(2000, 8000) * GalaxyTechLevel(), ShipOwner(GetShipRuins(Player())));",
+"//CustomArtData(temp_dword, 1, Rnd(20, 75));",
+"//CustomArtData(temp_dword, 3, CurTurn() + 11);",
+"temp_dword = CreateQuestItem('SubspaceCommunicator', ShipOwner(GetShipRuins(Player())));",
+"ItemCost(temp_dword, Rnd(2000, 8000) * GalaxyTechLevel());",
+"UselessItemData(temp_dword, 1, Rnd(500, 750)); //Выставляем начальный заряд коммуникатора",
+"UselessItemData(temp_dword, 3, CurTurn() + 11); //Выставляем начальное время задержки до возможности следующего вызова ППБ",
+"AddItemToShip(Player(), temp_dword);",
+"OrderLock(Player(), 0);",
+"temp_str = '';",
+"back_4d = CurTurn() + 4;",
+"if(back_4d - 1 - CurTurn() == 1) temp_str = \"<clrEnd>Возвращение в подпространство запланировано через один день. Если не желаете оказаться в гипере на следующие пару месяцев, то советую поторопиться.\";",
+"else if(back_4d - 1 - CurTurn() == 2) temp_str = \"<clrEnd>Возвращение в подпространство запланировано через два дня. Если не желаете оказаться в гипере на следующие пару месяцев, то советую поторопиться.\";",
+"else if(back_4d - 1 - CurTurn() == 3) temp_str = \"<clrEnd>Возвращение в подпространство запланировано через три дня. Если не желаете оказаться в гипере на следующие пару месяцев, то советую поторопиться.\";",
+"",
+"Ether(4, 'C4958375-3412-4E34-9D2D-1DF4A436F608', \"<color=0,255,0>Задание выполнено.</color><br>Да-да, мы вас ждали. К сожалению, узнать нам особо ничего не удалось: аппаратура не пережила квантовой модуляции, которой мы ее подвергли. Однако же у нас получилось восстановить некоторую информацию из блоков памяти зондов. Эти данные наиболее всего похожи на запланированный маршрут, там указаны координаты звездных систем и временные сроки.Последние координаты указывают на систему <StarName(GalaxyStar(temp_star-1))>, в то время как привязанный к ним временной интервал подходит к концу через несколько недель. Больше мы ничего сообщить вам, <ShipName(Player())>, не можем.Будь я на вашем месте, обязательно бы посетил эту звездную систему, пока срок не подошел к концу. Что бы там не находилось, это наверняка представляет огромную научную важность!\");"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          116,
+          "#":          117,
+          "Total.Lines":          11,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"InjectAnswer('DialogGov', \"Передумал\", 1);",
+"for(i = 0; i < GalaxyStars(); i = i + 1)",
+"{",
+"    cur_star = StarNearbyStars(ShipStar(Player()), i);",
+"    if(!SectorVisible(StarToCon(cur_star))) continue;",
+"    //Пропускает скрытый пиратский сектор",
+"    if(StarToCon(cur_star) == StarToCon(PlanetToStar(PlanetPirateClan()))) continue;",
+"    if(!i) tstr1 = '<color=0,50,200>' + StarName(cur_star) + '</color>';",
+"    else tstr1 = StarName(cur_star);",
+"    InjectAnswer('tp_2', tstr1, i);",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          93,
+          "#":          118,
+          "Total.Lines":          3,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_dword = StarNearbyStars(ShipStar(Player()), GAnswerData);",
+"if(GAnswerData) cost = GalaxyMoney(1) * GAnswerData;",
+"else cost = 0;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          120,
+          "#":          121,
+          "Total.Lines":          17,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cur_ruin = GetShipRuins(Player());",
+"",
+"HoleTurnCreate(ShipOrderObj(cur_ruin), 0);",
+"ShipSetCoords(Player(), PlayerTransCoordX, PlayerTransCoordY);",
+"StarMapCenterView(PlayerTransCoordX, PlayerTransCoordY, 0);",
+"",
+"TransferShip(Player(), temp_dword);",
+"TransferShip(cur_ruin, StarPlanets(GalaxyStar(2), 0));",
+"",
+"PlayerBridge(2);",
+"PlayerBridge(0);",
+"ShipChangeStar(Player(), temp_dword);",
+"ShowStaticEffect('TeleportOut_256_30', CoordX(Player()), CoordY(Player()));",
+"ShipMoney(Player(), ShipMoney(Player()) - cost);",
+"Sound('Sound.Sell');",
+"",
+"if(crush_ok == 8) crush_ok = 9;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          10,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          128,
+          "Total.Lines":          19,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(EqModule(ShipItems(Player(),0)) >= 0) ModuleToEquipment(-1,ShipItems(Player(),0));",
+"if(ItemExtraSpecials(ShipItems(Player(),0)))",
+"{",
+"    for(i = ItemExtraSpecials(ShipItems(Player(), 0)) - 1; i >= 0; i = i - 1)",
+"    {",
+"        temp_int=ItemExtraSpecials(ShipItems(Player(),0),i);",
+"        ItemExtraSpecialsDeleteByType(ShipItems(Player(),0),temp_int);",
+"    }",
+"}",
+"temp_dword = CreateHull(0, 100 + 175 * GalaxyTechLevel(), GalaxyTechLevel(), 6);",
+"ItemLevel(ShipItems(Player(),0),GalaxyTechLevel());",
+"SetEquipmentStats(ShipItems(Player(),0),GetEquipmentStats(temp_dword,0),0);",
+"ItemSize(ShipItems(Player(),0),ItemSize(temp_dword));",
+"ItemCost(ShipItems(Player(),0),ItemCost(ShipItems(Player(),0))+(ItemCost(ShipItems(Player(),0))*20)/100);",
+"HullHP(ShipItems(Player(),0),ItemSize(temp_dword));",
+"temp_int=(ItemCost(temp_dword)*20)/100;",
+"FreeItem(temp_dword);",
+"ShipMoney(Player(),ShipMoney(Player())-cost);",
+"Sound('Sound.Repair');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          20,
+          "Parent":          -1,
+          "#":          133,
+          "Total.Lines":          1,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"AddDialogOverride('DialogSSB2', 20);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          420,
+          "Pos.y":          190,
+          "Parent":          -1,
+          "#":          138,
+          "Total.Lines":          34,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Если игрок запросил доступ на ППБ",
+"if(UselessItemData(cur_bh_item, 1) < 1000) temp_str = \"</color>Недостаточно заряда вашего коммуникатора для открытия гипертуннеля.\";",
+"else",
+"{",
+"    UselessItemData(cur_bh_item, 1, 0);",
+"    UselessItemData(cur_bh_item, 3, CurTurn() + 11);",
+"    cur_ruin = GroupToShip(SSBGroup);",
+"    if(!cur_ruin)",
+"    {",
+"        throw 'Error! SSB was somehow destroyed!';",
+"    }",
+"",
+"    cur_hole = HoleCreate2(ShipStar(Player()), ShipStar(cur_ruin));",
+"    HoleTurnCreate(cur_hole, HoleTurnCreate(cur_hole) - 198);",
+"    HoleMap(cur_hole, 'SkipAB');",
+"    PlayerTransCoordX = CoordX(Player()) - 100;",
+"    PlayerTransCoordY = CoordY(Player()) + Rnd(-100, 100);",
+"    HoleX1(cur_hole, PlayerTransCoordX);",
+"    HoleY1(cur_hole, PlayerTransCoordY);",
+"    HoleX2(cur_hole, CoordX(cur_ruin));",
+"    HoleY2(cur_hole, CoordY(cur_ruin));",
+"",
+"    if(CoordX(Player()) >= -300 && CoordX(Player()) <= 300 && CoordY(Player()) >= -300 && CoordY(Player()) <= 300)",
+"    {",
+"        HoleX1(cur_hole, CoordX(Player()) - 300);",
+"        HoleY1(cur_hole, CoordY(Player()) + 300);",
+"    }",
+"    MakeShipEnterStar(cur_ruin, ShipStar(Player()), ShipStar(cur_ruin), 1);",
+"    OrderJumpHole(cur_ruin, cur_hole, 10);",
+"    ShipOrderData1(cur_ruin, 50);",
+"    OrderLock(cur_ruin, 1);",
+"    4d_turn = CurTurn() + 2;",
+"    temp_str = \"</color>Гиперпространственный тоннель открыт, ждём вас три дня.\";",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          400,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          140,
+          "Total.Lines":          12,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_str = \"<clrEnd>Обнаружены аномалии в следующих системах:\"+\"<br>\";",
+"for(i = 0; i<GalaxyHoles(); i = i + 1)",
+"{",
+"    temp_dword = HoleStar1(GalaxyHoles(i));",
+"    temp_dword_2 = HoleStar2(GalaxyHoles(i));",
+"    temp_int_3 = HoleTurnCreate(GalaxyHoles(i));",
+"    if(temp_dword != temp_dword_2)",
+"    {",
+"        temp_str = temp_str + '<clrEnd>' + StarName(temp_dword) + '->' + StarName(temp_dword_2) + \", закроется:\" + ' <clr>' + GameDateTxtByTurn(temp_int_3 + 200) + \"<br>\";",
+"    }",
+"}",
+"if(!GalaxyHoles()) temp_str = \"</color>Гиперпространственные аномалии не обнаружены.\";"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          30,
+          "Pos.y":          150,
+          "Parent":          -1,
+          "#":          144,
+          "Total.Lines":          4,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_str='';",
+"if(back_4d-1-CurTurn()==3)temp_str=\"<clrEnd>Возвращение в подпространство запланировано через три дня. Если не желаете оказаться в гипере на следующие пару месяцев, то советую поторопиться.\";",
+"if(back_4d-1-CurTurn()==2)temp_str=\"<clrEnd>Возвращение в подпространство запланировано через два дня. Если не желаете оказаться в гипере на следующие пару месяцев, то советую поторопиться.\";",
+"if(back_4d-1-CurTurn()==1)temp_str=\"<clrEnd>Возвращение в подпространство запланировано через один день. Если не желаете оказаться в гипере на следующие пару месяцев, то советую поторопиться.\";"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          10,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          147,
+          "Total.Lines":          3,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_dword = CreateHull(0, 100 + 150 * GalaxyTechLevel(), GalaxyTechLevel(), 6);",
+"cost = (ItemCost(temp_dword) * 20) / 100;",
+"FreeItem(temp_dword);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          450,
+          "Pos.y":          190,
+          "Parent":          -1,
+          "#":          149,
+          "Total.Lines":          21,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(UselessItemData(cur_bh_item, 1) < 500)",
+"{",
+"    temp_str = \"</color>Заряда коммуникатора недостаточно для открытия черной дыры.\";",
+"}",
+"else",
+"{",
+"    UselessItemData(cur_bh_item, 1, UselessItemData(cur_bh_item, 1) - 500);",
+"    temp_str = \"</color>Наши зонда наткнулись на кое-что ценное, но им мешают неизвестные корабли. Разберитесь.\";",
+"    temp_dword_2 = 0;",
+"    for(i = 10; i < 50; i = i + 1)",
+"    {",
+"        if(temp_dword_2) break;",
+"        temp_dword = StarNearbyStars(ShipStar(Player()), i);",
+"        if(!SectorVisible(StarToCon(temp_dword))) continue;",
+"        temp_dword_2 = temp_dword;",
+"    }",
+"    temp_dword = HoleCreate2(ShipStar(Player()), temp_dword_2);",
+"    HoleTurnCreate(temp_dword, CurTurn() - 197);",
+"    HoleX1(temp_dword, CoordX(Player()) - 100);",
+"    HoleY1(temp_dword, CoordY(Player()) + Rnd(-100,100));",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          450,
+          "Pos.y":          130,
+          "Parent":          -1,
+          "#":          151,
+          "Total.Lines":          9,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_dword_2 = 0;",
+"for(i = 0; i < ShipItems(Player()); i = i + 1)",
+"{",
+"    temp_dword_2 = ShipItems(Player(), i);",
+"    if(ItemType(temp_dword_2) != t_UselessItem) continue;",
+"    if(EquipmentImageName(temp_dword_2) != 'SubspaceCommunicator') continue;",
+"    cur_bh_item = temp_dword_2;",
+"}",
+"UselessItemData(cur_bh_item, 3, CurTurn() + 1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          40,
+          "Parent":          -1,
+          "#":          167,
+          "Total.Lines":          9,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"AddDialogOverride('DialogGov',20);",
+"if(crush_ok==8)",
+"{",
+"    if(back_4d-1<=CurTurn())",
+"    {",
+"        ExtremalTakeOff();",
+"        NoLanding(IdToShip(id_base),1);",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          50,
+          "Pos.y":          150,
+          "Parent":          -1,
+          "#":          169,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_str='';",
+"temp_str=\"<clrEnd>Вы находитесь на Подпространственной базе. Наше расположение строго конфиденциально, так как здесь проводят свои исследования самые выдающиеся умы со всей Галактики, что придает станции воистину бесценное значение. Не желаете ли помочь нам в научных изысканиях, поделившись артефактами? Или, может, хотели бы сделать ваше нестандартное оборудование более износостойким? Также вы могли бы выступить в роли испытателя наших самых секретных и новейших технологий.\";"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          30,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          172,
+          "Total.Lines":          14,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"cur_ruin = GetShipRuins(Player());",
+"",
+"ShipSetCoords(Player(), HoleX1(ShipOrderObj(cur_ruin)), HoleY1(ShipOrderObj(cur_ruin)));",
+"HoleTurnCreate(ShipOrderObj(cur_ruin), 0);",
+"",
+"TransferShip(Player(), ShipStar(Player()));",
+"//ShipDestroy(cur_ruin, 1);",
+"TransferShip(cur_ruin, StarPlanets(GalaxyStar(2), 0));",
+"",
+"PlayerBridge(2);",
+"PlayerBridge(0);",
+"ShipChangeStar(Player(), ShipStar(Player()));",
+"OrderMove(Player(), CoordX(Player()) + 200.0 * sin(((ShipAngle(Player())) * pi) / 180.0), CoordY(Player()) - 200.0 * cos(((ShipAngle(Player())) * pi) / 180.0), 1);",
+"ForceNextDay();"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          30,
+          "Pos.y":          110,
+          "Parent":          -1,
+          "#":          175,
+          "Total.Lines":          9,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"SkipGreeting();",
+"if(crush_ok==8)",
+"{",
+"    if(back_4d-1<=CurTurn())",
+"    {",
+"        ExtremalTakeOff();",
+"        NoLanding(IdToShip(id_base),1);",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          340,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          187,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(ShipOrder(CurShip) == 5) OrderNone(CurShip);"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"InitPlanet",
+          "Pos.x":          360,
+          "Pos.y":          260,
+          "Parent":          -1,
+          "#":          8,
+          "Race":          62,
+          "Owner":          62,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          280,
+          "Pos.y":          290,
+          "Parent":          -1,
+          "#":          7,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"InitStar",
+          "Pos.x":          280,
+          "Pos.y":          260,
+          "Parent":          -1,
+          "#":          9,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":false,
+          "NoComeKling":false        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          270,
+          "Pos.y":          40,
+          "Parent":          -1,
+          "#":          12,
+          "Total.Lines":          1,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"GetShipRuins(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          80,
+          "Pos.y":          20,
+          "Parent":          -1,
+          "#":          39,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"mod_ok"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          100,
+          "Pos.y":          40,
+          "Parent":          -1,
+          "#":          40,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!mod_ok"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          90,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          48,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int<11"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          110,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          54,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"temp_int_2"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          110,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          55,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!temp_int_2"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          130,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          69,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"gift==1 || gift==3 || gift==5"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          300,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          87,
+          "Total.Lines":          1,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"ShipType(GetShipRuins(Player())) == 'SB' && search_day <= CurTurn() && crush_ok == 3"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          320,
+          "Pos.y":          60,
+          "Parent":          -1,
+          "#":          88,
+          "Total.Lines":          1,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"ShipType(GetShipRuins(Player())) == 'SB' && ItemIn(Zond_take, Player()) && crush_ok == 2"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          530,
+          "Pos.y":          150,
+          "Parent":          -1,
+          "#":          94,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"crush_ok==3"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          550,
+          "Pos.y":          150,
+          "Parent":          -1,
+          "#":          95,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"crush_ok==2"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          320,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          106,
+          "Total.Lines":          1,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"Id(GetShipRuins(Player())) == id_base"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          -110,
+          "Pos.y":          -200,
+          "Parent":          -1,
+          "#":          108,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"crush_ok == 7"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          30,
+          "Pos.y":          130,
+          "Parent":          -1,
+          "#":          109,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"crush_ok==8"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          30,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          122,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"~HullSpecial(Player()) && cur_art_sb2_srch_type[0] == 100"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          10,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          123,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ItemLevel(ShipItems(Player(), 0)) < GalaxyTechLevel() && !findsubstr(BonusNumInCfg(HullSpecial(Player())), 'ExpScienceRanks_Tick')"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          -30,
+          "Pos.y":          310,
+          "Parent":          -1,
+          "#":          126,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player()) >= cost"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          270,
+          "Pos.y":          20,
+          "Parent":          -1,
+          "#":          130,
+          "Total.Lines":          1,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"GetTalkShip()"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          290,
+          "Pos.y":          20,
+          "Parent":          -1,
+          "#":          131,
+          "Total.Lines":          1,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"ShipInNormalSpace(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          320,
+          "Pos.y":          20,
+          "Parent":          -1,
+          "#":          132,
+          "Total.Lines":          1,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"ShipType(GetTalkShip()) == 'SSB'"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          0,
+          "Pos.y":          20,
+          "Parent":          119,
+          "#":          146,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player()) >= cost"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          320,
+          "Pos.y":          40,
+          "Parent":          -1,
+          "#":          166,
+          "Total.Lines":          1,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"ShipType(GetShipRuins(Player())) == 'SSB'"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          50,
+          "Pos.y":          130,
+          "Parent":          -1,
+          "#":          168,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"crush_ok==9"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          50,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          170,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"crush_ok == 9"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          20,
+          "Pos.y":          20,
+          "Parent":          119,
+          "#":          183,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"1"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"PlayerState",
+          "Pos.x":          450,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          11,
+          "Move":          0,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"SSBFreeState",
+          "Pos.x":          360,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          174,
+          "Move":          5,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":"TVar",
+          "Name":"cur_art_sb2_srch",
+          "Pos.x":          750,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          2,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_art_sb2",
+          "Pos.x":          750,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          3,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_int",
+          "Pos.x":          630,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          5,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_str",
+          "Pos.x":          750,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          6,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_art_sb2_srch_type_name",
+          "Pos.x":          750,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          20,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_art_sb2_srch_type",
+          "Pos.x":          750,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          21,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"mod_ok",
+          "Pos.x":          750,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          23,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_int_2",
+          "Pos.x":          630,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          30,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_int_3",
+          "Pos.x":          630,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          57,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_dword",
+          "Pos.x":          630,
+          "Pos.y":          260,
+          "Parent":          -1,
+          "#":          61,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"gift_art",
+          "Pos.x":          630,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          63,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_int_1",
+          "Pos.x":          630,
+          "Pos.y":          200,
+          "Parent":          -1,
+          "#":          70,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"gift",
+          "Pos.x":          750,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          71,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_bh_item",
+          "Pos.x":          750,
+          "Pos.y":          260,
+          "Parent":          -1,
+          "#":          72,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"add_cr",
+          "Pos.x":          630,
+          "Pos.y":          140,
+          "Parent":          -1,
+          "#":          73,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"add_srch",
+          "Pos.x":          750,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          74,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"mm_ok",
+          "Pos.x":          820,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          75,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"mm_name",
+          "Pos.x":          890,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          76,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"crush_ok",
+          "Pos.x":          630,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          77,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"blow",
+          "Pos.x":          710,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          78,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"id_base",
+          "Pos.x":          550,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          79,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"back_4d",
+          "Pos.x":          710,
+          "Pos.y":          370,
+          "Parent":          -1,
+          "#":          80,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"hole_id",
+          "Pos.x":          630,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          81,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"search_day",
+          "Pos.x":          710,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          82,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_hole",
+          "Pos.x":          630,
+          "Pos.y":          370,
+          "Parent":          -1,
+          "#":          83,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_star",
+          "Pos.x":          710,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          84,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"AB_base",
+          "Pos.x":          630,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          86,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"ruin_name",
+          "Pos.x":          630,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          107,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"srch_type",
+          "Pos.x":          750,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          141,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"threat",
+          "Pos.x":          550,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          142,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_dword_2",
+          "Pos.x":          630,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          143,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cost",
+          "Pos.x":          550,
+          "Pos.y":          370,
+          "Parent":          -1,
+          "#":          145,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_float",
+          "Pos.x":          750,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          152,
+          "Var.Type":"Float",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"4d_turn",
+          "Pos.x":          750,
+          "Pos.y":          60,
+          "Parent":          -1,
+          "#":          165,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"i",
+          "Pos.x":          630,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          176,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"j",
+          "Pos.x":          630,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          177,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_dword_3",
+          "Pos.x":          630,
+          "Pos.y":          300,
+          "Parent":          -1,
+          "#":          178,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_ruin",
+          "Pos.x":          550,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          179,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"PlayerTransCoordX",
+          "Pos.x":          900,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          180,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"PlayerTransCoordY",
+          "Pos.x":          900,
+          "Pos.y":          340,
+          "Parent":          -1,
+          "#":          181,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_hole",
+          "Pos.x":          550,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          182,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_star",
+          "Pos.x":          550,
+          "Pos.y":          420,
+          "Parent":          -1,
+          "#":          184,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tstr1",
+          "Pos.x":          660,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          185,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      10,
+      "End":      11,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      10,
+      "End":      8,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      8,
+      "End":      9,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      9,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      1,
+      "End":      15,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      15,
+      "End":      16,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      17,
+      "End":      19,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      1,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      17,
+      "End":      18,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      25,
+      "End":      17,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      27,
+      "End":      29,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      27,
+      "End":      28,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      28,
+      "End":      26,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      31,
+      "End":      32,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      34,
+      "End":      27,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      22,
+      "End":      35,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      35,
+      "End":      36,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      40,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      39,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      40,
+      "End":      24,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      39,
+      "End":      31,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      0,
+      "End":      42,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      18,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      13,
+      "End":      43,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      16,
+      "End":      43,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      43,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      29,
+      "End":      35,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      41,
+      "End":      25,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      37,
+      "End":      38,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      33,
+      "End":      34,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      44,
+      "End":      45,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      45,
+      "End":      46,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      46,
+      "End":      16,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      47,
+      "End":      48,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      48,
+      "End":      13,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      50,
+      "End":      51,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      53,
+      "End":      54,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      54,
+      "End":      49,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      53,
+      "End":      55,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      55,
+      "End":      56,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      60,
+      "End":      58,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      58,
+      "End":      59,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      52,
+      "End":      60,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      49,
+      "End":      62,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      62,
+      "End":      50,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      66,
+      "End":      65,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      65,
+      "End":      67,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      67,
+      "End":      68,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      64,
+      "End":      69,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      69,
+      "End":      66,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      12,
+      "End":      87,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      12,
+      "End":      88,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      88,
+      "End":      90,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      91,
+      "End":      94,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      91,
+      "End":      95,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      95,
+      "End":      96,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      94,
+      "End":      97,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      97,
+      "End":      98,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      98,
+      "End":      102,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      102,
+      "End":      103,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      103,
+      "End":      104,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      96,
+      "End":      99,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      99,
+      "End":      100,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      100,
+      "End":      101,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      87,
+      "End":      106,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      106,
+      "End":      89,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      108,
+      "End":      111,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      113,
+      "End":      110,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      110,
+      "End":      114,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      114,
+      "End":      116,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      116,
+      "End":      117,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      93,
+      "End":      118,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      118,
+      "End":      119,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      120,
+      "End":      121,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      110,
+      "End":      122,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      122,
+      "End":      123,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      115,
+      "End":      124,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      124,
+      "End":      125,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      125,
+      "End":      110,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      126,
+      "End":      127,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      127,
+      "End":      128,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      110,
+      "End":      22,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      24,
+      "End":      129,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      110,
+      "End":      47,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      110,
+      "End":      53,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      110,
+      "End":      64,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      68,
+      "End":      110,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      130,
+      "End":      131,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      131,
+      "End":      132,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      132,
+      "End":      133,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      135,
+      "End":      136,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      135,
+      "End":      137,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      136,
+      "End":      138,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      138,
+      "End":      139,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      137,
+      "End":      140,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      140,
+      "End":      139,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      109,
+      "End":      144,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      144,
+      "End":      110,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      119,
+      "End":      146,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      146,
+      "End":      120,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      123,
+      "End":      147,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      147,
+      "End":      115,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      124,
+      "End":      126,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      135,
+      "End":      148,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      148,
+      "End":      149,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      149,
+      "End":      139,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      135,
+      "End":      150,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      139,
+      "End":      150,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      134,
+      "End":      151,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      151,
+      "End":      135,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      111,
+      "End":      112,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      112,
+      "End":      153,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      153,
+      "End":      154,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      154,
+      "End":      155,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      155,
+      "End":      156,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      156,
+      "End":      157,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      157,
+      "End":      158,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      158,
+      "End":      159,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      159,
+      "End":      160,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      160,
+      "End":      161,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      161,
+      "End":      162,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      162,
+      "End":      163,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      163,
+      "End":      164,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      164,
+      "End":      113,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      12,
+      "End":      166,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      166,
+      "End":      167,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      168,
+      "End":      169,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      169,
+      "End":      110,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      110,
+      "End":      170,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      170,
+      "End":      171,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      171,
+      "End":      172,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      173,
+      "End":      8,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      173,
+      "End":      174,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      175,
+      "End":      108,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      175,
+      "End":      109,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      175,
+      "End":      168,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      92,
+      "End":      175,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      119,
+      "End":      183,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      183,
+      "End":      186,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      186,
+      "End":      175,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      174,
+      "End":      187,
+      "Nom":      0,
+      "Arrow":true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  84,
+  "BlockPar.EC":  
+  [
+    {
+      "#":"110",
+      "String":"Получить обновлённые данные"    
+    },
+    {
+      "#":"142",
+      "String":"<br>"    
+    },
+    {
+      "#":"143",
+      "String":"<0><br>Какой артефакт вы желаете сдать на изучение?"    
+    },
+    {
+      "#":"144",
+      "String":"У меня нету ненужных артефактов"    
+    },
+    {
+      "#":"145",
+      "String":"Благодарим за сотрудничество. За <0> тонн артефактов вы получаете <1> cr."    
+    },
+    {
+      "#":"147",
+      "String":"Улучшить артефакт"    
+    },
+    {
+      "#":"148",
+      "String":"Ничего я улучшать не буду"    
+    },
+    {
+      "#":"151",
+      "String":"Далее"    
+    },
+    {
+      "#":"153",
+      "String":"Как продвигаются исследования?"    
+    },
+    {
+      "#":"155",
+      "String":"Узнать результаты исследований зондов"    
+    },
+    {
+      "#":"156",
+      "String":"Передать уцелевшие обломки гиперпространственных зондов"    
+    },
+    {
+      "#":"157",
+      "String":"Возьмите все ненужные артефакты"    
+    },
+    {
+      "#":"158",
+      "String":" (транк)"    
+    },
+    {
+      "#":"160",
+      "String":"</color>Тип артефакта:             изучен на:"    
+    },
+    {
+      "#":"161",
+      "String":"Да-да, мы вас ждали. К сожалению, узнать нам особо ничего не удалось: аппаратура не пережила квантовой модуляции, которой мы ее подвергли. Однако же у нас получилось восстановить некоторую информацию из блоков памяти зондов. Эти данные наиболее всего похожи на запланированный маршрут, там указаны координаты звездных систем и временные сроки."    
+    },
+    {
+      "#":"162",
+      "String":"<color=255,0,0>Задание провалено.</color>"    
+    },
+    {
+      "#":"163",
+      "String":"Научная база <0> уничтожена"    
+    },
+    {
+      "#":"164",
+      "String":"Сообщение от научной базы <0>: исследования зондов завершены."    
+    },
+    {
+      "#":"165",
+      "String":"Успешно расправившись с напавшими на вас в гиперпространстве зондами, вы подобрали их уцелевшие части на корабль. Неповрежденное оборудование можно доставить на научную базу с целью выяснения причин агрессии зондов. А можно и распродать на запчасти, чего заморачиваться-то!"    
+    },
+    {
+      "#":"167",
+      "String":"Вы утверждаете, что были в гиперпространстве атакованы зондами? Действительно интересно, обычно там орудуют либо пираты, либо так называемые \"чужие\". Огромное спасибо вам за то, что дали нам новую загадку, рейнджер! Мы приложим все усилия к тому, чтобы разгадать ее. Думаю, сперва интегрально-корпускулярное сканирование, затем...<br>А, простите, отвлекся. Прилетайте через несколько дней, мы наверняка сможем рассказать вам больше об этом интересном феномене!"    
+    },
+    {
+      "#":"168",
+      "String":"Да-да, мы вас ждали. К сожалению, узнать нам особо ничего не удалось: аппаратура не пережила квантовой модуляции, которой мы ее подвергли. Однако же у нас получилось восстановить некоторую информацию из блоков памяти зондов. Эти данные наиболее всего похожи на запланированный маршрут, там указаны координаты звездных систем и временные сроки.<br>Последние координаты указывают на систему <0>, в то время как привязанный к ним временной интервал подходит к концу через несколько недель. Больше мы ничего сообщить вам, <1>, не можем.<br>Будь я на вашем месте, обязательно бы посетил эту звездную систему, пока срок не подошел к концу. Что бы там ни находилось, это наверняка представляет огромную научную важность!"    
+    },
+    {
+      "#":"170",
+      "String":"Передумал"    
+    },
+    {
+      "#":"175",
+      "String":"Уйти"    
+    },
+    {
+      "#":"176",
+      "String":"<color=0,255,0>Задание выполнено.</color><br>Успешно расправившись с напавшими на вас в гиперпространстве зондами, вы подобрали их уцелевшие части на корабль. Неповрежденное оборудование можно доставить на научную базу с целью выяснения причин агрессии зондов. А можно и распродать на запчасти, чего заморачиваться-то!"    
+    },
+    {
+      "#":"177",
+      "String":"Тогда я немедленно отправляюсь"    
+    },
+    {
+      "#":"178",
+      "String":"Да-да, мы вас ждали. К сожалению, узнать нам особо ничего не удалось: аппаратура не пережила квантовой модуляции, которой мы ее подвергли. Однако же у нас получилось восстановить некоторую информацию из блоков памяти зондов. Эти данные наиболее всего похожи на запланированный маршрут, там указаны координаты звездных систем и временные сроки.<br>Последние координаты указывают на систему <0>, в то время как привязанный к ним временной интервал подходит к концу через несколько недель. Больше мы ничего сообщить вам, <1>, не можем.<br>Будь я на вашем месте, обязательно бы посетил эту звездную систему, пока срок не подошел к концу. Что бы там не находилось, это наверняка представляет огромную научную важность!"    
+    },
+    {
+      "#":"181",
+      "String":"Да"    
+    },
+    {
+      "#":"183",
+      "String":"Я передумал"    
+    },
+    {
+      "#":"186",
+      "String":"<0>"    
+    },
+    {
+      "#":"187",
+      "String":"Конец связи"    
+    },
+    {
+      "#":"188",
+      "String":"Я бы хотел воспользоваться услугами вашей базы"    
+    },
+    {
+      "#":"205",
+      "String":""    
+    },
+    {
+      "#":"207",
+      "String":"Модернизация Клеща"    
+    },
+    {
+      "#":"208",
+      "String":"Нет"    
+    },
+    {
+      "#":"216",
+      "String":"<clrEnd>Вы ещё не помогали в изучении артефактов."    
+    },
+    {
+      "#":"218",
+      "String":", закроется:"    
+    },
+    {
+      "#":"220",
+      "String":"Помочь в защите"    
+    },
+    {
+      "#":"221",
+      "String":"</color>Заряда коммуникатора недостаточно для открытия черной дыры."    
+    },
+    {
+      "#":"222",
+      "String":"</color>Наши зонда наткнулись на кое-что ценное, но им мешают неизвестные корабли. Разберитесь."    
+    },
+    {
+      "#":"223",
+      "String":"Хорошо. А благодаря вашим поставкам дополнительного материала мы совершили ещё одно открытие. В качестве благодарности позвольте вручить вам уникальный артефакт созданный по новым технологиям."    
+    },
+    {
+      "#":"224",
+      "String":"Спасибо"    
+    },
+    {
+      "#":"225",
+      "String":"Подпространственное перемещение"    
+    },
+    {
+      "#":"226",
+      "String":"Мы не изучили данный тип оборудования. Привозите больше артефактов на исследование."    
+    },
+    {
+      "#":"228",
+      "String":"Какой микромодуль желаете использовать для совмещения?"    
+    },
+    {
+      "#":"230",
+      "String":"Понятно"    
+    },
+    {
+      "#":"231",
+      "String":"Вы выбрали для совмещения <0> и микромодуль <1>. Всё верно?"    
+    },
+    {
+      "#":"232",
+      "String":"Обычно оборудование неизвестного происхождения не совместимо с микромодулями из-за конфликтов технологий, однако у артефактов конфликт заметно ниже, именно поэтому они частично работают на нашем оборудовании. Чем больше мы изучим привезённых вами артефактов, тем больше сможем предложить.<br>Выберите оборудование неизвестного происхождения для совмещения с микромодулем."    
+    },
+    {
+      "#":"238",
+      "String":"</color>Недостаточно заряда вашего коммуникатора для открытия гипертуннеля."    
+    },
+    {
+      "#":"240",
+      "String":"Какой интересный экземпляр. Никакие сканеры, ни биотические, ни ментальные, ни технологические не смогли обнаружить никаких аномалий. Чистейшая работа... Большая удача, что нам удалось захватить объект живым. Возможно, вскрытие сможет показать как Чужим удалось создать столь совершенную систему маскировки."    
+    },
+    {
+      "#":"242",
+      "String":"Невероятно! Объект способен разговаривать на галалингве! Двойная удача, что он жив! Возможно, нам удастся наладить контакт, сколько же мы сможем от него узнать! Боюсь, коллеги, вскрытие немного откладывается. Охрана, доставьте объект в изоляционную камеру!"    
+    },
+    {
+      "#":"244",
+      "String":"Хмм... Запись о таком рейнджере действительно существует и ваши биометрические показатели полностью совпадают. Хорошо, предположим, я верю в эту версию, но это не объясняет ваш странный корабль."    
+    },
+    {
+      "#":"248",
+      "String":"Стоп-стоп-стоп, какое еще вскрытие?!"    
+    },
+    {
+      "#":"249",
+      "String":"Не пойду я ни в какую камеру, яйцеголовый! Я не \"чужой\", я самый обычный рейнджер."    
+    },
+    {
+      "#":"250",
+      "String":"Говорю же вам! Я рейнджер! Меня зовут <0>, можете рейтинг проверить!"    
+    },
+    {
+      "#":"251",
+      "String":"Ученые коалиции построили этот корпус. Сеть научных баз запустила проект по изучению черных дыр, результатом исследований стал этот корпус. Я получил экспериментальный образец в качестве благодарности за помощь в добыче материалов."    
+    },
+    {
+      "#":"252",
+      "String":"Вы собирались стереть мне память?!"    
+    },
+    {
+      "#":"253",
+      "String":"Ладно, я согласен на сотрудничество."    
+    },
+    {
+      "#":"254",
+      "String":"Рейнджер? Как интересно... Боюсь, ваш корабль говорит об обратном. Материалы из которых он построен и технологии используемые в нем недоступны Коалиции и уж тем более рядовым рейнджерам."    
+    },
+    {
+      "#":"255",
+      "String":"Интересно, значит, они все-таки решили заняться изучением черных дыр... Ну чтож, рано или поздно это должно было случиться, однако мы рассчитывали что их исследования ни к чему не приведут, поэтому не уделяли этому должного внимания, а оно вот как вышло... Корабль смогли построить... Возможно тут решающим фактором стала помощь таких рейнджеров как вы. Думаю, вы можете быть нам полезны. Это хорошо, терпеть не могу стирать память, пациенты так кричат... Жуть."    
+    },
+    {
+      "#":"256",
+      "String":"Конечно. Вы хоть представляете, где находитесь? Эта база - секретный правительственный объект, только избранные знают о нашем существовании, даже высшие чины не все в курсе. Мы должны охранять нашу секретность, скажите спасибо, что у нас есть эта технология, иначе пришлось бы устранять всех случайных пилотов. Вам повезло, с вами мы этого делать не будем. Думаю так или иначе вы сможете нам помочь, особенно сейчас, когда большинство наших зондов уничтожено. Вы, кстати, не знаете, что с ними случилось? Нет? Ну ладно, в любом случае наша защита теперь сильно ослабла и в случае нового нападения нам пригодиться любая помощь."    
+    },
+    {
+      "#":"258",
+      "String":"Объект <clr>X-24&1/2<clrEnd> на связи."    
+    },
+    {
+      "#":"259",
+      "String":"Мы можем заменить старые детали на более компактные и надёжные, в результате чего вес и износ артефакта уменьшатся, но цена увеличится в два раза.<br>Вот список что мы можем улучшить:<br><0>"    
+    },
+    {
+      "#":"260",
+      "String":"Наша станция оснащена гипергенератором рекордного размера, что позволяет почти моментально перемещаться в любую часть галактики. Но мы можем уменьшить размер поля до величины вашего корпуса, что позволит переместить вас туда куда пожелаете. Кстати, куда вам надо?"    
+    },
+    {
+      "#":"261",
+      "String":"Но эта услуга не бесплатна, часть деталей генератора безвозвратно уничтожается в результате эксплуатации. Наши издержки составят примерно <0> cr.<br>Ну так что, начать подготовку для вашего перемещения? Это не займёт много времени."    
+    },
+    {
+      "#":"263",
+      "String":"Получить информацию о открытых черных дырах"    
+    },
+    {
+      "#":"264",
+      "String":"</color>Гиперпространственные аномалии не обнаружены."    
+    },
+    {
+      "#":"265",
+      "String":"<clrEnd>Обнаружены аномалии в следующих системах:"    
+    },
+    {
+      "#":"266",
+      "String":"<clrEnd>Возвращение в подпространство запланировано через один день. Если не желаете оказаться в гипере на следующие пару месяцев, то советую поторопиться."    
+    },
+    {
+      "#":"267",
+      "String":"<clrEnd>Возвращение в подпространство запланировано через два дня. Если не желаете оказаться в гипере на следующие пару месяцев, то советую поторопиться."    
+    },
+    {
+      "#":"268",
+      "String":"<clrEnd>Возвращение в подпространство запланировано через три дня. Если не желаете оказаться в гипере на следующие пару месяцев, то советую поторопиться."    
+    },
+    {
+      "#":"270",
+      "String":"Отлично. Мы выдадим вам специальный коммуникатор, с его помощью вы сможете попасть на нашу станцию из любой точки галактики. Хотя ему и требуется некоторое время на перезарядку. В награду за сотрудничество наша станция предоставит вам доступ к ряду уникальных услуг. Будьте уверены, наши специалисты действительно способны творить чудеса, вы не будете разочарованы.<br>Итак, мы договорились. Самое главное помните: разглашать информацию о нашем существовании строжайше запрещено. Если же утечка все-таки произойдет, нам не останется ничего, кроме как прекратить наше сотрудничество и стереть память вам, а также всем, кто узнает о нашем существовании. Поверьте, нам такой исход нравиться ничуть не больше чем вам."    
+    },
+    {
+      "#":"271",
+      "String":"Покинуть базу"    
+    },
+    {
+      "#":"272",
+      "String":"</color>Гиперпространственный тоннель открыт, ждём вас три дня."    
+    },
+    {
+      "#":"276",
+      "String":"Благодарим за помощь в изучении неизвестного оборудования, в качестве компенсации получите <0> cr. за утраченный артефакт."    
+    },
+    {
+      "#":"278",
+      "String":"<clrEnd>Вы находитесь на Подпространственной базе. Наше расположение строго конфиденциально, так как здесь проводят свои исследования самые выдающиеся умы со всей Галактики, что придает станции воистину бесценное значение. Не желаете ли помочь нам в научных изысканиях, поделившись артефактами? Или, может, хотели бы сделать ваше нестандартное оборудование более износостойким? Также вы могли бы выступить в роли испытателя наших самых секретных и новейших технологий."    
+    },
+    {
+      "#":"279",
+      "String":"<color=0,255,0>Задание выполнено.</color><br>Да-да, мы вас ждали. К сожалению, узнать нам особо ничего не удалось: аппаратура не пережила квантовой модуляции, которой мы ее подвергли. Однако же у нас получилось восстановить некоторую информацию из блоков памяти зондов. Эти данные наиболее всего похожи на запланированный маршрут, там указаны координаты звездных систем и временные сроки.Последние координаты указывают на систему <0>, в то время как привязанный к ним временной интервал подходит к концу через несколько недель. Больше мы ничего сообщить вам, <1>, не можем.Будь я на вашем месте, обязательно бы посетил эту звездную систему, пока срок не подошел к концу. Что бы там не находилось, это наверняка представляет огромную научную важность!"    
+    },
+    {
+      "#":"281",
+      "String":"Нашими специалистами была разработана модификация вашего уникального корпуса. Изменения состава материала обшивки сделает её более прочной. Также будет произведена переоснастка внутренних систем, в результате чего, изменится объём всего корабля.<br>А да, новые материалы обойдутся вам в <0> cr.<br>Вы согласны?"    
+    },
+    {
+      "#":"282",
+      "String":"Будь я на вашем месте, обязательно бы посетил эту звездную систему, пока срок не подошел к концу. Что бы там не находилось, это наверняка представляет огромную научную важность!"    
+    },
+    {
+      "#":"283",
+      "String":"Последние координаты указывают на систему <0>, в то время как привязанный к ним временной интервал подходит к концу через несколько недель. Больше мы ничего сообщить вам, <1>, не можем."    
+    },
+    {
+      "#":"59",
+      "String":"Вы выбрали:<br>Название артефакта: <0>.<br>Вес артефакта: <1> т.<br>Цена артефакта: <2> cr.<br>Тип артефакта: <3>."    
+    },
+    {
+      "#":"61",
+      "String":"Сдать артефакт на изучение"    
+    },
+    {
+      "#":"62",
+      "String":"Отказаться"    
+    },
+    {
+      "#":"63",
+      "String":"Подтвердить"    
+    },
+    {
+      "#":"64",
+      "String":"Совместить оборудование с микромодулем"    
+    }  
+  ]
+}

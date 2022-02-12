@@ -1,0 +1,1586 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  23,
+  "ViewPos.y":  -146,
+  "ScriptName":"thehunt",
+  "ScriptFileOut":"H:\\thehunt.scr",
+  "ScriptTextOut":"H:\\thehunt.txt",
+  "GraphPoint.Count":  68,
+  "GraphLink.Count":  70,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  4,
+  "Stars.Count":  2,
+  "Planets.Count":  1,
+  "Ships.Count":  1,
+  "States.Count":  4,
+  "Groups.Count":  2,
+  "Places.Count":  0,
+  "Items.Count":  0,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  1,
+  "DialogMessages.Count":  10,
+  "DialogAnswers.Count":  18,
+  "Operations.Count":  11,
+  "Statements.Count":  14,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "DialogAnswers":      
+      [
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          950,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          32,
+          "Msg":"Уничтожению? Какое вам вообще может быть до меня дело?",
+          "AMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          980,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          33,
+          "Msg":"Пошёл прочь, недоносок.",
+          "AMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1010,
+          "Pos.y":          340,
+          "Parent":          -1,
+          "#":          34,
+          "Msg":"Вы должно быть шутите. Это какое-то недоразумение.",
+          "AMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1040,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          35,
+          "Msg":"Я вижу, что вы гуманоиды дела, и не станете трепаться попусту. Мы ещё можем решить это дело мирно.",
+          "AMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          1010,
+          "Pos.y":          430,
+          "Parent":          -1,
+          "#":          36,
+          "Msg":"А ты смешной. Но убью я тебя всё равно первым.",
+          "AMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          1120,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          37,
+          "Msg":"И правда. Я просто хотел сообщить, что этот приговор выносится тебе.",
+          "AMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          1040,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          38,
+          "Msg":"Постойте! Я правда невиновен! Я могу это доказать!..",
+          "AMsg.Num":"6"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          1090,
+          "Pos.y":          340,
+          "Parent":          -1,
+          "#":          39,
+          "Msg":"Что ж, поздравляю, вы раскрыли меня. Но имейте ввиду, солдафоны, что это окажется для вас новым ящиком Пандоры.",
+          "AMsg.Num":"7"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1070,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          40,
+          "Msg":"Назовите свою цену.",
+          "AMsg.Num":"8"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1110,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          41,
+          "Msg":"Я давно подумывал о том, чтобы уйти с этой тёмной дорожки. Став на этот путь, я достиг своих высот в криминальном мире и накопил немалое количество ресурсов. Будет не очень хорошо, если вы просто уничтожите то, что создала гибель ваших камрадов. Клянусь, я исправлюсь, и направлю всё до единой кредитки на пользу Коалиции.",
+          "AMsg.Num":"9"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          1070,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          42,
+          "Msg":"Я уверен, деньги смогут решить этот вопрос.",
+          "AMsg.Num":"10"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1110,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          43,
+          "Msg":"Я не простой пират, и вы это знаете. У меня есть много чего, что может оказаться для вас интересным.",
+          "AMsg.Num":"11"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          1160,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          44,
+          "Msg":"Да чтоб тебя...",
+          "AMsg.Num":"12"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          1160,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          45,
+          "Msg":"Я передумал, ты чертовски мне надоел. Я сам разнесу вас всех.",
+          "AMsg.Num":"13"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          1140,
+          "Pos.y":          470,
+          "Parent":          -1,
+          "#":          46,
+          "Msg":"Боюсь, у меня нет таких денег.",
+          "AMsg.Num":"14"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1160,
+          "Pos.y":          430,
+          "Parent":          -1,
+          "#":          47,
+          "Msg":"Я согласен.",
+          "AMsg.Num":"15"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          1240,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          48,
+          "Msg":"",
+          "AMsg.Num":"16"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          980,
+          "Pos.y":          470,
+          "Parent":          -1,
+          "#":          49,
+          "Msg":"",
+          "AMsg.Num":"17"        
+        }      
+      ],
+      "DialogMessages":      
+      [
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          950,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          22,
+          "Msg":"Вот мы и нашли тебя, <PlayerFull>. Это не составило особого труда с тем погромом, что ты оставил за собой.<br>Галактический Совет больше не намерен терпеть твои козни, и я рекомендую приготовиться к полному и безвозвратному уничтожению.",
+          "DMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          950,
+          "Pos.y":          470,
+          "Parent":          -1,
+          "#":          23,
+          "Msg":"Не удалось установить связь с абонентом.<br>Возможные причины: пользователь <PlayerFull> находится в чёрном списке.",
+          "DMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          950,
+          "Pos.y":          490,
+          "Parent":          -1,
+          "#":          24,
+          "Msg":"Твои дни в этом мире сочтены, ублюдок.",
+          "DMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1010,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          25,
+          "Msg":"Ха! Дело?! Ты, <PlayerFull>, обвиняешься в пиратстве, грабеже, убийствах и рецидивизме в просто гипертрофированных масштабах!<br>Нам известно, что ты уже успел уничтожить как минимум <ShipStatistic(Player(),5)> военных судов Коалиции, и не раз пытался это сокрыть! <ShipStatistic(Player(),5)> военных судов! И это в военное время! Я, как представитель <clr>девятого отдела<clrEnd> специального назначения, с радостью выполню своё задание и не оставлю от твоего корабля даже последней цистерны.",
+          "DMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1070,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          26,
+          "Msg":"Тебе нечего предложить нам. Смертный приговор обжалованию не подлежит.",
+          "DMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1040,
+          "Pos.y":          340,
+          "Parent":          -1,
+          "#":          27,
+          "Msg":"Ты не понимаешь, с кем имеешь дело, пиратская гниль.<br>Как бы ты ни уворачивался, сколько бы раз не подделывал свои документы на пиратских базах - наш отдел тебя вычислит. И уничтожит. Тебе некуда бежать.",
+          "DMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1130,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          28,
+          "Msg":"Простой, не простой - мы вскоре избавим Вселенную и от тебя, и от всей твоей гипертрофированной банды отморозков, готовься к смерти!",
+          "DMsg.Num":"6"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1140,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          29,
+          "Msg":"Я бы даже не стал тебя выслушивать, но продажные политики, наблюдающие за этим разговором, явно думают иначе, смерш бы их побрал.<br>Мы готовы рассмотреть использование всего твоего капитала во благо Коалиции. Но тебе это будет стоить не много ни мало, <GalaxyMoney(3,0)*3> cr залога.",
+          "DMsg.Num":"7"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1240,
+          "Pos.y":          430,
+          "Parent":          -1,
+          "#":          30,
+          "Msg":"Помни, стоит тебе нарушить своё слово, и мы вновь придём за тобой. И тогда спасения уже не будет.",
+          "DMsg.Num":"8"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          950,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          31,
+          "Msg":"На связи группа специального назначения <clr>девятого отдела<clrEnd>.<br>Ты уже однажды дал клятву исправиться, рейнджер, и ты нарушил её. Пощады не будет.",
+          "DMsg.Num":"9"        
+        }      
+      ],
+      "Dialogs":      
+      [
+        {
+          "Type":"TDialog",
+          "Name":"dAssassin",
+          "Pos.x":          830,
+          "Pos.y":          470,
+          "Parent":          -1,
+          "#":          17        
+        }      
+      ],
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"PlayerGroup",
+          "Pos.x":          450,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          9,
+          "Owner":          62,
+          "Group.Type":          126,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":true,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        },
+        {
+          "Type":"TGroup",
+          "Name":"AssasinGroup",
+          "Pos.x":          450,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          10,
+          "Owner":          63,
+          "Group.Type":          5,
+          "CntShipMin":          5,
+          "CntShipMax":          5,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          1,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":false,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          360,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          1,
+          "Total.Lines":          20,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"if(GRunFrom==3)",
+"{",
+"    if(GCntRun(GScriptName)<3)",
+"    {",
+"        if((CurTurn()-GLastTurnRun(GScriptName,0))>2000)",
+"        {",
+"            if(ShipStrengthInAverageRanger(Player())>=1.5 && CurTurn()>=365*20 && ShipOwner(ShipStar(Player()))!=1)",
+"            {",
+"                if(RangerStatus(Player())==Pirate)",
+"                {",
+"                    if(ShipStatistic(Player(),5)>40)",
+"                    {",
+"                        GRun();",
+"                        if(AssassinTalk)start_script=1;",
+"                    }",
+"                }",
+"            }",
+"        }",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          390,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          11,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(!CountIn(AssasinGroup))ShipOut(Player());"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          720,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          16,
+          "Total.Lines":          5,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(EndState)",
+"{",
+"    ShipOut(CurShip);",
+"    AssassinTalk=0;",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          52,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"dialog_attack=1"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1040,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          53,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AssassinTalk=3;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1160,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          54,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AssassinTalk=3;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1090,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          55,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AssassinTalk=3;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1210,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          56,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AssassinTalk=3;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1210,
+          "Pos.y":          430,
+          "Parent":          -1,
+          "#":          57,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AssassinTalk=2;",
+"ShipMoney(Player(),ShipMoney(Player())-GalaxyMoney(3,0)*3);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          810,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          58,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(!ShipInStar(Player(),Star1))ShipOut(CurShip);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          760,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          67,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"Dialog(dAssassin,AssasinGroup);"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"Planet1",
+          "Pos.x":          360,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          6,
+          "Race":          62,
+          "Owner":          63,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          260,
+          "Pos.y":          340,
+          "Parent":          -1,
+          "#":          8,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"Star1",
+          "Pos.x":          260,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          5,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":false,
+          "NoComeKling":false        
+        },
+        {
+          "Type":"TStar",
+          "Name":"Star2",
+          "Pos.x":          260,
+          "Pos.y":          430,
+          "Parent":          -1,
+          "#":          7,
+          "Constellation":          0,
+          "Priority":          1,
+          "NoKling":false,
+          "NoComeKling":false        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          18,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AssassinTalk==0"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          470,
+          "Parent":          -1,
+          "#":          19,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AssassinTalk==2 && !start_script"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          490,
+          "Parent":          -1,
+          "#":          20,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AssassinTalk==3"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          510,
+          "Parent":          -1,
+          "#":          21,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AssassinTalk==2 && start_script"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          1090,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          50,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipOnSidePirateClan(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          1140,
+          "Pos.y":          430,
+          "Parent":          -1,
+          "#":          51,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())>=GalaxyMoney(3,0)*3"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          680,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          59,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AssassinTalk==2"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          680,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          60,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"AssassinTalk==3"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          680,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          61,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipInNormalSpace(CurShip)"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          700,
+          "Pos.y":          440,
+          "Parent":          -1,
+          "#":          62,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipInNormalSpace(Player())"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          720,
+          "Pos.y":          430,
+          "Parent":          -1,
+          "#":          63,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!dialog_attack"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          720,
+          "Pos.y":          450,
+          "Parent":          -1,
+          "#":          64,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"dialog_attack"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          740,
+          "Pos.y":          430,
+          "Parent":          -1,
+          "#":          65,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipInStar(Player(),Star1)"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          760,
+          "Pos.y":          430,
+          "Parent":          -1,
+          "#":          66,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"Dist(CurShip,Player())<200"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"PlayerState",
+          "Pos.x":          560,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          12,
+          "Move":          0,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"AssasinState",
+          "Pos.x":          620,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          13,
+          "Move":          2,
+          "MoveObj":          9,
+          "Attack.Count":          1,
+          "Attack.Items":          
+          [
+            {
+              "Target.0":              9            
+            }          
+          ],
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"dAssassin",
+          "OnActCode":"dAssassin",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"JumpState",
+          "Pos.x":          720,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          14,
+          "Move":          3,
+          "MoveObj":          7,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"dAssassin",
+          "OnActCode":"dAssassin",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"AttackState",
+          "Pos.x":          720,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          15,
+          "Move":          2,
+          "MoveObj":          9,
+          "Attack.Count":          1,
+          "Attack.Items":          
+          [
+            {
+              "Target.0":              9            
+            }          
+          ],
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"dAssasin",
+          "OnActCode":"dAssasin",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":"TVar",
+          "Name":"AssassinTalk",
+          "Pos.x":          260,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          0,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":true        
+        },
+        {
+          "Type":"TVar",
+          "Name":"rand",
+          "Pos.x":          420,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          2,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"dialog_attack",
+          "Pos.x":          470,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          3,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"start_script",
+          "Pos.x":          360,
+          "Pos.y":          220,
+          "Parent":          -1,
+          "#":          4,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":true        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      6,
+      "End":      5,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      8,
+      "End":      5,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TStarLink",
+      "Begin":      7,
+      "End":      5,
+      "Nom":      0,
+      "Arrow":false,
+      "DistMin":      0,
+      "DistMax":      149,
+      "Hole":false    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      9,
+      "End":      6,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      10,
+      "End":      6,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      9,
+      "End":      12,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      10,
+      "End":      13,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      14,
+      "End":      16,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      17,
+      "End":      18,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      17,
+      "End":      19,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      17,
+      "End":      20,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      17,
+      "End":      21,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      18,
+      "End":      22,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      23,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      20,
+      "End":      24,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      21,
+      "End":      31,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      22,
+      "End":      32,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      22,
+      "End":      33,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      23,
+      "End":      49,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      24,
+      "End":      49,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      25,
+      "End":      34,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      25,
+      "End":      35,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      25,
+      "End":      36,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      26,
+      "End":      50,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      50,
+      "End":      43,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      26,
+      "End":      37,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      26,
+      "End":      41,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      26,
+      "End":      42,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      27,
+      "End":      38,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      27,
+      "End":      39,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      27,
+      "End":      40,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      28,
+      "End":      44,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      29,
+      "End":      51,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      51,
+      "End":      47,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      29,
+      "End":      45,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      29,
+      "End":      46,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      30,
+      "End":      48,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      31,
+      "End":      52,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      52,
+      "End":      49,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      32,
+      "End":      25,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      33,
+      "End":      53,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      34,
+      "End":      27,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      35,
+      "End":      26,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      36,
+      "End":      53,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      37,
+      "End":      54,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      55,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      39,
+      "End":      55,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      40,
+      "End":      26,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      41,
+      "End":      29,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      42,
+      "End":      53,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      43,
+      "End":      28,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      44,
+      "End":      54,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      45,
+      "End":      56,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      46,
+      "End":      56,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      47,
+      "End":      57,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      57,
+      "End":      30,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      15,
+      "End":      58,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      59,
+      "End":      14,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      60,
+      "End":      15,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      61,
+      "End":      62,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      62,
+      "End":      63,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      62,
+      "End":      64,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      64,
+      "End":      15,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      63,
+      "End":      65,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      65,
+      "End":      66,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      66,
+      "End":      67,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      67,
+      "End":      64,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      13,
+      "End":      59,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      13,
+      "End":      60,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      13,
+      "End":      61,
+      "Nom":      0,
+      "Arrow":true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  27,
+  "BlockPar.EC":  
+  [
+    {
+      "#":"0",
+      "String":"dAssasin"    
+    },
+    {
+      "#":"1",
+      "String":"Вот мы и нашли тебя, <PlayerFull>. Это не составило особого труда с тем погромом, что ты оставил за собой.<br>Галактический Совет больше не намерен терпеть твои козни, и я рекомендую приготовиться к полному и безвозвратному уничтожению."    
+    },
+    {
+      "#":"10",
+      "String":"На связи группа специального назначения <clr>девятого отдела<clrEnd>.<br>Ты уже однажды дал клятву исправиться, рейнджер, и ты нарушил её. Пощады не будет."    
+    },
+    {
+      "#":"11",
+      "String":"Уничтожению? Какое вам вообще может быть до меня дело?"    
+    },
+    {
+      "#":"12",
+      "String":"Пошёл прочь, недоносок."    
+    },
+    {
+      "#":"13",
+      "String":"Вы должно быть шутите. Это какое-то недоразумение."    
+    },
+    {
+      "#":"14",
+      "String":"Я вижу, что вы гуманоиды дела, и не станете трепаться попусту. Мы ещё можем решить это дело мирно."    
+    },
+    {
+      "#":"15",
+      "String":"А ты смешной. Но убью я тебя всё равно первым."    
+    },
+    {
+      "#":"16",
+      "String":"И правда. Я просто хотел сообщить, что этот приговор выносится тебе."    
+    },
+    {
+      "#":"17",
+      "String":"Постойте! Я правда невиновен! Я могу это доказать!.."    
+    },
+    {
+      "#":"18",
+      "String":"Что ж, поздравляю, вы раскрыли меня. Но имейте ввиду, солдафоны, что это окажется для вас новым ящиком Пандоры."    
+    },
+    {
+      "#":"19",
+      "String":"Назовите свою цену."    
+    },
+    {
+      "#":"2",
+      "String":"Не удалось установить связь с абонентом.<br>Возможные причины: пользователь <PlayerFull> находится в чёрном списке."    
+    },
+    {
+      "#":"20",
+      "String":"Я давно подумывал о том, чтобы уйти с этой тёмной дорожки. Став на этот путь, я достиг своих высот в криминальном мире и накопил немалое количество ресурсов. Будет не очень хорошо, если вы просто уничтожите то, что создала гибель ваших камрадов. Клянусь, я исправлюсь, и направлю всё до единой кредитки на пользу Коалиции."    
+    },
+    {
+      "#":"21",
+      "String":"Я уверен, деньги смогут решить этот вопрос."    
+    },
+    {
+      "#":"22",
+      "String":"Я не простой пират, и вы это знаете. У меня есть много чего, что может оказаться для вас интересным."    
+    },
+    {
+      "#":"23",
+      "String":"Да чтоб тебя..."    
+    },
+    {
+      "#":"24",
+      "String":"Я передумал, ты чертовски мне надоел. Я сам разнесу вас всех."    
+    },
+    {
+      "#":"25",
+      "String":"Боюсь, у меня нет таких денег."    
+    },
+    {
+      "#":"26",
+      "String":"Я согласен."    
+    },
+    {
+      "#":"3",
+      "String":"Твои дни в этом мире сочтены, ублюдок."    
+    },
+    {
+      "#":"4",
+      "String":"Ха! Дело?! Ты, <PlayerFull>, обвиняешься в пиратстве, грабеже, убийствах и рецидивизме в просто гипертрофированных масштабах!<br>Нам известно, что ты уже успел уничтожить как минимум <0> военных судов Коалиции, и не раз пытался это сокрыть! <1> военных судов! И это в военное время! Я, как представитель <clr>девятого отдела<clrEnd> специального назначения, с радостью выполню своё задание и не оставлю от твоего корабля даже последней цистерны."    
+    },
+    {
+      "#":"5",
+      "String":"Тебе нечего предложить нам. Смертный приговор обжалованию не подлежит."    
+    },
+    {
+      "#":"6",
+      "String":"Ты не понимаешь, с кем имеешь дело, пиратская гниль.<br>Как бы ты ни уворачивался, сколько бы раз не подделывал свои документы на пиратских базах - наш отдел тебя вычислит. И уничтожит. Тебе некуда бежать."    
+    },
+    {
+      "#":"7",
+      "String":"Простой, не простой - мы вскоре избавим Вселенную и от тебя, и от всей твоей гипертрофированной банды отморозков, готовься к смерти!"    
+    },
+    {
+      "#":"8",
+      "String":"Я бы даже не стал тебя выслушивать, но продажные политики, наблюдающие за этим разговором, явно думают иначе, смерш бы их побрал.<br>Мы готовы рассмотреть использование всего твоего капитала во благо Коалиции. Но тебе это будет стоить не много ни мало, <0> cr залога."    
+    },
+    {
+      "#":"9",
+      "String":"Помни, стоит тебе нарушить своё слово, и мы вновь придём за тобой. И тогда спасения уже не будет."    
+    }  
+  ]
+}

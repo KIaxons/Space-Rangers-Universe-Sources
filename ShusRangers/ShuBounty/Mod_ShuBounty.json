@@ -1,0 +1,3555 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  457,
+  "ViewPos.y":  289,
+  "ScriptName":"Mod_ShuBounty",
+  "ScriptFileOut":"H:\\Mod_ShuBounty.scr",
+  "ScriptTextOut":"H:\\Mod_ShuBounty.txt",
+  "GraphPoint.Count":  125,
+  "GraphLink.Count":  81,
+  "GraphRectText.Count":  5,
+  "Variables.Count":  29,
+  "Stars.Count":  1,
+  "Planets.Count":  1,
+  "Ships.Count":  1,
+  "States.Count":  1,
+  "Groups.Count":  1,
+  "Places.Count":  0,
+  "Items.Count":  0,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  15,
+  "DialogMessages.Count":  23,
+  "DialogAnswers.Count":  20,
+  "Operations.Count":  19,
+  "Statements.Count":  14,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "DialogAnswers":      
+      [
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          910,
+          "Pos.y":          580,
+          "Parent":          -1,
+          "#":          42,
+          "Msg":"Далее",
+          "AMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          970,
+          "Pos.y":          580,
+          "Parent":          -1,
+          "#":          43,
+          "Msg":"Вас понял",
+          "AMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          930,
+          "Pos.y":          650,
+          "Parent":          -1,
+          "#":          44,
+          "Msg":"Спасибо!",
+          "AMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1040,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          45,
+          "Msg":"Далее",
+          "AMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          1060,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          46,
+          "Msg":"Ясно",
+          "AMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          1060,
+          "Pos.y":          650,
+          "Parent":          -1,
+          "#":          47,
+          "Msg":"Спасибо!",
+          "AMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          1180,
+          "Pos.y":          600,
+          "Parent":          -1,
+          "#":          48,
+          "Msg":"И вам спасибо!",
+          "AMsg.Num":"6"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          1220,
+          "Pos.y":          580,
+          "Parent":          -1,
+          "#":          49,
+          "Msg":"Вот как? Ну ладно...",
+          "AMsg.Num":"7"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          1150,
+          "Pos.y":          580,
+          "Parent":          -1,
+          "#":          50,
+          "Msg":"Вот как? Ну ладно...",
+          "AMsg.Num":"8"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          1010,
+          "Pos.y":          830,
+          "Parent":          -1,
+          "#":          51,
+          "Msg":"Нет, спасибо",
+          "AMsg.Num":"9"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          920,
+          "Pos.y":          820,
+          "Parent":          -1,
+          "#":          52,
+          "Msg":"Рад был помочь",
+          "AMsg.Num":"10"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          1100,
+          "Pos.y":          830,
+          "Parent":          -1,
+          "#":          99,
+          "Msg":"Вот как? Ну ладно...",
+          "AMsg.Num":"11"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          1260,
+          "Pos.y":          840,
+          "Parent":          -1,
+          "#":          100,
+          "Msg":"У меня в трюме нет капсул",
+          "AMsg.Num":"12"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          1420,
+          "Pos.y":          830,
+          "Parent":          -1,
+          "#":          101,
+          "Msg":"У меня в трюме нет капсул",
+          "AMsg.Num":"13"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          1620,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          102,
+          "Msg":"Сдать кристаллы",
+          "AMsg.Num":"14"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          1670,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          104,
+          "Msg":"Не сейчас",
+          "AMsg.Num":"15"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          1560,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          105,
+          "Msg":"Понял",
+          "AMsg.Num":"16"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          1810,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          106,
+          "Msg":"Понял",
+          "AMsg.Num":"17"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          1740,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          107,
+          "Msg":"Оформляй перевод",
+          "AMsg.Num":"18"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          1360,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          108,
+          "Msg":"Я не буду ничего продавать",
+          "AMsg.Num":"19"        
+        }      
+      ],
+      "DialogMessages":      
+      [
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          910,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          53,
+          "Msg":"Как вам прекрасно известно, <Player>, на дворе идет война с пиратами, а пытающиеся воевать с интервентами рейнджеры, как правило, получают сплошные убытки, из-за чего престиж борьбы с кланом сильно падает.<br><br>КВСМК приняло решение о выплачивании вольным пилотам премий за головы пиратов. На данный момент ставка за голову бандита составляет <GalaxyMoney(1,0)*GalaxyTechLevel()/3> cr., но награда может варьироваться в зависимости от силы пирата. За помощь в ликвидации пирата выплачивается скромная сумма - <GalaxyMoney(0,4)/3> cr.",
+          "DMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          940,
+          "Pos.y":          580,
+          "Parent":          -1,
+          "#":          54,
+          "Msg":"Деньги, выплачиваемые Командованием за уничтожение пиратов, для удобства можно получать также и через платежный сервис <clr>West-Uni<clrEnd>, доступ к нему вы можете получить с мостика своего корабля. В качестве комиссии сервис взимает лишь <12+GalaxyTechLevel()>% от суммы перевода.<br><br>К вашему сведению, при вступлении в пиратский клан на ваш счет прекращает поступать награда за головы пиратов, а уже накопленная сумма обнуляется. Командование не любит предателей.",
+          "DMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          930,
+          "Pos.y":          630,
+          "Parent":          -1,
+          "#":          55,
+          "Msg":"Так держать, <Player>! Гонорар за сбитых пиратов в размере <WasPir> уже переведен на ваш счет.",
+          "DMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1040,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          56,
+          "Msg":"Как ты, конечно, знаешь, <Player>, пираты сейчас воюют с Коалицией. Только вот проблема в том, что многие пираты, в особенности мелкие бандиты и рейнджеры-перебежчики, еще несколько лет назад считали своим священным долгом грабить мирняк, а на такой риск, как борьба с вояками, идти никто не хотел.<br><br>Наши авторитеты между собой покумекали, да и порешили, что так, мол, не пойдет. Для повышения престижа \"военного пиратства\", мы ввели небольшую премию за убийство военных и рейнджеров. Сейчас она составляет <GalaxyMoney(0,3)*GalaxyTechLevel()/3> cr. за голову солдафона и <GalaxyMoney(0,2)*GalaxyTechLevel()/3> cr. за одного рейнджера, но \"ценник\" может изменяться в зависимости от силы пристреленного. За помощь в убийстве военного мы накидываем <GalaxyMoney(0,3)/3> cr., рейнджера - <GalaxyMoney(0,2)/3> cr.",
+          "DMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          970,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          57,
+          "Msg":"На данный момент нами не замечено серьезной активности со стороны пиратов, и поэтому Командованием было принято решение временно приостановить выплату наград за головы пиратов. Вы свободны.",
+          "DMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1060,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          58,
+          "Msg":"Бабки, которые мы отстегиваем за головы прислужников фараонов, ты, для удобства, можешь получить не только на нашей базе, но и мгновенно, с помощью сервиса <clr>West-Uni<clrEnd>. Доступ к нему ты можешь получить с мостика корабля. Правда, они хапают себе <12+GalaxyTechLevel()>% от награды, так что иногда лучше не полениться и забрать всю сумму.<br><br>А, да, чуть не забыл: при переходе на другую сторону, денежки за расстрел \"хороших парней\" на твой кошелечек больше не капают. Пираты не рады предателям.",
+          "DMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1060,
+          "Pos.y":          630,
+          "Parent":          -1,
+          "#":          59,
+          "Msg":"Классная работа, <Player>. Бабки, <WasWar> cr., уже на твоем счету.",
+          "DMsg.Num":"6"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1180,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          60,
+          "Msg":"Извиняй, кореш, но от Коалиции уже и не осталось-то ничего, так что мы решили остановить выдачу премий за борьбу с фараонами. Если и остались какие-то рейнджеры-одиночки, то они все равно уже не представляют угрозы.<br><br>Тем, у кого еще оставались не получены награды, мы решили вернуть половину от их суммы. В твоем случае, это составляет <WarriorBounty/2> cr. Забирай эти деньги, и спасибо тебе от всего нашего братства за помощь в войне.",
+          "DMsg.Num":"7"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1220,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          61,
+          "Msg":"Извиняй, кореш, но от Коалиции уже и не осталось-то ничего, так что мы решили остановить выдачу премий за борьбу с фараонами. Если и остались какие-то рейнджеры-одиночки, то они все равно уже не представляют угрозы.",
+          "DMsg.Num":"8"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1150,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          62,
+          "Msg":"Извиняй, кореш, но клан-то наш все былое величие порастерял, и на награды бабки больше не выделяются. Ты пока сам за себя, брат.",
+          "DMsg.Num":"9"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1040,
+          "Pos.y":          810,
+          "Parent":          -1,
+          "#":          63,
+          "Msg":"Вы, <Player>, не задумывались о том, что космос все чаще засоряется обломками, бесхозным оборудованием, минералами?<br>Наиболее часто в космосе встречаются цистерны, поэтому нами и гаальской космосозащитной организацией \"Гринспейс\" было решено начать их сбор. Таким образом, мы получаем и топливо для переработки, и куда более чистый космос.<br>Для сбора цистерн по всему рукаву Галактики активно привлекаются рейнджеры, как наиболее свободные и многозадачные пилоты. Цистерны обмениваются по курсу \"<2> ед. вместительности к <1> ед. нод-счета\". <br>В связи с невозможностью обеспечить нодами всех желающих, нами установлен лимит в <150> нд., который сбрасывается в среднем каждый год. Кроме того, при достижении рейнджером лимита, ему выдается микромодуль. Ближайший сброс лимита запланирован на <GameDateTxtByTurn(timerCis+1)>.<br>На данный момент вы можете получить еще <150-CisCount> нд.<br>Не желаете ли вы, рейнджер, сдать нам несколько цистерн?",
+          "DMsg.Num":"10"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          810,
+          "Parent":          -1,
+          "#":          64,
+          "Msg":"Вы сдали цистерну вместительностью <cis_fuel> ед., на ваш нод-счет начислено <tmp2> нд. Вы уже получили <CisCount> позволенных вам нд., осталось <150-CisCount> нд.<br>Не желаете ли вы, рейнджер, сдать нам еще несколько цистерн?",
+          "DMsg.Num":"11"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          800,
+          "Parent":          -1,
+          "#":          65,
+          "Msg":"Благодарим вас, рейнджер, за помощь нашему делу. В этом году вы сдали нам <how_cis> цистерн общим объемом <fuel_total> ед. топлива.<br>В награду мы вручаем вам микромодуль <Name(tmp)>. Не забудьте принять участие в акции в следующем году!",
+          "DMsg.Num":"12"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1100,
+          "Pos.y":          810,
+          "Parent":          -1,
+          "#":          66,
+          "Msg":"Так-так... Дайте свериться с базой данных...<br>...<br>Прошу прощения, ваш лимит на данный момент исчерпан. Ближайший сброс лимита намечен на <GameDateTxtByTurn(timerCis+1)>, прилетайте позже.",
+          "DMsg.Num":"13"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1260,
+          "Pos.y":          790,
+          "Parent":          -1,
+          "#":          80,
+          "Msg":"<Player>, сейчас набирает обороты использование пилотами спасательных капсул. Данное приспособление нередко спасает индивидуумов после опасных баталий, катапультируая их и практически полной остановки всех жизненных процессов.<br>Главная проблема таких капсул - высокий риск для здоровья гуманоидов. После длительного пребывания в состоянии анабиоза пилот может серьезно травмироваться или ослабнуть.<br>По вышеназванной причине мы принимаем подобные капсулы и оказываем пострадавшим медицинскую помощь. Процедура спонсируется Галактическим Советом, что позволяет обеспечивать спасенных базовым комплектом оборудования.<br>Возможно, вы сами привезли пациентов? За каждого гуманоида мы заплатим <clr>в полтора раза<clrEnd> больше стоимости капсулы, за исключением <clr>пиратов<clrEnd> - за них мы платим только <clr>в четверть раза<clrEnd> больше.",
+          "DMsg.Num":"14"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1420,
+          "Pos.y":          790,
+          "Parent":          -1,
+          "#":          81,
+          "Msg":"<Player>, сейчас набирает обороты использование пилотами спасательных капсул. Данное приспособление нередко спасает индивидуумов после опасных баталий, катапультируая их и практически полной остановки всех жизненных процессов.<br>Главная проблема таких капсул - высокий риск для здоровья гуманоидов. После длительного пребывания в состоянии анабиоза пилот может серьезно травмироваться или ослабнуть.<br>По вышеназванной причине мы принимаем подобные капсулы и оказываем пострадавшим медицинскую помощь. Процедуру поддерживает пиратский клан, что позволяет снабжать привезенных хоть каким-нибудь комплектом оборудования.<br>Возможно, вы сами привезли пациентов? За каждого гуманоида мы заплатим <clr>в четверть раза<clrEnd> больше цены капсулы. Исключение составляют пираты - за них нам положено отдавать <clr>в полтора раза<clrEnd> больше.",
+          "DMsg.Num":"15"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1340,
+          "Pos.y":          810,
+          "Parent":          -1,
+          "#":          82,
+          "Msg":"Благодарим вас за спасение бесценной жизни, <Player>! В награду на ваш счет перечислено <c> cr. Нет ли у вас еще капсул для сдачи?",
+          "DMsg.Num":"16"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1460,
+          "Pos.y":          810,
+          "Parent":          -1,
+          "#":          85,
+          "Msg":"Благодарим вас за спасение бесценной жизни, <Player>! В награду на ваш счет перечислено <c> cr. Нет ли у вас еще капсул для сдачи?",
+          "DMsg.Num":"17"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1620,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          86,
+          "Msg":"Кристаллы? Очень хорошо! Самые различные драгоценные камни и образования всегда находятся в цене. Так, сейчас посмотрим, что у вас есть...<br>...<br>У вас на борту находится <tmp> кристаллов. С учетом наценки из уважения к вашей торговой репутации (<tmp3>%), мы готовы взять товар за <tmp2> cr. Ну что, по рукам?",
+          "DMsg.Num":"18"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1560,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          87,
+          "Msg":"<Player>, у вас на борту нет подходящих для сдачи кристаллов. Приходите в следующий раз, когда найдете что-нибудь на незаселенных планетах.",
+          "DMsg.Num":"19"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1740,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          88,
+          "Msg":"Кредитку разблокировать, говоришь? Что ж, у нас есть спецы на это дело, щас посмотрим, много ли у тебя этого добраа...<br>...<br>Мы отрыли на твоем корыте <tmp> карт, сумма сбережений на них - <tmp3> cr. Комиссия нашего доминиона равна <2*GalaxyTechLevel()>%, в итоге тебе на счет <tmp2> cr. Переводить?",
+          "DMsg.Num":"20"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1810,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          89,
+          "Msg":"Наши лучшие парни нашли на твоем корабле только одну карту, оформленную на имя <Player>. Возвращайся, когда раздобудешь еще карт.",
+          "DMsg.Num":"21"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1340,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          90,
+          "Msg":"Мы отметили в вашем трюме те предметы, которые представляют для нас особенный интерес. Каждый мы готовы приобрести по утроенной цене.",
+          "DMsg.Num":"22"        
+        }      
+      ],
+      "Dialogs":      
+      [
+        {
+          "Type":"TDialog",
+          "Name":"AboutPirates",
+          "Pos.x":          940,
+          "Pos.y":          500,
+          "Parent":          -1,
+          "#":          27        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"TakeForPirates",
+          "Pos.x":          910,
+          "Pos.y":          610,
+          "Parent":          -1,
+          "#":          28        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"AboutWars",
+          "Pos.x":          1040,
+          "Pos.y":          500,
+          "Parent":          -1,
+          "#":          29        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"TakeForWars",
+          "Pos.x":          1040,
+          "Pos.y":          610,
+          "Parent":          -1,
+          "#":          30        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"NoWarReward",
+          "Pos.x":          1180,
+          "Pos.y":          500,
+          "Parent":          -1,
+          "#":          31        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"Cistern",
+          "Pos.x":          1070,
+          "Pos.y":          760,
+          "Parent":          -1,
+          "#":          32        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"Cistern2",
+          "Pos.x":          950,
+          "Pos.y":          760,
+          "Parent":          -1,
+          "#":          33        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"Capsule",
+          "Pos.x":          1260,
+          "Pos.y":          760,
+          "Parent":          -1,
+          "#":          34        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"CapsulePirateClan",
+          "Pos.x":          1420,
+          "Pos.y":          760,
+          "Parent":          -1,
+          "#":          35        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"Capsule2",
+          "Pos.x":          1340,
+          "Pos.y":          760,
+          "Parent":          -1,
+          "#":          36        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"CapsulePirateClan2",
+          "Pos.x":          1490,
+          "Pos.y":          790,
+          "Parent":          -1,
+          "#":          37        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"Crystal",
+          "Pos.x":          1580,
+          "Pos.y":          500,
+          "Parent":          -1,
+          "#":          38        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"Card",
+          "Pos.x":          1790,
+          "Pos.y":          500,
+          "Parent":          -1,
+          "#":          39        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"SellItems",
+          "Pos.x":          1340,
+          "Pos.y":          500,
+          "Parent":          -1,
+          "#":          40        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"SellItems2",
+          "Pos.x":          1440,
+          "Pos.y":          500,
+          "Parent":          -1,
+          "#":          41        
+        }      
+      ],
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"PlayerGroup",
+          "Pos.x":          590,
+          "Pos.y":          650,
+          "Parent":          -1,
+          "#":          23,
+          "Owner":          62,
+          "Group.Type":          126,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":true,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          590,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          0,
+          "Total.Lines":          1,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"GRun();"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          650,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          25,
+          "Total.Lines":          266,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Раздача юзлессов",
+"//Перебираем все новые корабли в галактике по заданным фильтрам",
+"if(GalaxyShipId() > lastShipId)",
+"{",
+"    tmp = BuildListOfNewShips(tArr, lastShipId, 2+4+8+16, 1+2+4+8+16+128, 1, '', 'Militiaman1,,Militiaman2,Militiaman3,Rebel,PirateRunner,RangerPirate,RangerExplorer,RangerPirateExplorer,Smuggler,EliteWarrior,Merc,Freelancer,RedLeader,AtlantLeader,FeiLeader,Khan,Headhunter');",
+"    //Если найден хотя бы один корабль, выдаем юзлессы",
+"    if(tmp)",
+"    {",
+"        for(i=0; i<ArrayDim(tArr); i=i+1)",
+"        {",
+"            //Обнуляем флаг для раздачи юзлессов",
+"            tmp=0;",
+"            //Выбираем корабль",
+"            tmp2=tArr[i];",
+"            //На всякий случай пропускаем корабли в гипере",
+"            if(ShipInHyperSpace(tmp2)) continue;",
+"            //Устанавливаем шанс на выдачу того или иного юзлесса",
+"            chance=0;",
+"            //Рейнджеры",
+"            if(ShipType(tmp2)=='Ranger' || ShipType(tmp2)=='RangerPirate' || ShipType(tmp2)=='RangerExplorer' || ShipType(tmp2)=='RangerPirateExplorer') chance=40;",
+"            //Мирные корабли",
+"            if(ShipType(tmp2)=='Diplomat' || ShipType(tmp2)=='Transport' || ShipType(tmp2)=='Smuggler' || ShipType(tmp2)=='Liner') chance=35;",
+"            //Пираты",
+"            if(ShipType(tmp2)=='Pirate' || ShipType(tmp2)=='Rebel' || ShipType(tmp2)=='PirateRunner' || ShipType(tmp2)=='Khan' || ShipType(tmp2)=='Headhunter') chance=30;",
+"            //Военные",
+"            if(ShipType(tmp2)=='Warrior' || ShipType(tmp2)=='EliteWarrior' || ShipType(tmp2)=='Militiaman1' || ShipType(tmp2)=='Militiaman2' || ShipType(tmp2)=='Militiaman3') chance=25;",
+"            //Случайно определяем шанс выдачи",
+"            if(Rnd(1, 100) <= chance)",
+"            {",
+"                //Формируется массив из всех возможных юзлессов для данного корабля",
+"                ArrayClear(hit_list);",
+"                //Пираты",
+"                if(ShipType(tmp2)=='Pirate' || ShipType(tmp2)=='Rebel' || ShipType(tmp2)=='PirateRunner' || ShipType(tmp2)=='Khan' || ShipType(tmp2)=='Headhunter') {",
+"                    tmp3=CreateQuestItem('Usl_11',PirateClan); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                //Малоки",
+"                if(!ShipPilotRace(tmp2)) {",
+"                    if(ShipType(tmp2)!='Warrior' && ShipType(tmp2)!='WarriorBig') {",
+"                        tmp3=CreateQuestItem('Usl_64',Maloc); ArrayAdd(hit_list,tmp3);",
+"                    }",
+"                    if(ShipType(tmp2)=='Diplomat' || ShipType(tmp2)=='Ranger' || ShipType(tmp2)=='Warrior' || ShipType(tmp2)=='EliteWarrior' || ShipType(tmp2)=='Militiaman1' || ShipType(tmp2)=='Militiaman2' || ShipType(tmp2)=='Militiaman3' ) {",
+"                        tmp3=CreateQuestItem('Usl_2',Maloc); ArrayAdd(hit_list,tmp3);",
+"                    }",
+"                }",
+"                //Пеленги",
+"                if(ShipPilotRace(tmp2)==1) {",
+"                    if(ShipType(tmp2)=='Transport' || ShipType(tmp2)=='Ranger' || ShipTypeN(tmp2)==t_Warrior) {",
+"                        tmp3=CreateQuestItem('Usl_12',Peleng); ArrayAdd(hit_list,tmp3);",
+"                    }",
+"                    if(ShipType(tmp2)!='Warrior' && ShipType(tmp2)!='WarriorBig') {",
+"                        tmp3=CreateQuestItem('Usl_70',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                    }",
+"                    if(ShipType(tmp2)=='Transport' || ShipType(tmp2)=='Ranger' || ShipType(tmp2)=='Liner') {",
+"                        tmp3=CreateQuestItem('Usl_16',Peleng); ArrayAdd(hit_list,tmp3);",
+"                    }",
+"                    if(ShipType(tmp2)!='WarriorBig' && ShipType(tmp2)!='Warrior') {",
+"                        tmp3=CreateQuestItem('Usl_19',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                    }",
+"                    if(ShipType(tmp2)=='Diplomat' || ShipType(tmp2)=='Transport' || ShipType(tmp2)=='Ranger') {",
+"                        tmp3=CreateQuestItem('Usl_22',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                    }",
+"                    if(ShipTypeN(tmp2)==t_Pirate && !Rnd(0,2) || ShipType(tmp2)=='Ranger' && Rnd(0,1) || ShipType(tmp2)=='RangerPirate' && Rnd(0,2) || ShipType(tmp2)=='Smuggler' && Rnd(0,3)) {",
+"                        tmp3=CreateQuestItem('Usl_25',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                    }",
+"                    if(ShipType(tmp2)=='Transport' || ShipType(tmp2)=='Ranger' || ShipType(tmp2)=='RangerPirate') {",
+"                        tmp3=CreateQuestItem('Usl_26',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                    }",
+"                    if (ShipType(tmp2)=='Ranger' && !Rnd(0,2) || ShipType(tmp2)=='RangerPirate' && !Rnd(0,2) || ShipType(tmp2)=='Diplomat') {",
+"                        tmp3=CreateQuestItem('Usl_28',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                    }",
+"                    if(ShipType(tmp2)=='Diplomat' && ShipOwner(tmp2)>1 && ShipOwner(tmp2)<4 || ShipType(tmp2)=='Ranger' && ShipOwner(tmp2)>1 && ShipOwner(tmp2)<4 || ShipType(tmp2)=='Diplomat' && ShipOwner(tmp2)>1 && ShipOwner(tmp2)<4 || !Rnd(0,2) && ShipTypeN(tmp2)==t_Warrior && ShipOwner(tmp2)>1 && ShipOwner(tmp2)<4) {",
+"                        tmp3=CreateQuestItem('Usl_29',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                    }",
+"                    tmp3=CreateQuestItem('Usl_30',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                //Фэяне",
+"                if(ShipPilotRace(tmp2)==3) {",
+"                    if(ShipType(tmp2)=='Transport' || ShipType(tmp2)=='Ranger') {",
+"                        tmp3=CreateQuestItem('Usl_33',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                    }",
+"                    if (ShipType(tmp2)=='RangerPirate' && !Rnd(0,2) || ShipType(tmp2)=='Ranger' || ShipTypeN(tmp2)==t_Pirate && !Rnd(0,2) || ShipType(tmp2)=='Smuggler') {",
+"                        tmp3=CreateQuestItem('Usl_35',Fei); ArrayAdd(hit_list,tmp3);",
+"                    }",
+"                }",
+"                //Гаальцы",
+"                if(ShipPilotRace(tmp2)==4) {",
+"                    if(ShipType(tmp2)=='Ranger' || Rnd(0,1) && ShipTypeN(tmp2)==t_Warrior || ShipType(tmp2)=='Diplomat') {",
+"                        tmp3=CreateQuestItem('Usl_56',Gaal); ArrayAdd(hit_list,tmp3);",
+"                    }",
+"                }",
+"",
+"                if(ShipType(tmp2)=='Ranger' && Rnd(0,3) || ShipType(tmp2)=='RangerPirate' && !Rnd(0,2) || ShipType(tmp2)=='Liner' && Rnd(0,2)) {",
+"                    tmp3=CreateQuestItem('Usl_58',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                tmp3=CreateQuestItem('Usl_63',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                if(ShipType(tmp2)=='RangerPirate' || Rnd(0,1) && ShipTypeN(tmp2)==t_Pirate ) {",
+"                    tmp3=CreateQuestItem('Usl_71',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                tmp3=CreateQuestItem('Usl_72',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                if(ShipType(tmp2)!='Warrior') {",
+"                    tmp3=CreateQuestItem('Usl_74',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                if (ShipType(tmp2)=='Ranger' && !Rnd(0,1) || ShipType(tmp2)=='Diplomat' || ShipTypeN(tmp2)==t_Pirate && GetShipPirateRank(tmp2)>3) {",
+"                    tmp3=CreateQuestItem('Usl_DataArchive',None); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                if(ShipType(tmp2)=='Ranger' && Rnd(0,3) || ShipType(tmp2)=='Transport' && Rnd(0,1) || ShipType(tmp2)=='Smuggler' || ShipType(tmp2)=='RangerPirate' && Rnd(0,2) || ShipTypeN(tmp2)==t_Pirate && !Rnd(0,2)) {",
+"                    tmp3=CreateQuestItem('Usl_Faruk',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                if (ShipType(tmp2)=='Liner' && !Rnd(0,2) || ShipType(tmp2)=='Smuggler' && !Rnd(0,2) || ShipType(tmp2)=='Ranger' && !Rnd(0,2)) {",
+"                    tmp3=CreateQuestItem('Usl_LasosCup',None); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                if (ShipTypeN(tmp2)==t_Pirate && !Rnd(0,2) && ShipOwner(tmp2)==PirateClan || ShipType(tmp2)=='RangerPirate' && Rnd(0,1)) {",
+"                    tmp3=CreateQuestItem('Usl_MemoryModule',None); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                if (ShipType(tmp2)=='Liner' && !Rnd(0,4) || ShipTypeN(tmp2)==t_Warrior && !Rnd(0,2) || ShipType(tmp2)=='Diplomat' || ShipType(tmp2)=='Ranger' || ShipType(tmp2)=='RangerPirate' || ShipType(tmp2)=='Smuggler')",
+"                {",
+"                    tmp3=CreateQuestItem('Usl_PTQ68',None); ArrayAdd(hit_list,tmp3);",
+"                    tmp3=CreateQuestItem('Usl_PTQn60',None); ArrayAdd(hit_list,tmp3);",
+"                    tmp3=CreateQuestItem('Usl_PTQn64',None); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                if(ShipPilotRace(tmp2)==1 || ShipPilotRace(tmp2)!=1 && !Rnd(0,2) && ShipTypeN(tmp2)!=t_Warrior) {",
+"                    tmp3=CreateQuestItem('Usl_14',Peleng); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                if(ShipTypeN(tmp2)!=t_Pirate && ShipTypeN(tmp2)!=t_Warrior && ShipPilotRace(tmp2)==1 || ShipPilotRace(tmp2)!=1 && !Rnd(0,4) && ShipTypeN(tmp2)!=t_Pirate && ShipTypeN(tmp2)!=t_Warrior) {",
+"                    tmp3=CreateQuestItem('Usl_18',Peleng); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                if((ShipType(tmp2)=='Ranger' || ShipType(tmp2)=='RangerPirate' || ShipType(tmp2)=='Diplomat') && !Rnd(0,2)) {",
+"                    tmp3=CreateQuestItem('Usl_23',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                if(ShipTypeN(tmp2)!=t_Warrior && ShipType(tmp2)!='Diplomat') {",
+"                    tmp3=CreateQuestItem('Usl_37',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                if((ShipType(tmp2)=='Diplomat' || ShipType(tmp2)=='Ranger') && Rnd(0,1) || ShipPilotRace(tmp2)==1 && (ShipType(tmp2)=='Pirate' || ShipTypeN(tmp2)==t_Ranger || ShipTypeN(tmp2)==t_Transport)) {",
+"                    tmp3=CreateQuestItem('Usl_40',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                if(ShipTypeN(tmp2)==t_Ranger && !Rnd(0,2) && ShipPilotRace(tmp2)!=1 || ShipPilotRace(tmp2)==1 && ShipType(tmp2)=='Ranger' && Rnd(0,1)) {",
+"                    tmp3=CreateQuestItem('Usl_46',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                if((ShipType(tmp2)=='Diplomat' || ShipType(tmp2)=='Ranger') && !Rnd(0,2) && ShipPilotRace(tmp2) || !ShipPilotRace(tmp2) && Rnd(0,1) && (ShipType(tmp2)=='Diplomat' || ShipType(tmp2)=='Ranger')) {",
+"                    tmp3=CreateQuestItem('Usl_40',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                if(ShipTypeN(tmp2)!=t_Warrior) {",
+"                    tmp3=CreateQuestItem('Usl_8',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                if(ShipTypeN(tmp2)!=t_Warrior && ShipPilotRace(tmp2) && ShipPilotRace(tmp2)!=2 && Rnd(0,2) || ShipType(tmp2)!=t_Warrior && ShipType(tmp2)!=t_Pirate && !Rnd(0,2) && ShipPilotRace(tmp2)!=1 && ShipPilotRace(tmp2)!=2) {",
+"                    tmp3=CreateQuestItem('Usl_Cactus',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                if(ShipType(tmp2)=='Transport' || ShipType(tmp2)=='Smuggler' || Rnd(0,1) && (ShipType(tmp2)=='Liner' || ShipType(tmp2)=='Diplomat') || !Rnd(0,2) && ShipType(tmp2)=='Ranger') {",
+"                    tmp3=CreateQuestItem('Usl_Pilot',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                if(!ShipPilotRace(tmp2) || ShipPilotRace(tmp2)==3 && !Rnd(0,2) || ShipPilotRace(tmp2)!=0 && ShipPilotRace(tmp2)!=3 && Rnd(0,1)) {",
+"                    tmp3=CreateQuestItem('Usl_Svarokok',ShipOwner(tmp2)); ArrayAdd(hit_list,tmp3);",
+"                }",
+"                //Из сформированного массива рандомно выбирается один предмет",
+"                if(ArrayDim(hit_list)>2) tmp3=hit_list[Rnd(1,ArrayDim(hit_list)-1)];",
+"                else tmp3=hit_list[1];",
+"                ShipAddDropItem(tmp2,tmp3);",
+"                ArrayClear(hit_list);",
+"            }",
+"            //С шансом 1:35 после уничтожения корабля останется гиперпыль",
+"            if(!Rnd(0,35)) {",
+"                tmp3=CreateQuestItem('Dust',None); ShipAddDropItem(tmp2,tmp3);",
+"            }",
+"            //Раздача спасательных капсул",
+"            if(ShipInScript(tmp2) && ShipType(tmp2)!='RangerPirate' && ShipType(tmp2)!='Smuggler') continue;",
+"            chance=0;",
+"            if(ShipSpecialBonuses(tmp2,bonHookRadius)==1) chance=0;",
+"            else if(ShipType(tmp2)=='Ranger') {",
+"                type=1; chance=40;",
+"            }",
+"            else if (ShipType(tmp2)=='RangerPirate') {",
+"                type=2; chance=40;",
+"            }",
+"            else if(ShipType(tmp2)=='Diplomat') {",
+"                type=3; chance=35;",
+"            }",
+"            else if(ShipType(tmp2)=='Transport' || ShipType(tmp2)=='Smuggler') {",
+"                type=4; chance=30;",
+"            }",
+"            else if(ShipType(tmp2)=='Liner') {",
+"                type=5; chance=30;",
+"            }",
+"            else if(ShipTypeN(tmp2)==t_Pirate && !PirateType(tmp2)) {",
+"                type=2; chance=35;",
+"            }",
+"            else if (ShipTypeN(tmp2)==t_Pirate && PirateType(tmp2)) {",
+"                type=2; chance=25;",
+"            }",
+"            if (Rnd(1,100)<=chance)",
+"            {",
+"                tmp3=CreateQuestItem('Usl_EscapePod',ShipPilotRace(tmp2));",
+"                SetName(tmp3,ShortName(tmp2));",
+"                if (type==1) UselessItemText(tmp3,\"Спасательная капсула, в которой лежит рейнджер <ShortName(tmp2)>. Необходимо доставить в ближайший медицинский центр.\");",
+"                if (type==2) UselessItemText(tmp3,\"Спасательная капсула, в которой лежит пират <ShortName(tmp2)>. Необходимо доставить в ближайший медицинский центр.\");",
+"                if (type==3) UselessItemText(tmp3,\"Спасательная капсула, в которой лежит дипломат <ShortName(tmp2)>. Необходимо доставить в ближайший медицинский центр.\");",
+"                if (type==4) UselessItemText(tmp3,\"Спасательная капсула, в которой лежит капитан транспорта <ShortName(tmp2)>. Необходимо доставить в ближайший медицинский центр.\");",
+"                if (type==5) UselessItemText(tmp3,\"Спасательная капсула, в которой лежит капитан лайнера <ShortName(tmp2)>. Необходимо доставить в ближайший медицинский центр.\");",
+"                ShipAddDropItem(tmp2,tmp3);",
+"            }",
+"        }",
+"    }",
+"    //Обновляем Id последнего рожденного корабля",
+"    lastShipId=GalaxyShipId();",
+"}",
+"//Сброс статистики по сданным цистернам",
+"if(CurTurn()>=timerCis)",
+"{",
+"    timerCis=CurTurn()+Rnd(300,420);",
+"    fuel_total=0;",
+"    how_cis=0;",
+"    CisCount=0;",
+"}",
+"//Начисление награды за пиратов/военных и рейнджеров",
+"for(i = GalaxyEvents() - 1; i >= 0; i = i - 1)",
+"{",
+"    if(GalaxyEventDate(i) < CurTurn()) break;",
+"",
+"    tstr1 = GalaxyEventType(i);",
+"    if(tstr1 == 'PlayerKillsShip')",
+"    {",
+"        if(ShipOwner(Player()) != PirateClan)",
+"        {",
+"            if(GalaxyEventData(i,0) == t_Pirate && ControlledSystems(2)>2 && ControlledSystems(0)>0)",
+"            {",
+"                PirateBounty=PirateBounty+GalaxyMoney(1,0)*GalaxyTechLevel()/3/85*GalaxyEventData(i,4);",
+"            }",
+"        }",
+"        else",
+"        {",
+"            if(GalaxyEventData(i,0) == t_Warrior)",
+"            {",
+"                if(ControlledSystems(2)>0 && ControlledSystems(0)>0) WarriorBounty=WarriorBounty+GalaxyMoney(0,3)*GalaxyTechLevel()/3/110*GalaxyEventData(i,4);",
+"            }",
+"            else if(GalaxyEventData(i,0) == t_Ranger)",
+"            {",
+"                if(GalaxyEventData(i,3)<5 && ControlledSystems(0)>2 && ControlledSystems(2)>2 && ControlledSystems(0)>0) WarriorBounty=WarriorBounty+GalaxyMoney(0,2)*GalaxyTechLevel()/2.7/85*GalaxyEventData(i,4);",
+"            }",
+"        }",
+"    }",
+"    else if(tstr1 == 'PlayerAssistKillsShip')",
+"    {",
+"        if(ShipOwner(Player()) != PirateClan)",
+"        {",
+"            if(GalaxyEventData(i,0) == t_Pirate && ControlledSystems(2)>2 && ControlledSystems(0)>0)",
+"            {",
+"                PirateBounty=PirateBounty+GalaxyMoney(0,4)/3;",
+"            }",
+"        }",
+"        else",
+"        {",
+"            if(GalaxyEventData(i,0) == t_Warrior)",
+"            {",
+"                if(ControlledSystems(2)>0 && ControlledSystems(0)>0) WarriorBounty=WarriorBounty+GalaxyMoney(0,3)/3;",
+"            }",
+"            else if(GalaxyEventData(i,0) == t_Ranger)",
+"            {",
+"                if(ControlledSystems(2)>0 && ControlledSystems(0)>0) WarriorBounty=WarriorBounty+GalaxyMoney(0,2)/3;",
+"            }",
+"        }",
+"    }",
+"    else if(tstr1 == 'PlayerChangesSide')",
+"    {",
+"        if(!GalaxyEventData(i, 0)) WarriorBounty = 0;",
+"        else PirateBounty = 0;",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          630,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          26,
+          "Total.Lines":          75,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"if(GetShipRuins(Player()))",
+"{",
+"    if(!PlayerBridge())",
+"    {",
+"        str0=ShipType(GetShipRuins(Player()));",
+"        if(str0=='SB')",
+"        {",
+"            AddDialogInject('SellItems','',\"Сдать уникальные предметы\",2);",
+"        }",
+"        else if(str0=='RC')",
+"        {",
+"            if(!ShipOnSidePirateClan(Player()))AddDialogInject('SellItems','',\"Сдать уникальные предметы\",2);",
+"            AddDialogInject('Cistern',\"Также мы предлагаем рейнджерам и прочим пилотам обмен цистерн на единицы нод-счета.\",\"Я хочу обменять цистерны\",2);",
+"        }",
+"        else if(str0=='PB')",
+"        {",
+"            if(ShipOnSidePirateClan(Player()))",
+"            {",
+"                if(!ControlledSystems(0) || !ControlledSystems(2))",
+"                {",
+"                    AddDialogInject('NoWarReward','',\"Почему я не могу забрать деньги за убийства?\",2);",
+"                }",
+"                else",
+"                {",
+"                    if(WarriorBounty)",
+"                    {",
+"                        AddDialogInject('TakeForWars',\"Кстати говоря, братан, у нас тут для тебя залежались <WarriorBounty> cr., как премия за борьбу с фараонами. Не желаешь ли забрать денежки?\",\"Я хочу получить свою награду\",2);",
+"                        AddDialogInject('AboutWars','',\"Расскажите подробнее о награде\",2);",
+"                    }",
+"                    else",
+"                    {",
+"                        AddDialogInject('AboutWars',\"К твоему сведению, нами введена награда за головы военных и рейнджеров. Не упусти свой шанс заработать.\",\"Расскажите подробнее о награде\",2);",
+"                    }",
+"                }",
+"                AddDialogInject('SellItems','',\"Сдать уникальные предметы\",2);",
+"            }",
+"        }",
+"        else if(str0=='MC')",
+"        {",
+"            if(StarOwner(ShipStar(Player()))==0)AddDialogInject('Capsule','',\"Сдать спасательные капсулы\",2);",
+"            else if(StarOwner(ShipStar(Player()))==2)AddDialogInject('CapsulePirateClan','',\"Сдать спасательные капсулы\",2);",
+"            AddDialogInject('SellItems','',\"Сдать уникальные предметы\",2);",
+"        }",
+"        else if(str0=='WB')",
+"        {",
+"            if(!ShipOnSidePirateClan(Player()))",
+"            {",
+"                if(ControlledSystems(2)<=2)AddDialogInject('AboutPirates','',\"Почему я не могу забрать награду за пиратов?\",2);",
+"                else",
+"                {",
+"                    if(PirateBounty)",
+"                    {",
+"                        AddDialogInject('TakeForPirates',\"По приказу КВСМК, мы награждаем рейнджеров за убийство пиратов. Для вас сейчас имеется премия в размере <PirateBounty> cr.\",\"Я хочу получить награду за пиратов\",2);",
+"                        AddDialogInject('AboutPirates','',\"Расскажите о награде за пиратов\",2);",
+"                    }",
+"                    else",
+"                    {",
+"                        AddDialogInject('AboutPirates',\"По приказу КВСМК, мы награждаем рейнджеров за убийство пиратов. Вы тоже имеете возможность получить премию за головы этих негодяев.\",\"Расскажите подробнее о награде\",2);",
+"                    }",
+"                }",
+"                AddDialogInject('SellItems','',\"Сдать уникальные предметы\",2);",
+"            }",
+"        }",
+"        else if(str0=='BK')",
+"        {",
+"            AddDialogInject('Crystal','',\"Я хочу сдать кристаллы\",2);",
+"            AddDialogInject('SellItems','',\"Сдать уникальные предметы\",2);",
+"        }",
+"        else if(str0=='CB')",
+"        {",
+"            AddDialogInject('Card','',\"Разблокируйте кредитные карты\",2);",
+"            AddDialogInject('SellItems','',\"Сдать уникальные предметы\",2);",
+"        }",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          910,
+          "Pos.y":          630,
+          "Parent":          -1,
+          "#":          69,
+          "Total.Lines":          4,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"WasPir=PirateBounty;",
+"ShipMoney(Player(),ShipMoney(Player())+PirateBounty);",
+"PirateBounty=0;",
+"Sound('Sound.Buy');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1040,
+          "Pos.y":          630,
+          "Parent":          -1,
+          "#":          70,
+          "Total.Lines":          4,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"WasWar=WarriorBounty;",
+"ShipMoney(Player(),ShipMoney(Player())+WarriorBounty);",
+"WarriorBounty=0;",
+"Sound('Sound.Buy');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          950,
+          "Pos.y":          780,
+          "Parent":          -1,
+          "#":          77,
+          "Total.Lines":          50,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Смотрим объем цистерны",
+"cis_fuel=GetEquipmentStats(ShipItems(Player(),GAnswerData),0);",
+"//Считаем, на сколько увеличится нод-счет игрока после сдачи цистерны",
+"tmp2=cis_fuel/2;",
+"if(CisCount+i<150)",
+"{",
+"    Sound('Sound.Sell');",
+"    dState=0;",
+"}",
+"//Если игрок выполнил/перевыполнил план по сдаче цистерн, выдаем наградной ММ",
+"if(CisCount+tmp2==150)",
+"{",
+"    if(GalaxyTechLevel()<3) BuildListOfMMByPriority(rewards,90,100);",
+"    if(GalaxyTechLevel()==3) BuildListOfMMByPriority(rewards,75,100);",
+"    if(GalaxyTechLevel()==4) BuildListOfMMByPriority(rewards,70,100);",
+"    if(GalaxyTechLevel()==5) BuildListOfMMByPriority(rewards,60,90);",
+"    if(GalaxyTechLevel()==6) BuildListOfMMByPriority(rewards,55,85);",
+"    if(GalaxyTechLevel()==7) BuildListOfMMByPriority(rewards,50,80);",
+"    if(GalaxyTechLevel()==8) BuildListOfMMByPriority(rewards,45,75);",
+"    ArrayRandomize(50,rewards);",
+"    tmp=CreateMM(rewards[0]);",
+"    AddItemToShip(Player(),tmp);",
+"    ArrayClear(rewards);",
+"    Sound('Sound.QuestOk');",
+"    dState=1;",
+"}",
+"if(CisCount+tmp2>150)",
+"{",
+"    if(GalaxyTechLevel()<3) BuildListOfMMByPriority(rewards,90,100);",
+"    if(GalaxyTechLevel()==3) BuildListOfMMByPriority(rewards,75,100);",
+"    if(GalaxyTechLevel()==4) BuildListOfMMByPriority(rewards,70,100);",
+"    if(GalaxyTechLevel()==5) BuildListOfMMByPriority(rewards,65,90);",
+"    if(GalaxyTechLevel()==6) BuildListOfMMByPriority(rewards,60,90);",
+"    if(GalaxyTechLevel()==7) BuildListOfMMByPriority(rewards,55,80);",
+"    if(GalaxyTechLevel()==8) BuildListOfMMByPriority(rewards,50,75);",
+"    ArrayRandomize(50,rewards);",
+"    tmp=CreateMM(rewards[0]);",
+"    AddItemToShip(Player(),tmp);",
+"    ArrayClear(rewards);",
+"    dState=1;",
+"    Sound('Sound.QuestOk');",
+"    tmp2=150-CisCount;",
+"}",
+"CisCount=CisCount+tmp2;",
+"//Пополняем нод-счет игрока",
+"RangerBaseNodes(Player(),RangerBaseNodes(Player())+tmp2);",
+"//Изымаем цистерну из трюма",
+"FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),ShipItems(Player(),GAnswerData))));",
+"how_cis=how_cis+1;",
+"fuel_total=fuel_total+cis_fuel;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1340,
+          "Pos.y":          790,
+          "Parent":          -1,
+          "#":          83,
+          "Total.Lines":          69,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Ищем капсулы в трюме игрока",
+"tmp2=ShipItems(Player(),GAnswerData);",
+"if(findsubstr(UselessItemText(tmp2),\"Спасательная капсула, в которой лежит рейнджер\")>=0) tmp=1;",
+"else if(findsubstr(UselessItemText(tmp2),\"Спасательная капсула, в которой лежит пират\")>=0) tmp=2;",
+"else if(findsubstr(UselessItemText(tmp2),\"Спасательная капсула, в которой лежит дипломат\")>=0) tmp=5;",
+"else if(findsubstr(UselessItemText(tmp2),\"Спасательная капсула, в которой лежит капитан транспорта\")>=0) tmp=3;",
+"else if(findsubstr(UselessItemText(tmp2),\"Спасательная капсула, в которой лежит капитан лайнера\")>=0) tmp=4;",
+"else",
+"{",
+"    if(findsubstr(Name(tmp2),\"Рейнджер\")>=0) tmp=1;",
+"    else if (findsubstr(Name(tmp2),\"Изменник\")>=0) tmp=2;",
+"    else if(findsubstr(Name(tmp2),\"Бамбай\")>=0 || findsubstr(Name(tmp2),\"Лякуша\")>=0 || findsubstr(Name(tmp2),\"Корсар\")>=0 || findsubstr(Name(tmp2),\"Фантом\")>=0 || findsubstr(Name(tmp2),\"Ренегал\")>=0) tmp=2;",
+"    else if(findsubstr(Name(tmp2),\"Бадуба\")>=0 || findsubstr(Name(tmp2),\"Шракан\")>=0 || findsubstr(Name(tmp2),\"Кобра\")>=0 || findsubstr(Name(tmp2),\"Оланиа\")>=0 || findsubstr(Name(tmp2),\"Боо-лан\")>=0) tmp=2;",
+"    else if(findsubstr(Name(tmp2),\"Рарт\")>=0 || findsubstr(Name(tmp2),\"Лянчер\")>=0 || findsubstr(Name(tmp2),\"Консул\")>=0 || findsubstr(Name(tmp2),\"Далани\")>=0 || findsubstr(Name(tmp2),\"Галит\")>=0) tmp=5;",
+"    else if(findsubstr(Name(tmp2),\"Аралита\")>=0 || findsubstr(Name(tmp2),\"Пачрямба\")>=0 || findsubstr(Name(tmp2),\"Астролайнер\")>=0 || findsubstr(Name(tmp2),\"Пиолептида\")>=0 || findsubstr(Name(tmp2),\"Плеокан\")>=0) tmp=4;",
+"    else if(findsubstr(Name(tmp2),\"Каргас\")>=0 || findsubstr(Name(tmp2),\"Ческа\")>=0 || findsubstr(Name(tmp2),\"Дальнобойщик\")>=0 || findsubstr(Name(tmp2),\"Менакен\")>=0 || findsubstr(Name(tmp2),\"Овеон\")>=0) tmp=3;",
+"}",
+"//Спавним новый корабль",
+"if (tmp==1) s=BuyRanger(StarPlanets(GalaxyStar(ItemOwner(tmp2)),0));",
+"if (tmp==2) s=BuyPirate(StarPlanets(GalaxyStar(ItemOwner(tmp2)),0));",
+"if (tmp==3) s=BuyTransport(StarPlanets(GalaxyStar(ItemOwner(tmp2)),0),0);",
+"if (tmp==4) s=BuyTransport(StarPlanets(GalaxyStar(ItemOwner(tmp2)),0),1);",
+"if (tmp==5) s=BuyTransport(StarPlanets(GalaxyStar(ItemOwner(tmp2)),0),2);",
+"RelationToRanger(s,Player(),100);",
+"//Запоминаем имя корабля",
+"tStr1=Name(tmp2);",
+"//Если в трюме созданного корабля есть доминаторское оборудование (откуда???) - меняем на нормальное",
+"for (j=0; j<ShipItems(s); j=j+1)",
+"{",
+"    tmp2=ShipItems(s,j);",
+"    if(ItemOwner(tmp2)==Kling) ItemOwner(tmp2,ShipOwner(s));",
+"}",
+"//Перебираем все системы в галактике",
+"for(i=0;i<GalaxyStars();i=i+1)",
+"{",
+"    //Ищем ближайшие к игроку",
+"    tmp2=StarNearbyStars(ShipStar(Player()),i);",
+"    //Пропускаем доминаторские системы",
+"    if(StarOwner(tmp2)==1) continue;",
+"    //Перебираем корабли в системе",
+"    for(j=0;j<StarShips(tmp2);j=j+1)",
+"    {",
+"        //Если нашли корабль с таким же именем - добавляем случайную цифру к имени спасенного корабля",
+"        if(Name(StarShips(tmp2,j))==tStr1)",
+"        {",
+"            tStr1=tStr1+' -'+Rnd(1,100)+'-';",
+"            break;",
+"        }",
+"    }",
+"}",
+"tmp2=ShipItems(Player(),GAnswerData);",
+"//for (j=0; j<ArrayDim(names); j=j+1)",
+"//{",
+"//if (findsubstr(tStr1,names[j])>=0){ tStr1=Format(tStr1,names[j]+' ',''); break; }",
+"//}",
+"//Задаем имя корабля",
+"SetName(s,tStr1);",
+"//Костыль, чтобы данный корабль не родил при смерти спас.капсулу",
+"ShipSpecialBonuses(s,bonHookRadius,1);",
+"HullHP(s,1);",
+"ShipHealthFactor(s,4,5);",
+"//Переносим корабль на МЦ",
+"TransferShip(s,GetShipRuins(Player()));",
+"//Считаем, сколько денег получит игрок за спасение",
+"if (tmp==2) c=ItemCost(tmp2)*5/4;",
+"else c=ItemCost(tmp2)*3/2;",
+"ShipMoney(Player(),ShipMoney(Player())+c);",
+"FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),ShipItems(Player(),GAnswerData))));",
+"Sound('Sound.Buy');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1460,
+          "Pos.y":          790,
+          "Parent":          -1,
+          "#":          84,
+          "Total.Lines":          69,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Ищем капсулы в трюме игрока",
+"tmp2=ShipItems(Player(),GAnswerData);",
+"if(findsubstr(UselessItemText(tmp2),\"Спасательная капсула, в которой лежит рейнджер\")>=0) tmp=1;",
+"else if(findsubstr(UselessItemText(tmp2),\"Спасательная капсула, в которой лежит пират\")>=0) tmp=2;",
+"else if(findsubstr(UselessItemText(tmp2),\"Спасательная капсула, в которой лежит дипломат\")>=0) tmp=5;",
+"else if(findsubstr(UselessItemText(tmp2),\"Спасательная капсула, в которой лежит капитан транспорта\")>=0) tmp=3;",
+"else if(findsubstr(UselessItemText(tmp2),\"Спасательная капсула, в которой лежит капитан лайнера\")>=0) tmp=4;",
+"else",
+"{",
+"    if(findsubstr(Name(tmp2),\"Рейнджер\")>=0) tmp=1;",
+"    else if (findsubstr(Name(tmp2),\"Изменник\")>=0) tmp=2;",
+"    else if(findsubstr(Name(tmp2),\"Бамбай\")>=0 || findsubstr(Name(tmp2),\"Лякуша\")>=0 || findsubstr(Name(tmp2),\"Корсар\")>=0 || findsubstr(Name(tmp2),\"Фантом\")>=0 || findsubstr(Name(tmp2),\"Ренегал\")>=0) tmp=2;",
+"    else if(findsubstr(Name(tmp2),\"Бадуба\")>=0 || findsubstr(Name(tmp2),\"Шракан\")>=0 || findsubstr(Name(tmp2),\"Кобра\")>=0 || findsubstr(Name(tmp2),\"Оланиа\")>=0 || findsubstr(Name(tmp2),\"Боо-лан\")>=0) tmp=2;",
+"    else if(findsubstr(Name(tmp2),\"Рарт\")>=0 || findsubstr(Name(tmp2),\"Лянчер\")>=0 || findsubstr(Name(tmp2),\"Консул\")>=0 || findsubstr(Name(tmp2),\"Далани\")>=0 || findsubstr(Name(tmp2),\"Галит\")>=0) tmp=5;",
+"    else if(findsubstr(Name(tmp2),\"Аралита\")>=0 || findsubstr(Name(tmp2),\"Пачрямба\")>=0 || findsubstr(Name(tmp2),\"Астролайнер\")>=0 || findsubstr(Name(tmp2),\"Пиолептида\")>=0 || findsubstr(Name(tmp2),\"Плеокан\")>=0) tmp=4;",
+"    else if(findsubstr(Name(tmp2),\"Каргас\")>=0 || findsubstr(Name(tmp2),\"Ческа\")>=0 || findsubstr(Name(tmp2),\"Дальнобойщик\")>=0 || findsubstr(Name(tmp2),\"Менакен\")>=0 || findsubstr(Name(tmp2),\"Овеон\")>=0) tmp=3;",
+"}",
+"//Спавним новый корабль",
+"if (tmp==1) s=BuyRanger(StarPlanets(GalaxyStar(ItemOwner(tmp2)),0));",
+"if (tmp==2){ s=BuyPirate(StarPlanets(GalaxyStar(ItemOwner(tmp2)),0)); ShipJoinsClan(s); }",
+"if (tmp==3) s=BuyTransport(StarPlanets(GalaxyStar(ItemOwner(tmp2)),0),0);",
+"if (tmp==4) s=BuyTransport(StarPlanets(GalaxyStar(ItemOwner(tmp2)),0),1);",
+"if (tmp==5) s=BuyTransport(StarPlanets(GalaxyStar(ItemOwner(tmp2)),0),2);",
+"RelationToRanger(s,Player(),100);",
+"//Запоминаем имя корабля",
+"tStr1=Name(tmp2);",
+"//Если в трюме созданного корабля есть доминаторское оборудование (откуда???) - меняем на нормальное",
+"for (j=0; j<ShipItems(s); j=j+1)",
+"{",
+"    tmp2=ShipItems(s,j);",
+"    if(ItemOwner(tmp2)==Kling) ItemOwner(tmp2,ShipOwner(s));",
+"}",
+"//Перебираем все системы в галактике",
+"for(i=0;i<GalaxyStars();i=i+1)",
+"{",
+"    //Ищем ближайшие к игроку",
+"    tmp2=StarNearbyStars(ShipStar(Player()),i);",
+"    //Пропускаем доминаторские системы",
+"    if(StarOwner(tmp2)==1) continue;",
+"    //Перебираем корабли в системе",
+"    for(j=0;j<StarShips(tmp2);j=j+1)",
+"    {",
+"        //Если нашли корабль с таким же именем - добавляем случайную цифру к имени спасенного корабля",
+"        if(Name(StarShips(tmp2,j))==tStr1)",
+"        {",
+"            tStr1=tStr1+' -'+Rnd(1,100)+'-';",
+"            break;",
+"        }",
+"    }",
+"}",
+"tmp2=ShipItems(Player(),GAnswerData);",
+"//for (j=0; j<ArrayDim(names); j=j+1)",
+"//{",
+"//if (findsubstr(tStr1,names[j])>=0){ tStr1=Format(tStr1,names[j]+' ',''); break; }",
+"//}",
+"//Задаем имя корабля",
+"SetName(s,tStr1);",
+"//Костыль, чтобы данный корабль не родил при смерти спас.капсулу",
+"ShipSpecialBonuses(s,bonHookRadius,1);",
+"HullHP(s,1);",
+"ShipHealthFactor(s,4,5);",
+"//Переносим корабль на МЦ",
+"TransferShip(s,GetShipRuins(Player()));",
+"//Считаем, сколько денег получит игрок за спасение",
+"if (tmp==2) c=ItemCost(tmp2)*3/2;",
+"else c=ItemCost(tmp2)*5/4;",
+"ShipMoney(Player(),ShipMoney(Player())+c);",
+"FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),ShipItems(Player(),GAnswerData))));",
+"Sound('Sound.Buy');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1580,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          91,
+          "Total.Lines":          31,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Ищем в трюме корабля кристаллы",
+"tmp=0;",
+"tmp2=0;",
+"tmp3=0;",
+"for(i=0;i<ShipItems(Player());i=i+1)",
+"{",
+"    s=ShipItems(Player(),i);",
+"    if(ItemType(s)!=t_UselessItem)continue;",
+"    if(EquipmentImageName(s)!='ShuBounty_Crystals' && EquipmentImageName(s)!='Crystal')continue;",
+"    //Считаем стоимость всех кристаллов",
+"    tmp2=tmp2+0.5*ItemCost(s)*GalaxyTechLevel();",
+"    //Считаем количество кристаллов",
+"    tmp=tmp+ItemSize(s);",
+"}",
+"//Считаем наценку на кристаллы, исходя из навыков и торгового рейтинга игрока",
+"if(tmp)",
+"{",
+"    tmp3=5.0*ShipSkill(Player(),3);",
+"    tmp3=tmp3+ShipSkill(Player(),4)*2;",
+"    if(StatusPlayer()==1)tmp3=tmp3+10;",
+"    else if(StatusPlayer()==-1)tmp3=tmp3-5;",
+"    if(ShipOnSidePirateClan(Player()))tmp3=tmp3-5;",
+"    if(ShipStatistic(Player(),4)>20)tmp3=tmp3-3;",
+"    if(ShipStatistic(Player(),4)>50)tmp3=tmp3-3;",
+"    if(ShipStatistic(Player(),4)>100)tmp3=tmp3-5;",
+"    if(ShipStatistic(Player(),1)>25)tmp3=tmp3+3;",
+"    if(ShipStatistic(Player(),1)>60)tmp3=tmp3+5;",
+"    if(tmp3>75)tmp3=75;",
+"    else if(tmp3<-25)tmp3=-25;",
+"    tmp2=tmp2*(tmp3+100)/100;",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1790,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          94,
+          "Total.Lines":          16,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Ищем в трюме игрока кредитки",
+"tmp=0;",
+"tmp2=0;",
+"for (i=0; i<ShipItems(Player()); i=i+1)",
+"{",
+"    s=ShipItems(Player(),i);",
+"    if (Name(s)==\"Заблокированная карта с кредитами\") {",
+"        //Если нашли - определяем, сколько на них денег",
+"        tmp2=tmp2+ItemCost(s)*Rnd(3,5);",
+"        tmp=tmp+1;",
+"    }",
+"}",
+"//Общая сумма сбережений",
+"tmp3=tmp2;",
+"//Сумма с комиссией",
+"tmp2=tmp2*(100-2*GalaxyTechLevel())/100;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1440,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          97,
+          "Total.Lines":          8,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Запоминаем выбор игрока",
+"tmp=ShipItems(Player(),GAnswerData);",
+"//БЦ дает двойную цену, остальные станции - тройную",
+"if(ShipType(GetShipRuins(Player()))=='BK') ShipMoney(Player(),ShipMoney(Player())+ItemCost(tmp)*2);",
+"else ShipMoney(Player(),ShipMoney(Player())+ItemCost(tmp)*3);",
+"//Изымаем предмет из трюма",
+"FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),ShipItems(Player(),GAnswerData))));",
+"Sound('Sound.Buy');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1260,
+          "Pos.y":          810,
+          "Parent":          -1,
+          "#":          98,
+          "Total.Lines":          13,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Ищем в трюме игрока капсулы и добавляем в диалог",
+"for(i=0;i<ShipItems(Player());i=i+1)",
+"{",
+"    j=ShipItems(Player(),i);",
+"    if(ItemType(j)==t_UselessItem && findsubstr(UselessItemText(j),\"Спасательная капсула, в которой лежит\")>=0)",
+"    {",
+"        if(!findsubstr(Name(j),\"Бамбай\") || !findsubstr(Name(j),\"Лякуша\") || !findsubstr(Name(j),\"Корсар\") || !findsubstr(Name(j),\"Фантом\") || !findsubstr(Name(j),\"Ренегал\")) tmp=2;",
+"        else if(!findsubstr(Name(j),\"Бадуба\") || !findsubstr(Name(j),\"Шракан\") || !findsubstr(Name(j),\"Кобра\") || !findsubstr(Name(j),\"Оланиа\") || !findsubstr(Name(j),\"Боо-лан\")) tmp=2;",
+"        else tmp=1;",
+"        if(tmp==2) InjectAnswer('Capsule2','<Name(j)> (<ItemCost(j)*3/2> cr)',i);",
+"        else InjectAnswer('Capsule2','<Name(j)> (<ItemCost(j)*5/4> cr)',i);",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1420,
+          "Pos.y":          810,
+          "Parent":          -1,
+          "#":          103,
+          "Total.Lines":          13,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Ищем в трюме игрока капсулы и добавляем в диалог",
+"for(i=0;i<ShipItems(Player());i=i+1)",
+"{",
+"    j=ShipItems(Player(),i);",
+"    if(ItemType(j)==t_UselessItem && findsubstr(UselessItemText(j),\"Спасательная капсула, в которой лежит\")>=0)",
+"    {",
+"        if(!findsubstr(Name(j),\"Бамбай\") || !findsubstr(Name(j),\"Лякуша\") || !findsubstr(Name(j),\"Корсар\") || !findsubstr(Name(j),\"Фантом\") || !findsubstr(Name(j),\"Ренегал\")) tmp=2;",
+"        else if(!findsubstr(Name(j),\"Бадуба\") || !findsubstr(Name(j),\"Шракан\") || !findsubstr(Name(j),\"Кобра\") || !findsubstr(Name(j),\"Оланиа\") || !findsubstr(Name(j),\"Боо-лан\")) tmp=2;",
+"        else tmp=1;",
+"        if(tmp==2) InjectAnswer('CapsulePirateClan2','<Name(j)> (<ItemCost(j)*5/4> cr)',i);",
+"        else InjectAnswer('CapsulePirateClan2','<Name(j)> (<ItemCost(j)*3/2> cr)',i);",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1360,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          109,
+          "Total.Lines":          225,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Ищем в трюме корабля юзлессы",
+"tmp = GetShipRuins(Player());",
+"for(i = 0; i < ShipItems(Player()); i = i + 1)",
+"{",
+"    j = ShipItems(Player(), i);",
+"    if(ItemType(j) == t_UselessItem)",
+"    {",
+"        if(ItemIsInUse(j)) continue;",
+"        c = 0;",
+"        s = 0;",
+"        tstr1 = EquipmentImageName(j);",
+"        //Военная база",
+"        if(ShipType(tmp) == 'WB')",
+"        {",
+"            if(tstr1 == 'Usl_11') s=1;",
+"            else if(tstr1 == 'Usl_12') s=1;",
+"            else if(tstr1 == 'Usl_27') s=1;",
+"            else if(tstr1 == 'Usl_35') s=1;",
+"            else if(tstr1 == 'Usl_39') s=1;",
+"            else if(tstr1 == 'Usl_42') s=1;",
+"            else if(tstr1 == 'Usl_47') s=1;",
+"            else if(tstr1 == 'Usl_56') s=1;",
+"            else if(tstr1 == 'Usl_6') s=1;",
+"            else if(tstr1 == 'Usl_Drugs') s=1;",
+"            else if(tstr1 == 'Usl_Bomber') s=1;",
+"            else if(tstr1 == 'Usl_MemoryModule') s=1;",
+"            else if(tstr1 == 'Usl_70') s=1;",
+"            else if(tstr1 == 'Usl_71') s=1;",
+"            else if(tstr1 == 'Usl_RandomItem_02') s=1;",
+"            else if(tstr1 == 'Usl_RandomItem_03') s=1;",
+"            else if(tstr1 == 'Usl_RandomItem_04') s=1;",
+"            else if(tstr1 == 'Usl_PTQ68') s=1;",
+"            else if(tstr1 == 'Usl_PTQn64') s=1;",
+"            else if(tstr1 == 'Usl_Svarokok') s=1;",
+"            else if(tstr1 == 'ReScripter') s=1;",
+"            else if(tstr1 == 'TrankMod') s=1;",
+"            else if(tstr1 == 'Ultrascan') s=1;",
+"            else if(tstr1 == 'secret_loot1') s=1;",
+"            else if(tstr1 == 'secret_loot3') s=1;",
+"        }",
+"        //Пиратская база",
+"        else if(ShipType(tmp) == 'PB')",
+"        {",
+"            //удалить: Usl_19, Usl_21, Usl_37, Usl_40, Usl_63, Usl_73, Usl_Faruk, Usl_PTQ70",
+"            if(tstr1 == 'Usl_11') s=1;",
+"            //if (tstr1 == 'Usl_12') s=1;",
+"            else if(tstr1 == 'Usl_19') s=1;",
+"            else if(tstr1 == 'Usl_21') s=1;",
+"            else if(tstr1 == 'Usl_27') s=1;",
+"            else if(tstr1 == 'Usl_35') s=1;",
+"            else if(tstr1 == 'Usl_37') s=1;",
+"            //if (tstr1 == 'Usl_39') s=1;",
+"            else if(tstr1 == 'Usl_40') s=1;",
+"            else if(tstr1 == 'Usl_42') s=1;",
+"            else if(tstr1 == 'Usl_47') s=1;",
+"            //if (tstr1 == 'Usl_56') s=1;",
+"            //if (tstr1 == 'Usl_6') s=1;",
+"            else if(tstr1 == 'Usl_63') s=1;",
+"            else if(tstr1 == 'Usl_73') s=1;",
+"            else if(tstr1 == 'Usl_Faruk') s=1;",
+"            else if(tstr1 == 'Usl_Drugs') s=1;",
+"            else if(tstr1 == 'Usl_PTQ70') s=1;",
+"            //if (tstr1 == 'Usl_Bomber') s=1;",
+"            else if(tstr1 == 'Usl_MemoryModule') s=1;",
+"            else if(tstr1 == 'Usl_70') s=1;",
+"            else if(tstr1 == 'Usl_71') s=1;",
+"            else if(tstr1 == 'Usl_RandomItem_02') s=1;",
+"            else if(tstr1 == 'Usl_RandomItem_03') s=1;",
+"            else if(tstr1 == 'Usl_RandomItem_04') s=1;",
+"            else if(tstr1 == 'Usl_PTQ68') s=1;",
+"            else if(tstr1 == 'Usl_PTQn64') s=1;",
+"            else if(tstr1 == 'secret_loot1') s=1;",
+"            else if(tstr1 == 'secret_loot2') s=1;",
+"            else if(tstr1 == 'secret_loot3') s=1;",
+"            else if(tstr1 == 'secret_loot4') s=1;",
+"        }",
+"        //Научная база",
+"        else if(ShipType(tmp) == 'SB')",
+"        {",
+"            if(tstr1 == 'OperatedProbe') s=1;",
+"            else if(tstr1 == 'Usl_21') s=1;",
+"            else if(tstr1 == 'Usl_25') s=1;",
+"            else if(tstr1 == 'Usl_26') s=1;",
+"            else if(tstr1 == 'Usl_33') s=1;",
+"            else if(tstr1 == 'Usl_34') s=1;",
+"            else if(tstr1 == 'Usl_37') s=1;",
+"            else if(tstr1 == 'Usl_39') s=1;",
+"            else if(tstr1 == 'Usl_40') s=1;",
+"            else if(tstr1 == 'Usl_45') s=1;",
+"            else if(tstr1 == 'Usl_47') s=1;",
+"            else if(tstr1 == 'Usl_48') s=1;",
+"            else if(tstr1 == 'Usl_56') s=1;",
+"            else if(tstr1 == 'Usl_57') s=1;",
+"            else if(tstr1 == 'Usl_60') s=1;",
+"            else if(tstr1 == 'Usl_66') s=1;",
+"            else if(tstr1 == 'Usl_67') s=1;",
+"            else if(tstr1 == 'Usl_MemoryModule') s=1;",
+"            else if(tstr1 == 'Usl_70') s=1;",
+"            else if(tstr1 == 'Usl_71') s=1;",
+"            else if(tstr1 == 'Usl_RandomItem_02') s=1;",
+"            else if(tstr1 == 'Usl_RandomItem_03') s=1;",
+"            else if(tstr1 == 'Usl_RandomItem_04') s=1;",
+"            else if(tstr1 == 'Usl_PTQ68') s=1;",
+"            else if(tstr1 == 'Usl_PTQn64') s=1;",
+"            else if(tstr1 == 'Chrono') s=1;",
+"            else if(tstr1 == 'Mater') s=1;",
+"            else if(tstr1 == 'ReScripter') s=1;",
+"            else if(tstr1 == 'TrankMod') s=1;",
+"            else if(tstr1 == 'Ultrascan') s=1;",
+"            else if(tstr1 == 'Vacuum') s=1;",
+"            else if(tstr1 == 'secret_loot1') s=1;",
+"            else if(tstr1 == 'secret_loot2') s=1;",
+"            else if(tstr1 == 'secret_loot3') s=1;",
+"            else if(tstr1 == 'secret_loot4') s=1;",
+"            else if(tstr1 == 'secret_loot5') s=1;",
+"        }",
+"        //Доминион",
+"        else if(ShipType(tmp) == 'CB')",
+"        {",
+"            if(tstr1 == 'OperatedProbe') s=1;",
+"            else if(tstr1 == 'Usl_21') s=1;",
+"            else if(tstr1 == 'Usl_25') s=1;",
+"            else if(tstr1 == 'Usl_26') s=1;",
+"            else if(tstr1 == 'Usl_33') s=1;",
+"            else if(tstr1 == 'Usl_34') s=1;",
+"            else if(tstr1 == 'Usl_37') s=1;",
+"            else if(tstr1 == 'Usl_39') s=1;",
+"            else if(tstr1 == 'Usl_40') s=1;",
+"            else if(tstr1 == 'Usl_45') s=1;",
+"            else if(tstr1 == 'Usl_47') s=1;",
+"            else if(tstr1 == 'Usl_48') s=1;",
+"            else if(tstr1 == 'Usl_56') s=1;",
+"            //if (tstr1 == 'Usl_57') s=1;",
+"            //if (tstr1 == 'Usl_60') s=1;",
+"            //if (tstr1 == 'Usl_66') s=1;",
+"            //if (tstr1 == 'Usl_67') s=1;",
+"            else if(tstr1 == 'Usl_MemoryModule') s=1;",
+"            else if(tstr1 == 'Chrono') s=1;",
+"            else if(tstr1 == 'Mater') s=1;",
+"            else if(tstr1 == 'ReScripter') s=1;",
+"            else if(tstr1 == 'TrankMod') s=1;",
+"            else if(tstr1 == 'Ultrascan') s=1;",
+"            else if(tstr1 == 'Vacuum') s=1;",
+"            //if (tstr1 == 'Usl_70') s=1;",
+"            //if (tstr1 == 'Usl_71') s=1;",
+"            //if (tstr1 == 'Usl_RandomItem_02') s=1;",
+"            //if (tstr1 == 'Usl_RandomItem_03') s=1;",
+"            //if (tstr1 == 'Usl_RandomItem_04') s=1;",
+"            //if (tstr1 == 'Usl_PTQ68') s=1;",
+"            //if (tstr1 == 'Usl_PTQn64') s=1;",
+"        }",
+"        //Медицинский центр",
+"        else if(ShipType(tmp) == 'MC')",
+"        {",
+"            if(tstr1 == 'Usl_1') s=1;",
+"            else if(tstr1 == 'Usl_11') s=1;",
+"            else if(tstr1 == 'Usl_22') s=1;",
+"            else if(tstr1 == 'Usl_30') s=1;",
+"            else if(tstr1 == 'Usl_4') s=1;",
+"            else if(tstr1 == 'Usl_41') s=1;",
+"            else if(tstr1 == 'Usl_68') s=1;",
+"            else if(tstr1 == 'Usl_75') s=1;",
+"            else if(tstr1 == 'Usl_AnimalCase') s=1;",
+"            else if(tstr1 == 'Usl_Cactus') s=1;",
+"            else if(tstr1 == 'Usl_CapsuleStukach') s=1;",
+"            else if(tstr1 == 'Usl_LasosCup') s=1;",
+"            else if(tstr1 == 'Usl_RandomItem_01') s=1;",
+"            else if(tstr1 == 'Usl_Svarokok') s=1;",
+"            else if(tstr1 == 'Banana') s=1;",
+"            else if(tstr1 == 'secret_loot2') s=1;",
+"        }",
+"        //Центр рейнджеров",
+"        else if(ShipType(tmp) == 'RC')",
+"        {",
+"            if(tstr1 == 'Usl_Svarokok') s=1;",
+"            else if(tstr1 == 'Usl_12') s=1;",
+"            else if(tstr1 == 'Usl_13') s=1;",
+"            else if(tstr1 == 'Usl_18') s=1;",
+"            else if(tstr1 == 'Usl_2') s=1;",
+"            else if(tstr1 == 'Usl_20') s=1;",
+"            else if(tstr1 == 'Usl_22') s=1;",
+"            else if(tstr1 == 'Usl_28') s=1;",
+"            else if(tstr1 == 'Usl_29') s=1;",
+"            else if(tstr1 == 'Usl_37') s=1;",
+"            else if(tstr1 == 'Usl_39') s=1;",
+"            else if(tstr1 == 'Usl_40') s=1;",
+"            else if(tstr1 == 'Usl_45') s=1;",
+"            else if(tstr1 == 'Usl_51') s=1;",
+"            else if(tstr1 == 'Usl_60') s=1;",
+"            else if(tstr1 == 'Usl_63') s=1;",
+"            else if(tstr1 == 'Usl_67') s=1;",
+"            else if(tstr1 == 'Usl_70') s=1;",
+"            else if(tstr1 == 'Usl_71') s=1;",
+"            else if(tstr1 == 'Usl_RandomItem_02') s=1;",
+"            else if(tstr1 == 'Usl_RandomItem_03') s=1;",
+"            else if(tstr1 == 'Usl_RandomItem_04') s=1;",
+"            else if(tstr1 == 'Usl_PTQ68') s=1;",
+"            else if(tstr1 == 'Usl_PTQ63') s=1;",
+"            else if(tstr1 == 'Usl_PTQn64') s=1;",
+"            else if(tstr1 == 'ReScripter') s=1;",
+"            else if(tstr1 == 'TrankMod') s=1;",
+"            else if(tstr1 == 'Ultrascan') s=1;",
+"            else if(tstr1 == 'secret_loot4') s=1;",
+"            else if(tstr1 == 'secret_loot5') s=1;",
+"        }",
+"        //Бизнес-центр",
+"        else if(ShipType(tmp) == 'BK' && ItemInScript(j) != 1 && ItemOwner(j) != 5 && EqCustomFaction(j) == '')",
+"        {",
+"            if(~findsubstr(EquipmentImageName(j), 'Usl')) s = 1;",
+"            if(~findsubstr(EquipmentImageName(j), 'secret_loot')) s = 1;",
+"            if(tstr1 == 'OperatedProbe') s=1;",
+"            else if(tstr1 == 'Banana') s=1;",
+"            else if(tstr1 == 'Chrono') s=1;",
+"            else if(tstr1 == 'Mater') s=1;",
+"            else if(tstr1 == 'ReScripter') s=1;",
+"            else if(tstr1 == 'TrankMod') s=1;",
+"            else if(tstr1 == 'Ultrascan') s=1;",
+"            else if(tstr1 == 'Vacuum') s=1;",
+"            else if(tstr1 == 'Usl_72') s=0;",
+"        }",
+"        //Если нашли хоть один предмет, добавляем его в список сдачи",
+"        if(s && ShipType(GetShipRuins(Player())) == 'BK') InjectAnswer('SellItems2', '<Name(j)> (<ItemCost(j) * 2> cr)', i);",
+"        else if(s) InjectAnswer('SellItems2', '<Name(j)> (<ItemCost(j) * 3> cr)', i);",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1010,
+          "Pos.y":          810,
+          "Parent":          -1,
+          "#":          110,
+          "Total.Lines":          17,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Ищем в трюме игрока цистерны и добавляем в диалог",
+"for(i=0;i<ShipItems(Player());i=i+1)",
+"{",
+"    j=ShipItems(Player(),i);",
+"    if(ItemType(j)==t_Cistern)",
+"    {",
+"        if(ItemOwner(j)==Maloc) tStr1=\"Малокская\";",
+"        if(ItemOwner(j)==Peleng) tStr1=\"Пеленгская\";",
+"        if(ItemOwner(j)==People) tStr1=\"Человеческая\";",
+"        if(ItemOwner(j)==Fei) tStr1=\"Фэянская\";",
+"        if(ItemOwner(j)==Gaal) tStr1=\"Гаальская\";",
+"        if(ItemOwner(j)==Kling) tStr1=\"Доминаторская\";",
+"        if(ItemOwner(j)==None) tStr1=\"Неизвестная\";",
+"        if(ItemOwner(j)==PirateClan) tStr1=\"Пиратская\";",
+"        InjectAnswer('Cistern2',\"<tStr1> цистерна объемом <GetEquipmentStats(ShipItems(Player(),i),0)> тонн\",i);",
+"    }",
+"}"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1180,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          111,
+          "Total.Lines":          3,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player(),ShipMoney(Player())+WarriorBounty/2);",
+"Sound('Sound.Buy');",
+"TalkToPirs=1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1620,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          112,
+          "Total.Lines":          11,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Изымаем кристаллы из трюма корабля",
+"for(i=ShipItems(Player())-1;i>0;i=i-1)",
+"{",
+"    s=ShipItems(Player(),i);",
+"    if(ItemType(s)!=t_UselessItem)continue;",
+"    if(EquipmentImageName(s)!='ShuBounty_Crystals' && EquipmentImageName(s)!='Crystal')continue;",
+"    FreeItem(GetItemFromShip(Player(),i));",
+"}",
+"//Переводим деньги на счет игрока",
+"ShipMoney(Player(),ShipMoney(Player())+tmp2);",
+"Sound('Sound.Buy');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1740,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          113,
+          "Total.Lines":          9,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"//Удаляем кредитки из трюма",
+"for(i=0;i<ShipItems(Player());i=i+1)",
+"{",
+"    tmp=ShipItems(Player(),i);",
+"    if(Name(tmp)==\"Заблокированная карта с кредитами\") FreeItem(GetItemFromShip(Player(),i));",
+"}",
+"//Переводим деньги на счет игрока",
+"ShipMoney(Player(),ShipMoney(Player())+tmp2);",
+"Sound('Sound.Buy');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          610,
+          "Pos.y":          560,
+          "Parent":          -1,
+          "#":          115,
+          "Total.Lines":          82,
+          "Code.Type":"Init",
+          "Code":          
+          [
+"ArrayClear(tArr);",
+"ArrayClear(hit_list);",
+"ArrayClear(rewards);",
+"//Перебираем все системы галактики",
+"for(i = 0; i < GalaxyStars(); i = i + 1)",
+"{",
+"    tmp = GalaxyStar(i);",
+"    for(j = 0; j < StarPlanets(tmp); j = j + 1)",
+"    {",
+"        //Ищем в системе незаселенные планеты",
+"        tmp2 = StarPlanets(tmp, j);",
+"        if(PlanetOwner(tmp2) == None)",
+"        {",
+"            //С шансом 25% закапываем на планету кристалл",
+"            if(Rnd(1, 100) <= 25)",
+"            {",
+"                tmp3 = CreateQuestItem('ShuBounty_Crystals', None);",
+"                ItemSize(tmp3, 1);",
+"                ItemCost(tmp3, Rnd(5000, 12500));",
+"                AddItemToPlanet(tmp2, tmp3);",
+"            }",
+"            //Если у игрока подключён мод ExpTC, закапываем ценную руду и самородки",
+"            if(IsScriptActive('Mod_ExpTC'))",
+"            {",
+"                //Их цены лучше считать, исходя из стоимости обычных минералов",
+"                //С шансом в 66% закапываем ещё одну партию драгоценных минералов",
+"                if(Rnd(1, 100) <= 66)",
+"                {",
+"                    rand = Rnd(1, 9);",
+"                    tmp3 = CreateCustomCountableItem('NuggetAsteroid', rand);",
+"                    ItemCost(tmp3, rand * (Rnd(10, 15) * 7));",
+"                    AddItemToPlanet(tmp2, tmp3);",
+"                }",
+"                //С дополнительным шансом в 33% закапываем ещё одну партию драгоценных минералов",
+"                if(Rnd(1, 100) <= 33)",
+"                {",
+"                    rand = Rnd(3, 33);",
+"                    tmp3 = CreateCustomCountableItem('NuggetAsteroid', rand);",
+"                    ItemCost(tmp3, rand * (Rnd(10, 15) * 7));",
+"                    AddItemToPlanet(tmp2, tmp3);",
+"                }",
+"                //С ещё более дополнительным шансом в 9% закапываем партию драгоценных минералов",
+"                if(Rnd(1, 100) <= 9)",
+"                {",
+"                    rand = Rnd(6, 66);",
+"                    tmp3 = CreateCustomCountableItem('NuggetAsteroid', rand);",
+"                    ItemCost(tmp3, rand * (Rnd(10, 15) * 7));",
+"                    AddItemToPlanet(tmp2, tmp3);",
+"                }",
+"            }",
+"        }",
+"    }",
+"}",
+"//Массив имен для спасательных капсул",
+"ArrayClear(names);",
+"ArrayAdd(names,\"Рейнджер\");",
+"ArrayAdd(names,\"Изменник\");",
+"ArrayAdd(names,\"Бамбай\");",
+"ArrayAdd(names,\"Лякуша\");",
+"ArrayAdd(names,\"Корсар\");",
+"ArrayAdd(names,\"Фантом\");",
+"ArrayAdd(names,\"Ренегал\");",
+"ArrayAdd(names,\"Рарт\");",
+"ArrayAdd(names,\"Лянчер\");",
+"ArrayAdd(names,\"Консул\");",
+"ArrayAdd(names,\"Далани\");",
+"ArrayAdd(names,\"Галит\");",
+"ArrayAdd(names,\"Каргас\");",
+"ArrayAdd(names,\"Ческа\");",
+"ArrayAdd(names,\"Дальнобойщик\");",
+"ArrayAdd(names,\"Менакен\");",
+"ArrayAdd(names,\"Овеон\");",
+"ArrayAdd(names,\"Аралита\");",
+"ArrayAdd(names,\"Пачрямба\");",
+"ArrayAdd(names,\"Астролайнер\");",
+"ArrayAdd(names,\"Пиолептида\");",
+"ArrayAdd(names,\"Плеокан\");",
+"ArrayAdd(names,\"Хардор\");",
+"ArrayAdd(names,\"Чхаша\");",
+"ArrayAdd(names,\"Бутлегер\");",
+"ArrayAdd(names,\"Ашиан\");",
+"ArrayAdd(names,\"Моонал\");"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"InitPlanet",
+          "Pos.x":          590,
+          "Pos.y":          630,
+          "Parent":          -1,
+          "#":          21,
+          "Race":          62,
+          "Owner":          62,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          590,
+          "Pos.y":          590,
+          "Parent":          -1,
+          "#":          22,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"InitStar",
+          "Pos.x":          590,
+          "Pos.y":          610,
+          "Parent":          -1,
+          "#":          20,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":false,
+          "NoComeKling":false        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          970,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          67,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ControlledSystems(2)<=2"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          910,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          68,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ControlledSystems(2)>2"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          1180,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          71,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!ControlledSystems(0) && ControlledSystems(2)"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          1150,
+          "Pos.y":          500,
+          "Parent":          -1,
+          "#":          72,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!ControlledSystems(2)"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          1220,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          73,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"TalkToPirs || WarriorBounty<=50"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          1180,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          74,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!TalkToPirs && WarriorBounty>50"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          1040,
+          "Pos.y":          790,
+          "Parent":          -1,
+          "#":          75,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"CisCount<150"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          1100,
+          "Pos.y":          790,
+          "Parent":          -1,
+          "#":          76,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"CisCount>=150"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          780,
+          "Parent":          -1,
+          "#":          78,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!dState"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          780,
+          "Parent":          -1,
+          "#":          79,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"dState"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          1600,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          92,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"tmp"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          1560,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          93,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!tmp"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          1770,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          95,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"tmp"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          1810,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          96,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!tmp"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"PlayerState",
+          "Pos.x":          590,
+          "Pos.y":          670,
+          "Parent":          -1,
+          "#":          24,
+          "Move":          0,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":"TVar",
+          "Name":"PirateBounty",
+          "Pos.x":          700,
+          "Pos.y":          650,
+          "Parent":          -1,
+          "#":          1,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"WarriorBounty",
+          "Pos.x":          700,
+          "Pos.y":          670,
+          "Parent":          -1,
+          "#":          2,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"WasPir",
+          "Pos.x":          700,
+          "Pos.y":          630,
+          "Parent":          -1,
+          "#":          3,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"WasWar",
+          "Pos.x":          700,
+          "Pos.y":          610,
+          "Parent":          -1,
+          "#":          4,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"TalkToPirs",
+          "Pos.x":          700,
+          "Pos.y":          590,
+          "Parent":          -1,
+          "#":          5,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"CisCount",
+          "Pos.x":          800,
+          "Pos.y":          670,
+          "Parent":          -1,
+          "#":          6,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"i",
+          "Pos.x":          770,
+          "Pos.y":          710,
+          "Parent":          -1,
+          "#":          7,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"rewards",
+          "Pos.x":          670,
+          "Pos.y":          810,
+          "Parent":          -1,
+          "#":          8,
+          "Var.Type":"Array",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"fuel_total",
+          "Pos.x":          800,
+          "Pos.y":          590,
+          "Parent":          -1,
+          "#":          9,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"how_cis",
+          "Pos.x":          800,
+          "Pos.y":          630,
+          "Parent":          -1,
+          "#":          10,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cis_fuel",
+          "Pos.x":          800,
+          "Pos.y":          610,
+          "Parent":          -1,
+          "#":          11,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"dState",
+          "Pos.x":          800,
+          "Pos.y":          570,
+          "Parent":          -1,
+          "#":          12,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"c",
+          "Pos.x":          770,
+          "Pos.y":          750,
+          "Parent":          -1,
+          "#":          13,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"timerCis",
+          "Pos.x":          800,
+          "Pos.y":          650,
+          "Parent":          -1,
+          "#":          14,
+          "Var.Type":"Dword",
+          "Init":"600",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"s",
+          "Pos.x":          770,
+          "Pos.y":          770,
+          "Parent":          -1,
+          "#":          15,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"names",
+          "Pos.x":          670,
+          "Pos.y":          830,
+          "Parent":          -1,
+          "#":          16,
+          "Var.Type":"Array",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"rand",
+          "Pos.x":          720,
+          "Pos.y":          710,
+          "Parent":          -1,
+          "#":          17,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"hit_list",
+          "Pos.x":          740,
+          "Pos.y":          810,
+          "Parent":          -1,
+          "#":          18,
+          "Var.Type":"Array",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"type",
+          "Pos.x":          800,
+          "Pos.y":          770,
+          "Parent":          -1,
+          "#":          19,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"str0",
+          "Pos.x":          670,
+          "Pos.y":          750,
+          "Parent":          -1,
+          "#":          114,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tmp",
+          "Pos.x":          720,
+          "Pos.y":          730,
+          "Parent":          -1,
+          "#":          116,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tmp2",
+          "Pos.x":          720,
+          "Pos.y":          750,
+          "Parent":          -1,
+          "#":          117,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"j",
+          "Pos.x":          770,
+          "Pos.y":          730,
+          "Parent":          -1,
+          "#":          118,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tmp3",
+          "Pos.x":          720,
+          "Pos.y":          770,
+          "Parent":          -1,
+          "#":          119,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tArr",
+          "Pos.x":          740,
+          "Pos.y":          830,
+          "Parent":          -1,
+          "#":          120,
+          "Var.Type":"Array",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"lastShipId",
+          "Pos.x":          800,
+          "Pos.y":          730,
+          "Parent":          -1,
+          "#":          121,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"chance",
+          "Pos.x":          800,
+          "Pos.y":          750,
+          "Parent":          -1,
+          "#":          122,
+          "Var.Type":"Dword",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tStr1",
+          "Pos.x":          670,
+          "Pos.y":          770,
+          "Parent":          -1,
+          "#":          123,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tstr1",
+          "Pos.x":          600,
+          "Pos.y":          750,
+          "Parent":          -1,
+          "#":          124,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      21,
+      "End":      20,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      22,
+      "End":      20,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      23,
+      "End":      21,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      23,
+      "End":      24,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      27,
+      "End":      67,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      27,
+      "End":      68,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      67,
+      "End":      57,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      68,
+      "End":      53,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      69,
+      "End":      55,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      29,
+      "End":      56,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      30,
+      "End":      70,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      28,
+      "End":      69,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      70,
+      "End":      59,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      31,
+      "End":      71,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      31,
+      "End":      72,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      71,
+      "End":      73,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      71,
+      "End":      74,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      73,
+      "End":      61,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      74,
+      "End":      60,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      72,
+      "End":      62,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      32,
+      "End":      75,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      32,
+      "End":      76,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      75,
+      "End":      63,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      76,
+      "End":      66,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      33,
+      "End":      77,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      77,
+      "End":      78,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      77,
+      "End":      79,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      78,
+      "End":      64,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      79,
+      "End":      65,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      34,
+      "End":      80,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      35,
+      "End":      81,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      83,
+      "End":      82,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      36,
+      "End":      83,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      84,
+      "End":      85,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      37,
+      "End":      84,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      91,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      91,
+      "End":      92,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      91,
+      "End":      93,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      92,
+      "End":      86,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      93,
+      "End":      87,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      39,
+      "End":      94,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      94,
+      "End":      95,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      94,
+      "End":      96,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      95,
+      "End":      88,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      96,
+      "End":      89,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      40,
+      "End":      90,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      41,
+      "End":      97,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      57,
+      "End":      43,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      53,
+      "End":      42,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      56,
+      "End":      45,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      80,
+      "End":      98,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      98,
+      "End":      100,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      81,
+      "End":      103,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      103,
+      "End":      101,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      86,
+      "End":      102,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      86,
+      "End":      104,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      87,
+      "End":      105,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      88,
+      "End":      104,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      88,
+      "End":      107,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      89,
+      "End":      106,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      90,
+      "End":      109,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      65,
+      "End":      52,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      63,
+      "End":      110,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      110,
+      "End":      51,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      66,
+      "End":      99,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      61,
+      "End":      49,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      60,
+      "End":      48,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      62,
+      "End":      50,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      42,
+      "End":      54,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      54,
+      "End":      43,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      45,
+      "End":      58,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      58,
+      "End":      46,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      55,
+      "End":      44,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      59,
+      "End":      47,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      109,
+      "End":      108,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      48,
+      "End":      111,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      102,
+      "End":      112,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      107,
+      "End":      113,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      64,
+      "End":      110,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      82,
+      "End":      98,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      85,
+      "End":      103,
+      "Nom":      0,
+      "Arrow":true    
+    }  
+  ],
+  "Rect.Text":  
+  [
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      890,
+      "Rect.Top":      432,
+      "Rect.Right":      1256,
+      "Rect.Bottom":      475,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      0,
+      "AlignY":      0,
+      "AlignRect":false,
+      "Text":"Награды за пиратов/военных:",
+      "Color":      0,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    },
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      889,
+      "Rect.Top":      703,
+      "Rect.Right":      1154,
+      "Rect.Bottom":      747,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      0,
+      "AlignY":      0,
+      "AlignRect":false,
+      "Text":"Сдача цистерн:",
+      "Color":      0,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    },
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      1325,
+      "Rect.Top":      433,
+      "Rect.Right":      1518,
+      "Rect.Bottom":      476,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      0,
+      "AlignY":      0,
+      "AlignRect":false,
+      "Text":"Сдача юзлессов:",
+      "Color":      0,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    },
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      1240,
+      "Rect.Top":      705,
+      "Rect.Right":      1609,
+      "Rect.Bottom":      743,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      0,
+      "AlignY":      0,
+      "AlignRect":false,
+      "Text":"Сдача спасательных капсул:",
+      "Color":      0,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    },
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      1547,
+      "Rect.Top":      432,
+      "Rect.Right":      1873,
+      "Rect.Bottom":      478,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      0,
+      "AlignY":      0,
+      "AlignRect":false,
+      "Text":"Сдача кристаллов и разблокировка карт:",
+      "Color":      0,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  105,
+  "BlockPar.EC":  
+  [
+    {
+      "#":"110",
+      "String":"Заблокированная карта с кредитами"    
+    },
+    {
+      "#":"114",
+      "String":"Как вам прекрасно известно, <Player>, на дворе идет война с пиратами, а пытающиеся воевать с интервентами рейнджеры, как правило, получают сплошные убытки, из-за чего престиж борьбы с кланом сильно падает.<br><br>КВСМК приняло решение о выплачивании вольным пилотам премий за головы пиратов. На данный момент ставка за голову бандита составляет <0> cr., но награда может варьироваться в зависимости от силы пирата. За помощь в ликвидации пирата выплачивается скромная сумма - <1> cr."    
+    },
+    {
+      "#":"116",
+      "String":"Деньги, выплачиваемые Командованием за уничтожение пиратов, для удобства можно получать также и через платежный сервис <clr>West-Uni<clrEnd>, доступ к нему вы можете получить с мостика своего корабля. В качестве комиссии сервис взимает лишь <0>% от суммы перевода.<br><br>К вашему сведению, при вступлении в пиратский клан на ваш счет прекращает поступать награда за головы пиратов, а уже накопленная сумма обнуляется. Командование не любит предателей."    
+    },
+    {
+      "#":"117",
+      "String":"Так держать, <Player>! Гонорар за сбитых пиратов в размере <0> уже переведен на ваш счет."    
+    },
+    {
+      "#":"118",
+      "String":"Как ты, конечно, знаешь, <Player>, пираты сейчас воюют с Коалицией. Только вот проблема в том, что многие пираты, в особенности мелкие бандиты и рейнджеры-перебежчики, еще несколько лет назад считали своим священным долгом грабить мирняк, а на такой риск, как борьба с вояками, идти никто не хотел.<br><br>Наши авторитеты между собой покумекали, да и порешили, что так, мол, не пойдет. Для повышения престижа \"военного пиратства\", мы ввели небольшую премию за убийство военных и рейнджеров. Сейчас она составляет <0> cr. за голову солдафона и <1> cr. за одного рейнджера, но \"ценник\" может изменяться в зависимости от силы пристреленного. За помощь в убийстве военного мы накидываем <2> cr., рейнджера - <3> cr."    
+    },
+    {
+      "#":"119",
+      "String":"На данный момент нами не замечено серьезной активности со стороны пиратов, и поэтому Командованием было принято решение временно приостановить выплату наград за головы пиратов. Вы свободны."    
+    },
+    {
+      "#":"120",
+      "String":"Бабки, которые мы отстегиваем за головы прислужников фараонов, ты, для удобства, можешь получить не только на нашей базе, но и мгновенно, с помощью сервиса <clr>West-Uni<clrEnd>. Доступ к нему ты можешь получить с мостика корабля. Правда, они хапают себе <0>% от награды, так что иногда лучше не полениться и забрать всю сумму.<br><br>А, да, чуть не забыл: при переходе на другую сторону, денежки за расстрел \"хороших парней\" на твой кошелечек больше не капают. Пираты не рады предателям."    
+    },
+    {
+      "#":"121",
+      "String":"Классная работа, <Player>. Бабки, <0> cr., уже на твоем счету."    
+    },
+    {
+      "#":"122",
+      "String":"Извиняй, кореш, но от Коалиции уже и не осталось-то ничего, так что мы решили остановить выдачу премий за борьбу с фараонами. Если и остались какие-то рейнджеры-одиночки, то они все равно уже не представляют угрозы.<br><br>Тем, у кого еще оставались не получены награды, мы решили вернуть половину от их суммы. В твоем случае, это составляет <0> cr. Забирай эти деньги, и спасибо тебе от всего нашего братства за помощь в войне."    
+    },
+    {
+      "#":"123",
+      "String":"Извиняй, кореш, но от Коалиции уже и не осталось-то ничего, так что мы решили остановить выдачу премий за борьбу с фараонами. Если и остались какие-то рейнджеры-одиночки, то они все равно уже не представляют угрозы."    
+    },
+    {
+      "#":"124",
+      "String":"Извиняй, кореш, но клан-то наш все былое величие порастерял, и на награды бабки больше не выделяются. Ты пока сам за себя, брат."    
+    },
+    {
+      "#":"125",
+      "String":"<0> цистерна объемом <1> тонн"    
+    },
+    {
+      "#":"126",
+      "String":"Пиратская"    
+    },
+    {
+      "#":"127",
+      "String":"Неизвестная"    
+    },
+    {
+      "#":"128",
+      "String":"Доминаторская"    
+    },
+    {
+      "#":"129",
+      "String":"Гаальская"    
+    },
+    {
+      "#":"130",
+      "String":"Фэянская"    
+    },
+    {
+      "#":"131",
+      "String":"Человеческая"    
+    },
+    {
+      "#":"132",
+      "String":"Пеленгская"    
+    },
+    {
+      "#":"133",
+      "String":"Малокская"    
+    },
+    {
+      "#":"134",
+      "String":"Вы, <Player>, не задумывались о том, что космос все чаще засоряется обломками, бесхозным оборудованием, минералами?<br>Наиболее часто в космосе встречаются цистерны, поэтому нами и гаальской космосозащитной организацией \"Гринспейс\" было решено начать их сбор. Таким образом, мы получаем и топливо для переработки, и куда более чистый космос.<br>Для сбора цистерн по всему рукаву Галактики активно привлекаются рейнджеры, как наиболее свободные и многозадачные пилоты. Цистерны обмениваются по курсу \"<0> ед. вместительности к <1> ед. нод-счета\". <br>В связи с невозможностью обеспечить нодами всех желающих, нами установлен лимит в <2> нд., который сбрасывается в среднем каждый год. Кроме того, при достижении рейнджером лимита, ему выдается микромодуль. Ближайший сброс лимита запланирован на <3>.<br>На данный момент вы можете получить еще <4> нд.<br>Не желаете ли вы, рейнджер, сдать нам несколько цистерн?"    
+    },
+    {
+      "#":"135",
+      "String":"Вы сдали цистерну вместительностью <0> ед., на ваш нод-счет начислено <1> нд. Вы уже получили <2> позволенных вам нд., осталось <3> нд.<br>Не желаете ли вы, рейнджер, сдать нам еще несколько цистерн?"    
+    },
+    {
+      "#":"136",
+      "String":"Благодарим вас, рейнджер, за помощь нашему делу. В этом году вы сдали нам <0> цистерн общим объемом <1> ед. топлива.<br>В награду мы вручаем вам микромодуль <2>. Не забудьте принять участие в акции в следующем году!"    
+    },
+    {
+      "#":"139",
+      "String":"Так-так... Дайте свериться с базой данных...<br>...<br>Прошу прощения, ваш лимит на данный момент исчерпан. Ближайший сброс лимита намечен на <0>, прилетайте позже."    
+    },
+    {
+      "#":"140",
+      "String":"Боо-лан"    
+    },
+    {
+      "#":"141",
+      "String":"Оланиа"    
+    },
+    {
+      "#":"142",
+      "String":"Кобра"    
+    },
+    {
+      "#":"143",
+      "String":"Шракан"    
+    },
+    {
+      "#":"144",
+      "String":"Бадуба"    
+    },
+    {
+      "#":"145",
+      "String":"Спасательная капсула, в которой лежит"    
+    },
+    {
+      "#":"146",
+      "String":"<Player>, сейчас набирает обороты использование пилотами спасательных капсул. Данное приспособление нередко спасает индивидуумов после опасных баталий, катапультируая их и практически полной остановки всех жизненных процессов.<br>Главная проблема таких капсул - высокий риск для здоровья гуманоидов. После длительного пребывания в состоянии анабиоза пилот может серьезно травмироваться или ослабнуть.<br>По вышеназванной причине мы принимаем подобные капсулы и оказываем пострадавшим медицинскую помощь. Процедура спонсируется Галактическим Советом, что позволяет обеспечивать спасенных базовым комплектом оборудования.<br>Возможно, вы сами привезли пациентов? За каждого гуманоида мы заплатим <clr>в полтора раза<clrEnd> больше стоимости капсулы, за исключением <clr>пиратов<clrEnd> - за них мы платим только <clr>в четверть раза<clrEnd> больше."    
+    },
+    {
+      "#":"147",
+      "String":"<Player>, сейчас набирает обороты использование пилотами спасательных капсул. Данное приспособление нередко спасает индивидуумов после опасных баталий, катапультируая их и практически полной остановки всех жизненных процессов.<br>Главная проблема таких капсул - высокий риск для здоровья гуманоидов. После длительного пребывания в состоянии анабиоза пилот может серьезно травмироваться или ослабнуть.<br>По вышеназванной причине мы принимаем подобные капсулы и оказываем пострадавшим медицинскую помощь. Процедуру поддерживает пиратский клан, что позволяет снабжать привезенных хоть каким-нибудь комплектом оборудования.<br>Возможно, вы сами привезли пациентов? За каждого гуманоида мы заплатим <clr>в четверть раза<clrEnd> больше цены капсулы. Исключение составляют пираты - за них нам положено отдавать <clr>в полтора раза<clrEnd> больше."    
+    },
+    {
+      "#":"148",
+      "String":"Благодарим вас за спасение бесценной жизни, <Player>! В награду на ваш счет перечислено <0> cr. Нет ли у вас еще капсул для сдачи?"    
+    },
+    {
+      "#":"149",
+      "String":"Кристаллы? Очень хорошо! Самые различные драгоценные камни и образования всегда находятся в цене. Так, сейчас посмотрим, что у вас есть...<br>...<br>У вас на борту находится <0> кристаллов. С учетом наценки из уважения к вашей торговой репутации (<1>%), мы готовы взять товар за <2> cr. Ну что, по рукам?"    
+    },
+    {
+      "#":"150",
+      "String":"<Player>, у вас на борту нет подходящих для сдачи кристаллов. Приходите в следующий раз, когда найдете что-нибудь на незаселенных планетах."    
+    },
+    {
+      "#":"151",
+      "String":"Кредитку разблокировать, говоришь? Что ж, у нас есть спецы на это дело, щас посмотрим, много ли у тебя этого добраа...<br>...<br>Мы отрыли на твоем корыте <0> карт, сумма сбережений на них - <1> cr. Комиссия нашего доминиона равна <2>%, в итоге тебе на счет <3> cr. Переводить?"    
+    },
+    {
+      "#":"152",
+      "String":"Наши лучшие парни нашли на твоем корабле только одну карту, оформленную на имя <Player>. Возвращайся, когда раздобудешь еще карт."    
+    },
+    {
+      "#":"179",
+      "String":"Мы отметили в вашем трюме те предметы, которые представляют для нас особенный интерес. Каждый мы готовы приобрести по утроенной цене."    
+    },
+    {
+      "#":"185",
+      "String":"Спасибо!"    
+    },
+    {
+      "#":"186",
+      "String":"Далее"    
+    },
+    {
+      "#":"187",
+      "String":"Вас понял"    
+    },
+    {
+      "#":"188",
+      "String":"Ясно"    
+    },
+    {
+      "#":"189",
+      "String":"И вам спасибо!"    
+    },
+    {
+      "#":"190",
+      "String":"Вот как? Ну ладно..."    
+    },
+    {
+      "#":"191",
+      "String":"Нет, спасибо"    
+    },
+    {
+      "#":"192",
+      "String":"Рад был помочь"    
+    },
+    {
+      "#":"197",
+      "String":"У меня в трюме нет капсул"    
+    },
+    {
+      "#":"198",
+      "String":"Сдать кристаллы"    
+    },
+    {
+      "#":"199",
+      "String":"Не сейчас"    
+    },
+    {
+      "#":"200",
+      "String":"Понял"    
+    },
+    {
+      "#":"201",
+      "String":"Оформляй перевод"    
+    },
+    {
+      "#":"202",
+      "String":"Я не буду ничего продавать"    
+    },
+    {
+      "#":"204",
+      "String":"Спасательная капсула, в которой лежит капитан лайнера"    
+    },
+    {
+      "#":"205",
+      "String":"Спасательная капсула, в которой лежит капитан транспорта"    
+    },
+    {
+      "#":"206",
+      "String":"Спасательная капсула, в которой лежит дипломат"    
+    },
+    {
+      "#":"207",
+      "String":"Спасательная капсула, в которой лежит пират"    
+    },
+    {
+      "#":"208",
+      "String":"Спасательная капсула, в которой лежит рейнджер"    
+    },
+    {
+      "#":"209",
+      "String":"Также мы предлагаем рейнджерам и прочим пилотам обмен цистерн на единицы нод-счета."    
+    },
+    {
+      "#":"50",
+      "String":"Спасательная капсула, в которой лежит капитан лайнера <0>. Необходимо доставить в ближайший медицинский центр."    
+    },
+    {
+      "#":"51",
+      "String":"Спасательная капсула, в которой лежит капитан транспорта <0>. Необходимо доставить в ближайший медицинский центр."    
+    },
+    {
+      "#":"52",
+      "String":"Спасательная капсула, в которой лежит дипломат <0>. Необходимо доставить в ближайший медицинский центр."    
+    },
+    {
+      "#":"53",
+      "String":"Спасательная капсула, в которой лежит пират <0>. Необходимо доставить в ближайший медицинский центр."    
+    },
+    {
+      "#":"54",
+      "String":"Спасательная капсула, в которой лежит рейнджер <0>. Необходимо доставить в ближайший медицинский центр."    
+    },
+    {
+      "#":"55",
+      "String":"Моонал"    
+    },
+    {
+      "#":"56",
+      "String":"Ашиан"    
+    },
+    {
+      "#":"57",
+      "String":"Бутлегер"    
+    },
+    {
+      "#":"58",
+      "String":"Чхаша"    
+    },
+    {
+      "#":"59",
+      "String":"Хардор"    
+    },
+    {
+      "#":"60",
+      "String":"Плеокан"    
+    },
+    {
+      "#":"61",
+      "String":"Пиолептида"    
+    },
+    {
+      "#":"62",
+      "String":"Астролайнер"    
+    },
+    {
+      "#":"63",
+      "String":"Пачрямба"    
+    },
+    {
+      "#":"64",
+      "String":"Аралита"    
+    },
+    {
+      "#":"65",
+      "String":"Овеон"    
+    },
+    {
+      "#":"66",
+      "String":"Менакен"    
+    },
+    {
+      "#":"67",
+      "String":"Дальнобойщик"    
+    },
+    {
+      "#":"68",
+      "String":"Ческа"    
+    },
+    {
+      "#":"69",
+      "String":"Каргас"    
+    },
+    {
+      "#":"70",
+      "String":"Галит"    
+    },
+    {
+      "#":"71",
+      "String":"Далани"    
+    },
+    {
+      "#":"72",
+      "String":"Консул"    
+    },
+    {
+      "#":"73",
+      "String":"Лянчер"    
+    },
+    {
+      "#":"74",
+      "String":"Рарт"    
+    },
+    {
+      "#":"75",
+      "String":"Ренегал"    
+    },
+    {
+      "#":"76",
+      "String":"Фантом"    
+    },
+    {
+      "#":"77",
+      "String":"Корсар"    
+    },
+    {
+      "#":"78",
+      "String":"Лякуша"    
+    },
+    {
+      "#":"79",
+      "String":"Бамбай"    
+    },
+    {
+      "#":"80",
+      "String":"Изменник"    
+    },
+    {
+      "#":"81",
+      "String":"Рейнджер"    
+    },
+    {
+      "#":"83",
+      "String":"Расскажите подробнее о награде"    
+    },
+    {
+      "#":"84",
+      "String":"К твоему сведению, нами введена награда за головы военных и рейнджеров. Не упусти свой шанс заработать."    
+    },
+    {
+      "#":"85",
+      "String":"Я хочу получить свою награду"    
+    },
+    {
+      "#":"86",
+      "String":"Кстати говоря, братан, у нас тут для тебя залежались <0> cr., как премия за борьбу с фараонами. Не желаешь ли забрать денежки?"    
+    },
+    {
+      "#":"87",
+      "String":"Почему я не могу забрать деньги за убийства?"    
+    },
+    {
+      "#":"88",
+      "String":"По приказу КВСМК, мы награждаем рейнджеров за убийство пиратов. Вы тоже имеете возможность получить премию за головы этих негодяев."    
+    },
+    {
+      "#":"89",
+      "String":"Расскажите о награде за пиратов"    
+    },
+    {
+      "#":"90",
+      "String":"Я хочу получить награду за пиратов"    
+    },
+    {
+      "#":"91",
+      "String":"По приказу КВСМК, мы награждаем рейнджеров за убийство пиратов. Для вас сейчас имеется премия в размере <0> cr."    
+    },
+    {
+      "#":"92",
+      "String":"Почему я не могу забрать награду за пиратов?"    
+    },
+    {
+      "#":"93",
+      "String":"Сдать спасательные капсулы"    
+    },
+    {
+      "#":"94",
+      "String":"Я хочу сдать кристаллы"    
+    },
+    {
+      "#":"95",
+      "String":"Разблокируйте кредитные карты"    
+    },
+    {
+      "#":"96",
+      "String":"Я хочу обменять цистерны"    
+    },
+    {
+      "#":"98",
+      "String":"Сдать уникальные предметы"    
+    }  
+  ]
+}

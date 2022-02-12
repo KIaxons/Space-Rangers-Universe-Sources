@@ -1,0 +1,1829 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  -12,
+  "ViewPos.y":  11,
+  "ScriptName":"MS_Terron",
+  "ScriptFileOut":"H:\\MS_Terron.scr",
+  "ScriptTextOut":"H:\\MS_Terron.txt",
+  "GraphPoint.Count":  82,
+  "GraphLink.Count":  82,
+  "GraphRectText.Count":  1,
+  "Variables.Count":  8,
+  "Stars.Count":  2,
+  "Planets.Count":  1,
+  "Ships.Count":  1,
+  "States.Count":  2,
+  "Groups.Count":  1,
+  "Places.Count":  1,
+  "Items.Count":  0,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  1,
+  "DialogMessages.Count":  22,
+  "DialogAnswers.Count":  25,
+  "Operations.Count":  7,
+  "Statements.Count":  11,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "DialogAnswers":      
+      [
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          960,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          11,
+          "Msg":"Собственно, а ты кто такой?",
+          "AMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1040,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          12,
+          "Msg":"Ага, так это ты сидишь на планете и управляешь всеми терронами! Значит, по твоему приказу они воюют с нами?",
+          "AMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          960,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          13,
+          "Msg":"Каким еще главным делом?",
+          "AMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1040,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          14,
+          "Msg":"Размножение? Ты ведь бесполый?",
+          "AMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          960,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          15,
+          "Msg":"Ну и зачем все это надо?",
+          "AMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1040,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          23,
+          "Msg":"Неслабо. И как успехи?",
+          "AMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          1020,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          24,
+          "Msg":"Спасибо, как-нибудь в другой раз!",
+          "AMsg.Num":"6"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          25,
+          "Msg":"Управляющий! Преобразование это цель моей жизни. Я готов стать доминатором. Что мне нужно сделать?",
+          "AMsg.Num":"7"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          860,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          26,
+          "Msg":"Нет. Я передумал. Смерть доминаторам!",
+          "AMsg.Num":"8"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          810,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          27,
+          "Msg":"Начать загрузку Террона в мозг.",
+          "AMsg.Num":"9"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit_end",
+          "Pos.x":          760,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          28,
+          "Msg":"2842-7343-24634",
+          "AMsg.Num":"10"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          860,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          29,
+          "Msg":"Запустить программу взлома \"Сабмодем\"",
+          "AMsg.Num":"11"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          760,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          31,
+          "Msg":"Я готов, подключиться.",
+          "AMsg.Num":"12"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          600,
+          "Pos.y":          610,
+          "Parent":          -1,
+          "#":          32,
+          "Msg":"Заблокировать систему вооружения Террона.",
+          "AMsg.Num":"13"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          650,
+          "Pos.y":          610,
+          "Parent":          -1,
+          "#":          33,
+          "Msg":"Испортить программу размножения терроноидов.",
+          "AMsg.Num":"14"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          710,
+          "Pos.y":          610,
+          "Parent":          -1,
+          "#":          34,
+          "Msg":"Взломать коды планетарного щита и получить точку высадки.",
+          "AMsg.Num":"15"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          650,
+          "Pos.y":          700,
+          "Parent":          -1,
+          "#":          35,
+          "Msg":"Отключиться.",
+          "AMsg.Num":"16"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          36,
+          "Msg":"Террон! У меня есть для тебя ценная информация.",
+          "AMsg.Num":"17"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1100,
+          "Pos.y":          580,
+          "Parent":          -1,
+          "#":          37,
+          "Msg":"Передаю тебе технологию \"Энерготрон\". Это величайшая разработка по преобразованию энергии в материю.",
+          "AMsg.Num":"18"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1100,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          38,
+          "Msg":"Значит, технология по преобразованию звезд тебя не интересует?",
+          "AMsg.Num":"19"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1100,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          45,
+          "Msg":"Ты шутишь, средняя продолжительность нашего вида равна 9.2 гс. Биологический организм не может прожить тысячу лет.",
+          "AMsg.Num":"20"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          960,
+          "Pos.y":          260,
+          "Parent":          -1,
+          "#":          46,
+          "Msg":"Да ну тебя. Я не собираюсь тут сидеть тысячи лет.",
+          "AMsg.Num":"21"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          960,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          47,
+          "Msg":"Ничего не понимаю. У меня нет Интеркома.",
+          "AMsg.Num":"22"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          1100,
+          "Pos.y":          660,
+          "Parent":          -1,
+          "#":          48,
+          "Msg":"Ну ладно. Преобразовывай, у меня дел своих полно.",
+          "AMsg.Num":"23"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          960,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          69,
+          "Msg":"Отключиться",
+          "AMsg.Num":"24"        
+        }      
+      ],
+      "DialogMessages":      
+      [
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          5,
+          "Msg":"Идентификация завершена. Объект <Player> не принадлежит к моему виду. Присвоенный приоритет - минимальный.",
+          "DMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1000,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          6,
+          "Msg":"Я, Управляющий, серия \"террон\", номер #0.",
+          "DMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          7,
+          "Msg":"Твои выводы нелогичны. Во-первых, я и есть планета. Во-вторых, я не воюю. Я, Управляющий, занимаюсь Главным Делом.",
+          "DMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          8,
+          "Msg":"Разумеется, я не пользуюсь столь отсталыми методами размножения. Я с помощью нанотехнологий преобразую все объекты, живые и неживые, разумные и неразумные, в элементы моего тела и тела моих подчиненных.",
+          "DMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1000,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          9,
+          "Msg":"Конечная цель - превратить в мой вид всю материю во Вселенной.",
+          "DMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1000,
+          "Pos.y":          360,
+          "Parent":          -1,
+          "#":          10,
+          "Msg":"Главное Дело - это размножение и экспансия своего вида.",
+          "DMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          420,
+          "Parent":          -1,
+          "#":          16,
+          "Msg":"Я уже превратил в свое тело все вещество этой планеты. Но ты задаешь слишком много вопросов для объекта с минимальным приоритетом. Оставайся на месте, и я преобразую тебя.",
+          "DMsg.Num":"6"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          860,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          17,
+          "Msg":"Подключись к бортовому компьютеру. Приготовься к загрузке начальных данных.",
+          "DMsg.Num":"7"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          810,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          18,
+          "Msg":"Подключись к бортовому компьютеру. Приготовься к загрузке начальных данных.\r\n...\r\nПрограмма взлома \"Сабмодем\" активна.",
+          "DMsg.Num":"8"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          710,
+          "Pos.y":          520,
+          "Parent":          -1,
+          "#":          19,
+          "Msg":"Начинаю загрузку данных.\r\n...\r\nПрограмма взлома \"Сабмодем\". Отчет:\r\nПолучен доступ к системе вооружения, программе размножения терроноидов. Получены коды доступа к планетарному щиту Террона и части его коммуникаций.",
+          "DMsg.Num":"9"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          600,
+          "Pos.y":          660,
+          "Parent":          -1,
+          "#":          20,
+          "Msg":"В системе вирус! Отключение контакта.\r\n...\r\nПрограмма взлома \"Сабмодем\". Отчет:\r\nВыведена из строя система вооружения Террона. Объект парализован и беззащитен. Программа \"Сабмодем\" желает вам удачи в бою!",
+          "DMsg.Num":"10"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          650,
+          "Pos.y":          660,
+          "Parent":          -1,
+          "#":          21,
+          "Msg":"В системе вирус! Отключение контакта.\r\n...\r\nПрограмма взлома \"Сабмодем\". Отчет:\r\nЗапись хаотичных данных в ПЗУ системы размножения прошла успешно. До полной перезагрузки терроноидам запрещено создавать новые корабли. Программа \"Сабмодем\" желает вам приятно провести время!",
+          "DMsg.Num":"11"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          710,
+          "Pos.y":          660,
+          "Parent":          -1,
+          "#":          22,
+          "Msg":"В системе вирус! Отключение контакта.\r\n...\r\nПрограмма взлома \"Сабмодем\". Отчет:\r\nУспешно разблокированы коды планетарного щита. Открыт доступ к посадке на объект Террон. Часть территории планеты взята под контроль. Координаты высадки введены в бортовой компьютер. Программа \"Сабмодем\" желает вам мягкой посадки!",
+          "DMsg.Num":"12"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          760,
+          "Pos.y":          460,
+          "Parent":          -1,
+          "#":          30,
+          "Msg":"Данные загружены. Терроид #5682 приготовьтесь к преобразованию молекулярной структуры. Введите свой код.",
+          "DMsg.Num":"13"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          500,
+          "Parent":          -1,
+          "#":          39,
+          "Msg":"Я не принимаю данных от тех, кто не принадлежит к моему виду. Ты должен быть превращен в одного из нас.",
+          "DMsg.Num":"14"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          260,
+          "Parent":          -1,
+          "#":          40,
+          "Msg":"Объект <Player>. Оставайся на месте и ожидай окончания процесса преобразования звезды. Ты следующий.",
+          "DMsg.Num":"15"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          420,
+          "Parent":          -1,
+          "#":          41,
+          "Msg":"Я, Управляющий, занимаюсь Главным Делом. Оставайся на месте <Player> и приготовься к преобразованию.",
+          "DMsg.Num":"16"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1050,
+          "Pos.y":          660,
+          "Parent":          -1,
+          "#":          42,
+          "Msg":"Время преобразования можно сократить, если использовать все ресурсы. Для этого я уже вызвал свои корабли. Моя задача преобразовать всю материю к своему виду. Ожидай своей трансформации сколько потребуется. Конец связи.",
+          "DMsg.Num":"17"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1050,
+          "Pos.y":          580,
+          "Parent":          -1,
+          "#":          43,
+          "Msg":"Меня интересует всё, что можно преобразовать. Требуются данные.",
+          "DMsg.Num":"18"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1050,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          44,
+          "Msg":"Данные получены. Приоритет преобразования звезды равен максимальному. Расчетное время: 112 гс. Оставайтесь на месте, ожидайте конца преобразования.",
+          "DMsg.Num":"19"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          56,
+          "Msg":"k32824242j 42k3jl2k34j scnsjnzb hweflwioefj ww134hkwh3 24uh42 23h429u42 2h34u234h2 ikjds6s0 sd2d55f 6dfg5d 3df1df8 6d65fgd2f2 7d8d7f5g 2j4nnk2j 2k4k2n5 n1n85k7b 934b6 5k6n4n35 34j5k2k0n45n 3800n4 352nk2 k423n4 4k6294 k23j45 3451295kj67j8 23kj2 5nk436 23k5j 5n4645 j35n3j45 456j345n 72k3j4n",
+          "DMsg.Num":"20"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          68,
+          "Msg":"В системе вирус! Отключение контакта.",
+          "DMsg.Num":"21"        
+        }      
+      ],
+      "Dialogs":      
+      [
+        {
+          "Type":"TDialog",
+          "Name":"dTerron",
+          "Pos.x":          760,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          4        
+        }      
+      ],
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"GroupTerron",
+          "Pos.x":          380,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          1,
+          "Owner":          64,
+          "Group.Type":          524289,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":false,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          890,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          52,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"MS_Terron_DialogOk=1"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1130,
+          "Pos.y":          620,
+          "Parent":          -1,
+          "#":          55,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"MS_Terron_ToStar=1;",
+"TerronToStar()"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          670,
+          "Pos.y":          650,
+          "Parent":          -1,
+          "#":          66,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"MS_Terron_Crack=1"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          570,
+          "Pos.y":          610,
+          "Parent":          -1,
+          "#":          70,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"TerronWeaponLock()"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          670,
+          "Pos.y":          610,
+          "Parent":          -1,
+          "#":          71,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"TerronGrowLock()"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          730,
+          "Pos.y":          610,
+          "Parent":          -1,
+          "#":          72,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"TerronLandingLock()"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          620,
+          "Pos.y":          610,
+          "Parent":          -1,
+          "#":          77,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"MS_Terron_Crack_Submodem=1;"          
+          ]        
+        }      
+      ],
+      "Places":      
+      [
+        {
+          "Type":"TPlace",
+          "Name":"PlaceToStar",
+          "Pos.x":          470,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          58,
+          "Place.Type":          0,
+          "Angle":"0",
+          "Dist":"0",
+          "Radius":          0,
+          "Obj1":          -1,
+          "Obj2":          -1        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"Planet",
+          "Pos.x":          380,
+          "Pos.y":          290,
+          "Parent":          -1,
+          "#":          2,
+          "Race":          62,
+          "Owner":          62,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          300,
+          "Pos.y":          290,
+          "Parent":          -1,
+          "#":          61,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"StarTerron",
+          "Pos.x":          380,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          0,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":false,
+          "NoComeKling":false        
+        },
+        {
+          "Type":"TStar",
+          "Name":"StarPlayer",
+          "Pos.x":          300,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          62,
+          "Constellation":          0,
+          "Priority":          1,
+          "NoKling":false,
+          "NoComeKling":false        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          870,
+          "Pos.y":          390,
+          "Parent":          -1,
+          "#":          50,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"HaveProgramm(progIntercom) && MS_Terron_DialogOk && !MS_Terron_ToStar && !MS_Terron_Crack"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          870,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          51,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"HaveProgramm(progIntercom) && !MS_Terron_DialogOk && !MS_Terron_ToStar && !MS_Terron_Crack"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          870,
+          "Pos.y":          260,
+          "Parent":          -1,
+          "#":          54,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"HaveProgramm(progIntercom) && MS_Terron_ToStar"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          870,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          57,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"!HaveProgramm(progIntercom)"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          380,
+          "Pos.y":          380,
+          "Parent":          -1,
+          "#":          59,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"MS_Terron_ToStar"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          1050,
+          "Pos.y":          540,
+          "Parent":          -1,
+          "#":          63,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"HaveProgramm(progEnergotron)"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          860,
+          "Pos.y":          490,
+          "Parent":          -1,
+          "#":          64,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"HaveProgramm(progSabCrack)"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          870,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          67,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"HaveProgramm(progIntercom) && MS_Terron_Crack"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          710,
+          "Pos.y":          580,
+          "Parent":          -1,
+          "#":          73,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"RobotSupport()"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          650,
+          "Pos.y":          580,
+          "Parent":          -1,
+          "#":          74,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          600,
+          "Pos.y":          580,
+          "Parent":          -1,
+          "#":          75,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"1"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"stTerron",
+          "Pos.x":          380,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          3,
+          "Move":          0,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"dTerron",
+          "OnActCode":"dTerron",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        },
+        {
+          "Type":"TState",
+          "Name":"stToStar",
+          "Pos.x":          380,
+          "Pos.y":          410,
+          "Parent":          -1,
+          "#":          60,
+          "Move":          1,
+          "MoveObj":          58,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"dTerron",
+          "OnActCode":"dTerron",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":"TVar",
+          "Name":"MS_Terron_DialogOk",
+          "Pos.x":          640,
+          "Pos.y":          70,
+          "Parent":          -1,
+          "#":          49,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":true        
+        },
+        {
+          "Type":"TVar",
+          "Name":"MS_Terron_ToStar",
+          "Pos.x":          800,
+          "Pos.y":          70,
+          "Parent":          -1,
+          "#":          53,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":true        
+        },
+        {
+          "Type":"TVar",
+          "Name":"MS_Terron_Crack",
+          "Pos.x":          940,
+          "Pos.y":          70,
+          "Parent":          -1,
+          "#":          65,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":true        
+        },
+        {
+          "Type":"TVar",
+          "Name":"MS_Terron_Crack_Submodem",
+          "Pos.x":          1080,
+          "Pos.y":          70,
+          "Parent":          -1,
+          "#":          76,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":true        
+        },
+        {
+          "Type":"TVar",
+          "Name":"i",
+          "Pos.x":          570,
+          "Pos.y":          290,
+          "Parent":          -1,
+          "#":          78,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"j",
+          "Pos.x":          600,
+          "Pos.y":          290,
+          "Parent":          -1,
+          "#":          79,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_star",
+          "Pos.x":          570,
+          "Pos.y":          330,
+          "Parent":          -1,
+          "#":          80,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"tdw1",
+          "Pos.x":          570,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          81,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      1,
+      "End":      2,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      2,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      1,
+      "End":      3,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      5,
+      "End":      11,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      11,
+      "End":      6,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      6,
+      "End":      12,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      12,
+      "End":      7,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      13,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      13,
+      "End":      10,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      10,
+      "End":      14,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      14,
+      "End":      8,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      8,
+      "End":      15,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      15,
+      "End":      9,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      9,
+      "End":      23,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      23,
+      "End":      16,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      16,
+      "End":      24,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      16,
+      "End":      25,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      25,
+      "End":      17,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      17,
+      "End":      26,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      17,
+      "End":      27,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      27,
+      "End":      30,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      30,
+      "End":      28,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      29,
+      "End":      18,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      18,
+      "End":      31,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      31,
+      "End":      19,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      27,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      33,
+      "End":      21,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      34,
+      "End":      22,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      20,
+      "End":      35,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      21,
+      "End":      35,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      22,
+      "End":      35,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      16,
+      "End":      36,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      36,
+      "End":      39,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      39,
+      "End":      24,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      39,
+      "End":      25,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      43,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      43,
+      "End":      37,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      37,
+      "End":      44,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      44,
+      "End":      45,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      45,
+      "End":      42,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      42,
+      "End":      48,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      4,
+      "End":      51,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      4,
+      "End":      50,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      50,
+      "End":      41,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      41,
+      "End":      25,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      41,
+      "End":      24,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      41,
+      "End":      36,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      40,
+      "End":      46,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      4,
+      "End":      54,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      54,
+      "End":      40,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      45,
+      "End":      55,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      56,
+      "End":      47,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      4,
+      "End":      57,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      57,
+      "End":      56,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      58,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      3,
+      "End":      59,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      59,
+      "End":      60,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      61,
+      "End":      62,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      39,
+      "End":      63,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      63,
+      "End":      38,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      17,
+      "End":      64,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      64,
+      "End":      29,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      34,
+      "End":      66,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      33,
+      "End":      66,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      4,
+      "End":      67,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      67,
+      "End":      68,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      68,
+      "End":      69,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      32,
+      "End":      70,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      33,
+      "End":      71,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      34,
+      "End":      72,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      73,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      73,
+      "End":      34,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      74,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      74,
+      "End":      33,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      75,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      75,
+      "End":      32,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      51,
+      "End":      52,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      52,
+      "End":      5,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      32,
+      "End":      20,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      32,
+      "End":      77,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      77,
+      "End":      66,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TStarLink",
+      "Begin":      62,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":false,
+      "DistMin":      0,
+      "DistMax":      1000,
+      "Hole":false    
+    }  
+  ],
+  "Rect.Text":  
+  [
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      133,
+      "Rect.Top":      113,
+      "Rect.Right":      1087,
+      "Rect.Bottom":      130,
+      "FStyle":      0,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      0,
+      "AlignY":      0,
+      "AlignRect":false,
+      "Text":"",
+      "Color":      16777215,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  47,
+  "BlockPar.EC":  
+  [
+    {
+      "#":"0",
+      "String":"Идентификация завершена. Объект <Player> не принадлежит к моему виду. Присвоенный приоритет - минимальный."    
+    },
+    {
+      "#":"1",
+      "String":"Я, Управляющий, серия \"террон\", номер #0."    
+    },
+    {
+      "#":"13",
+      "String":"Данные загружены. Терроид #5682 приготовьтесь к преобразованию молекулярной структуры. Введите свой код."    
+    },
+    {
+      "#":"14",
+      "String":"Я не принимаю данных от тех, кто не принадлежит к моему виду. Ты должен быть превращен в одного из нас."    
+    },
+    {
+      "#":"15",
+      "String":"Объект <Player>. Оставайся на месте и ожидай окончания процесса преобразования звезды. Ты следующий."    
+    },
+    {
+      "#":"16",
+      "String":"Я, Управляющий, занимаюсь Главным Делом. Оставайся на месте <Player> и приготовься к преобразованию."    
+    },
+    {
+      "#":"17",
+      "String":"Время преобразования можно сократить, если использовать все ресурсы. Для этого я уже вызвал свои корабли. Моя задача преобразовать всю материю к своему виду. Ожидай своей трансформации сколько потребуется. Конец связи."    
+    },
+    {
+      "#":"18",
+      "String":"Меня интересует всё, что можно преобразовать. Требуются данные."    
+    },
+    {
+      "#":"19",
+      "String":"Данные получены. Приоритет преобразования звезды равен максимальному. Расчетное время: 112 гс. Оставайтесь на месте, ожидайте конца преобразования."    
+    },
+    {
+      "#":"2",
+      "String":"Твои выводы нелогичны. Во-первых, я и есть планета. Во-вторых, я не воюю. Я, Управляющий, занимаюсь Главным Делом."    
+    },
+    {
+      "#":"20",
+      "String":"k32824242j 42k3jl2k34j scnsjnzb hweflwioefj ww134hkwh3 24uh42 23h429u42 2h34u234h2 ikjds6s0 sd2d55f 6dfg5d 3df1df8 6d65fgd2f2 7d8d7f5g 2j4nnk2j 2k4k2n5 n1n85k7b 934b6 5k6n4n35 34j5k2k0n45n 3800n4 352nk2 k423n4 4k6294 k23j45 3451295kj67j8 23kj2 5nk436 23k5j 5n4645 j35n3j45 456j345n 72k3j4n"    
+    },
+    {
+      "#":"21",
+      "String":"Собственно, а ты кто такой?"    
+    },
+    {
+      "#":"22",
+      "String":"Ага, так это ты сидишь на планете и управляешь всеми терронами! Значит, по твоему приказу они воюют с нами?"    
+    },
+    {
+      "#":"23",
+      "String":"Каким еще главным делом?"    
+    },
+    {
+      "#":"24",
+      "String":"Размножение? Ты ведь бесполый?"    
+    },
+    {
+      "#":"25",
+      "String":"Ну и зачем все это надо?"    
+    },
+    {
+      "#":"26",
+      "String":"Неслабо. И как успехи?"    
+    },
+    {
+      "#":"27",
+      "String":"Спасибо, как-нибудь в другой раз!"    
+    },
+    {
+      "#":"28",
+      "String":"Управляющий! Преобразование это цель моей жизни. Я готов стать доминатором. Что мне нужно сделать?"    
+    },
+    {
+      "#":"29",
+      "String":"Нет. Я передумал. Смерть доминаторам!"    
+    },
+    {
+      "#":"3",
+      "String":"Разумеется, я не пользуюсь столь отсталыми методами размножения. Я с помощью нанотехнологий преобразую все объекты, живые и неживые, разумные и неразумные, в элементы моего тела и тела моих подчиненных."    
+    },
+    {
+      "#":"30",
+      "String":"Начать загрузку Террона в мозг."    
+    },
+    {
+      "#":"31",
+      "String":"2842-7343-24634"    
+    },
+    {
+      "#":"32",
+      "String":"Запустить программу взлома \"Сабмодем\""    
+    },
+    {
+      "#":"33",
+      "String":"Я готов, подключиться."    
+    },
+    {
+      "#":"37",
+      "String":"Отключиться"    
+    },
+    {
+      "#":"38",
+      "String":"Террон! У меня есть для тебя ценная информация."    
+    },
+    {
+      "#":"39",
+      "String":"Передаю тебе технологию \"Энерготрон\". Это величайшая разработка по преобразованию энергии в материю."    
+    },
+    {
+      "#":"4",
+      "String":"Конечная цель - превратить в мой вид всю материю во Вселенной."    
+    },
+    {
+      "#":"40",
+      "String":"Значит, технология по преобразованию звезд тебя не интересует?"    
+    },
+    {
+      "#":"41",
+      "String":"Ты шутишь, средняя продолжительность нашего вида равна 9.2 гс. Биологический организм не может прожить тысячу лет."    
+    },
+    {
+      "#":"42",
+      "String":"Да ну тебя. Я не собираюсь тут сидеть тысячи лет."    
+    },
+    {
+      "#":"43",
+      "String":"Ничего не понимаю. У меня нет Интеркома."    
+    },
+    {
+      "#":"44",
+      "String":"Ну ладно. Преобразовывай, у меня дел своих полно."    
+    },
+    {
+      "#":"45",
+      "String":"В системе вирус! Отключение контакта."    
+    },
+    {
+      "#":"46",
+      "String":"В системе вирус! Отключение контакта.<br>...<br>Программа взлома \"Сабмодем\". Отчет:<br>Выведена из строя система вооружения Террона. Объект парализован и беззащитен. Программа \"Сабмодем\" желает вам удачи в бою!"    
+    },
+    {
+      "#":"47",
+      "String":"В системе вирус! Отключение контакта.<br>...<br>Программа взлома \"Сабмодем\". Отчет:<br>Запись хаотичных данных в ПЗУ системы размножения прошла успешно. До полной перезагрузки терроноидам запрещено создавать новые корабли. Программа \"Сабмодем\" желает вам приятно провести время!"    
+    },
+    {
+      "#":"48",
+      "String":"В системе вирус! Отключение контакта.<br>...<br>Программа взлома \"Сабмодем\". Отчет:<br>Успешно разблокированы коды планетарного щита. Открыт доступ к посадке на объект Террон. Часть территории планеты взята под контроль. Координаты высадки введены в бортовой компьютер. Программа \"Сабмодем\" желает вам мягкой посадки!"    
+    },
+    {
+      "#":"49",
+      "String":"Заблокировать систему вооружения Террона."    
+    },
+    {
+      "#":"5",
+      "String":"Главное Дело - это размножение и экспансия своего вида."    
+    },
+    {
+      "#":"50",
+      "String":"Испортить программу размножения терроноидов."    
+    },
+    {
+      "#":"51",
+      "String":"Взломать коды планетарного щита и получить точку высадки."    
+    },
+    {
+      "#":"52",
+      "String":"Начинаю загрузку данных.<br>...<br>Программа взлома \"Сабмодем\". Отчет:<br>Получен доступ к системе вооружения, программе размножения терроноидов. Получены коды доступа к планетарному щиту Террона и части его коммуникаций."    
+    },
+    {
+      "#":"53",
+      "String":"Отключиться."    
+    },
+    {
+      "#":"6",
+      "String":"Я уже превратил в свое тело все вещество этой планеты. Но ты задаешь слишком много вопросов для объекта с минимальным приоритетом. Оставайся на месте, и я преобразую тебя."    
+    },
+    {
+      "#":"7",
+      "String":"Подключись к бортовому компьютеру. Приготовься к загрузке начальных данных."    
+    },
+    {
+      "#":"8",
+      "String":"Подключись к бортовому компьютеру. Приготовься к загрузке начальных данных.<br>...<br>Программа взлома \"Сабмодем\" активна."    
+    }  
+  ]
+}

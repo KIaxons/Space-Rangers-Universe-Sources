@@ -1,0 +1,2289 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  -53,
+  "ViewPos.y":  -226,
+  "ScriptName":"Mod_ExpHulls",
+  "ScriptFileOut":"H:\\Mod_ExpHulls.scr",
+  "ScriptTextOut":"H:\\Mod_ExpHulls.txt",
+  "GraphPoint.Count":  105,
+  "GraphLink.Count":  82,
+  "GraphRectText.Count":  3,
+  "Variables.Count":  19,
+  "Stars.Count":  1,
+  "Planets.Count":  1,
+  "Ships.Count":  1,
+  "States.Count":  1,
+  "Groups.Count":  1,
+  "Places.Count":  0,
+  "Items.Count":  0,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  6,
+  "DialogMessages.Count":  9,
+  "DialogAnswers.Count":  24,
+  "Operations.Count":  21,
+  "Statements.Count":  21,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "DialogAnswers":      
+      [
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          1080,
+          "Pos.y":          -20,
+          "Parent":          -1,
+          "#":          8,
+          "Msg":"Служу Галактике!",
+          "AMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          950,
+          "Pos.y":          -50,
+          "Parent":          -1,
+          "#":          22,
+          "Msg":"Первый вариант за <cost_variation[0]> cr.",
+          "AMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          950,
+          "Pos.y":          -20,
+          "Parent":          -1,
+          "#":          23,
+          "Msg":"Второй вариант за <cost_variation[1]> cr.",
+          "AMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          950,
+          "Pos.y":          10,
+          "Parent":          -1,
+          "#":          24,
+          "Msg":"Третий вариант за <cost_variation[2]> cr.",
+          "AMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          1080,
+          "Pos.y":          130,
+          "Parent":          -1,
+          "#":          34,
+          "Msg":"Само собой!",
+          "AMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          1090,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          41,
+          "Msg":"Не сомневайтесь!",
+          "AMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1000,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          51,
+          "Msg":"Первый вариант за <cost_variation[0]> cr. и <nod_cost_variation[0]> нд.",
+          "AMsg.Num":"6"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1000,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          52,
+          "Msg":"Второй вариант за <cost_variation[1]> cr. и <nod_cost_variation[1]> нд.",
+          "AMsg.Num":"7"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          1000,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          53,
+          "Msg":"Третий вариант за <cost_variation[2]> cr. и <nod_cost_variation[2]> нд.",
+          "AMsg.Num":"8"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          750,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          58,
+          "Msg":"",
+          "AMsg.Num":"9"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"block",
+          "Pos.x":          950,
+          "Pos.y":          -60,
+          "Parent":          -1,
+          "#":          62,
+          "Msg":"Первый вариант за <cost_variation[0]> cr.",
+          "AMsg.Num":"10"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"block",
+          "Pos.x":          950,
+          "Pos.y":          -30,
+          "Parent":          -1,
+          "#":          63,
+          "Msg":"Второй вариант за <cost_variation[1]> cr.",
+          "AMsg.Num":"11"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"block",
+          "Pos.x":          950,
+          "Pos.y":          0,
+          "Parent":          -1,
+          "#":          64,
+          "Msg":"Третий вариант за <cost_variation[2]> cr.",
+          "AMsg.Num":"12"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"block",
+          "Pos.x":          1000,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          67,
+          "Msg":"Второй вариант за <cost_variation[1]> cr. и <nod_cost_variation[1]> нд.",
+          "AMsg.Num":"13"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"block",
+          "Pos.x":          1000,
+          "Pos.y":          310,
+          "Parent":          -1,
+          "#":          68,
+          "Msg":"Третий вариант за <cost_variation[2]> cr. и <nod_cost_variation[2]> нд.",
+          "AMsg.Num":"14"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"block",
+          "Pos.x":          1000,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          72,
+          "Msg":"Первый вариант за <cost_variation[0]> cr. и <nod_cost_variation[0]> нд.",
+          "AMsg.Num":"15"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"exit",
+          "Pos.x":          1100,
+          "Pos.y":          20,
+          "Parent":          -1,
+          "#":          75,
+          "Msg":"",
+          "AMsg.Num":"16"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"restart",
+          "Pos.x":          1020,
+          "Pos.y":          70,
+          "Parent":          -1,
+          "#":          83,
+          "Msg":"Далее",
+          "AMsg.Num":"17"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"block",
+          "Pos.x":          960,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          94,
+          "Msg":"Первый вариант за <cost_variation[0]> cr.",
+          "AMsg.Num":"18"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          960,
+          "Pos.y":          90,
+          "Parent":          -1,
+          "#":          95,
+          "Msg":"Первый вариант за <cost_variation[0]> cr.",
+          "AMsg.Num":"19"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"block",
+          "Pos.x":          960,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          96,
+          "Msg":"Второй вариант за <cost_variation[1]> cr.",
+          "AMsg.Num":"20"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          960,
+          "Pos.y":          130,
+          "Parent":          -1,
+          "#":          97,
+          "Msg":"Второй вариант за <cost_variation[1]> cr.",
+          "AMsg.Num":"21"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"block",
+          "Pos.x":          960,
+          "Pos.y":          150,
+          "Parent":          -1,
+          "#":          98,
+          "Msg":"Третий вариант за <cost_variation[2]> cr.",
+          "AMsg.Num":"22"        
+        },
+        {
+          "Type":"TDialogAnswer",
+          "Name":"",
+          "Pos.x":          960,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          99,
+          "Msg":"Третий вариант за <cost_variation[2]> cr.",
+          "AMsg.Num":"23"        
+        }      
+      ],
+      "DialogMessages":      
+      [
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          890,
+          "Pos.y":          -20,
+          "Parent":          -1,
+          "#":          7,
+          "Msg":"<temp_str>",
+          "DMsg.Num":"0"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1020,
+          "Pos.y":          -20,
+          "Parent":          -1,
+          "#":          17,
+          "Msg":"Хороший выбор, <PlayerFull>!\r\nСкоро механики закончат работу и доставят корпус на склад, откуда ты и сможешь его забрать.\r\nНадеюсь, этот грозный корабль ещё наведёт шороху среди врагов Коалиции!",
+          "DMsg.Num":"1"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1020,
+          "Pos.y":          130,
+          "Parent":          -1,
+          "#":          32,
+          "Msg":"Хорошее решение, <Player>!\r\nСкоро всё будет готово в лучшем виде. Как соберёшься - топай на склад, там и найдёшь свою новую птичку.\r\nТы только задай там жару этим воякам-дуболомам, а? Братва прям в натуре от души постаралась.",
+          "DMsg.Num":"2"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          880,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          38,
+          "Msg":"<temp_str>",
+          "DMsg.Num":"3"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1050,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          39,
+          "Msg":"Весьма разумный выбор, <PlayerFull>.\r\nСкоро ваш заказ будет готов и доставлен на склад, откуда вы сможете его забрать в любое удобное время.\r\nПусть этот высокотехнологичный корпус достойно послужит делу прогресса!",
+          "DMsg.Num":"4"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          800,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          56,
+          "Msg":"Как, разве вы не хотите послужить благородному делу науки? Очень жаль, <Player> - очень, очень жаль.",
+          "DMsg.Num":"5"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1080,
+          "Pos.y":          20,
+          "Parent":          -1,
+          "#":          57,
+          "Msg":"Что!? Да как ты смеешь отказываться от столь щедрого предложения, когда у нас каждый боевой корабль на счету?! Видно, командование в тебе всё-таки ошиблось, <Player>...",
+          "DMsg.Num":"6"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          880,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          80,
+          "Msg":"<temp_str>",
+          "DMsg.Num":"7"        
+        },
+        {
+          "Type":"TDialogMsg",
+          "Name":"",
+          "Pos.x":          1020,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          84,
+          "Msg":"Ну так вот и лети на ней отседова! Только помни, <Player>, если в перестрелке с первым же транспортом эта твоя лоханка вдруг развалится - это всё был твой осознанный выбор.",
+          "DMsg.Num":"8"        
+        }      
+      ],
+      "Dialogs":      
+      [
+        {
+          "Type":"TDialog",
+          "Name":"RBK_Dialog_WB",
+          "Pos.x":          680,
+          "Pos.y":          -20,
+          "Parent":          -1,
+          "#":          6        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"RBK_Dialog_SB",
+          "Pos.x":          680,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          36        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"ExitSB",
+          "Pos.x":          830,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          69        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"ExitDB",
+          "Pos.x":          1020,
+          "Pos.y":          20,
+          "Parent":          -1,
+          "#":          74        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"RBK_Dialog_PB",
+          "Pos.x":          680,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          78        
+        },
+        {
+          "Type":"TDialog",
+          "Name":"ExitPB",
+          "Pos.x":          1080,
+          "Pos.y":          100,
+          "Parent":          -1,
+          "#":          82        
+        }      
+      ],
+      "Groups":      
+      [
+        {
+          "Type":"TGroup",
+          "Name":"PlayerGroup",
+          "Pos.x":          380,
+          "Pos.y":          -60,
+          "Parent":          -1,
+          "#":          2,
+          "Owner":          62,
+          "Group.Type":          126,
+          "CntShipMin":          1,
+          "CntShipMax":          1,
+          "SpeedMin":          100,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "AddPlayer":true,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "DistSearch":          10000,
+          "Dialog":          -1,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          480,
+          "Pos.y":          -80,
+          "Parent":          -1,
+          "#":          5,
+          "Total.Lines":          1,
+          "Code.Type":"Global",
+          "Code":          
+          [
+"GRun();"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          830,
+          "Pos.y":          -20,
+          "Parent":          -1,
+          "#":          9,
+          "Total.Lines":          25,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(ShipRank(Player()) == 3) bonus_type = FindBonusByNameInCfg('ExpHulls_Rock1');",
+"else if(ShipRank(Player()) == 4) bonus_type = FindBonusByNameInCfg('ExpHulls_Rock2');",
+"else if(ShipRank(Player()) == 5) bonus_type = FindBonusByNameInCfg('ExpHulls_Rock3');",
+"else if(ShipRank(Player()) == 6) bonus_type = FindBonusByNameInCfg('ExpHulls_Rock4');",
+"else if(ShipRank(Player()) >= 7) bonus_type = FindBonusByNameInCfg('ExpHulls_Rock5');",
+"",
+"i=0;",
+"while(i < 3)",
+"{",
+"    temp_hull = CreateHull(2, 100 + (100 + 25 * i) * GalaxyTechLevel(), GalaxyTechLevel(), 2);",
+"    basic_size_variation[i] = ItemSize(temp_hull);",
+"    if(bonus_type > -1)SpecialToEquipment(bonus_type, temp_hull);",
+"    ItemCost(temp_hull, ItemCost(temp_hull) / 2);",
+"    cost_variation[i] = ItemCost(temp_hull);",
+"    size_variation[i] = ItemSize(temp_hull);",
+"    FreeItem(temp_hull);",
+"    i = i + 1;",
+"}",
+"if(GetGameOptions('FontDialog') == 0) DefSplt = '</color>-------------------------------------------------------------';",
+"else if(GetGameOptions('FontDialog') == 1) DefSplt = '</color>------------------------------------------';",
+"else if(GetGameOptions('FontDialog') == 2) DefSplt = '</color>-----------------------------------------';",
+"else DefSplt = '</color>-------------------------------------';",
+"",
+"temp_str = GetParFromString(BonusName(bonus_type), CT('FormInfo.DoubleQuote'), 1, 1) + GetParFromString(BonusName(bonus_type), CT('FormInfo.DoubleQuote'), 2, 0);",
+"temp_str = '</color>' + \"С учётом твоего звания мы можем предложить тебе корпус <temp_str>:<br><DefSplt><br>\"+BonusText(bonus_type) + \"<br> <br>В зависимости от твоего пилотажного стиля, ты можешь выбрать один из трёх корпусов разного размера, а мы, исходя из текущей боевой обстановки, успеем изготовить следующие варианты:<br><br>1. Размер <size_variation[0]> ед. (<cost_variation[0]> cr.)<br>2. Размер <size_variation[1]> ед. (<cost_variation[1]> cr.)<br>3. Размер <size_variation[2]> ед. (<cost_variation[2]> cr.)<br><DefSplt><br>Ну что, <Player>, какой из них тебе больше по нраву?\";"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1050,
+          "Pos.y":          -20,
+          "Parent":          -1,
+          "#":          18,
+          "Total.Lines":          8,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"hull_gift = CreateHull(2, selected_size, GalaxyTechLevel(), ShipPilotRace(cur_ruin));",
+"if(bonus_type > -1) SpecialToEquipment(bonus_type, hull_gift);",
+"ItemCost(hull_gift, ItemCost(hull_gift) / 2);",
+"AddItemToStorage(GetShipRuins(Player()), hull_gift);",
+"",
+"MB_countdown = CurTurn() + 183;",
+"ShipMoney(Player(), ShipMoney(Player()) - selected_cost);",
+"Sound('Sound.Buy');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          -50,
+          "Parent":          -1,
+          "#":          19,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"selected_size=basic_size_variation[0];",
+"selected_cost=cost_variation[0];"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          -20,
+          "Parent":          -1,
+          "#":          20,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"selected_size=basic_size_variation[1];",
+"selected_cost=cost_variation[1];"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          10,
+          "Parent":          -1,
+          "#":          21,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"selected_size=basic_size_variation[2];",
+"selected_cost=cost_variation[2];"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          90,
+          "Parent":          -1,
+          "#":          29,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"selected_size=basic_size_variation[0];",
+"selected_cost=cost_variation[0];"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          130,
+          "Parent":          -1,
+          "#":          30,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"selected_size=basic_size_variation[1];",
+"selected_cost=cost_variation[1];"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          31,
+          "Total.Lines":          2,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"selected_size=basic_size_variation[2];",
+"selected_cost=cost_variation[2];"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1050,
+          "Pos.y":          130,
+          "Parent":          -1,
+          "#":          33,
+          "Total.Lines":          8,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"hull_gift = CreateHull(2, selected_size, GalaxyTechLevel(), ShipPilotRace(cur_ruin), -1, 1);",
+"if(bonus_type > -1) SpecialToEquipment(bonus_type, hull_gift);",
+"ItemCost(hull_gift, ItemCost(hull_gift) / 2);",
+"AddItemToStorage(GetShipRuins(Player()), hull_gift);",
+"",
+"PB_countdown = CurTurn() + 183;",
+"ShipMoney(Player(), ShipMoney(Player()) - selected_cost);",
+"Sound('Sound.Buy');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          500,
+          "Pos.y":          -80,
+          "Parent":          -1,
+          "#":          35,
+          "Total.Lines":          4,
+          "Code.Type":"Init",
+          "Code":          
+          [
+"basic_size_variation = newarray(3);",
+"size_variation = newarray(3);",
+"cost_variation = newarray(3);",
+"nod_cost_variation = newarray(3);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          830,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          37,
+          "Total.Lines":          27,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(GalaxyTechLevel() == 4) bonus_type = FindBonusByNameInCfg('ExpHulls_Bolide1');",
+"else if(GalaxyTechLevel() == 5) bonus_type = FindBonusByNameInCfg('ExpHulls_Bolide2');",
+"else if(GalaxyTechLevel() == 6) bonus_type = FindBonusByNameInCfg('ExpHulls_Bolide3');",
+"else if(GalaxyTechLevel() == 7) bonus_type = FindBonusByNameInCfg('ExpHulls_Bolide4');",
+"else if(GalaxyTechLevel() >= 8) bonus_type = FindBonusByNameInCfg('ExpHulls_Bolide5');",
+"",
+"i = 0;",
+"while(i < 3)",
+"{",
+"    temp_hull = CreateHull(2, 100 + (100 + 25 * i) * GalaxyTechLevel(), GalaxyTechLevel(), 2);",
+"    basic_size_variation[i] = ItemSize(temp_hull);",
+"    if(bonus_type > -1)SpecialToEquipment(bonus_type, temp_hull);",
+"    ItemCost(temp_hull, ItemCost(temp_hull) / 2);",
+"    cost_variation[i] = ItemCost(temp_hull);",
+"    size_variation[i] = ItemSize(temp_hull);",
+"    nod_cost_variation[i] = size_variation[i] * GalaxyTechLevel() * GalaxyTechLevel() / 40;",
+"    FreeItem(temp_hull);",
+"    i = i + 1;",
+"}",
+"if(GetGameOptions('FontDialog') == 0) DefSplt = '</color>-------------------------------------------------------------';",
+"else if(GetGameOptions('FontDialog') == 1) DefSplt = '</color>------------------------------------------';",
+"else if(GetGameOptions('FontDialog') == 2) DefSplt = '</color>-----------------------------------------';",
+"else DefSplt = '</color>-------------------------------------';",
+"",
+"temp_str = GetParFromString(BonusName(bonus_type), CT('FormInfo.DoubleQuote'), 1, 1) + GetParFromString(BonusName(bonus_type), CT('FormInfo.DoubleQuote'), 2, 0);",
+"temp_str = '</color>' + \"На текущем уровне развития технологий в Галактике мы можем изготовить для вас корпус <temp_str>:<br><DefSplt><br>\"+BonusText(bonus_type) + \"<br> <br>В зависимости от ваших нужд, вы можете выбрать один из трёх вариантов различных по размеру. На данный момент мы способны изготовить следующие корпуса:<br><br>1. Размер <size_variation[0]> ед. (<cost_variation[0]> cr. и <nod_cost_variation[0]> нд.)<br>2. Размер <size_variation[1]> ед. (<cost_variation[1]> cr. и <nod_cost_variation[1]> нд.)<br>3. Размер <size_variation[2]> ед. (<cost_variation[2]> cr. и <nod_cost_variation[2]> нд.)<br><DefSplt><br>Какой предпочитаете?\";",
+"nod_type = 0;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1070,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          40,
+          "Total.Lines":          20,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"hull_gift = CreateHull(2, selected_size, GalaxyTechLevel(), ShipPilotRace(cur_ruin));",
+"if(bonus_type > -1) SpecialToEquipment(bonus_type, hull_gift);",
+"ItemCost(hull_gift, ItemCost(hull_gift) / 2);",
+"AddItemToStorage(GetShipRuins(Player()), hull_gift);",
+"",
+"if(nod_type == 2) RangerBaseNodes(Player(), RangerBaseNodes(Player()) - selected_nod_cost);",
+"else if(nod_type == 1)",
+"{",
+"    if(GetNodesFromShip(Player()) >= selected_nod_cost) GetNodesFromShip(Player(), selected_nod_cost);",
+"    else",
+"    {",
+"        selected_nod_cost = selected_nod_cost - GetNodesFromShip(Player());",
+"        GetNodesFromShip(Player(), GetNodesFromShip(Player()));",
+"        GetNodesFromStorage(GetShipRuins(Player()), selected_nod_cost);",
+"    }",
+"}",
+"",
+"SB_countdown = CurTurn() + 183;",
+"ShipMoney(Player(), ShipMoney(Player()) - selected_cost);",
+"Sound('Sound.Buy');"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1020,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          48,
+          "Total.Lines":          4,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"selected_size=basic_size_variation[0];",
+"selected_cost=cost_variation[0];",
+"selected_nod_cost=nod_cost_variation[0];",
+"nod_type=1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1020,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          49,
+          "Total.Lines":          4,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"selected_size=basic_size_variation[1];",
+"selected_cost=cost_variation[1];",
+"selected_nod_cost=nod_cost_variation[1];",
+"nod_type=1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1020,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          50,
+          "Total.Lines":          4,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"selected_size=basic_size_variation[2];",
+"selected_cost=cost_variation[2];",
+"selected_nod_cost=nod_cost_variation[2];",
+"nod_type=1;"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          1020,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          70,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"InjectAnswer('ExitSB',\"Никакой, благодарю\",-1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          30,
+          "Parent":          -1,
+          "#":          76,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"InjectAnswer('ExitDB',\"Не интересует\",-1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          830,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          79,
+          "Total.Lines":          25,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"if(GetShipPirateRank(Player()) == 2) bonus_type = FindBonusByNameInCfg('ExpHulls_Killer1');",
+"else if(GetShipPirateRank(Player()) == 3) bonus_type = FindBonusByNameInCfg('ExpHulls_Killer2');",
+"else if(GetShipPirateRank(Player()) == 4) bonus_type = FindBonusByNameInCfg('ExpHulls_Killer3');",
+"else if(GetShipPirateRank(Player()) == 5) bonus_type = FindBonusByNameInCfg('ExpHulls_Killer4');",
+"else if(GetShipPirateRank(Player()) >= 6) bonus_type = FindBonusByNameInCfg('ExpHulls_Killer5');",
+"",
+"i = 0;",
+"while(i < 3)",
+"{",
+"    temp_hull = CreateHull(2, 100 + (100 + 25 * i) * GalaxyTechLevel(), GalaxyTechLevel(), 2);",
+"    basic_size_variation[i] = ItemSize(temp_hull);",
+"    if(bonus_type > -1)SpecialToEquipment(bonus_type, temp_hull);",
+"    ItemCost(temp_hull, ItemCost(temp_hull) / 2);",
+"    cost_variation[i] = ItemCost(temp_hull);",
+"    size_variation[i] = ItemSize(temp_hull);",
+"    FreeItem(temp_hull);",
+"    i = i + 1;",
+"}",
+"if(GetGameOptions('FontDialog') == 0) DefSplt = '</color>-------------------------------------------------------------';",
+"else if(GetGameOptions('FontDialog') == 1) DefSplt = '</color>------------------------------------------';",
+"else if(GetGameOptions('FontDialog') == 2) DefSplt = '</color>-----------------------------------------';",
+"else DefSplt = '</color>-------------------------------------';",
+"",
+"temp_str = GetParFromString(BonusName(bonus_type), CT('FormInfo.DoubleQuote'), 1, 1) + GetParFromString(BonusName(bonus_type), CT('FormInfo.DoubleQuote'), 2, 0);",
+"temp_str = '</color>' + \"Твоя репутация среди братвы позволяет тебе заказать корпус <temp_str>:<br><DefSplt><br>\" + BonusText(bonus_type) + \"<br> <br>По желанию можешь выбрать один из трёх вариантов разного размера. Конкретно сейчас мы сможем забацать для тебя вот такие жестянки:<br><br>1. Размер <size_variation[0]> ед. (<cost_variation[0]> cr.)<br>2. Размер <size_variation[1]> ед. (<cost_variation[1]> cr.)<br>3. Размер <size_variation[2]> ед. (<cost_variation[2]> cr.)<br><DefSplt><br>Ну так что, братан, какой выбираешь?\";"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          980,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          81,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"InjectAnswer('ExitPB',\"Пожалуй, я пока полетаю на своей лоханке\",-1);"          
+          ]        
+        },
+        {
+          "Type":"Top",
+          "Name":"",
+          "Pos.x":          520,
+          "Pos.y":          -80,
+          "Parent":          -1,
+          "#":          103,
+          "Total.Lines":          52,
+          "Code.Type":"DialogBegin",
+          "Code":          
+          [
+"if(!PlayerBridge())",
+"{",
+"    cur_ruin = GetShipRuins(Player());",
+"",
+"    if(cur_ruin)",
+"    {",
+"        temp_str = ShipType(cur_ruin);",
+"",
+"        //Диалог на научной базе",
+"        if(temp_str == 'SB')",
+"        {",
+"            if(SB_countdown <= CurTurn())",
+"            {",
+"                if(GalaxyTechLevel() > 3)",
+"                {",
+"                    if(GalaxyTechLevel() > 7) bonus_name = GetParFromString(BonusName(FindBonusByNameInCfg('ExpHulls_Bolide5')), CT('FormInfo.DoubleQuote'), 1, 1);",
+"                    else bonus_name = GetParFromString(BonusName(FindBonusByNameInCfg('ExpHulls_Bolide1')), CT('FormInfo.DoubleQuote'), 1, 1);",
+"                    AddDialogBlock(CT('FormRuins.SB.SpecialShip.Ask'), 2);",
+"                    AddDialogInject('RBK_Dialog_SB',\"Кстати, недавно нами был сделан ряд интересных открытий, благодаря которым были разработаны чертежи уникального экспериментального корпуса <bonus_name>. Не желаете проспонсировать постройку прототипа? Разумеется, как главный спонсор, первым испытывать его в деле будете именно вы.\", \"Заказать постройку корпуса <bonus_name>\", 1);",
+"                }",
+"            }",
+"        }",
+"        //Диалог на пиратской базе",
+"        else if(temp_str == 'PB')",
+"        {",
+"            if(PB_countdown <= CurTurn())",
+"            {",
+"                if(GetShipPirateRank(Player()) > 2)",
+"                {",
+"                    if(GetShipPirateRank(Player()) > 6) bonus_name = GetParFromString(BonusName(FindBonusByNameInCfg('ExpHulls_Killer5')), CT('FormInfo.DoubleQuote'), 1, 1);",
+"                    else bonus_name = GetParFromString(BonusName(FindBonusByNameInCfg('ExpHulls_Killer1')), CT('FormInfo.DoubleQuote'), 1, 1);",
+"                    AddDialogBlock(CT('FormRuins.PB.SpecialShip.Ask'), 2);",
+"                    AddDialogInject('RBK_Dialog_PB', \"А ещё мы тут недавно обнесли один секретный подвальчик, а в том подвальчике обнаружили один очень интересный чертёжик. Так что теперь можем предложить тебе забашлять нам за сборку по этому чертёжику серьёзного пиратского корпуса <bonus_name>.\", \"Заказать постройку корпуса <bonus_name>\", 1);",
+"                }",
+"            }",
+"        }",
+"        //Диалог на военной базе",
+"        else if(temp_str == 'WB')",
+"        {",
+"            if(MB_countdown <= CurTurn())",
+"            {",
+"                if(ShipRank(Player()) > 2)",
+"                {",
+"                    if(ShipRank(Player()) > 6) bonus_name = GetParFromString(BonusName(FindBonusByNameInCfg('ExpHulls_Rock5')), CT('FormInfo.DoubleQuote'), 1, 1);",
+"                    else bonus_name = GetParFromString(BonusName(FindBonusByNameInCfg('ExpHulls_Rock1')), CT('FormInfo.DoubleQuote'), 1, 1);",
+"                    AddDialogBlock(CT('FormRuins.WB.SpecialShip.Ask'), 2);",
+"                    AddDialogInject('RBK_Dialog_WB', \"Рейнджер, <Player>! Согласно послужному списку, ты являешься образцовым офицером, а потому тебе предоставляется особый доступ к секретной технологии - опытному военному корпусу <bonus_name>. Но учти - технология секретная, а потому недешёвая... Только вот чего стоят эти жалкие кредиты, когда на кону судьба всей Галактики?\", \"Заказать постройку корпуса <bonus_name>\", 1);",
+"                }",
+"            }",
+"        }",
+"    }",
+"}"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":"TPlanet",
+          "Name":"InitPlanet",
+          "Pos.x":          380,
+          "Pos.y":          -80,
+          "Parent":          -1,
+          "#":          1,
+          "Race":          62,
+          "Owner":          62,
+          "Economy":          14,
+          "Goverment":          62,
+          "RangeMin":          0,
+          "RangeMax":          100,
+          "Dialog":          -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":"TStarShip",
+          "Name":"",
+          "Pos.x":          380,
+          "Pos.y":          -120,
+          "Parent":          -1,
+          "#":          4,
+          "Count":          1,
+          "Owner":          62,
+          "Ship.Type":          126,
+          "Player":true,
+          "SpeedMin":          0,
+          "SpeedMax":          10000,
+          "Weapon":          0,
+          "CargoHook":          0,
+          "EmptySpace":          0,
+          "StatusTraderMin":          0,
+          "StatusTraderMax":          100,
+          "StatusWarriorMin":          0,
+          "StatusWarriorMax":          100,
+          "StatusPirateMin":          0,
+          "StatusPirateMax":          100,
+          "StrengthMin":"0",
+          "StrengthMax":"0",
+          "Ruins":""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":"TStar",
+          "Name":"InitStar",
+          "Pos.x":          380,
+          "Pos.y":          -100,
+          "Parent":          -1,
+          "#":          0,
+          "Constellation":          0,
+          "Priority":          0,
+          "NoKling":false,
+          "NoComeKling":false        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          -50,
+          "Parent":          -1,
+          "#":          14,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())>=cost_variation[0]"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          -20,
+          "Parent":          -1,
+          "#":          15,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())>=cost_variation[1]"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          10,
+          "Parent":          -1,
+          "#":          16,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())>=cost_variation[2]"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          930,
+          "Pos.y":          320,
+          "Parent":          -1,
+          "#":          45,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())>=cost_variation[2] && (GetNodesFromShip(Player())+GetNodesFromStorage(GetShipRuins(Player())))>=nod_cost_variation[2]"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          930,
+          "Pos.y":          280,
+          "Parent":          -1,
+          "#":          46,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())>=cost_variation[1] && (GetNodesFromShip(Player())+GetNodesFromStorage(GetShipRuins(Player())))>=nod_cost_variation[1]"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          930,
+          "Pos.y":          240,
+          "Parent":          -1,
+          "#":          47,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())>=cost_variation[0] && (GetNodesFromShip(Player())+GetNodesFromStorage(GetShipRuins(Player())))>=nod_cost_variation[0]"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          -60,
+          "Parent":          -1,
+          "#":          59,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())<cost_variation[0]"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          -30,
+          "Parent":          -1,
+          "#":          60,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())<cost_variation[1]"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          0,
+          "Parent":          -1,
+          "#":          61,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())<cost_variation[2]"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          930,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          65,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())<cost_variation[0] || (GetNodesFromShip(Player())+GetNodesFromStorage(GetShipRuins(Player())))<nod_cost_variation[0]"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          930,
+          "Pos.y":          310,
+          "Parent":          -1,
+          "#":          66,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())<cost_variation[2] || (GetNodesFromShip(Player())+GetNodesFromStorage(GetShipRuins(Player())))<nod_cost_variation[2]"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          930,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          71,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())<cost_variation[1] || (GetNodesFromShip(Player())+GetNodesFromStorage(GetShipRuins(Player())))<nod_cost_variation[1]"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          930,
+          "Pos.y":          350,
+          "Parent":          -1,
+          "#":          73,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          920,
+          "Pos.y":          30,
+          "Parent":          -1,
+          "#":          77,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"1"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          940,
+          "Pos.y":          80,
+          "Parent":          -1,
+          "#":          88,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())<cost_variation[0]"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          940,
+          "Pos.y":          90,
+          "Parent":          -1,
+          "#":          89,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())>=cost_variation[0]"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          940,
+          "Pos.y":          120,
+          "Parent":          -1,
+          "#":          90,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())<cost_variation[1]"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          940,
+          "Pos.y":          130,
+          "Parent":          -1,
+          "#":          91,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())>=cost_variation[1]"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          940,
+          "Pos.y":          150,
+          "Parent":          -1,
+          "#":          92,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())<cost_variation[2]"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          940,
+          "Pos.y":          160,
+          "Parent":          -1,
+          "#":          93,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"ShipMoney(Player())>=cost_variation[2]"          
+          ]        
+        },
+        {
+          "Type":"Tif",
+          "Name":"",
+          "Pos.x":          940,
+          "Pos.y":          180,
+          "Parent":          -1,
+          "#":          100,
+          "Total.Lines":          1,
+          "Code.Type":"Turn",
+          "Code":          
+          [
+"1"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":"TState",
+          "Name":"PlayerState",
+          "Pos.x":          380,
+          "Pos.y":          -40,
+          "Parent":          -1,
+          "#":          3,
+          "Move":          0,
+          "MoveObj":          -1,
+          "Attack.Count":          0,
+          "TakeItem":          -1,
+          "TakeAllItem":false,
+          "OnTalk":"",
+          "OnActCode":"",
+          "EType":          1,
+          "EUnique":"",
+          "EMsg":""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":"TVar",
+          "Name":"size_variation",
+          "Pos.x":          380,
+          "Pos.y":          70,
+          "Parent":          -1,
+          "#":          10,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cost_variation",
+          "Pos.x":          380,
+          "Pos.y":          90,
+          "Parent":          -1,
+          "#":          11,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_hull",
+          "Pos.x":          380,
+          "Pos.y":          170,
+          "Parent":          -1,
+          "#":          12,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"bonus_type",
+          "Pos.x":          380,
+          "Pos.y":          210,
+          "Parent":          -1,
+          "#":          13,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"selected_size",
+          "Pos.x":          380,
+          "Pos.y":          110,
+          "Parent":          -1,
+          "#":          25,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"basic_size_variation",
+          "Pos.x":          380,
+          "Pos.y":          50,
+          "Parent":          -1,
+          "#":          26,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"hull_gift",
+          "Pos.x":          380,
+          "Pos.y":          190,
+          "Parent":          -1,
+          "#":          27,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"selected_cost",
+          "Pos.x":          380,
+          "Pos.y":          130,
+          "Parent":          -1,
+          "#":          28,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"nod_cost_variation",
+          "Pos.x":          380,
+          "Pos.y":          30,
+          "Parent":          -1,
+          "#":          42,
+          "Var.Type":"Unknown",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"selected_nod_cost",
+          "Pos.x":          380,
+          "Pos.y":          150,
+          "Parent":          -1,
+          "#":          43,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"bonus_name",
+          "Pos.x":          380,
+          "Pos.y":          230,
+          "Parent":          -1,
+          "#":          44,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"nod_type",
+          "Pos.x":          380,
+          "Pos.y":          10,
+          "Parent":          -1,
+          "#":          54,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"temp_str",
+          "Pos.x":          380,
+          "Pos.y":          250,
+          "Parent":          -1,
+          "#":          55,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"MB_countdown",
+          "Pos.x":          460,
+          "Pos.y":          -140,
+          "Parent":          -1,
+          "#":          85,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"PB_countdown",
+          "Pos.x":          460,
+          "Pos.y":          -120,
+          "Parent":          -1,
+          "#":          86,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"SB_countdown",
+          "Pos.x":          460,
+          "Pos.y":          -100,
+          "Parent":          -1,
+          "#":          87,
+          "Var.Type":"Int",
+          "Init":"0",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"DefSplt",
+          "Pos.x":          380,
+          "Pos.y":          270,
+          "Parent":          -1,
+          "#":          101,
+          "Var.Type":"Str",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"i",
+          "Pos.x":          380,
+          "Pos.y":          -10,
+          "Parent":          -1,
+          "#":          102,
+          "Var.Type":"Int",
+          "Init":"",
+          "Global":false        
+        },
+        {
+          "Type":"TVar",
+          "Name":"cur_ruin",
+          "Pos.x":          380,
+          "Pos.y":          290,
+          "Parent":          -1,
+          "#":          104,
+          "Var.Type":"Dword",
+          "Init":"",
+          "Global":false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":"TGraphLink",
+      "Begin":      4,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      1,
+      "End":      0,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      2,
+      "End":      1,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      2,
+      "End":      3,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      9,
+      "End":      7,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      15,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      16,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      14,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      17,
+      "End":      18,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      18,
+      "End":      8,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      14,
+      "End":      22,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      15,
+      "End":      23,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      16,
+      "End":      24,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      22,
+      "End":      19,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      23,
+      "End":      20,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      24,
+      "End":      21,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      19,
+      "End":      17,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      20,
+      "End":      17,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      21,
+      "End":      17,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      29,
+      "End":      32,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      30,
+      "End":      32,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      31,
+      "End":      32,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      32,
+      "End":      33,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      33,
+      "End":      34,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      39,
+      "End":      40,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      40,
+      "End":      41,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      37,
+      "End":      38,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      45,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      46,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      47,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      51,
+      "End":      48,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      52,
+      "End":      49,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      53,
+      "End":      50,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      50,
+      "End":      39,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      49,
+      "End":      39,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      48,
+      "End":      39,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      59,
+      "End":      62,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      60,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      59,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      60,
+      "End":      63,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      61,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      61,
+      "End":      64,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      65,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      47,
+      "End":      51,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      46,
+      "End":      52,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      66,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      66,
+      "End":      68,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      45,
+      "End":      53,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      69,
+      "End":      56,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      56,
+      "End":      58,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      71,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      71,
+      "End":      67,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      65,
+      "End":      72,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      38,
+      "End":      73,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      73,
+      "End":      70,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      74,
+      "End":      57,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      57,
+      "End":      75,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      7,
+      "End":      77,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      77,
+      "End":      76,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      78,
+      "End":      79,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      79,
+      "End":      80,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      84,
+      "End":      83,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      88,
+      "End":      94,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      89,
+      "End":      95,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      95,
+      "End":      29,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      90,
+      "End":      96,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      91,
+      "End":      97,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      97,
+      "End":      30,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      92,
+      "End":      98,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      93,
+      "End":      99,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      99,
+      "End":      31,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      80,
+      "End":      88,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      80,
+      "End":      89,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      80,
+      "End":      90,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      80,
+      "End":      91,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      80,
+      "End":      92,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      80,
+      "End":      93,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      80,
+      "End":      100,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      100,
+      "End":      81,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      82,
+      "End":      84,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      36,
+      "End":      37,
+      "Nom":      0,
+      "Arrow":true    
+    },
+    {
+      "Type":"TGraphLink",
+      "Begin":      6,
+      "End":      9,
+      "Nom":      0,
+      "Arrow":true    
+    }  
+  ],
+  "Rect.Text":  
+  [
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      557,
+      "Rect.Top":      -98,
+      "Rect.Right":      1145,
+      "Rect.Bottom":      43,
+      "FStyle":      1,
+      "FColor":      1116671,
+      "BStyle":      0,
+      "BColor":      14474456,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      0,
+      "AlignY":      -1,
+      "AlignRect":false,
+      "Text":"Покупка Скалы на WB",
+      "Color":      0,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    },
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      557,
+      "Rect.Top":      52,
+      "Rect.Right":      1145,
+      "Rect.Bottom":      193,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      0,
+      "AlignY":      -1,
+      "AlignRect":false,
+      "Text":"Покупка Убийцы на PB",
+      "Color":      0,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    },
+    {
+      "Type":"TGraphRectText",
+      "Rect.Left":      557,
+      "Rect.Top":      197,
+      "Rect.Right":      1145,
+      "Rect.Bottom":      373,
+      "FStyle":      1,
+      "FColor":      10710818,
+      "BStyle":      0,
+      "BColor":      14474460,
+      "BSize":      1,
+      "BCoef":"0,300000011920929",
+      "AlignX":      0,
+      "AlignY":      -1,
+      "AlignRect":false,
+      "Text":"Покупка Болида на SB",
+      "Color":      0,
+      "Font":"Arial",
+      "FontSize":      10,
+      "fsBold":false,
+      "fsItalic":false,
+      "fsUnderline":false    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  30,
+  "BlockPar.EC":  
+  [
+    {
+      "#":"100",
+      "String":"Что!? Да как ты смеешь отказываться от столь щедрого предложения, когда у нас каждый боевой корабль на счету?! Видно, командование в тебе всё-таки ошиблось, <Player>..."    
+    },
+    {
+      "#":"101",
+      "String":"Ну так вот и лети на ней отседова! Только помни, <Player>, если в перестрелке с первым же транспортом эта твоя лоханка вдруг развалится - это всё был твой осознанный выбор."    
+    },
+    {
+      "#":"102",
+      "String":"Служу Галактике!"    
+    },
+    {
+      "#":"103",
+      "String":"Не сомневайтесь!"    
+    },
+    {
+      "#":"110",
+      "String":"<br> <br>В зависимости от твоего пилотажного стиля, ты можешь выбрать один из трёх корпусов разного размера, а мы, исходя из текущей боевой обстановки, успеем изготовить следующие варианты:<br><br>1. Размер <0> ед. (<1> cr.)<br>2. Размер <2> ед. (<3> cr.)<br>3. Размер <4> ед. (<5> cr.)<br><6><br>Ну что, <Player>, какой из них тебе больше по нраву?"    
+    },
+    {
+      "#":"112",
+      "String":"<br> <br>В зависимости от ваших нужд, вы можете выбрать один из трёх вариантов различных по размеру. На данный момент мы способны изготовить следующие корпуса:<br><br>1. Размер <0> ед. (<1> cr. и <2> нд.)<br>2. Размер <3> ед. (<4> cr. и <5> нд.)<br>3. Размер <6> ед. (<7> cr. и <8> нд.)<br><9><br>Какой предпочитаете?"    
+    },
+    {
+      "#":"114",
+      "String":"<br> <br>По желанию можешь выбрать один из трёх вариантов разного размера. Конкретно сейчас мы сможем забацать для тебя вот такие жестянки:<br><br>1. Размер <0> ед. (<1> cr.)<br>2. Размер <2> ед. (<3> cr.)<br>3. Размер <4> ед. (<5> cr.)<br><6><br>Ну так что, братан, какой выбираешь?"    
+    },
+    {
+      "#":"116",
+      "String":"Первый вариант за <0> cr. и <1> нд."    
+    },
+    {
+      "#":"117",
+      "String":"Второй вариант за <0> cr. и <1> нд."    
+    },
+    {
+      "#":"118",
+      "String":"Третий вариант за <0> cr. и <1> нд."    
+    },
+    {
+      "#":"120",
+      "String":"С учётом твоего звания мы можем предложить тебе корпус <0>:<br><1><br>"    
+    },
+    {
+      "#":"121",
+      "String":"На текущем уровне развития технологий в Галактике мы можем изготовить для вас корпус <0>:<br><1><br>"    
+    },
+    {
+      "#":"122",
+      "String":"Твоя репутация среди братвы позволяет тебе заказать корпус <0>:<br><1><br>"    
+    },
+    {
+      "#":"24",
+      "String":"Само собой!"    
+    },
+    {
+      "#":"47",
+      "String":"Кстати, недавно нами был сделан ряд интересных открытий, благодаря которым были разработаны чертежи уникального экспериментального корпуса <0>. Не желаете проспонсировать постройку прототипа? Разумеется, как главный спонсор, первым испытывать его в деле будете именно вы."    
+    },
+    {
+      "#":"58",
+      "String":"<0>"    
+    },
+    {
+      "#":"71",
+      "String":"Первый вариант за <0> cr."    
+    },
+    {
+      "#":"72",
+      "String":"Второй вариант за <0> cr."    
+    },
+    {
+      "#":"73",
+      "String":"Третий вариант за <0> cr."    
+    },
+    {
+      "#":"79",
+      "String":"Пожалуй, я пока полетаю на своей лоханке"    
+    },
+    {
+      "#":"84",
+      "String":"Далее"    
+    },
+    {
+      "#":"87",
+      "String":"Заказать постройку корпуса <0>"    
+    },
+    {
+      "#":"88",
+      "String":"А ещё мы тут недавно обнесли один секретный подвальчик, а в том подвальчике обнаружили один очень интересный чертёжик. Так что теперь можем предложить тебе забашлять нам за сборку по этому чертёжику серьёзного пиратского корпуса <0>."    
+    },
+    {
+      "#":"89",
+      "String":"Рейнджер, <Player>! Согласно послужному списку, ты являешься образцовым офицером, а потому тебе предоставляется особый доступ к секретной технологии - опытному военному корпусу <0>. Но учти - технология секретная, а потому недешёвая... Только вот чего стоят эти жалкие кредиты, когда на кону судьба всей Галактики?"    
+    },
+    {
+      "#":"94",
+      "String":"Не интересует"    
+    },
+    {
+      "#":"95",
+      "String":"Хороший выбор, <PlayerFull>!<br>Скоро механики закончат работу и доставят корпус на склад, откуда ты и сможешь его забрать.<br>Надеюсь, этот грозный корабль ещё наведёт шороху среди врагов Коалиции!"    
+    },
+    {
+      "#":"96",
+      "String":"Хорошее решение, <Player>!<br>Скоро всё будет готово в лучшем виде. Как соберёшься - топай на склад, там и найдёшь свою новую птичку.<br>Ты только задай там жару этим воякам-дуболомам, а? Братва прям в натуре от души постаралась."    
+    },
+    {
+      "#":"97",
+      "String":"Никакой, благодарю"    
+    },
+    {
+      "#":"98",
+      "String":"Весьма разумный выбор, <PlayerFull>.<br>Скоро ваш заказ будет готов и доставлен на склад, откуда вы сможете его забрать в любое удобное время.<br>Пусть этот высокотехнологичный корпус достойно послужит делу прогресса!"    
+    },
+    {
+      "#":"99",
+      "String":"Как, разве вы не хотите послужить благородному делу науки? Очень жаль, <Player> - очень, очень жаль."    
+    }  
+  ]
+}
