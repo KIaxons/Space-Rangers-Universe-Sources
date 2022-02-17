@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -438,
-  "ViewPos.y":  218,
+  "ViewPos.x":  -433,
+  "ViewPos.y":  271,
   "ScriptName":  "Mod_ShuMercs",
   "ScriptFileOut":  "H:\\Mod_ShuMercs.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercs.txt",
@@ -3156,7 +3156,7 @@
           "Pos.y":  180,
           "Parent":  -1,
           "#":  207,
-          "Total.Lines":  104,
+          "Total.Lines":  107,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -3167,6 +3167,9 @@
               "        //3 - фэй",
               "",
               "if(ShipInHyperSpace(CurShip)) exit;",
+              "",
+              "dword employer = ShipIsPartner(CurShip);",
+              "if(employer) ShipOwner(CurShip, ShipOwner(employer));",
               "",
               "//Вручную корректируем характер наёмника",
               "int org_num = GetData(3);",
@@ -5123,7 +5126,7 @@
           "Pos.y":  540,
           "Parent":  -1,
           "#":  283,
-          "Total.Lines":  42,
+          "Total.Lines":  43,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -5161,6 +5164,7 @@
               "        Frees=Frees-1;",
               "    }",
               "    ShipSetPartner(cur_ship, Player(), days);",
+              "    ShipOwner(cur_ship, ShipOwner(Player())); //Чтобы не разрывали с игроком контракт сразу после найма",
               "    ChangeState('StateEscort', cur_ship);",
               "    if(fei_rel > 100) fei_rel=100;",
               "    if(red_rel > 100) red_rel=100;",
