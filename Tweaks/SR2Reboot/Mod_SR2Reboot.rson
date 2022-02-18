@@ -219,7 +219,7 @@
           "Pos.y":  140,
           "Parent":  -1,
           "#":  6,
-          "Total.Lines":  89,
+          "Total.Lines":  99,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -274,8 +274,8 @@
               "}",
               "",
               "//Уничтожаем всех флагманов и рейнджеров с корпусом \"Таухито\"",
-              "GetRidOfFlagshipsAndTauhits();",
-              "function GetRidOfFlagshipsAndTauhits(int types)",
+              "GetRidOfAnachronisms();",
+              "function GetRidOfAnachronisms(int types)",
               "{",
               "    i = BuildListOfNewShips(tarr1, lastShipId, types, 1+2+4+8+16, 1, '', '');",
               "    if(i)",
@@ -286,6 +286,16 @@
               "            int type = ShipTypeN(cur_ship);",
               "            if(type == t_Kling)",
               "            {",
+              "                //Уничтожаем всех берторов и клигов",
+              "                int sub_type = ShipSubType(cur_ship);",
+              "                if(sub_type > 5)",
+              "                {",
+              "                    TransferShip(cur_ship, StarPlanets(GalaxyStar(People), 0)); //На Меркурий",
+              "                    ShipDestroy(cur_ship, 1);",
+              "                    if(sub_type == 6) BuyDomikExtremal(GetShipHomePlanet(cur_ship), 1);",
+              "                    continue;",
+              "                }",
+              "",
               "                //В оригинале КР2 доминаторов сканировать нельзя в принципе",
               "                NoScanToShip(cur_ship, 1);",
               "                ShipAddCustomShipInfo(cur_ship, 'SR2Reboot_DomiksDropLock');",
@@ -326,8 +336,8 @@
           "Code":          
           [
               "//Уничтожаем всех рейнджеров с корпусом \"Таухито\"",
-              "if(CurTurn() < 666) GetRidOfFlagshipsAndTauhits(1+2+16);",
-              "else GetRidOfFlagshipsAndTauhits(1+16);"          
+              "if(CurTurn() < 666) GetRidOfAnachronisms(1+2+16);",
+              "else GetRidOfAnachronisms(1+16);"          
           ]        
         },
         {
