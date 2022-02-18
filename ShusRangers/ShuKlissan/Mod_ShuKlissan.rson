@@ -3895,7 +3895,7 @@
           "Pos.y":  0,
           "Parent":  302,
           "#":  18,
-          "Total.Lines":  1389,
+          "Total.Lines":  1391,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -4709,6 +4709,8 @@
               "            //Чтобы игрок не смог залететь в неё даже со стороны входа",
               "            HoleX1(cur_hole, 100000);",
               "            HoleY1(cur_hole, 100000);",
+              "            //А то ещё игрок влетит после клисан и окажется в лимбо",
+              "            HoleMap(cur_hole, 'NoEntry');",
               "",
               "            //Определяем количество клисан, которые отправятся на призыв Z-трансмиттера",
               "            cnt = RndObject(PortionInDiapason(KlissanInvasion['KlissanStrength'], 10, 100, 6, 12), PortionInDiapason(KlissanInvasion['KlissanStrength'], 10, 100, 12, 24), GroupToShip(Machpella));",
