@@ -1,0 +1,82 @@
+Asteroid ^{
+    Name=Asteroid -<Number>-
+    Text=Minerals available in the asteroid: <Count> units. Asteroid speed: <Speed>.
+    kAsteroidMaxDamagePercent=40
+    kAsteroidMaxDamagePercentDef=30
+    kAsteroidMinDamagePercent=20
+    kAsteroidMinDamagePercentDef=10
+}
+MicroModuls ^{
+    ShuAsteroids_AstrohullDefGenerator1 ^{
+        CustomTag=ShuAsteroids_AstrohullDefGenerator
+        Equipments=DefGenerator
+        KindGraph=Aster
+        Name=Astrohull Shield Generator I
+		AcrynSerie=Astrohull Shield Generator I-III
+		AcrynLevel=1
+		SerieLevel1=ShuAsteroids_AstrohullDefGenerator1
+		SerieLevel2=ShuAsteroids_AstrohullDefGenerator2
+		SerieLevel3=ShuAsteroids_AstrohullDefGenerator3
+		LevelsCount=3
+        Priority=10
+        Ruins=Any
+        Special=1
+        Text=<color=248,252,248>This generator was designed to protect ships frequently flying through large clusters of <color=255,239,99>asteroids</color>. The built-in astrocorbulator creates an anti-kinetic field that reduces the impact force when the ship collides with another space body. As a side effect, the device generates particles that noticeably lighten the ship, which can be extremely useful for pilots who value their time.</color>
+        Text=<clr><clrEnd>
+		Text=Asteroid hit damage: <clr>-40%<clrEnd>
+        Text=Ship mass: <bonMass><clr>%<clrEnd>
+        Fragility=100
+        Cost=150
+        Size=104
+		bonResistAsteroid=40
+        bonMass=-6
+    }
+    ShuAsteroids_AstrohullDefGenerator2 ^{
+        CustomTag=ShuAsteroids_AstrohullDefGenerator
+        Equipments=DefGenerator
+        KindGraph=Aster
+        Name=Astrohull Shield Generator II
+		AcrynSerie=Astrohull Shield Generator I-III
+		AcrynLevel=2
+		SerieLevel1=ShuAsteroids_AstrohullDefGenerator1
+		SerieLevel2=ShuAsteroids_AstrohullDefGenerator2
+		SerieLevel3=ShuAsteroids_AstrohullDefGenerator3
+		LevelsCount=3
+        Priority=30
+        Ruins=Any
+        Special=1
+        Text=<color=248,252,248>This generator was designed to protect ships frequently flying through large clusters of <color=255,239,99>asteroids</color>. The built-in astrocorbulator creates an anti-kinetic field that reduces the impact force when the ship collides with another space body. As a side effect, the device generates particles that noticeably lighten the ship, which can be extremely useful for pilots who value their time.</color>
+        Text=<clr><clrEnd>
+		Text=Asteroid hit damage: <clr>-60%<clrEnd>
+        Text=Ship mass: <bonMass><clr>%<clrEnd>
+        Fragility=100
+        Cost=200
+        Size=102
+		bonResistAsteroid=60
+        bonMass=-8
+    }
+    ShuAsteroids_AstrohullDefGenerator3 ^{
+        CustomTag=ShuAsteroids_AstrohullDefGenerator
+        Equipments=DefGenerator
+        KindGraph=Aster
+        Name=Astrohull Shield Generator III
+		AcrynSerie=Astrohull Shield Generator I-III
+		AcrynLevel=3
+		SerieLevel1=ShuAsteroids_AstrohullDefGenerator1
+		SerieLevel2=ShuAsteroids_AstrohullDefGenerator2
+		SerieLevel3=ShuAsteroids_AstrohullDefGenerator3
+		LevelsCount=3
+        Priority=50
+        Ruins=Any
+        Special=1
+        Text=<color=248,252,248>This generator was designed to protect ships frequently flying through large clusters of <color=255,239,99>asteroids</color>. The built-in astrocorbulator creates an anti-kinetic field that reduces the impact force when the ship collides with another space body. As a side effect, the device generates particles that noticeably lighten the ship, which can be extremely useful for pilots who value their time.</color>
+        Text=<clr><clrEnd>
+		Text=Asteroid hit damage: <clr>-80%<clrEnd>
+        Text=Ship mass: <bonMass><clr>%<clrEnd>
+        Fragility=100
+        Cost=250
+        Size=100
+		bonResistAsteroid=80
+        bonMass=-10
+    }
+}
