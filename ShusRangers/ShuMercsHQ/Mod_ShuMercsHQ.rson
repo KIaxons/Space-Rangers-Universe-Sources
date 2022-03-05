@@ -1,13 +1,13 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1950,
-  "ViewPos.y":  -165,
+  "ViewPos.x":  -2183,
+  "ViewPos.y":  -111,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
-  "GraphPoint.Count":  1027,
-  "GraphLink.Count":  951,
+  "GraphPoint.Count":  1030,
+  "GraphLink.Count":  954,
   "GraphRectText.Count":  2,
   "Variables.Count":  57,
   "Stars.Count":  1,
@@ -20,9 +20,9 @@
   "Ethers.Count":  0,
   "Dialogs.Count":  49,
   "DialogMessages.Count":  106,
-  "DialogAnswers.Count":  202,
-  "Operations.Count":  268,
-  "Statements.Count":  281,
+  "DialogAnswers.Count":  203,
+  "Operations.Count":  269,
+  "Statements.Count":  282,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
@@ -966,7 +966,7 @@
           "Pos.y":  40,
           "Parent":  547,
           "#":  548,
-          "Msg":  "<tstr4>",
+          "Msg":  "<tstr5>",
           "AMsg.Num":  "93"        
         },
         {
@@ -2048,6 +2048,16 @@
           "#":  1026,
           "Msg":  "",
           "AMsg.Num":  "201"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  1027,
+          "#":  1028,
+          "Msg":  "<tstr4>",
+          "AMsg.Num":  "202"        
         }      
       ],
       "DialogMessages":      
@@ -4033,7 +4043,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  4,
-          "Total.Lines":  1301,
+          "Total.Lines":  1309,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -5096,6 +5106,7 @@
               "    unknown t_array;",
               "    ArrayDelete(PlayerHQMainArray, 0);",
               "    t_array = newarray(1);",
+              "",
               "    ArrayDelete(t_array, 0);",
               "    ArrayAdd(t_array, '', 'OrganisationName');",
               "    ArrayAdd(t_array, -1, 'HQStar'); //Id (номер) звезды, в которой находится (либо ранее находился) штаб (имеет смысл запоминать, т.к. штаб в ней может временно отсутствовать)",
@@ -5112,6 +5123,7 @@
               "    ArrayAdd(t_array, 0, 'HQShipyardDialog'); //Маркер интро о первом заходе на верфь: 0 - интро ещё не было, 1 - интро уже выводилось",
               "    ArrayAdd(PlayerHQMainArray, t_array, 'Main');",
               "    t_array = newarray(1);",
+              "",
               "    //Заполняем раздел массива Mercs",
               "    ArrayDelete(t_array, 0);",
               "    ArrayAdd(t_array, 0, 'PlanetsCount'); //Число обитаемых планет в системе штаба",
@@ -5135,6 +5147,7 @@
               "    ArrayAdd(t_array, 0, 'CurrentReserve'); //Текущее число резервистов (фактически, запас наёмников для экстренного респавна, если запас готовых к вылету неожиданно иссяк)",
               "    ArrayAdd(PlayerHQMainArray, t_array, 'Mercs');",
               "    t_array = newarray(1);",
+              "",
               "    //Заполняем раздел массива Finance",
               "    ArrayDelete(t_array, 0);",
               "    ArrayAdd(t_array, 0.0, 'CurrentBalance'); //Текущий кредитный баланс организации (хранится в double, чтобы увеличить потенциальный лимит)",
@@ -5147,6 +5160,7 @@
               "    ArrayAdd(t_array, 0, 'StatsOutExpenses'); //Прочие месячные расходы организации",
               "    ArrayAdd(PlayerHQMainArray, t_array, 'Finance');",
               "    t_array = newarray(1);",
+              "",
               "    //Заполняем раздел массива Finance",
               "    ArrayDelete(t_array, 0);",
               "    ArrayAdd(t_array, 0, 'PrivateQuestAppear'); //Таймер до появления нового частного контракта",
@@ -5165,16 +5179,17 @@
               "    ArrayAdd(t_array, 0, 'GluonGunsQuestDialogStateSet'); //Для записи состояния диалога с учёным",
               "    ArrayAdd(PlayerHQMainArray, t_array, 'Quests');",
               "    t_array = newarray(1);",
+              "",
               "    ArrayAdd(t_array, 0, 'ScientificDepartment'); //Маркер наличия в штабе научного отдела",
               "    ArrayAdd(t_array, 0, 'SpeedUpRefill'); //Таймер до обновления запасов тетроазиновой жидкости (до возможности вновь ускорить движок)",
-              "    ArrayAdd(t_array, 0, 'PortalGenerator'); //Установлен ли в штабе портальный генератор",
+              "    ArrayAdd(t_array, 0, 'PortalGenerator'); //Установлен ли в штабе портальный генератор: 0 - нет, 1 - да, -1 - игрок уже узнал информацию насчёт условий постройки генератора, но ещё его не строил, -2 - игрок ранее уже строил генератор, но потом штаб был уничтожен, >1 - ход, в который будет завершена постройка генератора",
               "    ArrayAdd(t_array, int(CT('Script.Mod_ShuMercsHQ.PlayerMercsParams.PortalGeneratorLongJumpRange')), 'PortalGeneratorRange'); //Максимальная дальность скачка для портального генератора в парсеках",
               "    ArrayAdd(t_array, 0, 'PortalGeneratorTimer'); //Ход, в который можно будет снова активировать портальный генератор",
               "    ArrayAdd(t_array, '', 'PortalGeneratorReturnData'); //Данные (в строке через запятую) о том, когда и куда должен вернуться штаб после подбора игрока: 0 - номер хода, в который нужно произвести скачок назад, 1 - номер системы, куда нужно вернуться, 2 - координата X, 3 - координата Y",
               "    ArrayAdd(t_array, 0, 'GluonGunsDeveloped'); //Маркер о том, что уже были разработаны особые орудия (можно приступать к их производству)",
-              "",
               "    ArrayAdd(PlayerHQMainArray, t_array, 'Science');",
               "    t_array = newarray(1);",
+              "",
               "    ArrayAdd(t_array, 0, 'ArmoryWorkshop'); //Маркер наличия в штабе оружейного цеха",
               "    ArrayAdd(t_array, 0, 'WeaponGoodsProductionTime'); //Таймер до хода, на котором будет происходить производство оружия в качестве товара (первая проверка сработает лишь после появления в штабе оружейного цеха)",
               "    ArrayAdd(t_array, 0, 'WeaponGoodsInProduction'); //Количество оружия, находящегося в производстве, будет добавлено в магазин по истечении таймера",
@@ -5182,10 +5197,12 @@
               "    ArrayAdd(t_array, 0, 'GluonGunsShopTimer'); //Таймер до появления глюонных пушек в магазине штаба",
               "    ArrayAdd(PlayerHQMainArray, t_array, 'Armory');",
               "    t_array = newarray(1);",
+              "",
               "    ArrayAdd(t_array, 0, 'MedicalDepartment'); //Маркер наличия в штабе медблока",
               "    ArrayAdd(t_array, 0, 'UniqueStimulantLastIntake'); //Ход, когда игрок последний раз принимал \"Экспир\", нужен, для определения времени возможности следующего приёма",
               "    ArrayAdd(PlayerHQMainArray, t_array, 'Medicine');",
               "    t_array = newarray(1);",
+              "",
               "    ArrayAdd(t_array, 0, 'ProductionShipyard'); //Маркер наличия в штабе производственной верфи",
               "    ArrayAdd(t_array, '', 'ShipInProduction'); //Маркер активной постройки корабля/транклюкатора (если не равен ''), хранит в себе путь до раздела со статами будущего корабля/транклюкатора",
               "    ArrayAdd(t_array, 0, 'ShipInProductionTime'); //Таймер до завершения постройки нового корабля/транклюкатора",
@@ -5262,7 +5279,8 @@
               "",
               "    PlayerHQMainArray['Science', 'ScientificDepartment'] = 0;",
               "    PlayerHQMainArray['Science', 'SpeedUpRefill'] = 0;",
-              "    PlayerHQMainArray['Science', 'PortalGenerator'] = 0;",
+              "    //Если портальный генератор уже был установлен, либо была начата его установка",
+              "    if(PlayerHQMainArray['Science', 'PortalGenerator'] >= 1) PlayerHQMainArray['Science', 'PortalGenerator'] = -2;",
               "    PlayerHQMainArray['Science', 'PortalGeneratorRange'] = 0;",
               "    PlayerHQMainArray['Science', 'PortalGeneratorTimer'] = 0;",
               "    PlayerHQMainArray['Science', 'PortalGeneratorReturnData'] = '';",
@@ -5284,7 +5302,7 @@
               "function PlayerHQActCode() //OnStep_0",
               "{",
               "    dword HQ = ScriptItemActShip();",
-              "    if(PlayerHQMainArray['Science', 'PortalGenerator']) //Если в штабе установлен портальный генератор",
+              "    if(PlayerHQMainArray['Science', 'PortalGenerator'] == 1) //Если в штабе установлен портальный генератор",
               "    {",
               "        if(PlayerHQMainArray['Science', 'PortalGeneratorReturnData'] != '')",
               "        {",
@@ -5347,7 +5365,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  10,
-          "Total.Lines":  1096,
+          "Total.Lines":  1104,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -6187,6 +6205,13 @@
               "                }",
               "            }",
               "",
+              "            //Если строительство портального генератора в процессе, но ещё не завершено",
+              "            //if(PlayerHQMainArray['Science', 'PortalGenerator'] > 1)",
+              "            //{",
+              "            //    if(PlayerHQMainArray['Science', 'PortalGenerator'] <= CurTurn())",
+              "            //    {}",
+              "            //}",
+              "",
               "            if(PlayerHQMainArray['Science', 'GluonGunsDeveloped'])",
               "            {",
               "                //Если подошло время, добавляем в магазин случайную глюонную пушку того типа, которого в нём ещё нет",
@@ -6268,7 +6293,8 @@
               "                PlayerHQMainArray['Armory', 'MercsHullShopTimer'] = CurTurn() + RndObject(45, 75, cur_ruin);",
               "            }",
               "",
-              "            if(PlayerHQMainArray['Science', 'PortalGeneratorReturnData'] == '') //Маркер, что штаб не отправился на экстренное извлечение игрока",
+              "            //Если штаб в данный момент не отправился на экстренное извлечение игрока",
+              "            if(PlayerHQMainArray['Science', 'PortalGeneratorReturnData'] == '')",
               "            {",
               "                //Если на систему со штабом в данный момент не совершается нападение",
               "                if(!GetData(3, cur_ruin))",
@@ -23344,7 +23370,7 @@
               "            }",
               "",
               "            //Портальный генератор",
-              "            if(PlayerHQMainArray['Science', 'PortalGenerator'])",
+              "            if(PlayerHQMainArray['Science', 'PortalGenerator'] == 1)",
               "            {",
               "                if(PlayerHQMainArray['Science', 'PortalGeneratorTimer'] <= CurTurn())",
               "                {",
@@ -23727,7 +23753,7 @@
           "Pos.y":  20,
           "Parent":  544,
           "#":  545,
-          "Total.Lines":  30,
+          "Total.Lines":  44,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -23736,7 +23762,7 @@
               "if(!PlayerHQMainArray['Main', 'HQScienceDialog'])",
               "{",
               "    tstr1 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.GreetingIntro');",
-              "    tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerIntroOut');",
+              "    tstr5 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerIntroOut');",
               "",
               "    PlayerHQMainArray['Main', 'HQScienceDialog'] = 1;",
               "    tint1 = 0;",
@@ -23744,6 +23770,13 @@
               "else",
               "{",
               "    tstr1 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.Greeting');",
+              "    if(GTL >= 4 || PlayerHQMainArray['Science', 'PortalGenerator'] < 0)",
+              "    {",
+              "        if(!PlayerHQMainArray['Science', 'PortalGenerator']) tstr1 = tstr1 + \"<br>\" + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PortalGeneratorAddOffer');",
+              "        else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -1) tstr1 = tstr1 + \"<br>\" + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PortalGeneratorAddOfferAgain');",
+              "        else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -2) tstr1 = tstr1 + \"<br>\" + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PortalGeneratorAddOfferTwice');",
+              "    }",
+              "",
               "    //Если ускорение движка доступно",
               "    if(PlayerHQMainArray['Science', 'SpeedUpRefill'] <= CurTurn())",
               "    {",
@@ -23757,7 +23790,14 @@
               "        tint2 = 0;",
               "    }",
               "    tstr3 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskReliabilityImprove');",
-              "    tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerOut');",
+              "    if(GTL >= 4 || PlayerHQMainArray['Science', 'PortalGenerator'] < 0)",
+              "    {",
+              "        if(!PlayerHQMainArray['Science', 'PortalGenerator']) tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGenerator');",
+              "        else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -1) tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGeneratorAgain');",
+              "        else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -2) tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGeneratorTwice');",
+              "    }",
+              "    else tstr4 = '';",
+              "    tstr5 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerOut');",
               "",
               "    tint1 = 1;",
               "}"          
@@ -28210,6 +28250,54 @@
               "tstr4 = '</color>' + CT('Script.Mod_ShuMercsHQ.PlayerHQPortalGeneratorDialog.PlayerAskExtraction');",
               "tstr5 = '</color>' + CT('Script.Mod_ShuMercsHQ.PlayerHQPortalGeneratorDialog.PlayerOut');"          
           ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  1028,
+          "#":  1029,
+          "Total.Lines":  35,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "if(ruin_str_type == 'BK') ShipAddCustomShipInfo(cur_ruin, 'Teleport_Generator', '', 12, 45, 45, '45' + \"</color> дн.\", '50');",
+              "else ShipAddCustomShipInfo(cur_ruin, 'Teleport_Generator', '', 12, 45, 45, '45' + \"</color> дн.\", '');",
+              "i = ShipFindCustomShipInfoByType(cur_ruin, 'Teleport_Generator');",
+              "ShipCustomShipInfoDescription(cur_ruin, i, \"На эту станцию был\" + CT('FormInfo.br') +",
+              "\"установлен <color=255,240,100>портальный генератор</color>, позволяющий ей совершать гиперпространственные скачки:\" +",
+              "CT('FormInfo.br') + '<clr><clrEnd>' + CT('FormInfo.br') + \"Максимальная дальность скачка:\" +",
+              "' <' + 'Data1' + '> ' + \"пк.\" + CT('FormInfo.br') + \"Готовность к скачку через:\" + ' <' + 'TextData1' + '>');",
+              "",
+              "=На эту станцию был",
+              "=установлен <color=255,240,100>портальный генератор</color>, позволяющий ей совершать гиперпространственные скачки:",
+              "=<clr><clrEnd>",
+              "=Максимальная дальность скачка: <Data1>",
+              "=Готовность к скачку через: <TextData1>",
+              "",
+              "CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.DaysShort');",
+              "",
+              "'45' + \"</color> дн.",
+              "",
+              "tstr1 =",
+              "Cost",
+              "CurrentBalance int(PlayerHQMainArray['Finance', 'CurrentBalance'])",
+              "",
+              "tstr2 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerPortalGeneratorYesOrgBalance');",
+              "if(PlayerHQMainArray['Finance', 'CurrentBalance'] < cost)",
+              "{",
+              "    tstr2 = DeleteTags(tstr2);",
+              "    AddDialogBlock(tstr2, 1);",
+              "}",
+              "tstr3 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerPortalGeneratorYesOwnMoney');",
+              "if(ShipMoney(Player()) < cost)",
+              "{",
+              "    tstr3 = DeleteTags(tstr3);",
+              "    AddDialogBlock(tstr3, 1);",
+              "}",
+              "tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerPortalGeneratorNo');"          
+          ]        
         }      
       ],
       "Places":      
@@ -31917,7 +32005,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "PlayerHQMainArray['Science', 'PortalGenerator']"          
+              "PlayerHQMainArray['Science', 'PortalGenerator'] == 1"          
           ]        
         },
         {
@@ -32296,6 +32384,20 @@
           "Code":          
           [
               "1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  60,
+          "Pos.y":  20,
+          "Parent":  594,
+          "#":  1027,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tstr4 != ''"          
           ]        
         }      
       ],
@@ -40391,6 +40493,27 @@
       "Type":  "TGraphLink",
       "Begin":  1025,
       "End":  1026,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  594,
+      "End":  1027,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1027,
+      "End":  1028,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1028,
+      "End":  1029,
       "Nom":  0,
       "Arrow":  true    
     }  
