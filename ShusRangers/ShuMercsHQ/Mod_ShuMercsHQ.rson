@@ -1,13 +1,13 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -2183,
-  "ViewPos.y":  -111,
+  "ViewPos.x":  -2077,
+  "ViewPos.y":  13,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
-  "GraphPoint.Count":  1030,
-  "GraphLink.Count":  954,
+  "GraphPoint.Count":  1036,
+  "GraphLink.Count":  960,
   "GraphRectText.Count":  2,
   "Variables.Count":  57,
   "Stars.Count":  1,
@@ -18,11 +18,11 @@
   "Places.Count":  5,
   "Items.Count":  6,
   "Ethers.Count":  0,
-  "Dialogs.Count":  49,
-  "DialogMessages.Count":  106,
+  "Dialogs.Count":  50,
+  "DialogMessages.Count":  107,
   "DialogAnswers.Count":  203,
-  "Operations.Count":  269,
-  "Statements.Count":  282,
+  "Operations.Count":  271,
+  "Statements.Count":  284,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
@@ -3121,6 +3121,16 @@
           "#":  1025,
           "Msg":  "<tstr1>",
           "DMsg.Num":  "105"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  1029,
+          "#":  1034,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "106"        
         }      
       ],
       "Dialogs":      
@@ -3320,7 +3330,7 @@
         {
           "Type":  "TDialog",
           "Name":  "PlayerHQScienceDialog",
-          "Pos.x":  -1730,
+          "Pos.x":  -1760,
           "Pos.y":  150,
           "Parent":  -1,
           "#":  544        
@@ -3376,7 +3386,7 @@
         {
           "Type":  "TDialog",
           "Name":  "PlayerHQShipyardDialog",
-          "Pos.x":  -1950,
+          "Pos.x":  -1970,
           "Pos.y":  150,
           "Parent":  -1,
           "#":  672        
@@ -3516,6 +3526,14 @@
           "Pos.y":  90,
           "Parent":  942,
           "#":  992        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "PortalGeneratorBuild",
+          "Pos.x":  20,
+          "Pos.y":  -20,
+          "Parent":  1035,
+          "#":  1030        
         }      
       ],
       "Groups":      
@@ -28258,45 +28276,111 @@
           "Pos.y":  20,
           "Parent":  1028,
           "#":  1029,
-          "Total.Lines":  35,
+          "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "if(ruin_str_type == 'BK') ShipAddCustomShipInfo(cur_ruin, 'Teleport_Generator', '', 12, 45, 45, '45' + \"</color> дн.\", '50');",
-              "else ShipAddCustomShipInfo(cur_ruin, 'Teleport_Generator', '', 12, 45, 45, '45' + \"</color> дн.\", '');",
-              "i = ShipFindCustomShipInfoByType(cur_ruin, 'Teleport_Generator');",
-              "ShipCustomShipInfoDescription(cur_ruin, i, \"На эту станцию был\" + CT('FormInfo.br') +",
-              "\"установлен <color=255,240,100>портальный генератор</color>, позволяющий ей совершать гиперпространственные скачки:\" +",
-              "CT('FormInfo.br') + '<clr><clrEnd>' + CT('FormInfo.br') + \"Максимальная дальность скачка:\" +",
-              "' <' + 'Data1' + '> ' + \"пк.\" + CT('FormInfo.br') + \"Готовность к скачку через:\" + ' <' + 'TextData1' + '>');",
-              "",
-              "=На эту станцию был",
-              "=установлен <color=255,240,100>портальный генератор</color>, позволяющий ей совершать гиперпространственные скачки:",
-              "=<clr><clrEnd>",
-              "=Максимальная дальность скачка: <Data1>",
-              "=Готовность к скачку через: <TextData1>",
-              "",
-              "CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.DaysShort');",
-              "",
-              "'45' + \"</color> дн.",
-              "",
+              "tstr1 ="          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  1030,
+          "#":  1031,
+          "Total.Lines":  56,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
               "tstr1 =",
               "Cost",
               "CurrentBalance int(PlayerHQMainArray['Finance', 'CurrentBalance'])",
               "",
+              "",
+              "//Оплачиваем постройку генератора со счёта организации",
+              "if(!GAnswerData)",
+              "{",
+              "    PlayerHQMainArray['Science', 'PortalGenerator'] = 1;",
+              "    //PlayerHQMainArray['Science', 'PortalGeneratorRange'] = 0;",
+              "    //Вешаем декоративную инфошку (таймер до следующего прыжка в инфошке считается автоматически)",
+              "    PlayerHQMainArray['Science', 'PortalGeneratorTimer'] = CurTurn() + CT('Script.Mod_ShuMercsHQ.PlayerMercsParams.PortalGeneratorBuildingCooldown');",
+              "    ShipAddCustomShipInfo(cur_ruin, 'ShuMercsHQ_PortalGenerator', '', PlayerHQMainArray['Science', 'PortalGeneratorRange'], 0, 0, CT('Script.Mod_ShuMercsHQ.PlayerMercsParams.PortalGeneratorBuildingCooldown') + CT('ShipInfo.AddInfo.CustomInfos.ShuMercsHQ_PortalGenerator.DaysLeft'));",
+              "",
+              "    PlayerHQMainArray['Finance', 'CurrentBalance'] = PlayerHQMainArray['Finance', 'CurrentBalance'] - cost;",
+              "    Sound('Sound.Buy');",
+              "}",
+              "//Оплачиваем постройку генератора со счёта игрока",
+              "else if(GAnswerData == 1)",
+              "{",
+              "    PlayerHQMainArray['Science', 'PortalGenerator'] = 1;",
+              "    //PlayerHQMainArray['Science', 'PortalGeneratorRange'] = 0;",
+              "    //Вешаем декоративную инфошку (таймер до следующего прыжка в инфошке считается автоматически)",
+              "    PlayerHQMainArray['Science', 'PortalGeneratorTimer'] = CurTurn() + CT('Script.Mod_ShuMercsHQ.PlayerMercsParams.PortalGeneratorBuildingCooldown');",
+              "    ShipAddCustomShipInfo(cur_ruin, 'ShuMercsHQ_PortalGenerator', '', PlayerHQMainArray['Science', 'PortalGeneratorRange'], 0, 0, CT('Script.Mod_ShuMercsHQ.PlayerMercsParams.PortalGeneratorBuildingCooldown') + CT('ShipInfo.AddInfo.CustomInfos.ShuMercsHQ_PortalGenerator.DaysLeft'));",
+              "",
+              "    ShipMoney(Player(), ShipMoney(Player()) - cost);",
+              "    Sound('Sound.Buy');",
+              "}",
+              "//Игрок передумал строить генератор",
+              "else /*if(GAnswerData == 2)*/ tstr1 = CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PortalGeneratorBuildCancel');",
+              "",
+              "if(GTL >= 4 || PlayerHQMainArray['Science', 'PortalGenerator'] < 0)",
+              "{",
+              "    if(!PlayerHQMainArray['Science', 'PortalGenerator']) tstr1 = tstr1 + \"<br>\" + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PortalGeneratorAddOffer');",
+              "    else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -1) tstr1 = tstr1 + \"<br>\" + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PortalGeneratorAddOfferAgain');",
+              "    else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -2) tstr1 = tstr1 + \"<br>\" + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PortalGeneratorAddOfferTwice');",
+              "}",
+              "",
+              "//Если ускорение движка доступно",
+              "if(PlayerHQMainArray['Science', 'SpeedUpRefill'] <= CurTurn())",
+              "{",
+              "    tstr2 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskSpeedUp');",
+              "    tint2 = 1;",
+              "}",
+              "//Если игрок уже производил ускорение в течение двух последних месяцев",
+              "else",
+              "{",
+              "    tstr2 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskSpeedUpNotEnough');",
+              "    tint2 = 0;",
+              "}",
+              "tstr3 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskReliabilityImprove');",
+              "tstr4 = '';",
+              "tstr5 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerOut');",
+              "",
+              "tint1 = 1;"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  1034,
+          "#":  1035,
+          "Total.Lines":  18,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
               "tstr2 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerPortalGeneratorYesOrgBalance');",
               "if(PlayerHQMainArray['Finance', 'CurrentBalance'] < cost)",
               "{",
               "    tstr2 = DeleteTags(tstr2);",
               "    AddDialogBlock(tstr2, 1);",
               "}",
+              "InjectAnswer('PortalGeneratorBuild', tstr2, 0);",
+              "",
               "tstr3 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerPortalGeneratorYesOwnMoney');",
               "if(ShipMoney(Player()) < cost)",
               "{",
               "    tstr3 = DeleteTags(tstr3);",
               "    AddDialogBlock(tstr3, 1);",
               "}",
-              "tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerPortalGeneratorNo');"          
+              "InjectAnswer('PortalGeneratorBuild', tstr3, 1);",
+              "",
+              "tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerPortalGeneratorNo');",
+              "InjectAnswer('PortalGeneratorBuild', tstr4, 2);"          
           ]        
         }      
       ],
@@ -32398,6 +32482,34 @@
           "Code":          
           [
               "tstr4 != ''"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  30,
+          "Pos.y":  0,
+          "Parent":  1031,
+          "#":  1032,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  -120,
+          "Parent":  1032,
+          "#":  1033,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "1"          
           ]        
         }      
       ],
@@ -40514,6 +40626,48 @@
       "Type":  "TGraphLink",
       "Begin":  1028,
       "End":  1029,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1030,
+      "End":  1031,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1031,
+      "End":  1032,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1032,
+      "End":  1033,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1033,
+      "End":  546,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1029,
+      "End":  1034,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1034,
+      "End":  1035,
       "Nom":  0,
       "Arrow":  true    
     }  
