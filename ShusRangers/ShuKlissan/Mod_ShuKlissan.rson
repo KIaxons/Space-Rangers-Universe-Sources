@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1106,
-  "ViewPos.y":  -118,
+  "ViewPos.x":  -1010,
+  "ViewPos.y":  -58,
   "ScriptName":  "Mod_ShuKlissan",
   "ScriptFileOut":  "H:\\Mod_ShuKlissan.scr",
   "ScriptTextOut":  "H:\\Mod_ShuKlissan.txt",
@@ -113,7 +113,7 @@
           "Type":  "TDialogAnswer",
           "Name":  "hangar",
           "Pos.x":  0,
-          "Pos.y":  20,
+          "Pos.y":  40,
           "Parent":  82,
           "#":  157,
           "Msg":  "В ангар",
@@ -7570,9 +7570,9 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  -20,
-          "Pos.y":  0,
-          "Parent":  157,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  82,
           "#":  310,
           "Total.Lines":  9,
           "Code.Type":  "Turn",
@@ -7582,9 +7582,9 @@
               "ItemCost(cur_item, ItemCost(cur_item) * 2);",
               "LinkItemToScript(cur_item, MacrophaseShiftGenerator);",
               "AddItemToShip(Player(), cur_item);",
+              "//Ставим маркер о полном завершении основного исследования клисан",
+              "KlissanInvasion['MainResearch.StagesCompleted'] = 5;",
               "",
-              "//Ставим маркер о полном завершении основного исследования клисан (он и так равен 5, нахуя больше?)",
-              "//KlissanInvasion['MainResearch.StagesCompleted'] = KlissanInvasion['MainResearch.StagesCompleted'] + 1;",
               "//Добавляем новое задание (нет, т.к. на данном этапе игрок вполне может выбрать иной путь развития сюжета)",
               "//Ether(3, 'Coalition.TortugatzCaptured', \"Изучить любую клисанскую червоточину.\");"          
           ]        
@@ -8575,7 +8575,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "KlissanInvasion['MainResearch.StagesCompleted'] >= 4"          
+              "KlissanInvasion['MainResearch.StagesCompleted'] == 4"          
           ]        
         },
         {
@@ -11328,13 +11328,6 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  156,
-      "End":  82,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
       "Begin":  249,
       "End":  308,
       "Nom":  0,
@@ -11874,20 +11867,6 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  82,
-      "End":  157,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  157,
-      "End":  310,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
       "Begin":  247,
       "End":  148,
       "Nom":  0,
@@ -12219,6 +12198,27 @@
       "Type":  "TGraphLink",
       "Begin":  39,
       "End":  263,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  82,
+      "End":  310,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  310,
+      "End":  157,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  156,
+      "End":  82,
       "Nom":  0,
       "Arrow":  true    
     }  
