@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1027,
-  "ViewPos.y":  -134,
+  "ViewPos.x":  -1014,
+  "ViewPos.y":  -126,
   "ScriptName":  "Mod_ShuKlissan",
   "ScriptFileOut":  "H:\\Mod_ShuKlissan.scr",
   "ScriptTextOut":  "H:\\Mod_ShuKlissan.txt",
@@ -3895,7 +3895,7 @@
           "Pos.y":  0,
           "Parent":  302,
           "#":  18,
-          "Total.Lines":  1418,
+          "Total.Lines":  1422,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -4435,6 +4435,10 @@
               "                                {",
               "                                    TransferShip(cur_ship, GalaxyStar(TortugatzId));",
               "                                    ShipJoinToScript(cur_ship, 'Mod_ShuKlissan.Machpella.MachpellaWaitInTortugatzState');",
+              "                                    RuinsChangeType(cur_ship, t_CB);",
+              "                                    ShipOwner(cur_ship, PirateClan);",
+              "                                    ShipCustomFaction(cur_ship, 'SubFactionKlissan');",
+              "                                    OrderLock(cur_ship, 0);",
               "                                    SetData(0, 0, cur_ship);",
               "                                    SetData(0, 1, cur_ship);",
               "                                    SetData(0, 2, cur_ship);",
@@ -6764,7 +6768,7 @@
           "Pos.y":  0,
           "Parent":  -1,
           "#":  256,
-          "Total.Lines":  45,
+          "Total.Lines":  48,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -6786,6 +6790,9 @@
               "{",
               "    TransferShip(machpella, GalaxyStar(TortugatzId));",
               "    ShipJoinToScript(machpella, 'Mod_ShuKlissan.Machpella.MachpellaWaitInTortugatzState');",
+              "    ShipOwner(machpella, PirateClan);",
+              "    ShipCustomFaction(machpella, 'SubFactionKlissan');",
+              "    OrderLock(machpella, 0);",
               "    SetData(0, 0, machpella);",
               "    SetData(0, 1, machpella);",
               "    SetData(0, 2, machpella);",
@@ -6845,7 +6852,7 @@
           "Pos.y":  110,
           "Parent":  -1,
           "#":  258,
-          "Total.Lines":  45,
+          "Total.Lines":  48,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -6867,6 +6874,9 @@
               "{",
               "    TransferShip(machpella, GalaxyStar(TortugatzId));",
               "    ShipJoinToScript(machpella, 'Mod_ShuKlissan.Machpella.MachpellaWaitInTortugatzState');",
+              "    ShipOwner(machpella, PirateClan);",
+              "    ShipCustomFaction(machpella, 'SubFactionKlissan');",
+              "    OrderLock(machpella, 0);",
               "    SetData(0, 0, machpella);",
               "    SetData(0, 1, machpella);",
               "    SetData(0, 2, machpella);",
@@ -6903,7 +6913,7 @@
           "Pos.y":  170,
           "Parent":  -1,
           "#":  259,
-          "Total.Lines":  48,
+          "Total.Lines":  51,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -6930,6 +6940,9 @@
               "{",
               "    TransferShip(machpella, GalaxyStar(TortugatzId));",
               "    ShipJoinToScript(machpella, 'Mod_ShuKlissan.Machpella.MachpellaWaitInTortugatzState');",
+              "    RuinsChangeType(machpella, t_CB);",
+              "    ShipOwner(machpella, PirateClan);",
+              "    ShipCustomFaction(machpella, 'SubFactionKlissan');",
               "    SetData(0, 0, machpella);",
               "    SetData(0, 1, machpella);",
               "    SetData(0, 2, machpella);",
@@ -6964,7 +6977,7 @@
           "Pos.y":  170,
           "Parent":  -1,
           "#":  260,
-          "Total.Lines":  45,
+          "Total.Lines":  48,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -6986,6 +6999,9 @@
               "{",
               "    TransferShip(machpella, GalaxyStar(TortugatzId));",
               "    ShipJoinToScript(machpella, 'Mod_ShuKlissan.Machpella.MachpellaWaitInTortugatzState');",
+              "    ShipOwner(machpella, PirateClan);",
+              "    ShipCustomFaction(machpella, 'SubFactionKlissan');",
+              "    OrderLock(machpella, 0);",
               "    SetData(0, 0, machpella);",
               "    SetData(0, 1, machpella);",
               "    SetData(0, 2, machpella);",
