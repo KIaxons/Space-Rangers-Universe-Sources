@@ -186,6 +186,7 @@ begin
   if(number = 255) then EError('Error RewardNumber=255');
 
   ship.AddReward(number);
+  av[0].VInt:=number;
 
 end;
 
@@ -452,10 +453,11 @@ end;
 procedure SF_Rnd(av:array of TVarEC; code:TCodeEC);
 var
   min,max:integer;
+  t:cardinal;
 begin
   if High(av)<2 then raise Exception.Create('Error.Script Rnd');
 
-  if High(av)>2 then av[0].VInt:=Rnd(av[1].VInt,av[2].VInt,av[3].VDW)
+  if High(av)>2 then begin t:=av[3].VDW; av[0].VInt:=RndOut(av[1].VInt,av[2].VInt,t); end
   else if Galaxy<>nil then av[0].VInt:=RndOut(av[1].VInt,av[2].VInt,Galaxy.FRndOut)
   else begin
     min:=av[1].VInt;
@@ -817,6 +819,7 @@ begin
     else if (ship.FScriptShip<>nil) and
             (TScriptShip(ship.FScriptShip).FScript.FCD = 'Script.PC_fem_rangers') and
             (TScriptShip(ship.FScriptShip).GetOGroup.FName='GroupFem') then av[0].VStr:='FemRanger'
+    else if ship=Player.FBridge then av[0].VStr:='PlayerBridge'
     else av[0].VStr:=ship.TypeName;
 
 
@@ -942,7 +945,12 @@ var
 begin
     if High(av)<1 then raise Exception.Create('Error.Script ShipRaiseRank');
     ship:=TShip(av[1].VDW) as TNormalShip;
-    ship.GetNewRank;
+    if High(av)>1 then
+    begin
+      ship.FRank:=TRank(av[2].VInt);
+      ship.FRankPoints:=0;
+    end
+    else ship.GetNewRank;
 end;
 
 procedure SF_ShipStar(av:array of TVarEC; code:TCodeEC);
@@ -1138,12 +1146,15 @@ procedure SF_ShipStatistic(av:array of TVarEC; code:TCodeEC);
 var
 	obj: TObject;
   ship: TNormalShip;
+  ship2:TShip;
   i:integer;
 begin
   if (High(av) < 2) then raise Exception.Create('Error.Script ShipStatistic');
 
-  obj:=TShip(av[1].VDW);
-  if(obj is TNormalShip) then ship:=TNormalShip(obj)
+  obj:=TShip(av[1].VDW);ship:=nil;
+
+  if (obj is TNormalShip) then begin ship:=TNormalShip(obj); ship2:=ship; end
+  else if (obj is TShip) and (av[2].VInt in [10,11]) then ship2:=TShip(obj)
   else raise Exception.Create('Error.Script ShipStatistic - illegal object type');
 
   case av[2].VInt of
@@ -1191,21 +1202,24 @@ begin
       if(High(av) > 2) then Player.FTradePenalty:=av[3].VInt;
     end;
     10: begin
-      av[0].VDW:=cardinal(ship.FHomePlanet);
+      av[0].VDW:=cardinal(ship2.FHomePlanet);
       if(High(av) > 2) then
       begin
-        if ship is TWarrior then
+        if ship2 is TWarrior then
         begin
-          i:=ship.FHomePlanet.FWarriors.IndexOf(ship);
-          if i>=0 then ship.FHomePlanet.FWarriors.Delete(i);
-          TPlanet(av[3].VDW).FWarriors.Add(ship);
+          i:=ship2.FHomePlanet.FWarriors.IndexOf(ship2);
+          if i>=0 then ship2.FHomePlanet.FWarriors.Delete(i);
+          TPlanet(av[3].VDW).FWarriors.Add(ship2);
         end;
-        ship.FHomePlanet:=TPlanet(av[3].VDW);
+        ship2.FHomePlanet:=TPlanet(av[3].VDW);
       end;
     end;
     11: begin
-      av[0].VInt:=ship.FDay;
-      if(High(av) > 2) then ship.FDay:=av[3].VInt;
+      av[0].VInt:=ship2.FDay;
+      if(High(av) > 2) then ship2.FDay:=av[3].VInt;
+    end;
+    12: begin
+      av[0].VInt:=ship.Mass;
     end;
   else
     raise Exception.Create('Error.Script ShipStatistic');
@@ -2393,17 +2407,21 @@ var
     ship:TShip;
     planet:TPlanet;
     obj:TObject;
-    sitem:TScriptItem;
+    //sitem:TScriptItem;
+    item:TItem;
     sship:TScriptShip;
     i:integer;
 begin
     if High(av)<>2 then raise Exception.Create('Error.Script ItemInStar');
 
-    sitem:=TScriptItem(av[1].VDW);
+    obj:=TObject(av[1].VDW);
+    if obj is TScriptItem then item:=TScriptItem(obj).FItem
+    else item:=TItem(obj);
 
-    if sitem.FItem=nil then begin
-        av[0].VInt:=0;
-        Exit;
+    if item=nil then
+    begin
+      av[0].VInt:=0;
+      Exit;
     end;
 
     obj:=TObject(av[2].VDW);
@@ -2412,7 +2430,7 @@ begin
         for i:=0 to GScriptCur.FShips.Count-1 do begin
             sship:=GScriptCur.FShips.Items[i];
             if sship.FGroup <> integer(obj) then continue;
-            if (sship.FShip.FEquipments.IndexOf(sitem.FItem)>0) or (sship.FShip.FArtefacts.IndexOf(sitem.FItem)>0) then begin
+            if (sship.FShip.FEquipments.IndexOf(item)>0) or (sship.FShip.FArtefacts.IndexOf(item)>0) then begin
                 av[0].VInt:=1;
                 Exit;
             end;
@@ -2422,23 +2440,23 @@ begin
     end else if obj is TStar then begin
         star:=obj as TStar;
 
-        if star.FItems.IndexOf(sitem.FItem)<0 then av[0].VInt:=0
+        if star.FItems.IndexOf(item)<0 then av[0].VInt:=0
         else av[0].VInt:=1;
 
     end else if obj is TShip then begin
         ship:=obj as TShip;
 
-        if (ship.FEquipments.IndexOf(sitem.FItem)<0) and (ship.FArtefacts.IndexOf(sitem.FItem)<0) then av[0].VInt:=0
+        if (ship.FEquipments.IndexOf(item)<0) and (ship.FArtefacts.IndexOf(item)<0) then av[0].VInt:=0
         else av[0].VInt:=1;
 
     end else if obj is TPlanet then begin
     	planet:=obj as TPlanet;
 
         if (Player.FCurPlanet=planet) and (GShopList<>nil) then begin
-        	if ShopListFind(sitem.FItem)=nil then av[0].VInt:=0
+        	if ShopListFind(item)=nil then av[0].VInt:=0
     	    else av[0].VInt:=1;
         end else begin
-	        if planet.FEquipmentShop.IndexOf(sitem.FItem)<0 then av[0].VInt:=0
+	        if planet.FEquipmentShop.IndexOf(item)<0 then av[0].VInt:=0
     	    else av[0].VInt:=1;
         end;
 
@@ -2683,7 +2701,7 @@ begin
     item.FScriptItem:=sitem;
 
 	splace:=TScriptPlace(av[3].VDW);
-	if (splace.FType<>0) and (splace.FType<>1) and (splace.FType<>3) and (splace.FType<>5) then EError('Error.Script UselessItemCreate place');
+	if not(splace.FType in [0,1,3,5,6]) then EError('Error.Script UselessItemCreate place');
 
     splace.FStar.FItems.Add(item);
     item.FPos:=splace.GetCenter;
@@ -2973,9 +2991,10 @@ procedure SF_ShipInHole(av:array of TVarEC; code:TCodeEC);
 var
 	ship:TShip;
 begin
-    if High(av)<>1 then raise Exception.Create('Error.Script ShipInHole');
+    if High(av)<1 then raise Exception.Create('Error.Script ShipInHole');
 
     ship:=TShip(av[1].VDW);
+    if (High(av)>1) and (av[2].VInt<>0) then while ship.FCurShip<>nil do ship:=ship.FCurShip;
     if ship.InHyperSpace and (ship.FOrder=ORDER_JUMP_HOLE) then av[0].VInt:=1
     else av[0].VInt:=0;
 end;
@@ -3275,8 +3294,8 @@ begin
 
   if i=0 then
   begin
-    av[0].VInt:=round(ship.FmEInfections[EIllRadiation].Infection);
-    if High(av)>2 then ship.FmEInfections[EIllRadiation].Infection:=av[3].VInt;
+    av[0].VFloat:=ship.FmEInfections[EIllRadiation].Infection; //0.0..1.0
+    if High(av)>2 then ship.FmEInfections[EIllRadiation].Infection:=av[3].VFloat;
   end
   else if (i>0) and (i<=IllStimCnt) then
   begin
@@ -3704,7 +3723,7 @@ begin
   hole.FType:=1;
 
   splace:=TScriptPlace(av[1].VDW);
-  if (splace.FType<>0) and (splace.FType<>1) and (splace.FType<>3) and (splace.FType<>5) then EError('Error.Script HoleCreate place 1');
+  if not (splace.FType in[0,1,3,5,6]) then EError('Error.Script HoleCreate place 1');
 
   hole.FStar1:=splace.FStar;
 
@@ -3714,7 +3733,7 @@ begin
   hole.FPos1.y:=hole.FPos1.y-splace.FRadius*cos(a);
 
   splace:=TScriptPlace(av[2].VDW);
-  if (splace.FType<>0) and (splace.FType<>1) and (splace.FType<>3) and (splace.FType<>5) then EError('Error.Script HoleCreate place 1');
+  if not (splace.FType in[0,1,3,5,6]) then EError('Error.Script HoleCreate place 2');
 
   hole.FStar2:=splace.FStar;
 
@@ -3851,17 +3870,58 @@ end;
 procedure SF_CT(av:array of TVarEC; code:TCodeEC);
 var
 	tstr:WideString;
-begin
-    if High(av)<>1 then raise Exception.Create('Error.Script CT');
+  bl:TBlockParEC;
 
-    tstr:=CTExt(av[1].VStr);
-   	if FindSubString(tstr,'<')>=0 then begin
-	    tstr:=StringReplaceEC(tstr,'<br>',ll);
-	    if Player<>nil then begin
-        	tstr:=StringReplaceEC(tstr,'<PlayerFull>',ColorStr(Player.FullName,txtStandart));
-        end;
+    procedure _add(bl:TBlockParEC; ar:TVarEC);
+    var i:integer;
+        tempvar:TVarEC;
+    begin
+      for i:=0 to bl.Par_Count-1 do
+      begin
+        tempvar:=TVarEC.Create(vtStr);
+        tempvar.VStr:=bl.Par_Get(i);
+        tempvar.Name:=bl.Par_GetName(i);
+        ar.VArray.Add(tempvar);
+      end;
+      for i:=0 to bl.Block_Count-1 do
+      begin
+        tempvar:=TVarEC.Create(vtArray);
+        tempvar.VArray:=TVarArrayEC.Create;
+        tempvar.Name:=bl.Block_GetName(i);
+        _add(bl.Block_Get(i),tempvar);
+        if (tempvar.VArray.Count=0) then tempvar.VArray.Add(TVarEC.Create(vtUnknown));
+        ar.VArray.Add(tempvar);
+      end;
     end;
+begin
+    if High(av)<1 then raise Exception.Create('Error.Script CT');
+
+    if high(av)>1 then
+    begin
+      if av[2].VType = vtUnknown then begin av[2].ChangeVType(vtArray); av[2].VArray:=TVarArrayEC.Create; end
+      else if av[2].VType <> vtArray then raise Exception.Create('Error.Script GetMainData - 2nd argument is not an array');
+
+      av[2].VArray.Clear();
+
+      if av[1].VStr='' then bl:=GR_BPLang
+      else bl:=GR_BPLang.BlockPath_GetNE(av[1].VStr);
+
+      if bl<>nil then _add(bl,av[2]);
+
+      av[0].VInt:=av[2].VArray.Count;
+      if av[2].VArray.Count=0 then av[2].VArray.Add(TVarEC.Create(vtUnknown));
+
+    end else begin
+
+      tstr:=CTExt(av[1].VStr);
+   	  if FindSubString(tstr,'<')>=0 then
+      begin
+	      tstr:=StringReplaceEC(tstr,'<br>',ll);
+	      if Player<>nil then tstr:=StringReplaceEC(tstr,'<PlayerFull>',ColorStr(Player.FullName,txtStandart));
+      end;
+
     av[0].VStr:=StringReplaceEC(tstr,ll+' ',ll);
+    end;
 end;
 
 procedure SF_BlockExist(av:array of TVarEC; code:TCodeEC);
@@ -3892,10 +3952,51 @@ begin
 end;
 
 procedure SF_GetMainData(av:array of TVarEC; code:TCodeEC);
-begin
-    if High(av)<>1 then raise Exception.Create('Error.Script GetMainData');
+var bl:TBlockParEC;
 
-    if GR_BPM.ParPath_Count(av[1].VStr)>0 then av[0].VStr:=GR_BPM.ParPath_Get(av[1].VStr) else av[0].VStr:='';
+    procedure _add(bl:TBlockParEC; ar:TVarEC);
+    var i:integer;
+        tempvar:TVarEC;
+    begin
+      for i:=0 to bl.Par_Count-1 do
+      begin
+        tempvar:=TVarEC.Create(vtStr);
+        tempvar.VStr:=bl.Par_Get(i);
+        tempvar.Name:=bl.Par_GetName(i);
+        ar.VArray.Add(tempvar);
+      end;
+      for i:=0 to bl.Block_Count-1 do
+      begin
+        tempvar:=TVarEC.Create(vtArray);
+        tempvar.VArray:=TVarArrayEC.Create;
+        tempvar.Name:=bl.Block_GetName(i);
+        _add(bl.Block_Get(i),tempvar);
+        if (tempvar.VArray.Count=0) then tempvar.VArray.Add(TVarEC.Create(vtUnknown));
+        ar.VArray.Add(tempvar);
+      end;
+    end;
+begin
+    if High(av)<1 then raise Exception.Create('Error.Script GetMainData');
+
+    if high(av)>1 then
+    begin
+      if av[2].VType = vtUnknown then begin av[2].ChangeVType(vtArray); av[2].VArray:=TVarArrayEC.Create; end
+      else if av[2].VType <> vtArray then raise Exception.Create('Error.Script GetMainData - 2nd argument is not an array');
+
+      av[2].VArray.Clear();
+
+      if av[1].VStr='' then bl:=GR_BPM
+      else bl:=GR_BPM.BlockPath_GetNE(av[1].VStr);
+
+      if bl<>nil then _add(bl,av[2]);
+
+      av[0].VInt:=av[2].VArray.Count;
+      if av[2].VArray.Count=0 then av[2].VArray.Add(TVarEC.Create(vtUnknown));
+
+    end else begin
+      if GR_BPM.ParPath_Count(av[1].VStr)>0 then av[0].VStr:=GR_BPM.ParPath_Get(av[1].VStr) else av[0].VStr:='';
+      
+    end;
 end;
 
 procedure SF_GetGameOptions(av:array of TVarEC; code:TCodeEC);
@@ -3925,6 +4026,8 @@ var
   bpp: TBlockParEC;
 begin
   if High(av)<1 then av[0].VInt:=GetCountParEC(GR_UsedMods,',')
+  else if av[1].VType=vtStr then av[0].VInt:=ord(FindSubstring(GR_UsedModsWithComma, ', '+av[1].VStr+',') >= 0)
+  else if av[1].VInt=-1 then av[0].VStr:=GR_UsedMods
   else av[0].VStr:=GetStrParEC(GR_UsedMods,av[1].VInt,',');
 end;
 
@@ -4194,11 +4297,13 @@ begin
     if sitem=nil then
     begin
       sitem:=TScriptItem.Create;
+      sitem.FScript:=GScriptCur;
       GScriptCur.FItem.Add(sitem);
     end;
     if sitem.FOnActCompiledCode<>nil then sitem.FOnActCompiledCode.Free;
     sitem.FOnActCompiledCode:=nil;
     sitem.FOnActCode:='';
+    sitem.FFlag_CanSell:=true;
     
   end else begin
     sitem:=TScriptItem(av[2].VDW);
@@ -4360,8 +4465,11 @@ var
 begin
   if(High(av) < 1) then raise Exception.Create('Error.Script RaisePirateRank');
   ship:=TNormalShip(av[1].VDW);
-  rank:=Cardinal(ship.FPirateRank);
-  if(rank < 7) then ship.FPirateRank:=TPirateRank(rank+1);
+  if High(av)>1 then ship.FPirateRank:=TPirateRank(av[2].VInt)
+  else begin
+    rank:=Cardinal(ship.FPirateRank);
+    if(rank < 7) then ship.FPirateRank:=TPirateRank(rank+1);
+  end;
   if ship=Player then Player.FAchievementStats.CheckConditionAchBaron();
 end;
 
@@ -5205,6 +5313,7 @@ var
 begin
   if(High(av) < 1) then raise Exception.Create('Error.Script ShipJoinsClan');
   ship:=TNormalShip(av[1].VDW);
+  if (ship.FShipType=t_Pirate) and (ship.FOwner<>PirateClan) then begin inc(Galaxy.FPiratesClanCnt); dec(Galaxy.FPirateCnt); end;
   ship.FOwner:=PirateClan;
   if ship=Player then Player.FPirateClanReal:=true;
 end;
@@ -5349,7 +5458,11 @@ begin
   item:=TItem(av[2].VDW);
   av[0].VInt:=0;
   if(planet <> nil) and (item <> nil) then begin
-    if planet.ItemPutToPlanet(item) then av[0].VInt:=1;
+    if planet.ItemPutToPlanet(item) then
+    begin
+      planet.GoneItemsCorrect;
+      av[0].VInt:=1;
+    end;
   end;
 end;
 
@@ -5563,9 +5676,16 @@ begin
 end;
 
 procedure SF_PutItemInVault(av:array of TVarEC; code:TCodeEC);
+var obj:TObject;
 begin
   if(High(av) < 2) then raise Exception.Create('Error.Script PutItemInVault');
-  Galaxy.StoreItem(av[1].VStr,TObject(av[2].VDW));
+  if av[2].VDW=0 then
+  begin
+    obj:=Galaxy.UnStoreItem(av[1].VStr);
+    if obj<>nil then obj.Free;
+  end else begin
+    Galaxy.StoreItem(av[1].VStr,TObject(av[2].VDW));
+  end;
 end;
 
 procedure SF_GetItemFromVault(av:array of TVarEC; code:TCodeEC);
@@ -6080,7 +6200,7 @@ var
     for j:=0 to v.VArray.Count-1 do
     begin
       v2:=v.VArray.Items[j];
-      if v2.Name<>'' then tstr:=preStr+v2.Name else tstr:=preStr+inttostrEC(j);
+      if v2.Name<>'' then tstr:=preStr+#39+v2.Name+#39 else tstr:=preStr+inttostrEC(j);
       if v2.VType<>vtArray then SFT(tstr+']='+v2.VStr) else SFTarray( tstr+',',v2);
     end;
   end;
@@ -6371,13 +6491,21 @@ end;
 procedure SF_ShipOwner(av:array of TVarEC; code:TCodeEC);
 var
   ship: TShip;
+  pc1,pc2:boolean;
 begin
   if(High(av) < 1) then raise Exception.Create('Error.Script ShipOwner');
   ship:=TShip(av[1].VDW);
   if(ship <> nil) then
   begin
     av[0].VInt:=integer(ship.FOwner);
-    if(High(av) > 1) then ship.FOwner:=TOwner(av[2].VInt);
+    if(High(av) > 1) then
+    begin
+      pc1:=(ship.FShipType=t_Pirate) and (ship.FOwner=PirateClan);
+      ship.FOwner:=TOwner(av[2].VInt);
+      pc2:=(ship.FShipType=t_Pirate) and (ship.FOwner=PirateClan);
+      if pc1 and not pc2 then begin dec(Galaxy.FPiratesClanCnt); inc(Galaxy.FPirateCnt); end;
+      if pc2 and not pc1 then begin inc(Galaxy.FPiratesClanCnt); dec(Galaxy.FPirateCnt); end;
+    end;
   end else av[0].VInt:=-1;
 end;
 
@@ -6511,6 +6639,9 @@ var
   obj: TObject;
   pos: TPos;
   pol:TPolar;
+  Pl2D:PConstellationLine;
+  i:integer;
+  llst:TList;
 begin
   if High(av)<1 then raise Exception.Create('Error.Script CoordX');
   obj:=TObject(av[1].VDW);
@@ -6547,7 +6678,26 @@ begin
         (obj as TPlanet).FPolarPos:=CartesianToPolar(Point( round(pos.X),round(pos.Y) ));
         (obj as TPlanet).FGraphPlanet.Pos:=pos;
       end
-      else if(obj is TStar) then (obj as TStar).FPos:=pos
+      else if(obj is TStar) then
+      begin
+        llst:=TStar(obj).FConstellation.FLines;
+        for i:=0 to llst.Count-1 do
+        begin
+          Pl2D:=llst.Items[i];
+          if (Pl2D.P1.X = TStar(obj).FPos.X) and (Pl2D.P1.Y = TStar(obj).FPos.Y) then
+          begin
+            Pl2D.P1.X := pos.X;
+            Pl2D.P1.Y := pos.Y;
+          end;
+          if (Pl2D.P2.X = TStar(obj).FPos.X) and (Pl2D.P2.Y = TStar(obj).FPos.Y) then
+          begin
+            Pl2D.P2.X := pos.X;
+            Pl2D.P2.Y := pos.Y;
+          end;
+        end;
+        Pl2D:=nil;
+        (obj as TStar).FPos:=pos;
+      end
       else if(obj is TAsteroid) then (obj as TAsteroid).FPos:=pos
       else if(obj is TMissile) then (obj as TMissile).FPos:=pos;
     end;
@@ -6559,6 +6709,9 @@ var
   obj: TObject;
   pos: TPos;
   pol:TPolar;
+  Pl2D:PConstellationLine;
+  i:integer;
+  llst:TList;
 begin
   if High(av)<1 then raise Exception.Create('Error.Script CoordY');
   obj:=TObject(av[1].VDW);
@@ -6595,7 +6748,26 @@ begin
         (obj as TPlanet).FPolarPos:=CartesianToPolar(Point( round(pos.X),round(pos.Y) ));
         (obj as TPlanet).FGraphPlanet.Pos:=pos;
       end
-      else if(obj is TStar) then (obj as TStar).FPos:=pos
+      else if(obj is TStar) then
+      begin
+        llst:=TStar(obj).FConstellation.FLines;
+        for i:=0 to llst.Count-1 do
+        begin
+          Pl2D:=llst.Items[i];
+          if (Pl2D.P1.X = TStar(obj).FPos.X) and (Pl2D.P1.Y = TStar(obj).FPos.Y) then
+          begin
+            Pl2D.P1.X := pos.X;
+            Pl2D.P1.Y := pos.Y;
+          end;
+          if (Pl2D.P2.X = TStar(obj).FPos.X) and (Pl2D.P2.Y = TStar(obj).FPos.Y) then
+          begin
+            Pl2D.P2.X := pos.X;
+            Pl2D.P2.Y := pos.Y;
+          end;
+        end;
+        Pl2D:=nil;
+        (obj as TStar).FPos:=pos;
+      end
       else if(obj is TAsteroid) then (obj as TAsteroid).FPos:=pos
       else if(obj is TMissile) then (obj as TMissile).FPos:=pos;
     end;
@@ -6660,10 +6832,12 @@ procedure SF_ShipInHyperSpace(av:array of TVarEC; code:TCodeEC);
 var
   ship: TShip;
 begin
-  if(High(av) <> 1) then raise Exception.Create('Error.Script ShipInHyperSpace');
+  if(High(av) < 1) then raise Exception.Create('Error.Script ShipInHyperSpace');
   av[0].VInt:=0;
   ship:=TShip(av[1].VDW);
-  if(ship <> nil) then av[0].VInt:=Cardinal(ship.FInHiperSpace);
+  if ship = nil then exit;
+  if (High(av)>1) and (av[2].VInt<>0) then while ship.FCurShip<>nil do ship:=ship.FCurShip;
+  av[0].VInt:=Cardinal(ship.FInHiperSpace);
 end;
 
 
@@ -8069,8 +8243,7 @@ begin
   begin
     ruins:=TRuins.Create;
     av[0].VDW:=Cardinal(ruins);
-    ruins.Init(t_UB,star);//initialized as RC, so will have coalition owner and eq at creation
-    ruins.FCustomTypeName:=av[2].VStr;
+    ruins.Init(t_UB,star,av[2].VStr);//initialized as RC, so will have coalition owner and eq at creation
     if High(av) > 2 then ruins.FCurStanding:=TStanding(av[3].VInt)
     else ruins.FCurStanding:=tst_None;
   end;
@@ -8266,7 +8439,7 @@ end;
 
 
 // -----------------------------------------------------------------------------
-// ---------------------------- ??????? ----------------------------------------
+// ---------------------------- Arrays -----------------------------------------
 // -----------------------------------------------------------------------------
 procedure SF_ArrayAdd(av:array of TVarEC; code:TCodeEC);
 var
@@ -8288,10 +8461,13 @@ var
 begin
   if(High(av) < 2) then raise Exception.Create('Error.Script ArrayDelete');
   if(av[1].VType <> vtArray) then raise Exception.Create('Error.Script ArrayDelete - not array');
-  no:=av[2].VInt;
-  if (no >= 0) and (no < av[1].VArray.Count) then begin
-    av[1].VArray.Del(no);
+
+  if av[2].VType = vtStr then av[1].VArray.Del(av[2].VStr)
+  else begin
+    no:=av[2].VInt;
+    if (no >= 0) and (no < av[1].VArray.Count) then av[1].VArray.Del(no);
   end;
+
   av[0].VInt:=av[1].VArray.Count;
 end;
 
@@ -8650,7 +8826,8 @@ var
   tempvar:TVarEC;
 begin
   if(High(av) < 4) then raise Exception.Create('Error.Script BuildListOfQuestPossibleLocations');
-  if(av[1].VType <> vtArray) then raise Exception.Create('Error.Script BuildListOfQuestPossibleLocations - not array');
+  if av[1].VType = vtUnknown then begin av[1].ChangeVType(vtArray); av[1].VArray:=TVarArrayEC.Create; end
+  else if(av[1].VType <> vtArray) then raise Exception.Create('Error.Script BuildListOfQuestPossibleLocations - not array');
   star:=TStar(av[2].VDW);
   mindist:=av[3].VInt;
   maxdist:=av[4].VInt;
@@ -9081,7 +9258,8 @@ var
   restrict:boolean;
 begin
   if(High(av) < 3) then raise Exception.Create('Error.Script BuildListOfMMByPriority');
-  if(av[1].VType <> vtArray) then raise Exception.Create('Error.Script BuildListOfMMByPriority - not array');
+  if av[1].VType = vtUnknown then begin av[1].ChangeVType(vtArray); av[1].VArray:=TVarArrayEC.Create; end
+  else if(av[1].VType <> vtArray) then raise Exception.Create('Error.Script BuildListOfMMByPriority - not array');
 
   if High(av)>3 then restrict:=(av[4].VInt<>0) else restrict:=true;
 
@@ -9171,7 +9349,8 @@ var
 
 begin
   if(High(av) < 2) then raise Exception.Create('Error.Script BuildListOfNewShips');
-  if(av[1].VType <> vtArray) then raise Exception.Create('Error.Script BuildListOfNewShips - not array');
+  if av[1].VType = vtUnknown then begin av[1].ChangeVType(vtArray); av[1].VArray:=TVarArrayEC.Create; end
+  else if(av[1].VType <> vtArray) then raise Exception.Create('Error.Script BuildListOfNewShips - not array');
   av[1].VArray.Clear();
 
   startId:=av[2].VDW;
@@ -9811,6 +9990,25 @@ begin
   //0 - normal, 1 - no shop update, 2 - no goods update only, 3 - no eq update only
 end;
 
+procedure SF_PlanetExtraFlags(av:array of TVarEC; code:TCodeEC);
+var
+  pla: TPlanet;
+begin
+  if(High(av) < 1) then raise Exception.Create('Error.Script PlanetExtraFlags');
+
+  av[0].VInt:=0;
+  pla:=TPlanet(av[1].VDW);
+
+  av[0].VInt:=ord(pla.FFlag_NoBuyShips) + 2*ord(pla.FFlag_NoRandomEvents);
+  if(High(av) > 1) then
+  begin
+    pla.FFlag_NoBuyShips:=(av[2].VInt and 1)>0;
+    pla.FFlag_NoRandomEvents:=(av[2].VInt and 2)>0;
+  end;
+
+  //as set, 1 -  NoBuyShips, 2 - NoRandomEvents (no pirate PB spawn if set of Rogeria)
+end;
+
 
 procedure SF_NoDropItem(av:array of TVarEC; code:TCodeEC);
 var
@@ -10058,7 +10256,7 @@ var
 begin
   if(High(av) < 1) then raise Exception.Create('Error.Script ShipRepairEq');
   ship:=TShip(av[1].VDW);
-  for i:=ship.FEquipments.Count-1 downto 0 do begin
+  for i:=ship.FEquipments.Count-1 downto 1 do begin
     eq:=ship.FEquipments.Items[i];
     if eq.FExplotable then eq.RestoreDuration;
   end;
@@ -10075,7 +10273,7 @@ var
 begin
   if(High(av) < 1) then raise Exception.Create('Error.Script ItemInScript');
   item:=TItem(av[1].VDW);
-  if(item <> nil) and (item.FScriptItem <> nil) then av[0].VInt:=1 else av[0].VInt:=0;
+  if(item <> nil) and (item.FScriptItem <> nil) then av[0].VInt:=1+ord(TScriptItem(item.FScriptItem).FName='') else av[0].VInt:=0;
 end;
 
 
@@ -10365,6 +10563,16 @@ begin
   av[0].VInt:=sum;
 end;
 
+procedure SF_DeltaWin(av:array of TVarEC; code:TCodeEC);
+var
+  owner: TStarOwners;
+begin
+  if(High(av) < 1) then raise Exception.Create('Error.Script DeltaWin');
+  owner:=TStarOwners(av[1].VInt);
+  av[0].VInt:=Galaxy.FWarDeltaWin[owner];
+  if(High(av) > 1) then Galaxy.FWarDeltaWin[owner]:=av[2].VInt;
+end;
+
 
 procedure SF_ShipInFear(av:array of TVarEC; code:TCodeEC);
 var
@@ -10543,10 +10751,11 @@ begin
   if(High(av) < 1) then raise Exception.Create('Error.Script ShipSubType');
 
   ship:=TShip(av[1].VDW);
-  if ship is TKling then av[0].VInt:=integer((ship as TKling).FType)
-  else if ship is TTransport then av[0].VInt:=integer((ship as TTransport).FType)
-  else if ship is TWarrior then av[0].VInt:=integer((ship as TWarrior).FWarriorType)
-  else if ship is TPirate then av[0].VInt:=integer((ship as TPirate).FPirateType)
+  if ship is TKling then av[0].VInt:=integer(TKling(ship ).FType)
+  else if ship is TTransport then av[0].VInt:=integer(TTransport(ship).FType)
+  else if ship is TWarrior then av[0].VInt:=integer(TWarrior(ship).FWarriorType)
+  else if ship is TPirate then av[0].VInt:=integer(TPirate(ship).FPirateType)
+  else if ship is TRanger then av[0].VInt:=integer(TRanger(ship).FMoral)
   else av[0].VInt:=0;
 
   if High(av) > 1 then
@@ -10554,7 +10763,8 @@ begin
     if ship is TKling then TKling(ship).FType:=TKlingType(av[2].VInt)
     else if ship is TTransport then TTransport(ship).FType:=TTransportType(av[2].VInt)
     else if ship is TWarrior then TWarrior(ship).FWarriorType:=TWarriorType(av[2].VInt)
-    else if ship is TPirate then TPirate(ship).FPirateType:=TPirateType(av[2].VInt);
+    else if ship is TPirate then TPirate(ship).FPirateType:=TPirateType(av[2].VInt)
+    else if ship is TRanger then TRanger(ship).FMoral:=TStatus(av[2].VInt);
   end;
 end;
 
@@ -11502,6 +11712,8 @@ begin
   if (High(av) > 7) then pa.InfoTextData2:=av[8].VStr else pa.InfoTextData2:='';
   if (High(av) > 8) then pa.InfoTextData3:=av[9].VStr else pa.InfoTextData3:='';
 
+  pa.ShowAsStatusEffect:=GR_BPLang.Block['ShipInfo'].Block['AddInfo'].Block['CustomInfos'].Block[pa.InfoType].Par_Count('StatusEffect')>0;
+
   av[0].VDW:=Cardinal(pa);
 end;
 
@@ -12182,7 +12394,11 @@ begin
   bon:=av[2].VInt+1;
   if(High(av) > 2) then cnt:=av[3].VInt else cnt:=1;
 
-  if (item.FExtraSpecials = nil) and (cnt>0) then item.FExtraSpecials:=TList.Create;
+  if item.FExtraSpecials = nil then
+  begin
+    if cnt>0 then item.FExtraSpecials:=TList.Create
+    else exit;
+  end;
 
   pexsp:=nil;j:=-1;
   for i:=0 to item.FExtraSpecials.Count-1 do
@@ -12201,7 +12417,7 @@ begin
         item.FExtraSpecials:=nil;
       end;
     end;
-  end else begin
+  end else {if cnt>0 then} begin
     new(pexsp);
     item.FExtraSpecials.Add(pexsp);
     pexsp.no:=bon;
@@ -12314,15 +12530,15 @@ begin
   av[0].VStr:='';
   path:=av[1].VStr;
   cnt:=GetCountParEC(path,'.');
-  bpp:=GR_BPLang;
+  if (High(av)>1) and (av[2].VInt<>0) then bpp:=GR_BPM else bpp:=GR_BPLang;
   for i:=0 to cnt-1 do
   begin
-    if bpp.Block_Count(GetStrParEC(path,i,'.')) = 0 then
+    bpp:=bpp.BlockPath_GetNE(GetStrParEC(path,i,'.'));
+    if bpp=nil then
     begin
-      SFT('Warning.Script SF_GenerateCodeStringFromBlock - cant find block '+av[1].VStr);
+      SFT('Warning.Script SF_GenerateCodeStringFromBlock - cant find block '+av[1].VStr+' ['+inttostr(i)+']');
       exit;
     end;
-    bpp:=bpp.Block[GetStrParEC(path,i,'.')];
   end;
   av[0].VStr:=bpp.GenerateCodeString();
   if av[0].VStr='' then SFT('Warning.Script SF_GenerateCodeStringFromBlock - no code at '+av[1].VStr);
@@ -12360,12 +12576,6 @@ begin
   if(sitem <> nil) then
   begin
     av[0].VStr:=sitem.FOnActCode;
-    if(High(av) > 3) then
-    begin
-      if sitem.FOnActCompiledCode<>nil then sitem.FOnActCompiledCode.Free;
-      sitem.FOnActCompiledCode:=nil;
-      sitem.FOnActCode:='['+av[3].VStr+'|'+av[4].VStr+']'+av[2].VStr;
-    end;
     if(High(av) > 1) then
     begin
       if sitem.FOnActCompiledCode<>nil then sitem.FOnActCompiledCode.Free;
@@ -12412,6 +12622,7 @@ end;
 
 //t_OnDealingDamage - before applying damage to target hull, Object1 = target ship, Param = damage
 //t_OnDealingFatalDamage - on killing ship (before actual damage is applied and all item drops and statistic change), Object1 = target ship
+//t_OnDealingKamikazeDamage - on exploding klig, Object1 = target ship
 
 //t_OnTakingDamageEn,t_OnTakingDamageSp,t_OnTakingDamageMi - before applying weapon damage (energy,splinter or missile) to hull
 //t_OnTakingDamage - before applying untyped damage (star, asteroid, explosion) to hull
@@ -12424,6 +12635,13 @@ end;
 //Param - result of action:
 //0 - item will be picked normally
 //anything else - item will be deleted
+
+
+//t_OnChameleonConfusion - can ship see through player's chameleon, called for both player and ship
+//Object1 is ship, when called for player
+//Param - result
+//0 - ship recognizes player
+//1 - ship is confused and will open fire
 
 
 //t_OnStep    on steps
@@ -12559,6 +12777,8 @@ end;
 
 //t_OnDeath - as name says
 //CurShip - dying ship
+//Object1 = killer ship, if any
+//Object2 = killer object, if any
 
 procedure SF_CreateActCodeEvent(av:array of TVarEC; code:TCodeEC);
 var
@@ -12946,7 +13166,7 @@ end;
 
 procedure SF_NumberBox(av:array of TVarEC; code:TCodeEC);
 var
-  cnt:Cardinal;
+  cnt:integer;
   img,units,txt:WideString;
   zmin,zmax,zmaxok,price,cntmaxok,summaxok:Cardinal;
 begin
@@ -12954,14 +13174,14 @@ begin
   //av[0].VDW := 0;
   img:='GI,'+av[1].VStr;//'Bm.Items.2Minerals'
   txt:= av[2].VStr;
-  zmin:=av[3].VDW;
-  zmax:=av[4].VDW;
-  if (High(av) > 4) then zmaxok:=av[5].VDW else zmaxok:=zmax;
+  zmin:=av[3].VInt;
+  zmax:=av[4].VInt;
+  if (High(av) > 4) then zmaxok:=av[5].VInt else zmaxok:=zmax;
   if (High(av) > 5) and (av[6].VStr<>'') then units:='GI,'+av[6].VStr else units:='';//'Bm.FormCount2.2Kind0'
 
   if (High(av) > 6) then cnt:=av[7].VInt else cnt:=zmin;
 
-  if CountBox1(GetCurrentML, img, units, txt, zmin,zmax,zmaxok,cnt) = GIMB_Yes then av[0].VDW := cnt
+  if CountBox1(GetCurrentML, img, units, txt, zmin,zmax,zmaxok,cnt) = GIMB_Yes then av[0].VInt := cnt
   else av[0].VStr := 'Cancel';
 
 end;
@@ -14204,7 +14424,14 @@ end;
 //main.dat
 //Data.SE.Items.faction_name0/1/2 for container
 
-
+procedure SF_PlanetCustomFaction(av:array of TVarEC; code:TCodeEC);
+var pla:TPlanet;
+begin
+  if High(av) < 1 then raise Exception.Create('Error.Script PlanetCustomFaction');
+  pla:=TPlanet(av[1].VDW);
+  av[0].VStr:=pla.FCustomFaction;
+  if High(av) > 1 then pla.FCustomFaction:=av[2].VStr;
+end;
 
 procedure SF_ImportedFunction(av:array of TVarEC; code:TCodeEC);
 begin
@@ -14857,6 +15084,7 @@ begin
   va.Add('NoJump',vtExternFun).VExternFun:=SF_NoJump;
   va.Add('NoLanding',vtExternFun).VExternFun:=SF_NoLanding;
   va.Add('NoShopUpdate',vtExternFun).VExternFun:=SF_NoShopUpdate;
+  va.Add('PlanetExtraFlags',vtExternFun).VExternFun:=SF_PlanetExtraFlags;
 
   va.Add('NoDropItem',vtExternFun).VExternFun:=SF_NoDropItem;
   va.Add('CanSellItem',vtExternFun).VExternFun:=SF_CanSellItem;
@@ -14888,6 +15116,7 @@ begin
   va.Add('PlanetNewsText',vtExternFun).VExternFun:=SF_PlanetNewsText;
 
   va.Add('ControlledSystems',vtExternFun).VExternFun:=SF_ControlledSystems;
+  va.Add('DeltaWin',vtExternFun).VExternFun:=SF_DeltaWin;
 
   va.Add('ShipInFear',vtExternFun).VExternFun:=SF_ShipInFear;
 
@@ -15064,6 +15293,7 @@ begin
   va.Add('StarCustomFaction',vtExternFun).VExternFun:=SF_StarCustomFaction;
   va.Add('ShipCustomFaction',vtExternFun).VExternFun:=SF_ShipCustomFaction;
   va.Add('EqCustomFaction',vtExternFun).VExternFun:=SF_EqCustomFaction;
+  va.Add('PlanetCustomFaction',vtExternFun).VExternFun:=SF_PlanetCustomFaction;
   
   va.Add('ImportedFunction',vtExternFun).VExternFun:=SF_ImportedFunction;
   va.Add('ImportAll',vtExternFun).VExternFun:=SF_ImportAll;
