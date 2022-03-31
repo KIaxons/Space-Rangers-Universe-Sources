@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1806,
-  "ViewPos.y":  -54,
+  "ViewPos.x":  -1773,
+  "ViewPos.y":  31,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
@@ -23839,7 +23839,7 @@
           "Pos.y":  40,
           "Parent":  555,
           "#":  561,
-          "Total.Lines":  42,
+          "Total.Lines":  43,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -23883,6 +23883,7 @@
               "",
               "    tstr4 = tstr4 + ',';",
               "}",
+              "",
               "tstr1 = tstr1 + \"<br>\" + tstr6 + \"<br>\" + Format(CT('Script.Mod_ShuMercs.PlayerHQStrikeDialog.CandidatesListEnd'), '<CurrentBalance'+'>', int(PlayerHQMainArray['Finance', 'CurrentBalance']));",
               "tstr2 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQStrikeDialog.PlayerHireOut');"          
           ]        
@@ -27991,7 +27992,7 @@
           "Pos.y":  20,
           "Parent":  994,
           "#":  996,
-          "Total.Lines":  29,
+          "Total.Lines":  30,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -28004,6 +28005,7 @@
               "    if(StarNearbyStarsDist(cur_star, i) > PlayerHQMainArray['Science', 'PortalGeneratorRange']) continue;",
               "    if(StarOwner(tdwd1) != 0) continue;",
               "    if(StarCustomFaction(tdwd1) != '') continue;",
+              "    if(Id(tdwd1) - 1 == PlayerHQMainArray['Main', 'HQStar']) continue; //Пропускаем текущую штабную систему",
               "    //Пропускаем сектора, карты которых у игрока нет",
               "    if(!SectorVisible(StarToCon(tdwd1))) continue;",
               "",
