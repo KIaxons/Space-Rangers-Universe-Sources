@@ -23788,7 +23788,7 @@
               "        tint2 = 0;",
               "    }",
               "    tstr3 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskReliabilityImprove');",
-              "    if(GTL >= 4 || PlayerHQMainArray['Science', 'PortalGenerator'] < 0)",
+              "    if(GTL >= 4 && PlayerHQMainArray['Science', 'PortalGenerator'] < 0)",
               "    {",
               "        if(!PlayerHQMainArray['Science', 'PortalGenerator']) tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGenerator');",
               "        else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -1) tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGeneratorAgain');",
