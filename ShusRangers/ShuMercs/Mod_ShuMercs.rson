@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -449,
-  "ViewPos.y":  232,
+  "ViewPos.x":  22,
+  "ViewPos.y":  -116,
   "ScriptName":  "Mod_ShuMercs",
   "ScriptFileOut":  "H:\\Mod_ShuMercs.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercs.txt",
@@ -4722,17 +4722,17 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "attack_star=GAnswerData;",
-              "cost1=GalaxyMoney(3)*coef/100;",
-              "cost1=cost1*coef2/100;",
-              "cost=cost1*SqNom;",
+              "attack_star = GAnswerData;",
+              "cost1 = GalaxyMoney(3) * coef / 100;",
+              "cost1 = cost1 * coef2 / 100;",
+              "cost = cost1 * SqNom;",
               "",
-              "if(ShipPilotRace(s)==0)rel=red_rel/2;",
-              "else if(ShipPilotRace(s)==3)rel=fei_rel/2;",
-              "else rel=atlant_rel/2;",
+              "if(Soldats == Reds) rel = red_rel / 2;",
+              "else if(Soldats == Atlant) rel = atlant_rel / 2;",
+              "else if(Soldats == Feis) rel = fei_rel / 2;",
               "",
-              "coef=100-rel;",
-              "cost=cost*coef/100;"          
+              "coef = 100 - rel;",
+              "cost = cost * coef / 100;"          
           ]        
         },
         {
@@ -4746,23 +4746,23 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "raid_star=GAnswerData;",
-              "subowner=StarSeries(GalaxyStar(raid_star));",
+              "raid_star = GAnswerData;",
+              "subowner = StarSeries(GalaxyStar(raid_star));",
               "",
-              "if(StarCustomFaction(GalaxyStar(raid_star))=='Klissan')subowner=10;",
-              "if(StarOwner(GalaxyStar(raid_star))==0)subowner=5;",
+              "if(StarCustomFaction(GalaxyStar(raid_star)) == 'Klissan') subowner = 10;",
+              "if(StarOwner(GalaxyStar(raid_star)) == 0) subowner = 5;",
               "",
-              "cost1=GalaxyMoney(3)*coef/100;",
-              "cost1=cost1*coef2/100;",
-              "cost=cost1*SqNom;",
+              "cost1 = GalaxyMoney(3) * coef / 100;",
+              "cost1 = cost1 * coef2 / 100;",
+              "cost = cost1 * SqNom;",
               "",
-              "if(ShipPilotRace(s)==0)rel=red_rel/2;",
-              "else if(ShipPilotRace(s)==3)rel=fei_rel/2;",
-              "else rel=atlant_rel/2;",
+              "if(Soldats == Reds) rel = red_rel / 2;",
+              "else if(Soldats == Atlant) rel = atlant_rel / 2;",
+              "else if(Soldats == Feis) rel = fei_rel / 2;",
               "",
-              "coef=100-rel;",
-              "cost=cost*coef/100;",
-              "stroka3='';"          
+              "coef = 100 - rel;",
+              "cost = cost * coef / 100;",
+              "stroka3 = '';"          
           ]        
         },
         {
@@ -4920,18 +4920,26 @@
           "Pos.y":  410,
           "Parent":  -1,
           "#":  271,
-          "Total.Lines":  8,
+          "Total.Lines":  16,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "//Добавляются ответы с именами подходящих систем",
-              "for(i=0; i<GalaxyStars(); i=i+1)",
+              "//Добавляются ответы с названиями подходящих систем",
+              "for(i = 0; i < GalaxyStars(); i = i + 1)",
               "{",
-              "    s=GalaxyStar(i);",
-              "    if(attack_type==1 && s!=PlanetToStar(PlanetPirateClan()) && s!=GalaxyStar(71))InjectAnswer('AttackMB1',Name(s),i);",
-              "    else if(StarOwner(s)==1 || StarCustomFaction(s)=='Klissan' || StarOwner(ShipStar(Player()))==2 && StarOwner(s)==0)InjectAnswer('AttackMB2',Name(s),i);",
+              "    s = GalaxyStar(i);",
+              "    if(attack_type == 1 && s != PlanetToStar(PlanetPirateClan()) && s != GalaxyStar(71))",
+              "    {",
+              "        InjectAnswer('AttackMB1', Name(s), i);",
+              "    }",
+              "    else if( StarOwner(s) == 1 ||",
+              "             StarCustomFaction(s) == 'Klissan' ||",
+              "            (StarOwner(ShipStar(Player())) == 2 && !StarOwner(s)) )",
+              "    {",
+              "        InjectAnswer('AttackMB2', Name(s), i);",
+              "    }",
               "}",
-              "DAnswer('restart~'+\"Я передумал\");"          
+              "DAnswer('restart~' + \"Я передумал\");"          
           ]        
         },
         {
@@ -5097,8 +5105,8 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "coef2=105;",
-              "attack_type=1;"          
+              "coef2 = 105;",
+              "attack_type = 1;"          
           ]        
         },
         {
@@ -5112,7 +5120,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "coef2=95;",
+              "coef2 = 95;",
               "//\"Я мистер Шу, и мне вообще похуЮ на качество диалогов и иммерсивность игры\"",
               "//\"Поэтому я прямо в реплики персонала ЦН добавлю указание на навык лидерства игрока, см. ниже\""          
           ]        
@@ -5128,7 +5136,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "SqNom=GAnswerData;"          
+              "SqNom = GAnswerData;"          
           ]        
         },
         {
@@ -5142,7 +5150,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "for(it=0; it<SqNom; it=it+1)",
+              "for(it = 0; it < SqNom; it = it + 1)",
               "{",
               "    cur_planet = FindPlanetByAdvancement(100);",
               "    if(!cur_planet) cur_planet = FindPlanetByAdvancement(100, 2);",
@@ -5150,37 +5158,37 @@
               "    {",
               "        cur_ship = SpawnMerc(cur_planet, GroupToShip(MercCenter), 2);",
               "        Atlant = Atlant - 1;",
-              "        atlant_rel=atlant_rel+1;",
-              "        red_rel=red_rel-Rnd(0,1);",
-              "        fei_rel=fei_rel-Rnd(0,1);",
+              "        atlant_rel = atlant_rel + 1;",
+              "        red_rel = red_rel - Rnd(0, 1);",
+              "        fei_rel = fei_rel - Rnd(0, 1);",
               "    }",
               "    else if(Squad == 2)",
               "    {",
               "        cur_ship = SpawnMerc(cur_planet, GroupToShip(MercCenter), 1);",
-              "        Reds=Reds-1;",
-              "        atlant_rel=atlant_rel-Rnd(0,1);",
-              "        red_rel=red_rel+1;",
-              "        fei_rel=fei_rel-1;",
+              "        Reds = Reds - 1;",
+              "        atlant_rel = atlant_rel - Rnd(0, 1);",
+              "        red_rel = red_rel + 1;",
+              "        fei_rel = fei_rel - 1;",
               "    }",
               "    else if(Squad == 3)",
               "    {",
               "        cur_ship = SpawnMerc(cur_planet, GroupToShip(MercCenter), 3);",
-              "        Feis=Feis-1;",
-              "        atlant_rel=atlant_rel-Rnd(0,1);",
-              "        red_rel=red_rel-1;",
-              "        fei_rel=fei_rel+1;",
+              "        Feis = Feis - 1;",
+              "        atlant_rel = atlant_rel - Rnd(0, 1);",
+              "        red_rel = red_rel - 1;",
+              "        fei_rel = fei_rel + 1;",
               "    }",
               "    else if(Squad == 4)",
               "    {",
               "        cur_ship = SpawnMerc(cur_planet, GroupToShip(MercCenter), 0);",
-              "        Frees=Frees-1;",
+              "        Frees = Frees - 1;",
               "    }",
               "    ShipSetPartner(cur_ship, Player(), days);",
               "    ShipOwner(cur_ship, ShipOwner(Player())); //Чтобы не разрывали с игроком контракт сразу после найма",
               "    ChangeState('StateEscort', cur_ship);",
-              "    if(fei_rel > 100) fei_rel=100;",
-              "    if(red_rel > 100) red_rel=100;",
-              "    if(atlant_rel > 100) atlant_rel=100;",
+              "    if(fei_rel > 100) fei_rel = 100;",
+              "    if(red_rel > 100) red_rel = 100;",
+              "    if(atlant_rel > 100) atlant_rel = 100;",
               "}",
               "",
               "ShipMoney(Player(), ShipMoney(Player()) - cost);",
@@ -6234,9 +6242,9 @@
           [
               "if(attack_type == 1)",
               "{",
-              "    tint2=ShipSkill(Player(),'LeadershipCur');",
+              "    tint2 = ShipSkill(Player(), 'LeadershipCur');",
               "    //Добавляем ответы с выбором числа наёмников, которых игрок может нанять для атаки",
-              "    for(i=3; i<=10; i=i+1)",
+              "    for(i = 3; i <= 10; i = i + 1)",
               "    {",
               "        if(i == 3)tstr1=\"Три\";",
               "        else if(i == 4)tstr1=\"Четыре\";",
@@ -6251,7 +6259,7 @@
               "        if(i < 9)tint3=5;",
               "        else tint3=6;",
               "",
-              "        if((tint2*2) >= i && Soldats >= i)InjectAnswer('AttackMBChoose',tstr1,i);",
+              "        if((tint2*2) >= i && Soldats >= i) InjectAnswer('AttackMBChoose',tstr1,i);",
               "        else",
               "        {",
               "            AddDialogBlock(tstr1,1);",
@@ -6259,7 +6267,7 @@
               "        }",
               "    }",
               "}",
-              "DAnswer('restart~'+\"Я передумал\");"          
+              "DAnswer('restart~' + \"Я передумал\");"          
           ]        
         },
         {
@@ -6273,25 +6281,25 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "tint2=ShipPartners(Player())+PlayerPirates();",
+              "tint2 = ShipPartners(Player()) + PlayerPirates();",
               "//Добавляем ответы с выбором числа наёмников, которых игрок может нанять в подчинение",
-              "for(i=1; i<=6; i=i+1)",
+              "for(i = 1; i <= 6; i = i + 1)",
               "{",
-              "    if(i == 1)tstr1=\"Одного вполне достаточно\";",
-              "    else if(i == 2)tstr1=\"Дайте два\";",
-              "    else if(i == 3)tstr1=\"Ровно три штуки\";",
-              "    else if(i == 4)tstr1=\"Найму четыре и точка\";",
-              "    else if(i == 5)tstr1=\"Беру пятерку\";",
-              "    else if(i == 6)tstr1=\"Чего мелочиться - нанимаю шесть!\";",
+              "    if(i == 1) tstr1 = \"Одного вполне достаточно\";",
+              "    else if(i == 2) tstr1 = \"Дайте два\";",
+              "    else if(i == 3) tstr1 = \"Ровно три штуки\";",
+              "    else if(i == 4) tstr1 = \"Найму четыре и точка\";",
+              "    else if(i == 5) tstr1 = \"Беру пятерку\";",
+              "    else if(i == 6) tstr1 = \"Чего мелочиться - нанимаю шесть!\";",
               "",
-              "    if(tint2 <= (6-i) && Soldats >= i)InjectAnswer('HireMBChoose',tstr1,i);",
+              "    if(tint2 <= (6 - i) && Soldats >= i) InjectAnswer('HireMBChoose', tstr1, i);",
               "    else",
               "    {",
-              "        AddDialogBlock(tstr1,1);",
-              "        InjectAnswer('HireMBChoose',tstr1,i);",
+              "        AddDialogBlock(tstr1, 1);",
+              "        InjectAnswer('HireMBChoose', tstr1, i);",
               "    }",
               "}",
-              "DAnswer('restart~'+\"Я передумал\");"          
+              "DAnswer('restart~' + \"Я передумал\");"          
           ]        
         },
         {
@@ -6305,7 +6313,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "SqNom=GAnswerData;"          
+              "SqNom = GAnswerData;"          
           ]        
         },
         {
@@ -6315,41 +6323,42 @@
           "Pos.y":  410,
           "Parent":  -1,
           "#":  477,
-          "Total.Lines":  31,
+          "Total.Lines":  32,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "tint2=ShipSkill(Player(),'LeadershipCur');",
+              "tint2 = ShipSkill(Player(), 'LeadershipCur');",
               "//Добавляем ответы с выбором срока найма наёмников в подчинение игрока",
-              "for(i=1; i<=7; i=i+1)",
+              "for(i = 1; i <= 7; i = i + 1)",
               "{",
-              "    if(i == 1)tstr1=\"Один год\";",
-              "    else if(i == 2)tstr1=\"Два года\";",
-              "    else if(i == 3)tstr1=\"Три года\";",
-              "    else if(i == 4)tstr1=\"Четыре года\";",
-              "    else if(i == 5)tstr1=\"Пять лет\";",
-              "    else if(i == 6)tstr1=\"Пяти лет недостаточно, оформляем на шесть <clr>(лидерство)<clrEnd>\";",
-              "    else if(i == 7)tstr1=\"Десять лет и не меньше <clr>(лидерство)<clrEnd>\";",
+              "    if(i == 1) tstr1 = \"Один год\";",
+              "    else if(i == 2) tstr1 = \"Два года\";",
+              "    else if(i == 3) tstr1 = \"Три года\";",
+              "    else if(i == 4) tstr1 = \"Четыре года\";",
+              "    else if(i == 5) tstr1 = \"Пять лет\";",
+              "    else if(i == 6) tstr1 = \"Пяти лет недостаточно, оформляем на шесть <clr>(лидерство)<clrEnd>\";",
+              "    else if(i == 7) tstr1 = \"Десять лет и не меньше <clr>(лидерство)<clrEnd>\";",
               "",
-              "    if(i < 6)InjectAnswer('HireMBTime',tstr1,i);",
+              "    if(i < 6) InjectAnswer('HireMBTime', tstr1, i);",
               "    else",
               "    {",
               "        //Последняя опция найма предусматривает сразу 10 лет",
-              "        if(i > 6)i=10;",
+              "        if(i > 6) i = 10;",
               "",
               "        //Запоминаем требование к навыку лидерства игрока",
-              "        if(i < 7)tint3=3;",
-              "        else tint3=6;",
+              "        if(i < 7) tint3 = 3;",
+              "        else tint3 = 6;",
               "",
-              "        if(tint2 >= tint3)InjectAnswer('HireMBTime',tstr1,i);",
+              "        if(tint2 >= tint3) InjectAnswer('HireMBTime', tstr1, i);",
               "        else",
               "        {",
-              "            AddDialogBlock(tstr1,1);",
-              "            InjectAnswer('HireMBTime',tstr1,i);",
+              "            AddDialogBlock(tstr1, 1);",
+              "            InjectAnswer('HireMBTime', tstr1, i);",
               "        }",
               "    }",
               "}",
-              "DAnswer('restart~'+\"Я передумал\");"          
+              "",
+              "DAnswer('restart~' + \"Я передумал\");"          
           ]        
         },
         {
@@ -6363,18 +6372,18 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "days=365*GAnswerData;",
-              "cost1=GalaxyMoney(3)*coef/100;",
-              "cost1=cost1*coef2/100;",
-              "cost1=cost1*days/365;",
-              "cost=cost1*SqNom;",
+              "days = 365 * GAnswerData;",
+              "cost1 = GalaxyMoney(3) * coef / 100;",
+              "cost1 = cost1 * coef2 / 100;",
+              "cost1= cost1 * days / 365;",
+              "cost = cost1 * SqNom;",
               "",
-              "if(ShipPilotRace(s)==0)rel=red_rel/2;",
-              "else if(ShipPilotRace(s)==3)rel=fei_rel/2;",
-              "else rel=atlant_rel/2;",
+              "if(Soldats == Reds) rel = red_rel / 2;",
+              "else if(Soldats == Atlant) rel = atlant_rel / 2;",
+              "else if(Soldats == Feis) rel = fei_rel / 2;",
               "",
-              "coef=100-rel;",
-              "cost=cost*coef/100;"          
+              "coef = 100 - rel;",
+              "cost = cost * coef / 100;"          
           ]        
         },
         {
@@ -7495,11 +7504,12 @@
           "Pos.y":  180,
           "Parent":  -1,
           "#":  390,
-          "Total.Lines":  1,
+          "Total.Lines":  2,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "Squad!=1 && Soldats>=3 && Squad!=4 && ShipSkill(Player(),5)>=2 && ShipRank(Player())>=3 || Squad!=4 && Squad!=1 && Soldats>=3 && ShipSkill(Player(),5)>=2 && GetShipPirateRank(Player())>=3"          
+              "Soldats >= 3 && Squad != 1 && Squad != 4 && ShipSkill(Player(), 'LeadershipCur') >= 2 &&",
+              "(ShipRank(Player()) >= 3 || GetShipPirateRank(Player()) >= 3)"          
           ]        
         },
         {
@@ -7551,11 +7561,12 @@
           "Pos.y":  180,
           "Parent":  -1,
           "#":  394,
-          "Total.Lines":  1,
+          "Total.Lines":  2,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipRank(Player())>=1 && Squad!=2 && Soldats>=3 || Squad!=2 && GetShipPirateRank(Player())>=1 && Soldats>=3"          
+              "Soldats >= 3 && Squad != 2 &&",
+              "(ShipRank(Player()) >= 1 || GetShipPirateRank(Player()) >= 1)"          
           ]        
         },
         {
