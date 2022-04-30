@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1012,
-  "ViewPos.y":  -134,
+  "ViewPos.x":  -1043,
+  "ViewPos.y":  -90,
   "ScriptName":  "Mod_ShuKlissan",
   "ScriptFileOut":  "H:\\Mod_ShuKlissan.scr",
   "ScriptTextOut":  "H:\\Mod_ShuKlissan.txt",
@@ -3823,7 +3823,7 @@
               "",
               "    ArrayAdd(KlissanInvasion, 0, 'MainResearch.WasStarted'); //Маркер о начале исследования клисан, нужен для подстановки вступительного диалога перед открытием доступа к исследованию на НБ",
               "    ArrayAdd(KlissanInvasion, 0, 'MainResearch.ResearchLeft'); //Сколько ошмётков осталось сдать до завершения текущего этапа изучения клисан",
-              "    ArrayAdd(KlissanInvasion, 0, 'MainResearch.StagesCompleted'); //Сколько этапов общего исследования клисан было завершено (последний этап - 4, но финальное значение переменной будет равно 5)",
+              "    ArrayAdd(KlissanInvasion, 0, 'MainResearch.StagesCompleted'); //Сколько этапов общего исследования клисан было завершено (последний этап - 4, после чего переменная временно принимает значение 5, а после того, как игрок прочитает последний диалог - 6)",
               "    ArrayAdd(KlissanInvasion, 0, 'MacrophaseShiftGenerator.ActivationCooldown'); //Ход, в который станет доступно следующее использование макрофазового генератора (активируется автоматически, если лежит в трюме у игрока)",
               "",
               "    ArrayAdd(KlissanInvasion, (GalaxyDiffLevels(2) / 50) * 500, 'MentalCommunicator.ResearchLeft'); //Сколько осталось сдать ошмётков до изучения ментального коммуникатора",
@@ -7612,8 +7612,8 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "//Ставим маркер о завершении основного исследования клисан (игроку необходимо будет ещё прочитать финальный текст)",
-              "KlissanInvasion['MainResearch.StagesCompleted'] = KlissanInvasion['MainResearch.StagesCompleted'] + 1;",
+              "//Ставим маркер о завершении основного исследования клисан (игроку необходимо будет ещё прочитать финальный текст и получить макрофазовый генератор)",
+              "KlissanInvasion['MainResearch.StagesCompleted'] = 5;",
               "Sound('Sound.QuestOk');"          
           ]        
         },
@@ -7633,7 +7633,7 @@
               "LinkItemToScript(cur_item, MacrophaseShiftGenerator);",
               "AddItemToShip(Player(), cur_item);",
               "//Ставим маркер о полном завершении основного исследования клисан",
-              "KlissanInvasion['MainResearch.StagesCompleted'] = 5;",
+              "KlissanInvasion['MainResearch.StagesCompleted'] = 6;",
               "",
               "//Добавляем новое задание (нет, т.к. на данном этапе игрок вполне может выбрать иной путь развития сюжета)",
               "//Ether(3, 'Coalition.TortugatzCaptured', \"Изучить любую клисанскую червоточину.\");"          
@@ -12269,7 +12269,7 @@
       "Rect.Left":  -1054,
       "Rect.Top":  46,
       "Rect.Right":  -461,
-      "Rect.Bottom":  264,
+      "Rect.Bottom":  266,
       "FStyle":  1,
       "FColor":  10710818,
       "BStyle":  0,
