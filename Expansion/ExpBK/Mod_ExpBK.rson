@@ -1818,7 +1818,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player()) >= 100 && PlayerDebtCnt() < 3 && temp_int_5 < 100000000"          
+              "ShipMoney(Player()) >= 100 && PlayerDebtCnt() < 3 && temp_int_5 <= 99999900"          
           ]        
         },
         {
@@ -1972,7 +1972,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player()) < 100 || PlayerDebtCnt() >= 3 || temp_int_5 >= 100000000"          
+              "ShipMoney(Player()) < 100 || PlayerDebtCnt() >= 3 || temp_int_5 > 99999900"          
           ]        
         },
         {
