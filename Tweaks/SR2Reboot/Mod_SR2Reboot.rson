@@ -219,7 +219,7 @@
           "Pos.y":  140,
           "Parent":  -1,
           "#":  6,
-          "Total.Lines":  268,
+          "Total.Lines":  269,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -398,10 +398,11 @@
               "        //Была открыта форма 'Ship'",
               "        else if(IsPlayer(FormCurShip()))",
               "        {",
-              "            //Удаляем лишние арты из трюма, если был введён чит ARTS",
-              "            if(InterfaceText('StarMap', 'CheatArtsEnteredMark') == '1')",
+              "            //Удаляем лишние арты из трюма, если был введён чит ARTS (один, либо несколько раз подряд)",
+              "            int arts_entered = InterfaceText('StarMap', 'CheatArtsEnteredMark');",
+              "            if(arts_entered)",
               "            {",
-              "                int counter = 2;",
+              "                int counter = 2 * arts_entered;",
               "                for(int i = ShipArts(Player()) - 1; i >= 0; i = i - 1)",
               "                {",
               "                    dword art = ShipArts(Player(), i);",
