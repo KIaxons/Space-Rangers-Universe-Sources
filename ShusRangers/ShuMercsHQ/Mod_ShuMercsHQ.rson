@@ -1,7 +1,7 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -2045,
+  "ViewPos.x":  -2046,
   "ViewPos.y":  -261,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
@@ -5487,7 +5487,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  10,
-          "Total.Lines":  1317,
+          "Total.Lines":  1320,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -6275,6 +6275,9 @@
               "",
               "                            Chameleon(cur_ship, 'Ship.Akrin.PlayerMercCruiser');",
               "                        }",
+              "",
+              "                        //Лочим рейнджеру корпус, а то начнёт его сам менять",
+              "                        NoDropItem(ShipItems(cur_ship, 0), 1);",
               "",
               "                        //Перекладываем все вещи из флагмана на корабль рейнджера",
               "                        for(i = ShipItems(cur_ship) - 1; i > 0; i = i - 1) FreeItem(GetItemFromShip(cur_ship, i));",
