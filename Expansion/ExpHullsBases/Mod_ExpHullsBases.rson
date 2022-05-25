@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -99,
-  "ViewPos.y":  -147,
+  "ViewPos.x":  -45,
+  "ViewPos.y":  -223,
   "ScriptName":  "Mod_ExpHullsBases",
   "ScriptFileOut":  "H:\\Mod_ExpHullsBases.scr",
   "ScriptTextOut":  "H:\\Mod_ExpHullsBases.txt",
@@ -2402,7 +2402,7 @@
           "Pos.y":  20,
           "Parent":  134,
           "#":  135,
-          "Total.Lines":  47,
+          "Total.Lines":  40,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
@@ -2414,13 +2414,6 @@
               "    if(jumpCheck != '')",
               "    {",
               "        AddDialogOverride(jumpCheck, 3001);",
-              "        //Блокируем кнопку выхода с мостика",
-              "        if(GotoGov())",
-              "        {",
-              "            InterfaceState('RuinsTalk', 'ButFormClose', 0);",
-              "            InterfaceState('RuinsTalk', 'ButFormCloseImgLock', 1);",
-              "            InterfacePos('RuinsTalk', 'ButFormCloseImgLock', UICheckElement('RuinsTalk', 'ButFormClose', 'PosX'), UICheckElement('RuinsTalk', 'ButFormClose', 'PosY'), 1.0);",
-              "        }",
               "    }",
               "    else",
               "    {",
@@ -3381,7 +3374,7 @@
           "Pos.y":  420,
           "Parent":  -1,
           "#":  318,
-          "Total.Lines":  20,
+          "Total.Lines":  21,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -3397,9 +3390,10 @@
               "if(!PlayerBridge()) Sound('Sound.PG_Activation');",
               "jumpCheck = 'PlayerJumpReady';",
               "tempInt2 = Id(cur_ruin);",
+              "",
               "GotoGov(2);",
               "//Блокируем кнопку выхода с мостика",
-              "if(GotoGov())",
+              "if(PlayerBridge())",
               "{",
               "    InterfaceState('RuinsTalk', 'ButFormClose', 0);",
               "    InterfaceState('RuinsTalk', 'ButFormCloseImgLock', 1);",
@@ -3426,7 +3420,7 @@
               "",
               "jumpCheck = '';",
               "GotoGov(0);",
-              "InterfaceState('RuinsTalk', 'ButFormClose', -1);",
+              "InterfaceState('RuinsTalk', 'ButFormClose', 3);",
               "InterfaceState('RuinsTalk', 'ButFormCloseImgLock', -1);"          
           ]        
         },
@@ -3437,7 +3431,7 @@
           "Pos.y":  480,
           "Parent":  -1,
           "#":  324,
-          "Total.Lines":  8,
+          "Total.Lines":  11,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -3448,7 +3442,10 @@
               "ShipCustomShipInfoTextData(cur_ruin, k, 1, '' + ShipCustomShipInfoData(cur_ruin, k, 3) + \"</color> дн.\");",
               "Sound('Sound.PG_PortalOpening');",
               "jumpCheck = '';",
-              "GotoGov(0);"          
+              "",
+              "GotoGov(0);",
+              "InterfaceState('RuinsTalk', 'ButFormClose', 3);",
+              "InterfaceState('RuinsTalk', 'ButFormCloseImgLock', -1);"          
           ]        
         },
         {
@@ -3577,7 +3574,7 @@
           "Pos.y":  390,
           "Parent":  -1,
           "#":  343,
-          "Total.Lines":  23,
+          "Total.Lines":  24,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -3596,9 +3593,10 @@
               "",
               "jumpCheck = 'LongJumpReady';",
               "tempInt2 = Id(cur_ruin);",
+              "",
               "GotoGov(2);",
               "//Блокируем кнопку выхода с мостика",
-              "if(GotoGov())",
+              "if(PlayerBridge())",
               "{",
               "    InterfaceState('RuinsTalk', 'ButFormClose', 0);",
               "    InterfaceState('RuinsTalk', 'ButFormCloseImgLock', 1);",
@@ -3647,7 +3645,7 @@
               "",
               "jumpCheck = '';",
               "GotoGov(0);",
-              "InterfaceState('RuinsTalk', 'ButFormClose', -1);",
+              "InterfaceState('RuinsTalk', 'ButFormClose', 3);",
               "InterfaceState('RuinsTalk', 'ButFormCloseImgLock', -1);"          
           ]        
         },
@@ -3687,7 +3685,7 @@
               "ShipCustomShipInfoTextData(cur_ruin, k, 3, 'InHyper');",
               "jumpCheck = '';",
               "GotoGov(0);",
-              "InterfaceState('RuinsTalk', 'ButFormClose', -1);",
+              "InterfaceState('RuinsTalk', 'ButFormClose', 3);",
               "InterfaceState('RuinsTalk', 'ButFormCloseImgLock', -1);",
               "",
               "if(!PlayerBridge())",
@@ -3865,7 +3863,7 @@
           [
               "jumpCheck = '';",
               "GotoGov(0);",
-              "InterfaceState('RuinsTalk', 'ButFormClose', -1);",
+              "InterfaceState('RuinsTalk', 'ButFormClose', 3);",
               "InterfaceState('RuinsTalk', 'ButFormCloseImgLock', -1);",
               "",
               "if(!PlayerBridge())",
@@ -3883,7 +3881,7 @@
           "Type":  "Top",
           "Name":  "",
           "Pos.x":  890,
-          "Pos.y":  430,
+          "Pos.y":  420,
           "Parent":  -1,
           "#":  398,
           "Total.Lines":  13,
@@ -3899,9 +3897,9 @@
               "",
               "if(ShipOrder(cur_ruin) == 7) OrderNone(cur_ruin);",
               "jumpCheck = '';",
-              "GotoGov(0);",
               "",
-              "InterfaceState('RuinsTalk', 'ButFormClose', 1);",
+              "GotoGov(0);",
+              "InterfaceState('RuinsTalk', 'ButFormClose', 3);",
               "InterfaceState('RuinsTalk', 'ButFormCloseImgLock', -1);"          
           ]        
         },
@@ -3912,7 +3910,7 @@
           "Pos.y":  320,
           "Parent":  -1,
           "#":  399,
-          "Total.Lines":  27,
+          "Total.Lines":  28,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -3935,9 +3933,10 @@
               "if(!PlayerBridge()) Sound('Sound.PG_Activation');",
               "jumpCheck = 'ShortJumpReady';",
               "tempInt2 = Id(cur_ruin);",
+              "",
               "GotoGov(2);",
               "//Блокируем кнопку выхода с мостика",
-              "if(GotoGov())",
+              "if(PlayerBridge())",
               "{",
               "    InterfaceState('RuinsTalk', 'ButFormClose', 0);",
               "    InterfaceState('RuinsTalk', 'ButFormCloseImgLock', 1);",
@@ -3973,11 +3972,19 @@
           "Pos.y":  320,
           "Parent":  -1,
           "#":  419,
-          "Total.Lines":  1,
+          "Total.Lines":  9,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "cur_ruin = IdToShip(tempInt2);"          
+              "cur_ruin = IdToShip(tempInt2);",
+              "",
+              "//Блокируем кнопку выхода с мостика",
+              "if(GotoGov() && PlayerBridge())",
+              "{",
+              "    InterfaceState('RuinsTalk', 'ButFormClose', 0);",
+              "    InterfaceState('RuinsTalk', 'ButFormCloseImgLock', 1);",
+              "    InterfacePos('RuinsTalk', 'ButFormCloseImgLock', UICheckElement('RuinsTalk', 'ButFormClose', 'PosX'), UICheckElement('RuinsTalk', 'ButFormClose', 'PosY'), 1.0);",
+              "}"          
           ]        
         },
         {
@@ -3987,11 +3994,19 @@
           "Pos.y":  390,
           "Parent":  -1,
           "#":  420,
-          "Total.Lines":  1,
+          "Total.Lines":  9,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "cur_ruin = IdToShip(tempInt2);"          
+              "cur_ruin = IdToShip(tempInt2);",
+              "",
+              "//Блокируем кнопку выхода с мостика",
+              "if(GotoGov() && PlayerBridge())",
+              "{",
+              "    InterfaceState('RuinsTalk', 'ButFormClose', 0);",
+              "    InterfaceState('RuinsTalk', 'ButFormCloseImgLock', 1);",
+              "    InterfacePos('RuinsTalk', 'ButFormCloseImgLock', UICheckElement('RuinsTalk', 'ButFormClose', 'PosX'), UICheckElement('RuinsTalk', 'ButFormClose', 'PosY'), 1.0);",
+              "}"          
           ]        
         },
         {
@@ -4007,7 +4022,7 @@
           [
               "jumpCheck = '';",
               "GotoGov(0);",
-              "InterfaceState('RuinsTalk', 'ButFormClose', -1);",
+              "InterfaceState('RuinsTalk', 'ButFormClose', 3);",
               "InterfaceState('RuinsTalk', 'ButFormCloseImgLock', -1);",
               "",
               "//Разряжаем портальный генератор",
@@ -4028,7 +4043,7 @@
           [
               "jumpCheck = '';",
               "GotoGov(0);",
-              "InterfaceState('RuinsTalk', 'ButFormClose', -1);",
+              "InterfaceState('RuinsTalk', 'ButFormClose', 3);",
               "InterfaceState('RuinsTalk', 'ButFormCloseImgLock', -1);",
               "",
               "//Разряжаем портальный генератор",
@@ -4043,11 +4058,19 @@
           "Pos.y":  420,
           "Parent":  -1,
           "#":  425,
-          "Total.Lines":  1,
+          "Total.Lines":  9,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "cur_ruin = IdToShip(tempInt2);"          
+              "cur_ruin = IdToShip(tempInt2);",
+              "",
+              "//Блокируем кнопку выхода с мостика",
+              "if(GotoGov() && PlayerBridge())",
+              "{",
+              "    InterfaceState('RuinsTalk', 'ButFormClose', 0);",
+              "    InterfaceState('RuinsTalk', 'ButFormCloseImgLock', 1);",
+              "    InterfacePos('RuinsTalk', 'ButFormCloseImgLock', UICheckElement('RuinsTalk', 'ButFormClose', 'PosX'), UICheckElement('RuinsTalk', 'ButFormClose', 'PosY'), 1.0);",
+              "}"          
           ]        
         },
         {

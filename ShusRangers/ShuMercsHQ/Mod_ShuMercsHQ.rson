@@ -1,13 +1,13 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -2046,
-  "ViewPos.y":  -261,
+  "ViewPos.x":  -2045,
+  "ViewPos.y":  -258,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
-  "GraphPoint.Count":  1059,
-  "GraphLink.Count":  987,
+  "GraphPoint.Count":  1070,
+  "GraphLink.Count":  1000,
   "GraphRectText.Count":  2,
   "Variables.Count":  57,
   "Stars.Count":  1,
@@ -20,9 +20,9 @@
   "Ethers.Count":  0,
   "Dialogs.Count":  51,
   "DialogMessages.Count":  108,
-  "DialogAnswers.Count":  207,
-  "Operations.Count":  277,
-  "Statements.Count":  293,
+  "DialogAnswers.Count":  208,
+  "Operations.Count":  279,
+  "Statements.Count":  301,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
@@ -1921,10 +1921,10 @@
         },
         {
           "Type":  "TDialogAnswer",
-          "Name":  "continue",
-          "Pos.x":  40,
+          "Name":  "restart",
+          "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  972,
+          "Parent":  1060,
           "#":  973,
           "Msg":  "<tstr2>",
           "AMsg.Num":  "189"        
@@ -2053,7 +2053,7 @@
           "Type":  "TDialogAnswer",
           "Name":  "continue",
           "Pos.x":  0,
-          "Pos.y":  20,
+          "Pos.y":  40,
           "Parent":  1032,
           "#":  1033,
           "Msg":  "",
@@ -2098,6 +2098,16 @@
           "#":  1057,
           "Msg":  "<tstr3>",
           "AMsg.Num":  "206"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "continue",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  1061,
+          "#":  1062,
+          "Msg":  "<tstr2>",
+          "AMsg.Num":  "207"        
         }      
       ],
       "DialogMessages":      
@@ -3095,9 +3105,9 @@
         {
           "Type":  "TDialogMsg",
           "Name":  "",
-          "Pos.x":  0,
-          "Pos.y":  40,
-          "Parent":  969,
+          "Pos.x":  -10,
+          "Pos.y":  20,
+          "Parent":  1063,
           "#":  972,
           "Msg":  "<tstr1>",
           "DMsg.Num":  "99"        
@@ -6262,7 +6272,7 @@
               "                        {",
               "                            cur_item = ShipItems(tdwd1, 0);",
               "                            HullSeries(cur_item, -1);",
-              "                            SetName(cur_item, CT('MicroModuls.ShuMercsHQ_PlayerMercCruiser.Name'));",
+              "                            SetName(cur_item, Format(CT('MicroModuls.ShuMercsHQ_PlayerMercCruiser.Name'), '<Type'+'>', CT('Items.Hull.Type.' + ItemLevel(cur_item)), ''));",
               "                            EqCustomFaction(cur_item, 'SubFactionPlayerMercsFixedStanding');",
               "",
               "                            //Выдаём рейнджеру корпус флагмана",
@@ -23694,7 +23704,7 @@
           "Pos.y":  20,
           "Parent":  490,
           "#":  491,
-          "Total.Lines":  277,
+          "Total.Lines":  284,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
@@ -23727,10 +23737,10 @@
               "            //Добавляем диалог в случае нахождения станции в гипере (и если игрок в этот момент сидит на ней же)",
               "            if(ShipInHyperSpace(cur_ruin))",
               "            {",
-              "                tstr1 = Format(CT('Script.Mod_ShuMercsHQ.PlayerHQPortalGeneratorDialog.PlayerInHyper'),",
+              "                tstr1 = Format(CT('Script.Mod_ShuMercsHQ.PlayerHQPortalGeneratorDialog.InHyper'),",
               "                                  '<Star'+'>', StarName(ShipOrderObj(cur_ruin)),",
               "                                  '<DaysLeft'+'>', ShipOrderData1(cur_ruin));",
-              "                tstr2 = '</color>' + CT('Script.Mod_ShuMercsHQ.PlayerHQPortalGeneratorDialog.InHyper');",
+              "                tstr2 = '</color>' + CT('Script.Mod_ShuMercsHQ.PlayerHQPortalGeneratorDialog.PlayerInHyper');",
               "                AddDialogInject('PlayerHQInHyper', tstr1, tstr2, 0, 1);",
               "                exit;",
               "            }",
@@ -23948,6 +23958,13 @@
               "    }",
               "    else",
               "    {",
+              "        //Игрок находится в диалоге выбора \"прыгать/не прыгать\" и должен определиться",
+              "        if(PlayerHQJumpReady != '')",
+              "        {",
+              "            AddDialogOverride(PlayerHQJumpReady, 30001);",
+              "            exit;",
+              "        }",
+              "",
               "        tint1 = PlayerBridge();",
               "        //Если игрок находится на главном экране мостика",
               "        if(tint1 && tint1 <= 3)",
@@ -25536,9 +25553,9 @@
               "        tstr2 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQShipyardDialog.PlayerAskForConstruction');",
               "        tstr3 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQShipyardDialog.PlayerOut');",
               "",
-              "        //Если репутация у обеих сторон менее 25%, то ничего построить нельзя",
+              "        //Если репутация у обеих сторон менее 25%, то ничего построить нельзя (пока убрал это ограничение)",
               "        check = max(PlayerHQMainArray['Main', 'CoalitionReputation'], PlayerHQMainArray['Main', 'PirateClanReputation']);",
-              "        if(check >= 250) tint1 = 1;",
+              "        if(check >= 0) tint1 = 1;",
               "        else tint1 = 0;",
               "    }",
               "    //Если производство корабля/транклюкатора уже в процессе",
@@ -25667,7 +25684,7 @@
               "        ArrayAdd(tarr1, t_arr, block_path);",
               "        ArrayAdd(tarr1[block_path], 0, 'Owner');",
               "        ArrayAdd(tarr1[block_path], 0, 'RequiredReputation');",
-              "        int cost = GalaxyMoney(4, 4) * 10;",
+              "        int cost = GalaxyMoney(4, 4) * 25;",
               "        ArrayAdd(tarr1[block_path], cost, 'Cost'); //Цену считаем прям здесь же",
               "        ArrayAdd(tarr1[block_path], int(CT(block_path + 'ProductionTime')), 'ProductionTime');",
               "",
@@ -28268,9 +28285,9 @@
               "tstr2 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQShipyardDialog.PlayerAskForConstruction');",
               "tstr3 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQShipyardDialog.PlayerOutAfterCancel');",
               "",
-              "//Если репутация у обеих сторон менее 25%, то ничего построить нельзя",
+              "//Если репутация у обеих сторон менее 25%, то ничего построить нельзя (пока убрал это ограничение)",
               "tint1 = max(PlayerHQMainArray['Main', 'CoalitionReputation'], PlayerHQMainArray['Main', 'PirateClanReputation']);",
-              "if(tint1 >= 250) tint1 = 1;",
+              "if(tint1 >= 0) tint1 = 1;",
               "else tint1 = 0;"          
           ]        
         },
@@ -28439,17 +28456,25 @@
           "Pos.y":  20,
           "Parent":  961,
           "#":  963,
-          "Total.Lines":  16,
+          "Total.Lines":  24,
           "Code.Type":  "Turn",
           "Code":          
           [
+              "tdwd1 = GAnswerData;",
               "if(PlayerHQJumpReady == '')",
               "{",
-              "    tdwd1 = GAnswerData;",
               "    //Маркер установки оверрайда на диалог до тех пор, пока игрок не выберет \"да\" или \"нет\"",
               "    PlayerHQJumpReady = 'PortalGeneratorShortJump';",
               "    GotoGov(2);",
               "    if(!PlayerBridge()) Sound('Sound.PG_Activation');",
+              "}",
+              "",
+              "//Блокируем кнопку выхода с мостика (т.к. игрок может отдавать приказ с него)",
+              "if(GotoGov() && PlayerBridge())",
+              "{",
+              "    InterfaceState('RuinsTalk', 'ButFormClose', 0);",
+              "    InterfaceState('RuinsTalk', 'ButFormCloseImgLock', 1);",
+              "    InterfacePos('RuinsTalk', 'ButFormCloseImgLock', UICheckElement('RuinsTalk', 'ButFormClose', 'PosX'), UICheckElement('RuinsTalk', 'ButFormClose', 'PosY'), 1.0);",
               "}",
               "",
               "if(tdwd1 == Player()) tstr1 = CT('Script.Mod_ShuMercsHQ.PlayerHQPortalGeneratorDialog.ShortJumpPlacePlayer');",
@@ -28468,25 +28493,13 @@
           "Pos.y":  20,
           "Parent":  965,
           "#":  969,
-          "Total.Lines":  15,
+          "Total.Lines":  3,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "OrderTeleport(cur_ruin, cur_star, CoordX(tdwd1), CoordY(tdwd1));",
-              "//Задаём число дней на совершение скачка",
-              "ShipOrderData1(cur_ruin, CT('Script.Mod_ShuMercsHQ.PlayerMercsParams.PortalGeneratorShortJumpDays'));",
-              "PlayerHQMainArray['Science', 'PortalGeneratorTimer'] = CurTurn() + CT('Script.Mod_ShuMercsHQ.PlayerMercsParams.PortalGeneratorShortJumpCooldown');",
-              "PlayerHQJumpReady = '';",
-              "GotoGov(0);",
-              "",
-              "if(!PlayerBridge())",
-              "{",
-              "    Sound('Sound.PG_InWork');",
-              "    ButtonClick('RuinsTalk', 'PM_EndTurn');",
-              "}",
-              "",
               "tstr1 = '</color>' + CT('Script.Mod_ShuMercsHQ.PlayerHQPortalGeneratorDialog.ShortJumpGo');",
-              "tstr2 = '</color>' + CT('Script.Mod_ShuMercsHQ.PlayerHQPortalGeneratorDialog.PlayerShortJumpGo');"          
+              "if(!PlayerBridge()) tstr2 = '</color>' + CT('Script.Mod_ShuMercsHQ.PlayerHQPortalGeneratorDialog.PlayerShortJumpGo');",
+              "else tstr2 = '</color>' + CT('Script.Mod_ShuMercsHQ.PlayerHQPortalGeneratorDialog.PlayerShortJumpGoBridge');"          
           ]        
         },
         {
@@ -28496,15 +28509,21 @@
           "Pos.y":  20,
           "Parent":  966,
           "#":  970,
-          "Total.Lines":  7,
+          "Total.Lines":  13,
           "Code.Type":  "Turn",
           "Code":          
           [
               "PlayerHQMainArray['Science', 'PortalGeneratorTimer'] = CurTurn() + CT('Script.Mod_ShuMercsHQ.PlayerMercsParams.PortalGeneratorDeactivationCooldown');",
-              "if(!PlayerBridge()) Sound('Sound.PG_Deactivation');",
               "",
               "PlayerHQJumpReady = '';",
               "GotoGov(0);",
+              "if(!PlayerBridge()) Sound('Sound.PG_Deactivation');",
+              "else",
+              "{",
+              "    InterfaceState('RuinsTalk', 'ButFormClose', 3);",
+              "    InterfaceState('RuinsTalk', 'ButFormCloseImgLock', -1);",
+              "}",
+              "",
               "tstr1 = '</color>' + CT('Script.Mod_ShuMercsHQ.PlayerHQPortalGeneratorDialog.ShortJumpDeactivation');",
               "tstr2 = '';"          
           ]        
@@ -28658,7 +28677,7 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  -20,
+          "Pos.x":  -30,
           "Pos.y":  0,
           "Parent":  1001,
           "#":  1002,
@@ -28745,17 +28764,25 @@
           "Pos.y":  20,
           "Parent":  996,
           "#":  1006,
-          "Total.Lines":  13,
+          "Total.Lines":  21,
           "Code.Type":  "Turn",
           "Code":          
           [
+              "tdwd1 = GalaxyStar(int(ScriptItemTextData(ApprovalDocuments, 1)));",
               "if(PlayerHQJumpReady == '')",
               "{",
-              "    tdwd1 = GalaxyStar(int(ScriptItemTextData(ApprovalDocuments, 1)));",
               "    //Маркер установки оверрайда на диалог до тех пор, пока игрок не выберет \"да\" или \"нет\"",
               "    PlayerHQJumpReady = 'PortalGeneratorLongJump';",
               "    GotoGov(2);",
               "    if(!PlayerBridge()) Sound('Sound.PG_Activation');",
+              "}",
+              "",
+              "//Блокируем кнопку выхода с мостика (т.к. игрок может отдавать приказ с него)",
+              "if(GotoGov() && PlayerBridge())",
+              "{",
+              "    InterfaceState('RuinsTalk', 'ButFormClose', 0);",
+              "    InterfaceState('RuinsTalk', 'ButFormCloseImgLock', 1);",
+              "    InterfacePos('RuinsTalk', 'ButFormCloseImgLock', UICheckElement('RuinsTalk', 'ButFormClose', 'PosX'), UICheckElement('RuinsTalk', 'ButFormClose', 'PosY'), 1.0);",
               "}",
               "",
               "tstr1 = '</color>' + Format(CT('Script.Mod_ShuMercsHQ.PlayerHQPortalGeneratorDialog.LongJumpActivation'),",
@@ -28771,84 +28798,13 @@
           "Pos.y":  20,
           "Parent":  1009,
           "#":  1011,
-          "Total.Lines":  74,
+          "Total.Lines":  3,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "//Обновляем информацию по месту расположения штаба",
-              "PlayerHQMainArray['Main', 'HQStar'] = Id(tdwd1) - 1;",
-              "PlayerHQMainArray['Mercs', 'PlanetsCount'] = ScriptItemData(ApprovalDocuments, 3, 0);",
-              "PlayerHQMainArray['Mercs', 'ReplenishmentFrequency'] = CT('Script.Mod_ShuMercs.PlayerMercsParams.ReplenishmentFrequency');",
-              "PlayerHQMainArray['Mercs', 'ReplenishmentTimer'] = CurTurn() + PlayerHQMainArray['Mercs', 'ReplenishmentFrequency'];",
-              "PlayerHQMainArray['Mercs', 'ReplenishmentCount'] = ScriptItemData(ApprovalDocuments, 3, 0); //Количество рекрутов в месяц зависит непосредственно от числа планет",
-              "",
-              "OrderTeleport(cur_ruin, tdwd1, CoordX(cur_ruin), CoordY(cur_ruin));",
-              "//Задаём число дней на совершение скачка",
-              "tint1 = round(sqrt(Dist2Star(cur_star, tdwd1))) / 10 + 1;",
-              "ShipOrderData1(cur_ruin, tint1);",
-              "PlayerHQMainArray['Science', 'PortalGeneratorTimer'] = CurTurn() + CT('Script.Mod_ShuMercsHQ.PlayerMercsParams.PortalGeneratorLongJumpCooldown');",
-              "PlayerHQJumpReady = '';",
-              "GotoGov(0);",
-              "",
-              "//Если на систему со штабом в этот момент совершалось нападение, то теперь это уже не важно",
-              "if(GetData(3, cur_ruin))",
-              "{",
-              "    //Возвращаем всех дежурных наёмников из обороны",
-              "    for(i = 0; i < GroupCount(PlayerMercsDefenders); i = i + 1)",
-              "    {",
-              "        cur_ship = GroupShip(PlayerMercsDefenders, i);",
-              "        SetData(1, 2, cur_ship); //Выставляем маркер принудительного возвращения на базу",
-              "    }",
-              "    //Возвращаем ударную группу из обороны",
-              "    for(i = 0; i < GroupCount(PlayerMercsStrike); i = i + 1)",
-              "    {",
-              "        cur_ship = GroupShip(PlayerMercsStrike, i);",
-              "        if(!StateIs(cur_ship, 'DefendingStarState')) continue;",
-              "        SetData(1, 2, cur_ship); //Выставляем маркер принудительного возвращения на базу",
-              "    }",
-              "",
-              "    EtherDelete('PlayerMercsOrgStarAttack');",
-              "    SetData(0, 3, cur_ruin);",
-              "}",
-              "",
-              "if(!PlayerBridge())",
-              "{",
-              "    Sound('Sound.PG_InWork');",
-              "    ButtonClick('RuinsTalk', 'PM_EndTurn');",
-              "}",
-              "",
-              "//Чистим всё руками, потому что при удалении предмета оно автоматом не чистится",
-              "ScriptItemData(ApprovalDocuments, 1, 0);",
-              "ScriptItemData(ApprovalDocuments, 2, 0);",
-              "ScriptItemData(ApprovalDocuments, 3, 0);",
-              "ScriptItemTextData(ApprovalDocuments, 1, '');",
-              "ScriptItemTextData(ApprovalDocuments, 2, '');",
-              "ScriptItemTextData(ApprovalDocuments, 3, '');",
-              "//Удаляем из трюма игрока пакет документов на передислокацию",
-              "cur_item = ScriptItemToItem(ApprovalDocuments);",
-              "ReleaseItemFromScript(ApprovalDocuments);",
-              "FreeItem(GetItemFromShip(Player(), cur_item));",
-              "",
-              "//Обнуляем список выданных планетарных заданий при завершении задания на передислокацию штаба",
-              "GBuildOwnBase_QuestsGiven = '';",
-              "",
-              "//Удаляем все взятые по данному квесту планетарные задания и очищаем массив",
-              "for(i = ArrayDim(BuildOwnBase_QuestsArray) - 1; i > 0; i = i - 1) EtherDelete(BuildOwnBase_QuestsArray[i, 1]);",
-              "free(BuildOwnBase_QuestsArray);",
-              "BuildOwnBase_QuestsArray = newarray(1, 1);",
-              "",
-              "//Уведомление об успешном завершении задания на передислокацию штаба",
-              "tstr1 = '<color=255,0,0>' + CT('Quest.Info.OldQuests.Accepted') + '</color>';",
-              "tstr1 = tstr1 + \"<br>\" + CT('Script.Mod_ShuMercsHQ.PlayerHQRelocation.QuestMessage.Title');",
-              "tstr1 = tstr1 + \"<br>\" + '<clr><clrEnd>' + \"<br>\" + Format(CT('Script.Mod_ShuMercsHQ.PlayerHQRelocation.QuestMessage.Complete'), '<Star'+'>', '<color=255,240,100>' + Name(tdwd1) + '</color>', '');",
-              "CustomEther('QuestComplete_PlayerMercsOrg', 4, 'PlayerHQRelocation', tstr1);",
-              "",
-              "//Либо можно просто по-тихому его удалить, чтоб не мешало",
-              "//EtherDelete('PlayerHQRelocation');",
-              "//Sound('Sound.NewMsg');",
-              "",
               "tstr1 = '</color>' + CT('Script.Mod_ShuMercsHQ.PlayerHQPortalGeneratorDialog.LongJumpGo');",
-              "tstr2 = '</color>' + CT('Script.Mod_ShuMercsHQ.PlayerHQPortalGeneratorDialog.PlayerLongJumpGo');"          
+              "if(!PlayerBridge()) tstr2 = '</color>' + CT('Script.Mod_ShuMercsHQ.PlayerHQPortalGeneratorDialog.PlayerLongJumpGo');",
+              "else tstr2 = '</color>' + CT('Script.Mod_ShuMercsHQ.PlayerHQPortalGeneratorDialog.PlayerLongJumpGoBridge');"          
           ]        
         },
         {
@@ -28858,15 +28814,21 @@
           "Pos.y":  20,
           "Parent":  1010,
           "#":  1012,
-          "Total.Lines":  7,
+          "Total.Lines":  13,
           "Code.Type":  "Turn",
           "Code":          
           [
               "PlayerHQMainArray['Science', 'PortalGeneratorTimer'] = CurTurn() + CT('Script.Mod_ShuMercsHQ.PlayerMercsParams.PortalGeneratorDeactivationCooldown');",
-              "if(!PlayerBridge()) Sound('Sound.PG_Deactivation');",
               "",
               "PlayerHQJumpReady = '';",
               "GotoGov(0);",
+              "if(!PlayerBridge()) Sound('Sound.PG_Deactivation');",
+              "else",
+              "{",
+              "    InterfaceState('RuinsTalk', 'ButFormClose', 3);",
+              "    InterfaceState('RuinsTalk', 'ButFormCloseImgLock', -1);",
+              "}",
+              "",
               "tstr1 = '</color>' + CT('Script.Mod_ShuMercsHQ.PlayerHQPortalGeneratorDialog.LongJumpDeactivation');",
               "tstr2 = '';"          
           ]        
@@ -29155,7 +29117,7 @@
           "Pos.y":  20,
           "Parent":  1046,
           "#":  1049,
-          "Total.Lines":  10,
+          "Total.Lines":  11,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -29163,12 +29125,13 @@
               "cur_ship = GroupToShip(CruisersDefenders);",
               "TransferShip(cur_ship, StarPlanets(GalaxyStar(People), 0));",
               "ShipDestroy(cur_ship, 1);",
+              "PlayerHQMainArray['Shipyard', 'CapitalShipDock'] = 1;",
               "",
               "PlayerHQMainArray['Finance', 'CurrentBalance'] = PlayerHQMainArray['Finance', 'CurrentBalance'] + cost;",
               "Sound('Sound.Sell');",
               "GAnswerData = cost; //Таким образом, сохраняем значение cost до вывода следующей реплики",
               "",
-              "tstr1 = 'CruiserSoldCanceled';"          
+              "tstr1 = 'CruiserSold';"          
           ]        
         },
         {
@@ -29182,7 +29145,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "tstr1 = 'CruiserSolded';"          
+              "tstr1 = 'CruiserSoldCanceled';"          
           ]        
         },
         {
@@ -29206,6 +29169,134 @@
               "{",
               "    tint1 = 1;",
               "}"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  973,
+          "#":  1059,
+          "Total.Lines":  101,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//Короткий скачёк",
+              "if(PlayerHQJumpReady == 'PortalGeneratorShortJump')",
+              "{",
+              "    OrderTeleport(cur_ruin, cur_star, CoordX(tdwd1), CoordY(tdwd1));",
+              "    //Задаём число дней на совершение скачка",
+              "    ShipOrderData1(cur_ruin, CT('Script.Mod_ShuMercsHQ.PlayerMercsParams.PortalGeneratorShortJumpDays'));",
+              "    PlayerHQMainArray['Science', 'PortalGeneratorTimer'] = CurTurn() + CT('Script.Mod_ShuMercsHQ.PlayerMercsParams.PortalGeneratorShortJumpCooldown');",
+              "    PlayerHQJumpReady = '';",
+              "",
+              "    GotoGov(0);",
+              "    if(!PlayerBridge())",
+              "    {",
+              "        Sound('Sound.PG_InWork');",
+              "        ButtonClick('RuinsTalk', 'PM_EndTurn');",
+              "    }",
+              "    else",
+              "    {",
+              "        InterfaceState('RuinsTalk', 'ButFormClose', 3);",
+              "        InterfaceState('RuinsTalk', 'ButFormCloseImgLock', -1);",
+              "    }",
+              "}",
+              "//Дальний скачёк",
+              "else //if(PlayerHQJumpReady == 'PortalGeneratorLongJump')",
+              "{",
+              "    //Обновляем информацию по месту расположения штаба",
+              "    PlayerHQMainArray['Main', 'HQStar'] = Id(tdwd1) - 1;",
+              "    PlayerHQMainArray['Mercs', 'PlanetsCount'] = ScriptItemData(ApprovalDocuments, 3);",
+              "    PlayerHQMainArray['Mercs', 'ReplenishmentFrequency'] = CT('Script.Mod_ShuMercs.PlayerMercsParams.ReplenishmentFrequency');",
+              "    PlayerHQMainArray['Mercs', 'ReplenishmentTimer'] = CurTurn() + PlayerHQMainArray['Mercs', 'ReplenishmentFrequency'];",
+              "    PlayerHQMainArray['Mercs', 'ReplenishmentCount'] = ScriptItemData(ApprovalDocuments, 3); //Количество рекрутов в месяц зависит непосредственно от числа планет",
+              "",
+              "    OrderTeleport(cur_ruin, tdwd1, CoordX(cur_ruin), CoordY(cur_ruin));",
+              "    //Задаём число дней на совершение скачка",
+              "    tint1 = round(sqrt(Dist2Star(cur_star, tdwd1))) / 10 + 1;",
+              "    ShipOrderData1(cur_ruin, tint1);",
+              "    PlayerHQMainArray['Science', 'PortalGeneratorTimer'] = CurTurn() + CT('Script.Mod_ShuMercsHQ.PlayerMercsParams.PortalGeneratorLongJumpCooldown');",
+              "    PlayerHQJumpReady = '';",
+              "",
+              "    //Если на систему со штабом в этот момент совершалось нападение, то теперь это уже не важно",
+              "    if(GetData(3, cur_ruin))",
+              "    {",
+              "        //Возвращаем всех дежурных наёмников из обороны",
+              "        for(i = 0; i < GroupCount(PlayerMercsDefenders); i = i + 1)",
+              "        {",
+              "            cur_ship = GroupShip(PlayerMercsDefenders, i);",
+              "            SetData(1, 2, cur_ship); //Выставляем маркер принудительного возвращения на базу",
+              "        }",
+              "        //Возвращаем ударную группу из обороны",
+              "        for(i = 0; i < GroupCount(PlayerMercsStrike); i = i + 1)",
+              "        {",
+              "            cur_ship = GroupShip(PlayerMercsStrike, i);",
+              "            if(!StateIs(cur_ship, 'DefendingStarState')) continue;",
+              "            SetData(1, 2, cur_ship); //Выставляем маркер принудительного возвращения на базу",
+              "        }",
+              "",
+              "        EtherDelete('PlayerMercsOrgStarAttack');",
+              "        SetData(0, 3, cur_ruin);",
+              "    }",
+              "",
+              "    GotoGov(0);",
+              "    if(!PlayerBridge())",
+              "    {",
+              "        Sound('Sound.PG_InWork');",
+              "        ButtonClick('RuinsTalk', 'PM_EndTurn');",
+              "    }",
+              "    else",
+              "    {",
+              "        InterfaceState('RuinsTalk', 'ButFormClose', 3);",
+              "        InterfaceState('RuinsTalk', 'ButFormCloseImgLock', -1);",
+              "    }",
+              "",
+              "    //Чистим всё руками, потому что при удалении предмета оно автоматом не чистится",
+              "    ScriptItemData(ApprovalDocuments, 1, 0);",
+              "    ScriptItemData(ApprovalDocuments, 2, 0);",
+              "    ScriptItemData(ApprovalDocuments, 3, 0);",
+              "    ScriptItemTextData(ApprovalDocuments, 1, '');",
+              "    ScriptItemTextData(ApprovalDocuments, 2, '');",
+              "    ScriptItemTextData(ApprovalDocuments, 3, '');",
+              "    //Удаляем из трюма игрока пакет документов на передислокацию",
+              "    cur_item = ScriptItemToItem(ApprovalDocuments);",
+              "    ReleaseItemFromScript(ApprovalDocuments);",
+              "    FreeItem(GetItemFromShip(Player(), cur_item));",
+              "",
+              "    //Обнуляем список выданных планетарных заданий при завершении задания на передислокацию штаба",
+              "    GBuildOwnBase_QuestsGiven = '';",
+              "",
+              "    //Удаляем все взятые по данному квесту планетарные задания и очищаем массив",
+              "    for(i = ArrayDim(BuildOwnBase_QuestsArray) - 1; i > 0; i = i - 1) EtherDelete(BuildOwnBase_QuestsArray[i, 1]);",
+              "    free(BuildOwnBase_QuestsArray);",
+              "    BuildOwnBase_QuestsArray = newarray(1, 1);",
+              "",
+              "    //Уведомление об успешном завершении задания на передислокацию штаба",
+              "    tstr1 = '<color=255,0,0>' + CT('Quest.Info.OldQuests.Accepted') + '</color>';",
+              "    tstr1 = tstr1 + \"<br>\" + CT('Script.Mod_ShuMercsHQ.PlayerHQRelocation.QuestMessage.Title');",
+              "    tstr1 = tstr1 + \"<br>\" + '<clr><clrEnd>' + \"<br>\" + Format(CT('Script.Mod_ShuMercsHQ.PlayerHQRelocation.QuestMessage.Complete'), '<Star'+'>', '<color=255,240,100>' + Name(tdwd1) + '</color>', '');",
+              "    CustomEther('QuestComplete_PlayerMercsOrg', 4, 'PlayerHQRelocation', tstr1);",
+              "",
+              "    //Либо можно просто по-тихому его удалить, чтоб не мешало",
+              "    //EtherDelete('PlayerHQRelocation');",
+              "    //Sound('Sound.NewMsg');",
+              "}"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  -20,
+          "Parent":  1064,
+          "#":  1068,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tstr2 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQBridgeDialog.PlayerCallHQOut');"          
           ]        
         }      
       ],
@@ -33130,7 +33221,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  20,
+          "Pos.x":  30,
           "Pos.y":  20,
           "Parent":  946,
           "#":  993,
@@ -33158,7 +33249,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  20,
+          "Pos.x":  30,
           "Pos.y":  20,
           "Parent":  962,
           "#":  996,
@@ -33172,7 +33263,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  -20,
+          "Pos.x":  -10,
           "Pos.y":  20,
           "Parent":  997,
           "#":  998,
@@ -33186,7 +33277,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  0,
+          "Pos.x":  10,
           "Pos.y":  20,
           "Parent":  997,
           "#":  999,
@@ -33214,7 +33305,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  -60,
+          "Pos.x":  -70,
           "Pos.y":  0,
           "Parent":  1003,
           "#":  1005,
@@ -33461,6 +33552,118 @@
           "Code":          
           [
               "tint1 == 2"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  1065,
+          "#":  1060,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "PlayerHQJumpReady != ''"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  20,
+          "Pos.y":  20,
+          "Parent":  1065,
+          "#":  1061,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "PlayerHQJumpReady == ''"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -10,
+          "Pos.y":  20,
+          "Parent":  970,
+          "#":  1063,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "!PlayerBridge()"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  140,
+          "Pos.y":  0,
+          "Parent":  970,
+          "#":  1064,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "PlayerBridge()"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  70,
+          "Pos.y":  20,
+          "Parent":  972,
+          "#":  1065,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -50,
+          "Pos.y":  0,
+          "Parent":  1012,
+          "#":  1066,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "!PlayerBridge()"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  70,
+          "Pos.y":  0,
+          "Parent":  1012,
+          "#":  1067,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "PlayerBridge()"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  -300,
+          "Parent":  1068,
+          "#":  1069,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "1"          
           ]        
         }      
       ],
@@ -41081,13 +41284,6 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  958,
-      "End":  308,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
       "Begin":  959,
       "End":  960,
       "Nom":  0,
@@ -41159,13 +41355,6 @@
     {
       "Type":  "TGraphLink",
       "Begin":  969,
-      "End":  972,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  970,
       "End":  972,
       "Nom":  0,
       "Arrow":  true    
@@ -41445,20 +41634,6 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  1011,
-      "End":  972,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  1012,
-      "End":  972,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
       "Begin":  1006,
       "End":  1013,
       "Nom":  0,
@@ -41636,13 +41811,6 @@
       "Type":  "TGraphLink",
       "Begin":  1032,
       "End":  1033,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  972,
-      "End":  973,
       "Nom":  0,
       "Arrow":  true    
     },
@@ -41832,6 +42000,132 @@
       "Type":  "TGraphLink",
       "Begin":  1055,
       "End":  316,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  973,
+      "End":  1059,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1060,
+      "End":  973,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  970,
+      "End":  1064,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  970,
+      "End":  1063,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1063,
+      "End":  972,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1061,
+      "End":  1062,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  972,
+      "End":  1065,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1065,
+      "End":  1061,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1065,
+      "End":  1060,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1011,
+      "End":  972,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1012,
+      "End":  1066,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1066,
+      "End":  972,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1012,
+      "End":  1067,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1067,
+      "End":  1068,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1064,
+      "End":  1068,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  958,
+      "End":  308,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1068,
+      "End":  1069,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1069,
+      "End":  314,
       "Nom":  0,
       "Arrow":  true    
     }  
