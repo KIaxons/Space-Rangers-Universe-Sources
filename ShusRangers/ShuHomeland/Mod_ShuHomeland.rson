@@ -527,7 +527,7 @@
           [
               "//if(IsScriptActive('Mod_ExpAcryn'))",
               "//{",
-              "    //if(GetValueFromScript('Mod_ExpAcryn','HomeGiveCaseCheck')==1)GotoGov(0);",
+              "    //if(GetValueFromScript('Mod_ExpAcryn', 'HomeGiveCaseCheck') == 1) GotoGov(0);",
               "//}"          
           ]        
         },
@@ -548,8 +548,8 @@
               "    //Если подключён мод ExpPilotBridge то настройку уведомления об атаке родной системы мы вешаем в специальном разделе",
               "    if(CurrentMods('Expansion\\ExpPilotBridge'))",
               "    {",
-              "        bridge_ckeck_from = 12;",
-              "        bridge_ckeck_to = 12;",
+              "        int bridge_ckeck_from = 12;",
+              "        int bridge_ckeck_to = 12;",
               "    }",
               "    else",
               "    {",
