@@ -6379,7 +6379,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "NoTalkToShip(Player(),0);",
+              "NoTalkToShip(Player(), 0);",
               "DAnswer('main');",
               "Sound('Sound.ButtonInfoEnter');"          
           ]        
@@ -9324,11 +9324,11 @@
           "Code":          
           [
               "//Меняем вступительное описание в зависимости от того, подключён ли мод ExpBK",
-              "temp_str=\"Вы находитесь на сайте <color=0,50,200>Интерселлар</color> - официальном галанет-ресурсе галактической сети <clr>бизнес-центров<clrEnd>.\";",
-              "AddDialogInject('',temp_str,'BlockThisAnswer',1,1);",
-              "AddDialogBlock('BlockThisAnswer',2);",
-              "AddDialogBlock(CT('FormRuins.Bridge.BridgeExit'),2);",
-              "AddDialogInject('Galanet','',\"Покинуть сайт\",-1);"          
+              "temp_str = \"Вы находитесь на сайте <color=0,50,200>Интерселлар</color> - официальном галанет-ресурсе галактической сети <clr>бизнес-центров<clrEnd>.\";",
+              "AddDialogInject('', temp_str, 'BlockThisAnswer', 1, 1);",
+              "AddDialogBlock('BlockThisAnswer', 2);",
+              "AddDialogBlock(CT('FormRuins.Bridge.BridgeExit'), 2);",
+              "AddDialogInject('Galanet', '', \"Покинуть сайт\", -1);"          
           ]        
         },
         {

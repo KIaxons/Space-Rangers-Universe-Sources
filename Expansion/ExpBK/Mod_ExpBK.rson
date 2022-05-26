@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -306,
-  "ViewPos.y":  -44,
+  "ViewPos.x":  -312,
+  "ViewPos.y":  -45,
   "ScriptName":  "Mod_ExpBK",
   "ScriptFileOut":  "H:\\Mod_ExpBK.scr",
   "ScriptTextOut":  "H:\\Mod_ExpBK.txt",
@@ -342,8 +342,8 @@
         {
           "Type":  "TDialogAnswer",
           "Name":  "restart",
-          "Pos.x":  290,
-          "Pos.y":  640,
+          "Pos.x":  250,
+          "Pos.y":  620,
           "Parent":  -1,
           "#":  160,
           "Msg":  "Назад",
@@ -575,7 +575,7 @@
         {
           "Type":  "TDialogMsg",
           "Name":  "",
-          "Pos.x":  290,
+          "Pos.x":  250,
           "Pos.y":  580,
           "Parent":  -1,
           "#":  161,
@@ -630,7 +630,7 @@
         {
           "Type":  "TDialog",
           "Name":  "TradeNews_ON",
-          "Pos.x":  290,
+          "Pos.x":  250,
           "Pos.y":  550,
           "Parent":  -1,
           "#":  107        
@@ -638,7 +638,7 @@
         {
           "Type":  "TDialog",
           "Name":  "TradeNews_OFF",
-          "Pos.x":  290,
+          "Pos.x":  250,
           "Pos.y":  520,
           "Parent":  -1,
           "#":  110        
@@ -662,7 +662,7 @@
         {
           "Type":  "TDialog",
           "Name":  "TradeNewsBK",
-          "Pos.x":  290,
+          "Pos.x":  250,
           "Pos.y":  490,
           "Parent":  -1,
           "#":  117        
@@ -1124,32 +1124,32 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  350,
-          "Pos.y":  620,
+          "Pos.x":  300,
+          "Pos.y":  580,
           "Parent":  -1,
           "#":  37,
           "Total.Lines":  3,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "news_ok=0;",
-              "DAnswer('main');",
+              "news_ok = 0;",
+              "if(PlayerBridge()) DAnswer('main');",
               "Sound('Sound.ButtonInfoEnter');"          
           ]        
         },
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  330,
-          "Pos.y":  620,
+          "Pos.x":  300,
+          "Pos.y":  600,
           "Parent":  -1,
           "#":  38,
           "Total.Lines":  3,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "news_ok=1;",
-              "DAnswer('main');",
+              "news_ok = 1;",
+              "if(PlayerBridge()) DAnswer('main');",
               "Sound('Sound.ButtonInfoEnter');"          
           ]        
         },
@@ -1561,8 +1561,8 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  340,
-          "Pos.y":  580,
+          "Pos.x":  360,
+          "Pos.y":  620,
           "Parent":  -1,
           "#":  109,
           "Total.Lines":  12,
@@ -1571,15 +1571,15 @@
           [
               "if(!news_ok)",
               "{",
-              "    temp_str=\"Выключен\";",
-              "    if(GetGameOptions('FontDialog')<3)AddDialogInject('TradeNews_ON',\"Новости торговли: <temp_str>\",\"<color=0,50,200>Включить</color> вывод торговых новостей\",10);",
-              "    if(GetGameOptions('FontDialog')==3)AddDialogInject('TradeNews_ON',\"Новости торговли: <temp_str>\",\"<color=0,50,200>Включить</color> вывод торг. новостей\",10);",
+              "    temp_str = \"Выключен\";",
+              "    if(GetGameOptions('FontDialog') < 3) AddDialogInject('TradeNews_ON', \"Новости торговли: <temp_str>\", \"<color=0,50,200>Включить</color> вывод торговых новостей\", 10);",
+              "    else AddDialogInject('TradeNews_ON',\"Новости торговли: <temp_str>\", \"<color=0,50,200>Включить</color> вывод торг. новостей\", 10);",
               "}",
               "else",
               "{",
-              "    temp_str=\"Включён\";",
-              "    if(GetGameOptions('FontDialog')<3)AddDialogInject('TradeNews_OFF',\"Новости торговли: <temp_str>\",\"<color=0,50,200>Выключить</color> вывод торговых новостей\",10);",
-              "    if(GetGameOptions('FontDialog')==3)AddDialogInject('TradeNews_OFF',\"Новости торговли: <temp_str>\",\"<color=0,50,200>Выключить</color> вывод торг. новостей\",10);",
+              "    temp_str = \"Включён\";",
+              "    if(GetGameOptions('FontDialog') < 3) AddDialogInject('TradeNews_OFF', \"Новости торговли: <temp_str>\", \"<color=0,50,200>Выключить</color> вывод торговых новостей\", 10);",
+              "    else AddDialogInject('TradeNews_OFF',\"Новости торговли: <temp_str>\", \"<color=0,50,200>Выключить</color> вывод торг. новостей\", 10);",
               "}"          
           ]        
         },
@@ -1689,7 +1689,7 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  310,
+          "Pos.x":  230,
           "Pos.y":  580,
           "Parent":  -1,
           "#":  162,
@@ -1699,15 +1699,15 @@
           [
               "if(!news_ok)",
               "{",
-              "    temp_str=\"Выключен\";",
-              "    if(GetGameOptions('FontDialog')<3)InjectAnswer('TradeNews_ON',\"<color=0,50,200>Включить</color> вывод торговых новостей\",10);",
-              "    if(GetGameOptions('FontDialog')==3)InjectAnswer('TradeNews_ON',\"<color=0,50,200>Включить</color> вывод торг. новостей\",10);",
+              "    temp_str = \"Выключен\";",
+              "    if(GetGameOptions('FontDialog') < 3)InjectAnswer('TradeNews_ON', \"<color=0,50,200>Включить</color> вывод торговых новостей\", 10);",
+              "    else InjectAnswer('TradeNews_ON', \"<color=0,50,200>Включить</color> вывод торг. новостей\", 10);",
               "}",
               "else",
               "{",
-              "    temp_str=\"Включён\";",
-              "    if(GetGameOptions('FontDialog')<3)InjectAnswer('TradeNews_OFF',\"<color=0,50,200>Выключить</color> вывод торговых новостей\",10);",
-              "    if(GetGameOptions('FontDialog')==3)InjectAnswer('TradeNews_OFF',\"<color=0,50,200>Выключить</color> вывод торг. новостей\",10);",
+              "    temp_str = \"Включён\";",
+              "    if(GetGameOptions('FontDialog') < 3) InjectAnswer('TradeNews_OFF', \"<color=0,50,200>Выключить</color> вывод торговых новостей\", 10);",
+              "    else InjectAnswer('TradeNews_OFF', \"<color=0,50,200>Выключить</color> вывод торг. новостей\", 10);",
               "}"          
           ]        
         },
@@ -2073,8 +2073,8 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  390,
-          "Pos.y":  580,
+          "Pos.x":  360,
+          "Pos.y":  600,
           "Parent":  -1,
           "#":  108,
           "Total.Lines":  1,
@@ -2087,8 +2087,8 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  390,
-          "Pos.y":  610,
+          "Pos.x":  360,
+          "Pos.y":  580,
           "Parent":  -1,
           "#":  111,
           "Total.Lines":  1,
@@ -2101,8 +2101,8 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  370,
-          "Pos.y":  590,
+          "Pos.x":  380,
+          "Pos.y":  600,
           "Parent":  -1,
           "#":  112,
           "Total.Lines":  1,
@@ -2115,8 +2115,8 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  370,
-          "Pos.y":  610,
+          "Pos.x":  380,
+          "Pos.y":  580,
           "Parent":  -1,
           "#":  113,
           "Total.Lines":  1,
@@ -2255,8 +2255,8 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  300,
-          "Pos.y":  620,
+          "Pos.x":  270,
+          "Pos.y":  600,
           "Parent":  -1,
           "#":  163,
           "Total.Lines":  1,
@@ -2269,7 +2269,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  340,
+          "Pos.x":  330,
           "Pos.y":  600,
           "Parent":  -1,
           "#":  164,
@@ -3937,10 +3937,10 @@
     },
     {
       "Type":  "TGraphRectText",
-      "Rect.Left":  269,
+      "Rect.Left":  209,
       "Rect.Top":  468,
       "Rect.Right":  408,
-      "Rect.Bottom":  668,
+      "Rect.Bottom":  657,
       "FStyle":  1,
       "FColor":  10710818,
       "BStyle":  0,
@@ -3950,7 +3950,7 @@
       "AlignX":  0,
       "AlignY":  1,
       "AlignRect":  false,
-      "Text":  "Вывод торг. новостей",
+      "Text":  "Вывод торговых новостей",
       "Color":  0,
       "Font":  "Arial",
       "FontSize":  10,
