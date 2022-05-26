@@ -6,8 +6,8 @@
   "ScriptName":  "Mod_ExpBK",
   "ScriptFileOut":  "H:\\Mod_ExpBK.scr",
   "ScriptTextOut":  "H:\\Mod_ExpBK.txt",
-  "GraphPoint.Count":  180,
-  "GraphLink.Count":  146,
+  "GraphPoint.Count":  181,
+  "GraphLink.Count":  147,
   "GraphRectText.Count":  6,
   "Variables.Count":  38,
   "Stars.Count":  1,
@@ -19,7 +19,7 @@
   "Items.Count":  0,
   "Ethers.Count":  0,
   "Dialogs.Count":  11,
-  "DialogMessages.Count":  23,
+  "DialogMessages.Count":  24,
   "DialogAnswers.Count":  32,
   "Operations.Count":  30,
   "Statements.Count":  41,
@@ -581,6 +581,16 @@
           "#":  161,
           "Msg":  "Наша сеть старается поддерживать своих клиентов в курсе всех крупных событий делового мира, поэтому мы с радостью предоставим вам удобный гаджет для отслеживания свежих торговых новостей.",
           "DMsg.Num":  "22"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  570,
+          "Pos.y":  240,
+          "Parent":  -1,
+          "#":  180,
+          "Msg":  "",
+          "DMsg.Num":  "23"        
         }      
       ],
       "Dialogs":      
@@ -1619,11 +1629,12 @@
           "Pos.y":  -200,
           "Parent":  35,
           "#":  124,
-          "Total.Lines":  1,
+          "Total.Lines":  2,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "PlayerBridge(LBridgeCheck);"          
+              "PlayerBridge(LBridgeCheck);",
+              "//Последующий перевод на реплику нужен только чтобы игра не ломалась"          
           ]        
         },
         {
@@ -3821,6 +3832,13 @@
       "End":  178,
       "Nom":  0,
       "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  124,
+      "End":  180,
+      "Nom":  0,
+      "Arrow":  true    
     }  
   ],
   "Rect.Text":  
@@ -3964,7 +3982,7 @@
       "fsUnderline":  false    
     }  
   ],
-  "BlockPar.EC.Total.Strings":  85,
+  "BlockPar.EC.Total.Strings":  86,
   "BlockPar.EC":  
   [
     {
@@ -4178,6 +4196,10 @@
     {
       "#":  "195",
       "String":  "Мой кредитный долг"    
+    },
+    {
+      "#":  "196",
+      "String":  ""    
     },
     {
       "#":  "22",

@@ -2314,7 +2314,7 @@
           "Pos.y":  0,
           "Parent":  2,
           "#":  17,
-          "Total.Lines":  1560,
+          "Total.Lines":  1561,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -3547,7 +3547,7 @@
               "    //Предполагается, что нейролинк сперва появляется в Тортугаце на махпелле, а потому поначалу делаем его не враждебным к пиратам",
               "    RuinsChangeType(neurolink, t_CB);",
               "",
-              "    //Выбираем неповторяющееся имя (вплоть до N уникальных имён подряд, потом могут начать повторяться)",
+              "    //Выбираем неповторяющееся имя (вплоть до N уникальных имён подряд, после чего могут начать повторяться)",
               "    int names_count = CT('ShipName.Klissan.Neurolinks.Count');",
               "    str neurolink_name = CT('ShipName.Klissan.Neurolinks.' + RndObject(1, names_count, neurolink));",
               "    while(~findsubstr(KlissanInvasion['LastSpawnedNurolinkNames'], '*' + neurolink_name + '*')) neurolink_name = CT('ShipName.Klissan.Neurolinks.' + RndObject(1, names_count, neurolink));",
@@ -3740,6 +3740,7 @@
               "}",
               "",
               "//Ищет наградную планету (после освобождения) в указанной системе (всегда первая обитаемая в списке)",
+              "//(больше не используется)",
               "function GetRewardPlanet(dword star)",
               "{",
               "    for(int i = 0; i < StarPlanets(star); i = i + 1)",
