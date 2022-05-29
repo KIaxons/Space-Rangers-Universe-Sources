@@ -6,7 +6,7 @@
   "ScriptName":  "Mod_BlockPirates",
   "ScriptFileOut":  "H:\\Mod_BlockPirates.scr",
   "ScriptTextOut":  "H:\\Mod_BlockPirates.txt",
-  "GraphPoint.Count":  6,
+  "GraphPoint.Count":  7,
   "GraphLink.Count":  4,
   "GraphRectText.Count":  0,
   "Variables.Count":  0,
@@ -21,7 +21,7 @@
   "Dialogs.Count":  0,
   "DialogMessages.Count":  0,
   "DialogAnswers.Count":  0,
-  "Operations.Count":  1,
+  "Operations.Count":  2,
   "Statements.Count":  0,
   "Loops.Count":  0,
   "Visual.Objects":  
@@ -64,11 +64,11 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  140,
-          "Pos.y":  140,
+          "Pos.x":  90,
+          "Pos.y":  110,
           "Parent":  -1,
           "#":  5,
-          "Total.Lines":  113,
+          "Total.Lines":  111,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -77,11 +77,11 @@
               "AdvancedAdjustmentSet(1, i);",
               "AdvancedAdjustmentSet(2, i);",
               "AdvancedAdjustmentSet(3, i);",
-              "//Агрессивность пиратов будет зависеть от общей сложности, хотя это при их отключении и не суть важно",
+              "//Агрессивность пиратов будет зависеть от общей сложности, хотя при их отключении это не суть важно",
               "AdvancedAdjustmentSet(4, GalaxyDiffLevels());",
               "",
               "//Если ТН отключены и другие не активируют их принудительно",
-              "if(!AdvancedAdjustmentSet(0, -1) && !CurrentMods('Tweaks\\SR2Reboot'))",
+              "if(!AdvancedAdjustmentSet(0, -1) && !CurrentMods('Tweaks\\SR2Reboot') && !CurrentMods('Tweaks\\SR2Dominators'))",
               "{",
               "    //Включаем ТН",
               "    AdvancedAdjustmentSet(0, 1);",
@@ -182,9 +182,29 @@
               "CoordX(ConStar(pirate_sector, 1), 500);",
               "",
               "//Под конец выставляем сценарий пиратской концовки \"Коалиция спасена от пиратов\"",
-              "PirateWin(3);",
-              "",
-              "AllShipOut();"          
+              "PirateWin(3);"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  110,
+          "Pos.y":  110,
+          "Parent":  -1,
+          "#":  6,
+          "Total.Lines":  9,
+          "Code.Type":  "DialogBegin",
+          "Code":          
+          [
+              "dword cur_ruin = GetShipRuins(Player());",
+              "if(cur_ruin)",
+              "{",
+              "    if(ShipType(cur_ruin) == 'RC')",
+              "    {",
+              "        //Блочим вопрос игрока \"Как я могу помочь Коалиции в борьбе с пиратами?\"",
+              "        AddDialogBlock(CT('FormRuins.RC.PirateClan.PlayerSend'), 2);",
+              "    }",
+              "}"          
           ]        
         }      
       ],

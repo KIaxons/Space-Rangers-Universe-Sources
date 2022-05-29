@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  327,
-  "ViewPos.y":  -272,
+  "ViewPos.x":  -440,
+  "ViewPos.y":  265,
   "ScriptName":  "Mod_ShuMercs",
   "ScriptFileOut":  "H:\\Mod_ShuMercs.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercs.txt",
@@ -969,7 +969,7 @@
           "Pos.y":  20,
           "Parent":  292,
           "#":  98,
-          "Msg":  "Для того, чтобы улучшить отношения с <clr>\"Атлантом\"<clrEnd>, вам придется встретиться с лидером группировки.<br><br>Лидером <clr>ЧОП \"Атлант\"<clrEnd> является <clr>Кайло Норт<clrEnd> - прославленный наемный убийца, на скопленные деньги основавший гильдию охранников и киллеров. Чрезвычайно опасен.<br><br><clr>Норт<clrEnd> согласен переговорить с вами за <cost> cr.<br><br>Следующий вызов доступен <GameDateTxtByTurn(atlant_call+1)>.",
+          "Msg":  "Для того, чтобы улучшить отношения с <clr>\"Атлантом\"<clrEnd>, вам придется встретиться с лидером группировки.<br><br>Лидером <clr>ЧОП \"Атлант\"<clrEnd> является <clr>Кайло Норт<clrEnd> - прославленный наемный убийца, на скопленные деньги основавший гильдию охранников и киллеров. Чрезвычайно опасен.<br><br><clr>Норт<clrEnd> согласен переговорить с вами за <cost> cr.<br><br>Следующий вызов доступен <GameDateTxtByTurn(atlant_call + 1)>.",
           "DMsg.Num":  "28"        
         },
         {
@@ -979,7 +979,7 @@
           "Pos.y":  20,
           "Parent":  293,
           "#":  99,
-          "Msg":  "Для того, чтобы улучшить отношения с <clr>\"Красными топорами\"<clrEnd>, вам придется встретиться с лидером группировки.<br><br>Лидером <clr>отряда \"Красные топоры\"<clrEnd> является <clr>Бордюрг Ебрын<clrEnd> - бывалый малокский воин и пират, печально известный ненавистью к торгашам и животной жестокостью.<br> <br>Вы можете попробовать поговорить с <clr>Ебрыном<clrEnd> за <cost> cr.<br><br>Следующий вызов <GameDateTxtByTurn(red_call+1)>.",
+          "Msg":  "Для того, чтобы улучшить отношения с <clr>\"Красными топорами\"<clrEnd>, вам придется встретиться с лидером группировки.<br><br>Лидером <clr>отряда \"Красные топоры\"<clrEnd> является <clr>Бордюрг Ебрын<clrEnd> - бывалый малокский воин и пират, печально известный ненавистью к торгашам и животной жестокостью.<br> <br>Вы можете попробовать поговорить с <clr>Ебрыном<clrEnd> за <cost> cr.<br><br>Следующий вызов <GameDateTxtByTurn(red_call + 1)>.",
           "DMsg.Num":  "29"        
         },
         {
@@ -989,7 +989,7 @@
           "Pos.y":  20,
           "Parent":  294,
           "#":  100,
-          "Msg":  "Для того, чтобы улучшить отношения с <clr>\"Красными топорами\"<clrEnd>, вам придется встретиться с лидером группировки.<br><br>Пост гененрального директора <clr>Корпорации \"Фэйенгелион\"<clrEnd> занимает <clr>Элайма Фэй<clrEnd> - отличившийся инженер, осужденный за похищение секретных чертежей и впоследствии амнистированный, а также ксенофоб и автор нескольких евгенических концепций. <br> <br><clr>Фэй<clrEnd> может организовать вам встречу за <cost> cr. <br><br>Следующий вызов доступен <GameDateTxtByTurn(fei_call+1)>.",
+          "Msg":  "Для того, чтобы улучшить отношения с <clr>\"Красными топорами\"<clrEnd>, вам придется встретиться с лидером группировки.<br><br>Пост гененрального директора <clr>Корпорации \"Фэйенгелион\"<clrEnd> занимает <clr>Элайма Фэй<clrEnd> - отличившийся инженер, осужденный за похищение секретных чертежей и впоследствии амнистированный, а также ксенофоб и автор нескольких евгенических концепций. <br> <br><clr>Фэй<clrEnd> может организовать вам встречу за <cost> cr. <br><br>Следующий вызов доступен <GameDateTxtByTurn(fei_call + 1)>.",
           "DMsg.Num":  "30"        
         },
         {
@@ -4887,11 +4887,11 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "s=GroupToShip(FeiLeader);",
-              "if(rem > 47)rem=47;",
-              "i=50-rem;",
-              "cost=i*GalaxyMoney(0)*130/100;",
-              "cost=cost+GalaxyMoney(3);"          
+              "s = GroupToShip(FeiLeader);",
+              "if(rem > 47) rem = 47;",
+              "i = 50 - rem;",
+              "cost = i * GalaxyMoney(0) * 130 / 100;",
+              "cost = cost + GalaxyMoney(3);"          
           ]        
         },
         {
@@ -5748,9 +5748,9 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "cur_call=2;",
-              "NoTalkToShip(s,1);",
-              "fei_rel=rem;"          
+              "cur_call = 2;",
+              "NoTalkToShip(s, 1);",
+              "fei_rel = rem;"          
           ]        
         },
         {
@@ -5764,11 +5764,11 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "cur_call=3;",
-              "NoTargetToShip(s,3);",
-              "NoTalkToShip(s,1);",
-              "fei_rel=0;",
-              "rem=0;"          
+              "cur_call = 3;",
+              "NoTargetToShip(s, 3);",
+              "NoTalkToShip(s, 1);",
+              "fei_rel = 0;",
+              "rem = 0;"          
           ]        
         },
         {
@@ -5782,29 +5782,29 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "cur_call=2;",
-              "NoTalkToShip(s,1);",
-              "TruceBetweenShips(s,Player());",
-              "RelationToRanger(s,Player(),50);",
-              "ShipSetBad(s,0);",
-              "fei_rel=50;",
+              "cur_call = 2;",
+              "NoTalkToShip(s, 1);",
+              "TruceBetweenShips(s, Player());",
+              "RelationToRanger(s, Player(), 50);",
+              "ShipSetBad(s, 0);",
+              "fei_rel = 50;",
               "TruceBetweenShips(s,Player());",
               "",
-              "for(it=0; it<GalaxyStars(); it=it+1)",
+              "for(it = 0; it < GalaxyStars(); it = it + 1)",
               "{",
-              "    for(i=0; i<StarShips(GalaxyStar(it)); i=i+1)",
+              "    for(i = 0; i < StarShips(GalaxyStar(it)); i = i + 1)",
               "    {",
-              "        s=StarShips(GalaxyStar(it),i);",
-              "        if(ShipType(s)=='Merc' && ShipPilotRace(s) && ShipPilotRace(s)<=2)",
+              "        s = StarShips(GalaxyStar(it), i);",
+              "        if(ShipType(s) == 'Merc' && ShipPilotRace(s) && ShipPilotRace(s) <= 2)",
               "        {",
-              "            RelationToRanger(s,Player(),50);",
-              "            if(ShipGetBad(s)==Player())ShipSetBad(s,0);",
-              "            TruceBetweenShips(s,Player());",
+              "            RelationToRanger(s, Player(), 50);",
+              "            if(ShipGetBad(s) == Player()) ShipSetBad(s, 0);",
+              "            TruceBetweenShips(s, Player());",
               "        }",
               "    }",
               "}",
               "",
-              "ShipMoney(Player(),ShipMoney(Player())-cost);",
+              "ShipMoney(Player(), ShipMoney(Player()) - cost);",
               "Sound('Sound.Buy');"          
           ]        
         },
@@ -7472,7 +7472,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  400,
+          "Pos.x":  390,
           "Pos.y":  180,
           "Parent":  -1,
           "#":  388,

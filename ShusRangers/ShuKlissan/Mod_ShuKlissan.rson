@@ -3888,7 +3888,7 @@
           "Pos.y":  0,
           "Parent":  302,
           "#":  18,
-          "Total.Lines":  1461,
+          "Total.Lines":  1467,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -4830,6 +4830,9 @@
               "                        if(substr(tstr1, 0, 6) != 'Klissan' && tstr1 != 'KB') continue;",
               "",
               "                        TransferShip(cur_ship, StarPlanets(GalaxyStar(People), 0)); //На Меркурий",
+              "                        OrderNone(cur_ship);",
+              "                        ShipCustomFaction(cur_ship, '');",
+              "                        ShipOut(cur_ship);",
               "                        ShipDestroy(cur_ship, 1);",
               "                    }",
               "",
@@ -4888,6 +4891,9 @@
               "                    if(substr(tstr1, 0, 6) != 'Klissan' && tstr1 != 'KB') continue;",
               "",
               "                    TransferShip(cur_ship, StarPlanets(GalaxyStar(People), 0)); //На Меркурий",
+              "                    OrderNone(cur_ship);",
+              "                    ShipCustomFaction(cur_ship, '');",
+              "                    ShipOut(cur_ship);",
               "                    ShipDestroy(cur_ship, 1);",
               "                }",
               "",
