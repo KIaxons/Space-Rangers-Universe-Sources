@@ -313,7 +313,7 @@
           "Type":  "TDialogAnswer",
           "Name":  "",
           "Pos.x":  800,
-          "Pos.y":  -280,
+          "Pos.y":  -270,
           "Parent":  -1,
           "#":  357,
           "Msg":  "Выбрать нужные",
@@ -4077,7 +4077,7 @@
           "Code":          
           [
               "//Если мостик ТИ, то добавляем реплику без текста",
-              "AddDialogInject('BoardComp','',\"Бортовой компьютер\",0);"          
+              "AddDialogInject('BoardComp', '', \"Бортовой компьютер\", 0);"          
           ]        
         },
         {
@@ -6156,7 +6156,7 @@
           "Code":          
           [
               "//Если мостик не ТИ, то добавляем реплику с текстом",
-              "AddDialogInject('BoardComp',\"Вы находитесь на мостике своего корабля. Чем займётесь?\",\"Бортовой компьютер\",0,1);"          
+              "AddDialogInject('BoardComp', \"Вы находитесь на мостике своего корабля. Чем займётесь?\", \"Бортовой компьютер\", 0, 1);"          
           ]        
         },
         {
@@ -7432,7 +7432,7 @@
           "Type":  "Top",
           "Name":  "",
           "Pos.x":  780,
-          "Pos.y":  -280,
+          "Pos.y":  -270,
           "Parent":  -1,
           "#":  371,
           "Total.Lines":  41,
@@ -9165,31 +9165,32 @@
           "Pos.y":  -70,
           "Parent":  -1,
           "#":  640,
-          "Total.Lines":  34,
+          "Total.Lines":  36,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
               "//Если мостик не ТИ, то добавляем реплику с текстом",
-              "AddDialogBlock(\"Вернуться к пилотированию\",2);",
-              "AddDialogInject('BoardComp',\"Вы находитесь на мостике своего корабля. Чем займётесь?\",\"Бортовой компьютер\",0,1);",
-              "if(GotoGov())AddDialogBlock(\"Ключ на старт\",1);",
-              "temp_dword=GetShipPlanet(GetShipRuins(Player()));",
+              "AddDialogBlock(\"Вернуться к пилотированию\", 2);",
+              "AddDialogInject('BoardComp', \"Вы находитесь на мостике своего корабля. Чем займётесь?\", \"Бортовой компьютер\", 0, 1);",
+              "if(GotoGov()) AddDialogBlock(\"Ключ на старт\", 1);",
+              "",
+              "temp_dword = GetShipPlanet(GetShipRuins(Player()));",
               "if(temp_dword)",
               "{",
               "    //Делаем проверку на отношение планеты к рейнджеру",
-              "    if(PlanetOwner(temp_dword)!=7)",
+              "    if(PlanetOwner(temp_dword) != 7)",
               "    {",
-              "        if(RelationToRanger(temp_dword,Player())<=9)",
+              "        if(RelationToRanger(temp_dword, Player()) <= 9)",
               "        {",
-              "            AddDialogBlock(\"Ключ на старт\",1);",
+              "            AddDialogBlock(\"Ключ на старт\", 1);",
               "        }",
               "    }",
               "    //Пиратские планеты не имеют своего отношения (вернее их реальное отношение не применяется к игроку, пока планета пиратская) и наследуют его от Роджерии",
               "    else",
               "    {",
-              "        if(RelationToRanger(PlanetPirateClan(),Player())<=9)",
+              "        if(RelationToRanger(PlanetPirateClan(), Player()) <= 9)",
               "        {",
-              "            AddDialogBlock(\"Ключ на старт\",1);",
+              "            AddDialogBlock(\"Ключ на старт\", 1);",
               "        }",
               "    }",
               "}",
@@ -9198,11 +9199,12 @@
               "    //Проверка на блокировку игрока на базе в ExpHullsBases",
               "    if(IsScriptActive('Mod_ExpHullsBases'))",
               "    {",
-              "        if(GetValueFromScript('Mod_ExpHullsBases','jumpCheck')!='')AddDialogBlock(\"Ключ на старт\",1);",
+              "        if(GetValueFromScript('Mod_ExpHullsBases', 'jumpCheck') != '') AddDialogBlock(\"Ключ на старт\", 1);",
               "    }",
               "}",
-              "AddDialogInject('LunchIt','',\"Ключ на старт\",-1);",
-              "AddDialogInject('LeaveShip','',\"Покинуть корабль\",-2);"          
+              "",
+              "AddDialogInject('LunchIt', '', \"Ключ на старт\", -1);",
+              "AddDialogInject('LeaveShip', '', \"Покинуть корабль\", -2);"          
           ]        
         },
         {
@@ -9212,31 +9214,32 @@
           "Pos.y":  -90,
           "Parent":  -1,
           "#":  644,
-          "Total.Lines":  34,
+          "Total.Lines":  36,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
               "//Если мостик ТИ, то добавляем реплику без текста",
-              "AddDialogBlock(\"Вернуться к пилотированию\",2);",
-              "AddDialogInject('BoardComp','',\"Бортовой компьютер\",0);",
-              "if(GotoGov())AddDialogBlock(\"Ключ на старт\",1);",
-              "temp_dword=GetShipPlanet(GetShipRuins(Player()));",
+              "AddDialogBlock(\"Вернуться к пилотированию\", 2);",
+              "AddDialogInject('BoardComp', '', \"Бортовой компьютер\", 0);",
+              "if(GotoGov()) AddDialogBlock(\"Ключ на старт\", 1);",
+              "",
+              "temp_dword = GetShipPlanet(GetShipRuins(Player()));",
               "if(temp_dword)",
               "{",
               "    //Делаем проверку на отношение планеты к рейнджеру",
-              "    if(PlanetOwner(temp_dword)!=7)",
+              "    if(PlanetOwner(temp_dword) != 7)",
               "    {",
-              "        if(RelationToRanger(temp_dword,Player())<=9)",
+              "        if(RelationToRanger(temp_dword, Player()) <= 9)",
               "        {",
-              "            AddDialogBlock(\"Ключ на старт\",1);",
+              "            AddDialogBlock(\"Ключ на старт\", 1);",
               "        }",
               "    }",
               "    //Пиратские планеты не имеют своего отношения (вернее их реальное отношение не применяется к игроку, пока планета пиратская) и наследуют его от Роджерии",
               "    else",
               "    {",
-              "        if(RelationToRanger(PlanetPirateClan(),Player())<=9)",
+              "        if(RelationToRanger(PlanetPirateClan(), Player()) <= 9)",
               "        {",
-              "            AddDialogBlock(\"Ключ на старт\",1);",
+              "            AddDialogBlock(\"Ключ на старт\", 1);",
               "        }",
               "    }",
               "}",
@@ -9245,11 +9248,12 @@
               "    //Проверка на блокировку игрока на базе в ExpHullsBases",
               "    if(IsScriptActive('Mod_ExpHullsBases'))",
               "    {",
-              "        if(GetValueFromScript('Mod_ExpHullsBases','jumpCheck')!='')AddDialogBlock(\"Ключ на старт\",1);",
+              "        if(GetValueFromScript('Mod_ExpHullsBases', 'jumpCheck') != '') AddDialogBlock(\"Ключ на старт\", 1);",
               "    }",
               "}",
-              "AddDialogInject('LunchIt','',\"Ключ на старт\",-1);",
-              "AddDialogInject('LeaveShip','',\"Покинуть корабль\",-2);"          
+              "",
+              "AddDialogInject('LunchIt', '', \"Ключ на старт\", -1);",
+              "AddDialogInject('LeaveShip', '', \"Покинуть корабль\", -2);"          
           ]        
         },
         {
@@ -9686,7 +9690,7 @@
           "Code.Type":  "DialogBegin",
           "Code":          
           [
-              "PlayerBridge()==3"          
+              "PlayerBridge() == 3"          
           ]        
         },
         {

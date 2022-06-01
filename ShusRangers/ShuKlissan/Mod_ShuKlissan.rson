@@ -2314,7 +2314,7 @@
           "Pos.y":  0,
           "Parent":  2,
           "#":  17,
-          "Total.Lines":  1561,
+          "Total.Lines":  1564,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -2504,6 +2504,9 @@
               "    SetEquipmentStats(cloned_item, GetEquipmentStats(item, 1), 1);",
               "    SetEquipmentStats(cloned_item, GetEquipmentStats(item, 2), 2);",
               "    ShipAddDropItem(machpella, cloned_item);",
+              "",
+              "    //Астероиды сильно разваливают Махпеллу, цель крупная - попасть легко",
+              "    ShipSpecialBonuses(machpella, bonResistAsteroid, 100);",
               "",
               "    //Выдаём махпелле лучшее клисанское снаряжение",
               "    for(i = t_FuelTanks; i <= t_DefGenerator; i = i + 1) GiveEgemonEq(machpella, i, 100);",
