@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -2036,
-  "ViewPos.y":  -251,
+  "ViewPos.x":  -2039,
+  "ViewPos.y":  -257,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
@@ -5529,7 +5529,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  10,
-          "Total.Lines":  1340,
+          "Total.Lines":  1341,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -6263,6 +6263,7 @@
               "                        ShipCustomFaction(cur_ship, 'SubFactionPlayerMercsFixedStanding');",
               "                        ShipStanding(cur_ship, 5); //Полная нейтральность в конфликте Коалиции и пиратов",
               "                        ShipAddCustomShipInfo(cur_ship, 'ShuMercsHQ_StrikeGroupMercInfo');",
+              "                        ShipSpecialBonuses(cur_ship, bonSlotForsage, -1);",
               "",
               "                        //Возвращаем планете её оригинальную расу",
               "                        PlanetOwner(cur_planet, tint1);",
@@ -11375,7 +11376,7 @@
               "        if(GroupIn(CruisersDefenders, GroupToShip(PlayerHQ)))",
               "        {",
               "            //При этом основная ударная группа должна состоять не менее чем из трёх кораблей",
-              "            if(GroupCount() >= 3)",
+              "            if(GroupCount(PlayerMercsStrike) >= 3)",
               "            {",
               "                tstr3 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQBridgeDialog.PlayerAskGroupAddCruiser');",
               "                tint1 = 1;",
@@ -24757,7 +24758,7 @@
           "Pos.y":  60,
           "Parent":  578,
           "#":  585,
-          "Total.Lines":  74,
+          "Total.Lines":  77,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -24812,6 +24813,9 @@
               "    //SetName(cur_ship, PlayerHQMainArray['Main', 'OrganisationName'] + ' ' + GetParFromString(tstr2, '.', 0, 0));",
               "    //Запоминаем класс и номер данного наёмника в Lang (формат '18', где первая цифра - номер класса, а последующие - номер самого наёмника в списке данного класса)",
               "    SetData(tstr1, 0, cur_ship);",
+              "",
+              "    //Добавляем метку на корпус \"ударника\" (на случай, если в будущем игрок захочет его заменить)",
+              "    ItemExtraSpecialsAddByType(ShipItems(cur_ship, 0), FindBonusByNameInCfg('ShuMercsHQ_StrikeMercOwnItemMark'));",
               "",
               "    tstr1 = CT('Script.Mod_ShuMercs.PlayerMercsStrikeGroup.CandidatesList.' + tstr1 + '.Face');",
               "    if(tstr1 != '') ShipFace(cur_ship, int(tstr1));",
