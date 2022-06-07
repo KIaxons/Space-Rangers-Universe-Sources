@@ -1,7 +1,7 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -2040,
+  "ViewPos.x":  -2038,
   "ViewPos.y":  -255,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
@@ -24326,11 +24326,15 @@
           "Pos.y":  20,
           "Parent":  526,
           "#":  527,
-          "Total.Lines":  3,
+          "Total.Lines":  7,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "tstr1 = '</color>' + Format(CT('Script.Mod_ShuMercs.PlayerHQFinanceDialog.FinanceInfo'), '<CurrentBalance'+'>', int(PlayerHQMainArray['Finance', 'CurrentBalance']));",
+              "tint1 = CT('Script.Mod_ShuMercsHQ.PlayerMercsParams.WithdrawalFeePercent');",
+              "tstr1 = '</color>' + Format(CT('Script.Mod_ShuMercs.PlayerHQFinanceDialog.FinanceInfo'),",
+              "                               '<CurrentBalance'+'>', int(PlayerHQMainArray['Finance', 'CurrentBalance']),",
+              "                               '<WithdrawalPercent'+'>', '' + (100 - tint1) + '%',",
+              "                               '<WithdrawalFeePercent'+'>', '' + tint1 + '%');",
               "tstr2 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQFinanceDialog.PlayerOk');",
               "tint1 = 0;"          
           ]        
@@ -24371,16 +24375,16 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "i = min(PlayerHQMainArray['Finance', 'CurrentBalance'] - 100000, 100000000 - ShipMoney(Player())); //Максимальная сумма списания",
-              "tint2 = NumberBox('Bm.ItemsUseless.2Usl_Elus_s', CT('Script.Mod_ShuMercs.PlayerHQFinanceDialog.BalanceWithdrawSum'), 10000, i, i, 'Bm.FormCount2.2KindCredits');",
-              "if(tint2)",
+              "i = min(PlayerHQMainArray['Finance', 'CurrentBalance'] - 100000, RoundTo(100.0 / (100 - CT('Script.Mod_ShuMercsHQ.PlayerMercsParams.WithdrawalFeePercent')) * (100000000 - ShipMoney(Player())), 1, 0)); //Максимальная сумма списания",
+              "float to_withdraw = NumberBox('Bm.ItemsUseless.2Usl_Elus_s', CT('Script.Mod_ShuMercs.PlayerHQFinanceDialog.BalanceWithdrawSum'), 10000, i, i, 'Bm.FormCount2.2KindCredits');",
+              "if(to_withdraw)",
               "{",
-              "    tint3 = tint2 / 2;",
+              "    tint3 = min(RoundTo(to_withdraw * ('0.' + CT('Script.Mod_ShuMercsHQ.PlayerMercsParams.WithdrawalFeePercent')), 1, 0), 100000000);",
               "    tstr1 = '</color>' + Format(CT('Script.Mod_ShuMercs.PlayerHQFinanceDialog.BalanceWithdrawWarning'), '<WithdrawCount'+'>', tint3);",
               "",
               "    if(MessageBoxYesNo(tstr1, 8))",
               "    {",
-              "        PlayerHQMainArray['Finance', 'CurrentBalance'] = PlayerHQMainArray['Finance', 'CurrentBalance'] - tint2;",
+              "        PlayerHQMainArray['Finance', 'CurrentBalance'] = PlayerHQMainArray['Finance', 'CurrentBalance'] - to_withdraw;",
               "        ShipMoney(Player(), ShipMoney(Player()) + tint3);",
               "        Sound('Sound.Buy');",
               "        tstr1 = '</color>' + Format(CT('Script.Mod_ShuMercs.PlayerHQFinanceDialog.BalanceWithdraw'), '<WithdrawCount'+'>', tint3, '<CurrentBalance'+'>', int(PlayerHQMainArray['Finance', 'CurrentBalance']));",
