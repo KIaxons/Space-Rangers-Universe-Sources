@@ -66,7 +66,7 @@
           "Pos.y":  20,
           "Parent":  19,
           "#":  9,
-          "Msg":  "<tstr1>",
+          "Msg":  "<tstr2>",
           "AMsg.Num":  "3"        
         },
         {
@@ -76,7 +76,7 @@
           "Pos.y":  20,
           "Parent":  31,
           "#":  10,
-          "Msg":  "<tstr2>",
+          "Msg":  "<tstr3>",
           "AMsg.Num":  "4"        
         },
         {
@@ -323,7 +323,7 @@
           "Pos.y":  210,
           "Parent":  -1,
           "#":  2,
-          "Total.Lines":  214,
+          "Total.Lines":  215,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -534,12 +534,13 @@
               "    }",
               "}",
               "",
-              "//Завершаем квест если ЦР, на который игрок стал диск, был уничтожен",
               "if(TauhitEventStatus > 0)",
               "{",
               "    cur_ruin = IdToShip(TauhitStationId);",
+              "    //Завершаем квест если ЦР, на который игрок стал диск, был уничтожен",
               "    if(!cur_ruin) TauhitEventStatus = -2;",
-              "    else if(TauhitEventStatus == CurTurn()) NewsAdd(Format(CT('Script.Mod_ShuMM.TauhitHullReadyEther'), '<Base' + '>', ShipName(cur_ruin), '<Star' + '>', Name(ShipStar(cur_ruin))));",
+              "    //Выводим уведомление, если постройка \"Таухито\" успешно завершилась",
+              "    else if(TauhitEventStatus == CurTurn()) NewsAdd(Format(CT('Script.Mod_ShuMM.TauhitReadyNotification'), '<Station'+'>', ShipName(cur_ruin), '<Star'+'>', Name(ShipStar(cur_ruin)), '255,240,100'));",
               "}"          
           ]        
         },
@@ -624,7 +625,7 @@
           "Pos.y":  20,
           "Parent":  16,
           "#":  17,
-          "Total.Lines":  26,
+          "Total.Lines":  27,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -635,18 +636,19 @@
               "SpecialToEquipment(bonus, cur_item);",
               "cost = ItemCost(cur_item);",
               "",
-              "//Удаляем \"расчётный\" корпус во избежание утечки памяти",
-              "FreeItem(cur_item);",
-              "",
               "if(GetGameOptions('FontDialog') == '0') tstr1 = '</color>-----------------------------------------------------------';",
               "else if(GetGameOptions('FontDialog') == '1') tstr1 = '</color>------------------------------------------';",
               "else if(GetGameOptions('FontDialog') == '2') tstr1 = '</color>-------------------------------------------';",
               "else tstr1 = '</color>--------------------------------------';",
-              "tstr2 = '<color=0,50,200>' + CT('MicroModuls.ShuMM_TauhitHull.Name') + '</color> [<color=0,132,15>' + ItemSize(cur_item) + '</color>]:' + \"<br>\" + BonusText(bonus);",
+              "tstr2 = Format('<color=0,50,200>' + BonusName(bonus) + '</color> [<color=0,132,15>' + ItemSize(cur_item) + '</color>]:' + \"<br>\" + BonusText(bonus), '<color=248,252,248>', '', '<color=255,240,100>', '<color=0,50,200>', '');",
               "tstr1 = '</color>' + Format(CT('Script.Mod_ShuMM.TauhitPrice'),",
               "                               '<DefBreak'+'>', tstr1,",
-              "                               '<TauhitTechStats'+'>', tstr2,",
+              "                               '<TauhitTechStats'+'>', '</color>' + tstr2,",
               "                               '<Cost'+'>', cost);",
+              "",
+              "//Удаляем \"расчётный\" корпус во избежание утечки памяти",
+              "FreeItem(cur_item);",
+              "",
               "tstr2 = '</color>' + CT('Script.Mod_ShuMM.PlayerBuyTauhit');",
               "if(ShipMoney(Player()) < cost)",
               "{",
