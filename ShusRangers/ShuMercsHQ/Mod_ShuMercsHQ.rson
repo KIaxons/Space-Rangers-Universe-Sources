@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1999,
-  "ViewPos.y":  -111,
+  "ViewPos.x":  -2040,
+  "ViewPos.y":  -255,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
@@ -5532,7 +5532,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  10,
-          "Total.Lines":  1341,
+          "Total.Lines":  1337,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -6481,10 +6481,6 @@
               "                            PlayerHQMainArray['Quests', 'GluonGunsQuestStatus'] = 1;",
               "                            PlayerHQMainArray['Quests', 'GluonGunsQuestTimer'] = CurTurn() + RndObject(56, 112, cur_ruin);",
               "                            PlayerHQMainArray['Quests', 'GluonGunsQuestScienceBaseId'] = 0;",
-              "",
-              "                            //Просто на всякий случай",
-              "                            ShipJoin(PlanetQuestsShips, cur_ship);",
-              "                            SetData(CurTurn() + 1095, 0, cur_ship);",
               "                        }",
               "                        else",
               "                        {",
@@ -29018,7 +29014,7 @@
           "Pos.y":  40,
           "Parent":  1018,
           "#":  1020,
-          "Total.Lines":  13,
+          "Total.Lines":  12,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -29028,7 +29024,6 @@
               "                                                               + CoordX(cur_ruin) + ','",
               "                                                               + CoordY(cur_ruin);",
               "",
-              "NewsAdd(tint1);",
               "OrderTeleport(cur_ruin, tdwd1, CoordX(cur_ruin), CoordY(cur_ruin), 1, tint1);",
               "",
               "PlayerHQMainArray['Science', 'PortalGeneratorTimer'] = CurTurn() + CT('Script.Mod_ShuMercsHQ.PlayerMercsParams.PortalGeneratorExtractionCooldown');",
@@ -29270,7 +29265,7 @@
               "cur_ship = GroupToShip(CruisersDefenders);",
               "if(cur_ship)",
               "{",
-              "    if(GroupIn(cur_ship, cur_ruin))",
+              "    if(GroupIn(CruisersDefenders, cur_ruin))",
               "    {",
               "        tstr1 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQShipyardDialog.PlayerCruiserEquipChange');",
               "        InjectAnswer('MercCruiserDialog', tstr1, 0);",
