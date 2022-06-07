@@ -1,13 +1,13 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -2038,
-  "ViewPos.y":  -252,
+  "ViewPos.x":  -1999,
+  "ViewPos.y":  -111,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
   "GraphPoint.Count":  1071,
-  "GraphLink.Count":  1000,
+  "GraphLink.Count":  999,
   "GraphRectText.Count":  2,
   "Variables.Count":  58,
   "Stars.Count":  1,
@@ -29018,7 +29018,7 @@
           "Pos.y":  40,
           "Parent":  1018,
           "#":  1020,
-          "Total.Lines":  12,
+          "Total.Lines":  13,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -29028,6 +29028,7 @@
               "                                                               + CoordX(cur_ruin) + ','",
               "                                                               + CoordY(cur_ruin);",
               "",
+              "NewsAdd(tint1);",
               "OrderTeleport(cur_ruin, tdwd1, CoordX(cur_ruin), CoordY(cur_ruin), 1, tint1);",
               "",
               "PlayerHQMainArray['Science', 'PortalGeneratorTimer'] = CurTurn() + CT('Script.Mod_ShuMercsHQ.PlayerMercsParams.PortalGeneratorExtractionCooldown');",
@@ -41481,13 +41482,6 @@
     {
       "Type":  "TGraphLink",
       "Begin":  950,
-      "End":  959,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  951,
       "End":  959,
       "Nom":  0,
       "Arrow":  true    
