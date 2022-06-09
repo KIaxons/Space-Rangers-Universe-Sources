@@ -3087,7 +3087,7 @@
               "        if(str_type == '' || str_type == 'Ranger' || str_type == 'FemRanger')",
               "        {",
               "            //Спецагентки (ищем по имени корабля, т.к. никак иначе здесь не получится)",
-              "            if(findsubstr(CT('Script.Mod_ExpPilotBridge.PersonalStatistic.SpecialAgentSearchString'), '$' + name + '$') >= 0)",
+              "            if(findsubstr(CT('Script.PC_fem_rangers.SecretAgentsNames.' + CT('Script.PC_fem_rangers.SecretAgentsNames.' + owner) + '.NameSearchString'), '$' + name + '$') >= 0)",
               "            {",
               "                GRangSpecStat = GRangSpecStat + 1;",
               "            }",

@@ -5041,7 +5041,7 @@
               "                CoordX(cur_ruin, round(sin(tflt1 * pi) * 500) + CoordX(GroupToShip(Handler)));",
               "                CoordY(cur_ruin, round(cos(tflt1 * pi) * 500) + CoordY(GroupToShip(Handler)));",
               "",
-              "                SetName(cur_ruin, CT('Script.Mod_ShuKlissan.CoalitionAssaultStationName'));",
+              "                SetName(cur_ruin, RndObject(1, int(CT('Script.Mod_ShuKlissan.CoalitionAssaultStationName.' + CT('Script.Mod_ShuKlissan.CoalitionAssaultStationName.Count'))), cur_ruin));",
               "                ShipSkill(cur_ruin, 'Accuracy', 6);",
               "                ShipSkill(cur_ruin, 'Mobility', 6);",
               "                ShipSkill(cur_ruin, 'Technical', 6);",
