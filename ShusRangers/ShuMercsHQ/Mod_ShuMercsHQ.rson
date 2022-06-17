@@ -1,15 +1,15 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -2036,
-  "ViewPos.y":  -252,
+  "ViewPos.x":  -2040,
+  "ViewPos.y":  -258,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
-  "GraphPoint.Count":  1071,
+  "GraphPoint.Count":  1070,
   "GraphLink.Count":  999,
   "GraphRectText.Count":  2,
-  "Variables.Count":  58,
+  "Variables.Count":  57,
   "Stars.Count":  1,
   "Planets.Count":  2,
   "Ships.Count":  1,
@@ -1924,7 +1924,7 @@
           "Name":  "restart",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  1060,
+          "Parent":  1058,
           "#":  973,
           "Msg":  "<tstr2>",
           "AMsg.Num":  "189"        
@@ -2064,8 +2064,8 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  1042,
-          "#":  1046,
+          "Parent":  1041,
+          "#":  1045,
           "Msg":  "<tstr2>",
           "AMsg.Num":  "203"        
         },
@@ -2074,8 +2074,8 @@
           "Name":  "",
           "Pos.x":  20,
           "Pos.y":  20,
-          "Parent":  1042,
-          "#":  1047,
+          "Parent":  1041,
+          "#":  1046,
           "Msg":  "<tstr3>",
           "AMsg.Num":  "204"        
         },
@@ -2084,8 +2084,8 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  1051,
-          "#":  1052,
+          "Parent":  1050,
+          "#":  1051,
           "Msg":  "<tstr3>",
           "AMsg.Num":  "205"        
         },
@@ -2095,7 +2095,7 @@
           "Pos.x":  -1580,
           "Pos.y":  330,
           "Parent":  -1,
-          "#":  1057,
+          "#":  1056,
           "Msg":  "<tstr3>",
           "AMsg.Num":  "206"        
         },
@@ -2104,8 +2104,8 @@
           "Name":  "continue",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  1061,
-          "#":  1062,
+          "Parent":  1059,
+          "#":  1060,
           "Msg":  "<tstr2>",
           "AMsg.Num":  "207"        
         }      
@@ -3107,7 +3107,7 @@
           "Name":  "",
           "Pos.x":  -10,
           "Pos.y":  20,
-          "Parent":  1063,
+          "Parent":  1061,
           "#":  972,
           "Msg":  "<tstr1>",
           "DMsg.Num":  "99"        
@@ -3187,8 +3187,8 @@
           "Name":  "",
           "Pos.x":  20,
           "Pos.y":  0,
-          "Parent":  1044,
-          "#":  1042,
+          "Parent":  1043,
+          "#":  1041,
           "Msg":  "<tstr1>",
           "DMsg.Num":  "107"        
         }      
@@ -3600,8 +3600,8 @@
           "Name":  "MercCruiserDialog",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  1040,
-          "#":  1041        
+          "Parent":  1039,
+          "#":  1040        
         }      
       ],
       "Groups":      
@@ -4018,7 +4018,7 @@
           "Pos.x":  -670,
           "Pos.y":  340,
           "Parent":  -1,
-          "#":  1036,
+          "#":  1035,
           "Owner":  62,
           "Group.Type":  126,
           "CntShipMin":  0,
@@ -4158,7 +4158,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  4,
-          "Total.Lines":  1361,
+          "Total.Lines":  1363,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -5327,6 +5327,7 @@
               "    t_array = newarray(1);",
               "",
               "    ArrayDelete(t_array, 0);",
+              "    ArrayAdd(t_array, 0, 'HQId'); //Текущее Id станции, которое может быть полезно для её возврата в других модах",
               "    ArrayAdd(t_array, '', 'OrganisationName');",
               "    ArrayAdd(t_array, -1, 'HQStar'); //Id (номер) звезды, в которой находится (либо ранее находился) штаб (имеет смысл запоминать, т.к. штаб в ней может временно отсутствовать)",
               "    ArrayAdd(t_array, 1, 'HQLevel'); //Текущий уровень штаба",
@@ -5438,6 +5439,7 @@
               "//А эта - для его очистки в случае уничтожения штаба (чистим не всё, а только определённые данные)",
               "function ClearPlayerHQMainArray()",
               "{",
+              "    PlayerHQMainArray['Main', 'HQId'] = 0;",
               "    PlayerHQMainArray['Main', 'HQStar'] = -1;",
               "    PlayerHQMainArray['Main', 'HQLevel'] = 1;",
               "    PlayerHQMainArray['Main', 'HQLevelMax'] = int(CT('Script.Mod_ShuMercs.PlayerMercsParams.HQLevelMax'));",
@@ -5532,7 +5534,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  10,
-          "Total.Lines":  1341,
+          "Total.Lines":  1336,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -5672,20 +5674,14 @@
               "    //Если штаб уже был построен игроком",
               "    else",
               "    {",
-              "        //Удалить к середине июня 2022",
-              "        if(!TempToDel)",
+              "        //Удалить к концу июля 2022",
+              "        if(!TempToDel3)",
               "        {",
-              "            TempToDel = 1;",
+              "            TempToDel3 = 1;",
               "",
-              "            ArrayAdd(PlayerHQMainArray['Finance'], 0, 'StatsOutFleetMaintenance');",
-              "            ArrayAdd(PlayerHQMainArray['Shipyard'], 0, 'CapitalShipDock');",
-              "            PlayerHQMainArray['Main', 'HQLevelMax'] = 6;",
-              "        }",
-              "        if(!TempToDel2)",
-              "        {",
-              "            TempToDel2 = 1;",
-              "",
-              "            ArrayAdd(PlayerHQMainArray['Shipyard'], '', 'LastHQCruiserName');",
+              "            ArrayAdd(PlayerHQMainArray['Main'], 0, 'HQId');",
+              "            cur_ruin = GroupToShip(PlayerHQ);",
+              "            if(cur_ruin) PlayerHQMainArray['Main', 'HQId'] = Id(cur_ruin);",
               "        }",
               "",
               "        cur_ruin = GroupToShip(PlayerHQ);",
@@ -6820,6 +6816,7 @@
               "            ClearPlayerHQMainArray();",
               "",
               "            NewsAdd(Format(CT('Script.Mod_ShuMercs.PlayerMercsOrgMsg.HQWasDestroyed'), '<Star'+'>', Name(GalaxyStar(PlayerHQMainArray['Main', 'HQStar']))));",
+              "            PlayerHQMainArray['Main', 'HQId'] = 0;",
               "            PlayerHQMainArray['Main', 'HQStar'] = 0;",
               "            BuildOwnBase_InProcess = -2;",
               "        }",
@@ -9233,7 +9230,7 @@
           "Pos.y":  50,
           "Parent":  -1,
           "#":  218,
-          "Total.Lines":  169,
+          "Total.Lines":  170,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -9333,6 +9330,7 @@
               "",
               "    //Наконец, строим сам штаб",
               "    cur_ruin = BuildCustomRuins(cur_star, 'PlayerMB', 5);",
+              "    PlayerHQMainArray['Main', 'HQId'] = Id(cur_ruin);",
               "    //HullSpecial(cur_ruin, FindBonusByNameInCfg('ShuMercsHQ_PlayerMBLevel1'));",
               "    //HullType(cur_ruin, 9); //Меняем тип корпуса на акриновый",
               "    Chameleon(cur_ruin, 'Ruins.PlayerMBLevel1');",
@@ -29211,8 +29209,8 @@
           "Name":  "",
           "Pos.x":  -20,
           "Pos.y":  0,
-          "Parent":  1037,
-          "#":  1038,
+          "Parent":  1036,
+          "#":  1037,
           "Total.Lines":  10,
           "Code.Type":  "Turn",
           "Code":          
@@ -29234,8 +29232,8 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  1041,
-          "#":  1039,
+          "Parent":  1040,
+          "#":  1038,
           "Total.Lines":  19,
           "Code.Type":  "Turn",
           "Code":          
@@ -29266,8 +29264,8 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  1035,
-          "#":  1040,
+          "Parent":  1034,
+          "#":  1039,
           "Total.Lines":  21,
           "Code.Type":  "Turn",
           "Code":          
@@ -29300,8 +29298,8 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  1046,
-          "#":  1049,
+          "Parent":  1045,
+          "#":  1048,
           "Total.Lines":  11,
           "Code.Type":  "Turn",
           "Code":          
@@ -29324,8 +29322,8 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  1047,
-          "#":  1050,
+          "Parent":  1046,
+          "#":  1049,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -29338,8 +29336,8 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  1052,
-          "#":  1053,
+          "Parent":  1051,
+          "#":  1052,
           "Total.Lines":  10,
           "Code.Type":  "Turn",
           "Code":          
@@ -29362,7 +29360,7 @@
           "Pos.x":  0,
           "Pos.y":  20,
           "Parent":  973,
-          "#":  1059,
+          "#":  1057,
           "Total.Lines":  101,
           "Code.Type":  "Turn",
           "Code":          
@@ -29475,8 +29473,8 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  -20,
-          "Parent":  1064,
-          "#":  1068,
+          "Parent":  1062,
+          "#":  1066,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -33619,7 +33617,7 @@
           "Pos.x":  20,
           "Pos.y":  20,
           "Parent":  920,
-          "#":  1035,
+          "#":  1034,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -33632,8 +33630,8 @@
           "Name":  "",
           "Pos.x":  60,
           "Pos.y":  0,
-          "Parent":  1039,
-          "#":  1043,
+          "Parent":  1038,
+          "#":  1042,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -33646,8 +33644,8 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  1039,
-          "#":  1044,
+          "Parent":  1038,
+          "#":  1043,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -33660,8 +33658,8 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  -100,
-          "Parent":  1043,
-          "#":  1045,
+          "Parent":  1042,
+          "#":  1044,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -33674,8 +33672,8 @@
           "Name":  "",
           "Pos.x":  40,
           "Pos.y":  0,
-          "Parent":  1049,
-          "#":  1048,
+          "Parent":  1048,
+          "#":  1047,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -33689,7 +33687,7 @@
           "Pos.x":  -40,
           "Pos.y":  20,
           "Parent":  317,
-          "#":  1051,
+          "#":  1050,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -33702,8 +33700,8 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  40,
-          "Parent":  1053,
-          "#":  1054,
+          "Parent":  1052,
+          "#":  1053,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -33716,8 +33714,8 @@
           "Name":  "",
           "Pos.x":  40,
           "Pos.y":  0,
-          "Parent":  1054,
-          "#":  1055,
+          "Parent":  1053,
+          "#":  1054,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -33731,7 +33729,7 @@
           "Pos.x":  -1580,
           "Pos.y":  310,
           "Parent":  -1,
-          "#":  1056,
+          "#":  1055,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -33744,8 +33742,8 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  1065,
-          "#":  1060,
+          "Parent":  1063,
+          "#":  1058,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -33758,8 +33756,8 @@
           "Name":  "",
           "Pos.x":  20,
           "Pos.y":  20,
-          "Parent":  1065,
-          "#":  1061,
+          "Parent":  1063,
+          "#":  1059,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -33773,7 +33771,7 @@
           "Pos.x":  -10,
           "Pos.y":  20,
           "Parent":  970,
-          "#":  1063,
+          "#":  1061,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -33787,7 +33785,7 @@
           "Pos.x":  140,
           "Pos.y":  0,
           "Parent":  970,
-          "#":  1064,
+          "#":  1062,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -33801,7 +33799,7 @@
           "Pos.x":  70,
           "Pos.y":  20,
           "Parent":  972,
-          "#":  1065,
+          "#":  1063,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -33815,7 +33813,7 @@
           "Pos.x":  -50,
           "Pos.y":  0,
           "Parent":  1012,
-          "#":  1066,
+          "#":  1064,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -33829,7 +33827,7 @@
           "Pos.x":  70,
           "Pos.y":  0,
           "Parent":  1012,
-          "#":  1067,
+          "#":  1065,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -33842,8 +33840,8 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  -300,
-          "Parent":  1068,
-          "#":  1069,
+          "Parent":  1066,
+          "#":  1067,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -34660,8 +34658,8 @@
           "Name":  "CruiserWaitState",
           "Pos.x":  -120,
           "Pos.y":  0,
-          "Parent":  1036,
-          "#":  1037,
+          "Parent":  1035,
+          "#":  1036,
           "Move":  0,
           "MoveObj":  -1,
           "Attack.Count":  1,
@@ -35289,33 +35287,22 @@
         },
         {
           "Type":  "TVar",
-          "Name":  "TempToDel",
-          "Pos.x":  -620,
-          "Pos.y":  170,
-          "Parent":  -1,
-          "#":  1034,
-          "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "TempToDel2",
-          "Pos.x":  -620,
-          "Pos.y":  190,
-          "Parent":  -1,
-          "#":  1058,
-          "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
           "Name":  "BuildOwnBase_ConditionCooldown",
           "Pos.x":  280,
           "Pos.y":  -240,
           "Parent":  -1,
-          "#":  1070,
+          "#":  1068,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "TempToDel3",
+          "Pos.x":  -620,
+          "Pos.y":  170,
+          "Parent":  -1,
+          "#":  1069,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -42006,7 +41993,14 @@
     {
       "Type":  "TGraphLink",
       "Begin":  920,
-      "End":  1035,
+      "End":  1034,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1035,
+      "End":  1036,
       "Nom":  0,
       "Arrow":  true    
     },
@@ -42019,35 +42013,42 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  1037,
-      "End":  1038,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  1035,
-      "End":  1040,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  1041,
+      "Begin":  1034,
       "End":  1039,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  1039,
+      "Begin":  1040,
+      "End":  1038,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1038,
+      "End":  1042,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1038,
       "End":  1043,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  1039,
+      "Begin":  1043,
+      "End":  1041,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1042,
       "End":  1044,
       "Nom":  0,
       "Arrow":  true    
@@ -42055,35 +42056,35 @@
     {
       "Type":  "TGraphLink",
       "Begin":  1044,
-      "End":  1042,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  1043,
-      "End":  1045,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  1045,
       "End":  682,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  1042,
+      "Begin":  1041,
+      "End":  1045,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1041,
       "End":  1046,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  1042,
-      "End":  1047,
+      "Begin":  1045,
+      "End":  1048,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1047,
+      "End":  1044,
       "Nom":  0,
       "Arrow":  true    
     },
@@ -42096,36 +42097,29 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  1048,
-      "End":  1045,
+      "Begin":  1049,
+      "End":  1047,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  1047,
-      "End":  1050,
+      "Begin":  1048,
+      "End":  1047,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1035,
+      "End":  230,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  1050,
-      "End":  1048,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  1049,
-      "End":  1048,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  1036,
-      "End":  230,
+      "End":  1051,
       "Nom":  0,
       "Arrow":  true    
     },
@@ -42138,15 +42132,15 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  1052,
-      "End":  1053,
+      "Begin":  317,
+      "End":  1050,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  317,
-      "End":  1051,
+      "Begin":  1052,
+      "End":  1053,
       "Nom":  0,
       "Arrow":  true    
     },
@@ -42159,22 +42153,15 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  1054,
+      "Begin":  317,
       "End":  1055,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  317,
+      "Begin":  1055,
       "End":  1056,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  1056,
-      "End":  1057,
       "Nom":  0,
       "Arrow":  true    
     },
@@ -42187,7 +42174,7 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  1055,
+      "Begin":  1054,
       "End":  316,
       "Nom":  0,
       "Arrow":  true    
@@ -42195,13 +42182,13 @@
     {
       "Type":  "TGraphLink",
       "Begin":  973,
-      "End":  1059,
+      "End":  1057,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  1060,
+      "Begin":  1058,
       "End":  973,
       "Nom":  0,
       "Arrow":  true    
@@ -42209,13 +42196,34 @@
     {
       "Type":  "TGraphLink",
       "Begin":  970,
-      "End":  1064,
+      "End":  1062,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  970,
+      "End":  1061,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1061,
+      "End":  972,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1059,
+      "End":  1060,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  972,
       "End":  1063,
       "Nom":  0,
       "Arrow":  true    
@@ -42223,35 +42231,14 @@
     {
       "Type":  "TGraphLink",
       "Begin":  1063,
-      "End":  972,
+      "End":  1059,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  1061,
-      "End":  1062,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  972,
-      "End":  1065,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  1065,
-      "End":  1061,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  1065,
-      "End":  1060,
+      "Begin":  1063,
+      "End":  1058,
       "Nom":  0,
       "Arrow":  true    
     },
@@ -42265,13 +42252,13 @@
     {
       "Type":  "TGraphLink",
       "Begin":  1012,
-      "End":  1066,
+      "End":  1064,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  1066,
+      "Begin":  1064,
       "End":  972,
       "Nom":  0,
       "Arrow":  true    
@@ -42279,21 +42266,21 @@
     {
       "Type":  "TGraphLink",
       "Begin":  1012,
-      "End":  1067,
+      "End":  1065,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  1067,
-      "End":  1068,
+      "Begin":  1065,
+      "End":  1066,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  1064,
-      "End":  1068,
+      "Begin":  1062,
+      "End":  1066,
       "Nom":  0,
       "Arrow":  true    
     },
@@ -42306,14 +42293,14 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  1068,
-      "End":  1069,
+      "Begin":  1066,
+      "End":  1067,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  1069,
+      "Begin":  1067,
       "End":  314,
       "Nom":  0,
       "Arrow":  true    
