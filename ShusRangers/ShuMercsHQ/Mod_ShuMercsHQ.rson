@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -2042,
-  "ViewPos.y":  -256,
+  "ViewPos.x":  -2036,
+  "ViewPos.y":  -253,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
@@ -4158,7 +4158,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  4,
-          "Total.Lines":  1363,
+          "Total.Lines":  1362,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -5060,11 +5060,10 @@
               "        ShipSkill(ship, 'Leadership', 0);",
               "        ShipSpecialBonuses(ship, bonSkill6, -30);",
               "        //Повышаем всем наёмникам пиратское звание до барона, чтоб, сука, уважали их тупые пираты!",
-              "        while(GetShipPirateRank(ship) < 7)",
-              "        {",
-              "            ShipPirateRankPoints(ship, ShipNextPirateRankPoints(ship));",
-              "            RaisePirateRank(ship);",
-              "        }",
+              "        RaisePirateRank(ship, 7);",
+              "        //Уровень навыков использования доминаторского оружия равен ГТУ",
+              "        ShipTechLevelKnowledge(ship, GTL);",
+              "        ",
               "        //Запрещаем другим рейнджерам (и наёмникам) рэкетировать наёмников игрока",
               "        NoTargetToShip(ship, 3);",
               "",
@@ -5534,7 +5533,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  10,
-          "Total.Lines":  1336,
+          "Total.Lines":  1338,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -6351,6 +6350,8 @@
               "                        //Отправляем готовый \"крейсер\" в штаб",
               "                        TransferShip(cur_ship, cur_ruin);",
               "",
+              "                        //Может использовать доминаторское оружие любого ТУ",
+              "                        ShipTechLevelKnowledge(ship, 8);",
               "                        ArrangeItems(cur_ship);",
               "                        FreeAllHoldEquipment(cur_ship);",
               "",
