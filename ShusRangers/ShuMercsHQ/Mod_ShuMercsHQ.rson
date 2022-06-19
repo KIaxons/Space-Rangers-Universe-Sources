@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -2037,
-  "ViewPos.y":  -253,
+  "ViewPos.x":  -2035,
+  "ViewPos.y":  -251,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
@@ -9624,7 +9624,7 @@
           "Pos.y":  0,
           "Parent":  232,
           "#":  236,
-          "Total.Lines":  100,
+          "Total.Lines":  99,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -9639,7 +9639,6 @@
               "    else FreePlayerMerc(cur_merc);",
               "    exit;",
               "}",
-              "",
               "dword HQstar = GalaxyStar(PlayerHQMainArray['Main', 'HQStar']);",
               "",
               "//Меняем овнера на всякий случай, чтобы при захвате системы со штабом,",
@@ -10264,14 +10263,12 @@
           "Pos.y":  0,
           "Parent":  248,
           "#":  249,
-          "Total.Lines":  306,
+          "Total.Lines":  305,
           "Code.Type":  "Turn",
           "Code":          
           [
               "dword cur_star = ShipStar(CurShip);",
               "dword HQ = GroupToShip(PlayerHQ);",
-              "dword HQstar = ShipStar(HQ);",
-              "",
               "//Если штаб был уничтожен, делаем наёмника игрока фрилансером",
               "if(!HQ || Hit(CurShip, 0))",
               "{",
@@ -10295,6 +10292,7 @@
               "    else FreePlayerMerc(cur_merc);",
               "    exit;",
               "}",
+              "dword HQstar = ShipStar(HQ);",
               "",
               "OrderLock(CurShip, 1);",
               "if(RelationToRanger(CurShip, Player()) < 100) RelationToRanger(CurShip, Player(), 100);",
@@ -10647,7 +10645,7 @@
           "Pos.y":  0,
           "Parent":  263,
           "#":  264,
-          "Total.Lines":  117,
+          "Total.Lines":  116,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -10663,8 +10661,6 @@
               "",
               "dword cur_star = ShipStar(CurShip);",
               "dword HQ = GroupToShip(PlayerHQ);",
-              "dword HQStar = GalaxyStar(PlayerHQMainArray['Main', 'HQStar']);",
-              "",
               "//Если штаб был уничтожен, делаем наёмника игрока фрилансером",
               "if(!HQ || Hit(CurShip, 0))",
               "{",
@@ -10688,6 +10684,7 @@
               "    else FreePlayerMerc(cur_merc);",
               "    exit;",
               "}",
+              "dword HQStar = GalaxyStar(PlayerHQMainArray['Main', 'HQStar']);",
               "",
               "//Вручную корректируем характер наёмника",
               "ShipStatus(CurShip, 0, 0); //Торговец",
@@ -11516,7 +11513,7 @@
           "Pos.y":  0,
           "Parent":  325,
           "#":  326,
-          "Total.Lines":  118,
+          "Total.Lines":  117,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -11540,7 +11537,6 @@
               "    else FreePlayerMerc(cur_merc);",
               "    exit;",
               "}",
-              "",
               "dword HQstar = GalaxyStar(PlayerHQMainArray['Main', 'HQStar']);",
               "",
               "OrderLock(CurShip, 1);",
@@ -12312,7 +12308,7 @@
           "Pos.y":  0,
           "Parent":  358,
           "#":  359,
-          "Total.Lines":  78,
+          "Total.Lines":  77,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -12337,7 +12333,6 @@
               "",
               "    exit;",
               "}",
-              "",
               "dword HQstar = GalaxyStar(PlayerHQMainArray['Main', 'HQStar']);",
               "",
               "OrderLock(CurShip, 1);",
