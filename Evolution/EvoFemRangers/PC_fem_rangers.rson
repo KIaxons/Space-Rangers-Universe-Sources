@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -502,
-  "ViewPos.y":  -39,
+  "ViewPos.x":  -373,
+  "ViewPos.y":  -45,
   "ScriptName":  "PC_fem_rangers",
   "ScriptFileOut":  "H:\\PC_fem_rangers.scr",
   "ScriptTextOut":  "H:\\PC_fem_rangers.txt",
@@ -4981,13 +4981,13 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "cur_relation=min(max(0,max_relation),RelationToRanger(CurShip,Player()));",
-              "cur_relation_type=0;",
-              "if (cur_relation>=10){cur_relation_type=1;}",
-              "if (cur_relation>=30){cur_relation_type=2;}",
-              "if (cur_relation>=60){cur_relation_type=3;}",
-              "if (cur_relation>=80){cur_relation_type=4;}",
-              "roll=((Id(CurShip)+CurTurn())/20)%2;"          
+              "cur_relation = min(max(0, max_relation), RelationToRanger(CurShip, Player()));",
+              "cur_relation_type = 0;",
+              "if(cur_relation >= 80) cur_relation_type = 4;",
+              "else if(cur_relation >= 60) cur_relation_type = 3;",
+              "else if(cur_relation >= 30) cur_relation_type = 2;",
+              "else if(cur_relation >= 10) cur_relation_type = 1;",
+              "roll = (Id(CurShip) + CurTurn() / 20) % 2;"          
           ]        
         },
         {
@@ -5001,7 +5001,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "//roll=0;"          
+              "//roll = 0;"          
           ]        
         },
         {
@@ -5158,12 +5158,12 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "cur_relation=min(max(0,max_relation),RelationToRanger(CurShip,Player()));",
-              "cur_relation_type=0;",
-              "if (cur_relation>=10){cur_relation_type=1;}",
-              "if (cur_relation>=30){cur_relation_type=2;}",
-              "if (cur_relation>=60){cur_relation_type=3;}",
-              "if (cur_relation>=80){cur_relation_type=4;}"          
+              "cur_relation = min(max(0, max_relation), RelationToRanger(CurShip, Player()));",
+              "cur_relation_type = 0;",
+              "if(cur_relation >= 80) cur_relation_type = 4;",
+              "else if(cur_relation >= 60) cur_relation_type = 3;",
+              "else if(cur_relation >= 30) cur_relation_type = 2;",
+              "else if(cur_relation >= 10) cur_relation_type = 1;"          
           ]        
         },
         {
@@ -5325,7 +5325,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "second_try=2"          
+              "second_try = 2;"          
           ]        
         },
         {
@@ -8260,13 +8260,12 @@
           "Pos.y":  680,
           "Parent":  -1,
           "#":  1079,
-          "Total.Lines":  4,
+          "Total.Lines":  3,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "OrderLock(CurShip,0);",
-              "if (ShipInPrison(CurShip)){",
-              "OrderNone(CurShip);}",
+              "OrderLock(CurShip, 0);",
+              "if(ShipInPrison(CurShip)) OrderNone(CurShip);",
               "ShipFreeFlight(CurShip);"          
           ]        
         },
@@ -8281,7 +8280,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "OrderLock(CurShip,1);"          
+              "OrderLock(CurShip, 1);"          
           ]        
         },
         {
@@ -8415,11 +8414,11 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player(),ShipMoney(Player())+money_truce);",
-              "ShipMoney(CurShip,ShipMoney(CurShip)-money_truce);",
+              "ShipMoney(Player(), ShipMoney(Player()) + money_truce);",
+              "ShipMoney(CurShip, ShipMoney(CurShip) - money_truce);",
               "Sound('Sound.Buy');",
-              "TruceBetweenShips(Player(),CurShip);",
-              "RelationToRanger(CurShip,Player(),10);"          
+              "TruceBetweenShips(Player(), CurShip);",
+              "RelationToRanger(CurShip, Player(), 10);"          
           ]        
         },
         {
@@ -8433,7 +8432,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "money_truce=GalaxyMoney(1);"          
+              "money_truce = GalaxyMoney(1);"          
           ]        
         },
         {
@@ -8447,7 +8446,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "OrderFollowShip(Player(),ShipOrderObj(CurShip));",
+              "OrderFollowShip(Player(), ShipOrderObj(CurShip));",
               "AutoBattle(ShipOrderObj(CurShip));"          
           ]        
         },
@@ -9903,7 +9902,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "cur_relation_type==0"          
+              "!cur_relation_type"          
           ]        
         },
         {
@@ -9945,7 +9944,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "cur_relation_type==1"          
+              "cur_relation_type == 1"          
           ]        
         },
         {
@@ -9959,7 +9958,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "cur_relation_type==2"          
+              "cur_relation_type == 2"          
           ]        
         },
         {
@@ -9973,7 +9972,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "cur_relation_type==3"          
+              "cur_relation_type == 3"          
           ]        
         },
         {
@@ -9987,7 +9986,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "cur_relation_type==4"          
+              "cur_relation_type == 4"          
           ]        
         },
         {
@@ -10127,7 +10126,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipInPirateClan(Player()) && (!player_hate) && (!quest_status) && (!second_try)"          
+              "ShipInPirateClan(Player()) && !player_hate && !quest_status && !second_try"          
           ]        
         },
         {
@@ -10505,7 +10504,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "cur_relation_type==0"          
+              "!cur_relation_type"          
           ]        
         },
         {
@@ -10701,7 +10700,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "!StateIs(CurShip,'GuardVsPlayer') && !StateIs(CurShip,'GuardShip')"          
+              "!StateIs(CurShip, 'GuardVsPlayer', 'GuardShip')"          
           ]        
         },
         {
@@ -10715,7 +10714,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "StateIs(CurShip,'GuardVsPlayer') || StateIs(CurShip,'GuardShip')"          
+              "StateIs(CurShip, 'GuardVsPlayer', 'GuardShip')"          
           ]        
         },
         {
@@ -10813,7 +10812,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "max_relation<10"          
+              "max_relation < 10"          
           ]        
         },
         {
@@ -10823,11 +10822,15 @@
           "Pos.y":  890,
           "Parent":  -1,
           "#":  357,
-          "Total.Lines":  1,
+          "Total.Lines":  5,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "!ShipIsPartner(CurShip) && !StarOwner(ShipStar(Player())) && (GetShipPirateRank(Player())<6) && (((GetShipPirateRank(Player())-agent_counter)<=2)) && (RelationToRanger(quest_ship,Player())>=30)"          
+              "!ShipIsPartner(CurShip) &&",
+              "!StarOwner(ShipStar(Player())) &&",
+              "GetShipPirateRank(Player()) < 6 &&",
+              "(GetShipPirateRank(Player()) - agent_counter) <= 2 &&",
+              "RelationToRanger(quest_ship, Player()) >= 30"          
           ]        
         },
         {
@@ -10911,7 +10914,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "planet_list2[num_planets] && (best_dist>=req_dist)"          
+              "planet_list2[num_planets] && best_dist >= req_dist"          
           ]        
         },
         {
@@ -11373,7 +11376,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "StateIs(CurShip,'GuardVsPlayer') || StateIs(CurShip,'DeliveryVsPlayer')"          
+              "StateIs(CurShip, 'GuardVsPlayer', 'DeliveryVsPlayer')"          
           ]        
         },
         {
@@ -11387,7 +11390,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "max_relation>=10"          
+              "max_relation >= 10"          
           ]        
         },
         {
@@ -11401,7 +11404,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "!StateIs(CurShip,'GuardVsPlayer') && !StateIs(CurShip,'DeliveryVsPlayer')"          
+              "!StateIs(CurShip, 'GuardVsPlayer', 'DeliveryVsPlayer')"          
           ]        
         },
         {
@@ -11411,11 +11414,15 @@
           "Pos.y":  820,
           "Parent":  -1,
           "#":  465,
-          "Total.Lines":  1,
+          "Total.Lines":  5,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipIsPartner(CurShip) || StarOwner(ShipStar(Player())) || (GetShipPirateRank(Player())>=6) || (((GetShipPirateRank(Player())-agent_counter)>2)) || (RelationToRanger(quest_ship,Player())<30)"          
+              "ShipIsPartner(CurShip) ||",
+              "StarOwner(ShipStar(Player())) ||",
+              "(GetShipPirateRank(Player()) >= 6) ||",
+              "(((GetShipPirateRank(Player()) - agent_counter) > 2)) ||",
+              "(RelationToRanger(quest_ship, Player()) < 30)"          
           ]        
         },
         {
@@ -11429,7 +11436,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "(second_try!=1)"          
+              "second_try != 1"          
           ]        
         },
         {
@@ -11443,7 +11450,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "second_try==1"          
+              "second_try == 1"          
           ]        
         },
         {
@@ -14453,7 +14460,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "(GetTalkType()==TalkMoney) || (GetTalkType()==TalkGoods)"          
+              "GetTalkType() == TalkMoney || GetTalkType() == TalkGoods"          
           ]        
         },
         {
@@ -14467,7 +14474,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "(GetTalkType()==TalkTruce)"          
+              "GetTalkType() == TalkTruce"          
           ]        
         },
         {
@@ -14491,11 +14498,14 @@
           "Pos.y":  690,
           "Parent":  -1,
           "#":  1119,
-          "Total.Lines":  1,
+          "Total.Lines":  4,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "(GetTalkType()!=TalkMoney) && (GetTalkType()!=TalkGoods) && (GetTalkType()!=TalkTruce) && (GetTalkType()!=TalkAttack)"          
+              "(GetTalkType() != TalkMoney) &&",
+              "(GetTalkType() != TalkGoods) &&",
+              "(GetTalkType() != TalkTruce) &&",
+              "(GetTalkType() != TalkAttack)"          
           ]        
         },
         {
@@ -14509,7 +14519,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "((Id(GetTalkShip())+CurTurn())%2)==1"          
+              "((Id(GetTalkShip()) + CurTurn()) % 2) == 1"          
           ]        
         },
         {
@@ -14523,7 +14533,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "((Id(GetTalkShip())+CurTurn())%2)==0"          
+              "!((Id(GetTalkShip()) + CurTurn()) % 2)"          
           ]        
         },
         {
@@ -14537,7 +14547,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "((Id(GetTalkShip())+CurTurn())%3)==2"          
+              "((Id(GetTalkShip()) + CurTurn()) % 3) == 2"          
           ]        
         },
         {
@@ -14551,7 +14561,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "((Id(GetTalkShip())+CurTurn())%3)==1"          
+              "((Id(GetTalkShip()) + CurTurn()) % 3) == 1"          
           ]        
         },
         {
@@ -14565,7 +14575,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "((Id(GetTalkShip())+CurTurn())%3)==0"          
+              "!((Id(GetTalkShip()) + CurTurn()) % 3)"          
           ]        
         },
         {
@@ -14677,7 +14687,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "RelationToRanger(CurShip,Player())>=10"          
+              "RelationToRanger(CurShip, Player()) >= 10"          
           ]        
         },
         {
@@ -14691,7 +14701,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "RelationToRanger(CurShip,Player())<10"          
+              "RelationToRanger(CurShip, Player()) < 10"          
           ]        
         },
         {
@@ -14705,7 +14715,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "(RelationToRanger(CurShip,Player())<10) || (ShipOrderObj(CurShip)==0)"          
+              "RelationToRanger(CurShip, Player()) < 10 || !ShipOrderObj(CurShip)"          
           ]        
         },
         {
@@ -14719,7 +14729,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "(RelationToRanger(CurShip,Player())>=10) && (ShipOrderObj(CurShip)!=0)"          
+              "RelationToRanger(CurShip, Player()) >= 10 && ShipOrderObj(CurShip)"          
           ]        
         },
         {
@@ -15725,7 +15735,7 @@
         {
           "Type":  "TVar",
           "Name":  "cur_relation",
-          "Pos.x":  330,
+          "Pos.x":  300,
           "Pos.y":  860,
           "Parent":  -1,
           "#":  178,
