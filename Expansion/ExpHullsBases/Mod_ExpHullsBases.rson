@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -102,
-  "ViewPos.y":  -240,
+  "ViewPos.x":  -80,
+  "ViewPos.y":  -306,
   "ScriptName":  "Mod_ExpHullsBases",
   "ScriptFileOut":  "H:\\Mod_ExpHullsBases.scr",
   "ScriptTextOut":  "H:\\Mod_ExpHullsBases.txt",
@@ -3741,12 +3741,12 @@
           "Code.Type":  "Turn",
           "Code":          
           [
+              "if(PlayerBridge()) InjectAnswer('ShortJumpGo', \"Отправляйтесь к текущим координатам <color=0,50,200>моего корабля</color>\", -1);",
               "for(j = 0; j < StarPlanets(cur_star); j = j + 1)",
               "{",
               "    tempInt3 = StarPlanets(cur_star, j);",
               "    InjectAnswer('ShortJumpGo', \"Отправляйтесь к текущим координатам планеты\" + ' <color=0,50,200>' + PlanetName(tempInt3) + '</color>', tempInt3);",
-              "}",
-              "if(PlayerBridge()) InjectAnswer('ShortJumpGo', \"Отправляйтесь к текущим координатам <color=0,50,200>моего корабля</color>\", -1);"          
+              "}"          
           ]        
         },
         {
