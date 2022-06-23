@@ -1,0 +1,1357 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  -153,
+  "ViewPos.y":  -104,
+  "ScriptName":  "PC_part0",
+  "ScriptFileOut":  "H:\\PC_part0.scr",
+  "ScriptTextOut":  "H:\\PC_part0.txt",
+  "GraphPoint.Count":  56,
+  "GraphLink.Count":  44,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  10,
+  "Stars.Count":  1,
+  "Planets.Count":  1,
+  "Ships.Count":  1,
+  "States.Count":  1,
+  "Groups.Count":  1,
+  "Places.Count":  0,
+  "Items.Count":  0,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  3,
+  "DialogMessages.Count":  14,
+  "DialogAnswers.Count":  16,
+  "Operations.Count":  7,
+  "Statements.Count":  1,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "DialogAnswers":      
+      [
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  530,
+          "Pos.y":  290,
+          "Parent":  -1,
+          "#":  9,
+          "Msg":  "Я - охотник!",
+          "AMsg.Num":  "0"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  530,
+          "Pos.y":  320,
+          "Parent":  -1,
+          "#":  10,
+          "Msg":  "Я скорее хитрая дичь, чем глупый охотник.",
+          "AMsg.Num":  "1"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "hangar",
+          "Pos.x":  680,
+          "Pos.y":  370,
+          "Parent":  -1,
+          "#":  13,
+          "Msg":  "Уже ушел.",
+          "AMsg.Num":  "2"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  590,
+          "Pos.y":  290,
+          "Parent":  -1,
+          "#":  14,
+          "Msg":  "Конечно, соответствую!",
+          "AMsg.Num":  "3"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  590,
+          "Pos.y":  320,
+          "Parent":  -1,
+          "#":  15,
+          "Msg":  "Пожалуй, нет.",
+          "AMsg.Num":  "4"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  650,
+          "Pos.y":  290,
+          "Parent":  -1,
+          "#":  18,
+          "Msg":  "Я точно в этом уверен, и жалеть о своем решении не буду.",
+          "AMsg.Num":  "5"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  650,
+          "Pos.y":  320,
+          "Parent":  -1,
+          "#":  19,
+          "Msg":  "Мне надо немного подумать.",
+          "AMsg.Num":  "6"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  710,
+          "Pos.y":  290,
+          "Parent":  -1,
+          "#":  22,
+          "Msg":  "И это все?",
+          "AMsg.Num":  "7"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  770,
+          "Pos.y":  290,
+          "Parent":  -1,
+          "#":  24,
+          "Msg":  "Каким образом я могу повысить свой рейтинг пирата?",
+          "AMsg.Num":  "8"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "restart",
+          "Pos.x":  860,
+          "Pos.y":  290,
+          "Parent":  -1,
+          "#":  26,
+          "Msg":  "Все понял. Принимаюсь за дело.",
+          "AMsg.Num":  "9"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  690,
+          "Pos.y":  110,
+          "Parent":  -1,
+          "#":  30,
+          "Msg":  "Да, уверен!",
+          "AMsg.Num":  "10"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  690,
+          "Pos.y":  140,
+          "Parent":  -1,
+          "#":  31,
+          "Msg":  "Ой! Начальник, тут, типа, ошибочка вышла... Я передумал.",
+          "AMsg.Num":  "11"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "hangar",
+          "Pos.x":  750,
+          "Pos.y":  140,
+          "Parent":  -1,
+          "#":  34,
+          "Msg":  "Считай, что меня уже здесь нет.",
+          "AMsg.Num":  "12"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  750,
+          "Pos.y":  110,
+          "Parent":  -1,
+          "#":  35,
+          "Msg":  "Знаю. Я тогда полетел?",
+          "AMsg.Num":  "13"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  750,
+          "Pos.y":  80,
+          "Parent":  -1,
+          "#":  36,
+          "Msg":  "Не знаю.",
+          "AMsg.Num":  "14"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "restart",
+          "Pos.x":  810,
+          "Pos.y":  110,
+          "Parent":  -1,
+          "#":  38,
+          "Msg":  "Точно!",
+          "AMsg.Num":  "15"        
+        }      
+      ],
+      "DialogMessages":      
+      [
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  500,
+          "Pos.y":  290,
+          "Parent":  -1,
+          "#":  7,
+          "Msg":  "Как тебе наверно известно, обитатели этого мира делятся на две категории: охотников и дичь. К какой из них ты относишь себя?",
+          "DMsg.Num":  "0"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  560,
+          "Pos.y":  290,
+          "Parent":  -1,
+          "#":  11,
+          "Msg":  "А ты умнее, чем кажешься на первый взгляд. Это хорошо. Наше специальное предложение не для трусливых стадоподобных обывателей. Оно для тех, кто смел, отважен, силен духовно и физически, хорошо владеет разными видами оружия, является отличным пилотом, умеет подчиняться старшим, но при этом готов в любой момент сам стать лидером. От себя добавлю: желательно, чтобы у этого кандидата было все в порядке на \"чердаке\". У идиотов плохие перспективы для карьерного роста в нашем предприятии. \r\nПодумай, соответствуешь ли ты всем этим высоким стандартам?",
+          "DMsg.Num":  "1"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  560,
+          "Pos.y":  320,
+          "Parent":  -1,
+          "#":  12,
+          "Msg":  "Тогда беги отсюда, пока сезон охоты еще не открыт!",
+          "DMsg.Num":  "2"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  620,
+          "Pos.y":  290,
+          "Parent":  -1,
+          "#":  16,
+          "Msg":  "Тогда без лишних сантиментов <clr>предлагаю тебе присоединиться к нашему пиратскому братству<clrEnd>. Конечно, после этого на тебя будут косо смотреть твои сослуживцы и некоторые правители планет. Я уже не говорю про смену приоритетов. На первом месте у тебя всегда должны стоять идеалы нашей организации, а уж потом где-то в конце списка - личные интересы.\r\nЗато подумай о том, что ты получишь взамен. Теперь любая пиратская база станет для тебя родным домом. Ты получишь новые возможности для профессионального и карьерного роста. Тебе откроется новый источник для личного самообогащения. А сколько новых друзей у тебя появится... \r\nРешайся! Но помни: решив однажды присоединиться к нам, ты уже никогда не сможешь \"соскочить\". А за предательство мы караем быстро и беспощадно. Подумай хорошенько, ты точно уверен в том, что хочешь стать одним из нас, то есть - пиратом?",
+          "DMsg.Num":  "3"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  620,
+          "Pos.y":  320,
+          "Parent":  -1,
+          "#":  17,
+          "Msg":  "Тогда вали отсюда, и не трать мое время!",
+          "DMsg.Num":  "4"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  680,
+          "Pos.y":  290,
+          "Parent":  -1,
+          "#":  20,
+          "Msg":  "Тогда ты принят! Поздравляю со вступлением в семью! Тебе присваивается почетное стартовое звание <clr>салаги<clrEnd>. Небольшой <clr>подарок<clrEnd> по этому поводу уже ждет тебя на складе.",
+          "DMsg.Num":  "5"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  680,
+          "Pos.y":  320,
+          "Parent":  -1,
+          "#":  21,
+          "Msg":  "ЧТО? Мне казалось, что ты уже принял решение... Ладно, думай. Охрана, проводите моего собеседника на выход. Постарайтесь не уронить его по дороге. Он еще может нам понадобиться.",
+          "DMsg.Num":  "6"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  740,
+          "Pos.y":  290,
+          "Parent":  -1,
+          "#":  23,
+          "Msg":  "А чего ты хотел? Ящик вина да фейерверков в свою честь? Извиняй, брателло, не завезли. Залетай через недельку...\r\nВ нашем деле ты - никто! Обычный зеленый новичок, у которого втыкилла на губах еще не обсохла! Типичный салага, который не заслуживает ни доверия, ни уважения. Хочешь это изменить? Тогда покажи, на что способен. Докажи, что действительно являешься истинным пиратом, а не жалкой пародией на благородного корсара. Повысь свой пиратский рейтинг!",
+          "DMsg.Num":  "7"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  830,
+          "Pos.y":  290,
+          "Parent":  -1,
+          "#":  25,
+          "Msg":  "Вот наш прейскурант:\r\n<points>",
+          "DMsg.Num":  "8"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  660,
+          "Pos.y":  110,
+          "Parent":  -1,
+          "#":  29,
+          "Msg":  "Просто для проформы спрошу: ты уверен, что хочешь присоединиться к нам и стать настоящим пиратом, а не мелким хулиганом из утилизатора?",
+          "DMsg.Num":  "9"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  720,
+          "Pos.y":  110,
+          "Parent":  -1,
+          "#":  32,
+          "Msg":  "Все, ты принят. Поздравляю! Тебе присваивается почетное стартовое звание салаги. Небольшой подарок по этому поводу уже ждет тебя на складе. Что дальше делать, знаешь?",
+          "DMsg.Num":  "10"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  720,
+          "Pos.y":  140,
+          "Parent":  -1,
+          "#":  33,
+          "Msg":  "Ну и лети отсюда, неженка! А еще пирата из себя изображает...",
+          "DMsg.Num":  "11"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  780,
+          "Pos.y":  110,
+          "Parent":  -1,
+          "#":  37,
+          "Msg":  "Вот это по-нашему! Оформился  и за дело! Пускай теперь дрожат все жизненно важные места у торгашей и прочих обывателей!",
+          "DMsg.Num":  "12"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  860,
+          "Pos.y":  80,
+          "Parent":  -1,
+          "#":  39,
+          "Msg":  "Чтобы стать кем-то уважаемым в нашей среде, тебе нужно показать себя, подтвердить свою репутацию.  А для этого надо поработать на благо нашего братства, повышать свой рейтинг. Тогда мы про тебя тоже не забудем.",
+          "DMsg.Num":  "13"        
+        }      
+      ],
+      "Dialogs":      
+      [
+        {
+          "Type":  "TDialog",
+          "Name":  "DialogPB",
+          "Pos.x":  410,
+          "Pos.y":  290,
+          "Parent":  -1,
+          "#":  6        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "DialogPirate",
+          "Pos.x":  570,
+          "Pos.y":  110,
+          "Parent":  -1,
+          "#":  28        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "DialogJoinLock",
+          "Pos.x":  860,
+          "Pos.y":  180,
+          "Parent":  -1,
+          "#":  54        
+        }      
+      ],
+      "Groups":      
+      [
+        {
+          "Type":  "TGroup",
+          "Name":  "PlayerGroup",
+          "Pos.x":  260,
+          "Pos.y":  290,
+          "Parent":  -1,
+          "#":  2,
+          "Owner":  62,
+          "Group.Type":  126,
+          "CntShipMin":  1,
+          "CntShipMax":  1,
+          "SpeedMin":  100,
+          "SpeedMax":  10000,
+          "Weapon":  0,
+          "CargoHook":  0,
+          "EmptySpace":  0,
+          "AddPlayer":  true,
+          "StatusTraderMin":  0,
+          "StatusTraderMax":  100,
+          "StatusWarriorMin":  0,
+          "StatusWarriorMax":  100,
+          "StatusPirateMin":  0,
+          "StatusPirateMax":  100,
+          "DistSearch":  10000,
+          "Dialog":  -1,
+          "StrengthMin":  "0",
+          "StrengthMax":  "0",
+          "Ruins":  ""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  290,
+          "Pos.y":  200,
+          "Parent":  -1,
+          "#":  5,
+          "Total.Lines":  1,
+          "Code.Type":  "Global",
+          "Code":          
+          [
+              "if(!ShipInPirateClan(Player())) GRun();"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  650,
+          "Pos.y":  260,
+          "Parent":  -1,
+          "#":  8,
+          "Total.Lines":  66,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "ShipJoinsClan(Player());",
+              "",
+              "if(CurrentMods('Expansion\\ExpTraitors'))",
+              "{",
+              "    hull_gift = CreateQuestItem('ExpTraitors_PirateParrot');",
+              "    ItemSize(hull_gift, 1);",
+              "    UselessItemData(hull_gift, 1, 0);",
+              "    UselessItemData(hull_gift, 2, 1);",
+              "    UselessItemData(hull_gift, 3, -2);",
+              "    AddItemToStorage(GetShipRuins(Player()), hull_gift);",
+              "",
+              "    //Снижаем отношение всех планет Коалиции (но не ниже 20) и повышаем отношение всех пиратских планет, то есть Роджерии (но не выше 45)",
+              "    ChangeGlobalRelationsPlanets(Player(), 0, 0, 20, 31);",
+              "    RelationToRanger(PlanetPirateClan(), Player(), max(45, RelationToRanger(PlanetPirateClan(), Player())));",
+              "    //ShipType(Player(), 'RangerPiratePlayer'); //Если раскомментировать смену типа здесь, то смена отношения станций и смена типа в Mod_ExpTraitors при первом вступлении в клан производиться не будет",
+              "",
+              "    GotoGov(2); //Лочим игрока в диалоге, до тех пор, пока не прокликает его до конца",
+              "    //(нужно, чтобы сработало обновление ShipType() и отношения станций к игроку из скрипта Mod_ExpTraitors)",
+              "}",
+              "else",
+              "{",
+              "    hull_gift = CreateHull(2, 100 + 150 * GalaxyTechLevel(), GalaxyTechLevel(), 2);",
+              "    ItemCost(hull_gift, ItemCost(hull_gift) / 2);",
+              "    AddItemToStorage(GetShipRuins(Player()), hull_gift);",
+              "}",
+              "",
+              "//Сразу проваливаем задание флагмана из мода ExpAcryn, если игрок уже успел его взять",
+              "if(CurrentMods('Expansion\\ExpAcryn'))",
+              "{",
+              "    //Игрок взял задание у флагмана, а потом вступил в пиратский клан - все задания провалены до конца партии",
+              "    if(ExpAcrynQuestStatus < 6)",
+              "    {",
+              "        if(~EtherState('ExpAcryn_quest_' + ExpAcrynQuestStatus))",
+              "        {",
+              "            if(GetValueFromScript('Mod_ExpAcryn', 'fl_array', ExpAcrynQuestStatus, 1) == 1) points = '';",
+              "            else points = '2';",
+              "",
+              "            if(ExpAcrynQuestStatus == 0) Ether(5, 'ExpAcryn_quest_0', CT('Script.Mod_ExpAcryn.MissionFailed') + Format(CT('Script.Mod_ExpAcryn.MalocMission' + points), '#ItemName#', GetValueFromScript('Mod_ExpAcryn', 'addItemName')));",
+              "            else if(ExpAcrynQuestStatus == 1) Ether(5, 'ExpAcryn_quest_1', CT('Script.Mod_ExpAcryn.MissionFailed') + Format(CT('Script.Mod_ExpAcryn.PelengMission' + points), '#ItemName#', GetValueFromScript('Mod_ExpAcryn', 'addItemName')));",
+              "            else if(ExpAcrynQuestStatus == 2)",
+              "            {",
+              "                Ether(5, 'ExpAcryn_quest_2', CT('Script.Mod_ExpAcryn.MissionFailed') + Format(CT('Script.Mod_ExpAcryn.PeopleMission' + points), '#ItemName#', GetValueFromScript('Mod_ExpAcryn', 'addItemName')));",
+              "                ShipDeleteCustomShipInfo(Player(), 'ExpAcryn_mimi_player_infos');",
+              "            }",
+              "            else if(ExpAcrynQuestStatus == 3) Ether(5, 'ExpAcryn_quest_3', CT('Script.Mod_ExpAcryn.MissionFailed') + Format(CT('Script.Mod_ExpAcryn.FeiMission' + points), '#ItemName#', GetValueFromScript('Mod_ExpAcryn', 'addItemName')));",
+              "            else if(ExpAcrynQuestStatus == 4) Ether(5, 'ExpAcryn_quest_4', CT('Script.Mod_ExpAcryn.MissionFailed') + Format(CT('Script.Mod_ExpAcryn.GaalMission' + points), '#ItemName#', GetValueFromScript('Mod_ExpAcryn', 'addItemName')));",
+              "        }",
+              "",
+              "        //Также понижаем его репутацию на всех планетах соответствующей расы",
+              "        for(i = 0; i < GalaxyStars(); i = i + 1)",
+              "        {",
+              "            hull_gift = GalaxyStar(i);",
+              "            if(StarOwner(hull_gift)) continue; //Не в доминаторских системах",
+              "            for(j = 0; j < StarPlanets(hull_gift); j = j + 1)",
+              "            {",
+              "                dword planet = StarPlanets(hull_gift, j);",
+              "                if(PlanetOwner(planet) != ExpAcrynQuestStatus) continue;",
+              "                RelationToRanger(planet, Player(), RelationToRanger(planet, Player()) - 30);",
+              "                if(RelationToRanger(planet, Player()) < 10) RelationToRanger(planet, Player(), 10);",
+              "            }",
+              "        }",
+              "",
+              "        ReleaseItemFromScript(GetValueFromScript('Mod_ExpAcryn', 'Q_item'));",
+              "        ExpAcrynQuestStatus = 7;",
+              "    }",
+              "}"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  20,
+          "Pos.y":  0,
+          "Parent":  5,
+          "#":  41,
+          "Total.Lines":  28,
+          "Code.Type":  "Init",
+          "Code":          
+          [
+              "visited_locations = newarray(1);",
+              "",
+              "reward_eq_size = newarray(7);",
+              "reward_eq_size[0] = 30;",
+              "reward_eq_size[1] = 20;",
+              "reward_eq_size[2] = 15;",
+              "reward_eq_size[3] = 15;",
+              "reward_eq_size[4] = 20;",
+              "reward_eq_size[5] = 20;",
+              "reward_eq_size[6] = 20;",
+              "",
+              "pirate_mod = newarray(7);",
+              "pirate_mod[0] = \"Апгрейтинговый топливный бак\";",
+              "pirate_mod[1] = \"Апгрейтинговый двигатель\";",
+              "pirate_mod[2] = \"Апгрейтинговый радар\";",
+              "pirate_mod[3] = \"Апгрейтинговый сканер\";",
+              "pirate_mod[4] = \"Биогенный дроид\";",
+              "pirate_mod[5] = \"Апгрейтинговый захват\";",
+              "pirate_mod[6] = \"Апгрейтинговый генератор защиты\";",
+              "",
+              "gov_mod = newarray(7);",
+              "gov_mod[0] = \"Ультрасплавный топливный бак\";",
+              "gov_mod[1] = \"Нанобролитовый двигатель\";",
+              "gov_mod[2] = \"Ультрасплавный радар\";",
+              "gov_mod[3] = \"Ультрасплавный сканер\";",
+              "gov_mod[4] = \"Нанобролитовый дроид\";",
+              "gov_mod[5] = \"Ультрасплавный захват\";",
+              "gov_mod[6] = \"Нанобролитовый генератор защиты\";"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  60,
+          "Pos.y":  0,
+          "Parent":  5,
+          "#":  46,
+          "Total.Lines":  2,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//Игрок вступил в клан - скрипт завершается",
+              "if(ShipInPirateClan(Player()) && !GotoGov()) ShipOut(Player());"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  800,
+          "Pos.y":  290,
+          "Parent":  -1,
+          "#":  48,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "points = '<clrEnd>' + CT('FormRuins.PB.RankPoints.RankPoints');"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  860,
+          "Pos.y":  200,
+          "Parent":  -1,
+          "#":  52,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "GotoGov(0);"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  40,
+          "Pos.y":  0,
+          "Parent":  5,
+          "#":  55,
+          "Total.Lines":  39,
+          "Code.Type":  "DialogBegin",
+          "Code":          
+          [
+              "dword ruin = GetShipRuins(Player());",
+              "if(ruin)",
+              "{",
+              "    if(ShipType(ruin) == 'PB')",
+              "    {",
+              "        if(!GotoGov())",
+              "        {",
+              "            if(!ShipInPirateClan(Player()))",
+              "            {",
+              "                int check = 0;",
+              "                if(CurrentMods('Tweaks\\RevolutionDelayed'))",
+              "                {",
+              "                    if(GetValueFromScript('Mod_RevolutionDelayed', 'pirates_begin_turn') <= CurTurn()) check = 1;",
+              "                }",
+              "                else check = 1;",
+              "                ",
+              "                if(check)",
+              "                {",
+              "                    if(~StatusPlayer()) //Если игрок по характеру не пират",
+              "                    {",
+              "                        AddDialogInject('DialogPB', \"Кроме того, мы можем прямо сейчас сделать тебе одно особое предложение, от которого крайне сложно будет отказаться...\", \"Что за особое предложение?\", 1);",
+              "                    }",
+              "                    else //Если пират",
+              "                    {",
+              "                        AddDialogInject('', \"Кого еще тут принесла нелегкая? А, это ты, брателло? Приветствую тебя на нашей пиратской...\", '', 10, 1);",
+              "                        AddDialogInject('DialogPirate', \"А чего это тебя в списках нет? Видно опять техническая группа что-то накосячила. Ладно, дело поправимое.  В общем так, <ShipName(Player())>, вот тебе уже заполненное заявление на прием в братство пиратов. Как будешь готов, просто поставь крестик или галочку там внизу и будем считать, что все в ажуре.\", \"Вступить в братство пиратов\", 9, 0);",
+              "    ",
+              "                        //У игрока появилась возможность приобрести саб-модем",
+              "                        if(PlayerMayTakeSubCrack())",
+              "                        {",
+              "                            AddDialogInject('', \"Кстати, сегодня мы готовы продать тебе кое-что интересное. Но только если у тебя есть на счету <SubCrackCost()> cr.\", '', 8, 0);",
+              "                        }",
+              "                    }",
+              "                }",
+              "            }",
+              "        }",
+              "        else AddDialogOverride('DialogJoinLock', 20000);",
+              "    }",
+              "}"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":  "TPlanet",
+          "Name":  "PlanetNew",
+          "Pos.x":  260,
+          "Pos.y":  260,
+          "Parent":  -1,
+          "#":  1,
+          "Race":  62,
+          "Owner":  62,
+          "Economy":  14,
+          "Goverment":  62,
+          "RangeMin":  0,
+          "RangeMax":  100,
+          "Dialog":  -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":  "TStarShip",
+          "Name":  "",
+          "Pos.x":  260,
+          "Pos.y":  200,
+          "Parent":  -1,
+          "#":  4,
+          "Count":  1,
+          "Owner":  62,
+          "Ship.Type":  126,
+          "Player":  true,
+          "SpeedMin":  0,
+          "SpeedMax":  10000,
+          "Weapon":  0,
+          "CargoHook":  0,
+          "EmptySpace":  0,
+          "StatusTraderMin":  0,
+          "StatusTraderMax":  100,
+          "StatusWarriorMin":  0,
+          "StatusWarriorMax":  100,
+          "StatusPirateMin":  0,
+          "StatusPirateMax":  100,
+          "StrengthMin":  "0",
+          "StrengthMax":  "0",
+          "Ruins":  ""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":  "TStar",
+          "Name":  "StarNew",
+          "Pos.x":  260,
+          "Pos.y":  230,
+          "Parent":  -1,
+          "#":  0,
+          "Constellation":  0,
+          "Priority":  0,
+          "NoKling":  false,
+          "NoComeKling":  false        
+        }      
+      ],
+      "Statements":      
+      [
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  650,
+          "Pos.y":  170,
+          "Parent":  -1,
+          "#":  53,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "1"          
+          ]        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":  "TState",
+          "Name":  "PlayerState",
+          "Pos.x":  260,
+          "Pos.y":  320,
+          "Parent":  -1,
+          "#":  3,
+          "Move":  0,
+          "MoveObj":  -1,
+          "Attack.Count":  0,
+          "TakeItem":  -1,
+          "TakeAllItem":  false,
+          "OnTalk":  "",
+          "OnActCode":  "",
+          "EType":  1,
+          "EUnique":  "",
+          "EMsg":  ""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":  "TVar",
+          "Name":  "agent_counter",
+          "Pos.x":  410,
+          "Pos.y":  330,
+          "Parent":  -1,
+          "#":  27,
+          "Var.Type":  "Int",
+          "Init":  "0",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "visited_locations",
+          "Pos.x":  410,
+          "Pos.y":  350,
+          "Parent":  -1,
+          "#":  40,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "pirate_mod",
+          "Pos.x":  450,
+          "Pos.y":  420,
+          "Parent":  -1,
+          "#":  42,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "gov_mod",
+          "Pos.x":  450,
+          "Pos.y":  400,
+          "Parent":  -1,
+          "#":  43,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "reward_eq_size",
+          "Pos.x":  450,
+          "Pos.y":  440,
+          "Parent":  -1,
+          "#":  44,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "hull_gift",
+          "Pos.x":  680,
+          "Pos.y":  260,
+          "Parent":  -1,
+          "#":  45,
+          "Var.Type":  "Dword",
+          "Init":  "0",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "points",
+          "Pos.x":  800,
+          "Pos.y":  310,
+          "Parent":  -1,
+          "#":  47,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "temp_dwd",
+          "Pos.x":  450,
+          "Pos.y":  460,
+          "Parent":  -1,
+          "#":  49,
+          "Var.Type":  "Dword",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "i",
+          "Pos.x":  530,
+          "Pos.y":  400,
+          "Parent":  -1,
+          "#":  50,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "j",
+          "Pos.x":  560,
+          "Pos.y":  400,
+          "Parent":  -1,
+          "#":  51,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":  "TGraphLink",
+      "Begin":  4,
+      "End":  0,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1,
+      "End":  0,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  2,
+      "End":  1,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  2,
+      "End":  3,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  6,
+      "End":  7,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  7,
+      "End":  9,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  7,
+      "End":  10,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  12,
+      "End":  13,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  10,
+      "End":  12,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  9,
+      "End":  11,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  11,
+      "End":  14,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  15,
+      "End":  17,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  17,
+      "End":  13,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  11,
+      "End":  15,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  16,
+      "End":  19,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  16,
+      "End":  18,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  18,
+      "End":  20,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  19,
+      "End":  21,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  21,
+      "End":  13,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  20,
+      "End":  22,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  22,
+      "End":  23,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  23,
+      "End":  24,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  25,
+      "End":  26,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  18,
+      "End":  8,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  28,
+      "End":  29,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  29,
+      "End":  30,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  29,
+      "End":  31,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  31,
+      "End":  33,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  33,
+      "End":  34,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  32,
+      "End":  36,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  32,
+      "End":  35,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  35,
+      "End":  37,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  37,
+      "End":  38,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  36,
+      "End":  39,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  39,
+      "End":  24,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  14,
+      "End":  16,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  24,
+      "End":  48,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  48,
+      "End":  25,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  26,
+      "End":  52,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  38,
+      "End":  52,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  30,
+      "End":  53,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  53,
+      "End":  8,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  30,
+      "End":  32,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  54,
+      "End":  52,
+      "Nom":  0,
+      "Arrow":  true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  50,
+  "BlockPar.EC":  
+  [
+    {
+      "#":  "100",
+      "String":  "Апгрейтинговый сканер"    
+    },
+    {
+      "#":  "101",
+      "String":  "Апгрейтинговый радар"    
+    },
+    {
+      "#":  "102",
+      "String":  "Апгрейтинговый двигатель"    
+    },
+    {
+      "#":  "103",
+      "String":  "Апгрейтинговый топливный бак"    
+    },
+    {
+      "#":  "110",
+      "String":  "Тогда без лишних сантиментов <clr>предлагаю тебе присоединиться к нашему пиратскому братству<clrEnd>. Конечно, после этого на тебя будут косо смотреть твои сослуживцы и некоторые правители планет. Я уже не говорю про смену приоритетов. На первом месте у тебя всегда должны стоять идеалы нашей организации, а уж потом где-то в конце списка - личные интересы.<br>Зато подумай о том, что ты получишь взамен. Теперь любая пиратская база станет для тебя родным домом. Ты получишь новые возможности для профессионального и карьерного роста. Тебе откроется новый источник для личного самообогащения. А сколько новых друзей у тебя появится... <br>Решайся! Но помни: решив однажды присоединиться к нам, ты уже никогда не сможешь \"соскочить\". А за предательство мы караем быстро и беспощадно. Подумай хорошенько, ты точно уверен в том, что хочешь стать одним из нас, то есть - пиратом?"    
+    },
+    {
+      "#":  "111",
+      "String":  "ЧТО? Мне казалось, что ты уже принял решение... Ладно, думай. Охрана, проводите моего собеседника на выход. Постарайтесь не уронить его по дороге. Он еще может нам понадобиться."    
+    },
+    {
+      "#":  "112",
+      "String":  "А чего ты хотел? Ящик вина да фейерверков в свою честь? Извиняй, брателло, не завезли. Залетай через недельку...<br>В нашем деле ты - никто! Обычный зеленый новичок, у которого втыкилла на губах еще не обсохла! Типичный салага, который не заслуживает ни доверия, ни уважения. Хочешь это изменить? Тогда покажи, на что способен. Докажи, что действительно являешься истинным пиратом, а не жалкой пародией на благородного корсара. Повысь свой пиратский рейтинг!"    
+    },
+    {
+      "#":  "114",
+      "String":  "Вот это по-нашему! Оформился  и за дело! Пускай теперь дрожат все жизненно важные места у торгашей и прочих обывателей!"    
+    },
+    {
+      "#":  "115",
+      "String":  "Тогда ты принят! Поздравляю со вступлением в семью! Тебе присваивается почетное стартовое звание <clr>салаги<clrEnd>. Небольшой <clr>подарок<clrEnd> по этому поводу уже ждет тебя на складе."    
+    },
+    {
+      "#":  "117",
+      "String":  "Кроме того, мы можем прямо сейчас сделать тебе одно особое предложение, от которого крайне сложно будет отказаться..."    
+    },
+    {
+      "#":  "118",
+      "String":  "Кстати, сегодня мы готовы продать тебе кое-что интересное. Но только если у тебя есть на счету <0> cr."    
+    },
+    {
+      "#":  "119",
+      "String":  "Вот наш прейскурант:<br><0>"    
+    },
+    {
+      "#":  "21",
+      "String":  "Как тебе наверно известно, обитатели этого мира делятся на две категории: охотников и дичь. К какой из них ты относишь себя?"    
+    },
+    {
+      "#":  "24",
+      "String":  "Тогда беги отсюда, пока сезон охоты еще не открыт!"    
+    },
+    {
+      "#":  "26",
+      "String":  "Тогда вали отсюда, и не трать мое время!"    
+    },
+    {
+      "#":  "32",
+      "String":  "Я - охотник!"    
+    },
+    {
+      "#":  "33",
+      "String":  "Я скорее хитрая дичь, чем глупый охотник."    
+    },
+    {
+      "#":  "35",
+      "String":  "Конечно, соответствую!"    
+    },
+    {
+      "#":  "36",
+      "String":  "Пожалуй, нет."    
+    },
+    {
+      "#":  "37",
+      "String":  "Я точно в этом уверен, и жалеть о своем решении не буду."    
+    },
+    {
+      "#":  "38",
+      "String":  "Мне надо немного подумать."    
+    },
+    {
+      "#":  "39",
+      "String":  "И это все?"    
+    },
+    {
+      "#":  "40",
+      "String":  "Каким образом я могу повысить свой рейтинг пирата?"    
+    },
+    {
+      "#":  "41",
+      "String":  "Все понял. Принимаюсь за дело."    
+    },
+    {
+      "#":  "42",
+      "String":  "Просто для проформы спрошу: ты уверен, что хочешь присоединиться к нам и стать настоящим пиратом, а не мелким хулиганом из утилизатора?"    
+    },
+    {
+      "#":  "43",
+      "String":  "Все, ты принят. Поздравляю! Тебе присваивается почетное стартовое звание салаги. Небольшой подарок по этому поводу уже ждет тебя на складе. Что дальше делать, знаешь?"    
+    },
+    {
+      "#":  "44",
+      "String":  "Ну и лети отсюда, неженка! А еще пирата из себя изображает..."    
+    },
+    {
+      "#":  "46",
+      "String":  "Чтобы стать кем-то уважаемым в нашей среде, тебе нужно показать себя, подтвердить свою репутацию.  А для этого надо поработать на благо нашего братства, повышать свой рейтинг. Тогда мы про тебя тоже не забудем."    
+    },
+    {
+      "#":  "47",
+      "String":  "Да, уверен!"    
+    },
+    {
+      "#":  "50",
+      "String":  "Считай, что меня уже здесь нет."    
+    },
+    {
+      "#":  "51",
+      "String":  "Знаю. Я тогда полетел?"    
+    },
+    {
+      "#":  "52",
+      "String":  "Не знаю."    
+    },
+    {
+      "#":  "53",
+      "String":  "Точно!"    
+    },
+    {
+      "#":  "70",
+      "String":  "Что за особое предложение?"    
+    },
+    {
+      "#":  "72",
+      "String":  "Вступить в братство пиратов"    
+    },
+    {
+      "#":  "73",
+      "String":  "А чего это тебя в списках нет? Видно опять техническая группа что-то накосячила. Ладно, дело поправимое.  В общем так, <0>, вот тебе уже заполненное заявление на прием в братство пиратов. Как будешь готов, просто поставь крестик или галочку там внизу и будем считать, что все в ажуре."    
+    },
+    {
+      "#":  "74",
+      "String":  "Кого еще тут принесла нелегкая? А, это ты, брателло? Приветствую тебя на нашей пиратской..."    
+    },
+    {
+      "#":  "75",
+      "String":  "Уже ушел."    
+    },
+    {
+      "#":  "81",
+      "String":  "А ты умнее, чем кажешься на первый взгляд. Это хорошо. Наше специальное предложение не для трусливых стадоподобных обывателей. Оно для тех, кто смел, отважен, силен духовно и физически, хорошо владеет разными видами оружия, является отличным пилотом, умеет подчиняться старшим, но при этом готов в любой момент сам стать лидером. От себя добавлю: желательно, чтобы у этого кандидата было все в порядке на \"чердаке\". У идиотов плохие перспективы для карьерного роста в нашем предприятии. <br>Подумай, соответствуешь ли ты всем этим высоким стандартам?"    
+    },
+    {
+      "#":  "84",
+      "String":  "Ой! Начальник, тут, типа, ошибочка вышла... Я передумал."    
+    },
+    {
+      "#":  "90",
+      "String":  "Нанобролитовый генератор защиты"    
+    },
+    {
+      "#":  "91",
+      "String":  "Ультрасплавный захват"    
+    },
+    {
+      "#":  "92",
+      "String":  "Нанобролитовый дроид"    
+    },
+    {
+      "#":  "93",
+      "String":  "Ультрасплавный сканер"    
+    },
+    {
+      "#":  "94",
+      "String":  "Ультрасплавный радар"    
+    },
+    {
+      "#":  "95",
+      "String":  "Нанобролитовый двигатель"    
+    },
+    {
+      "#":  "96",
+      "String":  "Ультрасплавный топливный бак"    
+    },
+    {
+      "#":  "97",
+      "String":  "Апгрейтинговый генератор защиты"    
+    },
+    {
+      "#":  "98",
+      "String":  "Апгрейтинговый захват"    
+    },
+    {
+      "#":  "99",
+      "String":  "Биогенный дроид"    
+    }  
+  ]
+}

@@ -965,7 +965,7 @@
               "            if(IsScriptActive('Mod_ExpBK'))tstr1 = CT('Script.Mod_ExpAutoSearch.DialogHeaderWithExpBK');",
               "            else tstr1 = CT('Script.Mod_ExpAutoSearch.DialogHeaderWithNoExpBK');",
               "            //Блокируем диалог, если игрок допустил уже больше двух просрочек по кредиту",
-              "            if(PlayerDebtCnt() > 2)AddDialogBlock(CT('Script.Mod_ExpAutoSearch.MainDialogInject'), 1);",
+              "            if(PlayerDebtCnt() > 2) AddDialogBlock(CT('Script.Mod_ExpAutoSearch.MainDialogInject'), 1);",
               "            AddDialogInject('AutoSearch', tstr1, CT('Script.Mod_ExpAutoSearch.MainDialogInject'), 7);",
               "        }",
               "    }",
@@ -975,7 +975,7 @@
               "        if(ShipType(cur_shop) == 'BK')",
               "        {",
               "            //Блокируем диалог, если игрок допустил уже больше двух просрочек по кредиту",
-              "            if(PlayerDebtCnt() > 2)AddDialogBlock(CT('Script.Mod_ExpAutoSearch.MainDialogInject'), 1);",
+              "            if(PlayerDebtCnt() > 2) AddDialogBlock(CT('Script.Mod_ExpAutoSearch.MainDialogInject'), 1);",
               "            AddDialogInject('AutoSearch', '', CT('Script.Mod_ExpAutoSearch.MainDialogInject'), 0);",
               "        }",
               "    }",
@@ -1023,15 +1023,15 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "GAcrynListTempArr=newarray(2);",
-              "GAcrynListTempArr[0]=0;",
+              "GAcrynListTempArr = newarray(2);",
+              "GAcrynListTempArr[0] = 0;",
               "OpenCustomForm('AutoSearch');",
               "//Если новый запрос был создан",
-              "if(GAcrynListTempArr[0])tstr1='</color>'+CT('Script.Mod_ExpAutoSearch.GreetingsNewRequestText');",
+              "if(GAcrynListTempArr[0]) tstr1 = '</color>' + CT('Script.Mod_ExpAutoSearch.GreetingsNewRequestText');",
               "//Если не был",
-              "else tstr1='</color>'+Format(CT('Script.Mod_ExpAutoSearch.GreetingsText'),'#0#',maxRequestCount,'#1#',maxResultsCount,'#2#',requestCreateCost,'#3#',requestRollCost);",
+              "else tstr1 = '</color>' + Format(CT('Script.Mod_ExpAutoSearch.GreetingsText'), '#0#', maxRequestCount, '#1#', maxResultsCount, '#2#', requestCreateCost, '#3#', requestRollCost);",
               "free(GAcrynListTempArr);",
-              "arraychange(GAcrynListTempArr,1);"          
+              "arraychange(GAcrynListTempArr, 1);"          
           ]        
         },
         {
@@ -1066,19 +1066,19 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "GAcrynListTempArr=newarray(2);",
-              "GAcrynListTempArr[0]=GAnswerData;",
+              "GAcrynListTempArr = newarray(2);",
+              "GAcrynListTempArr[0] = GAnswerData;",
               "//Запоминаем старое значение числа запросов на случай, если изменяемый запрос будет удалён",
-              "tint1=GItemsToSearchArr[0,0];",
+              "tint1 = GItemsToSearchArr[0, 0];",
               "OpenCustomForm('AutoSearch');",
               "//Если запрос был изменён",
-              "if(GAcrynListTempArr[0])tstr1='</color>'+CT('Script.Mod_ExpAutoSearch.RequestWasChanged');",
+              "if(GAcrynListTempArr[0]) tstr1 = '</color>' + CT('Script.Mod_ExpAutoSearch.RequestWasChanged');",
               "//Если запрос был удалён",
-              "else if(GItemsToSearchArr[0,0]<tint1)tstr1='</color>'+CT('Script.Mod_ExpAutoSearch.RequestWasDeleted');",
+              "else if(GItemsToSearchArr[0, 0] < tint1) tstr1 = '</color>' + CT('Script.Mod_ExpAutoSearch.RequestWasDeleted');",
               "//Если запрос не изменялся и не удалялся",
-              "else tstr1='</color>'+CT('Script.Mod_ExpAutoSearch.RequestChangeList');",
+              "else tstr1 = '</color>' + CT('Script.Mod_ExpAutoSearch.RequestChangeList');",
               "free(GAcrynListTempArr);",
-              "arraychange(GAcrynListTempArr,1);"          
+              "arraychange(GAcrynListTempArr, 1);"          
           ]        
         },
         {
