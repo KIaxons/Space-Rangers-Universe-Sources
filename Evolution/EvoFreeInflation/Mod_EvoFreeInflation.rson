@@ -3,13 +3,13 @@
   "FileVersion":  8,
   "ViewPos.x":  -644,
   "ViewPos.y":  -202,
-  "ScriptName":  "Mod_StopInflation",
-  "ScriptFileOut":  "H:\\Mod_StopInflation.scr",
-  "ScriptTextOut":  "H:\\Mod_StopInflation.txt",
-  "GraphPoint.Count":  12,
+  "ScriptName":  "Mod_EvoFreeInflation",
+  "ScriptFileOut":  "H:\\Mod_EvoFreeInflation.scr",
+  "ScriptTextOut":  "H:\\Mod_EvoFreeInflation.txt",
+  "GraphPoint.Count":  15,
   "GraphLink.Count":  4,
   "GraphRectText.Count":  0,
-  "Variables.Count":  5,
+  "Variables.Count":  8,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
@@ -68,22 +68,21 @@
           "Pos.y":  110,
           "Parent":  -1,
           "#":  5,
-          "Total.Lines":  12,
+          "Total.Lines":  11,
           "Code.Type":  "Init",
           "Code":          
           [
-              "SetRangersCapital(capital_amount, 1);",
-              "//i = BuildListOfNewShips(tarr1, lastShipId, t_Ranger);",
-              "//if(i) //Если был обнаружен хотя бы один новый корабль, подходящий по заданным фильтрам",
-              "//{",
-              "//    for(i = 0; i < ArrayDim(tarr1); i = i + 1)",
-              "//    {",
-              "//        cur_ship = tarr1[i];",
-              "//        if(IsPlayer(cur_ship)) continue;",
-              "//        ShipAddCustomShipInfo(cur_ship, 'StopInflation_RangerDeathInfo');",
-              "//    }",
-              "//}",
-              "//lastShipId = GalaxyShipId();"          
+              "start_capital_amount = PortionInDiapason(GalaxyDiffLevels(1), 50, 500, 75000, 10000); //Скалируем от сложности разброса цен",
+              "max_reached_GTL = GalaxyTechLevel();",
+              "",
+              "coef = 1.0;",
+              "//От начала игры и вплоть до 3330 года",
+              "coef = coef * PortionInDiapason(CurTurn(), 301, 11251, 1.0, 4.0);",
+              "//Рост по ГТУ",
+              "coef = coef * PortionInDiapason(max_reached_GTL, 1, 8, 1.0, 4.0);",
+              "",
+              "cur_capital_amount = start_capital_amount * coef;",
+              "SetRangersCapital(cur_capital_amount, 1);"          
           ]        
         },
         {
@@ -93,13 +92,24 @@
           "Pos.y":  110,
           "Parent":  -1,
           "#":  6,
-          "Total.Lines":  3,
+          "Total.Lines":  14,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "i = BuildListOfNewShips(tarr1, lastShipId, t_Ranger);",
+              "//Пришло время определять месячную инфляцию",
+              "if(!((CurTurn() - 301) % 30))",
+              "{",
+              "    max_reached_GTL = max(GalaxyTechLevel(), max_reached_GTL);",
               "",
-              "//SetRangersCapital(capital_amount, 1);"          
+              "    coef = 1.0;",
+              "    //От начала игры и вплоть до 3330 года",
+              "    coef = coef * PortionInDiapason(CurTurn(), 301, 11251, 1.0, 4.0);",
+              "    //Рост по ГТУ",
+              "    coef = coef * PortionInDiapason(max_reached_GTL, 1, 8, 1.0, 4.0);",
+              "",
+              "    cur_capital_amount = start_capital_amount * coef;",
+              "    SetRangersCapital(cur_capital_amount, 1);",
+              "}"          
           ]        
         }      
       ],
@@ -190,13 +200,13 @@
       [
         {
           "Type":  "TVar",
-          "Name":  "capital_amount",
-          "Pos.x":  90,
-          "Pos.y":  90,
-          "Parent":  -1,
+          "Name":  "cur_capital_amount",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  12,
           "#":  7,
           "Var.Type":  "Dword",
-          "Init":  "20000",
+          "Init":  "50000",
           "Global":  false        
         },
         {
@@ -241,6 +251,39 @@
           "#":  11,
           "Var.Type":  "Dword",
           "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "max_reached_GTL",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  13,
+          "#":  12,
+          "Var.Type":  "Int",
+          "Init":  "1",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "coef",
+          "Pos.x":  90,
+          "Pos.y":  30,
+          "Parent":  -1,
+          "#":  13,
+          "Var.Type":  "Float",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "start_capital_amount",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  7,
+          "#":  14,
+          "Var.Type":  "Dword",
+          "Init":  "50000",
           "Global":  false        
         }      
       ]    
