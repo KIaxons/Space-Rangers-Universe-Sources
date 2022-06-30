@@ -2227,7 +2227,7 @@
               "        }",
               "    }",
               "    //Выводим Уитли из скриптового объекта при подборе его игроком (больше подбирать его некому)",
-              "    else if(ScriptItemActionType() == t_OnItemPickUp) ReleaseItemFromScript(wheatley);",
+              "    else /*if(ScriptItemActionType() == t_OnItemPickUp)*/ ReleaseItemFromScript(wheatley);",
               "}",
               "//Присваиваем объекту вышеописанный акткод",
               "ItemOnActCode(Script_Wheatley, 'OnActCode_ScriptWheatley();', 't_OnItemHit,t_OnItemPickUp');",
