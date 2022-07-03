@@ -8903,7 +8903,7 @@
               "            agent_ship = GetTalkShip(); //Запоминаем в отдельную переменную, т.к. на t_OnLeavingForm функции уже не возвращают корабль",
               "            if(!IsPlayer(agent_ship))",
               "            {",
-              "                if(GroupIs(agent_ship, GroupFem))//ShipInCurScript(agent_ship) && ShipGroup(agent_ship) == GroupFem)",
+              "                if(ShipInCurScript(agent_ship) && ShipGroup(agent_ship) == GroupFem)",
               "                {",
               "                    agent_ship_orig_face = ShipFace(agent_ship, 'Init');",
               "                    ShipFace(agent_ship, 25); //Номер оригинального лица спецагентки",
