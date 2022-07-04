@@ -1,0 +1,553 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  -461,
+  "ViewPos.y":  -172,
+  "ScriptName":  "Mod_UtilityFunctionsPack",
+  "ScriptFileOut":  "H:\\Mod_UtilityFunctionsPack.scr",
+  "ScriptTextOut":  "H:\\Mod_UtilityFunctionsPack.txt",
+  "GraphPoint.Count":  35,
+  "GraphLink.Count":  4,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  29,
+  "Stars.Count":  1,
+  "Planets.Count":  1,
+  "Ships.Count":  1,
+  "States.Count":  1,
+  "Groups.Count":  1,
+  "Places.Count":  0,
+  "Items.Count":  0,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  0,
+  "DialogMessages.Count":  0,
+  "DialogAnswers.Count":  0,
+  "Operations.Count":  1,
+  "Statements.Count":  0,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "Groups":      
+      [
+        {
+          "Type":  "TGroup",
+          "Name":  "PlayerGroup",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  2,
+          "#":  3,
+          "Owner":  62,
+          "Group.Type":  126,
+          "CntShipMin":  1,
+          "CntShipMax":  1,
+          "SpeedMin":  100,
+          "SpeedMax":  10000,
+          "Weapon":  0,
+          "CargoHook":  0,
+          "EmptySpace":  0,
+          "AddPlayer":  true,
+          "StatusTraderMin":  0,
+          "StatusTraderMax":  100,
+          "StatusWarriorMin":  0,
+          "StatusWarriorMax":  100,
+          "StatusPirateMin":  0,
+          "StatusPirateMax":  100,
+          "DistSearch":  10000,
+          "Dialog":  -1,
+          "StrengthMin":  "0",
+          "StrengthMax":  "0",
+          "Ruins":  ""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  30,
+          "Pos.y":  0,
+          "Parent":  0,
+          "#":  6,
+          "Total.Lines":  32,
+          "Code.Type":  "Init",
+          "Code":          
+          [
+              "UtilityFunctionsLibInit = ImportedFunction('UtilityFunctions', 'UtilityFunctionsLibInit');",
+              "GetGalaxyGenerationSeed = ImportedFunction('UtilityFunctions', 'GetGalaxyGenerationSeed');",
+              "GetSectorAdjacentToDicea = ImportedFunction('UtilityFunctions', 'GetSectorAdjacentToDicea');",
+              "AdvancedAdjustmentSet = ImportedFunction('UtilityFunctions', 'AdvancedAdjustmentSet');",
+              "SetRangersCapital = ImportedFunction('UtilityFunctions', 'SetRangersCapital');",
+              "RoundTo = ImportedFunction('UtilityFunctions', 'RoundTo');",
+              "Exponent = ImportedFunction('UtilityFunctions', 'Exponent');",
+              "TrimNumbers = ImportedFunction('UtilityFunctions', 'TrimNumbers');",
+              "DistCoords = ImportedFunction('UtilityFunctions', 'DistCoords');",
+              "PortionInDiapason = ImportedFunction('UtilityFunctions', 'PortionInDiapason');",
+              "ParsCountFromString = ImportedFunction('UtilityFunctions', 'PortionInDiapason');",
+              "GetParFromString = ImportedFunction('UtilityFunctions', 'GetParFromString');",
+              "SetParFromString = ImportedFunction('UtilityFunctions', 'SetParFromString');",
+              "GetParFromTxt = ImportedFunction('UtilityFunctions', 'GetParFromTxt');",
+              "SetParFromTxt = ImportedFunction('UtilityFunctions', 'SetParFromTxt');",
+              "GetStringFromClipboard = ImportedFunction('UtilityFunctions', 'GetStringFromClipboard');",
+              "SendStringToClipboard = ImportedFunction('UtilityFunctions', 'SendStringToClipboard');",
+              "IsShiftCtrlPressed = ImportedFunction('UtilityFunctions', 'IsShiftCtrlPressed');",
+              "RndObject = ImportedFunction('UtilityFunctions', 'RndObject');",
+              "IdToHole = ImportedFunction('UtilityFunctions', 'IdToHole');",
+              "ShipSubrace = ImportedFunction('UtilityFunctions', 'ShipSubrace');",
+              "ShipNearbyShips = ImportedFunction('UtilityFunctions', 'ShipNearbyShips');",
+              "GetShipScriptName = ImportedFunction('UtilityFunctions', 'GetShipScriptName');",
+              "ShipJoinToScript = ImportedFunction('UtilityFunctions', 'ShipJoinToScript');",
+              "GetScriptNoKlingMarksFromStar = ImportedFunction('UtilityFunctions', 'GetScriptNoKlingMarksFromStar');",
+              "GetPlanetOrbitProbe = ImportedFunction('UtilityFunctions', 'GetPlanetOrbitProbe');",
+              "HullExtraSettings = ImportedFunction('UtilityFunctions', 'HullExtraSettings');",
+              "CustomArtCostCalc = ImportedFunction('UtilityFunctions', 'CustomArtCostCalc');",
+              "CustomArtSizeCalc = ImportedFunction('UtilityFunctions', 'CustomArtSizeCalc');",
+              "",
+              "UtilityFunctionsLibInit(GalaxyPtr());",
+              "AllShipOut();"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":  "TPlanet",
+          "Name":  "InitPlanet",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  1,
+          "#":  2,
+          "Race":  62,
+          "Owner":  62,
+          "Economy":  14,
+          "Goverment":  62,
+          "RangeMin":  0,
+          "RangeMax":  100,
+          "Dialog":  -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":  "TStarShip",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  -20,
+          "Parent":  1,
+          "#":  0,
+          "Count":  1,
+          "Owner":  62,
+          "Ship.Type":  126,
+          "Player":  true,
+          "SpeedMin":  0,
+          "SpeedMax":  10000,
+          "Weapon":  0,
+          "CargoHook":  0,
+          "EmptySpace":  0,
+          "StatusTraderMin":  0,
+          "StatusTraderMax":  100,
+          "StatusWarriorMin":  0,
+          "StatusWarriorMax":  100,
+          "StatusPirateMin":  0,
+          "StatusPirateMax":  100,
+          "StrengthMin":  "0",
+          "StrengthMax":  "0",
+          "Ruins":  ""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":  "TStar",
+          "Name":  "InitStar",
+          "Pos.x":  80,
+          "Pos.y":  80,
+          "Parent":  -1,
+          "#":  1,
+          "Constellation":  0,
+          "Priority":  0,
+          "NoKling":  false,
+          "NoComeKling":  false        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":  "TState",
+          "Name":  "PlayerState",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  3,
+          "#":  4,
+          "Move":  0,
+          "MoveObj":  -1,
+          "Attack.Count":  0,
+          "TakeItem":  -1,
+          "TakeAllItem":  false,
+          "OnTalk":  "",
+          "OnActCode":  "",
+          "EType":  1,
+          "EUnique":  "",
+          "EMsg":  ""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":  "TVar",
+          "Name":  "PortionInDiapason",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  15,
+          "#":  5,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "UtilityFunctionsLibInit",
+          "Pos.x":  70,
+          "Pos.y":  0,
+          "Parent":  6,
+          "#":  7,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "GetGalaxyGenerationSeed",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  7,
+          "#":  8,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "GetSectorAdjacentToDicea",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  8,
+          "#":  9,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "AdvancedAdjustmentSet",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  9,
+          "#":  10,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "SetRangersCapital",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  10,
+          "#":  11,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "RoundTo",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  11,
+          "#":  12,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "Exponent",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  12,
+          "#":  13,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "TrimNumbers",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  13,
+          "#":  14,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "DistCoords",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  14,
+          "#":  15,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "ParsCountFromString",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  5,
+          "#":  16,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "GetParFromString",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  16,
+          "#":  17,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "SetParFromString",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  17,
+          "#":  18,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "GetParFromTxt",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  18,
+          "#":  19,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "SetParFromTxt",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  19,
+          "#":  20,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "GetStringFromClipboard",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  20,
+          "#":  21,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "SendStringToClipboard",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  21,
+          "#":  22,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "IsShiftCtrlPressed",
+          "Pos.x":  170,
+          "Pos.y":  -320,
+          "Parent":  22,
+          "#":  23,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "RndObject",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  23,
+          "#":  24,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "IdToHole",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  24,
+          "#":  25,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "ShipSubrace",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  25,
+          "#":  26,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "ShipNearbyShips",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  26,
+          "#":  27,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "GetShipScriptName",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  27,
+          "#":  28,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "ShipJoinToScript",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  28,
+          "#":  29,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "GetScriptNoKlingMarksFromStar",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  29,
+          "#":  30,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "GetPlanetOrbitProbe",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  30,
+          "#":  31,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "HullExtraSettings",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  31,
+          "#":  32,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "CustomArtCostCalc",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  32,
+          "#":  33,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "CustomArtSizeCalc",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  33,
+          "#":  34,
+          "Var.Type":  "Unknown",
+          "Init":  "",
+          "Global":  true        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":  "TGraphLink",
+      "Begin":  3,
+      "End":  4,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  3,
+      "End":  2,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  2,
+      "End":  1,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  0,
+      "End":  1,
+      "Nom":  0,
+      "Arrow":  true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  0,
+  "BlockPar.EC":  
+  [
+  
+  ]
+}

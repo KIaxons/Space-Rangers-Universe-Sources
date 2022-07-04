@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1155,
-  "ViewPos.y":  -119,
+  "ViewPos.x":  -1002,
+  "ViewPos.y":  -124,
   "ScriptName":  "Mod_ShuKlissan",
   "ScriptFileOut":  "H:\\Mod_ShuKlissan.scr",
   "ScriptTextOut":  "H:\\Mod_ShuKlissan.txt",
@@ -491,9 +491,9 @@
         },
         {
           "Type":  "TDialogAnswer",
-          "Name":  "",
-          "Pos.x":  20,
-          "Pos.y":  0,
+          "Name":  "takeoff",
+          "Pos.x":  0,
+          "Pos.y":  20,
           "Parent":  127,
           "#":  195,
           "Msg":  "Ладно, ладно, черт возьми. Я займусь этим. Куда я денусь. И лучше бы вам на этот раз приготовить награду поинтереснее пачки второуровневых микромодулей, господа.",
@@ -672,8 +672,8 @@
         {
           "Type":  "TDialogAnswer",
           "Name":  "exit",
-          "Pos.x":  -20,
-          "Pos.y":  0,
+          "Pos.x":  0,
+          "Pos.y":  20,
           "Parent":  134,
           "#":  213,
           "Msg":  "",
@@ -1557,7 +1557,7 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  195,
+          "Parent":  273,
           "#":  134,
           "Msg":  "",
           "DMsg.Num":  "62"        
@@ -7260,20 +7260,23 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  213,
+          "Parent":  195,
           "#":  273,
-          "Total.Lines":  18,
+          "Total.Lines":  29,
           "Code.Type":  "Turn",
           "Code":          
           [
               "GotoGov(0);",
+              "",
               "if(ShipOnSidePirateClan(Player()))",
               "{",
               "    ShipOwner(Player(), ShipPilotRace(Player()));",
               "    ShipType(Player(), 'Ranger');",
               "}",
-              "MakeShipEnterStar(Player(), GalaxyStar(NifigatzId), ShipStar(Player()), 10);",
-              "FormChange('Jump');",
+              "",
+              "//Просто мгновенный перенос игрока к выходу из гипера в нужной системе",
+              "//MakeShipEnterStar(Player(), GalaxyStar(NifigatzId), ShipStar(Player()), 10);",
+              "//FormChange('Jump');",
               "",
               "//Отправляем махпеллу в Нифигац и выставляем ей стейт ожидания игрока (чтобы потом на него напасть)",
               "dword machpella = GroupToShip(Machpella);",
@@ -7283,7 +7286,15 @@
               "ShipDeleteCustomShipInfo(machpella, 'ShuKlissan_ShipImmortalInfo');",
               "",
               "Ether(3, 'Specagent.GalaxyFreed', \"Ликвидировать махпеллу.\");",
-              "KlissanInvasion['SpecagentFreedTheGalaxyEndingStage'] = 3;"          
+              "KlissanInvasion['SpecagentFreedTheGalaxyEndingStage'] = 3;",
+              "",
+              "//По нажатии данного ответа игрок моментально взлетит, и будет отправлен в систему с махпеллой",
+              "ShipDestination(Player(), GalaxyStar(NifigatzId));",
+              "OrderTakeOff(Player());",
+              "ExtremalTakeOff();",
+              "",
+              "//Подстановки пустого диалога ниже в данном случае не обязательны,",
+              "//но могут быть полезны на случай, если нужно будет снять с ответа тэг takeoff"          
           ]        
         },
         {
@@ -11910,20 +11921,6 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  195,
-      "End":  134,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  213,
-      "End":  273,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
       "Begin":  25,
       "End":  371,
       "Nom":  0,
@@ -12318,6 +12315,20 @@
       "Type":  "TGraphLink",
       "Begin":  156,
       "End":  82,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  195,
+      "End":  273,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  273,
+      "End":  134,
       "Nom":  0,
       "Arrow":  true    
     }  
