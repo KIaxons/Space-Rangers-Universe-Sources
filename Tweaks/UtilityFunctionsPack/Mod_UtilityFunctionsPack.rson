@@ -68,17 +68,18 @@
           "Pos.y":  0,
           "Parent":  0,
           "#":  6,
-          "Total.Lines":  32,
+          "Total.Lines":  34,
           "Code.Type":  "Init",
           "Code":          
           [
               "UtilityFunctionsLibInit = ImportedFunction('UtilityFunctions', 'UtilityFunctionsLibInit');",
+              "UtilityFunctionsLibInit(GalaxyPtr());",
               "GetGalaxyGenerationSeed = ImportedFunction('UtilityFunctions', 'GetGalaxyGenerationSeed');",
               "GetSectorAdjacentToDicea = ImportedFunction('UtilityFunctions', 'GetSectorAdjacentToDicea');",
               "AdvancedAdjustmentSet = ImportedFunction('UtilityFunctions', 'AdvancedAdjustmentSet');",
               "SetRangersCapital = ImportedFunction('UtilityFunctions', 'SetRangersCapital');",
               "RoundTo = ImportedFunction('UtilityFunctions', 'RoundTo');",
-              "Exponent = ImportedFunction('UtilityFunctions', 'Exponent');",
+              "Power = ImportedFunction('UtilityFunctions', 'Power');",
               "TrimNumbers = ImportedFunction('UtilityFunctions', 'TrimNumbers');",
               "DistCoords = ImportedFunction('UtilityFunctions', 'DistCoords');",
               "PortionInDiapason = ImportedFunction('UtilityFunctions', 'PortionInDiapason');",
@@ -102,7 +103,8 @@
               "CustomArtCostCalc = ImportedFunction('UtilityFunctions', 'CustomArtCostCalc');",
               "CustomArtSizeCalc = ImportedFunction('UtilityFunctions', 'CustomArtSizeCalc');",
               "",
-              "UtilityFunctionsLibInit(GalaxyPtr());",
+              "//Скрипт продолжит работать ещё минимум ход, поэтому инициализировать функции его запуском рисково",
+              "//Игрок может два раза перезагрузиться за один ход, и тогда функции перезаписаны не будут",
               "AllShipOut();"          
           ]        
         }      
@@ -271,7 +273,7 @@
         },
         {
           "Type":  "TVar",
-          "Name":  "Exponent",
+          "Name":  "Power",
           "Pos.x":  0,
           "Pos.y":  20,
           "Parent":  12,
