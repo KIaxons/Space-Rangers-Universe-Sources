@@ -8890,7 +8890,7 @@
           "Pos.y":  220,
           "Parent":  -1,
           "#":  1238,
-          "Total.Lines":  68,
+          "Total.Lines":  73,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -8921,6 +8921,9 @@
               "                        InterfaceImage('Talk', 'CaptainImageMod', 'GI,Bm.Captain.2' + str_race + agent_ship_orig_face + 'i');",
               "                        InterfaceState('Talk', 'CaptainImageMod', 1);",
               "                    }",
+              "                    InterfaceState('Talk', 'TalkShip', 0);",
+              "                    InterfaceText('Talk', 'TalkShipLabelMod', CT('ShipType.People.Ranger') + CT('FormInfo.br') + ShipName(agent_ship));",
+              "                    InterfaceState('Talk', 'TalkShipLabelMod', 1);",
               "                }",
               "                else if(ShipPilotRace(agent_ship) == People)",
               "                {",
@@ -8959,6 +8962,8 @@
               "",
               "            InterfaceState('Talk', 'CaptainAnimMod', 0);",
               "            InterfaceState('Talk', 'CaptainImageMod', 0);",
+              "            InterfaceState('Talk', 'TalkShip', 1);",
+              "            InterfaceState('Talk', 'TalkShipLabelMod', 0);",
               "        }",
               "    }",
               "}"          
