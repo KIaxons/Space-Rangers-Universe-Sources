@@ -1767,7 +1767,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  4,
-          "Total.Lines":  518,
+          "Total.Lines":  514,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -2120,11 +2120,7 @@
               "    ShipSkill(ship, 'Leadership', 0);",
               "    ShipSpecialBonuses(ship, bonSkill6, -30);",
               "    //Повышаем всем наёмникам пиратское звание до барона, чтоб, сука, уважали их тупые пираты!",
-              "    while(GetShipPirateRank(ship) < 7)",
-              "    {",
-              "        ShipPirateRankPoints(ship, ShipNextPirateRankPoints(ship));",
-              "        RaisePirateRank(ship);",
-              "    }",
+              "    RaisePirateRank(ship, 7);",
               "    //Запрещаем другим рейнджерам (и наёмникам) рэкетировать наёмников игрока",
               "    NoTargetToShip(ship, 3);",
               "",
