@@ -8077,7 +8077,7 @@
           "Pos.y":  20,
           "Parent":  384,
           "#":  385,
-          "Total.Lines":  87,
+          "Total.Lines":  90,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -8167,7 +8167,10 @@
               "        OrderJumpHole(CurShip, hole);",
               "        SetData(Id(hole), 1);",
               "    }",
-              "}"          
+              "}",
+              "",
+              "//На всякий случай",
+              "//if(!ShipOrder(CurShip)) OrderMove(CurShip, NeurolinksPatrol, 0);"          
           ]        
         },
         {
