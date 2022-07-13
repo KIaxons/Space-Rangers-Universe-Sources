@@ -1827,7 +1827,7 @@
           "Pos.y":  50,
           "Parent":  -1,
           "#":  100,
-          "Total.Lines":  265,
+          "Total.Lines":  266,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -1978,7 +1978,6 @@
               "                    ShipOwner(cur_ruin, Gaal);",
               "                    ShipFace(cur_ruin, 'New');",
               "                    ShipJoin(SSBGroup, cur_ruin);",
-              "                    ShipAddCustomShipInfo(cur_ruin, 'Immortal', 'NoShow');",
               "                    ShipSetCoords(cur_ruin, HoleX1(cur_hole), HoleY1(cur_hole));",
               "                    id_base = Id(cur_ruin);",
               "                    Chameleon(cur_ruin, 'Ruins.SSB');",
@@ -1991,6 +1990,8 @@
               "                    //Очищаем магазины",
               "                    for(i = ShopItems(cur_ruin) - 1; i >= 0; i = i - 1) FreeItem(GetItemFromShop(cur_ruin, i));",
               "                    for(i = t_Food; i <= t_Narcotics; i = i + 1) GoodsAdd(cur_ruin, i, -GoodsAdd(cur_ruin, i, 0));",
+              "",
+              "                    ShipAddCustomShipInfo(cur_ruin, 'ShipImmortalInfo', 'NoShow');",
               "",
               "                    OrderJumpHole(cur_ruin, cur_hole, 10);",
               "                    ShipOrderData1(cur_ruin, 1);",
