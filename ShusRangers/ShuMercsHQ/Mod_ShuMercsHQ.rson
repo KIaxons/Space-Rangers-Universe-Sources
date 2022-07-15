@@ -24066,7 +24066,7 @@
               "            AddDialogInject('PlayerHQQuestsDialog', tstr2, tstr1, 90);",
               "",
               "            //Ударная группа",
-              "            if(!GroupIn(PlayerMercsStrike, cur_ruin))",
+              "            if(GroupCount(PlayerMercsStrike) && !GroupIn(PlayerMercsStrike, cur_ruin))",
               "            {",
               "                //Если группа ещё не вернулась в штаб",
               "                tstr1 = CT('Script.Mod_ShuMercs.PlayerHQMainDialog.PlayerAskStrikeGroupOut');",
@@ -24500,7 +24500,7 @@
           "Pos.y":  20,
           "Parent":  539,
           "#":  540,
-          "Total.Lines":  29,
+          "Total.Lines":  28,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -24509,7 +24509,6 @@
               "tstr1 = '</color>' + Format(CT('Script.Mod_ShuMercs.PlayerHQStrikeDialog.Greeting'), '<AddText'+'>', tstr1, '');",
               "",
               "tint1 = GroupCount(PlayerMercsStrike);",
-              "",
               "if(tint1 < PlayerHQMainArray['Mercs', 'MaxStrike'] && PlayerHQMainArray['Mercs', 'StrikeCandidatesList'] != ',,')",
               "{",
               "    tint2 = 1;",
@@ -26321,9 +26320,9 @@
           "Code":          
           [
               "tstr1 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQMainDialog.PlayerAskStrikeGroup');",
-              "if(!GroupIn(PlayerMercsStrike, GroupToShip(PlayerHQ)))",
+              "//Если группа ещё не вернулась в штаб",
+              "if(GroupCount(PlayerMercsStrike) && !GroupIn(PlayerMercsStrike, GroupToShip(PlayerHQ)))",
               "{",
-              "    //Если группа ещё не вернулась в штаб",
               "    tstr1 = CT('Script.Mod_ShuMercs.PlayerHQMainDialog.PlayerAskStrikeGroupOut');",
               "    AddDialogBlock(tstr1, 1);",
               "}",
