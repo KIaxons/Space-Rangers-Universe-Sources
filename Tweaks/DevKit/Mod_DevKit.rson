@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -497,
-  "ViewPos.y":  -259,
+  "ViewPos.x":  -471,
+  "ViewPos.y":  83,
   "ScriptName":  "Mod_DevKit",
   "ScriptFileOut":  "H:\\Mod_DevKit.scr",
   "ScriptTextOut":  "H:\\Mod_DevKit.txt",
@@ -1324,15 +1324,20 @@
           "Pos.y":  500,
           "Parent":  -1,
           "#":  56,
-          "Total.Lines":  7,
+          "Total.Lines":  12,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "for(temp_int=0;temp_int<BonusCount();temp_int=temp_int+1)",
+              "for(i = 0; i < BonusCount(); i = i + 1)",
               "{",
-              "    if(BonusIsSpecial(temp_int))continue;",
-              "    temp_gift=CreateMM(temp_int);",
-              "    AddItemToShip(Player(),temp_gift);",
+              "    str bon_section_name = BonusNumInCfg(i);",
+              "    if(BonusIsSpecial(i))",
+              "    {",
+              "        if(!int(CT('MicroModuls.' + bon_section_name + '.UniqueMM'))) continue;",
+              "    }",
+              "    if(CT('MicroModuls.' + bon_section_name + '.Name') == '') continue;",
+              "",
+              "    AddItemToShip(Player(), CreateMM(i));",
               "}",
               "Sound('Sound.Buy');"          
           ]        

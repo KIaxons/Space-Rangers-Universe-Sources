@@ -6,10 +6,10 @@
   "ScriptName":  "Mod_EvoMC",
   "ScriptFileOut":  "H:\\Mod_EvoMC.scr",
   "ScriptTextOut":  "H:\\Mod_EvoMC.txt",
-  "GraphPoint.Count":  120,
+  "GraphPoint.Count":  121,
   "GraphLink.Count":  98,
   "GraphRectText.Count":  7,
-  "Variables.Count":  27,
+  "Variables.Count":  28,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
@@ -1259,7 +1259,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "variable3>0 || unknown3>0"          
+              "variable3 > 0 || unknown3 > 0"          
           ]        
         },
         {
@@ -1972,6 +1972,17 @@
           "Parent":  99,
           "#":  106,
           "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "i",
+          "Pos.x":  -80,
+          "Pos.y":  300,
+          "Parent":  -1,
+          "#":  120,
+          "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
         }      
