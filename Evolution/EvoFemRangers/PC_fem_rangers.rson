@@ -3649,7 +3649,7 @@
           "Pos.y":  0,
           "Parent":  5,
           "#":  12,
-          "Total.Lines":  165,
+          "Total.Lines":  166,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -3784,6 +3784,7 @@
               "                    {",
               "                        //Временно меняем расу, чтобы код не опознал корабль как спецагентку",
               "                        ShipPilotRace(agent_ship, Maloc);",
+              "                        ShipFace(agent_ship, 0); //У малоков портретов в списке намного меньше, чем у людей",
               "                        agent_ship_orig_race = People;",
               "",
               "                        agent_ship_orig_face = cur_face;",
