@@ -7,7 +7,7 @@
   "ScriptFileOut":  "H:\\Mod_ExpScienceRanks.scr",
   "ScriptTextOut":  "H:\\Mod_ExpScienceRanks.txt",
   "GraphPoint.Count":  203,
-  "GraphLink.Count":  139,
+  "GraphLink.Count":  138,
   "GraphRectText.Count":  6,
   "Variables.Count":  68,
   "Stars.Count":  1,
@@ -1834,7 +1834,7 @@
           "Pos.y":  20,
           "Parent":  196,
           "#":  117,
-          "Total.Lines":  23,
+          "Total.Lines":  24,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -1857,6 +1857,7 @@
               "Sound('Sound.Sell');",
               "ShipMoney(Player(), ShipMoney(Player()) + bh_total_cost);",
               "player_bh_score = player_bh_score + bh_total_size;",
+              "",
               "ArrayClear(bh_items);",
               "ArrayClear(bh_item_costs);",
               "ArrayClear(bh_item_types);",
@@ -1896,14 +1897,14 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "temp_dword=GAnswerData;",
+              "temp_dword = GAnswerData;",
               "Sound('Sound.Sell');",
-              "bh_total_cost=0;",
-              "bh_total_size=0;",
-              "ShipMoney(Player(),ShipMoney(Player())+ItemCost(temp_dword)*4);",
-              "player_bh_score=player_bh_score+ItemSize(temp_dword)*2;",
-              "bh_total_size=ItemSize(temp_dword)*2;",
-              "bh_total_cost=ItemCost(temp_dword)*4;",
+              "bh_total_cost = 0;",
+              "bh_total_size = 0;",
+              "ShipMoney(Player(), ShipMoney(Player()) + ItemCost(temp_dword) * 4);",
+              "player_bh_score = player_bh_score + ItemSize(temp_dword) * 2;",
+              "bh_total_size = ItemSize(temp_dword) * 2;",
+              "bh_total_cost = ItemCost(temp_dword) * 4;",
               "FreeItem(GetArtFromShip(Player(), temp_dword));"          
           ]        
         },
@@ -2553,7 +2554,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "temp_int<temp_int_2 && temp_int!=temp_int_2"          
+              "temp_int < temp_int_2 && temp_int != temp_int_2"          
           ]        
         },
         {
@@ -2651,7 +2652,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "chosen_akrin <= -1"          
+              "chosen_akrin == -1"          
           ]        
         },
         {
@@ -2797,7 +2798,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  0,
+          "Pos.x":  20,
           "Pos.y":  20,
           "Parent":  119,
           "#":  190,
@@ -4492,13 +4493,6 @@
       "Type":  "TGraphLink",
       "Begin":  190,
       "End":  39,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  119,
-      "End":  190,
       "Nom":  0,
       "Arrow":  true    
     },
