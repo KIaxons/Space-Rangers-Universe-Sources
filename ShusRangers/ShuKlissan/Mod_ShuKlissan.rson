@@ -4061,7 +4061,7 @@
           "Pos.y":  0,
           "Parent":  302,
           "#":  18,
-          "Total.Lines":  1468,
+          "Total.Lines":  1471,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -5155,8 +5155,10 @@
               "        {",
               "            if(ShipInStar(Player(), GalaxyStar(TortugatzId)))",
               "            {",
-              "                if(HullDamage(cur_ruin) > 33 || Hit(cur_ruin, 0))",
+              "                if(HullDamage(cur_ruin) > 33 && (KlissanInvasion['EndingSequenceIsStarted'] || Hit(cur_ruin, 0)))",
               "                {",
+              "                    KlissanInvasion['HandlerSpecialGuardsWasSpawned'] = CurTurn() + 182;",
+              "",
               "                    for(i = 1; i <= 5; i = i + 1)",
               "                    {",
               "                        cur_ship = BuyPirate(PlanetPirateClan(), 1000);",
@@ -5170,11 +5172,12 @@
               "",
               "                        ShipJoin(HandlerGuardShips, cur_ship);",
               "                    }",
-              "                    KlissanInvasion['HandlerSpecialGuardsWasSpawned'] = 1;",
               "                }",
               "            }",
               "        }",
               "    }",
+              "    //Возвращаем возможность спавна защитников Хандлера спустя полгода",
+              "    else if(KlissanInvasion['HandlerSpecialGuardsWasSpawned'] >= CurTurn()) KlissanInvasion['HandlerSpecialGuardsWasSpawned'] = 0;",
               "",
               "    //Если была запущена силовая концовка захвата Тортугаца за Коалицию",
               "    if(KlissanInvasion['TortugatzAssaultEndingStage'])",
@@ -6017,7 +6020,7 @@
           "Pos.y":  20,
           "Parent":  27,
           "#":  69,
-          "Total.Lines":  6,
+          "Total.Lines":  15,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -6025,8 +6028,17 @@
               "OrderLock(CurShip, 1);",
               "ShipFreeFlight(CurShip);",
               "",
-              "if(!ShipInNormalSpace(CurShip)) OrderTakeOff(CurShip);",
-              "else OrderFollowShip(CurShip, Player(), 1);"          
+              "if(KlissanInvasion['HandlerSpecialGuardsWasSpawned'])",
+              "{",
+              "    if(!ShipInNormalSpace(CurShip)) OrderTakeOff(CurShip);",
+              "    else OrderFollowShip(CurShip, Player(), 1);",
+              "}",
+              "//Если таймер спавна новых защитников обновился, ликвидируем старых",
+              "else",
+              "{",
+              "    if(ShipInNormalSpace(CurShip)) OrderLanding(CurShip, NearCivilPlanet(CurShip));",
+              "    else ShipDestroy(CurShip, 1);",
+              "}"          
           ]        
         },
         {

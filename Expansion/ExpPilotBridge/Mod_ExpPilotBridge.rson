@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -490,
-  "ViewPos.y":  -540,
+  "ViewPos.x":  -477,
+  "ViewPos.y":  -513,
   "ScriptName":  "Mod_ExpPilotBridge",
   "ScriptFileOut":  "H:\\Mod_ExpPilotBridge.scr",
   "ScriptTextOut":  "H:\\Mod_ExpPilotBridge.txt",
@@ -9175,13 +9175,14 @@
           "Pos.y":  -20,
           "Parent":  -1,
           "#":  643,
-          "Total.Lines":  3,
+          "Total.Lines":  4,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "if(CapitalShipStats(ShipEqInSlot(Player(),t_Hull))==1)PlayerBridge(1);",
-              "if(CapitalShipStats(ShipEqInSlot(Player(),t_Hull))==2)PlayerBridge(2);",
-              "if(CapitalShipStats(ShipEqInSlot(Player(),t_Hull))==3)PlayerBridge(3);"          
+              "i = CapitalShipStats(ShipEqInSlot(Player(), t_Hull));",
+              "if(i == 1) PlayerBridge(1);",
+              "else if(i == 2) PlayerBridge(2);",
+              "else if(i == 3) PlayerBridge(3);"          
           ]        
         },
         {

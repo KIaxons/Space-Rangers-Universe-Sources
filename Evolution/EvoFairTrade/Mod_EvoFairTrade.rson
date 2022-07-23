@@ -72,7 +72,7 @@
           "Code.Type":  "Init",
           "Code":          
           [
-              "AdjustRuinsGoodsPricesToStorage(1.0, 15000.0, 1.0, 0.20);",
+              "AdjustRuinsGoodsPricesToStorage(1.0, 15000.0, 1.05, 0.20);",
               "if(GetShipRuins(Player())) player_ruins = Id(GetShipRuins(Player()));"          
           ]        
         },
@@ -87,7 +87,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "AdjustRuinsGoodsPricesToStorage(1, 15000, 1.0, 0.20);",
+              "AdjustRuinsGoodsPricesToStorage(1, 15000, 1.05, 0.20);",
               "",
               "//Если игрок приземлился на станцию, проверка на товары в его трюме и сравнение их цен с магазинными произойдёт не раньше, чем через ход",
               "if(!player_ruins)",
@@ -110,7 +110,7 @@
               "            int goods_count = GoodsCount(Player(), i);",
               "            if(!goods_count) continue;",
               "",
-              "            int target_price = PortionInDiapason(goods_count, 1, 15000, 1.0, 0.20) * round(1.0 * GoodsCost(Player(), i) / goods_count);",
+              "            int target_price = PortionInDiapason(goods_count, 1, 15000, 1.05, 0.20) * round(1.0 * GoodsCost(Player(), i) / goods_count);",
               "            if(GoodsSellPrice(cur_ruin, i) <= target_price) continue;",
               "            GoodsSellPrice(cur_ruin, i, target_price);",
               "        }",
