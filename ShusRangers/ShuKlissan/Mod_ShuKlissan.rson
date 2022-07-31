@@ -4091,7 +4091,7 @@
           "Pos.y":  0,
           "Parent":  302,
           "#":  18,
-          "Total.Lines":  1552,
+          "Total.Lines":  1553,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -5153,8 +5153,9 @@
               "                for(i = 1; i < GalaxyStars(); i = i + 1)",
               "                {",
               "                    cur_star = StarNearbyStars(tdwd1, i);",
+              "                    tint2 = RndObject(3, 5, cur_star); //Минимальный остаток кораблей в системе",
               "                    tint1 = KlissansInStar(cur_star);",
-              "                    if(tint1 <= 3) continue;",
+              "                    if(tint1 <= tint2) continue;",
               "",
               "                    for(j = 0; j < StarShips(cur_star); j = j + 1)",
               "                    {",
@@ -5181,7 +5182,7 @@
               "",
               "                        cnt = cnt - 1;",
               "                        tint1 = tint1 - 1;",
-              "                        if(tint1 <= 3) break; //В системе осталось слишком мало клисан",
+              "                        if(tint1 <= tint2) break; //В системе осталось слишком мало клисан",
               "                    }",
               "",
               "                    if(cnt <= 0) break;",
