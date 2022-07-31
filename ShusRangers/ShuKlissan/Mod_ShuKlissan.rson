@@ -4091,7 +4091,7 @@
           "Pos.y":  0,
           "Parent":  302,
           "#":  18,
-          "Total.Lines":  1553,
+          "Total.Lines":  1561,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -5144,6 +5144,14 @@
               "            //Начинается атака клисан на указанную игроком систему",
               "            if(KlissanInvasion['ZTransmitter.WasActivatedInStar'])",
               "            {",
+              "                //Как оригинальный движок определяет число домиков для вызова маяком:",
+              "                /*",
+              "                k := PortionInDiapason(art.FPower, MinTransmitterPower, MaxTransmitterPower, 1, 3);",
+              "                ...",
+              "                if(cnt > RndOut(10, 12, FRndOut) * k) or ((cnt > 8 * k) and (strenth > 8 * k)) then break;",
+              "                (strenth это сумма ShipStrengthInBestRanger для призываемых кораблей)",
+              "                */",
+              "            ",
               "                tdwd1 = GalaxyStar(KlissanInvasion['ZTransmitter.WasActivatedInStar'] - 1);",
               "                KlissanInvasion['ZTransmitter.WasActivatedInStar'] = 0;",
               "",
