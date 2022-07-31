@@ -4091,7 +4091,7 @@
           "Pos.y":  0,
           "Parent":  302,
           "#":  18,
-          "Total.Lines":  1561,
+          "Total.Lines":  1562,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -4134,6 +4134,7 @@
               "",
               "            //Создаём нападающие на систему неизвестные корабли",
               "            cur_planet = FindPlanetByAdvancement(100);",
+              "            if(!cur_planet) cur_planet = FindPlanetByAdvancement(100, 2);",
               "            for(i = 0; i < RndObject(3, 6, cur_star); i = i + 1)",
               "            {",
               "                cur_ship = SpawnUnknownShip(cur_planet, 2); //Первоначально будут созданы как доминаторские урганты",
@@ -5151,7 +5152,7 @@
               "                if(cnt > RndOut(10, 12, FRndOut) * k) or ((cnt > 8 * k) and (strenth > 8 * k)) then break;",
               "                (strenth это сумма ShipStrengthInBestRanger для призываемых кораблей)",
               "                */",
-              "            ",
+              "",
               "                tdwd1 = GalaxyStar(KlissanInvasion['ZTransmitter.WasActivatedInStar'] - 1);",
               "                KlissanInvasion['ZTransmitter.WasActivatedInStar'] = 0;",
               "",
