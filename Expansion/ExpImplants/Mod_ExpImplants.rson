@@ -768,7 +768,7 @@
               "        temp_int = substr(biomm_MC[i], 17, 2);",
               "        temp_int_2 = temp_int_2 / 2;",
               "        if(!temp_int_2) temp_int_2 = 1;",
-              "        cost = GalaxyMoney(3) * 3 * temp_int_2;",
+              "        cost = round(3.5 * GalaxyMoney(4, 4) * temp_int_2);",
               "        //Небольшая добавка к цене биомодуля в зависимости от высоты его номера в списке Lang",
               "        cost = cost + (cost * temp_int * 2) / 100;",
               "        biomm_cost[i] = cost;",
@@ -2796,7 +2796,7 @@
               "        temp_int_2 = substr(biomm_PB[i], 11, 1);",
               "        //Берём номер биомодуля из списка его ГТУ",
               "        temp_int = substr(biomm_PB[i], 17, 2);",
-              "        cost = GalaxyMoney(3) * 3 * temp_int_2;",
+              "        cost = round(3.5 * GalaxyMoney(4, 4) * temp_int_2);",
               "        //Небольшая добавка к цене биомодуля в зависимости от высоты его номера в списке Lang",
               "        cost = cost + (cost * temp_int * 2) / 100;",
               "        temp_int = CT(biomm_PB[i] + DeleteTags('.Stama'));",
@@ -2925,10 +2925,10 @@
               "//Вычисляем процент пиратской скидки (78% при 100 рейтинге)",
               "temp_dword = round(100.0 * ShipStatus(Player(), 1) / 130) + 1;",
               "",
-              "if(GetGameOptions('FontDialog')==0) DefSplt='</color>-------------------------------------------------------------';",
-              "else if(GetGameOptions('FontDialog')==1) DefSplt='</color>------------------------------------------';",
-              "else if(GetGameOptions('FontDialog')==2) DefSplt='</color>-----------------------------------------';",
-              "else DefSplt='</color>-------------------------------------';"          
+              "if(GetGameOptions('FontDialog') == '0') DefSplt = '</color>-------------------------------------------------------------';",
+              "else if(GetGameOptions('FontDialog') == '1') DefSplt = '</color>------------------------------------------';",
+              "else if(GetGameOptions('FontDialog') == '2') DefSplt = '</color>-----------------------------------------';",
+              "else DefSplt = '</color>-------------------------------------';"          
           ]        
         },
         {
@@ -3509,10 +3509,10 @@
               "        temp_str_1=temp_str_1+'<clrEnd>'+temp_int+'.<clr> <ShipCustomShipInfoTextData(Player(),i,1)>'+\"<br>\";",
               "    }",
               "}",
-              "if(GetGameOptions('FontDialog')==0) DefSplt='</color>-------------------------------------------------------------';",
-              "else if(GetGameOptions('FontDialog')==1) DefSplt='</color>------------------------------------------';",
-              "else if(GetGameOptions('FontDialog')==2) DefSplt='</color>-----------------------------------------';",
-              "else DefSplt='</color>-------------------------------------';"          
+              "if(GetGameOptions('FontDialog') == '0') DefSplt = '</color>-------------------------------------------------------------';",
+              "else if(GetGameOptions('FontDialog') == '1') DefSplt = '</color>------------------------------------------';",
+              "else if(GetGameOptions('FontDialog') == '2') DefSplt = '</color>-----------------------------------------';",
+              "else DefSplt = '</color>-------------------------------------';"          
           ]        
         },
         {
