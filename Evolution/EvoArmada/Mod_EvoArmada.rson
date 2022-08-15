@@ -336,7 +336,7 @@
               "    while(~findsubstr(LastSpawnedDreadnoughtNames, '*' + dreadnought_name + '*')) dreadnought_name = CT('ShipName.Dreadnought.' + RndObject(1, names_count, ship));",
               "    LastSpawnedDreadnoughtNames = LastSpawnedDreadnoughtNames + dreadnought_name + '*';",
               "    //Если имён в строке скопилось слишком много, подчищаем её с конца",
-              "    if(ParsCountFromString(LastSpawnedDreadnoughtNames, '*') > (names_count - 6 + 2)) //В строке запоминается на 6 имён меньше от их максимального числа в списке",
+              "    if(ParsCountFromString(LastSpawnedDreadnoughtNames, '*') > (names_count - 5 + 2)) //В строке запоминается на 5 имён меньше от их максимального числа в списке",
               "    {",
               "        LastSpawnedDreadnoughtNames = SetParFromString(LastSpawnedDreadnoughtNames, '*', 1, '');",
               "        LastSpawnedDreadnoughtNames = substr(LastSpawnedDreadnoughtNames, 1);",
