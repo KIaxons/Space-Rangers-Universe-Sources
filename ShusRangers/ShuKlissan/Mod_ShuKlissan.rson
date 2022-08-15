@@ -2314,7 +2314,7 @@
           "Pos.y":  0,
           "Parent":  2,
           "#":  17,
-          "Total.Lines":  1772,
+          "Total.Lines":  1775,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -3261,6 +3261,9 @@
               "        if(custom_weapon_type == 'klissan_moldikvink')",
               "        {",
               "            LinkItemToScript(item);",
+              "            ScriptItemData(item, 1, GetEquipmentStats(item, 1));",
+              "            ScriptItemData(item, 2, GetEquipmentStats(item, 0));",
+              "            EqSpecial(item, FindBonusByNameInCfg('ShuKlissan_KvinkgunLock'));",
               "            ItemOnActCode(item, GenerateCodeStringFromBlock('ActCodeBlocksList.ShuKlissan_KvinkgunShot'));",
               "        }",
               "    }",
