@@ -1,15 +1,15 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -477,
-  "ViewPos.y":  -513,
+  "ViewPos.x":  -331,
+  "ViewPos.y":  -541,
   "ScriptName":  "Mod_ExpPilotBridge",
   "ScriptFileOut":  "H:\\Mod_ExpPilotBridge.scr",
   "ScriptTextOut":  "H:\\Mod_ExpPilotBridge.txt",
-  "GraphPoint.Count":  673,
+  "GraphPoint.Count":  674,
   "GraphLink.Count":  419,
   "GraphRectText.Count":  23,
-  "Variables.Count":  234,
+  "Variables.Count":  235,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
@@ -6613,10 +6613,10 @@
           "Type":  "Top",
           "Name":  "",
           "Pos.x":  920,
-          "Pos.y":  -450,
+          "Pos.y":  -460,
           "Parent":  -1,
           "#":  320,
-          "Total.Lines":  63,
+          "Total.Lines":  64,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -6638,6 +6638,7 @@
               "ArrayClear(transfer_list_done);",
               "temp_dword=0;",
               "temp_dword_2=0;",
+              "",
               "//Определение подходящих пунктов отправки",
               "for(i=0;i<StorageItems();i=i+1)",
               "{",
@@ -6660,9 +6661,9 @@
               "        if(StarOwner(ShipStar(temp_dword))==1)continue;",
               "        if(StarCustomFaction(ShipStar(temp_dword))!='')continue;",
               "        if(StarToCon(ShipStar(temp_dword))==StarToCon(PlanetToStar(PlanetPirateClan())));",
-              "        if(ShipType(temp_dword)=='Inhibitor')continue;",
-              "        if(ShipType(temp_dword)=='SSB')continue;",
-              "        if(ShipType(temp_dword)=='BM')continue;",
+              "        if(ShipType(temp_dword)=='Inhibitor') continue;",
+              "        if(ShipType(temp_dword)=='SSB') continue;",
+              "        //if(ShipType(temp_dword)=='BM') continue; //Вместо полной блокировки, наложим ограничения на выбор спецов",
               "        temp_dword_2=StorageItemLocation(i);",
               "        ArrayAdd(temp_array,temp_dword_2);",
               "        ArrayAdd(temp_array_2,\"Место отправки:\"+' <Name(temp_dword_2)> (<color=0,50,200><StarName(ShipStar(temp_dword_2))></color>)');",
@@ -6670,18 +6671,18 @@
               "        ArrayAdd(temp_array_3,temp_int-1);",
               "    }",
               "}",
+              "",
               "if(ArrayDim(temp_array_2)>1)",
               "{",
-              "    for(i=1;i<ArrayDim(temp_array_2);i=i+1)",
-              "    {",
-              "        InjectAnswer('HullTransCon',temp_array_2[i],i);",
-              "    }",
+              "    for(i=1; i<ArrayDim(temp_array_2); i=i+1) InjectAnswer('HullTransCon',temp_array_2[i],i);",
               "}",
+              "",
               "if(ArrayDim(temp_array_2)<=1)",
               "{",
               "    AddDialogBlock(\"Корпусов на хранении не найдено\",1);",
               "    InjectAnswer('HullTransCon',\"Корпусов на хранении не найдено\",i);",
               "}",
+              "",
               "InjectAnswer('Galanet',\"Покинуть сайт\",-1);"          
           ]        
         },
@@ -6692,11 +6693,17 @@
           "Pos.y":  -460,
           "Parent":  -1,
           "#":  323,
-          "Total.Lines":  1,
+          "Total.Lines":  7,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "temp_int_3 = GAnswerData;"          
+              "temp_int_3 = GAnswerData;",
+              "if(ObjectType(temp_array[temp_int_3]) == 4)",
+              "{",
+              "    if(ShipType(temp_array[temp_int_3]) == 'BM') RasputinBMDeliveryMark = 1;",
+              "    else RasputinBMDeliveryMark = 0;",
+              "}",
+              "else RasputinBMDeliveryMark = 0;"          
           ]        
         },
         {
@@ -7185,7 +7192,7 @@
           "Pos.y":  -330,
           "Parent":  -1,
           "#":  344,
-          "Total.Lines":  51,
+          "Total.Lines":  55,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -7199,6 +7206,7 @@
               "if(HullEndType==4)HullEndStarId=Id(ShipStar(HullDelEndId))-1;",
               "HullDelTime=0;",
               "ArrayClear(transfer_list_can);",
+              "",
               "//Расчёт дистанции до системы назначения и времени в пути",
               "if(HullEndType==3)",
               "{",
@@ -7210,6 +7218,7 @@
               "    full_distance=Dist2Star(GalaxyStar(HullFromStarId),GalaxyStar(HullEndStarId));",
               "    HullDelFromStr=Name(GAnswerData);",
               "}",
+              "",
               "temp_int_1=round(sqrt(full_distance));",
               "//Определяем среднее (при выборе спецов) время доставки",
               "if(!temp_int_1)HullDelTime=7;",
@@ -7228,7 +7237,8 @@
               "//Подсчёт размера корпуса, а также составление массива корпусов на складе пункта отправки",
               "transfer_cargo_cost=0;",
               "transfer_cargo_size=0;",
-              "for(i=0;i<StorageItems();i=i+1)",
+              "",
+              "for(i=0; i<StorageItems(); i=i+1)",
               "{",
               "    if(ItemType(StorageItems(i))!=t_Hull)continue;",
               "    if(StorageItemLocation(i)==HullDelFromId)",
@@ -7237,6 +7247,7 @@
               "        ArrayAdd(transfer_list_can,StorageItems(i));",
               "    }",
               "}",
+              "",
               "//Переменные для подстановки в диалог",
               "if(HullFromType==3)point_from=\"<clrEnd>планете\"+' ';",
               "if(HullFromType==4)point_from='';"          
@@ -7249,7 +7260,7 @@
           "Pos.y":  -300,
           "Parent":  -1,
           "#":  345,
-          "Total.Lines":  14,
+          "Total.Lines":  15,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -7262,11 +7273,12 @@
               "        temp_str=temp_str+i+'. '+'<color=0,50,200>'+DeleteTags(Name(transfer_list_can[i]))+'</color>'+' (<color=0,50,200>'+ItemSize(transfer_list_can[i])+\"</color> ед.)\"+\"<br>\";",
               "    }",
               "}",
-              "if(ArrayDim(transfer_list_can)==2)temp_str='</color>'+\"<DeleteTags(Name(transfer_list_can[1]))> размером в <ItemSize(transfer_list_can[1])> ед.\";",
-              "if(GetGameOptions('FontDialog')==0)DefSplt='</color>-------------------------------------------------------------';",
-              "if(GetGameOptions('FontDialog')==1)DefSplt='</color>------------------------------------------';",
-              "if(GetGameOptions('FontDialog')==2)DefSplt='</color>-----------------------------------------';",
-              "if(GetGameOptions('FontDialog')==3)DefSplt='</color>-------------------------------------';"          
+              "",
+              "if(ArrayDim(transfer_list_can)==2) temp_str='</color>'+\"<DeleteTags(Name(transfer_list_can[1]))> размером в <ItemSize(transfer_list_can[1])> ед.\";",
+              "if(GetGameOptions('FontDialog')==0) DefSplt='</color>-------------------------------------------------------------';",
+              "if(GetGameOptions('FontDialog')==1) DefSplt='</color>------------------------------------------';",
+              "if(GetGameOptions('FontDialog')==2) DefSplt='</color>-----------------------------------------';",
+              "if(GetGameOptions('FontDialog')==3) DefSplt='</color>-------------------------------------';"          
           ]        
         },
         {
@@ -7312,24 +7324,25 @@
           "Pos.y":  -300,
           "Parent":  -1,
           "#":  359,
-          "Total.Lines":  16,
+          "Total.Lines":  17,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "for(i=1;i<ArrayDim(temp_array_5);i=i+1)",
+              "for(i=1; i<ArrayDim(temp_array_5); i=i+1)",
               "{",
               "    //Число 100 000 000 служит маркером, что была нажата именно кнопка \"Удалить\" и отбрасывается в начале обработчика",
               "    if(temp_int_6<3)",
               "    {",
-              "        if(temp_array_5[i]==-1)InjectAnswer('HullTransList',temp_array_2[i]+\" ед.) (<color=255,0,0>удалить</color>)\",100000000+i);",
-              "        if(temp_array_5[i]==0)InjectAnswer('HullTransList',temp_array_2[i]+\" ед.) (<color=0,50,200>добавить</color>)\",i);",
+              "        if(temp_array_5[i]==-1) InjectAnswer('HullTransList',temp_array_2[i]+\" ед.) (<color=255,0,0>удалить</color>)\",100000000+i);",
+              "        if(temp_array_5[i]==0) InjectAnswer('HullTransList',temp_array_2[i]+\" ед.) (<color=0,50,200>добавить</color>)\",i);",
               "    }",
               "    else",
               "    {",
-              "        if(temp_array_5[i]==-1)InjectAnswer('HullTransList',temp_array_2[i]+\" ед.) (<color=255,0,0>удалить</color>)\",100000000+i);",
-              "        if(temp_array_5[i]==0)InjectAnswer('CustomBlock','<color=120,124,120>'+DeleteTags(temp_array_2[i])+\" ед.) (добавить)\"+'</color>',i);",
+              "        if(temp_array_5[i]==-1) InjectAnswer('HullTransList',temp_array_2[i]+\" ед.) (<color=255,0,0>удалить</color>)\",100000000+i);",
+              "        if(temp_array_5[i]==0) InjectAnswer('CustomBlock','<color=120,124,120>'+DeleteTags(temp_array_2[i])+\" ед.) (добавить)\"+'</color>',i);",
               "    }",
               "}",
+              "",
               "if(temp_int>0)InjectAnswer('HullTransListReady',\"Подтвердить выбор\",1);",
               "if(temp_int<=0)InjectAnswer('CustomBlock',\"<color=120,124,120>Подтвердить выбор</color>\",1);"          
           ]        
@@ -7341,12 +7354,12 @@
           "Pos.y":  -260,
           "Parent":  -1,
           "#":  360,
-          "Total.Lines":  36,
+          "Total.Lines":  38,
           "Code.Type":  "Turn",
           "Code":          
           [
               "//Формирование списка предметов в диалоге и соответствующих ему ответов",
-              "if(GAnswerData>=100000000)temp_int=GAnswerData%100000000;",
+              "if(GAnswerData>=100000000) temp_int=GAnswerData%100000000;",
               "else temp_int=GAnswerData;",
               "temp_int_2=0;",
               "//Значения переменной temp_int_2: 1 - игрок нажал кнопку \"Добавить\", 2 - игрок нажал кнопку \"Удалить\"",
@@ -7364,10 +7377,11 @@
               "    temp_int_6=temp_int_6-1;",
               "    temp_int_2=2;",
               "}",
+              "",
               "temp_int=0;",
               "temp_str='';",
               "//Заполняем строку с содержанием списка",
-              "for(i=1;i<ArrayDim(temp_array_5);i=i+1)",
+              "for(i=1; i<ArrayDim(temp_array_5); i=i+1)",
               "{",
               "    if(temp_array_5[i]==-1)",
               "    {",
@@ -7375,12 +7389,13 @@
               "        temp_str=temp_str+'</color>'+temp_int+'. '+temp_array_6[i]+\"<br>\";",
               "    }",
               "}",
-              "if(temp_int==0)temp_str=CT('FormInfo.td_otstup_HullCargoList'+GetGameOptions('FontDialog'))+\"<clrEnd>--- <clr>Ничего<clrEnd> ---\";",
+              "",
+              "if(!temp_int) temp_str=CT('FormInfo.td_otstup_HullCargoList'+GetGameOptions('FontDialog'))+\"<clrEnd>--- <clr>Ничего<clrEnd> ---\";",
               "//Установка длины \"дефисного разделителя\" в зависимости от выбранного в игре размера шрифта",
-              "if(GetGameOptions('FontDialog')==0)DefSplt='</color>------------------------------';",
-              "if(GetGameOptions('FontDialog')==1)DefSplt='</color>--------------------------';",
-              "if(GetGameOptions('FontDialog')==2)DefSplt='</color>-----------------------------';",
-              "if(GetGameOptions('FontDialog')==3)DefSplt='</color>--------------------------';"          
+              "if(GetGameOptions('FontDialog') ==' 0') DefSplt='</color>------------------------------';",
+              "else if(GetGameOptions('FontDialog') == '1') DefSplt='</color>--------------------------';",
+              "else if(GetGameOptions('FontDialog') == '2') DefSplt='</color>-----------------------------';",
+              "else DefSplt='</color>--------------------------';"          
           ]        
         },
         {
@@ -7394,12 +7409,12 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "for(i=1;i<ArrayDim(temp_array_5);i=i+1)",
+              "for(i=1; i<ArrayDim(temp_array_5); i=i+1)",
               "{",
               "    InjectAnswer('HullTransList',temp_array_2[i]+\" ед.) (<color=0,50,200>добавить</color>)\",i);",
               "}",
-              "if(temp_int>0)InjectAnswer('HullTransListReady',\"Подтвердить выбор\",1);",
-              "if(temp_int<=0)InjectAnswer('CustomBlock',\"<color=120,124,120>Подтвердить выбор</color>\",1);"          
+              "if(temp_int > 0) InjectAnswer('HullTransListReady',\"Подтвердить выбор\",1);",
+              "else InjectAnswer('CustomBlock',\"<color=120,124,120>Подтвердить выбор</color>\",1);"          
           ]        
         },
         {
@@ -7463,7 +7478,7 @@
           "Pos.y":  -300,
           "Parent":  -1,
           "#":  366,
-          "Total.Lines":  22,
+          "Total.Lines":  24,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -7471,7 +7486,8 @@
               "ArrayClear(temp_array_4);",
               "transfer_cargo_size=0;",
               "temp_str='';",
-              "for(i=1;i<ArrayDim(transfer_list_can);i=i+1)",
+              "",
+              "for(i=1; i<ArrayDim(transfer_list_can); i=i+1)",
               "{",
               "    temp_dword=transfer_list_can[i];",
               "    transfer_cargo_size=transfer_cargo_size+ItemSize(temp_dword);",
@@ -7479,6 +7495,7 @@
               "    temp_str_3='</color><color=0,50,200>'+DeleteTags(Name(temp_dword))+'</color> (<color=0,50,200>'+ItemSize(temp_dword)+\"</color> ед.)\";",
               "    temp_str=temp_str+'</color>'+i+'. '+temp_str_3+\"<br>\";",
               "}",
+              "",
               "ArrayAdd(temp_array_4,\"Выбери квалификацию агента:\");//1",
               "ArrayAdd(temp_array_4,\"Профи\");//2",
               "ArrayAdd(temp_array_4,\"Умелец\");//3",
@@ -7914,7 +7931,7 @@
               "",
               "//Запоминаем число корпусов на перегоне, а также изымаем их со склада и помещаем в невидимое хранилище",
               "HullOnWay=1;",
-              "for(j=1;j<ArrayDim(transfer_list_done);j=j+1)",
+              "for(j=1; j<ArrayDim(transfer_list_done); j=j+1)",
               "{",
               "    temp_dword=GetItemFromStorage(FindItemInStorage(transfer_list_done[j]));",
               "    PutItemInVault('HullDelServ_'+j,temp_dword);",
@@ -9854,7 +9871,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())<(transfer_cargo_cost*80)/100"          
+              "ShipMoney(Player()) < (transfer_cargo_cost * 80) / 100 || RasputinBMDeliveryMark"          
           ]        
         },
         {
@@ -9868,7 +9885,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())<transfer_cargo_cost+(transfer_cargo_cost*20)/100"          
+              "ShipMoney(Player()) < transfer_cargo_cost + (transfer_cargo_cost * 20) / 100 || RasputinBMDeliveryMark"          
           ]        
         },
         {
@@ -9882,7 +9899,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())<(transfer_cargo_cost*40)/100"          
+              "ShipMoney(Player()) < (transfer_cargo_cost * 40) / 100"          
           ]        
         },
         {
@@ -9896,7 +9913,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())>=transfer_cargo_cost+(transfer_cargo_cost*20)/100"          
+              "ShipMoney(Player())>=transfer_cargo_cost+(transfer_cargo_cost*20)/100 && !RasputinBMDeliveryMark"          
           ]        
         },
         {
@@ -9910,7 +9927,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())>=(transfer_cargo_cost*80)/100"          
+              "ShipMoney(Player())>=(transfer_cargo_cost*80)/100 && !RasputinBMDeliveryMark"          
           ]        
         },
         {
@@ -13504,6 +13521,17 @@
           "#":  671,
           "Var.Type":  "Int",
           "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "RasputinBMDeliveryMark",
+          "Pos.x":  920,
+          "Pos.y":  -560,
+          "Parent":  -1,
+          "#":  673,
+          "Var.Type":  "Int",
+          "Init":  "0",
           "Global":  false        
         }      
       ]    
