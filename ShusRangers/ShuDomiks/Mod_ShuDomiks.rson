@@ -6,14 +6,14 @@
   "ScriptName":  "Mod_ShuDomiks",
   "ScriptFileOut":  "H:\\Mod_ShuDomiks.scr",
   "ScriptTextOut":  "H:\\Mod_ShuDomiks.txt",
-  "GraphPoint.Count":  286,
-  "GraphLink.Count":  226,
+  "GraphPoint.Count":  293,
+  "GraphLink.Count":  242,
   "GraphRectText.Count":  1,
   "Variables.Count":  74,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
-  "States.Count":  14,
+  "States.Count":  20,
   "Groups.Count":  17,
   "Places.Count":  1,
   "Items.Count":  1,
@@ -21,7 +21,7 @@
   "Dialogs.Count":  7,
   "DialogMessages.Count":  27,
   "DialogAnswers.Count":  41,
-  "Operations.Count":  41,
+  "Operations.Count":  42,
   "Statements.Count":  60,
   "Loops.Count":  0,
   "Visual.Objects":  
@@ -1902,7 +1902,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  106,
-          "Total.Lines":  735,
+          "Total.Lines":  739,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -2397,8 +2397,6 @@
               "    {",
               "        dword cur_star = ShipStar(shipyard);",
               "        int is_player_here = (ShipStar(Player()) == cur_star);",
-              "",
-              "            SFT(ScriptItemActParam());",
               "        if(!ScriptItemActParam())",
               "        {",
               "            if(!is_player_here) exit;",
@@ -2411,6 +2409,12 @@
               "                if(Dist(shipyard, cur_item) > ShipHookRange(shipyard)) continue;",
               "                if(ItemInScript(cur_item) == 1) continue;",
               "                ShipPicksItem(shipyard, cur_item, 1);",
+              "",
+              "                for(int j = 1; j < ShipCntWeapon(shipyard); j = j + 1)",
+              "                {",
+              "                    dword gun = ShipWeapon(shipyard, j);",
+              "                    if(WeaponTarget(gun) == cur_item) WeaponTarget(gun, 0);",
+              "                }",
               "            }",
               "        }",
               "        else",
@@ -4253,6 +4257,20 @@
               "    exit;",
               "}"          
           ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  30,
+          "Pos.y":  320,
+          "Parent":  -1,
+          "#":  292,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "ShipOut();"          
+          ]        
         }      
       ],
       "Places":      
@@ -5420,6 +5438,114 @@
           "Pos.y":  0,
           "Parent":  283,
           "#":  284,
+          "Move":  0,
+          "MoveObj":  -1,
+          "Attack.Count":  0,
+          "TakeItem":  -1,
+          "TakeAllItem":  false,
+          "OnTalk":  "",
+          "OnActCode":  "",
+          "EType":  1,
+          "EUnique":  "",
+          "EMsg":  ""        
+        },
+        {
+          "Type":  "TState",
+          "Name":  "StateNew4",
+          "Pos.x":  160,
+          "Pos.y":  310,
+          "Parent":  -1,
+          "#":  286,
+          "Move":  0,
+          "MoveObj":  -1,
+          "Attack.Count":  0,
+          "TakeItem":  -1,
+          "TakeAllItem":  false,
+          "OnTalk":  "",
+          "OnActCode":  "",
+          "EType":  1,
+          "EUnique":  "",
+          "EMsg":  ""        
+        },
+        {
+          "Type":  "TState",
+          "Name":  "StateNew5",
+          "Pos.x":  160,
+          "Pos.y":  340,
+          "Parent":  -1,
+          "#":  287,
+          "Move":  0,
+          "MoveObj":  -1,
+          "Attack.Count":  0,
+          "TakeItem":  -1,
+          "TakeAllItem":  false,
+          "OnTalk":  "",
+          "OnActCode":  "",
+          "EType":  1,
+          "EUnique":  "",
+          "EMsg":  ""        
+        },
+        {
+          "Type":  "TState",
+          "Name":  "StateNew2",
+          "Pos.x":  110,
+          "Pos.y":  310,
+          "Parent":  -1,
+          "#":  288,
+          "Move":  0,
+          "MoveObj":  -1,
+          "Attack.Count":  0,
+          "TakeItem":  -1,
+          "TakeAllItem":  false,
+          "OnTalk":  "",
+          "OnActCode":  "",
+          "EType":  1,
+          "EUnique":  "",
+          "EMsg":  ""        
+        },
+        {
+          "Type":  "TState",
+          "Name":  "StateNew3",
+          "Pos.x":  110,
+          "Pos.y":  340,
+          "Parent":  -1,
+          "#":  289,
+          "Move":  0,
+          "MoveObj":  -1,
+          "Attack.Count":  0,
+          "TakeItem":  -1,
+          "TakeAllItem":  false,
+          "OnTalk":  "",
+          "OnActCode":  "",
+          "EType":  1,
+          "EUnique":  "",
+          "EMsg":  ""        
+        },
+        {
+          "Type":  "TState",
+          "Name":  "StateNew0",
+          "Pos.x":  0,
+          "Pos.y":  310,
+          "Parent":  -1,
+          "#":  290,
+          "Move":  0,
+          "MoveObj":  -1,
+          "Attack.Count":  0,
+          "TakeItem":  -1,
+          "TakeAllItem":  false,
+          "OnTalk":  "",
+          "OnActCode":  "",
+          "EType":  1,
+          "EUnique":  "",
+          "EMsg":  ""        
+        },
+        {
+          "Type":  "TState",
+          "Name":  "StateNew1",
+          "Pos.x":  0,
+          "Pos.y":  330,
+          "Parent":  -1,
+          "#":  291,
           "Move":  0,
           "MoveObj":  -1,
           "Attack.Count":  0,
@@ -7832,6 +7958,130 @@
       "Type":  "TGraphLink",
       "Begin":  283,
       "End":  1,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TStateLink",
+      "Begin":  131,
+      "End":  290,
+      "Nom":  0,
+      "Arrow":  true,
+      "Expr":  "0",
+      "Priority":  0    
+    },
+    {
+      "Type":  "TStateLink",
+      "Begin":  290,
+      "End":  291,
+      "Nom":  0,
+      "Arrow":  true,
+      "Expr":  "0",
+      "Priority":  0    
+    },
+    {
+      "Type":  "TStateLink",
+      "Begin":  130,
+      "End":  288,
+      "Nom":  0,
+      "Arrow":  true,
+      "Expr":  "0",
+      "Priority":  0    
+    },
+    {
+      "Type":  "TStateLink",
+      "Begin":  288,
+      "End":  289,
+      "Nom":  0,
+      "Arrow":  true,
+      "Expr":  "0",
+      "Priority":  0    
+    },
+    {
+      "Type":  "TStateLink",
+      "Begin":  129,
+      "End":  286,
+      "Nom":  0,
+      "Arrow":  true,
+      "Expr":  "0",
+      "Priority":  0    
+    },
+    {
+      "Type":  "TStateLink",
+      "Begin":  286,
+      "End":  287,
+      "Nom":  0,
+      "Arrow":  true,
+      "Expr":  "0",
+      "Priority":  0    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  290,
+      "End":  292,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  291,
+      "End":  292,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  288,
+      "End":  292,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  289,
+      "End":  292,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  130,
+      "End":  292,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  131,
+      "End":  292,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  286,
+      "End":  292,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  287,
+      "End":  292,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  129,
+      "End":  292,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  134,
+      "End":  292,
       "Nom":  0,
       "Arrow":  true    
     }  
