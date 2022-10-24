@@ -1,13 +1,13 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1017,
-  "ViewPos.y":  -39,
+  "ViewPos.x":  -1120,
+  "ViewPos.y":  8,
   "ScriptName":  "Mod_ShuKlissan",
   "ScriptFileOut":  "H:\\Mod_ShuKlissan.scr",
   "ScriptTextOut":  "H:\\Mod_ShuKlissan.txt",
-  "GraphPoint.Count":  411,
-  "GraphLink.Count":  345,
+  "GraphPoint.Count":  414,
+  "GraphLink.Count":  348,
   "GraphRectText.Count":  3,
   "Variables.Count":  36,
   "Stars.Count":  1,
@@ -22,7 +22,7 @@
   "DialogMessages.Count":  78,
   "DialogAnswers.Count":  90,
   "Operations.Count":  92,
-  "Statements.Count":  46,
+  "Statements.Count":  49,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
@@ -432,9 +432,9 @@
         {
           "Type":  "TDialogAnswer",
           "Name":  "restart",
-          "Pos.x":  20,
+          "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  112,
+          "Parent":  412,
           "#":  189,
           "Msg":  "Вы дожно быть шутите. Пройти через всё это только ради того, чтобы бежать с поля боя? Ну уж нет, я не смогу спать спокойно, зная, что тостеры продолжают вырезать наших пачками. Можете просиживать свои задницы в тылу сколько угодно, но я немедленно возвращаюсь на фронт!",
           "AMsg.Num":  "40"        
@@ -442,9 +442,9 @@
         {
           "Type":  "TDialogAnswer",
           "Name":  "restart",
-          "Pos.x":  20,
+          "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  113,
+          "Parent":  413,
           "#":  190,
           "Msg":  "Благодарствую, не имею права отказаться. Показывайте, что вы там для меня припасли.",
           "AMsg.Num":  "41"        
@@ -554,7 +554,7 @@
           "Name":  "restart",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  112,
+          "Parent":  411,
           "#":  201,
           "Msg":  "Знаете, вы правы. Я устал от всех этих космических сражений. Я оставляю это дело своим космическим коллегам. Следуя примеру наших вояк, они обязательно расправятся с доминаторами.",
           "AMsg.Num":  "52"        
@@ -5892,7 +5892,7 @@
           "Pos.y":  0,
           "Parent":  2,
           "#":  19,
-          "Total.Lines":  223,
+          "Total.Lines":  229,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
@@ -5988,6 +5988,8 @@
               "                    //Коалиционная силовая концовка с захватом Тортугаца",
               "                    if(KlissanInvasion['PlotEnding'] == 'Coalition.TortugatzCaptured')",
               "                    {",
+              "                        //Если в данный момент активно задание из пиратской ветки на прибытие в ближайший ЦР, выполняем его",
+              "                        if(EtherState('BABB37FE-1007-4A51-A103-DB9EBEAA4C10') == 3) Ether(4, 'BABB37FE-1007-4A51-A103-DB9EBEAA4C10', CT('Script.PC_final.250'));",
               "                        AddDialogOverride('Ending_Coalition_TortugatzCaptured', 500);",
               "                    }",
               "",
@@ -5995,10 +5997,14 @@
               "                    //(не уверен, что последняя сможет быть тут запущена в принципе)",
               "                    if(KlissanInvasion['PlotEnding'] == 'Specagent.AlakayKilled')",
               "                    {",
+              "                        //Если в данный момент активно задание из пиратской ветки на прибытие в ближайший ЦР, выполняем его",
+              "                        if(EtherState('BABB37FE-1007-4A51-A103-DB9EBEAA4C10') == 3) Ether(4, 'BABB37FE-1007-4A51-A103-DB9EBEAA4C10', CT('Script.PC_final.250'));",
               "                        AddDialogOverride('Ending_Specagent_AlakayKilled', 500);",
               "                    }",
               "                    else if(KlissanInvasion['PlotEnding'] == 'Specagent.AlakayExiled')",
               "                    {",
+              "                        //Если в данный момент активно задание из пиратской ветки на прибытие в ближайший ЦР, выполняем его",
+              "                        if(EtherState('BABB37FE-1007-4A51-A103-DB9EBEAA4C10') == 3) Ether(4, 'BABB37FE-1007-4A51-A103-DB9EBEAA4C10', CT('Script.PC_final.250'));",
               "                        AddDialogOverride('Ending_Specagent_AlakayExiled', 500);",
               "                    }",
               "                    //Стандартная коалиционная концовка за спецагента из пиратской сюжетки HD (скрипт PC_final),",
@@ -9054,7 +9060,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  0,
+          "Pos.x":  20,
           "Pos.y":  20,
           "Parent":  188,
           "#":  264,
@@ -9674,6 +9680,48 @@
           "Pos.y":  100,
           "Parent":  -1,
           "#":  404,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -10,
+          "Pos.y":  20,
+          "Parent":  112,
+          "#":  411,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  10,
+          "Pos.y":  20,
+          "Parent":  112,
+          "#":  412,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  113,
+          "#":  413,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -11110,27 +11158,6 @@
       "Type":  "TGraphLink",
       "Begin":  111,
       "End":  188,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  112,
-      "End":  189,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  112,
-      "End":  201,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  113,
-      "End":  190,
       "Nom":  0,
       "Arrow":  true    
     },
@@ -12888,6 +12915,48 @@
       "Type":  "TGraphLink",
       "Begin":  273,
       "End":  134,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  113,
+      "End":  413,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  413,
+      "End":  190,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  112,
+      "End":  412,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  412,
+      "End":  189,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  112,
+      "End":  411,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  411,
+      "End":  201,
       "Nom":  0,
       "Arrow":  true    
     }  
