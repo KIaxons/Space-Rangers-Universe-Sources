@@ -4158,7 +4158,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  4,
-          "Total.Lines":  1365,
+          "Total.Lines":  1368,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -4764,6 +4764,7 @@
               "        dword gun = CreateCustomWeapon('GluonEmitter', size, GTL, People);",
               "        LinkItemToScript(gun);",
               "        ItemOnActCode(gun, GenerateCodeStringFromBlock('ActCodeBlocksList.ShuMercsHQ_GluonizingEnergy'));",
+              "        ItemExtraSpecialsAddByType(gun, FindBonusByNameInCfg('bonAIValue'), 500); //Повышаем ценность глюонного оружия в глазах бота",
               "    }",
               "    //Глюонный торментор",
               "    else if(gun_type == 2)",
@@ -4773,6 +4774,7 @@
               "        gun = CreateCustomWeapon('GluonTormentor', size, GTL, People);",
               "        LinkItemToScript(gun);",
               "        ItemOnActCode(gun, GenerateCodeStringFromBlock('ActCodeBlocksList.ShuMercsHQ_GluonizingSplinter'));",
+              "        ItemExtraSpecialsAddByType(gun, FindBonusByNameInCfg('bonAIValue'), 500); //Повышаем ценность глюонного оружия в глазах бота",
               "    }",
               "    //Глюонная торпедная установка",
               "    else if(gun_type == 3)",
@@ -4785,6 +4787,7 @@
               "        WeaponAmmunition(gun, new_ammo);",
               "        LinkItemToScript(gun);",
               "        ItemOnActCode(gun, GenerateCodeStringFromBlock('ActCodeBlocksList.ShuMercsHQ_GluonizingMissile'));",
+              "        ItemExtraSpecialsAddByType(gun, FindBonusByNameInCfg('bonAIValue'), 500); //Повышаем ценность глюонного оружия в глазах бота",
               "    }",
               "",
               "    EqCustomFaction(gun, 'SubFactionPlayerMercsFixedStanding');",
