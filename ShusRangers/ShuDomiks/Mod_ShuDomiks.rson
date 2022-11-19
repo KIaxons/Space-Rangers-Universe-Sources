@@ -1902,7 +1902,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  106,
-          "Total.Lines":  745,
+          "Total.Lines":  746,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -2540,6 +2540,7 @@
               "                    dword ship = StarShips(star, j);",
               "                    if(ShipOwner(ship) != Kling) continue;",
               "                    if(ShipSubrace(ship, -1) != 1) continue; //Только келлероиды",
+              "                    if(ShipInScript(ship)) continue;",
               "                    if(ShipCustomFaction(ship) != '') continue;",
               "                    if(!ShipInNormalSpace(ship)) continue;",
               "",
