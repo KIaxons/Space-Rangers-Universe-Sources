@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1046,
-  "ViewPos.y":  -45,
+  "ViewPos.x":  -935,
+  "ViewPos.y":  -74,
   "ScriptName":  "Mod_ShuKlissan",
   "ScriptFileOut":  "H:\\Mod_ShuKlissan.scr",
   "ScriptTextOut":  "H:\\Mod_ShuKlissan.txt",
@@ -7217,7 +7217,7 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  20,
+          "Pos.x":  40,
           "Pos.y":  0,
           "Parent":  105,
           "#":  250,
@@ -7249,7 +7249,7 @@
           "Pos.y":  20,
           "Parent":  130,
           "#":  251,
-          "Total.Lines":  10,
+          "Total.Lines":  11,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -7261,6 +7261,7 @@
               "",
               "    InjectAnswer('KlissanControl_OrderStarFree', '<color=0,50,200>' + Name(cur_star) + '</color>', i);",
               "}",
+              "",
               "InjectAnswer('KlissanControl_OrderStarFree', \"Все системы! Очистите всё!\", -1);",
               "DAnswer('restart~' + \"Назад\");"          
           ]        
@@ -8519,7 +8520,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "tint1 = KlissanInvasion['KlissanControl.NextAttackOrderTurn'] - KlissanInvasion['KlissanControl.LastAttackOrderTurn'];"          
+              "tint1 = KlissanInvasion['KlissanControl.NextMachpellaOrderTurn'] - CurTurn();"          
           ]        
         },
         {
