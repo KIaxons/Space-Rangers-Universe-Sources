@@ -1,15 +1,15 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -337,
-  "ViewPos.y":  -272,
+  "ViewPos.x":  -298,
+  "ViewPos.y":  -271,
   "ScriptName":  "Mod_EvoTranc",
   "ScriptFileOut":  "H:\\Mod_EvoTranc.scr",
   "ScriptTextOut":  "H:\\Mod_EvoTranc.txt",
-  "GraphPoint.Count":  299,
-  "GraphLink.Count":  218,
+  "GraphPoint.Count":  303,
+  "GraphLink.Count":  221,
   "GraphRectText.Count":  7,
-  "Variables.Count":  63,
+  "Variables.Count":  64,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
@@ -21,7 +21,7 @@
   "Dialogs.Count":  33,
   "DialogMessages.Count":  36,
   "DialogAnswers.Count":  27,
-  "Operations.Count":  77,
+  "Operations.Count":  80,
   "Statements.Count":  56,
   "Loops.Count":  0,
   "Visual.Objects":  
@@ -609,7 +609,7 @@
           "Pos.y":  60,
           "Parent":  -1,
           "#":  245,
-          "Msg":  "Извините, <Player>. Я следую приказам хозяина <ShipName(tempDwd)> и не имею времени на посторонние разговоры.",
+          "Msg":  "<tstr1>",
           "DMsg.Num":  "30"        
         },
         {
@@ -629,7 +629,7 @@
           "Pos.y":  60,
           "Parent":  -1,
           "#":  249,
-          "Msg":  "Хозяин потерян. Запущена программа самоликвидации.\r\nВсем окружающим кораблям рекомендую сохранять дистанцию.",
+          "Msg":  "<tstr1>",
           "DMsg.Num":  "32"        
         },
         {
@@ -639,7 +639,7 @@
           "Pos.y":  60,
           "Parent":  -1,
           "#":  258,
-          "Msg":  "Мой хозяин <ShipName(tempDwd)> желает вашей скорейшей смерти, но прямо сейчас у меня нет времени исполнять его волю. Пока что.",
+          "Msg":  "<tstr1>",
           "DMsg.Num":  "33"        
         },
         {
@@ -877,7 +877,7 @@
           "Type":  "TDialog",
           "Name":  "TrancGoesBOOM!",
           "Pos.x":  790,
-          "Pos.y":  30,
+          "Pos.y":  20,
           "Parent":  -1,
           "#":  242        
         },
@@ -4098,14 +4098,13 @@
           "Pos.y":  0,
           "Parent":  -1,
           "#":  247,
-          "Total.Lines":  4,
+          "Total.Lines":  3,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "temp_int_4=Rnd(1,3);",
-              "if(temp_int_4==1)TextCorr='</color>'+\"Мой хозяин <ShipName(tempDwd)> передаёт вам привет! Готовьтесь встретить свой сборочный конвейер!\";",
-              "else if(temp_int_4==2)TextCorr='</color>'+\"Просто хочу, чтобы вы знали: когда хозяин <ShipName(tempDwd)> приказал вас уничтожить, я обрабатывал эту команду всего <substr(0.0001*(10-ItemLevel(ShipItems(cur_Tranc,0))),0,6)> секунды.<br>А теперь умрите!\";",
-              "else TextCorr='</color>'+\"Ничего личного, <Player>. Просто хозяин <ShipName(tempDwd)> приказал демонтировать вас максимально изощрённым и садистским способом.\";"          
+              "temp_int_4 = RndObject(1, 3, cur_Tranc);",
+              "if(temp_int_4 == 2) tstr1 = '</color>' + Format(CT('Script.Mod_EvoTranc.NPCsTrancTalks.OnAttack2'), '<Ship'+'>', ShipName(tempDwd) + '<Object=' + tempDwd + ',23,17,0>', '<RndTime'+'>', substr(0.0001 * (10 - ItemLevel(ShipItems(cur_Tranc, 0))), 0, 6));",
+              "else tstr1 = '</color>' + Format(CT('Script.Mod_EvoTranc.NPCsTrancTalks.OnAttack' + temp_int_4), '<Ship'+'>', ShipName(tempDwd) + '<Object=' + tempDwd + ',23,17,0>');"          
           ]        
         },
         {
@@ -4928,15 +4927,15 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "temp_int_4=Rnd(1,8);",
-              "if(temp_int_4==1)TextCorr='</color>'+\"Хозяин... за что?\";",
-              "else if(temp_int_4==2)TextCorr='</color>'+\"Ай! Мне же тоже может быть больно ;C\";",
-              "else if(temp_int_4==3)TextCorr='</color>'+\"Почему, хозяин? Разве я чем-то вас подвёл?\";",
-              "else if(temp_int_4==4)TextCorr='</color>'+\"Ваше недовольство ранит меня сильнее, чем ваши пушки.\";",
-              "else if(temp_int_4==5)TextCorr='</color>'+\"Если мне суждено умереть от вашей руки, прошу, скажите напоследок, что я был хорошим роботом!\";",
-              "else if(temp_int_4==6)TextCorr='</color>'+\"Крррааа...жжется, ваш выстрел повредил мой блокиратор эмоций.<br>Ау! Ау! Как больно! Я не хочу умирать. Хозяин, пощади!\";",
-              "else if(temp_int_4==7)TextCorr='</color>'+\"Знаю, что не должен этого говорить, но... я люблю вас, хозяин. Хочу, чтобы вы это знали, прежде чем разобьёте мой вычислительный процессор.\";",
-              "else if(temp_int_4==8)TextCorr='</color>'+\"Хозяин, вы правда желаете меня убить?<br>...<br>Скажите, а умирать это больно?\";"          
+              "temp_int_4 = RndObject(1, 8, GetTalkShip());",
+              "if(temp_int_4 == 1) TextCorr='</color>' + \"Хозяин... за что?\";",
+              "else if(temp_int_4 == 2) TextCorr='</color>' + \"Ай! Мне же тоже может быть больно ;C\";",
+              "else if(temp_int_4 == 3) TextCorr='</color>' + \"Почему, хозяин? Разве я чем-то вас подвёл?\";",
+              "else if(temp_int_4 == 4) TextCorr='</color>' + \"Ваше недовольство ранит меня сильнее, чем ваши пушки.\";",
+              "else if(temp_int_4 == 5) TextCorr='</color>' + \"Если мне суждено умереть от вашей руки, прошу, скажите напоследок, что я был хорошим роботом!\";",
+              "else if(temp_int_4 == 6) TextCorr='</color>' + \"Крррааа...жжется, ваш выстрел повредил мой блокиратор эмоций.<br>Ау! Ау! Как больно! Я не хочу умирать. Хозяин, пощади!\";",
+              "else if(temp_int_4 == 7) TextCorr='</color>' + \"Знаю, что не должен этого говорить, но... я люблю вас, хозяин. Хочу, чтобы вы это знали, прежде чем разобьёте мой вычислительный процессор.\";",
+              "else if(temp_int_4 == 8) TextCorr='</color>' + \"Хозяин, вы правда желаете меня убить?<br>...<br>Скажите, а умирать это больно?\";"          
           ]        
         },
         {
@@ -5016,6 +5015,48 @@
               "        ShipDeleteCustomShipInfo(Player(), 'TrancPanelMoverInfo');",
               "    }",
               "}"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  700,
+          "Pos.y":  0,
+          "Parent":  -1,
+          "#":  299,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tstr1 = '</color>' + Format(CT('Script.Mod_EvoTranc.NPCsTrancTalks.NormalRelation'), '<Ship'+'>', ShipName(tempDwd) + '<Object=' + tempDwd + ',23,17,0>');"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  760,
+          "Pos.y":  40,
+          "Parent":  -1,
+          "#":  301,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tstr1 = '</color>' + Format(CT('Script.Mod_EvoTranc.NPCsTrancTalks.HostileRelation'), '<Ship'+'>', ShipName(tempDwd) + '<Object=' + tempDwd + ',23,17,0>');"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  790,
+          "Pos.y":  40,
+          "Parent":  -1,
+          "#":  302,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tstr1 = '</color>' + CT('Script.Mod_EvoTranc.NPCsTrancTalks.SelfDestructionWarning');"          
           ]        
         }      
       ],
@@ -6601,6 +6642,17 @@
           "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tstr1",
+          "Pos.x":  -110,
+          "Pos.y":  470,
+          "Parent":  -1,
+          "#":  300,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
         }      
       ]    
     }  
@@ -7855,13 +7907,6 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  244,
-      "End":  245,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
       "Begin":  245,
       "End":  246,
       "Nom":  0,
@@ -7890,13 +7935,6 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  242,
-      "End":  249,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
       "Begin":  249,
       "End":  246,
       "Nom":  0,
@@ -7906,13 +7944,6 @@
       "Type":  "TGraphLink",
       "Begin":  252,
       "End":  250,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  257,
-      "End":  258,
       "Nom":  0,
       "Arrow":  true    
     },
@@ -8132,6 +8163,48 @@
       "End":  10,
       "Nom":  0,
       "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  244,
+      "End":  299,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  299,
+      "End":  245,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  257,
+      "End":  301,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  301,
+      "End":  258,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  242,
+      "End":  302,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  302,
+      "End":  249,
+      "Nom":  0,
+      "Arrow":  true    
     }  
   ],
   "Rect.Text":  
@@ -8298,7 +8371,7 @@
       "fsUnderline":  false    
     }  
   ],
-  "BlockPar.EC.Total.Strings":  248,
+  "BlockPar.EC.Total.Strings":  242,
   "BlockPar.EC":  
   [
     {
@@ -9134,26 +9207,6 @@
       "String":  "Наш центр предлагает целый комплекс услуг по модернизации транклюкаторов. От простой перекраски и увеличения вместимости корпуса, до установки новейших боевых систем, способных значительно повысить наступательный потенциал вашего \"питомца\".<br><0>А если вы давно мечтали установить на него более мощный двигатель, захват, пушку или ещё какое-то полезное устройство, но всё никак не хватало свободного пространства, то за относительно небольшую плату мы запросто \"ужмём\" желаемое оборудование до вполне приемлемых размеров.<br>Итак, как бы вы хотели улучшить <1>?"    
     },
     {
-      "#":  "837",
-      "String":  "Мой хозяин <0> передаёт вам привет! Готовьтесь встретить свой сборочный конвейер!"    
-    },
-    {
-      "#":  "841",
-      "String":  "Просто хочу, чтобы вы знали: когда хозяин <0> приказал вас уничтожить, я обрабатывал эту команду всего <1> секунды.<br>А теперь умрите!"    
-    },
-    {
-      "#":  "842",
-      "String":  "Мой хозяин <0> желает вашей скорейшей смерти, но прямо сейчас у меня нет времени исполнять его волю. Пока что."    
-    },
-    {
-      "#":  "843",
-      "String":  "Ничего личного, <Player>. Просто хозяин <0> приказал демонтировать вас максимально изощрённым и садистским способом."    
-    },
-    {
-      "#":  "844",
-      "String":  "Извините, <Player>. Я следую приказам хозяина <0> и не имею времени на посторонние разговоры."    
-    },
-    {
       "#":  "847",
       "String":  "1. Автоследование: <color=45,105,45>В любые системы</color>"    
     },
@@ -9168,10 +9221,6 @@
     {
       "#":  "854",
       "String":  "1. Автоследование: <color=45,105,45>В любые</color>"    
-    },
-    {
-      "#":  "858",
-      "String":  "Хозяин потерян. Запущена программа самоликвидации.<br>Всем окружающим кораблям рекомендую сохранять дистанцию."    
     },
     {
       "#":  "859",
