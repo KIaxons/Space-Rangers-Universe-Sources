@@ -1902,7 +1902,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  106,
-          "Total.Lines":  746,
+          "Total.Lines":  751,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -2509,7 +2509,12 @@
               "        }",
               "    }",
               "    //Терроноидная верфь подобрала предмет",
-              "    else if(ScriptItemActionType(t_OnItemPickUp)) ScriptItemActParam(-1); //Сразу удаляем его",
+              "    else if(ScriptItemActionType(t_OnItemPickUp))",
+              "    {",
+              "        item_type = ItemType(ScriptItemActObject1());",
+              "        if(item_type > t_Narcotics) ScriptItemActParam(-1); //Если это не товар, то сразу удаляем его",
+              "        else ShipGoods(shipyard, item_type, -ItemSize(ScriptItemActObject1())); //Иначе просто зануляем счётчик товара в трюме",
+              "    }",
               "    //Если верфь была уничтожена",
               "    else //if(ScriptItemActionType(t_OnDeath))",
               "    {",
