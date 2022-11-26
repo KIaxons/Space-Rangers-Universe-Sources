@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -334,
-  "ViewPos.y":  -238,
+  "ViewPos.x":  -252,
+  "ViewPos.y":  -241,
   "ScriptName":  "Mod_ExpSSB",
   "ScriptFileOut":  "H:\\Mod_ExpSSB.scr",
   "ScriptTextOut":  "H:\\Mod_ExpSSB.txt",
@@ -2294,7 +2294,7 @@
           "Pos.y":  190,
           "Parent":  -1,
           "#":  128,
-          "Total.Lines":  34,
+          "Total.Lines":  31,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -2305,16 +2305,13 @@
               "    UselessItemData(cur_bh_item, 1, 0);",
               "    UselessItemData(cur_bh_item, 3, CurTurn() + 11);",
               "    cur_ruin = GroupToShip(SSBGroup);",
-              "    if(!cur_ruin)",
-              "    {",
-              "        throw 'Error! SSB was somehow destroyed!';",
-              "    }",
+              "    if(!cur_ruin) throw 'Error! SSB was somehow destroyed!';",
               "",
               "    cur_hole = HoleCreate2(ShipStar(Player()), ShipStar(cur_ruin));",
               "    HoleTurnCreate(cur_hole, HoleTurnCreate(cur_hole) - 198);",
               "    HoleMap(cur_hole, 'SkipAB');",
-              "    PlayerTransCoordX = CoordX(Player()) - 100;",
-              "    PlayerTransCoordY = CoordY(Player()) + Rnd(-100, 100);",
+              "    PlayerTransCoordX = CoordX(Player()) + RndObject(-100, 100, cur_ruin);",
+              "    PlayerTransCoordY = CoordY(Player()) + RndObject(-100, 100, cur_ruin);",
               "    HoleX1(cur_hole, PlayerTransCoordX);",
               "    HoleY1(cur_hole, PlayerTransCoordY);",
               "    HoleX2(cur_hole, CoordX(cur_ruin));",
@@ -2407,14 +2404,11 @@
           "Pos.y":  190,
           "Parent":  -1,
           "#":  139,
-          "Total.Lines":  21,
+          "Total.Lines":  18,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "if(UselessItemData(cur_bh_item, 1) < 500)",
-              "{",
-              "    temp_str = \"</color>Заряда коммуникатора недостаточно для открытия черной дыры.\";",
-              "}",
+              "if(UselessItemData(cur_bh_item, 1) < 500) temp_str = \"</color>Заряда коммуникатора недостаточно для открытия черной дыры.\";",
               "else",
               "{",
               "    UselessItemData(cur_bh_item, 1, UselessItemData(cur_bh_item, 1) - 500);",
@@ -2441,7 +2435,7 @@
           "Pos.y":  130,
           "Parent":  -1,
           "#":  141,
-          "Total.Lines":  9,
+          "Total.Lines":  11,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -2452,7 +2446,9 @@
               "    if(ItemType(temp_dword_2) != t_UselessItem) continue;",
               "    if(EquipmentImageName(temp_dword_2) != 'SubspaceCommunicator') continue;",
               "    cur_bh_item = temp_dword_2;",
+              "    break;",
               "}",
+              "",
               "UselessItemData(cur_bh_item, 3, CurTurn() + 1);"          
           ]        
         },
