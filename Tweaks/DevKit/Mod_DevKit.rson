@@ -1,13 +1,13 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -471,
-  "ViewPos.y":  83,
+  "ViewPos.x":  -361,
+  "ViewPos.y":  101,
   "ScriptName":  "Mod_DevKit",
   "ScriptFileOut":  "H:\\Mod_DevKit.scr",
   "ScriptTextOut":  "H:\\Mod_DevKit.txt",
-  "GraphPoint.Count":  241,
-  "GraphLink.Count":  269,
+  "GraphPoint.Count":  248,
+  "GraphLink.Count":  277,
   "GraphRectText.Count":  17,
   "Variables.Count":  28,
   "Stars.Count":  1,
@@ -20,9 +20,9 @@
   "Ethers.Count":  0,
   "Dialogs.Count":  4,
   "DialogMessages.Count":  14,
-  "DialogAnswers.Count":  76,
-  "Operations.Count":  90,
-  "Statements.Count":  23,
+  "DialogAnswers.Count":  78,
+  "Operations.Count":  92,
+  "Statements.Count":  26,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
@@ -292,8 +292,8 @@
         {
           "Type":  "TDialogAnswer",
           "Name":  "",
-          "Pos.x":  320,
-          "Pos.y":  550,
+          "Pos.x":  380,
+          "Pos.y":  570,
           "Parent":  -1,
           "#":  73,
           "Msg":  "Повысить коалиционное",
@@ -302,7 +302,7 @@
         {
           "Type":  "TDialogAnswer",
           "Name":  "",
-          "Pos.x":  320,
+          "Pos.x":  360,
           "Pos.y":  570,
           "Parent":  -1,
           "#":  74,
@@ -502,8 +502,8 @@
         {
           "Type":  "TDialogAnswer",
           "Name":  "",
-          "Pos.x":  320,
-          "Pos.y":  590,
+          "Pos.x":  400,
+          "Pos.y":  570,
           "Parent":  -1,
           "#":  132,
           "Msg":  "Стать Бароном",
@@ -512,8 +512,8 @@
         {
           "Type":  "TDialogAnswer",
           "Name":  "",
-          "Pos.x":  320,
-          "Pos.y":  610,
+          "Pos.x":  420,
+          "Pos.y":  570,
           "Parent":  -1,
           "#":  133,
           "Msg":  "Стать Адмиралом",
@@ -788,6 +788,26 @@
           "#":  236,
           "Msg":  "<tstr1>",
           "AMsg.Num":  "75"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  244,
+          "#":  243,
+          "Msg":  "<tstr1>",
+          "AMsg.Num":  "76"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "block",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  246,
+          "#":  247,
+          "Msg":  "<tstr1>",
+          "AMsg.Num":  "77"        
         }      
       ],
       "DialogMessages":      
@@ -1454,9 +1474,9 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  390,
-          "Pos.y":  550,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  73,
           "#":  71,
           "Total.Lines":  3,
           "Code.Type":  "Turn",
@@ -1470,9 +1490,9 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  390,
-          "Pos.y":  570,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  74,
           "#":  75,
           "Total.Lines":  3,
           "Code.Type":  "Turn",
@@ -3975,9 +3995,9 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  390,
-          "Pos.y":  590,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  132,
           "#":  134,
           "Total.Lines":  4,
           "Code.Type":  "Turn",
@@ -3992,9 +4012,9 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  390,
-          "Pos.y":  610,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  133,
           "#":  135,
           "Total.Lines":  4,
           "Code.Type":  "Turn",
@@ -4659,6 +4679,78 @@
           [
               "tstr1 = '</color>' + CT('MicroModuls.491.Name');"          
           ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  242,
+          "#":  241,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tstr1 = '</color>' + 'Повысить научное';"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  40,
+          "Pos.y":  0,
+          "Parent":  243,
+          "#":  245,
+          "Total.Lines":  45,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "int new_rank = NumberBox('Bm.FormShip2.2SR3_img', 'Укажите желаемое звание', 1, 8, 8, '', min(PlayerScienceRank['CurrentRank'] + 1, 8));",
+              "",
+              "if(new_rank && new_rank != PlayerScienceRank['CurrentRank'])",
+              "{",
+              "    PlayerScienceRank['CurrentRank'] = new_rank;",
+              "",
+              "    if(new_rank < 8)",
+              "    {",
+              "        PlayerScienceRank['HolesToNextRankLeft'] = PlayerScienceRank['HolesToRankRequired', PlayerScienceRank['CurrentRank'] + 1] - PlayerScienceRank['HolesExplored'];",
+              "",
+              "        if(PlayerScienceRank['CurrentRank'] == 5) int rank_image_num = 5;",
+              "        else if(PlayerScienceRank['CurrentRank'] == 0 || PlayerScienceRank['CurrentRank'] == 7) rank_image_num = 2;",
+              "        else if(PlayerScienceRank['CurrentRank'] == 3 || PlayerScienceRank['CurrentRank'] == 8) rank_image_num = 4;",
+              "        else rank_image_num = 3;",
+              "",
+              "        ShipCustomShipInfoData(Player(), 'Science_rank_infos', 1, rank_image_num);",
+              "        ShipCustomShipInfoData(Player(), 'Science_rank_infos', 2, PlayerScienceRank['HolesToNextRankLeft']);",
+              "        ShipCustomShipInfoTextData(Player(), 'Science_rank_infos', 1, CT('RankScientific.' + PlayerScienceRank['CurrentRank'] + '.Text'));",
+              "        ShipCustomShipInfoTextData(Player(), 'Science_rank_infos', 2, CT('RankScientific.' + PlayerScienceRank['CurrentRank'] + '.Name'));",
+              "",
+              "        InterfaceState('Ship', 'CustomRankImage_2_NR', 0);",
+              "        if(PlayerScienceRank['CurrentRank'] == 1) InterfaceImage('Ship', 'CustomRankImageL_' + rank_image_num, 'GI,Bm.FormShip2.2BH_img');",
+              "        else if(PlayerScienceRank['CurrentRank'] == 2) InterfaceImage('Ship', 'CustomRankImageL_' + rank_image_num, 'GI,Bm.FormShip2.2SR1_img');",
+              "        else if(PlayerScienceRank['CurrentRank'] == 3) InterfaceImage('Ship', 'CustomRankImageL_' + rank_image_num, 'GI,Bm.FormShip2.2SR1_img');",
+              "        else if(PlayerScienceRank['CurrentRank'] == 4) InterfaceImage('Ship', 'CustomRankImageL_' + rank_image_num, 'GI,Bm.FormShip2.2SR2_img');",
+              "        else if(PlayerScienceRank['CurrentRank'] == 5) InterfaceImage('Ship', 'CustomRankImageL_' + rank_image_num, 'GI,Bm.FormShip2.2SR2_img');",
+              "        else if(PlayerScienceRank['CurrentRank'] == 6) InterfaceImage('Ship', 'CustomRankImageL_' + rank_image_num, 'GI,Bm.FormShip2.2SR3_img');",
+              "        else if(PlayerScienceRank['CurrentRank'] == 7) InterfaceImage('Ship', 'CustomRankImageL_' + rank_image_num, 'GI,Bm.FormShip2.2SR3_img');",
+              "    }",
+              "    else",
+              "    {",
+              "        PlayerScienceRank['HolesToNextRankLeft'] = 0;",
+              "",
+              "        rank_image_num = 4;",
+              "        ShipCustomShipInfoData(Player(), 'Science_rank_infos', 1, rank_image_num);",
+              "        ShipCustomShipInfoData(Player(), 'Science_rank_infos', 2, -10);",
+              "        ShipCustomShipInfoTextData(Player(), 'Science_rank_infos', 1, CT('RankScientific.' + PlayerScienceRank['CurrentRank'] + '.Text'));",
+              "        ShipCustomShipInfoTextData(Player(), 'Science_rank_infos', 2, CT('RankScientific.' + PlayerScienceRank['CurrentRank'] + '.Name'));",
+              "        ",
+              "        InterfaceState('Ship', 'CustomRankImage_2_NR', 0);",
+              "        InterfaceImage('Ship', 'CustomRankImageL_' + rank_image_num, 'GI,Bm.FormShip2.2SR4_img');",
+              "    }",
+              "",
+              "    Sound('Sound.Repair');",
+              "}"          
+          ]        
         }      
       ],
       "Planets":      
@@ -4901,7 +4993,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  540,
+          "Pos.x":  360,
           "Pos.y":  610,
           "Parent":  -1,
           "#":  222,
@@ -4971,7 +5063,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  430,
+          "Pos.x":  300,
           "Pos.y":  640,
           "Parent":  -1,
           "#":  227,
@@ -5050,6 +5142,48 @@
           "Code":          
           [
               "1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  300,
+          "Pos.y":  550,
+          "Parent":  -1,
+          "#":  242,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "CurrentMods('Expansion\\ExpScienceRanks')"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -10,
+          "Pos.y":  20,
+          "Parent":  241,
+          "#":  244,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "~ShipFindCustomShipInfoByType(Player(), 'Science_rank_infos')"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  10,
+          "Pos.y":  20,
+          "Parent":  241,
+          "#":  246,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "ShipFindCustomShipInfoByType(Player(), 'Science_rank_infos') == -1"          
           ]        
         }      
       ],
@@ -7269,6 +7403,62 @@
       "Type":  "TGraphLink",
       "Begin":  238,
       "End":  236,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  243,
+      "End":  245,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  242,
+      "End":  241,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  241,
+      "End":  244,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  244,
+      "End":  243,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  241,
+      "End":  246,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  246,
+      "End":  247,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  245,
+      "End":  222,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  72,
+      "End":  242,
       "Nom":  0,
       "Arrow":  true    
     }  
