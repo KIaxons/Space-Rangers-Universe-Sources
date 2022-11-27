@@ -1,15 +1,15 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  13,
-  "ViewPos.y":  -121,
+  "ViewPos.x":  16,
+  "ViewPos.y":  -163,
   "ScriptName":  "Mod_ExpScienceRanks",
   "ScriptFileOut":  "H:\\Mod_ExpScienceRanks.scr",
   "ScriptTextOut":  "H:\\Mod_ExpScienceRanks.txt",
-  "GraphPoint.Count":  201,
+  "GraphPoint.Count":  203,
   "GraphLink.Count":  138,
   "GraphRectText.Count":  6,
-  "Variables.Count":  65,
+  "Variables.Count":  67,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
@@ -601,7 +601,7 @@
           "Pos.y":  -70,
           "Parent":  -1,
           "#":  6,
-          "Total.Lines":  51,
+          "Total.Lines":  52,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -635,7 +635,8 @@
               "                            InterfaceState('Ship', 'CustomRankImage_2_NR', 1);",
               "                            //А также выводим соответствующее уведомление",
               "                            temp_str_2 = CT('RankScientific.' + (PlayerScienceRank['CurrentRank'] + 1) + '.Name');",
-              "                            NewsAdd(\"Вы исследовали уже <PlayerScienceRank['HolesExplored']> Чёрных Дыр и потому представлены к новой учёной степени <temp_str_2>.<br>Торжественную церемонию и вручение подарка вам организуют на любой научной базе.<br>До тех пор подсчёт исследованных вами Чёрных Дыр приостановлен.\");",
+              "                            tstr1 = PlayerScienceRank['HolesExplored'];",
+              "                            NewsAdd(\"Вы исследовали уже <tstr1> Чёрных Дыр и потому представлены к новой учёной степени <temp_str_2>.<br>Торжественную церемонию и вручение подарка вам организуют на любой научной базе.<br>До тех пор подсчёт исследованных вами Чёрных Дыр приостановлен.\");",
               "                        }",
               "                        //Если пока ещё нет",
               "                        else",
@@ -2293,11 +2294,11 @@
               "if(!TempToDel)",
               "{",
               "    ArrayDelete(PlayerScienceRank, 0);",
-              "    ArrayAdd(PlayerScienceRank, 0, 'CurrentRank');",
+              "    ArrayAdd(PlayerScienceRank, cur_science_rank, 'CurrentRank');",
               "    ArrayAdd(PlayerScienceRank, 0, 'HolesExplored');",
               "    ArrayAdd(PlayerScienceRank, newarray(9), 'HolesToRankRequired');",
-              "    ArrayAdd(PlayerScienceRank, 0, 'HolesToNextRankLeft');",
-              "    ",
+              "    ArrayAdd(PlayerScienceRank, holes_left, 'HolesToNextRankLeft');",
+              "",
               "    PlayerScienceRank['HolesToRankRequired', 0] = int(CT('RankScientific.0.BlackHolesCount'));",
               "    PlayerScienceRank['HolesToRankRequired', 1] = int(CT('RankScientific.1.BlackHolesCount'));",
               "    PlayerScienceRank['HolesToRankRequired', 2] = int(CT('RankScientific.2.BlackHolesCount'));",
@@ -3703,6 +3704,28 @@
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "holes_left",
+          "Pos.x":  700,
+          "Pos.y":  -120,
+          "Parent":  -1,
+          "#":  201,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "cur_science_rank",
+          "Pos.x":  700,
+          "Pos.y":  -140,
+          "Parent":  -1,
+          "#":  202,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
         }      
       ]    
     }  
@@ -5025,8 +5048,8 @@
       "String":  ""    
     },
     {
-      "#":  "392",
-      "String":  "Вы исследовали уже <PlayerScienceRank["    
+      "#":  "393",
+      "String":  "Вы исследовали уже <0> Чёрных Дыр и потому представлены к новой учёной степени <1>.<br>Торжественную церемонию и вручение подарка вам организуют на любой научной базе.<br>До тех пор подсчёт исследованных вами Чёрных Дыр приостановлен."    
     },
     {
       "#":  "40",
