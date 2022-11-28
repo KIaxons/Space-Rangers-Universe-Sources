@@ -2459,7 +2459,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  158,
-          "Total.Lines":  18,
+          "Total.Lines":  19,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -2471,6 +2471,7 @@
               "",
               "//ShipDestroy(cur_ruin, 1); //Кусок старой реализации сокрытия базы :|",
               "TransferShip(cur_ruin, StarPlanets(GalaxyStar(2), 0));",
+              "OrderNone(cur_ruin); //Сбрасываем приказ с ЧД, чтобы отвязать её от всех кораблей",
               "",
               "dword player_star = ShipStar(Player());",
               "TransferShip(Player(), player_star);",
