@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -997,
-  "ViewPos.y":  -102,
+  "ViewPos.x":  -991,
+  "ViewPos.y":  -71,
   "ScriptName":  "Mod_ShuKlissan",
   "ScriptFileOut":  "H:\\Mod_ShuKlissan.scr",
   "ScriptTextOut":  "H:\\Mod_ShuKlissan.txt",
@@ -7440,7 +7440,7 @@
           "Pos.y":  0,
           "Parent":  -1,
           "#":  257,
-          "Total.Lines":  10,
+          "Total.Lines":  12,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -7452,6 +7452,8 @@
               "",
               "Ether(3, 'PirateClan.GalaxyConquered', \"Поработить Галактику.\");",
               "KlissanInvasion['KlissanControl.WasReceived'] = 1;",
+              "KlissanInvasion['NextNeurolinkReadyTurn'] = 0; //Сбрасываем таймер до спавна нейролинка, чтобы игрок мог, при желании, тут же начать атаку",
+              "",
               "KlissanInvasion['GalaxyPirateConquestBegan'] = 1;",
               "KlissanInvasion['EndingSequenceIsStarted'] = 1;"          
           ]        
@@ -7646,7 +7648,7 @@
           "Pos.y":  170,
           "Parent":  -1,
           "#":  261,
-          "Total.Lines":  10,
+          "Total.Lines":  12,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -7658,6 +7660,8 @@
               "",
               "Ether(3, 'Specagent.GalaxyFreed', \"Истребить остатки доминаторов.\");",
               "KlissanInvasion['KlissanControl.WasReceived'] = 1;",
+              "KlissanInvasion['NextNeurolinkReadyTurn'] = 0; //Сбрасываем таймер до спавна нейролинка, чтобы игрок мог, при желании, тут же начать атаку",
+              "",
               "KlissanInvasion['SpecagentFreedTheGalaxyEndingStage'] = 1;",
               "KlissanInvasion['EndingSequenceIsStarted'] = 1;"          
           ]        
