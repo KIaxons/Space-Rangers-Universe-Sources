@@ -82,11 +82,53 @@
           "Pos.y":  0,
           "Parent":  5,
           "#":  6,
-          "Total.Lines":  1,
+          "Total.Lines":  43,
           "Code.Type":  "Init",
           "Code":          
           [
-              "if(CurrentMods('Expansion\\ExpPanel')) IsExpPanelActive = 1;"          
+              "if(CurrentMods('Expansion\\ExpPanel')) IsExpPanelActive = 1;",
+              "",
+              "function PlayerBotActCode() //t_OnEnteringForm",
+              "{",
+              "    if(ScriptItemActionType(t_OnStep))",
+              "    {",
+              "        if(!IsExpPanelActive)",
+              "        {",
+              "            if(ShipOrder(Player()) == 5)",
+              "            {",
+              "                ExtremalTakeOff();",
+              "                FormChange(CurrentForm());",
+              "            }",
+              "        }",
+              "        else",
+              "        {",
+              "            if(!GTurnBrakeOff) //Включена автопромотка ходов в моде ExpPanel",
+              "            {",
+              "                if(ShipOrder(Player()) == 5)",
+              "                {",
+              "                    ExtremalTakeOff();",
+              "                    FormChange(CurrentForm());",
+              "                }",
+              "            }",
+              "        }",
+              "    }",
+              "    else //if(ScriptItemActionType(t_OnEnteringForm))",
+              "    {",
+              "        if(IsExpPanelActive)",
+              "        {",
+              "            if(GTurnBrakeOff) //Включена автопромотка ходов в моде ExpPanel",
+              "            {",
+              "                str cur_form = CurrentForm();",
+              "                if(cur_form == 'Planet' || cur_form == 'PlanetNO' || cur_form == 'RuinsTalk')",
+              "                {",
+              "                    while(ShipOrder(Player()) != 5) ButtonClick(cur_form, 'PM_EndTurn');",
+              "                    ExtremalTakeOff();",
+              "                    FormChange(cur_form);",
+              "                }",
+              "            }",
+              "        }",
+              "    }",
+              "}"          
           ]        
         },
         {
@@ -96,23 +138,33 @@
           "Pos.y":  0,
           "Parent":  6,
           "#":  8,
-          "Total.Lines":  16,
+          "Total.Lines":  26,
           "Code.Type":  "Turn",
           "Code":          
           [
               "if(IsAutoBotCheatOn)",
               "{",
               "    if(CurrentForm() == 'StarMap') ButtonClick('StarMap', 'CenterShip');",
-              "    else if(!IsExpPanelActive)",
+              "",
+              "    if(!IsExpPanelActive)",
               "    {",
+              "        if(ShipOrder(Player()) == 5)",
+              "        {",
+              "            ExtremalTakeOff();",
+              "            FormChange(cur_form);",
+              "        }",
+              "    ",
               "        if(CurrentMods('Expansion\\ExpPanel')) IsExpPanelActive = 1;",
               "    }",
               "    else",
               "    {",
-              "        if(GTurnBrakeOff) //Включена автопромотка ходов в моде ExpPanel",
+              "        if(!GTurnBrakeOff) //Включена автопромотка ходов в моде ExpPanel",
               "        {",
-              "            if(GetShipPlanet(Player())) ButtonClick('Planet', 'PM_EndTurn');",
-              "            else if(GetShipRuins(Player())) ButtonClick('RuinsTalk', 'PM_EndTurn');",
+              "            if(ShipOrder(Player()) == 5)",
+              "            {",
+              "                ExtremalTakeOff();",
+              "                FormChange(cur_form);",
+              "            }",
               "        }",
               "    }",
               "}"          
@@ -125,7 +177,7 @@
           "Pos.y":  0,
           "Parent":  11,
           "#":  14,
-          "Total.Lines":  12,
+          "Total.Lines":  7,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -135,12 +187,7 @@
               "    exit;",
               "}",
               "",
-              "ShipFreeFlight(CurShip);",
-              "if(ShipOrder(CurShip) == 5)",
-              "{",
-              "    FormChange('Hangar');",
-              "    ButtonClick('Hangar', 'ButTakeOff');",
-              "}"          
+              "ShipFreeFlight(CurShip);"          
           ]        
         },
         {
@@ -150,7 +197,7 @@
           "Pos.y":  0,
           "Parent":  12,
           "#":  15,
-          "Total.Lines":  27,
+          "Total.Lines":  22,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -175,12 +222,7 @@
               "ShipStatus(CurShip, 1, 0);",
               "ShipStatus(CurShip, 2, 0);",
               "",
-              "ShipFreeFlight(CurShip);",
-              "if(ShipOrder(CurShip) == 5)",
-              "{",
-              "    FormChange('Hangar');",
-              "    ButtonClick('Hangar', 'ButTakeOff');",
-              "}"          
+              "ShipFreeFlight(CurShip);"          
           ]        
         },
         {
@@ -190,7 +232,7 @@
           "Pos.y":  0,
           "Parent":  13,
           "#":  16,
-          "Total.Lines":  27,
+          "Total.Lines":  22,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -215,12 +257,7 @@
               "ShipStatus(CurShip, 1, 100);",
               "ShipStatus(CurShip, 2, 0);",
               "",
-              "ShipFreeFlight(CurShip);",
-              "if(ShipOrder(CurShip) == 5)",
-              "{",
-              "    FormChange('Hangar');",
-              "    ButtonClick('Hangar', 'ButTakeOff');",
-              "}"          
+              "ShipFreeFlight(CurShip);"          
           ]        
         },
         {
@@ -230,7 +267,7 @@
           "Pos.y":  0,
           "Parent":  17,
           "#":  18,
-          "Total.Lines":  27,
+          "Total.Lines":  22,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -255,12 +292,7 @@
               "ShipStatus(CurShip, 1, 0);",
               "ShipStatus(CurShip, 2, 100);",
               "",
-              "ShipFreeFlight(CurShip);",
-              "if(ShipOrder(CurShip) == 5)",
-              "{",
-              "    FormChange('Hangar');",
-              "    ButtonClick('Hangar', 'ButTakeOff');",
-              "}"          
+              "ShipFreeFlight(CurShip);"          
           ]        
         }      
       ],
@@ -432,7 +464,7 @@
           "TakeItem":  -1,
           "TakeAllItem":  false,
           "OnTalk":  "",
-          "OnActCode":  "",
+          "OnActCode":  "[t_OnEnteringForm|]\r\nPlayerBotActCode();",
           "EType":  1,
           "EUnique":  "",
           "EMsg":  ""        
@@ -450,7 +482,7 @@
           "TakeItem":  -1,
           "TakeAllItem":  false,
           "OnTalk":  "",
-          "OnActCode":  "",
+          "OnActCode":  "[t_OnEnteringForm|]\r\nPlayerBotActCode();",
           "EType":  1,
           "EUnique":  "",
           "EMsg":  ""        
@@ -468,7 +500,7 @@
           "TakeItem":  -1,
           "TakeAllItem":  false,
           "OnTalk":  "",
-          "OnActCode":  "",
+          "OnActCode":  "[t_OnEnteringForm|]\r\nPlayerBotActCode();",
           "EType":  1,
           "EUnique":  "",
           "EMsg":  ""        
@@ -486,7 +518,7 @@
           "TakeItem":  -1,
           "TakeAllItem":  false,
           "OnTalk":  "",
-          "OnActCode":  "",
+          "OnActCode":  "[t_OnEnteringForm|]\r\nPlayerBotActCode();",
           "EType":  1,
           "EUnique":  "",
           "EMsg":  ""        
