@@ -96,7 +96,7 @@
           "Pos.y":  0,
           "Parent":  6,
           "#":  8,
-          "Total.Lines":  19,
+          "Total.Lines":  16,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -109,13 +109,10 @@
               "    }",
               "    else",
               "    {",
-              "        if(GetShipPlanet(Player()))",
+              "        if(GTurnBrakeOff) //Включена автопромотка ходов в моде ExpPanel",
               "        {",
-              "            if(GTurnBrakeOff) ButtonClick('Planet', 'PM_EndTurn');",
-              "        }",
-              "        else if(GetShipRuins(Player()))",
-              "        {",
-              "            if(GTurnBrakeOff) ButtonClick('RuinsTalk', 'PM_EndTurn');",
+              "            if(GetShipPlanet(Player())) ButtonClick('Planet', 'PM_EndTurn');",
+              "            else if(GetShipRuins(Player())) ButtonClick('RuinsTalk', 'PM_EndTurn');",
               "        }",
               "    }",
               "}"          
@@ -128,7 +125,7 @@
           "Pos.y":  0,
           "Parent":  11,
           "#":  14,
-          "Total.Lines":  8,
+          "Total.Lines":  12,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -139,7 +136,11 @@
               "}",
               "",
               "ShipFreeFlight(CurShip);",
-              "if(ShipOrder(CurShip) == 5) ExtremalTakeOff();"          
+              "if(ShipOrder(CurShip) == 5)",
+              "{",
+              "    FormChange('Hangar');",
+              "    ButtonClick('Hangar', 'ButTakeOff');",
+              "}"          
           ]        
         },
         {
@@ -149,13 +150,23 @@
           "Pos.y":  0,
           "Parent":  12,
           "#":  15,
-          "Total.Lines":  13,
+          "Total.Lines":  27,
           "Code.Type":  "Turn",
           "Code":          
           [
               "if(!IsAutoBotCheatOn)",
               "{",
               "    ChangeState('NormalState');",
+              "    exit;",
+              "}",
+              "else if(IsAutoBotCheatOn == 3)",
+              "{",
+              "    ChangeState('AutoPirateState');",
+              "    exit;",
+              "}",
+              "else if(IsAutoBotCheatOn == 4)",
+              "{",
+              "    ChangeState('AutoWarriorState');",
               "    exit;",
               "}",
               "",
@@ -165,7 +176,11 @@
               "ShipStatus(CurShip, 2, 0);",
               "",
               "ShipFreeFlight(CurShip);",
-              "if(ShipOrder(CurShip) == 5) ExtremalTakeOff();"          
+              "if(ShipOrder(CurShip) == 5)",
+              "{",
+              "    FormChange('Hangar');",
+              "    ButtonClick('Hangar', 'ButTakeOff');",
+              "}"          
           ]        
         },
         {
@@ -175,13 +190,23 @@
           "Pos.y":  0,
           "Parent":  13,
           "#":  16,
-          "Total.Lines":  13,
+          "Total.Lines":  27,
           "Code.Type":  "Turn",
           "Code":          
           [
               "if(!IsAutoBotCheatOn)",
               "{",
               "    ChangeState('NormalState');",
+              "    exit;",
+              "}",
+              "else if(IsAutoBotCheatOn == 2)",
+              "{",
+              "    ChangeState('AutoTraderState');",
+              "    exit;",
+              "}",
+              "else if(IsAutoBotCheatOn == 4)",
+              "{",
+              "    ChangeState('AutoWarriorState');",
               "    exit;",
               "}",
               "",
@@ -191,7 +216,11 @@
               "ShipStatus(CurShip, 2, 0);",
               "",
               "ShipFreeFlight(CurShip);",
-              "if(ShipOrder(CurShip) == 5) ExtremalTakeOff();"          
+              "if(ShipOrder(CurShip) == 5)",
+              "{",
+              "    FormChange('Hangar');",
+              "    ButtonClick('Hangar', 'ButTakeOff');",
+              "}"          
           ]        
         },
         {
@@ -201,13 +230,23 @@
           "Pos.y":  0,
           "Parent":  17,
           "#":  18,
-          "Total.Lines":  13,
+          "Total.Lines":  27,
           "Code.Type":  "Turn",
           "Code":          
           [
               "if(!IsAutoBotCheatOn)",
               "{",
               "    ChangeState('NormalState');",
+              "    exit;",
+              "}",
+              "else if(IsAutoBotCheatOn == 2)",
+              "{",
+              "    ChangeState('AutoTraderState');",
+              "    exit;",
+              "}",
+              "else if(IsAutoBotCheatOn == 3)",
+              "{",
+              "    ChangeState('AutoPirateState');",
               "    exit;",
               "}",
               "",
@@ -217,7 +256,11 @@
               "ShipStatus(CurShip, 2, 100);",
               "",
               "ShipFreeFlight(CurShip);",
-              "if(ShipOrder(CurShip) == 5) ExtremalTakeOff();"          
+              "if(ShipOrder(CurShip) == 5)",
+              "{",
+              "    FormChange('Hangar');",
+              "    ButtonClick('Hangar', 'ButTakeOff');",
+              "}"          
           ]        
         }      
       ],
