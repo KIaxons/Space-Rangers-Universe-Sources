@@ -45,13 +45,16 @@ ShipInfo ^{
 						02=else //if(ScriptItemActParam() == 11)
 						02 ^{
 							//Проверка активации автопропуска хода после взлёта или выхода из гипера на случай подключённого мода, превращающего игрока в бота - AutoBot
-							01=if(ShipInNormalSpace(Player()))
+							01=if(GTurnBrakeOff)
 							01 ^{
-								01=if(IsScriptActive('Mod_AutoBot'))
+								01=if(ShipInNormalSpace(Player()))
 								01 ^{
-									01=if(IsAutoBotCheatOn)
+									01=if(IsScriptActive('Mod_AutoBot'))
 									01 ^{
-										01=FilmFlags(3, 1);
+										01=if(IsAutoBotCheatOn)
+										01 ^{
+											01=FilmFlags(3, 1);
+										}
 									}
 								}
 							}
