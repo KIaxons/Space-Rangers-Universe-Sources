@@ -38,23 +38,35 @@ ShipInfo ^{
 							01=if(GTurnBrakeOff)
 							01 ^{
 								//Если игрок не находится на планете, станции, в гипере или в ЧД
-								//(т.к. после взлёта ему по любому придется отдать какой-то приказ), то принудительно пропускаем ход
+								//(т.к. после взлёта ему по-любому придётся отдать какой-то приказ), то принудительно пропускаем ход
 								01=if(ShipInNormalSpace(Player())) FilmFlags(3, 1);
 							}
 						}
-						02=else
+						02=else //if(ScriptItemActParam() == 11)
 						02 ^{
-							01=int cnt = ShipItems(Player());
-							02=for(int i = 1; i < cnt; i = i + 1)
-							02 ^{
+							//Проверка активации автопропуска хода после взлёта или выхода из гипера на случай подключённого мода, превращающего игрока в бота - AutoBot
+							01=if(ShipInNormalSpace(Player()))
+							01 ^{
+								01=if(IsScriptActive('Mod_AutoBot'))
+								01 ^{
+									01=if(IsAutoBotCheatOn)
+									01 ^{
+										01=FilmFlags(3, 1);
+									}
+								}
+							}
+						
+							02=int cnt = ShipItems(Player());
+							03=for(int i = 1; i < cnt; i = i + 1)
+							03 ^{
 								01=dword item = ShipItems(Player(), i);
 								02=if(!ItemIsInUse(item)) continue;
 								03=dur = dur + ItemDurability(item);
 								04=dur_count = dur_count + 1;
 							}
-							03=cnt = ShipSlots(Player(), 2);
-							04=for(i = 1; i <= cnt; i = i + 1)
-							04 ^{
+							04=cnt = ShipSlots(Player(), 2);
+							05=for(i = 1; i <= cnt; i = i + 1)
+							05 ^{
 								01=item = ShipEqInSlot(Player(), t_Artefact, i);
 								02=if(item)
 								02 ^{
@@ -62,7 +74,7 @@ ShipInfo ^{
 									02=dur_count = dur_count + 1;
 								}
 							}
-							05=if(dur_count >= 0)
+							06=if(dur_count >= 0)
 							06 ^{
 								01=dur = dur + (100 - HullDamage(Player()));
 								02=dur_count = dur_count + 1;
@@ -76,7 +88,8 @@ ShipInfo ^{
                     }
                     04=else if(ScriptItemActionType(t_OnEnteringForm))
                     04 ^{
-                        01=if(CurrentForm() == 'Ship')
+						01=str cur_form = CurrentForm();
+                        02=if(cur_form == 'Ship')
                         02 ^{
                             01=if(InterfaceState('StarMap', 'fix_info_window') == 1) InterfaceState('StarMap', 'fix_info_window', 0);
 							02=InterfaceState('Ship', 'HideShipRankPanel', 1);
@@ -96,15 +109,16 @@ ShipInfo ^{
 								02=InterfaceState('Ship', 'GateBurnAnim', 0);
 							}
                         }
-                        03=if(CurrentForm() == 'StarMap')
-                        04 ^{
+                        03=else if(cur_form == 'StarMap')
+                        03 ^{
                             01=InterfaceSize('StarMap', 'HPbar_s', 0, 141 - 141 * HullDamage(Player()) / 100);
                             02=InterfacePos('StarMap', 'HPbar_s', 0, 141 * HullDamage(Player()) / 100, 0);
                         }
                     }
                     05=else if(ScriptItemActionType(t_OnLeavingForm))
                     05 ^{
-                        01=if(CurrentForm() == 'Ship')
+						01=cur_form = CurrentForm();
+                        02=if(cur_form == 'Ship')
                         02 ^{
                             01=for(i = 1; i < 10; i = i + 1)
                             02 ^{
@@ -159,7 +173,10 @@ ShipInfo ^{
                             10=InterfacePos('StarMap', 'fix_info_butt_a', -dur, 0, 0);
 							11=InterfaceState('Ship', 'HideShipRankPanel', 0);
                         }
-                        03=if(CurrentForm() == 'StarMap' && InterfaceState('StarMap', 'fix_info_window') == 1) InterfaceState('StarMap', 'fix_info_window', 0);
+                        03=else if(cur_form == 'StarMap')
+						03 ^{
+							01=if(InterfaceState('StarMap', 'fix_info_window') == 1) InterfaceState('StarMap', 'fix_info_window', 0);
+						}
                     }
                     06=else if(ScriptItemActionType(t_OnScan))
                     06 ^{
