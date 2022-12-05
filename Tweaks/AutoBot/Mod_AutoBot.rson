@@ -171,13 +171,13 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "if(!IsExpPanelActive)",
-              "{",
-              "    if(CurrentMods('Expansion\\ExpPanel')) IsExpPanelActive = 1;",
-              "}",
-              "",
               "if(IsAutoBotCheatOn)",
               "{",
+              "    if(!IsExpPanelActive)",
+              "    {",
+              "        if(CurrentMods('Expansion\\ExpPanel')) IsExpPanelActive = 1;",
+              "    }",
+              "",
               "    if(CurrentForm() == 'StarMap') ButtonClick('StarMap', 'CenterShip');",
               "}"          
           ]        
