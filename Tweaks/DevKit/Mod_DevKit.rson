@@ -1576,15 +1576,11 @@
           "Pos.y":  60,
           "Parent":  -1,
           "#":  87,
-          "Total.Lines":  6,
+          "Total.Lines":  2,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
-              "if(GetTalkShip())",
-              "{",
-              "    if(ShipTypeN(GetTalkShip()) == t_Pirate && ShipOwner(GetTalkShip()) == PirateClan) AddDialogInject('KillThisShit', '', 'Сдохни, тупорылая сука!!!1', 50);",
-              "    else AddDialogInject('KillThisShit', '', 'Убейся.', 50);",
-              "}",
+              "if(GetTalkShip()) AddDialogInject('KillThisShit', '', 'Убейся.', 50);",
               "AddDialogInject('DevKit', '', \"DevKit\", 1000);"          
           ]        
         },
