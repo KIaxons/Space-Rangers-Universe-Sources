@@ -169,7 +169,7 @@
           "Pos.y":  340,
           "Parent":  -1,
           "#":  4,
-          "Total.Lines":  1113,
+          "Total.Lines":  1107,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -785,9 +785,6 @@
               "            ItemSize(hull, round(1.0 * ItemSize(hull) * (1.0 + (1.0 * GeneralDiffLevel))));",
               "            //И значительно снижаем получаемый от астероидов урон",
               "            ShipSpecialBonuses(ship, bonResistAsteroid, 75);",
-              "",
-              "            //Вешаем блядоинфошку на каждую станцию с дополнительными залпами, просто чтобы эти залпы в слотах подсвечивать (иначе никак)",
-              "            ShipAddCustomShipInfo(ship, 'GunBatteryLabelsSwitcherForRuinsBlyat');",
               "        }",
               "        else if(num_type == t_Warrior)",
               "        {",
@@ -1143,9 +1140,6 @@
               "            ItemSize(hull, round(ItemSize(hull) * (1.0 + (1.0 * GeneralDiffLevel))));",
               "            //И значительно снижаем получаемый от астероидов урон",
               "            ShipSpecialBonuses(ship, bonResistAsteroid, 75);",
-              "",
-              "            //Вешаем блядоинфошку на каждую станцию с дополнительными залпами, просто чтобы эти залпы в слотах подсвечивать (иначе никак)",
-              "            ShipAddCustomShipInfo(ship, 'GunBatteryLabelsSwitcherForRuinsBlyat');",
               "        }",
               "        //Перебор всех пиратских \"новорождённых\" судов",
               "        else",

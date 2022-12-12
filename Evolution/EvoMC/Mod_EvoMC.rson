@@ -638,7 +638,7 @@
           "Pos.y":  370,
           "Parent":  -1,
           "#":  45,
-          "Total.Lines":  12,
+          "Total.Lines":  13,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -652,8 +652,9 @@
               "    urine = 0;",
               "    vDays = 0;",
               "}",
+              "",
               "//Обнуляем счётчик купленных медикаментов",
-              "if(!findsubstr(GameDateTxtByTurn(CurTurn()), \"1 января\")) CurMed = 0;"          
+              "if(!findsubstr(GameDateTxtByTurn(CurTurn()), CT('CalendarDateTexts.January1'))) CurMed = 0;"          
           ]        
         },
         {
@@ -1979,7 +1980,7 @@
           "Type":  "TVar",
           "Name":  "i",
           "Pos.x":  -80,
-          "Pos.y":  300,
+          "Pos.y":  320,
           "Parent":  -1,
           "#":  120,
           "Var.Type":  "Int",
@@ -2842,7 +2843,7 @@
       "fsUnderline":  false    
     }  
   ],
-  "BlockPar.EC.Total.Strings":  12,
+  "BlockPar.EC.Total.Strings":  11,
   "BlockPar.EC":  
   [
     {
@@ -2888,10 +2889,6 @@
     {
       "#":  "140",
       "String":  "Ну хоть пробничек дайте! Что... не положено... Ну тогда пока"    
-    },
-    {
-      "#":  "141",
-      "String":  "1 января"    
     }  
   ]
 }
