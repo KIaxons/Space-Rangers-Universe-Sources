@@ -539,7 +539,7 @@
           "Pos.y":  400,
           "Parent":  -1,
           "#":  104,
-          "Msg":  "Хорошо, в таком случае вы должны знать, что в процессе извлечения у <TextCorr4> практически не будет права на ошибку. Все действия должны быть совершены очень быстро и чётко, а чтобы снизить риск потери и микромодуля и предмета, мы заранее определяем, на сохранении чего должны сосредоточиться наши эксперты в случае возникновения внезапных осложнений.\r\nИтак, вероятность сохранить <item_name> при возникновении проблем составляет <exlude_type><clr>%<clrEnd>, а сохранение микромодуля <module_name> будет возможно лишь с <exlude_type_2><clr>%<clrEnd> шансом. Вы должны выбрать, <Player>, и я настоятельно рекомендую подойти к этому выбору со всей ответственностью.",
+          "Msg":  "Хорошо, в таком случае вы должны знать, что в процессе извлечения у <TextCorr4> практически не будет права на ошибку. Все действия должны быть совершены очень быстро и чётко, а чтобы снизить риск потери и микромодуля и предмета, мы заранее определяем, на сохранении чего должны сосредоточиться наши эксперты в случае возникновения осложнений.\r\nВы должны выбрать, <Player>, и я настоятельно рекомендую подойти к этому выбору со всей серьёзностью.",
           "DMsg.Num":  "13"        
         },
         {
@@ -800,7 +800,7 @@
           "Pos.y":  370,
           "Parent":  -1,
           "#":  9,
-          "Total.Lines":  156,
+          "Total.Lines":  157,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -808,23 +808,24 @@
               "ArrayClear(items);",
               "input = '';",
               "//Ищем на корабле игрока",
-              "for(i=0; i<ShipItems(Player()); i=i+1)",
+              "for(i = 0; i < ShipItems(Player()); i = i + 1)",
               "{",
-              "    cur_item=ShipItems(Player(),i);",
-              "    if(EqModule(cur_item)<0) continue;",
+              "    cur_item = ShipItems(Player(), i);",
+              "    if(EqModule(cur_item) < 0) continue;",
               "    if(ItemInScript(cur_item) == 1)",
               "    {",
               "        if(~EqSpecial(cur_item))",
               "        {",
               "            //Исключение всех скриптовых предметов, кроме тех, что имеют особую пометку в бонусе",
-              "            if(CT('MicroModuls.'+BonusNumInCfg(EqSpecial(cur_item))+'.ScriptItemIgnore')!=1) continue;",
+              "            if(CT('MicroModuls.' + BonusNumInCfg(EqSpecial(cur_item)) + '.ScriptItemIgnore') != 1) continue;",
               "        }",
               "        else continue;",
               "    }",
+              "",
               "    //Оставляем в списке только оборудование и пушки",
-              "    if(ItemType(cur_item)<=t_Hull || ItemType(cur_item)>t_CustomWeapon) continue;",
+              "    if(ItemType(cur_item) <= t_Hull || ItemType(cur_item) > t_CustomWeapon) continue;",
               "    //Исключаем предметы с ММ, имеющим пометку \"Не извлекаемый\"",
-              "    if(CT('MicroModuls.'+BonusNumInCfg(EqModule(cur_item))+'.NotRemovable')==1) continue;",
+              "    if(CT('MicroModuls.' + BonusNumInCfg(EqModule(cur_item)) + '.NotRemovable') == 1) continue;",
               "    //Исключаем высокоуровневое нестандартное",
               "    if(!ShipCanRepairEq(Player(),cur_item)) continue;",
               "    if(EqCustomFaction(cur_item)!='' && ItemLevel(cur_item)>GalaxyTechLevel()) continue;",
@@ -1622,15 +1623,14 @@
           "Pos.y":  370,
           "Parent":  -1,
           "#":  99,
-          "Total.Lines":  5,
+          "Total.Lines":  4,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "exlude_type=90;",
-              "exlude_type_2=45;",
-              "cost=(cost*26)/10;",
-              "variable=0;",
-              "TextCorr4='</color>'+\"специалистов\";"          
+              "exlude_type = 65;",
+              "exlude_type_2 = 30;",
+              "cost = (cost * 26) / 10;",
+              "TextCorr4 = '</color>' + \"специалистов\";"          
           ]        
         },
         {
@@ -1640,15 +1640,14 @@
           "Pos.y":  400,
           "Parent":  -1,
           "#":  100,
-          "Total.Lines":  5,
+          "Total.Lines":  4,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "exlude_type=65;",
-              "exlude_type_2=30;",
-              "cost=(cost*16)/10;",
-              "variable=2;",
-              "TextCorr4='</color>'+\"специалистов\";"          
+              "exlude_type = 45;",
+              "exlude_type_2 = 15;",
+              "cost = (cost * 16) / 10;",
+              "TextCorr4 = '</color>' + \"специалистов\";"          
           ]        
         },
         {
@@ -1658,15 +1657,14 @@
           "Pos.y":  430,
           "Parent":  -1,
           "#":  101,
-          "Total.Lines":  5,
+          "Total.Lines":  4,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "exlude_type=40;",
-              "exlude_type_2=20;",
-              "cost=(cost*6)/10;",
-              "variable=4;",
-              "TextCorr4='</color>'+\"стажёров\";"          
+              "exlude_type = 20;",
+              "exlude_type_2 = 5;",
+              "cost = (cost * 6) / 10;",
+              "TextCorr4 = '</color>' + \"стажёров\";"          
           ]        
         },
         {
@@ -1680,7 +1678,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "exlude=1;"          
+              "exlude = 1;"          
           ]        
         },
         {
@@ -1694,7 +1692,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "exlude=0;"          
+              "exlude = 0;"          
           ]        
         },
         {
@@ -1704,12 +1702,19 @@
           "Pos.y":  400,
           "Parent":  -1,
           "#":  110,
-          "Total.Lines":  45,
+          "Total.Lines":  56,
           "Code.Type":  "Turn",
           "Code":          
           [
               "tint = 0;",
               "tint2 = FindBonusByCustomTag('EvoSB_AcrynSeed');",
+              "",
+              "int add_diff = PortionInDiapason(GalaxyDiffLevels(7), 50, 500, 10, 0); //Учитываем настройку сложности удачи",
+              "add_diff = add_diff + PortionInDiapason(GalaxyTechLevel(), 3, 8, 1, 5); //Учитываем ГТУ",
+              "add_diff = add_diff + PortionInDiapason(BonusPriority(EqModule(cur_module)), 100, 0, 10, 0); //Учитываем крутость микромодуля",
+              "",
+              "exlude_type = exlude_type + add_diff;",
+              "exlude_type = exlude_type_2 + add_diff;",
               "",
               "//Проверяем, нет ли на предмете уже записанного зерна",
               "//Если есть, то используем его",
@@ -1722,7 +1727,7 @@
               "    tint = substr(tint, count(tint) - 6);",
               "    while(tint <= 999) tint = abs(tint * tint + 1);",
               "    ItemExtraSpecialsAddByType(cur_item, tint2, tint);",
-              "    tint = abs((j * j * SB_id + j / 10) % 100) + 1;",
+              "    tint = Rnd(1, 100, tint);",
               "}",
               "//Если нет (ММ ещё ни разу не извлекались), то используем Id предмета",
               "else",
@@ -1732,23 +1737,27 @@
               "    tint = substr(tint, count(tint) - 6);",
               "    while(tint <= 999) tint = abs(tint * tint + 1);",
               "    ItemExtraSpecialsAddByType(cur_item, tint2, tint);",
-              "    tint = abs((j * j * SB_id + j / 10) % 100) + 1;",
+              "    tint = Rnd(1, 100, tint);",
               "}",
               "",
               "//Если для сохранения был выбран предмет",
               "if(exlude)",
               "{",
+              "    //Стараемся сохранить предмет",
               "    if(tint <= exlude_type) item_ok = 1; //Предмет цел",
               "    else item_ok = -1; //Предмет потерян",
-              "    if(tint <= (5 - variable) + round(1.0 * GalaxyTechLevel() / 2)) module_ok = 1; //Модуль цел",
+              "",
+              "    if(tint <= round(0.1 * exlude_type)) module_ok = 1; //Модуль цел",
               "    else module_ok = -1; //Модуль потерян",
               "}",
               "//Если для сохранения был выбран микромодуль",
               "else",
               "{",
+              "    //Стараемся сохранить модуль",
               "    if(tint <= exlude_type_2) module_ok = 1; //Модуль цел",
               "    else module_ok = -1; //Модуль потерян",
-              "    if(tint <= (7 - variable) + round(1.0 * GalaxyTechLevel() / 2)) item_ok = 1; //Предмет цел",
+              "",
+              "    if(tint <= round(0.1 * exlude_type_2)) item_ok = 1; //Предмет цел",
               "    else item_ok = -1; //Предмет потерян",
               "}",
               "",
@@ -1780,9 +1789,9 @@
               "",
               "FreeItem(cur_module);",
               "Sound('Sound.QuestCancel');",
-              "TextCorr3='';",
-              "if(ArrayDim(items)>2) TextCorr3='</color>'+\"<br>\"+\"И хотя время сейчас крайне неподходящее, но по долгу службы я обязан задать этот вопрос. Не желаете ли вы попытать удачу с извлечением другого модуля?\";",
-              "TextCorr2='</color>'+\"Разумеется, <Player>. Это ваше полное право.\";"          
+              "TextCorr3 = '';",
+              "if(ArrayDim(items) > 2) TextCorr3 = '</color>' + \"<br>\" + \"И хотя время сейчас крайне неподходящее, но по долгу службы я обязан задать этот вопрос. Не желаете ли вы попытать удачу с извлечением другого модуля?\";",
+              "TextCorr2 = '</color>' + \"Разумеется, <Player>. Это ваше полное право.\";"          
           ]        
         },
         {
@@ -1792,30 +1801,32 @@
           "Pos.y":  400,
           "Parent":  -1,
           "#":  126,
-          "Total.Lines":  20,
+          "Total.Lines":  22,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ModuleToEquipment(-1,cur_item);",
+              "ModuleToEquipment(-1, cur_item);",
               "FreeItem(cur_module);",
-              "if(ItemType(cur_item)!=t_Hull)",
+              "if(ItemType(cur_item) != t_Hull)",
               "{",
-              "    tint2=Rnd(73,100);",
-              "    ItemDurability(cur_item,ItemDurability(cur_item)-tint2);",
-              "    if(ItemDurability(cur_item)<0)ItemDurability(cur_item,0);",
+              "    tint2 = RndObject(73, 100, cur_ruin);",
+              "    ItemDurability(cur_item, ItemDurability(cur_item) - tint2);",
+              "    if(ItemDurability(cur_item) < 0) ItemDurability(cur_item, 0);",
               "}",
               "else",
               "{",
-              "    tint2=round((0.01*Rnd(73,100))*HullHP(cur_item));",
-              "    HullHP(cur_item,HullHP(cur_item)-tint2);",
-              "    if(HullHP(cur_item)<=0)HullHP(cur_item,1);",
+              "    tint2 = round((0.01 * RndObject(73, 100, cur_ruin)) * HullHP(cur_item));",
+              "    HullHP(cur_item, HullHP(cur_item) - tint2);",
+              "    if(HullHP(cur_item) <= 0) HullHP(cur_item, 1);",
               "}",
               "Sound('Sound.Repair');",
-              "if(TextCorr4=='</color>'+\"специалистов\")TextCorr4='</color>'+\"специалисты\";",
-              "else TextCorr4='</color>'+\"стажёры\";",
-              "TextCorr3='';",
-              "if(ArrayDim(items)>2) TextCorr3='</color>'+\"<br>\"+\"Понимаю, что новости невесёлые, но может вы всё же захотите испытать удачу в извлечении другого модуля?\";",
-              "TextCorr2='</color>'+\"Ну как хотите. Мы будем рады, если вы решите ещё что-нибудь извлечь.\";"          
+              "",
+              "if(TextCorr4 == '</color>' + \"специалистов\") TextCorr4 = '</color>' + \"специалисты\";",
+              "else TextCorr4 = '</color>' + \"стажёры\";",
+              "",
+              "TextCorr3 = '';",
+              "if(ArrayDim(items) > 2) TextCorr3 = '</color>' + \"<br>\" + \"Понимаю, что новости невесёлые, но может вы всё же захотите испытать удачу в извлечении другого модуля?\";",
+              "TextCorr2 = '</color>' + \"Ну как хотите. Мы будем рады, если вы решите ещё что-нибудь извлечь.\";"          
           ]        
         },
         {
@@ -1843,9 +1854,9 @@
               "",
               "AddItemToShip(Player(), cur_module);",
               "Sound('Sound.Repair');",
-              "TextCorr3='';",
-              "if(ArrayDim(items)>2) TextCorr3='</color>'+' '+\"Не желаете попытать удачу в извлечении другого модуля?\";",
-              "TextCorr2='</color>'+\"Ну как хотите. Мы будем рады, если вы решите ещё что-нибудь извлечь.\";"          
+              "TextCorr3 = '';",
+              "if(ArrayDim(items) > 2) TextCorr3 = '</color>' + ' ' + \"Не желаете попытать удачу в извлечении другого модуля?\";",
+              "TextCorr2 = '</color>' + \"Ну как хотите. Мы будем рады, если вы решите ещё что-нибудь извлечь.\";"          
           ]        
         },
         {
@@ -1855,16 +1866,17 @@
           "Pos.y":  380,
           "Parent":  -1,
           "#":  128,
-          "Total.Lines":  6,
+          "Total.Lines":  7,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ModuleToEquipment(-1,cur_item);",
-              "AddItemToShip(Player(),cur_module);",
+              "ModuleToEquipment(-1, cur_item);",
+              "AddItemToShip(Player(), cur_module);",
               "Sound('Sound.QuestOk');",
-              "TextCorr3='';",
-              "if(ArrayDim(items)>2) TextCorr3='</color>'+\"<br>\"+\"Желаете вновь попытать удачу в извлечении?\";",
-              "TextCorr2='</color>'+\"Ну как хотите. Видеть счастливые улыбки на лицах клиентов нам всегда в радость.\";"          
+              "TextCorr3 = '';",
+              "",
+              "if(ArrayDim(items) > 2) TextCorr3 = '</color>' + \"<br>\" + \"Желаете вновь попытать удачу в извлечении?\";",
+              "TextCorr2 = '</color>' + \"Ну как хотите. Видеть счастливые улыбки на лицах клиентов нам всегда в радость.\";"          
           ]        
         },
         {
@@ -2486,7 +2498,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ArrayDim(items)<2 && !tempDwd"          
+              "ArrayDim(items) < 2 && !tempDwd"          
           ]        
         },
         {
@@ -2500,7 +2512,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ArrayDim(items)>1 || tempDwd"          
+              "ArrayDim(items) > 1 || tempDwd"          
           ]        
         },
         {
@@ -2514,7 +2526,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())>=(cost*26)/10"          
+              "ShipMoney(Player()) >= (cost * 26) / 10"          
           ]        
         },
         {
@@ -2528,7 +2540,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())>=(cost*16)/10"          
+              "ShipMoney(Player()) >= (cost * 16) / 10"          
           ]        
         },
         {
@@ -2542,7 +2554,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())>=(cost*6)/10"          
+              "ShipMoney(Player()) >= (cost * 6) / 10"          
           ]        
         },
         {
@@ -2780,7 +2792,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ArrayDim(items)>2"          
+              "ArrayDim(items) > 2"          
           ]        
         },
         {
@@ -2794,7 +2806,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())<(cost*26)/10"          
+              "ShipMoney(Player()) < (cost * 26) / 10"          
           ]        
         },
         {
@@ -2808,7 +2820,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())<(cost*6)/10"          
+              "ShipMoney(Player()) < (cost * 6) / 10"          
           ]        
         },
         {
@@ -2822,7 +2834,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())<(cost*16)/10"          
+              "ShipMoney(Player()) < (cost * 16) / 10"          
           ]        
         },
         {
@@ -4971,7 +4983,7 @@
     },
     {
       "#":  "226",
-      "String":  "Хорошо, в таком случае вы должны знать, что в процессе извлечения у <0> практически не будет права на ошибку. Все действия должны быть совершены очень быстро и чётко, а чтобы снизить риск потери и микромодуля и предмета, мы заранее определяем, на сохранении чего должны сосредоточиться наши эксперты в случае возникновения внезапных осложнений.<br>Итак, вероятность сохранить <1> при возникновении проблем составляет <2><clr>%<clrEnd>, а сохранение микромодуля <3> будет возможно лишь с <4><clr>%<clrEnd> шансом. Вы должны выбрать, <Player>, и я настоятельно рекомендую подойти к этому выбору со всей ответственностью."    
+      "String":  "Хорошо, в таком случае вы должны знать, что в процессе извлечения у <0> практически не будет права на ошибку. Все действия должны быть совершены очень быстро и чётко, а чтобы снизить риск потери и микромодуля и предмета, мы заранее определяем, на сохранении чего должны сосредоточиться наши эксперты в случае возникновения осложнений.<br>Вы должны выбрать, <Player>, и я настоятельно рекомендую подойти к этому выбору со всей серьёзностью."    
     },
     {
       "#":  "232",
