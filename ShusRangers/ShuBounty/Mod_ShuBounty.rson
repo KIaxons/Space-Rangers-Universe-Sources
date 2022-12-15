@@ -1,15 +1,15 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  496,
-  "ViewPos.y":  249,
+  "ViewPos.x":  451,
+  "ViewPos.y":  326,
   "ScriptName":  "Mod_ShuBounty",
   "ScriptFileOut":  "H:\\Mod_ShuBounty.scr",
   "ScriptTextOut":  "H:\\Mod_ShuBounty.txt",
-  "GraphPoint.Count":  133,
+  "GraphPoint.Count":  134,
   "GraphLink.Count":  81,
   "GraphRectText.Count":  5,
-  "Variables.Count":  37,
+  "Variables.Count":  38,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
@@ -641,10 +641,15 @@
           "Pos.y":  560,
           "Parent":  -1,
           "#":  25,
-          "Total.Lines":  71,
+          "Total.Lines":  76,
           "Code.Type":  "Turn",
           "Code":          
           [
+              "if(!IsShuMercsHQEnabled)",
+              "{",
+              "    if(CurrentMods('ShusRangers\\ShuMercsHQ')) IsShuMercsHQEnabled = 1;",
+              "}",
+              "",
               "//Раздаём случайные юзлесы всем новым кораблям",
               "if(GalaxyShipId() > lastShipId)",
               "{",
@@ -2691,6 +2696,17 @@
           "#":  132,
           "Var.Type":  "Int",
           "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "IsShuMercsHQEnabled",
+          "Pos.x":  590,
+          "Pos.y":  530,
+          "Parent":  -1,
+          "#":  133,
+          "Var.Type":  "Int",
+          "Init":  "0",
           "Global":  false        
         }      
       ]    

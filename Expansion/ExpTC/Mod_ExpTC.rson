@@ -1576,7 +1576,7 @@
           "Pos.y":  -50,
           "Parent":  -1,
           "#":  113,
-          "Total.Lines":  125,
+          "Total.Lines":  126,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -1630,9 +1630,10 @@
               "    {",
               "        if(item_type < t_Hull || item_type > t_CustomWeapon) continue;",
               "        if(!ItemImprovement(cur_bh_item)) continue;",
-              "        if(EqSpecial(cur_bh_item) > -1)",
+              "        //Также исключаем все акриновые предметы с пометкой \"Не улучшаемый\"",
+              "        if(~item_acryn)",
               "        {",
-              "            if(BonusPriority(EqSpecial(cur_bh_item)) < 10) continue;",
+              "            if(CT('MicroModuls.' + BonusNumInCfg(item_acryn) + '.BlockImp')) continue;",
               "        }",
               "    }",
               "    //Исключения для уникального улучшения оборудования и оружия",
