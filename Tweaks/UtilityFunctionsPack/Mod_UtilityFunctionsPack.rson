@@ -6,10 +6,10 @@
   "ScriptName":  "Mod_UtilityFunctionsPack",
   "ScriptFileOut":  "H:\\Mod_UtilityFunctionsPack.scr",
   "ScriptTextOut":  "H:\\Mod_UtilityFunctionsPack.txt",
-  "GraphPoint.Count":  37,
+  "GraphPoint.Count":  38,
   "GraphLink.Count":  4,
   "GraphRectText.Count":  0,
-  "Variables.Count":  31,
+  "Variables.Count":  32,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
@@ -68,7 +68,7 @@
           "Pos.y":  0,
           "Parent":  0,
           "#":  6,
-          "Total.Lines":  85,
+          "Total.Lines":  86,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -145,6 +145,7 @@
               "IdToHole = ImportedFunction('UtilityFunctions', 'IdToHole');",
               "ShipSubrace = ImportedFunction('UtilityFunctions', 'ShipSubrace');",
               "ShipNearbyShips = ImportedFunction('UtilityFunctions', 'ShipNearbyShips');",
+              "ShipPrevStar = ImportedFunction('UtilityFunctions', 'ShipPrevStar');",
               "GetShipScriptName = ImportedFunction('UtilityFunctions', 'GetShipScriptName');",
               "ShipJoinToScript = ImportedFunction('UtilityFunctions', 'ShipJoinToScript');",
               "GetScriptNoKlingMarksFromStar = ImportedFunction('UtilityFunctions', 'GetScriptNoKlingMarksFromStar');",
@@ -492,7 +493,7 @@
           "Name":  "GetShipScriptName",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  27,
+          "Parent":  37,
           "#":  28,
           "Var.Type":  "Unknown",
           "Init":  "",
@@ -583,6 +584,17 @@
           "Parent":  -1,
           "#":  36,
           "Var.Type":  "Array",
+          "Init":  "",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "ShipPrevStar",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  27,
+          "#":  37,
+          "Var.Type":  "Unknown",
           "Init":  "",
           "Global":  true        
         }      
