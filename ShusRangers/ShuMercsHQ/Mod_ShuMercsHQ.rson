@@ -10913,7 +10913,7 @@
               "        if(!tdwd3) tstr1 = '</color>' + Format(CT('Script.Mod_ShuMercs.PlayerMercsTalks.GreetingWhileEarning' + RndObject(1, 9, cur_ship)), '<MercName'+'>', Format(Name(cur_ship), PlayerHQMainArray['Main', 'OrganisationName'] + ' ', '', ''));",
               "        else",
               "        {",
-              "            tint3 = ShipIsPartner(tdwd3, 1); //Дата завершения партнёрского контракта наёмника",
+              "            tint3 = CurTurn() + ShipIsPartner(tdwd3, 1); //Дата завершения партнёрского контракта наёмника",
               "            tstr1 = '</color>' + Format(CT('Script.Mod_ShuMercs.PlayerMercsTalks.GreetingWhilePartner'), '<TargetShip'+'>', ShipName(tdwd3), '<TargetShipFull'+'>', Name(tdwd3), '<EndPartnerDate'+'>', GameDateTxtByTurn(tint3));",
               "        }",
               "    }",
