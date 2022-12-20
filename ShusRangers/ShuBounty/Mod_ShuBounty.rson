@@ -2231,7 +2231,7 @@
               "            if(ShipTypeN(ship) == t_Ranger) ship_stats = ship_stats + ':' + ShipSubType(ship) + ':' + ShipRank(ship) + ',' + GetShipPirateRank(ship) + ':' + ShipCustomFaction(ship) + ':' + ShipStatus(ship, 0) + ',' + ShipStatus(ship, 1) + ',' + ShipStatus(ship, 2)",
               "            else ship_stats = ship_stats + ':' + ShipSubType(ship) + ':' + ShipRank(ship) + ',' + GetShipPirateRank(ship) + ':' + ShipCustomFaction(ship)",
               "            int implants_infos = ShipFindCustomShipInfoByType(ship, 'bioMM_NPC');",
-              "            if(~implants_infos) ship_stats = ship_stats + ':' + ShipCustomShipInfoData(ship, implants_infos, 1) + '*' + ShipCustomShipInfoData(ship, implants_infos, 2) + '*' + ShipCustomShipInfoData(ship, implants_infos, 3) + '*' + ShipCustomShipInfoTextData(ship, implants_infos, 1) + '*' + ShipCustomShipInfoTextData(ship, implants_infos, 2) + '*' + ShipCustomShipInfoTextData(ship, implants_infos, 3);",
+              "            if(~implants_infos) ship_stats = ship_stats + ':' + ShipCustomShipInfoData(ship, implants_infos, 1) + '*' + ShipCustomShipInfoData(ship, implants_infos, 2) + '*' + ShipCustomShipInfoData(ship, implants_infos, 3) + '*' + substr(ShipCustomShipInfoTextData(ship, implants_infos, 1), 0, 1) + '*' + ShipCustomShipInfoTextData(ship, implants_infos, 2) + '*' + ShipCustomShipInfoTextData(ship, implants_infos, 3);",
               "            ScriptItemTextData(cur_item, 2, ship_stats);",
               "",
               "            str pilot_name = CT('UselessItems.ShuBounty_EscapePod.Description.' + ship_type);",
