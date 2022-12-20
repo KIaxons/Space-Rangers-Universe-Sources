@@ -783,7 +783,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  19,
-          "Total.Lines":  1075,
+          "Total.Lines":  1076,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -1167,7 +1167,8 @@
               "            AddImplantBonuses(ship, CT(tstr + '.Bonus_' + j), int(CT(tstr + '.Bonus_' + j + '_var')));",
               "        }",
               "",
-              "        implant_info_str = implant_info_str + ',' + suitable_implant_num + '.' + slot + '.' + quality;",
+              "        if(implant_info_str != '') implant_info_str = implant_info_str + ',' + suitable_implant_num + '.' + slot + '.' + quality;",
+              "        else implant_info_str = '' + suitable_implant_num + '.' + slot + '.' + quality;",
               "    }",
               "",
               "    //Добавляем инфошку и заполняем описание (также запоминаем всё ещё свободные части тела и ГТУ, на котором произошло добавление биомодулей)",
