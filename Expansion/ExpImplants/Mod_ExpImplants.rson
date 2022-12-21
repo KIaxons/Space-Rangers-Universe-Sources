@@ -783,7 +783,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  19,
-          "Total.Lines":  1105,
+          "Total.Lines":  1102,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -949,7 +949,7 @@
               "        else if(roll <= ImplantChanceArray[11] - race) bioms_to_install = round(1.0 * bioms_at_max / 1.5);",
               "        else if(roll <= ImplantChanceArray[12] - race) bioms_to_install = round(1.0 * bioms_at_max / 2.0);",
               "        else if(roll <= ImplantChanceArray[13] - race) bioms_to_install = round(1.0 * bioms_at_max / 3.0);",
-              "        else bioms_to_install = 1;",
+              "        else bioms_to_install = 1; //Но не менее одного биомодуля",
               "",
               "        //SFT('Chances:');",
               "        //SFT('' + (ImplantChanceArray[9] - race)  + ' for ' + bioms_at_max);",
@@ -957,9 +957,6 @@
               "        //SFT('' + (ImplantChanceArray[11] - race) + ' for ' + round(1.0 * bioms_at_max / 1.5));",
               "        //SFT('' + (ImplantChanceArray[12] - race) + ' for ' + round(1.0 * bioms_at_max / 2.0));",
               "        //SFT('' + (ImplantChanceArray[13] - race) + ' for ' + round(1.0 * bioms_at_max / 3.0));",
-              "",
-              "        //Но не менее одного биомодуля",
-              "        if(bioms_to_install <= 0) bioms_to_install = 1;",
               "",
               "        //SFT('To install: ' + bioms_to_install);",
               "    }",
