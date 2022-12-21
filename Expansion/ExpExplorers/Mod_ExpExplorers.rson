@@ -205,7 +205,7 @@
           "Pos.y":  140,
           "Parent":  -1,
           "#":  6,
-          "Total.Lines":  133,
+          "Total.Lines":  134,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -261,11 +261,11 @@
               "",
               "        if(ShipType(tdwd1) == 'Ranger' || ShipType(tdwd1) == 'RangerPirate')",
               "        {",
-              "            if(Rnd(1, 100) > TotalBHExplorersPercent) continue; //Ограничиваем процент рейнджеров, летающих по ЧД",
+              "            if(RndObject(1, 100, tdwd1) > TotalBHExplorersPercent) continue; //Ограничиваем процент рейнджеров, летающих по ЧД",
               "",
               "            //Добавляем рейнджеру инфошку эксплорэра",
               "            //Задаём рандомное число посещённых ЧД для рейнджеров, которые уже существовали к моменту появления игрока",
-              "            infos = ShipAddCustomShipInfo(tdwd1, 'BraveExplorer', 'NoShow', 0, 0, Rnd(3, 12));",
+              "            infos = ShipAddCustomShipInfo(tdwd1, 'ExpExplorers_ExplorerInfo', 'NoShow', 0, 0, RndObject(3, 12, tdwd1));",
               "            //Если подключён мод ExpScienceRanks, то проверяем, нужно ли выдавать рейнджеру учёные звания",
               "            if(BlockExist('RankScientific'))",
               "            {",
@@ -274,7 +274,7 @@
               "                //TextData3 >= 0 && TextData3 <= 8 - собственно, сами звания",
               "",
               "                //Данный рейнджер не получит никаких учёных званий вообще",
-              "                if(ShipType(tdwd1) == 'RangerPirate' || Rnd(1, 100) <= 30)",
+              "                if(ShipType(tdwd1) == 'RangerPirate' || RndObject(1, 100, tdwd1) <= 30)",
               "                {",
               "                    ShipCustomShipInfoTextData(0, infos, 2, 'NoRank');",
               "                    ShipCustomShipInfoTextData(0, infos, 3, -1);",
@@ -316,7 +316,7 @@
               "            else",
               "            {",
               "                //Рейнджер не получит учёных званий даже после подключения ExpScienceRanks",
-              "                if(ShipType(tdwd1) == 'RangerPirate' || Rnd(1, 100) <= 30)",
+              "                if(ShipType(tdwd1) == 'RangerPirate' || RndObject(1, 100, tdwd1) <= 30)",
               "                {",
               "                    ShipCustomShipInfoTextData(0, infos, 2, 'NoRank');",
               "                    ShipCustomShipInfoTextData(0, infos, 3, -1);",
@@ -328,6 +328,7 @@
               "                    ShipCustomShipInfoTextData(0, infos, 3, 0);",
               "                }",
               "            }",
+              "",
               "            //Даём рейнджеру особый тип, если число посещённых им ЧД уже со старта превышает 10",
               "            if(countBH >= 10)",
               "            {",
@@ -370,7 +371,7 @@
               "",
               "            if(RndObject(1, 100, tdwd1) > TotalBHExplorersPercent) continue; //Ограничиваем процент рейнджеров, летающих по ЧД",
               "            //Добавляем рейнджеру инфошку исследователя",
-              "            infos = ShipAddCustomShipInfo(tdwd1, 'BraveExplorer', 'NoShow', 0, 0, 0);",
+              "            infos = ShipAddCustomShipInfo(tdwd1, 'ExpExplorers_ExplorerInfo', 'NoShow', 0, 0, 0);",
               "",
               "            //Если подключён мод ExpScienceRanks, то запоминаем стартовую информацию о следующем и текущем звании",
               "            //TextData3 == -1 - полный блок на получение и обладание учёными званиями",
@@ -491,7 +492,7 @@
               "                    //Добавляем автореген за каждого экипированного младшего дроида",
               "                    ABShipModifiers(tdwd2, 'regen', 100 * ArtefactTypeInUse(cur_ship, t_ArtefactDroid));",
               "                    //Ставим кораблю метку, что он попал в ЧД вместе с игроком",
-              "                    tint1 = ShipFindCustomShipInfoByType(cur_ship, 'BraveExplorer');",
+              "                    tint1 = ShipFindCustomShipInfoByType(cur_ship, 'ExpExplorers_ExplorerInfo');",
               "                    if(~tint1)",
               "                    {",
               "                        //Если данный корабль является партнёром игрока, то артефактов после боя он не получит",
@@ -1248,7 +1249,7 @@
           "Code":          
           [
               "//Разблокируем кнопку закрытия формы диалога, если опция группового приказа недоступна",
-              "if(ArrayDim(tarr) < 2)InterfaceState('Talk','Close',3);"          
+              "if(ArrayDim(tarr) < 2) InterfaceState('Talk', 'Close', 3);"          
           ]        
         },
         {
@@ -1263,7 +1264,7 @@
           "Code":          
           [
               "//Разблокируем кнопку закрытия формы диалога, если опция группового приказа недоступна",
-              "if(ArrayDim(tarr) < 2)InterfaceState('Talk','Close',3);"          
+              "if(ArrayDim(tarr) < 2) InterfaceState('Talk', 'Close', 3);"          
           ]        
         }      
       ],
