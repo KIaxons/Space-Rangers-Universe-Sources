@@ -2314,7 +2314,7 @@
           "Pos.y":  0,
           "Parent":  2,
           "#":  17,
-          "Total.Lines":  1983,
+          "Total.Lines":  1985,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -3813,8 +3813,10 @@
               "    {",
               "        dword target = ScriptItemActObject1();",
               "        if(ObjectType(target) != 5) exit;",
-              "        int owner = ShipOwner(target);",
-              "        if(owner > Gaal && owner != PirateClan) exit;",
+              "        int tint = ShipTypeN(target);",
+              "        if(tint == t_Kling || tint > t_Warrior) exit;",
+              "        //int tint = ShipOwner(target);",
+              "        //if(tint > Gaal && tint != PirateClan) exit;",
               "        if(ShipInScript(target, 0))",
               "        {",
               "            if(ShipCustomFaction(target) == 'Klissan') exit;",
