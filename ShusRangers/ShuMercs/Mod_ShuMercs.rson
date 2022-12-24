@@ -2112,7 +2112,7 @@
               "",
               "    //Накидываем ботам халявного опыта (распределяют пускай сами)",
               "    ShipFreeExp(ship, ShipFreeExp(ship) + 600 * GTL);",
-              "    SetShipExpByType(ship, GetShipExpByType(ship) + 600 * GTL);",
+              "    SetShipExpByType(ship, GetShipExpByType(ship) + 600 * GTL, 0);",
               "    //Унижаем наёмникам лидерство, чтобы они не могли нанимать другие корабли",
               "    ShipSkill(ship, 'Leadership', 0);",
               "    ShipSpecialBonuses(ship, bonSkill6, -30);",

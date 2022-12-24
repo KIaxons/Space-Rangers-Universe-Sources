@@ -882,7 +882,7 @@
               "Ether(4, '', Format(CT('Script.Mod_RevTerrorist.RewardEther'), '#0#', ShortName(Player()), '#1#', bkName));",
               "//Начисляем опыт за задание",
               "ShipFreeExp(Player(), ShipFreeExp(Player()) + tmp);",
-              "SetShipExpByType(Player(), GetShipExpByType(Player()) + tmp);",
+              "SetShipExpByType(Player(), GetShipExpByType(Player()) + tmp, 0);",
               "//Выдаем игроку наградной ММ",
               "AddItemToShip(Player(), CreateMM(mmReward[0]));",
               "//Выводим БЦ и игрока из скрипта",
