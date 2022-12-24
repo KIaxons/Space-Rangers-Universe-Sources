@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -445,
-  "ViewPos.y":  -394,
+  "ViewPos.x":  -513,
+  "ViewPos.y":  -440,
   "ScriptName":  "Mod_ExpPilotBridge",
   "ScriptFileOut":  "H:\\Mod_ExpPilotBridge.scr",
   "ScriptTextOut":  "H:\\Mod_ExpPilotBridge.txt",
@@ -8680,7 +8680,7 @@
           "Pos.y":  -220,
           "Parent":  -1,
           "#":  497,
-          "Total.Lines":  16,
+          "Total.Lines":  17,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
@@ -8690,7 +8690,8 @@
               "money_quest=money_quest+EQuestReward;",
               "ShipMoney(Player(),ShipMoney(Player())+EQuestReward);",
               "exp_quest=exp_quest+EQuestExpReward;",
-              "ShipFreeExp(Player(),ShipFreeExp(Player())+EQuestExpReward);",
+              "ShipFreeExp(Player(), ShipFreeExp(Player()) + EQuestExpReward);",
+              "SetShipExpByType(Player(), GetShipExpByType(Player()) + EQuestExpReward);",
               "RelationToRanger(GetShipPlanet(Player()),Player(),100);",
               "CustomEther('QuestOk',4,'CustomQuestKillBridge',\"<color=0,255,0>Задание успешно выполнено</color>\"+CT('FormInfo.br')+\"Заказчик - планета <color=255,240,100>\"+PlanetName(IdToPlanet(EQuestPlanet))+\"</color> (система <color=255,240,100>\"+StarName(PlanetToStar(IdToPlanet(EQuestPlanet)))+'</color>)'+CT('FormInfo.br')+' '+CT('FormInfo.br')+GEQuestText);",
               "EQuestReward=0;",

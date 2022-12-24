@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  451,
-  "ViewPos.y":  327,
+  "ViewPos.x":  455,
+  "ViewPos.y":  337,
   "ScriptName":  "Mod_ShuBounty",
   "ScriptFileOut":  "H:\\Mod_ShuBounty.scr",
   "ScriptTextOut":  "H:\\Mod_ShuBounty.txt",
@@ -2169,7 +2169,7 @@
           "Pos.y":  20,
           "Parent":  122,
           "#":  121,
-          "Total.Lines":  804,
+          "Total.Lines":  805,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -2270,6 +2270,7 @@
               "    }",
               "",
               "    ShipFreeExp(Player(), ShipFreeExp(Player()) + exp_points);",
+              "    SetShipExpByType(Player(), GetShipExpByType(Player()) + exp_points);",
               "    ShipMoney(Player(), ShipMoney(Player()) + reward);",
               "    if(will_revive) Sound('Sound.Repair');",
               "    else",
@@ -2944,7 +2945,7 @@
               "        //Текущее количество нераспределённого опыта корабля",
               "        else if(i == 6) ShipFreeExp(ship, int(cur_par));",
               "        //Количество опыта, полученного кораблём за всю игру (для рейнджеров определяет их место в рейтинге)",
-              "        else if(i == 7) GetShipExpByType(ship);",
+              "        else if(i == 7) SetShipExpByType(ship, int(cur_par));",
               "        //Отношение воскрешённого корабля к игроку (если при эвакуации оно было враждебным, то не повышаем до максимума)",
               "        else if(i == 8)",
               "        {",

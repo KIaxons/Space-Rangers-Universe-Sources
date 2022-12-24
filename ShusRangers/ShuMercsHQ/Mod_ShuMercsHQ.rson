@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -2039,
-  "ViewPos.y":  -253,
+  "ViewPos.x":  -1286,
+  "ViewPos.y":  -72,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
@@ -4158,7 +4158,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  4,
-          "Total.Lines":  1368,
+          "Total.Lines":  1370,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -5055,7 +5055,9 @@
               "        NoDropItem(hull, 1);",
               "",
               "        //Накидываем ботам халявного опыта (распределяют пускай сами)",
-              "        ShipFreeExp(ship, ShipFreeExp(ship) + (750 * PlayerHQMainArray['Main', 'HQLevel']) * PlayerHQMainArray['Mercs', 'PlanetsCount']);",
+              "        int add_exp = 750 * PlayerHQMainArray['Main', 'HQLevel'] * PlayerHQMainArray['Mercs', 'PlanetsCount'];",
+              "        ShipFreeExp(ship, ShipFreeExp(ship) + add_exp);",
+              "        SetShipExpByType(ship, GetShipExpByType(cur_ship) + add_exp);",
               "        //Унижаем наёмникам лидерство, чтобы они не могли нанимать другие корабли",
               "        ShipSkill(ship, 'Leadership', 0);",
               "        ShipSpecialBonuses(ship, bonSkill6, -30);",
@@ -9773,7 +9775,7 @@
           "Pos.y":  0,
           "Parent":  233,
           "#":  237,
-          "Total.Lines":  159,
+          "Total.Lines":  162,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -9810,7 +9812,10 @@
               "    if(~GetData(0))",
               "    {",
               "        ShipMoney(CurShip, round(1.2 * ShipMoney(CurShip)));",
-              "        ShipFreeExp(CurShip, round(1.2 * ShipFreeExp(CurShip)));",
+              "        int free_exp = ShipFreeExp(CurShip);",
+              "        int add_exp = round(0.2 * free_exp);",
+              "        ShipFreeExp(CurShip, free_exp + add_exp);",
+              "        SetShipExpByType(CurShip, GetShipExpByType(CurShip) + add_exp);",
               "    }",
               "    //Задание было прервано игроком, который атаковал охраняемый корабль",
               "    else",
@@ -9945,7 +9950,7 @@
           "Pos.y":  0,
           "Parent":  234,
           "#":  238,
-          "Total.Lines":  171,
+          "Total.Lines":  175,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -10084,7 +10089,11 @@
               "            FreeItem(GetItemFromShip(CurShip, cur_item));",
               "            SetData(0, 2);",
               "            ShipMoney(CurShip, round(1.4 * ShipMoney(CurShip)));",
-              "            ShipFreeExp(CurShip, round(1.4 * ShipFreeExp(CurShip)));",
+              "            int free_exp = ShipFreeExp(CurShip);",
+              "            int add_exp = round(0.4 * free_exp);",
+              "            ShipFreeExp(CurShip, free_exp + add_exp);",
+              "            SetShipExpByType(CurShip, GetShipExpByType(CurShip) + add_exp);",
+              "",
               "            //Также у наёмника имеется некоторый шанс получить рандомный артефакт",
               "            if(IsScriptActive('Mod_ExpExplorers'))",
               "            {",

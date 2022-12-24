@@ -1767,7 +1767,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  4,
-          "Total.Lines":  526,
+          "Total.Lines":  527,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -2112,6 +2112,7 @@
               "",
               "    //Накидываем ботам халявного опыта (распределяют пускай сами)",
               "    ShipFreeExp(ship, ShipFreeExp(ship) + 600 * GTL);",
+              "    SetShipExpByType(ship, GetShipExpByType(ship) + 600 * GTL);",
               "    //Унижаем наёмникам лидерство, чтобы они не могли нанимать другие корабли",
               "    ShipSkill(ship, 'Leadership', 0);",
               "    ShipSpecialBonuses(ship, bonSkill6, -30);",
