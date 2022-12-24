@@ -2988,7 +2988,7 @@
           "Pos.y":  20,
           "Parent":  126,
           "#":  123,
-          "Total.Lines":  15,
+          "Total.Lines":  17,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -2998,7 +2998,9 @@
               "{",
               "    dword item = temp_arr[i];",
               "",
-              "    str hand_over = Format(CT('Script.Mod_ShuBounty.EscapePodsDialog.PlayerHandOverPod'), '<Name'+'>', Format(ScriptItemTextData(item, 3), '255,240,100', '0,50,200', ''), '');",
+              "    str pilot_name = Format(ScriptItemTextData(item, 3), '255,240,100', '0,50,200', '');",
+              "    pilot_name = lowercase(substr(pilot_name, 0, 1)) + substr(pilot_name, 1);",
+              "    str hand_over = Format(CT('Script.Mod_ShuBounty.EscapePodsDialog.PlayerHandOverPod'), '<Name'+'>', pilot_name, '');",
               "    if(!UselessItemData(item, 3)) hand_over = hand_over + ' ' + CT('Script.Mod_ShuBounty.EscapePodsDialog.PlayerPilotIsDead');",
               "",
               "    InjectAnswer('EscapePodOff', hand_over, i);",
