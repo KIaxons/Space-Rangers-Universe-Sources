@@ -771,7 +771,7 @@
               "        cost = round(3.5 * GalaxyMoney(4, 4) * temp_int_2);",
               "        //Небольшая добавка к цене биомодуля в зависимости от высоты его номера в списке Lang",
               "        cost = cost + (cost * temp_int * 2) / 100;",
-              "        biomm_cost[i] = cost;",
+              "        biomm_cost[i] = round(cost, 100);",
               "    }",
               "}"          
           ]        
@@ -2883,7 +2883,7 @@
               "        if(temp_int) cost = cost - round(0.4 * cost);",
               "        //Повышаем цену в случае, если биомодуль нелегальный",
               "        else cost = cost + round(0.65 * cost);",
-              "        biomm_cost[i + 3] = cost;",
+              "        biomm_cost[i + 3] = round(cost, 10);",
               "    }",
               "}"          
           ]        
