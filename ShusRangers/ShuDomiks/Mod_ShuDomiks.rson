@@ -1,20 +1,20 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -763,
-  "ViewPos.y":  -263,
+  "ViewPos.x":  -629,
+  "ViewPos.y":  -242,
   "ScriptName":  "Mod_ShuDomiks",
   "ScriptFileOut":  "H:\\Mod_ShuDomiks.scr",
   "ScriptTextOut":  "H:\\Mod_ShuDomiks.txt",
-  "GraphPoint.Count":  298,
-  "GraphLink.Count":  245,
+  "GraphPoint.Count":  300,
+  "GraphLink.Count":  250,
   "GraphRectText.Count":  1,
   "Variables.Count":  76,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
   "States.Count":  21,
-  "Groups.Count":  18,
+  "Groups.Count":  23,
   "Places.Count":  1,
   "Items.Count":  1,
   "Ethers.Count":  0,
@@ -22,7 +22,7 @@
   "DialogMessages.Count":  27,
   "DialogAnswers.Count":  41,
   "Operations.Count":  43,
-  "Statements.Count":  60,
+  "Statements.Count":  57,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
@@ -385,7 +385,7 @@
           "Pos.x":  1070,
           "Pos.y":  110,
           "Parent":  -1,
-          "#":  258,
+          "#":  255,
           "Msg":  "Ага. Поехали!",
           "AMsg.Num":  "35"        
         },
@@ -395,7 +395,7 @@
           "Pos.x":  790,
           "Pos.y":  230,
           "Parent":  -1,
-          "#":  261,
+          "#":  258,
           "Msg":  "Я заплачу зеленым стажерам!",
           "AMsg.Num":  "36"        
         },
@@ -405,7 +405,7 @@
           "Pos.x":  610,
           "Pos.y":  230,
           "Parent":  -1,
-          "#":  264,
+          "#":  261,
           "Msg":  "Оплачиваю стоимость самых лучших спецов",
           "AMsg.Num":  "37"        
         },
@@ -415,7 +415,7 @@
           "Pos.x":  700,
           "Pos.y":  230,
           "Parent":  -1,
-          "#":  265,
+          "#":  262,
           "Msg":  "Пусть поработают обычные специалисты",
           "AMsg.Num":  "38"        
         },
@@ -425,7 +425,7 @@
           "Pos.x":  1060,
           "Pos.y":  0,
           "Parent":  -1,
-          "#":  271,
+          "#":  268,
           "Msg":  "А почему бы и нет? Давайте начнем!",
           "AMsg.Num":  "39"        
         },
@@ -435,7 +435,7 @@
           "Pos.x":  1220,
           "Pos.y":  40,
           "Parent":  -1,
-          "#":  273,
+          "#":  270,
           "Msg":  "А почему бы и нет? Давайте начнем!",
           "AMsg.Num":  "40"        
         }      
@@ -761,7 +761,7 @@
           "Pos.x":  1000,
           "Pos.y":  60,
           "Parent":  -1,
-          "#":  236        
+          "#":  233        
         },
         {
           "Type":  "TDialog",
@@ -769,7 +769,7 @@
           "Pos.x":  830,
           "Pos.y":  60,
           "Parent":  -1,
-          "#":  244        
+          "#":  241        
         }      
       ],
       "Groups":      
@@ -807,7 +807,7 @@
           "Type":  "TGroup",
           "Name":  "KellerClone",
           "Pos.x":  -140,
-          "Pos.y":  0,
+          "Pos.y":  -60,
           "Parent":  -1,
           "#":  108,
           "Owner":  62,
@@ -835,9 +835,9 @@
         {
           "Type":  "TGroup",
           "Name":  "DomRuinsTerron",
-          "Pos.x":  -140,
-          "Pos.y":  80,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  114,
           "#":  109,
           "Owner":  62,
           "Group.Type":  126,
@@ -980,9 +980,9 @@
         {
           "Type":  "TGroup",
           "Name":  "DomRuinsKeller",
-          "Pos.x":  -140,
-          "Pos.y":  60,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  115,
           "#":  114,
           "Owner":  62,
           "Group.Type":  126,
@@ -1010,7 +1010,7 @@
           "Type":  "TGroup",
           "Name":  "DomRuinsBlazer",
           "Pos.x":  -140,
-          "Pos.y":  40,
+          "Pos.y":  0,
           "Parent":  -1,
           "#":  115,
           "Owner":  62,
@@ -1213,7 +1213,7 @@
           "Type":  "TGroup",
           "Name":  "InhibitorDestroy",
           "Pos.x":  0,
-          "Pos.y":  30,
+          "Pos.y":  20,
           "Parent":  110,
           "#":  122,
           "Owner":  62,
@@ -1244,7 +1244,7 @@
           "Pos.x":  -140,
           "Pos.y":  220,
           "Parent":  -1,
-          "#":  283,
+          "#":  280,
           "Owner":  62,
           "Group.Type":  126,
           "CntShipMin":  0,
@@ -1271,9 +1271,154 @@
           "Type":  "TGroup",
           "Name":  "RattorsPack1",
           "Pos.x":  0,
-          "Pos.y":  -170,
+          "Pos.y":  -190,
           "Parent":  1,
-          "#":  293,
+          "#":  290,
+          "Owner":  62,
+          "Group.Type":  126,
+          "CntShipMin":  0,
+          "CntShipMax":  0,
+          "SpeedMin":  100,
+          "SpeedMax":  10000,
+          "Weapon":  0,
+          "CargoHook":  0,
+          "EmptySpace":  0,
+          "AddPlayer":  false,
+          "StatusTraderMin":  0,
+          "StatusTraderMax":  100,
+          "StatusWarriorMin":  0,
+          "StatusWarriorMax":  100,
+          "StatusPirateMin":  0,
+          "StatusPirateMax":  100,
+          "DistSearch":  10000,
+          "Dialog":  -1,
+          "StrengthMin":  "0",
+          "StrengthMax":  "0",
+          "Ruins":  ""        
+        },
+        {
+          "Type":  "TGroup",
+          "Name":  "RattorsPack2",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  290,
+          "#":  295,
+          "Owner":  62,
+          "Group.Type":  126,
+          "CntShipMin":  0,
+          "CntShipMax":  0,
+          "SpeedMin":  100,
+          "SpeedMax":  10000,
+          "Weapon":  0,
+          "CargoHook":  0,
+          "EmptySpace":  0,
+          "AddPlayer":  false,
+          "StatusTraderMin":  0,
+          "StatusTraderMax":  100,
+          "StatusWarriorMin":  0,
+          "StatusWarriorMax":  100,
+          "StatusPirateMin":  0,
+          "StatusPirateMax":  100,
+          "DistSearch":  10000,
+          "Dialog":  -1,
+          "StrengthMin":  "0",
+          "StrengthMax":  "0",
+          "Ruins":  ""        
+        },
+        {
+          "Type":  "TGroup",
+          "Name":  "RattorsPack3",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  295,
+          "#":  296,
+          "Owner":  62,
+          "Group.Type":  126,
+          "CntShipMin":  0,
+          "CntShipMax":  0,
+          "SpeedMin":  100,
+          "SpeedMax":  10000,
+          "Weapon":  0,
+          "CargoHook":  0,
+          "EmptySpace":  0,
+          "AddPlayer":  false,
+          "StatusTraderMin":  0,
+          "StatusTraderMax":  100,
+          "StatusWarriorMin":  0,
+          "StatusWarriorMax":  100,
+          "StatusPirateMin":  0,
+          "StatusPirateMax":  100,
+          "DistSearch":  10000,
+          "Dialog":  -1,
+          "StrengthMin":  "0",
+          "StrengthMax":  "0",
+          "Ruins":  ""        
+        },
+        {
+          "Type":  "TGroup",
+          "Name":  "RattorsPack4",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  296,
+          "#":  297,
+          "Owner":  62,
+          "Group.Type":  126,
+          "CntShipMin":  0,
+          "CntShipMax":  0,
+          "SpeedMin":  100,
+          "SpeedMax":  10000,
+          "Weapon":  0,
+          "CargoHook":  0,
+          "EmptySpace":  0,
+          "AddPlayer":  false,
+          "StatusTraderMin":  0,
+          "StatusTraderMax":  100,
+          "StatusWarriorMin":  0,
+          "StatusWarriorMax":  100,
+          "StatusPirateMin":  0,
+          "StatusPirateMax":  100,
+          "DistSearch":  10000,
+          "Dialog":  -1,
+          "StrengthMin":  "0",
+          "StrengthMax":  "0",
+          "Ruins":  ""        
+        },
+        {
+          "Type":  "TGroup",
+          "Name":  "RattorsPack5",
+          "Pos.x":  0,
+          "Pos.y":  80,
+          "Parent":  290,
+          "#":  298,
+          "Owner":  62,
+          "Group.Type":  126,
+          "CntShipMin":  0,
+          "CntShipMax":  0,
+          "SpeedMin":  100,
+          "SpeedMax":  10000,
+          "Weapon":  0,
+          "CargoHook":  0,
+          "EmptySpace":  0,
+          "AddPlayer":  false,
+          "StatusTraderMin":  0,
+          "StatusTraderMax":  100,
+          "StatusWarriorMin":  0,
+          "StatusWarriorMax":  100,
+          "StatusPirateMin":  0,
+          "StatusPirateMax":  100,
+          "DistSearch":  10000,
+          "Dialog":  -1,
+          "StrengthMin":  "0",
+          "StrengthMax":  "0",
+          "Ruins":  ""        
+        },
+        {
+          "Type":  "TGroup",
+          "Name":  "RattorsPack6",
+          "Pos.x":  0,
+          "Pos.y":  100,
+          "Parent":  290,
+          "#":  299,
           "Owner":  62,
           "Group.Type":  126,
           "CntShipMin":  0,
@@ -1305,7 +1450,7 @@
           "Pos.x":  330,
           "Pos.y":  270,
           "Parent":  -1,
-          "#":  235,
+          "#":  232,
           "Class":  5,
           "Item.Type":  0,
           "Size":  10,
@@ -1338,10 +1483,28 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  4,
-          "Total.Lines":  580,
+          "Total.Lines":  598,
           "Code.Type":  "Turn",
           "Code":          
           [
+              "//Удалить к марту 2023",
+              "if(ArrayDim(RattorsCodeDoneArr) < 2)",
+              "{",
+              "    ArrayDelete(RattorsCodeDoneArr, 0);",
+              "    ArrayAdd(RattorsCodeDoneArr, 0, 'State' + RattorsPack1);",
+              "    ArrayAdd(RattorsCodeDoneArr, 0, 'ActCode' + RattorsPack1);",
+              "    ArrayAdd(RattorsCodeDoneArr, 0, 'State' + RattorsPack2);",
+              "    ArrayAdd(RattorsCodeDoneArr, 0, 'ActCode' + RattorsPack2);",
+              "    ArrayAdd(RattorsCodeDoneArr, 0, 'State' + RattorsPack3);",
+              "    ArrayAdd(RattorsCodeDoneArr, 0, 'ActCode' + RattorsPack3);",
+              "    ArrayAdd(RattorsCodeDoneArr, 0, 'State' + RattorsPack4);",
+              "    ArrayAdd(RattorsCodeDoneArr, 0, 'ActCode' + RattorsPack4);",
+              "    ArrayAdd(RattorsCodeDoneArr, 0, 'State' + RattorsPack5);",
+              "    ArrayAdd(RattorsCodeDoneArr, 0, 'ActCode' + RattorsPack5);",
+              "    ArrayAdd(RattorsCodeDoneArr, 0, 'State' + RattorsPack6);",
+              "    ArrayAdd(RattorsCodeDoneArr, 0, 'ActCode' + RattorsPack6);",
+              "}",
+              "",
               "//Автоматическое обновление характеристик кастомных орудий",
               "//Срабатывает, только если параметр StatsVersion для ShuDomiks был изменён",
               "if(gunUpdateCheck != CT('Items.Weapon.CustomWeapon.StatsVersion.ShuDomiks'))",
@@ -1931,7 +2094,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  106,
-          "Total.Lines":  842,
+          "Total.Lines":  958,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -1939,6 +2102,20 @@
               "InventShuDomiksCustomGuns();",
               "gunUpdateCheck = CT('Items.Weapon.CustomWeapon.StatsVersion.ShuDomiks');",
               "RattorsAssemblyDelay = PortionInDiapason(AdvancedAdjustmentSet(3, -1), 50, 500, 75, 25); //Интервал, с которым верфи будут спавнить новые стаи ратторов",
+              "",
+              "ArrayDelete(RattorsCodeDoneArr, 0);",
+              "ArrayAdd(RattorsCodeDoneArr, 0, 'State' + RattorsPack1);",
+              "ArrayAdd(RattorsCodeDoneArr, 0, 'ActCode' + RattorsPack1);",
+              "ArrayAdd(RattorsCodeDoneArr, 0, 'State' + RattorsPack2);",
+              "ArrayAdd(RattorsCodeDoneArr, 0, 'ActCode' + RattorsPack2);",
+              "ArrayAdd(RattorsCodeDoneArr, 0, 'State' + RattorsPack3);",
+              "ArrayAdd(RattorsCodeDoneArr, 0, 'ActCode' + RattorsPack3);",
+              "ArrayAdd(RattorsCodeDoneArr, 0, 'State' + RattorsPack4);",
+              "ArrayAdd(RattorsCodeDoneArr, 0, 'ActCode' + RattorsPack4);",
+              "ArrayAdd(RattorsCodeDoneArr, 0, 'State' + RattorsPack5);",
+              "ArrayAdd(RattorsCodeDoneArr, 0, 'ActCode' + RattorsPack5);",
+              "ArrayAdd(RattorsCodeDoneArr, 0, 'State' + RattorsPack6);",
+              "ArrayAdd(RattorsCodeDoneArr, 0, 'ActCode' + RattorsPack6);",
               "",
               "//Функция для объявления и обновления кастомных орудий",
               "function InventShuDomiksCustomGuns()",
@@ -2698,48 +2875,150 @@
               "        ShipJoinToScript(rattor, 'Mod_ShuDomiks.RattorsPack1');",
               "        OrderLock(rattor, 1); //Раздавать приказы будет исключительно стейт",
               "        SetData(Id(target), 0, rattor);",
-              "        SetData(Id(dom_ruins), 0, rattor);",
+              "        SetData(Id(dom_ruins), 1, rattor);",
               "        TransferShip(rattor, dom_ruins);",
+              "        OrderTakeOff(rattor);",
               "    }",
               "}",
               "",
-              "function RattorsPackProceedAttack(int group_num, dword target, int attack_stage)",
+              "function RattorsPackProceedAttack(int cur_group, dword target, int attack_stage)",
               "{",
               "    //Первый этап - окружение цели, занятие позиций по периметру в зависимости от числа живых ратторов",
               "    //В процессе этого ведение синхронного попеременного непрерывного огня с целью сбить броню цели",
               "    if(!attack_stage)",
               "    {",
-              "        //Если раттор остался всего один, то он занимает позицию ровно перед целью",
-              "        int rattors_count = GroupCount(group_num);",
-              "        if(rattors_count == 1)",
+              "        int rattors_count = GroupCount(cur_group);",
+              "        for(int i = 1; i <= rattors_count; i = i + 1)",
               "        {",
-              "",
-              "        }",
-              "        //Иначе расставляем корабли, начиная с верхнего левого угла на",
-              "        else",
-              "        {",
-              "            int pos_angle_step = round(360.0 / rattors_count);",
-              "            float start_angle = ShipAngle(target) - 45.0;",
-              "            for(int i = 1; i <= rattors_count; i = i + 1)",
-              "            {",
-              "                float angle = (start_angle + pos_angle_step * i) * pi / 180;",
-              "                int dist = 50;",
-              "                int coordX = round(sin(angle) * dist) + CoordX(target);",
-              "                int coordY = round(cos(angle) * dist) + CoordY(target);",
-              "                OrderMove(GroupShip(group_num, i - 1), coordX, coordY);",
-              "            }",
-              "",
-              "        //float angle = 0.01 * RndObject(0, 200, BlackMarket);",
-              "        //int dist = PlanetOrbitRadius(StarPlanets(star, StarPlanets(star) - 1)) + RndObject(250, 450, BlackMarket); //Расстояние от самой дальней планеты, вычисляем радиус",
-              "        //int coordX = round(sin(angle * pi) * dist);",
-              "        //int coordY = round(cos(angle * pi) * dist);",
-              "",
-              "",
+              "            dword rattor = GroupShip(cur_group, i - 1);",
+              "            OrderFollowShip(rattor, target, 3);",
               "        }",
               "    }",
               "    else if(attack_stage == 1)",
               "    {",
               "",
+              "    }",
+              "}",
+              "",
+              "function RattorsPackActCode() //t_OnStep_0,1",
+              "{",
+              "    dword cur_ship = ScriptItemActShip();",
+              "    if(ScriptItemActionType(t_OnStep))",
+              "    {",
+              "        if(!ShipInNormalSpace(cur_ship)) exit; //До взлёта рассчитывать позиции вокруг цели не имеет смысла",
+              "        if(ShipOrder(cur_ship) != 6) exit;",
+              "        if(ShipOrderData1(cur_ship) != 3) exit; //Визуальный маркер тарана корабля",
+              "        //dword target = ShipOrderObj(cur_ship);//IdToShip(GetData(0, cur_ship), 1);",
+              "        dword target = Player();",
+              "",
+              "        int cur_group = ShipGroup(cur_ship);",
+              "        int cur_step = ScriptItemActParam();",
+              "        ",
+              "        if(RattorsCodeDoneArr['ActCode' + cur_group] == '' + CurTurn() + cur_step) exit; //В целях синхронизации и оптимизации управляем поведением всех кораблей стаи через код первого вызванного за ход корабля в группе",
+              "        RattorsCodeDoneArr['ActCode' + cur_group] = '' + CurTurn() + cur_step;",
+              "",
+              "        int dist = 85;",
+              "        dword first_rattor = GroupToShip(cur_group);",
+              "",
+              "        if(!cur_step)",
+              "        {",
+              "            //Считаем от первого корабля в группе",
+              "            if(Dist(first_rattor, target) > dist + 1) exit; //+1 для допуска небольшой погрешности",
+              "",
+              "            //Проверяем, что все ратторы находятся строго на своих местах вокруг цели",
+              "            int rattors_count = GroupCount(cur_group);",
+              "            int pos_angle_step = round(360.0 / rattors_count);",
+              "",
+              "            if(rattors_count == 2) float start_angle = ShipAngle(target) - 90.0;",
+              "            else if(rattors_count == 4) start_angle = ShipAngle(target) - 45.0;",
+              "            else start_angle = ShipAngle(target); //Если ратторов 1, 3 или 5",
+              "",
+              "            for(int i = 1; i <= rattors_count; i = i + 1)",
+              "            {",
+              "                float angle = (start_angle + pos_angle_step * i) * pi / 180;",
+              "                int coordX = round(sin(angle) * dist) + CoordX(target);",
+              "                int coordY = round(-cos(angle) * dist) + CoordY(target);",
+              "                dword rattor = GroupShip(cur_group, i - 1);",
+              "                if(CoordX(rattor) != coordX) exit;",
+              "                if(CoordY(rattor) != coordY) exit;",
+              "            }",
+              "",
+              "            //Если все живые ратторы на своих местах, начинаем внедрение в цель",
+              "            for(i = 1; i <= rattors_count; i = i + 1)",
+              "            {",
+              "                rattor = GroupShip(cur_group, i - 1);",
+              "                OrderLanding(rattor, target);",
+              "            }",
+              "        }",
+              "        else if(cur_step == 1)",
+              "        {",
+              "            //Считаем от первого корабля в группе",
+              "            int target_end_X = GetShipPath(target, 'EndCoordX');",
+              "            int target_end_Y = GetShipPath(target, 'EndCoordY');",
+              "            if(DistCoords(GetShipPath(first_rattor, 'EndCoordX'), GetShipPath(first_rattor, 'EndCoordY'), target_end_X, target_end_Y) > dist + 15) exit;",
+              "",
+              "            rattors_count = GroupCount(cur_group);",
+              "            pos_angle_step = round(360.0 / rattors_count);",
+              "",
+              "            if(rattors_count == 2) start_angle = GetShipPath(target, 'EndAngle') - 90.0;",
+              "            else if(rattors_count == 4) start_angle = GetShipPath(target, 'EndAngle') - 45.0;",
+              "            else start_angle = GetShipPath(target, 'EndAngle'); //Если ратторов 1, 3 или 5",
+              "",
+              "            for(i = 1; i <= rattors_count; i = i + 1)",
+              "            {",
+              "                angle = (start_angle + pos_angle_step * i) * pi / 180;",
+              "                coordX = round(sin(angle) * dist) + target_end_X;",
+              "                coordY = round(-cos(angle) * dist) + target_end_Y;",
+              "                rattor = GroupShip(cur_group, i - 1);",
+              "                SetShipPath(rattor, coordX, coordY);",
+              "                //ShipFreeFlight(rattor, 1);",
+              "            }",
+              "        }",
+              "        else //if(cur_step == 11)",
+              "        {",
+              "            //Считаем от первого корабля в группе",
+              "            if(Dist(first_rattor, target) > dist + 1) exit; //+1 для допуска небольшой погрешности",
+              "",
+              "            //Проверяем, что все ратторы находятся строго на своих местах вокруг цели",
+              "            rattors_count = GroupCount(cur_group);",
+              "            pos_angle_step = round(360.0 / rattors_count);",
+              "",
+              "            if(rattors_count == 2) start_angle = ShipAngle(target) - 90.0;",
+              "            else if(rattors_count == 4) start_angle = ShipAngle(target) - 45.0;",
+              "            else start_angle = ShipAngle(target); //Если ратторов 1, 3 или 5",
+              "",
+              "            for(i = 1; i <= rattors_count; i = i + 1)",
+              "            {",
+              "                angle = (start_angle + pos_angle_step * i) * pi / 180;",
+              "                coordX = round(sin(angle) * dist) + CoordX(target);",
+              "                coordY = round(-cos(angle) * dist) + CoordY(target);",
+              "                rattor = GroupShip(cur_group, i - 1);",
+              "                if(CoordX(rattor) != coordX) exit;",
+              "                if(CoordY(rattor) != coordY) exit;",
+              "            }",
+              "",
+              "            //Если все живые ратторы на своих местах, производим синхронный залп",
+              "            if(rattors_count == 5) //Рисуем звезду",
+              "            {",
+              "                ShowEffect('Weapon.3', 0, GroupShip(cur_group, 2), GroupShip(cur_group, 0), 0, 0, 1, 0,0,0);",
+              "                ShowEffect('Weapon.3', 0, GroupShip(cur_group, 3), GroupShip(cur_group, 1), 0, 0, 1, 0,0,0);",
+              "                ShowEffect('Weapon.3', 0, GroupShip(cur_group, 4), GroupShip(cur_group, 2), 0, 0, 1, 0,0,0);",
+              "                ShowEffect('Weapon.3', 0, GroupShip(cur_group, 0), GroupShip(cur_group, 3), 0, 0, 1, 0,0,0);",
+              "                ShowEffect('Weapon.3', 0, GroupShip(cur_group, 1), GroupShip(cur_group, 4), 0, 0, 1, 0,0,0);",
+              "            }",
+              "            else if(rattors_count > 2) for(i = 1; i <= rattors_count; i = i + 1) //Рисуем фигуру, плюс выстрел по цели",
+              "            {",
+              "                rattor = GroupShip(cur_group, i - 1);",
+              "                if(i < rattors_count) ShowEffect('Weapon.3', 0, GroupShip(cur_group, i), rattor, 0, 0, 1, 0,0,0);",
+              "                else ShowEffect('Weapon.3', 0, GroupShip(cur_group, 0), rattor, 0, 0, 1, 0,0,0);",
+              "                ShowEffect('Weapon.3', 0, target, rattor, 0, 0, 1, 0,0,0);",
+              "            }",
+              "            else for(i = 1; i <= rattors_count; i = i + 1) //Просто выстрел по цели",
+              "            {",
+              "                rattor = GroupShip(cur_group, i - 1);",
+              "                ShowEffect('Weapon.3', 0, target, rattor, 0, 0, 1, 0,0,0);",
+              "            }",
+              "        }",
               "    }",
               "}",
               "",
@@ -2782,16 +3061,22 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  -30,
+          "Pos.x":  -20,
           "Pos.y":  0,
-          "Parent":  175,
+          "Parent":  124,
           "#":  136,
-          "Total.Lines":  2,
+          "Total.Lines":  8,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "if(PlayerChameleonCurType() == 1) PlayerChameleonDetected(1, 1);",
-              "Dialog(KellerCloneDialog, CurShip);"          
+              "if(ShipInStar(Player(), ShipStar(CurShip)))",
+              "{",
+              "    if(PlayerChameleonCurType() == 1) PlayerChameleonDetected(1, 1);",
+              "    Dialog(KellerCloneDialog, CurShip);",
+              "",
+              "    if(WasKellerCloneSpawned == 1) ChangeState('KellerCloneFree');",
+              "    else if(WasKellerCloneSpawned == 2) ChangeState('KellerCloneJump');",
+              "}"          
           ]        
         },
         {
@@ -2994,7 +3279,7 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  -30,
+          "Pos.x":  -20,
           "Pos.y":  0,
           "Parent":  126,
           "#":  141,
@@ -3462,7 +3747,7 @@
           "Pos.x":  1260,
           "Pos.y":  150,
           "Parent":  -1,
-          "#":  183,
+          "#":  180,
           "Total.Lines":  7,
           "Code.Type":  "Turn",
           "Code":          
@@ -3482,7 +3767,7 @@
           "Pos.x":  1100,
           "Pos.y":  150,
           "Parent":  -1,
-          "#":  184,
+          "#":  181,
           "Total.Lines":  9,
           "Code.Type":  "Turn",
           "Code":          
@@ -3504,7 +3789,7 @@
           "Pos.x":  1180,
           "Pos.y":  150,
           "Parent":  -1,
-          "#":  185,
+          "#":  182,
           "Total.Lines":  29,
           "Code.Type":  "Turn",
           "Code":          
@@ -3546,7 +3831,7 @@
           "Pos.x":  400,
           "Pos.y":  290,
           "Parent":  -1,
-          "#":  189,
+          "#":  186,
           "Total.Lines":  48,
           "Code.Type":  "DialogBegin",
           "Code":          
@@ -3607,7 +3892,7 @@
           "Pos.x":  630,
           "Pos.y":  50,
           "Parent":  -1,
-          "#":  210,
+          "#":  207,
           "Total.Lines":  12,
           "Code.Type":  "Turn",
           "Code":          
@@ -3632,7 +3917,7 @@
           "Pos.x":  700,
           "Pos.y":  50,
           "Parent":  -1,
-          "#":  212,
+          "#":  209,
           "Total.Lines":  32,
           "Code.Type":  "Turn",
           "Code":          
@@ -3677,7 +3962,7 @@
           "Pos.x":  770,
           "Pos.y":  50,
           "Parent":  -1,
-          "#":  214,
+          "#":  211,
           "Total.Lines":  10,
           "Code.Type":  "Turn",
           "Code":          
@@ -3700,7 +3985,7 @@
           "Pos.x":  1000,
           "Pos.y":  90,
           "Parent":  -1,
-          "#":  237,
+          "#":  234,
           "Total.Lines":  17,
           "Code.Type":  "Turn",
           "Code":          
@@ -3730,7 +4015,7 @@
           "Pos.x":  830,
           "Pos.y":  30,
           "Parent":  -1,
-          "#":  243,
+          "#":  240,
           "Total.Lines":  15,
           "Code.Type":  "Turn",
           "Code":          
@@ -3758,7 +4043,7 @@
           "Pos.x":  830,
           "Pos.y":  100,
           "Parent":  -1,
-          "#":  245,
+          "#":  242,
           "Total.Lines":  6,
           "Code.Type":  "Turn",
           "Code":          
@@ -3777,7 +4062,7 @@
           "Pos.x":  380,
           "Pos.y":  310,
           "Parent":  -1,
-          "#":  254,
+          "#":  251,
           "Total.Lines":  562,
           "Code.Type":  "Init",
           "Code":          
@@ -4352,7 +4637,7 @@
           "Pos.x":  1220,
           "Pos.y":  -40,
           "Parent":  -1,
-          "#":  267,
+          "#":  264,
           "Total.Lines":  2,
           "Code.Type":  "Turn",
           "Code":          
@@ -4367,7 +4652,7 @@
           "Pos.x":  1060,
           "Pos.y":  -60,
           "Parent":  -1,
-          "#":  268,
+          "#":  265,
           "Total.Lines":  2,
           "Code.Type":  "Turn",
           "Code":          
@@ -4381,8 +4666,8 @@
           "Name":  "",
           "Pos.x":  -20,
           "Pos.y":  0,
-          "Parent":  284,
-          "#":  285,
+          "Parent":  281,
+          "#":  282,
           "Total.Lines":  21,
           "Code.Type":  "Turn",
           "Code":          
@@ -4416,7 +4701,7 @@
           "Pos.x":  30,
           "Pos.y":  320,
           "Parent":  -1,
-          "#":  292,
+          "#":  289,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -4429,9 +4714,9 @@
           "Name":  "",
           "Pos.x":  -20,
           "Pos.y":  0,
-          "Parent":  294,
-          "#":  295,
-          "Total.Lines":  75,
+          "Parent":  291,
+          "#":  292,
+          "Total.Lines":  77,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -4456,9 +4741,9 @@
               "    exit; //До взлёта им всё равно больше делать нечего",
               "}",
               "",
-              "if(RattorsPack1_LogicDone == CurTurn()) exit; //В целях синхронизации и оптимизации управляем поведением всех кораблей стаи через код первого вызванного за ход корабля в группе",
-              "RattorsPack1_LogicDone = CurTurn();",
               "int cur_group = ShipGroup(CurShip);",
+              "if(RattorsCodeDoneArr['State' + cur_group] == CurTurn()) exit; //В целях синхронизации и оптимизации управляем поведением всех кораблей стаи через код первого вызванного за ход корабля в группе",
+              "RattorsCodeDoneArr['State' + cur_group] = CurTurn();",
               "",
               "dword cur_star = ShipStar(CurShip);",
               "if(GetData(0))",
@@ -4482,14 +4767,16 @@
               "{",
               "    RattorsPackProceedAttack(cur_group, target, 0);",
               "",
-              "    int cnt = GroupCount(cur_group);",
+              "    //int cnt = GroupCount(cur_group);",
+              "    /*",
               "    for(int i = 0; i < cnt; i = i + 1)",
               "    {",
               "        dword rattor = GroupShip(cur_group, i);",
-              "        ShipFreeFlight(rattor, 1); //Автонаводим орудия ратторов на потенциальные окружающие цели",
+              "        //ShipFreeFlight(rattor, 1); //Автонаводим орудия ратторов на потенциальные окружающие цели (не работает из стейта None)",
               "        OrderFollowShip(rattor, target, 3);",
               "        ShipSetBad(rattor, target);",
               "    }",
+              "    */",
               "}",
               "else if(ShipOrder(CurShip) != 2) //В системе не осталось враждебных целей, возвращаем стаю ратторов на их родную верфь (если они уже и так не на пути туда)",
               "{",
@@ -4499,7 +4786,7 @@
               "    {",
               "        rattor = GroupShip(cur_group, i);",
               "        SetData(0, 0, rattor); //Маркерно обнуляем Id цели перед возвращением домой",
-              "        ShipFreeFlight(rattor, 1); //Автонаводим орудия ратторов на потенциальные окружающие цели",
+              "        //ShipFreeFlight(rattor, 1); //Автонаводим орудия ратторов на потенциальные окружающие цели (не работает из стейта None)",
               "        OrderLanding(rattor, home_shipyard);",
               "    }",
               "    //Родная верфь уничтожена, а, значит, и ратторам возвращаться некуда",
@@ -4681,52 +4968,10 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  30,
-          "Pos.y":  -30,
-          "Parent":  136,
-          "#":  173,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "WasKellerCloneSpawned == 1"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  0,
-          "Pos.y":  -30,
-          "Parent":  136,
-          "#":  174,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "WasKellerCloneSpawned == 2"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  -20,
-          "Pos.y":  0,
-          "Parent":  124,
-          "#":  175,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ShipInStar(Player(), ShipStar(CurShip))"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
           "Pos.x":  200,
           "Pos.y":  -50,
           "Parent":  -1,
-          "#":  176,
+          "#":  173,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -4740,7 +4985,7 @@
           "Pos.x":  240,
           "Pos.y":  -50,
           "Parent":  -1,
-          "#":  177,
+          "#":  174,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -4754,7 +4999,7 @@
           "Pos.x":  280,
           "Pos.y":  -50,
           "Parent":  -1,
-          "#":  178,
+          "#":  175,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -4768,7 +5013,7 @@
           "Pos.x":  1050,
           "Pos.y":  150,
           "Parent":  -1,
-          "#":  179,
+          "#":  176,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -4782,7 +5027,7 @@
           "Pos.x":  1260,
           "Pos.y":  130,
           "Parent":  -1,
-          "#":  180,
+          "#":  177,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -4796,7 +5041,7 @@
           "Pos.x":  1100,
           "Pos.y":  130,
           "Parent":  -1,
-          "#":  181,
+          "#":  178,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -4810,7 +5055,7 @@
           "Pos.x":  1180,
           "Pos.y":  130,
           "Parent":  -1,
-          "#":  182,
+          "#":  179,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -4824,7 +5069,7 @@
           "Pos.x":  470,
           "Pos.y":  -80,
           "Parent":  -1,
-          "#":  190,
+          "#":  187,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -4838,7 +5083,7 @@
           "Pos.x":  370,
           "Pos.y":  -80,
           "Parent":  -1,
-          "#":  191,
+          "#":  188,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -4852,7 +5097,7 @@
           "Pos.x":  440,
           "Pos.y":  -50,
           "Parent":  -1,
-          "#":  192,
+          "#":  189,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -4866,7 +5111,7 @@
           "Pos.x":  470,
           "Pos.y":  -50,
           "Parent":  -1,
-          "#":  193,
+          "#":  190,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -4880,7 +5125,7 @@
           "Pos.x":  1030,
           "Pos.y":  -20,
           "Parent":  -1,
-          "#":  195,
+          "#":  192,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -4894,7 +5139,7 @@
           "Pos.x":  1200,
           "Pos.y":  10,
           "Parent":  -1,
-          "#":  196,
+          "#":  193,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -4908,7 +5153,7 @@
           "Pos.x":  610,
           "Pos.y":  190,
           "Parent":  -1,
-          "#":  197,
+          "#":  194,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -4922,7 +5167,7 @@
           "Pos.x":  700,
           "Pos.y":  190,
           "Parent":  -1,
-          "#":  198,
+          "#":  195,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -4936,7 +5181,7 @@
           "Pos.x":  790,
           "Pos.y":  190,
           "Parent":  -1,
-          "#":  199,
+          "#":  196,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -4950,7 +5195,7 @@
           "Pos.x":  830,
           "Pos.y":  190,
           "Parent":  -1,
-          "#":  200,
+          "#":  197,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -4964,7 +5209,7 @@
           "Pos.x":  1260,
           "Pos.y":  -80,
           "Parent":  -1,
-          "#":  201,
+          "#":  198,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -4978,7 +5223,7 @@
           "Pos.x":  1000,
           "Pos.y":  -80,
           "Parent":  -1,
-          "#":  202,
+          "#":  199,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -4992,7 +5237,7 @@
           "Pos.x":  1030,
           "Pos.y":  -60,
           "Parent":  -1,
-          "#":  203,
+          "#":  200,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5006,7 +5251,7 @@
           "Pos.x":  1000,
           "Pos.y":  -60,
           "Parent":  -1,
-          "#":  204,
+          "#":  201,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5020,7 +5265,7 @@
           "Pos.x":  700,
           "Pos.y":  -20,
           "Parent":  -1,
-          "#":  205,
+          "#":  202,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5034,7 +5279,7 @@
           "Pos.x":  1160,
           "Pos.y":  -60,
           "Parent":  -1,
-          "#":  206,
+          "#":  203,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5048,7 +5293,7 @@
           "Pos.x":  1160,
           "Pos.y":  -40,
           "Parent":  -1,
-          "#":  207,
+          "#":  204,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5062,7 +5307,7 @@
           "Pos.x":  1190,
           "Pos.y":  -40,
           "Parent":  -1,
-          "#":  208,
+          "#":  205,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5076,7 +5321,7 @@
           "Pos.x":  610,
           "Pos.y":  100,
           "Parent":  -1,
-          "#":  209,
+          "#":  206,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5090,7 +5335,7 @@
           "Pos.x":  680,
           "Pos.y":  80,
           "Parent":  -1,
-          "#":  211,
+          "#":  208,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5104,7 +5349,7 @@
           "Pos.x":  750,
           "Pos.y":  100,
           "Parent":  -1,
-          "#":  213,
+          "#":  210,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5118,7 +5363,7 @@
           "Pos.x":  770,
           "Pos.y":  100,
           "Parent":  -1,
-          "#":  215,
+          "#":  212,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5132,7 +5377,7 @@
           "Pos.x":  630,
           "Pos.y":  100,
           "Parent":  -1,
-          "#":  216,
+          "#":  213,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5146,7 +5391,7 @@
           "Pos.x":  700,
           "Pos.y":  80,
           "Parent":  -1,
-          "#":  217,
+          "#":  214,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5160,7 +5405,7 @@
           "Pos.x":  790,
           "Pos.y":  100,
           "Parent":  -1,
-          "#":  218,
+          "#":  215,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5174,7 +5419,7 @@
           "Pos.x":  720,
           "Pos.y":  80,
           "Parent":  -1,
-          "#":  219,
+          "#":  216,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5188,7 +5433,7 @@
           "Pos.x":  650,
           "Pos.y":  100,
           "Parent":  -1,
-          "#":  220,
+          "#":  217,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5202,7 +5447,7 @@
           "Pos.x":  420,
           "Pos.y":  270,
           "Parent":  -1,
-          "#":  232,
+          "#":  229,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5216,7 +5461,7 @@
           "Pos.x":  250,
           "Pos.y":  70,
           "Parent":  -1,
-          "#":  246,
+          "#":  243,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5230,7 +5475,7 @@
           "Pos.x":  250,
           "Pos.y":  100,
           "Parent":  -1,
-          "#":  247,
+          "#":  244,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5244,7 +5489,7 @@
           "Pos.x":  1030,
           "Pos.y":  40,
           "Parent":  -1,
-          "#":  248,
+          "#":  245,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5258,7 +5503,7 @@
           "Pos.x":  1030,
           "Pos.y":  180,
           "Parent":  -1,
-          "#":  249,
+          "#":  246,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5272,7 +5517,7 @@
           "Pos.x":  1160,
           "Pos.y":  40,
           "Parent":  -1,
-          "#":  250,
+          "#":  247,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5286,7 +5531,7 @@
           "Pos.x":  610,
           "Pos.y":  30,
           "Parent":  -1,
-          "#":  255,
+          "#":  252,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5300,7 +5545,7 @@
           "Pos.x":  830,
           "Pos.y":  -20,
           "Parent":  -1,
-          "#":  256,
+          "#":  253,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5314,7 +5559,7 @@
           "Pos.x":  1070,
           "Pos.y":  150,
           "Parent":  -1,
-          "#":  259,
+          "#":  256,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5328,7 +5573,7 @@
           "Pos.x":  790,
           "Pos.y":  210,
           "Parent":  -1,
-          "#":  260,
+          "#":  257,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5342,7 +5587,7 @@
           "Pos.x":  700,
           "Pos.y":  210,
           "Parent":  -1,
-          "#":  262,
+          "#":  259,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5356,7 +5601,7 @@
           "Pos.x":  610,
           "Pos.y":  210,
           "Parent":  -1,
-          "#":  263,
+          "#":  260,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5370,7 +5615,7 @@
           "Pos.x":  830,
           "Pos.y":  210,
           "Parent":  -1,
-          "#":  266,
+          "#":  263,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5384,7 +5629,7 @@
           "Pos.x":  1060,
           "Pos.y":  -20,
           "Parent":  -1,
-          "#":  270,
+          "#":  267,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5398,7 +5643,7 @@
           "Pos.x":  1220,
           "Pos.y":  10,
           "Parent":  -1,
-          "#":  272,
+          "#":  269,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5412,7 +5657,7 @@
           "Pos.x":  1260,
           "Pos.y":  10,
           "Parent":  -1,
-          "#":  274,
+          "#":  271,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5426,7 +5671,7 @@
           "Pos.x":  1110,
           "Pos.y":  -20,
           "Parent":  -1,
-          "#":  275,
+          "#":  272,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -5476,9 +5721,9 @@
         {
           "Type":  "TState",
           "Name":  "KellerCloneFree",
-          "Pos.x":  0,
-          "Pos.y":  -30,
-          "Parent":  124,
+          "Pos.x":  -110,
+          "Pos.y":  -20,
+          "Parent":  136,
           "#":  125,
           "Move":  5,
           "MoveObj":  -1,
@@ -5494,9 +5739,9 @@
         {
           "Type":  "TState",
           "Name":  "KellerCloneJump",
-          "Pos.x":  30,
-          "Pos.y":  -30,
-          "Parent":  174,
+          "Pos.x":  -110,
+          "Pos.y":  0,
+          "Parent":  136,
           "#":  126,
           "Move":  5,
           "MoveObj":  -1,
@@ -5676,8 +5921,8 @@
           "Name":  "DomikJumpToStar",
           "Pos.x":  -110,
           "Pos.y":  0,
-          "Parent":  283,
-          "#":  284,
+          "Parent":  280,
+          "#":  281,
           "Move":  0,
           "MoveObj":  -1,
           "Attack.Count":  0,
@@ -5695,7 +5940,7 @@
           "Pos.x":  160,
           "Pos.y":  310,
           "Parent":  -1,
-          "#":  286,
+          "#":  283,
           "Move":  0,
           "MoveObj":  -1,
           "Attack.Count":  0,
@@ -5713,7 +5958,7 @@
           "Pos.x":  160,
           "Pos.y":  340,
           "Parent":  -1,
-          "#":  287,
+          "#":  284,
           "Move":  0,
           "MoveObj":  -1,
           "Attack.Count":  0,
@@ -5731,7 +5976,7 @@
           "Pos.x":  110,
           "Pos.y":  310,
           "Parent":  -1,
-          "#":  288,
+          "#":  285,
           "Move":  0,
           "MoveObj":  -1,
           "Attack.Count":  0,
@@ -5749,7 +5994,7 @@
           "Pos.x":  110,
           "Pos.y":  340,
           "Parent":  -1,
-          "#":  289,
+          "#":  286,
           "Move":  0,
           "MoveObj":  -1,
           "Attack.Count":  0,
@@ -5767,7 +6012,7 @@
           "Pos.x":  0,
           "Pos.y":  310,
           "Parent":  -1,
-          "#":  290,
+          "#":  287,
           "Move":  0,
           "MoveObj":  -1,
           "Attack.Count":  0,
@@ -5785,7 +6030,7 @@
           "Pos.x":  0,
           "Pos.y":  330,
           "Parent":  -1,
-          "#":  291,
+          "#":  288,
           "Move":  0,
           "MoveObj":  -1,
           "Attack.Count":  0,
@@ -5799,18 +6044,18 @@
         },
         {
           "Type":  "TState",
-          "Name":  "RattorsPack1_State",
+          "Name":  "RattorsPack_State",
           "Pos.x":  -130,
           "Pos.y":  0,
-          "Parent":  293,
-          "#":  294,
+          "Parent":  290,
+          "#":  291,
           "Move":  0,
           "MoveObj":  -1,
           "Attack.Count":  0,
           "TakeItem":  -1,
           "TakeAllItem":  false,
           "OnTalk":  "",
-          "OnActCode":  "",
+          "OnActCode":  "[t_OnStep|0,1,11]\r\nRattorsPackActCode();",
           "EType":  1,
           "EUnique":  "",
           "EMsg":  ""        
@@ -5822,7 +6067,7 @@
           "Type":  "TVar",
           "Name":  "lastShipId",
           "Pos.x":  440,
-          "Pos.y":  250,
+          "Pos.y":  270,
           "Parent":  -1,
           "#":  5,
           "Var.Type":  "Dword",
@@ -6162,8 +6407,8 @@
         {
           "Type":  "TVar",
           "Name":  "WasKellerCloneSpawned",
-          "Pos.x":  -50,
-          "Pos.y":  -80,
+          "Pos.x":  -20,
+          "Pos.y":  -20,
           "Parent":  124,
           "#":  98,
           "Var.Type":  "Int",
@@ -6264,7 +6509,7 @@
           "Pos.x":  680,
           "Pos.y":  290,
           "Parent":  -1,
-          "#":  186,
+          "#":  183,
           "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
@@ -6275,7 +6520,7 @@
           "Pos.x":  780,
           "Pos.y":  310,
           "Parent":  -1,
-          "#":  187,
+          "#":  184,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -6286,7 +6531,7 @@
           "Pos.x":  440,
           "Pos.y":  290,
           "Parent":  -1,
-          "#":  188,
+          "#":  185,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -6297,7 +6542,7 @@
           "Pos.x":  580,
           "Pos.y":  310,
           "Parent":  -1,
-          "#":  194,
+          "#":  191,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -6308,7 +6553,7 @@
           "Pos.x":  610,
           "Pos.y":  290,
           "Parent":  -1,
-          "#":  221,
+          "#":  218,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -6319,7 +6564,7 @@
           "Pos.x":  680,
           "Pos.y":  310,
           "Parent":  -1,
-          "#":  222,
+          "#":  219,
           "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
@@ -6330,7 +6575,7 @@
           "Pos.x":  680,
           "Pos.y":  370,
           "Parent":  -1,
-          "#":  223,
+          "#":  220,
           "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
@@ -6341,7 +6586,7 @@
           "Pos.x":  580,
           "Pos.y":  370,
           "Parent":  -1,
-          "#":  224,
+          "#":  221,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -6352,7 +6597,7 @@
           "Pos.x":  680,
           "Pos.y":  330,
           "Parent":  -1,
-          "#":  225,
+          "#":  222,
           "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
@@ -6363,7 +6608,7 @@
           "Pos.x":  680,
           "Pos.y":  410,
           "Parent":  -1,
-          "#":  226,
+          "#":  223,
           "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
@@ -6374,7 +6619,7 @@
           "Pos.x":  780,
           "Pos.y":  350,
           "Parent":  -1,
-          "#":  227,
+          "#":  224,
           "Var.Type":  "Float",
           "Init":  "",
           "Global":  false        
@@ -6385,7 +6630,7 @@
           "Pos.x":  780,
           "Pos.y":  370,
           "Parent":  -1,
-          "#":  228,
+          "#":  225,
           "Var.Type":  "Float",
           "Init":  "",
           "Global":  false        
@@ -6396,7 +6641,7 @@
           "Pos.x":  580,
           "Pos.y":  330,
           "Parent":  -1,
-          "#":  229,
+          "#":  226,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -6407,7 +6652,7 @@
           "Pos.x":  680,
           "Pos.y":  450,
           "Parent":  -1,
-          "#":  230,
+          "#":  227,
           "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
@@ -6418,7 +6663,7 @@
           "Pos.x":  0,
           "Pos.y":  20,
           "Parent":  171,
-          "#":  231,
+          "#":  228,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -6429,7 +6674,7 @@
           "Pos.x":  680,
           "Pos.y":  470,
           "Parent":  -1,
-          "#":  233,
+          "#":  230,
           "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
@@ -6440,7 +6685,7 @@
           "Pos.x":  610,
           "Pos.y":  -120,
           "Parent":  -1,
-          "#":  234,
+          "#":  231,
           "Var.Type":  "Int",
           "Init":  "30",
           "Global":  false        
@@ -6451,7 +6696,7 @@
           "Pos.x":  680,
           "Pos.y":  430,
           "Parent":  -1,
-          "#":  238,
+          "#":  235,
           "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
@@ -6461,8 +6706,8 @@
           "Name":  "InhibOnBonusNum",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  231,
-          "#":  239,
+          "Parent":  228,
+          "#":  236,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -6472,8 +6717,8 @@
           "Name":  "InhibOffBonusNum",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  239,
-          "#":  240,
+          "Parent":  236,
+          "#":  237,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -6484,7 +6729,7 @@
           "Pos.x":  580,
           "Pos.y":  430,
           "Parent":  -1,
-          "#":  241,
+          "#":  238,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -6495,7 +6740,7 @@
           "Pos.x":  -10,
           "Pos.y":  -20,
           "Parent":  -1,
-          "#":  242,
+          "#":  239,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
@@ -6506,7 +6751,7 @@
           "Pos.x":  -10,
           "Pos.y":  230,
           "Parent":  -1,
-          "#":  251,
+          "#":  248,
           "Var.Type":  "Array",
           "Init":  "5",
           "Global":  false        
@@ -6517,7 +6762,7 @@
           "Pos.x":  780,
           "Pos.y":  410,
           "Parent":  -1,
-          "#":  252,
+          "#":  249,
           "Var.Type":  "Array",
           "Init":  "",
           "Global":  false        
@@ -6528,7 +6773,7 @@
           "Pos.x":  580,
           "Pos.y":  350,
           "Parent":  -1,
-          "#":  253,
+          "#":  250,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -6539,7 +6784,7 @@
           "Pos.x":  580,
           "Pos.y":  450,
           "Parent":  -1,
-          "#":  257,
+          "#":  254,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -6550,7 +6795,7 @@
           "Pos.x":  1160,
           "Pos.y":  -160,
           "Parent":  -1,
-          "#":  269,
+          "#":  266,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
@@ -6561,7 +6806,7 @@
           "Pos.x":  1000,
           "Pos.y":  -120,
           "Parent":  -1,
-          "#":  276,
+          "#":  273,
           "Var.Type":  "Int",
           "Init":  "75",
           "Global":  false        
@@ -6572,7 +6817,7 @@
           "Pos.x":  1000,
           "Pos.y":  -100,
           "Parent":  -1,
-          "#":  277,
+          "#":  274,
           "Var.Type":  "Int",
           "Init":  "25",
           "Global":  false        
@@ -6583,7 +6828,7 @@
           "Pos.x":  -10,
           "Pos.y":  100,
           "Parent":  -1,
-          "#":  278,
+          "#":  275,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
@@ -6594,7 +6839,7 @@
           "Pos.x":  580,
           "Pos.y":  510,
           "Parent":  -1,
-          "#":  279,
+          "#":  276,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -6605,7 +6850,7 @@
           "Pos.x":  580,
           "Pos.y":  490,
           "Parent":  -1,
-          "#":  280,
+          "#":  277,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -6616,7 +6861,7 @@
           "Pos.x":  680,
           "Pos.y":  350,
           "Parent":  -1,
-          "#":  281,
+          "#":  278,
           "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
@@ -6625,9 +6870,9 @@
           "Type":  "TVar",
           "Name":  "LastSpawnedShipyardNames",
           "Pos.x":  440,
-          "Pos.y":  230,
+          "Pos.y":  250,
           "Parent":  -1,
-          "#":  282,
+          "#":  279,
           "Var.Type":  "Str",
           "Init":  "*",
           "Global":  false        
@@ -6635,23 +6880,23 @@
         {
           "Type":  "TVar",
           "Name":  "RattorsAssemblyDelay",
-          "Pos.x":  440,
-          "Pos.y":  270,
-          "Parent":  -1,
-          "#":  296,
+          "Pos.x":  -130,
+          "Pos.y":  -20,
+          "Parent":  115,
+          "#":  293,
           "Var.Type":  "Dword",
           "Init":  "45",
           "Global":  false        
         },
         {
           "Type":  "TVar",
-          "Name":  "RattorsPack1_LogicDone",
-          "Pos.x":  0,
-          "Pos.y":  20,
-          "Parent":  295,
-          "#":  297,
-          "Var.Type":  "Int",
-          "Init":  "0",
+          "Name":  "RattorsCodeDoneArr",
+          "Pos.x":  -130,
+          "Pos.y":  -20,
+          "Parent":  290,
+          "#":  294,
+          "Var.Type":  "Array",
+          "Init":  "",
           "Global":  false        
         }      
       ]    
@@ -7354,56 +7599,21 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  136,
-      "End":  173,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
       "Begin":  173,
-      "End":  125,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  136,
-      "End":  174,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  174,
-      "End":  126,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  175,
-      "End":  136,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  176,
       "End":  70,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  177,
+      "Begin":  174,
       "End":  71,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  178,
+      "Begin":  175,
       "End":  72,
       "Nom":  0,
       "Arrow":  true    
@@ -7411,27 +7621,20 @@
     {
       "Type":  "TGraphLink",
       "Begin":  41,
-      "End":  176,
+      "End":  173,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  41,
-      "End":  177,
+      "End":  174,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  41,
-      "End":  178,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  124,
       "End":  175,
       "Nom":  0,
       "Arrow":  true    
@@ -7453,13 +7656,13 @@
     {
       "Type":  "TGraphLink",
       "Begin":  36,
-      "End":  179,
+      "End":  176,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  179,
+      "Begin":  176,
       "End":  65,
       "Nom":  0,
       "Arrow":  true    
@@ -7467,62 +7670,62 @@
     {
       "Type":  "TGraphLink",
       "Begin":  158,
+      "End":  177,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  158,
+      "End":  178,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  158,
+      "End":  179,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  177,
       "End":  180,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  158,
+      "Begin":  178,
       "End":  181,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  158,
+      "Begin":  179,
       "End":  182,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  180,
-      "End":  183,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  181,
-      "End":  184,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
       "Begin":  182,
-      "End":  185,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  185,
       "End":  37,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  184,
+      "Begin":  181,
       "End":  39,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  183,
+      "Begin":  180,
       "End":  38,
       "Nom":  0,
       "Arrow":  true    
@@ -7530,48 +7733,48 @@
     {
       "Type":  "TGraphLink",
       "Begin":  149,
-      "End":  190,
+      "End":  187,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  149,
-      "End":  191,
+      "End":  188,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  190,
-      "End":  192,
+      "Begin":  187,
+      "End":  189,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  190,
-      "End":  193,
+      "Begin":  187,
+      "End":  190,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  191,
+      "Begin":  188,
       "End":  49,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  192,
+      "Begin":  189,
       "End":  48,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  193,
+      "Begin":  190,
       "End":  50,
       "Nom":  0,
       "Arrow":  true    
@@ -7579,13 +7782,13 @@
     {
       "Type":  "TGraphLink",
       "Begin":  34,
-      "End":  195,
+      "End":  192,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  195,
+      "Begin":  192,
       "End":  69,
       "Nom":  0,
       "Arrow":  true    
@@ -7593,34 +7796,34 @@
     {
       "Type":  "TGraphLink",
       "Begin":  33,
-      "End":  196,
+      "End":  193,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  196,
+      "Begin":  193,
       "End":  61,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  197,
+      "Begin":  194,
       "End":  54,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  198,
+      "Begin":  195,
       "End":  55,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  199,
+      "Begin":  196,
       "End":  56,
       "Nom":  0,
       "Arrow":  true    
@@ -7628,41 +7831,41 @@
     {
       "Type":  "TGraphLink",
       "Begin":  28,
-      "End":  200,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  200,
       "End":  197,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  200,
-      "End":  198,
+      "Begin":  197,
+      "End":  194,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  200,
-      "End":  199,
+      "Begin":  197,
+      "End":  195,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  197,
+      "End":  196,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  148,
-      "End":  201,
+      "End":  198,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  201,
+      "Begin":  198,
       "End":  32,
       "Nom":  0,
       "Arrow":  true    
@@ -7670,34 +7873,34 @@
     {
       "Type":  "TGraphLink",
       "Begin":  148,
-      "End":  202,
+      "End":  199,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  202,
-      "End":  203,
+      "Begin":  199,
+      "End":  200,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  202,
-      "End":  204,
+      "Begin":  199,
+      "End":  201,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  57,
-      "End":  205,
+      "End":  202,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  204,
+      "Begin":  201,
       "End":  35,
       "Nom":  0,
       "Arrow":  true    
@@ -7705,6 +7908,27 @@
     {
       "Type":  "TGraphLink",
       "Begin":  148,
+      "End":  203,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  203,
+      "End":  204,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  203,
+      "End":  205,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  154,
       "End":  206,
       "Nom":  0,
       "Arrow":  true    
@@ -7718,28 +7942,7 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  206,
-      "End":  208,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  154,
-      "End":  209,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  209,
-      "End":  210,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  210,
+      "Begin":  207,
       "End":  30,
       "Nom":  0,
       "Arrow":  true    
@@ -7747,20 +7950,20 @@
     {
       "Type":  "TGraphLink",
       "Begin":  154,
-      "End":  211,
+      "End":  208,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  211,
-      "End":  212,
+      "Begin":  208,
+      "End":  209,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  212,
+      "Begin":  209,
       "End":  31,
       "Nom":  0,
       "Arrow":  true    
@@ -7768,20 +7971,20 @@
     {
       "Type":  "TGraphLink",
       "Begin":  154,
-      "End":  213,
+      "End":  210,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  213,
-      "End":  214,
+      "Begin":  210,
+      "End":  211,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  214,
+      "Begin":  211,
       "End":  29,
       "Nom":  0,
       "Arrow":  true    
@@ -7789,20 +7992,34 @@
     {
       "Type":  "TGraphLink",
       "Begin":  155,
+      "End":  212,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  155,
+      "End":  213,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  155,
+      "End":  214,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  156,
       "End":  215,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  155,
-      "End":  216,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  155,
+      "Begin":  156,
       "End":  217,
       "Nom":  0,
       "Arrow":  true    
@@ -7810,83 +8027,69 @@
     {
       "Type":  "TGraphLink",
       "Begin":  156,
-      "End":  218,
+      "End":  216,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  156,
-      "End":  220,
+      "Begin":  212,
+      "End":  211,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  156,
-      "End":  219,
+      "Begin":  213,
+      "End":  207,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  214,
+      "End":  209,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  215,
-      "End":  214,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  216,
-      "End":  210,
+      "End":  211,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  217,
-      "End":  212,
+      "End":  207,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  218,
-      "End":  214,
+      "Begin":  216,
+      "End":  209,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  220,
-      "End":  210,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  219,
-      "End":  212,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  232,
+      "Begin":  229,
       "End":  4,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  236,
-      "End":  237,
+      "Begin":  233,
+      "End":  234,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  237,
+      "Begin":  234,
       "End":  36,
       "Nom":  0,
       "Arrow":  true    
@@ -7908,20 +8111,20 @@
     {
       "Type":  "TGraphLink",
       "Begin":  26,
-      "End":  243,
+      "End":  240,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  244,
-      "End":  245,
+      "Begin":  241,
+      "End":  242,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  245,
+      "Begin":  242,
       "End":  28,
       "Nom":  0,
       "Arrow":  true    
@@ -7929,13 +8132,13 @@
     {
       "Type":  "TGraphLink",
       "Begin":  44,
-      "End":  246,
+      "End":  243,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  246,
+      "Begin":  243,
       "End":  75,
       "Nom":  0,
       "Arrow":  true    
@@ -7943,13 +8146,13 @@
     {
       "Type":  "TGraphLink",
       "Begin":  45,
-      "End":  247,
+      "End":  244,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  247,
+      "Begin":  244,
       "End":  75,
       "Nom":  0,
       "Arrow":  true    
@@ -7977,7 +8180,7 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  248,
+      "Begin":  245,
       "End":  35,
       "Nom":  0,
       "Arrow":  true    
@@ -7985,41 +8188,41 @@
     {
       "Type":  "TGraphLink",
       "Begin":  66,
-      "End":  249,
+      "End":  246,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  249,
-      "End":  248,
+      "Begin":  246,
+      "End":  245,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  157,
-      "End":  250,
+      "End":  247,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  250,
-      "End":  248,
+      "Begin":  247,
+      "End":  245,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  207,
-      "End":  250,
+      "Begin":  204,
+      "End":  247,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  255,
+      "Begin":  252,
       "End":  58,
       "Nom":  0,
       "Arrow":  true    
@@ -8027,27 +8230,27 @@
     {
       "Type":  "TGraphLink",
       "Begin":  30,
-      "End":  255,
+      "End":  252,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  31,
-      "End":  255,
+      "End":  252,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  29,
-      "End":  255,
+      "End":  252,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  256,
+      "Begin":  253,
       "End":  26,
       "Nom":  0,
       "Arrow":  true    
@@ -8055,27 +8258,34 @@
     {
       "Type":  "TGraphLink",
       "Begin":  168,
-      "End":  256,
+      "End":  253,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  205,
-      "End":  256,
+      "Begin":  202,
+      "End":  253,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  36,
-      "End":  259,
+      "End":  256,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  259,
+      "Begin":  256,
+      "End":  255,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  257,
       "End":  258,
       "Nom":  0,
       "Arrow":  true    
@@ -8089,77 +8299,70 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  263,
-      "End":  264,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  262,
-      "End":  265,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  200,
-      "End":  266,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  266,
-      "End":  260,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  266,
+      "Begin":  259,
       "End":  262,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  266,
+      "Begin":  197,
       "End":  263,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  266,
+      "Begin":  263,
+      "End":  257,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  263,
+      "End":  259,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  263,
+      "End":  260,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  263,
       "End":  59,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  208,
-      "End":  267,
+      "Begin":  205,
+      "End":  264,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  267,
+      "Begin":  264,
       "End":  33,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  203,
-      "End":  268,
+      "Begin":  200,
+      "End":  265,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  268,
+      "Begin":  265,
       "End":  34,
       "Nom":  0,
       "Arrow":  true    
@@ -8167,41 +8370,41 @@
     {
       "Type":  "TGraphLink",
       "Begin":  34,
+      "End":  267,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  267,
+      "End":  268,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  33,
+      "End":  269,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  269,
       "End":  270,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  270,
+      "Begin":  33,
       "End":  271,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  33,
-      "End":  272,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  272,
-      "End":  273,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  33,
-      "End":  274,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  274,
+      "Begin":  271,
       "End":  62,
       "Nom":  0,
       "Arrow":  true    
@@ -8209,34 +8412,34 @@
     {
       "Type":  "TGraphLink",
       "Begin":  34,
-      "End":  275,
+      "End":  272,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  275,
+      "Begin":  272,
       "End":  63,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  283,
-      "End":  284,
+      "Begin":  280,
+      "End":  281,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  284,
-      "End":  285,
+      "Begin":  281,
+      "End":  282,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  283,
+      "Begin":  280,
       "End":  1,
       "Nom":  0,
       "Arrow":  true    
@@ -8244,7 +8447,7 @@
     {
       "Type":  "TStateLink",
       "Begin":  131,
-      "End":  290,
+      "End":  287,
       "Nom":  0,
       "Arrow":  true,
       "Expr":  "0",
@@ -8252,16 +8455,7 @@
     },
     {
       "Type":  "TStateLink",
-      "Begin":  290,
-      "End":  291,
-      "Nom":  0,
-      "Arrow":  true,
-      "Expr":  "0",
-      "Priority":  0    
-    },
-    {
-      "Type":  "TStateLink",
-      "Begin":  130,
+      "Begin":  287,
       "End":  288,
       "Nom":  0,
       "Arrow":  true,
@@ -8270,8 +8464,8 @@
     },
     {
       "Type":  "TStateLink",
-      "Begin":  288,
-      "End":  289,
+      "Begin":  130,
+      "End":  285,
       "Nom":  0,
       "Arrow":  true,
       "Expr":  "0",
@@ -8279,7 +8473,7 @@
     },
     {
       "Type":  "TStateLink",
-      "Begin":  129,
+      "Begin":  285,
       "End":  286,
       "Nom":  0,
       "Arrow":  true,
@@ -8288,8 +8482,17 @@
     },
     {
       "Type":  "TStateLink",
-      "Begin":  286,
-      "End":  287,
+      "Begin":  129,
+      "End":  283,
+      "Nom":  0,
+      "Arrow":  true,
+      "Expr":  "0",
+      "Priority":  0    
+    },
+    {
+      "Type":  "TStateLink",
+      "Begin":  283,
+      "End":  284,
       "Nom":  0,
       "Arrow":  true,
       "Expr":  "0",
@@ -8297,8 +8500,78 @@
     },
     {
       "Type":  "TGraphLink",
+      "Begin":  287,
+      "End":  289,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  288,
+      "End":  289,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  285,
+      "End":  289,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  286,
+      "End":  289,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  130,
+      "End":  289,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  131,
+      "End":  289,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  283,
+      "End":  289,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  284,
+      "End":  289,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  129,
+      "End":  289,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  134,
+      "End":  289,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
       "Begin":  290,
-      "End":  292,
+      "End":  1,
       "Nom":  0,
       "Arrow":  true    
     },
@@ -8311,78 +8584,85 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  288,
-      "End":  292,
+      "Begin":  290,
+      "End":  291,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  289,
-      "End":  292,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  130,
-      "End":  292,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  131,
-      "End":  292,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  286,
-      "End":  292,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  287,
-      "End":  292,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  129,
-      "End":  292,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  134,
-      "End":  292,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  293,
+      "Begin":  297,
       "End":  1,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  294,
-      "End":  295,
+      "Begin":  296,
+      "End":  1,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  293,
-      "End":  294,
+      "Begin":  295,
+      "End":  1,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  299,
+      "End":  1,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  298,
+      "End":  1,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  295,
+      "End":  291,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  296,
+      "End":  291,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  297,
+      "End":  291,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  298,
+      "End":  291,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  299,
+      "End":  291,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  124,
+      "End":  136,
       "Nom":  0,
       "Arrow":  true    
     }  

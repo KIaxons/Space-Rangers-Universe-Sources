@@ -780,7 +780,7 @@
               "        //Ищем любые капсулы",
               "        pods_found = FindEscapePodsInStock(cur_ruin, (1 << t_Ranger) + (1 << t_Transport) + (1 << t_Pirate) + (1 << t_Warrior)); //В данной функции заполняется temp_arr",
               "        //Различные добавочные реплики для коалиционных, либо пиратских МЦ",
-              "        AddDialogInject('HandOverEscapePod', CT('Script.Mod_ShuBounty.EscapePodsDialog.AskToHandOver' + cur_ruin_type), CT('Script.Mod_ShuBounty.EscapePodsDialog.PlayerHandOver'), 0);",
+              "        if(pods_found) AddDialogInject('HandOverEscapePod', CT('Script.Mod_ShuBounty.EscapePodsDialog.AskToHandOver' + cur_ruin_type), CT('Script.Mod_ShuBounty.EscapePodsDialog.PlayerHandOver'), 0);",
               "",
               "        AddDialogInject('SellItems', '', \"Сдать уникальные предметы\", 2);",
               "    }",
