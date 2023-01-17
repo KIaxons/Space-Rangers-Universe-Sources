@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1066,
-  "ViewPos.y":  -54,
+  "ViewPos.x":  -1002,
+  "ViewPos.y":  -117,
   "ScriptName":  "Mod_ShuKlissan",
   "ScriptFileOut":  "H:\\Mod_ShuKlissan.scr",
   "ScriptTextOut":  "H:\\Mod_ShuKlissan.txt",
@@ -4312,7 +4312,7 @@
           "Pos.y":  0,
           "Parent":  302,
           "#":  18,
-          "Total.Lines":  1583,
+          "Total.Lines":  1586,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -5001,18 +5001,21 @@
               "                {",
               "                    if(KlissanInvasion['DaysPassedAfterStart'] >= 547)",
               "                    {",
-              "                        if(StateIs(machpella, 'MachpellaWaitInTortugatzState'))//Может случиться не раньше, чем через 1.5 года с начала вторжения",
+              "                        if(StateIs(machpella, 'MachpellaWaitInTortugatzState')) //Может случиться не раньше, чем через 1.5 года с начала вторжения",
               "                        {",
-              "                            if(ShipInNormalSpace(Player()))",
+              "                            if(!CountIn(Neurolinks, ShipStar(machpella), 1)) //Если в данный момент махпелла не занята отправкой нейролинка",
               "                            {",
-              "                                tdwd1 = ShipStar(Player());",
-              "                                if(StarCustomFaction(tdwd1) == 'Klissan')",
+              "                                if(ShipInNormalSpace(Player()))",
               "                                {",
-              "                                    SetData(Id(tdwd1), 0, machpella); //Id системы для совершения ЧД прыжка",
-              "                                    SetData(CurTurn() + 70, 1, machpella); //Время пребывания махпеллы в указанной системе",
+              "                                    tdwd1 = ShipStar(Player());",
+              "                                    if(StarCustomFaction(tdwd1) == 'Klissan')",
+              "                                    {",
+              "                                        SetData(Id(tdwd1), 0, machpella); //Id системы для совершения ЧД прыжка",
+              "                                        SetData(CurTurn() + 70, 1, machpella); //Время пребывания махпеллы в указанной системе",
               "",
-              "                                    ChangeState('MachpellaJumpToStarState', machpella);",
-              "                                    KlissanInvasion['MachpellaJumpToPlayerStarEvent'] = 1;",
+              "                                        ChangeState('MachpellaJumpToStarState', machpella);",
+              "                                        KlissanInvasion['MachpellaJumpToPlayerStarEvent'] = 1;",
+              "                                    }",
               "                                }",
               "                            }",
               "                        }",
@@ -8550,7 +8553,7 @@
           "Code":          
           [
               "int wait_days = KlissanInvasion['KlissanControl.NextMachpellaOrderTurn'] - CurTurn();",
-              "if(!KlissanInvasion['KlissanControl.StarToAttack']) tstr1 = '</color>' + \"Призвать Махпеллу (<wait_days> дней)\";",
+              "if(!CountIn(Neurolinks, ShipStar(machpella), 1) /*!KlissanInvasion['KlissanControl.StarToAttack']*/) tstr1 = '</color>' + \"Призвать Махпеллу (<wait_days> дней)\";",
               "else tstr1 = '</color>' + \"Призвать Махпеллу (Махпелла занята организацией атаки)\";"          
           ]        
         },
