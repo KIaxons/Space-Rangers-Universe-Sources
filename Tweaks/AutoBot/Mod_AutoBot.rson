@@ -82,13 +82,13 @@
           "Pos.y":  0,
           "Parent":  5,
           "#":  6,
-          "Total.Lines":  72,
+          "Total.Lines":  77,
           "Code.Type":  "Init",
           "Code":          
           [
               "if(CurrentMods('Expansion\\ExpPanel')) IsExpPanelActive = 1;",
               "",
-              "function PlayerBotActCode() //t_OnStep_0, t_OnEnteringForm",
+              "function PlayerBotActCode() //t_OnStep_0, t_OnItemPickUp, t_OnEnteringForm",
               "{",
               "    if(ScriptItemActionType(t_OnStep))",
               "    {",
@@ -119,6 +119,11 @@
               "                FormChange(cur_form);",
               "            }",
               "        }",
+              "    }",
+              "    else if(ScriptItemActionType(t_OnItemPickUp))",
+              "    {",
+              "        ShipCalcParam(Player());",
+              "        if(ShipFreeSpace(Player()) < 0) ShipFreeFlight(Player(), 4);",
               "    }",
               "    else //if(ScriptItemActionType(t_OnEnteringForm))",
               "    {",
@@ -488,7 +493,7 @@
           "TakeItem":  -1,
           "TakeAllItem":  false,
           "OnTalk":  "",
-          "OnActCode":  "[t_OnEnteringForm,t_OnStep|0]\r\nPlayerBotActCode();",
+          "OnActCode":  "[t_OnItemPickUp,t_OnEnteringForm,t_OnStep|0]\r\nPlayerBotActCode();",
           "EType":  1,
           "EUnique":  "",
           "EMsg":  ""        
@@ -506,7 +511,7 @@
           "TakeItem":  -1,
           "TakeAllItem":  false,
           "OnTalk":  "",
-          "OnActCode":  "[t_OnEnteringForm,t_OnStep|0]\r\nPlayerBotActCode();",
+          "OnActCode":  "[t_OnItemPickUp,t_OnEnteringForm,t_OnStep|0]\r\nPlayerBotActCode();",
           "EType":  1,
           "EUnique":  "",
           "EMsg":  ""        
@@ -524,7 +529,7 @@
           "TakeItem":  -1,
           "TakeAllItem":  false,
           "OnTalk":  "",
-          "OnActCode":  "[t_OnEnteringForm,t_OnStep|0]\r\nPlayerBotActCode();",
+          "OnActCode":  "[t_OnItemPickUp,t_OnEnteringForm,t_OnStep|0]\r\nPlayerBotActCode();",
           "EType":  1,
           "EUnique":  "",
           "EMsg":  ""        
@@ -542,7 +547,7 @@
           "TakeItem":  -1,
           "TakeAllItem":  false,
           "OnTalk":  "",
-          "OnActCode":  "[t_OnEnteringForm,t_OnStep|0]\r\nPlayerBotActCode();",
+          "OnActCode":  "[t_OnItemPickUp,t_OnEnteringForm,t_OnStep|0]\r\nPlayerBotActCode();",
           "EType":  1,
           "EUnique":  "",
           "EMsg":  ""        
