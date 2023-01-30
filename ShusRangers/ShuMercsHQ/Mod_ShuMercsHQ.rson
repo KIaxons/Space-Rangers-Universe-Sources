@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1216,
-  "ViewPos.y":  -194,
+  "ViewPos.x":  -1338,
+  "ViewPos.y":  -151,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
@@ -8665,7 +8665,7 @@
           "Pos.y":  -40,
           "Parent":  10,
           "#":  124,
-          "Total.Lines":  68,
+          "Total.Lines":  69,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -8673,6 +8673,7 @@
               "//PrisonQuestCheck == -1 - игрок совершил побег, отношение с планетой будет испорчено до минимального враждебного",
               "//PrisonQuestCheck ==  0 - нейтральное значение",
               "//PrisonQuestCheck ==  1 - игрок отсидел положенный срок, переводим в правительство и выдаём особую реплику",
+              "",
               "if(GQuestStatus == 2)",
               "{",
               "    tdwd1 = GetShipPlanet(Player());",

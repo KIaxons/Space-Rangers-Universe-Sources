@@ -1053,21 +1053,29 @@
           "Pos.y":  20,
           "Parent":  33,
           "#":  34,
-          "Total.Lines":  11,
+          "Total.Lines":  19,
           "Code.Type":  "Turn",
           "Code":          
           [
               "//temp_int_5 - сумма депозита с учётом накопленных процентов",
-              "int to_add_limit = min(ShipMoney(Player()), 100000000 - temp_int_5);",
-              "temp_int = NumberBox('Bm.ItemsUseless.2Usl_Elus_s', \"На сколько пополнить?\", 100, to_add_limit, to_add_limit, 'Bm.FormCount2.2KindCredits');",
-              "if(temp_int)",
+              "int cur_deposit = temp_int_5;",
+              "",
+              "//Процент комиссии составляет 5%, так что мы заранее закладываем в лимит списания сумму в 105%",
+              "//После этого, при начислении суммы мы получаем 1% от 105% и затем перемножаем его на 100% уже с учётом вычета 5% комиссии",
+              "//Так что не пугайтесь тому громадному значению после запятой",
+              "int to_add_limit = 100000000 - cur_deposit;",
+              "to_add_limit = min(ShipMoney(Player()), to_add_limit + round(0.05 * to_add_limit));",
+              "int to_deposit = NumberBox('Bm.ItemsUseless.2Usl_Elus_s', \"На сколько пополнить?\", 100, to_add_limit, to_add_limit, 'Bm.FormCount2.2KindCredits');",
+              "if(to_deposit)",
               "{",
-              "    ShipMoney(Player(), ShipMoney(Player()) - temp_int);",
-              "    PlayerDeposit(temp_int_5 + (temp_int - (temp_int * 5) / 100));",
+              "    ShipMoney(Player(), ShipMoney(Player()) - to_deposit);",
+              "    PlayerDeposit(cur_deposit + round(0.00952380952380952380952380952381 * to_deposit * 100));",
               "    PlayerDepositDay(0);",
-              "    temp_int_5 = DepositPercentCalc();",
+              "    cur_deposit = DepositPercentCalc();",
               "    Sound('Sound.Sell');",
-              "}"          
+              "}",
+              "",
+              "temp_int_5 = cur_deposit;"          
           ]        
         },
         {
@@ -1077,51 +1085,62 @@
           "Pos.y":  0,
           "Parent":  32,
           "#":  35,
-          "Total.Lines":  41,
+          "Total.Lines":  52,
           "Code.Type":  "Turn",
           "Code":          
           [
               "//temp_int_5 - сумма депозита с учётом накопленных процентов",
-              "temp_int = NumberBox('Bm.ItemsUseless.2Usl_Elus_s', \"Сколько снять?\", 100, temp_int_5, temp_int_5, 'Bm.FormCount2.2KindCredits');",
-              "if(temp_int_5 - temp_int < 1000 && (temp_int_5 - temp_int))",
+              "int cur_deposit = temp_int_5;",
+              "",
+              "//Процент комиссии составляет 5%, так что мы заранее закладываем в лимит списания сумму в 105%",
+              "//После этого, при начислении суммы мы получаем 1% от 105% и затем перемножаем его на 100% уже с учётом вычета 5% комиссии",
+              "//Так что не пугайтесь тому громадному значению после запятой",
+              "int to_withdraw_limit = 100000000 - ShipMoney(Player());",
+              "to_withdraw_limit = min(cur_deposit, to_withdraw_limit + round(0.05 * to_withdraw_limit));",
+              "int to_withdraw = NumberBox('Bm.ItemsUseless.2Usl_Elus_s', \"Сколько снять?\", 100, to_withdraw_limit, to_withdraw_limit, 'Bm.FormCount2.2KindCredits');",
+              "",
+              "//Если остаток на счёте после снятия указанной игроком суммы будет ниже минимального порога в 1000 cr.",
+              "if(cur_deposit - to_withdraw < 1000 && (cur_deposit - to_withdraw))",
               "{",
               "    if(MessageBoxYesNo(\"При снятии данной суммы, остаток средств на счёте составит менее 1000 cr. Все счета с остатком менее 1000 cr. автоматически аннулируются, а оставшиеся средства переводятся владельцу со стандартной комиссией в 5%. Вы уверены, что хотите продолжить?\"))",
               "    {",
-              "        temp_int = temp_int + (temp_int_5 - temp_int);",
-              "        ShipMoney(Player(), ShipMoney(Player()) + (temp_int - (temp_int * 5) / 100));",
+              "        to_withdraw = to_withdraw_limit;",
+              "        ShipMoney(Player(), ShipMoney(Player()) + round(0.00952380952380952380952380952381 * to_withdraw * 100));",
               "        PlayerDeposit(0);",
               "        PlayerDepositDate(0);",
               "        PlayerDepositDay(0);",
               "        PlayerDepositPercent(0);",
-              "        temp_int_5 = 0;",
-              "        Sound('Sound.Sell');",
+              "        cur_deposit = 0;",
+              "        Sound('Sound.Buy');",
               "        MessageBox(\"Ваш депозитный счёт успешно аннулирован.\");",
-              "        temp_str_4 = '';",
               "    }",
               "}",
-              "else if(!(temp_int_5 - temp_int))",
+              "//Если игрок решил снять со счёта всё",
+              "else if(!(cur_deposit - to_withdraw))",
               "{",
               "    if(MessageBoxYesNo(\"Вы собираетесь снять со счёта все доступные средства. При этом ваш депозитный счёт будет аннулирован и открыть его снова вы сможете лишь на ближайшем бизнес-центре. Вы уверены, что хотите продолжить?\"))",
               "    {",
-              "        ShipMoney(Player(), ShipMoney(Player()) + (temp_int - (temp_int * 5) / 100));",
+              "        ShipMoney(Player(), ShipMoney(Player()) + round(0.00952380952380952380952380952381 * to_withdraw * 100));",
               "        PlayerDeposit(0);",
               "        PlayerDepositDate(0);",
               "        PlayerDepositDay(0);",
               "        PlayerDepositPercent(0);",
-              "        temp_int_5 = 0;",
-              "        Sound('Sound.Sell');",
+              "        cur_deposit = 0;",
+              "        Sound('Sound.Buy');",
               "        MessageBox(\"Ваш депозитный счёт успешно аннулирован.\");",
-              "        temp_str_4 = '';",
               "    }",
               "}",
-              "else if(temp_int_5 - temp_int >= 1000 && (temp_int_5 - temp_int) && temp_int)",
+              "//Если игрок решил снять со хоть сколько-то и при этом остаток после снятия будет выше или равен минимальному порогу в 1000 cr.",
+              "else if(cur_deposit - to_withdraw >= 1000 && (cur_deposit - to_withdraw) && to_withdraw)",
               "{",
-              "    ShipMoney(Player(), ShipMoney(Player()) + (temp_int - (temp_int * 5) / 100));",
-              "    PlayerDeposit(temp_int_5 - temp_int);",
+              "    ShipMoney(Player(), ShipMoney(Player()) + round(0.00952380952380952380952380952381 * to_withdraw * 100));",
+              "    PlayerDeposit(cur_deposit - to_withdraw);",
               "    PlayerDepositDay(0);",
-              "    temp_int_5 = DepositPercentCalc();",
-              "    Sound('Sound.Sell');",
-              "}"          
+              "    cur_deposit = DepositPercentCalc();",
+              "    Sound('Sound.Buy');",
+              "}",
+              "",
+              "temp_int_5 = cur_deposit;"          
           ]        
         },
         {
@@ -1468,7 +1487,7 @@
           "Pos.y":  20,
           "Parent":  168,
           "#":  97,
-          "Total.Lines":  24,
+          "Total.Lines":  25,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -1487,7 +1506,8 @@
               "}",
               "if(PlayerDebt() <= 0)",
               "{",
-              "    temp_str_4 = substr(PlayerDepositPercent(), 0, 1) + '.' + substr(PlayerDepositPercent(), 1, 1) + '%';",
+              "    if(PlayerDepositPercent() < 10) temp_str_4 = '0.' + PlayerDepositPercent() + '%';",
+              "    else temp_str_4 = substr(PlayerDepositPercent(), 0, 1) + '.' + substr(PlayerDepositPercent(), 1, 1) + '%';",
               "}",
               "if(PlayerDebtCnt() >= 3)",
               "{",
@@ -2000,7 +2020,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "CurTurn() - PlayerDepositDate() > 30 && PlayerDebtCnt() < 3"          
+              "CurTurn() - PlayerDepositDate() > 30 && PlayerDebtCnt() < 3 && ShipMoney(Player()) <= 99999900"          
           ]        
         },
         {
@@ -2014,7 +2034,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "CurTurn() - PlayerDepositDate() < 31 || PlayerDebtCnt() >= 3"          
+              "CurTurn() - PlayerDepositDate() < 31 || PlayerDebtCnt() >= 3 || ShipMoney(Player()) > 99999900"          
           ]        
         },
         {
