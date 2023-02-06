@@ -116,29 +116,12 @@
           "Pos.y":  20,
           "Parent":  4,
           "#":  7,
-          "Total.Lines":  19,
+          "Total.Lines":  2,
           "Code.Type":  "Turn",
           "Code":          
           [
               "//Дублируем сюда, т.к. спавший под конец хода эффект акткод фиксирует не всегда",
-              "if(ShipInNormalSpace(CurShip))",
-              "{",
-              "    if(!ShipRadarRange(CurShip)) //Радар сломан или отсутствует (или задебафан в 0)",
-              "    {",
-              "        InterfaceState('StarMap', 'RadarJamming', 1);",
-              "        InterfaceState('Talk', 'RadarJamming', 1);",
-              "    }",
-              "    else if(ShipStatusEffect(CurShip, 2)) //Висят ЭМ-помехи (Magnetic)",
-              "    {",
-              "        InterfaceState('StarMap', 'RadarJamming', 1);",
-              "        InterfaceState('Talk', 'RadarJamming', 1);",
-              "    }",
-              "    else",
-              "    {",
-              "        InterfaceState('StarMap', 'RadarJamming', 0);",
-              "        InterfaceState('Talk', 'RadarJamming', 0);",
-              "    }",
-              "}"          
+              "PlayerActCode();"          
           ]        
         }      
       ],
