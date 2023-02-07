@@ -747,7 +747,7 @@
           "Pos.y":  210,
           "Parent":  -1,
           "#":  1,
-          "Total.Lines":  149,
+          "Total.Lines":  161,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -899,6 +899,18 @@
               "            break;",
               "        }",
               "    }",
+              "}",
+              "",
+              "function PlayerActCode() //t_OnLeavingForm",
+              "{",
+              "    //На случай, если у просканированного корабля была установлена спасательная капсула",
+              "    //if(ScriptItemActionType(t_OnLeavingForm))",
+              "    //{",
+              "    if(CurrentForm() == 'Scaner')",
+              "    {",
+              "        InterfaceState('Scaner', 'BlockWeaponSlot1', 0);",
+              "    }",
+              "    //}",
               "}"          
           ]        
         },
@@ -2996,7 +3008,7 @@
           "TakeItem":  -1,
           "TakeAllItem":  false,
           "OnTalk":  "",
-          "OnActCode":  "",
+          "OnActCode":  "[t_OnLeavingForm|]\r\nPlayerActCode();",
           "EType":  1,
           "EUnique":  "",
           "EMsg":  ""        
