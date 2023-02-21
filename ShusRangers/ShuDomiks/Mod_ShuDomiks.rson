@@ -2208,7 +2208,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  105,
-          "Total.Lines":  2407,
+          "Total.Lines":  2408,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -3877,6 +3877,7 @@
               "            if(HullHP(hull) <= 0)",
               "            {",
               "                OrderNone(target);",
+              "                NoDropToShip(target, 0); //Этим фиксим дабокостыль с автовозрождением убитых рейнджеров",
               "",
               "                if(FilmFlags(0))",
               "                {",
