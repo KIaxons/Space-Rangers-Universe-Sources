@@ -1,0 +1,403 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  -545,
+  "ViewPos.y":  -186,
+  "ScriptName":  "Mod_EvoComfyCamo",
+  "ScriptFileOut":  "H:\\Mod_EvoComfyCamo.scr",
+  "ScriptTextOut":  "H:\\Mod_EvoComfyCamo.txt",
+  "GraphPoint.Count":  16,
+  "GraphLink.Count":  7,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  4,
+  "Stars.Count":  1,
+  "Planets.Count":  1,
+  "Ships.Count":  1,
+  "States.Count":  1,
+  "Groups.Count":  1,
+  "Places.Count":  0,
+  "Items.Count":  0,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  1,
+  "DialogMessages.Count":  1,
+  "DialogAnswers.Count":  1,
+  "Operations.Count":  4,
+  "Statements.Count":  0,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "DialogAnswers":      
+      [
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "fastexit",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  11,
+          "#":  12,
+          "Msg":  "<tstr2>",
+          "AMsg.Num":  "0"        
+        }      
+      ],
+      "DialogMessages":      
+      [
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  10,
+          "#":  11,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "0"        
+        }      
+      ],
+      "Dialogs":      
+      [
+        {
+          "Type":  "TDialog",
+          "Name":  "OnConfusedDialog",
+          "Pos.x":  260,
+          "Pos.y":  140,
+          "Parent":  -1,
+          "#":  9        
+        }      
+      ],
+      "Groups":      
+      [
+        {
+          "Type":  "TGroup",
+          "Name":  "PlayerGroup",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  2,
+          "#":  3,
+          "Owner":  62,
+          "Group.Type":  126,
+          "CntShipMin":  1,
+          "CntShipMax":  1,
+          "SpeedMin":  100,
+          "SpeedMax":  10000,
+          "Weapon":  0,
+          "CargoHook":  0,
+          "EmptySpace":  0,
+          "AddPlayer":  true,
+          "StatusTraderMin":  0,
+          "StatusTraderMax":  100,
+          "StatusWarriorMin":  0,
+          "StatusWarriorMax":  100,
+          "StatusPirateMin":  0,
+          "StatusPirateMax":  100,
+          "DistSearch":  10000,
+          "Dialog":  -1,
+          "StrengthMin":  "0",
+          "StrengthMax":  "0",
+          "Ruins":  ""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  30,
+          "Pos.y":  0,
+          "Parent":  0,
+          "#":  5,
+          "Total.Lines":  1,
+          "Code.Type":  "Global",
+          "Code":          
+          [
+              "GRun();"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  20,
+          "Pos.y":  0,
+          "Parent":  5,
+          "#":  6,
+          "Total.Lines":  33,
+          "Code.Type":  "Init",
+          "Code":          
+          [
+              "function PlayerActCode() //t_OnChameleonConfusion",
+              "{",
+              "    if(!ScriptItemActParam()) exit; //Если корабль по умолчанию всегда распознаёт под камуфляжем игрока",
+              "    if(ShipRank(Player()) < 4) exit; //Если игрок ещё не достиг военного звания \"Истребитель\"",
+              "",
+              "    dword cur_ship = ScriptItemActObject1();",
+              "    if(ShipTypeN(cur_ship) == t_Warrior)",
+              "    {",
+              "        ScriptItemActParam(0);",
+              "        recognizedShip = cur_ship;",
+              "        exit;",
+              "    }",
+              "",
+              "    if(~ShipFindCustomShipInfoByType(cur_ship, 'IgnoreCamoInfo'))",
+              "    {",
+              "        ScriptItemActParam(0);",
+              "        recognizedShip = cur_ship;",
+              "        exit;",
+              "    }",
+              "",
+              "    //Другие рейнджеры со званием \"Истребитель\" также имеют доступ к электронной подписи",
+              "    //if(ShipTypeN(cur_ship) == t_Ranger)",
+              "    //{",
+              "    //    if(ShipRank(cur_ship) >= 4)",
+              "    //    {",
+              "    //        ScriptItemActParam(0);",
+              "    //        recognizedShip = cur_ship;",
+              "    //        exit;",
+              "    //    }",
+              "    //}",
+              "",
+              "    confusedShip = cur_ship;",
+              "}"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  20,
+          "Pos.y":  0,
+          "Parent":  6,
+          "#":  7,
+          "Total.Lines":  17,
+          "Code.Type":  "DialogBegin",
+          "Code":          
+          [
+              "dword cur_ship = GetTalkShip();",
+              "if(cur_ship)",
+              "{",
+              "    if(cur_ship == confusedShip)",
+              "    {",
+              "        str answer = '</color>' + CT('Script.Mod_EvoComfyCamo.PlayerSendSignature' + Rnd(1, 5, Id(cur_ship) + CurTurn() + 121));",
+              "        AddDialogInject('OnConfusedDialog', '', answer, 100000);",
+              "    }",
+              "    else if(0)//cur_ship == recognizedShip)",
+              "    {",
+              "        if(ShipTypeN(cur_ship) == t_Warrior) str add_text = '';",
+              "        else add_text = '';",
+              "",
+              "        AddDialogBlock('BlockedAnswer', 2);",
+              "        AddDialogInject('OnConfusedDialog', add_text, 'BlockedAnswer', 0);",
+              "    }",
+              "}"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  9,
+          "#":  10,
+          "Total.Lines":  6,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "dword cur_ship = GetTalkShip();",
+              "tstr1 = '</color>' + CT('Script.Mod_EvoComfyCamo.OnReceiveSignature' + Rnd(1, 5, Id(cur_ship) + CurTurn() + 794));",
+              "tstr2 = '</color>' + CT('Talk.Exit');",
+              "",
+              "ShipAddCustomShipInfo(cur_ship, 'IgnoreCamoInfo', 'NoShow', 0);",
+              "confusedShip = 0;"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":  "TPlanet",
+          "Name":  "InitPlanet",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  1,
+          "#":  2,
+          "Race":  62,
+          "Owner":  62,
+          "Economy":  14,
+          "Goverment":  62,
+          "RangeMin":  0,
+          "RangeMax":  100,
+          "Dialog":  -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":  "TStarShip",
+          "Name":  "",
+          "Pos.x":  80,
+          "Pos.y":  140,
+          "Parent":  -1,
+          "#":  0,
+          "Count":  1,
+          "Owner":  62,
+          "Ship.Type":  126,
+          "Player":  true,
+          "SpeedMin":  0,
+          "SpeedMax":  10000,
+          "Weapon":  0,
+          "CargoHook":  0,
+          "EmptySpace":  0,
+          "StatusTraderMin":  0,
+          "StatusTraderMax":  100,
+          "StatusWarriorMin":  0,
+          "StatusWarriorMax":  100,
+          "StatusPirateMin":  0,
+          "StatusPirateMax":  100,
+          "StrengthMin":  "0",
+          "StrengthMax":  "0",
+          "Ruins":  ""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":  "TStar",
+          "Name":  "InitStar",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  0,
+          "#":  1,
+          "Constellation":  0,
+          "Priority":  0,
+          "NoKling":  false,
+          "NoComeKling":  false        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":  "TState",
+          "Name":  "PlayerState",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  3,
+          "#":  4,
+          "Move":  0,
+          "MoveObj":  -1,
+          "Attack.Count":  0,
+          "TakeItem":  -1,
+          "TakeAllItem":  false,
+          "OnTalk":  "",
+          "OnActCode":  "[t_OnChameleonConfusion|]\r\nPlayerActCode();",
+          "EType":  1,
+          "EUnique":  "",
+          "EMsg":  ""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":  "TVar",
+          "Name":  "confusedShip",
+          "Pos.x":  150,
+          "Pos.y":  160,
+          "Parent":  -1,
+          "#":  8,
+          "Var.Type":  "Dword",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "recognizedShip",
+          "Pos.x":  150,
+          "Pos.y":  180,
+          "Parent":  -1,
+          "#":  13,
+          "Var.Type":  "Dword",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tstr1",
+          "Pos.x":  170,
+          "Pos.y":  200,
+          "Parent":  -1,
+          "#":  14,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tstr2",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  14,
+          "#":  15,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":  "TGraphLink",
+      "Begin":  3,
+      "End":  4,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  3,
+      "End":  2,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  2,
+      "End":  1,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  0,
+      "End":  1,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  9,
+      "End":  10,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  10,
+      "End":  11,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  11,
+      "End":  12,
+      "Nom":  0,
+      "Arrow":  true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  1,
+  "BlockPar.EC":  
+  [
+    {
+      "#":  "0",
+      "String":  "<0>"    
+    }  
+  ]
+}
