@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1231,
-  "ViewPos.y":  -1,
+  "ViewPos.x":  -1590,
+  "ViewPos.y":  330,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
@@ -13581,7 +13581,7 @@
           "Pos.y":  20,
           "Parent":  374,
           "#":  372,
-          "Total.Lines":  427,
+          "Total.Lines":  428,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -13833,7 +13833,8 @@
               "                    ShipSpecialBonuses(tdwd1, bonHookRadius, 100);",
               "                    //Также убеждаемся, что у любого пирата в трюме хватит места для подбора контрабанды",
               "                    AddItemToShip(tdwd1, cur_item);",
-              "                    FixOverweight(tdwd1);",
+              "                    //Устраняем возможный перевес",
+              "                    ShipImproveItems(tdwd1, 0);",
               "                    GetItemFromShip(tdwd1, cur_item);",
               "",
               "                    //\"Лидер\" пиратов летит к контрабандисту, а остальные следуют за ним",
@@ -17624,7 +17625,7 @@
           "Pos.y":  20,
           "Parent":  372,
           "#":  410,
-          "Total.Lines":  337,
+          "Total.Lines":  338,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -17938,7 +17939,8 @@
               "",
               "    //Кладём контрабанду в трюм контрабандиста и устраняем возможный перевес",
               "    AddItemToShip(target_ship, quest_item);",
-              "    FixOverweight(target_ship);",
+              "    //Устраняем возможный перевес",
+              "    ShipImproveItems(target_ship, 0);",
               "",
               "    //Создаём \"филлерного\" транка для группы пиратов,",
               "    //чтобы не стриггерилось условие смерти всех пиратов раньше времени",
@@ -18145,7 +18147,7 @@
           "Pos.y":  20,
           "Parent":  377,
           "#":  428,
-          "Total.Lines":  248,
+          "Total.Lines":  249,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -18322,7 +18324,8 @@
               "        ItemIsInUse(art, target_ship, 1);",
               "        NoDropItem(art, 1);",
               "    }",
-              "    FixOverweight(target_ship);",
+              "    //Устраняем возможный перевес",
+              "    ShipImproveItems(target_ship, 0);",
               "    NoTargetToShip(target_ship, 3);",
               "    ShipJoin(QuestTarget, target_ship);",
               "    //Пират-цель пока занимается своими делами в той системе, в которой его поймал скрипт",
@@ -23291,7 +23294,7 @@
           "Pos.y":  20,
           "Parent":  475,
           "#":  477,
-          "Total.Lines":  324,
+          "Total.Lines":  326,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -23531,7 +23534,9 @@
               "        NoDropItem(cur_item, 1);",
               "        AddItemToShip(target_ship, cur_item);",
               "    }",
-              "    FixOverweight(target_ship);",
+              "    //Устраняем возможный перевес",
+              "    ShipImproveItems(target_ship, 0);",
+              "",
               "    //Выдаём дипломату приказ посадки на первую обитаемую планету в системе",
               "    ShipJoin(QuestTarget, target_ship, 'QuestTargetMoveState', 0, 0, Id(begin_planet) * 2);",
               "    TransferShip(target_ship, begin_star);",
