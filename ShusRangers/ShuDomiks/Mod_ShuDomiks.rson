@@ -2208,7 +2208,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  105,
-          "Total.Lines":  2420,
+          "Total.Lines":  2421,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -4561,6 +4561,7 @@
               "//Выбирает свободную группу в указанных номерных границах, и с учётом числа уже запущенных указанной верфью групп",
               "function FindFreeRattorsPack(ref ruin_id, int groups_max, ref range_bound)",
               "{",
+              "    //!!! Не забыть также обновить перебор групп в обработчике смерти верфи при добавлении новой группы !!!",
               "    for(int i = range_bound; i <= 7; i = i + 1)",
               "    {",
               "        int group = GetValueFromScript('Mod_ShuDomiks', 'RattorsPack' + i);",
