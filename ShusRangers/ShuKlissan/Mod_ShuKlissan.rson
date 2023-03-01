@@ -2314,7 +2314,7 @@
           "Pos.y":  0,
           "Parent":  2,
           "#":  17,
-          "Total.Lines":  1987,
+          "Total.Lines":  1988,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -2527,7 +2527,7 @@
               "",
               "    //Выдаём махпелле лучшее клисанское снаряжение",
               "    for(i = t_FuelTanks; i <= t_DefGenerator; i = i + 1) GiveEgemonEq(machpella, i, 100);",
-              "    ShipSpecialBonuses(machpella, bonHookRadius, -1000); //Чтобы не собирала астероиды",
+              "    ShipSpecialBonuses(machpella, bonHookRadius, -1000); //Чтобы не собирала минералы",
               "",
               "    //Если подключена EvoArmada, бафаем махпеллу",
               "    if(EvoArmadaInit)",
@@ -3957,7 +3957,8 @@
               "    GiveNondusEq(neurolink, t_CargoHook);",
               "    GiveEgemonEq(neurolink, t_RepairRobot);",
               "    GiveNondusEq(neurolink, t_DefGenerator);",
-              "    ShipSpecialBonuses(neurolink, bonHookRadius, -1000); //Чтобы не собирал астероиды",
+              "    ShipSpecialBonuses(neurolink, bonHookRadius, -1000); //Чтобы не собирал минералы",
+              "    ShipSpecialBonuses(neurolink, bonResistAsteroid, 80);",
               "",
               "    //Зачищаем магазины и блокируем их автозаполнение",
               "    //for(i = t_Food; i <= t_Narcotics; i = i + 1) GoodsAdd(neurolink, i, -GoodsAdd(neurolink, i, 0));",
