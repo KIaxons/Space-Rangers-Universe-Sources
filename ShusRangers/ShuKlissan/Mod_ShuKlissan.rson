@@ -2314,7 +2314,7 @@
           "Pos.y":  0,
           "Parent":  2,
           "#":  17,
-          "Total.Lines":  1988,
+          "Total.Lines":  1989,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -2512,6 +2512,7 @@
               "    SetEquipmentStats(item, 140, 1);",
               "    SetEquipmentStats(item, 400, 2);",
               "    AddItemToShip(machpella, item);",
+              "    ItemIsInUse(item, machpella, 1);",
               "    NoDropItem(item, 1);",
               "",
               "    dword cloned_item = CreateCustomWeapon('klissan_hellwave', 150, 8, None);",
