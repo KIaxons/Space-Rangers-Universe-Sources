@@ -5953,7 +5953,7 @@
           "Pos.y":  0,
           "Parent":  262,
           "#":  263,
-          "Total.Lines":  84,
+          "Total.Lines":  85,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -5975,6 +5975,7 @@
               "        ShipDestroy(CurShip, 1);",
               "",
               "        //Сокращаем время КД до спавна новой стаи на 1/5 за каждого вернувшегося обратно на верфь раттора",
+              "        dword home_shipyard = IdToShip(GetData(1));",
               "        SetData(max(GetData(0, IdToShip(GetData(1))) - round(0.20 * RattorGroupsDataArray['PackAssemblyDelay']), 0), 0, home_shipyard);",
               "    }",
               "    else OrderTakeOff(CurShip);",
@@ -6032,7 +6033,7 @@
               "{",
               "    if(ShipOrder(CurShip) != 2) //В системе не осталось враждебных целей, возвращаем стаю ратторов на их родную верфь (если они уже и так не на пути туда)",
               "    {",
-              "        dword home_shipyard = IdToShip(GetData(1));",
+              "        home_shipyard = IdToShip(GetData(1));",
               "        if(home_shipyard) for(i = 0; i < group_count; i = i + 1)",
               "        {",
               "            rattor = GroupShip(cur_group, i);",
