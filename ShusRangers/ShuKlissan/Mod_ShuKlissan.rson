@@ -1,13 +1,13 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1002,
-  "ViewPos.y":  -117,
+  "ViewPos.x":  -1189,
+  "ViewPos.y":  -155,
   "ScriptName":  "Mod_ShuKlissan",
   "ScriptFileOut":  "H:\\Mod_ShuKlissan.scr",
   "ScriptTextOut":  "H:\\Mod_ShuKlissan.txt",
-  "GraphPoint.Count":  415,
-  "GraphLink.Count":  348,
+  "GraphPoint.Count":  418,
+  "GraphLink.Count":  352,
   "GraphRectText.Count":  3,
   "Variables.Count":  37,
   "Stars.Count":  1,
@@ -20,9 +20,9 @@
   "Ethers.Count":  0,
   "Dialogs.Count":  33,
   "DialogMessages.Count":  78,
-  "DialogAnswers.Count":  90,
+  "DialogAnswers.Count":  91,
   "Operations.Count":  92,
-  "Statements.Count":  49,
+  "Statements.Count":  51,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
@@ -33,7 +33,7 @@
           "Type":  "TDialogAnswer",
           "Name":  "",
           "Pos.x":  0,
-          "Pos.y":  20,
+          "Pos.y":  40,
           "Parent":  73,
           "#":  149,
           "Msg":  "Отлично!",
@@ -694,7 +694,7 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  314,
+          "Parent":  415,
           "#":  215,
           "Msg":  "К основному исследованию",
           "AMsg.Num":  "66"        
@@ -928,6 +928,16 @@
           "#":  403,
           "Msg":  "<tstr1>",
           "AMsg.Num":  "89"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "restart",
+          "Pos.x":  130,
+          "Pos.y":  60,
+          "Parent":  -1,
+          "#":  417,
+          "Msg":  "Назад",
+          "AMsg.Num":  "90"        
         }      
       ],
       "DialogMessages":      
@@ -936,7 +946,7 @@
           "Type":  "TDialogMsg",
           "Name":  "",
           "Pos.x":  0,
-          "Pos.y":  140,
+          "Pos.y":  160,
           "Parent":  33,
           "#":  63,
           "Msg":  "<tstr1>",
@@ -1016,7 +1026,7 @@
           "Type":  "TDialogMsg",
           "Name":  "",
           "Pos.x":  0,
-          "Pos.y":  70,
+          "Pos.y":  90,
           "Parent":  31,
           "#":  80,
           "Msg":  "За прошедшие две сотни лет с момента последней войны развитие клисан не стояло на месте - может, внешне их корабли и фактически идентичны тем данным, что хранятся в наших архивах, однако нам уже довелось убедиться на собственной шкуре, что эта волна клисан значительно отличается от ветви, встреченной Коалицией три века тому назад. Их устройство более совершенно, а технологии во многом превосходят все то, с чем нам вообще доводилось сталкиваться раньше. Что важнее всего - структура этой расы имеет кристаллическую, а не белковую основу, что рушит практически все наши представления о них как об органических существах. Даже самые простейшие процессы, протекающие в их телах, для нас абсолютно чужды и непонятны, и мы можем лишь попытаться описать их, подбирая аналогичные или схожие термины из нашего языка. Принцип работы клисанского оборудования вообще остается для нас тайной из тайн.",
@@ -1734,7 +1744,7 @@
         {
           "Type":  "TDialog",
           "Name":  "Remains",
-          "Pos.x":  -40,
+          "Pos.x":  -30,
           "Pos.y":  30,
           "Parent":  31,
           "#":  33        
@@ -1790,8 +1800,8 @@
         {
           "Type":  "TDialog",
           "Name":  "Protoplasm",
-          "Pos.x":  160,
-          "Pos.y":  120,
+          "Pos.x":  170,
+          "Pos.y":  140,
           "Parent":  -1,
           "#":  40        
         },
@@ -2314,7 +2324,7 @@
           "Pos.y":  0,
           "Parent":  2,
           "#":  17,
-          "Total.Lines":  1989,
+          "Total.Lines":  1990,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -2396,6 +2406,7 @@
               "cur_ship = SpawnHandler(GalaxyStar(TortugatzId));",
               "ShipSetCoords(SpawnMachpella(GalaxyStar(TortugatzId), PlanetPirateClan()), CoordX(cur_ship) + RndObject(-200, 200, cur_ship), CoordY(cur_ship) + RndObject(-200, 200, cur_ship));",
               "",
+              "//Спавнится всего с 1 лезкой - исправить это!",
               "function SpawnHandler(dword star)",
               "{",
               "    dword handler = BuildCustomRuins(star, 'Handler', 8);",
@@ -4316,7 +4327,7 @@
           "Pos.y":  0,
           "Parent":  302,
           "#":  18,
-          "Total.Lines":  1595,
+          "Total.Lines":  1594,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -5517,7 +5528,7 @@
               "",
               "    //В случае если игрок находится в Тортугаце и нанёс Хандлеру повреждение, либо если здоровье Хандлера опустилось ниже 50%",
               "    //Спавнится \"защита\" Хандлера",
-              "    if(!KlissanInvasion['HandlerSpecialGuardsWasSpawned'])",
+              "    if(KlissanInvasion['HandlerSpecialGuardsWasSpawned'] <= CurTurn())",
               "    {",
               "        cur_ruin = GroupToShip(Handler);",
               "        if(cur_ruin)",
@@ -5532,21 +5543,19 @@
               "                    {",
               "                        cur_ship = BuyPirate(PlanetPirateClan(), 1000);",
               "                        Chameleon(cur_ship, 'Ship.Akrin.HandlerSpecialGuard');",
-              "                        TransferShip(cur_ship, cur_ruin);",
               "                        ShipMoney(cur_ship, 1000000);",
               "                        for(j = 1; j <= 7; j = j + 1) ShipRefit(cur_ship);",
               "                        ShipImproveItems(cur_ship, 15);",
               "                        ShipRepairEq(cur_ship);",
               "                        NoTalkToShip(cur_ship, 1);",
               "",
+              "                        TransferShip(cur_ship, cur_ruin);",
               "                        ShipJoin(HandlerGuardShips, cur_ship);",
               "                    }",
               "                }",
               "            }",
               "        }",
               "    }",
-              "    //Возвращаем возможность спавна защитников Хандлера спустя полгода",
-              "    else if(KlissanInvasion['HandlerSpecialGuardsWasSpawned'] >= CurTurn()) KlissanInvasion['HandlerSpecialGuardsWasSpawned'] = 0;",
               "",
               "    //Если была запущена силовая концовка захвата Тортугаца за Коалицию",
               "    if(KlissanInvasion['TortugatzAssaultEndingStage'])",
@@ -5582,7 +5591,7 @@
               "                CoordX(cur_ruin, round(sin(tflt1 * pi) * 500) + CoordX(GroupToShip(Handler)));",
               "                CoordY(cur_ruin, round(cos(tflt1 * pi) * 500) + CoordY(GroupToShip(Handler)));",
               "",
-              "                SetName(cur_ruin, RndObject(1, int(CT('Script.Mod_ShuKlissan.CoalitionAssaultStationName.' + CT('Script.Mod_ShuKlissan.CoalitionAssaultStationName.Count'))), cur_ruin));",
+              "                SetName(cur_ruin, CT('Script.Mod_ShuKlissan.CoalitionAssaultStationName.' + RndObject(1, int(CT('Script.Mod_ShuKlissan.CoalitionAssaultStationName.Count')), cur_ruin)));",
               "                ShipSkill(cur_ruin, 'Accuracy', 6);",
               "                ShipSkill(cur_ruin, 'Mobility', 6);",
               "                ShipSkill(cur_ruin, 'Technical', 6);",
@@ -5602,6 +5611,7 @@
               "                HullHP(cur_ruin, 'To100');",
               "                //Военная база технически будет неуязвима, но с учётом её пассивности в бою, это и не особо важно",
               "                ShipAddCustomShipInfo(cur_ruin, 'ShipImmortalInfo', 'NoShow');",
+              "                ShipSpecialBonuses(cur_ruin, bonResistAsteroid, 95);",
               "",
               "                //Если подключена EvoArmada, вешаем на ВБ дополнительные залпы и бонусы",
               "                if(EvoArmadaInit)",
@@ -5623,8 +5633,8 @@
               "                }",
               "",
               "                ShipJoinToScript(cur_ruin, 'Mod_ShuKlissan.CoalitionAssaultWB');",
-              "                MakeShipEnterStar(cur_ruin, GalaxyStar(TortugatzId), cur_star, 7);",
-              "                OrderTeleport(cur_ruin, GalaxyStar(TortugatzId), CoordX(Player()) - 150, CoordY(Player()) - 150, 0, 7);",
+              "                MakeShipEnterStar(cur_ruin, GalaxyStar(TortugatzId), cur_star, 1);",
+              "                OrderTeleport(cur_ruin, GalaxyStar(TortugatzId), CoordX(Player()) - 150, CoordY(Player()) - 150, 0, 1); //ShipOrderData1(Player()) + 1 //Позже игроку скручивают таймер",
               "",
               "                //Спавним военных, которые взлетят с прибывшей ВБ, и будут поддерживать игрока в бою",
               "                cnt = RndObject(21, 25, cur_ruin);",
@@ -6297,7 +6307,7 @@
           "Pos.y":  20,
           "Parent":  26,
           "#":  68,
-          "Total.Lines":  100,
+          "Total.Lines":  102,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -6327,9 +6337,9 @@
               "}",
               "",
               "//Выход на связь с игроком",
-              "if(ShipInNormalSpace(CurShip))",
+              "if(ShipInNormalSpace(Player()))",
               "{",
-              "    if(ShipInNormalSpace(Player()))",
+              "    if(ShipInNormalSpace(CurShip))",
               "    {",
               "        if(ShipStar(Player()) == ShipStar(CurShip))",
               "        {",
@@ -6389,6 +6399,8 @@
               "            }",
               "        }",
               "    }",
+              "    //Чтобы не тормозила вылетать за игроком",
+              "    //else if(ShipInHyperSpace(CurShip)) ShipOrderData1(CurShip, 0);",
               "}",
               "else if(GetShipPlanet(CurShip))",
               "{",
@@ -6418,7 +6430,7 @@
               "OrderLock(CurShip, 1);",
               "ShipFreeFlight(CurShip);",
               "",
-              "if(KlissanInvasion['HandlerSpecialGuardsWasSpawned'])",
+              "if(ShipStar(CurShip) == ShipStar(Player()))",
               "{",
               "    if(!ShipInNormalSpace(CurShip)) OrderTakeOff(CurShip);",
               "    else OrderFollowShip(CurShip, Player(), 1);",
@@ -8918,8 +8930,8 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  140,
-          "Pos.y":  60,
+          "Pos.x":  150,
+          "Pos.y":  80,
           "Parent":  -1,
           "#":  405,
           "Total.Lines":  3,
@@ -9676,7 +9688,7 @@
           "Type":  "Tif",
           "Name":  "",
           "Pos.x":  0,
-          "Pos.y":  -140,
+          "Pos.y":  -160,
           "Parent":  381,
           "#":  380,
           "Total.Lines":  1,
@@ -9732,7 +9744,7 @@
           "Type":  "Tif",
           "Name":  "",
           "Pos.x":  230,
-          "Pos.y":  100,
+          "Pos.y":  120,
           "Parent":  -1,
           "#":  404,
           "Total.Lines":  1,
@@ -9783,6 +9795,34 @@
           [
               "1"          
           ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  314,
+          "#":  415,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "KlissanInvasion['MainResearch.ResearchLeft']"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  20,
+          "Pos.y":  20,
+          "Parent":  314,
+          "#":  416,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "!KlissanInvasion['MainResearch.ResearchLeft']"          
+          ]        
         }      
       ],
       "States":      
@@ -9830,7 +9870,7 @@
           "Pos.y":  20,
           "Parent":  12,
           "#":  22,
-          "Move":  0,
+          "Move":  5,
           "MoveObj":  -1,
           "Attack.Count":  0,
           "TakeItem":  -1,
@@ -12153,13 +12193,6 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  314,
-      "End":  215,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
       "Begin":  35,
       "End":  318,
       "Nom":  0,
@@ -12755,13 +12788,6 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  382,
-      "End":  215,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
       "Begin":  149,
       "End":  63,
       "Nom":  0,
@@ -13023,6 +13049,48 @@
       "Type":  "TGraphLink",
       "Begin":  411,
       "End":  201,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  382,
+      "End":  415,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  314,
+      "End":  415,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  314,
+      "End":  416,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  382,
+      "End":  416,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  415,
+      "End":  215,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  416,
+      "End":  417,
       "Nom":  0,
       "Arrow":  true    
     }  
