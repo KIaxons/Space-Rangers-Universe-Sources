@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1045,
-  "ViewPos.y":  -126,
+  "ViewPos.x":  -874,
+  "ViewPos.y":  -140,
   "ScriptName":  "Mod_ShuKlissan",
   "ScriptFileOut":  "H:\\Mod_ShuKlissan.scr",
   "ScriptTextOut":  "H:\\Mod_ShuKlissan.txt",
@@ -7944,7 +7944,7 @@
           "Pos.y":  20,
           "Parent":  195,
           "#":  273,
-          "Total.Lines":  30,
+          "Total.Lines":  35,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -7967,6 +7967,11 @@
               "RelationToRanger(machpella, Player(), 0);",
               "ShipDeleteCustomShipInfo(machpella, 'ShipImmortalInfo');",
               "NoTargetToShip(machpella, 0);",
+              "",
+              "dword handler = GroupToShip(Handler);",
+              "ShipDeleteCustomShipInfo(Handler, 'ShipImmortalInfo');",
+              "ShipDestroy(handler, 1);",
+              "KlissanInvasion['KlissanControl.WasReceived'] = 0;",
               "",
               "Ether(3, 'Specagent.GalaxyFreed', \"Ликвидировать махпеллу.\");",
               "KlissanInvasion['SpecagentFreedTheGalaxyEndingStage'] = 3;",
