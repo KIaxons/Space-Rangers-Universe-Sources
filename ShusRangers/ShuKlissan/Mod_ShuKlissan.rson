@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -874,
-  "ViewPos.y":  -140,
+  "ViewPos.x":  -903,
+  "ViewPos.y":  -77,
   "ScriptName":  "Mod_ShuKlissan",
   "ScriptFileOut":  "H:\\Mod_ShuKlissan.scr",
   "ScriptTextOut":  "H:\\Mod_ShuKlissan.txt",
@@ -7944,7 +7944,7 @@
           "Pos.y":  20,
           "Parent":  195,
           "#":  273,
-          "Total.Lines":  35,
+          "Total.Lines":  39,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -7969,7 +7969,11 @@
               "NoTargetToShip(machpella, 0);",
               "",
               "dword handler = GroupToShip(Handler);",
-              "ShipDeleteCustomShipInfo(Handler, 'ShipImmortalInfo');",
+              "ShipOut(handler);",
+              "ShipDeleteCustomShipInfo(handler, 'ShipImmortalInfo');",
+              "OrderNone(handler);",
+              "OrderLock(handler, 1);",
+              "TransferShip(handler, StarPlanets(GalaxyStar(People), 0)); //На Меркурий",
               "ShipDestroy(handler, 1);",
               "KlissanInvasion['KlissanControl.WasReceived'] = 0;",
               "",
