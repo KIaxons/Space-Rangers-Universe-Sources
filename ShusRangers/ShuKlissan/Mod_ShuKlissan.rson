@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1090,
-  "ViewPos.y":  12,
+  "ViewPos.x":  -638,
+  "ViewPos.y":  -109,
   "ScriptName":  "Mod_ShuKlissan",
   "ScriptFileOut":  "H:\\Mod_ShuKlissan.scr",
   "ScriptTextOut":  "H:\\Mod_ShuKlissan.txt",
@@ -7723,7 +7723,7 @@
           "Pos.y":  170,
           "Parent":  -1,
           "#":  261,
-          "Total.Lines":  60,
+          "Total.Lines":  64,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -7756,6 +7756,10 @@
               "if(StateIs(machpella, 'MachpellaWaitInTortugatzState'))",
               "{",
               "    ShipOwner(machpella, ShipPilotRace(machpella));",
+              "    //Корректируем текущий ShipStanding для рейнджера-махпеллы",
+              "    ShipKillFactionInCurSystem(machpella, 2, ShipKillFactionInCurSystem(machpella, 0) + 1);",
+              "    ShipKillFactionInCurSystem(machpella, 0, 0);",
+              "",
               "    for(i = 0; i < StarShips(cur_star); i = i + 1)",
               "    {",
               "        cur_ship = StarShips(cur_star, i);",
