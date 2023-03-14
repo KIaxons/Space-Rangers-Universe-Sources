@@ -169,7 +169,7 @@
           "Pos.y":  340,
           "Parent":  -1,
           "#":  4,
-          "Total.Lines":  1107,
+          "Total.Lines":  1110,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -696,7 +696,10 @@
               "        tint = ShipOwner(cur_ship);",
               "        tint2 = ShipSubType(cur_ship);",
               "        //Пропускаем доминаторских боссов",
-              "        if(tint == 5 && tint2 == 0) continue;",
+              "        if(tint == Kling)",
+              "        {",
+              "            if(!tint2) continue;",
+              "        }",
               "",
               "        AddExtraAttacksToShip(cur_ship, tint, ShipTypeN(cur_ship), ShipType(cur_ship), tint2);",
               "    }",
