@@ -18838,7 +18838,7 @@
           "Pos.y":  20,
           "Parent":  443,
           "#":  434,
-          "Total.Lines":  227,
+          "Total.Lines":  231,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -18933,6 +18933,10 @@
               "        else tstr1 = tstr1 + \"<br>\" + '<clr><clrEnd>' + \"<br>\" + CT('Script.Mod_ShuMercs.PlayerMercsOrgMsg.QuestNoteHQDestroyed');",
               "        CustomEther('QuestFailed_PlayerMercsOrg', 5, ActiveQuestsHQArray[ActiveQuestHQ, 3], tstr1);",
               "    }",
+              "",
+              "    //На всякий случай дублируем",
+              "    NoComeKlingToStar(GalaxyStar(ActiveQuestsHQArray[ActiveQuestHQ, 7] - 1), 0);",
+              "    NoComeKlingToStar(cur_star, 0);",
               "",
               "    ActiveQuestsHQArray[ActiveQuestHQ, 0] = 0;",
               "    //Завершаем квест и получаем награду (ну, либо пиздюлей)",
@@ -19078,7 +19082,7 @@
           "Pos.y":  20,
           "Parent":  437,
           "#":  439,
-          "Total.Lines":  259,
+          "Total.Lines":  263,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -19202,6 +19206,10 @@
               "        RelationToRanger(PlanetPirateClan(), Player(), ActiveQuestsHQArray[ActiveQuestHQ, 10] - 25);",
               "        if(RelationToRanger(PlanetPirateClan(), Player()) < 10) RelationToRanger(PlanetPirateClan(), Player(), 10);",
               "    }",
+              "",
+              "    //На всякий случай дублируем",
+              "    NoComeKlingToStar(GalaxyStar(ActiveQuestsHQArray[ActiveQuestHQ, 7] - 1), 0);",
+              "    NoComeKlingToStar(cur_star, 0);",
               "",
               "    ActiveQuestsHQArray[ActiveQuestHQ, 0] = 0;",
               "    //Завершаем квест и получаем награду (ну, либо пиздюлей)",
@@ -19350,7 +19358,7 @@
           "Pos.y":  20,
           "Parent":  438,
           "#":  440,
-          "Total.Lines":  245,
+          "Total.Lines":  249,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -19460,6 +19468,10 @@
               "        RelationToRanger(PlanetPirateClan(), Player(), ActiveQuestsHQArray[ActiveQuestHQ, 11] - 25);",
               "        if(RelationToRanger(PlanetPirateClan(), Player()) < 10) RelationToRanger(PlanetPirateClan(), Player(), 10);",
               "    }",
+              "",
+              "    //На всякий случай дублируем",
+              "    NoComeKlingToStar(GalaxyStar(ActiveQuestsHQArray[ActiveQuestHQ, 7] - 1), 0);",
+              "    NoComeKlingToStar(cur_star, 0);",
               "",
               "    ActiveQuestsHQArray[ActiveQuestHQ, 0] = 0;",
               "    //Завершаем квест и получаем награду (ну, либо пиздюлей)",
@@ -19972,7 +19984,7 @@
           "Pos.y":  20,
           "Parent":  444,
           "#":  442,
-          "Total.Lines":  224,
+          "Total.Lines":  228,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -20064,6 +20076,10 @@
               "        else tstr1 = tstr1 + \"<br>\" + '<clr><clrEnd>' + \"<br>\" + CT('Script.Mod_ShuMercs.PlayerMercsOrgMsg.QuestNoteHQDestroyed');",
               "        CustomEther('QuestFailed_PlayerMercsOrg', 5, ActiveQuestsHQArray[ActiveQuestHQ, 3], tstr1);",
               "    }",
+              "",
+              "    //На всякий случай дублируем",
+              "    NoComeKlingToStar(GalaxyStar(ActiveQuestsHQArray[ActiveQuestHQ, 7] - 1), 0);",
+              "    NoComeKlingToStar(cur_star, 0);",
               "",
               "    ActiveQuestsHQArray[ActiveQuestHQ, 0] = 0;",
               "    //Завершаем квест и получаем награду (ну, либо пиздюлей)",
@@ -30926,7 +30942,7 @@
           "Pos.y":  20,
           "Parent":  1080,
           "#":  1081,
-          "Total.Lines":  302,
+          "Total.Lines":  306,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -31013,6 +31029,10 @@
               "        else tstr1 = tstr1 + \"<br>\" + '<clr><clrEnd>' + \"<br>\" + CT('Script.Mod_ShuMercs.PlayerMercsOrgMsg.QuestNoteHQDestroyed');",
               "        CustomEther('QuestFailed_PlayerMercsOrg', 5, ActiveQuestsHQArray[ActiveQuestHQ, 3], tstr1);",
               "    }",
+              "",
+              "    //На всякий случай дублируем",
+              "    NoComeKlingToStar(GalaxyStar(ActiveQuestsHQArray[ActiveQuestHQ, 7] - 1), 0);",
+              "    NoComeKlingToStar(cur_star, 0);",
               "",
               "    //Снимаем защиту от прибытия новых нейролинков в атакуемую систему",
               "    tint1 = Id(cur_star);",
