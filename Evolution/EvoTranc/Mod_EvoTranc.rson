@@ -1046,9 +1046,9 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "Chameleon(cur_Tranc,'Ship.TranclucatorRed');",
-              "EquipmentImageName(cur_Tranc,'ArtTranclucatorRed');",
-              "if(cur_ItemTranc)EquipmentImageName(cur_ItemTranc,'ArtTranclucatorRed');"          
+              "Chameleon(cur_Tranc, 'Ship.TranclucatorRed');",
+              "TranclucatorData(cur_Tranc, 'ArtSysName', 'ArtTranclucatorRed');",
+              "if(cur_ItemTranc) EquipmentImageName(cur_ItemTranc, 'ArtTranclucatorRed');"          
           ]        
         },
         {
@@ -1063,8 +1063,8 @@
           "Code":          
           [
               "Chameleon(cur_Tranc);",
-              "EquipmentImageName(cur_Tranc,'');",
-              "if(cur_ItemTranc)EquipmentImageName(cur_ItemTranc,'');"          
+              "TranclucatorData(cur_Tranc, 'ArtSysName', '');",
+              "if(cur_ItemTranc) EquipmentImageName(cur_ItemTranc, '');"          
           ]        
         },
         {
@@ -1078,9 +1078,9 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "Chameleon(cur_Tranc,'Ship.TranclucatorGreen');",
-              "EquipmentImageName(cur_Tranc,'ArtTranclucatorGreen');",
-              "if(cur_ItemTranc)EquipmentImageName(cur_ItemTranc,'ArtTranclucatorGreen');"          
+              "Chameleon(cur_Tranc, 'Ship.TranclucatorGreen');",
+              "TranclucatorData(cur_Tranc, 'ArtSysName', 'ArtTranclucatorGreen');",
+              "if(cur_ItemTranc) EquipmentImageName(cur_ItemTranc, 'ArtTranclucatorGreen');"          
           ]        
         },
         {
@@ -1094,9 +1094,9 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "Chameleon(cur_Tranc,'Ship.TranclucatorBlue');",
-              "EquipmentImageName(cur_Tranc,'ArtTranclucatorBlue');",
-              "if(cur_ItemTranc)EquipmentImageName(cur_ItemTranc,'ArtTranclucatorBlue');"          
+              "Chameleon(cur_Tranc, 'Ship.TranclucatorBlue');",
+              "TranclucatorData(cur_Tranc, 'ArtSysName', 'ArtTranclucatorBlue');",
+              "if(cur_ItemTranc) EquipmentImageName(cur_ItemTranc, 'ArtTranclucatorBlue');"          
           ]        
         },
         {
@@ -1110,9 +1110,9 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "Chameleon(cur_Tranc,'Ship.TranclucatorViolet');",
-              "EquipmentImageName(cur_Tranc,'ArtTranclucatorViolet');",
-              "if(cur_ItemTranc)EquipmentImageName(cur_ItemTranc,'ArtTranclucatorViolet');"          
+              "Chameleon(cur_Tranc, 'Ship.TranclucatorViolet');",
+              "TranclucatorData(cur_Tranc, 'ArtSysName', 'ArtTranclucatorViolet');",
+              "if(cur_ItemTranc) EquipmentImageName(cur_ItemTranc, 'ArtTranclucatorViolet');"          
           ]        
         },
         {
@@ -1126,8 +1126,8 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "temp_int=1;",
-              "if(EquipmentImageName(cur_Tranc)=='ArtTranclucatorRed')temp_int=0;"          
+              "temp_int = 1;",
+              "if(EquipmentImageName(cur_Tranc) == 'ArtTranclucatorRed') temp_int = 0;"          
           ]        
         },
         {
@@ -1141,8 +1141,8 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "temp_int=1;",
-              "if(EquipmentImageName(cur_Tranc)=='')temp_int=0;"          
+              "temp_int = 1;",
+              "if(EquipmentImageName(cur_Tranc) == '') temp_int = 0;"          
           ]        
         },
         {
@@ -1156,8 +1156,8 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "temp_int=1;",
-              "if(EquipmentImageName(cur_Tranc)=='ArtTranclucatorGreen')temp_int=0;"          
+              "temp_int = 1;",
+              "if(EquipmentImageName(cur_Tranc) == 'ArtTranclucatorGreen') temp_int = 0;"          
           ]        
         },
         {
@@ -1171,8 +1171,8 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "temp_int=1;",
-              "if(EquipmentImageName(cur_Tranc)=='ArtTranclucatorBlue')temp_int=0;"          
+              "temp_int = 1;",
+              "if(EquipmentImageName(cur_Tranc) == 'ArtTranclucatorBlue') temp_int = 0;"          
           ]        
         },
         {
@@ -1186,8 +1186,8 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "temp_int=1;",
-              "if(EquipmentImageName(cur_Tranc)=='ArtTranclucatorViolet')temp_int=0;"          
+              "temp_int = 1;",
+              "if(EquipmentImageName(cur_Tranc) == 'ArtTranclucatorViolet') temp_int = 0;"          
           ]        
         },
         {
@@ -1861,7 +1861,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player(),ShipMoney(Player())-cost);",
+              "ShipMoney(Player(), ShipMoney(Player()) - cost);",
               "Sound('Sound.Repair');"          
           ]        
         },
@@ -2741,7 +2741,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "InjectAnswer('Canceled',\"А знаете, я что-то передумал\",5);"          
+              "InjectAnswer('Canceled', \"А знаете, я что-то передумал\", 5);"          
           ]        
         },
         {
@@ -2755,8 +2755,8 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "temp_int=1;",
-              "if(EquipmentImageName(cur_Tranc)=='ArtTranclucatorWhite')temp_int=0;"          
+              "temp_int = 1;",
+              "if(EquipmentImageName(cur_Tranc) == 'ArtTranclucatorWhite') temp_int = 0;"          
           ]        
         },
         {
@@ -2770,8 +2770,8 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "temp_int=1;",
-              "if(EquipmentImageName(cur_Tranc)=='ArtTranclucatorYellow')temp_int=0;"          
+              "temp_int = 1;",
+              "if(EquipmentImageName(cur_Tranc) == 'ArtTranclucatorYellow') temp_int = 0;"          
           ]        
         },
         {
@@ -2785,9 +2785,9 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "Chameleon(cur_Tranc,'Ship.TranclucatorWhite');",
-              "EquipmentImageName(cur_Tranc,'ArtTranclucatorWhite');",
-              "if(cur_ItemTranc)EquipmentImageName(cur_ItemTranc,'ArtTranclucatorWhite');"          
+              "Chameleon(cur_Tranc, 'Ship.TranclucatorWhite');",
+              "TranclucatorData(cur_Tranc, 'ArtSysName', 'ArtTranclucatorWhite');",
+              "if(cur_ItemTranc) EquipmentImageName(cur_ItemTranc, 'ArtTranclucatorWhite');"          
           ]        
         },
         {
@@ -2801,9 +2801,9 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "Chameleon(cur_Tranc,'Ship.TranclucatorYellow');",
-              "EquipmentImageName(cur_Tranc,'ArtTranclucatorYellow');",
-              "if(cur_ItemTranc)EquipmentImageName(cur_ItemTranc,'ArtTranclucatorYellow');"          
+              "Chameleon(cur_Tranc, 'Ship.TranclucatorYellow');",
+              "TranclucatorData(cur_Tranc, 'ArtSysName', 'ArtTranclucatorYellow');",
+              "if(cur_ItemTranc) EquipmentImageName(cur_ItemTranc, 'ArtTranclucatorYellow');"          
           ]        
         },
         {

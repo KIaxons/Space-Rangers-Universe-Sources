@@ -30777,7 +30777,7 @@
           "Pos.y":  20,
           "Parent":  1081,
           "#":  1082,
-          "Total.Lines":  454,
+          "Total.Lines":  455,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -31067,6 +31067,7 @@
               "        if(CurrentMods('Evolution\\EvoTranc'))",
               "        {",
               "            Chameleon(ship, 'Ship.TranclucatorRed');",
+              "            TranclucatorData(ship, 'ArtSysName', 'TranclucatorRed');",
               "            EquipmentImageName(item, 'ArtTranclucatorRed');",
               "        }",
               "        for(j = ShipItems(ship) - 1; j >= 1; j = j - 1) FreeItem(GetItemFromShip(ship, j));",
