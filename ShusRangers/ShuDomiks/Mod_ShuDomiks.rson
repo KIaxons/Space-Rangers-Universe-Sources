@@ -1842,7 +1842,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  99,
-          "Total.Lines":  2422,
+          "Total.Lines":  2423,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -3576,7 +3576,6 @@
               "                                        for(i = rattors_count - 1; i >= 0; i = i - 1)",
               "                                        {",
               "                                            dword rattor = GroupShip(cur_group, i);",
-              "                                            SetData(-1, 0, rattor); //Выставляем всей стае маркер нахождения на цели",
               "                                            OrderNone(rattor);",
               "",
               "                                            if(GetShipRuins(rattor) != target) //Если кто-то из ратторов по какой-то причине не успел за ведущим - пускаем его в расход",
@@ -3588,6 +3587,8 @@
               "                                                if(FilmFlags(0)) ShowEffect('Weapon.NoGraph', 0, rattor, 0, 0, 6, 0, 0,0,0);",
               "                                                continue;",
               "                                            }",
+              "",
+              "                                            SetData(-1, 0, rattor); //Выставляем всей успешно приземлившейся стае маркер нахождения на цели",
               "",
               "                                            ShipSpecialBonuses(rattor, bonSpeed, ShipSpecialBonuses(rattor, bonSpeed) + 100000);",
               "",
