@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1938,
-  "ViewPos.y":  365,
+  "ViewPos.x":  -1498,
+  "ViewPos.y":  339,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
@@ -31319,7 +31319,7 @@
           "Pos.y":  20,
           "Parent":  1081,
           "#":  1082,
-          "Total.Lines":  457,
+          "Total.Lines":  461,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -31608,7 +31608,11 @@
               "",
               "        ship = ArtTranclucatorToShip(item);",
               "        SetName(ship, tranc_name);",
-              "        if(i == 2) ShipFace(ship, 84826580);",
+              "        if(i == 2)",
+              "        {",
+              "            if(ShipPilotRace(Player()) != Fei || ShipFace(Player()) != 8) ShipFace(ship, 84826580);",
+              "            else ShipFace(ship, 848265802);",
+              "        }",
               "        TranclucatorData(ship, 'Proprietor', warrior);",
               "        if(CurrentMods('Evolution\\EvoTranc'))",
               "        {",

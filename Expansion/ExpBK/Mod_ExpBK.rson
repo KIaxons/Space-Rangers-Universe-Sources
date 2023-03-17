@@ -816,13 +816,13 @@
               "}",
               "",
               "//Вывод новости о необходимости продления лицензии",
-              "if(~ShipFindCustomShipInfoByType(Player(),'Trade_license'))",
+              "if(~ShipFindCustomShipInfoByType(Player(), 'Trade_license'))",
               "{",
               "    temp_int = ShipCustomShipInfoData(Player(), 'Trade_license', 1);",
               "    //За три месяца",
-              "    if((temp_int - CurTurn()) == 90) NewsAdd(\"Сообщение из бизнес-центра.<br>Уважаемый <Player>! Срок действия вашей <color=255,240,100>торговой лицензии</color> истекает ровно через три месяца. Если вы не хотите потерять все связанные с ней торговые преимущества, рекомендуем продлить лицензию в любом бизнес-центре за месяц до её истечения.<br>Дополнительное напоминание будет направлено вам одновременно с открытием окна на продление.<br>С уважением, Администрация.\");",
+              "    if((temp_int - CurTurn()) == 90) NewsAdd(\"Сообщение из бизнес-центра.<br>Уважаемый <Player>! Срок действия вашей <color=255,240,100>торговой лицензии</color> истекает ровно через три месяца. Если вы не хотите потерять все связанные с ней торговые преимущества, рекомендуем как можно скорее посетить один из наших центров для своевременного <color=255,240,100>продления</color>.<br>Кстати, продление обойдётся вам дешевле оформления новой лицензии, ведь мы искренне заботимся о финансовом благополучии своих клиентов.<br>С уважением, Администрация.\");",
               "    //За месяц",
-              "    else if((temp_int - CurTurn()) == 30) NewsAdd(\"Сообщение из бизнес-центра.<br>Уважаемый <Player>! Срок действия вашей <color=255,240,100>торговой лицензии</color> истекает ровно через месяц. Если вы не хотите потерять все связанные с ней торговые преимущества, рекомендуем как можно скорее посетить один из наших центров для своевременного продления.<br>Кстати, продление обойдётся вам дешевле оформления новой лицензии, ведь мы искренне заботимся о финансовом благополучии своих клиентов.<br>С уважением, Администрация.\");",
+              "    //else if((temp_int - CurTurn()) == 30) NewsAdd(\"Сообщение из бизнес-центра.<br>Уважаемый <Player>! Срок действия вашей <color=255,240,100>торговой лицензии</color> истекает ровно через месяц. Если вы не хотите потерять все связанные с ней торговые преимущества, рекомендуем как можно скорее посетить один из наших центров для своевременного продления.<br>Кстати, продление обойдётся вам дешевле оформления новой лицензии, ведь мы искренне заботимся о финансовом благополучии своих клиентов.<br>С уважением, Администрация.\");",
               "}",
               "",
               "//Взведение таймера потери лицензии при наборе свыше 2-х просрочек по кредиту",
@@ -870,7 +870,7 @@
           "Pos.y":  0,
           "Parent":  29,
           "#":  7,
-          "Total.Lines":  96,
+          "Total.Lines":  100,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
@@ -881,7 +881,7 @@
               "    if(temp_str == 'BK')",
               "    {",
               "        //temp_int_3  == -1 - у игрока есть действующая, ещё не истекающая торговая лицензия",
-              "        //temp_int_3  ==  1 - торговая лицензия истечёт через месяц",
+              "        //temp_int_3  ==  1 - торговая лицензия истечёт через три месяца",
               "        //temp_int_3  ==  0 - у игрока нет торговой лицензии",
               "        temp_int_3 = -1;",
               "        //Проверка на истечение лицензии",
@@ -889,7 +889,7 @@
               "        if(~temp_int)",
               "        {",
               "            temp_int = ShipCustomShipInfoData(Player(), temp_int, 1);",
-              "            if(temp_int - CurTurn() <= 29) temp_int_3 = 1;",
+              "            if(temp_int - CurTurn() <= 89) temp_int_3 = 1;",
               "        }",
               "        //Проверка на наличие действующей лицензии",
               "        else temp_int_3 = 0;",
@@ -897,23 +897,27 @@
               "        //Подключение диалогов на БЦ в зависимости от соблюдения различных условий",
               "        if(!temp_int_3 && ShipStatus(Player(), 0) >= 30 && !LTradeLicenseCheck && BKexist != 3)",
               "        {",
-              "            AddDialogInject('TradeLicense', \"Также, исходя из вашей репутации опытного торговца, мы хотели бы предложить вам приобрести нашу специальную торговую лицензию, которая не только укрепит ваш статус в деловой среде, но и откроет ряд новых полезных возможностей.\",\"А что это за торговая лицензия?\", 0);",
+              "            AddDialogInject('TradeLicense', \"Также, исходя из вашей репутации опытного торговца, мы хотели бы предложить вам приобрести нашу специальную торговую лицензию, которая не только укрепит ваш статус в деловой среде, но и откроет ряд новых полезных возможностей.\", \"А что это за торговая лицензия?\", 0);",
               "        }",
+              "",
               "        if(!temp_int_3 && ShipStatus(Player(), 0) >= 30 && LTradeLicenseCheck == 1 && BKexist != 3)",
               "        {",
-              "            AddDialogInject('TradeLicense', \"Также мы хотели бы напомнить вам, что вы можете вновь приобрести нашу торговую лицензию, которая ощутимо облегчит вашу деловую жизнь.\",\"Приобрести торговую лицензию\", 0);",
+              "            AddDialogInject('TradeLicense', \"Также мы хотели бы напомнить вам, что вы можете вновь приобрести нашу торговую лицензию, которая ощутимо облегчит вашу деловую жизнь.\", \"Приобрести торговую лицензию\", 0);",
               "        }",
+              "",
               "        if(temp_int_3 == 1 && BKexist != 3)",
               "        {",
               "            temp_str = \"</color>всего через <clr><temp_int - CurTurn() + 2><clrEnd> дн.\";",
               "            if((temp_int - CurTurn() + 2) == 1) temp_str = \"</color>уже <clr>завтра<clrEnd>.\";",
-              "            AddDialogInject('TradeLicense', \"Также мы хотели бы обратить ваше внимание на то, что ваша торговая лицензия истекает <temp_str> Настоятельно рекомендуем её продлить, тем более, что продление обойдётся вам значительно дешевле покупки новой лицензии.\",\"Продлить торговую лицензию\", 0);",
+              "            AddDialogInject('TradeLicense', \"Также мы хотели бы обратить ваше внимание на то, что ваша торговая лицензия истекает <temp_str> Настоятельно рекомендуем её продлить, тем более, что продление обойдётся вам значительно дешевле покупки новой лицензии.\", \"Продлить торговую лицензию\", 0);",
               "        }",
+              "",
               "        //Если у игрока есть торговая лицензия",
               "        if(~ShipFindCustomShipInfoByType(Player(), 'Trade_license'))",
               "        {",
               "            AddDialogInject('BuyTerminalBK', '', \"Терминал для удалённых закупок\", 0);",
               "        }",
+              "",
               "        //Если мод ExpPilotBridge отключён (иначе вывод новостей можно будет включить на мостике)",
               "        if(!IsScriptActive('Mod_ExpPilotBridge'))",
               "        {",
@@ -983,12 +987,12 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipAddCustomShipInfo(Player(),'Trade_license',\"Увеличивает торговый опыт в зависимости от торгового рейтинга. Действительна до <GameDateTxtByTurn(CurTurn()+365*5)>.\",CurTurn()+365*5,-1,0);",
-              "ShipSpecialBonuses(Player(),bonSkill4,ShipSpecialBonuses(Player(),bonSkill4)+1);",
+              "ShipAddCustomShipInfo(Player(), 'Trade_license', \"Увеличивает торговый опыт в зависимости от торгового рейтинга. Действительна до <GameDateTxtByTurn(CurTurn() + 365 * 5)>.\", CurTurn() + 365 * 5, -1, 0);",
+              "ShipSpecialBonuses(Player(), bonSkill4, ShipSpecialBonuses(Player(), bonSkill4) + 1);",
               "//Списываем на 15% больше, если игрок попался в лохоловку",
-              "if(ShipMoney(Player())>=(temp_int_2+((temp_int_2*15)/100)))ShipMoney(Player(),ShipMoney(Player())-(temp_int_2+((temp_int_2*15)/100)));",
-              "else ShipMoney(Player(),ShipMoney(Player())-ShipMoney(Player()));",
-              "LTradeLicenseCheck=1;",
+              "if(ShipMoney(Player()) >= (temp_int_2 + ((temp_int_2 * 15) / 100))) ShipMoney(Player(), ShipMoney(Player()) - (temp_int_2 + ((temp_int_2 * 15) / 100)));",
+              "else ShipMoney(Player(), ShipMoney(Player()) - ShipMoney(Player()));",
+              "LTradeLicenseCheck = 1;",
               "Sound('Sound.Sell');"          
           ]        
         },
@@ -1003,11 +1007,11 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "temp_int=ShipFindCustomShipInfoByType(Player(),'Trade_license');",
-              "ShipCustomShipInfoData(Player(),temp_int,1,ShipCustomShipInfoData(Player(),temp_int,1)+365*5);",
-              "temp_int_1=ShipCustomShipInfoData(Player(),temp_int,1);",
-              "ShipCustomShipInfoDescription(Player(),temp_int,\"Увеличивает торговый опыт в зависимости от торгового рейтинга. Действительна до <GameDateTxtByTurn(temp_int_1)>.\");",
-              "ShipMoney(Player(),ShipMoney(Player())-temp_int_2);",
+              "temp_int = ShipFindCustomShipInfoByType(Player(), 'Trade_license');",
+              "ShipCustomShipInfoData(Player(), temp_int, 1, ShipCustomShipInfoData(Player(), temp_int, 1) + 365 * 5);",
+              "temp_int_1 = ShipCustomShipInfoData(Player(), temp_int, 1);",
+              "ShipCustomShipInfoDescription(Player(), temp_int, \"Увеличивает торговый опыт в зависимости от торгового рейтинга. Действительна до <GameDateTxtByTurn(temp_int_1)>.\");",
+              "ShipMoney(Player(), ShipMoney(Player()) - temp_int_2);",
               "Sound('Sound.Sell');"          
           ]        
         },
@@ -1671,7 +1675,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "temp_int_2=round(1.6*GalaxyMoney(3))*GalaxyDiffLevels(1)/50;"          
+              "temp_int_2 = round(1.6 * GalaxyMoney(3)) * GalaxyDiffLevels(1) / 50;"          
           ]        
         },
         {
@@ -1685,9 +1689,9 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipAddCustomShipInfo(Player(),'Trade_license',\"Увеличивает торговый опыт в зависимости от торгового рейтинга. Действительна до <GameDateTxtByTurn(CurTurn()+365*5)>.\",CurTurn()+365*5,-1,0);",
-              "ShipSpecialBonuses(Player(),bonSkill4,ShipSpecialBonuses(Player(),bonSkill4)+1);",
-              "ShipMoney(Player(),ShipMoney(Player())-temp_int_2);",
+              "ShipAddCustomShipInfo(Player(), 'Trade_license', \"Увеличивает торговый опыт в зависимости от торгового рейтинга. Действительна до <GameDateTxtByTurn(CurTurn()+365*5)>.\", CurTurn() + 365 * 5, -1, 0);",
+              "ShipSpecialBonuses(Player(), bonSkill4, ShipSpecialBonuses(Player(), bonSkill4) + 1);",
+              "ShipMoney(Player(), ShipMoney(Player()) - temp_int_2);",
               "Sound('Sound.Sell');"          
           ]        
         },
@@ -1702,10 +1706,10 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipAddCustomShipInfo(Player(),'Trade_license',\"Увеличивает торговый опыт в зависимости от торгового рейтинга. Действительна до <GameDateTxtByTurn(CurTurn()+365*5)>.\",CurTurn()+365*5,-1,0);",
-              "ShipSpecialBonuses(Player(),bonSkill4,ShipSpecialBonuses(Player(),bonSkill4)+1);",
-              "ShipMoney(Player(),ShipMoney(Player())-temp_int_2);",
-              "LTradeLicenseCheck=1;",
+              "ShipAddCustomShipInfo(Player(), 'Trade_license', \"Увеличивает торговый опыт в зависимости от торгового рейтинга. Действительна до <GameDateTxtByTurn(CurTurn() + 365 * 5)>.\", CurTurn() + 365 * 5, -1, 0);",
+              "ShipSpecialBonuses(Player(), bonSkill4, ShipSpecialBonuses(Player(), bonSkill4) + 1);",
+              "ShipMoney(Player(), ShipMoney(Player()) - temp_int_2);",
+              "LTradeLicenseCheck = 1;",
               "Sound('Sound.Sell');"          
           ]        
         },
@@ -1824,7 +1828,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())>=temp_int_2"          
+              "ShipMoney(Player()) >= temp_int_2"          
           ]        
         },
         {
@@ -1838,7 +1842,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())>=temp_int_2"          
+              "ShipMoney(Player()) >= temp_int_2"          
           ]        
         },
         {
@@ -1964,7 +1968,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "temp_int_3==1"          
+              "temp_int_3 == 1"          
           ]        
         },
         {
@@ -1978,7 +1982,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "temp_int_3==0 && LTradeLicenseCheck==0"          
+              "!temp_int_3 && !LTradeLicenseCheck"          
           ]        
         },
         {
@@ -2160,7 +2164,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())<temp_int_2"          
+              "ShipMoney(Player()) < temp_int_2"          
           ]        
         },
         {
@@ -2174,7 +2178,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())<temp_int_2"          
+              "ShipMoney(Player()) < temp_int_2"          
           ]        
         },
         {
@@ -2188,7 +2192,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "temp_int_3==0 && LTradeLicenseCheck==1"          
+              "!temp_int_3 && LTradeLicenseCheck == 1"          
           ]        
         },
         {
@@ -3982,7 +3986,7 @@
       "fsUnderline":  false    
     }  
   ],
-  "BlockPar.EC.Total.Strings":  86,
+  "BlockPar.EC.Total.Strings":  85,
   "BlockPar.EC":  
   [
     {
@@ -4170,14 +4174,6 @@
       "String":  "Кол-во:"    
     },
     {
-      "#":  "188",
-      "String":  "Сообщение из бизнес-центра.<br>Уважаемый <Player>! Срок действия вашей <color=255,240,100>торговой лицензии</color> истекает ровно через месяц. Если вы не хотите потерять все связанные с ней торговые преимущества, рекомендуем как можно скорее посетить один из наших центров для своевременного продления.<br>Кстати, продление обойдётся вам дешевле оформления новой лицензии, ведь мы искренне заботимся о финансовом благополучии своих клиентов.<br>С уважением, Администрация."    
-    },
-    {
-      "#":  "189",
-      "String":  "Сообщение из бизнес-центра.<br>Уважаемый <Player>! Срок действия вашей <color=255,240,100>торговой лицензии</color> истекает ровно через три месяца. Если вы не хотите потерять все связанные с ней торговые преимущества, рекомендуем продлить лицензию в любом бизнес-центре за месяц до её истечения.<br>Дополнительное напоминание будет направлено вам одновременно с открытием окна на продление.<br>С уважением, Администрация."    
-    },
-    {
       "#":  "190",
       "String":  "<color=255,240,100>Свежие экономические новости:</color>"    
     },
@@ -4200,6 +4196,10 @@
     {
       "#":  "196",
       "String":  ""    
+    },
+    {
+      "#":  "197",
+      "String":  "Сообщение из бизнес-центра.<br>Уважаемый <Player>! Срок действия вашей <color=255,240,100>торговой лицензии</color> истекает ровно через три месяца. Если вы не хотите потерять все связанные с ней торговые преимущества, рекомендуем как можно скорее посетить один из наших центров для своевременного <color=255,240,100>продления</color>.<br>Кстати, продление обойдётся вам дешевле оформления новой лицензии, ведь мы искренне заботимся о финансовом благополучии своих клиентов.<br>С уважением, Администрация."    
     },
     {
       "#":  "22",
