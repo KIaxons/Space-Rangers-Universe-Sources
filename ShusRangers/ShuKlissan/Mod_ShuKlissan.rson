@@ -4804,7 +4804,7 @@
               "",
               "                        if(IsPlayer(cur_ship)) continue;",
               "                        if(!ShipInHole(cur_ship)) continue; //Проверка, что корабль находится в ЧД",
-              "                        if(HoleStar1(ShipOrderObj(cur_ship)) != HoleStar1(cur_hole)) continue; //Проверка, что корабль находится в той же ЧД, что и игрок",
+              "                        if(ShipOrderObj(cur_ship) != cur_hole) continue; //Проверка, что корабль находится в той же ЧД, что и игрок",
               "                        if(ShipType(cur_ship) == 'Machpella') machpella_in_the_hole = 1;",
               "",
               "                        ArrayClear(tarr1);",

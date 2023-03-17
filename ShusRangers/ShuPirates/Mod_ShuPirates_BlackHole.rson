@@ -232,7 +232,7 @@
               "",
               "                    if(IsPlayer(cur_ship)) continue;",
               "                    if(!ShipInHole(cur_ship)) continue;",
-              "                    if(HoleStar1(ShipOrderObj(cur_ship)) != HoleStar1(cur_hole)) continue;",
+              "                    if(ShipOrderObj(cur_ship) != cur_hole) continue; //Проверка, что корабль находится в той же ЧД, что и игрок",
               "",
               "                    //Проверяем отношение корабля к игроку, если оно враждебно, то корабль останется врагом игрока и в АБ",
               "                    if(RelationToShip(cur_ship, Player()) <= 9)",
