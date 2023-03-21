@@ -1,0 +1,263 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  -601,
+  "ViewPos.y":  -205,
+  "ScriptName":  "Mod_FlexTheUniverse",
+  "ScriptFileOut":  "H:\\Mod_FlexTheUniverse.scr",
+  "ScriptTextOut":  "H:\\Mod_FlexTheUniverse.txt",
+  "GraphPoint.Count":  8,
+  "GraphLink.Count":  4,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  1,
+  "Stars.Count":  1,
+  "Planets.Count":  1,
+  "Ships.Count":  1,
+  "States.Count":  1,
+  "Groups.Count":  1,
+  "Places.Count":  0,
+  "Items.Count":  0,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  0,
+  "DialogMessages.Count":  0,
+  "DialogAnswers.Count":  0,
+  "Operations.Count":  2,
+  "Statements.Count":  0,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "Groups":      
+      [
+        {
+          "Type":  "TGroup",
+          "Name":  "PlayerGroup",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  2,
+          "#":  3,
+          "Owner":  62,
+          "Group.Type":  126,
+          "CntShipMin":  1,
+          "CntShipMax":  1,
+          "SpeedMin":  100,
+          "SpeedMax":  10000,
+          "Weapon":  0,
+          "CargoHook":  0,
+          "EmptySpace":  0,
+          "AddPlayer":  true,
+          "StatusTraderMin":  0,
+          "StatusTraderMax":  100,
+          "StatusWarriorMin":  0,
+          "StatusWarriorMax":  100,
+          "StatusPirateMin":  0,
+          "StatusPirateMax":  100,
+          "DistSearch":  10000,
+          "Dialog":  -1,
+          "StrengthMin":  "0",
+          "StrengthMax":  "0",
+          "Ruins":  ""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  30,
+          "Pos.y":  0,
+          "Parent":  0,
+          "#":  5,
+          "Total.Lines":  1,
+          "Code.Type":  "Global",
+          "Code":          
+          [
+              "GRun();"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  20,
+          "Pos.y":  0,
+          "Parent":  5,
+          "#":  6,
+          "Total.Lines":  36,
+          "Code.Type":  "Init",
+          "Code":          
+          [
+              "player_face = ShipFace(Player());",
+              "",
+              "function PlayerActCode() //t_OnEnteringForm, t_OnScan",
+              "{",
+              "    if(ScriptItemActionType(t_OnEnteringForm))",
+              "    {",
+              "        if(CurrentForm() == 'Ship')",
+              "        {",
+              "            if(findsubstr(ShipName(Player()), CT('ShipName.Ranger.People.35')))// || ShipPilotRace(Player()) != People) //Рикардо",
+              "            {",
+              "                if(ShipFace(Player()) == 82736775) ShipFace(Player(), player_face);",
+              "                exit;",
+              "            }",
+              "",
+              "            if(ShipFace(Player()) != 82736775)",
+              "            {",
+              "                player_face = ShipFace(Player());",
+              "                ShipFace(Player(), 82736775);",
+              "            }",
+              "        }",
+              "        else if(CurrentForm() == 'Talk') //Разговор в космосе",
+              "        {",
+              "            dword ship = GetTalkShip();",
+              "            //if(ShipPilotRace(ship) != People) exit;",
+              "            if(findsubstr(ShipName(ship), CT('ShipName.Ranger.People.35'))) exit; //Рикардо",
+              "            ShipFace(ship, 82736775);",
+              "        }",
+              "    }",
+              "    else",
+              "    {",
+              "        ship = FormCurShip();",
+              "        //if(ShipPilotRace(ship) != People) exit;",
+              "        if(findsubstr(ShipName(ship), CT('ShipName.Ranger.People.35'))) exit; //Рикардо",
+              "        ShipFace(ship, 82736775);",
+              "    }",
+              "}"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":  "TPlanet",
+          "Name":  "InitPlanet",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  1,
+          "#":  2,
+          "Race":  62,
+          "Owner":  62,
+          "Economy":  14,
+          "Goverment":  62,
+          "RangeMin":  0,
+          "RangeMax":  100,
+          "Dialog":  -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":  "TStarShip",
+          "Name":  "",
+          "Pos.x":  60,
+          "Pos.y":  140,
+          "Parent":  -1,
+          "#":  0,
+          "Count":  1,
+          "Owner":  62,
+          "Ship.Type":  126,
+          "Player":  true,
+          "SpeedMin":  0,
+          "SpeedMax":  10000,
+          "Weapon":  0,
+          "CargoHook":  0,
+          "EmptySpace":  0,
+          "StatusTraderMin":  0,
+          "StatusTraderMax":  100,
+          "StatusWarriorMin":  0,
+          "StatusWarriorMax":  100,
+          "StatusPirateMin":  0,
+          "StatusPirateMax":  100,
+          "StrengthMin":  "0",
+          "StrengthMax":  "0",
+          "Ruins":  ""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":  "TStar",
+          "Name":  "InitStar",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  0,
+          "#":  1,
+          "Constellation":  0,
+          "Priority":  0,
+          "NoKling":  false,
+          "NoComeKling":  false        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":  "TState",
+          "Name":  "PlayerState",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  3,
+          "#":  4,
+          "Move":  0,
+          "MoveObj":  -1,
+          "Attack.Count":  0,
+          "TakeItem":  -1,
+          "TakeAllItem":  false,
+          "OnTalk":  "",
+          "OnActCode":  "[t_OnEnteringForm,t_OnScan|]\r\nPlayerActCode();",
+          "EType":  1,
+          "EUnique":  "",
+          "EMsg":  ""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":  "TVar",
+          "Name":  "player_face",
+          "Pos.x":  130,
+          "Pos.y":  140,
+          "Parent":  -1,
+          "#":  7,
+          "Var.Type":  "Int",
+          "Init":  "-1",
+          "Global":  false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":  "TGraphLink",
+      "Begin":  3,
+      "End":  4,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  3,
+      "End":  2,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  2,
+      "End":  1,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  0,
+      "End":  1,
+      "Nom":  0,
+      "Arrow":  true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  0,
+  "BlockPar.EC":  
+  [
+  
+  ]
+}
