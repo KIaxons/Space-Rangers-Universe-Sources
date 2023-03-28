@@ -1233,7 +1233,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  4,
-          "Total.Lines":  596,
+          "Total.Lines":  598,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -1686,7 +1686,9 @@
               "                                ShipSpecialBonuses(cur_ship, bonAttacks, 2);",
               "                            }",
               "",
+              "                            //TransferShip(cur_ship, cur_star); //Сам взлетит",
               "                            ShipJoin(KellerClone, cur_ship);",
+              "",
               "                            //Выводится уведомление-задание о необходимости найти клона Келлера",
               "                            Ether(3, 'KellerCloneTask', Format(CT('Script.Mod_ShuDomiks.KellerCloneTask'), '<Star'+'>', Name(ShipStar(cur_ship)), '255,240,100'));",
               "                        }",
@@ -4276,10 +4278,16 @@
           "Pos.y":  0,
           "Parent":  108,
           "#":  116,
-          "Total.Lines":  12,
+          "Total.Lines":  18,
           "Code.Type":  "Turn",
           "Code":          
           [
+              "if(!ShipInNormalSpace(CurShip))",
+              "{",
+              "    OrderTakeOff(CurShip);",
+              "    exit;",
+              "}",
+              "",
               "//Клон Келлера имеет подтип босса, а потому любой стейт для него будет работать как Free",
               "ShipFreeFlight(CurShip, 1); //Выполняем наведение орудий на подходящие окружающие цели",
               "OrderMove(CurShip, Loop);",
