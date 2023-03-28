@@ -4546,7 +4546,7 @@
               "            {",
               "                //Добавляем диалоги на мостик",
               "                cur_star = ShipStar(Player());",
-              "            ",
+              "",
               "                if(jumpCheck != '')",
               "                {",
               "                    AddDialogOverride(jumpCheck, 3001);",
@@ -4558,7 +4558,7 @@
               "                        cur_ruin = StarRuins(cur_star, i);",
               "                        if(!ShipInNormalSpace(cur_ruin)) continue;",
               "                        if(Dist(Player(), cur_ruin) > ShipRadarRange(Player())) continue;",
-              "            ",
+              "",
               "                        ruin_str_type = ShipType(cur_ruin);",
               "                        if(ruin_str_type == 'WB')",
               "                        {",
@@ -4747,7 +4747,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipRank(Player()) < (6 - ShipSkill(Player(), 5) / 2)"          
+              "ShipRank(Player()) < (6 - ShipSkill(Player(), 'Leadership') / 2)"          
           ]        
         },
         {
@@ -4761,7 +4761,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipRank(Player()) >= (6 - ShipSkill(Player(), 5) / 2)"          
+              "ShipRank(Player()) >= (6 - ShipSkill(Player(), 'Leadership') / 2)"          
           ]        
         },
         {

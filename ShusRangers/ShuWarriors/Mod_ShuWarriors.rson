@@ -1,28 +1,28 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -279,
-  "ViewPos.y":  -97,
+  "ViewPos.x":  -235,
+  "ViewPos.y":  -104,
   "ScriptName":  "Mod_ShuWarriors",
   "ScriptFileOut":  "H:\\Mod_ShuWarriors.scr",
   "ScriptTextOut":  "H:\\Mod_ShuWarriors.txt",
-  "GraphPoint.Count":  55,
-  "GraphLink.Count":  28,
+  "GraphPoint.Count":  110,
+  "GraphLink.Count":  66,
   "GraphRectText.Count":  0,
-  "Variables.Count":  19,
+  "Variables.Count":  37,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
-  "States.Count":  5,
+  "States.Count":  6,
   "Groups.Count":  3,
   "Places.Count":  0,
   "Items.Count":  0,
   "Ethers.Count":  0,
-  "Dialogs.Count":  2,
-  "DialogMessages.Count":  3,
-  "DialogAnswers.Count":  4,
-  "Operations.Count":  12,
-  "Statements.Count":  4,
+  "Dialogs.Count":  3,
+  "DialogMessages.Count":  8,
+  "DialogAnswers.Count":  8,
+  "Operations.Count":  24,
+  "Statements.Count":  18,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
@@ -31,43 +31,83 @@
       [
         {
           "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  410,
-          "Pos.y":  150,
-          "Parent":  -1,
-          "#":  22,
-          "Msg":  "<tstr2>",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  58,
+          "#":  60,
+          "Msg":  "<tstr3>",
           "AMsg.Num":  "0"        
         },
         {
           "Type":  "TDialogAnswer",
           "Name":  "",
-          "Pos.x":  510,
-          "Pos.y":  150,
-          "Parent":  -1,
-          "#":  23,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  59,
+          "#":  61,
           "Msg":  "<tstr2>",
           "AMsg.Num":  "1"        
         },
         {
           "Type":  "TDialogAnswer",
-          "Name":  "takeoff",
-          "Pos.x":  630,
-          "Pos.y":  150,
-          "Parent":  -1,
-          "#":  24,
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  67,
+          "#":  71,
           "Msg":  "<tstr2>",
           "AMsg.Num":  "2"        
         },
         {
           "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  550,
-          "Pos.y":  150,
-          "Parent":  -1,
-          "#":  25,
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  68,
+          "#":  72,
           "Msg":  "<tstr3>",
           "AMsg.Num":  "3"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "block",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  70,
+          "#":  73,
+          "Msg":  "<tstr3>",
+          "AMsg.Num":  "4"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  69,
+          "#":  74,
+          "Msg":  "<tstr4>",
+          "AMsg.Num":  "5"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "exit",
+          "Pos.x":  0,
+          "Pos.y":  80,
+          "Parent":  105,
+          "#":  104,
+          "Msg":  "",
+          "AMsg.Num":  "6"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "restart",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  108,
+          "#":  109,
+          "Msg":  "<tstr2>",
+          "AMsg.Num":  "7"        
         }      
       ],
       "DialogMessages":      
@@ -75,51 +115,109 @@
         {
           "Type":  "TDialogMsg",
           "Name":  "",
-          "Pos.x":  530,
-          "Pos.y":  120,
-          "Parent":  -1,
-          "#":  19,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  51,
+          "#":  52,
           "Msg":  "<tstr1>",
           "DMsg.Num":  "0"        
         },
         {
           "Type":  "TDialogMsg",
           "Name":  "",
-          "Pos.x":  410,
-          "Pos.y":  120,
-          "Parent":  -1,
-          "#":  20,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  50,
+          "#":  53,
           "Msg":  "<tstr1>",
           "DMsg.Num":  "1"        
         },
         {
           "Type":  "TDialogMsg",
           "Name":  "",
-          "Pos.x":  630,
-          "Pos.y":  120,
-          "Parent":  -1,
-          "#":  21,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  66,
+          "#":  62,
           "Msg":  "<tstr1>",
           "DMsg.Num":  "2"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  64,
+          "#":  65,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "3"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  75,
+          "#":  76,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "4"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  77,
+          "#":  78,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "5"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  79,
+          "#":  80,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "6"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  107,
+          "#":  108,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "7"        
         }      
       ],
       "Dialogs":      
       [
         {
           "Type":  "TDialog",
-          "Name":  "WBOrderToAttack",
-          "Pos.x":  470,
-          "Pos.y":  50,
+          "Name":  "MilitaryOperationWBDialog",
+          "Pos.x":  520,
+          "Pos.y":  -30,
           "Parent":  -1,
-          "#":  26        
+          "#":  25        
         },
         {
           "Type":  "TDialog",
-          "Name":  "WBAreReadyToAttack",
-          "Pos.x":  630,
-          "Pos.y":  50,
-          "Parent":  -1,
-          "#":  43        
+          "Name":  "PlanScr",
+          "Pos.x":  -20,
+          "Pos.y":  -140,
+          "Parent":  81,
+          "#":  83        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "PlanScrChoose",
+          "Pos.x":  -20,
+          "Pos.y":  20,
+          "Parent":  83,
+          "#":  101        
         }      
       ],
       "Groups":      
@@ -129,8 +227,8 @@
           "Name":  "PlayerState",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  5,
-          "#":  7,
+          "Parent":  4,
+          "#":  6,
           "Owner":  62,
           "Group.Type":  126,
           "CntShipMin":  1,
@@ -155,11 +253,11 @@
         },
         {
           "Type":  "TGroup",
-          "Name":  "AttackingElite",
+          "Name":  "OperativeWB",
           "Pos.x":  0,
-          "Pos.y":  -120,
-          "Parent":  5,
-          "#":  8,
+          "Pos.y":  -110,
+          "Parent":  4,
+          "#":  31,
           "Owner":  62,
           "Group.Type":  126,
           "CntShipMin":  0,
@@ -184,11 +282,11 @@
         },
         {
           "Type":  "TGroup",
-          "Name":  "AttackingWB",
+          "Name":  "OperativeWarriors",
           "Pos.x":  0,
           "Pos.y":  -160,
-          "Parent":  5,
-          "#":  9,
+          "Parent":  4,
+          "#":  36,
           "Owner":  62,
           "Group.Type":  126,
           "CntShipMin":  0,
@@ -219,7 +317,7 @@
           "Name":  "",
           "Pos.x":  30,
           "Pos.y":  0,
-          "Parent":  6,
+          "Parent":  5,
           "#":  0,
           "Total.Lines":  1,
           "Code.Type":  "Global",
@@ -234,13 +332,13 @@
           "Pos.x":  20,
           "Pos.y":  0,
           "Parent":  0,
-          "#":  15,
-          "Total.Lines":  44,
+          "#":  8,
+          "Total.Lines":  182,
           "Code.Type":  "Init",
           "Code":          
           [
               "//Впервые заводим таймер до спавна группы элитных военных",
-              "EliteWarriorsSpawnTimer = Rnd(9, 121);",
+              "EliteWarriorsSpawnTimer = 0;//CurTurn() + Rnd(9, 121);",
               "",
               "function SpawnEliteWarrior(planet, money_coef)",
               "{",
@@ -249,7 +347,6 @@
               "",
               "    //Случайно подбираем акрин для нового военного",
               "    int acryn = RndObject(1, 5, ship);",
-              "",
               "    if(acryn == 1) acryn = FindBonusByNameInCfg('351'); //Скала (старая, не из ExpHulls)",
               "    else if(acryn == 2) acryn = FindBonusByNameInCfg('359'); //Неуязвимый корпус III",
               "    else if(acryn == 3) acryn = FindBonusByNameInCfg('367'); //Миоплазменный корпус III",
@@ -269,11 +366,7 @@
               "    ShipSkill(ship, 5, RndObject(1, 4, ship));",
               "",
               "    //А также его звание до уровня не ниже истребителя",
-              "    while(ShipRank(ship) < 4)",
-              "    {",
-              "        ShipRankPoints(ship, ShipNextRankPoints(ship));",
-              "        ShipRaiseRank(ship);",
-              "    }",
+              "    ShipRaiseRank(ship, max(4, ShipRank(ship)));",
               "",
               "    ShipRefit(ship);",
               "    ShipRefit(ship);",
@@ -282,6 +375,149 @@
               "    ShipImproveItems(ship, RndObject(3, 8, ship));",
               "",
               "    result = ship;",
+              "}",
+              "",
+              "function InitWBOperation(dword military_base_id, int by_player = 0)",
+              "{",
+              "    unknown operation = newarray(1);",
+              "    ArrayDelete(operation, 0);",
+              "",
+              "    ArrayAdd(operation, military_base_id, 'MilitaryBaseId');",
+              "    //Возможные уровни вовлечения игрока в организацию атаки (полностью аналогично значениям operation_lvl):",
+              "    //OrganizedByPlayer == 0 - игрок не может заказать никакую операцию, поскольку имеет 0 звание",
+              "    //OrganizedByPlayer == 1 - игрок может заказать обычную операцию (аналог ванильной), когда целевую систему и состав нападающих определяет ВБ, а игрок только платит",
+              "    //OrganizedByPlayer == 2 - игрок может заказать операцию, а также может выбрать один из флагманов (если он будет среди военных кораблей) своим командным кораблём и самолично повести атакующую группу в бой",
+              "    //OrganizedByPlayer == 3 - игрок может заказать операцию с участием до двух флагманов, а также сам выбирает систему для атаки",
+              "    //OrganizedByPlayer == 4 - игрок может заказать операцию с участием до двух флагманов (включая один дредноут, если подключена EvoArmada) и самой ВБ, а также сам выбирает систему для атаки",
+              "    ArrayAdd(operation, by_player, 'OrganizedByPlayer');",
+              "    ArrayAdd(operation, 0, 'StarToAttackId'); //Id звезды",
+              "    //rrayAdd(operation, newarray(1), 'EnemyForcesId');",
+              "    ArrayAdd(operation, newarray(1), 'AlliesForcesId'); //Список Id участвующих в атаке военных кораблей (после постройки корабли с планет из списка ниже также переносятся сюда)",
+              "    ArrayAdd(operation, newarray(1), 'ShipyardsInvolvedId'); //Список Id планет (формат 'Id планеты,ход завершения постройки'), на которых будет запущено строительство новых кораблей для усиления атакующей группировки",
+              "    ArrayAdd(operation, 0, 'FlagmanId'); //Id флагмана, возглавляющего атаку (имеет значение для игрока, решившего использовать линкор в качестве флагмана)",
+              "    ArrayAdd(operation, 0, 'GatheringPlaceId'); //Id звезды, либо самой ВБ, если атакующие силы отправятся в бой вместе с ней",
+              "    ArrayAdd(operation, 0, 'AttackDate'); //Дата начала атаки, когда военные корабли или ВБ получит приказ совершить прыжок в атакуемую систему",
+              "",
+              "    result = ArrayAdd(GlobalWBOperationsArray, operation) - 1;",
+              "    operation = newarray(1); //Ибо ебаный дабокод",
+              "}",
+              "",
+              "function FindWBOperation(dword military_base_id)",
+              "{",
+              "    for(int i = ArrayDim(GlobalWBOperationsArray); i >= 1; i = i - 1)",
+              "    {",
+              "        if(GlobalWBOperationsArray[i, 'MilitaryBaseId'] == military_base_id)",
+              "        {",
+              "            result = i;",
+              "            exit;",
+              "        }",
+              "    }",
+              "",
+              "    result = 0;",
+              "}",
+              "",
+              "function FindAllMilitaryShipsInSector(dword sector, ref array)",
+              "{",
+              "    ArrayClear(array);",
+              "",
+              "    unknown warriors = newarray(1);",
+              "    unknown battleships = newarray(1);",
+              "    unknown dreadnoughts = newarray(1);",
+              "    int wars_count = 0;",
+              "    for(int i = ConStars(sector) - 1; i >= 0; i = i - 1)",
+              "    {",
+              "        dword star = ConStar(sector, i);",
+              "        if(StarOwner(star)) continue; //Если система не под контролем Коалиции",
+              "        if(StarBattle(star)) continue; //Если система под атакой",
+              "",
+              "        for(int j = StarPlanets(star) - 1; j >= 0; j = j - 1)",
+              "        {",
+              "            dword planet = StarPlanets(star, j);",
+              "            if(PlanetOwner(planet) == None) continue;",
+              "",
+              "            for(int k = PlanetWarriors(planet) - 1; k >= 0; k = k - 1)",
+              "            {",
+              "                dword warrior = PlanetWarriors(planet, k);",
+              "                if(ShipOrder(warrior) == 6) continue; //Если с кем-то сражается",
+              "                if(ShipInGameEvent(warrior)) continue;",
+              "                if(ShipInScript(warrior, 0))",
+              "                {",
+              "                    if(GetShipScriptName(warrior, 3) != 'Mod_EvoArmada.Dreadnought') continue;",
+              "                }",
+              "",
+              "                if(!ShipSubType(warrior)) ArrayAdd(warriors, warrior); //Обычный/элитный военный",
+              "                else",
+              "                {",
+              "                    if(ShipType(warrior) == 'Dreadnought') ArrayAdd(dreadnoughts, warrior);",
+              "                    else ArrayAdd(battleships, warrior); //Линкор",
+              "                }",
+              "",
+              "                wars_count = wars_count + 1;",
+              "            }",
+              "        }",
+              "    }",
+              "",
+              "    ArrayAdd(array, warriors, 'Warriors');",
+              "    ArrayAdd(array, battleships, 'Battleships');",
+              "    ArrayAdd(array, dreadnoughts, 'Dreadnoughts');",
+              "",
+              "    result = wars_count; //Чисто для возможности быстрой проверки, был ли найден хоть кто-нибудь",
+              "}",
+              "",
+              "//Ищет систему в автоматическом режиме, либо собирает массив подходящих для атаки систем, которые может выбрать игрок",
+              "function FindStarToAttack(dword ruin = 0, ref array)",
+              "{",
+              "    //Принцип ванильного определения системы для атаки:",
+              "    //Каждая захваченная врагом система суммирует дистанции до всех коалиционных систем в Галактике, после чего сумма этих дистанций перемножается на Rnd(1.0, 2.0)",
+              "    //по итогу выбирается система с наименьшим значением",
+              "",
+              "    unknown stars_arr = newarray(1);",
+              "    unknown dist_arr = newarray(1);",
+              "    dist_arr[0] = -1; //Для корректности сортировки ебучих дабомассивов",
+              "",
+              "    for(int i = GalaxyStars() - 1; i >= 0; i = i - 1)",
+              "    {",
+              "        dword star = GalaxyStar(i);",
+              "        if(!StarOwner(star)) continue; //Проверяем только враждебные Коалиции системы",
+              "",
+              "        int dist_summ = 0;",
+              "        for(int j = GalaxyStars() - 1; j >= 1; j = j - 1)",
+              "        {",
+              "            dword coal_star = GalaxyStar(j);",
+              "            if(StarOwner(coal_star)) continue; //Запоминаем дистанции только до коалиционных систем",
+              "            if(StarCustomFaction(coal_star) != '') continue;",
+              "            dist_summ = dist_summ + StarNearbyStarsDist(star, j);",
+              "        }",
+              "",
+              "        ArrayAdd(stars_arr, star);",
+              "        ArrayAdd(dist_arr, dist_summ);",
+              "    }",
+              "",
+              "    //Заносим в массив список всех подходящих для атаки систем (далее игрок будет сам выбирать из списка)",
+              "    //Игроку на выбор будут доступны N систем с ближайшими суммами дистанций до Коалиционных систем",
+              "    if(GetVariableType(array) == 9)//if(array)",
+              "    {",
+              "        ArrayClear(array);",
+              "        ArraySort(dist_arr, stars_arr);",
+              "        for(i = 1; i < ArrayDim(stars_arr); i = i + 1) ArrayAdd(array, stars_arr[i]);",
+              "        exit;",
+              "    }",
+              "    //Выбираем систему автоматически, по ванильному принципу",
+              "    else",
+              "    {",
+              "        if(ruin) for(i = ArrayDim(dist_arr) - 1; i >= 1; i = i - 1) dist_arr[i] = round(0.1 * RndObject(10, 20, ruin) * dist_arr[i]);",
+              "        else if(ruin) for(i = ArrayDim(dist_arr) - 1; i >= 1; i = i - 1) dist_arr[i] = round(0.1 * Rnd(10, 20) * dist_arr[i]);",
+              "        ArraySort(dist_arr, stars_arr);",
+              "        result = stars_arr[1];",
+              "        exit;",
+              "    }",
+              "",
+              "    //Принцип ванильного подбора военных в группу для атаки системы (флагманы добавляются в группу, наряду с обычными военными):",
+              "    //Военные собираются с одного случайного сектора, в котором обязательно должны присутствовать вражеские корабли (полностью коалиционный сектор выберет, только если на него в момент проверки напали)",
+              "    //Проверяемый сектор обновляется при каждом новом запросе игрока с ВБ (но может рандомно выбрать один и тот же сектор несколько раз подряд) и поэтому постоянно снимает с него деньги, а не только при успехе поиска",
+              "    //Перебор набирает военных в группу до тех пор, пока их суммарная относительная сила не сравняются с силой врага в атакуемой системе",
+              "    //Сперва в группу добавляются военные, которые сидят на своих планетах, и только если их не хватило, происходит добавление тех, кто в данный момент занят чем-то ещё (на патруле или в другой системе, например)",
+              "    //В группу никогда не набираются корабли с приказом преследования, т.к. считается, что они сражаются, а потому заняты",
               "}"          
           ]        
         },
@@ -290,8 +526,8 @@
           "Name":  "",
           "Pos.x":  20,
           "Pos.y":  0,
-          "Parent":  17,
-          "#":  16,
+          "Parent":  10,
+          "#":  9,
           "Total.Lines":  49,
           "Code.Type":  "Turn",
           "Code":          
@@ -329,7 +565,7 @@
               "    //Если таковые системы найдены, начинается строительство военных в случайной из них",
               "    if(ArrayDim(tarr1) > 1)",
               "    {",
-              "        cur_star = tarr1[1, Rnd(1, ArrayDim(tarr1) - 1, GetGalaxyGenerationSeed() + sqr(CurTurn()))];",
+              "        cur_star = tarr1[Rnd(1, ArrayDim(tarr1) - 1, GetGalaxyGenerationSeed() + sqr(CurTurn()))];",
               "        cur_ruin = StarRuins(cur_star, 'WB');",
               "",
               "        //Спавним на выбранной планете от 5 до 8 элитных военных",
@@ -352,9 +588,9 @@
           "Name":  "",
           "Pos.x":  20,
           "Pos.y":  0,
-          "Parent":  15,
-          "#":  17,
-          "Total.Lines":  19,
+          "Parent":  8,
+          "#":  10,
+          "Total.Lines":  96,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
@@ -363,16 +599,93 @@
               "{",
               "    if(ShipType(cur_ruin) == 'WB')",
               "    {",
-              "        if(!PlayerBridge())",
+              "        AddDialogBlock(CT('FormRuins.WB.WarOperation.PlayerSend'), 2); //Блокируем ванильный диалог о заказе военной операции (он всё равно говно)",
+              "",
+              "        //Возможные уровни вовлечения игрока в организацию атаки (зависят от военного звания и навыка лидерства):",
+              "        //operation_lvl == 0 - игрок не может заказать никакую операцию, поскольку имеет 0 звание",
+              "        //operation_lvl == 1 - игрок может заказать обычную операцию (аналог ванильной), когда целевую систему и состав нападающих определяет ВБ, а игрок только платит",
+              "        //operation_lvl == 2 - игрок может заказать операцию, а также может выбрать один из флагманов (если он будет среди военных кораблей) своим командным кораблём и самолично повести атакующую группу в бой",
+              "        //operation_lvl == 3 - игрок может заказать операцию с участием до двух флагманов, а также сам выбирает систему для атаки",
+              "        //operation_lvl == 4 - игрок может заказать операцию с участием до двух флагманов (включая один дредноут, если подключена EvoArmada) и самой ВБ, а также сам выбирает систему для атаки",
+              "",
+              "        //Если ВБ организует уже организует операцию (в том числе, если сама ещё никуда не летит)",
+              "        if(GetShipScriptName(cur_ruin, 3) == 'Mod_ShuWarriors.OperativeWB')",
               "        {",
-              "            //Если была заказана операция атаки системы, блокируем все прочие диалоги на ВБ",
-              "            if(WBOnAttack) AddDialogOverride('WBAreReadyToAttack', 4000);",
-              "            //Если игрок имеет звание адмирала",
-              "            else if(ShipRank(Player()) >= 7)",
+              "            if(StateIs(cur_ruin, 'WBOnPrepare'))",
               "            {",
-              "                //И если предыдущая заказанная игроком операция атаки уже завершилась, а скорость движения базы больше нуля",
-              "                AddDialogInject('WBOrderToAttack', '', CT('Script.Mod_ShuWarriors.MilitaryOperationBegin'), 2);",
-              "                if(GroupCount(AttackingWB) || GroupCount(AttackingElite) || !ShipSpeed(cur_ruin) || (ShipInScript(cur_ruin) && !ShipInCurScript(cur_ruin))) AddDialogBlock(CT('Script.Mod_ShuWarriors.MilitaryOperationBegin'), 1);",
+              "                AddDialogInject('MilitaryOperationWBDialog', '', CT('Script.Mod_ShuWarriors.MilitaryOperationWBDialog.OnLevel' + operation_lvl + '.PlayerRequestOperation'), 0, 0, 1);",
+              "                on_prepare = 1;",
+              "            }",
+              "            else //if(StateIs(cur_ruin, 'WBOnAttack'))",
+              "            {",
+              "",
+              "            }",
+              "        }",
+              "        else if(!ShipInGameEvent(cur_ruin))",
+              "        {",
+              "            if(ShipInNormalSpace(cur_ruin))",
+              "            {",
+              "                if(!ShipOnSidePirateClan(Player()))",
+              "                {",
+              "                    check = (!ShipOrder(cur_ruin) && !ShipDestination(cur_ruin) && !StarBattle(ShipStar(cur_ruin)));",
+              "",
+              "                    //Не раньше звания \"Истребитель\"",
+              "                    int pass_rank = max((6 - ShipSkill(Player(), 'Leadership') / 2), 4);",
+              "",
+              "                    int leadership = ShipSkill(Player(), 'Leadership');",
+              "                    operation_lvl = 0;",
+              "                    player_rank = ShipRank(Player());",
+              "                    if(player_rank >= 7) //Адмирал",
+              "                    {",
+              "                        if(leadership == 5) operation_lvl = 4;",
+              "                        else operation_lvl = 3;",
+              "                        player_str_rank = lowercase(CT('Rank.Admiral.Name'));",
+              "                    }",
+              "                    else if(player_rank == 6) //Командор",
+              "                    {",
+              "                        if(leadership == 5) operation_lvl = 3;",
+              "                        else operation_lvl = 2;",
+              "                        player_str_rank = lowercase(CT('Rank.Commander.Name'));",
+              "                    }",
+              "                    else if(player_rank == 5) //Ас (Пилот)",
+              "                    {",
+              "                        if(leadership == 6) operation_lvl = 2;",
+              "                        else operation_lvl = 1;",
+              "                        player_str_rank = lowercase(CT('Rank.Ace.Name'));",
+              "                    }",
+              "                    else if(player_rank == 4) //Истребитель",
+              "                    {",
+              "                        operation_lvl = 1;",
+              "                        player_str_rank = lowercase(CT('Rank.Leader.Name'));",
+              "                    }",
+              "                    else if(player_rank == 3) //Капитан",
+              "                    {",
+              "                        operation_lvl = 1;",
+              "                        player_str_rank = lowercase(CT('Rank.Wingman.Name'));",
+              "                    }",
+              "                    else if(player_rank == 2) //Пилот",
+              "                    {",
+              "                        operation_lvl = 1;",
+              "                        player_str_rank = lowercase(CT('Rank.Pilot.Name'));",
+              "                    }",
+              "                    else if(player_rank == 1) //Кадет",
+              "                    {",
+              "                        operation_lvl = 1;",
+              "                        player_str_rank = lowercase(CT('Rank.Cadet.Name'));",
+              "                    }",
+              "                    else player_str_rank = lowercase(CT('Rank.Rookie.Name')); //Новичок",
+              "",
+              "                    operation_lvl = 4;",
+              "                    dialog_path = 'Script.Mod_ShuWarriors.MilitaryOperationWBDialog.OnLevel' + operation_lvl;",
+              "                    operation_num = -1; //Будет получен после инициализации новой операции",
+              "                    min_allies_power = 75;",
+              "                    cur_sector = StarToCon(ShipStar(cur_ruin));",
+              "",
+              "                    cur_star = FindStarToAttack(cur_ruin);",
+              "",
+              "                    if(!check) AddDialogBlock(CT('Script.Mod_ShuWarriors.MilitaryOperationWBDialog.OnLevel' + operation_lvl + '.PlayerRequestOperation'), 1);",
+              "                    AddDialogInject('MilitaryOperationWBDialog', '', CT('Script.Mod_ShuWarriors.MilitaryOperationWBDialog.OnLevel' + operation_lvl + '.PlayerRequestOperation'), 0, 0, 1);",
+              "                }",
               "            }",
               "        }",
               "    }",
@@ -382,182 +695,29 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  -20,
-          "Pos.y":  0,
-          "Parent":  12,
-          "#":  18,
-          "Total.Lines":  11,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  26,
+          "#":  29,
+          "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "//Отправляем созданных сугубо для атаки элитных военных в их родную систему",
-              "dword home_star = PlanetToStar(GetShipHomePlanet(CurShip));",
-              "if(ShipInNormalSpace(CurShip))",
-              "{",
-              "    OrderJump(CurShip, home_star);",
-              "}",
-              "//Но по дороге безжалостно убиваем",
-              "else if(ShipInHyperSpace(CurShip))",
-              "{",
-              "    if(ShipStar(CurShip) == home_star) ShipDestroy(CurShip, 1);",
-              "}"          
+              "//"          
           ]        
         },
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  470,
-          "Pos.y":  80,
-          "Parent":  -1,
-          "#":  27,
-          "Total.Lines":  42,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "cur_star = ShipStar(Player());",
-              "check = 0;",
-              "//Если в текущей системе идёт бой",
-              "if(StarBattle(cur_star)) check = 1;",
-              "//Если станция слишком сильно повреждена",
-              "else if(HullDamage(cur_ruin) > 33) check = 2;",
-              "else if(ShipInGameEvent(cur_ruin)) check = 3;",
-              "else",
-              "{",
-              "    //Перебираем 30 ближайших систем и ищем среди них враждебные, пригодные для атаки",
-              "    check = 4;",
-              "    for(i = 1; i <= 30; i = i + 1)",
-              "    {",
-              "        attack_star = StarNearbyStars(cur_star, i);",
-              "        //Пропускаем коалиционные системы",
-              "        if(StarOwner(attack_star) == 0) continue;",
-              "        //Пропускаем слишком далёкие системы",
-              "        if(Dist2Star(attack_star, cur_star) > 920) continue;",
-              "        //Пропускаем системы, в которых уже присутствует ВБ",
-              "        if(StarRuins(attack_star, 'WB')) continue;",
-              "        //Пропускаем пиратский сектор",
-              "        if(StarToCon(attack_star) == StarToCon(PlanetToStar(PlanetPirateClan()))) continue;",
-              "",
-              "        check = 0;",
-              "        break;",
-              "    }",
-              "}",
-              "",
-              "if(!check)",
-              "{",
-              "    tstr1 = '</color>' + Format(CT('Script.Mod_ShuWarriors.AyeAyeCaptain'), '#0#', Name(attack_star), '#1#', ShipName(cur_ruin));",
-              "    tstr2 = '</color>' + CT('Script.Mod_ShuWarriors.IOrderYouToAttack');",
-              "    tstr3 = '</color>' + CT('Script.Mod_ShuWarriors.AttackIsCanceled');",
-              "}",
-              "else",
-              "{",
-              "    if(check == 1) tstr1 = '</color>' + CT('Script.Mod_ShuWarriors.NoWeAreUnderAttack');",
-              "    else if(check == 2) tstr1 = '</color>' + Format(CT('Script.Mod_ShuWarriors.NoWeAreInCriticalShape'), '#0#', ShipName(cur_ruin));",
-              "    else if(check == 3) tstr1 = '</color>' + CT('Script.Mod_ShuWarriors.NoWeAreAtTheMission');",
-              "    else if(check == 4) tstr1 = '</color>' + Format(CT('Script.Mod_ShuWarriors.NoWeGotThisSector'), '#0#', 30, '#1#', Name(cur_star));",
-              "    tstr2 = '</color>' + CT('Script.Mod_ShuWarriors.RogerThat');",
-              "}"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  510,
-          "Pos.y":  180,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  27,
           "#":  30,
-          "Total.Lines":  60,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "//Выбираем ближайшую к текущей военной базе обитаемую планету",
-              "cur_planet = NearCivilPlanet(cur_ruin);",
-              "waitingTimer = 0;",
-              "//Спавним на выбранной планете от 4 до 6 элитных военных",
-              "for(i = Rnd(4, 6); i >= 1; i = i - 1)",
-              "{",
-              "    cur_ship = SpawnEliteWarrior(cur_planet, 350);",
-              "    //После чего отправляем его их военную базу для дальнейшего присоединения к атаке на систему",
-              "    TransferShip(cur_ship, cur_ruin);",
-              "    //Под конец ещё раз экипируем элитного военного и проводим модернизацию его оборудки",
-              "    ShipRefit(cur_ship);",
-              "    ShipRefit(cur_ship);",
-              "    ShipImproveItems(cur_ship, Rnd(3, 10));",
-              "}",
-              "",
-              "//Запоминаем Id атакуемой системы (обязательно до добавления кораблей и ВБ в группы, т.к. сразу сработает их стейткод)",
-              "attack_star_id = Id(attack_star) - 1;",
-              "",
-              "tstr1 = '';",
-              "//Выгоняем с базы все корабли перед прыжком",
-              "for(i = 0; i < StarShips(cur_star); i = i + 1)",
-              "{",
-              "    cur_ship = StarShips(cur_star, i);",
-              "    if(GetShipRuins(cur_ship) == cur_ruin)",
-              "    {",
-              "        //Выгоняем с базы всех не военных перед прыжком",
-              "        tint1 = ShipTypeN(cur_ship);",
-              "        if(ShipType(cur_ship) != 'EliteWarrior' && tint1 != t_Warrior)",
-              "        {",
-              "            //Хотя при некотором шансе рейнджеры могут остаться на базе и отправиться с ней в налёт",
-              "            if(tint1 == t_Ranger)",
-              "            {",
-              "                if(Rnd(1, 100) <= 40) OrderTakeOff(cur_ship);",
-              "            }",
-              "            //Все остальные улетают точно",
-              "            else OrderTakeOff(cur_ship);",
-              "        }",
-              "        //Кроме скриптовых военных",
-              "        if(ShipInScript(cur_ship, 0)) OrderTakeOff(cur_ship);",
-              "        //Все присутствующие на ВБ военные корабли и желающие рейнджеры заносятся в список участников и помещаются в группу",
-              "        else",
-              "        {",
-              "            tstr1 = tstr1 + \"<br>\" + Name(cur_ship);",
-              "            ShipJoin(AttackingElite, cur_ship);",
-              "        }",
-              "    }",
-              "}",
-              "",
-              "//Таймер для вывода элитных военных из скрипта, если что-то пошло не так",
-              "waitingTimer = CurTurn() + 120;",
-              "//Записываем саму ВБ в скриптовую группу и отправляем в атакуемую систему",
-              "ShipJoin(AttackingWB, cur_ruin);",
-              "OrderTeleport(cur_ruin, attack_star, CoordX(cur_ruin) + Rnd(-600, 600), CoordY(cur_ruin) + Rnd(-600, 600));",
-              "",
-              "//Создаём тексты диалогов для игрока и запираем его в \"оверрайде\", чтобы он никак не мог остаться сидеть на базе во время совершения прыжка",
-              "tstr1 = '</color>' + Format(CT('Script.Mod_ShuWarriors.WeAreGoingOutSoon'), '#0#', tstr1, '#1#', Name(attack_star));",
-              "tstr2 = '</color>' + CT('Script.Mod_ShuWarriors.ToHangar');",
-              "WBOnAttack = 1;",
-              "GotoGov(2);",
-              "AddDialogOverride('WBAreReadyToAttack', 4000);"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  630,
-          "Pos.y":  80,
-          "Parent":  -1,
-          "#":  44,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "SkipGreeting();"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  630,
-          "Pos.y":  180,
-          "Parent":  -1,
-          "#":  46,
-          "Total.Lines":  2,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "WBOnAttack = 0;",
-              "GotoGov(0);"          
+              "//"          
           ]        
         },
         {
@@ -565,58 +725,490 @@
           "Name":  "",
           "Pos.x":  -20,
           "Pos.y":  0,
-          "Parent":  13,
+          "Parent":  32,
+          "#":  34,
+          "Total.Lines":  3,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//ВБ в данный момент занята координацией атаки военных, собирающихся в заданной точке прыжка, перед нападением на систему",
+              "//Стейт нужен, главным образом, для того, чтобы лочить заказ новых операций с данной ВБ до тех пор, пока уже заказанная операция не стартует",
+              "///"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  -20,
+          "Pos.y":  0,
+          "Parent":  33,
+          "#":  35,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//ВБ занята подготовкой к прыжку в атакуемую систему, в этот момент на ней собираются все участвующие военные"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  -20,
+          "Pos.y":  0,
+          "Parent":  37,
+          "#":  38,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  -20,
+          "Pos.y":  0,
+          "Parent":  39,
+          "#":  40,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  -20,
+          "Pos.y":  0,
+          "Parent":  41,
+          "#":  42,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  44,
+          "#":  45,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  46,
+          "#":  47,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  49,
+          "#":  50,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  48,
           "#":  51,
-          "Total.Lines":  13,
+          "Total.Lines":  7,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "if(ShipStar(GroupToShip(AttackingElite)) == GalaxyStar(attack_star_id))",
+              "tstr1 = '</color>' + Format(CT(dialog_path + '.WBRequestOperation'),",
+              "                              '<PlayerRank'+'>', player_str_rank,",
+              "                              '<Sector'+'>', '<color=0,50,200>' + Name(StarToCon(ShipStar(cur_ruin))) + '</color>',",
+              "                              '<MilitaryBase'+'>', '<color=0,50,200>' + ShipName(cur_ruin) + '</color>',",
+              "                              '');",
+              "tstr2 = '</color>' + CT(dialog_path + '.PlayerConfirmationYes');",
+              "tstr3 = '</color>' + CT(dialog_path + '.PlayerConfirmationNo');"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  61,
+          "#":  64,
+          "Total.Lines":  12,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tstr1 = '</color>' + Format(CT(dialog_path + '.WBConfirmationYes'),",
+              "                              '<PlayerRank'+'>', player_str_rank,",
+              "                              '<StarToAttack'+'>', '<color=255,0,0>' + CT(dialog_path + '.WBPlanningScreenStarNotChoosed') + '</color>',",
+              "                              '<AttackShipsNumbers'+'>', '<color=255,0,0>0</color>',",
+              "                              '<AttackDate'+'>', '<color=255,0,0>' + CT(dialog_path + '.WBPlanningScreenDateNotChoosed') + '</color>',",
+              "                              '<Cost'+'>', '<color=0,50,200>0</color>',",
+              "                              '');",
+              "tstr2 = '</color>' + CT(dialog_path + '.PlayerToPlanning');",
+              "tstr3 = '</color>' + CT(dialog_path + '.PlayerBeginOperation');",
+              "tstr4 = '</color>' + CT(dialog_path + '.PlayerCancelOperation');",
+              "",
+              "attack_date = 0;"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  60,
+          "#":  66,
+          "Total.Lines":  3,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tstr1 = '</color>' + Format(CT(dialog_path + '.WBConfirmationNo'),",
+              "                              '<PlayerRank'+'>', player_str_rank,",
+              "                              '');"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  74,
+          "#":  75,
+          "Total.Lines":  3,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tstr1 = '</color>' + Format(CT(dialog_path + '.WBCancelOperation'),",
+              "                              '<PlayerRank'+'>', player_str_rank,",
+              "                              '');"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  72,
+          "#":  77,
+          "Total.Lines":  4,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tstr1 = '</color>' + Format(CT(dialog_path + '.WBBeginOperation'),",
+              "                              '<PlayerRank'+'>', player_str_rank,",
+              "                              '<AttackDate'+'>', '<color=255,0,0>' + GameDateTxtByTurn(attack_date) + '</color>',",
+              "                              '');"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  71,
+          "#":  79,
+          "Total.Lines":  44,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//Здесь собирается текст для экрана планирования",
+              "if(operation_num == -1) operation_num = InitWBOperation(Id(cur_ruin), operation_lvl);",
+              "ships_available = FindAllMilitaryShipsInSector(cur_sector, tarr1);",
+              "",
+              "if(!GlobalWBOperationsArray[operation_num, 'StarToAttackId'])",
               "{",
-              "    ChangeState('EliteFight');",
-              "    exit;",
+              "    tstr1 = '<color=255,0,0>' + CT(dialog_path + '.WBPlanningScreenStarNotChoosed') + '</color>';",
+              "    tstr2 = '<color=255,0,0>0</color>';",
+              "    tstr3 = '-';",
+              "    tstr4 = '<color=0,50,200>0%</color> / 0%';",
+              "    cur_allies_power = 0;",
+              "    tstr5 = '<color=255,0,0>' + CT(dialog_path + '.WBPlanningScreenGatherNotChoosed') + '</color>';",
+              "    tstr6 = '<color=255,0,0>' + CT(dialog_path + '.WBPlanningScreenDateNotChoosed') + '</color>';",
+              "    tstr7 = '- <color=0,50,200>' + CT(dialog_path + '.WBPlanningScreenShipsNotChoosed') + '</color>';",
+              "    cost = 0;",
+              "}",
+              "else",
+              "{",
+              "    tstr1 = '<color=0,50,200>' + Name(GalaxyStar(GlobalWBOperationsArray[operation_num, 'StarToAttackId'] - 1)) + '</color>';",
+              "    tstr2 = '<color=255,0,0>0</color>';",
+              "    tstr3 = '-';",
+              "    tstr4 = '<color=0,50,200>0%</color> / 0%';",
+              "    cur_allies_power = 0;",
+              "    tstr5 = '<color=255,0,0>' + CT(dialog_path + '.WBPlanningScreenGatherNotChoosed') + '</color>';",
+              "    tstr6 = '<color=255,0,0>' + CT(dialog_path + '.WBPlanningScreenDateNotChoosed') + '</color>';",
+              "    tstr7 = '- <color=0,50,200>' + CT(dialog_path + '.WBPlanningScreenShipsNotChoosed') + '</color>';",
+              "    cost = 0;",
               "}",
               "",
-              "if(waitingTimer)",
+              "if(cost <= ShipMoney(Player())) tstr8 = '<color=0,50,200>' + cost + '</color>';",
+              "else tstr8 = '<color=255,0,0>' + cost + '</color>';",
+              "",
+              "tstr1 = '</color>' + Format(CT(dialog_path + '.WBPlanningScreen'),",
+              "                              '<SplitLine'+'>', split_str,",
+              "                              '<Indent'+'>', indent_str,",
+              "                              '<StarToAttack'+'>', tstr1,",
+              "                              '<AlliesNumbers'+'>', tstr2,",
+              "                              '<EnemyNumbers'+'>', tstr3,",
+              "                              '<ForcesRatio'+'>', tstr4,",
+              "                              '<GatheringPlace'+'>', tstr5,",
+              "                              '<AttackDate'+'>', tstr6,",
+              "                              '<AttackShipsList'+'>', tstr7,",
+              "                              '<Cost'+'>', tstr8,",
+              "                              '');"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  80,
+          "#":  81,
+          "Total.Lines":  48,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "if(check < 0) exit; //Для отсечения лишних ответов при выборе системы/кораблей",
+              "",
+              "//Здесь собираются ответы для экрана планирования",
+              "int star_choosed = 0;",
+              "if(GlobalWBOperationsArray[operation_num, 'StarToAttackId']) star_choosed = 1;",
+              "",
+              "//Выбор системы для атаки",
+              "InjectAnswer('PlanScr', CT(dialog_path + '.PlayerPlanningChooseStar'), 1);",
+              "",
+              "//Выбор атакующих военных",
+              "if(!star_choosed) AddDialogBlock(CT(dialog_path + '.PlayerPlanningChooseAttackers'), 1);",
+              "InjectAnswer('PlanScr', CT(dialog_path + '.PlayerPlanningChooseAttackers'), 2);",
+              "",
+              "//Выбор флагмана (доступен только, если в составе атакующих имеется линкор или дредноут)",
+              "check = 0;",
+              "if(star_choosed)",
               "{",
-              "    if(ShipStar(CurShip) != GalaxyStar(attack_star_id) && CurTurn() >= waitingTimer)",
+              "    for(int i = ArrayDim(GlobalWBOperationsArray[operation_num, 'AlliesForcesId']) - 1; i >= 1; i = i + 1)",
               "    {",
-              "        ShipDestroy(CurShip, 1);",
+              "        if(ShipSubType(GlobalWBOperationsArray[operation_num, 'AlliesForcesId', i]))",
+              "        {",
+              "            check = 1;",
+              "            break;",
+              "        }",
+              "    }",
+              "}",
+              "if(!check) AddDialogBlock('snap~' + CT(dialog_path + '.PlayerPlanningChooseFlagman'), 1);",
+              "InjectAnswer('PlanScr', 'snap~' + CT(dialog_path + '.PlayerPlanningChooseFlagman'), 3);",
+              "",
+              "//Заказать постройку кораблей на коалиционных планетах сектора (возможно только если игроку не хватает сил для нападения даже после выбора всех доступных военных кораблей в секторе)",
+              "check = 0;",
+              "if(star_choosed)",
+              "{",
+              "    if(cur_allies_power >= min_allies_power || ArrayDim(GlobalWBOperationsArray[operation_num, 'AlliesForcesId']) - 1 < ships_available) check = 1;",
+              "}",
+              "if(!check) AddDialogBlock('snap~' + CT(dialog_path + '.PlayerPlanningConstructionOrder'), 1);",
+              "InjectAnswer('PlanScr', 'snap~' + CT(dialog_path + '.PlayerPlanningConstructionOrder'), 4);",
+              "",
+              "//Выбор места сбора военных перед атакой",
+              "if(!star_choosed) AddDialogBlock('snap~' + CT(dialog_path + '.PlayerPlanningChooseGatheringPlace'), 1);",
+              "InjectAnswer('PlanScr', 'snap~' + CT(dialog_path + '.PlayerPlanningChooseGatheringPlace'), 5);",
+              "",
+              "//Выбор точной даты атаки (игрок может выбирать только из ограниченного диапазона)",
+              "if(!star_choosed) AddDialogBlock('snap~' + CT(dialog_path + '.PlayerPlanningChooseAttackDate'), 1);",
+              "InjectAnswer('PlanScr', 'snap~' + CT(dialog_path + '.PlayerPlanningChooseAttackDate'), 6);",
+              "",
+              "//Завершить планирование",
+              "InjectAnswer('PlanScr', 'snap~' + CT(dialog_path + '.PlayerPlanningDone'), 0);"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  25,
+          "#":  88,
+          "Total.Lines":  34,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "FindStarToAttack(cur_ruin, stars_to_attack_arr);",
+              "",
+              "if(ArrayDim(stars_to_attack_arr) > 1)",
+              "{",
+              "    //Установка длины \"дефисного разделителя\" и отступа в зависимости от выбранного в игре размера шрифта",
+              "    if(GetGameOptions('FontDialog') == '0')",
+              "    {",
+              "        split_str = '</color>-----------------------------------------------------------';",
+              "        indent_str = CT('FormInfo.td_310') + CT('FormInfo.align_right');",
+              "    }",
+              "    else if(GetGameOptions('FontDialog') == '1')",
+              "    {",
+              "        split_str = '</color>------------------------------------------';",
+              "        indent_str = CT('FormInfo.td_312') + CT('FormInfo.align_right');",
+              "    }",
+              "    else if(GetGameOptions('FontDialog') == '2')",
+              "    {",
+              "        split_str = '</color>-------------------------------------------';",
+              "        indent_str = CT('FormInfo.td_324') + CT('FormInfo.align_right');",
+              "    }",
+              "    else //if(GetGameOptions('FontDialog') == '3')",
+              "    {",
+              "        split_str = '</color>--------------------------------------';",
+              "        indent_str = CT('FormInfo.td_325') + CT('FormInfo.align_right');",
+              "    }",
+              "}",
+              "else //Если вдруг атаковать нечего",
+              "{",
+              "    tstr1 = '</color>' + Format(CT(dialog_path + '.WBRequestOperationNoTargetStars'),",
+              "                                  '<PlayerRank'+'>', player_str_rank,",
+              "                                  '');",
+              "    tstr2 = '</color>' + CT(dialog_path + '.PlayerRequestOperationNoTargetStars');",
+              "    operation_lvl = -1;",
+              "}"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  40,
+          "Parent":  83,
+          "#":  96,
+          "Total.Lines":  75,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//Выбор системы для атаки",
+              "if(GAnswerData == 1)",
+              "{",
+              "    check = -1; //Маркер для диалога с выбором",
+              "",
+              "    for(int i = 1; i < min(ArrayDim(stars_to_attack_arr), 16); i = i + 1) //До 15 систем на выбор",
+              "    {",
+              "        if(Id(stars_to_attack_arr[i]) != GlobalWBOperationsArray[operation_num, 'StarToAttackId']) tstr1 = Format(CT(dialog_path + '.PlayerPlanningChooseStarToAttack'), '<Star'+'>', Name(stars_to_attack_arr[i]), '');",
+              "        else tstr1 = Format(CT(dialog_path + '.PlayerPlanningChooseStarToAttack'), '<Star'+'>', '<color=0,50,200>' + Name(stars_to_attack_arr[i]) + '</color>', '');",
+              "",
+              "        InjectAnswer('PlanScrChoose', tstr1, stars_to_attack_arr[i]); //Пометка для уже выбранной системы",
+              "    }",
+              "",
+              "    InjectAnswer('PlanScrChoose', CT(dialog_path + '.PlayerPlanningChooseBack'), 0);",
+              "}",
+              "//Выбор атакующих военных (кораблей из списка доступных в секторе с ВБ)",
+              "else if(GAnswerData == 2)",
+              "{",
+              "",
+              "}",
+              "//Выбор флагмана (доступен только, если в составе атакующих имеется линкор или дредноут)",
+              "else if(GAnswerData == 3)",
+              "{",
+              "",
+              "}",
+              "//Заказать постройку кораблей на коалиционных планетах сектора (возможно только если игроку не хватает сил для нападения даже после выбора всех доступных военных кораблей в секторе)",
+              "else if(GAnswerData == 4)",
+              "{",
+              "",
+              "}",
+              "//Выбор места сбора военных перед атакой",
+              "else if(GAnswerData == 5)",
+              "{",
+              "",
+              "}",
+              "//Выбор точной даты атаки (игрок может выбирать только из ограниченного диапазона)",
+              "else if(GAnswerData == 6)",
+              "{",
+              "",
+              "}",
+              "//Завершение планирования",
+              "else",
+              "{",
+              "    if(GlobalWBOperationsArray[operation_num, 'StarToAttackId']) tstr5 = '<color=0,50,200>' + Name(GalaxyStar(GlobalWBOperationsArray[operation_num, 'StarToAttackId'] - 1)) + '</color>';",
+              "    else tstr5 = '<color=255,0,0>' + CT(dialog_path + '.WBPlanningScreenStarNotChoosed') + '</color>';",
+              "    /////",
+              "    if(GlobalWBOperationsArray[operation_num, 'AlliesForcesId'] > 1 || GlobalWBOperationsArray[operation_num, 'ShipyardsInvolvedId'] > 1)",
+              "    {",
+              "        tstr6 = '<clr>' + (ArrayDim(GlobalWBOperationsArray[operation_num, 'AlliesForcesId']) - 1);",
+              "        if(GlobalWBOperationsArray[operation_num, 'ShipyardsInvolvedId'] > 1) tstr6 = tstr6 + '</color> + <clr>' + (ArrayDim(GlobalWBOperationsArray[operation_num, 'ShipyardsInvolvedId']) - 1) + '</color>';",
+              "",
+              "        if(cur_allies_power >= min_allies_power) tstr6 = Format(tstr6, '<clr'+'>', '<color=0,50,200'+'>', '');",
+              "        else tstr6 = Format(tstr6, '<clr'+'>', '<color=255,0,0'+'>', '');",
+              "    }",
+              "    else tstr6 = '<color=255,0,0>0</color>';",
+              "    /////",
+              "    if(GlobalWBOperationsArray[operation_num, 'AttackDate']) tstr7 = '<color=0,50,200>' + GameDateTxtByTurn(GlobalWBOperationsArray[operation_num, 'AttackDate']) + '</color>';",
+              "    else tstr7 = '<color=255,0,0>' + CT(dialog_path + '.WBPlanningScreenDateNotChoosed') + '</color>';",
+              "    /////",
+              "    if(cost <= ShipMoney(Player())) tstr8 = '<color=0,50,200>' + cost + '</color>';",
+              "    else tstr8 = '<color=255,0,0>' + cost + '</color>';",
+              "",
+              "    tstr1 = '</color>' + Format(CT(dialog_path + '.WBAfterPlanning'),",
+              "                                  '<PlayerRank'+'>', player_str_rank,",
+              "                                  '<StarToAttack'+'>', tstr5,",
+              "                                  '<AttackShipsNumbers'+'>', tstr6,",
+              "                                  '<AttackDate'+'>', tstr7,",
+              "                                  '<Cost'+'>', tstr8,",
+              "                                  '');",
+              "    tstr2 = '</color>' + CT(dialog_path + '.PlayerToPlanning');",
+              "    tstr3 = '</color>' + CT(dialog_path + '.PlayerBeginOperation');",
+              "    tstr4 = '</color>' + CT(dialog_path + '.PlayerCancelOperation');",
+              "",
+              "    check = 0;",
+              "}"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  101,
+          "#":  102,
+          "Total.Lines":  17,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//Выбор или перевыбор системы обнуляет всю ранее заданную информацию",
+              "check = abs(check); //Чтобы больше не блокировать основные ответы экрана планирования после завершения выбора системы/кораблей",
+              "if(check == 1)",
+              "{",
+              "    if(GAnswerData) //Если игрок не отменил выбор системы",
+              "    {",
+              "        if(Id(GAnswerData) != GlobalWBOperationsArray[operation_num, 'StarToAttackId'])",
+              "        {",
+              "            GlobalWBOperationsArray[operation_num, 'StarToAttackId'] = Id(GAnswerData);",
+              "            ArrayClear(GlobalWBOperationsArray[operation_num, 'AlliesForcesId']);",
+              "            ArrayClear(GlobalWBOperationsArray[operation_num, 'ShipyardsInvolvedId']);",
+              "            GlobalWBOperationsArray[operation_num, 'FlagmanId'] = 0;",
+              "            GlobalWBOperationsArray[operation_num, 'GatheringPlaceId'] = 0;",
+              "            GlobalWBOperationsArray[operation_num, 'AttackDate'] = 0;",
+              "        }",
               "    }",
               "}"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  -20,
-          "Pos.y":  0,
-          "Parent":  11,
-          "#":  52,
-          "Total.Lines":  6,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "if(StarOwner(ShipStar(CurShip)) == 0)",
-              "{",
-              "    OrderLock(CurShip, 1);",
-              "    ChangeState('EliteGoHome');",
-              "    exit;",
-              "}"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  -20,
-          "Pos.y":  0,
-          "Parent":  14,
-          "#":  53,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "if(StarOwner(ShipStar(CurShip)) == 0) ShipOut(CurShip);"          
           ]        
         }      
       ],
@@ -627,8 +1219,8 @@
           "Name":  "InitPlanet",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  4,
-          "#":  5,
+          "Parent":  3,
+          "#":  4,
           "Race":  62,
           "Owner":  62,
           "Economy":  14,
@@ -646,7 +1238,7 @@
           "Pos.x":  300,
           "Pos.y":  270,
           "Parent":  -1,
-          "#":  6,
+          "#":  5,
           "Count":  1,
           "Owner":  62,
           "Ship.Type":  126,
@@ -674,8 +1266,8 @@
           "Name":  "InitStar",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  6,
-          "#":  4,
+          "Parent":  5,
+          "#":  3,
           "Constellation":  0,
           "Priority":  0,
           "NoKling":  false,
@@ -687,10 +1279,192 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  530,
-          "Pos.y":  100,
-          "Parent":  -1,
+          "Pos.x":  -20,
+          "Pos.y":  30,
+          "Parent":  88,
+          "#":  26,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "operation_lvl == 2"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  30,
+          "Parent":  88,
+          "#":  27,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "operation_lvl == 3"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  70,
+          "Pos.y":  30,
+          "Parent":  88,
           "#":  28,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "operation_lvl == 4"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -40,
+          "Pos.y":  30,
+          "Parent":  88,
+          "#":  44,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "operation_lvl == 1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -60,
+          "Pos.y":  30,
+          "Parent":  88,
+          "#":  46,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "!operation_lvl"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  20,
+          "Pos.y":  20,
+          "Parent":  28,
+          "#":  48,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "!on_prepare"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -20,
+          "Pos.y":  20,
+          "Parent":  28,
+          "#":  49,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "on_prepare"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  10,
+          "Pos.y":  20,
+          "Parent":  52,
+          "#":  58,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -10,
+          "Pos.y":  20,
+          "Parent":  52,
+          "#":  59,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -40,
+          "Pos.y":  20,
+          "Parent":  65,
+          "#":  67,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -20,
+          "Pos.y":  20,
+          "Parent":  65,
+          "#":  68,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "attack_date"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  20,
+          "Pos.y":  20,
+          "Parent":  65,
+          "#":  69,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  65,
+          "#":  70,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "!attack_date"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  20,
+          "Pos.y":  0,
+          "Parent":  96,
+          "#":  84,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -701,10 +1475,10 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  410,
-          "Pos.y":  100,
-          "Parent":  -1,
-          "#":  29,
+          "Pos.x":  0,
+          "Pos.y":  60,
+          "Parent":  96,
+          "#":  85,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -715,10 +1489,10 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  610,
-          "Pos.y":  180,
-          "Parent":  -1,
-          "#":  48,
+          "Pos.x":  0,
+          "Pos.y":  60,
+          "Parent":  102,
+          "#":  103,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -729,15 +1503,29 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  610,
-          "Pos.y":  120,
-          "Parent":  -1,
-          "#":  49,
+          "Pos.x":  20,
+          "Pos.y":  0,
+          "Parent":  62,
+          "#":  105,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
           [
               "1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  120,
+          "Pos.y":  30,
+          "Parent":  88,
+          "#":  107,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "operation_lvl == -1"          
           ]        
         }      
       ],
@@ -748,8 +1536,8 @@
           "Name":  "PlayerGroup",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  7,
-          "#":  10,
+          "Parent":  6,
+          "#":  7,
           "Move":  0,
           "MoveObj":  -1,
           "Attack.Count":  0,
@@ -763,11 +1551,11 @@
         },
         {
           "Type":  "TState",
-          "Name":  "EliteFight",
-          "Pos.x":  0,
-          "Pos.y":  20,
-          "Parent":  13,
-          "#":  11,
+          "Name":  "WBOnCoordination",
+          "Pos.x":  -130,
+          "Pos.y":  0,
+          "Parent":  31,
+          "#":  32,
           "Move":  5,
           "MoveObj":  -1,
           "Attack.Count":  0,
@@ -781,12 +1569,12 @@
         },
         {
           "Type":  "TState",
-          "Name":  "EliteGoHome",
+          "Name":  "WBOnPrepare",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  11,
-          "#":  12,
-          "Move":  0,
+          "Parent":  32,
+          "#":  33,
+          "Move":  5,
           "MoveObj":  -1,
           "Attack.Count":  0,
           "TakeItem":  -1,
@@ -799,12 +1587,12 @@
         },
         {
           "Type":  "TState",
-          "Name":  "EliteWait",
-          "Pos.x":  -70,
-          "Pos.y":  0,
-          "Parent":  8,
-          "#":  13,
-          "Move":  0,
+          "Name":  "WBOnAttack",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  33,
+          "#":  37,
+          "Move":  5,
           "MoveObj":  -1,
           "Attack.Count":  0,
           "TakeItem":  -1,
@@ -817,11 +1605,29 @@
         },
         {
           "Type":  "TState",
-          "Name":  "WBFight",
-          "Pos.x":  -70,
+          "Name":  "WarriorsOnPrepare",
+          "Pos.x":  -130,
           "Pos.y":  0,
-          "Parent":  9,
-          "#":  14,
+          "Parent":  36,
+          "#":  39,
+          "Move":  5,
+          "MoveObj":  -1,
+          "Attack.Count":  0,
+          "TakeItem":  -1,
+          "TakeAllItem":  false,
+          "OnTalk":  "",
+          "OnActCode":  "",
+          "EType":  1,
+          "EUnique":  "",
+          "EMsg":  ""        
+        },
+        {
+          "Type":  "TState",
+          "Name":  "WarriorsOnAttack",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  39,
+          "#":  41,
           "Move":  5,
           "MoveObj":  -1,
           "Attack.Count":  0,
@@ -841,7 +1647,7 @@
           "Name":  "i",
           "Pos.x":  60,
           "Pos.y":  0,
-          "Parent":  31,
+          "Parent":  11,
           "#":  1,
           "Var.Type":  "Int",
           "Init":  "",
@@ -850,9 +1656,9 @@
         {
           "Type":  "TVar",
           "Name":  "EliteWarriorsSpawnTimer",
-          "Pos.x":  0,
+          "Pos.x":  -20,
           "Pos.y":  -20,
-          "Parent":  15,
+          "Parent":  8,
           "#":  2,
           "Var.Type":  "Int",
           "Init":  "0",
@@ -860,22 +1666,11 @@
         },
         {
           "Type":  "TVar",
-          "Name":  "attack_star_id",
-          "Pos.x":  0,
-          "Pos.y":  20,
-          "Parent":  47,
-          "#":  3,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
           "Name":  "tstr1",
           "Pos.x":  80,
-          "Pos.y":  0,
-          "Parent":  34,
-          "#":  31,
+          "Pos.y":  -20,
+          "Parent":  14,
+          "#":  11,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -885,8 +1680,8 @@
           "Name":  "cur_ruin",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  40,
-          "#":  32,
+          "Parent":  20,
+          "#":  12,
           "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
@@ -896,8 +1691,8 @@
           "Name":  "check",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  42,
-          "#":  33,
+          "Parent":  22,
+          "#":  13,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -905,10 +1700,10 @@
         {
           "Type":  "TVar",
           "Name":  "cur_star",
-          "Pos.x":  390,
-          "Pos.y":  290,
-          "Parent":  -1,
-          "#":  34,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  98,
+          "#":  14,
           "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
@@ -916,10 +1711,10 @@
         {
           "Type":  "TVar",
           "Name":  "j",
-          "Pos.x":  40,
+          "Pos.x":  30,
           "Pos.y":  0,
           "Parent":  1,
-          "#":  35,
+          "#":  15,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -929,8 +1724,8 @@
           "Name":  "cur_ship",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  32,
-          "#":  36,
+          "Parent":  12,
+          "#":  16,
           "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
@@ -940,8 +1735,8 @@
           "Name":  "tstr2",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  31,
-          "#":  37,
+          "Parent":  11,
+          "#":  17,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -951,8 +1746,8 @@
           "Name":  "tstr3",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  37,
-          "#":  38,
+          "Parent":  17,
+          "#":  18,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -962,8 +1757,8 @@
           "Name":  "tdwd1",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  36,
-          "#":  39,
+          "Parent":  16,
+          "#":  19,
           "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
@@ -973,8 +1768,8 @@
           "Name":  "cur_planet",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  34,
-          "#":  40,
+          "Parent":  14,
+          "#":  20,
           "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
@@ -985,7 +1780,7 @@
           "Pos.x":  0,
           "Pos.y":  20,
           "Parent":  1,
-          "#":  41,
+          "#":  21,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -995,31 +1790,9 @@
           "Name":  "rand",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  41,
-          "#":  42,
+          "Parent":  21,
+          "#":  22,
           "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "WBOnAttack",
-          "Pos.x":  510,
-          "Pos.y":  200,
-          "Parent":  -1,
-          "#":  45,
-          "Var.Type":  "Int",
-          "Init":  "0",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "attack_star",
-          "Pos.x":  210,
-          "Pos.y":  110,
-          "Parent":  -1,
-          "#":  47,
-          "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
         },
@@ -1028,8 +1801,8 @@
           "Name":  "waitingTimer",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  39,
-          "#":  50,
+          "Parent":  19,
+          "#":  23,
           "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
@@ -1037,10 +1810,241 @@
         {
           "Type":  "TVar",
           "Name":  "tarr1",
-          "Pos.x":  620,
+          "Pos.x":  220,
+          "Pos.y":  -20,
+          "Parent":  14,
+          "#":  24,
+          "Var.Type":  "Array",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "operation_lvl",
+          "Pos.x":  390,
           "Pos.y":  290,
           "Parent":  -1,
+          "#":  43,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "on_prepare",
+          "Pos.x":  0,
+          "Pos.y":  40,
+          "Parent":  43,
           "#":  54,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "dialog_path",
+          "Pos.x":  490,
+          "Pos.y":  290,
+          "Parent":  -1,
+          "#":  55,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "player_str_rank",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  57,
+          "#":  56,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "player_rank",
+          "Pos.x":  600,
+          "Pos.y":  290,
+          "Parent":  -1,
+          "#":  57,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tstr4",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  18,
+          "#":  63,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "attack_date",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  56,
+          "#":  82,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "split_str",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  95,
+          "#":  86,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "indent_str",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  86,
+          "#":  87,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "operation_num",
+          "Pos.x":  390,
+          "Pos.y":  310,
+          "Parent":  -1,
+          "#":  89,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "GlobalWBOperationsArray",
+          "Pos.x":  330,
+          "Pos.y":  230,
+          "Parent":  -1,
+          "#":  90,
+          "Var.Type":  "Array",
+          "Init":  "1",
+          "Global":  true        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "cost",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  13,
+          "#":  91,
+          "Var.Type":  "Dword",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tstr5",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  63,
+          "#":  92,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tstr6",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  92,
+          "#":  93,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tstr7",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  93,
+          "#":  94,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tstr8",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  94,
+          "#":  95,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "ships_available",
+          "Pos.x":  490,
+          "Pos.y":  310,
+          "Parent":  -1,
+          "#":  97,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "cur_sector",
+          "Pos.x":  390,
+          "Pos.y":  380,
+          "Parent":  -1,
+          "#":  98,
+          "Var.Type":  "Dword",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "cur_allies_power",
+          "Pos.x":  490,
+          "Pos.y":  330,
+          "Parent":  -1,
+          "#":  99,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "min_allies_power",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  99,
+          "#":  100,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "stars_to_attack_arr",
+          "Pos.x":  610,
+          "Pos.y":  400,
+          "Parent":  -1,
+          "#":  106,
           "Var.Type":  "Array",
           "Init":  "",
           "Global":  false        
@@ -1052,8 +2056,15 @@
   [
     {
       "Type":  "TGraphLink",
+      "Begin":  4,
+      "End":  3,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
       "Begin":  5,
-      "End":  4,
+      "End":  3,
       "Nom":  0,
       "Arrow":  true    
     },
@@ -1066,147 +2077,105 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  7,
-      "End":  5,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  8,
-      "End":  5,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  9,
-      "End":  5,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  7,
-      "End":  10,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  12,
-      "End":  18,
+      "Begin":  6,
+      "End":  7,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  26,
-      "End":  27,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  27,
-      "End":  28,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  27,
       "End":  29,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  28,
-      "End":  19,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  29,
-      "End":  20,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  19,
-      "End":  23,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  19,
-      "End":  25,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  20,
-      "End":  22,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  23,
+      "Begin":  27,
       "End":  30,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  21,
-      "End":  24,
+      "Begin":  31,
+      "End":  4,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  43,
-      "End":  44,
+      "Begin":  31,
+      "End":  32,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  32,
+      "End":  34,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  33,
+      "End":  35,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  36,
+      "End":  4,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  37,
+      "End":  38,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  39,
+      "End":  40,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  41,
+      "End":  42,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  36,
+      "End":  39,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  44,
-      "End":  21,
+      "End":  45,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  24,
-      "End":  46,
+      "Begin":  46,
+      "End":  47,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  8,
-      "End":  13,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  9,
-      "End":  14,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  30,
+      "Begin":  28,
       "End":  48,
       "Nom":  0,
       "Arrow":  true    
@@ -1214,6 +2183,20 @@
     {
       "Type":  "TGraphLink",
       "Begin":  48,
+      "End":  51,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  51,
+      "End":  52,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  28,
       "End":  49,
       "Nom":  0,
       "Arrow":  true    
@@ -1221,39 +2204,322 @@
     {
       "Type":  "TGraphLink",
       "Begin":  49,
-      "End":  21,
+      "End":  50,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  13,
-      "End":  51,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  11,
-      "End":  52,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  14,
+      "Begin":  50,
       "End":  53,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  52,
+      "End":  58,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  58,
+      "End":  60,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  52,
+      "End":  59,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  59,
+      "End":  61,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  61,
+      "End":  64,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  64,
+      "End":  65,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  60,
+      "End":  66,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  66,
+      "End":  62,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  65,
+      "End":  67,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  65,
+      "End":  68,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  65,
+      "End":  69,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  65,
+      "End":  70,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  67,
+      "End":  71,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  68,
+      "End":  72,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  70,
+      "End":  73,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  69,
+      "End":  74,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  74,
+      "End":  75,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  75,
+      "End":  76,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  72,
+      "End":  77,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  77,
+      "End":  78,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  71,
+      "End":  79,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  79,
+      "End":  80,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  80,
+      "End":  81,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  84,
+      "End":  65,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  85,
+      "End":  79,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  25,
+      "End":  88,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  88,
+      "End":  46,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  88,
+      "End":  44,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  88,
+      "End":  26,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  88,
+      "End":  27,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  88,
+      "End":  28,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  83,
+      "End":  96,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  96,
+      "End":  84,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  96,
+      "End":  85,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  101,
+      "End":  102,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  102,
+      "End":  103,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  103,
+      "End":  79,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  76,
+      "End":  104,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  62,
+      "End":  105,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  105,
+      "End":  104,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  88,
+      "End":  107,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  107,
+      "End":  108,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  108,
+      "End":  109,
       "Nom":  0,
       "Arrow":  true    
     }  
   ],
-  "BlockPar.EC.Total.Strings":  2,
+  "BlockPar.EC.Total.Strings":  1,
   "BlockPar.EC":  
   [
-    {
-      "#":  "40",
-      "String":  "<br>"    
-    },
     {
       "#":  "41",
       "String":  "<0>"    

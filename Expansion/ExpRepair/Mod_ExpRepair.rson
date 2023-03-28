@@ -403,7 +403,7 @@
               "    DefSplt = '</color>-------------------------------------------';",
               "    IndentStr = CT('FormInfo.td_324') + CT('FormInfo.align_right');",
               "}",
-              "else",
+              "else //if(GetGameOptions('FontDialog') == '3')",
               "{",
               "    DefSplt = '</color>--------------------------------------';",
               "    IndentStr = CT('FormInfo.td_325') + CT('FormInfo.align_right');",
@@ -2321,7 +2321,7 @@
         {
           "Type":  "TVar",
           "Name":  "check",
-          "Pos.x":  500,
+          "Pos.x":  490,
           "Pos.y":  10,
           "Parent":  -1,
           "#":  56,

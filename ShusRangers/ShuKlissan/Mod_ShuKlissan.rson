@@ -4399,7 +4399,7 @@
           "Pos.y":  0,
           "Parent":  302,
           "#":  18,
-          "Total.Lines":  1624,
+          "Total.Lines":  1625,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -4701,6 +4701,7 @@
               "            for(j = 0; j < StarShips(cur_star); j = j + 1)",
               "            {",
               "                cur_ship = StarShips(cur_star, j);",
+              "                if(ObjectType(cur_ship) != 5) continue; //Сразу скипаем возможные станции",
               "                if(!ShipInNormalSpace(cur_ship)) continue;",
               "                if(!ShipKillFactionInCurSystem(cur_ship, -1)) continue;",
               "                tint2 = ShipTypeN(cur_ship);",
