@@ -5075,12 +5075,12 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "temp_int=NumberBox('Bm.ItemsUseless.2Usl_Elus_s',\"Сколько пожертвовать?\",100,bld_cost_2-credits_now_2,ShipMoney(Player()),'Bm.FormCount2.2KindCredits');",
-              "if(temp_int>0)",
+              "temp_int = NumberBox('Bm.ItemsUseless.2Usl_Elus_s', \"Сколько пожертвовать?\", 100, bld_cost_2 - credits_now_2, ShipMoney(Player()), 'Bm.FormCount2.2KindCredits');",
+              "if(temp_int > 0)",
               "{",
-              "    ShipMoney(Player(),ShipMoney(Player())-temp_int);",
-              "    credits_now_2=credits_now_2+temp_int;",
-              "    repay_2=repay_2+temp_int;",
+              "    ShipMoney(Player(), ShipMoney(Player()) - temp_int);",
+              "    credits_now_2 = credits_now_2 + temp_int;",
+              "    repay_2 = repay_2 + temp_int;",
               "    Sound('Sound.Sell');",
               "}"          
           ]        
@@ -6187,9 +6187,9 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "if(CapitalShipStats(ShipEqInSlot(Player(),t_Hull))==1)PlayerBridge(1);",
-              "if(CapitalShipStats(ShipEqInSlot(Player(),t_Hull))==2)PlayerBridge(2);",
-              "if(CapitalShipStats(ShipEqInSlot(Player(),t_Hull))==3)PlayerBridge(3);"          
+              "if(CapitalShipStats(ShipEqInSlot(Player(), t_Hull)) == 1) PlayerBridge(1);",
+              "if(CapitalShipStats(ShipEqInSlot(Player(), t_Hull)) == 2) PlayerBridge(2);",
+              "if(CapitalShipStats(ShipEqInSlot(Player(), t_Hull)) == 3) PlayerBridge(3);"          
           ]        
         },
         {
@@ -6325,24 +6325,26 @@
           "Pos.y":  -140,
           "Parent":  -1,
           "#":  201,
-          "Total.Lines":  14,
+          "Total.Lines":  16,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
-              "AddDialogInject('',\"\",'BlockThisAnswer',1,1);",
-              "AddDialogBlock('BlockThisAnswer',2);",
-              "AddDialogBlock(CT('FormRuins.Bridge.BridgeExit'),2);",
+              "AddDialogInject('', \"\", 'BlockThisAnswer', 1, 1);",
+              "AddDialogBlock('BlockThisAnswer', 2);",
+              "AddDialogBlock(CT('FormRuins.Bridge.BridgeExit'), 2);",
+              "",
               "if(!NoTalkToShip(Player()))",
               "{",
-              "    temp_str=\"Разрешены\";",
-              "    AddDialogInject('Comm_OFF',\"Все входящие вызовы: <temp_str>\",\"Включить запрет\",15);",
+              "    temp_str = \"Разрешены\";",
+              "    AddDialogInject('Comm_OFF', \"Все входящие вызовы: <temp_str>\", \"Включить запрет\", 15);",
               "}",
               "else",
               "{",
-              "    temp_str=\"Запрещены\";",
-              "    AddDialogInject('Comm_ON',\"Все входящие вызовы: <temp_str>\",\"Выключить запрет\",15);",
+              "    temp_str = \"Запрещены\";",
+              "    AddDialogInject('Comm_ON', \"Все входящие вызовы: <temp_str>\", \"Выключить запрет\", 15);",
               "}",
-              "AddDialogInject('BoardComp','',\"Завершить настройку\",-1);"          
+              "",
+              "AddDialogInject('BoardComp', '', \"Завершить настройку\", -1);"          
           ]        
         },
         {
@@ -9566,7 +9568,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "credits_now<bld_cost && ShipMoney(Player())>99"          
+              "credits_now < bld_cost && ShipMoney(Player()) > 99"          
           ]        
         },
         {
@@ -9580,7 +9582,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "credits_now_2<bld_cost_2 && ShipMoney(Player())>99"          
+              "credits_now_2 < bld_cost_2 && ShipMoney(Player()) > 99"          
           ]        
         },
         {
@@ -10847,7 +10849,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "credits_now_2>=bld_cost_2 || ShipMoney(Player())<=99"          
+              "credits_now_2 >= bld_cost_2 || ShipMoney(Player()) <= 99"          
           ]        
         },
         {
@@ -10861,7 +10863,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "credits_now>=bld_cost || ShipMoney(Player())<=99"          
+              "credits_now >= bld_cost || ShipMoney(Player()) <= 99"          
           ]        
         },
         {
@@ -13001,8 +13003,8 @@
         {
           "Type":  "TVar",
           "Name":  "TLegUpCount",
-          "Pos.x":  400,
-          "Pos.y":  -240,
+          "Pos.x":  -90,
+          "Pos.y":  220,
           "Parent":  -1,
           "#":  414,
           "Var.Type":  "Int",
