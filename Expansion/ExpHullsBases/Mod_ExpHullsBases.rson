@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -11,
-  "ViewPos.y":  -309,
+  "ViewPos.x":  43,
+  "ViewPos.y":  -311,
   "ScriptName":  "Mod_ExpHullsBases",
   "ScriptFileOut":  "H:\\Mod_ExpHullsBases.scr",
   "ScriptTextOut":  "H:\\Mod_ExpHullsBases.txt",
@@ -2214,7 +2214,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "destination_star=ConStar(cur_con,0);"          
+              "destination_star = ConStar(cur_con, 0);"          
           ]        
         },
         {
@@ -2240,7 +2240,7 @@
               "    if(GetShipRuins(StarShips(cur_star, i)) == cur_ruin) OrderTakeOff(StarShips(cur_star, i));",
               "}",
               "OrderNone(cur_ruin);",
-              "OrderTeleport(cur_ruin, destination_star, CoordX(cur_ruin), CoordY(cur_ruin));"          
+              "OrderTeleport(cur_ruin, destination_star, CoordX(cur_ruin), CoordY(cur_ruin), 1, max(2, round(0.1 * Dist(ShipStar(cur_ruin), destination_star)) + 1));"          
           ]        
         },
         {
@@ -2254,7 +2254,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "destination_star=ConStar(cur_con,1);"          
+              "destination_star = ConStar(cur_con, 1);"          
           ]        
         },
         {
@@ -2268,7 +2268,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "destination_star=ConStar(cur_con,2);"          
+              "destination_star = ConStar(cur_con, 2);"          
           ]        
         },
         {
@@ -2282,7 +2282,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "destination_star=ConStar(cur_con,3);"          
+              "destination_star = ConStar(cur_con, 3);"          
           ]        
         },
         {
@@ -2296,7 +2296,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "destination_star=ConStar(cur_con,4);"          
+              "destination_star = ConStar(cur_con, 4);"          
           ]        
         },
         {
@@ -2310,7 +2310,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "destination_star=ConStar(cur_con,5);"          
+              "destination_star = ConStar(cur_con, 5);"          
           ]        
         },
         {
@@ -2860,12 +2860,12 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "if(!cur_ruin)cur_ruin=GAnswerData;",
-              "if(ShipType(cur_ruin)=='SB')TextCorr='</color>'+\"научной базы <ShipName(cur_ruin)>\";",
-              "else if(ShipType(cur_ruin)=='RC')TextCorr='</color>'+\"центра рейнджеров <ShipName(cur_ruin)>\";",
-              "else if(ShipType(cur_ruin)=='MC')TextCorr='</color>'+\"медицинского центра <ShipName(cur_ruin)>\";",
-              "else if(ShipType(cur_ruin)=='BK')TextCorr='</color>'+\"бизнес-центра <ShipName(cur_ruin)>\";",
-              "else if(ShipType(cur_ruin)=='TC')TextCorr='</color>'+\"технологического центра <ShipName(cur_ruin)>\";"          
+              "if(!cur_ruin) cur_ruin = GAnswerData;",
+              "if(ShipType(cur_ruin) == 'SB') TextCorr = '</color>' + \"научной базы <ShipName(cur_ruin)>\";",
+              "else if(ShipType(cur_ruin) == 'RC')  TextCorr = '</color>' + \"центра рейнджеров <ShipName(cur_ruin)>\";",
+              "else if(ShipType(cur_ruin) == 'MC')TextCorr = '</color>' + \"медицинского центра <ShipName(cur_ruin)>\";",
+              "else if(ShipType(cur_ruin) == 'BK') TextCorr = '</color>' + \"бизнес-центра <ShipName(cur_ruin)>\";",
+              "else if(ShipType(cur_ruin) == 'TC') TextCorr = '</color>' + \"технологического центра <ShipName(cur_ruin)>\";"          
           ]        
         },
         {
@@ -2995,10 +2995,10 @@
               "//Формируем ответы",
               "for(j = 1; j < ArrayDim(tempArr); j = j + 1)",
               "{",
-              "    tempInt3 = tempArr[j];",
+              "    dword dest_star = tempArr[j];",
               "    //Системы, в которых идёт бой, выделяем красным",
-              "    if(StarBattle(tempInt3))InjectAnswer('LongJumpGo', '</color>' + \"Отправляйтесь в систему\" + ' <color=255,0,0>' + StarName(tempInt3) + '</color>', tempArr2[j]);",
-              "    else InjectAnswer('LongJumpGo', '</color>' + \"Отправляйтесь в систему <StarName(tempInt3)>\", tempArr2[j]);",
+              "    if(StarBattle(dest_star)) InjectAnswer('LongJumpGo', '</color>' + \"Отправляйтесь в систему\" + ' <color=255,0,0>' + StarName(dest_star) + '</color>', tempArr2[j]);",
+              "    else InjectAnswer('LongJumpGo', '</color>' + \"Отправляйтесь в систему <StarName(dest_star)>\", tempArr2[j]);",
               "}"          
           ]        
         },
@@ -3265,8 +3265,8 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "j = GalaxyStar(j - 1);",
-              "ShipDestination(Player(), j);",
+              "dword dest_star = GalaxyStar(j - 1);",
+              "ShipDestination(Player(), dest_star);",
               "",
               "//Разряжаем портальный генератор на одну треть",
               "ShipCustomShipInfoData(cur_ruin, k, 3, round(ShipCustomShipInfoData(cur_ruin, k, 2) / 3));",
@@ -3440,17 +3440,15 @@
           "Pos.y":  450,
           "Parent":  -1,
           "#":  338,
-          "Total.Lines":  8,
+          "Total.Lines":  6,
           "Code.Type":  "Turn",
           "Code":          
           [
               "if(ShipOrder(cur_ruin) != 7)",
               "{",
-              "    j = GalaxyStar(j - 1);",
+              "    dword dest_star = GalaxyStar(j - 1);",
               "    if(ShipInScript(cur_ruin, 0)) ShipOut(cur_ruin);",
-              "    OrderTeleport(cur_ruin, j, CoordX(cur_ruin), CoordY(cur_ruin));",
-              "    //Задаём число дней на совершение скачка",
-              "    ShipOrderData1(cur_ruin, (StarNearbyStarsDist(cur_star, tempInt3) / 10) + 1);",
+              "    OrderTeleport(cur_ruin, dest_star, CoordX(cur_ruin), CoordY(cur_ruin), 1, max(2, round(0.1 * Dist(ShipStar(cur_ruin), dest_star)) + 1));",
               "}"          
           ]        
         },
@@ -3628,8 +3626,8 @@
           [
               "for(j = 0; j < StarPlanets(cur_star); j = j + 1)",
               "{",
-              "    tempInt3 = StarPlanets(cur_star, j);",
-              "    InjectAnswer('ShortJumpGo', \"Отправляйтесь к текущим координатам планеты\" + ' <color=0,50,200>' + PlanetName(tempInt3) + '</color>', tempInt3);",
+              "    dword planet = StarPlanets(cur_star, j);",
+              "    InjectAnswer('ShortJumpGo', \"Отправляйтесь к текущим координатам планеты\" + ' <color=0,50,200>' + PlanetName(planet) + '</color>', planet);",
               "}"          
           ]        
         },
@@ -3662,18 +3660,16 @@
           "Pos.y":  400,
           "Parent":  -1,
           "#":  381,
-          "Total.Lines":  9,
+          "Total.Lines":  7,
           "Code.Type":  "Turn",
           "Code":          
           [
               "if(ShipOrder(cur_ruin) != 7)",
               "{",
-              "    if(j == -1) j = Player();",
-              "    else j = IdToPlanet(j);",
+              "    if(j == -1) dword dest_obj = Player();",
+              "    else dest_obj = IdToPlanet(j);",
               "    if(ShipInScript(cur_ruin, 0)) ShipOut(cur_ruin);",
-              "    OrderTeleport(cur_ruin, cur_star, CoordX(j), CoordY(j));",
-              "    //Задаём число дней на совершение скачка",
-              "    ShipOrderData1(cur_ruin, 0);",
+              "    OrderTeleport(cur_ruin, cur_star, CoordX(dest_obj), CoordY(dest_obj), 1, 0);",
               "}"          
           ]        
         },
@@ -10120,7 +10116,7 @@
       "BStyle":  0,
       "BColor":  14474460,
       "BSize":  1,
-      "BCoef":  "0,300000011920929",
+      "BCoef":  "0.300000011920929",
       "AlignX":  1,
       "AlignY":  -1,
       "AlignRect":  false,
@@ -10143,7 +10139,7 @@
       "BStyle":  0,
       "BColor":  14474460,
       "BSize":  1,
-      "BCoef":  "0,300000011920929",
+      "BCoef":  "0.300000011920929",
       "AlignX":  0,
       "AlignY":  -1,
       "AlignRect":  false,
@@ -10166,7 +10162,7 @@
       "BStyle":  0,
       "BColor":  14474460,
       "BSize":  1,
-      "BCoef":  "0,300000011920929",
+      "BCoef":  "0.300000011920929",
       "AlignX":  0,
       "AlignY":  -1,
       "AlignRect":  false,

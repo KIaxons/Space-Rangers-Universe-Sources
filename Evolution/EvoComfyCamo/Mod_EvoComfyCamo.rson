@@ -165,7 +165,7 @@
           "Pos.y":  0,
           "Parent":  6,
           "#":  7,
-          "Total.Lines":  17,
+          "Total.Lines":  20,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
@@ -174,8 +174,11 @@
               "{",
               "    if(cur_ship == confusedShip)",
               "    {",
-              "        str answer = '</color>' + CT('Script.Mod_EvoComfyCamo.PlayerSendSignature' + Rnd(1, 5, Id(cur_ship) + CurTurn() + 121));",
-              "        AddDialogInject('OnConfusedDialog', '', answer, 100000);",
+              "        if(ShipTypeN(cur_ship) != t_Kling && ShipTypeN(cur_ship) != t_Tranclucator)",
+              "        {",
+              "            str answer = '</color>' + CT('Script.Mod_EvoComfyCamo.PlayerSendSignature' + Rnd(1, 5, Id(cur_ship) + CurTurn() + 121));",
+              "            AddDialogInject('OnConfusedDialog', '', answer, 100000);",
+              "        }",
               "    }",
               "    else if(0)//cur_ship == recognizedShip)",
               "    {",
@@ -195,7 +198,7 @@
           "Pos.y":  20,
           "Parent":  9,
           "#":  10,
-          "Total.Lines":  6,
+          "Total.Lines":  15,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -204,6 +207,15 @@
               "tstr2 = '</color>' + CT('Talk.Exit');",
               "",
               "ShipAddCustomShipInfo(cur_ship, 'IgnoreCamoInfo', 'NoShow', 0);",
+              "if(RelationToShip(cur_ship, Player()) > 9)",
+              "{",
+              "    for(int i = 1; i <= ShipCntWeapon(cur_ship); i = i + 1)",
+              "    {",
+              "        dword gun = ShipWeapon(cur_ship, i);",
+              "        if(WeaponTarget(gun) == Player()) WeaponTarget(gun, 0);",
+              "    }",
+              "}",
+              "",
               "confusedShip = 0;"          
           ]        
         }      
