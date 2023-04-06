@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1483,
-  "ViewPos.y":  -60,
+  "ViewPos.x":  -1560,
+  "ViewPos.y":  -130,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
@@ -22586,7 +22586,7 @@
           "Pos.y":  20,
           "Parent":  459,
           "#":  461,
-          "Total.Lines":  221,
+          "Total.Lines":  225,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -22647,6 +22647,10 @@
               "            if(StarBattle(cur_star)) continue;",
               "            if(StarOwner(cur_star) != 1) continue;",
               "            if(StarCustomFaction(cur_star) != '') continue;",
+              "            if(MS_Terron_ToStar) //Если Террона отправили преобразовывать звезду, то терроноидов не трогаем, а то улетят в Гралгар",
+              "            {",
+              "                if(StarSeries(cur_star) == 2) continue;",
+              "            }",
               "",
               "            break;",
               "        }",
@@ -34406,7 +34410,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  70,
+          "Pos.x":  90,
           "Pos.y":  0,
           "Parent":  433,
           "#":  463,
@@ -34420,7 +34424,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  90,
+          "Pos.x":  110,
           "Pos.y":  0,
           "Parent":  433,
           "#":  464,
@@ -34462,7 +34466,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  120,
+          "Pos.x":  140,
           "Pos.y":  0,
           "Parent":  433,
           "#":  471,
@@ -34476,7 +34480,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  140,
+          "Pos.x":  160,
           "Pos.y":  0,
           "Parent":  433,
           "#":  472,
