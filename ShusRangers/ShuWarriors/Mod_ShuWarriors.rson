@@ -6,8 +6,8 @@
   "ScriptName":  "Mod_ShuWarriors",
   "ScriptFileOut":  "H:\\Mod_ShuWarriors.scr",
   "ScriptTextOut":  "H:\\Mod_ShuWarriors.txt",
-  "GraphPoint.Count":  132,
-  "GraphLink.Count":  76,
+  "GraphPoint.Count":  142,
+  "GraphLink.Count":  86,
   "GraphRectText.Count":  0,
   "Variables.Count":  51,
   "Stars.Count":  1,
@@ -19,10 +19,10 @@
   "Items.Count":  0,
   "Ethers.Count":  0,
   "Dialogs.Count":  4,
-  "DialogMessages.Count":  10,
-  "DialogAnswers.Count":  12,
-  "Operations.Count":  21,
-  "Statements.Count":  21,
+  "DialogMessages.Count":  12,
+  "DialogAnswers.Count":  15,
+  "Operations.Count":  23,
+  "Statements.Count":  24,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
@@ -148,6 +148,36 @@
           "#":  129,
           "Msg":  "<tstr2>",
           "AMsg.Num":  "11"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "fastexit",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  136,
+          "#":  135,
+          "Msg":  "<tstr2>",
+          "AMsg.Num":  "12"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "exit",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  137,
+          "#":  138,
+          "Msg":  "<tstr2>",
+          "AMsg.Num":  "13"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "fastexit",
+          "Pos.x":  0,
+          "Pos.y":  -20,
+          "Parent":  140,
+          "#":  141,
+          "Msg":  "<tstr2>",
+          "AMsg.Num":  "14"        
         }      
       ],
       "DialogMessages":      
@@ -251,6 +281,26 @@
           "#":  128,
           "Msg":  "<tstr1>",
           "DMsg.Num":  "9"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  133,
+          "#":  134,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "10"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  -20,
+          "Pos.y":  0,
+          "Parent":  124,
+          "#":  140,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "11"        
         }      
       ],
       "Dialogs":      
@@ -282,7 +332,7 @@
         {
           "Type":  "TDialog",
           "Name":  "OperationFlagmanDialog",
-          "Pos.x":  310,
+          "Pos.x":  300,
           "Pos.y":  -20,
           "Parent":  -1,
           "#":  117        
@@ -430,7 +480,7 @@
           "Pos.y":  0,
           "Parent":  0,
           "#":  8,
-          "Total.Lines":  537,
+          "Total.Lines":  542,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -959,6 +1009,11 @@
               "                OrderNone(ship);",
               "                OrderLock(ship, 1);",
               "                SetData(-3, 0, ship);",
+              "",
+              "                dword star = ShipStar(Player());",
+              "                for(int i = StarPlanets(star) - 1; i >= 0; i = i - 1) NoLanding(StarPlanets(star, i), 1);",
+              "                for(i = StarRuins(star) - 1; i >= 0; i = i - 1) NoLanding(StarRuins(star, i), 1);",
+              "                NoJump(1);",
               "            }",
               "        }",
               "    }",
@@ -1515,7 +1570,7 @@
           "Pos.y":  0,
           "Parent":  32,
           "#":  33,
-          "Total.Lines":  117,
+          "Total.Lines":  135,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -1594,7 +1649,23 @@
               "        }",
               "    }",
               "    //Игрок управляет флагманом, самому флагману в этот момент ничего делать не надо",
-              "    else if(flagman_mark == -3) exit;",
+              "    else if(flagman_mark == -3)",
+              "    {",
+              "        //Производим небольшой \"полевой ремонт\" орудий, чтобы игрок на флагмане не мог превратиться в совсем уж \"тыкву\"",
+              "        for(int i = ShipCntWeapon(Player()); i >= 1; i = i - 1)",
+              "        {",
+              "            dword gun = ShipWeapon(Player(), i);",
+              "            if(ItemIsBroken(gun))",
+              "            {",
+              "                if(RndObject(1, 100, CurShip) <= 50) ItemDurability(gun, RndObject(5, 21, CurShip));",
+              "            }",
+              "            if(MissilesToRearm(gun))",
+              "            {",
+              "                if(RndObject(1, 100, CurShip) <= 50) MissilesToRearm(gun, 1);",
+              "            }",
+              "        }",
+              "        exit;",
+              "    }",
               "    //Игрок сам решил покинуть флагман, но при желании ещё может вернуться",
               "    else if(flagman_mark == -4)",
               "    {",
@@ -1604,6 +1675,8 @@
               "    //Игрока принудительно выгоняют с флагмана, после чего флагман сразу же выводится из скрипта",
               "    else //if(flagman_mark == -5)",
               "    {",
+              "        GAnswerData = 2;",
+              "        Dialog(OperationFlagmanDialog, CurShip);",
               "        OrderLock(CurShip, 0);",
               "        ShipOut(CurShip);",
               "        ShipFreeFlight(CurShip);",
@@ -2911,13 +2984,18 @@
           "Pos.y":  0,
           "Parent":  123,
           "#":  124,
-          "Total.Lines":  3,
+          "Total.Lines":  8,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "OrderLanding(Player(), cur_ship);",
+              "tstr1 = '</color>' + Format(CT('Script.Mod_ShuWarriors.OperationFlagmanDialog.FlagmanAskDirectControlYes'),",
+              "                               '<PlayerRank'+'>', player_str_rank,",
+              "                               '<Flagman'+'>', '<color=0,50,200>' + Name(cur_ship) + '</color>',",
+              "                               '<FlagmanShort'+'>', '<color=0,50,200>' + ShipName(cur_ship) + '</color>',",
+              "                               '');",
+              "tstr2 = '</color>' + CT('Talk.Exit');",
               "",
-              "//При вылете снимать хамелеон с военного"          
+              "OrderLanding(Player(), cur_ship);"          
           ]        
         },
         {
@@ -2927,11 +3005,12 @@
           "Pos.y":  20,
           "Parent":  125,
           "#":  127,
-          "Total.Lines":  29,
+          "Total.Lines":  33,
           "Code.Type":  "Turn",
           "Code":          
           [
               "cur_ship = GetTalkShip();",
+              "SetData(-2, 0, cur_ship); //На всякий случай",
               "",
               "player_rank = ShipRank(Player());",
               "if(player_rank >= 7) player_str_rank = lowercase(CT('Rank.Admiral.Name')); //Адмирал",
@@ -2940,7 +3019,7 @@
               "else if(player_rank == 4) player_str_rank = lowercase(CT('Rank.Leader.Name')); //Истребитель",
               "else /*if(player_rank == 3)*/ player_str_rank = lowercase(CT('Rank.Wingman.Name')); //Капитан",
               "",
-              "if(1)",
+              "if(HullDamage(cur_ship) < 85)",
               "{",
               "    tstr1 = '</color>' + Format(CT('Script.Mod_ShuWarriors.OperationFlagmanDialog.FlagmanDirectControlYes'),",
               "                                   '<PlayerRank'+'>', player_str_rank,",
@@ -2950,8 +3029,11 @@
               "    tstr2 = '</color>' + CT('Talk.Exit');",
               "",
               "    OrderLanding(Player(), cur_ship);",
+              "    OrderLock(cur_ship, 1);",
+              "    OrderFollowShip(cur_ship, Player(), 0);",
+              "    ShipFreeFlight(cur_ship, 1);",
               "}",
-              "else",
+              "else //Флагман откажет игроку в прямом управлении, поскольку имеет критические повреждения",
               "{",
               "    tstr1 = '</color>' + Format(CT('Script.Mod_ShuWarriors.OperationFlagmanDialog.FlagmanDirectControlNo'),",
               "                                   '<PlayerRank'+'>', player_str_rank,",
@@ -2960,6 +3042,92 @@
               "                                   '');",
               "    tstr2 = '</color>' + CT('Talk.Exit');",
               "}"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  132,
+          "#":  133,
+          "Total.Lines":  58,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//Игрока выгоняют с флагмана за плохое поведение или потому что бой в системе подошёл к концу",
+              "cur_ship = CurShip;",
+              "",
+              "player_rank = ShipRank(Player());",
+              "if(player_rank >= 7) player_str_rank = lowercase(CT('Rank.Admiral.Name')); //Адмирал",
+              "else if(player_rank == 6) player_str_rank = lowercase(CT('Rank.Commander.Name')); //Командор",
+              "else if(player_rank == 5) player_str_rank = lowercase(CT('Rank.Ace.Name')); //Ас (Пилот)",
+              "else if(player_rank == 4) player_str_rank = lowercase(CT('Rank.Leader.Name')); //Истребитель",
+              "else /*if(player_rank == 3)*/ player_str_rank = lowercase(CT('Rank.Wingman.Name')); //Капитан",
+              "",
+              "if(RelationToShip(cur_ship, Player()) > 9) //Игрока выгоняют, потому что подошло время",
+              "{",
+              "    tstr1 = '</color>' + Format(CT('Script.Mod_ShuWarriors.OperationFlagmanDialog.FlagmanPlayerFliesOut'),",
+              "                                   '<PlayerRank'+'>', player_str_rank,",
+              "                                   '<Flagman'+'>', '<color=0,50,200>' + Name(cur_ship) + '</color>',",
+              "                                   '<FlagmanShort'+'>', '<color=0,50,200>' + ShipName(cur_ship) + '</color>',",
+              "                                   '<Star'+'>', '<color=0,50,200>' + Name(ShipStar(cur_ship)) + '</color>',",
+              "                                   '');",
+              "    tstr2 = '</color>' + CT('Script.Mod_ShuWarriors.OperationFlagmanDialog.PlayerFliesOut');",
+              "",
+              "    //Чинится, по сути, корабль игрока, а не флагман",
+              "    HullHP(cur_ship, 'To100');",
+              "    ShipRefuel(cur_ship);",
+              "    for(i = ShipItems(cur_ship) - 1; i >= 1; i = i - 1)",
+              "    {",
+              "        cur_item = ShipItems(cur_ship, 1);",
+              "        //Чинят только стандартную оборудку",
+              "        if(ItemType(cur_item) >= t_Weapon13 && ItemType(cur_item) <= t_Weapon15) continue;",
+              "        else if(ItemType(cur_item) == t_CustomWeapon)",
+              "        {",
+              "            if(GetCustomWeaponData(CustomWeaponType(cur_item), 'Availability') == 'NotSoldAndNodeRepair') continue;",
+              "        }",
+              "",
+              "        ItemDurability(cur_item, max(ItemDurability(cur_item), RndObject(75, 85, cur_ship)));",
+              "    }",
+              "",
+              "    check = 1;",
+              "}",
+              "else //Игрока выгоняют за плохое поведение",
+              "{",
+              "    tstr1 = '</color>' + Format(CT('Script.Mod_ShuWarriors.OperationFlagmanDialog.FlagmanPlayerKickedOut'),",
+              "                                   '<PlayerRank'+'>', player_str_rank,",
+              "                                   '<Flagman'+'>', '<color=0,50,200>' + Name(cur_ship) + '</color>',",
+              "                                   '<FlagmanShort'+'>', '<color=0,50,200>' + ShipName(cur_ship) + '</color>',",
+              "                                   '<Star'+'>', '<color=0,50,200>' + Name(ShipStar(cur_ship)) + '</color>',",
+              "                                   '');",
+              "",
+              "    if(Rnd(1, 100, GetGalaxyGenerationSeed() + sqr(CurTurn())) <= 33) //Игроку удалость бежать",
+              "    {",
+              "        tstr2 = '</color>' + CT('Script.Mod_ShuWarriors.OperationFlagmanDialog.PlayerKickedOutRun');",
+              "        check = 1;",
+              "    }",
+              "    else //Игрока застрелили",
+              "    {",
+              "        tstr2 = '</color>' + CT('Script.Mod_ShuWarriors.OperationFlagmanDialog.PlayerKickedOutDead');",
+              "        check = 0;",
+              "    }",
+              "}"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  20,
+          "Pos.y":  0,
+          "Parent":  138,
+          "#":  139,
+          "Total.Lines":  2,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tstr1 = '</color>' + CT('Script.Mod_ShuWarriors.OperationFlagmanDialog.PlayerWasShotEnding');",
+              "CustomLose(tstr1, 'PlayerWasShot');"          
           ]        
         }      
       ],
@@ -3296,7 +3464,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  20,
+          "Pos.x":  0,
           "Pos.y":  20,
           "Parent":  117,
           "#":  125,
@@ -3304,13 +3472,13 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "GAnswerData"          
+              "GAnswerData == 1"          
           ]        
         },
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  -20,
+          "Pos.x":  -30,
           "Pos.y":  20,
           "Parent":  117,
           "#":  126,
@@ -3319,6 +3487,48 @@
           "Code":          
           [
               "!GAnswerData"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  30,
+          "Pos.y":  20,
+          "Parent":  117,
+          "#":  132,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "GAnswerData == 2"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -10,
+          "Pos.y":  20,
+          "Parent":  134,
+          "#":  136,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "check"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  10,
+          "Pos.y":  20,
+          "Parent":  134,
+          "#":  137,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "!check"          
           ]        
         }      
       ],
@@ -4503,13 +4713,6 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  123,
-      "End":  124,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
       "Begin":  121,
       "End":  122,
       "Nom":  0,
@@ -4554,6 +4757,83 @@
       "Type":  "TGraphLink",
       "Begin":  128,
       "End":  129,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  117,
+      "End":  132,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  132,
+      "End":  133,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  133,
+      "End":  134,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  134,
+      "End":  136,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  136,
+      "End":  135,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  134,
+      "End":  137,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  137,
+      "End":  138,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  138,
+      "End":  139,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  123,
+      "End":  124,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  124,
+      "End":  140,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  140,
+      "End":  141,
       "Nom":  0,
       "Arrow":  true    
     }  
