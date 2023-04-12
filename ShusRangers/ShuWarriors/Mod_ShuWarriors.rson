@@ -2275,7 +2275,7 @@
           "Pos.y":  20,
           "Parent":  57,
           "#":  62,
-          "Total.Lines":  136,
+          "Total.Lines":  137,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -2384,9 +2384,10 @@
               "}",
               "for(i = ArrayDim(GlobalWBOperationsArray[operation_num, 'ShipyardsInvolvedId']) - 1; i >= 1; i = i - 1)",
               "{",
-              "    cur_planet = IdToPlanet(GlobalWBOperationsArray[operation_num, 'ShipyardsInvolvedId']);",
+              "    cur_planet = IdToPlanet(GlobalWBOperationsArray[operation_num, 'ShipyardsInvolvedId', i]);",
               "    RelationToRanger(cur_planet, Player(), max(RelationToRanger(cur_planet, Player()), 50));",
               "    cur_ship = BuyWarrior(cur_planet, 300);",
+              "    TransferShip(cur_ship, cur_planet); //Вводим военного в список системы, иначе он не будет исполнять свою логику",
               "    ArrayAdd(GlobalWBOperationsArray[operation_num, 'AlliesForcesId'], Id(cur_ship));",
               "    ShipRefit(cur_ship);",
               "    ShipRefit(cur_ship);",
