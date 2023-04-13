@@ -1,15 +1,15 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -579,
-  "ViewPos.y":  -13,
+  "ViewPos.x":  -976,
+  "ViewPos.y":  25,
   "ScriptName":  "Mod_EvoMC",
   "ScriptFileOut":  "H:\\Mod_EvoMC.scr",
   "ScriptTextOut":  "H:\\Mod_EvoMC.txt",
-  "GraphPoint.Count":  121,
-  "GraphLink.Count":  98,
+  "GraphPoint.Count":  139,
+  "GraphLink.Count":  108,
   "GraphRectText.Count":  7,
-  "Variables.Count":  28,
+  "Variables.Count":  33,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
@@ -18,11 +18,11 @@
   "Places.Count":  0,
   "Items.Count":  0,
   "Ethers.Count":  0,
-  "Dialogs.Count":  7,
-  "DialogMessages.Count":  14,
-  "DialogAnswers.Count":  14,
-  "Operations.Count":  21,
-  "Statements.Count":  32,
+  "Dialogs.Count":  10,
+  "DialogMessages.Count":  17,
+  "DialogAnswers.Count":  16,
+  "Operations.Count":  24,
+  "Statements.Count":  34,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
@@ -168,6 +168,26 @@
           "#":  107,
           "Msg":  "<tstr1>",
           "AMsg.Num":  "13"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "exit",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  126,
+          "#":  127,
+          "Msg":  "",
+          "AMsg.Num":  "14"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "exit",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  132,
+          "#":  133,
+          "Msg":  "",
+          "AMsg.Num":  "15"        
         }      
       ],
       "DialogMessages":      
@@ -311,6 +331,36 @@
           "#":  118,
           "Msg":  "<tstr1>",
           "DMsg.Num":  "13"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  124,
+          "#":  126,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "14"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  125,
+          "#":  128,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "15"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  131,
+          "#":  132,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "16"        
         }      
       ],
       "Dialogs":      
@@ -370,6 +420,30 @@
           "Pos.y":  60,
           "Parent":  99,
           "#":  116        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "StimulantsTakingDialog",
+          "Pos.x":  -450,
+          "Pos.y":  380,
+          "Parent":  -1,
+          "#":  121        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "IllnessesRemovalDialog",
+          "Pos.x":  -450,
+          "Pos.y":  180,
+          "Parent":  -1,
+          "#":  122        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "StimulantTakeDialog",
+          "Pos.x":  20,
+          "Pos.y":  20,
+          "Parent":  121,
+          "#":  130        
         }      
       ],
       "Groups":      
@@ -427,7 +501,7 @@
           "Pos.y":  0,
           "Parent":  21,
           "#":  6,
-          "Total.Lines":  29,
+          "Total.Lines":  32,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
@@ -436,8 +510,11 @@
               "{",
               "    if(ShipType(cur_ruin) == 'MC')",
               "    {",
+              "        pirateMC = StarOwner(ShipStar(cur_ruin));",
+              "",
               "        MaxMed = 1 + ShipRank(Player()) / 2;",
               "        TotalMed = MaxMed - CurMed;",
+              "",
               "        AddDialogInject('DialogMC', '', \"Закупиться медикаментами\", 5);",
               "        tstr1 = CT('Script.Mod_EvoMC.StimulantsRemovalDialog.PlayerAskStimulantsRemoval');",
               "        AddDialogInject('StimulantsRemovalDialog', '', tstr1, 0);",
@@ -1141,6 +1218,131 @@
               "",
               "tstr1 = '</color>' + CT('Script.Mod_EvoMC.StimulantsRemovalDialog.AllStimulantsWasRemoved');"          
           ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  121,
+          "#":  123,
+          "Total.Lines":  84,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "int stim_num = 0;",
+              "stims_top_limit = max(2, ShipRank(Player())); //В оригинале там ShipRank() + 1, но, имхо, это избыточно",
+              "",
+              "//В ваниле смена списка стимуляторов происходит каждые 13 дней, одновременно на всех МЦ (то есть везде их список одинаковый)",
+              "//В моде же пусть меняются раз в 15 дней",
+              "int seed = (Power(CurTurn() / 15, 3) + GetObjectGenerationSeed(cur_ruin)) ^ GetObjectGenerationSeed(GalaxyPtr());",
+              "if(seed != stim_seed) //Обновление маркерного зерна и списка стимуляторов для покупки",
+              "{",
+              "    stim_seed = seed;",
+              "",
+              "    CT('Illness.Stimulant', stims_array);",
+              "    ArrayDelete(stims_array, 'EndDate');",
+              "    j = 0;",
+              "    for(i = 0; i < ArrayDim(stims_array); i = i + 1)",
+              "    {",
+              "        tstr1 = stims_array[i, 'Designation'];",
+              "        if(tstr1 == '') continue;",
+              "        if(tstr1 == 'Original')",
+              "        {",
+              "            stim_num = GetVariableName(stims_array[i]) + 13; //Сдвиг нумерации стимуляторов относительно болезней в общем списке",
+              "            ArrayAdd(stims_array[i], stim_num, 'OriginalNum');",
+              "            //ArrayAdd(stims_array[i], '', 'CustomNum');",
+              "            if(ShipHealthFactor(Player(), stim_num))",
+              "            {",
+              "                stims_array[i, 'RollChance'] = 0;",
+              "                j = j + 1;",
+              "            }",
+              "        }",
+              "        //На будущее",
+              "        //else",
+              "        //{}",
+              "    ",
+              "        if(j >= stims_top_limit) break;",
+              "    }",
+              "",
+              "    //Составляем текущий список стимуляторов на продажу",
+              "    tstr1 = '*';",
+              "    while(j < 3)",
+              "    {",
+              "        seed = sqr(seed);",
+              "        i = Rnd(0, ArrayDim(stims_array), seed);",
+              "        if(Rnd(1, 100, seed) > stims_array[i, 'RollChance'])",
+              "        {",
+              "            stim_num = stims_array[i, 'OriginalNum'];",
+              "            if(stim_num)",
+              "            {",
+              "                seed = seed ^ 45645;",
+              "                ArrayAdd(stims_array[i], max(1, (ShipHealthFactor(0, stim_num) / 30) + Rnd(-2, 2, seed)), 'Duration']);",
+              "                seed = seed ^ 78730;",
+              "                ArrayAdd(stims_array[i], 0, 'Cost']);",
+              "                tstr1 = tstr1 + i + '*';",
+              "                j = j + 1;",
+              "            }",
+              "            //На будущее",
+              "            //else",
+              "            //{}",
+              "        }",
+              "    }",
+              "",
+              "    //Удаляем из массива все лишние стимуляторы",
+              "    j = 0;",
+              "    while(ArrayDim(stims_array) > 3)",
+              "    {",
+              "        if(findsubstr(tstr1, '*' + GetVariableName(stims_array[j]), + '*') == -1) ArrayDelete(stims_array, j);",
+              "        else j = j + 1;",
+              "    }",
+              "}",
+              "",
+              "",
+              "tstr1 = '</color>' + CT('FormRuins.MC.Stimulants.MC1');",
+              "",
+              "",
+              "if(!pirateMC)",
+              "{",
+              "",
+              "}",
+              "else //Если МЦ находится в пиратской системе",
+              "{",
+              "",
+              "}",
+              "",
+              "PlayerMedPolicy();",
+              "",
+              "check = 1;"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  128,
+          "#":  129,
+          "Total.Lines":  0,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              ""          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  130,
+          "#":  131,
+          "Total.Lines":  0,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              ""          
+          ]        
         }      
       ],
       "Planets":      
@@ -1654,6 +1856,34 @@
           [
               "1"          
           ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -20,
+          "Pos.y":  20,
+          "Parent":  123,
+          "#":  124,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "check < stims_top_limit && !tint1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  123,
+          "#":  125,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "check >= stims_top_limit || tint1"          
+          ]        
         }      
       ],
       "States":      
@@ -1984,6 +2214,61 @@
           "Parent":  -1,
           "#":  120,
           "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "stims_top_limit",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  137,
+          "#":  134,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "pirateMC",
+          "Pos.x":  -100,
+          "Pos.y":  120,
+          "Parent":  -1,
+          "#":  135,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "j",
+          "Pos.x":  -50,
+          "Pos.y":  320,
+          "Parent":  -1,
+          "#":  136,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "stim_seed",
+          "Pos.x":  40,
+          "Pos.y":  40,
+          "Parent":  121,
+          "#":  137,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "stims_array",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  134,
+          "#":  138,
+          "Var.Type":  "Array",
           "Init":  "",
           "Global":  false        
         }      
@@ -2677,6 +2962,76 @@
       "End":  104,
       "Nom":  0,
       "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  130,
+      "End":  131,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  131,
+      "End":  132,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  132,
+      "End":  133,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  121,
+      "End":  123,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  123,
+      "End":  125,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  125,
+      "End":  128,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  128,
+      "End":  129,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  123,
+      "End":  124,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  124,
+      "End":  126,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  126,
+      "End":  127,
+      "Nom":  0,
+      "Arrow":  true    
     }  
   ],
   "Rect.Text":  
@@ -2692,7 +3047,7 @@
       "BStyle":  0,
       "BColor":  14474460,
       "BSize":  1,
-      "BCoef":  "0,300000011920929",
+      "BCoef":  "0.300000011920929",
       "AlignX":  0,
       "AlignY":  0,
       "AlignRect":  false,
@@ -2715,7 +3070,7 @@
       "BStyle":  0,
       "BColor":  14474460,
       "BSize":  1,
-      "BCoef":  "0,300000011920929",
+      "BCoef":  "0.300000011920929",
       "AlignX":  -1,
       "AlignY":  1,
       "AlignRect":  false,
@@ -2738,7 +3093,7 @@
       "BStyle":  0,
       "BColor":  14474460,
       "BSize":  1,
-      "BCoef":  "0,300000011920929",
+      "BCoef":  "0.300000011920929",
       "AlignX":  0,
       "AlignY":  0,
       "AlignRect":  false,
@@ -2761,7 +3116,7 @@
       "BStyle":  0,
       "BColor":  14474460,
       "BSize":  1,
-      "BCoef":  "0,300000011920929",
+      "BCoef":  "0.300000011920929",
       "AlignX":  -1,
       "AlignY":  1,
       "AlignRect":  false,
@@ -2784,7 +3139,7 @@
       "BStyle":  0,
       "BColor":  14474460,
       "BSize":  1,
-      "BCoef":  "0,300000011920929",
+      "BCoef":  "0.300000011920929",
       "AlignX":  -1,
       "AlignY":  1,
       "AlignRect":  false,
@@ -2807,7 +3162,7 @@
       "BStyle":  0,
       "BColor":  14474460,
       "BSize":  1,
-      "BCoef":  "0,300000011920929",
+      "BCoef":  "0.300000011920929",
       "AlignX":  -1,
       "AlignY":  -1,
       "AlignRect":  false,
@@ -2830,7 +3185,7 @@
       "BStyle":  0,
       "BColor":  14474460,
       "BSize":  1,
-      "BCoef":  "0,300000011920929",
+      "BCoef":  "0.300000011920929",
       "AlignX":  -1,
       "AlignY":  -1,
       "AlignRect":  false,
