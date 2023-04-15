@@ -1,13 +1,13 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -782,
-  "ViewPos.y":  -15,
+  "ViewPos.x":  -789,
+  "ViewPos.y":  -14,
   "ScriptName":  "Mod_EvoMC",
   "ScriptFileOut":  "H:\\Mod_EvoMC.scr",
   "ScriptTextOut":  "H:\\Mod_EvoMC.txt",
-  "GraphPoint.Count":  138,
-  "GraphLink.Count":  108,
+  "GraphPoint.Count":  150,
+  "GraphLink.Count":  120,
   "GraphRectText.Count":  5,
   "Variables.Count":  32,
   "Stars.Count":  1,
@@ -18,11 +18,11 @@
   "Places.Count":  0,
   "Items.Count":  0,
   "Ethers.Count":  0,
-  "Dialogs.Count":  10,
-  "DialogMessages.Count":  17,
-  "DialogAnswers.Count":  16,
-  "Operations.Count":  24,
-  "Statements.Count":  34,
+  "Dialogs.Count":  11,
+  "DialogMessages.Count":  20,
+  "DialogAnswers.Count":  18,
+  "Operations.Count":  27,
+  "Statements.Count":  37,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
@@ -188,6 +188,26 @@
           "#":  133,
           "Msg":  "",
           "AMsg.Num":  "15"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "exit",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  142,
+          "#":  143,
+          "Msg":  "",
+          "AMsg.Num":  "16"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "exit",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  147,
+          "#":  148,
+          "Msg":  "",
+          "AMsg.Num":  "17"        
         }      
       ],
       "DialogMessages":      
@@ -361,6 +381,36 @@
           "#":  132,
           "Msg":  "<tstr1>",
           "DMsg.Num":  "16"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  140,
+          "#":  141,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "17"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  139,
+          "#":  142,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "18"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  -20,
+          "Pos.y":  20,
+          "Parent":  149,
+          "#":  147,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "19"        
         }      
       ],
       "Dialogs":      
@@ -444,6 +494,14 @@
           "Pos.y":  20,
           "Parent":  121,
           "#":  130        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "IllnessRemoveDialog",
+          "Pos.x":  20,
+          "Pos.y":  20,
+          "Parent":  122,
+          "#":  145        
         }      
       ],
       "Groups":      
@@ -511,20 +569,20 @@
               "    if(ShipType(cur_ruin) == 'MC')",
               "    {",
               "        AddDialogBlock('HideThisAnswer', 2);",
-              "    ",
               "        pirateMC = StarOwner(ShipStar(cur_ruin));",
+              "",
+              "        tstr1 = CT('FormRuins.MC.Illnes.PlayerAskMedExam');",
+              "        AddDialogInject('IllnessesRemovalDialog', '', tstr1, 30);",
+              "        tstr1 = CT('Script.Mod_EvoMC.VaccinationDialog.PlayerAskVaccination');",
+              "        AddDialogInject('VaccinationsDialog', '', tstr1, 25);",
+              "        tstr1 = CT('FormRuins.MC.Stimulants.PlayerAskStim');",
+              "        AddDialogInject('StimulantsTakingDialog', '', tstr1, 20);",
+              "        tstr1 = CT('Script.Mod_EvoMC.StimulantsRemovalDialog.PlayerAskStimulantsRemoval');",
+              "        AddDialogInject('StimulantsRemovalDialog', '', tstr1, 15);",
               "",
               "        MaxMed = 1 + ShipRank(Player()) / 2;",
               "        TotalMed = MaxMed - CurMed;",
-              "",
-              "        tstr1 = CT('FormRuins.MC.Stimulants.PlayerAskStim');",
-              "        AddDialogInject('StimulantsTakingDialog', '', tstr1, 0);",
-              "        tstr1 = CT('Script.Mod_EvoMC.StimulantsRemovalDialog.PlayerAskStimulantsRemoval');",
-              "        AddDialogInject('StimulantsRemovalDialog', '', tstr1, 0);",
-              "        tstr1 = CT('Script.Mod_EvoMC.VaccinationDialog.PlayerAskVaccination');",
-              "        AddDialogInject('VaccinationsDialog', '', tstr1, 0);",
-              "",
-              "        AddDialogInject('DialogMC', '', \"Закупиться медикаментами\", 0);",
+              "        AddDialogInject('DialogMC', '', \"Закупиться медикаментами\", 10);",
               "    }",
               "}",
               "else",
@@ -1231,7 +1289,7 @@
           "Pos.y":  20,
           "Parent":  121,
           "#":  123,
-          "Total.Lines":  208,
+          "Total.Lines":  214,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -1259,8 +1317,6 @@
               "    stim_seed = seed;",
               "",
               "    CT('Illness.Stimulant', stims_array);",
-              "    ArrayDelete(stims_array, 'EndDate');",
-              "    //SFT(stims_array); //Для отладки",
               "    for(i = ArrayDim(stims_array) - 1; i >= 0; i = i - 1)",
               "    {",
               "        //Удаляем из составленного массива все лишние элементы",
@@ -1307,6 +1363,8 @@
               "        if(cur_stims >= stims_top_limit) break;",
               "    }",
               "",
+              "    //SFT(stims_array); //Для отладки",
+              "",
               "    //Составляем текущий список стимуляторов на продажу",
               "    tstr1 = '*';",
               "    j = 0;",
@@ -1328,7 +1386,11 @@
               "            cost = round(0.01 * cost * stims_array[i, 'ValueConstant'] * GalaxyMoney(0, 0));",
               "            cost = round(PortionInDiapason(stims_array[i, 'RollChance'], 25, 75, 2.0, 0.5) * cost);",
               "            cost = round(PortionInDiapason(stims_array[i, 'Duration'], standart_dur - 3, standart_dur + 2, 0.5, 1.40) * cost);",
-              "            if(PlayerMedPolicy()) cost = cost / 2;",
+              "            //На пиратских МЦ страховка не работает",
+              "            if(!pirateMC)",
+              "            {",
+              "                if(PlayerMedPolicy()) cost = cost / 2;",
+              "            }",
               "            cost = round(cost, 10);",
               "            ArrayAdd(stims_array[i], cost, 'Cost');",
               "",
@@ -1409,7 +1471,9 @@
               "    else if(j <= 4) tstr2 = Format(tstr2, '<AddStim'+'>', '<color=0,50,200>' + j + '</color> ' + CT('FormRuins.MC.Stimulants.MCStimsLeftInjsSome'), '');",
               "    else tstr2 = Format(tstr2, '<AddStim'+'>', '<color=0,50,200>' + j + '</color> ' + CT('FormRuins.MC.Stimulants.MCStimsLeftInjsMany'), '');",
               "",
-              "    tstr1 = tstr1 + Format('<br>') + tstr2 + Format('<br>') + CT('FormRuins.MC.Stimulants.MCStimsInsurance');",
+              "    //На пиратских МЦ страховка не работает",
+              "    if(!pirateMC) tstr1 = tstr1 + Format('<br>') + tstr2 + Format('<br>') + CT('FormRuins.MC.Stimulants.MCStimsInsurance');",
+              "",
               "    for(i = 0; i < ArrayDim(stims_array); i = i + 1)",
               "    {",
               "        if(!i) tstr2 = dividing_line;",
@@ -1516,6 +1580,98 @@
               "    if(!pirateMC) tstr1 = '</color>' + CT('FormRuins.MC.Stimulants.MCAfterPlayerNo');",
               "    else tstr1 = '</color>' + CT('FormRuins.MC.Stimulants.MCAfterPlayerNoPirate');",
               "}"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  122,
+          "#":  138,
+          "Total.Lines":  51,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "if(GetGameOptions('FontDialog') == '0') dividing_line = '</color>-------------------------------------------------------------';",
+              "else if(GetGameOptions('FontDialog') == '1') dividing_line = '</color>------------------------------------------';",
+              "else if(GetGameOptions('FontDialog') == '2') dividing_line = '</color>-----------------------------------------';",
+              "else /*if(GetGameOptions('FontDialog') == '3')*/ dividing_line = '</color>-------------------------------------';",
+              "",
+              "int ill_num = 0;",
+              "CT('Illness.Illness', tarr1);",
+              "for(i = ArrayDim(tarr1) - 1; i >= 0; i = i - 1)",
+              "{",
+              "    //Удаляем из составленного массива все лишние элементы",
+              "    if(GetVariableType(tarr1[i]) != 9)",
+              "    {",
+              "        ArrayDelete(tarr1, i);",
+              "        continue;",
+              "    }",
+              "    for(j = ArrayDim(tarr1[i]) - 1; j >= 0; j = j - 1)",
+              "    {",
+              "        if(GetVariableName(tarr1[i, j]) == 'Designation')",
+              "        {",
+              "            tstr1 = tarr1[i, j];",
+              "            break;",
+              "        }",
+              "",
+              "        if(!j)",
+              "        {",
+              "            tstr1 = '';",
+              "            ArrayDelete(tarr1, i);",
+              "        }",
+              "    }",
+              "    if(tstr1 == '') continue;",
+              "",
+              "    if(tstr1 == 'Original')",
+              "    {",
+              "        ill_num = 1 + GetVariableName(tarr1[i]); //Сдвиг нумерации болезней в ёба-списке в Lang",
+              "        if(!ShipHealthFactor(Player(), ill_num))",
+              "        {",
+              "            if(!ShipHealthFactorStatus(Player(), ill_num)) ArrayDelete(tarr1, i); //Удаляем из массива те болезни, которых у игрока нет",
+              "            else ArrayAdd(tarr1[i], ill_num, 'OriginalNum');",
+              "        }",
+              "        else ArrayAdd(tarr1[i], ill_num, 'OriginalNum');",
+              "    }",
+              "    //Болезни из модов",
+              "    else",
+              "    {",
+              "",
+              "    }",
+              "}",
+              "",
+              "SFT(tarr1); //Для отладки",
+              "",
+              "//CT('FormRuins.MC.Illnes.PlayerAskMedExam')"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  141,
+          "#":  144,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  145,
+          "#":  146,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//"          
           ]        
         }      
       ],
@@ -2057,6 +2213,48 @@
           "Code":          
           [
               "check"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -20,
+          "Pos.y":  20,
+          "Parent":  138,
+          "#":  139,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "!check"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  138,
+          "#":  140,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "check"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  20,
+          "Pos.y":  0,
+          "Parent":  146,
+          "#":  149,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "!check"          
           ]        
         }      
       ],
@@ -3193,6 +3391,90 @@
       "Type":  "TGraphLink",
       "Begin":  126,
       "End":  127,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  122,
+      "End":  138,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  138,
+      "End":  140,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  138,
+      "End":  139,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  145,
+      "End":  146,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  140,
+      "End":  141,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  141,
+      "End":  144,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  139,
+      "End":  142,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  142,
+      "End":  143,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  147,
+      "End":  148,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  146,
+      "End":  149,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  149,
+      "End":  147,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  146,
+      "End":  140,
       "Nom":  0,
       "Arrow":  true    
     }  

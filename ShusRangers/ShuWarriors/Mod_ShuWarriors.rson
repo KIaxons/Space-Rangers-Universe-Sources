@@ -3966,7 +3966,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "new_operation_arr['AttackDate'] && ShipMoney(Player()) >= cost"          
+              "new_operation_arr['AttackDate'] && ShipMoney(Player()) >= new_operation_arr['OperationCost']"          
           ]        
         },
         {
@@ -3994,7 +3994,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "!new_operation_arr['AttackDate'] || ShipMoney(Player()) < cost"          
+              "!new_operation_arr['AttackDate'] || ShipMoney(Player()) < new_operation_arr['OperationCost']"          
           ]        
         },
         {
