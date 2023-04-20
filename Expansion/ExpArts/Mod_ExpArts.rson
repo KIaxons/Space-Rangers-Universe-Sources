@@ -251,10 +251,15 @@
           "Pos.y":  20,
           "Parent":  20,
           "#":  19,
-          "Total.Lines":  106,
+          "Total.Lines":  111,
           "Code.Type":  "Turn",
           "Code":          
           [
+              "//tdw = CreateQuestItem('Hyperlink');",
+              "//AddItemToShip(Player(), tdw);",
+              "//LinkItemToScript(tdw);",
+              "//CanSellItem(tdw, 1);",
+              "",
               "//Добавляем бомбы на пиратские корабли",
               "// (делаем первоначальный прогон не в иниткоде, а на четвёртом ходу, чтобы гарантированно",
               "//                      охватить все пиратские типы кораблей)",
