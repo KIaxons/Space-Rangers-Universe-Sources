@@ -6507,14 +6507,14 @@
               "",
               "if(GetShipPlanet(temp_dword))",
               "{",
-              "    if(PlanetOwner(GetShipPlanet(temp_dword)) == None)",
-              "    {",
-              "        ShipType(temp_dword, ruin_type + 'PlanetNoneAlpha');",
-              "    }",
-              "    else ShipType(temp_dword, ruin_type + 'HangarAlpha');",
+              "    if(PlanetOwner(GetShipPlanet(temp_dword)) == None) ruin_type = ruin_type + 'PlanetNoneAlpha';",
+              "    else ruin_type = ruin_type + 'HangarAlpha';",
               "}",
-              "else if(GetShipRuins(temp_dword)) ShipType(temp_dword, ruin_type + 'HangarAlpha');",
-              "else ShipType(temp_dword, ruin_type + 'SpaceAlpha');"          
+              "else if(GetShipRuins(temp_dword)) ruin_type = ruin_type + 'HangarAlpha';",
+              "else ruin_type = ruin_type + 'SpaceAlpha';",
+              "",
+              "ShipType(temp_dword, ruin_type);",
+              "SetName(temp_dword, ruin_type); //Выставление имени необходимо для непосредственной проверки из акткода, поскольку запросить текущий ShipType() станции-мостика невозможно, вернётся 'PlayerBridge'"          
           ]        
         },
         {
