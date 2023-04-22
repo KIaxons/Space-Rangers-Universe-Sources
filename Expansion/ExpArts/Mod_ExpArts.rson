@@ -190,7 +190,7 @@
               "        for(i = 0; i < tin2; i = i + 1)",
               "        {",
               "            //Создаём и закапываем на случайной планете гиперлинк",
-              "            tdw = CreateQuestItem('Hyperlink', None);",
+              "            tdw = CreateQuestItem('Hyperlink');",
               "            if((ItemSize(tdw) % 2)) ItemSize(tdw, ItemSize(tdw) - 1);",
               "            ItemCost(tdw, round(2.0 * ItemCost(tdw)));",
               "            if((ItemCost(tdw) % 2)) ItemCost(tdw, ItemCost(tdw) - 1);",
