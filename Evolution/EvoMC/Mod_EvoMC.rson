@@ -1779,7 +1779,7 @@
               "                for(j = ArrayDim(stims_array[tint1, 'AddBonuses']) - 1; j >= 0; j = j - 1)",
               "                {",
               "                    str bon_str = GetVariableName(stims_array[tint1, 'AddBonuses', j]);",
-              "                    bons_str = bons_str + bon_str + ':' + stims_array[tint1, 'AddBonuses', j];",
+              "                    bons_str = bons_str + bon_str + '=' + stims_array[tint1, 'AddBonuses', j];",
               "                    if(j) bons_str = bons_str + ',';",
               "",
               "                    int bon = GetValueFromScript('', bon_str);",
