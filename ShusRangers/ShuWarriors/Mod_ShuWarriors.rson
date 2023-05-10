@@ -1622,7 +1622,7 @@
           "Pos.y":  0,
           "Parent":  30,
           "#":  31,
-          "Total.Lines":  160,
+          "Total.Lines":  164,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -1766,7 +1766,11 @@
               "else if(!GetData(2))",
               "{",
               "    //Летим в указанное скриптовое место (в точку сбора перед прыжком)",
-              "    if(!ShipInNormalSpace(CurShip)) OrderTakeOff(CurShip);",
+              "    if(!ShipInNormalSpace(CurShip))",
+              "    {",
+              "        ShipRefuel(CurShip);",
+              "        OrderTakeOff(CurShip);",
+              "    }",
               "    else",
               "    {",
               "        //Если военному требуется дозаправка, то сперва отправляем его к ближайшей заселённой планете",
