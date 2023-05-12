@@ -6,22 +6,22 @@
   "ScriptName":  "Mod_ExpSSB",
   "ScriptFileOut":  "H:\\Mod_ExpSSB.scr",
   "ScriptTextOut":  "H:\\Mod_ExpSSB.txt",
-  "GraphPoint.Count":  178,
-  "GraphLink.Count":  128,
+  "GraphPoint.Count":  181,
+  "GraphLink.Count":  131,
   "GraphRectText.Count":  0,
   "Variables.Count":  46,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
-  "States.Count":  2,
-  "Groups.Count":  2,
+  "States.Count":  3,
+  "Groups.Count":  3,
   "Places.Count":  0,
   "Items.Count":  1,
   "Ethers.Count":  2,
   "Dialogs.Count":  9,
   "DialogMessages.Count":  26,
   "DialogAnswers.Count":  33,
-  "Operations.Count":  38,
+  "Operations.Count":  39,
   "Statements.Count":  16,
   "Loops.Count":  0,
   "Visual.Objects":  
@@ -785,6 +785,35 @@
           "StatusPirateMax":  100,
           "DistSearch":  10000,
           "Dialog":  86,
+          "StrengthMin":  "0",
+          "StrengthMax":  "0",
+          "Ruins":  ""        
+        },
+        {
+          "Type":  "TGroup",
+          "Name":  "HoloTargetGroup",
+          "Pos.x":  0,
+          "Pos.y":  -180,
+          "Parent":  8,
+          "#":  178,
+          "Owner":  62,
+          "Group.Type":  126,
+          "CntShipMin":  0,
+          "CntShipMax":  0,
+          "SpeedMin":  100,
+          "SpeedMax":  10000,
+          "Weapon":  0,
+          "CargoHook":  0,
+          "EmptySpace":  0,
+          "AddPlayer":  false,
+          "StatusTraderMin":  0,
+          "StatusTraderMax":  100,
+          "StatusWarriorMin":  0,
+          "StatusWarriorMax":  100,
+          "StatusPirateMin":  0,
+          "StatusPirateMax":  100,
+          "DistSearch":  10000,
+          "Dialog":  -1,
           "StrengthMin":  "0",
           "StrengthMax":  "0",
           "Ruins":  ""        
@@ -2504,6 +2533,20 @@
           [
               "if(ShipOrder(CurShip) == 5) OrderNone(CurShip);"          
           ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  -20,
+          "Parent":  179,
+          "#":  180,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//Группа используется для занесения голографических копий игрока из акткода, чтобы в тех не попадали астероиды - не удалять!"          
+          ]        
         }      
       ],
       "Planets":      
@@ -2822,6 +2865,24 @@
           "Pos.y":  320,
           "Parent":  -1,
           "#":  159,
+          "Move":  5,
+          "MoveObj":  -1,
+          "Attack.Count":  0,
+          "TakeItem":  -1,
+          "TakeAllItem":  false,
+          "OnTalk":  "",
+          "OnActCode":  "",
+          "EType":  1,
+          "EUnique":  "",
+          "EMsg":  ""        
+        },
+        {
+          "Type":  "TState",
+          "Name":  "HoloTargetState",
+          "Pos.x":  0,
+          "Pos.y":  -20,
+          "Parent":  178,
+          "#":  179,
           "Move":  5,
           "MoveObj":  -1,
           "Attack.Count":  0,
@@ -4240,6 +4301,27 @@
       "Type":  "TGraphLink",
       "Begin":  175,
       "End":  133,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  178,
+      "End":  8,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  178,
+      "End":  179,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  179,
+      "End":  180,
       "Nom":  0,
       "Arrow":  true    
     }  
