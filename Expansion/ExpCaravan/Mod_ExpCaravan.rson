@@ -105,7 +105,7 @@
         },
         {
           "Type":  "TGroup",
-          "Name":  "Korovan",
+          "Name":  "Transport",
           "Pos.x":  -50,
           "Pos.y":  240,
           "Parent":  -1,
@@ -134,7 +134,7 @@
         },
         {
           "Type":  "TGroup",
-          "Name":  "Korovan_Prot",
+          "Name":  "Warriors",
           "Pos.x":  -220,
           "Pos.y":  140,
           "Parent":  -1,
@@ -288,7 +288,7 @@
               "//Караван уже в пути (ежеходный обработчик)",
               "if(vScst > 0)",
               "{",
-              "    if(GroupCount(Korovan) || GroupCount(Korovan_Prot))",
+              "    if(GroupCount(Transport) || GroupCount(Warriors))",
               "    {",
               "        caravan_was_started = 1;",
               "        //Очищаем массивы с кораблями каравана и атакующими его пиратами",
@@ -341,15 +341,15 @@
               "        }",
               "",
               "        //Заполняем массив с кораблями каравана, если они уцелели",
-              "        if(GroupCount(Korovan)) ArrayAdd(groups, GroupToShip(Korovan));",
-              "        if(GroupCount(Korovan_Prot))",
+              "        if(GroupCount(Transport)) ArrayAdd(groups, GroupToShip(Transport));",
+              "        if(GroupCount(Warriors))",
               "        {",
-              "            for(i = 0; i < GroupCount(Korovan_Prot); i = i + 1) ArrayAdd(groups, GroupShip(Korovan_Prot, i));",
+              "            for(i = 0; i < GroupCount(Warriors); i = i + 1) ArrayAdd(groups, GroupShip(Warriors, i));",
               "        }",
               "",
               "        //Перебираем корабли в системе, где находится транспорт из каравана или (если транспорт погиб) его защитники",
-              "        if(GroupCount(Korovan)) tdw = ShipStar(GroupToShip(Korovan));",
-              "        else tdw = ShipStar(GroupToShip(Korovan_Prot));",
+              "        if(GroupCount(Transport)) tdw = ShipStar(GroupToShip(Transport));",
+              "        else tdw = ShipStar(GroupToShip(Warriors));",
               "",
               "        for(i = 0; i < StarShips(tdw); i = i + 1)",
               "        {",
@@ -483,7 +483,7 @@
               "    }",
               "",
               "    //Если никаких кораблей в группах данного скрипта не осталось, то выводим из него и игрока, чем завершаем текущее выполнение скрипта",
-              "    if(!GroupCount(Korovan) && !GroupCount(Korovan_Prot) && !GroupCount(Pirates))",
+              "    if(!GroupCount(Transport) && !GroupCount(Warriors) && !GroupCount(Pirates))",
               "    {",
               "        //Сами эти переменные не очистятся",
               "        ScriptItemData(Cargo_1, 1, 0);",
@@ -662,7 +662,7 @@
               "    }",
               "    //Вешаем транспорту инфошку, которая запомнит для военных точное место его смерти (если таковая по дороге случиться)",
               "    ShipAddCustomShipInfo(tdw, 'ExpCaravan_TransportInfos');",
-              "    ShipJoin(Korovan, tdw);",
+              "    ShipJoin(Transport, tdw);",
               "",
               "    //Готовим военных (ровно 6 штук)",
               "    for(i = 0; i < 6; i = i + 1)",
@@ -820,7 +820,7 @@
               "        ShipSpecialBonuses(tdw, bonWMissile, GalaxyTechLevel());",
               "        //Добавляем военным инфошку для возможности делать выстрел по выпавшим из транспорта контейнерам",
               "        ShipAddCustomShipInfo(tdw, 'ExpCaravan_WarriorShotInfos', 'NoShow', 0);",
-              "        ShipJoin(Korovan_Prot, tdw);",
+              "        ShipJoin(Warriors, tdw);",
               "    }",
               "    //На всякий случай запрещаем военным стрельбу по контейнерам",
               "    //Я рот ебал этого казино, но почему-то на первом ходу после спавна они думают, что контейнеры дропнуты в системе, хотя они в тот момент лежат в транспорте",
@@ -832,9 +832,9 @@
               "//Если караван уже находится в пути, то появляются нападающие на него пираты (от 10 до 15)",
               "if(vScst == 1)",
               "{",
-              "    if(GroupCount(Korovan))",
+              "    if(GroupCount(Transport))",
               "    {",
-              "        if(GroupIn(Korovan, KorovanStarFinish) && ShipInNormalSpace(GroupToShip(Korovan)))",
+              "        if(GroupIn(Transport, KorovanStarFinish) && ShipInNormalSpace(GroupToShip(Transport)))",
               "        {",
               "            planetRace = PlanetRace(KorovanPlanetFinish);",
               "            planetOwner = PlanetOwner(KorovanPlanetFinish);",
@@ -941,8 +941,8 @@
               "                }",
               "                //Накидываем пирату невидимые бонусы",
               "                ShipSpecialBonuses(tdw, bonHook, 500);",
-              "                ShipSpecialBonuses(tdw, bonWEnergy, ShipProtectability(GroupToShip(Korovan)) / 2);",
-              "                ShipSpecialBonuses(tdw, bonWSplinter, ShipProtectability(GroupToShip(Korovan)) / 2);",
+              "                ShipSpecialBonuses(tdw, bonWEnergy, ShipProtectability(GroupToShip(Transport)) / 2);",
+              "                ShipSpecialBonuses(tdw, bonWSplinter, ShipProtectability(GroupToShip(Transport)) / 2);",
               "                ShipSpecialBonuses(tdw, bonSpeed, 50 * GalaxyTechLevel());",
               "                ShipRepairEq(tdw);",
               "                ShipJoin(Pirates, tdw);",
@@ -957,9 +957,9 @@
               "    }",
               "}",
               "",
-              "if(!GroupCount(Korovan))",
+              "if(!GroupCount(Transport))",
               "{",
-              "    if(!GroupCount(Korovan_Prot))",
+              "    if(!GroupCount(Warriors))",
               "    {",
               "        if(!GroupCount(Pirates)) AllShipOut();",
               "    }",
@@ -987,14 +987,15 @@
           "Pos.y":  160,
           "Parent":  -1,
           "#":  47,
-          "Total.Lines":  6,
+          "Total.Lines":  7,
           "Code.Type":  "Init",
           "Code":          
           [
               "groups = newarray(1);",
               "groups_ID = newarray(1);",
               "pirates_ID = newarray(1);",
-              "//Имеется 50% вероятность, что скрипт не будет запущен, даже при соблюдении всех условий",
+              "",
+              "//Имеется 50% вероятность, что скрипт не будет повторно запущен, даже при соблюдении всех условий",
               "if(GCntRun('Mod_ExpCaravan') && Rnd(1, 100) <= 50) vScst = -1;",
               "else vScst = -2;"          
           ]        
@@ -1247,9 +1248,9 @@
               "",
               "    if(ItemIn(cargo, ShipStar(CurShip)))",
               "    {",
-              "        for(j = 0; j < GroupCount(Korovan_Prot); j = j + 1)",
+              "        for(j = 0; j < GroupCount(Warriors); j = j + 1)",
               "        {",
-              "            ship = GroupShip(Korovan_Prot, j);",
+              "            ship = GroupShip(Warriors, j);",
               "            //Не позволяем военному назначить себе в приказы подбора и уничтожения уже назначенные туда номера грузов",
               "            if(GetData(0, ship) == i || (GetData(1, ship) & (1 << i)) || GetData(1, ship) >= (2+4+8)) continue; //Если данный военный уже занят \"обработкой\" текущего груза",
               "            if(ShipFreeSpace(ship) >= ItemSize(cargo) && !GetData(0, ship)) //Отдаём приказ поднять груз, если под него есть место в трюме (и если такой приказ ещё не был кораблём получен)",
@@ -1281,9 +1282,9 @@
               "//Первое распределение военных по стейтам",
               "if(!first_assignment_done)",
               "{",
-              "    for(j = 0; j < GroupCount(Korovan_Prot); j = j + 1)",
+              "    for(j = 0; j < GroupCount(Warriors); j = j + 1)",
               "    {",
-              "        ship = GroupShip(Korovan_Prot, j);",
+              "        ship = GroupShip(Warriors, j);",
               "        if(GetData(0, ship)) ChangeState('W_Grab' + GetData(0, ship), ship);",
               "        else ChangeState('W_MoveAround', ship);",
               "    }",
@@ -1321,9 +1322,9 @@
               "        if(!(GetData(1, CurShip) & (1 << l))) continue;",
               "",
               "        int shot_permission = 1;",
-              "        for(j = 0; j < GroupCount(Korovan_Prot); j = j + 1)",
+              "        for(j = 0; j < GroupCount(Warriors); j = j + 1)",
               "        {",
-              "            ship = GroupShip(Korovan_Prot, j);",
+              "            ship = GroupShip(Warriors, j);",
               "            int num = GetData(0, ship);",
               "            if(!num) continue;",
               "            is_warriors_pickers = 1; //Это значит, что кто-то из военных сейчас занят подбором контейнера",
@@ -1349,9 +1350,9 @@
               "else",
               "{",
               "    //Проверяем, имеются ли военные, которые в данный момент заняты подбором контейнера",
-              "    for(j = 0; j < GroupCount(Korovan_Prot); j = j + 1)",
+              "    for(j = 0; j < GroupCount(Warriors); j = j + 1)",
               "    {",
-              "        ship = GroupShip(Korovan_Prot, j);",
+              "        ship = GroupShip(Warriors, j);",
               "        if(!GetData(0, ship)) continue;",
               "        is_warriors_pickers = 1;",
               "        break;",
@@ -1477,7 +1478,7 @@
         },
         {
           "Type":  "TPlace",
-          "Name":  "Near_Kor",
+          "Name":  "NearTransport",
           "Pos.x":  -30,
           "Pos.y":  90,
           "Parent":  -1,
@@ -1498,7 +1499,7 @@
           "#":  57,
           "Place.Type":  4,
           "Angle":  "0",
-          "Dist":  "0,5",
+          "Dist":  "0.5",
           "Radius":  100,
           "Obj1":  56,
           "Obj2":  -1        
@@ -1512,7 +1513,7 @@
           "#":  58,
           "Place.Type":  4,
           "Angle":  "0",
-          "Dist":  "0,5",
+          "Dist":  "0.5",
           "Radius":  100,
           "Obj1":  55,
           "Obj2":  -1        
@@ -1526,7 +1527,7 @@
           "#":  59,
           "Place.Type":  4,
           "Angle":  "0",
-          "Dist":  "0,5",
+          "Dist":  "0.5",
           "Radius":  100,
           "Obj1":  54,
           "Obj2":  -1        
@@ -1661,7 +1662,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "!GroupIn(Korovan_Prot, Near_Kor) && !GetShipPlanet(CurShip)"          
+              "!GroupIn(Warriors, NearTransport) && !GetShipPlanet(CurShip)"          
           ]        
         },
         {
@@ -1675,7 +1676,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "GroupCount(Korovan_Prot)"          
+              "GroupCount(Warriors)"          
           ]        
         },
         {
@@ -1689,7 +1690,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "GroupIn(Korovan, ToFinishStar) && GroupIn(Korovan_Prot, Near_Kor)"          
+              "GroupIn(Transport, ToFinishStar) && GroupIn(Warriors, NearTransport)"          
           ]        
         },
         {
@@ -1717,8 +1718,8 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "( GroupIn(Korovan, ToFinishStar) && GroupIn(Korovan_Prot, Near_Kor) ) ||",
-              "( ShipStar(CurShip) != KorovanStarFinish && GroupIn(Korovan, KorovanStarFinish) )"          
+              "( GroupIn(Transport, ToFinishStar) && GroupIn(Warriors, NearTransport) ) ||",
+              "( ShipStar(CurShip) != KorovanStarFinish && GroupIn(Transport, KorovanStarFinish) )"          
           ]        
         },
         {
@@ -1746,7 +1747,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "GroupIn(Korovan_Prot, Near_Kor)"          
+              "GroupIn(Warriors, NearTransport)"          
           ]        
         },
         {
@@ -1760,7 +1761,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "GroupIn(Korovan, KorovanStarFinish) && ShipInNormalSpace(GroupToShip(Korovan))"          
+              "GroupIn(Transport, KorovanStarFinish) && ShipInNormalSpace(GroupToShip(Transport))"          
           ]        
         },
         {
@@ -1774,7 +1775,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "!GroupCount(Korovan_Prot) && caravan_was_started"          
+              "!GroupCount(Warriors) && caravan_was_started"          
           ]        
         },
         {
@@ -1802,7 +1803,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "GroupCount(Korovan)"          
+              "GroupCount(Transport)"          
           ]        
         },
         {
@@ -1816,7 +1817,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "!GroupCount(Korovan) && caravan_was_started"          
+              "!GroupCount(Transport) && caravan_was_started"          
           ]        
         },
         {
@@ -1830,7 +1831,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "GroupCount(Korovan)"          
+              "GroupCount(Transport)"          
           ]        
         },
         {
@@ -1844,7 +1845,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "!GroupCount(Korovan)"          
+              "!GroupCount(Transport)"          
           ]        
         },
         {
@@ -1858,7 +1859,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "GroupCount(Korovan)"          
+              "GroupCount(Transport)"          
           ]        
         },
         {
@@ -1872,7 +1873,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "GetShipPlanet(GroupToShip(Korovan)) == KorovanPlanetFinish"          
+              "GetShipPlanet(GroupToShip(Transport)) == KorovanPlanetFinish"          
           ]        
         },
         {
@@ -1886,7 +1887,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "GroupCount(Korovan_Prot)"          
+              "GroupCount(Warriors)"          
           ]        
         },
         {
@@ -1962,7 +1963,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "GroupCount(Korovan)"          
+              "GroupCount(Transport)"          
           ]        
         },
         {
@@ -1976,7 +1977,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "!GroupCount(Korovan)"          
+              "!GroupCount(Transport)"          
           ]        
         },
         {
@@ -2234,7 +2235,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipInHyperSpace(GroupToShip(Korovan))"          
+              "ShipInHyperSpace(GroupToShip(Transport))"          
           ]        
         },
         {
