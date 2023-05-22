@@ -2866,7 +2866,7 @@
           "Pos.y":  20,
           "Parent":  212,
           "#":  226,
-          "Total.Lines":  64,
+          "Total.Lines":  70,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -2889,6 +2889,12 @@
               "                {",
               "                    tarr1[i, 1] = ItemCost(item) * 4;",
               "                    tarr1[i, 2] = ' (<color=0,132,15>' + tarr1[i, 1] + '</color> cr.) <color=0,50,200>x4</color>';",
+              "                    tstr2 = tstr2 + tarr1[i, 2];",
+              "                }",
+              "                else if(EquipmentImageName(item) == 'Digger') //При сдаче артефакта \"Диггер\" из ShuDomiks",
+              "                {",
+              "                    tarr1[i, 1] = ItemCost(item) * 3;",
+              "                    tarr1[i, 2] = ' (<color=0,132,15>' + tarr1[i, 1] + '</color> cr.) <color=0,50,200>x3</color>';",
               "                    tstr2 = tstr2 + tarr1[i, 2];",
               "                }",
               "                else",
