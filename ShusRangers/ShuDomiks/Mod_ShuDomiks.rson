@@ -1,15 +1,15 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -478,
-  "ViewPos.y":  -259,
+  "ViewPos.x":  -464,
+  "ViewPos.y":  -194,
   "ScriptName":  "Mod_ShuDomiks",
   "ScriptFileOut":  "H:\\Mod_ShuDomiks.scr",
   "ScriptTextOut":  "H:\\Mod_ShuDomiks.txt",
-  "GraphPoint.Count":  275,
-  "GraphLink.Count":  219,
+  "GraphPoint.Count":  287,
+  "GraphLink.Count":  230,
   "GraphRectText.Count":  0,
-  "Variables.Count":  70,
+  "Variables.Count":  71,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
@@ -18,11 +18,11 @@
   "Places.Count":  1,
   "Items.Count":  0,
   "Ethers.Count":  0,
-  "Dialogs.Count":  7,
-  "DialogMessages.Count":  27,
-  "DialogAnswers.Count":  41,
-  "Operations.Count":  43,
-  "Statements.Count":  57,
+  "Dialogs.Count":  9,
+  "DialogMessages.Count":  29,
+  "DialogAnswers.Count":  43,
+  "Operations.Count":  46,
+  "Statements.Count":  59,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
@@ -438,6 +438,26 @@
           "#":  248,
           "Msg":  "А почему бы и нет? Давайте начнем!",
           "AMsg.Num":  "40"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "exit",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  284,
+          "#":  285,
+          "Msg":  "",
+          "AMsg.Num":  "41"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  279,
+          "#":  286,
+          "Msg":  "<tstr2>",
+          "AMsg.Num":  "42"        
         }      
       ],
       "DialogMessages":      
@@ -711,6 +731,26 @@
           "#":  51,
           "Msg":  "Энергия успешно перенаправлена на двигатели. <Name(cur_ship)> взял курс на планету <Name(NearCivilPlanet(cur_ship))>. Компенсация в размере <credit_cost> cr переведена на ваш счет.",
           "DMsg.Num":  "26"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  277,
+          "#":  278,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "27"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  283,
+          "#":  284,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "28"        
         }      
       ],
       "Dialogs":      
@@ -770,6 +810,22 @@
           "Pos.y":  60,
           "Parent":  -1,
           "#":  220        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "DiggerDialogSB",
+          "Pos.x":  90,
+          "Pos.y":  310,
+          "Parent":  -1,
+          "#":  276        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "SellCybercoins",
+          "Pos.x":  40,
+          "Pos.y":  20,
+          "Parent":  276,
+          "#":  280        
         }      
       ],
       "Groups":      
@@ -777,9 +833,9 @@
         {
           "Type":  "TGroup",
           "Name":  "PlayerGroup",
-          "Pos.x":  -310,
-          "Pos.y":  280,
-          "Parent":  -1,
+          "Pos.x":  -170,
+          "Pos.y":  0,
+          "Parent":  1,
           "#":  100,
           "Owner":  62,
           "Group.Type":  126,
@@ -1267,7 +1323,7 @@
               "    {",
               "        //Выключаем пушки у всех Терроноидов в Гралгаре",
               "        cur_star = ShipStar(Terron());",
-              "        for(i = 0; i < StarShips(cur_star); i = i + 1)",
+              "        for(i = StarShips(cur_star) - 1; i >= 0; i = i - 1)",
               "        {",
               "            cur_ship = StarShips(cur_star, i);",
               "            if(cur_ship == Terron()) continue;",
@@ -1845,7 +1901,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  99,
-          "Total.Lines":  2433,
+          "Total.Lines":  2463,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -2044,6 +2100,9 @@
               "    SysCountToDiffArray[4] = 1;",
               "}",
               "",
+              "//Считаем, сколько систем контролируются каждой доминаторской серией",
+              "ReCalcSystemsDomSerie();",
+              "",
               "//Добавляем Келлеру инфошку для создания своей копии в виде транклюкатора перед смертью",
               "//Требуется для последующего создания клона Келлера",
               "ShipAddCustomShipInfo(Keller(), 'KellerLastWishInfo', 'NoShow');",
@@ -2240,6 +2299,21 @@
               "    result = inhib;",
               "}",
               "",
+              "function ReCalcSystemsDomSerie()",
+              "{",
+              "    //Считаем, сколько систем контролируются каждой доминаторской серией",
+              "    ControlledSystemsDomSerie[0] = 0; //Блазер",
+              "    ControlledSystemsDomSerie[1] = 0; //Келлер",
+              "    ControlledSystemsDomSerie[2] = 0; //Террон",
+              "    for(int i = GalaxyStars() - 1; i >= 0; i = i - 1)",
+              "    {",
+              "        dword star = GalaxyStar(i);",
+              "        if(StarOwner(star) != 1) continue;",
+              "        if(StarCustomFaction(star) != '') continue;",
+              "        ControlledSystemsDomSerie[StarSeries(star)] = ControlledSystemsDomSerie[StarSeries(star)] + 1;",
+              "    }",
+              "}",
+              "",
               "//Функция для создания верфи в указанной системе (возвращает верфь или 0, если создать верфь не получилось)",
               "function SpawnDomRuins(dword star, int sub_race)",
               "{",
@@ -2262,6 +2336,7 @@
               "",
               "        //Устанавливаем строковый тип",
               "        ShipType(ruin, 'DomRuins');",
+              "",
               "        //Выдаём верфи аЭгис",
               "        dword item = CreateArt(t_ArtPDTurret, None);",
               "        AddItemToShip(ruin, item);",
@@ -2372,6 +2447,17 @@
               "                if(j <= 3) item = CreateEquipment(t_Weapon12, RndObject(25, 90, ruin), min(GTL + 1, 8), Kling); //Турбогравир",
               "                else item = CreateEquipment(t_Weapon14, RndObject(45, 165, ruin), min(GTL + 1, 8), Kling); //Вертикс",
               "                ItemSubrace(item, sub_race);",
+              "                AddItemToShip(ruin, item);",
+              "                ItemIsInUse(item, ruin, 1);",
+              "            }",
+              "",
+              "            //С шансом выдаём келлерской верфи артефакт \"Диггер\"",
+              "            if(RndObject(1, 100, ruin) <= 15)",
+              "            {",
+              "                item = CreateCustomArt('Digger', CustomArtSizeCalc(int(CT('Artefacts.CustomArtefacts.Digger.Size'))), CustomArtCostCalc(int(CT('Artefacts.CustomArtefacts.Digger.Cost'))), Kling);",
+              "                ItemSubrace(item, 1);",
+              "                EqSpecial(item, FindBonusByNameInCfg('ShuDomiks_ArtDiggerDebuff'));",
+              "                CustomArtData(item, 1, RndObject(0, 3333, ruin));",
               "                AddItemToShip(ruin, item);",
               "                ItemIsInUse(item, ruin, 1);",
               "            }",
@@ -5107,7 +5193,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  166,
-          "Total.Lines":  48,
+          "Total.Lines":  72,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
@@ -5120,6 +5206,30 @@
               "",
               "        if(tstr1 == 'SB')",
               "        {",
+              "            //Если Келлер ещё не побеждён",
+              "            if(!DomiksDefeated(1))",
+              "            {",
+              "                //Проверяем трюм игрока на наличие не пустых артефактов \"диггер\"",
+              "                for(i = ShipArts(Player()) - 1; i >= 0; i = i - 1)",
+              "                {",
+              "                    cur_item = ShipArts(Player(), i);",
+              "                    if(ItemType(cur_item) != t_Artefact) continue;",
+              "                    if(EquipmentImageName(cur_item) == 'Digger')",
+              "                    {",
+              "                        if(CustomArtData(cur_item, 1) >= 100)",
+              "                        {",
+              "                            i = -1;",
+              "                            break;",
+              "                        }",
+              "                    }",
+              "                }",
+              "    ",
+              "                if(i == -1)",
+              "                {",
+              "                    AddDialogInject('DiggerDialogSB', CT('Script.Mod_ShuDomiks.DiggerDialogSB.AddGreetingsSellCybercoins'), CT('Script.Mod_ShuDomiks.DiggerDialogSB.PlayerAskSellCybercoins'), 45);",
+              "                }",
+              "            }",
+              "",
               "            if(!LastTalkAboutDomAcrynsOnSB)",
               "            {",
               "                if(UnknownDomAcrynsTimer == -1) AddDialogInject('DomModUnlockSB', '', \"Мне надо разблокировать доминаторский акрин\", 1);",
@@ -5338,7 +5448,7 @@
           "Pos.y":  310,
           "Parent":  -1,
           "#":  229,
-          "Total.Lines":  563,
+          "Total.Lines":  574,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -5674,6 +5784,17 @@
               "            //Бертору вешаем бонус на броню",
               "            tint3 = round((1.2 * GeneralDiffLevel / 2) + (1.2 * PortionInDiapason(hull_level, 1, 8, 1, 10) / 2));",
               "            ItemExtraSpecialsAddByType(hull, FindBonusByNameInCfg('ShuDomiks_bonHull'), tint3);",
+              "",
+              "            //С шансом выдаём келлерскому бертору артефакт \"Диггер\"",
+              "            if(RndObject(1, 100, ship) <= 5)",
+              "            {",
+              "                cur_item = CreateCustomArt('Digger', CustomArtSizeCalc(int(CT('Artefacts.CustomArtefacts.Digger.Size'))), CustomArtCostCalc(int(CT('Artefacts.CustomArtefacts.Digger.Cost'))), Kling);",
+              "                ItemSubrace(cur_item, 1);",
+              "                EqSpecial(cur_item, FindBonusByNameInCfg('ShuDomiks_ArtDiggerDebuff'));",
+              "                CustomArtData(cur_item, 1, RndObject(0, 2222, ship));",
+              "                AddItemToShip(ship, cur_item);",
+              "                ItemIsInUse(cur_item, ship, 1);",
+              "            }",
               "",
               "            //Если подключён мод EvoArmada, добавляем дополнительные залпы кораблю в этом же цикле (чтоб два раза не перебирать доминаторов в разных модах)",
               "            if(EvoArmadaInit)",
@@ -6083,6 +6204,111 @@
               "//Клон Келлера имеет подтип босса, а потому любой стейт для него будет работать как Free",
               "ShipFreeFlight(CurShip); //А это здесь нужно, чтобы перебить его OrderLock()"          
           ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  276,
+          "#":  277,
+          "Total.Lines":  26,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "check = 0; //Сколько диггеров уже опустошил игрок за время данного диалога",
+              "",
+              "//Считаем, сколько систем контролируются каждой доминаторской серией",
+              "ReCalcSystemsDomSerie();",
+              "int cost_full = PortionInDiapason(ControlledSystemsDomSerie[1], 0, GalaxyStars() - 2, round(0.20 * GalaxyMoney(0, 0)), round(0.20 * GalaxyMoney(4, 4)));",
+              "cost_full = round(0.01 * Rnd(90, 110, GetObjectGenerationSeed(Keller()) ^ Power(CurTurn() / 30, 3)) * cost_full); //Небольшой рандомизатор, меняющийся каждые 30 дней",
+              "tstr1 = '</color>' + Format(CT('Script.Mod_ShuDomiks.DiggerDialogSB.SellCybercoins'),",
+              "                               '<CostCybercoin'+'>', cost_full);",
+              "",
+              "//Записываем в массив все не пустые артефакты \"диггер\" из трюма игрока",
+              "ArrayClear(tarr1);",
+              "ArrayDelete(tarr1, 0);",
+              "for(i = 0; i < ShipArts(Player()); i = i + 1)",
+              "{",
+              "    cur_item = ShipArts(Player(), i);",
+              "    if(ItemType(cur_item) != t_Artefact) continue;",
+              "    if(EquipmentImageName(cur_item) == 'Digger')",
+              "    {",
+              "        if(CustomArtData(cur_item, 1) >= 100)",
+              "        {",
+              "            ArrayAdd(tarr1, newarray(2));",
+              "            tarr1[i, 0] = cur_item;",
+              "            tarr1[i, 1] = round(0.01 * CustomArtData(cur_item, 1) * cost_full); //RoundTo(CustomArtData(cur_item, 1), 100, -1);",
+              "        }",
+              "    }",
+              "}"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  278,
+          "#":  279,
+          "Total.Lines":  21,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//Проверяем трюм игрока на наличие не пустых артефактов \"диггер\"",
+              "for(i = 0; i < ArrayDim(tarr1); i = i + 1)",
+              "{",
+              "    cur_item = tarr1[i, 0];",
+              "    CreateActCodeEvent(t_OnShowingItemInfo, cur_item, 0, 0, 0, 0); //Чтобы обновить визуальный счётчик Киберкойнов",
+              "    tstr2 = Format(CT('Script.Mod_ShuDomiks.DiggerDialogSB.PlayerSellCybercoinsYes'),",
+              "                      '<Cybercoins'+'>', CustomArtTextData(cur_item, 1),",
+              "                      '<Cost'+'>', tarr1[i, 1]);",
+              "    InjectAnswer('SellCybercoins', tstr2, i);",
+              "}",
+              "",
+              "if(!check)",
+              "{",
+              "    tstr2 = '</color>' + CT('Script.Mod_ShuDomiks.DiggerDialogSB.PlayerSellCybercoinsNo');",
+              "    tstr1 = '</color>' + CT('Script.Mod_ShuDomiks.DiggerDialogSB.SellCybercoinsNo');",
+              "}",
+              "else",
+              "{",
+              "    tstr2 = '</color>' + CT('Script.Mod_ShuDomiks.DiggerDialogSB.PlayerSellCybercoinsNoAgain');",
+              "    tstr1 = '</color>' + CT('Script.Mod_ShuDomiks.DiggerDialogSB.SellCybercoinsNoAgain');",
+              "}"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  280,
+          "#":  281,
+          "Total.Lines":  19,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "i = GAnswerData;",
+              "",
+              "CustomArtData(tarr1[i, 0], 1, 0);",
+              "int cost = tarr1[i, 1];",
+              "",
+              "ArrayDelete(tarr1 , i);",
+              "if(ArrayDim(tarr1)) //Если у игрока ещё остались киберкойны на других диггерах",
+              "{",
+              "    tstr1 = '</color>' + Format(CT('Script.Mod_ShuDomiks.DiggerDialogSB.SellCybercoinsYesMore'), '<Cost'+'>', cost);",
+              "}",
+              "else //Если больше продавать нечего",
+              "{",
+              "    tstr1 = '</color>' + Format(CT('Script.Mod_ShuDomiks.DiggerDialogSB.SellCybercoinsYes'), '<Cost'+'>', cost);",
+              "    ArrayAdd(tarr1, 0);",
+              "}",
+              "",
+              "ShipMoney(Player(), ShipMoney(Player()) + cost);",
+              "Sound('Sound.Sell');",
+              "check = check + 1;"          
+          ]        
         }      
       ],
       "Places":      
@@ -6090,9 +6316,9 @@
         {
           "Type":  "TPlace",
           "Name":  "Loop",
-          "Pos.x":  -210,
-          "Pos.y":  300,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  0,
           "#":  98,
           "Place.Type":  0,
           "Angle":  "0",
@@ -6125,9 +6351,9 @@
         {
           "Type":  "TStarShip",
           "Name":  "",
-          "Pos.x":  -210,
-          "Pos.y":  260,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  -20,
+          "Parent":  0,
           "#":  2,
           "Count":  1,
           "Owner":  62,
@@ -6154,9 +6380,9 @@
         {
           "Type":  "TStar",
           "Name":  "InitStar",
-          "Pos.x":  -210,
-          "Pos.y":  280,
-          "Parent":  -1,
+          "Pos.x":  -70,
+          "Pos.y":  0,
+          "Parent":  1,
           "#":  0,
           "Constellation":  0,
           "Priority":  0,
@@ -6963,6 +7189,34 @@
           [
               "1"          
           ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -20,
+          "Pos.y":  0,
+          "Parent":  281,
+          "#":  282,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "GetVariableType(tarr1[0]) == 9"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  281,
+          "#":  283,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "GetVariableType(tarr1[0]) != 9"          
+          ]        
         }      
       ],
       "States":      
@@ -6970,9 +7224,9 @@
         {
           "Type":  "TState",
           "Name":  "PlayerState",
-          "Pos.x":  -310,
-          "Pos.y":  310,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  100,
           "#":  107,
           "Move":  0,
           "MoveObj":  -1,
@@ -7936,6 +8190,17 @@
           "#":  273,
           "Var.Type":  "Int",
           "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "ControlledSystemsDomSerie",
+          "Pos.x":  520,
+          "Pos.y":  270,
+          "Parent":  -1,
+          "#":  275,
+          "Var.Type":  "Array",
+          "Init":  "3",
           "Global":  false        
         }      
       ]    
@@ -9475,9 +9740,86 @@
       "End":  1,
       "Nom":  0,
       "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  276,
+      "End":  277,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  277,
+      "End":  278,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  278,
+      "End":  279,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  280,
+      "End":  281,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  281,
+      "End":  283,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  283,
+      "End":  284,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  284,
+      "End":  285,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  281,
+      "End":  282,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  282,
+      "End":  278,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  279,
+      "End":  286,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  286,
+      "End":  284,
+      "Nom":  0,
+      "Arrow":  true    
     }  
   ],
-  "BlockPar.EC.Total.Strings":  72,
+  "BlockPar.EC.Total.Strings":  73,
   "BlockPar.EC":  
   [
     {
@@ -9767,6 +10109,10 @@
     {
       "#":  "90",
       "String":  "На мостик"    
+    },
+    {
+      "#":  "91",
+      "String":  "<0>"    
     }  
   ]
 }
