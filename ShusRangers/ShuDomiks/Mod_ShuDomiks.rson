@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -464,
-  "ViewPos.y":  -194,
+  "ViewPos.x":  -422,
+  "ViewPos.y":  -84,
   "ScriptName":  "Mod_ShuDomiks",
   "ScriptFileOut":  "H:\\Mod_ShuDomiks.scr",
   "ScriptTextOut":  "H:\\Mod_ShuDomiks.txt",
@@ -4837,7 +4837,7 @@
           "Pos.y":  40,
           "Parent":  -1,
           "#":  131,
-          "Total.Lines":  15,
+          "Total.Lines":  16,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -4851,10 +4851,11 @@
               "        tstr1 = BonusNumInCfg(tint1);",
               "        if(~findsubstr(tstr1, 'DomModLocked'))",
               "        {",
-              "            InjectAnswer('DomModUnlockCBGo', Name(cur_item), cur_item);",
+              "            InjectAnswer('DomModUnlockCBGo', DeleteTags(Name(cur_item)), cur_item);",
               "        }",
               "    }",
               "}",
+              "",
               "DAnswer('restart~' + \"Ничего я выбирать не буду\");"          
           ]        
         },
@@ -5083,7 +5084,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "LastTalkAboutDomAcrynsOnSB=1;"          
+              "LastTalkAboutDomAcrynsOnSB = 1;"          
           ]        
         },
         {
@@ -5097,9 +5098,9 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "if(MinGTLToDomAcrynUnlock-GalaxyTechLevel()==1)tstr1=\"Тем не менее, исследования в этом направлении идут полным ходом и в скором времени мы должны совершить прорыв.\";",
-              "if(MinGTLToDomAcrynUnlock-GalaxyTechLevel()==2)tstr1=\"Мы активно проводим исследования в этом направлении, но, все же, еще далеки от успеха.\";",
-              "if(MinGTLToDomAcrynUnlock-GalaxyTechLevel()==3)tstr1=\"Мы лишь сравнительно недавно мобилизовали персонал для этой задачи и пока не имеем серьезных успехов.\";"          
+              "if(MinGTLToDomAcrynUnlock - GalaxyTechLevel() == 1) tstr1 = \"Тем не менее, исследования в этом направлении идут полным ходом и в скором времени мы должны совершить прорыв.\";",
+              "if(MinGTLToDomAcrynUnlock - GalaxyTechLevel() == 2) tstr1 = \"Мы активно проводим исследования в этом направлении, но, все же, еще далеки от успеха.\";",
+              "if(MinGTLToDomAcrynUnlock - GalaxyTechLevel() == 3) tstr1 = \"Мы лишь сравнительно недавно мобилизовали персонал для этой задачи и пока не имеем серьезных успехов.\";"          
           ]        
         },
         {
@@ -5193,7 +5194,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  166,
-          "Total.Lines":  72,
+          "Total.Lines":  67,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
@@ -5218,15 +5219,10 @@
               "                    {",
               "                        if(CustomArtData(cur_item, 1) >= 100)",
               "                        {",
-              "                            i = -1;",
+              "                            AddDialogInject('DiggerDialogSB', CT('Script.Mod_ShuDomiks.DiggerDialogSB.AddGreetingsSellCybercoins'), CT('Script.Mod_ShuDomiks.DiggerDialogSB.PlayerAskSellCybercoins'), 45);",
               "                            break;",
               "                        }",
               "                    }",
-              "                }",
-              "    ",
-              "                if(i == -1)",
-              "                {",
-              "                    AddDialogInject('DiggerDialogSB', CT('Script.Mod_ShuDomiks.DiggerDialogSB.AddGreetingsSellCybercoins'), CT('Script.Mod_ShuDomiks.DiggerDialogSB.PlayerAskSellCybercoins'), 45);",
               "                }",
               "            }",
               "",
@@ -5383,12 +5379,12 @@
               "nodes_cost=credit_cost/350;",
               "if(nodes_cost<10)nodes_cost=10;",
               "//Вычитаем пиратскую скидку на кредиты",
-              "tint2=credit_cost;//Запоминаем значение без скидки для диалога",
+              "tint2=credit_cost; //Запоминаем значение без скидки для диалога",
               "flt1=discount;",
               "flt1=flt1/100*credit_cost;",
               "credit_cost=round(-flt1+credit_cost);",
               "//И на ноды",
-              "tint3=nodes_cost;//Запоминаем значение без скидки для диалога",
+              "tint3=nodes_cost; //Запоминаем значение без скидки для диалога",
               "flt1=discount;",
               "flt1=flt1/100*nodes_cost;",
               "nodes_cost=round(-flt1+nodes_cost);"          
@@ -5401,25 +5397,26 @@
           "Pos.y":  30,
           "Parent":  -1,
           "#":  219,
-          "Total.Lines":  15,
+          "Total.Lines":  16,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "tint3=DomModUnlocksPerformedSB*7;//Определяем коэффициент для расчёта цены следующей разблокировки",
-              "for(i=1;i<ShipItems(Player());i=i+1)",
+              "tint3 = DomModUnlocksPerformedSB * 7; //Определяем коэффициент для расчёта цены следующей разблокировки",
+              "for(i = 1; i < ShipItems(Player()); i = i + 1)",
               "{",
-              "    cur_item=ShipItems(Player(),i);",
-              "    tint1=EqSpecial(cur_item);",
-              "    if(tint1>-1)",
+              "    cur_item = ShipItems(Player(), i);",
+              "    tint1 = EqSpecial(cur_item);",
+              "    if(~tint1)",
               "    {",
-              "        tstr1=BonusNumInCfg(tint1);",
-              "        if(findsubstr(tstr1,'DomModLocked')>-1)",
+              "        tstr1 = BonusNumInCfg(tint1);",
+              "        if(~findsubstr(tstr1, 'DomModLocked'))",
               "        {",
-              "            InjectAnswer('DomModUnlockSBGo',Name(cur_item),cur_item);",
+              "            InjectAnswer('DomModUnlockSBGo', DeleteTags(Name(cur_item)), cur_item);",
               "        }",
               "    }",
               "}",
-              "DAnswer('restart~'+\"Ничего я выбирать не буду\");"          
+              "",
+              "DAnswer('restart~' + \"Ничего я выбирать не буду\");"          
           ]        
         },
         {
@@ -5433,12 +5430,12 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "cur_item=GAnswerData;",
-              "tstr1=Name(cur_item);",
+              "cur_item = GAnswerData;",
+              "tstr1 = Name(cur_item);",
               "//Рассчитываем максимальную цену разблокировки в кредитах и нодах",
-              "credit_cost=ItemCost(cur_item)/100*50+ItemCost(cur_item)/100*tint3;",
-              "nodes_cost=credit_cost/400;",
-              "if(nodes_cost<10)nodes_cost=10;"          
+              "credit_cost = ItemCost(cur_item) / 100 * 50 + ItemCost(cur_item) / 100 * tint3;",
+              "nodes_cost = credit_cost / 400;",
+              "if(nodes_cost < 10) nodes_cost = 10;"          
           ]        
         },
         {
@@ -5448,7 +5445,7 @@
           "Pos.y":  310,
           "Parent":  -1,
           "#":  229,
-          "Total.Lines":  574,
+          "Total.Lines":  577,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -5786,14 +5783,17 @@
               "            ItemExtraSpecialsAddByType(hull, FindBonusByNameInCfg('ShuDomiks_bonHull'), tint3);",
               "",
               "            //С шансом выдаём келлерскому бертору артефакт \"Диггер\"",
-              "            if(RndObject(1, 100, ship) <= 5)",
+              "            if(ShipSubrace(ship, -1) == 1)",
               "            {",
-              "                cur_item = CreateCustomArt('Digger', CustomArtSizeCalc(int(CT('Artefacts.CustomArtefacts.Digger.Size'))), CustomArtCostCalc(int(CT('Artefacts.CustomArtefacts.Digger.Cost'))), Kling);",
-              "                ItemSubrace(cur_item, 1);",
-              "                EqSpecial(cur_item, FindBonusByNameInCfg('ShuDomiks_ArtDiggerDebuff'));",
-              "                CustomArtData(cur_item, 1, RndObject(0, 2222, ship));",
-              "                AddItemToShip(ship, cur_item);",
-              "                ItemIsInUse(cur_item, ship, 1);",
+              "                if(RndObject(1, 100, ship) <= 5)",
+              "                {",
+              "                    cur_item = CreateCustomArt('Digger', CustomArtSizeCalc(int(CT('Artefacts.CustomArtefacts.Digger.Size'))), CustomArtCostCalc(int(CT('Artefacts.CustomArtefacts.Digger.Cost'))), Kling);",
+              "                    ItemSubrace(cur_item, 1);",
+              "                    EqSpecial(cur_item, FindBonusByNameInCfg('ShuDomiks_ArtDiggerDebuff'));",
+              "                    CustomArtData(cur_item, 1, RndObject(0, 2222, ship));",
+              "                    AddItemToShip(ship, cur_item);",
+              "                    ItemIsInUse(cur_item, ship, 1);",
+              "                }",
               "            }",
               "",
               "            //Если подключён мод EvoArmada, добавляем дополнительные залпы кораблю в этом же цикле (чтоб два раза не перебирать доминаторов в разных модах)",
@@ -6055,7 +6055,7 @@
           "Code":          
           [
               "//Рассчитываем стоимость начального платежа за открытие доступа к разблокировке доминаторских акринов на доминионах",
-              "credit_cost=GalaxyMoney(3)+GalaxyMoney(0)*ShipStatistic(Player(),1);"          
+              "credit_cost = GalaxyMoney(3) + GalaxyMoney(0) * ShipStatistic(Player(), 1);"          
           ]        
         },
         {
@@ -6236,9 +6236,9 @@
               "    {",
               "        if(CustomArtData(cur_item, 1) >= 100)",
               "        {",
-              "            ArrayAdd(tarr1, newarray(2));",
-              "            tarr1[i, 0] = cur_item;",
-              "            tarr1[i, 1] = round(0.01 * CustomArtData(cur_item, 1) * cost_full); //RoundTo(CustomArtData(cur_item, 1), 100, -1);",
+              "            j = ArrayAdd(tarr1, newarray(2)) - 1;",
+              "            tarr1[j, 0] = cur_item;",
+              "            tarr1[j, 1] = round(0.01 * CustomArtData(cur_item, 1) * cost_full); //RoundTo(CustomArtData(cur_item, 1), 100, -1);",
               "        }",
               "    }",
               "}"          
@@ -6459,7 +6459,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "GalaxyTechLevel()<MinGTLToDomAcrynUnlock"          
+              "GalaxyTechLevel() < MinGTLToDomAcrynUnlock"          
           ]        
         },
         {
@@ -6473,7 +6473,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "GalaxyTechLevel()>=MinGTLToDomAcrynUnlock"          
+              "GalaxyTechLevel() >= MinGTLToDomAcrynUnlock"          
           ]        
         },
         {
