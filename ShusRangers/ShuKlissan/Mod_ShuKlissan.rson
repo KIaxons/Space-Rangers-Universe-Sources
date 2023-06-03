@@ -4698,7 +4698,7 @@
               "            check = StarOwner(cur_star);",
               "",
               "            tint1 = ShipKillFactionInCurSystem(Player(), -1); //После снятия StarCustomFaction() этот счётчик сразу же обнулится",
-              "            for(j = 0; j < StarShips(cur_star); j = j + 1)",
+              "            for(j = StarShips(cur_star) - 1; j >= 0; j = j - 1)",
               "            {",
               "                cur_ship = StarShips(cur_star, j);",
               "                if(ObjectType(cur_ship) != 5) continue; //Сразу скипаем возможные станции",
