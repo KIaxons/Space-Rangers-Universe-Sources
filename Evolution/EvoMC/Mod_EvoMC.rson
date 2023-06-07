@@ -1908,7 +1908,7 @@
               "        else tstr2 = tstr2 + Format('<br>') + '---';",
               "    }",
               "",
-              "    cost = GalaxyMoney(1, j) + cost / 3; //Стоимость уринотерапии",
+              "    cost = GalaxyMoney(1, j) + cost / 3; //Стоимость уринотерапии (иногда может оказываться меньше цены лечения болезней из списка)",
               "    if(!pirateMC && PlayerMedPolicy()) cost = cost / 2; //На пиратских МЦ страховка не работает",
               "    //cost = round(cost, 10);",
               "",
