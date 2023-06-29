@@ -536,7 +536,7 @@
           "Pos.y":  0,
           "Parent":  0,
           "#":  8,
-          "Total.Lines":  596,
+          "Total.Lines":  599,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -1041,6 +1041,9 @@
               "            {",
               "                if(StateIs(ship, 'WarriorsOnAttack'))",
               "                {",
+              "                    //На случай, если был подключён ExpScienceRanks и игрок летел на \"Клеще\"",
+              "                    if(!findsubstr(BonusNumInCfg(HullSpecial(Player())), 'ExpScienceRanks_Tick')) InterfaceState('StarMap', 'Klesh_main_panel', 0);",
+              "",
               "                    TransferShip(Player(), ShipStar(Player()));",
               "                    ShipSetCoords(Player(), CoordX(ship), CoordY(ship));",
               "                    ShipAngle(Player(), ShipAngle(ship));",
@@ -1079,7 +1082,7 @@
               "    }",
               "}",
               "",
-              "//Вызывать лишь строго из диалога MilitaryOperationWBDialog!",
+              "//Вызывать строго из диалога MilitaryOperationWBDialog!",
               "function UpdateSidePowers()",
               "{",
               "    //Считаем силу атакующих военных, включая тех, которых дозаказал к постройке игрок",
@@ -3452,7 +3455,7 @@
           "Pos.y":  20,
           "Parent":  131,
           "#":  132,
-          "Total.Lines":  97,
+          "Total.Lines":  100,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -3544,6 +3547,9 @@
               "    else ShipType(flagship, 'Dreadnought');",
               "    ShipDeleteCustomShipInfo(Player(), 'ShuWarriors_FlagshipDirectControl');",
               "",
+              "    //На случай, если был подключён ExpScienceRanks и игрок садился на флагман на \"Клеще\"",
+              "    if(!findsubstr(BonusNumInCfg(HullSpecial(Player())), 'ExpScienceRanks_Tick')) InterfaceState('StarMap', 'Klesh_main_panel', 1);",
+              "",
               "    for(i = StarPlanets(star) - 1; i >= 0; i = i - 1) NoLanding(StarPlanets(star, i), 0);",
               "    for(i = StarRuins(star) - 1; i >= 0; i = i - 1) NoLanding(StarRuins(star, i), 0);",
               "    NoJump(0);",
@@ -3612,7 +3618,7 @@
           "Pos.y":  20,
           "Parent":  146,
           "#":  147,
-          "Total.Lines":  30,
+          "Total.Lines":  33,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -3633,6 +3639,9 @@
               "if(!findsubstr(ShipType(flagship), 'Warrior')) ShipType(flagship, '');",
               "else ShipType(flagship, 'Dreadnought');",
               "ShipDeleteCustomShipInfo(Player(), 'ShuWarriors_FlagshipDirectControl');",
+              "",
+              "//На случай, если был подключён ExpScienceRanks и игрок садился на флагман на \"Клеще\"",
+              "if(!findsubstr(BonusNumInCfg(HullSpecial(Player())), 'ExpScienceRanks_Tick')) InterfaceState('StarMap', 'Klesh_main_panel', 1);",
               "",
               "for(int i = StarPlanets(star) - 1; i >= 0; i = i - 1) NoLanding(StarPlanets(star, i), 0);",
               "for(i = StarRuins(star) - 1; i >= 0; i = i - 1) NoLanding(StarRuins(star, i), 0);",
