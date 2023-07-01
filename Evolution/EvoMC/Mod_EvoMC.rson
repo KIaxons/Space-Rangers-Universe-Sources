@@ -1341,7 +1341,7 @@
               "else /*if(GetGameOptions('FontDialog') == '3')*/ dividing_line = '-------------------------------------';",
               "",
               "int pirate_clan_off = 0;",
-              "if(!CurrentMods('Tweaks\\BlockPirates')) pirate_clan_off = 1;",
+              "if(CurrentMods('Tweaks\\BlockPirates')) pirate_clan_off = 1;",
               "",
               "int stim_num = 0;",
               "int stims_top_limit = max(2, ShipRank(Player())) + max(ShipSpecialBonuses(Player(), bonStimCapacity), 0); //В оригинале тут ShipRank(Player()) + 1",
