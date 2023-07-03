@@ -1901,7 +1901,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  99,
-          "Total.Lines":  2465,
+          "Total.Lines":  2468,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -3181,8 +3181,11 @@
               "            for(i = guns_cnt - 1; i >= 0; i = i - 1)",
               "            {",
               "                dword gun = ShipWeapon(target, i + 1);",
+              "",
               "                if(ItemIsBroken(gun))",
               "                {",
+              "                    ArrayDelete(top_guns, i);",
+              "                    ArrayDelete(top_guns_dmg, i);",
               "                    guns_cnt = guns_cnt - 1;",
               "                    continue;",
               "                }",
