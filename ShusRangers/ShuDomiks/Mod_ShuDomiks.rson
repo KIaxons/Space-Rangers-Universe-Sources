@@ -1,15 +1,15 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -413,
-  "ViewPos.y":  -130,
+  "ViewPos.x":  -470,
+  "ViewPos.y":  -233,
   "ScriptName":  "Mod_ShuDomiks",
   "ScriptFileOut":  "H:\\Mod_ShuDomiks.scr",
   "ScriptTextOut":  "H:\\Mod_ShuDomiks.txt",
-  "GraphPoint.Count":  287,
+  "GraphPoint.Count":  288,
   "GraphLink.Count":  230,
   "GraphRectText.Count":  0,
-  "Variables.Count":  71,
+  "Variables.Count":  72,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
@@ -1901,7 +1901,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  99,
-          "Total.Lines":  2468,
+          "Total.Lines":  2467,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -2714,7 +2714,7 @@
               "        }",
               "",
               "        //Проверяем, не запускала ли эта верфь недавно ратторов и если да, ликвидируем все запущенные ею стаи",
-              "        for(i = 1; i <= 7; i = i + 1)",
+              "        for(i = 1; i <= RattorsPacksLimit; i = i + 1)",
               "        {",
               "            int group = GetValueFromScript('Mod_ShuDomiks', 'RattorsPack' + i);",
               "            int group_count = GroupCount(group);",
@@ -4300,8 +4300,7 @@
               "//Выбирает свободную группу в указанных номерных границах, и с учётом числа уже запущенных указанной верфью групп",
               "function FindFreeRattorsPack(ref ruin_id, int groups_max, ref range_bound)",
               "{",
-              "    //!!! Не забыть также обновить перебор групп в обработчике смерти верфи при добавлении новой группы !!!",
-              "    for(int i = range_bound; i <= 7; i = i + 1)",
+              "    for(int i = range_bound; i <= RattorsPacksLimit; i = i + 1)",
               "    {",
               "        int group = GetValueFromScript('Mod_ShuDomiks', 'RattorsPack' + i);",
               "        if(GroupCount(group)) //Если группа занята, то также проверяем, какая конкретно верфь её запустила",
@@ -6100,7 +6099,7 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  -20,
+          "Pos.x":  -30,
           "Pos.y":  0,
           "Parent":  262,
           "#":  263,
@@ -8206,6 +8205,17 @@
           "#":  275,
           "Var.Type":  "Array",
           "Init":  "3",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "RattorsPacksLimit",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  264,
+          "#":  287,
+          "Var.Type":  "Int",
+          "Init":  "7",
           "Global":  false        
         }      
       ]    
