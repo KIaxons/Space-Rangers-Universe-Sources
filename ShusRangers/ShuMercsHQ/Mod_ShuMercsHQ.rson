@@ -5653,7 +5653,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  10,
-          "Total.Lines":  1334,
+          "Total.Lines":  1335,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -6979,8 +6979,9 @@
               "        }",
               "    }",
               "}",
+              "",
               "//Если игрок уже построил хотя бы один штаб за партию",
-              "if(ArrayDim(PlayerHQMainArray) > 1)",
+              "if(0)//ArrayDim(PlayerHQMainArray) > 1)",
               "{",
               "    //Ежегодно снижаем репутацию организации игрока среди обеих враждующих сторон (отключено)",
               "    if(0)//PlayerHQMainArray['Main', 'ReputationDecreaseTimer'] <= CurTurn())",

@@ -1,15 +1,15 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1810,
-  "ViewPos.y":  -88,
+  "ViewPos.x":  -1590,
+  "ViewPos.y":  -84,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
-  "GraphPoint.Count":  1120,
-  "GraphLink.Count":  1033,
+  "GraphPoint.Count":  1130,
+  "GraphLink.Count":  1043,
   "GraphRectText.Count":  2,
-  "Variables.Count":  69,
+  "Variables.Count":  71,
   "Stars.Count":  1,
   "Planets.Count":  2,
   "Ships.Count":  1,
@@ -19,10 +19,10 @@
   "Items.Count":  4,
   "Ethers.Count":  0,
   "Dialogs.Count":  54,
-  "DialogMessages.Count":  112,
-  "DialogAnswers.Count":  214,
-  "Operations.Count":  295,
-  "Statements.Count":  311,
+  "DialogMessages.Count":  114,
+  "DialogAnswers.Count":  216,
+  "Operations.Count":  297,
+  "Statements.Count":  313,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
@@ -2168,6 +2168,26 @@
           "#":  1118,
           "Msg":  "",
           "AMsg.Num":  "213"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  -1040,
+          "Pos.y":  -90,
+          "Parent":  -1,
+          "#":  1121,
+          "Msg":  "<tstr8>",
+          "AMsg.Num":  "214"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  -850,
+          "Pos.y":  -80,
+          "Parent":  -1,
+          "#":  1128,
+          "Msg":  "<tstr8>",
+          "AMsg.Num":  "215"        
         }      
       ],
       "DialogMessages":      
@@ -3291,6 +3311,26 @@
           "#":  1119,
           "Msg":  "<tstr2>",
           "DMsg.Num":  "111"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  -1040,
+          "Pos.y":  -30,
+          "Parent":  -1,
+          "#":  1123,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "112"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  1126,
+          "#":  1127,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "113"        
         }      
       ],
       "Dialogs":      
@@ -5737,7 +5777,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  10,
-          "Total.Lines":  1334,
+          "Total.Lines":  1344,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -5973,6 +6013,7 @@
               "                for(i = 0; i < GroupCount(PlayerMercsStrike); i = i + 1)",
               "                {",
               "                    cur_ship = GroupShip(PlayerMercsStrike, i);",
+              "                    if(int(GetData(3, cur_ship)) != -2) continue;",
               "",
               "                    tint1 = ShipStatistic(cur_ship, 11);",
               "                    tint2 = PortionInDiapason(CurTurn(), tint1, tint1 + 1825, 0, 4);",
@@ -7033,7 +7074,15 @@
               "            //Выводим уведомление о гибели всей ударной группы игрока",
               "            if(PlayerHQMainArray['Mercs', 'StrikeGroupIsAlive'])",
               "            {",
-              "                if(!GroupCount(PlayerMercsStrike))",
+              "                check = 0;",
+              "                for(i = 0; i < GroupCount(PlayerMercsStrike); i = i + 1)",
+              "                {",
+              "                    cur_ship = GroupShip(PlayerMercsStrike, i);",
+              "                    if(int(GetData(3, cur_ship)) != -2) continue;",
+              "                    check = check + 1;",
+              "                }",
+              "",
+              "                if(!check)",
               "                {",
               "                    CustomEther('PlayerMercsOrg', 0, '', CT('Script.Mod_ShuMercs.PlayerMercsOrgMsg.StrikeGroupWasLost'));",
               "                    PlayerHQMainArray['Mercs', 'StrikeGroupIsAlive'] = 0;",
@@ -7063,8 +7112,9 @@
               "        }",
               "    }",
               "}",
+              "",
               "//Если игрок уже построил хотя бы один штаб за партию",
-              "if(ArrayDim(PlayerHQMainArray) > 1)",
+              "if(0)//ArrayDim(PlayerHQMainArray) > 1)",
               "{",
               "    //Ежегодно снижаем репутацию организации игрока среди обеих враждующих сторон (отключено)",
               "    if(0)//PlayerHQMainArray['Main', 'ReputationDecreaseTimer'] <= CurTurn())",
@@ -11084,7 +11134,7 @@
           "Pos.y":  20,
           "Parent":  265,
           "#":  266,
-          "Total.Lines":  185,
+          "Total.Lines":  191,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -11272,6 +11322,12 @@
               "            }",
               "        }",
               "    }",
+              "}",
+              "",
+              "if(tint1)",
+              "{",
+              "    tstr8 = '';",
+              "    if(ShipGroup(cur_ship) == PlayerMercsFree) tstr8 = '</color>' + CT('Script.Mod_ShuMercs.PlayerMercsStrikeGroup.PlayerINeedYou');",
               "}"          
           ]        
         },
@@ -11775,7 +11831,7 @@
               "        if(GroupIn(CruisersDefenders, GroupToShip(PlayerHQ)))",
               "        {",
               "            //При этом основная ударная группа должна состоять не менее чем из трёх кораблей",
-              "            if(GroupCount(PlayerMercsStrike) >= 3)",
+              "            if(real_strikes >= 3)",
               "            {",
               "                tstr3 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQBridgeDialog.PlayerAskGroupAddCruiser');",
               "                tint1 = 1;",
@@ -11819,13 +11875,14 @@
           "Pos.y":  20,
           "Parent":  320,
           "#":  323,
-          "Total.Lines":  26,
+          "Total.Lines":  28,
           "Code.Type":  "Turn",
           "Code":          
           [
               "for(i = 0; i < GroupCount(PlayerMercsStrike); i = i + 1)",
               "{",
               "    cur_ship = GroupShip(PlayerMercsStrike, i);",
+              "    if(int(GetData(3, cur_ship)) != -2) continue;",
               "",
               "    //Записываем всем кораблям группы систему назначения",
               "    SetData(Id(cur_star) - 1, 2, cur_ship);",
@@ -11833,6 +11890,7 @@
               "    if(~check) MakeShipEnterStar(cur_ship, cur_star, tdwd2, check - 1);",
               "    ChangeState('MovingOutState', cur_ship);",
               "}",
+              "",
               "//Также отправляем с ними крейсер, если игрок решил усилить им группу",
               "if(tint1 == 3)",
               "{",
@@ -12015,7 +12073,7 @@
           "Pos.y":  0,
           "Parent":  327,
           "#":  328,
-          "Total.Lines":  199,
+          "Total.Lines":  210,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -12084,6 +12142,7 @@
               "//Если время вылета ударной группы истекло",
               "if(GetData(2) <= CurTurn())",
               "{",
+              "    int strikes = 0;",
               "    for(int i = 0; i < GroupCount(PlayerMercsStrike); i = i + 1)",
               "    {",
               "        dword cur_ship = GroupShip(PlayerMercsStrike, i);",
@@ -12091,7 +12150,13 @@
               "        ShipDeleteCustomShipInfo(cur_ship, 'ShuMercsHQ_MercTalksBlock');",
               "        NoTalkToShip(cur_ship, 0);",
               "        OrderLock(cur_ship, 1);",
-              "        ChangeState('ReturningStrikeState', cur_ship);",
+              "",
+              "        if(int(GetData(3, cur_ship)) != -2) ShipJoin(PlayerMercsFree, cur_ship, 'FreeEarningState', 0, 0, 0);",
+              "        else",
+              "        {",
+              "            ChangeState('ReturningStrikeState', cur_ship);",
+              "            strikes = strikes + 1;",
+              "        }",
               "    }",
               "",
               "    //А также крейсер, если он находится в составе ударной группы",
@@ -12107,12 +12172,16 @@
               "            //ChangeState('ReturningBaseState', cur_ship);",
               "            //Или нет, хз",
               "            ChangeState('ReturningStrikeState', cur_ship);",
+              "            strikes = strikes + 1;",
               "        }",
               "    }",
               "",
-              "    if(GroupCount(PlayerMercsStrike)) CustomEther('PlayerMercsOrg', 0, '', Format(CT('Script.Mod_ShuMercs.PlayerMercsOrgMsg.StrikeGroupReturning'), '<Star'+'>', Name(cur_star), '255,240,100'));",
-              "    //На случай, если из всей ударной группы уцелел только крейсер",
-              "    else CustomEther('PlayerMercsOrg', 0, '', Format(CT('Script.Mod_ShuMercs.PlayerMercsOrgMsg.StrikeGroupReturningOnlyCruiser'), '<Star'+'>', Name(cur_star), '255,240,100'));",
+              "    if(strikes)",
+              "    {",
+              "        if(GroupCount(PlayerMercsStrike)) CustomEther('PlayerMercsOrg', 0, '', Format(CT('Script.Mod_ShuMercs.PlayerMercsOrgMsg.StrikeGroupReturning'), '<Star'+'>', Name(cur_star), '255,240,100'));",
+              "        //На случай, если из всей ударной группы уцелел только крейсер",
+              "        else CustomEther('PlayerMercsOrg', 0, '', Format(CT('Script.Mod_ShuMercs.PlayerMercsOrgMsg.StrikeGroupReturningOnlyCruiser'), '<Star'+'>', Name(cur_star), '255,240,100'));",
+              "    }",
               "",
               "    exit;",
               "}",
@@ -12227,7 +12296,7 @@
           "Pos.y":  20,
           "Parent":  329,
           "#":  330,
-          "Total.Lines":  173,
+          "Total.Lines":  182,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -12238,14 +12307,22 @@
               "if(!cur_ship) cur_ship = CurShip;",
               "cur_star = ShipStar(cur_ship);",
               "",
-              "if(ShipGroup(cur_ship) == PlayerMercsStrike) //Если это наёмник из ударной группы",
+              "if(int(GetData(3, cur_ship)) == -2)  //Если это наёмник из ударной группы",
               "{",
               "    //Используется для выбора не общих, а частных уникальных реплик наёмника, если они были для него прописаны",
               "    phrases_path = 'Script.Mod_ShuMercs.PlayerMercsStrikeGroup.CandidatesList.Class' + substr(GetData(0, cur_ship), 0, 1) + '.' + substr(GetData(0, cur_ship), 1) + '.PersonalPhrases';",
               "    if(!BlockExist(phrases_path)) phrases_path = '';",
               "}",
-              "//Если это крейсер организации",
-              "else phrases_path = 'Script.Mod_ShuMercs.PlayerMercCruiserDialog'; //Сюда добавляется путь до уникальных реплик крейсера",
+              "//Если это крейсер организации или левый \"свободник\"",
+              "else",
+              "{",
+              "    if(ShipType(cur_ship) != 'PlayerMercCruiser')",
+              "    {",
+              "        phrases_path = ''; //Рандомный \"свободник\"",
+              "        tstr8 = '</color>' + CT('Script.Mod_ShuMercs.PlayerMercsStrikeGroup.PlayerYouAreFree');",
+              "    }",
+              "    phrases_path = 'Script.Mod_ShuMercs.PlayerMercCruiserDialog'; //Сюда добавляется путь до уникальных реплик крейсера",
+              "}",
               "",
               "tint1 = 1;",
               "",
@@ -12274,6 +12351,7 @@
               "        tint2 = 1;",
               "        break;",
               "    }",
+              "",
               "    //Если группа только прибыла в систему и вышла с игроком на связь (вызывает случайный первый наёмник или крейсер)",
               "    if(GetData(2, cur_ship) == -1)",
               "    {",
@@ -12465,7 +12543,7 @@
           "Pos.y":  20,
           "Parent":  340,
           "#":  341,
-          "Total.Lines":  71,
+          "Total.Lines":  72,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -12482,6 +12560,7 @@
               "    for(i = 0; i < GroupCount(PlayerMercsStrike); i = i + 1)",
               "    {",
               "        cur_ship = GroupShip(PlayerMercsStrike, i);",
+              "        if(StateIs(cur_ship, 'SittingBaseState')) continue;",
               "",
               "        if(!ShipInNormalSpace(cur_ship)) continue;",
               "        if(ShipStar(cur_ship) != ShipStar(Player())) continue;",
@@ -12549,7 +12628,7 @@
           "Pos.y":  40,
           "Parent":  344,
           "#":  345,
-          "Total.Lines":  42,
+          "Total.Lines":  45,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -12568,13 +12647,16 @@
               "for(i = 0; i < GroupCount(PlayerMercsStrike); i = i + 1)",
               "{",
               "    cur_ship = GroupShip(PlayerMercsStrike, i);",
+              "    if(StateIs(cur_ship, 'SittingBaseState')) continue;",
+              "",
               "    if(~ShipFindCustomShipInfoByType(cur_ship, 'ShuMercsHQ_MercTalksBlock'))",
               "    {",
               "        NoTalkToShip(cur_ship, 0);",
               "        ShipDeleteCustomShipInfo(cur_ship, 'ShuMercsHQ_MercTalksBlock');",
               "    }",
               "",
-              "    ChangeState('ReturningStrikeState', cur_ship);",
+              "    if(int(GetData(3, cur_ship)) != -2) ShipJoin(PlayerMercsFree, cur_ship, 'ReturningBaseState', 0, 0, 0); //В ударной группе попался рандомный корабль",
+              "    else ChangeState('ReturningStrikeState', cur_ship);",
               "}",
               "",
               "//А также крейсер, если он находится в составе ударной группы",
@@ -12604,7 +12686,7 @@
           "Pos.y":  20,
           "Parent":  348,
           "#":  350,
-          "Total.Lines":  28,
+          "Total.Lines":  29,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -12612,6 +12694,7 @@
               "for(i = 0; i < GroupCount(PlayerMercsStrike); i = i + 1)",
               "{",
               "    cur_ship = GroupShip(PlayerMercsStrike, i);",
+              "    if(StateIs(cur_ship, 'SittingBaseState')) continue;",
               "",
               "    if(!ShipInNormalSpace(cur_ship)) continue;",
               "    if(ShipStar(cur_ship) != ShipStar(Player())) continue;",
@@ -12736,7 +12819,7 @@
           "Pos.y":  40,
           "Parent":  337,
           "#":  357,
-          "Total.Lines":  38,
+          "Total.Lines":  40,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -12757,6 +12840,8 @@
               "for(i = 0; i < GroupCount(PlayerMercsStrike); i = i + 1)",
               "{",
               "    cur_ship = GroupShip(PlayerMercsStrike, i);",
+              "    if(StateIs(cur_ship, 'SittingBaseState')) continue;",
+              "",
               "    if(ShipInHyperSpace(cur_ship)) continue;",
               "    if(ShipStar(cur_ship) != ShipStar(Player())) continue;",
               "",
@@ -27760,7 +27845,7 @@
           "Pos.y":  0,
           "Parent":  705,
           "#":  704,
-          "Total.Lines":  36,
+          "Total.Lines":  46,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -27771,9 +27856,11 @@
               "check = 1;",
               "if(GroupCount(PlayerMercsStrike))",
               "{",
+              "    real_strikes = 0;",
               "    for(i = 0; i < GroupCount(PlayerMercsStrike); i = i + 1)",
               "    {",
               "        cur_ship = GroupShip(PlayerMercsStrike, i);",
+              "        if(int(GetData(3, cur_ship)) != -2) continue;",
               "",
               "        //Если хоть один корабль из состава группы ещё не вернулся в штаб",
               "        if(GetShipRuins(cur_ship) != cur_ruin || StateIs(cur_ship, 'MovingOutState'))",
@@ -27793,6 +27880,14 @@
               "                break;",
               "            }",
               "        }",
+              "",
+              "        real_strikes = real_strikes + 1;",
+              "    }",
+              "",
+              "    if(!real_strikes)",
+              "    {",
+              "        check = 0;",
+              "        tstr1 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQBridgeDialog.PlayerAskGroupNoGroup');",
               "    }",
               "}",
               "else",
@@ -28325,7 +28420,7 @@
           "Pos.y":  40,
           "Parent":  789,
           "#":  790,
-          "Total.Lines":  69,
+          "Total.Lines":  70,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -28340,6 +28435,7 @@
               "    for(i = 0; i < GroupCount(PlayerMercsStrike); i = i + 1)",
               "    {",
               "        cur_ship = GroupShip(PlayerMercsStrike, i);",
+              "        if(StateIs(cur_ship, 'SittingBaseState')) continue;",
               "",
               "        if(!ShipInNormalSpace(cur_ship)) continue;",
               "        if(ShipStar(cur_ship) != ShipStar(Player())) continue;",
@@ -28407,7 +28503,7 @@
           "Pos.y":  20,
           "Parent":  795,
           "#":  796,
-          "Total.Lines":  28,
+          "Total.Lines":  29,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -28415,6 +28511,7 @@
               "for(i = 0; i < GroupCount(PlayerMercsStrike); i = i + 1)",
               "{",
               "    cur_ship = GroupShip(PlayerMercsStrike, i);",
+              "    if(StateIs(cur_ship, 'SittingBaseState')) continue;",
               "",
               "    if(!ShipInNormalSpace(cur_ship)) continue;",
               "    if(ShipStar(cur_ship) != ShipStar(Player())) continue;",
@@ -28448,7 +28545,7 @@
           "Pos.y":  0,
           "Parent":  797,
           "#":  798,
-          "Total.Lines":  200,
+          "Total.Lines":  212,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -28518,6 +28615,7 @@
               "//Если время вылета ударной группы истекло",
               "if(GetData(2) <= CurTurn())",
               "{",
+              "    int strikes = 0;",
               "    for(int i = 0; i < GroupCount(PlayerMercsStrike); i = i + 1)",
               "    {",
               "        cur_ship = GroupShip(PlayerMercsStrike, i);",
@@ -28525,7 +28623,13 @@
               "        ShipDeleteCustomShipInfo(cur_ship, 'ShuMercsHQ_MercTalksBlock');",
               "        NoTalkToShip(cur_ship, 0);",
               "        OrderLock(cur_ship, 1);",
-              "        ChangeState('ReturningStrikeState', cur_ship);",
+              "",
+              "        if(int(GetData(3, cur_ship)) != -2) ShipJoin(PlayerMercsFree, cur_ship, 'FreeEarningState', 0, 0, 0);",
+              "        else",
+              "        {",
+              "            ChangeState('ReturningStrikeState', cur_ship);",
+              "            strikes = strikes + 1;",
+              "        }",
               "    }",
               "",
               "    //А также крейсер, если он находится в составе ударной группы",
@@ -28541,12 +28645,17 @@
               "            //ChangeState('ReturningBaseState', cur_ship);",
               "            //Или нет, хз",
               "            ChangeState('ReturningStrikeState', cur_ship);",
+              "            strikes = strikes + 1;",
               "        }",
               "    }",
               "",
-              "    if(GroupCount(PlayerMercsStrike)) CustomEther('PlayerMercsOrg', 0, '', Format(CT('Script.Mod_ShuMercs.PlayerMercsOrgMsg.StrikeGroupReturning'), '<Star'+'>', Name(cur_star), '255,240,100'));",
-              "    //На случай, если из всей ударной группы уцелел только крейсер",
-              "    else CustomEther('PlayerMercsOrg', 0, '', Format(CT('Script.Mod_ShuMercs.PlayerMercsOrgMsg.StrikeGroupReturningOnlyCruiser'), '<Star'+'>', Name(cur_star), '255,240,100'));",
+              "",
+              "    if(strikes)",
+              "    {",
+              "        if(GroupCount(PlayerMercsStrike)) CustomEther('PlayerMercsOrg', 0, '', Format(CT('Script.Mod_ShuMercs.PlayerMercsOrgMsg.StrikeGroupReturning'), '<Star'+'>', Name(cur_star), '255,240,100'));",
+              "        //На случай, если из всей ударной группы уцелел только крейсер",
+              "        else CustomEther('PlayerMercsOrg', 0, '', Format(CT('Script.Mod_ShuMercs.PlayerMercsOrgMsg.StrikeGroupReturningOnlyCruiser'), '<Star'+'>', Name(cur_star), '255,240,100'));",
+              "    }",
               "",
               "    exit;",
               "}",
@@ -35221,6 +35330,39 @@
               "if(ArrayDim(tarr1) == 1) tarr1[0] = 0;",
               "else ArrayDelete(tarr1, GAnswerData);"          
           ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  -1040,
+          "Pos.y":  -50,
+          "Parent":  -1,
+          "#":  1122,
+          "Total.Lines":  4,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tstr1 = '</color>' + CT('Script.Mod_ShuMercs.PlayerMercsStrikeGroup.YouAreFree');",
+              "tstr2 = '</color>' + CT('Talk.Exit');",
+              "",
+              "ShipJoin(PlayerMercsFree, cur_ship, 'FreeEarningState', 0, 0, 0);"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  40,
+          "Parent":  1125,
+          "#":  1126,
+          "Total.Lines":  3,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tstr1 = '</color>' + CT('Script.Mod_ShuMercs.PlayerMercsStrikeGroup.PlayerINeedYou');",
+              "tstr3 = '</color>' + CT('Talk.Exit');",
+              "ShipJoin(PlayerMercsStrike, cur_ship, 'StrikeFollowState', 0, 0, CurTurn() + 90);"          
+          ]        
         }      
       ],
       "Places":      
@@ -36302,7 +36444,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  80,
+          "Pos.x":  120,
           "Pos.y":  20,
           "Parent":  281,
           "#":  283,
@@ -36526,7 +36668,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  80,
+          "Pos.x":  100,
           "Pos.y":  30,
           "Parent":  331,
           "#":  355,
@@ -39742,6 +39884,34 @@
           [
               "!tarr1[0]"          
           ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -1040,
+          "Pos.y":  -110,
+          "Parent":  -1,
+          "#":  1120,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tint1 && int(GetData(3)) != -2"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  90,
+          "Pos.y":  20,
+          "Parent":  917,
+          "#":  1125,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tstr8 != ''"          
+          ]        
         }      
       ],
       "States":      
@@ -41331,6 +41501,28 @@
           "#":  1107,
           "Var.Type":  "Int",
           "Init":  "0",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tstr8",
+          "Pos.x":  -350,
+          "Pos.y":  380,
+          "Parent":  -1,
+          "#":  1124,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "real_strikes",
+          "Pos.x":  -1560,
+          "Pos.y":  180,
+          "Parent":  -1,
+          "#":  1129,
+          "Var.Type":  "Int",
+          "Init":  "",
           "Global":  false        
         }      
       ]    
@@ -48566,6 +48758,76 @@
       "Type":  "TGraphLink",
       "Begin":  1117,
       "End":  1118,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  331,
+      "End":  1120,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1120,
+      "End":  1121,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1121,
+      "End":  1122,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1122,
+      "End":  1123,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1123,
+      "End":  352,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1126,
+      "End":  1127,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1127,
+      "End":  808,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  917,
+      "End":  1125,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1125,
+      "End":  1128,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1128,
+      "End":  1126,
       "Nom":  0,
       "Arrow":  true    
     }  
