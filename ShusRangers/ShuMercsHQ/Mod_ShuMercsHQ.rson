@@ -10693,7 +10693,7 @@
               "        {",
               "            int tint = ShipStatistic(CurShip, 11); //Ход рождения корабля",
               "            tint = PortionInDiapason(CurTurn(), tint, tint + 1825, 0, 4);",
-              "            tint = round(0.23 * RndObject(7, 14, CurShip) * GalaxyMoney(2, tint) * 5 * (0.70 * PortionInDiapason(PlayerHQMainArray['Main', 'HQLevel'], 1, PlayerHQMainArray['Main', 'HQLevelMax'], 1.2, 2.4)));",
+              "            tint = round(0.23 * RndObject(7, 14, CurShip) * GalaxyMoney(2, tint) * 5 * (0.70 * PortionInDiapason(PlayerHQMainArray['Main', 'HQLevel'], 1, PlayerHQMainArray['Main', 'HQLevelMax'], 1.1, 2.2))); //1.2 - 2.4",
               "            PlayerHQMainArray['Finance', 'CurrentBalance'] = min(PlayerHQMainArray['Finance', 'CurrentBalance'] + tint, 1000000000);",
               "            //Для отчёта доходности лимит на 1 млрд не ставим, т.к. незачем",
               "            PlayerHQMainArray['Finance', 'StatsInEarnings'] = PlayerHQMainArray['Finance', 'StatsInEarnings'] + tint;",
