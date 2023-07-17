@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1650,
-  "ViewPos.y":  -31,
+  "ViewPos.x":  -1684,
+  "ViewPos.y":  -203,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
@@ -28161,7 +28161,7 @@
           "Pos.y":  20,
           "Parent":  779,
           "#":  780,
-          "Total.Lines":  11,
+          "Total.Lines":  14,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -28169,10 +28169,13 @@
               "tstr2 = '</color>' + CT('Quest.ShuMercs.QuestsHQ.Special.GluonGunsInvention.NewGunsDonePlayer');",
               "",
               "dword new_gun = CreateGluonGun(cur_ruin, 1, 1);",
+              "SetName(new_gun, CT('Quest.ShuMercs.QuestsHQ.Special.GluonGunsInvention.GluonEmitterPrototype'));",
               "AddItemToStorage(cur_ruin, new_gun);",
               "new_gun = CreateGluonGun(cur_ruin, 2, 1);",
+              "SetName(new_gun, CT('Quest.ShuMercs.QuestsHQ.Special.GluonGunsInvention.GluonTormentorPrototype'));",
               "AddItemToStorage(cur_ruin, new_gun);",
               "new_gun = CreateGluonGun(cur_ruin, 3, 1);",
+              "SetName(new_gun, CT('Quest.ShuMercs.QuestsHQ.Special.GluonGunsInvention.GluonTorpedoLauncherPrototype'));",
               "AddItemToStorage(cur_ruin, new_gun);",
               "",
               "PlayerHQMainArray['Quests', 'GluonGunsQuestStatus'] = -1; //Квест успешно завершён, повторное прохождение в этой партии не потребуется"          
