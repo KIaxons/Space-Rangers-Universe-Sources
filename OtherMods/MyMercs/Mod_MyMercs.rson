@@ -31043,7 +31043,7 @@
           "Pos.y":  20,
           "Parent":  971,
           "#":  1055,
-          "Total.Lines":  107,
+          "Total.Lines":  105,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -31093,7 +31093,6 @@
               "        {",
               "            cur_ship = GroupShip(PlayerMercsDefenders, i);",
               "",
-              "            OrderLock(cur_ship, 1);",
               "            ShipSpecialBonuses(cur_ship, bonFuel, ShipSpecialBonuses(cur_ship, bonFuel) + 10000);",
               "            ChangeState('ReturningBaseState', cur_ship);",
               "        }",
@@ -31103,7 +31102,6 @@
               "            cur_ship = GroupShip(PlayerMercsStrike, i);",
               "            if(!StateIs(cur_ship, 'DefendingStarState')) continue;",
               "",
-              "            OrderLock(cur_ship, 1);",
               "            ShipSpecialBonuses(cur_ship, bonFuel, ShipSpecialBonuses(cur_ship, bonFuel) + 10000);",
               "            ChangeState('ReturningStrikeState', cur_ship);",
               "        }",
@@ -31145,7 +31143,7 @@
               "    BuildOwnBase_QuestsArray = newarray(1, 1);",
               "",
               "    //Уведомление об успешном завершении задания на передислокацию штаба",
-              "    tstr1 = '<color=255,0,0>' + CT('Quest.Info.OldQuests.Accepted') + '</color>';",
+              "    tstr1 = '<color=0,255,0>' + CT('Quest.Info.OldQuests.Accepted') + '</color>';",
               "    tstr1 = tstr1 + \"<br>\" + CT('Script.Mod_ShuMercsHQ.PlayerHQRelocation.QuestMessage.Title');",
               "    tstr1 = tstr1 + \"<br>\" + '<clr><clrEnd>' + \"<br>\" + Format(CT('Script.Mod_ShuMercsHQ.PlayerHQRelocation.QuestMessage.Complete'), '<Star'+'>', '<color=255,240,100>' + Name(tdwd1) + '</color>', '');",
               "    CustomEther('QuestComplete_PlayerMercsOrg', 4, 'PlayerHQRelocation', tstr1);",
