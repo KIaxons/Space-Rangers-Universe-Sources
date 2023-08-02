@@ -519,34 +519,13 @@
           "Pos.y":  20,
           "Parent":  10,
           "#":  9,
-          "Total.Lines":  24,
+          "Total.Lines":  3,
           "Code.Type":  "Turn",
           "Code":          
           [
               "//Уничтожаем всех рейнджеров с корпусом \"Таухито\"",
               "if(CurTurn() < 666) GetRidOfAnachronisms(1+2+16);",
-              "else GetRidOfAnachronisms(1+16);",
-              "",
-              "//Подменяем аЭгис и Ралс, полученные игроком в ЧД",
-              "if(ShipInHole(Player()))",
-              "{",
-              "    for(i = ShipArts(Player()) - 1; i >= 0; i = i - 1)",
-              "    {",
-              "        cur_item = ShipArts(Player(), i);",
-              "        if(ItemType(cur_item) == t_ArtPDTurret)",
-              "        {",
-              "            tdwd1 = CreateCustomArt('ArtMissileDef_Custom', ItemSize(cur_item), ItemCost(cur_item), ItemOwner(cur_item));",
-              "            FreeItem(GetItemFromShip(Player(), cur_item));",
-              "            AddItemToShip(Player(), tdwd1);",
-              "        }",
-              "        else if(ItemType(cur_item) == t_ArtFastRacks)",
-              "        {",
-              "            tdwd1 = CreateCustomArt('ArtSplinter_Custom', ItemSize(cur_item), ItemCost(cur_item), ItemOwner(cur_item));",
-              "            FreeItem(GetItemFromShip(Player(), cur_item));",
-              "            AddItemToShip(Player(), tdwd1);",
-              "        }",
-              "    }",
-              "}"          
+              "else GetRidOfAnachronisms(1+16);"          
           ]        
         },
         {
