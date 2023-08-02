@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -285,
-  "ViewPos.y":  204,
+  "ViewPos.x":  -23,
+  "ViewPos.y":  105,
   "ScriptName":  "PC_fem_rangers",
   "ScriptFileOut":  "H:\\PC_fem_rangers.scr",
   "ScriptTextOut":  "H:\\PC_fem_rangers.txt",
@@ -3594,7 +3594,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ArrayDim(new_enemies)>1"          
+              "ArrayDim(new_enemies) > 1"          
           ]        
         }      
       ],
@@ -4002,15 +4002,20 @@
           "Pos.y":  430,
           "Parent":  -1,
           "#":  44,
-          "Total.Lines":  5,
+          "Total.Lines":  10,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ship_to_guard=0;",
-              "counter=0;",
-              "while (counter<GroupCount(GroupTransports)){",
-              "if (quest_data1[ship_num]==Id(GroupShip(GroupTransports,counter))){ship_to_guard=GroupShip(GroupTransports,counter);}",
-              "counter=counter+1;}"          
+              "ship_to_guard = 0;",
+              "counter = 0;",
+              "while(counter < GroupCount(GroupTransports))",
+              "{",
+              "    if(quest_data1[ship_num] == Id(GroupShip(GroupTransports, counter)))",
+              "    {",
+              "        ship_to_guard = GroupShip(GroupTransports, counter);",
+              "    }",
+              "    counter = counter + 1;",
+              "}"          
           ]        
         },
         {
@@ -4024,9 +4029,9 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "counter=0;",
-              "while (fem_id[counter]!=Id(CurShip)){counter=counter+1;}",
-              "ship_num=counter;"          
+              "counter = 0;",
+              "while(fem_id[counter] != Id(CurShip)) counter = counter + 1;",
+              "ship_num = counter;"          
           ]        
         },
         {
@@ -4045,7 +4050,7 @@
               "OrderLock(CurShip, 0);",
               "temp_curship = CurShip;",
               "ShipFreeFlight(CurShip);",
-              "ChangeState(3, temp_curship);",
+              "ChangeState('FemStateFree', temp_curship);",
               "exit;"          
           ]        
         },
@@ -4056,20 +4061,21 @@
           "Pos.y":  390,
           "Parent":  -1,
           "#":  51,
-          "Total.Lines":  11,
+          "Total.Lines":  12,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "OrderLock(ship_to_guard,0);",
+              "OrderLock(ship_to_guard, 0);",
               "ShipOut(ship_to_guard);",
-              "quest_data1[ship_num]=0;",
-              "quest_data2[ship_num]=0;",
-              "OrderLock(CurShip,0);",
-              "if (ShipInNormalSpace(CurShip)){",
-              "OrderMove(CurShip,CoordX(CurShip)+Rnd(-50,50),CoordY(CurShip)+Rnd(-50,50));",
-              "if (PlanetOwner(NearCivilPlanet(CurShip))<5){OrderLanding(CurShip,NearCivilPlanet(CurShip),1);}",
+              "quest_data1[ship_num] = 0;",
+              "quest_data2[ship_num] = 0;",
+              "OrderLock(CurShip, 0);",
+              "if(ShipInNormalSpace(CurShip))",
+              "{",
+              "    OrderMove(CurShip, CoordX(CurShip) + Rnd(-50, 50), CoordY(CurShip) + Rnd(-50, 50));",
+              "    if(PlanetOwner(NearCivilPlanet(CurShip)) < 5) OrderLanding(CurShip, NearCivilPlanet(CurShip), 1);",
               "}",
-              "ChangeState(7,CurShip);",
+              "ChangeState('FemStateFreeGetReward', CurShip);",
               "exit;"          
           ]        
         },
@@ -4135,18 +4141,20 @@
           "Pos.y":  430,
           "Parent":  -1,
           "#":  62,
-          "Total.Lines":  8,
+          "Total.Lines":  10,
           "Code.Type":  "Turn",
           "Code":          
           [
               "ShipRefuel(CurShip);",
               "ShipRepairEq(CurShip);",
               "OrderTakeOff(CurShip);",
-              "if (GetShipPlanet(ship_to_guard)){",
-              "OrderLock(ship_to_guard,0);",
-              "ShipRefuel(ship_to_guard);",
-              "ShipRepairEq(ship_to_guard);",
-              "OrderTakeOff(ship_to_guard);}"          
+              "if(GetShipPlanet(ship_to_guard))",
+              "{",
+              "    OrderLock(ship_to_guard, 0);",
+              "    ShipRefuel(ship_to_guard);",
+              "    ShipRepairEq(ship_to_guard);",
+              "    OrderTakeOff(ship_to_guard);",
+              "}"          
           ]        
         },
         {
@@ -4160,7 +4168,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "OrderFollowShip(CurShip,ship_to_guard,0,1)"          
+              "OrderFollowShip(CurShip, ship_to_guard, 0, 1);"          
           ]        
         },
         {
@@ -4174,7 +4182,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "OrderJump(CurShip,ShipStar(ship_to_guard),1)"          
+              "OrderJump(CurShip, ShipStar(ship_to_guard), 1);"          
           ]        
         },
         {
@@ -4184,24 +4192,28 @@
           "Pos.y":  520,
           "Parent":  -1,
           "#":  66,
-          "Total.Lines":  14,
+          "Total.Lines":  18,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "counter=0;",
+              "counter = 0;",
               "ArrayClear(new_enemies);",
-              "while (counter<StarShips(ShipStar(CurShip))){",
-              "quest_ship=StarShips(ShipStar(CurShip),counter);",
-              "if ((!ShipInScript(quest_ship)) &&  (quest_ship!=Player())){",
-              "ship_is_enemy=0;",
-              "if (ShipGetBad(quest_ship)==CurShip){ship_is_enemy=1;}",
-              "if (ShipGetBad(quest_ship)==ship_to_guard){ship_is_enemy=1;}",
-              "if (ShipGetBad(ship_to_guard)==quest_ship){ship_is_enemy=1;}",
-              "if (ship_is_enemy){",
-              "ArrayAdd(new_enemies,quest_ship);",
-              "}}",
-              "counter=counter+1;}",
-              "temp_curship=CurShip;"          
+              "while(counter < StarShips(ShipStar(CurShip)))",
+              "{",
+              "    quest_ship = StarShips(ShipStar(CurShip), counter);",
+              "    if(!ShipInScript(quest_ship) && (quest_ship != Player()))",
+              "    {",
+              "        ship_is_enemy = 0;",
+              "        if(ShipGetBad(quest_ship) == CurShip) ship_is_enemy = 1;",
+              "        else if(ShipGetBad(quest_ship) == ship_to_guard) ship_is_enemy = 1;",
+              "        else if(ShipGetBad(ship_to_guard) == quest_ship) ship_is_enemy = 1;",
+              "",
+              "        if(ship_is_enemy) ArrayAdd(new_enemies, quest_ship);",
+              "    }",
+              "",
+              "    counter = counter + 1;",
+              "}",
+              "temp_curship = CurShip;"          
           ]        
         },
         {
@@ -4215,9 +4227,9 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ArrayAdd(enemy_id,Id(new_enemies[1]));",
-              "ShipJoin(GroupEnemies,new_enemies[1]);",
-              "ArrayDelete(new_enemies,1)"          
+              "ArrayAdd(enemy_id, Id(new_enemies[1]));",
+              "ShipJoin(GroupEnemies, new_enemies[1]);",
+              "ArrayDelete(new_enemies, 1);"          
           ]        
         },
         {
@@ -4231,8 +4243,8 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "switch_state=1;",
-              "ChangeState(8,temp_curship);",
+              "switch_state = 1;",
+              "ChangeState('FemGuardVsPlayer', temp_curship);",
               "exit;"          
           ]        
         },
@@ -4247,7 +4259,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "player_is_enemy=0"          
+              "player_is_enemy = 0;"          
           ]        
         },
         {
@@ -4261,7 +4273,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "player_is_enemy=1"          
+              "player_is_enemy = 1;"          
           ]        
         },
         {
@@ -4275,8 +4287,8 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "switch_state=1;",
-              "ChangeState(6,temp_curship);",
+              "switch_state = 1;",
+              "ChangeState('FemGuardShip', temp_curship);",
               "exit;"          
           ]        
         },
@@ -4291,7 +4303,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "switch_state=0"          
+              "switch_state = 0;"          
           ]        
         },
         {
@@ -4306,10 +4318,10 @@
           "Code":          
           [
               "OrderNone(ship_to_guard);",
-              "OrderLock(ship_to_guard,1);",
+              "OrderLock(ship_to_guard, 1);",
               "ShipRefuel(ship_to_guard);",
               "ShipRepairEq(ship_to_guard);",
-              "OrderLanding(CurShip,GetShipPlanet(ship_to_guard),1);"          
+              "OrderLanding(CurShip, GetShipPlanet(ship_to_guard), 1);"          
           ]        
         },
         {
@@ -4323,7 +4335,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "OrderJump(CurShip,ShipOrderObj(ship_to_guard),1)"          
+              "OrderJump(CurShip, ShipOrderObj(ship_to_guard), 1);"          
           ]        
         },
         {
@@ -4337,8 +4349,8 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "//OrderMove(CurShip, CoordX(CurShip) + Rnd(-50, 50), CoordY(CurShip) + Rnd(-50, 50))",
-              "ShipFreeFlight(CurShip)"          
+              "//OrderMove(CurShip, CoordX(CurShip) + Rnd(-50, 50), CoordY(CurShip) + Rnd(-50, 50));",
+              "ShipFreeFlight(CurShip);"          
           ]        
         },
         {
@@ -4425,7 +4437,7 @@
               "    if((RelationToRanger(temp_curship, Player()) < 10) || (ShipGetBad(Player()) == temp_curship))",
               "    {",
               "        switch_state = 1;",
-              "        ChangeState('DeliveryVsPlayer', temp_curship);",
+              "        ChangeState('FemDeliveryVsPlayer', temp_curship);",
               "        player_is_enemy = 0;",
               "        exit;",
               "    }",
@@ -4435,7 +4447,7 @@
               "    if((RelationToRanger(temp_curship, Player()) >= 10) && (ShipGetBad(Player()) != temp_curship))",
               "    {",
               "        switch_state = 1;",
-              "        ChangeState('Delivery', temp_curship);",
+              "        ChangeState('FemDelivery', temp_curship);",
               "        player_is_enemy = 1;",
               "        exit;",
               "    }",
@@ -5134,7 +5146,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "OrderLock(ship_to_guard,0);",
+              "OrderLock(ship_to_guard, 0);",
               "ShipOut(ship_to_guard);",
               "OrderNone(CurShip);"          
           ]        
@@ -8471,7 +8483,7 @@
               "        if(truce_flag)",
               "        {",
               "            if(",
-              "                ShipIsPartner(quest_ship) != Player() ||",
+              "                 ShipIsPartner(quest_ship) != Player() ||",
               "                (ShipIsPartner(CurShip) == Player() && ShipIsPartner(quest_ship) == Player())",
               "              )",
               "            {",
@@ -8564,7 +8576,7 @@
               "                                    ItemSize(ShipItems(CurShip, 0), ItemSize(ShipItems(CurShip, 0)) + ItemSize(quest_item) - ShipFreeSpace(CurShip));",
               "                                }",
               "                                AddItemToShip(CurShip, quest_item);",
-              "                                ChangeState('Delivery', CurShip);",
+              "                                ChangeState('FemDelivery', CurShip);",
               "                            }",
               "                        }",
               "                        else",
@@ -8580,7 +8592,7 @@
               "                            OrderLock(CurShip, 1);",
               "                            temp_curship = CurShip;",
               "                            ShipJoin(GroupTransports, ship_to_guard);",
-              "                            ChangeState('GuardShip', temp_curship);",
+              "                            ChangeState('FemGuardShip', temp_curship);",
               "                        }",
               "                    }",
               "                }",
@@ -8597,7 +8609,7 @@
           "Pos.y":  20,
           "Parent":  103,
           "#":  1079,
-          "Total.Lines":  149,
+          "Total.Lines":  148,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -8649,7 +8661,6 @@
               "            }",
               "",
               "            roll = ((CurTurn() + Id(CurShip) + Id(GetShipPlanet(CurShip))) / 30) % 1000;",
-              "",
               "            if(roll < 500)",
               "            {",
               "                ShipMoney(CurShip, ShipMoney(CurShip) + GalaxyMoney(4));",
@@ -9032,7 +9043,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "CurTurn()<quest_data2[ship_num]"          
+              "CurTurn() < quest_data2[ship_num]"          
           ]        
         },
         {
@@ -9046,7 +9057,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "CurTurn()>=quest_data2[ship_num]"          
+              "CurTurn() >= quest_data2[ship_num]"          
           ]        
         },
         {
@@ -9074,7 +9085,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipStar(CurShip)==ShipStar(ship_to_guard)"          
+              "ShipStar(CurShip) == ShipStar(ship_to_guard)"          
           ]        
         },
         {
@@ -9088,7 +9099,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipStar(CurShip)!=ShipStar(ship_to_guard)"          
+              "ShipStar(CurShip) != ShipStar(ship_to_guard)"          
           ]        
         },
         {
@@ -9256,7 +9267,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "(ShipOrder(ship_to_guard)!=3) || (ShipTurnBeforeEndOrder(ship_to_guard)>1)"          
+              "(ShipOrder(ship_to_guard) != 3) || (ShipTurnBeforeEndOrder(ship_to_guard) > 1)"          
           ]        
         },
         {
@@ -9270,7 +9281,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "(ShipOrder(ship_to_guard)==3) && (ShipTurnBeforeEndOrder(ship_to_guard)<2)"          
+              "(ShipOrder(ship_to_guard) == 3) && (ShipTurnBeforeEndOrder(ship_to_guard) < 2)"          
           ]        
         },
         {
@@ -9340,7 +9351,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "(RelationToRanger(temp_curship,Player())<10) || (ShipGetBad(Player())==temp_curship) || (ShipGetBad(Player())==ship_to_guard) || (ShipGetBad(ship_to_guard)==Player())"          
+              "(RelationToRanger(temp_curship, Player()) < 10) || (ShipGetBad(Player()) == temp_curship) || (ShipGetBad(Player()) == ship_to_guard) || (ShipGetBad(ship_to_guard) == Player())"          
           ]        
         },
         {
@@ -9354,7 +9365,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "(RelationToRanger(temp_curship,Player())>9) && (ShipGetBad(Player())!=temp_curship) && (ShipGetBad(Player())!=ship_to_guard) && (ShipGetBad(ship_to_guard)!=Player())"          
+              "(RelationToRanger(temp_curship,Player())>9) && (ShipGetBad(Player()) != temp_curship) && (ShipGetBad(Player()) != ship_to_guard) && (ShipGetBad(ship_to_guard) != Player())"          
           ]        
         },
         {
@@ -10166,7 +10177,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "!StateIs(CurShip, 'GuardVsPlayer', 'GuardShip')"          
+              "!StateIs(CurShip, 'FemGuardVsPlayer', 'FemGuardShip')"          
           ]        
         },
         {
@@ -10180,7 +10191,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "StateIs(CurShip, 'GuardVsPlayer', 'GuardShip')"          
+              "StateIs(CurShip, 'FemGuardVsPlayer', 'FemGuardShip')"          
           ]        
         },
         {
@@ -10842,7 +10853,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "StateIs(CurShip, 'GuardVsPlayer', 'DeliveryVsPlayer')"          
+              "StateIs(CurShip, 'FemGuardVsPlayer', 'FemDeliveryVsPlayer')"          
           ]        
         },
         {
@@ -10870,7 +10881,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "!StateIs(CurShip, 'GuardVsPlayer', 'DeliveryVsPlayer')"          
+              "!StateIs(CurShip, 'FemGuardVsPlayer', 'FemDeliveryVsPlayer')"          
           ]        
         },
         {
@@ -10986,7 +10997,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipInFear(CurShip) && (HullDamage(CurShip)>50)"          
+              "ShipInFear(CurShip) && (HullDamage(CurShip) > 50)"          
           ]        
         },
         {
@@ -11000,7 +11011,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "!ShipInFear(CurShip) || (HullDamage(CurShip)<=50)"          
+              "!ShipInFear(CurShip) || (HullDamage(CurShip) <= 50)"          
           ]        
         },
         {
@@ -13814,7 +13825,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "(RelationToRanger(ship_to_guard,CurShip)<10) || (ShipGetBad(CurShip)==ship_to_guard)"          
+              "(RelationToRanger(ship_to_guard, CurShip) < 10) || (ShipGetBad(CurShip) == ship_to_guard)"          
           ]        
         },
         {
@@ -13828,7 +13839,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "(RelationToRanger(ship_to_guard,CurShip)>=10) && (ShipGetBad(CurShip)!=ship_to_guard)"          
+              "(RelationToRanger(ship_to_guard, CurShip) >= 10) && (ShipGetBad(CurShip) != ship_to_guard)"          
           ]        
         },
         {
@@ -14076,7 +14087,7 @@
         },
         {
           "Type":  "TState",
-          "Name":  "GuardShip",
+          "Name":  "FemGuardShip",
           "Pos.x":  760,
           "Pos.y":  510,
           "Parent":  -1,
@@ -14100,7 +14111,7 @@
         },
         {
           "Type":  "TState",
-          "Name":  "StateFreeGetReward",
+          "Name":  "FemStateFreeGetReward",
           "Pos.x":  860,
           "Pos.y":  370,
           "Parent":  -1,
@@ -14124,7 +14135,7 @@
         },
         {
           "Type":  "TState",
-          "Name":  "GuardVsPlayer",
+          "Name":  "FemGuardVsPlayer",
           "Pos.x":  760,
           "Pos.y":  570,
           "Parent":  -1,
@@ -14149,7 +14160,7 @@
         },
         {
           "Type":  "TState",
-          "Name":  "Delivery",
+          "Name":  "FemDelivery",
           "Pos.x":  420,
           "Pos.y":  550,
           "Parent":  -1,
@@ -14173,7 +14184,7 @@
         },
         {
           "Type":  "TState",
-          "Name":  "DeliveryVsPlayer",
+          "Name":  "FemDeliveryVsPlayer",
           "Pos.x":  420,
           "Pos.y":  600,
           "Parent":  -1,
