@@ -1247,7 +1247,7 @@
           "Pos.y":  60,
           "Parent":  109,
           "#":  110,
-          "Total.Lines":  38,
+          "Total.Lines":  42,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -1263,6 +1263,10 @@
               "    ShipCustomShipInfoData(Player(), tarr1[i, 'Designation'], 1, 0);",
               "    CreateActCodeEvent(t_OnStep, tarr1[i, 'Designation'], Player(), 1, 0, 11);",
               "}",
+              "",
+              "//Незначительно сокращаем продолжительность наркозависимости, если она есть",
+              "int addictivity = ShipHealthFactor(Player(), 6);",
+              "if(addictivity > 60) max(ShipHealthFactor(Player(), 6, round(0.90 * addictivity)), 60);",
               "",
               "ShipMoney(Player(), ShipMoney(Player()) - tarr1[i, 'Cost']);",
               "Sound('Sound.Sell');",
@@ -1298,7 +1302,7 @@
           "Pos.y":  20,
           "Parent":  115,
           "#":  116,
-          "Total.Lines":  20,
+          "Total.Lines":  23,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -1316,6 +1320,9 @@
               "}",
               "ArrayClear(tarr1);",
               "",
+              "//Сокращаем продолжительность наркозависимости, если она есть",
+              "int addictivity = ShipHealthFactor(Player(), 6);",
+              "if(addictivity > 60) max(ShipHealthFactor(Player(), 6, addictivity / 2), 60);",
               "PlayerImmunity(100);",
               "",
               "ShipMoney(Player(), ShipMoney(Player()) - GAnswerData);",
