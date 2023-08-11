@@ -1901,7 +1901,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  99,
-          "Total.Lines":  2469,
+          "Total.Lines":  2471,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -4366,10 +4366,12 @@
               "        //Сразу исключаем все скриптовые корабли (нет)",
               "        //if(ShipInScript(cur_ship, 0)) continue;",
               "",
+              "        if(IsPlayer(cur_ship)) continue;",
               "        tint2 = ShipOwner(cur_ship);",
               "        tint3 = ShipSubType(cur_ship);",
               "        //Пропускаем доминаторских боссов",
               "        if(tint2 == Kling && !tint3) continue;",
+              "",
               "        ShuDomiksMainUpgrade(cur_ship, tint2, ShipType(cur_ship), tint3);",
               "    }",
               "}",
