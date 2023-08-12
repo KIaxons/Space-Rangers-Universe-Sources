@@ -6107,7 +6107,7 @@
           "Pos.y":  0,
           "Parent":  262,
           "#":  263,
-          "Total.Lines":  97,
+          "Total.Lines":  99,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -6183,6 +6183,7 @@
               "            {",
               "                OrderLock(rattor, 0);",
               "                ShipOut(rattor);",
+              "                OrderNone(rattor);",
               "                continue;",
               "            }",
               "            OrderFollowShip(rattor, target, 3);",
@@ -6201,6 +6202,7 @@
               "            {",
               "                OrderLock(rattor, 0);",
               "                ShipOut(rattor);",
+              "                OrderNone(rattor);",
               "                continue;",
               "            }",
               "            SetData(0, 0, rattor); //Маркерно обнуляем Id цели перед возвращением домой",
