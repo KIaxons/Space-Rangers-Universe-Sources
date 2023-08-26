@@ -1,13 +1,13 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1891,
-  "ViewPos.y":  -167,
+  "ViewPos.x":  -2093,
+  "ViewPos.y":  -271,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
   "GraphPoint.Count":  1106,
-  "GraphLink.Count":  1022,
+  "GraphLink.Count":  1021,
   "GraphRectText.Count":  2,
   "Variables.Count":  68,
   "Stars.Count":  1,
@@ -25895,7 +25895,7 @@
           "Pos.y":  40,
           "Parent":  555,
           "#":  561,
-          "Total.Lines":  43,
+          "Total.Lines":  44,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -25927,7 +25927,8 @@
               "",
               "        //Формируем блок текста о наёмнике для вывода в диалог",
               "        tstr1 = tstr1 + \"<br>\";",
-              "        if(findsubstr(tstr1, tstr6) == -1) tstr1 = tstr1 + tstr6; //Настолько стрёмная проверка на случай, если первый в списке наёмник уже был нанят",
+              "        //if(findsubstr(tstr1, tstr6) == -1) tstr1 = tstr1 + tstr6; //Настолько стрёмная проверка на случай, если первый в списке наёмник уже был нанят",
+              "        tstr1 = tstr1 + tstr6;",
               "        //if(!i)",
               "        tstr1 = tstr1 + \"<br>\" + Format(CT('Script.Mod_ShuMercs.PlayerMercsStrikeGroup.CandidatesList.' + tstr3 + '.Description') '<Name'+'>', CT('Script.Mod_ShuMercs.PlayerMercsStrikeGroup.CandidatesList.' + tstr3 + '.Name'), '<Cost'+'>', cost);",
               "    }",
@@ -47357,13 +47358,6 @@
       "Type":  "TGraphLink",
       "Begin":  1053,
       "End":  1054,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  591,
-      "End":  316,
       "Nom":  0,
       "Arrow":  true    
     },
