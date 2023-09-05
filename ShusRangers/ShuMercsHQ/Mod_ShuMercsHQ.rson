@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -2093,
-  "ViewPos.y":  -271,
+  "ViewPos.x":  -1537,
+  "ViewPos.y":  -217,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
@@ -5653,7 +5653,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  10,
-          "Total.Lines":  1335,
+          "Total.Lines":  1336,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -6365,7 +6365,8 @@
               "                        //Запрещаем другим рейнджерам (и наёмникам) рэкетировать крейсер",
               "                        NoTargetToShip(cur_ship, 3);",
               "",
-              "                        for(i = 0; i <= 5; i = i + 1) ShipSkill(cur_ship, i, ShipSkill(tdwd1, i));",
+              "                        for(i = 0; i <= 4; i = i + 1) ShipSkill(cur_ship, i, ShipSkill(tdwd1, i));",
+              "                        ShipSkill(cur_ship, 'Leadership', 0); //Чтобы не нанимал себе в напарники других наёмников",
               "",
               "                        PlayerHQMainArray['Shipyard', 'LastHQCruiserName'] = ShipName(cur_ship); //Переменная PlayerHQMainArray['Shipyard', 'LastHQCruiserName'] запоминается для последующего вывода имени в случае гибели крейсера",
               "                        SetName(cur_ship, PlayerHQMainArray['Main', 'OrganisationName'] + ' ' + PlayerHQMainArray['Shipyard', 'LastHQCruiserName']);",
