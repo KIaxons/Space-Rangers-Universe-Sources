@@ -1,19 +1,19 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -184,
-  "ViewPos.y":  -238,
+  "ViewPos.x":  -555,
+  "ViewPos.y":  -6,
   "ScriptName":  "Mod_ShuMercs",
   "ScriptFileOut":  "H:\\Mod_ShuMercs.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercs.txt",
-  "GraphPoint.Count":  517,
-  "GraphLink.Count":  449,
+  "GraphPoint.Count":  519,
+  "GraphLink.Count":  450,
   "GraphRectText.Count":  5,
   "Variables.Count":  108,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
-  "States.Count":  23,
+  "States.Count":  24,
   "Groups.Count":  9,
   "Places.Count":  0,
   "Items.Count":  0,
@@ -21,7 +21,7 @@
   "Dialogs.Count":  23,
   "DialogMessages.Count":  61,
   "DialogAnswers.Count":  65,
-  "Operations.Count":  93,
+  "Operations.Count":  94,
   "Statements.Count":  132,
   "Loops.Count":  0,
   "Visual.Objects":  
@@ -6542,6 +6542,35 @@
               "    }",
               "}"          
           ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  -20,
+          "Pos.y":  0,
+          "Parent":  517,
+          "#":  518,
+          "Total.Lines":  16,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//Данный стейт используется и заполняется из скрипта ShuMercsHQ",
+              "if(!ShipInNormalSpace(CurShip))",
+              "{",
+              "    ShipDeleteCustomShipInfo(CurShip, 'ShuMercsHQ_StrikeGroupMercInfo'); //Нужны для контроля реальной смерти бывших наёмников из ударной группы",
+              "    OrderNone(CurShip);",
+              "    ShipDestroy(CurShip, 1);",
+              "    exit;",
+              "}",
+              "//Посадка или прыжок",
+              "if(ShipOrder(CurShip) == 2 || ShipOrder(CurShip) == 3) exit;",
+              "",
+              "//Отправляем бывшего наёмника (или какой-то другой корабль?) умирать где-то вне поля зрения игрока",
+              "OrderLock(CurShip, 1);",
+              "dword cur_star = ShipStar(CurShip);",
+              "if(StarOwner(cur_star) != 1) OrderLanding(CurShip, NearCivilPlanet(CurShip));",
+              "else OrderJump(CurShip, StarNearbyStars(cur_star, RndObject(1, 5, CurShip)));"          
+          ]        
         }      
       ],
       "Planets":      
@@ -8878,6 +8907,24 @@
           "Parent":  -1,
           "#":  206,
           "Move":  0,
+          "MoveObj":  -1,
+          "Attack.Count":  0,
+          "TakeItem":  -1,
+          "TakeAllItem":  false,
+          "OnTalk":  "",
+          "OnActCode":  "",
+          "EType":  1,
+          "EUnique":  "",
+          "EMsg":  ""        
+        },
+        {
+          "Type":  "TState",
+          "Name":  "MercToDieState",
+          "Pos.x":  80,
+          "Pos.y":  340,
+          "Parent":  -1,
+          "#":  517,
+          "Move":  5,
           "MoveObj":  -1,
           "Attack.Count":  0,
           "TakeItem":  -1,
@@ -13224,6 +13271,13 @@
       "Type":  "TGraphLink",
       "Begin":  511,
       "End":  94,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  517,
+      "End":  518,
       "Nom":  0,
       "Arrow":  true    
     }  
