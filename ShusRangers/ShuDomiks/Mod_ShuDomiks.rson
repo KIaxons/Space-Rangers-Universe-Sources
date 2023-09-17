@@ -1,15 +1,15 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -146,
-  "ViewPos.y":  -247,
+  "ViewPos.x":  -372,
+  "ViewPos.y":  -217,
   "ScriptName":  "Mod_ShuDomiks",
   "ScriptFileOut":  "H:\\Mod_ShuDomiks.scr",
   "ScriptTextOut":  "H:\\Mod_ShuDomiks.txt",
-  "GraphPoint.Count":  288,
+  "GraphPoint.Count":  289,
   "GraphLink.Count":  230,
   "GraphRectText.Count":  0,
-  "Variables.Count":  72,
+  "Variables.Count":  73,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
@@ -1901,7 +1901,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  99,
-          "Total.Lines":  2471,
+          "Total.Lines":  2559,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -4324,6 +4324,94 @@
               "    result = -1;",
               "}",
               "",
+              "//Ищет доминаторские акрины в трюме и на складе игрока для указанной станции, возвращает заполненный массив",
+              "//Предполагается использовать только из диалога по прилёту на соответствующую станцию",
+              "function FindDomModsInStock(dword place = 0)",
+              "{",
+              "    ArrayClear(tarr1);",
+              "    ArrayDelete(tarr1, 0);",
+              "",
+              "    int some_found_cnt = 0;",
+              "    int cnt = ShipItems(Player());",
+              "    for(int i = 1; i < cnt; i = i + 1)",
+              "    {",
+              "        dword item = ShipItems(Player(), i);",
+              "",
+              "        if(ItemType(item) < t_FuelTanks || ItemType(item) > t_CustomWeapon) continue;",
+              "        if(ItemOwner(item) != Kling) continue;",
+              "        if(EqSpecial(item) == -1) continue;",
+              "        if(findsubstr(BonusNumInCfg(EqSpecial(item)), 'DomModLocked') == -1) continue;",
+              "",
+              "        ArrayAdd(tarr1, item);",
+              "        some_found_cnt = some_found_cnt + 1;",
+              "    }",
+              "",
+              "    if(place)",
+              "    {",
+              "        cnt = StorageItems();",
+              "        for(i = 0; i < cnt; i = i + 1)",
+              "        {",
+              "            if(StorageItemLocation(i) != place) continue;",
+              "            item = StorageItems(i);",
+              "    ",
+              "            if(ItemType(item) < t_FuelTanks || ItemType(item) > t_CustomWeapon) continue;",
+              "            if(ItemOwner(item) != Kling) continue;",
+              "            if(EqSpecial(item) == -1) continue;",
+              "            if(findsubstr(BonusNumInCfg(EqSpecial(item)), 'DomModLocked') == -1) continue;",
+              "    ",
+              "            ArrayAdd(tarr1, item);",
+              "            some_found_cnt = some_found_cnt + 1;",
+              "        }",
+              "    }",
+              "",
+              "    if(!some_found_cnt) ArrayAdd(tarr1, 0); //Чтоб не крашил, собака",
+              "    result = some_found_cnt;",
+              "}",
+              "",
+              "//Ищет артефакты \"Диггер\" в трюме и на складе игрока для указанной станции, возвращает заполненный массив",
+              "//Предполагается использовать только из диалога по прилёту на соответствующую станцию",
+              "function FindDiggersInStock(dword place = 0, float cybercoins = 0.0)",
+              "{",
+              "    cybercoins = min(cybercoins, 100.0);",
+              "",
+              "    ArrayClear(tarr2);",
+              "    ArrayDelete(tarr2, 0);",
+              "",
+              "    int some_found_cnt = 0;",
+              "    int cnt = ShipItems(Player());",
+              "    for(int i = 1; i < cnt; i = i + 1)",
+              "    {",
+              "        dword art = ShipItems(Player(), i);",
+              "",
+              "        if(ItemType(art) != t_Artefact) continue;",
+              "        if(EquipmentImageName(art) != 'Digger') continue;",
+              "        if(0.01 * CustomArtData(art, 1) < cybercoins) continue; //Недостаточно Киберкойнов на счету \"Диггера\"",
+              "",
+              "        ArrayAdd(tarr2, art);",
+              "        some_found_cnt = some_found_cnt + 1;",
+              "    }",
+              "",
+              "    if(place)",
+              "    {",
+              "        cnt = StorageItems();",
+              "        for(i = 0; i < cnt; i = i + 1)",
+              "        {",
+              "            if(StorageItemLocation(i) != place) continue;",
+              "            art = StorageItems(i);",
+              "    ",
+              "            if(ItemType(art) != t_Artefact) continue;",
+              "            if(EquipmentImageName(art) != 'Digger') continue;",
+              "            if(0.01 * CustomArtData(art, 1) < cybercoins) continue; //Недостаточно Киберкойнов на счету \"Диггера\"",
+              "    ",
+              "            ArrayAdd(tarr2, art);",
+              "            some_found_cnt = some_found_cnt + 1;",
+              "        }",
+              "    }",
+              "",
+              "    if(!some_found_cnt) ArrayAdd(tarr2, 0); //Чтоб не крашил, собака",
+              "    result = some_found_cnt;",
+              "}",
+              "",
               "function FindShipItemById(dword ship, dword id)",
               "{",
               "    for(int i = ShipItems(ship) - 1; i >= 0; i = i - 1)",
@@ -4869,23 +4957,15 @@
           "Pos.y":  40,
           "Parent":  -1,
           "#":  131,
-          "Total.Lines":  16,
+          "Total.Lines":  8,
           "Code.Type":  "Turn",
           "Code":          
           [
               "tint3 = DomModUnlocksPerformedSB * 5; //Определяем коэффициент для расчёта цены следующей разблокировки",
-              "for(i = 1; i < ShipItems(Player()); i = i + 1)",
+              "for(i = 0; i < ArrayDim(tarr1); i = i + 1)",
               "{",
-              "    cur_item = ShipItems(Player(), i);",
-              "    tint1 = EqSpecial(cur_item);",
-              "    if(~tint1)",
-              "    {",
-              "        tstr1 = BonusNumInCfg(tint1);",
-              "        if(~findsubstr(tstr1, 'DomModLocked'))",
-              "        {",
-              "            InjectAnswer('DomModUnlockCBGo', DeleteTags(Name(cur_item)), cur_item);",
-              "        }",
-              "    }",
+              "    cur_item = tarr1[i];",
+              "    InjectAnswer('DomModUnlockCBGo', DeleteTags(Name(cur_item)), cur_item);",
               "}",
               "",
               "DAnswer('restart~' + \"Ничего я выбирать не буду\");"          
@@ -4898,16 +4978,17 @@
           "Pos.y":  150,
           "Parent":  -1,
           "#":  134,
-          "Total.Lines":  6,
+          "Total.Lines":  7,
           "Code.Type":  "Turn",
           "Code":          
           [
               "//Запоминаем возможные проценты снижения характеристики предмета в случае неудачи",
-              "tint1=85;",
-              "tint2=90;",
+              "tint1 = 85;",
+              "tint2 = 90;",
+              "",
               "//Кидаем \"кости\"",
-              "chance=Id(cur_item)+40;",
-              "chance=abs((chance*chance*chance+chance/10)%100)+1;"          
+              "chance = Id(cur_item) + 40;",
+              "chance = abs((chance * chance * chance + chance / 10) % 100) + 1;"          
           ]        
         },
         {
@@ -4922,16 +5003,16 @@
           "Code":          
           [
               "//Запоминаем возможные проценты снижения характеристики предмета в случае неудачи",
-              "tint1=82;",
-              "tint2=87;",
+              "tint1 = 82;",
+              "tint2 = 87;",
               "",
               "//Запоминаем цену выбранного эксперимента",
-              "credit_cost=credit_cost/2;",
-              "nodes_cost=nodes_cost/2;",
+              "credit_cost = credit_cost / 2;",
+              "nodes_cost = nodes_cost / 2;",
               "",
               "//Кидаем \"кости\"",
-              "chance=Id(cur_item)+41;",
-              "chance=abs((chance*chance*chance+chance/10)%100)+1;"          
+              "chance = Id(cur_item) + 41;",
+              "chance = abs((chance * chance * chance + chance / 10) % 100) + 1;"          
           ]        
         },
         {
@@ -4941,19 +5022,21 @@
           "Pos.y":  150,
           "Parent":  -1,
           "#":  136,
-          "Total.Lines":  9,
+          "Total.Lines":  11,
           "Code.Type":  "Turn",
           "Code":          
           [
               "//Запоминаем возможные проценты снижения характеристики предмета в случае неудачи",
-              "tint1=80;",
-              "tint2=85;",
+              "tint1 = 80;",
+              "tint2 = 85;",
+              "",
               "//Запоминаем цену выбранного эксперимента",
-              "credit_cost=credit_cost/4;",
-              "nodes_cost=nodes_cost/4;",
+              "credit_cost = credit_cost / 4;",
+              "nodes_cost = nodes_cost / 4;",
+              "",
               "//Кидаем \"кости\"",
-              "chance=Id(cur_item)+42;",
-              "chance=abs((chance*chance*chance+chance/10)%100)+1;"          
+              "chance = Id(cur_item) + 42;",
+              "chance = abs((chance * chance * chance + chance / 10) % 100) + 1;"          
           ]        
         },
         {
@@ -4987,26 +5070,26 @@
               "rand = RndObject(MinChanceUnlockCB, MaxChanceUnlockCB, cur_ruin);",
               "",
               "//Запоминаем возможные проценты снижения/повышения характеристики предмета в случае неудачи",
-              "tint1=60+DomModUnlocksPerformedSB;",
-              "tint2=110+DomModUnlocksPerformedSB;",
-              "if(tint1>90)tint1=90;",
-              "if(tint2>140)tint2=140;",
+              "tint1 = 60 + DomModUnlocksPerformedSB;",
+              "tint2 = 110 + DomModUnlocksPerformedSB;",
+              "if(tint1 > 90) tint1 = 90;",
+              "if(tint2 > 140) tint2 = 140;",
               "",
               "//Если ГТУ ещё недостаточно высок, существенно снижаем шансы успеха",
               "if(GalaxyTechLevel() == MinGTLToDomAcrynUnlock - 1)",
               "{",
-              "    rand=rand-25;",
-              "    tint1=tint1-25;",
-              "    tint2=tint2-25;",
+              "    rand = rand - 25;",
+              "    tint1 = tint1 - 25;",
+              "    tint2 = tint2 - 25;",
               "}",
               "",
               "//Отнимаем у игрока требуемое количество денег и нодов",
-              "ShipMoney(Player(),ShipMoney(Player())-credit_cost);",
-              "GetNodesFromShip(Player(),nodes_cost);",
+              "ShipMoney(Player(), ShipMoney(Player()) - credit_cost);",
+              "GetNodesFromShip(Player(), nodes_cost);",
               "",
               "//Кидаем \"кости\"",
-              "chance=Id(cur_item)+57;",
-              "chance=abs((chance*chance*chance+chance/10)%100)+1;"          
+              "chance = Id(cur_item) + 57;",
+              "chance = abs((chance * chance * chance + chance / 10) % 100) + 1;"          
           ]        
         },
         {
@@ -5157,8 +5240,8 @@
               "",
               "//Повышаем шансы на разблокировку других акринов в будущем",
               "DomModUnlocksPerformedSB = DomModUnlocksPerformedSB + 1;",
-              "if(MinChanceUnlockCB < 50) MinChanceUnlockCB=MinChanceUnlockCB + RndObject(0, 2, cur_ruin);",
-              "if(MaxChanceUnlockCB < 100) MaxChanceUnlockCB=MaxChanceUnlockCB + RndObject(0, 2, cur_ruin);",
+              "if(MinChanceUnlockCB < 50) MinChanceUnlockCB = MinChanceUnlockCB + RndObject(0, 2, cur_ruin);",
+              "if(MaxChanceUnlockCB < 100) MaxChanceUnlockCB = MaxChanceUnlockCB + RndObject(0, 2, cur_ruin);",
               "Sound('Sound.QuestCancel');"          
           ]        
         },
@@ -5174,14 +5257,14 @@
           "Code":          
           [
               "//Предварительно сперва снимаем акрин, чтобы снять уже наложенные модификаторы стоимости и размера",
-              "tint3=FindBonusByNameInCfg(DeleteTags(Format(BonusNumInCfg(EqSpecial(cur_item)),'Locked','Unlocked')));",
-              "SpecialToEquipment(-1,cur_item);",
-              "SpecialToEquipment(tint3,cur_item);",
+              "tint3 = FindBonusByNameInCfg(DeleteTags(Format(BonusNumInCfg(EqSpecial(cur_item)), 'Locked', 'Unlocked')));",
+              "SpecialToEquipment(-1, cur_item);",
+              "SpecialToEquipment(tint3, cur_item);",
               "",
               "//Повышаем шансы на разблокировку других акринов в будущем",
-              "DomModUnlocksPerformedSB=DomModUnlocksPerformedSB+1;",
-              "if(MinChanceUnlockCB<50) MinChanceUnlockCB=MinChanceUnlockCB + RndObject(0, 2, cur_ruin);",
-              "if(MaxChanceUnlockCB<100) MaxChanceUnlockCB=MaxChanceUnlockCB + RndObject(0, 2, cur_ruin);",
+              "DomModUnlocksPerformedSB = DomModUnlocksPerformedSB + 1;",
+              "if(MinChanceUnlockCB < 50) MinChanceUnlockCB = MinChanceUnlockCB + RndObject(0, 2, cur_ruin);",
+              "if(MaxChanceUnlockCB < 100) MaxChanceUnlockCB = MaxChanceUnlockCB + RndObject(0, 2, cur_ruin);",
               "Sound('Sound.Repair');"          
           ]        
         },
@@ -5197,35 +5280,35 @@
           "Code":          
           [
               "//Предварительно сперва снимаем акрин, чтобы снять уже наложенные модификаторы стоимости и размера",
-              "tint3=FindBonusByNameInCfg(DeleteTags(Format(BonusNumInCfg(EqSpecial(cur_item)),'Locked','Unlocked')));",
-              "SpecialToEquipment(-1,cur_item);",
-              "SpecialToEquipment(tint3,cur_item);",
+              "tint3 = FindBonusByNameInCfg(DeleteTags(Format(BonusNumInCfg(EqSpecial(cur_item)), 'Locked', 'Unlocked')));",
+              "SpecialToEquipment(-1, cur_item);",
+              "SpecialToEquipment(tint3, cur_item);",
               "",
               "//Переходим к определению побочного ущерба/бонуса предмету",
               "chance = RndObject(1, 100, cur_ruin);",
               "if(chance > 55)",
               "{",
-              "    SetEquipmentStats(cur_item,GetEquipmentStats(cur_item,0) * RndObject(tint1, tint2, cur_ruin) / 100,0);",
-              "    tstr2='</color>'+\"Только вот нашим парням пришлось убрать парочку мешавших деталек, так что характеристики оборудования могли слегка поменяться.\";",
+              "    SetEquipmentStats(cur_item, GetEquipmentStats(cur_item, 0) * RndObject(tint1, tint2, cur_ruin) / 100, 0);",
+              "    tstr2 = '</color>' + \"Только вот нашим парням пришлось убрать парочку мешавших деталек, так что характеристики оборудования могли слегка поменяться.\";",
               "}",
               "else",
               "{",
-              "    if(chance>30 && ItemLevel(cur_item)>1)",
+              "    if(chance > 30 && ItemLevel(cur_item) > 1)",
               "    {",
-              "        ItemLevel(cur_item,ItemLevel(cur_item)-1);",
-              "        tstr2='</color>'+\"Но при совмещении всплыло несколько досадных багов, из-за которых технический уровень оборудования упал.\";",
+              "        ItemLevel(cur_item, ItemLevel(cur_item) - 1);",
+              "        tstr2 = '</color>' + \"Но при совмещении всплыло несколько досадных багов, из-за которых технический уровень оборудования упал.\";",
               "    }",
               "    else",
               "    {",
-              "        ItemDurability(cur_item,0);",
-              "        tstr2='</color>'+\"К сожалению, при совмещении оборудование вышло из строя. Впрочем, это всё ерунда, верно?\";",
+              "        ItemDurability(cur_item, 0);",
+              "        tstr2 = '</color>' + \"К сожалению, при совмещении оборудование вышло из строя. Впрочем, это всё ерунда, верно?\";",
               "    }",
               "}",
               "",
               "//Повышаем шансы на разблокировку других акринов в будущем",
-              "DomModUnlocksPerformedSB=DomModUnlocksPerformedSB+1;",
-              "if(MinChanceUnlockCB<50) MinChanceUnlockCB=MinChanceUnlockCB + RndObject(0, 2, cur_ruin);",
-              "if(MaxChanceUnlockCB<100) MaxChanceUnlockCB=MaxChanceUnlockCB + RndObject(0, 2, cur_ruin);",
+              "DomModUnlocksPerformedSB = DomModUnlocksPerformedSB + 1;",
+              "if(MinChanceUnlockCB < 50) MinChanceUnlockCB = MinChanceUnlockCB + RndObject(0, 2, cur_ruin);",
+              "if(MaxChanceUnlockCB < 100) MaxChanceUnlockCB = MaxChanceUnlockCB + RndObject(0, 2, cur_ruin);",
               "Sound('Sound.Repair');"          
           ]        
         },
@@ -5236,7 +5319,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  166,
-          "Total.Lines":  67,
+          "Total.Lines":  79,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
@@ -5270,7 +5353,11 @@
               "",
               "            if(!LastTalkAboutDomAcrynsOnSB)",
               "            {",
-              "                if(UnknownDomAcrynsTimer == -1) AddDialogInject('DomModUnlockSB', '', \"Мне надо разблокировать доминаторский акрин\", 1);",
+              "                if(UnknownDomAcrynsTimer == -1)",
+              "                {",
+              "                    //FindDomModsInStock при вызове заполняет tarr1",
+              "                    if(FindDomModsInStock(cur_ruin)) AddDialogInject('DomModUnlockSB', '', \"Мне надо разблокировать доминаторский акрин\", 1);",
+              "                }",
               "            }",
               "        }",
               "        else if(tstr1 == 'RC')",
@@ -5285,7 +5372,15 @@
               "        }",
               "        else if(tstr1 == 'CB')",
               "        {",
-              "            AddDialogInject('DomModUnlockCB', '', \"Мне надо разблокировать доминаторский акрин\", 1);",
+              "            //FindDomModsInStock при вызове заполняет tarr1",
+              "            if(FindDomModsInStock(cur_ruin)) AddDialogInject('DomModUnlockCB', '', \"Мне надо разблокировать доминаторский акрин\", 1);",
+              "",
+              "            //Диалог для разблокировки возможности торговли (обмена) с Келлером",
+              "            if()",
+              "            {",
+              "                //FindDiggersInStock при вызове заполняет tarr2",
+              "                if(FindDiggersInStock(cur_ruin, 0.0))",
+              "            }",
               "        }",
               "    }",
               "    else",
@@ -5321,17 +5416,17 @@
           "Code":          
           [
               "//Предварительно сперва снимаем акрин, чтобы снять уже наложенные модификаторы стоимости и размера",
-              "tint3=FindBonusByNameInCfg(DeleteTags(Format(BonusNumInCfg(EqSpecial(cur_item)),'Locked','Unlocked')));",
-              "SpecialToEquipment(-1,cur_item);",
-              "SpecialToEquipment(tint3,cur_item);",
-              "ShipMoney(Player(),ShipMoney(Player())-credit_cost);",
-              "GetNodesFromShip(Player(),nodes_cost);",
+              "tint3 = FindBonusByNameInCfg(DeleteTags(Format(BonusNumInCfg(EqSpecial(cur_item)), 'Locked', 'Unlocked')));",
+              "SpecialToEquipment(-1, cur_item);",
+              "SpecialToEquipment(tint3, cur_item);",
+              "ShipMoney(Player(), ShipMoney(Player()) - credit_cost);",
+              "GetNodesFromShip(Player(), nodes_cost);",
               "",
               "//Повышаем шансы на разблокировку других акринов в будущем",
-              "DomModUnlocksPerformedSB=DomModUnlocksPerformedSB+1;",
-              "if(RookieChanceUnlockSB<60) RookieChanceUnlockSB=RookieChanceUnlockSB + RndObject(1, 3, cur_ruin);",
-              "if(OrdinaryChanceUnlockSB<75) OrdinaryChanceUnlockSB=OrdinaryChanceUnlockSB+2;",
-              "if(ProfiChanceUnlockSB<90) ProfiChanceUnlockSB=ProfiChanceUnlockSB+2;",
+              "DomModUnlocksPerformedSB = DomModUnlocksPerformedSB + 1;",
+              "if(RookieChanceUnlockSB < 60) RookieChanceUnlockSB = RookieChanceUnlockSB + RndObject(1, 3, cur_ruin);",
+              "if(OrdinaryChanceUnlockSB < 75) OrdinaryChanceUnlockSB = OrdinaryChanceUnlockSB + 2;",
+              "if(ProfiChanceUnlockSB < 90) ProfiChanceUnlockSB = ProfiChanceUnlockSB + 2;",
               "Sound('Sound.Repair');"          
           ]        
         },
@@ -5347,39 +5442,39 @@
           "Code":          
           [
               "//Предварительно сперва снимаем акрин, чтобы снять уже наложенные модификаторы стоимости и размера",
-              "tint3=FindBonusByNameInCfg(DeleteTags(Format(BonusNumInCfg(EqSpecial(cur_item)),'Locked','Unlocked')));",
-              "SpecialToEquipment(-1,cur_item);",
-              "SpecialToEquipment(tint3,cur_item);",
+              "tint3=FindBonusByNameInCfg(DeleteTags(Format(BonusNumInCfg(EqSpecial(cur_item)), 'Locked', 'Unlocked')));",
+              "SpecialToEquipment(-1, cur_item);",
+              "SpecialToEquipment(tint3, cur_item);",
               "",
               "//Переходим к определению побочного ущерба предмету",
               "chance = RndObject(1, 100, cur_ruin);",
               "if(chance > 55)",
               "{",
               "    SetEquipmentStats(cur_item, GetEquipmentStats(cur_item, 0) * RndObject(tint1, tint2, cur_ruin) / 100, 0);",
-              "    tstr2='</color>'+\"К несчастью, при снятии блокировки мы повредили оборудование и одна из его характеристик снизилась.\";",
+              "    tstr2 = '</color>' + \"К несчастью, при снятии блокировки мы повредили оборудование и одна из его характеристик снизилась.\";",
               "}",
               "else",
               "{",
-              "    if(chance>30 && ItemLevel(cur_item)>1)",
+              "    if(chance > 30 && ItemLevel(cur_item) > 1)",
               "    {",
-              "        ItemLevel(cur_item,ItemLevel(cur_item)-1);",
-              "        tstr2='</color>'+\"Но совмещение оборудования произошло с ошибками, и его технический уровень упал.\";",
+              "        ItemLevel(cur_item, ItemLevel(cur_item) - 1);",
+              "        tstr2 = '</color>' + \"Но совмещение оборудования произошло с ошибками, и его технический уровень упал.\";",
               "    }",
               "    else",
               "    {",
-              "        ItemDurability(cur_item,0);",
-              "        tstr2='</color>'+\"К сожалению, при совмещении оборудование вышло из строя. Впрочем, это не критично и мастера из соседнего отдела смогут устранить дефекты.\";",
+              "        ItemDurability(cur_item, 0);",
+              "        tstr2 = '</color>' + \"К сожалению, при совмещении оборудование вышло из строя. Впрочем, это не критично и мастера из соседнего отдела смогут устранить дефекты.\";",
               "    }",
               "}",
               "",
-              "ShipMoney(Player(),ShipMoney(Player())-credit_cost);",
-              "GetNodesFromShip(Player(),nodes_cost);",
+              "ShipMoney(Player(), ShipMoney(Player()) - credit_cost);",
+              "GetNodesFromShip(Player(), nodes_cost);",
               "",
               "//Повышаем шансы на разблокировку других акринов в будущем",
-              "DomModUnlocksPerformedSB=DomModUnlocksPerformedSB+1;",
-              "if(RookieChanceUnlockSB<60) RookieChanceUnlockSB=RookieChanceUnlockSB + RndObject(1, 3, cur_ruin);",
-              "if(OrdinaryChanceUnlockSB<75) OrdinaryChanceUnlockSB=OrdinaryChanceUnlockSB+2;",
-              "if(ProfiChanceUnlockSB<90) ProfiChanceUnlockSB=ProfiChanceUnlockSB+2;",
+              "DomModUnlocksPerformedSB = DomModUnlocksPerformedSB + 1;",
+              "if(RookieChanceUnlockSB < 60) RookieChanceUnlockSB = RookieChanceUnlockSB + RndObject(1, 3, cur_ruin);",
+              "if(OrdinaryChanceUnlockSB < 75) OrdinaryChanceUnlockSB = OrdinaryChanceUnlockSB + 2;",
+              "if(ProfiChanceUnlockSB < 90) ProfiChanceUnlockSB = ProfiChanceUnlockSB + 2;",
               "Sound('Sound.Repair');"          
           ]        
         },
@@ -5395,15 +5490,15 @@
           "Code":          
           [
               "//Уничтожаем предмет",
-              "FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),cur_item)));",
-              "ShipMoney(Player(),ShipMoney(Player())-credit_cost);",
-              "GetNodesFromShip(Player(),nodes_cost);",
+              "FreeItem(GetItemFromShip(Player(), FindItemInShip(Player(), cur_item)));",
+              "ShipMoney(Player(), ShipMoney(Player()) - credit_cost);",
+              "GetNodesFromShip(Player(), nodes_cost);",
               "",
               "//Повышаем шансы на разблокировку других акринов в будущем",
-              "DomModUnlocksPerformedSB=DomModUnlocksPerformedSB+1;",
-              "if(RookieChanceUnlockSB<60) RookieChanceUnlockSB=RookieChanceUnlockSB + RndObject(1, 3, cur_ruin);",
-              "if(OrdinaryChanceUnlockSB<75) OrdinaryChanceUnlockSB=OrdinaryChanceUnlockSB+2;",
-              "if(ProfiChanceUnlockSB<90) ProfiChanceUnlockSB=ProfiChanceUnlockSB+2;",
+              "DomModUnlocksPerformedSB = DomModUnlocksPerformedSB + 1;",
+              "if(RookieChanceUnlockSB < 60) RookieChanceUnlockSB = RookieChanceUnlockSB + RndObject(1, 3, cur_ruin);",
+              "if(OrdinaryChanceUnlockSB < 75) OrdinaryChanceUnlockSB = OrdinaryChanceUnlockSB + 2;",
+              "if(ProfiChanceUnlockSB < 90) ProfiChanceUnlockSB = ProfiChanceUnlockSB + 2;",
               "Sound('Sound.QuestCancel');"          
           ]        
         },
@@ -5414,27 +5509,29 @@
           "Pos.y":  90,
           "Parent":  -1,
           "#":  213,
-          "Total.Lines":  17,
+          "Total.Lines":  19,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "cur_item=GAnswerData;",
-              "tstr1=DeleteTags(Name(cur_item));",
-              "credit_cost=ItemCost(cur_item)/100*45+ItemCost(cur_item)/100*tint3;",
-              "if(GalaxyTechLevel<MinGTLToDomAcrynUnlock)credit_cost=credit_cost/4*2.5;",
-              "else credit_cost=credit_cost/4*2;",
-              "nodes_cost=credit_cost/350;",
-              "if(nodes_cost<10)nodes_cost=10;",
+              "cur_item = GAnswerData;",
+              "tstr1 = DeleteTags(Name(cur_item));",
+              "credit_cost = ItemCost(cur_item) / 100 * 45 + ItemCost(cur_item) / 100 * tint3;",
+              "if(GalaxyTechLevel < MinGTLToDomAcrynUnlock) credit_cost = credit_cost / 4 * 2.5;",
+              "else credit_cost = credit_cost / 4 * 2;",
+              "nodes_cost = credit_cost / 350;",
+              "if(nodes_cost < 10) nodes_cost = 10;",
+              "",
               "//Вычитаем пиратскую скидку на кредиты",
-              "tint2=credit_cost; //Запоминаем значение без скидки для диалога",
-              "flt1=discount;",
-              "flt1=flt1/100*credit_cost;",
-              "credit_cost=round(-flt1+credit_cost);",
+              "tint2 = credit_cost; //Запоминаем значение без скидки для диалога",
+              "flt1 = discount;",
+              "flt1 = flt1 / 100 * credit_cost;",
+              "credit_cost = round(-flt1+credit_cost);",
+              "",
               "//И на ноды",
-              "tint3=nodes_cost; //Запоминаем значение без скидки для диалога",
-              "flt1=discount;",
-              "flt1=flt1/100*nodes_cost;",
-              "nodes_cost=round(-flt1+nodes_cost);"          
+              "tint3 = nodes_cost; //Запоминаем значение без скидки для диалога",
+              "flt1 = discount;",
+              "flt1 = flt1 / 100 * nodes_cost;",
+              "nodes_cost = round(-flt1 + nodes_cost);"          
           ]        
         },
         {
@@ -5444,23 +5541,15 @@
           "Pos.y":  30,
           "Parent":  -1,
           "#":  219,
-          "Total.Lines":  16,
+          "Total.Lines":  8,
           "Code.Type":  "Turn",
           "Code":          
           [
               "tint3 = DomModUnlocksPerformedSB * 7; //Определяем коэффициент для расчёта цены следующей разблокировки",
-              "for(i = 1; i < ShipItems(Player()); i = i + 1)",
+              "for(i = 0; i < ArrayDim(tarr1); i = i + 1)",
               "{",
-              "    cur_item = ShipItems(Player(), i);",
-              "    tint1 = EqSpecial(cur_item);",
-              "    if(~tint1)",
-              "    {",
-              "        tstr1 = BonusNumInCfg(tint1);",
-              "        if(~findsubstr(tstr1, 'DomModLocked'))",
-              "        {",
-              "            InjectAnswer('DomModUnlockSBGo', DeleteTags(Name(cur_item)), cur_item);",
-              "        }",
-              "    }",
+              "    cur_item = tarr1[i];",
+              "    InjectAnswer('DomModUnlockSBGo', DeleteTags(Name(cur_item)), cur_item);",
               "}",
               "",
               "DAnswer('restart~' + \"Ничего я выбирать не буду\");"          
@@ -6732,7 +6821,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())>=credit_cost && GetNodesFromShip(Player())>=nodes_cost"          
+              "ShipMoney(Player()) >= credit_cost && GetNodesFromShip(Player()) >= nodes_cost"          
           ]        
         },
         {
@@ -6746,7 +6835,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())>=credit_cost/2 && GetNodesFromShip(Player())>=nodes_cost/2"          
+              "ShipMoney(Player()) >= credit_cost / 2 && GetNodesFromShip(Player()) >= nodes_cost / 2"          
           ]        
         },
         {
@@ -6760,7 +6849,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())>=credit_cost/4 && GetNodesFromShip(Player())>=nodes_cost/4"          
+              "ShipMoney(Player()) >= credit_cost / 4 && GetNodesFromShip(Player()) >= nodes_cost / 4"          
           ]        
         },
         {
@@ -6900,7 +6989,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "chance<=ProfiChanceUnlockSB"          
+              "chance <= ProfiChanceUnlockSB"          
           ]        
         },
         {
@@ -6914,7 +7003,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "chance>ProfiChanceUnlockSB"          
+              "chance > ProfiChanceUnlockSB"          
           ]        
         },
         {
@@ -6956,7 +7045,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "chance<=OrdinaryChanceUnlockSB"          
+              "chance <= OrdinaryChanceUnlockSB"          
           ]        
         },
         {
@@ -6970,7 +7059,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "chance>OrdinaryChanceUnlockSB"          
+              "chance > OrdinaryChanceUnlockSB"          
           ]        
         },
         {
@@ -6998,7 +7087,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "chance>RookieChanceUnlockSB"          
+              "chance > RookieChanceUnlockSB"          
           ]        
         },
         {
@@ -7012,7 +7101,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "chance<=RookieChanceUnlockSB"          
+              "chance <= RookieChanceUnlockSB"          
           ]        
         },
         {
@@ -7152,7 +7241,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())<credit_cost/4 || GetNodesFromShip(Player())<nodes_cost/4"          
+              "ShipMoney(Player()) < credit_cost / 4 || GetNodesFromShip(Player()) < nodes_cost / 4"          
           ]        
         },
         {
@@ -7166,7 +7255,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())<credit_cost/2 || GetNodesFromShip(Player())<nodes_cost/2"          
+              "ShipMoney(Player()) < credit_cost / 2 || GetNodesFromShip(Player()) < nodes_cost / 2"          
           ]        
         },
         {
@@ -7180,7 +7269,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipMoney(Player())<credit_cost || GetNodesFromShip(Player())<nodes_cost"          
+              "ShipMoney(Player()) < credit_cost || GetNodesFromShip(Player()) < nodes_cost"          
           ]        
         },
         {
@@ -8275,6 +8364,17 @@
           "#":  287,
           "Var.Type":  "Int",
           "Init":  "7",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tarr2",
+          "Pos.x":  780,
+          "Pos.y":  430,
+          "Parent":  -1,
+          "#":  288,
+          "Var.Type":  "Array",
+          "Init":  "",
           "Global":  false        
         }      
       ]    
