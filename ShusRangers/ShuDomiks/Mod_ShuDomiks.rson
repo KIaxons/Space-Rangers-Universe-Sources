@@ -6,8 +6,8 @@
   "ScriptName":  "Mod_ShuDomiks",
   "ScriptFileOut":  "H:\\Mod_ShuDomiks.scr",
   "ScriptTextOut":  "H:\\Mod_ShuDomiks.txt",
-  "GraphPoint.Count":  318,
-  "GraphLink.Count":  252,
+  "GraphPoint.Count":  322,
+  "GraphLink.Count":  256,
   "GraphRectText.Count":  0,
   "Variables.Count":  78,
   "Stars.Count":  1,
@@ -19,9 +19,9 @@
   "Items.Count":  0,
   "Ethers.Count":  0,
   "Dialogs.Count":  12,
-  "DialogMessages.Count":  35,
-  "DialogAnswers.Count":  48,
-  "Operations.Count":  52,
+  "DialogMessages.Count":  36,
+  "DialogAnswers.Count":  50,
+  "Operations.Count":  53,
   "Statements.Count":  61,
   "Loops.Count":  0,
   "Visual.Objects":  
@@ -508,6 +508,26 @@
           "#":  313,
           "Msg":  "",
           "AMsg.Num":  "47"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  317,
+          "#":  318,
+          "Msg":  "<tstr2>",
+          "AMsg.Num":  "48"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "exit",
+          "Pos.x":  20,
+          "Pos.y":  0,
+          "Parent":  319,
+          "#":  320,
+          "Msg":  "",
+          "AMsg.Num":  "49"        
         }      
       ],
       "DialogMessages":      
@@ -855,12 +875,22 @@
         {
           "Type":  "TDialogMsg",
           "Name":  "",
-          "Pos.x":  -100,
-          "Pos.y":  490,
-          "Parent":  -1,
+          "Pos.x":  20,
+          "Pos.y":  0,
+          "Parent":  316,
           "#":  317,
           "Msg":  "<tstr1>",
           "DMsg.Num":  "34"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  321,
+          "#":  319,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "35"        
         }      
       ],
       "Dialogs":      
@@ -956,8 +986,8 @@
         {
           "Type":  "TDialog",
           "Name":  "DiggerDialogSSB",
-          "Pos.x":  -100,
-          "Pos.y":  450,
+          "Pos.x":  -60,
+          "Pos.y":  420,
           "Parent":  -1,
           "#":  315        
         }      
@@ -5667,7 +5697,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  166,
-          "Total.Lines":  97,
+          "Total.Lines":  112,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
@@ -5745,6 +5775,21 @@
               "                    {",
               "                        AddDialogInject('DiggerDialogCB', '', CT('Script.Mod_ShuDomiks.DiggerDialogCB.PlayerRevealConditionsAsk'), 1);",
               "                    }",
+              "                }",
+              "            }",
+              "        }",
+              "        //Подпространственная база из мода ExpSSB",
+              "        else if(tstr1 == 'SSB')",
+              "        {",
+              "",
+              "            if(!DomiksDefeated(1)) // || DomiksDefeated(1) == 3)",
+              "            {",
+              "                //Диалог на SSB либо разблокирует для игрока возможность активации \"Диггеров\",",
+              "                //либо просто подтвердит уже открытую возможность, если ранее игрок открыл её в доминионе",
+              "                //FindDiggersInStock при вызове заполняет tarr2",
+              "                if(FindDiggersInStock(cur_ruin, 0.0))",
+              "                {",
+              "                    AddDialogInject('DiggerDialogSSB', '', CT('Script.Mod_ShuDomiks.DiggerDialogSSB.PlayerRevealConditionsAsk'), 1);",
               "                }",
               "            }",
               "        }",
@@ -6944,15 +6989,39 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  -100,
-          "Pos.y":  470,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  315,
           "#":  316,
-          "Total.Lines":  0,
+          "Total.Lines":  10,
           "Code.Type":  "Turn",
           "Code":          
           [
-              ""          
+              "if(DiggerRevelationStatus < 2) //Если возможность активировать диггер ещё не доступна игроку",
+              "{",
+              "    tstr1 = '</color>' + CT('Script.Mod_ShuDomiks.DiggerDialogSSB.');",
+              "    tstr2 = '</color>' + CT('Script.Mod_ShuDomiks.DiggerDialogSSB.');",
+              "}",
+              "else //Если ранее он уже открыл её на доминионе",
+              "{",
+              "    tstr1 = '</color>' + CT('Script.Mod_ShuDomiks.DiggerDialogSSB.');",
+              "    tstr2 = '</color>' + CT('Script.Mod_ShuDomiks.DiggerDialogSSB.');",
+              "}"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  -20,
+          "Pos.y":  0,
+          "Parent":  318,
+          "#":  321,
+          "Total.Lines":  2,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "if(DiggerRevelationStatus < 2) DiggerRevelationStatus = 1;",
+              "tstr1 = '</color>' + CT('Script.Mod_ShuDomiks.DiggerDialogSSB.');"          
           ]        
         }      
       ],
@@ -10737,6 +10806,34 @@
       "Type":  "TGraphLink",
       "Begin":  316,
       "End":  317,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  317,
+      "End":  318,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  319,
+      "End":  320,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  318,
+      "End":  321,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  321,
+      "End":  319,
       "Nom":  0,
       "Arrow":  true    
     }  
