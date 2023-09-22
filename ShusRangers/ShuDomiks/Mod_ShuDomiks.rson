@@ -1,13 +1,13 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -713,
-  "ViewPos.y":  -196,
+  "ViewPos.x":  -540,
+  "ViewPos.y":  -154,
   "ScriptName":  "Mod_ShuDomiks",
   "ScriptFileOut":  "H:\\Mod_ShuDomiks.scr",
   "ScriptTextOut":  "H:\\Mod_ShuDomiks.txt",
-  "GraphPoint.Count":  315,
-  "GraphLink.Count":  250,
+  "GraphPoint.Count":  318,
+  "GraphLink.Count":  252,
   "GraphRectText.Count":  0,
   "Variables.Count":  78,
   "Stars.Count":  1,
@@ -18,10 +18,10 @@
   "Places.Count":  1,
   "Items.Count":  0,
   "Ethers.Count":  0,
-  "Dialogs.Count":  11,
-  "DialogMessages.Count":  34,
+  "Dialogs.Count":  12,
+  "DialogMessages.Count":  35,
   "DialogAnswers.Count":  48,
-  "Operations.Count":  51,
+  "Operations.Count":  52,
   "Statements.Count":  61,
   "Loops.Count":  0,
   "Visual.Objects":  
@@ -851,6 +851,16 @@
           "#":  305,
           "Msg":  "<tstr1>",
           "DMsg.Num":  "33"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  -100,
+          "Pos.y":  490,
+          "Parent":  -1,
+          "#":  317,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "34"        
         }      
       ],
       "Dialogs":      
@@ -942,6 +952,14 @@
           "Pos.y":  -20,
           "Parent":  301,
           "#":  314        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "DiggerDialogSSB",
+          "Pos.x":  -100,
+          "Pos.y":  450,
+          "Parent":  -1,
+          "#":  315        
         }      
       ],
       "Groups":      
@@ -6922,6 +6940,20 @@
               "    TempVar1 = 1;",
               "}"          
           ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  -100,
+          "Pos.y":  470,
+          "Parent":  -1,
+          "#":  316,
+          "Total.Lines":  0,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              ""          
+          ]        
         }      
       ],
       "Places":      
@@ -10691,6 +10723,20 @@
       "Type":  "TGraphLink",
       "Begin":  314,
       "End":  301,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  315,
+      "End":  316,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  316,
+      "End":  317,
       "Nom":  0,
       "Arrow":  true    
     }  
