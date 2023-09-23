@@ -1,15 +1,15 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  175,
-  "ViewPos.y":  84,
+  "ViewPos.x":  168,
+  "ViewPos.y":  129,
   "ScriptName":  "Mod_ShuHomeland",
   "ScriptFileOut":  "H:\\Mod_ShuHomeland.scr",
   "ScriptTextOut":  "H:\\Mod_ShuHomeland.txt",
-  "GraphPoint.Count":  58,
-  "GraphLink.Count":  27,
+  "GraphPoint.Count":  46,
+  "GraphLink.Count":  12,
   "GraphRectText.Count":  0,
-  "Variables.Count":  20,
+  "Variables.Count":  24,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
@@ -21,8 +21,8 @@
   "Dialogs.Count":  4,
   "DialogMessages.Count":  2,
   "DialogAnswers.Count":  2,
-  "Operations.Count":  11,
-  "Statements.Count":  14,
+  "Operations.Count":  9,
+  "Statements.Count":  0,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
@@ -32,20 +32,20 @@
         {
           "Type":  "TDialogAnswer",
           "Name":  "restart",
-          "Pos.x":  940,
-          "Pos.y":  380,
-          "Parent":  -1,
-          "#":  32,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  20,
+          "#":  24,
           "Msg":  "<TempStr4>",
           "AMsg.Num":  "0"        
         },
         {
           "Type":  "TDialogAnswer",
           "Name":  "restart",
-          "Pos.x":  940,
-          "Pos.y":  330,
-          "Parent":  -1,
-          "#":  45,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  29,
+          "#":  30,
           "Msg":  "От души!",
           "AMsg.Num":  "1"        
         }      
@@ -55,20 +55,20 @@
         {
           "Type":  "TDialogMsg",
           "Name":  "",
-          "Pos.x":  940,
-          "Pos.y":  410,
-          "Parent":  -1,
-          "#":  28,
-          "Msg":  "Здравия желаем, рейнджер <Player>! Согласно нашим данным, у вас уже накопилось достаточно очков воина для получения звания <TempStr2>. В награду за ваши заслуги перед Коалицией, мы с гордостью вручаем вам <TempStr>. Продолжайте вашу борьбу с захватчиками и, рано или поздно, победа будет за нами!\r\nТакже, от лица местного представительства сети центров рейнджеров, передаём в ваши руки <TempStr5>. Надеемся, что этот скромный подарок сможет помочь вам в вашем нелёгком деле.\r\n<TempStr3>",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  21,
+          "#":  20,
+          "Msg":  "<tstr1>",
           "DMsg.Num":  "0"        
         },
         {
           "Type":  "TDialogMsg",
           "Name":  "",
-          "Pos.x":  940,
-          "Pos.y":  270,
-          "Parent":  -1,
-          "#":  44,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  28,
+          "#":  29,
           "Msg":  "О, какие люди! Вас-то мы и ждали! Вы ведь, должно быть, уже в курсе, что ваше пиратское усердие не осталось незамеченным? От имени братства, торжественно провозглашаем вас <TempStr2>, и в качестве небольшого поощрительного презента вручаем <TempStr5>.\r\nПродолжайте в том же духе, <Player>, Верховные Лякуши очень довольны!",
           "DMsg.Num":  "1"        
         }      
@@ -78,34 +78,34 @@
         {
           "Type":  "TDialog",
           "Name":  "CoalitionRankRaise",
-          "Pos.x":  940,
-          "Pos.y":  470,
-          "Parent":  -1,
-          "#":  27        
+          "Pos.x":  0,
+          "Pos.y":  30,
+          "Parent":  26,
+          "#":  19        
         },
         {
           "Type":  "TDialog",
           "Name":  "PirateRankRaise",
-          "Pos.x":  940,
-          "Pos.y":  210,
-          "Parent":  -1,
-          "#":  42        
+          "Pos.x":  140,
+          "Pos.y":  30,
+          "Parent":  26,
+          "#":  27        
         },
         {
           "Type":  "TDialog",
           "Name":  "Notification_ON",
-          "Pos.x":  1090,
-          "Pos.y":  300,
-          "Parent":  -1,
-          "#":  46        
+          "Pos.x":  0,
+          "Pos.y":  30,
+          "Parent":  41,
+          "#":  31        
         },
         {
           "Type":  "TDialog",
           "Name":  "Notification_OFF",
-          "Pos.x":  1090,
-          "Pos.y":  340,
-          "Parent":  -1,
-          "#":  47        
+          "Pos.x":  0,
+          "Pos.y":  70,
+          "Parent":  41,
+          "#":  32        
         }      
       ],
       "Groups":      
@@ -145,9 +145,9 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  680,
-          "Pos.y":  350,
-          "Parent":  -1,
+          "Pos.x":  30,
+          "Pos.y":  0,
+          "Parent":  37,
           "#":  4,
           "Total.Lines":  1,
           "Code.Type":  "Global",
@@ -159,18 +159,19 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  780,
-          "Pos.y":  350,
-          "Parent":  -1,
+          "Pos.x":  20,
+          "Pos.y":  0,
+          "Parent":  6,
           "#":  5,
-          "Total.Lines":  144,
+          "Total.Lines":  146,
           "Code.Type":  "Turn",
           "Code":          
           [
               "//Отсчитываем ходы после последней отправки уведомления об атаке родной системы (чтобы его не присылали игроку каждый ход)",
-              "if(HomeAttackEtherTimer<30)HomeAttackEtherTimer=HomeAttackEtherTimer+1;",
+              "if(HomeAttackEtherTimer < 30) HomeAttackEtherTimer = HomeAttackEtherTimer + 1;",
+              "",
               "//Перебираем галактические события",
-              "for(i=GalaxyEvents()-1;i>=0;i=i-1)",
+              "for(i = GalaxyEvents() - 1; i >= 0; i = i - 1)",
               "{",
               "    if(GalaxyEventDate(i)<CurTurn())break;",
               "    if(GalaxyEventType(i)=='RuinsDestroyed')",
@@ -238,7 +239,7 @@
               "        TempDword=GalaxyStar(HomeStarId);",
               "        if(ShipOwner(Player())==7)",
               "        {",
-              "            if(StarOwner(TempDword)==2 && StarCustomFaction(TempDword)!='Klissan')Ether(0,'',\"Сорян, братуха, тут неувязочка одна вышла. Снесли нам, короче, все полимеры - <color=255,240,100>пиратские базы</color> то есть. Так что придётся тебе за новыми званиями на родную планету <HomePlanetName> в систему <HomeStarName> летать.<br>Но ты не переживай, мера временная.\");",
+              "            if(StarOwner(TempDword)==2 && StarCustomFaction(TempDword)!='Klissan') Ether(0,'',\"Сорян, братуха, тут неувязочка одна вышла. Снесли нам, короче, все полимеры - <color=255,240,100>пиратские базы</color> то есть. Так что придётся тебе за новыми званиями на родную планету <HomePlanetName> в систему <HomeStarName> летать.<br>Но ты не переживай, мера временная.\");",
               "            PBLostMessCheck=1;",
               "        }",
               "    }",
@@ -248,7 +249,7 @@
               "{",
               "    if(HomeAttackEtherTimer>=30)",
               "    {",
-              "        TempDword=GalaxyStar(HomeStarId);",
+              "        TempDword = GalaxyStar(HomeStarId);",
               "        if(StarBattle(TempDword))",
               "        {",
               "            if(!ShipInStar(Player(),TempDword))",
@@ -258,7 +259,7 @@
               "                {",
               "                    if(StarOwner(TempDword)==0)",
               "                    {",
-              "                        TempDword2=Rnd(1,3);",
+              "                        TempDword2 = RndObject(1, 3, TempDword);",
               "                        if(TempDword2==1)CustomEther('Galaxy_Alert',0,'',\"Внимание!!! Ваша родная система <HomeStarName> была атакована силами противника! Требуется срочная помощь в выдворении захватчиков.\");",
               "                        if(TempDword2==2)CustomEther('Galaxy_Alert',0,'',\"Внимание!!! Вашей родной системе <HomeStarName> угрожают проклятые оккупанты! Помогите доблестным защитникам отстоять родину!\");",
               "                        if(TempDword2==3)CustomEther('Galaxy_Alert',0,'',\"Внимание!!! На вашу родную систему <HomeStarName> напали враги Коалиции! Как можно скорее отправляйтесь туда и помогите военным отразить атаку.\");",
@@ -270,7 +271,7 @@
               "                {",
               "                    if(StarOwner(TempDword)==2 && StarCustomFaction(TempDword)!='Klissan')",
               "                    {",
-              "                        TempDword2=Rnd(1,3);",
+              "                        TempDword2 = RndObject(1, 3, TempDword);",
               "                        if(TempDword2==1)CustomEther('Galaxy_Alert',0,'',\"Полундра!!! Враги напали на твою родную систему <HomeStarName>. Быстро дуй на помощь братанам, а не то останешься без родины!\");",
               "                        if(TempDword2==2)CustomEther('Galaxy_Alert',0,'',\"Полундра!!! Твоя родная система <HomeStarName> под атакой. Айда помогать браткам отбиться, а то так и пропадёт ведь!\");",
               "                        if(TempDword2==3)CustomEther('Galaxy_Alert',0,'',\"Полундра!!! Твоя родная система <HomeStarName> находится под угрозой захвата контрреволюционными элементами. Срочно сворачивай свои дела и дуй сюда, пока дело не повернулось круто!\");",
@@ -281,32 +282,33 @@
               "        }",
               "    }",
               "}",
+              "",
               "//Повышаем военное звание всех рейнджеров, севших на родную планету игрока",
               "//(работает только при отсутствии в Галактике ВБ и при наличии у рейнджера достаточного количества очков лётчика)",
               "if(!MBExist)",
               "{",
-              "    TempDword=GalaxyStar(HomeStarId);",
+              "    TempDword = GalaxyStar(HomeStarId);",
               "    //Родная система игрока принадлежит Коалиции",
-              "    if(StarOwner(TempDword)==0)",
+              "    if(StarOwner(TempDword) == 0)",
               "    {",
-              "        for(i=0;i<StarShips(TempDword);i=i+1)",
+              "        for(i = 0; i < StarShips(TempDword); i = i + 1)",
               "        {",
-              "            TempDword2=StarShips(TempDword,i);",
-              "            if(ShipOnSidePirateClan(TempDword2))continue;",
-              "            if(IsPlayer(TempDword2))continue;",
-              "            if(ShipType(TempDword2)!='Ranger')continue;",
-              "            if(ShipRankPoints(TempDword2)<ShipNextRankPoints(TempDword2))continue;",
-              "            j=GetShipHomePlanet(Player());",
-              "            if(GetShipPlanet(TempDword2)==j)",
+              "            TempDword2 = StarShips(TempDword, i);",
+              "            if(ShipOnSidePirateClan(TempDword2)) continue;",
+              "            if(IsPlayer(TempDword2)) continue;",
+              "            if(ShipType(TempDword2) != 'Ranger') continue;",
+              "            if(ShipRankPoints(TempDword2) < ShipNextRankPoints(TempDword2)) continue;",
+              "            j = GetShipHomePlanet(Player());",
+              "            if(GetShipPlanet(TempDword2) == j)",
               "            {",
               "                ShipRaiseRank(TempDword2);",
-              "                ShipImproveItems(TempDword2,Rnd(1,2));",
-              "                if(Rnd(0,1))GiveRewardByNom(TempDword2,13);",
-              "                else if(PlanetOwner(j)==0)GiveRewardByNom(TempDword2,14);",
-              "                else if(PlanetOwner(j)==1)GiveRewardByNom(TempDword2,25);",
-              "                else if(PlanetOwner(j)==2)GiveRewardByNom(TempDword2,18);",
-              "                else if(PlanetOwner(j)==3)GiveRewardByNom(TempDword2,8);",
-              "                else if(PlanetOwner(j)==4)GiveRewardByNom(TempDword2,11);",
+              "                ShipImproveItems(TempDword2, RndObject(1, 2, TempDword2));",
+              "                if(RndObject(0, 1, TempDword2)) GiveRewardByNom(TempDword2, 13);",
+              "                else if(PlanetOwner(j) == Maloc) GiveRewardByNom(TempDword2, 14);",
+              "                else if(PlanetOwner(j) == Peleng) GiveRewardByNom(TempDword2, 25);",
+              "                else if(PlanetOwner(j) == People) GiveRewardByNom(TempDword2, 18);",
+              "                else if(PlanetOwner(j) == Fei) GiveRewardByNom(TempDword2, 8);",
+              "                else if(PlanetOwner(j) == Gaal) GiveRewardByNom(TempDword2, 11);",
               "            }",
               "        }",
               "    }",
@@ -316,169 +318,295 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  750,
-          "Pos.y":  350,
-          "Parent":  -1,
+          "Pos.x":  20,
+          "Pos.y":  0,
+          "Parent":  4,
           "#":  6,
-          "Total.Lines":  26,
+          "Total.Lines":  27,
           "Code.Type":  "Init",
           "Code":          
           [
               "//Проверяем наличие ВБ и ПБ в Галактике при подключении мода",
-              "MBExist=0;",
-              "for(j=0;j<GalaxyStars();j=j+1)",
+              "MBExist = 0;",
+              "for(j = 0; j < GalaxyStars(); j = j + 1)",
               "{",
-              "    if(StarRuins(GalaxyStar(j),'WB')>0)",
+              "    if(StarRuins(GalaxyStar(j), 'WB'))",
               "    {",
-              "        MBExist=1;",
-              "        TempDword=StarRuins(GalaxyStar(j),'WB');",
+              "        MBExist = 1;",
+              "        TempDword = StarRuins(GalaxyStar(j), 'WB');",
               "    }",
               "}",
-              "PBExist=0;",
-              "for(j=0;j<GalaxyStars();j=j+1)",
+              "",
+              "PBExist = 0;",
+              "for(j = 0; j < GalaxyStars(); j = j + 1)",
               "{",
-              "    if(StarRuins(GalaxyStar(j),'PB')>0)",
+              "    if(StarRuins(GalaxyStar(j), 'PB'))",
               "    {",
-              "        PBExist=1;",
+              "        PBExist = 1;",
               "        break;",
               "    }",
               "}",
               "",
-              "HomePlanetId=Id(GetShipHomePlanet(Player()));",
-              "HomePlanetName=PlanetName(GetShipHomePlanet(Player()));",
-              "HomeStarId=Id(PlanetToStar(GetShipHomePlanet(Player())))-1;",
-              "HomeStarName=StarName(PlanetToStar(GetShipHomePlanet(Player())));",
+              "HomePlanetId = Id(GetShipHomePlanet(Player()));",
+              "HomePlanetName = PlanetName(GetShipHomePlanet(Player()));",
+              "HomeStarId = Id(PlanetToStar(GetShipHomePlanet(Player()))) - 1;",
+              "HomeStarName = StarName(PlanetToStar(GetShipHomePlanet(Player())));",
               "",
-              "IsHomeAttackEtherOn=1;"          
+              "IsHomeAttackEtherOn = 1;"          
           ]        
         },
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  910,
-          "Pos.y":  470,
-          "Parent":  -1,
-          "#":  26,
-          "Total.Lines":  1,
-          "Code.Type":  "DialogBegin",
-          "Code":          
-          [
-              "AddDialogOverride('CoalitionRankRaise',1001);"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  940,
-          "Pos.y":  440,
-          "Parent":  -1,
-          "#":  29,
-          "Total.Lines":  48,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  19,
+          "#":  21,
+          "Total.Lines":  110,
           "Code.Type":  "Turn",
           "Code":          
           [
               "SkipGreeting();",
               "ShipRaiseRank(Player());",
-              "TempDword=GetShipPlanet(Player());",
+              "tint1 = 0;",
+              "",
               "//Выдача награды (медали)",
-              "if(Rnd(0,1)){GiveRewardByNom(Player(),13);TempStr=CT('Reward.13.Name');}",
-              "else if(PlanetOwner(TempDword)==0){GiveRewardByNom(Player(),14);TempStr=CT('Reward.14.Name');}",
-              "else if(PlanetOwner(TempDword)==1){GiveRewardByNom(Player(),25);TempStr=CT('Reward.25.Name');}",
-              "else if(PlanetOwner(TempDword)==2){GiveRewardByNom(Player(),18);TempStr=CT('Reward.18.Name');}",
-              "else if(PlanetOwner(TempDword)==3){GiveRewardByNom(Player(),8);TempStr=CT('Reward.8.Name');}",
-              "else if(PlanetOwner(TempDword)==4){GiveRewardByNom(Player(),11);TempStr=CT('Reward.11.Name');}",
-              "//Запоминаем имя полученного игроком звания",
-              "if(ShipRank(Player())==1)TempStr2=CT('Rank.Cadet.Name');",
-              "if(ShipRank(Player())==2)TempStr2=CT('Rank.Pilot.Name');",
-              "if(ShipRank(Player())==3)TempStr2=CT('Rank.Wingman.Name');",
-              "if(ShipRank(Player())==4)TempStr2=CT('Rank.Leader.Name');",
-              "if(ShipRank(Player())==5)TempStr2=CT('Rank.Ace.Name');",
-              "if(ShipRank(Player())==6)TempStr2=CT('Rank.Commander.Name');",
-              "if(ShipRank(Player())==7)TempStr2=CT('Rank.Admiral.Name');",
-              "//Выбираем и выдаём игроку случайный микромодуль (в зависимости от высоты полученного ранга)",
-              "if(ShipRank(Player())==7)TempDword2=CreateMM(FindBonusByCustomTag('AkrinAmplifier'));",
-              "else",
+              "if(RndObject(0, 1, cur_planet))",
               "{",
-              "    if(ShipRank(Player())==1)BuildListOfMMByPriority(NewRankReward,60,80);",
-              "    if(ShipRank(Player())==2)BuildListOfMMByPriority(NewRankReward,50,70);",
-              "    if(ShipRank(Player())==3)BuildListOfMMByPriority(NewRankReward,40,60);",
-              "    if(ShipRank(Player())==4)BuildListOfMMByPriority(NewRankReward,25,40);",
-              "    if(ShipRank(Player())==5)BuildListOfMMByPriority(NewRankReward,15,30);",
-              "    if(ShipRank(Player())==6)BuildListOfMMByPriority(NewRankReward,1,10);",
-              "    ArrayRandomize(50,NewRankReward);",
-              "    TempDword2=CreateMM(NewRankReward[0]);",
+              "    GiveRewardByNom(Player(), 13);",
+              "    TempStr = CT('Reward.13.Name');",
+              "}",
+              "",
+              "else if(PlanetOwner(cur_planet) == Maloc)",
+              "{",
+              "    GiveRewardByNom(Player(), 14);",
+              "    TempStr = CT('Reward.14.Name');",
+              "}",
+              "else if(PlanetOwner(cur_planet) == Peleng)",
+              "{",
+              "    GiveRewardByNom(Player(), 25);",
+              "    TempStr = CT('Reward.25.Name');",
+              "}",
+              "else if(PlanetOwner(cur_planet) == People)",
+              "{",
+              "    GiveRewardByNom(Player(), 18);",
+              "    TempStr = CT('Reward.18.Name');",
+              "}",
+              "else if(PlanetOwner(cur_planet) == Fei)",
+              "{",
+              "    GiveRewardByNom(Player(), 8);",
+              "    TempStr = CT('Reward.8.Name');",
+              "}",
+              "else if(PlanetOwner(cur_planet) == Gaal)",
+              "{",
+              "    GiveRewardByNom(Player(), 11);",
+              "    TempStr = CT('Reward.11.Name');",
+              "}",
+              "",
+              "//Запоминаем имя полученного игроком звания и выдаём игроку случайный микромодуль (в зависимости от высоты полученного ранга)",
+              "cur_rank = ShipRank(Player());",
+              "if(cur_rank == 1)",
+              "{",
+              "    TempStr2 = CT('Rank.Cadet.Name');",
+              "    BuildListOfMMByPriority(NewRankReward, 60, 80);",
+              "}",
+              "else if(cur_rank == 2)",
+              "{",
+              "    BuildListOfMMByPriority(NewRankReward, 50, 70);",
+              "    TempStr2 = CT('Rank.Pilot.Name');",
+              "}",
+              "else if(cur_rank == 3) ",
+              "{",
+              "    BuildListOfMMByPriority(NewRankReward, 40, 60);",
+              "    TempStr2 = CT('Rank.Wingman.Name');",
+              "}",
+              "else if(cur_rank == 4)",
+              "{",
+              "    BuildListOfMMByPriority(NewRankReward, 25, 40);",
+              "    TempStr2 = CT('Rank.Leader.Name');",
+              "}",
+              "else if(cur_rank == 5)",
+              "{",
+              "    BuildListOfMMByPriority(NewRankReward, 15, 30);",
+              "    TempStr2 = CT('Rank.Ace.Name');",
+              "}",
+              "else if(cur_rank == 6)",
+              "{",
+              "    BuildListOfMMByPriority(NewRankReward, 1, 10);",
+              "    TempStr2 = CT('Rank.Commander.Name');",
+              "}",
+              "else if(cur_rank == 7)",
+              "{",
+              "    TempDword2 = CreateMM(FindBonusByCustomTag('AkrinAmplifier'));",
+              "    TempStr2 = CT('Rank.Admiral.Name');",
+              "}",
+              "",
+              "if(tint1)",
+              "{",
+              "    ArrayRandomize(50, NewRankReward);",
+              "    TempDword2 = CreateMM(NewRankReward[0]);",
               "    ArrayClear(NewRankReward);",
               "}",
-              "AddItemToShip(Player(),TempDword2);",
-              "TempStr4='</color>'+\"Спасибо!\";",
-              "TempStr5='</color>'+\"микромодуль\"+' '+substr(Name(TempDword2),12,100);",
+              "",
+              "AddItemToShip(Player(), TempDword2);",
+              "TempStr4 = '</color>' + \"Спасибо!\";",
+              "TempStr5 = '</color>' + \"микромодуль\" + ' ' + substr(Name(TempDword2), 12, 100);",
+              "",
               "//Проверяем, подключён ли мод ExpAcrin и добавляем соответствующую реплику при получении звания Капитан",
-              "TempStr3='';",
-              "if(IsScriptActive('Mod_ExpAcryn'))",
+              "TempStr3 = '';",
+              "if(CurrentMods('Evolution\\EvoComfyCamo'))",
               "{",
-              "    if(GetValueFromScript('Mod_ExpAcryn','HomeGiveCaseCheck')==1)",
+              "    if(cur_rank == GetValueFromScript('Mod_EvoComfyCamo', 'rank_to_get_sign')) TempStr3 = CT('Script.Mod_ShuHomeland.CoalitionRankRaise.MilitarySign');",
+              "}",
+              "if(CurrentMods('Expansion\\Mod_ExpAcryn'))",
+              "{",
+              "    if(GetValueFromScript('Mod_ExpAcryn', 'HomeGiveCaseCheck') == 1)",
               "    {",
-              "        TempStr3='</color>'+\"И ещё один момент, <Player>. Люди в чёрных костюмах приказали передать вам вот этот секретный кейс. Они сказали, что вы должны будете непременно доставить его на ближайший корабль-флагман. Отдельно объяснять важность подобной \\\"просьбы\\\", надеюсь, не надо?\";",
-              "        TempStr4='</color>'+\"Вас понял, задачу выполню!\";",
-              "        //GotoGov(2);",
+              "        if(TempStr3 != '') TempStr3 = Format('<br>');",
+              "        TempStr3 = TempStr3 + \"И ещё один момент, <Player>. Люди в чёрных костюмах приказали передать вам вот этот секретный кейс. Они сказали, что вы должны будете непременно доставить его на ближайший корабль-флагман. Отдельно объяснять важность подобной \\\"просьбы\\\", надеюсь, не надо?\";",
+              "        TempStr4 = '</color>' + \"Вас понял, задачу выполню!\";",
               "    }",
               "}",
-              "//Звук победы",
+              "",
+              "tstr1 = '</color>' + Format(CT('Script.Mod_ShuHomeland.CoalitionRankRaise.Congrats'),",
+              "                               '<NewRank'+'>', TempStr2,",
+              "                               '<HonoraryBadge'+'>', TempStr,",
+              "                               '<Reward'+'>', TempStr5);",
+              "if(TempStr3 != '') tstr1 = tstr1 + Format('<br>') + TempStr3;",
+              "",
+              "//Играем звук победы",
               "Sound('Sound.QuestOk');"          
           ]        
         },
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  910,
-          "Pos.y":  210,
+          "Pos.x":  870,
+          "Pos.y":  280,
           "Parent":  -1,
-          "#":  41,
-          "Total.Lines":  1,
+          "#":  26,
+          "Total.Lines":  48,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
-              "AddDialogOverride('PirateRankRaise',1001);"          
+              "cur_planet = GetShipPlanet(Player());",
+              "if(cur_planet)",
+              "{",
+              "    if(ShipOwner(Player()) <= Gaal)",
+              "    {",
+              "        if(!MBExist)",
+              "        {",
+              "            if(PlanetOwner(cur_planet) <= Gaal)",
+              "            {",
+              "                if(cur_planet == GetShipHomePlanet(Player()))",
+              "                {",
+              "                    if(ShipRankPoints(Player()) >= ShipNextRankPoints(Player()))",
+              "                    {",
+              "                        if(ShipRank(Player()) < 7)",
+              "                        {",
+              "                            if(RelationToRanger(cur_planet, Player()) >= 30)",
+              "                            {",
+              "                                AddDialogOverride('CoalitionRankRaise', 1001);",
+              "                            }",
+              "                        }",
+              "                    }",
+              "                }",
+              "            }",
+              "        }",
+              "    }",
+              "    else if(ShipOwner(Player()) == PirateClan)",
+              "    {",
+              "        if(!PBExist)",
+              "        {",
+              "            if(PlanetOwner(cur_planet) == PirateClan)",
+              "            {",
+              "                if(cur_planet == GetShipHomePlanet(Player()))",
+              "                {",
+              "                    if(ShipPirateRankPoints(Player()) >= ShipNextPirateRankPoints(Player()))",
+              "                    {",
+              "                        if(GetShipPirateRank(Player()) < 7)",
+              "                        {",
+              "                            if(RelationToRanger(cur_planet, Player()) >= 30)",
+              "                            {",
+              "                                AddDialogOverride('PirateRankRaise', 1001);",
+              "                            }",
+              "                        }",
+              "                    }",
+              "                }",
+              "            }",
+              "        }",
+              "    }",
+              "}"          
           ]        
         },
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  940,
-          "Pos.y":  240,
-          "Parent":  -1,
-          "#":  43,
-          "Total.Lines":  28,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  27,
+          "#":  28,
+          "Total.Lines":  58,
           "Code.Type":  "Turn",
           "Code":          
           [
               "SkipGreeting();",
               "RaisePirateRank(Player());",
-              "TempDword=GetShipPlanet(Player());",
-              "//Запоминаем имя полученного игроком звания",
-              "if(GetShipPirateRank(Player())==1)TempStr2=\"Юнгой\";",
-              "if(GetShipPirateRank(Player())==2)TempStr2=\"Рейдером\";",
-              "if(GetShipPirateRank(Player())==3)TempStr2=\"Шкипером\";",
-              "if(GetShipPirateRank(Player())==4)TempStr2=\"Головорезом\";",
-              "if(GetShipPirateRank(Player())==5)TempStr2=\"Атаманом\";",
-              "if(GetShipPirateRank(Player())==6)TempStr2=\"Ханом\";",
-              "if(GetShipPirateRank(Player())==7)TempStr2=\"Бароном\";",
-              "//Выбираем и выдаём игроку случайный микромодуль (в зависимости от высоты полученного ранга)",
-              "if(GetShipPirateRank(Player())==7)TempDword2=CreateMM(FindBonusByCustomTag('AkrinAmplifier'));",
-              "else",
+              "tint1 = 0;",
+              "",
+              "//Запоминаем имя полученного игроком звания и выдаём игроку случайный микромодуль (в зависимости от высоты полученного ранга)",
+              "cur_rank = GetShipPirateRank(Player());",
+              "if(cur_rank == 1)",
               "{",
-              "    if(GetShipPirateRank(Player())==1)BuildListOfMMByPriority(NewRankReward,60,80);",
-              "    if(GetShipPirateRank(Player())==2)BuildListOfMMByPriority(NewRankReward,50,70);",
-              "    if(GetShipPirateRank(Player())==3)BuildListOfMMByPriority(NewRankReward,40,60);",
-              "    if(GetShipPirateRank(Player())==4)BuildListOfMMByPriority(NewRankReward,25,40);",
-              "    if(GetShipPirateRank(Player())==5)BuildListOfMMByPriority(NewRankReward,15,30);",
-              "    if(GetShipPirateRank(Player())==6)BuildListOfMMByPriority(NewRankReward,1,10);",
-              "    ArrayRandomize(50,NewRankReward);",
-              "    TempDword2=CreateMM(NewRankReward[0]);",
+              "    BuildListOfMMByPriority(NewRankReward, 60, 80);",
+              "    TempStr2 = \"Юнгой\";",
+              "    tint1 = 1;",
+              "}",
+              "else if(cur_rank == 2)",
+              "{",
+              "    BuildListOfMMByPriority(NewRankReward, 50, 70);",
+              "    TempStr2 = \"Рейдером\";",
+              "    tint1 = 1;",
+              "}",
+              "else if(cur_rank == 3)",
+              "{",
+              "    BuildListOfMMByPriority(NewRankReward, 40, 60);",
+              "    TempStr2 = \"Шкипером\";",
+              "    tint1 = 1;",
+              "}",
+              "else if(cur_rank == 4)",
+              "{",
+              "    BuildListOfMMByPriority(NewRankReward, 25, 40);",
+              "    TempStr2 = \"Головорезом\";",
+              "    tint1 = 1;",
+              "}",
+              "else if(cur_rank == 5)",
+              "{",
+              "    BuildListOfMMByPriority(NewRankReward, 15, 30);",
+              "    TempStr2 = \"Атаманом\";",
+              "    tint1 = 1;",
+              "}",
+              "else if(cur_rank == 6)",
+              "{",
+              "    BuildListOfMMByPriority(NewRankReward, 1, 10);",
+              "    TempStr2 = \"Ханом\";",
+              "    tint1 = 1;",
+              "}",
+              "else if(cur_rank == 7)",
+              "{",
+              "    TempDword2 = CreateMM(FindBonusByCustomTag('AkrinAmplifier'));",
+              "    TempStr2 = \"Бароном\";",
+              "}",
+              "",
+              "if(tint1)",
+              "{",
+              "    ArrayRandomize(50, NewRankReward);",
+              "    TempDword2 = CreateMM(NewRankReward[0]);",
               "    ArrayClear(NewRankReward);",
               "}",
-              "AddItemToShip(Player(),TempDword2);",
-              "TempStr5='</color>'+Name(TempDword2);",
+              "",
+              "AddItemToShip(Player(), TempDword2);",
+              "TempStr5 = '</color>' + Name(TempDword2);",
               "Sound('Sound.QuestOk');"          
           ]        
         },
@@ -487,8 +615,8 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  46,
-          "#":  48,
+          "Parent":  31,
+          "#":  33,
           "Total.Lines":  3,
           "Code.Type":  "Turn",
           "Code":          
@@ -503,8 +631,8 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  47,
-          "#":  49,
+          "Parent":  32,
+          "#":  34,
           "Total.Lines":  3,
           "Code.Type":  "Turn",
           "Code":          
@@ -517,27 +645,10 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  940,
-          "Pos.y":  350,
+          "Pos.x":  920,
+          "Pos.y":  400,
           "Parent":  -1,
-          "#":  51,
-          "Total.Lines":  4,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "//if(IsScriptActive('Mod_ExpAcryn'))",
-              "//{",
-              "    //if(GetValueFromScript('Mod_ExpAcryn', 'HomeGiveCaseCheck') == 1) GotoGov(0);",
-              "//}"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1060,
-          "Pos.y":  300,
-          "Parent":  -1,
-          "#":  57,
+          "#":  41,
           "Total.Lines":  44,
           "Code.Type":  "DialogBegin",
           "Code":          
@@ -615,7 +726,7 @@
           "Pos.x":  640,
           "Pos.y":  350,
           "Parent":  -1,
-          "#":  53,
+          "#":  37,
           "Count":  1,
           "Owner":  62,
           "Ship.Type":  126,
@@ -651,205 +762,6 @@
           "NoComeKling":  false        
         }      
       ],
-      "Statements":      
-      [
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  820,
-          "Pos.y":  350,
-          "Parent":  -1,
-          "#":  7,
-          "Total.Lines":  1,
-          "Code.Type":  "DialogBegin",
-          "Code":          
-          [
-              "!MBExist"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  880,
-          "Pos.y":  440,
-          "Parent":  -1,
-          "#":  8,
-          "Total.Lines":  1,
-          "Code.Type":  "DialogBegin",
-          "Code":          
-          [
-              "ShipRank(Player())<7"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  850,
-          "Pos.y":  350,
-          "Parent":  -1,
-          "#":  21,
-          "Total.Lines":  1,
-          "Code.Type":  "DialogBegin",
-          "Code":          
-          [
-              "GetShipPlanet(Player()) == GetShipHomePlanet(Player())"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  880,
-          "Pos.y":  350,
-          "Parent":  -1,
-          "#":  22,
-          "Total.Lines":  1,
-          "Code.Type":  "DialogBegin",
-          "Code":          
-          [
-              "PlanetOwner(GetShipPlanet(Player())) >= 0 && PlanetOwner(GetShipPlanet(Player())) <= 4"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  880,
-          "Pos.y":  410,
-          "Parent":  -1,
-          "#":  23,
-          "Total.Lines":  1,
-          "Code.Type":  "DialogBegin",
-          "Code":          
-          [
-              "ShipOwner(Player())>=0 && ShipOwner(Player())<=4"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  880,
-          "Pos.y":  470,
-          "Parent":  -1,
-          "#":  24,
-          "Total.Lines":  1,
-          "Code.Type":  "DialogBegin",
-          "Code":          
-          [
-              "ShipRankPoints(Player())>=ShipNextRankPoints(Player())"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  880,
-          "Pos.y":  380,
-          "Parent":  -1,
-          "#":  25,
-          "Total.Lines":  1,
-          "Code.Type":  "DialogBegin",
-          "Code":          
-          [
-              "RelationToRanger(GetShipPlanet(Player()),Player())>=30"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  820,
-          "Pos.y":  330,
-          "Parent":  -1,
-          "#":  34,
-          "Total.Lines":  1,
-          "Code.Type":  "DialogBegin",
-          "Code":          
-          [
-              "!PBExist"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  850,
-          "Pos.y":  330,
-          "Parent":  -1,
-          "#":  35,
-          "Total.Lines":  1,
-          "Code.Type":  "DialogBegin",
-          "Code":          
-          [
-              "GetShipPlanet(Player()) == GetShipHomePlanet(Player())"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  880,
-          "Pos.y":  330,
-          "Parent":  -1,
-          "#":  36,
-          "Total.Lines":  1,
-          "Code.Type":  "DialogBegin",
-          "Code":          
-          [
-              "PlanetOwner(GetShipPlanet(Player())) == PirateClan"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  880,
-          "Pos.y":  300,
-          "Parent":  -1,
-          "#":  37,
-          "Total.Lines":  1,
-          "Code.Type":  "DialogBegin",
-          "Code":          
-          [
-              "RelationToRanger(GetShipPlanet(Player()),Player())>=30"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  880,
-          "Pos.y":  270,
-          "Parent":  -1,
-          "#":  38,
-          "Total.Lines":  1,
-          "Code.Type":  "DialogBegin",
-          "Code":          
-          [
-              "ShipOwner(Player())==7"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  880,
-          "Pos.y":  240,
-          "Parent":  -1,
-          "#":  39,
-          "Total.Lines":  1,
-          "Code.Type":  "DialogBegin",
-          "Code":          
-          [
-              "GetShipPirateRank(Player())<7"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  880,
-          "Pos.y":  210,
-          "Parent":  -1,
-          "#":  40,
-          "Total.Lines":  1,
-          "Code.Type":  "DialogBegin",
-          "Code":          
-          [
-              "ShipPirateRankPoints(Player())>=ShipNextPirateRankPoints(Player())"          
-          ]        
-        }      
-      ],
       "States":      
       [
         {
@@ -879,7 +791,7 @@
           "Pos.x":  750,
           "Pos.y":  380,
           "Parent":  -1,
-          "#":  9,
+          "#":  7,
           "Var.Type":  "Int",
           "Init":  "1",
           "Global":  false        
@@ -890,7 +802,7 @@
           "Pos.x":  930,
           "Pos.y":  610,
           "Parent":  -1,
-          "#":  10,
+          "#":  8,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
@@ -901,7 +813,7 @@
           "Pos.x":  930,
           "Pos.y":  630,
           "Parent":  -1,
-          "#":  11,
+          "#":  9,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
@@ -912,7 +824,7 @@
           "Pos.x":  750,
           "Pos.y":  430,
           "Parent":  -1,
-          "#":  12,
+          "#":  10,
           "Var.Type":  "Dword",
           "Init":  "0",
           "Global":  false        
@@ -923,7 +835,7 @@
           "Pos.x":  750,
           "Pos.y":  450,
           "Parent":  -1,
-          "#":  13,
+          "#":  11,
           "Var.Type":  "Dword",
           "Init":  "0",
           "Global":  false        
@@ -934,7 +846,7 @@
           "Pos.x":  750,
           "Pos.y":  480,
           "Parent":  -1,
-          "#":  14,
+          "#":  12,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -945,7 +857,7 @@
           "Pos.x":  750,
           "Pos.y":  500,
           "Parent":  -1,
-          "#":  15,
+          "#":  13,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -956,7 +868,7 @@
           "Pos.x":  750,
           "Pos.y":  530,
           "Parent":  -1,
-          "#":  16,
+          "#":  14,
           "Var.Type":  "Array",
           "Init":  "",
           "Global":  false        
@@ -967,7 +879,7 @@
           "Pos.x":  750,
           "Pos.y":  580,
           "Parent":  -1,
-          "#":  17,
+          "#":  15,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
@@ -978,7 +890,7 @@
           "Pos.x":  750,
           "Pos.y":  560,
           "Parent":  -1,
-          "#":  18,
+          "#":  16,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
@@ -989,7 +901,7 @@
           "Pos.x":  750,
           "Pos.y":  610,
           "Parent":  -1,
-          "#":  19,
+          "#":  17,
           "Var.Type":  "Dword",
           "Init":  "0",
           "Global":  false        
@@ -1000,7 +912,7 @@
           "Pos.x":  750,
           "Pos.y":  630,
           "Parent":  -1,
-          "#":  20,
+          "#":  18,
           "Var.Type":  "Dword",
           "Init":  "0",
           "Global":  false        
@@ -1011,7 +923,7 @@
           "Pos.x":  850,
           "Pos.y":  630,
           "Parent":  -1,
-          "#":  30,
+          "#":  22,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -1022,7 +934,7 @@
           "Pos.x":  850,
           "Pos.y":  610,
           "Parent":  -1,
-          "#":  31,
+          "#":  23,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -1033,7 +945,7 @@
           "Pos.x":  750,
           "Pos.y":  400,
           "Parent":  -1,
-          "#":  33,
+          "#":  25,
           "Var.Type":  "Int",
           "Init":  "1",
           "Global":  false        
@@ -1044,7 +956,7 @@
           "Pos.x":  850,
           "Pos.y":  650,
           "Parent":  -1,
-          "#":  50,
+          "#":  35,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -1055,7 +967,7 @@
           "Pos.x":  850,
           "Pos.y":  670,
           "Parent":  -1,
-          "#":  52,
+          "#":  36,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -1066,7 +978,7 @@
           "Pos.x":  900,
           "Pos.y":  560,
           "Parent":  -1,
-          "#":  54,
+          "#":  38,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
@@ -1077,7 +989,7 @@
           "Pos.x":  900,
           "Pos.y":  580,
           "Parent":  -1,
-          "#":  55,
+          "#":  39,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
@@ -1088,7 +1000,51 @@
           "Pos.x":  850,
           "Pos.y":  690,
           "Parent":  -1,
-          "#":  56,
+          "#":  40,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "cur_planet",
+          "Pos.x":  900,
+          "Pos.y":  530,
+          "Parent":  -1,
+          "#":  42,
+          "Var.Type":  "Dword",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tint1",
+          "Pos.x":  970,
+          "Pos.y":  610,
+          "Parent":  -1,
+          "#":  43,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "cur_rank",
+          "Pos.x":  970,
+          "Pos.y":  630,
+          "Parent":  -1,
+          "#":  44,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tstr1",
+          "Pos.x":  1030,
+          "Pos.y":  610,
+          "Parent":  -1,
+          "#":  45,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -1121,7 +1077,7 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  7,
+      "Begin":  19,
       "End":  21,
       "Nom":  0,
       "Arrow":  true    
@@ -1129,55 +1085,20 @@
     {
       "Type":  "TGraphLink",
       "Begin":  21,
-      "End":  22,
+      "End":  20,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  23,
-      "End":  8,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  8,
+      "Begin":  20,
       "End":  24,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  22,
-      "End":  25,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  25,
-      "End":  23,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  24,
-      "End":  26,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
       "Begin":  27,
-      "End":  29,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  29,
       "End":  28,
       "Nom":  0,
       "Arrow":  true    
@@ -1185,110 +1106,40 @@
     {
       "Type":  "TGraphLink",
       "Begin":  28,
-      "End":  32,
+      "End":  29,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  34,
-      "End":  35,
+      "Begin":  29,
+      "End":  30,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  35,
-      "End":  36,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  36,
-      "End":  37,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  37,
-      "End":  38,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  38,
-      "End":  39,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  39,
-      "End":  40,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  40,
-      "End":  41,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  42,
-      "End":  43,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  43,
-      "End":  44,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  44,
-      "End":  45,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  46,
-      "End":  48,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  47,
-      "End":  49,
+      "Begin":  31,
+      "End":  33,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  32,
-      "End":  51,
+      "End":  34,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  53,
+      "Begin":  37,
       "End":  0,
       "Nom":  0,
       "Arrow":  true    
     }  
   ],
-  "BlockPar.EC.Total.Strings":  35,
+  "BlockPar.EC.Total.Strings":  34,
   "BlockPar.EC":  
   [
     {
@@ -1390,10 +1241,6 @@
     {
       "#":  "44",
       "String":  "микромодуль"    
-    },
-    {
-      "#":  "48",
-      "String":  "Здравия желаем, рейнджер <Player>! Согласно нашим данным, у вас уже накопилось достаточно очков воина для получения звания <0>. В награду за ваши заслуги перед Коалицией, мы с гордостью вручаем вам <1>. Продолжайте вашу борьбу с захватчиками и, рано или поздно, победа будет за нами!<br>Также, от лица местного представительства сети центров рейнджеров, передаём в ваши руки <2>. Надеемся, что этот скромный подарок сможет помочь вам в вашем нелёгком деле.<br><3>"    
     },
     {
       "#":  "49",

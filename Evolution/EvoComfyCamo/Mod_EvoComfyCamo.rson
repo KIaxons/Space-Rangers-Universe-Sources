@@ -6,10 +6,10 @@
   "ScriptName":  "Mod_EvoComfyCamo",
   "ScriptFileOut":  "H:\\Mod_EvoComfyCamo.scr",
   "ScriptTextOut":  "H:\\Mod_EvoComfyCamo.txt",
-  "GraphPoint.Count":  16,
+  "GraphPoint.Count":  17,
   "GraphLink.Count":  7,
   "GraphRectText.Count":  0,
-  "Variables.Count":  4,
+  "Variables.Count":  5,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
@@ -126,7 +126,7 @@
               "function PlayerActCode() //t_OnChameleonConfusion",
               "{",
               "    if(!ScriptItemActParam()) exit; //Если корабль по умолчанию всегда распознаёт под камуфляжем игрока",
-              "    if(ShipRank(Player()) < 4) exit; //Если игрок ещё не достиг военного звания \"Истребитель\"",
+              "    if(ShipRank(Player()) < rank_to_get_sign) exit; //Если игрок ещё не достиг военного звания \"Истребитель\"",
               "",
               "    dword cur_ship = ScriptItemActObject1();",
               "    if(ShipTypeN(cur_ship) == t_Warrior)",
@@ -347,6 +347,17 @@
           "#":  15,
           "Var.Type":  "Str",
           "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "rank_to_get_sign",
+          "Pos.x":  130,
+          "Pos.y":  120,
+          "Parent":  -1,
+          "#":  16,
+          "Var.Type":  "Int",
+          "Init":  "4",
           "Global":  false        
         }      
       ]    
