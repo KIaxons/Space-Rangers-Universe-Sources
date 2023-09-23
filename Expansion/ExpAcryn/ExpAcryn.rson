@@ -4986,7 +4986,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "cur_ship = GetTalkShip();",
+              "cur_ship = CurShip; //Диалог вызывается из стейта, а, значит, GetTalkShip() вернёт нихуя (спасибо даб)",
               "",
               "//Игрок общается со своим же ботом, восполняем ему потраченный \"Интерком\", если таковой был",
               "if(GetProgramm(5)) SetProgramm(5, GetProgramm(5) + 1);"          
