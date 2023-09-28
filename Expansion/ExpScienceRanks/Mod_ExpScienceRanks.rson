@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  35,
-  "ViewPos.y":  8,
+  "ViewPos.x":  37,
+  "ViewPos.y":  -159,
   "ScriptName":  "Mod_ExpScienceRanks",
   "ScriptFileOut":  "H:\\Mod_ExpScienceRanks.scr",
   "ScriptTextOut":  "H:\\Mod_ExpScienceRanks.txt",
@@ -1024,7 +1024,7 @@
               "if(GetGameOptions('FontDialog') == '0') temp_str = '</color>-----------------------------------------------------------';",
               "else if(GetGameOptions('FontDialog') == '1') temp_str = '</color>------------------------------------------';",
               "else if(GetGameOptions('FontDialog') == '2') temp_str = '</color>-------------------------------------------';",
-              "else temp_str = '</color>--------------------------------------';",
+              "else /*if(GetGameOptions('FontDialog') == '3')*/ temp_str = '</color>--------------------------------------';",
               "",
               "//Формируем поздравительный текст",
               "temp_str = '</color>' + Format(CT('Script.Mod_ExpScienceRanks.RankRiseCongrats'), '#0#', temp_str_2, '#1#', temp_str_3, '#2#', temp_str, '#3#', science_reward_item_name);"          
