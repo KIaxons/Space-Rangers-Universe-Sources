@@ -82,7 +82,7 @@
           "Pos.y":  240,
           "Parent":  -1,
           "#":  9,
-          "Total.Lines":  54,
+          "Total.Lines":  58,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -127,6 +127,10 @@
               "        else if(rand + penalty <= 2)",
               "        {",
               "            ShipInPrison(cur_ship, 0);",
+              "            HullHP(cur_ship, 'UpTo75');",
+              "            ItemDurability(ShipEqInSlot(cur_ship, t_Engine), 100);",
+              "            OrderTakeOff(cur_ship);",
+              "",
               "            if(ShipTypeN(cur_ship) == t_Ranger)",
               "            {",
               "                if(PlanetOwner(cur_planet) != PirateClan) RelationToRanger(cur_planet, cur_ship, 10);",
