@@ -834,7 +834,7 @@
               "                            {",
               "                                tstr1 = tstr1 + Format(DeleteTags(CT('FormInfo.Equipment.Damage')), ' -', GetEquipmentStats(cur_item, ' <MinDamage'+'><color=248,252,216>-</color><'+'MaxDamage><'+'Bonus>')) + ', ' + Format(DeleteTags(CT('FormInfo.Equipment.Radius')), ' ', GetEquipmentStats(cur_item, ' <Radius'+'>'));",
               "                                //Для ракетного оружия также добавляем максимальный боезапас",
-              "                                if(GetEquipmentStats(cur_item, 3) == 2) tstr1 = tstr1 + ', ' + Format(CT('FormInfo.Equipment.MaxAmmo'), '#MaxCount#', GetEquipmentStats(cur_item, '<MaxCount'+'>')) + \"<br>\";",
+              "                                if(GetEquipmentStats(cur_item, 3) == 2) tstr1 = tstr1 + ', ' + Format(CT('FormInfo.Equipment.MaxAmmo'), '<MaxCount'+'>', GetEquipmentStats(cur_item, '<MaxCount'+'>')) + \"<br>\";",
               "                                else tstr1 = tstr1 + \"<br>\";",
               "                            }",
               "                            else if(item_type == t_Hull)",
