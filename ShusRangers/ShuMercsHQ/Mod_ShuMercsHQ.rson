@@ -25250,7 +25250,7 @@
           "Pos.y":  20,
           "Parent":  490,
           "#":  491,
-          "Total.Lines":  291,
+          "Total.Lines":  292,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
@@ -25271,7 +25271,8 @@
               "            AddDialogBlock(CT('FormRuins.GN.Modern.PlayerAsk'), 2); //Блочим \"Я желаю поучаствовать в развитии вашей базы\"",
               "",
               "            tint1 = 1;",
-              "            tstr1 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQIntroDialog.IntroText' + tint1);",
+              "            if(BuildOwnBase_Condition == 6) tstr1 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQIntroDialog.IntroTextTziptzilot' + tint1);",
+              "            else tstr1 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQIntroDialog.IntroText' + tint1);",
               "            tstr2 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQIntroDialog.PlayerNext');",
               "            AddDialogInject('PlayerHQIntroDialog', tstr1, tstr2, 0, 1);",
               "        }",
