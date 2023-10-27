@@ -7029,7 +7029,7 @@
           "Pos.y":  290,
           "Parent":  -1,
           "#":  166,
-          "Total.Lines":  125,
+          "Total.Lines":  122,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
@@ -7078,27 +7078,24 @@
               "",
               "            if(!DomiksDefeated(1)) // || DomiksDefeated(1) == 3)",
               "            {",
-              "                //Диалог для разблокировки возможности торговли (обмена) с Келлером",
-              "                if(!(DiggerRevelationStatus & 4)) //Игрок ещё не разблокировал возможность активации \"Диггеров\" на ППБ",
+              "                //Диалог для разблокировки возможности торговли (обмена) с Келлером (доступен, только если игрок ещё не открыл доступ на ППБ)",
+              "                if(!(DiggerRevelationStatus & 1))",
               "                {",
-              "                    if(!(DiggerRevelationStatus & 1))",
+              "                    //Пиратское звание не ниже \"Головорез\"",
+              "                    if(GetShipPirateRank(Player()) >= 4)",
               "                    {",
-              "                        //Пиратское звание не ниже \"Головорез\"",
-              "                        if(GetShipPirateRank(Player()) >= 4)",
+              "                        //FindDiggersInStock при вызове заполняет diggers_array",
+              "                        if(FindDiggersInStock(cur_ruin, 0.0))",
               "                        {",
-              "                            //FindDiggersInStock при вызове заполняет diggers_array",
-              "                            if(FindDiggersInStock(cur_ruin, 0.0))",
-              "                            {",
-              "                                AddDialogInject('DiggerDialogCB', CT('Script.Mod_ShuDomiks.DiggerDialogCB.OfferToReveal'), CT('Script.Mod_ShuDomiks.DiggerDialogCB.PlayerOfferToReveal'), 0);",
-              "                            }",
+              "                            AddDialogInject('DiggerDialogCB', CT('Script.Mod_ShuDomiks.DiggerDialogCB.OfferToReveal'), CT('Script.Mod_ShuDomiks.DiggerDialogCB.PlayerOfferToReveal'), 0);",
               "                        }",
               "                    }",
-              "                    else if(!(DiggerRevelationStatus & 2))",
+              "                }",
+              "                else if(!(DiggerRevelationStatus & 2))",
+              "                {",
+              "                    if(FindDiggersInStock(cur_ruin, 100.0) >= 3)",
               "                    {",
-              "                        if(FindDiggersInStock(cur_ruin, 100.0) >= 3)",
-              "                        {",
-              "                            AddDialogInject('DiggerDialogCB', '', CT('Script.Mod_ShuDomiks.DiggerDialogCB.PlayerRevealConditionsAsk'), 1);",
-              "                        }",
+              "                        AddDialogInject('DiggerDialogCB', '', CT('Script.Mod_ShuDomiks.DiggerDialogCB.PlayerRevealConditionsAsk'), 1);",
               "                    }",
               "                }",
               "            }",
@@ -8228,7 +8225,7 @@
               "tstr2 = '</color>' + CT('Script.Mod_ShuDomiks.DiggerDialogCB.PlayerRevealConditionsOk');",
               "tstr3 = '</color>' + CT('Script.Mod_ShuDomiks.DiggerDialogCB.RevealConditionsOk');",
               "",
-              "DiggerRevelationStatus = DiggerRevelationStatus + 1;"          
+              "DiggerRevelationStatus = DiggerRevelationStatus | 1;"          
           ]        
         },
         {
@@ -8296,7 +8293,7 @@
           "Code":          
           [
               "g_DeclareKellerExchangeArray();",
-              "DiggerRevelationStatus = DiggerRevelationStatus + 2;",
+              "DiggerRevelationStatus = DiggerRevelationStatus | 2;",
               "FakeDiggerQuestData[0] = 2;",
               "",
               "tstr1 = '</color>' + CT('Script.Mod_ShuDomiks.DiggerDialogCB.RevealConditionsAskLast');",
@@ -8456,7 +8453,7 @@
               "tstr3 = '</color>' + CT('Script.Mod_ShuDomiks.DiggerDialogSSB.RevealEnd');",
               "",
               "g_DeclareKellerExchangeArray();",
-              "DiggerRevelationStatus = DiggerRevelationStatus + 2 + 4; //Дописываем дополнительный маркер, чтобы больше не имелось возможности сдать пиратам 3 полных диггера за нихрена"          
+              "DiggerRevelationStatus = DiggerRevelationStatus | 1+2+4; //Дописываем дополнительный маркер, чтобы больше не имелось возможности сдать пиратам 3 полных диггера за нихрена"          
           ]        
         },
         {
@@ -8533,7 +8530,7 @@
               "tstr2 = '</color>' + CT('Script.Mod_ShuDomiks.MainDiggerDialog.FirstActivation.PlayerContactYesEnd');",
               "",
               "KellerExchange['PlayerID'] = '#' + RndObject(13289, 94884, Player());",
-              "DiggerRevelationStatus = DiggerRevelationStatus + 8;"          
+              "DiggerRevelationStatus = DiggerRevelationStatus | 8;"          
           ]        
         },
         {
@@ -8552,7 +8549,7 @@
               "tstr3 = '</color>' + CT('Script.Mod_ShuDomiks.MainDiggerDialog.FirstActivation.PlayerContactNoEndTwo');",
               "",
               "KellerExchange['PlayerID'] = '#' + RndObject(13289, 94884, Player());",
-              "DiggerRevelationStatus = DiggerRevelationStatus + 8;"          
+              "DiggerRevelationStatus = DiggerRevelationStatus | 8;"          
           ]        
         },
         {
@@ -8875,7 +8872,7 @@
               "    {",
               "        tstr1 = '</color>' + CT('Script.Mod_ShuDomiks.MainDiggerDialog.KellerExchange.ConfirmDeal');",
               "        tstr2 = '</color>' + CT('Script.Mod_ShuDomiks.MainDiggerDialog.KellerExchange.PlayerConfirmDealOk');",
-              "    ",
+              "",
               "        check = 1;",
               "    }",
               "    else //Если игрок находится слишком близко к звезде",
