@@ -1164,7 +1164,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  168,
-          "Total.Lines":  131,
+          "Total.Lines":  133,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -1174,6 +1174,8 @@
               "//Повторно вызывается из Main.dat в момент загрузки игры",
               "function g_InventShuNukesCustomGuns()",
               "{",
+              "    SFT('g_InventShuNukesCustomGuns');",
+              "",
               "    int cnt = CT('Items.Weapon.CustomWeapon.ShuNukes.Count');",
               "    for(int i = 1; i <= cnt; i = i + 1)",
               "    {",
