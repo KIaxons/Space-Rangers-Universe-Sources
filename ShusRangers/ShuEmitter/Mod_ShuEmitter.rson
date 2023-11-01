@@ -6,10 +6,10 @@
   "ScriptName":  "Mod_ShuEmitter",
   "ScriptFileOut":  "H:\\Mod_ShuEmitter.scr",
   "ScriptTextOut":  "H:\\Mod_ShuEmitter.txt",
-  "GraphPoint.Count":  19,
-  "GraphLink.Count":  5,
+  "GraphPoint.Count":  16,
+  "GraphLink.Count":  4,
   "GraphRectText.Count":  0,
-  "Variables.Count":  10,
+  "Variables.Count":  9,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
@@ -21,8 +21,8 @@
   "Dialogs.Count":  0,
   "DialogMessages.Count":  0,
   "DialogAnswers.Count":  0,
-  "Operations.Count":  3,
-  "Statements.Count":  1,
+  "Operations.Count":  2,
+  "Statements.Count":  0,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
@@ -78,36 +78,38 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  0,
-          "Pos.y":  20,
-          "Parent":  17,
-          "#":  12,
-          "Total.Lines":  7,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "//Автоматическое обновление характеристик кастомных орудий",
-              "//Срабатывает, только если параметр StatsVersion для ShuEmitter был изменён",
-              "if(gunUpdateCheck != CT('Items.Weapon.CustomWeapon.StatsVersion.ShuEmitter'))",
-              "{",
-              "    InventShuEmitterCustomGuns();",
-              "    gunUpdateCheck = CT('Items.Weapon.CustomWeapon.StatsVersion.ShuEmitter');",
-              "}"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
           "Pos.x":  400,
           "Pos.y":  200,
           "Parent":  -1,
-          "#":  13,
-          "Total.Lines":  85,
+          "#":  12,
+          "Total.Lines":  90,
           "Code.Type":  "Init",
           "Code":          
           [
-              "InventShuEmitterCustomGuns();",
-              "gunUpdateCheck = CT('Items.Weapon.CustomWeapon.StatsVersion.ShuEmitter');",
+              "g_InventShuEmitterCustomGuns();",
+              "",
+              "//Повторно вызывается из Main.dat в момент загрузки игры",
+              "function g_InventShuEmitterCustomGuns()",
+              "{",
+              "    int cnt = CT('Items.Weapon.CustomWeapon.ShuEmitter.Count');",
+              "    for(int i = 1; i <= cnt; i = i + 1)",
+              "    {",
+              "        //По очереди выбираем системное название каждой новой пушки из Lang",
+              "        str type_name = CT('Items.Weapon.CustomWeapon.ShuEmitter.' + i);",
+              "        str path = 'Items.Weapon.CustomWeapon.' + type_name;",
+              "",
+              "        //Прописываем пушку/сбрасываем уже прописанную пушку до уровня базовой из оригинальной игры",
+              "        dword weapon = InventNewCustomWeapon(type_name, t_Weapon1 - 1 + CT('Items.Weapon.OriginalWeaponType.' + CT(path + '.BaseGun')));",
+              "        //Задаём характеристики оружия",
+              "        SetCustomWeaponShotData(weapon, CT(path + '.ShotType'), CT(path + '.Speed'), CT(path + '.AverageRadius'), CT(path + '.SecondaryDamageRadius'), CT(path + '.MiningFactor'), CT(path + '.ShotsPerTurn'));",
+              "        SetCustomWeaponDamageData(weapon, CT(path + '.MinDamage'), CT(path + '.MaxDamage'), CT(path + '.DamageSet'), CT(path + '.mWeaponDamage'));",
+              "        SetCustomMissileWeaponStats(weapon, CT(path + '.MissileRadius'), CT(path + '.MissileMaxSpeed'), CT(path + '.MissileMinSpeed'), CT(path + '.MissileChanceToBeHit'));",
+              "        SetCustomWeaponPrimaryData(weapon, CT(path + '.TechLevel'), t_Weapon1 - 1 + CT('Items.Weapon.OriginalWeaponType.' + CT(path + '.InventTechLevel')), t_Weapon1 - 1 + CT('Items.Weapon.OriginalWeaponType.' + CT(path + '.ArcadeType')));",
+              "        SetCustomWeaponSizeAndCost(weapon, CT(path + '.kCost'), CT(path + '.AverageSize'));",
+              "        SetCustomWeaponAvailability(weapon, CT(path + '.StoreAvailability'));",
+              "        SetCustomWeaponSE(weapon, CT(path + '.ShotEffectPath'), CT(path + '.SplashEffectPath'), CT(path + '.MissileExplosionEffectPath'), CT(path + '.ShotEffectPalette'));",
+              "    }",
+              "}",
               "",
               "//Обработчик для разброса нескольких новых пушек с уникальными модификациями по незаселёнкам",
               "//Создаются и заносятся в массив новые пушки",
@@ -119,6 +121,7 @@
               "    else tdwd = CreateCustomWeapon('maloc_laser2', Rnd(30, 120), Rnd(1, 6), 1);",
               "    ArrayAdd(tarr1, tdwd);",
               "}",
+              "",
               "//Фотонные пушки M2, M3 или M4, от 4 до 10 шт.",
               "r = Rnd(4, 10);",
               "for(n = 1; n <= r; n = n + 1)",
@@ -129,6 +132,7 @@
               "    else tdwd = CreateCustomWeapon('photon_gun3', Rnd(10, 40), Rnd(2, 6), 0);",
               "    ArrayAdd(tarr1, tdwd);",
               "}",
+              "",
               "//Сплэшевый лазер, от 2 до 9 шт.",
               "r = Rnd(2, 9);",
               "for(n = 1; n <= r; n = n + 1)",
@@ -136,6 +140,7 @@
               "    tdwd = CreateCustomWeapon('splash_faser', Rnd(20, 80), Rnd(1, 6), Rnd(0, 5));",
               "    ArrayAdd(tarr1, tdwd);",
               "}",
+              "",
               "//Прожектор вихря, 1 шт. (добавляется с шансом 1 к 10)",
               "r = Rnd(1, 10);",
               "if(r == 1)",
@@ -143,6 +148,7 @@
               "    tdwd = CreateCustomWeapon('sphere_gun', Rnd(90, 110), Rnd(1, 3), None);",
               "    ArrayAdd(tarr1, tdwd);",
               "}",
+              "",
               "//Разбрасываем добавленные в массив орудия по незаселёнкам",
               "while(ArrayDim(tarr1) > 1)",
               "{",
@@ -169,27 +175,6 @@
               "    ItemDurability(tarr1[r], Rnd(0, 87));",
               "    AddItemToPlanet(cur_planet, tarr1[r]);",
               "    ArrayDelete(tarr1, r);",
-              "}",
-              "",
-              "//Функция для объявления и обновления кастомных орудий",
-              "function InventShuEmitterCustomGuns()",
-              "{",
-              "    for(i = 1; i <= CT('Items.Weapon.CustomWeapon.ShuEmitter.Count'); i = i + 1)",
-              "    {",
-              "        //По очереди выбираем системное название каждой новой пушки из Lang",
-              "        tstr = CT('Items.Weapon.CustomWeapon.ShuEmitter.' + i);",
-              "        tstr2 = 'Items.Weapon.CustomWeapon.';",
-              "        //Прописываем пушку/сбрасываем уже прописанную пушку до уровня базовой из оригинальной игры",
-              "        tdwd = InventNewCustomWeapon(tstr, t_Weapon1 - 1 + CT('Items.Weapon.OriginalWeaponType.' + CT(tstr2 + tstr + '.BaseGun')));",
-              "        //Задаём характеристики оружия",
-              "        SetCustomWeaponShotData(tdwd, CT(tstr2 + tstr + '.ShotType'), CT(tstr2 + tstr + '.Speed'), CT(tstr2 + tstr + '.AverageRadius'), CT(tstr2 + tstr + '.SecondaryDamageRadius'), CT(tstr2 + tstr + '.MiningFactor'), CT(tstr2 + tstr + '.ShotsPerTurn'));",
-              "        SetCustomWeaponDamageData(tdwd, CT(tstr2 + tstr + '.MinDamage'), CT(tstr2 + tstr + '.MaxDamage'), CT(tstr2 + tstr + '.DamageSet'), CT(tstr2 + tstr + '.mWeaponDamage'));",
-              "        SetCustomMissileWeaponStats(tdwd, CT(tstr2 + tstr + '.MissileRadius'), CT(tstr2 + tstr + '.MissileMaxSpeed'), CT(tstr2 + tstr + '.MissileMinSpeed'), CT(tstr2 + tstr + '.MissileChanceToBeHit'));",
-              "        SetCustomWeaponPrimaryData(tdwd, CT(tstr2 + tstr + '.TechLevel'), t_Weapon1 - 1 + CT('Items.Weapon.OriginalWeaponType.' + CT(tstr2 + tstr + '.InventTechLevel')), t_Weapon1 - 1 + CT('Items.Weapon.OriginalWeaponType.' + CT(tstr2 + tstr + '.ArcadeType')));",
-              "        SetCustomWeaponSizeAndCost(tdwd, CT(tstr2 + tstr + '.kCost'), CT(tstr2 + tstr + '.AverageSize'));",
-              "        SetCustomWeaponAvailability(tdwd, CT(tstr2 + tstr + '.StoreAvailability'));",
-              "        SetCustomWeaponSE(tdwd, CT(tstr2 + tstr + '.ShotEffectPath'), CT(tstr2 + tstr + '.SplashEffectPath'), CT(tstr2 + tstr + '.MissileExplosionEffectPath'), CT(tstr2 + tstr + '.ShotEffectPalette'));",
-              "    }",
               "}"          
           ]        
         }      
@@ -254,23 +239,6 @@
           "Priority":  0,
           "NoKling":  false,
           "NoComeKling":  false        
-        }      
-      ],
-      "Statements":      
-      [
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  420,
-          "Pos.y":  180,
-          "Parent":  -1,
-          "#":  17,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "!ShipIsTakeoff(Player())"          
-          ]        
         }      
       ],
       "States":      
@@ -368,7 +336,7 @@
           "Pos.x":  270,
           "Pos.y":  310,
           "Parent":  -1,
-          "#":  14,
+          "#":  13,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -379,18 +347,7 @@
           "Pos.x":  270,
           "Pos.y":  330,
           "Parent":  -1,
-          "#":  15,
-          "Var.Type":  "Str",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "gunUpdateCheck",
-          "Pos.x":  450,
-          "Pos.y":  200,
-          "Parent":  -1,
-          "#":  16,
+          "#":  14,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -401,7 +358,7 @@
           "Pos.x":  190,
           "Pos.y":  330,
           "Parent":  -1,
-          "#":  18,
+          "#":  15,
           "Var.Type":  "Array",
           "Init":  "",
           "Global":  false        
@@ -436,13 +393,6 @@
       "Type":  "TGraphLink",
       "Begin":  10,
       "End":  11,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  17,
-      "End":  12,
       "Nom":  0,
       "Arrow":  true    
     }  
