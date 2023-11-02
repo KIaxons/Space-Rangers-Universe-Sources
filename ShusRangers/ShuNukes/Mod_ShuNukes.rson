@@ -1,15 +1,15 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  74,
-  "ViewPos.y":  -78,
+  "ViewPos.x":  -56,
+  "ViewPos.y":  -74,
   "ScriptName":  "Mod_ShuNukes",
   "ScriptFileOut":  "H:\\Mod_ShuNukes.scr",
   "ScriptTextOut":  "H:\\Mod_ShuNukes.txt",
-  "GraphPoint.Count":  180,
-  "GraphLink.Count":  106,
+  "GraphPoint.Count":  22,
+  "GraphLink.Count":  5,
   "GraphRectText.Count":  0,
-  "Variables.Count":  67,
+  "Variables.Count":  12,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
@@ -18,518 +18,15 @@
   "Places.Count":  0,
   "Items.Count":  0,
   "Ethers.Count":  0,
-  "Dialogs.Count":  8,
-  "DialogMessages.Count":  14,
-  "DialogAnswers.Count":  29,
-  "Operations.Count":  30,
-  "Statements.Count":  27,
+  "Dialogs.Count":  0,
+  "DialogMessages.Count":  0,
+  "DialogAnswers.Count":  0,
+  "Operations.Count":  4,
+  "Statements.Count":  1,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
     {
-      "DialogAnswers":      
-      [
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1000,
-          "Pos.y":  560,
-          "Parent":  -1,
-          "#":  75,
-          "Msg":  "Вот как? Ну ладно...",
-          "AMsg.Num":  "0"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1140,
-          "Pos.y":  440,
-          "Parent":  -1,
-          "#":  76,
-          "Msg":  "Дайте одну боеголовку за <sum> cr.",
-          "AMsg.Num":  "1"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1110,
-          "Pos.y":  560,
-          "Parent":  -1,
-          "#":  77,
-          "Msg":  "Нисколько, слишком дорогое это удовольствие",
-          "AMsg.Num":  "2"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1140,
-          "Pos.y":  460,
-          "Parent":  -1,
-          "#":  78,
-          "Msg":  "Возьму два снаряда за <sum*2> cr.",
-          "AMsg.Num":  "3"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1000,
-          "Pos.y":  690,
-          "Parent":  -1,
-          "#":  79,
-          "Msg":  "Вот как? Ну ладно...",
-          "AMsg.Num":  "4"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1140,
-          "Pos.y":  590,
-          "Parent":  -1,
-          "#":  80,
-          "Msg":  "Покупаю один снаряд, <sum> cr.",
-          "AMsg.Num":  "5"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1140,
-          "Pos.y":  610,
-          "Parent":  -1,
-          "#":  81,
-          "Msg":  "Дайте две! Плачу <sum*2> cr.",
-          "AMsg.Num":  "6"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1110,
-          "Pos.y":  710,
-          "Parent":  -1,
-          "#":  82,
-          "Msg":  "Не нужно мне никаких ядерах",
-          "AMsg.Num":  "7"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1120,
-          "Pos.y":  740,
-          "Parent":  -1,
-          "#":  83,
-          "Msg":  "Вот это настоящее оружие! Беру!",
-          "AMsg.Num":  "8"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1120,
-          "Pos.y":  810,
-          "Parent":  -1,
-          "#":  84,
-          "Msg":  "Убедил! Давай сюда свой агрегат!",
-          "AMsg.Num":  "9"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1090,
-          "Pos.y":  830,
-          "Parent":  -1,
-          "#":  85,
-          "Msg":  "Не буду я платить такие бабки за эту погремушку!",
-          "AMsg.Num":  "10"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1090,
-          "Pos.y":  760,
-          "Parent":  -1,
-          "#":  86,
-          "Msg":  "Меня это не интересует",
-          "AMsg.Num":  "11"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1490,
-          "Pos.y":  470,
-          "Parent":  -1,
-          "#":  87,
-          "Msg":  "Добро, приступайте",
-          "AMsg.Num":  "12"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1470,
-          "Pos.y":  500,
-          "Parent":  -1,
-          "#":  88,
-          "Msg":  "Отставить",
-          "AMsg.Num":  "13"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1490,
-          "Pos.y":  560,
-          "Parent":  -1,
-          "#":  89,
-          "Msg":  "Так держать",
-          "AMsg.Num":  "14"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1450,
-          "Pos.y":  630,
-          "Parent":  -1,
-          "#":  90,
-          "Msg":  "Нет, в данный момент меня это не интересует",
-          "AMsg.Num":  "15"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1490,
-          "Pos.y":  610,
-          "Parent":  -1,
-          "#":  91,
-          "Msg":  "Как раз кстати, хоть иногда смогу почувствовать себя в безопасности",
-          "AMsg.Num":  "16"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1450,
-          "Pos.y":  700,
-          "Parent":  -1,
-          "#":  92,
-          "Msg":  "Меня это не интересует",
-          "AMsg.Num":  "17"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1490,
-          "Pos.y":  680,
-          "Parent":  -1,
-          "#":  93,
-          "Msg":  "Вот это настоящее оружие! Беру!",
-          "AMsg.Num":  "18"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1490,
-          "Pos.y":  740,
-          "Parent":  -1,
-          "#":  94,
-          "Msg":  "Убедил! Давай сюда свой агрегат!",
-          "AMsg.Num":  "19"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1450,
-          "Pos.y":  760,
-          "Parent":  -1,
-          "#":  95,
-          "Msg":  "Не буду я платить такие бабки за эту погремушку!",
-          "AMsg.Num":  "20"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1140,
-          "Pos.y":  630,
-          "Parent":  -1,
-          "#":  96,
-          "Msg":  "Загружай три за <sum*3> cr.",
-          "AMsg.Num":  "21"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1140,
-          "Pos.y":  480,
-          "Parent":  -1,
-          "#":  97,
-          "Msg":  "Три снаряда за <sum*3> cr.",
-          "AMsg.Num":  "22"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1140,
-          "Pos.y":  650,
-          "Parent":  -1,
-          "#":  98,
-          "Msg":  "Четыре будет в самый раз. <sum*4> cr.",
-          "AMsg.Num":  "23"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1140,
-          "Pos.y":  670,
-          "Parent":  -1,
-          "#":  99,
-          "Msg":  "А что, грузи пять. <sum*5> cr. уже переведены",
-          "AMsg.Num":  "24"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1140,
-          "Pos.y":  690,
-          "Parent":  -1,
-          "#":  100,
-          "Msg":  "Шесть боеголовок и не меньше! <sum*6> cr.",
-          "AMsg.Num":  "25"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1140,
-          "Pos.y":  500,
-          "Parent":  -1,
-          "#":  101,
-          "Msg":  "Четыре боеголовки, <sum*4> cr.",
-          "AMsg.Num":  "26"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1140,
-          "Pos.y":  520,
-          "Parent":  -1,
-          "#":  102,
-          "Msg":  "Пять штук за <sum*5> cr.",
-          "AMsg.Num":  "27"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  1140,
-          "Pos.y":  540,
-          "Parent":  -1,
-          "#":  103,
-          "Msg":  "Загружайте сразу шесть, плачу <sum*6> cr.",
-          "AMsg.Num":  "28"        
-        }      
-      ],
-      "DialogMessages":      
-      [
-        {
-          "Type":  "TDialogMsg",
-          "Name":  "",
-          "Pos.x":  1050,
-          "Pos.y":  490,
-          "Parent":  -1,
-          "#":  61,
-          "Msg":  "По нашим расценкам, одна боеголовка для твоей модели обойдется в <sum> cr. Боезапас вашей установки - <UselessItemData(PlayerNuke,1)>/<total>, в этом году вам можно получить еще <ammo> ракет. Ну что, сколько снарядов берете?",
-          "DMsg.Num":  "0"        
-        },
-        {
-          "Type":  "TDialogMsg",
-          "Name":  "",
-          "Pos.x":  1000,
-          "Pos.y":  530,
-          "Parent":  -1,
-          "#":  62,
-          "Msg":  "Простите, <Player>, но ваш лимит на сейчас превышен. Обновление наших баз данных происходит <clr>23 февраля<clrEnd> и <clr>9 мая<clrEnd> - тогда и прилетайте.",
-          "DMsg.Num":  "1"        
-        },
-        {
-          "Type":  "TDialogMsg",
-          "Name":  "",
-          "Pos.x":  1050,
-          "Pos.y":  620,
-          "Parent":  -1,
-          "#":  63,
-          "Msg":  "Так-с, дай-ка взглянуть... Один снаряд к твоей крошке у нас стоит <sum> cr, а заряжено в ней <UselessItemData(PlayerNuke,1)> ракет из <total>. Мы сейчас можем предложить тебе <ammo2> шт. боеголовок, так что определяйся, сколько ядерах тебе загружать.",
-          "DMsg.Num":  "2"        
-        },
-        {
-          "Type":  "TDialogMsg",
-          "Name":  "",
-          "Pos.x":  1000,
-          "Pos.y":  660,
-          "Parent":  -1,
-          "#":  64,
-          "Msg":  "Пардонь, браток, но мы все ядерахи разбазаривать не можем. Возвращайся как-нибудь в районе <GameDateTxtByTurn(upd2)>, тогда намечается следующий завоз.",
-          "DMsg.Num":  "3"        
-        },
-        {
-          "Type":  "TDialogMsg",
-          "Name":  "",
-          "Pos.x":  1060,
-          "Pos.y":  740,
-          "Parent":  -1,
-          "#":  65,
-          "Msg":  "Вы достигли требуемого звания, и имеете право получить доступ к ОМП, адаптированному для применения в космосе. Последнее слово техники - пусковая установка RL-2, способная нести до трёх самонаводящихся ракет одновременно. Спустя годы попыток воссоздать доминаторские торпеды, мы, наконец, нашли идеальное решение вопроса, и заменили боевую начинку ракеты, ведомой системой выстрелил-и-не-вспомнил на тактическую ядерную боеголовку. Орудие недешевое, да и козни пиратского клана, укравшего технологию ещё на ранних стадиях разработки, дел не улучшает, но, поверьте - оно того стоит. <br>Применяйте тактические ракеты с умом - мы постоянно улучшаем их оснастку, но по постановлению Галактического Совета имеем право выделять не более <clr>двух<clrEnd> боеприпасов в полгода каждому заинтересованному пилоту. <br>Сама установка обойдётся вам, как свободному пилоту, в <sum> cr. Постарайтесь понять нас, <Player>, мы вынуждены оплачивать все страховки на тот случай, если вы примените ядерное оружие не по назначению. <br>Будьте верны рейнджерскому делу, и примените этих маленьких вестников смерти, сравнимых с мощью кварковых бомб, на борьбу с врагами необъятного народа Коалиции!",
-          "DMsg.Num":  "4"        
-        },
-        {
-          "Type":  "TDialogMsg",
-          "Name":  "",
-          "Pos.x":  1060,
-          "Pos.y":  810,
-          "Parent":  -1,
-          "#":  66,
-          "Msg":  "Окей, коллега, ты уже набрался достаточно авторитета, чтобы мы могли переговорить с тобой с глазу на глаз. Как жизнь пиратская? Толпы всевозможных отбросов на хвосте не докучают? Не беспокойся, мы нашли этому отличное решение - ядерное оружие! Хе-хе. Пусковая установка, способная нести до трёх самонаводящихся ракет класса ТАС-16 одновременно, свежачком с чертежей яйцеголовых Коалиции. Те годами пытались воссоздать доминаторские торпеды, и, должен признать, хоть раз в жизни пришли к чему-то действительно гениальному - заменили боевую начинку ракеты, ведомой системой выстрелил-и-не-вспомнил на тактическую ядерную боеголовку. Стоит оно, конечно, недешево, да и в космосе хрен применишь из-за неэффективности ядерного оружия в вакууме, но система наведения обычно всё компенсирует. <br>К сожалению, наши запасы не так обширны, как хотелось бы, и мы не можем выделять больше <clr>двух<clrEnd> ракет в полгода каждому допущенному к большой бабахалке брату. <br>Сама установка обойдётся тебе в <sum> cr. Немало, да, но только представь, сколько торгашей можно вынести за раз! <br>Будь паинькой, и направь эту крошку в правильное русло. Нет такого врага, который избежит разорительного присутствия пиратского клана!",
-          "DMsg.Num":  "5"        
-        },
-        {
-          "Type":  "TDialogMsg",
-          "Name":  "",
-          "Pos.x":  1430,
-          "Pos.y":  470,
-          "Parent":  -1,
-          "#":  67,
-          "Msg":  "Так точно, рейнджер, <Base> подпадает под специальное распоряжение Галактического Совета \"О лимитированном контролируемом распространении тактического ядерного оружия в целях противодействия внешней угрозе\", и у нас есть возможность для установки дополнительных систем защиты. В столь неспокойные времена лишним оно точно не станет.<br>Мы рады, что вы заинтересованы в спонсировании этого вопроса, наличие ядерного оружия на борту <Base> значительно усилит способность станции в случае критической ситуации постоять за себя.<br>Установка первичных систем обойдётся в <sum> cr. - таким образом, <Base> сможет запускать по одной боеголовке раз в <20> дней. Не беспокойтесь, <clr>все расходы на боеприпасы Галактический Совет берёт на себя<clrEnd> - ваше дело лишь его к тому обязать.",
-          "DMsg.Num":  "6"        
-        },
-        {
-          "Type":  "TDialogMsg",
-          "Name":  "",
-          "Pos.x":  1430,
-          "Pos.y":  500,
-          "Parent":  -1,
-          "#":  68,
-          "Msg":  "В данный момент станция оборудована моделью пусковой установки <clr>RL-2M MK I<clrEnd>, способной запускать один ядерный заряд раз в <20> дней. За <sum> cr. мы можем модернизировать систему до <clr>RL-2M MK II<clrEnd>, что сократит задержку перед следующей атакой до <10> дней.",
-          "DMsg.Num":  "7"        
-        },
-        {
-          "Type":  "TDialogMsg",
-          "Name":  "",
-          "Pos.x":  1430,
-          "Pos.y":  530,
-          "Parent":  -1,
-          "#":  69,
-          "Msg":  "В данный момент станция оборудована моделью пусковой установки <clr>RL-2M MK II<clrEnd>, способной запускать один ядерный заряд раз в <10> дней. За <sum> cr. мы можем модернизировать систему до <clr>RL-2M MK III<clrEnd>, что сократит задержку перед следующей атакой до <5> дней.",
-          "DMsg.Num":  "8"        
-        },
-        {
-          "Type":  "TDialogMsg",
-          "Name":  "",
-          "Pos.x":  1430,
-          "Pos.y":  560,
-          "Parent":  -1,
-          "#":  70,
-          "Msg":  "В данный момент станция оборудована моделью пусковой установки <clr>RL-2M MK III<clrEnd>, способной запускать один ядерный заряд раз в <5> дней. Это лучшая из доступных на сегодняшний день стационарных ядерных систем тактического назначения. ",
-          "DMsg.Num":  "9"        
-        },
-        {
-          "Type":  "TDialogMsg",
-          "Name":  "",
-          "Pos.x":  1410,
-          "Pos.y":  610,
-          "Parent":  -1,
-          "#":  71,
-          "Msg":  "Итак, вот оно, детище наших лучших инженеров - <clr>Абсорбер<clrEnd>. Он представляет из себя систему противодействия баллистическому огню, способную нейтрализовать 80% урона от попадания ядерной боеголовки, рассеивая локализованную энергию в вакууме. Не действует на обычные ракеты из-за низкого для локализации энергетического потенциала. Перезарядка после каждой локализации будет занимать приблизительно <30> дней. Такая штучка обойдётся вам в добрые <sum> cr., но ставлю на кон свою репутацию управляющего, об этом выборе вы не пожалеете наверняка.",
-          "DMsg.Num":  "10"        
-        },
-        {
-          "Type":  "TDialogMsg",
-          "Name":  "",
-          "Pos.x":  1430,
-          "Pos.y":  440,
-          "Parent":  -1,
-          "#":  72,
-          "Msg":  "Отлично, что ты решил нам с этим подсобить, брат. Наличие ядерного оружия на борту <Base> точно заставит фараонов задуматься, стоит ли устраивать на нас облаву - разнесем их всех в щепки!<br>Установка базовых систем выльется тебе в <sum> cr. - таким образом, <Base> сможет запускать по одной боеголовке раз в <20> дней. Не боись, <clr>все расходы на боеприпасы пиратское братство берет на себя<clrEnd>, от тебя требуется только подтолкнуть Верховных Лякуш к такому шагу.",
-          "DMsg.Num":  "11"        
-        },
-        {
-          "Type":  "TDialogMsg",
-          "Name":  "",
-          "Pos.x":  1410,
-          "Pos.y":  680,
-          "Parent":  -1,
-          "#":  73,
-          "Msg":  "Рейнджер, насколько нам известно, вы являетесь активным пользователем пусковой установки RL-2. После некоторых размышлений, Командование приняло решение доверить вам уникальную модель RL-3. <br>В отличие от стандартного образца, RL-3 обладает вместимостью <6> ракет, а благодаря использованию доминаторских энергопакетов зарядка занимает только <2> дня! Отдадим мы это чудо инженерной мысли за <sum> cr. <br>Понимаю, немало, но гигантское тактическое преимущество в космосе не дрейфует! Не так ли, <Player>? ",
-          "DMsg.Num":  "12"        
-        },
-        {
-          "Type":  "TDialogMsg",
-          "Name":  "",
-          "Pos.x":  1410,
-          "Pos.y":  740,
-          "Parent":  -1,
-          "#":  74,
-          "Msg":  "Как мне нашептал алкарис, <Player>, ты очень любишь все ядерное и рактное, в частности, пусковую установку RL-2. Хо-хо, как ты разносил этих фараонов - это надо было видеть! <br>Спрос рождает предложение, брат, и у нас есть, что предложить даже такому бывалому пирату. <br>С гордостью презентуем тебе ужасную, страшную, безжалостную и безумно опасную RL-3! \"Тройка\" с вместимостью в аж <6> боеголовок и с зарядкой <2> дня позволит тебе сеять хаос и разрушение в троекратном объеме, бу-га-га! По заверениям наших спецов, этот агрегатище также дает плюс к респекту и уважухе среди правильных пацанов. <br>Начать сеять погромы во всех обитаемых и не очень мирах можно прямо сейчас всего-то за <sum> cr. Предложение, от которого невозможно отказаться, не так ли?",
-          "DMsg.Num":  "13"        
-        }      
-      ],
-      "Dialogs":      
-      [
-        {
-          "Type":  "TDialog",
-          "Name":  "NukeWB",
-          "Pos.x":  920,
-          "Pos.y":  510,
-          "Parent":  -1,
-          "#":  107        
-        },
-        {
-          "Type":  "TDialog",
-          "Name":  "NukeCB",
-          "Pos.x":  920,
-          "Pos.y":  640,
-          "Parent":  -1,
-          "#":  108        
-        },
-        {
-          "Type":  "TDialog",
-          "Name":  "BuyNukeWB",
-          "Pos.x":  920,
-          "Pos.y":  740,
-          "Parent":  -1,
-          "#":  109        
-        },
-        {
-          "Type":  "TDialog",
-          "Name":  "BuyNukeCB",
-          "Pos.x":  920,
-          "Pos.y":  810,
-          "Parent":  -1,
-          "#":  110        
-        },
-        {
-          "Type":  "TDialog",
-          "Name":  "BuyNukeForRuins",
-          "Pos.x":  1240,
-          "Pos.y":  500,
-          "Parent":  -1,
-          "#":  111        
-        },
-        {
-          "Type":  "TDialog",
-          "Name":  "BuyAbsorber",
-          "Pos.x":  1240,
-          "Pos.y":  610,
-          "Parent":  -1,
-          "#":  112        
-        },
-        {
-          "Type":  "TDialog",
-          "Name":  "UpgradeWB",
-          "Pos.x":  1240,
-          "Pos.y":  680,
-          "Parent":  -1,
-          "#":  113        
-        },
-        {
-          "Type":  "TDialog",
-          "Name":  "UpgradeCB",
-          "Pos.x":  1240,
-          "Pos.y":  740,
-          "Parent":  -1,
-          "#":  114        
-        }      
-      ],
       "Groups":      
       [
         {
@@ -538,7 +35,7 @@
           "Pos.x":  0,
           "Pos.y":  20,
           "Parent":  1,
-          "#":  104,
+          "#":  5,
           "Owner":  62,
           "Group.Type":  126,
           "CntShipMin":  1,
@@ -583,13 +80,17 @@
           "Name":  "",
           "Pos.x":  20,
           "Pos.y":  0,
-          "Parent":  106,
+          "Parent":  7,
           "#":  4,
-          "Total.Lines":  1,
+          "Total.Lines":  5,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "if(!EvoArmadaInit) EvoArmadaInit = CurrentMods('Evolution\\EvoArmada');"          
+              "GTL = GalaxyTechLevel();",
+              "if(!EvoArmadaInit) EvoArmadaInit = CurrentMods('Evolution\\EvoArmada');",
+              "",
+              "//Добавляем ядерное оружие новорождённым кораблям",
+              "if(GalaxyShipId() > lastShipId) DistributeNukeMissiles();"          
           ]        
         },
         {
@@ -597,564 +98,13 @@
           "Name":  "",
           "Pos.x":  20,
           "Pos.y":  0,
-          "Parent":  168,
-          "#":  106,
-          "Total.Lines":  82,
+          "Parent":  8,
+          "#":  7,
+          "Total.Lines":  1,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
-              "if(GetShipRuins(Player())>0)",
-              "{",
-              "    if(!PlayerBridge())",
-              "    {",
-              "        s=GetShipRuins(Player());",
-              "        if(ShipType(s)=='MC' || ShipType(s)=='RC' || ShipType(s)=='SB' || ShipType(s)=='BK' || ShipType(s)=='PB' || ShipType(s)=='TC')",
-              "        {",
-              "            AddDialogInject('BuyNukeForRuins','',\"Я желаю установить на базу ядерное оружие\",0);",
-              "        }",
-              "",
-              "        if(ShipType(GetShipRuins(Player()))=='WB')",
-              "        {",
-              "            if(!ShipOnSidePirateClan(Player()))",
-              "            {",
-              "                if(!PlayerGotAbsorber)",
-              "                {",
-              "                    if(ShipRank(Player()) >= 2) AddDialogInject('BuyAbsorber',\"Не желаете ли также приобрести абсорбер?\",\"Хочу приобрести абсорбер\",1);",
-              "                }",
-              "",
-              "                if(PlayerGotNuke)",
-              "                {",
-              "                    if(upgrade) total=6;",
-              "                    else total=4;",
-              "",
-              "                    AddDialogInject('NukeWB','',\"Меня интересует зарядка ядерного оружия\", 0);",
-              "",
-              "                    if(UselessItemData(PlayerNuke, 1) == total) AddDialogBlock(\"Меня интересует зарядка ядерного оружия\",0);",
-              "                    else if(!ItemIn(PlayerNuke, Player())) AddDialogBlock(\"Меня интересует зарядка ядерного оружия\",0);",
-              "                    else AddDialogBlock(\"Меня интересует зарядка ядерного оружия\", 0);",
-              "",
-              "                    if(~FindItemInShip(Player(), PlayerNuke))",
-              "                    {",
-              "                        if(!upgrade && ShipRank(Player()) >= 5 && CurTurn() > wb_date) AddDialogInject('UpgradeWB',\"Мы убеждены, что вас также заинтересует третья модификация пусковой установки RL.\",\"Хочу приобрести RL-3\",0);",
-              "                    }",
-              "                }",
-              "",
-              "                if(!PlayerGotNuke)",
-              "                {",
-              "                    if(ShipRank(Player()) >= 3) AddDialogInject('BuyNukeWB',\"Рейнджерам со званием от <clr>Истребителя<clrEnd> мы предлагаем уникальное ядерное оружие. Мне кажется, вы, <Player>, заинтересуетесь этим.\",\"Покажите мне свое ядерное оружие\",0);",
-              "                }",
-              "            }",
-              "        }",
-              "    }",
-              "}",
-              "",
-              "if(GetShipRuins(Player()))",
-              "{",
-              "    if(!PlayerBridge())",
-              "    {",
-              "        if(ShipType(GetShipRuins(Player())) == 'CB')",
-              "        {",
-              "            if(ShipOnSidePirateClan(Player()))",
-              "            {",
-              "                if(!PlayerGotAbsorber)",
-              "                {",
-              "                    if(GetShipPirateRank(Player()) >= 2) AddDialogInject('BuyAbsorber',\"Не желаете ли также приобрести абсорбер?\",\"Хочу приобрести абсорбер\",0);",
-              "                }",
-              "",
-              "                if(PlayerGotNuke)",
-              "                {",
-              "                    if(upgrade) total = 6;",
-              "                    else total = 4;",
-              "",
-              "                    AddDialogInject('NukeCB', '', \"Я хотел бы зарядить ядерное оружие\", 1);",
-              "                    if(UselessItemData(PlayerNuke, 1) == total) AddDialogBlock(\"Я хотел бы зарядить ядерное оружие\",0);",
-              "                    else if(!ItemIn(PlayerNuke, Player())) AddDialogBlock(\"Я хотел бы зарядить ядерное оружие\",0);",
-              "                    else AddDialogBlock(\"Я хотел бы зарядить ядерное оружие\", 0);",
-              "",
-              "                    if(~FindItemInShip(Player(),PlayerNuke))",
-              "                    {",
-              "                        if(!upgrade && GetShipPirateRank(Player()) >= 5 && CurTurn() > cb_date) AddDialogInject('UpgradeCB',\"Тебе, браток, наверняка будет интересна новая модель ядерной бабахалки. Хочешь взглянуть?\",\"Хочу приобрести RL-3\",0);",
-              "                    }",
-              "                }",
-              "",
-              "                if(!PlayerGotNuke)",
-              "                {",
-              "                    if(GetShipPirateRank(Player()) >= 3) AddDialogInject('BuyNukeCB', \"Братан, к нам на доминион недавно завезли любопытные экземпляры ядерного оружия, хочешь глянуть?\",\"Что за ядерное оружие?\",0);",
-              "                }",
-              "            }",
-              "        }",
-              "    }",
-              "}"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1000,
-          "Pos.y":  490,
-          "Parent":  -1,
-          "#":  117,
-          "Total.Lines":  4,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "if (upgrade) total=6;",
-              "else total=4;",
-              "i=total-UselessItemData(PlayerNuke,1);",
-              "sum=GalaxyMoney(4)*1.2;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1000,
-          "Pos.y":  620,
-          "Parent":  -1,
-          "#":  120,
-          "Total.Lines":  4,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "if (upgrade) total=6;",
-              "else total=4;",
-              "i=total-UselessItemData(PlayerNuke,1);",
-              "sum=GalaxyMoney(4)*1.1;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1020,
-          "Pos.y":  740,
-          "Parent":  -1,
-          "#":  121,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "sum=GalaxyMoney(4)*11+GalaxyMoney(2);"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1020,
-          "Pos.y":  810,
-          "Parent":  -1,
-          "#":  122,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "sum=GalaxyMoney(4)*10;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1360,
-          "Pos.y":  500,
-          "Parent":  -1,
-          "#":  123,
-          "Total.Lines":  16,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "s=GetShipRuins(Player());",
-              "Ranger=ShortName(Player());",
-              "Base=Name(GetShipRuins(Player()));",
-              "if (ShipFindCustomShipInfoByType(s,'RuinsNuke')==-1) num=0;",
-              "else num=ShipCustomShipInfoData(s,ShipFindCustomShipInfoByType(s,'RuinsNuke'),2);",
-              "if (GalaxyTechLevel()<3) sum=175000;",
-              "if (GalaxyTechLevel()==3) sum=200000;",
-              "if (GalaxyTechLevel()==4) sum=225000;",
-              "if (GalaxyTechLevel()==5) sum=260000;",
-              "if (GalaxyTechLevel()==6) sum=295000;",
-              "if (GalaxyTechLevel()==7) sum=335000;",
-              "if (GalaxyTechLevel()==8) sum=375000;",
-              "sum=sum/2;",
-              "sum=sum+GalaxyMoney(0);",
-              "if (nuke_cnt==0) sum=sum*40/100;",
-              "else if (nuke_cnt==1) sum=sum*75/100;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1360,
-          "Pos.y":  610,
-          "Parent":  -1,
-          "#":  129,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "sum=GalaxyMoney(4)*9.3+GalaxyMoney(1);"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1360,
-          "Pos.y":  680,
-          "Parent":  -1,
-          "#":  130,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "sum=GalaxyMoney(4)*20+GalaxyMoney(3);"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1360,
-          "Pos.y":  740,
-          "Parent":  -1,
-          "#":  131,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "sum=GalaxyMoney(4)*18+GalaxyMoney(2);"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1200,
-          "Pos.y":  440,
-          "Parent":  -1,
-          "#":  138,
-          "Total.Lines":  4,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+1);",
-              "ShipMoney(Player(),ShipMoney(Player())-sum);",
-              "Sound('Sound.Buy');",
-              "ammo=ammo-1;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1200,
-          "Pos.y":  460,
-          "Parent":  -1,
-          "#":  139,
-          "Total.Lines":  4,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+2);",
-              "ShipMoney(Player(),ShipMoney(Player())-sum*2);",
-              "Sound('Sound.Buy');",
-              "ammo=ammo-2;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1200,
-          "Pos.y":  590,
-          "Parent":  -1,
-          "#":  140,
-          "Total.Lines":  4,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+1);",
-              "ShipMoney(Player(),ShipMoney(Player())-sum);",
-              "Sound('Sound.Buy');",
-              "ammo2=ammo2-1;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1200,
-          "Pos.y":  610,
-          "Parent":  -1,
-          "#":  141,
-          "Total.Lines":  4,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+2);",
-              "ShipMoney(Player(),ShipMoney(Player())-sum*2);",
-              "Sound('Sound.Buy');",
-              "ammo2=ammo2-2;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1190,
-          "Pos.y":  740,
-          "Parent":  -1,
-          "#":  142,
-          "Total.Lines":  10,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "i=CreateQuestItem('Nuke',ShipOwner(GetShipRuins(Player())));",
-              "ItemCost(i,sum);",
-              "UselessItemData(i,1,1);",
-              "UselessItemData(i,2,5);",
-              "ItemSize(i,Rnd(40,80));",
-              "LinkItemToScript(i,PlayerNuke);",
-              "AddItemToShip(Player(),i);",
-              "ShipMoney(Player(),ShipMoney(Player())-sum);",
-              "Sound('Sound.Buy');",
-              "PlayerGotNuke=1;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1190,
-          "Pos.y":  810,
-          "Parent":  -1,
-          "#":  143,
-          "Total.Lines":  10,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "i=CreateQuestItem('Nuke',PirateClan);",
-              "ItemCost(i,sum);",
-              "UselessItemData(i,1,1);",
-              "UselessItemData(i,2,5);",
-              "ItemSize(i,Rnd(40,80));",
-              "LinkItemToScript(i,PlayerNuke);",
-              "ShipMoney(Player(),ShipMoney(Player())-sum);",
-              "AddItemToShip(Player(),i);",
-              "Sound('Sound.Buy');",
-              "PlayerGotNuke=1;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1560,
-          "Pos.y":  470,
-          "Parent":  -1,
-          "#":  144,
-          "Total.Lines":  7,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "Sound('Sound.Buy');",
-              "ShipMoney(Player(),ShipMoney(Player())-sum);",
-              "if (num==0) ShipAddCustomShipInfo(s,'RuinsNuke','',0,1);",
-              "if (num==1) ShipCustomShipInfoData(s,ShipFindCustomShipInfoByType(s,'RuinsNuke'),2,2);",
-              "if (num==2) ShipCustomShipInfoData(s,ShipFindCustomShipInfoByType(s,'RuinsNuke'),2,3);",
-              "num=num+1;",
-              "nuke_cnt=nuke_cnt+1;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1560,
-          "Pos.y":  610,
-          "Parent":  -1,
-          "#":  145,
-          "Total.Lines":  4,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ShipAddCustomShipInfo(Player(),'Absorber');",
-              "ShipMoney(Player(),ShipMoney(Player())-sum);",
-              "Sound('Sound.Buy');",
-              "PlayerGotAbsorber=1;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1560,
-          "Pos.y":  680,
-          "Parent":  -1,
-          "#":  146,
-          "Total.Lines":  12,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "i=CreateQuestItem('Nuke2',ShipOwner(GetShipRuins(Player())));",
-              "ItemCost(i,sum);",
-              "UselessItemData(i,1,2);",
-              "UselessItemData(i,2,2);",
-              "ItemSize(i,Rnd(40,80));",
-              "if (FindItemInShip(Player(),PlayerNuke)>0) FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),PlayerNuke)));",
-              "else FreeItem(GetItemFromStorage(FindItemInStorage(PlayerNuke)));",
-              "LinkItemToScript(i,PlayerNuke);",
-              "ShipMoney(Player(),ShipMoney(Player())-sum);",
-              "AddItemToShip(Player(),i);",
-              "Sound('Sound.Buy');",
-              "upgrade=1;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1560,
-          "Pos.y":  740,
-          "Parent":  -1,
-          "#":  147,
-          "Total.Lines":  12,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "i=CreateQuestItem('Nuke2',PirateClan);",
-              "ItemCost(i,sum);",
-              "UselessItemData(i,1,2);",
-              "UselessItemData(i,2,2);",
-              "ItemSize(i,Rnd(40,80));",
-              "if (FindItemInShip(Player(),PlayerNuke)>0) FreeItem(GetItemFromShip(Player(),FindItemInShip(Player(),PlayerNuke)));",
-              "else FreeItem(GetItemFromStorage(FindItemInStorage(PlayerNuke)));",
-              "LinkItemToScript(i,PlayerNuke);",
-              "ShipMoney(Player(),ShipMoney(Player())-sum);",
-              "AddItemToShip(Player(),i);",
-              "Sound('Sound.Buy');",
-              "upgrade=1;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1200,
-          "Pos.y":  630,
-          "Parent":  -1,
-          "#":  148,
-          "Total.Lines":  4,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+3);",
-              "ShipMoney(Player(),ShipMoney(Player())-sum*3);",
-              "Sound('Sound.Buy');",
-              "ammo2=ammo2-3;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1200,
-          "Pos.y":  480,
-          "Parent":  -1,
-          "#":  149,
-          "Total.Lines":  4,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+3);",
-              "ShipMoney(Player(),ShipMoney(Player())-sum*3);",
-              "Sound('Sound.Buy');",
-              "ammo=ammo-3;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1200,
-          "Pos.y":  650,
-          "Parent":  -1,
-          "#":  150,
-          "Total.Lines":  4,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+4);",
-              "ShipMoney(Player(),ShipMoney(Player())-sum*4);",
-              "Sound('Sound.Buy');",
-              "ammo2=ammo2-4;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1200,
-          "Pos.y":  670,
-          "Parent":  -1,
-          "#":  151,
-          "Total.Lines":  4,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+5);",
-              "ShipMoney(Player(),ShipMoney(Player())-sum*5);",
-              "Sound('Sound.Buy');",
-              "ammo2=ammo2-5;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1200,
-          "Pos.y":  690,
-          "Parent":  -1,
-          "#":  152,
-          "Total.Lines":  4,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+6);",
-              "ShipMoney(Player(),ShipMoney(Player())-sum*6);",
-              "Sound('Sound.Buy');",
-              "ammo2=ammo2-6;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1200,
-          "Pos.y":  500,
-          "Parent":  -1,
-          "#":  153,
-          "Total.Lines":  4,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+4);",
-              "ShipMoney(Player(),ShipMoney(Player())-sum*4);",
-              "Sound('Sound.Buy');",
-              "ammo=ammo-4;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1200,
-          "Pos.y":  520,
-          "Parent":  -1,
-          "#":  154,
-          "Total.Lines":  4,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+5);",
-              "ShipMoney(Player(),ShipMoney(Player())-sum*5);",
-              "Sound('Sound.Buy');",
-              "ammo=ammo-5;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  1200,
-          "Pos.y":  540,
-          "Parent":  -1,
-          "#":  155,
-          "Total.Lines":  4,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "UselessItemData(PlayerNuke,1,UselessItemData(PlayerNuke,1)+6);",
-              "ShipMoney(Player(),ShipMoney(Player())-sum*6);",
-              "Sound('Sound.Buy');",
-              "ammo=ammo-6;"          
+              "//"          
           ]        
         },
         {
@@ -1163,11 +113,13 @@
           "Pos.x":  20,
           "Pos.y":  0,
           "Parent":  3,
-          "#":  168,
-          "Total.Lines":  133,
+          "#":  8,
+          "Total.Lines":  247,
           "Code.Type":  "Init",
           "Code":          
           [
+              "GTL = GalaxyTechLevel();",
+              "",
               "EvoArmadaInit = CurrentMods('Evolution\\EvoArmada');",
               "g_InventShuNukesCustomGuns();",
               "",
@@ -1210,22 +162,46 @@
               "        {",
               "            cur_ship = tarr1[i];",
               "",
+              "            //Корабль должен соблюдать некоторые требования по размеру корпуса для установки ядерных пусковых установок",
+              "            dword hull = ShipEqInSlot(cur_ship, t_Hull);",
+              "            if(ItemSize(hull) < max(400, 125 * ItemLevel(hull))) continue;",
+              "",
               "            int ship_type_num = ShipTypeN(cur_ship);",
               "            str ship_type = ShipType(cur_ship);",
+              "            int nuke_max = 3;",
+              "            int nuke_shafts = 0;",
+              "            str nuke_type = 'NukeTorpedo';",
               "",
               "            if(ship_type_num == t_Pirate)",
               "            {",
-              "                if(ship_type == '' || ship_type == 'Khan' || ship_type == 'Thug')",
+              "                if(ship_type == 'Pirate' || ship_type == 'Khan' || ship_type == 'Thug')",
               "                {",
               "                    if(GetShipPirateRank(cur_ship) < 5) continue; //Не ниже атамана",
               "                    else if(GetShipPirateRank(cur_ship) < 6)",
               "                    {",
               "                        if(RndObject(0, 2, cur_ship)) continue;",
+              "                        nuke_type = 'DirtyNukeTorpedo';",
+              "                        nuke_shafts = 1;",
               "                    }",
               "                }",
               "                else if(ship_type == 'PirateCorvette')",
               "                {",
               "                    if(RndObject(0, 1, cur_ship)) continue;",
+              "                    nuke_type = 'DirtyNukeTorpedo';",
+              "                    nuke_max = 5;",
+              "                    nuke_shafts = 1;",
+              "                }",
+              "                else if(ship_type == 'PirateFrigate')",
+              "                {",
+              "                    nuke_type = 'DirtyNukeTorpedo';",
+              "                    nuke_max = 8;",
+              "                    nuke_shafts = 2;",
+              "                }",
+              "                else if(ship_type == 'PirateGalleon')",
+              "                {",
+              "                    nuke_type = 'DirtyNukeTorpedo';",
+              "                    nuke_max = 12;",
+              "                    nuke_shafts = 3;",
               "                }",
               "            }",
               "            else if(ship_type_num == t_Warrior)",
@@ -1236,7 +212,18 @@
               "                    else if(ShipRank(cur_ship) < 6)",
               "                    {",
               "                        if(RndObject(0, 1, cur_ship)) continue;",
+              "                        nuke_shafts = 1;",
               "                    }",
+              "                }",
+              "                else if(ship_type == 'Dreadnought')",
+              "                {",
+              "                    nuke_max = 16;",
+              "                    nuke_shafts = 4;",
+              "                }",
+              "                else //if(ship_type == '???')",
+              "                {",
+              "                    nuke_max = 12;",
+              "                    nuke_shafts = 3;",
               "                }",
               "            }",
               "            else if(ship_type_num == t_Ranger)",
@@ -1247,6 +234,7 @@
               "                    else if(ShipRank(cur_ship) < 6)",
               "                    {",
               "                        if(RndObject(0, 1, cur_ship)) continue;",
+              "                        nuke_shafts = 1;",
               "                    }",
               "                }",
               "                else",
@@ -1255,12 +243,87 @@
               "                    else if(GetShipPirateRank(cur_ship) < 6)",
               "                    {",
               "                        if(RndObject(0, 1, cur_ship)) continue;",
+              "                        nuke_type = 'DirtyNukeTorpedo';",
+              "                        nuke_shafts = 1;",
               "                    }",
               "                }",
               "            }",
+              "            else if(ship_type_num >= t_RC)",
+              "            {",
+              "                //Нейтральные и вялофракционные станции",
+              "                int stand_for = ShipStanding(cur_ship);",
+              "                if(stand_for >= 4 && stand_for <= 6)",
+              "                {",
+              "                    nuke_shafts = 1;",
+              "                    if(stand_for == 4 || ship_type_num == t_PB) nuke_type = 'DirtyNukeTorpedo';",
+              "                }",
+              "                else if(stand_for >= 2 && stand_for <= 3) //Коалиционная станция",
+              "                {",
+              "                    nuke_max = 6;",
+              "                    nuke_shafts = 2;",
+              "                }",
+              "                else //Пиратская станция",
+              "                {",
+              "                    nuke_type = 'DirtyNukeTorpedo';",
+              "                    nuke_max = 6;",
+              "                    nuke_shafts = 2;",
+              "                }",
+              "            }",
               "",
-              "            if(!EvoArmadaInit) int nukes_shafts = 1;",
-              "            else if(ship_type_num == t_Ranger) nukes_shafts = 1;",
+              "            if(nuke_shafts <= 0) throw 'Variable \\\\\\\"nuke_shafts\\\\\\\" in Mod_ShuNukes are 0, ShipTypeN is \\\\\\\"' + ship_type_num + '\\\\\\\" and ShipType is \\\\\\\"' + ship_type + '\\\\\\\"';",
+              "",
+              "            //Добавить визуальные маркеры на корпус и ракеты в трюм",
+              "            //Добавить физический запуск ракет из трюма",
+              "",
+              "            if(EvoArmadaInit)",
+              "            {",
+              "                //ShipCustomShipInfoData_1 == текущее число ядерных ракет на борту",
+              "                //ShipCustomShipInfoData_2 == лимит ядерных ракет на борту",
+              "                //ShipCustomShipInfoData_3 == таймер перезарядки (следующий ход возможного ядерного залпа, а для станций этот таймер также означает время до пополнения ракеты)",
+              "                //ShipCustomShipInfoTextData_1 == тип экипированных ядерных ракет на борту (по факту, раздел бонуса ракеты)",
+              "                //ShipCustomShipInfoTextData_2 == количество ракетных шахт в корпусе корабля (ограничивает число одновременных пусков)",
+              "",
+              "                dword nuke_weight = CreateQuestItem('ShuNukes_NukesWeight');",
+              "                ItemSize(nuke_weight, round(PortionInDiapason(ItemLevel(hull), 1, 8, 200, 400), 10) * nuke_shafts);",
+              "                AddItemToShip(cur_ship, nuke_weight);",
+              "                NoDropItem(nuke_weight, 1);",
+              "",
+              "                dword nukes = CreateCustomCountableItem('ShuNukes_' + nuke_type, );",
+              "                AddItemToShip(cur_ship, nukes);",
+              "                NoDropItem(nukes, 1);",
+              "",
+              "                str text = '';",
+              "                if(nuke_shafts > 1 && nuke_shafts <= 4) text = Format(CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NPCNuclearMissiles.DescriptionSeveral'), '<NukeShafts'+'>', nuke_shafts);",
+              "                else text = Format(CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NPCNuclearMissiles.DescriptionMany'), '<NukeShafts'+'>', nuke_shafts);",
+              "                ShipAddCustomShipInfo(cur_ship, 'ShuNukes_NPCNuclearMissiles', text, nuke_max, nuke_max, 0, nuke_type, nuke_shafts, Id(nuke_weight));",
+              "                ArrangeItems(cur_ship);",
+              "            }",
+              "            else",
+              "            {",
+              "                //ShipCustomShipInfoData_1 == текущее число ядерных ракет на борту",
+              "                //ShipCustomShipInfoData_2 == лимит ядерных ракет на борту",
+              "                //ShipCustomShipInfoData_3 == таймер перезарядки (следующий ход возможного ядерного залпа, а для станций этот таймер также означает время до пополнения ракеты)",
+              "                //ShipCustomShipInfoTextData_1 == тип экипированных ядерных ракет на борту (по факту, раздел бонуса ракеты)",
+              "                //ShipCustomShipInfoTextData_2 == количество ракетных шахт в корпусе корабля (ограничивает число одновременных пусков, сейчас в инфошке не используется)",
+              "",
+              "                nuke_shafts = 1; //Не нужно им много без армады",
+              "                nuke_max = min(nuke_max, 6);",
+              "",
+              "                nuke_weight = CreateQuestItem('ShuNukes_NukesWeight');",
+              "                ItemSize(nuke_weight, round(PortionInDiapason(ItemLevel(hull), 1, 8, 200, 400), 10) * nuke_shafts);",
+              "                AddItemToShip(cur_ship, nuke_weight);",
+              "                NoDropItem(nuke_weight, 1);",
+              "",
+              "                nukes = CreateCustomCountableItem('ShuNukes_' + nuke_type, );",
+              "                AddItemToShip(cur_ship, nukes);",
+              "                NoDropItem(nukes, 1);",
+              "",
+              "                text = '';",
+              "                if(nuke_shafts > 1 && nuke_shafts <= 4) text = Format(CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NPCNuclearMissilesNoArmada.DescriptionSeveral'), '<NukeShafts'+'>', nuke_shafts);",
+              "                else text = Format(CT('ShipInfo.AddInfo.CustomInfos.ShuNukes_NPCNuclearMissilesNoArmada.DescriptionMany'), '<NukeShafts'+'>', nuke_shafts);",
+              "                ShipAddCustomShipInfo(cur_ship, 'ShuNukes_NPCNuclearMissilesNoArmada', text, nuke_max, nuke_max, 0, nuke_type, nuke_shafts, Id(nuke_weight));",
+              "                ArrangeItems(cur_ship);",
+              "            }",
               "        }",
               "    }",
               "",
@@ -1272,31 +335,32 @@
               "    dword star = ShipStar(ship);",
               "    int coordX = CoordX(ship);",
               "    int coordY = CoordY(ship);",
-              "    int bon = FindBonusByNameInCfg('ShuNukes_' + nuke_type);",
               "    int damage_min = 200 + tech * 65;",
               "    int damage_max = 300 + tech * 85;",
               "    int speed = 400 + tech * 50;",
+              "    if(ShipTypeN(ship) <= t_Tranclucator) float base_angle = ShipAngle(ship);",
+              "    else base_angle = Angle(ship, target);",
               "",
               "    for(int i = 1; i <= nukes_cnt; i = i + 1)",
               "    {",
               "        if(i == 1)",
               "        {",
-              "            if(!(nukes_cnt % 2)) float angle = ShipAngle(ship) - 6; //Если запускаем чётное число ракет",
-              "            else angle = ShipAngle(ship);",
+              "            if(!(nukes_cnt % 2)) float angle = base_angle - 6; //Если запускаем чётное число ракет",
+              "            else angle = base_angle;",
               "        }",
               "        else if(!(nukes_cnt % 2)) //Если запускаем чётное число ракет",
               "        {",
-              "            if(i <= nukes_cnt / 2) angle = ShipAngle(ship) - 10 * i;",
-              "            else if(i - nukes_cnt / 2 == 1) angle = ShipAngle(ship) + 6;",
-              "            else angle = ShipAngle(ship) + 10 * (i - nukes_cnt / 2);",
+              "            if(i <= nukes_cnt / 2) angle = base_angle - 10 * i;",
+              "            else if(i - nukes_cnt / 2 == 1) angle = base_angle + 6;",
+              "            else angle = base_angle + 10 * (i - nukes_cnt / 2);",
               "        }",
               "        else //Если запускаем нечётное число ракет",
               "        {",
-              "            if(i <= nukes_cnt / 2 + 1) angle = ShipAngle(ship) - 12 * (i - 1);",
-              "            else angle = ShipAngle(ship) + 12 * ((i - 1) - (nukes_cnt - 1) / 2);",
+              "            if(i <= nukes_cnt / 2 + 1) angle = base_angle - 12 * (i - 1);",
+              "            else angle = base_angle + 12 * ((i - 1) - (nukes_cnt - 1) / 2);",
               "        }",
               "",
-              "        dword nuke = SpawnMissile(star, target, coordX, coordY, angle, damage_min, damage_max, speed, nuke_type, -1, bon);",
+              "        dword nuke = SpawnMissile(star, target, coordX, coordY, angle, damage_min, damage_max, speed, nuke_type);",
               "        MissileOwner(nuke, ship);",
               "        //MissileLive(nuke, -200); //Ракета тупо скипнет ход, т.к. её логика не подрубится сразу",
               "    }",
@@ -1371,379 +435,15 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  960,
-          "Pos.y":  490,
-          "Parent":  -1,
-          "#":  115,
+          "Pos.x":  0,
+          "Pos.y":  -20,
+          "Parent":  4,
+          "#":  21,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ammo"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  960,
-          "Pos.y":  530,
-          "Parent":  -1,
-          "#":  116,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "!ammo"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  960,
-          "Pos.y":  620,
-          "Parent":  -1,
-          "#":  118,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ammo2"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  960,
-          "Pos.y":  660,
-          "Parent":  -1,
-          "#":  119,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "!ammo2"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1400,
-          "Pos.y":  440,
-          "Parent":  -1,
-          "#":  124,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "num==0 && StarOwner(ShipStar(Player()))==2 || num==0 && ShipType(GetShipRuins(Player()))=='PB'"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1400,
-          "Pos.y":  470,
-          "Parent":  -1,
-          "#":  125,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "num==0 && StarOwner(ShipStar(Player()))!=2 && ShipType(GetShipRuins(Player()))!='PB'"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1400,
-          "Pos.y":  500,
-          "Parent":  -1,
-          "#":  126,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "num==1"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1400,
-          "Pos.y":  530,
-          "Parent":  -1,
-          "#":  127,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "num==2"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1400,
-          "Pos.y":  560,
-          "Parent":  -1,
-          "#":  128,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "num==3"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1090,
-          "Pos.y":  740,
-          "Parent":  -1,
-          "#":  132,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ShipMoney(Player())>=sum"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1090,
-          "Pos.y":  810,
-          "Parent":  -1,
-          "#":  133,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ShipMoney(Player())>=sum"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1470,
-          "Pos.y":  470,
-          "Parent":  -1,
-          "#":  134,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ShipMoney(Player())>=sum"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1450,
-          "Pos.y":  610,
-          "Parent":  -1,
-          "#":  135,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ShipMoney(Player())>=sum"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1450,
-          "Pos.y":  680,
-          "Parent":  -1,
-          "#":  136,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ShipMoney(Player())>=sum"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1450,
-          "Pos.y":  740,
-          "Parent":  -1,
-          "#":  137,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ShipMoney(Player())>=sum"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1110,
-          "Pos.y":  440,
-          "Parent":  -1,
-          "#":  156,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ammo>=1 && i>=1 && ShipMoney(Player())>=sum"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1110,
-          "Pos.y":  460,
-          "Parent":  -1,
-          "#":  157,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ammo>=2 && i>=2 && ShipMoney(Player())>=sum*2"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1110,
-          "Pos.y":  480,
-          "Parent":  -1,
-          "#":  158,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ammo>=3 && i>=3 && ShipMoney(Player())>=sum*3"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1110,
-          "Pos.y":  500,
-          "Parent":  -1,
-          "#":  159,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ammo>=4 && i>=4 && ShipMoney(Player())>=sum*4"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1110,
-          "Pos.y":  520,
-          "Parent":  -1,
-          "#":  160,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ammo>=5 && i>=5 && ShipMoney(Player())>=sum*5"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1110,
-          "Pos.y":  540,
-          "Parent":  -1,
-          "#":  161,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ammo>=6 && i>=6 && ShipMoney(Player())>=sum*6"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1110,
-          "Pos.y":  590,
-          "Parent":  -1,
-          "#":  162,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ammo2>=1 && i>=1 && ShipMoney(Player())>=sum"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1110,
-          "Pos.y":  610,
-          "Parent":  -1,
-          "#":  163,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ammo2>=2 && i>=2 && ShipMoney(Player())>=sum*2"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1110,
-          "Pos.y":  630,
-          "Parent":  -1,
-          "#":  164,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ammo2>=3 && i>=3 && ShipMoney(Player())>=sum*3"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1110,
-          "Pos.y":  650,
-          "Parent":  -1,
-          "#":  165,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ammo2>=4 && i>=4 && ShipMoney(Player())>=sum*4"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1110,
-          "Pos.y":  670,
-          "Parent":  -1,
-          "#":  166,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ammo2>=5 && i>=5 && ShipMoney(Player())>=sum*5"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  1110,
-          "Pos.y":  690,
-          "Parent":  -1,
-          "#":  167,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ammo2>=6 && i>=6 && ShipMoney(Player())>=sum*6"          
+              "!ShipIsTakeoff(Player())"          
           ]        
         }      
       ],
@@ -1754,8 +454,8 @@
           "Name":  "PlayerState",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  104,
-          "#":  105,
+          "Parent":  5,
+          "#":  6,
           "Move":  0,
           "MoveObj":  -1,
           "Attack.Count":  0,
@@ -1772,627 +472,11 @@
       [
         {
           "Type":  "TVar",
-          "Name":  "PlayerGotNuke",
-          "Pos.x":  1110,
-          "Pos.y":  170,
-          "Parent":  -1,
-          "#":  5,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  true        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "nuke_cnt",
-          "Pos.x":  960,
-          "Pos.y":  190,
-          "Parent":  -1,
-          "#":  6,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  true        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "PlayerGotAbsorber",
-          "Pos.x":  960,
-          "Pos.y":  140,
-          "Parent":  -1,
-          "#":  7,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  true        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "AllowNukes",
-          "Pos.x":  1070,
-          "Pos.y":  210,
-          "Parent":  -1,
-          "#":  8,
-          "Var.Type":  "Dword",
-          "Init":  "1",
-          "Global":  true        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "ImplantsGiveaway",
-          "Pos.x":  1150,
-          "Pos.y":  240,
-          "Parent":  -1,
-          "#":  9,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  true        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "cost1",
-          "Pos.x":  900,
-          "Pos.y":  360,
-          "Parent":  -1,
-          "#":  10,
-          "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "cost2",
-          "Pos.x":  970,
-          "Pos.y":  360,
-          "Parent":  -1,
-          "#":  11,
-          "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "cost3",
-          "Pos.x":  1040,
-          "Pos.y":  360,
-          "Parent":  -1,
-          "#":  12,
-          "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "cost4",
-          "Pos.x":  1110,
-          "Pos.y":  360,
-          "Parent":  -1,
-          "#":  13,
-          "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "count1",
-          "Pos.x":  1180,
-          "Pos.y":  360,
-          "Parent":  -1,
-          "#":  14,
-          "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "count3",
-          "Pos.x":  1250,
-          "Pos.y":  360,
-          "Parent":  -1,
-          "#":  15,
-          "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "count2",
-          "Pos.x":  1320,
-          "Pos.y":  360,
-          "Parent":  -1,
-          "#":  16,
-          "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "count4",
-          "Pos.x":  1390,
-          "Pos.y":  360,
-          "Parent":  -1,
-          "#":  17,
-          "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "total1",
-          "Pos.x":  1460,
-          "Pos.y":  360,
-          "Parent":  -1,
-          "#":  18,
-          "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "total2",
-          "Pos.x":  1530,
-          "Pos.y":  360,
-          "Parent":  -1,
-          "#":  19,
-          "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "total3",
-          "Pos.x":  1600,
-          "Pos.y":  360,
-          "Parent":  -1,
-          "#":  20,
-          "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "total4",
-          "Pos.x":  1660,
-          "Pos.y":  360,
-          "Parent":  -1,
-          "#":  21,
-          "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "cur_count1",
-          "Pos.x":  1460,
-          "Pos.y":  280,
-          "Parent":  -1,
-          "#":  22,
-          "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "cur_count2",
-          "Pos.x":  1460,
-          "Pos.y":  300,
-          "Parent":  -1,
-          "#":  23,
-          "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "cur_count3",
-          "Pos.x":  1570,
-          "Pos.y":  320,
-          "Parent":  -1,
-          "#":  24,
-          "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "cur_count4",
-          "Pos.x":  700,
-          "Pos.y":  550,
-          "Parent":  -1,
-          "#":  25,
-          "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "ammo_box",
-          "Pos.x":  690,
-          "Pos.y":  490,
-          "Parent":  -1,
-          "#":  26,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "ammo",
-          "Pos.x":  690,
-          "Pos.y":  380,
-          "Parent":  -1,
-          "#":  27,
-          "Var.Type":  "Dword",
-          "Init":  "2",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "sum",
-          "Pos.x":  830,
-          "Pos.y":  380,
-          "Parent":  -1,
-          "#":  28,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "upd2",
-          "Pos.x":  900,
-          "Pos.y":  380,
-          "Parent":  -1,
-          "#":  29,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "ammo2",
-          "Pos.x":  970,
-          "Pos.y":  380,
-          "Parent":  -1,
-          "#":  30,
-          "Var.Type":  "Dword",
-          "Init":  "2",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "Dom",
-          "Pos.x":  1040,
-          "Pos.y":  380,
-          "Parent":  -1,
-          "#":  31,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "s",
-          "Pos.x":  1110,
-          "Pos.y":  380,
-          "Parent":  -1,
-          "#":  32,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "sh",
-          "Pos.x":  1180,
-          "Pos.y":  380,
-          "Parent":  -1,
-          "#":  33,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "star_num",
-          "Pos.x":  1240,
-          "Pos.y":  380,
-          "Parent":  -1,
-          "#":  34,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "star_opora",
-          "Pos.x":  1320,
-          "Pos.y":  380,
-          "Parent":  -1,
-          "#":  35,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "DomId",
-          "Pos.x":  1420,
-          "Pos.y":  380,
-          "Parent":  -1,
-          "#":  36,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "ship_checked",
-          "Pos.x":  1460,
-          "Pos.y":  340,
-          "Parent":  -1,
-          "#":  37,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "shipcantz",
-          "Pos.x":  1500,
-          "Pos.y":  380,
-          "Parent":  -1,
-          "#":  38,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "starka",
-          "Pos.x":  1600,
-          "Pos.y":  380,
-          "Parent":  -1,
-          "#":  39,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "num",
-          "Pos.x":  1660,
-          "Pos.y":  380,
-          "Parent":  -1,
-          "#":  40,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "boss_nuke",
-          "Pos.x":  1460,
-          "Pos.y":  320,
-          "Parent":  -1,
-          "#":  41,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "boss_absorber",
-          "Pos.x":  1570,
-          "Pos.y":  280,
-          "Parent":  -1,
-          "#":  42,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "Ranger",
-          "Pos.x":  1570,
-          "Pos.y":  300,
-          "Parent":  -1,
-          "#":  43,
-          "Var.Type":  "Str",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "Base",
-          "Pos.x":  640,
-          "Pos.y":  510,
-          "Parent":  -1,
-          "#":  44,
-          "Var.Type":  "Str",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "upgrade",
-          "Pos.x":  740,
-          "Pos.y":  460,
-          "Parent":  -1,
-          "#":  45,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "total",
-          "Pos.x":  690,
-          "Pos.y":  400,
-          "Parent":  -1,
-          "#":  46,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "upg_date",
-          "Pos.x":  760,
-          "Pos.y":  400,
-          "Parent":  -1,
-          "#":  47,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "wb_date",
-          "Pos.x":  830,
-          "Pos.y":  400,
-          "Parent":  -1,
-          "#":  48,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "cb_date",
-          "Pos.x":  900,
-          "Pos.y":  400,
-          "Parent":  -1,
-          "#":  49,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "nuke_boom",
-          "Pos.x":  960,
-          "Pos.y":  420,
-          "Parent":  -1,
-          "#":  50,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "temp_dword7",
-          "Pos.x":  1040,
-          "Pos.y":  400,
-          "Parent":  -1,
-          "#":  51,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "massiv_obyavlen",
-          "Pos.x":  1140,
-          "Pos.y":  340,
-          "Parent":  -1,
-          "#":  52,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "massiv",
-          "Pos.x":  1180,
-          "Pos.y":  400,
-          "Parent":  -1,
-          "#":  53,
-          "Var.Type":  "Unknown",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "it",
-          "Pos.x":  1250,
-          "Pos.y":  400,
-          "Parent":  -1,
-          "#":  54,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "temp_int",
-          "Pos.x":  1310,
-          "Pos.y":  400,
-          "Parent":  -1,
-          "#":  55,
-          "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "temp_str",
-          "Pos.x":  1390,
-          "Pos.y":  400,
-          "Parent":  -1,
-          "#":  56,
-          "Var.Type":  "Str",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "temp_int_1",
-          "Pos.x":  1460,
-          "Pos.y":  400,
-          "Parent":  -1,
-          "#":  57,
-          "Var.Type":  "Int",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "temp_str_1",
-          "Pos.x":  1540,
-          "Pos.y":  420,
-          "Parent":  -1,
-          "#":  58,
-          "Var.Type":  "Str",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "bio",
-          "Pos.x":  1600,
-          "Pos.y":  400,
-          "Parent":  -1,
-          "#":  59,
-          "Var.Type":  "Str",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "rand",
-          "Pos.x":  1660,
-          "Pos.y":  400,
-          "Parent":  -1,
-          "#":  60,
-          "Var.Type":  "Dword",
-          "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
           "Name":  "lastShipId",
-          "Pos.x":  0,
-          "Pos.y":  -20,
-          "Parent":  168,
-          "#":  169,
+          "Pos.x":  -20,
+          "Pos.y":  -40,
+          "Parent":  8,
+          "#":  9,
           "Var.Type":  "Dword",
           "Init":  "0",
           "Global":  false        
@@ -2400,10 +484,10 @@
         {
           "Type":  "TVar",
           "Name":  "tarr1",
-          "Pos.x":  80,
+          "Pos.x":  70,
           "Pos.y":  0,
-          "Parent":  174,
-          "#":  170,
+          "Parent":  14,
+          "#":  10,
           "Var.Type":  "Array",
           "Init":  "",
           "Global":  false        
@@ -2411,10 +495,10 @@
         {
           "Type":  "TVar",
           "Name":  "i",
-          "Pos.x":  640,
+          "Pos.x":  620,
           "Pos.y":  280,
           "Parent":  -1,
-          "#":  171,
+          "#":  11,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -2424,8 +508,8 @@
           "Name":  "j",
           "Pos.x":  30,
           "Pos.y":  0,
-          "Parent":  171,
-          "#":  172,
+          "Parent":  11,
+          "#":  12,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -2435,8 +519,8 @@
           "Name":  "tint1",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  171,
-          "#":  173,
+          "Parent":  11,
+          "#":  13,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -2444,10 +528,10 @@
         {
           "Type":  "TVar",
           "Name":  "tstr1",
-          "Pos.x":  100,
+          "Pos.x":  90,
           "Pos.y":  0,
-          "Parent":  176,
-          "#":  174,
+          "Parent":  16,
+          "#":  14,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -2457,8 +541,8 @@
           "Name":  "tstr2",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  174,
-          "#":  175,
+          "Parent":  14,
+          "#":  15,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -2466,10 +550,10 @@
         {
           "Type":  "TVar",
           "Name":  "cur_star",
-          "Pos.x":  90,
+          "Pos.x":  80,
           "Pos.y":  0,
-          "Parent":  171,
-          "#":  176,
+          "Parent":  11,
+          "#":  16,
           "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
@@ -2479,8 +563,8 @@
           "Name":  "cur_ruin",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  176,
-          "#":  177,
+          "Parent":  16,
+          "#":  17,
           "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
@@ -2490,8 +574,8 @@
           "Name":  "cur_ship",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  177,
-          "#":  178,
+          "Parent":  17,
+          "#":  18,
           "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
@@ -2499,12 +583,23 @@
         {
           "Type":  "TVar",
           "Name":  "EvoArmadaInit",
-          "Pos.x":  0,
-          "Pos.y":  -40,
-          "Parent":  168,
-          "#":  179,
+          "Pos.x":  -20,
+          "Pos.y":  -60,
+          "Parent":  8,
+          "#":  19,
           "Var.Type":  "Int",
           "Init":  "0",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "GTL",
+          "Pos.x":  -20,
+          "Pos.y":  -80,
+          "Parent":  8,
+          "#":  20,
+          "Var.Type":  "Int",
+          "Init":  "",
           "Global":  false        
         }      
       ]    
@@ -2528,935 +623,29 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  104,
+      "Begin":  5,
       "End":  1,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  104,
-      "End":  105,
+      "Begin":  5,
+      "End":  6,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  107,
-      "End":  115,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  107,
-      "End":  116,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  115,
-      "End":  117,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  117,
-      "End":  61,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  116,
-      "End":  62,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  108,
-      "End":  118,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  108,
-      "End":  119,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  118,
-      "End":  120,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  120,
-      "End":  63,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  119,
-      "End":  64,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  109,
-      "End":  121,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  121,
-      "End":  65,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  110,
-      "End":  122,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  122,
-      "End":  66,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  111,
-      "End":  123,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  123,
-      "End":  124,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  123,
-      "End":  125,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  123,
-      "End":  126,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  123,
-      "End":  127,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  123,
-      "End":  128,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  124,
-      "End":  72,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  125,
-      "End":  67,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  126,
-      "End":  68,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  127,
-      "End":  69,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  128,
-      "End":  70,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  112,
-      "End":  129,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  129,
-      "End":  71,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  113,
-      "End":  130,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  130,
-      "End":  73,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  114,
-      "End":  131,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  131,
-      "End":  74,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  62,
-      "End":  75,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  64,
-      "End":  79,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  65,
-      "End":  132,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  65,
-      "End":  86,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  132,
-      "End":  83,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  66,
-      "End":  133,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  133,
-      "End":  84,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  66,
-      "End":  85,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  67,
-      "End":  134,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  134,
-      "End":  87,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  67,
-      "End":  88,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  68,
-      "End":  134,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  68,
-      "End":  88,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  69,
-      "End":  134,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  69,
-      "End":  88,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  70,
-      "End":  89,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  71,
-      "End":  135,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  135,
-      "End":  91,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  71,
-      "End":  90,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  72,
-      "End":  134,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  72,
-      "End":  88,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  73,
-      "End":  136,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  136,
-      "End":  93,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  73,
-      "End":  92,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  74,
-      "End":  137,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  137,
-      "End":  94,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  74,
-      "End":  95,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  76,
-      "End":  138,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  78,
-      "End":  139,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  80,
-      "End":  140,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  81,
-      "End":  141,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  83,
-      "End":  142,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  84,
-      "End":  143,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  87,
-      "End":  144,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  91,
-      "End":  145,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  93,
-      "End":  146,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  94,
-      "End":  147,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  96,
-      "End":  148,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  97,
-      "End":  149,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  98,
-      "End":  150,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  99,
-      "End":  151,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  100,
-      "End":  152,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  101,
-      "End":  153,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  102,
-      "End":  154,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  103,
-      "End":  155,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  156,
-      "End":  76,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  157,
-      "End":  78,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  158,
-      "End":  97,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  159,
-      "End":  101,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  160,
-      "End":  102,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  161,
-      "End":  103,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  61,
-      "End":  156,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  61,
-      "End":  157,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  61,
-      "End":  158,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  61,
-      "End":  159,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  61,
-      "End":  160,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  61,
-      "End":  161,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  61,
-      "End":  77,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  162,
-      "End":  80,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  163,
-      "End":  81,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  164,
-      "End":  96,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  165,
-      "End":  98,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  166,
-      "End":  99,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  167,
-      "End":  100,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  63,
-      "End":  162,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  63,
-      "End":  163,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  63,
-      "End":  164,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  63,
-      "End":  165,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  63,
-      "End":  166,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  63,
-      "End":  167,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  63,
-      "End":  82,
+      "Begin":  21,
+      "End":  4,
       "Nom":  0,
       "Arrow":  true    
     }  
   ],
-  "BlockPar.EC.Total.Strings":  50,
+  "BlockPar.EC.Total.Strings":  0,
   "BlockPar.EC":  
   [
-    {
-      "#":  "18",
-      "String":  "Что за ядерное оружие?"    
-    },
-    {
-      "#":  "19",
-      "String":  "Братан, к нам на доминион недавно завезли любопытные экземпляры ядерного оружия, хочешь глянуть?"    
-    },
-    {
-      "#":  "20",
-      "String":  "Хочу приобрести RL-3"    
-    },
-    {
-      "#":  "21",
-      "String":  "Тебе, браток, наверняка будет интересна новая модель ядерной бабахалки. Хочешь взглянуть?"    
-    },
-    {
-      "#":  "22",
-      "String":  "Я хотел бы зарядить ядерное оружие"    
-    },
-    {
-      "#":  "23",
-      "String":  "Хочу приобрести абсорбер"    
-    },
-    {
-      "#":  "24",
-      "String":  "Не желаете ли также приобрести абсорбер?"    
-    },
-    {
-      "#":  "25",
-      "String":  "Покажите мне свое ядерное оружие"    
-    },
-    {
-      "#":  "26",
-      "String":  "Рейнджерам со званием от <clr>Истребителя<clrEnd> мы предлагаем уникальное ядерное оружие. Мне кажется, вы, <Player>, заинтересуетесь этим."    
-    },
-    {
-      "#":  "27",
-      "String":  "Мы убеждены, что вас также заинтересует третья модификация пусковой установки RL."    
-    },
-    {
-      "#":  "28",
-      "String":  "Меня интересует зарядка ядерного оружия"    
-    },
-    {
-      "#":  "29",
-      "String":  "Я желаю установить на базу ядерное оружие"    
-    },
-    {
-      "#":  "30",
-      "String":  "По нашим расценкам, одна боеголовка для твоей модели обойдется в <0> cr. Боезапас вашей установки - <1>/<2>, в этом году вам можно получить еще <3> ракет. Ну что, сколько снарядов берете?"    
-    },
-    {
-      "#":  "31",
-      "String":  "Простите, <Player>, но ваш лимит на сейчас превышен. Обновление наших баз данных происходит <clr>23 февраля<clrEnd> и <clr>9 мая<clrEnd> - тогда и прилетайте."    
-    },
-    {
-      "#":  "32",
-      "String":  "Так-с, дай-ка взглянуть... Один снаряд к твоей крошке у нас стоит <0> cr, а заряжено в ней <1> ракет из <2>. Мы сейчас можем предложить тебе <3> шт. боеголовок, так что определяйся, сколько ядерах тебе загружать."    
-    },
-    {
-      "#":  "33",
-      "String":  "Пардонь, браток, но мы все ядерахи разбазаривать не можем. Возвращайся как-нибудь в районе <0>, тогда намечается следующий завоз."    
-    },
-    {
-      "#":  "34",
-      "String":  "Вы достигли требуемого звания, и имеете право получить доступ к ОМП, адаптированному для применения в космосе. Последнее слово техники - пусковая установка RL-2, способная нести до трёх самонаводящихся ракет одновременно. Спустя годы попыток воссоздать доминаторские торпеды, мы, наконец, нашли идеальное решение вопроса, и заменили боевую начинку ракеты, ведомой системой выстрелил-и-не-вспомнил на тактическую ядерную боеголовку. Орудие недешевое, да и козни пиратского клана, укравшего технологию ещё на ранних стадиях разработки, дел не улучшает, но, поверьте - оно того стоит. <br>Применяйте тактические ракеты с умом - мы постоянно улучшаем их оснастку, но по постановлению Галактического Совета имеем право выделять не более <clr>двух<clrEnd> боеприпасов в полгода каждому заинтересованному пилоту. <br>Сама установка обойдётся вам, как свободному пилоту, в <0> cr. Постарайтесь понять нас, <Player>, мы вынуждены оплачивать все страховки на тот случай, если вы примените ядерное оружие не по назначению. <br>Будьте верны рейнджерскому делу, и примените этих маленьких вестников смерти, сравнимых с мощью кварковых бомб, на борьбу с врагами необъятного народа Коалиции!"    
-    },
-    {
-      "#":  "35",
-      "String":  "Окей, коллега, ты уже набрался достаточно авторитета, чтобы мы могли переговорить с тобой с глазу на глаз. Как жизнь пиратская? Толпы всевозможных отбросов на хвосте не докучают? Не беспокойся, мы нашли этому отличное решение - ядерное оружие! Хе-хе. Пусковая установка, способная нести до трёх самонаводящихся ракет класса ТАС-16 одновременно, свежачком с чертежей яйцеголовых Коалиции. Те годами пытались воссоздать доминаторские торпеды, и, должен признать, хоть раз в жизни пришли к чему-то действительно гениальному - заменили боевую начинку ракеты, ведомой системой выстрелил-и-не-вспомнил на тактическую ядерную боеголовку. Стоит оно, конечно, недешево, да и в космосе хрен применишь из-за неэффективности ядерного оружия в вакууме, но система наведения обычно всё компенсирует. <br>К сожалению, наши запасы не так обширны, как хотелось бы, и мы не можем выделять больше <clr>двух<clrEnd> ракет в полгода каждому допущенному к большой бабахалке брату. <br>Сама установка обойдётся тебе в <0> cr. Немало, да, но только представь, сколько торгашей можно вынести за раз! <br>Будь паинькой, и направь эту крошку в правильное русло. Нет такого врага, который избежит разорительного присутствия пиратского клана!"    
-    },
-    {
-      "#":  "36",
-      "String":  "Так точно, рейнджер, <0> подпадает под специальное распоряжение Галактического Совета \"О лимитированном контролируемом распространении тактического ядерного оружия в целях противодействия внешней угрозе\", и у нас есть возможность для установки дополнительных систем защиты. В столь неспокойные времена лишним оно точно не станет.<br>Мы рады, что вы заинтересованы в спонсировании этого вопроса, наличие ядерного оружия на борту <1> значительно усилит способность станции в случае критической ситуации постоять за себя.<br>Установка первичных систем обойдётся в <2> cr. - таким образом, <3> сможет запускать по одной боеголовке раз в <4> дней. Не беспокойтесь, <clr>все расходы на боеприпасы Галактический Совет берёт на себя<clrEnd> - ваше дело лишь его к тому обязать."    
-    },
-    {
-      "#":  "37",
-      "String":  "В данный момент станция оборудована моделью пусковой установки <clr>RL-2M MK I<clrEnd>, способной запускать один ядерный заряд раз в <0> дней. За <1> cr. мы можем модернизировать систему до <clr>RL-2M MK II<clrEnd>, что сократит задержку перед следующей атакой до <2> дней."    
-    },
-    {
-      "#":  "38",
-      "String":  "В данный момент станция оборудована моделью пусковой установки <clr>RL-2M MK II<clrEnd>, способной запускать один ядерный заряд раз в <0> дней. За <1> cr. мы можем модернизировать систему до <clr>RL-2M MK III<clrEnd>, что сократит задержку перед следующей атакой до <2> дней."    
-    },
-    {
-      "#":  "39",
-      "String":  "В данный момент станция оборудована моделью пусковой установки <clr>RL-2M MK III<clrEnd>, способной запускать один ядерный заряд раз в <0> дней. Это лучшая из доступных на сегодняшний день стационарных ядерных систем тактического назначения. "    
-    },
-    {
-      "#":  "40",
-      "String":  "Итак, вот оно, детище наших лучших инженеров - <clr>Абсорбер<clrEnd>. Он представляет из себя систему противодействия баллистическому огню, способную нейтрализовать 80% урона от попадания ядерной боеголовки, рассеивая локализованную энергию в вакууме. Не действует на обычные ракеты из-за низкого для локализации энергетического потенциала. Перезарядка после каждой локализации будет занимать приблизительно <0> дней. Такая штучка обойдётся вам в добрые <1> cr., но ставлю на кон свою репутацию управляющего, об этом выборе вы не пожалеете наверняка."    
-    },
-    {
-      "#":  "41",
-      "String":  "Отлично, что ты решил нам с этим подсобить, брат. Наличие ядерного оружия на борту <0> точно заставит фараонов задуматься, стоит ли устраивать на нас облаву - разнесем их всех в щепки!<br>Установка базовых систем выльется тебе в <1> cr. - таким образом, <2> сможет запускать по одной боеголовке раз в <3> дней. Не боись, <clr>все расходы на боеприпасы пиратское братство берет на себя<clrEnd>, от тебя требуется только подтолкнуть Верховных Лякуш к такому шагу."    
-    },
-    {
-      "#":  "42",
-      "String":  "Рейнджер, насколько нам известно, вы являетесь активным пользователем пусковой установки RL-2. После некоторых размышлений, Командование приняло решение доверить вам уникальную модель RL-3. <br>В отличие от стандартного образца, RL-3 обладает вместимостью <0> ракет, а благодаря использованию доминаторских энергопакетов зарядка занимает только <1> дня! Отдадим мы это чудо инженерной мысли за <2> cr. <br>Понимаю, немало, но гигантское тактическое преимущество в космосе не дрейфует! Не так ли, <Player>? "    
-    },
-    {
-      "#":  "43",
-      "String":  "Как мне нашептал алкарис, <Player>, ты очень любишь все ядерное и рактное, в частности, пусковую установку RL-2. Хо-хо, как ты разносил этих фараонов - это надо было видеть! <br>Спрос рождает предложение, брат, и у нас есть, что предложить даже такому бывалому пирату. <br>С гордостью презентуем тебе ужасную, страшную, безжалостную и безумно опасную RL-3! \"Тройка\" с вместимостью в аж <0> боеголовок и с зарядкой <1> дня позволит тебе сеять хаос и разрушение в троекратном объеме, бу-га-га! По заверениям наших спецов, этот агрегатище также дает плюс к респекту и уважухе среди правильных пацанов. <br>Начать сеять погромы во всех обитаемых и не очень мирах можно прямо сейчас всего-то за <2> cr. Предложение, от которого невозможно отказаться, не так ли?"    
-    },
-    {
-      "#":  "44",
-      "String":  "Вот как? Ну ладно..."    
-    },
-    {
-      "#":  "45",
-      "String":  "Дайте одну боеголовку за <0> cr."    
-    },
-    {
-      "#":  "46",
-      "String":  "Нисколько, слишком дорогое это удовольствие"    
-    },
-    {
-      "#":  "47",
-      "String":  "Возьму два снаряда за <0> cr."    
-    },
-    {
-      "#":  "48",
-      "String":  "Покупаю один снаряд, <0> cr."    
-    },
-    {
-      "#":  "49",
-      "String":  "Дайте две! Плачу <0> cr."    
-    },
-    {
-      "#":  "50",
-      "String":  "Не нужно мне никаких ядерах"    
-    },
-    {
-      "#":  "51",
-      "String":  "Вот это настоящее оружие! Беру!"    
-    },
-    {
-      "#":  "52",
-      "String":  "Убедил! Давай сюда свой агрегат!"    
-    },
-    {
-      "#":  "53",
-      "String":  "Не буду я платить такие бабки за эту погремушку!"    
-    },
-    {
-      "#":  "54",
-      "String":  "Меня это не интересует"    
-    },
-    {
-      "#":  "55",
-      "String":  "Добро, приступайте"    
-    },
-    {
-      "#":  "56",
-      "String":  "Отставить"    
-    },
-    {
-      "#":  "57",
-      "String":  "Так держать"    
-    },
-    {
-      "#":  "58",
-      "String":  "Нет, в данный момент меня это не интересует"    
-    },
-    {
-      "#":  "59",
-      "String":  "Как раз кстати, хоть иногда смогу почувствовать себя в безопасности"    
-    },
-    {
-      "#":  "60",
-      "String":  "Загружай три за <0> cr."    
-    },
-    {
-      "#":  "61",
-      "String":  "Три снаряда за <0> cr."    
-    },
-    {
-      "#":  "62",
-      "String":  "Четыре будет в самый раз. <0> cr."    
-    },
-    {
-      "#":  "63",
-      "String":  "А что, грузи пять. <0> cr. уже переведены"    
-    },
-    {
-      "#":  "64",
-      "String":  "Шесть боеголовок и не меньше! <0> cr."    
-    },
-    {
-      "#":  "65",
-      "String":  "Четыре боеголовки, <0> cr."    
-    },
-    {
-      "#":  "66",
-      "String":  "Пять штук за <0> cr."    
-    },
-    {
-      "#":  "67",
-      "String":  "Загружайте сразу шесть, плачу <0> cr."    
-    }  
+  
   ]
 }
