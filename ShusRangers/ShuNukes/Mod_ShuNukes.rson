@@ -138,9 +138,9 @@
           [
               "GTL = GalaxyTechLevel();",
               "",
-              "ArrayDelete(NukeRange, 0);",
-              "ArrayAdd(NukeRange, 700, 'Min');",
-              "ArrayAdd(NukeRange, 100, 'Step');",
+              "ArrayDelete(g_NukeRange, 0);",
+              "ArrayAdd(g_NukeRange, 700, 'Min');",
+              "ArrayAdd(g_NukeRange, 100, 'Step');",
               "",
               "EvoArmadaInit = CurrentMods('Evolution\\EvoArmada');",
               "g_InventShuNukesCustomGuns();",
@@ -685,14 +685,14 @@
         },
         {
           "Type":  "TVar",
-          "Name":  "NukeRange",
+          "Name":  "g_NukeRange",
           "Pos.x":  540,
           "Pos.y":  240,
           "Parent":  -1,
           "#":  25,
           "Var.Type":  "Array",
           "Init":  "",
-          "Global":  false        
+          "Global":  true        
         }      
       ]    
     }  
