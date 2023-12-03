@@ -864,10 +864,11 @@
           "Pos.y":  20,
           "Parent":  58,
           "#":  53,
-          "Total.Lines":  1,
+          "Total.Lines":  2,
           "Code.Type":  "Turn",
           "Code":          
           [
+              "//Выход из диалога о ядерных торпедах",
               "tstr1 = '</color>' + CT('Script.Mod_ShuNukes.' + path + '.AnswerRefuse');"          
           ]        
         },
@@ -878,10 +879,11 @@
           "Pos.y":  20,
           "Parent":  55,
           "#":  60,
-          "Total.Lines":  6,
+          "Total.Lines":  7,
           "Code.Type":  "Turn",
           "Code":          
           [
+              "//Устанавливаем пусковую установку в корпус игрока",
               "ItemExtraSpecialsAddByType(cur_item, bon, 1);",
               "ShipCustomShipInfoTextData(Player(), 'ShuNukes_NuclearMissiles', 2, SetParFromString(ShipCustomShipInfoTextData(Player(), 'ShuNukes_NuclearMissiles', 2), ',', 0, '1'));",
               "ShipMoney(Player(), ShipMoney(Player()) - launcher_cost);",
@@ -916,12 +918,13 @@
           "Pos.y":  20,
           "Parent":  56,
           "#":  62,
-          "Total.Lines":  15,
+          "Total.Lines":  16,
           "Code.Type":  "Turn",
           "Code":          
           [
+              "//Добавляем игроку ядерных торпед",
               "tint1 = g_NukeParams[nuke_type, 'NukesPerYear'] - g_NukeParams[nuke_type, 'NukesSold'];",
-              "str nukes_cnt = NumberBox('Bm.FormShip2.NukeNumberIcon', CT('Script.Mod_ShuNukes.' + path + '.HowMuchNukes'), 0, tint1, RoundTo(1.0 * ShipMoney(Player()) / nuke_cost, 1.0, -1));",
+              "str nukes_cnt = NumberBox('Bm.FormShip2.NukeNumberIcon', CT('Script.Mod_ShuNukes.' + path + '.HowMuchNukes'), 1, tint1, RoundTo(1.0 * ShipMoney(Player()) / nuke_cost, 1.0, -1), '', 1);",
               "if(int(nukes_cnt) && nukes_cnt != 'Cancel')",
               "{",
               "    dword nukes = CreateCustomCountableItem('ShuNukes_' + nuke_type, nukes_cnt);",
