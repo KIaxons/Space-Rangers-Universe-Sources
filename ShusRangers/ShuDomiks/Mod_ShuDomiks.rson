@@ -5550,7 +5550,7 @@
               "            {",
               "                Sound('Sound.Talk');",
               "                if(KellerExchange['NextExchangeTurn'] >= 0) MessageBox(Format(CT('Script.Mod_ShuDomiks.MainDiggerDialog.KellerExchangeCallAfterTradeDelay'), '<Date'+'>', GameDateTxtByTurn(KellerExchange['NextExchangeTurn'])));",
-              "                else MessageBox(Format(CT('Script.Mod_ShuDomiks.MainDiggerDialog.KellerExchangeCallAfterBadTradeDelay'), '<Date'+'>', GameDateTxtByTurn(KellerExchange['NextExchangeTurn']))); //Если прошлая сделка с Келлером прошла не по плану",
+              "                else MessageBox(Format(CT('Script.Mod_ShuDomiks.MainDiggerDialog.KellerExchangeCallAfterBadTradeDelay'), '<Date'+'>', GameDateTxtByTurn(-KellerExchange['NextExchangeTurn']))); //Если прошлая сделка с Келлером прошла не по плану",
               "                SetProgramm(progIntercom, GetProgramm(progIntercom) - 1); //Типо потратили на декодировку сообщения от \"секретаря\"",
               "                exit;",
               "            }",
