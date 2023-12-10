@@ -284,7 +284,7 @@
               "        {",
               "            AddDialogInject('NukeDialog', '', CT('Script.Mod_ShuNukes.' + path + '.PlayerAskNukeFirstTime'), 0);",
               "        }",
-              "        else if(ShipRank(Player()) >= 4) //Звание не ниже 'Истребитель'",
+              "        else if(ShipRank(Player()) >= 4) //Звание не ниже \"Истребитель\"",
               "        {",
               "            if(!(g_NukeParams[nuke_type, 'DialogStatus'] & 2)) AddDialogInject('NukeDialog', '', Format(CT('Script.Mod_ShuNukes.' + path + '.PlayerAskNukeFirstTimeTwice'), '<Rank'+'>', CT('Script.Mod_ShuNukes.MilitaryRankName.' + 4)), 0);",
               "            else AddDialogInject('NukeDialog', '', CT('Script.Mod_ShuNukes.' + path + '.PlayerAskNuke'), 0);",
@@ -296,7 +296,7 @@
               "        {",
               "            path = 'NukeDialogPB';",
               "            nuke_type = 'DirtyNukeTorpedo';",
-              "    ",
+              "",
               "            //DialogStatus & 1 - игрок впервые поговорил о ядерках на ПБ",
               "            if(!(g_NukeParams[nuke_type, 'DialogStatus'] & 1))",
               "            {",
@@ -311,9 +311,9 @@
               "            path = 'NukeDialogCB';",
               "            nuke_type = 'DirtyNukeTorpedo';",
               "            g_NukeParams[nuke_type, 'NukesPerYear'] = (GetShipPirateRank(Player()) - 2) * 4;",
-              "    ",
+              "",
               "            //DialogStatus & 2 - игрок впервые поговорил о ядерках на доминионе, имея при этом соответствующее звание",
-              "            if(GetShipPirateRank(Player()) >= 4) //Звание не ниже 'Головорез'",
+              "            if(GetShipPirateRank(Player()) >= 4) //Звание не ниже \"Головорез\"",
               "            {",
               "                if(!(g_NukeParams[nuke_type, 'DialogStatus'] & 2)) AddDialogInject('NukeDialog', '', Format(CT('Script.Mod_ShuNukes.' + path + '.PlayerAskNukeFirstTimeTwice'), '<Rank'+'>', CT('Script.Mod_ShuNukes.PirateRankName.' + 4)), 0);",
               "                else AddDialogInject('NukeDialog', '', CT('Script.Mod_ShuNukes.' + path + '.PlayerAskNuke'), 0);",
@@ -686,7 +686,7 @@
               "{",
               "    if((cur_ruin_type == 'WB' && ShipRank(Player()) <= 4) || (cur_ruin_type != 'WB' && GetShipPirateRank(Player()) <= 4))",
               "    {",
-              "        if(nuke_type = 'NukeTorpedo') str rank = CT('Script.Mod_ShuNukes.MilitaryRankName.' + 4);",
+              "        if(nuke_type == 'NukeTorpedo') str rank = CT('Script.Mod_ShuNukes.MilitaryRankName.' + 4);",
               "        else rank = CT('Script.Mod_ShuNukes.PirateRankName.' + 4);",
               "",
               "        tstr1 = '</color>' + Format(CT('Script.Mod_ShuNukes.' + path + '.AnswerNukeFirstTimeNoRank'), '<Rank'+'>', rank);",
@@ -733,7 +733,7 @@
           "Code":          
           [
               "tstr1 = '</color>' + CT('Script.Mod_ShuNukes.' + path + '.AnswerNuke');",
-              "g_NukeParams['NukeTorpedo', 'DialogStatus'] = g_NukeParams['NukeTorpedo', 'DialogStatus'] | 2;"          
+              "g_NukeParams[nuke_type, 'DialogStatus'] = g_NukeParams[nuke_type, 'DialogStatus'] | 2;"          
           ]        
         },
         {
@@ -758,7 +758,7 @@
               "if(ShipOwner(cur_ruin) == Maloc) nuke_cost = round(GalaxyMoney(3, Maloc) * 3, 100);",
               "else nuke_cost = round(GalaxyMoney(3, PirateClan) * 4, 100);",
               "if(ShipOwner(cur_ruin) == Maloc) launcher_cost = round(GalaxyMoney(4, Maloc) * ItemLevel(cur_item), 100);",
-              "else launcher_cost = round(1.33 * GalaxyMoney(4, PirateClan) * ItemLevel(cur_item), 100);",
+              "else launcher_cost = round(1.5 * GalaxyMoney(4, PirateClan) * ItemLevel(cur_item), 100);",
               "",
               "//Пусковая установка в данном корпусе отсутствует (можно докупить торпед, либо установить её)",
               "if(!ItemExtraSpecialsCountByType(cur_item, bon))",
@@ -1062,7 +1062,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "(g_NukeParams['NukeTorpedo', 'DialogStatus'] & 2)"          
+              "(g_NukeParams[nuke_type, 'DialogStatus'] & 2)"          
           ]        
         },
         {
@@ -1076,7 +1076,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "!(g_NukeParams['NukeTorpedo', 'DialogStatus'] & 2)"          
+              "!(g_NukeParams[nuke_type, 'DialogStatus'] & 2)"          
           ]        
         },
         {
