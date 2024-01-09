@@ -1,15 +1,15 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -2108,
-  "ViewPos.y":  -256,
+  "ViewPos.x":  -1705,
+  "ViewPos.y":  -173,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
-  "GraphPoint.Count":  1108,
-  "GraphLink.Count":  1022,
+  "GraphPoint.Count":  1106,
+  "GraphLink.Count":  1021,
   "GraphRectText.Count":  2,
-  "Variables.Count":  69,
+  "Variables.Count":  68,
   "Stars.Count":  1,
   "Planets.Count":  2,
   "Ships.Count":  1,
@@ -21,7 +21,7 @@
   "Dialogs.Count":  52,
   "DialogMessages.Count":  110,
   "DialogAnswers.Count":  212,
-  "Operations.Count":  291,
+  "Operations.Count":  290,
   "Statements.Count":  309,
   "Loops.Count":  0,
   "Visual.Objects":  
@@ -34513,29 +34513,6 @@
               "    }",
               "}"          
           ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  -620,
-          "Pos.y":  190,
-          "Parent":  -1,
-          "#":  1106,
-          "Total.Lines":  10,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "//Удалить к концу осени 2023",
-              "if(!TempToDel1)",
-              "{",
-              "    TempToDel1 = 1;",
-              "    if(ArrayDim(PlayerHQMainArray) != 1)",
-              "    {",
-              "        ArrayAdd(PlayerHQMainArray['Mercs'], CurTurn() + 50, 'FreedLimitTimer'); //Номер хода, на котором произойдёт очередное обнуление числа наёмников ушедших во фрилансеры",
-              "        ArrayAdd(PlayerHQMainArray['Mercs'], 0, 'FreedLimitCount'); //Сколько наёмников было освобождено до очередного обнуления",
-              "    }",
-              "}"          
-          ]        
         }      
       ],
       "Places":      
@@ -40607,17 +40584,6 @@
           "#":  1096,
           "Var.Type":  "Dword",
           "Init":  "",
-          "Global":  false        
-        },
-        {
-          "Type":  "TVar",
-          "Name":  "TempToDel1",
-          "Pos.x":  0,
-          "Pos.y":  -20,
-          "Parent":  1106,
-          "#":  1107,
-          "Var.Type":  "Int",
-          "Init":  "0",
           "Global":  false        
         }      
       ]    
@@ -47769,13 +47735,6 @@
       "Type":  "TGraphLink",
       "Begin":  1105,
       "End":  35,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  1106,
-      "End":  124,
       "Nom":  0,
       "Arrow":  true    
     }  

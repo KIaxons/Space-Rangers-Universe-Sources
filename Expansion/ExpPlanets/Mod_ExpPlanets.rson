@@ -1,0 +1,299 @@
+{
+  "FileID":  573785173,
+  "FileVersion":  8,
+  "ViewPos.x":  -390,
+  "ViewPos.y":  -307,
+  "ScriptName":  "Mod_ExpPlanets",
+  "ScriptFileOut":  "H:\\Mod_ExpPlanets.scr",
+  "ScriptTextOut":  "H:\\Mod_ExpPlanets.txt",
+  "GraphPoint.Count":  9,
+  "GraphLink.Count":  4,
+  "GraphRectText.Count":  0,
+  "Variables.Count":  2,
+  "Stars.Count":  1,
+  "Planets.Count":  1,
+  "Ships.Count":  1,
+  "States.Count":  1,
+  "Groups.Count":  1,
+  "Places.Count":  0,
+  "Items.Count":  0,
+  "Ethers.Count":  0,
+  "Dialogs.Count":  0,
+  "DialogMessages.Count":  0,
+  "DialogAnswers.Count":  0,
+  "Operations.Count":  2,
+  "Statements.Count":  0,
+  "Loops.Count":  0,
+  "Visual.Objects":  
+  [
+    {
+      "Groups":      
+      [
+        {
+          "Type":  "TGroup",
+          "Name":  "PlayerGroup",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  1,
+          "#":  4,
+          "Owner":  62,
+          "Group.Type":  126,
+          "CntShipMin":  1,
+          "CntShipMax":  1,
+          "SpeedMin":  100,
+          "SpeedMax":  10000,
+          "Weapon":  0,
+          "CargoHook":  0,
+          "EmptySpace":  0,
+          "AddPlayer":  true,
+          "StatusTraderMin":  0,
+          "StatusTraderMax":  100,
+          "StatusWarriorMin":  0,
+          "StatusWarriorMax":  100,
+          "StatusPirateMin":  0,
+          "StatusPirateMax":  100,
+          "DistSearch":  10000,
+          "Dialog":  -1,
+          "StrengthMin":  "0",
+          "StrengthMax":  "0",
+          "Ruins":  ""        
+        }      
+      ],
+      "Operations":      
+      [
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  30,
+          "Pos.y":  0,
+          "Parent":  2,
+          "#":  5,
+          "Total.Lines":  1,
+          "Code.Type":  "Global",
+          "Code":          
+          [
+              "if(!GLastTurnRun(GScriptName)) GRun();"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  250,
+          "Pos.y":  40,
+          "Parent":  -1,
+          "#":  6,
+          "Total.Lines":  61,
+          "Code.Type":  "Init",
+          "Code":          
+          [
+              "StarFonImage(GalaxyStar(46), 84); //Установка фона системе Арктур",
+              "StarFonImage(GalaxyStar(47), 85); //Установка фона системе Диатар",
+              "StarFonImage(GalaxyStar(48), 86); //Установка фона системе Элга",
+              "StarFonImage(GalaxyStar(56), 80); //Установка фона системе Озеум",
+              "StarFonImage(GalaxyStar(57), 83); //Установка фона системе Ригель",
+              "StarFonImage(GalaxyStar(58), 82); //Установка фона системе Тураис",
+              "StarFonImage(GalaxyStar(61), 81); //Установка фона системе Юфалли",
+              "StarFonImage(GalaxyStar(62), 79); //Установка фона системе Муррац",
+              "StarSetGraph(GalaxyStar(48), 'Star.Red');",
+              "StarSetGraph(GalaxyStar(56), 'Star.Blue');",
+              "StarSetGraph(GalaxyStar(57), 'Star.Red');",
+              "StarSetGraph(GalaxyStar(58), 'Star.Green');",
+              "StarSetGraph(GalaxyStar(61), 'Star.02');",
+              "",
+              "//--Гархарл--",
+              "planet = CreatePlanet(GalaxyStar(Maloc));",
+              "SetName(planet, CT('PlanetName.NewPlanets.Taron'));",
+              "PlanetSetGraph(planet, 208);",
+              "PlanetTerrain(planet, 0, 400);",
+              "PlanetTerrain(planet, 1, 600);",
+              "PlanetTerrain(planet, 2, 0); //Вода-равнина-горы",
+              "for(i = PlanetItems(planet) - 1; i >= 0; i = i - 1) AddItemToPlanet(planet, GetItemFromPlanet(planet, i));",
+              "",
+              "//--Чешилан--",
+              "planet = CreatePlanet(GalaxyStar(Peleng));",
+              "SetName(planet, CT('PlanetName.NewPlanets.Pkhedoc'));",
+              "PlanetSetGraph(planet, 209);",
+              "PlanetTerrain(planet, 0, 1000);",
+              "PlanetTerrain(planet, 1, 10);",
+              "PlanetTerrain(planet, 2, 0);",
+              "for(i = PlanetItems(planet) - 1; i >= 0; i = i - 1) AddItemToPlanet(planet, GetItemFromPlanet(planet, i));",
+              "",
+              "//--Возвращаем Нептун--",
+              "planet = CreatePlanet(GalaxyStar(People));",
+              "SetName(planet, CT('PlanetName.Solar.7')); //Из-за перестановки планет в нумерации игры, бывший Нептун стал Ураном",
+              "PlanetSetGraph(planet, 207);",
+              "PlanetTerrain(planet, 0, 380);",
+              "PlanetTerrain(planet, 1, 110);",
+              "PlanetTerrain(planet, 2, 0);",
+              "PlanetOrbitalVelocity(planet, 40); //Вращение по часовой стрелке со скоростью 40",
+              "for(i = PlanetItems(planet) - 1; i >= 0; i = i - 1) AddItemToPlanet(planet, GetItemFromPlanet(planet, i));",
+              "",
+              "//--Тристерия--",
+              "planet = CreatePlanet(GalaxyStar(Fei));",
+              "SetName(planet, CT('PlanetName.NewPlanets.Atlas'));",
+              "PlanetSetGraph(planet, 210);",
+              "PlanetTerrain(planet, 0, 80);",
+              "PlanetTerrain(planet, 1, 110);",
+              "PlanetTerrain(planet, 2, 900);",
+              "for(i = PlanetItems(planet) - 1; i >= 0; i = i - 1) AddItemToPlanet(planet, GetItemFromPlanet(planet, i));",
+              "",
+              "//--Дээва--",
+              "planet = CreatePlanet(GalaxyStar(Gaal));",
+              "SetName(planet, CT('PlanetName.NewPlanets.Kraa'));",
+              "PlanetSetGraph(planet, 211);",
+              "PlanetTerrain(planet, 0, 0);",
+              "PlanetTerrain(planet, 1, 380);",
+              "PlanetTerrain(planet, 2, 110);",
+              "for(i = PlanetItems(planet) - 1; i >= 0; i = i - 1) AddItemToPlanet(planet, GetItemFromPlanet(planet, i));",
+              "",
+              "ShipOut(Player());"          
+          ]        
+        }      
+      ],
+      "Planets":      
+      [
+        {
+          "Type":  "TPlanet",
+          "Name":  "ScriptPlanet",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  0,
+          "#":  1,
+          "Race":  62,
+          "Owner":  62,
+          "Economy":  14,
+          "Goverment":  62,
+          "RangeMin":  0,
+          "RangeMax":  100,
+          "Dialog":  -1        
+        }      
+      ],
+      "Ships":      
+      [
+        {
+          "Type":  "TStarShip",
+          "Name":  "",
+          "Pos.x":  200,
+          "Pos.y":  40,
+          "Parent":  -1,
+          "#":  2,
+          "Count":  1,
+          "Owner":  62,
+          "Ship.Type":  126,
+          "Player":  true,
+          "SpeedMin":  0,
+          "SpeedMax":  10000,
+          "Weapon":  0,
+          "CargoHook":  0,
+          "EmptySpace":  0,
+          "StatusTraderMin":  0,
+          "StatusTraderMax":  100,
+          "StatusWarriorMin":  0,
+          "StatusWarriorMax":  100,
+          "StatusPirateMin":  0,
+          "StatusPirateMax":  100,
+          "StrengthMin":  "0",
+          "StrengthMax":  "0",
+          "Ruins":  ""        
+        }      
+      ],
+      "Stars":      
+      [
+        {
+          "Type":  "TStar",
+          "Name":  "ScriptStar",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  2,
+          "#":  0,
+          "Constellation":  0,
+          "Priority":  0,
+          "NoKling":  false,
+          "NoComeKling":  false        
+        }      
+      ],
+      "States":      
+      [
+        {
+          "Type":  "TState",
+          "Name":  "PlayerState",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  4,
+          "#":  3,
+          "Move":  0,
+          "MoveObj":  -1,
+          "Attack.Count":  0,
+          "TakeItem":  -1,
+          "TakeAllItem":  false,
+          "OnTalk":  "",
+          "OnActCode":  "",
+          "EType":  1,
+          "EUnique":  "",
+          "EMsg":  ""        
+        }      
+      ],
+      "Variables":      
+      [
+        {
+          "Type":  "TVar",
+          "Name":  "planet",
+          "Pos.x":  230,
+          "Pos.y":  20,
+          "Parent":  -1,
+          "#":  7,
+          "Var.Type":  "Dword",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "i",
+          "Pos.x":  230,
+          "Pos.y":  0,
+          "Parent":  -1,
+          "#":  8,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        }      
+      ]    
+    }  
+  ],
+  "Visual.Links":  
+  [
+    {
+      "Type":  "TGraphLink",
+      "Begin":  2,
+      "End":  0,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1,
+      "End":  0,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  4,
+      "End":  1,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  4,
+      "End":  3,
+      "Nom":  0,
+      "Arrow":  true    
+    }  
+  ],
+  "BlockPar.EC.Total.Strings":  0,
+  "BlockPar.EC":  
+  [
+  
+  ]
+}
