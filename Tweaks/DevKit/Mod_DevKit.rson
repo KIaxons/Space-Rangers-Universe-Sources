@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -371,
-  "ViewPos.y":  21,
+  "ViewPos.x":  -457,
+  "ViewPos.y":  336,
   "ScriptName":  "Mod_DevKit",
   "ScriptFileOut":  "H:\\Mod_DevKit.scr",
   "ScriptTextOut":  "H:\\Mod_DevKit.txt",
@@ -3767,11 +3767,13 @@
           "Pos.y":  860,
           "Parent":  -1,
           "#":  96,
-          "Total.Lines":  2,
+          "Total.Lines":  4,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ItemSize(ShipItems(Player(),0),temp_int);",
+              "ItemSize(ShipItems(Player(), 0), temp_int);",
+              "HullHP(Player(), 'To100');",
+              "ShipCalcParam(Player());",
               "Sound('Sound.Buy');"          
           ]        
         },
@@ -4047,7 +4049,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "temp_int=CountBox('Bm.Items.2FuelTanks14s','Размер',1,12000);"          
+              "temp_int = CountBox('Bm.Items.2FuelTanks14s', 'Размер', 1, 300000);"          
           ]        
         },
         {
