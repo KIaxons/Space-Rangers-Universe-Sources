@@ -666,7 +666,7 @@
           "Pos.y":  0,
           "Parent":  5,
           "#":  6,
-          "Total.Lines":  270,
+          "Total.Lines":  271,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -912,8 +912,9 @@
               "            //Меняем имя типа игрока (меняет названия характеров и приставку к имени)",
               "            ShipType(Player(), 'RangerPiratePlayer');",
               "",
-              "            //Если подключен мод EvoFreeInflation, то исключаем игрока из списка рейнджеров",
-              "            if(CurrentMods('Evolution\\EvoFreeInflation')) RangerExcludedFromRating(Player(), 1);",
+              "            //Если подключен мод EvoFreeInflation или EvoNoInflation, то исключаем игрока из списка рейнджеров (а почему только с ними?)",
+              "            //if(CurrentMods('Evolution\\EvoFreeInflation') || CurrentMods('Evolution\\EvoNoInflation'))",
+              "            RangerExcludedFromRating(Player(), 1);",
               "",
               "            //Меняем лимиты отношения станций к игроку",
               "            RuinsRelationLimits['SB', 'Min'] = 10; //Научная база",
