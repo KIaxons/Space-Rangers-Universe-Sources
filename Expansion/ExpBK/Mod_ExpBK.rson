@@ -1,15 +1,15 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -267,
-  "ViewPos.y":  -29,
+  "ViewPos.x":  -473,
+  "ViewPos.y":  -84,
   "ScriptName":  "Mod_ExpBK",
   "ScriptFileOut":  "H:\\Mod_ExpBK.scr",
   "ScriptTextOut":  "H:\\Mod_ExpBK.txt",
-  "GraphPoint.Count":  184,
-  "GraphLink.Count":  147,
+  "GraphPoint.Count":  209,
+  "GraphLink.Count":  155,
   "GraphRectText.Count":  5,
-  "Variables.Count":  41,
+  "Variables.Count":  53,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
@@ -18,11 +18,11 @@
   "Places.Count":  0,
   "Items.Count":  0,
   "Ethers.Count":  0,
-  "Dialogs.Count":  11,
-  "DialogMessages.Count":  24,
-  "DialogAnswers.Count":  32,
-  "Operations.Count":  30,
-  "Statements.Count":  41,
+  "Dialogs.Count":  12,
+  "DialogMessages.Count":  25,
+  "DialogAnswers.Count":  33,
+  "Operations.Count":  36,
+  "Statements.Count":  45,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
@@ -84,7 +84,7 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  40,
-          "Parent":  94,
+          "Parent":  93,
           "#":  32,
           "Msg":  "Снять",
           "AMsg.Num":  "5"        
@@ -104,7 +104,7 @@
           "Name":  "restart",
           "Pos.x":  0,
           "Pos.y":  40,
-          "Parent":  175,
+          "Parent":  169,
           "#":  36,
           "Msg":  "Назад",
           "AMsg.Num":  "7"        
@@ -112,41 +112,41 @@
         {
           "Type":  "TDialogAnswer",
           "Name":  "",
-          "Pos.x":  190,
-          "Pos.y":  340,
-          "Parent":  -1,
-          "#":  56,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  54,
+          "#":  55,
           "Msg":  "Подтвердить",
           "AMsg.Num":  "8"        
         },
         {
           "Type":  "TDialogAnswer",
           "Name":  "",
-          "Pos.x":  110,
-          "Pos.y":  370,
-          "Parent":  -1,
-          "#":  59,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  190,
+          "#":  58,
           "Msg":  "Выбрать другой тип товара",
           "AMsg.Num":  "9"        
         },
         {
           "Type":  "TDialogAnswer",
           "Name":  "block",
-          "Pos.x":  310,
-          "Pos.y":  410,
-          "Parent":  -1,
-          "#":  62,
-          "Msg":  "Купить товар [Завершение сделки]",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  60,
+          "#":  61,
+          "Msg":  "<tstr3>",
           "AMsg.Num":  "10"        
         },
         {
           "Type":  "TDialogAnswer",
           "Name":  "",
-          "Pos.x":  340,
-          "Pos.y":  430,
-          "Parent":  -1,
-          "#":  63,
-          "Msg":  "Купить товар [удалённо]",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  59,
+          "#":  62,
+          "Msg":  "<tstr2>",
           "AMsg.Num":  "11"        
         },
         {
@@ -155,18 +155,18 @@
           "Pos.x":  240,
           "Pos.y":  60,
           "Parent":  -1,
-          "#":  87,
+          "#":  86,
           "Msg":  "И что даёт торговая лицензия?",
           "AMsg.Num":  "12"        
         },
         {
           "Type":  "TDialogAnswer",
           "Name":  "restart",
-          "Pos.x":  360,
-          "Pos.y":  430,
-          "Parent":  -1,
-          "#":  88,
-          "Msg":  "Завершить работу с терминалом",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  178,
+          "#":  87,
+          "Msg":  "<tstr6>",
           "AMsg.Num":  "13"        
         },
         {
@@ -174,8 +174,8 @@
           "Name":  "block",
           "Pos.x":  0,
           "Pos.y":  40,
-          "Parent":  92,
-          "#":  93,
+          "Parent":  91,
+          "#":  92,
           "Msg":  "Пополнить",
           "AMsg.Num":  "14"        
         },
@@ -184,8 +184,8 @@
           "Name":  "block",
           "Pos.x":  0,
           "Pos.y":  40,
-          "Parent":  95,
-          "#":  96,
+          "Parent":  94,
+          "#":  95,
           "Msg":  "Снять",
           "AMsg.Num":  "15"        
         },
@@ -194,8 +194,8 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  100,
-          "#":  101,
+          "Parent":  99,
+          "#":  100,
           "Msg":  "Погасить кредит",
           "AMsg.Num":  "16"        
         },
@@ -204,8 +204,8 @@
           "Name":  "block",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  104,
-          "#":  102,
+          "Parent":  103,
+          "#":  101,
           "Msg":  "Погасить кредит",
           "AMsg.Num":  "17"        
         },
@@ -214,8 +214,8 @@
           "Name":  "restart",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  173,
-          "#":  106,
+          "Parent":  167,
+          "#":  105,
           "Msg":  "Назад",
           "AMsg.Num":  "18"        
         },
@@ -225,7 +225,7 @@
           "Pos.x":  540,
           "Pos.y":  100,
           "Parent":  -1,
-          "#":  118,
+          "#":  115,
           "Msg":  "Извините, но у меня, кажется, не хватает кредитов",
           "AMsg.Num":  "19"        
         },
@@ -235,7 +235,7 @@
           "Pos.x":  240,
           "Pos.y":  210,
           "Parent":  -1,
-          "#":  121,
+          "#":  118,
           "Msg":  "Уговорили",
           "AMsg.Num":  "20"        
         },
@@ -245,7 +245,7 @@
           "Pos.x":  310,
           "Pos.y":  80,
           "Parent":  -1,
-          "#":  126,
+          "#":  123,
           "Msg":  "Не интересует",
           "AMsg.Num":  "21"        
         },
@@ -255,7 +255,7 @@
           "Pos.x":  470,
           "Pos.y":  190,
           "Parent":  -1,
-          "#":  131,
+          "#":  128,
           "Msg":  "Приобрести вновь",
           "AMsg.Num":  "22"        
         },
@@ -265,7 +265,7 @@
           "Pos.x":  470,
           "Pos.y":  170,
           "Parent":  -1,
-          "#":  132,
+          "#":  129,
           "Msg":  "Приобрести вновь",
           "AMsg.Num":  "23"        
         },
@@ -275,7 +275,7 @@
           "Pos.x":  420,
           "Pos.y":  190,
           "Parent":  -1,
-          "#":  135,
+          "#":  132,
           "Msg":  "Как-нибудь в другой раз",
           "AMsg.Num":  "24"        
         },
@@ -285,7 +285,7 @@
           "Pos.x":  520,
           "Pos.y":  210,
           "Parent":  -1,
-          "#":  138,
+          "#":  135,
           "Msg":  "",
           "AMsg.Num":  "25"        
         },
@@ -295,29 +295,19 @@
           "Pos.x":  370,
           "Pos.y":  210,
           "Parent":  -1,
-          "#":  140,
+          "#":  137,
           "Msg":  "",
           "AMsg.Num":  "26"        
         },
         {
           "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  310,
-          "Pos.y":  300,
-          "Parent":  -1,
-          "#":  141,
-          "Msg":  "Завершить работу с терминалом",
+          "Name":  "",
+          "Pos.x":  -20,
+          "Pos.y":  0,
+          "Parent":  47,
+          "#":  138,
+          "Msg":  "<tstr1>",
           "AMsg.Num":  "27"        
-        },
-        {
-          "Type":  "TDialogAnswer",
-          "Name":  "restart",
-          "Pos.x":  170,
-          "Pos.y":  430,
-          "Parent":  -1,
-          "#":  144,
-          "Msg":  "Завершить работу с терминалом",
-          "AMsg.Num":  "28"        
         },
         {
           "Type":  "TDialogAnswer",
@@ -325,9 +315,9 @@
           "Pos.x":  470,
           "Pos.y":  80,
           "Parent":  -1,
-          "#":  148,
+          "#":  142,
           "Msg":  "В секту \"Святого дуралея\" я вступать не собираюсь, но лицензию всё же возьму",
-          "AMsg.Num":  "29"        
+          "AMsg.Num":  "28"        
         },
         {
           "Type":  "TDialogAnswer",
@@ -335,9 +325,9 @@
           "Pos.x":  540,
           "Pos.y":  170,
           "Parent":  -1,
-          "#":  151,
+          "#":  145,
           "Msg":  "",
-          "AMsg.Num":  "30"        
+          "AMsg.Num":  "29"        
         },
         {
           "Type":  "TDialogAnswer",
@@ -345,9 +335,29 @@
           "Pos.x":  250,
           "Pos.y":  620,
           "Parent":  -1,
-          "#":  160,
+          "#":  154,
           "Msg":  "Назад",
+          "AMsg.Num":  "30"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  185,
+          "#":  187,
+          "Msg":  "<tstr4>",
           "AMsg.Num":  "31"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "block",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  186,
+          "#":  188,
+          "Msg":  "<tstr5>",
+          "AMsg.Num":  "32"        
         }      
       ],
       "DialogMessages":      
@@ -397,7 +407,7 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  97,
+          "Parent":  96,
           "#":  30,
           "Msg":  "Состояние счёта: <temp_int_5> cr.\r\nГодовой процент: <temp_str_4>\r\n\r\nВы можете пополнять или снимать средства с вашего счёта со стандартной комиссией в <clr>5%<clrEnd>.\r\n\r\nБаланс счёта не может составлять менее <clr>1000<clrEnd> cr. Минимальная сумма пополнения или снятия средств со счёта составляет <clr>100<clrEnd> cr.\r\n<temp_str_3><temp_str_5>",
           "DMsg.Num":  "4"        
@@ -405,61 +415,61 @@
         {
           "Type":  "TDialogMsg",
           "Name":  "",
-          "Pos.x":  250,
-          "Pos.y":  400,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  40,
           "#":  41,
-          "Msg":  "Выберите сектор:",
+          "Msg":  "<tstr1>",
           "DMsg.Num":  "5"        
         },
         {
           "Type":  "TDialogMsg",
           "Name":  "",
-          "Pos.x":  280,
-          "Pos.y":  330,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  43,
           "#":  44,
-          "Msg":  "Нет планет пригодных для покупки товара.",
+          "Msg":  "<tstr2>",
           "DMsg.Num":  "6"        
         },
         {
           "Type":  "TDialogMsg",
           "Name":  "",
-          "Pos.x":  150,
-          "Pos.y":  400,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  193,
           "#":  46,
-          "Msg":  "На какой планете купить товар?",
+          "Msg":  "<tstr1>",
           "DMsg.Num":  "7"        
         },
         {
           "Type":  "TDialogMsg",
           "Name":  "",
-          "Pos.x":  80,
-          "Pos.y":  400,
-          "Parent":  -1,
-          "#":  50,
-          "Msg":  "На складах планеты <Name(choose_planet)> имеются следующие товары:\r\n\r\n<temp_str>\r\nКомиссия за удалённую покупку составит <temp_str_5> сверх стоимости приобретаемых товаров.\r\nКакой товар вас интересует?",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  79,
+          "#":  49,
+          "Msg":  "<tstr1>",
           "DMsg.Num":  "8"        
         },
         {
           "Type":  "TDialogMsg",
           "Name":  "",
-          "Pos.x":  110,
-          "Pos.y":  340,
-          "Parent":  -1,
-          "#":  54,
-          "Msg":  "Требуется подтверждение заказа.\r\n<DefSplt>\r\nТовар: <type_name[type]>\r\nКоличество: <buy_count> т.\r\nЦена за тонну: <temp_str_6> cr.\r\nКомиссия за тонну: <temp_int-temp_str_6> cr.\r\n<DefSplt>\r\nИтоговая стоимость: <buy_cost> cr.",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  78,
+          "#":  53,
+          "Msg":  "<tstr2>",
           "DMsg.Num":  "9"        
         },
         {
           "Type":  "TDialogMsg",
           "Name":  "",
-          "Pos.x":  230,
-          "Pos.y":  300,
-          "Parent":  -1,
-          "#":  58,
-          "Msg":  "Заказ подтверждён.\r\n<DefSplt>\r\nБлагодарим вас за пользование нашим терминалом для удалённых закупок.\r\nВ ближайшие дни заказанный товар будет доставлен на ваш личный склад на планете <Name(choose_planet)>.",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  56,
+          "#":  57,
+          "Msg":  "<tstr1>",
           "DMsg.Num":  "10"        
         },
         {
@@ -468,18 +478,18 @@
           "Pos.x":  240,
           "Pos.y":  100,
           "Parent":  -1,
-          "#":  86,
+          "#":  85,
           "Msg":  "Если вы желаете более эффективно торговать, то мы предлагаем приобрести торговую лицензию.",
           "DMsg.Num":  "11"        
         },
         {
           "Type":  "TDialogMsg",
           "Name":  "",
-          "Pos.x":  360,
-          "Pos.y":  370,
-          "Parent":  -1,
-          "#":  90,
-          "Msg":  "Этот терминал позволит вам купить товар почти на любой планете.",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  119,
+          "#":  89,
+          "Msg":  "<tstr1>",
           "DMsg.Num":  "12"        
         },
         {
@@ -487,8 +497,8 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  169,
-          "#":  99,
+          "Parent":  163,
+          "#":  98,
           "Msg":  "Ваша задолженность: <PlayerDebt()> cr.\r\nДата погашения: <GameDateTxtByTurn(PlayerDebtDate())> <clr>г.<clrEnd>\r\nОсталось дней: <PlayerDebtDate()-CurTurn()>\r\nКоличество просрочек: <PlayerDebtCnt()>\r\n\r\nЗдесь вы можете погасить кредитную задолженность на любую оставшуюся сумму с комиссией всего в <clr>5%<clrEnd>.\r\n\r\nМинимальная сумма погашения составляет <clr>100<clrEnd> cr.",
           "DMsg.Num":  "13"        
         },
@@ -498,7 +508,7 @@
           "Pos.x":  420,
           "Pos.y":  170,
           "Parent":  -1,
-          "#":  130,
+          "#":  127,
           "Msg":  "Решили вновь приобрести у нас торговую лицензию? На этот раз её цена составит полновесные <temp_int_2> cr.",
           "DMsg.Num":  "14"        
         },
@@ -508,7 +518,7 @@
           "Pos.x":  520,
           "Pos.y":  170,
           "Parent":  -1,
-          "#":  136,
+          "#":  133,
           "Msg":  "Отлично! Я знал, что вы ещё вернётесь к нам за лицензией. Все возвращаются.",
           "DMsg.Num":  "15"        
         },
@@ -518,7 +528,7 @@
           "Pos.x":  370,
           "Pos.y":  190,
           "Parent":  -1,
-          "#":  139,
+          "#":  136,
           "Msg":  "Вам же хуже.",
           "DMsg.Num":  "16"        
         },
@@ -528,7 +538,7 @@
           "Pos.x":  540,
           "Pos.y":  80,
           "Parent":  -1,
-          "#":  149,
+          "#":  143,
           "Msg":  "Ну что вы, право, будьте ж людьми.",
           "DMsg.Num":  "17"        
         },
@@ -538,7 +548,7 @@
           "Pos.x":  540,
           "Pos.y":  150,
           "Parent":  -1,
-          "#":  150,
+          "#":  144,
           "Msg":  "Ну как же так можно то, стыдно!",
           "DMsg.Num":  "18"        
         },
@@ -548,7 +558,7 @@
           "Pos.x":  560,
           "Pos.y":  150,
           "Parent":  -1,
-          "#":  155,
+          "#":  149,
           "Msg":  "Ну как же так можно то, стыдно вдвойне!",
           "DMsg.Num":  "19"        
         },
@@ -558,7 +568,7 @@
           "Pos.x":  420,
           "Pos.y":  210,
           "Parent":  -1,
-          "#":  156,
+          "#":  150,
           "Msg":  "А я-то думал, что как бывший лицензированный торговец вы должны прекрасно понимать все преимущества этого документа. Видимо, я в вас ошибся...\r\nЧто ж, желаю и дальше оставаться бывшим, рейнджер <Player>.",
           "DMsg.Num":  "20"        
         },
@@ -568,7 +578,7 @@
           "Pos.x":  340,
           "Pos.y":  210,
           "Parent":  -1,
-          "#":  157,
+          "#":  151,
           "Msg":  "Крайне неразумно с вашей стороны. Срок действия лицензии закончится, и вы всё равно вернётесь к нам за переоформлением, только в тот раз это будет стоить дороже.\r\nПриятной вам потери денег, рейнджер <Player>.",
           "DMsg.Num":  "21"        
         },
@@ -578,7 +588,7 @@
           "Pos.x":  250,
           "Pos.y":  580,
           "Parent":  -1,
-          "#":  161,
+          "#":  155,
           "Msg":  "Наша сеть старается поддерживать своих клиентов в курсе всех крупных событий делового мира, поэтому мы с радостью предоставим вам удобный гаджет для отслеживания свежих торговых новостей.",
           "DMsg.Num":  "22"        
         },
@@ -588,44 +598,46 @@
           "Pos.x":  570,
           "Pos.y":  240,
           "Parent":  -1,
-          "#":  180,
+          "#":  174,
           "Msg":  "",
           "DMsg.Num":  "23"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  204,
+          "#":  205,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "24"        
         }      
       ],
       "Dialogs":      
       [
         {
           "Type":  "TDialog",
-          "Name":  "goods_3",
-          "Pos.x":  150,
-          "Pos.y":  370,
-          "Parent":  -1,
+          "Name":  "ChooseStoreDialog",
+          "Pos.x":  -30,
+          "Pos.y":  160,
+          "Parent":  88,
           "#":  45        
         },
         {
           "Type":  "TDialog",
-          "Name":  "goods_1",
-          "Pos.x":  0,
-          "Pos.y":  430,
-          "Parent":  -1,
-          "#":  48        
+          "Name":  "BuyGoodsDialog",
+          "Pos.x":  -60,
+          "Pos.y":  30,
+          "Parent":  189,
+          "#":  51        
         },
         {
           "Type":  "TDialog",
-          "Name":  "goods_2",
-          "Pos.x":  40,
-          "Pos.y":  310,
+          "Name":  "PurchaseTerminalDialog",
+          "Pos.x":  -110,
+          "Pos.y":  190,
           "Parent":  -1,
-          "#":  52        
-        },
-        {
-          "Type":  "TDialog",
-          "Name":  "BuyTerminalBK",
-          "Pos.x":  310,
-          "Pos.y":  330,
-          "Parent":  -1,
-          "#":  89        
+          "#":  88        
         },
         {
           "Type":  "TDialog",
@@ -633,7 +645,7 @@
           "Pos.x":  250,
           "Pos.y":  550,
           "Parent":  -1,
-          "#":  107        
+          "#":  106        
         },
         {
           "Type":  "TDialog",
@@ -641,15 +653,7 @@
           "Pos.x":  250,
           "Pos.y":  520,
           "Parent":  -1,
-          "#":  110        
-        },
-        {
-          "Type":  "TDialog",
-          "Name":  "CustomBlock",
-          "Pos.x":  10,
-          "Pos.y":  290,
-          "Parent":  -1,
-          "#":  114        
+          "#":  109        
         },
         {
           "Type":  "TDialog",
@@ -657,7 +661,7 @@
           "Pos.x":  440,
           "Pos.y":  150,
           "Parent":  -1,
-          "#":  116        
+          "#":  113        
         },
         {
           "Type":  "TDialog",
@@ -665,7 +669,7 @@
           "Pos.x":  250,
           "Pos.y":  490,
           "Parent":  -1,
-          "#":  117        
+          "#":  114        
         },
         {
           "Type":  "TDialog",
@@ -673,7 +677,7 @@
           "Pos.x":  420,
           "Pos.y":  350,
           "Parent":  -1,
-          "#":  168        
+          "#":  162        
         },
         {
           "Type":  "TDialog",
@@ -681,7 +685,31 @@
           "Pos.x":  420,
           "Pos.y":  240,
           "Parent":  -1,
-          "#":  169        
+          "#":  163        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "ChooseGoodsDialog",
+          "Pos.x":  160,
+          "Pos.y":  40,
+          "Parent":  88,
+          "#":  189        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "OpenEquipShopDialog",
+          "Pos.x":  -190,
+          "Pos.y":  40,
+          "Parent":  88,
+          "#":  194        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "CloseEquipShopDialog",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  195,
+          "#":  203        
         }      
       ],
       "Groups":      
@@ -721,7 +749,7 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  610,
+          "Pos.x":  620,
           "Pos.y":  260,
           "Parent":  -1,
           "#":  5,
@@ -737,7 +765,7 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  91,
+          "Parent":  90,
           "#":  6,
           "Total.Lines":  124,
           "Code.Type":  "Turn",
@@ -876,13 +904,15 @@
           "Pos.y":  0,
           "Parent":  29,
           "#":  7,
-          "Total.Lines":  100,
+          "Total.Lines":  106,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
               "cur_ruin = GetShipRuins(Player());",
               "if(cur_ruin)",
               "{",
+              "    if(int(is_equip_purchase) == -1) AddDialogOverride('CloseEquipShopDialog', 1000);",
+              "",
               "    temp_str = ShipType(cur_ruin);",
               "    if(temp_str == 'BK')",
               "    {",
@@ -921,7 +951,7 @@
               "        //Если у игрока есть торговая лицензия",
               "        if(~ShipFindCustomShipInfoByType(Player(), 'Trade_license'))",
               "        {",
-              "            AddDialogInject('BuyTerminalBK', '', \"Терминал для удалённых закупок\", 0);",
+              "            AddDialogInject('PurchaseTerminalDialog', '', \"Терминал для удалённых закупок\", 0);",
               "        }",
               "",
               "        //Если мод ExpPilotBridge отключён (иначе вывод новостей можно будет включить на мостике)",
@@ -934,7 +964,7 @@
               "    {",
               "        if(BKexist)",
               "        {",
-              "            if(IsScriptActive('Mod_ExpPilotBridge'))",
+              "            if(CurrentMods('Expansion\\ExpPilotBridge'))",
               "            {",
               "                if(PlayerBridge() == 14)",
               "                {",
@@ -947,36 +977,40 @@
               "                    AddDialogInject('Loan', '', \"Мой кредитный долг\", 10);",
               "",
               "                    if(!PlayerDebt()) AddDialogBlock(\"Мой кредитный долг\", 1);",
-              "                    AddDialogInject('BuyTerminalBK', '', \"Терминал для удалённых закупок\", 5);",
+              "                    AddDialogInject('PurchaseTerminalDialog', '', \"Терминал для удалённых закупок\", 5);",
               "",
               "                    //Если у игрока нет торговой лицензии",
               "                    if(ShipFindCustomShipInfoByType(Player(),'Trade_license') == -1) AddDialogBlock(\"Терминал для удалённых закупок\", 1);",
               "",
-              "                    //Запоминание номер мостика с Галанетом для возможности автоматического возврата на него в случае закрытия всех доп. диалогов БЦ",
+              "                    //Запоминание номера мостика с Галанетом для возможности автоматического возврата на него в случае закрытия всех доп. диалогов БЦ",
               "                    LBridgeCheck = 14;",
               "                }",
               "            }",
+              "            //Просто нахуй эту всю ебатню",
+              "            /*",
               "            else",
               "            {",
               "                if(PlayerBridge() == 1 || PlayerBridge() == 2)",
               "                {",
-              "                    AddDialogInject('Deposit','',\"Мой депозитный счёт\", 0);",
+              "                    AddDialogInject('Deposit', '', \"Мой депозитный счёт\", 0);",
               "",
               "                    if(!PlayerDeposit()) AddDialogBlock(\"Мой депозитный счёт\", 1);",
-              "                    AddDialogInject('Loan','',\"Мой кредитный долг\", 0);",
+              "                    AddDialogInject('Loan', '', \"Мой кредитный долг\", 0);",
               "",
               "                    if(!PlayerDebt()) AddDialogBlock(\"Мой кредитный долг\", 1);",
-              "                    AddDialogInject('BuyTerminalBK', '', \"Терминал для удалённых закупок\", 0);",
+              "                    AddDialogInject('PurchaseTerminalDialog', '', \"Терминал для удалённых закупок\", 0);",
               "",
               "                    //Если у игрока нет торговой лицензии",
-              "                    if(ShipFindCustomShipInfoByType(Player(),'Trade_license') == -1) AddDialogBlock(\"Терминал для удалённых закупок\", 1);",
+              "                    if(ShipFindCustomShipInfoByType(Player(), 'Trade_license') == -1) AddDialogBlock(\"Терминал для удалённых закупок\", 1);",
               "",
               "                    //Запоминание номер мостика для возможности автоматического возврата на него в случае закрытия всех доп. диалогов БЦ",
               "                    if(PlayerBridge() == 1) LBridgeCheck = 1;",
               "                    else LBridgeCheck = 2;",
               "                }",
               "            }",
+              "            */",
               "        }",
+              "",
               "        DefSplt = '';",
               "    }",
               "}"          
@@ -1028,7 +1062,7 @@
           "Pos.y":  0,
           "Parent":  5,
           "#":  29,
-          "Total.Lines":  24,
+          "Total.Lines":  183,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -1049,12 +1083,171 @@
               "//Функция расчёта накопленных процентов для текущего состояния депозитного счёта",
               "function DepositPercentCalc()",
               "{",
-              "    float tflt;",
+              "    float tflt = 0.0;",
               "    tflt = 1.0 + 0.0001 * PlayerDepositPercent() / 12; //Считаем X",
               "    tflt = exp((1.0 * PlayerDepositDay() / 365 * 12) * ln(tflt)); //Считаем Y и возводим X в степень Y",
               "    int deposit_summ = round(min(tflt * PlayerDeposit(), 100000000)); //Применяем получившийся процент к сумме на счету и округляем результат",
               "",
               "    result = deposit_summ;",
+              "}",
+              "",
+              "function PlayerActCode() //t_OnEnteringForm, t_OnLeavingForm, t_OnPlayerBuyEq",
+              "{",
+              "    if(ScriptItemActionType(t_OnEnteringForm))",
+              "    {",
+              "        if(is_equip_purchase)",
+              "        {",
+              "            if(CurrentForm() == 'EquipmentShop')",
+              "            {",
+              "                cur_ruin = GetShipRuins(Player());",
+              "",
+              "                //Чтобы игроку не предлагали заменить свой корпус на новый из магазина, но с доплатой",
+              "                tint1 = NoDropItem(ShipEqInSlot(Player(), t_Hull), 1);",
+              "",
+              "                InterfaceState('EquipmentShop', 'PM_FreeSpace', 0);",
+              "                if(ShipFreeSpace(Player()) >= 0)",
+              "                {",
+              "                    InterfaceState('EquipmentShop', 'PM_FreeSpace_Mod', 1);",
+              "                    InterfaceText('EquipmentShop', 'PM_FreeSpace_Mod', '' + ShipFreeSpace(Player()));",
+              "                }",
+              "                else",
+              "                {",
+              "                     InterfaceState('EquipmentShop', 'PM_FreeSpaceRed_Mod', 1);",
+              "                     InterfaceText('EquipmentShop', 'PM_FreeSpaceRed_Mod', '' + ShipFreeSpace(Player()));",
+              "                     InterfaceState('EquipmentShop', 'PM_WarningSpace', 0);",
+              "                     InterfaceState('EquipmentShop', 'PM_WarningSpace_Mod', 1);",
+              "                }",
+              "                tint2 = ItemSize(ShipEqInSlot(Player(), t_Hull), 500000);",
+              "",
+              "                //Сперва чистим магазин на мостике",
+              "                if(PlayerBridge())",
+              "                {",
+              "                    for(int i = ShopItems(cur_ruin) - 1; i >= 0; i = i - 1)",
+              "                    {",
+              "                        FreeItem(GetItemFromShop(cur_ruin, i));",
+              "                    }",
+              "                }",
+              "                //Либо временно прячем предметы из магазина на БЦ",
+              "                else",
+              "                {",
+              "                    tint3 = ShopItems(cur_ruin);",
+              "                    for(i = tint3 - 1; i >= 0; i = i - 1)",
+              "                    {",
+              "                        PutItemInVault('EquipmentShopVault_' + Id(cur_ruin) + '_' + i, GetItemFromShop(cur_ruin, i));",
+              "                    }",
+              "",
+              "                    InterfaceState('EquipmentShop', 'PM_EndTurn', 0);",
+              "                    InterfaceState('EquipmentShop', 'RT_EndTurn_Lock', 1);",
+              "",
+              "                    InterfaceState('EquipmentShop', 'PR_Gov', 0);",
+              "                    InterfaceState('EquipmentShop', 'PR_Goods', 0);",
+              "                    InterfaceState('EquipmentShop', 'PR_Shop', 0);",
+              "                    InterfaceState('EquipmentShop', 'PR_Info', 0);",
+              "                    InterfaceState('EquipmentShop', 'PR_Hangar', 0);",
+              "                    InterfaceState('EquipmentShop', 'PanelRuins', 0);",
+              "                }",
+              "",
+              "                //Переносим ассортимент из выбранного магазина в магазин мостика",
+              "                if(!(is_equip_purchase % 2)) cur_store = IdToPlanet(is_equip_purchase / 2); //Магазин на планете",
+              "                else cur_store = IdToShip((is_equip_purchase - 1) / 2); //Магазин на станции",
+              "",
+              "                ArrayClear(tarr1);",
+              "                ArrayDelete(tarr1, 0);",
+              "                int bon = FindBonusByNameInCfg('ItemPrevCost');",
+              "                for(i = ShopItems(cur_store) - 1; i >= 0; i = i - 1)",
+              "                {",
+              "                    dword item = ShopItems(cur_store, i);",
+              "                    ItemExtraSpecialsAddByType(item, bon, ItemCost(item));",
+              "                    ItemCost(item, max(round(cur_commission * ItemCost(item)), 100));",
+              "                    ArrayAdd(tarr1, GetItemFromShop(cur_store, item));",
+              "                }",
+              "                for(i = ArrayDim(tarr1) - 1; i >= 0; i = i - 1)",
+              "                {",
+              "                    item = tarr1[i];",
+              "                    AddItemToShop(cur_ruin, item);",
+              "                }",
+              "            }",
+              "            //Если игрок не завершил полный цикл работы с терминалом закупок и свалил",
+              "            else is_equip_purchase = 0;",
+              "        }",
+              "    }",
+              "    else if(ScriptItemActionType(t_OnLeavingForm))",
+              "    {",
+              "        if(is_equip_purchase)",
+              "        {",
+              "            if(CurrentForm() == 'EquipmentShop')",
+              "            {",
+              "                cur_ruin = GetShipRuins(Player());",
+              "",
+              "                NoDropItem(ShipEqInSlot(Player(), t_Hull), tint1);",
+              "                ItemSize(ShipEqInSlot(Player(), t_Hull), tint2);",
+              "",
+              "                InterfaceState('EquipmentShop', 'PM_FreeSpace', -1);",
+              "                InterfaceState('EquipmentShop', 'PM_FreeSpace_Mod', -1);",
+              "                InterfaceState('EquipmentShop', 'PM_FreeSpaceRed_Mod', -1);",
+              "                InterfaceState('EquipmentShop', 'PM_WarningSpace', -1);",
+              "                InterfaceState('EquipmentShop', 'PM_WarningSpace_Mod', -1);",
+              "",
+              "                //Переносим невыкупленный ассортимент из магазин мостика обратно в выбранный магазин",
+              "                if(!(is_equip_purchase % 2)) cur_store = IdToPlanet(is_equip_purchase / 2); //Магазин на планете",
+              "                else cur_store = IdToShip((is_equip_purchase - 1) / 2); //Магазин на станции",
+              "",
+              "                ArrayClear(tarr1);",
+              "                ArrayDelete(tarr1, 0);",
+              "                bon = FindBonusByNameInCfg('ItemPrevCost');",
+              "                for(i = ShopItems(cur_ruin) - 1; i >= 0; i = i - 1)",
+              "                {",
+              "                    item = ShopItems(cur_ruin, i);",
+              "                    ItemCost(item, ItemExtraSpecialsCountByType(item, bon));",
+              "                    ItemExtraSpecialsDeleteByType(item, bon, ItemExtraSpecialsCountByType(item, bon));",
+              "                    ArrayAdd(tarr1, GetItemFromShop(cur_ruin, item));",
+              "                }",
+              "                for(i = ArrayDim(tarr1) - 1; i >= 0; i = i - 1)",
+              "                {",
+              "                    item = tarr1[i];",
+              "                    AddItemToShop(cur_store, item);",
+              "                }",
+              "",
+              "                //Возвращаем раннее извлечённые предметы в магазин БЦ, если игрок покупал оборудование через него",
+              "                if(!PlayerBridge())",
+              "                {",
+              "                    for(i = tint3 - 1; i >= 0; i = i - 1)",
+              "                    {",
+              "                        AddItemToShop(cur_ruin, GetItemFromVault('EquipmentShopVault_' + Id(cur_ruin) + '_' + i));",
+              "                    }",
+              "",
+              "                    InterfaceState('EquipmentShop', 'PM_EndTurn', -1);",
+              "                    InterfaceState('EquipmentShop', 'RT_EndTurn_Lock', 0);",
+              "",
+              "                    InterfaceState('EquipmentShop', 'PR_Gov', -1);",
+              "                    InterfaceState('EquipmentShop', 'PR_Goods', -1);",
+              "                    InterfaceState('EquipmentShop', 'PR_Shop', -1);",
+              "                    InterfaceState('EquipmentShop', 'PR_Info', -1);",
+              "                    InterfaceState('EquipmentShop', 'PR_Hangar', -1);",
+              "                    InterfaceState('EquipmentShop', 'PanelRuins', -1);",
+              "                }",
+              "",
+              "                is_equip_purchase = -1;",
+              "            }",
+              "        }",
+              "    }",
+              "    //Игрок приобрёл что-то в магазине оборудования",
+              "    else //if(ScriptItemActionType(t_OnPlayerBuyEq))",
+              "    {",
+              "        if(is_equip_purchase)",
+              "        {",
+              "            cur_ruin = GetShipRuins(Player());",
+              "            if(!(is_equip_purchase % 2)) cur_store = IdToPlanet(is_equip_purchase / 2); //Магазин на планете",
+              "            else cur_store = IdToShip((is_equip_purchase - 1) / 2); //Магазин на станции",
+              "",
+              "            dword purchased_item = ScriptItemActObject1();",
+              "            if(IsPlayer(ScriptItemActParam())) AddItemToStorage(cur_store, GetItemFromShip(Player(), purchased_item)); //Игрок купил предмет",
+              "            else AddItemToStorage(cur_store, GetItemFromStorage(FindItemInStorage(purchased_item))); //Игрок купил корпус",
+              "            ScriptItemActParam(cur_store);",
+              "",
+              "            buy_count = buy_count + 1;",
+              "        }",
+              "    }",
               "}"          
           ]        
         },
@@ -1190,278 +1383,355 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  280,
-          "Pos.y":  430,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  62,
           "#":  39,
-          "Total.Lines":  25,
+          "Total.Lines":  23,
           "Code.Type":  "Turn",
           "Code":          
           [
+              "//Заносим в список все сектора, в которых имеются свободные системы",
               "ArrayClear(temp_array);",
-              "ArrayClear(temp_array_2);",
-              "ArrayClear(temp_array_3);",
               "for(i = 0; i < GalaxySectors(); i = i + 1)",
               "{",
-              "    temp_dword = GalaxySectors(i);",
-              "    if(!SectorVisible(temp_dword)) continue;",
-              "    ",
+              "    dword sector = GalaxySectors(i);",
+              "    if(!SectorVisible(sector)) continue;",
+              "",
               "    temp_int = 0;",
-              "    for(j = 0; j < ConStars(temp_dword); j = j + 1)",
+              "    for(j = 0; j < ConStars(sector); j = j + 1)",
               "    {",
-              "        temp_dword_2 = ConStar(temp_dword, j);",
+              "        temp_dword_2 = ConStar(sector, j);",
               "        if(StarOwner(temp_dword_2) == 1) continue;",
               "        if(StarCustomFaction(temp_dword_2) == 'Klissan') continue;",
               "        if(StarToCon(temp_dword_2) == StarToCon(PlanetToStar(PlanetPirateClan())));",
               "        temp_int = 1;",
+              "        break;",
               "    }",
-              "    ",
-              "    if(temp_int == 1)",
-              "    {",
-              "        ArrayAdd(temp_array, temp_dword);",
-              "        ArrayAdd(temp_array_2, DeleteTags('<Name(temp_dword)>'));",
-              "        ArrayAdd(temp_array_3, i);",
-              "    }",
-              "}"          
+              "",
+              "    if(temp_int == 1) ArrayAdd(temp_array, sector);",
+              "}",
+              "",
+              "tstr1 = '</color>' + CT('Script.Mod_ExpBK.PurchaseTerminalDialog.SectorChoosing');",
+              "tstr2 = '</color>' + CT('Script.Mod_ExpBK.PurchaseTerminalDialog.NoStoresAvailable');"          
           ]        
         },
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  250,
-          "Pos.y":  370,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  41,
           "#":  42,
-          "Total.Lines":  4,
+          "Total.Lines":  12,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "for(i = 1; i < ArrayDim(temp_array_2); i = i + 1)",
+              "//Получение в строку слова \"Сектор \"",
+              "//tstr2 = CT('FormInfo.M09Const');",
+              "//tstr2 = substr(tstr2, 0, count(tstr2) - 1) + ' ';",
+              "for(i = 1; i < ArrayDim(temp_array); i = i + 1)",
               "{",
-              "    InjectAnswer('goods_3', temp_array_2[i], temp_array_3[i]);",
-              "}"          
+              "    dword sector = temp_array[i];",
+              "    if(StarToCon(ShipStar(Player())) != sector) tstr1 = Name(sector);",
+              "    else tstr1 = '<color=0,50,200>' + Name(sector) + '</color>';",
+              "    InjectAnswer('ChooseStoreDialog', tstr1, sector);",
+              "}",
+              "",
+              "InjectAnswer('PurchaseTerminalDialog', CT('Script.Mod_ExpBK.PurchaseTerminalDialog.SwitchBack'), 0);"          
           ]        
         },
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  200,
-          "Pos.y":  400,
-          "Parent":  -1,
+          "Pos.x":  -20,
+          "Pos.y":  0,
+          "Parent":  46,
           "#":  47,
-          "Total.Lines":  17,
+          "Total.Lines":  49,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "temp_int_4 = GAnswerData;",
-              "temp_dword = GalaxySectors(temp_int_4);",
-              "",
-              "for(i = 0; i < ConStars(temp_dword); i = i + 1)",
+              "//Предлагаем игроку на выбора все планеты и станции в секторе (если подключён EvoFairTrade), магазины которых доступны для игрока",
+              "dword sector = GAnswerData;",
+              "for(i = 0; i < ConStars(sector); i = i + 1)",
               "{",
-              "    temp_dword_2 = ConStar(temp_dword, i);",
-              "    if(StarOwner(temp_dword_2) == 1) continue;",
-              "    if(StarCustomFaction(temp_dword_2) == 'Klissan') continue;",
-              "    if(StarToCon(temp_dword_2) == StarToCon(PlanetToStar(PlanetPirateClan())));",
+              "    dword star = ConStar(sector, i);",
+              "    if(StarOwner(star) == 1) continue;",
+              "    if(StarCustomFaction(star) == 'Klissan') continue;",
+              "    if(StarToCon(star) == StarToCon(PlanetToStar(PlanetPirateClan())));",
               "",
-              "    for(j = 0; j < StarPlanets(temp_dword_2); j = j + 1)",
+              "    for(j = 0; j < StarPlanets(star); j = j + 1)",
               "    {",
-              "        temp_dword_3 = StarPlanets(temp_dword_2, j);",
-              "        if(PlanetOwner(temp_dword_3) == 6) continue;",
-              "        InjectAnswer('goods_1', Name(temp_dword_3) + DeleteTags(' (' + Name(temp_dword_2) + ')'), temp_dword_3);",
-              "    }",
-              "}"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  110,
-          "Pos.y":  400,
-          "Parent":  -1,
-          "#":  49,
-          "Total.Lines":  53,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "if(GetGameOptions('FontDialog') == '0') temp_str=CT('FormInfo.td_otstup_4')+\"Кол-во:\"+CT('FormInfo.td_otstup_5')+\"Цена:\"+\"<br>\";",
-              "else if(GetGameOptions('FontDialog') == '1') temp_str=CT('FormInfo.td_otstup_4')+\"Кол-во:\"+CT('FormInfo.td_otstup_6')+\"Цена:\"+\"<br>\";",
-              "else if(GetGameOptions('FontDialog') == '2') temp_str=CT('FormInfo.td_otstup_4')+\"Кол-во:\"+CT('FormInfo.td_otstup_7')+\"Цена:\"+\"<br>\";",
-              "else temp_str=CT('FormInfo.td_otstup_4')+\"Кол-во:\"+CT('FormInfo.td_otstup_8')+\"Цена:\"+\"<br>\";",
+              "        dword planet = StarPlanets(star, j);",
+              "        if(PlanetOwner(planet) == None) continue;",
+              "        if(PlayerBridge())",
+              "        {",
+              "            if(planet == GetShipPlanet(GetShipRuins(Player()))) continue;",
+              "        }",
+              "        if(planet == PlanetPirateClan()) continue;",
+              "        if(is_equip_purchase && !ShopItems(planet)) continue;",
               "",
-              "for(i = 0; i < 8; i = i + 1)",
-              "{",
-              "    temp_int = GoodsAdd(choose_planet, i, 0);",
-              "    if(!temp_int) temp_str_6 = '<color=255,0,0>' + temp_int + '</color>';",
-              "    else temp_str_6=temp_int;",
-              "    if(temp_int<10)temp_str_2='       '+temp_str_6;",
-              "    if(temp_int>9 && temp_int<100)temp_str_2='     '+temp_str_6;",
-              "    if(temp_int>99 && temp_int<1000)temp_str_2='   '+temp_str_6;",
-              "    if(temp_int>999 && temp_int<10000)temp_str_2=' '+temp_str_6;",
-              "    if(temp_int>9999 && temp_int<100000)temp_str_2=temp_str_6;",
-              "    temp_int=GoodsBuyPrice(choose_planet,i);",
-              "    if(temp_int<10)temp_str_3='/      '+temp_int;",
-              "    if(temp_int>9 && temp_int<100)temp_str_3='/    '+temp_int;",
-              "    if(temp_int>99 && temp_int<1000)temp_str_3='/  '+temp_int;",
-              "    if(temp_int>999 && temp_int<10000)temp_str_3='/'+temp_int;",
-              "    if(temp_int>9999 && temp_int<100000)temp_str_3=temp_int;",
+              "        if(star != ShipStar(Player())) tstr1 = CT('Planet.Name') + ' <color=0,50,200>' + Name(planet) + '</color> (' + Name(star) + ')';",
+              "        else tstr1 = CT('Planet.Name') + ' <color=0,50,200>' + Name(planet) + '</color> (<color=0,50,200>' + Name(star) + '</color>)';",
               "",
-              "    if(ShipType(GetShipRuins(Player()))=='BK')",
-              "    {",
-              "        temp_int=GoodsBuyPrice(choose_planet,i);",
-              "        temp_int_5=round(Commission*temp_int);",
-              "        if(temp_int_5==temp_int)temp_int=temp_int_5+1;",
-              "        else temp_int=temp_int_5;",
-              "        if(temp_int<10)temp_str_4='    ('+temp_int+')';",
-              "        if(temp_int>9 && temp_int<100)temp_str_4='   ('+temp_int+')';",
-              "        if(temp_int>99 && temp_int<1000)temp_str_4=' ('+temp_int+')';",
-              "    }",
-              "    if(ShipType(GetShipRuins(Player()))!='BK')",
-              "    {",
-              "        temp_int=GoodsBuyPrice(choose_planet,i);",
-              "        temp_int_5=round(Commission*temp_int);",
-              "        if(temp_int_5==temp_int)temp_int=temp_int_5+1;",
-              "        else temp_int=temp_int_5;",
-              "        if(temp_int<10)temp_str_4='    ('+temp_int+')';",
-              "        if(temp_int>9 && temp_int<100)temp_str_4='   ('+temp_int+')';",
-              "        if(temp_int>99 && temp_int<1000)temp_str_4=' ('+temp_int+')';",
+              "        if(!is_equip_purchase) InjectAnswer('ChooseGoodsDialog', tstr1, planet);",
+              "        else InjectAnswer('OpenEquipShopDialog', tstr1, planet);",
               "    }",
               "",
-              "    if(ShipGoodsIllegalOnPlanet(Player(),i,choose_planet)==0)",
+              "    if(CurrentMods('Evolution\\EvoFairTrade') || is_equip_purchase)",
               "    {",
-              "        temp_str=temp_str+'<color=0,50,200>'+type_name[i+1]+':</color><clrEnd>'+CT('FormInfo.td_otstup_1')+temp_str_2+CT('FormInfo.td_otstup_2')+temp_str_3+'<color=120,120,120>'+temp_str_4+'</color>'+\"<br>\";",
-              "    }",
+              "        for(j = 0; j < StarRuins(star); j = j + 1)",
+              "        {",
+              "            dword station = StarRuins(star, j);",
+              "            if(NoShopUpdate(station)) continue;",
+              "            if(station == cur_ruin) continue;",
+              "            if(ShipOwner(station) > Gaal && ShipOwner(station) < PirateClan) continue;",
+              "            if(CT('AssistantExclusions.' + ShipType(station)) == 'NoSearch') continue;",
+              "            if(ShipType(station) == 'CB' && ShipOwner(Player()) != PirateClan) continue;",
+              "            if(is_equip_purchase && !ShopItems(station)) continue;",
               "",
-              "    if(ShipGoodsIllegalOnPlanet(Player(),i,choose_planet)==1)",
-              "    {",
-              "        temp_str=temp_str+'<color=255,0,0>'+type_name[i+1]+':</color><clrEnd>'+CT('FormInfo.td_otstup_1')+temp_str_2+CT('FormInfo.td_otstup_2')+temp_str_3+'<color=120,120,120>'+temp_str_4+'</color>'+\"<br>\";",
-              "    }",
-              "}"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  40,
-          "Pos.y":  400,
-          "Parent":  -1,
-          "#":  51,
-          "Total.Lines":  13,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "for(i=0; i<8; i=i+1)",
-              "{",
-              "    buy_count=GoodsAdd(choose_planet,i,0);",
-              "    if(buy_count>0 && ShipGoodsIllegalOnPlanet(Player(),i,choose_planet)==0)",
-              "    {",
-              "        InjectAnswer('goods_2',type_name[i+1],i+1);",
-              "    }",
-              "    if(buy_count==0 || ShipGoodsIllegalOnPlanet(Player(),i,choose_planet)==1)",
-              "    {",
-              "        InjectAnswer('CustomBlock','<color=120,124,120>'+type_name[i+1]+'</color>',i+1);",
+              "            if(star != ShipStar(Player())) tstr1 = CT('ShipType.TypeName.' + ShipType(station)) + ' <color=0,50,200>' + ShipName(station) + '</color> (' + Name(star) + ')';",
+              "            else tstr1 = CT('ShipType.TypeName.' + ShipType(station)) + ' <color=0,50,200>' + ShipName(station) + '</color> (<color=0,50,200>' + Name(star) + '</color>)';",
+              "",
+              "            if(!is_equip_purchase) InjectAnswer('ChooseGoodsDialog', tstr1, station);",
+              "            else InjectAnswer('OpenEquipShopDialog', tstr1, station);",
+              "        }",
               "    }",
               "}",
-              "InjectAnswer('goods_3',\"Выбрать другую планету\",temp_int_4);"          
+              "",
+              "tstr1 = '</color>' + CT('Script.Mod_ExpBK.PurchaseTerminalDialog.BackToSectorSelection');"          
           ]        
         },
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  40,
-          "Pos.y":  340,
-          "Parent":  -1,
-          "#":  53,
-          "Total.Lines":  64,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  58,
+          "#":  48,
+          "Total.Lines":  68,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//Составление строчки товара с учётом размера шрифта",
+              "tstr1 = CT('Script.Mod_ExpBK.PurchaseTerminalDialog.Quantity');",
+              "tstr2 = CT('Script.Mod_ExpBK.PurchaseTerminalDialog.Cost');",
+              "if(GetGameOptions('FontDialog') == '0') tstr1 = Format('<td=156'+'>') + tstr1 + Format('<td=253'+'>') + tstr2 + Format('<br>');",
+              "else if(GetGameOptions('FontDialog') == '1') tstr1 = Format('<td=156'+'>') + tstr1 + Format('<td=264'+'>') + tstr2 + Format('<br>');",
+              "else if(GetGameOptions('FontDialog') == '2') tstr1 = Format('<td=156'+'>') + tstr1 + Format('<td=267'+'>') + tstr2 + Format('<br>');",
+              "else /*if(GetGameOptions('FontDialog') == '3')*/ tstr1 = Format('<td=156'+'>') + tstr1 + Format('<td=269'+'>') + tstr2 + Format('<br>');",
+              "",
+              "for(i = 0; i <= t_Narcotics; i = i + 1)",
+              "{",
+              "    temp_int = GoodsAdd(cur_store, i, 0);",
+              "    if(!temp_int) temp_str_6 = '<color=255,0,0>' + temp_int + '</color>';",
+              "    else temp_str_6 = temp_int;",
+              "    if(temp_int < 10) temp_str_2 = '       ' + temp_str_6;",
+              "    if(temp_int > 9 && temp_int < 100) temp_str_2 = '     ' + temp_str_6;",
+              "    if(temp_int > 99 && temp_int < 1000) temp_str_2 = '   ' + temp_str_6;",
+              "    if(temp_int > 999 && temp_int < 10000) temp_str_2 = ' ' + temp_str_6;",
+              "    if(temp_int > 9999 && temp_int < 100000) temp_str_2 = temp_str_6;",
+              "    temp_int = GoodsBuyPrice(cur_store, i);",
+              "    if(temp_int < 10) temp_str_3 = '/      ' + temp_int;",
+              "    if(temp_int > 9 && temp_int < 100) temp_str_3 = '/    ' + temp_int;",
+              "    if(temp_int > 99 && temp_int < 1000) temp_str_3 = '/  ' + temp_int;",
+              "    if(temp_int > 999 && temp_int < 10000) temp_str_3 = '/' + temp_int;",
+              "    if(temp_int > 9999 && temp_int < 100000) temp_str_3 = temp_int;",
+              "",
+              "    if(ShipType(cur_ruin) == 'BK')",
+              "    {",
+              "        temp_int = GoodsBuyPrice(cur_store, i);",
+              "        temp_int_5 = round(cur_commission * temp_int);",
+              "        if(temp_int_5 == temp_int) temp_int = temp_int_5 + 1;",
+              "        else temp_int = temp_int_5;",
+              "        if(temp_int < 10) temp_str_4 = '    (' + temp_int + ')';",
+              "        if(temp_int > 9 && temp_int < 100) temp_str_4 = '   (' + temp_int + ')';",
+              "        if(temp_int > 99 && temp_int < 1000) temp_str_4 = ' (' + temp_int + ')';",
+              "    }",
+              "    else",
+              "    {",
+              "        temp_int = GoodsBuyPrice(cur_store, i);",
+              "        temp_int_5 = round(cur_commission * temp_int);",
+              "        if(temp_int_5 == temp_int) temp_int = temp_int_5 + 1;",
+              "        else temp_int = temp_int_5;",
+              "        if(temp_int < 10) temp_str_4 = '    (' + temp_int + ')';",
+              "        if(temp_int > 9 && temp_int < 100) temp_str_4 = '   (' + temp_int + ')';",
+              "        if(temp_int > 99 && temp_int < 1000) temp_str_4 = ' (' + temp_int + ')';",
+              "    }",
+              "",
+              "    if(ObjectType(cur_store) == 3)",
+              "    {",
+              "        if(!ShipGoodsIllegalOnPlanet(Player(), i, cur_store))",
+              "        {",
+              "            tstr1 = tstr1 + '<color=0,50,200>' + type_name[i + 1] + ':</color>' + Format('<td=155'+'>') + temp_str_2 + Format('<td=225'+'>') + temp_str_3 + '<color=120,120,120>' + temp_str_4 + '</color>' + Format('<br>');",
+              "        }",
+              "        else",
+              "        {",
+              "            tstr1 = tstr1 + '<color=255,0,0>' + type_name[i + 1] + ':</color>' + Format('<td=155'+'>') + temp_str_2 + Format('<td=225'+'>') + temp_str_3 + '<color=120,120,120>' + temp_str_4 + '</color>' + Format('<br>');",
+              "        }",
+              "    }",
+              "    //Выбираем товар на станции",
+              "    else tstr1 = tstr1 + '<color=0,50,200>' + type_name[i + 1] + ':</color>' + Format('<td=155'+'>') + temp_str_2 + Format('<td=225'+'>') + temp_str_3 + '<color=120,120,120>' + temp_str_4 + '</color>' + Format('<br>');",
+              "}",
+              "",
+              "if(ObjectType(cur_store) == 3) tstr5 = lowercase(CT('FormInfo.MM09')) + ' <color=0,50,200>' + Name(cur_store) + '</color>';",
+              "else tstr5 = '<color=0,50,200>' + Name(cur_store) + '</color>';",
+              "tstr1 = '</color>' + Format(CT('Script.Mod_ExpBK.PurchaseTerminalDialog.GoodsAtStore'),",
+              "                               '<Store'+'>', tstr5,",
+              "                               '<GoodsList'+'>', tstr1,",
+              "                               '<Commission'+'>', '<color=0,50,200>' + round((cur_commission - 1.0) * 100.0) + '%</color>',",
+              "                               '');"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  -20,
+          "Pos.y":  0,
+          "Parent":  49,
+          "#":  50,
+          "Total.Lines":  19,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "for(i = 0; i < 8; i = i + 1)",
+              "{",
+              "    buy_count = GoodsAdd(cur_store, i, 0);",
+              "",
+              "    if(ObjectType(cur_store) == 3)",
+              "    {",
+              "        if(!buy_count || ShipGoodsIllegalOnPlanet(Player(), i, cur_store)) AddDialogBlock(type_name[i + 1], 1);",
+              "        InjectAnswer('BuyGoodsDialog', type_name[i + 1], i + 1);",
+              "    }",
+              "    else",
+              "    {",
+              "        if(!buy_count) AddDialogBlock(type_name[i + 1], 1);",
+              "        InjectAnswer('BuyGoodsDialog', type_name[i + 1], i + 1);",
+              "    }",
+              "}",
+              "",
+              "if(ObjectType(cur_store) == 3) dword sector = StarToCon(PlanetToStar(cur_store));",
+              "else sector = StarToCon(ShipStar(cur_store));",
+              "InjectAnswer('ChooseStoreDialog', CT('Script.Mod_ExpBK.PurchaseTerminalDialog.BackToStoreSelection'), sector);"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  51,
+          "#":  52,
+          "Total.Lines":  75,
           "Code.Type":  "Turn",
           "Code":          
           [
               "type = GAnswerData;",
               "",
-              "buy_count=GoodsAdd(choose_planet,type-1,0)+1;",
-              "buy_count=min(GoodsAdd(choose_planet,type-1,0),buy_count);",
-              "temp_int=GoodsBuyPrice(choose_planet,type-1);",
-              "if(ShipType(GetShipRuins(Player()))=='BK')",
+              "buy_count = GoodsAdd(cur_store, type - 1, 0) + 1;",
+              "buy_count = min(GoodsAdd(cur_store, type - 1, 0), buy_count);",
+              "temp_int = GoodsBuyPrice(cur_store, type - 1);",
+              "if(ShipType(cur_ruin) == 'BK')",
               "{",
-              "    temp_str_6=temp_int;",
-              "    temp_int_5=round(Commission*temp_int);",
-              "    if(temp_int_5==temp_int)temp_int=temp_int_5+1;",
-              "    else temp_int=temp_int_5;",
+              "    temp_str_6 = temp_int;",
+              "    temp_int_5 = round(cur_commission * temp_int);",
+              "    if(temp_int_5 == temp_int) temp_int = temp_int_5 + 1;",
+              "    else temp_int = temp_int_5;",
               "}",
-              "if(ShipType(GetShipRuins(Player()))!='BK')",
+              "else",
               "{",
-              "    temp_str_6=temp_int;",
-              "    temp_int_5=round(Commission*temp_int);",
-              "    if(temp_int_5==temp_int)temp_int=temp_int_5+1;",
-              "    else temp_int=temp_int_5;",
+              "    temp_str_6 = temp_int;",
+              "    temp_int_5 = round(cur_commission * temp_int);",
+              "    if(temp_int_5 == temp_int) temp_int = temp_int_5 + 1;",
+              "    else temp_int = temp_int_5;",
               "}",
-              "if(type==1)",
+              "",
+              "tstr2 = '</color>' + CT('Script.Mod_ExpBK.PurchaseTerminalDialog.SetGoodsQuantity');",
+              "if(type - 1 == t_Food)",
               "{",
-              "    temp_int_1=int(ShipMoney(Player())/temp_int);",
-              "    buy_count=CountBox('Bm.Items.2Food',\"Сколько купить?\",1,buy_count,temp_int,1,temp_int_1,buy_count,ShipMoney(Player()));",
+              "    temp_int_1 = int(ShipMoney(Player()) / temp_int);",
+              "    buy_count = CountBox('Bm.Items.2Food', tstr2, 1, buy_count, temp_int, 1, temp_int_1, buy_count, ShipMoney(Player()));",
               "}",
-              "else if(type==2)",
+              "else if(type - 1 == t_Medicine)",
               "{",
-              "    temp_int_1=int(ShipMoney(Player())/temp_int);",
-              "    buy_count=CountBox('Bm.Items.2Medicine',\"Сколько купить?\",1,buy_count,temp_int,1,temp_int_1,buy_count,ShipMoney(Player()));",
+              "    temp_int_1 = int(ShipMoney(Player())/temp_int);",
+              "    buy_count = CountBox('Bm.Items.2Medicine', tstr2, 1, buy_count,temp_int,1,temp_int_1, buy_count, ShipMoney(Player()));",
               "}",
-              "else if(type==3)",
+              "else if(type - 1 == t_Technics)",
               "{",
-              "    temp_int_1=int(ShipMoney(Player())/temp_int);",
-              "    buy_count=CountBox('Bm.Items.2Technics',\"Сколько купить?\",1,buy_count,temp_int,1,temp_int_1,buy_count,ShipMoney(Player()));",
+              "    temp_int_1 = int(ShipMoney(Player()) / temp_int);",
+              "    buy_count = CountBox('Bm.Items.2Technics', tstr2, 1, buy_count, temp_int, 1, temp_int_1, buy_count, ShipMoney(Player()));",
               "}",
-              "else if(type==4)",
+              "else if(type - 1 == t_Luxury)",
               "{",
-              "    temp_int_1=int(ShipMoney(Player())/temp_int);",
-              "    buy_count=CountBox('Bm.Items.2Luxury',\"Сколько купить?\",1,buy_count,temp_int,1,temp_int_1,buy_count,ShipMoney(Player()));",
+              "    temp_int_1 = int(ShipMoney(Player())/temp_int);",
+              "    buy_count = CountBox('Bm.Items.2Luxury', tstr2, 1, buy_count, temp_int, 1, temp_int_1, buy_count, ShipMoney(Player()));",
               "}",
-              "else if(type==5)",
+              "else if(type - 1 == t_Minerals)",
               "{",
-              "    temp_int_1=int(ShipMoney(Player())/temp_int);",
-              "    buy_count=CountBox('Bm.Items.2Minerals',\"Сколько купить?\",1,buy_count,temp_int,1,temp_int_1,buy_count,ShipMoney(Player()));",
+              "    temp_int_1 = int(ShipMoney(Player()) / temp_int);",
+              "    buy_count = CountBox('Bm.Items.2Minerals', tstr2, 1, buy_count, temp_int, 1, temp_int_1, buy_count, ShipMoney(Player()));",
               "}",
-              "else if(type==6)",
+              "else if(type - 1 == t_Alcohol)",
               "{",
-              "    temp_int_1=int(ShipMoney(Player())/temp_int);",
-              "    buy_count=CountBox('Bm.Items.2Alcohol',\"Сколько купить?\",1,buy_count,temp_int,1,temp_int_1,buy_count,ShipMoney(Player()));",
+              "    temp_int_1 = int(ShipMoney(Player()) / temp_int);",
+              "    buy_count = CountBox('Bm.Items.2Alcohol', tstr2, 1, buy_count, temp_int, 1, temp_int_1, buy_count, ShipMoney(Player()));",
               "}",
-              "else if(type==7)",
+              "else if(type - 1 == t_Arms)",
               "{",
-              "    temp_int_1=int(ShipMoney(Player())/temp_int);",
-              "    buy_count=CountBox('Bm.Items.2Arms',\"Сколько купить?\",1,buy_count,temp_int,1,temp_int_1,buy_count,ShipMoney(Player()));",
+              "    temp_int_1 = int(ShipMoney(Player()) / temp_int);",
+              "    buy_count = CountBox('Bm.Items.2Arms', tstr2, 1, buy_count,temp_int, 1, temp_int_1, buy_count, ShipMoney(Player()));",
               "}",
-              "else if(type==8)",
+              "else if(type - 1 == t_Narcotics)",
               "{",
-              "    temp_int_1=int(ShipMoney(Player())/temp_int);",
-              "    buy_count=CountBox('Bm.Items.2Narcotics',\"Сколько купить?\",1,buy_count,temp_int,1,temp_int_1,buy_count,ShipMoney(Player()));",
+              "    temp_int_1 = int(ShipMoney(Player()) / temp_int);",
+              "    buy_count = CountBox('Bm.Items.2Narcotics', tstr2, 1, buy_count, temp_int, 1, temp_int_1, buy_count, ShipMoney(Player()));",
               "}",
-              "buy_cost = buy_count * temp_int;",
-              "if(GetGameOptions('FontDialog') == '0') DefSplt = '</color>-------------------------------------------------------------';",
-              "else if(GetGameOptions('FontDialog') == '1') DefSplt = '</color>------------------------------------------';",
-              "else if(GetGameOptions('FontDialog') == '2') DefSplt = '</color>-----------------------------------------';",
-              "else DefSplt = '</color>-------------------------------------';"          
+              "",
+              "if(buy_count > 0)",
+              "{",
+              "    buy_cost = buy_count * temp_int;",
+              "    tstr2 = '</color>' + Format(CT('Script.Mod_ExpBK.PurchaseTerminalDialog.GoodsConfirmationRequired'),",
+              "                                   '<SplitLine'+'>', DefSplt,",
+              "                                   '<Goods'+'>', '<color=0,50,200>' + type_name[type] + '</color>',",
+              "                                   '<Quantity'+'>', '<color=0,50,200>' + buy_count + '</color>',",
+              "                                   '<CostPerTon'+'>', '<color=0,50,200>' + temp_str_6 + '</color>',",
+              "                                   '<CommissionPerTon'+'>', '<color=0,50,200>' + (temp_int - temp_str_6) + '</color>',",
+              "                                   '<Cost'+'>', '<color=0,50,200>' + buy_cost + '</color>',",
+              "                                   '');",
+              "}",
+              "else buy_cost = 0;"          
           ]        
         },
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  230,
-          "Pos.y":  340,
-          "Parent":  -1,
-          "#":  57,
-          "Total.Lines":  10,
+          "Pos.x":  0,
+          "Pos.y":  40,
+          "Parent":  55,
+          "#":  56,
+          "Total.Lines":  17,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "if(ShipType(GetShipRuins(Player()))=='BK') buy_day=CurTurn()+3;",
-              "else buy_day=CurTurn()+5;",
+              "if(ShipType(cur_ruin) == 'BK') buy_day_goods = CurTurn() + 3;",
+              "else buy_day_goods = CurTurn() + 5;",
               "",
-              "ShipMoney(Player(),ShipMoney(Player())-buy_cost);",
-              "goods=CreateGoods(type-1,buy_count);",
+              "ShipMoney(Player(), ShipMoney(Player()) - buy_cost);",
+              "goods = CreateGoods(type - 1, buy_count);",
               "//Выставляем купленным товарам цену с учётом комиссии",
-              "ItemCost(goods,buy_count*(GoodsBuyPrice(choose_planet,type-1)+(temp_int-temp_str_6)));",
-              "AddItemToStorage(choose_planet,goods);",
-              "PlanetSetGoods(choose_planet,type-1,(GoodsAdd(choose_planet,type-1,0)-buy_count));",
-              "Sound('Sound.Sell');"          
+              "ItemCost(goods, buy_count * (GoodsBuyPrice(cur_store, type - 1) + (temp_int - temp_str_6)));",
+              "AddItemToStorage(cur_store, goods);",
+              "PlanetSetGoods(cur_store, type - 1, (GoodsAdd(cur_store, type - 1, 0) - buy_count));",
+              "Sound('Sound.Sell');",
+              "",
+              "if(ObjectType(cur_store) == 3) tstr5 = lowercase(CT('FormInfo.MM09')) + ' <color=0,50,200>' + Name(cur_store) + '</color>';",
+              "else tstr5 = '<color=0,50,200>' + Name(cur_store) + '</color>';",
+              "tstr1 = '</color>' + Format(CT('Script.Mod_ExpBK.PurchaseTerminalDialog.GoodsOrderConfirmed'),",
+              "                               '<SplitLine'+'>', DefSplt,",
+              "                               '<Store'+'>', tstr5,",
+              "                               '');"          
           ]        
         },
         {
@@ -1470,7 +1740,7 @@
           "Pos.x":  320,
           "Pos.y":  130,
           "Parent":  -1,
-          "#":  84,
+          "#":  83,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -1484,7 +1754,7 @@
           "Pos.x":  310,
           "Pos.y":  60,
           "Parent":  -1,
-          "#":  85,
+          "#":  84,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -1497,9 +1767,9 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  168,
-          "#":  97,
-          "Total.Lines":  25,
+          "Parent":  162,
+          "#":  96,
+          "Total.Lines":  27,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -1516,11 +1786,13 @@
               "{",
               "    temp_str_4 = \"<color=0,50,200>заморожен</color>\";",
               "}",
+              "",
               "if(PlayerDebt() <= 0)",
               "{",
               "    if(PlayerDepositPercent() < 10) temp_str_4 = '0.' + PlayerDepositPercent() + '%';",
               "    else temp_str_4 = substr(PlayerDepositPercent(), 0, 1) + '.' + substr(PlayerDepositPercent(), 1, 1) + '%';",
               "}",
+              "",
               "if(PlayerDebtCnt() >= 3)",
               "{",
               "    temp_str_5 = \"</color><br>Ваш депозитный счёт <color=0,50,200>заморожен</color> до полного погашения задолженности по кредиту.\";",
@@ -1535,8 +1807,8 @@
           "Name":  "",
           "Pos.x":  100,
           "Pos.y":  0,
-          "Parent":  101,
-          "#":  103,
+          "Parent":  100,
+          "#":  102,
           "Total.Lines":  50,
           "Code.Type":  "Turn",
           "Code":          
@@ -1599,7 +1871,7 @@
           "Pos.x":  360,
           "Pos.y":  620,
           "Parent":  -1,
-          "#":  109,
+          "#":  108,
           "Total.Lines":  12,
           "Code.Type":  "Turn",
           "Code":          
@@ -1621,40 +1893,31 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  10,
-          "Pos.y":  370,
-          "Parent":  -1,
-          "#":  115,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "buy_count = 0;"          
-          ]        
-        },
-        {
-          "Type":  "Top",
-          "Name":  "",
-          "Pos.x":  360,
-          "Pos.y":  350,
-          "Parent":  -1,
-          "#":  122,
-          "Total.Lines":  12,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  88,
+          "#":  119,
+          "Total.Lines":  17,
           "Code.Type":  "Turn",
           "Code":          
           [
               "//Если закупка происходит на мостике",
-              "if(PlayerBridge())",
-              "{",
-              "    temp_str_5 = '7%';",
-              "    Commission = 1.07;",
-              "}",
+              "if(PlayerBridge()) cur_commission = 1.07;",
               "//Если закупка происходит на БЦ",
-              "else",
-              "{",
-              "    temp_str_5 = '3%';",
-              "    Commission = 1.03;",
-              "}"          
+              "else cur_commission = 1.03;",
+              "is_equip_purchase = 0;",
+              "",
+              "if(GetGameOptions('FontDialog') == '0') DefSplt = '</color>-------------------------------------------------------------';",
+              "else if(GetGameOptions('FontDialog') == '1') DefSplt = '</color>------------------------------------------';",
+              "else if(GetGameOptions('FontDialog') == '2') DefSplt = '</color>-----------------------------------------';",
+              "else /*if(GetGameOptions('FontDialog') == '3')*/ DefSplt = '</color>-------------------------------------';",
+              "",
+              "tstr1 = '</color>' + Format(CT('Script.Mod_ExpBK.PurchaseTerminalDialog.Intro'), '<Commission'+'>', '' + round((cur_commission - 1.0) * 100.0) + '%');",
+              "tstr2 = '</color>' + CT('Script.Mod_ExpBK.PurchaseTerminalDialog.GoodsPurchase');",
+              "tstr3 = '</color>' + CT('Script.Mod_ExpBK.PurchaseTerminalDialog.GoodsPurchaseBlocked');",
+              "tstr4 = '</color>' + CT('Script.Mod_ExpBK.PurchaseTerminalDialog.EquipmentPurchase');",
+              "tstr5 = '</color>' + CT('Script.Mod_ExpBK.PurchaseTerminalDialog.EquipmentPurchaseBlocked');",
+              "tstr6 = '</color>' + CT('Script.Mod_ExpBK.PurchaseTerminalDialog.LeaveTerminal');"          
           ]        
         },
         {
@@ -1663,7 +1926,7 @@
           "Pos.x":  0,
           "Pos.y":  -200,
           "Parent":  35,
-          "#":  124,
+          "#":  121,
           "Total.Lines":  2,
           "Code.Type":  "Turn",
           "Code":          
@@ -1678,7 +1941,7 @@
           "Pos.x":  370,
           "Pos.y":  170,
           "Parent":  -1,
-          "#":  129,
+          "#":  126,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -1692,7 +1955,7 @@
           "Pos.x":  490,
           "Pos.y":  170,
           "Parent":  -1,
-          "#":  137,
+          "#":  134,
           "Total.Lines":  4,
           "Code.Type":  "Turn",
           "Code":          
@@ -1709,7 +1972,7 @@
           "Pos.x":  500,
           "Pos.y":  80,
           "Parent":  -1,
-          "#":  152,
+          "#":  146,
           "Total.Lines":  5,
           "Code.Type":  "Turn",
           "Code":          
@@ -1727,7 +1990,7 @@
           "Pos.x":  230,
           "Pos.y":  580,
           "Parent":  -1,
-          "#":  162,
+          "#":  156,
           "Total.Lines":  12,
           "Code.Type":  "Turn",
           "Code":          
@@ -1749,15 +2012,165 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  110,
-          "Pos.y":  430,
-          "Parent":  -1,
-          "#":  172,
+          "Pos.x":  0,
+          "Pos.y":  150,
+          "Parent":  189,
+          "#":  166,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "choose_planet = GAnswerData;"          
+              "cur_store = GAnswerData;"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  20,
+          "Pos.y":  0,
+          "Parent":  44,
+          "#":  192,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "InjectAnswer('PurchaseTerminalDialog', CT('Script.Mod_ExpBK.PurchaseTerminalDialog.SwitchBack'), 0);"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  45,
+          "#":  193,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tstr1 = '</color>' + CT('Script.Mod_ExpBK.PurchaseTerminalDialog.StoreChoosing');"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  194,
+          "#":  195,
+          "Total.Lines":  25,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "if(ObjectType(GAnswerData) == 3) is_equip_purchase = Id(GAnswerData) * 2;",
+              "else is_equip_purchase = Id(GAnswerData) * 2 + 1;",
+              "buy_count = 0;",
+              "FormChange('EquipmentShop');",
+              "",
+              "if(PlayerBridge())",
+              "{",
+              "    //При переходе на форму магазина оборудки мостик выключается и подключается другая станция",
+              "    //Меняем тип этой станции, чтоб на неё подгружался нужный нам фон (единственный способ сменить фон на станции)",
+              "    //Приписка Alpha в названии фона (а, следовательно, и типа станции) в кэше обязательна для рескейла изображения с сохранением альфа-канала",
+              "    dword temp_station = GetShipRuins(Player());",
+              "    if(GetMainData('Data.SE.' + Chameleon(Player(), 'GraphName') + '.BridgeOtherFormBG') != '') str ruin_type = GetMainData('Data.SE.' + Chameleon(Player(), 'GraphName') + '.BridgeOtherFormBG');",
+              "    else ruin_type = 'OtherFormBridge';",
+              "",
+              "    if(GetShipPlanet(temp_station))",
+              "    {",
+              "        if(PlanetOwner(GetShipPlanet(temp_station)) == None) ruin_type = ruin_type + 'PlanetNoneAlpha';",
+              "        else ruin_type = ruin_type + 'HangarAlpha';",
+              "    }",
+              "    else if(GetShipRuins(temp_station)) ruin_type = ruin_type + 'HangarAlpha';",
+              "    else ruin_type = ruin_type + 'SpaceAlpha';",
+              "",
+              "    ShipType(temp_station, ruin_type);",
+              "    SetName(temp_station, ruin_type); //Выставление имени необходимо для непосредственной проверки из акткода, поскольку запросить текущий ShipType() станции-мостика невозможно, вернётся 'PlayerBridge'",
+              "}"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  187,
+          "#":  198,
+          "Total.Lines":  2,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//Просто маркер, чтобы ниже выбиралась корректная ветка диалога, а также заработал акткод на игроке",
+              "is_equip_purchase = 1;"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  203,
+          "#":  204,
+          "Total.Lines":  17,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "if(buy_count)",
+              "{",
+              "    if(ShipType(cur_ruin) == 'BK') buy_day_equip = CurTurn() + 3;",
+              "    else buy_day_equip = CurTurn() + 5;",
+              "",
+              "    if(ObjectType(cur_store) == 3) tstr5 = lowercase(CT('FormInfo.MM09')) + ' <color=0,50,200>' + Name(cur_store) + '</color>';",
+              "    else tstr5 = '<color=0,50,200>' + Name(cur_store) + '</color>';",
+              "    tstr1 = '</color>' + Format(CT('Script.Mod_ExpBK.PurchaseTerminalDialog.EquipmentOrderConfirmed'),",
+              "                                   '<SplitLine'+'>', DefSplt,",
+              "                                   '<Store'+'>', tstr5,",
+              "                                   '');",
+              "}",
+              "//Игрок ничего не купил",
+              "else",
+              "{",
+              "    tstr1 = '</color>' + CT('Script.Mod_ExpBK.PurchaseTerminalDialog.EquipmentOrderCanceled');",
+              "}"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  -10,
+          "Pos.y":  420,
+          "Parent":  -1,
+          "#":  206,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "InjectAnswer('PurchaseTerminalDialog', CT('Script.Mod_ExpBK.PurchaseTerminalDialog.BackToTerminal'), 0);"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  205,
+          "#":  207,
+          "Total.Lines":  12,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "is_equip_purchase = 0;",
+              "",
+              "if(!buy_count)",
+              "{",
+              "    if(ObjectType(cur_store) == 3) dword sector = StarToCon(PlanetToStar(cur_store)); //Магазин на планете",
+              "    else sector = StarToCon(ShipStar(cur_store)); //Магазин на станции",
+              "",
+              "    //Если игрок вернётся к выбору магазинов, то маркер покупки оборудования будет выставлен автоматически",
+              "    InjectAnswer('ChooseStoreDialog', CT('Script.Mod_ExpBK.PurchaseTerminalDialog.BackToStoreSelection'), sector, 'is_equip_purchase = 1;');",
+              "}",
+              "",
+              "InjectAnswer('PurchaseTerminalDialog', CT('Script.Mod_ExpBK.PurchaseTerminalDialog.BackToTerminal'), 0);"          
           ]        
         }      
       ],
@@ -1870,9 +2283,9 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  250,
-          "Pos.y":  430,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  39,
           "#":  40,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
@@ -1884,9 +2297,9 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  280,
-          "Pos.y":  390,
-          "Parent":  -1,
+          "Pos.x":  20,
+          "Pos.y":  20,
+          "Parent":  39,
           "#":  43,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
@@ -1898,10 +2311,10 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  150,
-          "Pos.y":  340,
-          "Parent":  -1,
-          "#":  55,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  53,
+          "#":  54,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -1912,38 +2325,38 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  340,
-          "Pos.y":  400,
-          "Parent":  -1,
+          "Pos.x":  -50,
+          "Pos.y":  20,
+          "Parent":  89,
+          "#":  59,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "buy_day_goods < CurTurn()"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -30,
+          "Pos.y":  20,
+          "Parent":  89,
           "#":  60,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "buy_day < CurTurn()"          
+              "buy_day_goods >= CurTurn()"          
           ]        
         },
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  310,
-          "Pos.y":  370,
-          "Parent":  -1,
-          "#":  61,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "buy_day >= CurTurn()"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  80,
-          "Pos.y":  340,
-          "Parent":  -1,
-          "#":  79,
+          "Pos.x":  20,
+          "Pos.y":  20,
+          "Parent":  52,
+          "#":  78,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -1954,10 +2367,10 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  40,
-          "Pos.y":  370,
-          "Parent":  -1,
-          "#":  80,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  52,
+          "#":  79,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -1971,7 +2384,7 @@
           "Pos.x":  370,
           "Pos.y":  130,
           "Parent":  -1,
-          "#":  82,
+          "#":  81,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -1985,7 +2398,7 @@
           "Pos.x":  440,
           "Pos.y":  100,
           "Parent":  -1,
-          "#":  83,
+          "#":  82,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -1999,7 +2412,7 @@
           "Pos.x":  20,
           "Pos.y":  -20,
           "Parent":  7,
-          "#":  91,
+          "#":  90,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2013,7 +2426,7 @@
           "Pos.x":  20,
           "Pos.y":  30,
           "Parent":  30,
-          "#":  92,
+          "#":  91,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2027,7 +2440,7 @@
           "Pos.x":  40,
           "Pos.y":  30,
           "Parent":  30,
-          "#":  94,
+          "#":  93,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2041,7 +2454,7 @@
           "Pos.x":  60,
           "Pos.y":  30,
           "Parent":  30,
-          "#":  95,
+          "#":  94,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2055,7 +2468,7 @@
           "Pos.x":  0,
           "Pos.y":  -70,
           "Parent":  35,
-          "#":  98,
+          "#":  97,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2068,8 +2481,8 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  30,
-          "Parent":  99,
-          "#":  100,
+          "Parent":  98,
+          "#":  99,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2082,8 +2495,8 @@
           "Name":  "",
           "Pos.x":  20,
           "Pos.y":  30,
-          "Parent":  99,
-          "#":  104,
+          "Parent":  98,
+          "#":  103,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2096,8 +2509,8 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  -50,
-          "Parent":  103,
-          "#":  105,
+          "Parent":  102,
+          "#":  104,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2111,7 +2524,7 @@
           "Pos.x":  360,
           "Pos.y":  600,
           "Parent":  -1,
-          "#":  108,
+          "#":  107,
           "Total.Lines":  1,
           "Code.Type":  "DialogBegin",
           "Code":          
@@ -2125,7 +2538,7 @@
           "Pos.x":  360,
           "Pos.y":  580,
           "Parent":  -1,
-          "#":  111,
+          "#":  110,
           "Total.Lines":  1,
           "Code.Type":  "DialogBegin",
           "Code":          
@@ -2139,7 +2552,7 @@
           "Pos.x":  380,
           "Pos.y":  600,
           "Parent":  -1,
-          "#":  112,
+          "#":  111,
           "Total.Lines":  1,
           "Code.Type":  "DialogBegin",
           "Code":          
@@ -2153,7 +2566,7 @@
           "Pos.x":  380,
           "Pos.y":  580,
           "Parent":  -1,
-          "#":  113,
+          "#":  112,
           "Total.Lines":  1,
           "Code.Type":  "DialogBegin",
           "Code":          
@@ -2167,7 +2580,7 @@
           "Pos.x":  470,
           "Pos.y":  100,
           "Parent":  -1,
-          "#":  119,
+          "#":  116,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2181,7 +2594,7 @@
           "Pos.x":  320,
           "Pos.y":  210,
           "Parent":  -1,
-          "#":  120,
+          "#":  117,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2195,7 +2608,7 @@
           "Pos.x":  370,
           "Pos.y":  150,
           "Parent":  -1,
-          "#":  128,
+          "#":  125,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2209,7 +2622,7 @@
           "Pos.x":  450,
           "Pos.y":  190,
           "Parent":  -1,
-          "#":  133,
+          "#":  130,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2223,7 +2636,7 @@
           "Pos.x":  450,
           "Pos.y":  170,
           "Parent":  -1,
-          "#":  134,
+          "#":  131,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2234,38 +2647,10 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  170,
-          "Pos.y":  300,
-          "Parent":  -1,
-          "#":  142,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ShipType(GetShipRuins(Player()))!='BK'"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
-          "Pos.x":  280,
-          "Pos.y":  300,
-          "Parent":  -1,
-          "#":  143,
-          "Total.Lines":  1,
-          "Code.Type":  "Turn",
-          "Code":          
-          [
-              "ShipType(cur_ruin) == 'BK'"          
-          ]        
-        },
-        {
-          "Type":  "Tif",
-          "Name":  "",
           "Pos.x":  560,
           "Pos.y":  120,
           "Parent":  -1,
-          "#":  153,
+          "#":  147,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2279,7 +2664,7 @@
           "Pos.x":  540,
           "Pos.y":  120,
           "Parent":  -1,
-          "#":  154,
+          "#":  148,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2293,7 +2678,7 @@
           "Pos.x":  270,
           "Pos.y":  600,
           "Parent":  -1,
-          "#":  163,
+          "#":  157,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2307,7 +2692,7 @@
           "Pos.x":  330,
           "Pos.y":  600,
           "Parent":  -1,
-          "#":  164,
+          "#":  158,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2320,8 +2705,8 @@
           "Name":  "",
           "Pos.x":  40,
           "Pos.y":  30,
-          "Parent":  99,
-          "#":  173,
+          "Parent":  98,
+          "#":  167,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2334,8 +2719,8 @@
           "Name":  "",
           "Pos.x":  -20,
           "Pos.y":  -50,
-          "Parent":  103,
-          "#":  174,
+          "Parent":  102,
+          "#":  168,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2349,7 +2734,7 @@
           "Pos.x":  80,
           "Pos.y":  30,
           "Parent":  30,
-          "#":  175,
+          "#":  169,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2362,8 +2747,8 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  -90,
-          "Parent":  178,
-          "#":  176,
+          "Parent":  172,
+          "#":  170,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2377,7 +2762,7 @@
           "Pos.x":  -20,
           "Pos.y":  -70,
           "Parent":  35,
-          "#":  177,
+          "#":  171,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2391,7 +2776,91 @@
           "Pos.x":  110,
           "Pos.y":  0,
           "Parent":  34,
+          "#":  172,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  30,
+          "Pos.y":  20,
+          "Parent":  89,
           "#":  178,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -10,
+          "Pos.y":  20,
+          "Parent":  89,
+          "#":  185,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "buy_day_equip < CurTurn()"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  10,
+          "Pos.y":  20,
+          "Parent":  89,
+          "#":  186,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "buy_day_equip >= CurTurn()"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  20,
+          "Pos.y":  20,
+          "Parent":  53,
+          "#":  190,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -40,
+          "Pos.y":  0,
+          "Parent":  48,
+          "#":  191,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  -100,
+          "Parent":  138,
+          "#":  197,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -2415,7 +2884,7 @@
           "TakeItem":  -1,
           "TakeAllItem":  false,
           "OnTalk":  "",
-          "OnActCode":  "",
+          "OnActCode":  "[t_OnEnteringForm,t_OnLeavingForm,t_OnPlayerBuyEq|]\r\nPlayerActCode();",
           "EType":  1,
           "EUnique":  "",
           "EMsg":  ""        
@@ -2514,10 +2983,10 @@
         {
           "Type":  "TVar",
           "Name":  "buy_count",
-          "Pos.x":  840,
-          "Pos.y":  290,
-          "Parent":  -1,
-          "#":  64,
+          "Pos.x":  0,
+          "Pos.y":  -20,
+          "Parent":  189,
+          "#":  63,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
@@ -2528,29 +2997,29 @@
           "Pos.x":  840,
           "Pos.y":  130,
           "Parent":  -1,
-          "#":  65,
+          "#":  64,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
         },
         {
           "Type":  "TVar",
-          "Name":  "choose_planet",
-          "Pos.x":  610,
-          "Pos.y":  190,
-          "Parent":  -1,
-          "#":  66,
+          "Name":  "cur_store",
+          "Pos.x":  20,
+          "Pos.y":  20,
+          "Parent":  88,
+          "#":  65,
           "Var.Type":  "Dword",
           "Init":  "0",
           "Global":  false        
         },
         {
           "Type":  "TVar",
-          "Name":  "buy_day",
-          "Pos.x":  840,
-          "Pos.y":  270,
-          "Parent":  -1,
-          "#":  67,
+          "Name":  "buy_day_goods",
+          "Pos.x":  0,
+          "Pos.y":  -20,
+          "Parent":  63,
+          "#":  66,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
@@ -2561,7 +3030,7 @@
           "Pos.x":  840,
           "Pos.y":  250,
           "Parent":  -1,
-          "#":  68,
+          "#":  67,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
@@ -2572,7 +3041,7 @@
           "Pos.x":  730,
           "Pos.y":  390,
           "Parent":  -1,
-          "#":  69,
+          "#":  68,
           "Var.Type":  "Array",
           "Init":  "",
           "Global":  false        
@@ -2583,7 +3052,7 @@
           "Pos.x":  730,
           "Pos.y":  370,
           "Parent":  -1,
-          "#":  70,
+          "#":  69,
           "Var.Type":  "Array",
           "Init":  "",
           "Global":  false        
@@ -2594,7 +3063,7 @@
           "Pos.x":  730,
           "Pos.y":  410,
           "Parent":  -1,
-          "#":  71,
+          "#":  70,
           "Var.Type":  "Array",
           "Init":  "9",
           "Global":  false        
@@ -2605,7 +3074,7 @@
           "Pos.x":  610,
           "Pos.y":  150,
           "Parent":  -1,
-          "#":  72,
+          "#":  71,
           "Var.Type":  "Dword",
           "Init":  "0",
           "Global":  false        
@@ -2616,7 +3085,7 @@
           "Pos.x":  840,
           "Pos.y":  410,
           "Parent":  -1,
-          "#":  73,
+          "#":  72,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
@@ -2627,7 +3096,7 @@
           "Pos.x":  610,
           "Pos.y":  170,
           "Parent":  -1,
-          "#":  74,
+          "#":  73,
           "Var.Type":  "Dword",
           "Init":  "0",
           "Global":  false        
@@ -2638,7 +3107,7 @@
           "Pos.x":  730,
           "Pos.y":  150,
           "Parent":  -1,
-          "#":  75,
+          "#":  74,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -2649,7 +3118,7 @@
           "Pos.x":  730,
           "Pos.y":  170,
           "Parent":  -1,
-          "#":  76,
+          "#":  75,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -2660,7 +3129,7 @@
           "Pos.x":  730,
           "Pos.y":  190,
           "Parent":  -1,
-          "#":  77,
+          "#":  76,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -2671,7 +3140,7 @@
           "Pos.x":  840,
           "Pos.y":  150,
           "Parent":  -1,
-          "#":  78,
+          "#":  77,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
@@ -2682,7 +3151,7 @@
           "Pos.x":  840,
           "Pos.y":  90,
           "Parent":  -1,
-          "#":  81,
+          "#":  80,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
@@ -2693,7 +3162,7 @@
           "Pos.x":  730,
           "Pos.y":  210,
           "Parent":  -1,
-          "#":  123,
+          "#":  120,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -2704,7 +3173,7 @@
           "Pos.x":  840,
           "Pos.y":  210,
           "Parent":  -1,
-          "#":  125,
+          "#":  122,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -2715,7 +3184,7 @@
           "Pos.x":  840,
           "Pos.y":  190,
           "Parent":  -1,
-          "#":  127,
+          "#":  124,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
@@ -2726,7 +3195,7 @@
           "Pos.x":  840,
           "Pos.y":  230,
           "Parent":  -1,
-          "#":  145,
+          "#":  139,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
@@ -2737,7 +3206,7 @@
           "Pos.x":  730,
           "Pos.y":  230,
           "Parent":  -1,
-          "#":  146,
+          "#":  140,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
@@ -2748,7 +3217,7 @@
           "Pos.x":  840,
           "Pos.y":  430,
           "Parent":  -1,
-          "#":  147,
+          "#":  141,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
@@ -2759,7 +3228,7 @@
           "Pos.x":  840,
           "Pos.y":  170,
           "Parent":  -1,
-          "#":  158,
+          "#":  152,
           "Var.Type":  "Int",
           "Init":  "1",
           "Global":  false        
@@ -2770,18 +3239,18 @@
           "Pos.x":  730,
           "Pos.y":  250,
           "Parent":  -1,
-          "#":  159,
+          "#":  153,
           "Var.Type":  "Str",
           "Init":  "",
           "Global":  false        
         },
         {
           "Type":  "TVar",
-          "Name":  "Commission",
-          "Pos.x":  730,
-          "Pos.y":  290,
-          "Parent":  -1,
-          "#":  165,
+          "Name":  "cur_commission",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  65,
+          "#":  159,
           "Var.Type":  "Float",
           "Init":  "0",
           "Global":  false        
@@ -2792,7 +3261,7 @@
           "Pos.x":  730,
           "Pos.y":  310,
           "Parent":  -1,
-          "#":  166,
+          "#":  160,
           "Var.Type":  "Float",
           "Init":  "",
           "Global":  false        
@@ -2803,7 +3272,7 @@
           "Pos.x":  900,
           "Pos.y":  130,
           "Parent":  -1,
-          "#":  167,
+          "#":  161,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -2814,7 +3283,7 @@
           "Pos.x":  840,
           "Pos.y":  110,
           "Parent":  -1,
-          "#":  170,
+          "#":  164,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
@@ -2823,9 +3292,9 @@
           "Type":  "TVar",
           "Name":  "cur_ruin",
           "Pos.x":  610,
-          "Pos.y":  210,
+          "Pos.y":  240,
           "Parent":  -1,
-          "#":  171,
+          "#":  165,
           "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
@@ -2836,7 +3305,7 @@
           "Pos.x":  930,
           "Pos.y":  130,
           "Parent":  -1,
-          "#":  179,
+          "#":  173,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -2847,7 +3316,7 @@
           "Pos.x":  610,
           "Pos.y":  280,
           "Parent":  -1,
-          "#":  181,
+          "#":  175,
           "Var.Type":  "Int",
           "Init":  "0",
           "Global":  false        
@@ -2858,7 +3327,7 @@
           "Pos.x":  610,
           "Pos.y":  300,
           "Parent":  -1,
-          "#":  182,
+          "#":  176,
           "Var.Type":  "Dword",
           "Init":  "0",
           "Global":  false        
@@ -2869,7 +3338,139 @@
           "Pos.x":  900,
           "Pos.y":  150,
           "Parent":  -1,
+          "#":  177,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tstr1",
+          "Pos.x":  730,
+          "Pos.y":  450,
+          "Parent":  -1,
+          "#":  179,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tstr2",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  179,
+          "#":  180,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tstr3",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  180,
+          "#":  181,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tstr4",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  181,
+          "#":  182,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tstr5",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  182,
           "#":  183,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tstr6",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  183,
+          "#":  184,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "buy_day_equip",
+          "Pos.x":  0,
+          "Pos.y":  -20,
+          "Parent":  194,
+          "#":  196,
+          "Var.Type":  "Int",
+          "Init":  "0",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "is_equip_purchase",
+          "Pos.x":  0,
+          "Pos.y":  -20,
+          "Parent":  196,
+          "#":  199,
+          "Var.Type":  "Dword",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tarr1",
+          "Pos.x":  730,
+          "Pos.y":  90,
+          "Parent":  -1,
+          "#":  200,
+          "Var.Type":  "Array",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tint1",
+          "Pos.x":  800,
+          "Pos.y":  450,
+          "Parent":  -1,
+          "#":  201,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tint2",
+          "Pos.x":  800,
+          "Pos.y":  470,
+          "Parent":  -1,
+          "#":  202,
+          "Var.Type":  "Int",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "tint3",
+          "Pos.x":  800,
+          "Pos.y":  490,
+          "Parent":  -1,
+          "#":  208,
           "Var.Type":  "Int",
           "Init":  "",
           "Global":  false        
@@ -3042,13 +3643,6 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  45,
-      "End":  46,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
       "Begin":  46,
       "End":  47,
       "Nom":  0,
@@ -3063,8 +3657,8 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  50,
-      "End":  51,
+      "Begin":  53,
+      "End":  54,
       "Nom":  0,
       "Arrow":  true    
     },
@@ -3084,56 +3678,49 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  56,
-      "End":  57,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  57,
-      "End":  58,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  54,
-      "End":  59,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  59,
-      "End":  49,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  61,
-      "End":  62,
+      "Begin":  58,
+      "End":  48,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  60,
-      "End":  63,
+      "End":  61,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  63,
+      "Begin":  59,
+      "End":  62,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  62,
       "End":  39,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  53,
+      "Begin":  52,
+      "End":  78,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  78,
+      "End":  53,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  52,
       "End":  79,
       "Nom":  0,
       "Arrow":  true    
@@ -3141,41 +3728,34 @@
     {
       "Type":  "TGraphLink",
       "Begin":  79,
-      "End":  54,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  53,
-      "End":  80,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  80,
-      "End":  50,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  84,
-      "End":  14,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  85,
-      "End":  8,
+      "End":  49,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  83,
+      "End":  14,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  84,
+      "End":  8,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  82,
+      "End":  85,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  85,
       "End":  86,
       "Nom":  0,
       "Arrow":  true    
@@ -3183,34 +3763,27 @@
     {
       "Type":  "TGraphLink",
       "Begin":  86,
-      "End":  87,
+      "End":  84,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  87,
-      "End":  85,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  90,
-      "End":  61,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  90,
+      "Begin":  89,
       "End":  60,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  91,
+      "Begin":  89,
+      "End":  59,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  90,
       "End":  6,
       "Nom":  0,
       "Arrow":  true    
@@ -3218,14 +3791,28 @@
     {
       "Type":  "TGraphLink",
       "Begin":  30,
+      "End":  91,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  91,
       "End":  92,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  92,
+      "Begin":  30,
       "End":  93,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  93,
+      "End":  32,
       "Nom":  0,
       "Arrow":  true    
     },
@@ -3239,28 +3826,21 @@
     {
       "Type":  "TGraphLink",
       "Begin":  94,
-      "End":  32,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  30,
       "End":  95,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  95,
-      "End":  96,
+      "Begin":  35,
+      "End":  97,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  35,
-      "End":  98,
+      "Begin":  98,
+      "End":  99,
       "Nom":  0,
       "Arrow":  true    
     },
@@ -3273,57 +3853,64 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  100,
+      "Begin":  103,
       "End":  101,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  104,
-      "End":  102,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  99,
-      "End":  104,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  101,
+      "Begin":  98,
       "End":  103,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  103,
-      "End":  105,
+      "Begin":  100,
+      "End":  102,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  110,
+      "Begin":  102,
+      "End":  104,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  109,
       "End":  37,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  107,
+      "Begin":  106,
       "End":  38,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  108,
-      "End":  109,
+      "Begin":  107,
+      "End":  108,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  110,
+      "End":  107,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  112,
+      "End":  111,
       "Nom":  0,
       "Arrow":  true    
     },
@@ -3337,41 +3924,55 @@
     {
       "Type":  "TGraphLink",
       "Begin":  113,
-      "End":  112,
+      "End":  81,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  112,
-      "End":  109,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  114,
-      "End":  115,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  116,
+      "Begin":  113,
       "End":  82,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
+      "Begin":  8,
+      "End":  116,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
       "Begin":  116,
+      "End":  115,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  81,
       "End":  83,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  8,
+      "Begin":  117,
+      "End":  118,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  14,
+      "End":  117,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  88,
       "End":  119,
       "Nom":  0,
       "Arrow":  true    
@@ -3379,76 +3980,48 @@
     {
       "Type":  "TGraphLink",
       "Begin":  119,
-      "End":  118,
+      "End":  89,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  82,
-      "End":  84,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  120,
-      "End":  121,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  14,
-      "End":  120,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  89,
-      "End":  122,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  122,
-      "End":  90,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  86,
-      "End":  126,
+      "Begin":  85,
+      "End":  123,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  8,
+      "End":  123,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  113,
+      "End":  125,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  125,
       "End":  126,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  116,
-      "End":  128,
+      "Begin":  126,
+      "End":  127,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  128,
-      "End":  129,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  129,
+      "Begin":  127,
       "End":  130,
       "Nom":  0,
       "Arrow":  true    
@@ -3456,20 +4029,34 @@
     {
       "Type":  "TGraphLink",
       "Begin":  130,
-      "End":  133,
+      "End":  128,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  133,
+      "Begin":  127,
       "End":  131,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  130,
+      "Begin":  131,
+      "End":  129,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  127,
+      "End":  132,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  129,
       "End":  134,
       "Nom":  0,
       "Arrow":  true    
@@ -3477,27 +4064,20 @@
     {
       "Type":  "TGraphLink",
       "Begin":  134,
-      "End":  132,
+      "End":  133,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  130,
+      "Begin":  133,
       "End":  135,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  132,
-      "End":  137,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  137,
+      "Begin":  123,
       "End":  136,
       "Nom":  0,
       "Arrow":  true    
@@ -3505,126 +4085,42 @@
     {
       "Type":  "TGraphLink",
       "Begin":  136,
-      "End":  138,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  126,
-      "End":  139,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  139,
-      "End":  140,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  143,
-      "End":  141,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  42,
-      "End":  142,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  42,
-      "End":  143,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  142,
-      "End":  144,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  47,
-      "End":  143,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  47,
-      "End":  142,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  44,
-      "End":  143,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  44,
-      "End":  142,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  58,
-      "End":  143,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  58,
-      "End":  142,
+      "End":  137,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  9,
-      "End":  148,
+      "End":  142,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  149,
+      "Begin":  143,
       "End":  13,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  150,
-      "End":  151,
+      "Begin":  144,
+      "End":  145,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  148,
-      "End":  152,
+      "Begin":  142,
+      "End":  146,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  152,
-      "End":  149,
+      "Begin":  146,
+      "End":  143,
       "Nom":  0,
       "Arrow":  true    
     },
@@ -3637,28 +4133,70 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  118,
-      "End":  153,
+      "Begin":  115,
+      "End":  147,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  118,
-      "End":  154,
+      "Begin":  115,
+      "End":  148,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  154,
+      "Begin":  148,
+      "End":  144,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  147,
+      "End":  149,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  149,
+      "End":  145,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  132,
       "End":  150,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  153,
+      "Begin":  150,
+      "End":  137,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  15,
+      "End":  151,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  151,
+      "End":  137,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  114,
       "End":  155,
       "Nom":  0,
       "Arrow":  true    
@@ -3666,27 +4204,27 @@
     {
       "Type":  "TGraphLink",
       "Begin":  155,
-      "End":  151,
+      "End":  154,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  135,
+      "Begin":  155,
       "End":  156,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  156,
-      "End":  140,
+      "Begin":  38,
+      "End":  157,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  15,
+      "Begin":  37,
       "End":  157,
       "Nom":  0,
       "Arrow":  true    
@@ -3694,181 +4232,118 @@
     {
       "Type":  "TGraphLink",
       "Begin":  157,
-      "End":  140,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  117,
-      "End":  161,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  161,
-      "End":  160,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  161,
-      "End":  162,
+      "End":  155,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  38,
-      "End":  163,
+      "End":  158,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  37,
-      "End":  163,
+      "End":  158,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  158,
+      "End":  108,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  163,
-      "End":  161,
+      "End":  98,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  38,
-      "End":  164,
+      "Begin":  162,
+      "End":  96,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  37,
-      "End":  164,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  164,
-      "End":  109,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  90,
-      "End":  88,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  169,
-      "End":  99,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  168,
-      "End":  97,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  97,
+      "Begin":  96,
       "End":  30,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  105,
-      "End":  124,
+      "Begin":  104,
+      "End":  121,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  97,
+      "End":  121,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  51,
+      "End":  52,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  98,
-      "End":  124,
+      "End":  167,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  52,
-      "End":  53,
+      "Begin":  167,
+      "End":  105,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  48,
-      "End":  172,
+      "Begin":  102,
+      "End":  168,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  172,
-      "End":  49,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  99,
-      "End":  173,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  173,
-      "End":  106,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  103,
-      "End":  174,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  174,
-      "End":  99,
+      "Begin":  168,
+      "End":  98,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  30,
-      "End":  175,
+      "End":  169,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  175,
+      "Begin":  169,
       "End":  36,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  176,
+      "Begin":  170,
       "End":  30,
       "Nom":  0,
       "Arrow":  true    
@@ -3876,35 +4351,217 @@
     {
       "Type":  "TGraphLink",
       "Begin":  35,
-      "End":  177,
+      "End":  171,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  177,
+      "Begin":  171,
       "End":  30,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  178,
-      "End":  176,
+      "Begin":  172,
+      "End":  170,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
       "Begin":  34,
+      "End":  172,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  121,
+      "End":  174,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  89,
       "End":  178,
       "Nom":  0,
       "Arrow":  true    
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  124,
-      "End":  180,
+      "Begin":  178,
+      "End":  87,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  185,
+      "End":  187,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  186,
+      "End":  188,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  89,
+      "End":  185,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  89,
+      "End":  186,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  189,
+      "End":  166,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  53,
+      "End":  190,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  190,
+      "End":  58,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  48,
+      "End":  191,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  191,
+      "End":  49,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  56,
+      "End":  57,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  47,
+      "End":  138,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  166,
+      "End":  48,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  44,
+      "End":  192,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  45,
+      "End":  193,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  193,
+      "End":  46,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  194,
+      "End":  195,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  138,
+      "End":  197,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  197,
+      "End":  39,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  187,
+      "End":  198,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  198,
+      "End":  39,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  57,
+      "End":  206,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  203,
+      "End":  204,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  204,
+      "End":  205,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  205,
+      "End":  207,
       "Nom":  0,
       "Arrow":  true    
     }  
@@ -3922,7 +4579,7 @@
       "BStyle":  0,
       "BColor":  0,
       "BSize":  1,
-      "BCoef":  "0,300000011920929",
+      "BCoef":  "0.300000011920929",
       "AlignX":  -1,
       "AlignY":  -1,
       "AlignRect":  false,
@@ -3945,7 +4602,7 @@
       "BStyle":  0,
       "BColor":  0,
       "BSize":  1,
-      "BCoef":  "0,300000011920929",
+      "BCoef":  "0.300000011920929",
       "AlignX":  0,
       "AlignY":  1,
       "AlignRect":  false,
@@ -3959,20 +4616,20 @@
     },
     {
       "Type":  "TGraphRectText",
-      "Rect.Left":  -21,
-      "Rect.Top":  276,
-      "Rect.Right":  408,
-      "Rect.Bottom":  470,
+      "Rect.Left":  -328,
+      "Rect.Top":  167,
+      "Rect.Right":  180,
+      "Rect.Bottom":  439,
       "FStyle":  1,
       "FColor":  10710818,
       "BStyle":  0,
       "BColor":  0,
       "BSize":  1,
-      "BCoef":  "0,300000011920929",
+      "BCoef":  "0.300000011920929",
       "AlignX":  -1,
       "AlignY":  1,
       "AlignRect":  false,
-      "Text":  " Удалённая покупка товара",
+      "Text":  "     Терминал удалённых закупок",
       "Color":  0,
       "Font":  "Arial",
       "FontSize":  10,
@@ -3991,7 +4648,7 @@
       "BStyle":  0,
       "BColor":  0,
       "BSize":  1,
-      "BCoef":  "0,300000011920929",
+      "BCoef":  "0.300000011920929",
       "AlignX":  0,
       "AlignY":  1,
       "AlignRect":  false,
@@ -4014,7 +4671,7 @@
       "BStyle":  0,
       "BColor":  0,
       "BSize":  1,
-      "BCoef":  "0,300000011920929",
+      "BCoef":  "0.300000011920929",
       "AlignX":  1,
       "AlignY":  1,
       "AlignRect":  false,
@@ -4027,13 +4684,9 @@
       "fsUnderline":  false    
     }  
   ],
-  "BlockPar.EC.Total.Strings":  85,
+  "BlockPar.EC.Total.Strings":  72,
   "BlockPar.EC":  
   [
-    {
-      "#":  "100",
-      "String":  "Сколько купить?"    
-    },
     {
       "#":  "107",
       "String":  "Также, исходя из вашей репутации опытного торговца, мы хотели бы предложить вам приобрести нашу специальную торговую лицензию, которая не только укрепит ваш статус в деловой среде, но и откроет ряд новых полезных возможностей."    
@@ -4044,11 +4697,7 @@
     },
     {
       "#":  "112",
-      "String":  "Этот терминал позволит вам купить товар почти на любой планете."    
-    },
-    {
-      "#":  "113",
-      "String":  "На складах планеты <0> имеются следующие товары:<br><br><1><br>Комиссия за удалённую покупку составит <2> сверх стоимости приобретаемых товаров.<br>Какой товар вас интересует?"    
+      "String":  "<0>"    
     },
     {
       "#":  "115",
@@ -4107,10 +4756,6 @@
       "String":  "</color>всего через <clr><0><clrEnd> дн."    
     },
     {
-      "#":  "135",
-      "String":  "Завершить работу с терминалом"    
-    },
-    {
       "#":  "143",
       "String":  "<color=0,50,200>заморожен</color>"    
     },
@@ -4167,14 +4812,6 @@
       "String":  "Состояние счёта: <0> cr.<br>Годовой процент: <1><br><br>Вы можете пополнять или снимать средства с вашего счёта со стандартной комиссией в <clr>5%<clrEnd>.<br><br>Баланс счёта не может составлять менее <clr>1000<clrEnd> cr. Минимальная сумма пополнения или снятия средств со счёта составляет <clr>100<clrEnd> cr.<br><2><3>"    
     },
     {
-      "#":  "162",
-      "String":  "Требуется подтверждение заказа.<br><0><br>Товар: <1><br>Количество: <2> т.<br>Цена за тонну: <3> cr.<br>Комиссия за тонну: <4> cr.<br><5><br>Итоговая стоимость: <6> cr."    
-    },
-    {
-      "#":  "163",
-      "String":  "Заказ подтверждён.<br><0><br>Благодарим вас за пользование нашим терминалом для удалённых закупок.<br>В ближайшие дни заказанный товар будет доставлен на ваш личный склад на планете <1>."    
-    },
-    {
       "#":  "165",
       "String":  "<color=0,50,200>Выключить</color> вывод торг. новостей"    
     },
@@ -4205,14 +4842,6 @@
     {
       "#":  "181",
       "String":  "Ваша задолженность: <0> cr.<br>Дата погашения: <1> <clr>г.<clrEnd><br>Осталось дней: <2><br>Количество просрочек: <3><br><br>Здесь вы можете погасить кредитную задолженность на любую оставшуюся сумму с комиссией всего в <clr>5%<clrEnd>.<br><br>Минимальная сумма погашения составляет <clr>100<clrEnd> cr."    
-    },
-    {
-      "#":  "182",
-      "String":  "Цена:"    
-    },
-    {
-      "#":  "183",
-      "String":  "Кол-во:"    
     },
     {
       "#":  "190",
@@ -4255,18 +4884,6 @@
       "String":  "<br>"    
     },
     {
-      "#":  "36",
-      "String":  "Выберите сектор:"    
-    },
-    {
-      "#":  "38",
-      "String":  "Нет планет пригодных для покупки товара."    
-    },
-    {
-      "#":  "39",
-      "String":  "На какой планете купить товар?"    
-    },
-    {
       "#":  "44",
       "String":  "Снять"    
     },
@@ -4291,14 +4908,6 @@
       "String":  "Подтвердить"    
     },
     {
-      "#":  "54",
-      "String":  "Купить товар [Завершение сделки]"    
-    },
-    {
-      "#":  "55",
-      "String":  "Купить товар [удалённо]"    
-    },
-    {
       "#":  "57",
       "String":  "Выбрать другой тип товара"    
     },
@@ -4321,10 +4930,6 @@
     {
       "#":  "70",
       "String":  "Торговые новости"    
-    },
-    {
-      "#":  "77",
-      "String":  "Выбрать другую планету"    
     },
     {
       "#":  "81",

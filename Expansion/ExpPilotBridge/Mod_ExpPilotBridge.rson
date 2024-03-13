@@ -6511,24 +6511,24 @@
           "Code":          
           [
               "FormChange('Info');",
-              "InterfacePos('Info', 'PanelRuins', 0, 1000, 0);",
+              "",
               "//При переходе на форму инфоцентра мостик выключается и подключается другая станция",
               "//Меняем тип этой станции, чтоб на неё подгружался нужный нам фон (единственный способ сменить фон на станции)",
               "//Приписка Alpha в названии фона (а, следовательно, и типа станции) в кэше обязательна для рескейла изображения с сохранением альфа-канала",
-              "temp_dword = GetShipRuins(Player());",
-              "if(GetMainData('Data.SE.' + Chameleon(Player(), 'GraphName') + '.BridgeInfoBG') != '') str ruin_type = GetMainData('Data.SE.' + Chameleon(Player(), 'GraphName') + '.BridgeInfoBG');",
-              "else ruin_type = 'InfoBridge';",
+              "dword temp_station = GetShipRuins(Player());",
+              "if(GetMainData('Data.SE.' + Chameleon(Player(), 'GraphName') + '.BridgeOtherFormBG') != '') str ruin_type = GetMainData('Data.SE.' + Chameleon(Player(), 'GraphName') + '.BridgeOtherFormBG');",
+              "else ruin_type = 'OtherFormBridge';",
               "",
-              "if(GetShipPlanet(temp_dword))",
+              "if(GetShipPlanet(temp_station))",
               "{",
-              "    if(PlanetOwner(GetShipPlanet(temp_dword)) == None) ruin_type = ruin_type + 'PlanetNoneAlpha';",
+              "    if(PlanetOwner(GetShipPlanet(temp_station)) == None) ruin_type = ruin_type + 'PlanetNoneAlpha';",
               "    else ruin_type = ruin_type + 'HangarAlpha';",
               "}",
-              "else if(GetShipRuins(temp_dword)) ruin_type = ruin_type + 'HangarAlpha';",
+              "else if(GetShipRuins(temp_station)) ruin_type = ruin_type + 'HangarAlpha';",
               "else ruin_type = ruin_type + 'SpaceAlpha';",
               "",
-              "ShipType(temp_dword, ruin_type);",
-              "SetName(temp_dword, ruin_type); //Выставление имени необходимо для непосредственной проверки из акткода, поскольку запросить текущий ShipType() станции-мостика невозможно, вернётся 'PlayerBridge'"          
+              "ShipType(temp_station, ruin_type);",
+              "SetName(temp_station, ruin_type); //Выставление имени необходимо для непосредственной проверки из акткода, поскольку запросить текущий ShipType() станции-мостика невозможно, вернётся 'PlayerBridge'"          
           ]        
         },
         {
