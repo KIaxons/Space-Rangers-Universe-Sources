@@ -6,10 +6,10 @@
   "ScriptName":  "Mod_ExpHulls",
   "ScriptFileOut":  "H:\\Mod_ExpHulls.scr",
   "ScriptTextOut":  "H:\\Mod_ExpHulls.txt",
-  "GraphPoint.Count":  105,
-  "GraphLink.Count":  82,
+  "GraphPoint.Count":  110,
+  "GraphLink.Count":  85,
   "GraphRectText.Count":  3,
-  "Variables.Count":  19,
+  "Variables.Count":  20,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
@@ -18,10 +18,10 @@
   "Places.Count":  0,
   "Items.Count":  0,
   "Ethers.Count":  0,
-  "Dialogs.Count":  6,
-  "DialogMessages.Count":  9,
-  "DialogAnswers.Count":  24,
-  "Operations.Count":  21,
+  "Dialogs.Count":  7,
+  "DialogMessages.Count":  10,
+  "DialogAnswers.Count":  25,
+  "Operations.Count":  22,
   "Statements.Count":  21,
   "Loops.Count":  0,
   "Visual.Objects":  
@@ -268,6 +268,16 @@
           "#":  99,
           "Msg":  "Третий вариант за <cost_variation[2]> cr.",
           "AMsg.Num":  "23"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  107,
+          "#":  108,
+          "Msg":  "",
+          "AMsg.Num":  "24"        
         }      
       ],
       "DialogMessages":      
@@ -361,6 +371,16 @@
           "#":  84,
           "Msg":  "Ну так вот и лети на ней отседова! Только помни, <Player>, если в перестрелке с первым же транспортом эта твоя лоханка вдруг развалится - это всё был твой осознанный выбор.",
           "DMsg.Num":  "8"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  106,
+          "#":  107,
+          "Msg":  "",
+          "DMsg.Num":  "9"        
         }      
       ],
       "Dialogs":      
@@ -412,6 +432,14 @@
           "Pos.y":  100,
           "Parent":  -1,
           "#":  82        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "FaeyliathanHullGetOnPlayerMB",
+          "Pos.x":  590,
+          "Pos.y":  -180,
+          "Parent":  -1,
+          "#":  105        
         }      
       ],
       "Groups":      
@@ -639,14 +667,20 @@
           "Pos.y":  -80,
           "Parent":  -1,
           "#":  35,
-          "Total.Lines":  4,
+          "Total.Lines":  10,
           "Code.Type":  "Init",
           "Code":          
           [
               "basic_size_variation = newarray(3);",
               "size_variation = newarray(3);",
               "cost_variation = newarray(3);",
-              "nod_cost_variation = newarray(3);"          
+              "nod_cost_variation = newarray(3);",
+              "",
+              "//Вызывается из скрипта ShuMercsHQ после завершения постройки корпуса, сам вызываемый код прописан в Lang мода ExpHulls",
+              "function g_FaeyliathanHullConstructionDone()",
+              "{",
+              "    FaeyliathanConstructionDone = 1;",
+              "}"          
           ]        
         },
         {
@@ -860,7 +894,7 @@
           "Pos.y":  -80,
           "Parent":  -1,
           "#":  103,
-          "Total.Lines":  52,
+          "Total.Lines":  62,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
@@ -914,8 +948,41 @@
               "                }",
               "            }",
               "        }",
+              "        //Диалог в штабе игрока (мод ShuMercsHQ)",
+              "        else if(temp_str == 'PlayerMB')",
+              "        {",
+              "            //Если игрок заказал в штабе постройку перевозчика корпусов и заказ был успешно выполнен",
+              "            if(FaeyliathanConstructionDone)",
+              "            {",
+              "                FaeyliathanConstructionDone = 0;",
+              "                AddDialogOverride('FaeyliathanHullGetOnPlayerMB', 50000000);",
+              "            }",
+              "        }",
               "    }",
               "}"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  105,
+          "#":  106,
+          "Total.Lines":  10,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "dword cur_hull = CreateHull(6, 3000, GalaxyTechLevel(), Fei, -1); //Тип, размер, ТУ, раса, серия",
+              "",
+              "SpecialToEquipment(FindBonusByNameInCfg('ExpHulls_FaeyliathanHull'), cur_hull);",
+              "",
+              "//Заносим корпус в скрипт и вешаем на него необходимые обработчики",
+              "LinkItemToScript(cur_hull);",
+              "ItemOnActCode(cur_hull, GenerateCodeStringFromBlock('ActCodeBlocksList.ExpHulls_HullTransporter'));",
+              "ItemExtraSpecialsAddByType(cur_hull, FindBonusByNameInCfg('ExpHulls_HullTransporterMark'));",
+              "",
+              "AddItemToStorage(cur_ruin, cur_hull);"          
           ]        
         }      
       ],
@@ -1326,11 +1393,11 @@
         {
           "Type":  "TVar",
           "Name":  "temp_hull",
-          "Pos.x":  380,
-          "Pos.y":  170,
+          "Pos.x":  290,
+          "Pos.y":  -100,
           "Parent":  -1,
           "#":  12,
-          "Var.Type":  "Int",
+          "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
         },
@@ -1370,11 +1437,11 @@
         {
           "Type":  "TVar",
           "Name":  "hull_gift",
-          "Pos.x":  380,
-          "Pos.y":  190,
+          "Pos.x":  290,
+          "Pos.y":  -80,
           "Parent":  -1,
           "#":  27,
-          "Var.Type":  "Int",
+          "Var.Type":  "Dword",
           "Init":  "",
           "Global":  false        
         },
@@ -1502,12 +1569,23 @@
         {
           "Type":  "TVar",
           "Name":  "cur_ruin",
-          "Pos.x":  380,
-          "Pos.y":  290,
+          "Pos.x":  290,
+          "Pos.y":  -120,
           "Parent":  -1,
           "#":  104,
           "Var.Type":  "Dword",
           "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "FaeyliathanConstructionDone",
+          "Pos.x":  610,
+          "Pos.y":  -160,
+          "Parent":  -1,
+          "#":  109,
+          "Var.Type":  "Int",
+          "Init":  "0",
           "Global":  false        
         }      
       ]    
@@ -2088,6 +2166,27 @@
       "End":  9,
       "Nom":  0,
       "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  105,
+      "End":  106,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  106,
+      "End":  107,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  107,
+      "End":  108,
+      "Nom":  0,
+      "Arrow":  true    
     }  
   ],
   "Rect.Text":  
@@ -2162,7 +2261,7 @@
       "fsUnderline":  false    
     }  
   ],
-  "BlockPar.EC.Total.Strings":  30,
+  "BlockPar.EC.Total.Strings":  31,
   "BlockPar.EC":  
   [
     {
@@ -2216,6 +2315,10 @@
     {
       "#":  "122",
       "String":  "Твоя репутация среди братвы позволяет тебе заказать корпус <0>:<br><1><br>"    
+    },
+    {
+      "#":  "123",
+      "String":  ""    
     },
     {
       "#":  "24",
