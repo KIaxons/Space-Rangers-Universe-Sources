@@ -721,7 +721,7 @@
           "Pos.y":  0,
           "Parent":  5,
           "#":  21,
-          "Total.Lines":  209,
+          "Total.Lines":  211,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -847,6 +847,7 @@
               "    */",
               "",
               "    if(illness_cnt) CustomEther('Illness', 3, 'IllnessNotification', text);",
+              "    else EtherDelete('IllnessNotification');",
               "}",
               "",
               "function g_UpdateStimulantsNotification()",
@@ -924,6 +925,7 @@
               "    */",
               "",
               "    if(stimulants_cnt) CustomEther('Stimulants', 3, 'StimulantsNotification', text);",
+              "    else EtherDelete('StimulantsNotification');",
               "}",
               "",
               "function PlayerActCode() //t_OnLeavingForm",
