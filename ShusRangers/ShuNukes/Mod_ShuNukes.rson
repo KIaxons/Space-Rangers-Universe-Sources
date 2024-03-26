@@ -893,7 +893,7 @@
               "//CreateActCodeEvent(t_OnPlayerChangeHull, 'ShuNukes_NuclearMissiles', Player(), ShipEqInSlot(Player(), t_Hull)); //Для обновления веса скрытого юзлеса",
               "dword nuke_weight = IdToItem(GetParFromString(ShipCustomShipInfoTextData(Player(), 'ShuNukes_NuclearMissiles', 2), ',', 1, 0));",
               "if(nuke_weight) ItemSize(nuke_weight, g_NukeParams['WeightPerShaft'] * ItemExtraSpecialsCountByType(ShipEqInSlot(Player(), t_Hull), FindBonusByNameInCfg('ShuNukes_NukeShaft')));",
-              "else throw 'nuke_weight are missing at hold of ' + Name(Player()) + '!';",
+              "else throw 'nuke_weight are missing at hold of ' + Name(Player()) + ', error 1!';",
               "",
               "ShipMoney(Player(), ShipMoney(Player()) - launcher_cost);",
               "Sound('Sound.Buy');",
@@ -908,13 +908,18 @@
           "Pos.y":  20,
           "Parent":  57,
           "#":  61,
-          "Total.Lines":  6,
+          "Total.Lines":  11,
           "Code.Type":  "Turn",
           "Code":          
           [
               "//Удаляем пусковую установку из корпуса игрока",
               "ItemExtraSpecialsDeleteByType(cur_item, bon, ItemExtraSpecialsCountByType(cur_item, bon));",
               "ShipCustomShipInfoTextData(Player(), 'ShuNukes_NuclearMissiles', 2, SetParFromString(ShipCustomShipInfoTextData(Player(), 'ShuNukes_NuclearMissiles', 2), ',', 0, '0'));",
+              "",
+              "dword nuke_weight = IdToItem(GetParFromString(ShipCustomShipInfoTextData(Player(), 'ShuNukes_NuclearMissiles', 2), ',', 1, 0));",
+              "if(nuke_weight) ItemSize(nuke_weight, 0);",
+              "else throw 'nuke_weight are missing at hold of ' + Name(Player()) + ', error 2!';",
+              "",
               "Sound('Sound.Repair');",
               "",
               "tstr1 = '</color>' + CT('Script.Mod_ShuNukes.' + path + '.AnswerDeinstallLaunchShaft');"          
