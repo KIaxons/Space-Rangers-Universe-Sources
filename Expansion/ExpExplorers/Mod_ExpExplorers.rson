@@ -1,15 +1,15 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -450,
-  "ViewPos.y":  -225,
+  "ViewPos.x":  -456,
+  "ViewPos.y":  -226,
   "ScriptName":  "Mod_ExpExplorers",
   "ScriptFileOut":  "H:\\Mod_ExpExplorers.scr",
   "ScriptTextOut":  "H:\\Mod_ExpExplorers.txt",
-  "GraphPoint.Count":  64,
-  "GraphLink.Count":  28,
+  "GraphPoint.Count":  87,
+  "GraphLink.Count":  46,
   "GraphRectText.Count":  0,
-  "Variables.Count":  28,
+  "Variables.Count":  30,
   "Stars.Count":  1,
   "Planets.Count":  1,
   "Ships.Count":  1,
@@ -18,11 +18,11 @@
   "Places.Count":  0,
   "Items.Count":  0,
   "Ethers.Count":  0,
-  "Dialogs.Count":  3,
-  "DialogMessages.Count":  3,
-  "DialogAnswers.Count":  6,
-  "Operations.Count":  12,
-  "Statements.Count":  7,
+  "Dialogs.Count":  8,
+  "DialogMessages.Count":  8,
+  "DialogAnswers.Count":  7,
+  "Operations.Count":  20,
+  "Statements.Count":  9,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
@@ -88,6 +88,16 @@
           "#":  49,
           "Msg":  "<tstr3>",
           "AMsg.Num":  "5"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "restart",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  74,
+          "#":  78,
+          "Msg":  "<tstr2>",
+          "AMsg.Num":  "6"        
         }      
       ],
       "DialogMessages":      
@@ -121,6 +131,56 @@
           "#":  42,
           "Msg":  "<tstr1>",
           "DMsg.Num":  "2"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  66,
+          "#":  68,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "3"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  67,
+          "#":  69,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "4"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  -20,
+          "Pos.y":  0,
+          "Parent":  77,
+          "#":  74,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "5"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  -20,
+          "Pos.y":  0,
+          "Parent":  80,
+          "#":  81,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "6"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  -20,
+          "Pos.y":  0,
+          "Parent":  85,
+          "#":  86,
+          "Msg":  "<tsrt1>",
+          "DMsg.Num":  "7"        
         }      
       ],
       "Dialogs":      
@@ -148,6 +208,46 @@
           "Pos.y":  -70,
           "Parent":  -1,
           "#":  40        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "SendPartnerToUninhabited",
+          "Pos.x":  610,
+          "Pos.y":  -60,
+          "Parent":  -1,
+          "#":  64        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "PartnerToUninhabitedTargetPlanet",
+          "Pos.x":  20,
+          "Pos.y":  20,
+          "Parent":  65,
+          "#":  72        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "PartnerToUninhabitedOrderSet",
+          "Pos.x":  20,
+          "Pos.y":  0,
+          "Parent":  82,
+          "#":  76        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "PartnerToUninhabitedTargetDropPoint",
+          "Pos.x":  20,
+          "Pos.y":  0,
+          "Parent":  70,
+          "#":  79        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "CancelPartnerToUninhabited",
+          "Pos.x":  40,
+          "Pos.y":  140,
+          "Parent":  64,
+          "#":  84        
         }      
       ],
       "Groups":      
@@ -155,9 +255,9 @@
         {
           "Type":  "TGroup",
           "Name":  "PlayerGroup",
-          "Pos.x":  40,
-          "Pos.y":  200,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  2,
           "#":  3,
           "Owner":  62,
           "Group.Type":  126,
@@ -205,7 +305,7 @@
           "Pos.y":  140,
           "Parent":  -1,
           "#":  6,
-          "Total.Lines":  134,
+          "Total.Lines":  164,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -342,6 +442,36 @@
               "        }",
               "    }",
               "}",
+              "",
+              "function g_CountLeftItemsOnUninhabited(dword planet, dword ship = 0)",
+              "{",
+              "    //Считаем, сколько ещё зондов/вещей влезающих в трюм бота осталось на незаселёнке",
+              "    int cnt = 0;",
+              "    for(int i = GetPlanetOrbitProbe(planet, -1, 0) - 1; i >= 0; i = i - 1)",
+              "    {",
+              "        dword item = GetPlanetOrbitProbe(planet, i, 0);",
+              "        if(!item) continue; //На этой орбите зонда нет",
+              "        if(ship)",
+              "        {",
+              "            if(ItemSize(item) > ShipFreeSpace(ship)) continue; //Зонд слишком тяжёлый",
+              "        }",
+              "",
+              "        cnt = cnt + 1;",
+              "    }",
+              "    for(i = PlanetItems(planet) - 1; i >= 0; i = i - 1)",
+              "    {",
+              "        if(PlanetItemsHiddency(planet, i, 'IsHidden', -1)) continue; //Пропускаем всё ещё закопанные вещи",
+              "        if(ship)",
+              "        {",
+              "            if(ItemSize(PlanetItems(planet, i)) > ShipFreeSpace(ship)) continue;",
+              "        }",
+              "",
+              "        cnt = cnt + 1;",
+              "    }",
+              "",
+              "    result = cnt;",
+              "}",
+              "",
               "lastShipId = GalaxyShipId();"          
           ]        
         },
@@ -630,7 +760,7 @@
           "Pos.y":  140,
           "Parent":  -1,
           "#":  30,
-          "Total.Lines":  76,
+          "Total.Lines":  134,
           "Code.Type":  "DialogBegin",
           "Code":          
           [
@@ -641,8 +771,9 @@
               "    {",
               "        tint2 = 0;",
               "        check = 0;",
+              "",
               "        //\"Деблокируем\" всех партнёров игрока, чтобы была возможность отдать им другой групповой приказ",
-              "        if(ShipIsPartner(cur_ship) == Player())",
+              "        if(IsPlayer(ShipIsPartner(cur_ship)))",
               "        {",
               "            for(i = 0; i < ShipPartners(Player()); i = i + 1)",
               "            {",
@@ -656,10 +787,11 @@
               "                if(ShipFindCustomShipInfoByType(tdwd1, 'OrderJumpHole_ForCompanion') == -1) continue;",
               "                OrderLock(tdwd1, 0);",
               "            }",
+              "",
               "            check = 1;",
               "        }",
               "        //\"Деблокируем\" всех транклюкаторов игрока, чтобы была возможность отдать им другой групповой приказ",
-              "        else if(TranclucatorData(cur_ship,'Proprietor') == Player())",
+              "        else if(IsPlayer(TranclucatorData(cur_ship, 'Proprietor')))",
               "        {",
               "            for(i = 0; i < PlayerTranclucators(); i = i + 1)",
               "            {",
@@ -667,20 +799,23 @@
               "                if(ShipFindCustomShipInfoByType(tdwd1, 'OrderJumpHole_ForCompanion') == -1) continue;",
               "                OrderLock(tdwd1, 0);",
               "            }",
+              "",
               "            check = 1;",
               "        }",
-              "        ",
+              "",
               "        //Если корабль является партнёром/транклюкатором игрока",
               "        if(check)",
               "        {",
+              "            cur_star = ShipStar(Player());",
+              "",
               "            //Проверяем, имеется ли на корабле инфошка приказа прыжка в ЧД",
               "            tint3 = -1;",
               "            tint1 = ShipFindCustomShipInfoByType(cur_ship, 'OrderJumpHole_ForCompanion');",
               "            if(~ShipFindCustomShipInfoByType(cur_ship, 'OrderJumpHole_ForCompanion')) tint3 = ShipCustomShipInfoData(cur_ship, tint1, 2); //Запоминаем Id указанной в приказе чёрной дыры",
+              "",
               "            //Если у игрока установлен приказ на прыжок в ЧД",
               "            if(ShipOrder(Player()) == 4)",
               "            {",
-              "                cur_star = ShipStar(Player());",
               "                cur_hole = ShipOrderObj(Player());",
               "",
               "                //Если приказ на прыжок в данную ЧД кораблю ещё не выдан",
@@ -706,6 +841,59 @@
               "                        AddDialogInject('SendPiratePartnerToBH', '', tstr1, 10);",
               "                    }",
               "                }",
+              "            }",
+              "",
+              "            //Выставление и отмена приказа на сбор вещей игрока с незаселённой планеты",
+              "            if(ShipFindCustomShipInfoByType(cur_ship, 'OrderCollectDiscoveredItems') == -1)",
+              "            {",
+              "                ArrayClear(tarr);",
+              "                ArrayDelete(tarr, 0);",
+              "                tdwd1 = 0; //Текущая система игрока, если не равна 0, нужна только для упрощения одной проверки ниже",
+              "                //Ищем в Галактике все планеты, на которых игрок уже что-то раскопал, либо на которых работают его зонды",
+              "                for(i = 0; i < GalaxyStars(); i = i + 1)",
+              "                {",
+              "                    dword star = StarNearbyStars(cur_star, i);",
+              "                    if(StarOwner(star) == 1) continue;",
+              "                    if(!SectorVisible(StarToCon(star))) continue;",
+              "",
+              "                    for(j = 0; j < StarPlanets(star); j = j + 1)",
+              "                    {",
+              "                        dword planet = StarPlanets(star, j);",
+              "                        if(PlanetOwner(planet) != None) continue;",
+              "",
+              "                        if(PlanetItems(planet) <= PlanetItemsHiddency(planet, -1, '', -1))",
+              "                        {",
+              "                            check = 0;",
+              "                            for(int l = 0; l < GetPlanetOrbitProbe(planet, -1, 0); l = l + 1)",
+              "                            {",
+              "                                if(GetPlanetOrbitProbe(planet, l, 0))",
+              "                                {",
+              "                                    check = 1;",
+              "                                    break;",
+              "                                }",
+              "                            }",
+              "                            if(!check) continue;",
+              "                        }",
+              "",
+              "                        if(star == ShipStar(cur_ship)) tdwd1 = star;",
+              "                        ArrayAdd(tarr, star);",
+              "                        break;",
+              "                    }",
+              "                }",
+              "",
+              "                if(ArrayDim(tarr) && (ShipTypeN(cur_ship) != t_Tranclucator || tdwd1))",
+              "                {",
+              "                    path = 'Partner';",
+              "                    if(ShipTypeN(cur_ship) == t_Tranclucator) path = 'Tranc';",
+              "                    else if(ShipTypeN(cur_ship) == t_Pirate || ShipOwner(cur_ship) == PirateClan) path = 'Pirate';",
+              "                    AddDialogInject('SendPartnerToUninhabited', '', CT('Script.Mod_ExpExplorers.OrderCollectDiscoveredItems.' + path + '.PlayerSetOrder'), 0);",
+              "                }",
+              "                else ArrayAdd(tarr, 0); //дабоёбский код",
+              "            }",
+              "            //Если бот уже имеет приказ сбора вещей с незаселёнки, добавляем игроку опцию отмены данного приказа",
+              "            else",
+              "            {",
+              "                AddDialogInject('CancelPartnerToUninhabited', '', CT('Script.Mod_ExpExplorers.OrderCollectDiscoveredItems.' + path + '.PlayerCancelOrder'), 0);",
               "            }",
               "        }",
               "    }",
@@ -1266,6 +1454,229 @@
               "//Разблокируем кнопку закрытия формы диалога, если опция группового приказа недоступна",
               "if(ArrayDim(tarr) < 2) InterfaceState('Talk', 'Close', 3);"          
           ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  64,
+          "#":  65,
+          "Total.Lines":  5,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "if(ShipTypeN(cur_ship) == t_Tranclucator) cur_star = tdwd1;",
+              "cur_star = tarr[0]; //На случай, если доступная для выбора система всего одна",
+              "",
+              "if(ArrayDim(tarr) > 1 && ShipTypeN(cur_ship) != t_Tranclucator) tstr1 = '</color>' + CT('Script.Mod_ExpExplorers.OrderCollectDiscoveredItems.' + path + '.ChooseStar');",
+              "else tstr1 = '</color>' + CT('Script.Mod_ExpExplorers.OrderCollectDiscoveredItems.' + path + '.ChoosePlanet');"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  69,
+          "#":  70,
+          "Total.Lines":  28,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tstr1 = CT('Script.Mod_ExpExplorers.OrderCollectDiscoveredItems.' + path + '.PlayerSetPlanet');",
+              "cnt = 0;",
+              "j = 0;",
+              "for(int i = 0; i < StarPlanets(cur_star); i = i + 1)",
+              "{",
+              "    dword planet = StarPlanets(cur_star, i);",
+              "    if(PlanetOwner(planet) != None) continue;",
+              "    if(PlanetItems(planet) <= PlanetItemsHiddency(planet, -1, '', -1))",
+              "    {",
+              "        check = 0;",
+              "        for(int l = 0; l < GetPlanetOrbitProbe(planet, -1, 0); l = l + 1)",
+              "        {",
+              "            if(GetPlanetOrbitProbe(planet, l, 0))",
+              "            {",
+              "                check = 1;",
+              "                break;",
+              "            }",
+              "        }",
+              "        if(!check) continue;",
+              "    }",
+              "",
+              "    InjectAnswer('PartnerToUninhabitedTargetDropPoint', Format(tstr1, '<Planet'+'>', Name(planet)), i + 1);",
+              "    if(!j) j = i + 1; //Запоминаем первую доступную для сбора планету в списке для отдачи приказа сбора вещей со всех планет в системе по очереди",
+              "    cnt = cnt + 1;",
+              "}",
+              "",
+              "if(cnt > 1) InjectAnswer('PartnerToUninhabitedTargetDropPoint', CT('Script.Mod_ExpExplorers.OrderCollectDiscoveredItems.' + path + '.PlayerSetAllPlanets'), -j);",
+              "DAnswer('restart~' + CT('Script.Mod_ExpExplorers.OrderCollectDiscoveredItems.' + path + '.PlayerRefused'));"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  68,
+          "#":  71,
+          "Total.Lines":  7,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tstr1 = CT('Script.Mod_ExpExplorers.OrderCollectDiscoveredItems.' + path + '.PlayerSetStar');",
+              "for(int i = 0; i < ArrayDim(tarr); i = i + 1)",
+              "{",
+              "    InjectAnswer('PartnerToUninhabitedTargetPlanet', Format(tstr1, '<Star'+'>', Name(tarr[i])), tarr[i]);",
+              "}",
+              "",
+              "DAnswer('restart~' + CT('Script.Mod_ExpExplorers.OrderCollectDiscoveredItems.' + path + '.PlayerRefused'));"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  72,
+          "#":  73,
+          "Total.Lines":  2,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "cur_star = GAnswerData;",
+              "tstr1 = '</color>' + Format(CT('Script.Mod_ExpExplorers.OrderCollectDiscoveredItems.' + path + '.ChoosePlanetDistant'), '<Star'+'>', Name(cur_star));"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  76,
+          "#":  77,
+          "Total.Lines":  13,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "if(ObjectType(GAnswerData) == 3) tstr1 = 'p' + Id(GAnswerData);",
+              "else tstr1 = 's' + Id(GAnswerData);",
+              "",
+              "ShipAddCustomShipInfo(cur_ship, 'OrderCollectDiscoveredItems', 'NoShow', Id(cur_star), int(cur_planet), 0, tstr1, '0,0,0,0,0,0,0,0', 'Collecting');",
+              "OrderLock(cur_ship, 1);",
+              "//Приказ собирать лут с планет в другой системе",
+              "if(cur_star != ShipStar(cur_ship)) OrderJump(cur_ship, cur_star);",
+              "//Приказ собирать лут с конкретной планеты, либо со всех доступных планет по очереди",
+              "else OrderLanding(cur_ship, StarPlanets(cur_star, abs(cur_planet) - 1));",
+              "",
+              "if(cur_star == ShipStar(cur_ship)) tstr1 = '</color>' + CT('Script.Mod_ExpExplorers.OrderCollectDiscoveredItems.' + path + '.OrderConfirmed');",
+              "else tstr1 = '</color>' + Format(CT('Script.Mod_ExpExplorers.OrderCollectDiscoveredItems.' + path + '.OrderConfirmedDistant'), '<Star'+'>', Name(cur_star));",
+              "tstr2 = '</color>' + CT('Script.Mod_ExpExplorers.OrderCollectDiscoveredItems.' + path + '.PlayerDone');"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  79,
+          "#":  80,
+          "Total.Lines":  2,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "cur_planet = GAnswerData; //Здесь задаётся не адрес планеты, а её номер в списке системы (но начиная с 1, а не с 0!), либо -1 для выбора всех планет",
+              "tstr1 = '</color>' + Format(CT('Script.Mod_ExpExplorers.OrderCollectDiscoveredItems.' + path + '.ChooseDropPoint'), '<Star'+'>', Name(cur_star));"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  81,
+          "#":  82,
+          "Total.Lines":  55,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tstr1 = CT('Script.Mod_ExpExplorers.OrderCollectDiscoveredItems.' + path + '.PlayerSetDropPointPlanet');",
+              "for(int i = 0; i < StarPlanets(cur_star); i = i + 1)",
+              "{",
+              "    dword planet = StarPlanets(cur_star, i);",
+              "    if(PlanetOwner(planet) == None) continue;",
+              "    tstr2 = Format(tstr1, '<Planet'+'>', Name(planet));",
+              "",
+              "    if(ShipTypeN(cur_ship) == t_Tranclucator)",
+              "    {",
+              "        if(RelationToRanger(planet, Player()) < 10)",
+              "        {",
+              "            tstr2 = DeleteTags(tstr2);",
+              "            AddDialogBlock(tstr2, 1);",
+              "        }",
+              "    }",
+              "    else if(RelationToShip(planet, cur_ship) < 10)",
+              "    {",
+              "        tstr2 = DeleteTags(tstr2);",
+              "        AddDialogBlock(tstr2, 1);",
+              "    }",
+              "",
+              "    InjectAnswer('PartnerToUninhabitedOrderSet', tstr2, planet);",
+              "}",
+              "",
+              "tstr1 = CT('Script.Mod_ExpExplorers.OrderCollectDiscoveredItems.' + path + '.PlayerSetDropPointStation');",
+              "for(i = 0; i < StarRuins(cur_star); i = i + 1)",
+              "{",
+              "    dword station = StarRuins(cur_star, i);",
+              "    tstr2 = Format(ShipType(station), '_licensed', '', '');",
+              "    if(tstr2 == 'Inhibitor' || tstr2 == 'BM' || tstr2 == 'SSB') continue;",
+              "    if(tstr2 == 'Handler')",
+              "    {",
+              "        if(ShipOwner(Player()) != PirateClan && GetShipPirateRank(Player()) < 7) continue;",
+              "    }",
+              "    if(tstr2 == 'CB' && (ShipOwner(Player()) != PirateClan || ShipOwner(cur_ship) != PirateClan)) continue;",
+              "    tstr2 = Format(tstr1, '<Station'+'>', Name(station));",
+              "",
+              "    if(ShipTypeN(cur_ship) == t_Tranclucator)",
+              "    {",
+              "        if(RelationToRanger(station, Player()) < 10)",
+              "        {",
+              "            tstr2 = DeleteTags(tstr2);",
+              "            AddDialogBlock(tstr2, 1);",
+              "        }",
+              "    }",
+              "    else if(RelationToShip(station, cur_ship) < 10)",
+              "    {",
+              "        tstr2 = DeleteTags(tstr2);",
+              "        AddDialogBlock(tstr2, 1);",
+              "    }",
+              "",
+              "    InjectAnswer('PartnerToUninhabitedOrderSet', tstr2, station);",
+              "}",
+              "",
+              "DAnswer('restart~' + CT('Script.Mod_ExpExplorers.OrderCollectDiscoveredItems.' + path + '.PlayerRefused'));"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  84,
+          "#":  85,
+          "Total.Lines":  7,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "//Отмена приказа сбора вещей с незаселёнки",
+              "ShipDeleteCustomShipInfo(cur_ship, 'OrderCollectDiscoveredItems');",
+              "OrderLock(cur_ship, 0);",
+              "ShipFreeFlight(cur_ship);",
+              "",
+              "tstr1 = '</color>' + CT('Script.Mod_ExpExplorers.OrderCollectDiscoveredItems.' + path + '.CancelOrderDone');",
+              "tstr2 = '</color>' + CT('Script.Mod_ExpExplorers.OrderCollectDiscoveredItems.' + path + '.PlayerCancelOrderDone');"          
+          ]        
         }      
       ],
       "Planets":      
@@ -1273,9 +1684,9 @@
         {
           "Type":  "TPlanet",
           "Name":  "PlanetNew",
-          "Pos.x":  40,
-          "Pos.y":  170,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  1,
           "#":  2,
           "Race":  62,
           "Owner":  62,
@@ -1320,9 +1731,9 @@
         {
           "Type":  "TStar",
           "Name":  "StarNew",
-          "Pos.x":  40,
-          "Pos.y":  140,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  0,
           "#":  1,
           "Constellation":  0,
           "Priority":  0,
@@ -1429,6 +1840,34 @@
           [
               "1"          
           ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -20,
+          "Pos.y":  20,
+          "Parent":  65,
+          "#":  66,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "ArrayDim(tarr) > 1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  65,
+          "#":  67,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "ArrayDim(tarr) <= 1"          
+          ]        
         }      
       ],
       "States":      
@@ -1436,9 +1875,9 @@
         {
           "Type":  "TState",
           "Name":  "PlayerState",
-          "Pos.x":  40,
-          "Pos.y":  230,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  3,
           "#":  4,
           "Move":  0,
           "MoveObj":  -1,
@@ -1556,9 +1995,9 @@
         {
           "Type":  "TVar",
           "Name":  "infos",
-          "Pos.x":  160,
-          "Pos.y":  270,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  53,
           "#":  18,
           "Var.Type":  "Dword",
           "Init":  "",
@@ -1589,9 +2028,9 @@
         {
           "Type":  "TVar",
           "Name":  "lastShipId",
-          "Pos.x":  160,
-          "Pos.y":  290,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  18,
           "#":  21,
           "Var.Type":  "Dword",
           "Init":  "",
@@ -1600,9 +2039,9 @@
         {
           "Type":  "TVar",
           "Name":  "tdwd2",
-          "Pos.x":  160,
-          "Pos.y":  190,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  7,
           "#":  22,
           "Var.Type":  "Dword",
           "Init":  "",
@@ -1644,9 +2083,9 @@
         {
           "Type":  "TVar",
           "Name":  "cur_ship",
-          "Pos.x":  160,
-          "Pos.y":  230,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  83,
           "#":  26,
           "Var.Type":  "Dword",
           "Init":  "",
@@ -1688,9 +2127,9 @@
         {
           "Type":  "TVar",
           "Name":  "tstr2",
-          "Pos.x":  340,
-          "Pos.y":  190,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  17,
           "#":  37,
           "Var.Type":  "Str",
           "Init":  "",
@@ -1699,9 +2138,9 @@
         {
           "Type":  "TVar",
           "Name":  "cur_hole",
-          "Pos.x":  160,
-          "Pos.y":  250,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  26,
           "#":  53,
           "Var.Type":  "Dword",
           "Init":  "",
@@ -1710,9 +2149,9 @@
         {
           "Type":  "TVar",
           "Name":  "cur_star",
-          "Pos.x":  160,
-          "Pos.y":  210,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  22,
           "#":  54,
           "Var.Type":  "Dword",
           "Init":  "",
@@ -1721,9 +2160,9 @@
         {
           "Type":  "TVar",
           "Name":  "tstr3",
-          "Pos.x":  340,
-          "Pos.y":  210,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  37,
           "#":  55,
           "Var.Type":  "Str",
           "Init":  "",
@@ -1754,12 +2193,34 @@
         {
           "Type":  "TVar",
           "Name":  "TortugatzId",
-          "Pos.x":  160,
-          "Pos.y":  310,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  21,
           "#":  63,
           "Var.Type":  "Int",
           "Init":  "70",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "path",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  55,
+          "#":  75,
+          "Var.Type":  "Str",
+          "Init":  "",
+          "Global":  false        
+        },
+        {
+          "Type":  "TVar",
+          "Name":  "cur_planet",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  54,
+          "#":  83,
+          "Var.Type":  "Dword",
+          "Init":  "",
           "Global":  false        
         }      
       ]    
@@ -1960,6 +2421,132 @@
       "Type":  "TGraphLink",
       "Begin":  60,
       "End":  35,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  72,
+      "End":  73,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  73,
+      "End":  69,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  64,
+      "End":  65,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  66,
+      "End":  68,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  68,
+      "End":  71,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  67,
+      "End":  69,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  69,
+      "End":  70,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  76,
+      "End":  77,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  77,
+      "End":  74,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  74,
+      "End":  78,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  79,
+      "End":  80,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  80,
+      "End":  81,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  81,
+      "End":  82,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  65,
+      "End":  66,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  65,
+      "End":  67,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  84,
+      "End":  85,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  85,
+      "End":  86,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  86,
+      "End":  78,
       "Nom":  0,
       "Arrow":  true    
     }  
