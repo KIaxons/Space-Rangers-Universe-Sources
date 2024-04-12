@@ -995,7 +995,7 @@
               "        if(GetGameOptions('FontDialog') == '0') DefSplt = '</color>-------------------------------------------------------------';",
               "        else if(GetGameOptions('FontDialog') == '1') DefSplt = '</color>------------------------------------------';",
               "        else if(GetGameOptions('FontDialog') == '2') DefSplt = '</color>-----------------------------------------';",
-              "        else DefSplt = '</color>-------------------------------------';",
+              "        else /*if(GetGameOptions('FontDialog') == '3')*/ DefSplt = '</color>-------------------------------------';",
               "",
               "        AddDialogBlock(CT('FormRuins.RC.AboutNod.PlayerSend'), 2);",
               "        AddDialogBlock(CT('FormRuins.RC.PirateClan.PlayerSend'), 2);",

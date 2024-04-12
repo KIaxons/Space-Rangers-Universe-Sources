@@ -1472,7 +1472,7 @@
               "    {",
               "        j = FindBonusByNameInCfg('ExpTC_HullSpraying');",
               "        if(~j) j = ItemExtraSpecialsCountByType(cur_item, j);",
-              "        if(j) continue;",
+              "        if(j > 0) continue;",
               "    }",
               "",
               "    ArrayAdd(items, cur_item);",
@@ -1634,7 +1634,7 @@
               "if(GetGameOptions('FontDialog') == '0') DefSplt = '</color>-------------------------------------------------------------';",
               "else if(GetGameOptions('FontDialog') == '1') DefSplt = '</color>------------------------------------------';",
               "else if(GetGameOptions('FontDialog') == '2') DefSplt = '</color>-----------------------------------------';",
-              "else DefSplt = '</color>-------------------------------------';"          
+              "else /*if(GetGameOptions('FontDialog') == '3')*/ DefSplt = '</color>-------------------------------------';"          
           ]        
         },
         {
