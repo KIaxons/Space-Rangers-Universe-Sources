@@ -132,9 +132,9 @@
         {
           "Type":  "TDialogAnswer",
           "Name":  "restart",
-          "Pos.x":  320,
-          "Pos.y":  250,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  277,
           "#":  166,
           "Msg":  "Далее",
           "AMsg.Num":  "10"        
@@ -292,9 +292,9 @@
         {
           "Type":  "TDialogAnswer",
           "Name":  "restart",
-          "Pos.x":  340,
-          "Pos.y":  250,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  276,
           "#":  278,
           "Msg":  "<TextCorr2>",
           "AMsg.Num":  "26"        
@@ -485,9 +485,9 @@
         {
           "Type":  "TDialogMsg",
           "Name":  "",
-          "Pos.x":  340,
-          "Pos.y":  210,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  164,
           "#":  165,
           "Msg":  "Слушаюсь, хозяин! Форсаж отключён.",
           "DMsg.Num":  "18"        
@@ -812,16 +812,16 @@
         {
           "Type":  "TDialog",
           "Name":  "TrancForsageD",
-          "Pos.x":  410,
-          "Pos.y":  210,
+          "Pos.x":  400,
+          "Pos.y":  240,
           "Parent":  -1,
           "#":  161        
         },
         {
           "Type":  "TDialog",
           "Name":  "AftOn",
-          "Pos.x":  410,
-          "Pos.y":  250,
+          "Pos.x":  320,
+          "Pos.y":  240,
           "Parent":  -1,
           "#":  174        
         },
@@ -2909,35 +2909,39 @@
           "Pos.y":  210,
           "Parent":  -1,
           "#":  123,
-          "Total.Lines":  26,
+          "Total.Lines":  30,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "if(SpecialUpgradeArray[1]>-1)",
+              "if(SpecialUpgradeArray[1] > -1)",
               "{",
-              "    if(SpecialUpgradeArray[1]>0 && ShipMoney(Player())>=SpecialUpgradeArray[2])InjectAnswer('SpecialUpGo',\"Установить орудие \\\"Мусаси\\\"\",1);",
-              "    else InjectAnswer('Block','<color=120,124,120>'+\"Установить орудие \\\"Мусаси\\\"\"+'</color>',1);",
+              "    if(SpecialUpgradeArray[1] > 0 && ShipMoney(Player()) >= SpecialUpgradeArray[2]) InjectAnswer('SpecialUpGo', \"Установить орудие \\\"Мусаси\\\"\", 1);",
+              "    else InjectAnswer('Block', '<color=120,124,120>' + \"Установить орудие \\\"Мусаси\\\"\" + '</color>', 1);",
               "}",
-              "if(SpecialUpgradeArray[3]>-1)",
+              "",
+              "if(SpecialUpgradeArray[3] > -1)",
               "{",
-              "    if(SpecialUpgradeArray[3]>0 && ShipMoney(Player())>=SpecialUpgradeArray[4])InjectAnswer('SpecialUpGo',\"Установить модуль \\\"Джэбэ\\\"\",2);",
-              "    else InjectAnswer('Block','<color=120,124,120>'+\"Установить модуль \\\"Джэбэ\\\"\"+'</color>',2);",
+              "    if(SpecialUpgradeArray[3] > 0 && ShipMoney(Player()) >= SpecialUpgradeArray[4]) InjectAnswer('SpecialUpGo', \"Установить модуль \\\"Джэбэ\\\"\", 2);",
+              "    else InjectAnswer('Block', '<color=120,124,120>' + \"Установить модуль \\\"Джэбэ\\\"\"+'</color>', 2);",
               "}",
-              "if(SpecialUpgradeArray[5]>-1)",
+              "",
+              "if(SpecialUpgradeArray[5] > -1)",
               "{",
-              "    if(SpecialUpgradeArray[5]>0 && ShipMoney(Player())>=SpecialUpgradeArray[6])InjectAnswer('SpecialUpGo',\"Установить дефлектор \\\"Мангуст\\\"\",3);",
-              "    else InjectAnswer('Block','<color=120,124,120>'+\"Установить дефлектор \\\"Мангуст\\\"\"+'</color>',3);",
+              "    if(SpecialUpgradeArray[5] > 0 && ShipMoney(Player()) >= SpecialUpgradeArray[6]) InjectAnswer('SpecialUpGo', \"Установить дефлектор \\\"Мангуст\\\"\", 3);",
+              "    else InjectAnswer('Block', '<color=120,124,120>' + \"Установить дефлектор \\\"Мангуст\\\"\" + '</color>', 3);",
               "}",
-              "if(SpecialUpgradeArray[7]>-1)",
+              "",
+              "if(SpecialUpgradeArray[7] > -1)",
               "{",
-              "    if(SpecialUpgradeArray[7]>0 && ShipMoney(Player())>=SpecialUpgradeArray[8])InjectAnswer('SpecialUpGo',\"Установить систему \\\"Херувим\\\"\",4);",
-              "    else InjectAnswer('Block','<color=120,124,120>'+\"Установить систему \\\"Херувим\\\"\"+'</color>',4);",
+              "    if(SpecialUpgradeArray[7] > 0 && ShipMoney(Player()) >= SpecialUpgradeArray[8]) InjectAnswer('SpecialUpGo', \"Установить систему \\\"Херувим\\\"\", 4);",
+              "    else InjectAnswer('Block', '<color=120,124,120>' + \"Установить систему \\\"Херувим\\\"\" + '</color>', 4);",
               "}",
-              "if(temp_int)InjectAnswer('Canceled',\"Нет, прямо сейчас такая огневая мощь моему роботу не к чему\",6);",
+              "",
+              "if(temp_int) InjectAnswer('Canceled', \"Нет, прямо сейчас такая огневая мощь моему роботу не к чему\", 6);",
               "else",
               "{",
-              "    InjectAnswer('Canceled',\"На пока боевых апгрейдов моему роботу хватит, благодарю\",7);",
-              "    temp_int=1;",
+              "    InjectAnswer('Canceled', \"На пока боевых апгрейдов моему роботу хватит, благодарю\", 7);",
+              "    temp_int = 1;",
               "}"          
           ]        
         },
@@ -3349,41 +3353,42 @@
           "Pos.y":  230,
           "Parent":  -1,
           "#":  147,
-          "Total.Lines":  115,
+          "Total.Lines":  119,
           "Code.Type":  "Turn",
           "Code":          
           [
-              "tempDwd=GAnswerData;",
-              "tempDwd2=GetShipRuins(Player());",
-              "temp_int_6=-1;",
+              "tempDwd = GAnswerData;",
+              "tempDwd2 = GetShipRuins(Player());",
+              "temp_int_6 = -1;",
               "",
               "if(~EqModule(tempDwd))",
               "{",
-              "    temp_int_6=EqModule(tempDwd);",
-              "    EqModule(tempDwd,-1);",
+              "    temp_int_6 = EqModule(tempDwd);",
+              "    EqModule(tempDwd, -1);",
               "}",
               "",
-              "TextCorr=DeleteTags(Name(tempDwd));",
-              "if(~temp_int_6)EqModule(tempDwd,temp_int_6);",
-              "temp_int_3=0;",
+              "TextCorr = DeleteTags(Name(tempDwd));",
+              "if(~temp_int_6) EqModule(tempDwd, temp_int_6);",
+              "temp_int_3 = 0;",
               "",
               "//Стоимость в кредитах",
-              "temp_int=round(0.5*ItemCost(tempDwd));",
-              "if(ItemOwner(tempDwd)!=5 && EqCustomFaction(tempDwd)!='Klissan')",
+              "temp_int = round(0.5 * ItemCost(tempDwd));",
+              "if(ItemOwner(tempDwd) != Kling && EqCustomFaction(tempDwd) != 'Klissan')",
               "{",
               "    //Вычитаем стоимость в кредитах",
-              "    ShipMoney(Player(),ShipMoney(Player())-temp_int);",
+              "    ShipMoney(Player(), ShipMoney(Player()) - temp_int);",
               "}",
-              "else if(EqCustomFaction(tempDwd)=='Klissan')",
+              "else if(EqCustomFaction(tempDwd) == 'Klissan')",
               "{",
               "    //Вычитаем стоимость в кредитах",
-              "    ShipMoney(Player(),ShipMoney(Player())-temp_int);",
+              "    ShipMoney(Player(), ShipMoney(Player()) - temp_int);",
+              "",
               "    //Вычитаем стоимость в протоплазме",
-              "    temp_int_2=round(1.0*temp_int/100);",
-              "    for(i=0;i<ShipItems(Player());i=i+1)",
+              "    temp_int_2 = round(1.0 * temp_int / 100);",
+              "    for(i = 0; i < ShipItems(Player()); i = i + 1)",
               "    {",
-              "        cur_item=ShipItems(Player(),i);",
-              "        if(ItemType(cur_item)==t_UselessCountableItem)",
+              "        cur_item = ShipItems(Player(),i);",
+              "        if(ItemType(cur_item) == t_UselessCountableItem)",
               "        {",
               "            if(EquipmentImageName(cur_item)=='KlissanProtoplasm')",
               "            {",
@@ -3399,8 +3404,10 @@
               "                }",
               "            }",
               "        }",
-              "        if(!temp_int_2)break;",
+              "",
+              "        if(!temp_int_2) break;",
               "    }",
+              "",
               "    if(temp_int_2)while(temp_int_2)",
               "    {",
               "        cur_item=StorageItems(temp_int_3);",
@@ -3420,12 +3427,13 @@
               "                        temp_int_2=temp_int_2-ItemSize(cur_item);",
               "                        FreeItem(GetItemFromStorage(temp_int_3));",
               "                        //Откатываем счётчик, чтобы позволить скрипту ещё раз пройтись по номеру удалённой вещи",
-              "                        temp_int_3=temp_int_3-1;",
+              "                        temp_int_3 = temp_int_3 - 1;",
               "                    }",
               "                }",
               "            }",
               "        }",
-              "        temp_int_3=temp_int_3+1;",
+              "",
+              "        temp_int_3 = temp_int_3 + 1;",
               "    }",
               "}",
               "else",
@@ -3529,11 +3537,11 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  360,
-          "Pos.y":  210,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  163,
           "#":  164,
-          "Total.Lines":  19,
+          "Total.Lines":  21,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -3544,6 +3552,7 @@
               "InterfaceState('Talk', 'Close', 3);",
               "",
               "//Если транклюкаторов у игрока более одного, проверяем, сколько из них находятся в текущей системе",
+              "ArrayClear(tempArr);",
               "if(PlayerTranclucators() > 1)",
               "{",
               "    for(i = 0; i < PlayerTranclucators(); i = i + 1)",
@@ -3553,6 +3562,7 @@
               "        if(ShipStar(tempDwd) != cur_star) continue;",
               "        ArrayAdd(tempArr, tempDwd);",
               "    }",
+              "",
               "    //Если транклюкаторов у игрока несколько, выводим запрос и ответ о ретрансляции приказа всем доступным роботам",
               "    if(ArrayDim(tempArr) > 2) TextCorr2 = '</color>' + CT('Talk.Tranclucator.OrderForAll');",
               "}"          
@@ -3586,10 +3596,10 @@
           "Type":  "Top",
           "Name":  "",
           "Pos.x":  0,
-          "Pos.y":  20,
+          "Pos.y":  40,
           "Parent":  174,
           "#":  175,
-          "Total.Lines":  18,
+          "Total.Lines":  20,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -3599,6 +3609,7 @@
               "InterfaceState('Talk', 'Close', 3);",
               "",
               "//Если транклюкаторов у игрока более одного, проверяем, сколько из них находятся в текущей системе",
+              "ArrayClear(tempArr);",
               "if(PlayerTranclucators() > 1)",
               "{",
               "    for(i = 0; i < PlayerTranclucators(); i = i + 1)",
@@ -3608,6 +3619,7 @@
               "        if(ShipStar(tempDwd) != cur_star) continue;",
               "        ArrayAdd(tempArr, tempDwd);",
               "    }",
+              "",
               "    //Если транклюкаторов у игрока несколько, выводим запрос и ответ о ретрансляции приказа всем доступным роботам",
               "    if(ArrayDim(tempArr) > 2) TextCorr2 = '</color>' + CT('Talk.Tranclucator.OrderForAll');",
               "}"          
@@ -3763,9 +3775,9 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "OrderFollowShip(cur_Tranc,Player(),0);",
-              "ShipCustomShipInfoTextData(cur_Tranc,temp_int_4,3,'');",
-              "OrderLock(cur_Tranc,0);"          
+              "OrderFollowShip(cur_Tranc, Player(), 0);",
+              "ShipCustomShipInfoTextData(cur_Tranc, temp_int_4, 3, '');",
+              "OrderLock(cur_Tranc, 0);"          
           ]        
         },
         {
@@ -3779,9 +3791,9 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "OrderJump(cur_Tranc,GAnswerData);",
-              "ShipCustomShipInfoTextData(cur_Tranc,temp_int_4,3,'JumpByOrder');",
-              "OrderLock(cur_Tranc,1);"          
+              "OrderJump(cur_Tranc, GAnswerData);",
+              "ShipCustomShipInfoTextData(cur_Tranc, temp_int_4, 3, 'JumpByOrder');",
+              "OrderLock(cur_Tranc, 1);"          
           ]        
         },
         {
@@ -4907,9 +4919,9 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  360,
-          "Pos.y":  250,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  278,
           "#":  279,
           "Total.Lines":  12,
           "Code.Type":  "Turn",
@@ -5520,7 +5532,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  410,
+          "Pos.x":  400,
           "Pos.y":  190,
           "Parent":  -1,
           "#":  162,
@@ -5534,9 +5546,9 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  380,
-          "Pos.y":  210,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  161,
           "#":  163,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
@@ -5626,7 +5638,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipCanJump(cur_Tranc,ShipStar(cur_Tranc),GAnswerData,1)"          
+              "ShipCanJump(cur_Tranc, ShipStar(cur_Tranc), GAnswerData, 1)"          
           ]        
         },
         {
@@ -5640,7 +5652,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "!ShipCanJump(cur_Tranc,ShipStar(cur_Tranc),GAnswerData,1)"          
+              "!ShipCanJump(cur_Tranc, ShipStar(cur_Tranc), GAnswerData, 1)"          
           ]        
         },
         {
@@ -5772,7 +5784,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  -10,
+          "Pos.x":  0,
           "Pos.y":  20,
           "Parent":  176,
           "#":  274,
@@ -5786,7 +5798,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  10,
+          "Pos.x":  20,
           "Pos.y":  20,
           "Parent":  176,
           "#":  275,
@@ -5800,9 +5812,9 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  340,
-          "Pos.y":  230,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  165,
           "#":  276,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
@@ -5814,9 +5826,9 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  320,
-          "Pos.y":  230,
-          "Parent":  -1,
+          "Pos.x":  20,
+          "Pos.y":  20,
+          "Parent":  165,
           "#":  277,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
@@ -8081,7 +8093,7 @@
       "Rect.Left":  81,
       "Rect.Top":  -86,
       "Rect.Right":  678,
-      "Rect.Bottom":  371,
+      "Rect.Bottom":  374,
       "FStyle":  1,
       "FColor":  10710818,
       "BStyle":  0,
