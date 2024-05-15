@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  43,
-  "ViewPos.y":  -311,
+  "ViewPos.x":  38,
+  "ViewPos.y":  -242,
   "ScriptName":  "Mod_ExpHullsBases",
   "ScriptFileOut":  "H:\\Mod_ExpHullsBases.scr",
   "ScriptTextOut":  "H:\\Mod_ExpHullsBases.txt",
@@ -1721,7 +1721,7 @@
               "cur_ruin_techlevel = ItemLevel(ruin_hull);",
               "",
               "//Запоминаем число доступных средств игрока для удобства всех последующих проверок",
-              "if(ruin_str_type != 'PlayerMB') player_money = ShipMoney(Player());",
+              "if(ruin_str_type != 'PlayerMercHQ') player_money = ShipMoney(Player());",
               "else player_money = max(ShipMoney(Player()), int(PlayerHQMainArray['Finance', 'CurrentBalance']));",
               "",
               "if(~cur_module) ModuleToEquipment(-1, ruin_hull);",
@@ -1842,22 +1842,22 @@
               "    TextCorr4 = '</color>' + \"<br><br><clr>Портальный генератор:<clrEnd><br>Макс. дальность скачка: <ShipCustomShipInfoData(cur_ruin, tempInt3, 1)> пк.<br>Будет готов к скачку через: <ShipCustomShipInfoTextData(cur_ruin, tempInt3, 1)>\";",
               "}",
               "",
-              "if(GetGameOptions('FontDialog') == 3) TextCorr = '</color>'+\"возм.\";",
+              "if(GetGameOptions('FontDialog') == 3) TextCorr = '</color>' + \"возм.\";",
               "else TextCorr = '</color>' + \"возможная\";",
               "HullReport = '</color>' + Format(CT('Script.Mod_ExpHullsBases.RuinHullReport'),",
-              "                        '<HullName' + '>', ruin_hull_name,",
-              "                        '<CurrentHitPoints' + '>', HullHP(cur_ruin),",
-              "                        '<FullHitPoints' + '>', cur_ruin_size,",
-              "                        '<ScheduledRepair' + '>', PlanRep,",
-              "                        '<MaxHitPointsText' + '>', TextCorr,",
-              "                        '<MaxHitPoints' + '>', max_ruin_size,",
-              "                        '<CurrentArmor' + '>', cur_ruin_armor,",
-              "                        '<AdditionalArmor' + '>', ShipArmor(cur_ruin) - cur_ruin_armor,",
-              "                        '<MaxArmor' + '>', max_ruin_armor,",
-              "                        '<HullCost' + '>', cur_ruin_cost,",
-              "                        '<AddText' + '>', TextCorr4",
+              "                        '<HullName'+'>', ruin_hull_name,",
+              "                        '<CurrentHitPoints'+'>', HullHP(cur_ruin),",
+              "                        '<FullHitPoints'+'>', cur_ruin_size,",
+              "                        '<ScheduledRepair'+'>', PlanRep,",
+              "                        '<MaxHitPointsText'+'>', TextCorr,",
+              "                        '<MaxHitPoints'+'>', max_ruin_size,",
+              "                        '<CurrentArmor'+'>', cur_ruin_armor,",
+              "                        '<AdditionalArmor'+'>', ShipArmor(cur_ruin) - cur_ruin_armor,",
+              "                        '<MaxArmor'+'>', max_ruin_armor,",
+              "                        '<HullCost'+'>', cur_ruin_cost,",
+              "                        '<AddText'+'>', TextCorr4",
               "                       );",
-              "if(ruin_str_type == 'PlayerMB') HullReport = HullReport + \"<br>\" + Format(CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.RuinHullReportHQLevel'), '<Level' + '>', PlayerHQMainArray['Main', 'HQLevel']);"          
+              "if(ruin_str_type == 'PlayerMercHQ') HullReport = HullReport + Format('<br>') + Format(CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.RuinHullReportHQLevel'), '<Level'+'>', PlayerHQMainArray['Main', 'HQLevel']);"          
           ]        
         },
         {
@@ -1871,7 +1871,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "if(ruin_str_type == 'PlayerMB') tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.PlayerHurricaneYes');",
+              "if(ruin_str_type == 'PlayerMercHQ') tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.PlayerHurricaneYes');",
               "else tstr1 = '</color>' + \"Я согласен, вот деньги\";",
               "",
               "if(player_money < upgrade_cost_hurricane)",
@@ -1893,7 +1893,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "if(ruin_str_type == 'PlayerMB') tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.PlayerGSOMYes');",
+              "if(ruin_str_type == 'PlayerMercHQ') tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.PlayerGSOMYes');",
               "else tstr1 = '</color>' + \"Приступайте к установке\";",
               "",
               "if(player_money < upgrade_cost_gsom)",
@@ -1938,7 +1938,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "if(ruin_str_type == 'PlayerMB') tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.PlayerPolyxenYes');",
+              "if(ruin_str_type == 'PlayerMercHQ') tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.PlayerPolyxenYes');",
               "else tstr1 = '</color>' + \"Начинайте установку поликсенатной брони\";",
               "",
               "if(player_money < upgrade_cost_polyxen)",
@@ -2426,7 +2426,7 @@
           "Code":          
           [
               "//Добавляем опции для установки акриновых улучшений и портального генератора",
-              "if(ruin_str_type == 'WB' || ruin_str_type == 'PlayerMB')",
+              "if(ruin_str_type == 'WB' || ruin_str_type == 'PlayerMercHQ')",
               "{",
               "    TextCorr2 = '</color>' + \"Что скажешь?\";",
               "    TextCorr3 = '</color>' + \"Остаток покроет твой карман.\";",
@@ -2464,8 +2464,8 @@
               "//Увеличение размера",
               "if(cur_ruin_size < max_ruin_size)",
               "{",
-              "    if(ruin_str_type != 'PlayerMB') tstr1 = '</color>' + \"Увеличить структуру на <size_augment_str> ед. за <size_upgrade_cost_str> cr.\";",
-              "    else tstr1 = '</color>' + Format(CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.PlayerAskHullStructureIncrease'), '<Count'+'>', size_augment_str, '<Cost'+'>', size_upgrade_cost_str);",
+              "    if(ruin_str_type != 'PlayerMercHQ') tstr1 = '</color>' + \"Увеличить структуру на <size_augment_str> ед. за <size_upgrade_cost_str> cr.\";",
+              "    else tstr1 = '</color>' + Format(CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.PlayerAskHullStructureIncrease'), '<Count'+'>', size_augment_str, '<Cost'+'>', size_upgrade_cost_str);",
               "",
               "    if(player_money < size_upgrade_cost)",
               "    {",
@@ -2478,8 +2478,8 @@
               "//Усиление брони",
               "if(cur_ruin_armor < max_ruin_armor)",
               "{",
-              "    if(ruin_str_type != 'PlayerMB') tstr1 = '</color>' + \"Увеличить броню на <armor_augment_str> ед. за <armor_upgrade_cost_str> cr.\";",
-              "    else tstr1 = '</color>' + Format(CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.PlayerAskHullArmorIncrease'), '<Count'+'>', armor_augment_str, '<Cost'+'>', armor_upgrade_cost_str);",
+              "    if(ruin_str_type != 'PlayerMercHQ') tstr1 = '</color>' + \"Увеличить броню на <armor_augment_str> ед. за <armor_upgrade_cost_str> cr.\";",
+              "    else tstr1 = '</color>' + Format(CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.PlayerAskHullArmorIncrease'), '<Count'+'>', armor_augment_str, '<Cost'+'>', armor_upgrade_cost_str);",
               "",
               "    if(player_money < armor_upgrade_cost)",
               "    {",
@@ -2506,8 +2506,8 @@
               "",
               "    if(tint1)",
               "    {",
-              "        if(ruin_str_type != 'PlayerMB') tstr1 = '</color>' + \"Полный апгрейд корпуса за <level_upgrade_cost_str> cr.\";",
-              "        else tstr1 = '</color>' + Format(CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.PlayerAskHullLevelIncrease'), '<Cost'+'>', level_upgrade_cost_str);",
+              "        if(ruin_str_type != 'PlayerMercHQ') tstr1 = '</color>' + \"Полный апгрейд корпуса за <level_upgrade_cost_str> cr.\";",
+              "        else tstr1 = '</color>' + Format(CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.PlayerAskHullLevelIncrease'), '<Cost'+'>', level_upgrade_cost_str);",
               "",
               "        if(player_money < level_upgrade_cost)",
               "        {",
@@ -2785,7 +2785,7 @@
           "Pos.y":  20,
           "Parent":  251,
           "#":  252,
-          "Total.Lines":  22,
+          "Total.Lines":  23,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -2809,6 +2809,7 @@
               "    tstr2 = DeleteTags(tstr2);",
               "    AddDialogBlock(tstr2, 1);",
               "}",
+              "",
               "InjectAnswer('RuinImproveDone', tstr1, 8);",
               "InjectAnswer('RuinImproveDone', tstr2, 9);"          
           ]        
@@ -3890,8 +3891,8 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "if(ruin_str_type != 'PlayerMB') tstr1 = '</color>' + Format(CT('Script.Mod_ExpHullsBases.Dialogs' + ruin_str_type + '.GreetingImprove'), '<HullReport' + '>', HullReport, '');",
-              "else tstr1 = '</color>' + Format(CT('Script.Mod_ExpHullsBases.Dialogs' + ruin_str_type + '.GreetingImprove'), '<HullReport' + '>', HullReport, '<CurrentBalance' + '>', '<color=0,50,200>' + int(PlayerHQMainArray['Finance', 'CurrentBalance']) + '</color>', '');"          
+              "if(ruin_str_type != 'PlayerMercHQ') tstr1 = '</color>' + Format(CT('Script.Mod_ExpHullsBases.Dialogs' + ruin_str_type + '.GreetingImprove'), '<HullReport'+'>', HullReport, '');",
+              "else tstr1 = '</color>' + Format(CT('Script.Mod_ExpHullsBases.Dialogs' + ruin_str_type + '.GreetingImprove'), '<HullReport'+'>', HullReport, '<CurrentBalance'+'>', '<color=0,50,200>' + int(PlayerHQMainArray['Finance', 'CurrentBalance']) + '</color>', '');"          
           ]        
         },
         {
@@ -3901,7 +3902,7 @@
           "Pos.y":  20,
           "Parent":  438,
           "#":  437,
-          "Total.Lines":  12,
+          "Total.Lines":  13,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -3915,6 +3916,7 @@
               "        tstr1 = DeleteTags(tstr1);",
               "        AddDialogBlock(tstr1, 1);",
               "    }",
+              "",
               "    InjectAnswer('RuinImproveDone', tstr1, 10);",
               "}"          
           ]        
@@ -3935,7 +3937,7 @@
               "//Увеличение размера",
               "if(GAnswerData == 1)",
               "{",
-              "    if(ruin_str_type == 'PlayerMB')",
+              "    if(ruin_str_type == 'PlayerMercHQ')",
               "    {",
               "        check = PlayerHQPayCheck(size_upgrade_cost);",
               "        if(!check)",
@@ -3952,9 +3954,9 @@
               "    ItemCost(ShipItems(cur_ruin, 0), cur_ruin_cost + cur_ruin_cost / 7);",
               "",
               "    if(ruin_str_type == 'WB') tstr1 = '</color>' + \"Так держать, <Player>! Наши виртуозы автогена и кувалды уже закупили всё необходимое и приступили к работе. Новый отсек и сопутствующая система коммуникаций скоро будут введены в эксплуатацию.<br>И глазом моргнуть не успеешь, как всё будет готово!\";",
-              "    else if(ruin_str_type == 'PlayerMB')",
+              "    else if(ruin_str_type == 'PlayerMercHQ')",
               "    {",
-              "        tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.HullStructureIncreased');",
+              "        tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.HullStructureIncreased');",
               "    }",
               "    else tstr1 = '</color>' + \"Отлично! Наши виртуозы автогена и кувалды уже закупили всё необходимое и приступили к работе. Новый отсек и сопутствующая система коммуникаций скоро будут введены в эксплуатацию.<br>И глазом моргнуть не успеете, как всё будет готово!\";",
               "    tstr2 = '</color>' + \"Превосходно!\";",
@@ -3964,7 +3966,7 @@
               "//Усиление брони",
               "else if(GAnswerData == 2)",
               "{",
-              "    if(ruin_str_type == 'PlayerMB')",
+              "    if(ruin_str_type == 'PlayerMercHQ')",
               "    {",
               "        check = PlayerHQPayCheck(armor_upgrade_cost);",
               "        if(!check)",
@@ -3980,9 +3982,9 @@
               "    ItemCost(ShipItems(cur_ruin, 0), cur_ruin_cost + cur_ruin_cost * 4 / 10);",
               "",
               "    if(ruin_str_type == 'WB') tstr1 = '</color>' + \"Отлично, <Player>! Под надёжным укрытием из новенькой брони наши парни смогут ещё дольше сдерживать агрессора на подступах к базе, даже если в конечном итоге им придётся отдать за это свои жизни!<br>Кстати, новую броню уже вовсю приваривают к каркасу. Иди взгляни сам, если хочешь.\";",
-              "    else if(ruin_str_type == 'PlayerMB')",
+              "    else if(ruin_str_type == 'PlayerMercHQ')",
               "    {",
-              "        tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.HullArmorIncreased');",
+              "        tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.HullArmorIncreased');",
               "    }",
               "    else tstr1 = '</color>' + \"Новая обшивка уже доставлена на базу и прямо сейчас фиксируется на несущем каркасе.<br>Благодарим за сотрудничество, <Player>, теперь у персонала появится <clr>20<clrEnd> лишних секунд на то, чтобы добежать до спасательных капсул, когда на систему нападут доминаторы.\";",
               "    tstr2 = '</color>' + \"Превосходно!\";",
@@ -3992,7 +3994,7 @@
               "//Повышение ТУ корпуса",
               "else if(GAnswerData == 3)",
               "{",
-              "    if(ruin_str_type == 'PlayerMB')",
+              "    if(ruin_str_type == 'PlayerMercHQ')",
               "    {",
               "        check = PlayerHQPayCheck(level_upgrade_cost);",
               "        if(!check)",
@@ -4008,9 +4010,9 @@
               "    ItemCost(ShipItems(cur_ruin, 0), cur_ruin_cost + cur_ruin_cost / 3);",
               "",
               "    if(ruin_str_type == 'WB') tstr1 = '</color>' + \"Благодаря твоим деньгам, наша база, наконец, получила столь нужный ей апгрейд. С таким шикарным корпусом нам впору перепрофилироваться в настоящий линкор! Шутка - база стать линкором никак не может, однако ты всё равно большой молодец, <Player>.<br>Кстати, проверь список доступных улучшений, там наверняка появилось что-нибудь новое.\";",
-              "    else if(ruin_str_type == 'PlayerMB')",
+              "    else if(ruin_str_type == 'PlayerMercHQ')",
               "    {",
-              "        tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.HullLevelIncreased');",
+              "        tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.HullLevelIncreased');",
               "    }",
               "    else tstr1 = '</color>' + \"Благодаря вашим деньгам, на базе была проведена тотальная реконструкция. Станция блестит как новенькая!<br>Проверьте доступные улучшения, наверняка уже появилась возможность прикрутить к ней что-нибудь интересное.\";",
               "    tstr2 = '</color>' + \"Превосходно!\";",
@@ -4020,7 +4022,7 @@
               "//Установка ГСОМ",
               "else if(GAnswerData == 4)",
               "{",
-              "    if(ruin_str_type == 'PlayerMB')",
+              "    if(ruin_str_type == 'PlayerMercHQ')",
               "    {",
               "        check = PlayerHQPayCheck(upgrade_cost_gsom);",
               "        if(!check)",
@@ -4055,9 +4057,9 @@
               "    }",
               "",
               "    if(ruin_str_type == 'WB') tstr1 = '</color>' + \"А ну, попробуй угадай, в каком ухе у меня жужжит? В обоих, говоришь? Эх ты! Это же звук работающего <clr>ГСОМ<clrEnd>!<br>Теперь наша база - по-настоящему крепкий орешек и сможет дать достойный отпор любому врагу!\";",
-              "    else if(ruin_str_type == 'PlayerMB')",
+              "    else if(ruin_str_type == 'PlayerMercHQ')",
               "    {",
-              "        tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.GSOMInstalled');",
+              "        tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.GSOMInstalled');",
               "    }",
               "    else tstr1 = '</color>' + \"Угадайте, в каком ухе у меня жужжит? В обоих, говорите? Эх вы! Это же звук работающего <clr>ГСОМ<clrEnd>!<br>Теперь наша база - по-настоящему крепкий орешек и сможет дать достойный отпор любому врагу!\";",
               "    tstr2 = '</color>' + \"Превосходно!\";",
@@ -4067,7 +4069,7 @@
               "//Установка \"Урагана\"",
               "else if(GAnswerData == 5)",
               "{",
-              "    if(ruin_str_type == 'PlayerMB')",
+              "    if(ruin_str_type == 'PlayerMercHQ')",
               "    {",
               "        check = PlayerHQPayCheck(upgrade_cost_hurricane);",
               "        if(!check)",
@@ -4102,9 +4104,9 @@
               "    }",
               "",
               "    if(ruin_str_type == 'WB') tstr1 = '</color>' + \"<clr>Ураган<clrEnd> успешно установлен и откалиброван, а стрелки уже проходят экспресс-курс обучения для работы с новым нейронным интерфейсом.<br>Совсем скоро наша база сможет похвастаться самыми дальнобойными пушками в бескрайнем космосе, и всё это благодаря тебе, <Player>.\";",
-              "    else if(ruin_str_type == 'PlayerMB')",
+              "    else if(ruin_str_type == 'PlayerMercHQ')",
               "    {",
-              "        tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.HurricaneInstalled');",
+              "        tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.HurricaneInstalled');",
               "    }",
               "    else tstr1 = '</color>' + \"<clr>Ураган<clrEnd> успешно установлен и откалиброван, а стрелки уже проходят экспресс-курс обучения для работы с новым нейронным интерфейсом.<br>Совсем скоро наша станция сможет похвастаться самыми дальнобойными орудиями в бескрайнем космосе, и всё это благодаря вам, <Player>.\";",
               "    tstr2 = '</color>' + \"Превосходно!\";",
@@ -4114,7 +4116,7 @@
               "//Установка поликсенатной брони",
               "else if(GAnswerData == 6)",
               "{",
-              "    if(ruin_str_type == 'PlayerMB')",
+              "    if(ruin_str_type == 'PlayerMercHQ')",
               "    {",
               "        check = PlayerHQPayCheck(upgrade_cost_polyxen);",
               "        if(!check)",
@@ -4149,9 +4151,9 @@
               "    }",
               "",
               "    if(ruin_str_type == 'WB') tstr1 = '</color>' + \"Ну что ж, добро пожаловать на военную базу с пластиковой бронёй!<br>Не унывай, боец, модернизировать базу теперь можно куда дешевле, да и ремонт из собственного кармана отныне будет не так сильно кусать за ляху.\";",
-              "    else if(ruin_str_type == 'PlayerMB')",
+              "    else if(ruin_str_type == 'PlayerMercHQ')",
               "    {",
-              "        tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.PolyxenInstalled');",
+              "        tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.PolyxenInstalled');",
               "    }",
               "    else tstr1 = '</color>' + \"Ну что ж, добро пожаловать на космическую станцию с пластиковой бронёй!<br>Не расстраивайтесь - усовершенствовать такую станцию можно куда дешевле, да и ремонт из собственных средств теперь будет отнюдь не так дорог.\";",
               "    tstr2 = '</color>' + \"Превосходно!\";",
@@ -4161,7 +4163,7 @@
               "//Установка портального генератора",
               "else if(GAnswerData == 7)",
               "{",
-              "    if(ruin_str_type == 'PlayerMB')",
+              "    if(ruin_str_type == 'PlayerMercHQ')",
               "    {",
               "        check = PlayerHQPayCheck(upgrade_cost_portalGen);",
               "        if(!check)",
@@ -4182,9 +4184,9 @@
               "    i = ShipFindCustomShipInfoByType(cur_ruin, 'Teleport_Generator');",
               "    ShipCustomShipInfoDescription(cur_ruin, i, \"На эту станцию был\" + CT('FormInfo.br') + \"установлен <color=255,240,100>портальный генератор</color>, позволяющий ей совершать гиперпространственные скачки:\" + CT('FormInfo.br') + '<clr><clrEnd>' + CT('FormInfo.br') + \"Максимальная дальность скачка:\" + ' <' + 'Data1' + '> ' + \"пк.\" + CT('FormInfo.br') + \"Готовность к скачку через:\" + ' <' + 'TextData1' + '>');",
               "",
-              "    if(ruin_str_type == 'PlayerMB')",
+              "    if(ruin_str_type == 'PlayerMercHQ')",
               "    {",
-              "        tstr1 = '</color>' + Format(CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.PortalGeneratorInstalled'), '<Days' + '>', ShipCustomShipInfoData(cur_ruin, i, 2));",
+              "        tstr1 = '</color>' + Format(CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.PortalGeneratorInstalled'), '<Days' + '>', ShipCustomShipInfoData(cur_ruin, i, 2));",
               "    }",
               "    else tstr1 = '</color>' + \"Отлично, <Player>! Мы тотчас же приступим к установке и настройке генератора.<br>...<br>Дело сделано! Генератор установлен и уже начал заряжаться, а наша станция вскоре сможет рассекать пространство быстрее самых шустрых космических судов.<br>Вы просто замечательный спонсор, <Player> - весь персонал в восторге от открывшихся перед нами возможностей! Обязательно возвращайтесь через <ShipCustomShipInfoData(cur_ruin, i, 2)> дней, чтобы собственноручно отдать приказ на первый гиперпространственный скачок.\";",
               "    tstr2 = '</color>' + \"Превосходно!\";",
@@ -4194,7 +4196,7 @@
               "//Установка доп. энергоядра",
               "else if(GAnswerData == 8 || GAnswerData == 9)",
               "{",
-              "    if(ruin_str_type == 'PlayerMB')",
+              "    if(ruin_str_type == 'PlayerMercHQ')",
               "    {",
               "        check = PlayerHQPayCheck(upgrade_cost_portalGen);",
               "        if(!check)",
@@ -4255,10 +4257,10 @@
               "        ShipCustomShipInfoDescription(cur_ruin, k, \"На эту станцию было установлено <tempInt3> <color=255,240,100>дополнительных энергоядра</color>, значительно улучшивших<br>работу портального генератора и всех энергозависимых подсистем:<br><clr><clrEnd><br>\" + \"Сила энергетического оружия: <color=255,240,100>+</color><tempInt3 * 7> ед.<br>Дальность радара: <color=255,240,100>+</color><tempInt3 * 250> млн. км.<br>Мощность сканера: <color=255,240,100>+</color><tempInt3 * 5> ед.<br>Мощность захвата: <color=255,240,100>+</color><tempInt3 * 25> ед.<br>Дальность захвата: <color=255,240,100>+</color><tempInt3 * 25> ед.<br>Скорость захвата: <color=255,240,100>+</color><tempInt3 * 3><br>Генератор защитного поля: <color=255,240,100>+</color><tempInt3 * 5> ед.\", 1);",
               "    }",
               "",
-              "    if(ruin_str_type == 'PlayerMB')",
+              "    if(ruin_str_type == 'PlayerMercHQ')",
               "    {",
-              "        tstr2 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.PowerCore' + ShipCustomShipInfoData(cur_ruin, k, 1));",
-              "        tstr1 = '</color>' + Format(CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.PortalGeneratorInstalled'), '<AddText' + '>', tstr2);",
+              "        tstr2 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.PowerCore' + ShipCustomShipInfoData(cur_ruin, k, 1));",
+              "        tstr1 = '</color>' + Format(CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.PortalGeneratorInstalled'), '<AddText' + '>', tstr2);",
               "    }",
               "    else",
               "    {",
@@ -4281,8 +4283,8 @@
               "        check = PlayerHQPayCheck(cost);",
               "        if(check)",
               "        {",
-              "            tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.HQLevelUp' + (PlayerHQMainArray['Main', 'HQLevel'] + 1));",
-              "            tstr2 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.PlayerHQLevelUp');",
+              "            tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.HQLevelUp' + (PlayerHQMainArray['Main', 'HQLevel'] + 1));",
+              "            tstr2 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.PlayerHQLevelUp');",
               "",
               "            //Лочим игрока на этом диалоге, пока не нажмёт ответ \"Отлично!\"",
               "            //Нужно, чтобы уровень штаба реально повысился, а это происходит только в скрипте ShuMercs (здесь только выводим реплики и списываем деньги)",
@@ -4299,8 +4301,8 @@
               "    }",
               "    else",
               "    {",
-              "        tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.HQLevelUp' + (PlayerHQMainArray['Main', 'HQLevel'] + 1));",
-              "        tstr2 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.PlayerHQLevelUp');",
+              "        tstr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.HQLevelUp' + (PlayerHQMainArray['Main', 'HQLevel'] + 1));",
+              "        tstr2 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.PlayerHQLevelUp');",
               "    }",
               "}"          
           ]        
@@ -4390,7 +4392,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "if(ruin_str_type != 'PlayerMB')",
+              "if(ruin_str_type != 'PlayerMercHQ')",
               "{",
               "    tempStr1 = '</color>' + \"Расскажите мне о проекте <clr>\\\"ГСОМ\\\"<clrEnd>\";",
               "    tempStr2 = '</color>' + \"Расскажите мне о проекте <clr>\\\"Ураган\\\"<clrEnd>\";",
@@ -4398,9 +4400,9 @@
               "}",
               "else",
               "{",
-              "    tempStr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.PlayerAskGSOM');",
-              "    tempStr2 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.PlayerAskHurricane');",
-              "    tempStr3 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMB.PlayerAskPolyxen');",
+              "    tempStr1 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.PlayerAskGSOM');",
+              "    tempStr2 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.PlayerAskHurricane');",
+              "    tempStr3 = '</color>' + CT('Script.Mod_ExpHullsBases.DialogsPlayerMercHQ.PlayerAskPolyxen');",
               "}"          
           ]        
         },
@@ -4500,12 +4502,12 @@
               "                if(ruin_str_type != 'PB' && ruin_str_type != 'CB') AddDialogInject('ruinhull_upgrade_talk', '', \"Мне нужен подробный отчёт о состоянии станции\", 0);",
               "            }",
               "        }",
-              "        else if(ruin_str_type == 'PlayerMB')",
+              "        else if(ruin_str_type == 'PlayerMercHQ')",
               "        {",
               "            if(RuinsAllowModernization(cur_ruin))",
               "            {",
               "                //Если игрок повысил уровень штаба, но пока что не прожал \"Отлично!\" (т.к. этот ответ как раз и повышает уровень)",
-              "                if(ruin_str_type == 'PlayerMB' && GotoGov())",
+              "                if(ruin_str_type == 'PlayerMercHQ' && GotoGov())",
               "                {",
               "                    AddDialogOverride('RuinImproveDone', 4000, 10);",
               "                }",
@@ -5554,7 +5556,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "cur_ruin_techlevel > 3 && ruin_str_type != 'PlayerMB'"          
+              "cur_ruin_techlevel > 3 && ruin_str_type != 'PlayerMercHQ'"          
           ]        
         },
         {
@@ -6229,7 +6231,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ruin_str_type == 'PlayerMB'"          
+              "ruin_str_type == 'PlayerMercHQ'"          
           ]        
         },
         {
