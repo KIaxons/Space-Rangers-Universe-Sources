@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -396,
-  "ViewPos.y":  -507,
+  "ViewPos.x":  -346,
+  "ViewPos.y":  -523,
   "ScriptName":  "Mod_ExpPilotBridge",
   "ScriptFileOut":  "H:\\Mod_ExpPilotBridge.scr",
   "ScriptTextOut":  "H:\\Mod_ExpPilotBridge.txt",
@@ -5455,7 +5455,7 @@
           "Pos.y":  -370,
           "Parent":  -1,
           "#":  141,
-          "Total.Lines":  39,
+          "Total.Lines":  37,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -5487,9 +5487,7 @@
               "        str type = Format(ShipType(temp_dword_3), '_licensed', '', '');",
               "        if(type == 'Inhibitor') continue;",
               "        if(type == 'BM') continue;",
-              "        if(type == 'RedAxesHQ') continue;",
-              "        if(type == 'AtlantHQ') continue;",
-              "        if(type == 'FaeyangelionHQ') continue;",
+              "        if(type == 'MercHQ') continue;",
               "        if(type == 'SSB') continue;",
               "",
               "        InjectAnswer('del_serv_3',Name(temp_dword_3)+DeleteTags(' (<color=0,50,200>'+Name(temp_dword_2)+'</color>)'),temp_dword_3);",
@@ -7201,7 +7199,7 @@
           "Pos.y":  -360,
           "Parent":  -1,
           "#":  338,
-          "Total.Lines":  40,
+          "Total.Lines":  38,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -7234,10 +7232,8 @@
               "        str type = Format(ShipType(temp_dword_3), '_licensed', '', '');;",
               "        if(type == 'Inhibitor') continue;",
               "        if(type == 'BM') continue;",
-              "        if(type == 'RedAxesHQ') continue;",
-              "        if(type == 'AtlantHQ') continue;",
-              "        if(type == 'FaeyangelionHQ') continue;",
-              "        if(type == 'SSB_licensed') continue;",
+              "        if(type == 'MercHQ') continue;",
+              "        if(type == 'SSB') continue;",
               "",
               "        InjectAnswer('HullTransHullChoose', Name(temp_dword_3) + DeleteTags(' (<color=0,50,200>' + Name(temp_dword_2) + '</color>)'), temp_dword_3);",
               "    }",
