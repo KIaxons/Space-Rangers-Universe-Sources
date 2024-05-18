@@ -195,7 +195,7 @@ ShipInfo ^{
 							01=if(ShipCustomFaction(ship) == '')
 							01 ^{
 								01=str type = ShipType(ship);
-								02=if(type != 'Merc' && type != 'PlayerMerc' && type != 'Freelancer' && type != 'RedLeader' && type != 'AtlantLeader' && type != 'FeiLeader') InterfaceState('Scaner', 'RankWndCustom', 1);
+								02=if(type != 'Merc' && type != 'PlayerMerc' && type != 'Freelancer' && type != 'MercLeader') InterfaceState('Scaner', 'RankWndCustom', 1);
 								03=else InterfaceState('Scaner', 'RankWndCustom', 0);
 							}
 							02=else InterfaceState('Scaner', 'RankWndCustom', 0);
