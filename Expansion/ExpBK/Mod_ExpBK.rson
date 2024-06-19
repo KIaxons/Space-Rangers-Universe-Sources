@@ -1031,7 +1031,7 @@
           "Pos.y":  0,
           "Parent":  5,
           "#":  28,
-          "Total.Lines":  308,
+          "Total.Lines":  309,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -1070,6 +1070,7 @@
               "{",
               "    if(ScriptItemActionType(t_OnStep))",
               "    {",
+              "        //Этим уродским костылём фиксим возможность генерации в магазинах корпусов со 100500 ед. структуры, если игрок скипает ходы, сидя в магазине",
               "        if(hull_size_changed)",
               "        {",
               "            ItemSize(ShipEqInSlot(Player(), t_Hull), tint1);",
