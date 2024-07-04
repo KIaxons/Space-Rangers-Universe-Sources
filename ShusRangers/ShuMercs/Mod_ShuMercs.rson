@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  184,
-  "ViewPos.y":  -287,
+  "ViewPos.x":  -207,
+  "ViewPos.y":  81,
   "ScriptName":  "Mod_ShuMercs",
   "ScriptFileOut":  "H:\\Mod_ShuMercs.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercs.txt",
@@ -6515,7 +6515,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "ShipOwner(cur_ship, ShipOwner(Player()));",
+              "ShipOwner(CurShip, ShipOwner(Player()));",
               "if(IsPlayer(ShipGetBad(CurShip)))",
               "{",
               "    ShipSetBad(CurShip, 0);",
