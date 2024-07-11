@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -356,
-  "ViewPos.y":  135,
+  "ViewPos.x":  554,
+  "ViewPos.y":  -88,
   "ScriptName":  "PC_fem_rangers",
   "ScriptFileOut":  "H:\\PC_fem_rangers.scr",
   "ScriptTextOut":  "H:\\PC_fem_rangers.txt",
@@ -3621,7 +3621,7 @@
           "Pos.y":  0,
           "Parent":  5,
           "#":  12,
-          "Total.Lines":  175,
+          "Total.Lines":  181,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -3725,6 +3725,12 @@
               "planet_list = newarray(20);",
               "planet_list2 = newarray(20);",
               "planet_statuses = newarray(20);",
+              "",
+              "//Для внешних запросов",
+              "function g_GetFemRangersCount()",
+              "{",
+              "    result = GroupCount(GroupFem);",
+              "}",
               "",
               "function PlayerActCode() //t_OnEnteringForm,t_OnLeavingForm",
               "{",
