@@ -2754,7 +2754,7 @@
               "                            //Помимо инфошки \"Детачера\", у игрока обязательно должна быть копия \"Интеркома\"",
               "                            if(GetProgramm(5))",
               "                            {",
-              "                                if(ShipFindCustomShipInfoByType(Player(), 'ExpAcryn_mimi_player_infos') > -1)",
+              "                                if(~ShipFindCustomShipInfoByType(Player(), 'ExpAcryn_mimi_player_infos'))",
               "                                {",
               "                                    if(ShipFindCustomShipInfoByType(GetTalkShip(), 'ExpAcryn_block_infos') == -1) AddDialogInject('Bertor_mimi', '', \"Запуск программы: <color=0,50,200>Детачер</color>\", 3);",
               "                                }",
