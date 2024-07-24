@@ -1,13 +1,13 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -2096,
-  "ViewPos.y":  -130,
+  "ViewPos.x":  -2159,
+  "ViewPos.y":  -66,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
-  "GraphPoint.Count":  1114,
-  "GraphLink.Count":  1030,
+  "GraphPoint.Count":  1117,
+  "GraphLink.Count":  1036,
   "GraphRectText.Count":  2,
   "Variables.Count":  68,
   "Stars.Count":  1,
@@ -21,8 +21,8 @@
   "Dialogs.Count":  53,
   "DialogMessages.Count":  111,
   "DialogAnswers.Count":  213,
-  "Operations.Count":  293,
-  "Statements.Count":  311,
+  "Operations.Count":  294,
+  "Statements.Count":  313,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
@@ -3470,7 +3470,7 @@
         {
           "Type":  "TDialog",
           "Name":  "PlayerHQScienceDialog",
-          "Pos.x":  -1760,
+          "Pos.x":  -1850,
           "Pos.y":  150,
           "Parent":  -1,
           "#":  544        
@@ -3526,7 +3526,7 @@
         {
           "Type":  "TDialog",
           "Name":  "PlayerHQShipyardDialog",
-          "Pos.x":  -1970,
+          "Pos.x":  -2070,
           "Pos.y":  150,
           "Parent":  -1,
           "#":  670        
@@ -3694,7 +3694,7 @@
         {
           "Type":  "TDialog",
           "Name":  "PlayerHQScienceRelImpChooseShip",
-          "Pos.x":  40,
+          "Pos.x":  60,
           "Pos.y":  -40,
           "Parent":  1110,
           "#":  1111        
@@ -26671,10 +26671,10 @@
               "",
               "//Составляем список подходящих для апгрейда \"Эксдюралити\" вещей",
               "ArrayClear(tarr1);",
-              "//GAnswerData задаётся либо в блоке выше, либо после вызова диалога PlayerHQScienceRelImpChooseShip",
-              "for(i = 1; i < ShipItems(GAnswerData); i = i + 1)",
+              "//cur_ship задаётся либо в блоке выше, либо после вызова диалога PlayerHQScienceRelImpChooseShip",
+              "for(i = 1; i < ShipItems(cur_ship); i = i + 1)",
               "{",
-              "    cur_item = ShipItems(GAnswerData, i);",
+              "    cur_item = ShipItems(cur_ship, i);",
               "",
               "    tint1 = ItemType(cur_item);",
               "    if(tint1 < t_FuelTanks || tint1 > t_CustomWeapon) continue;",
@@ -30126,9 +30126,9 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  -1970,
-          "Pos.y":  250,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  919,
           "#":  929,
           "Total.Lines":  2,
           "Code.Type":  "Turn",
@@ -34690,7 +34690,7 @@
               "for(int i = 0; i < GroupCount(PlayerMercsStrike); i = i + 1)",
               "{",
               "    dword merc = GroupShip(PlayerMercsStrike, i);",
-              "    tstr2 = Name(merc);",
+              "    tstr2 = CT('ShipType.TypeName.PlayerMerc') + ' <color=0,50,200>' + Format(Name(merc), PlayerHQMainArray['Main', 'OrganisationName'] + ' ', '', '') + '</color>';",
               "    if(!StateIs(merc, 'SittingBaseState'))",
               "    {",
               "        tstr2 = tstr2 + ' ' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.ReliabilityImproveChooseShipNotHere');",
@@ -34698,12 +34698,12 @@
               "    }",
               "    else AddDialogBlock(tstr2, 0);",
               "",
-              "    InjectAnswer('PlayerHQScienceRelImpChooseShip', Name(merc), merc);",
+              "    InjectAnswer('PlayerHQScienceRelImpChooseShip', tstr2, merc);",
               "}",
               "merc = GroupToShip(CruisersDefenders);",
               "if(merc)",
               "{",
-              "    tstr2 = Name(merc);",
+              "    tstr2 = CT('ShipType.TypeName.PlayerMercCruiser') + ' <color=0,50,200>' + Format(Name(merc), PlayerHQMainArray['Main', 'OrganisationName'] + ' ', '', '') + '</color>';",
               "    if(!StateIs(merc, 'SittingBaseState'))",
               "    {",
               "        tstr2 = tstr2 + ' ' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.ReliabilityImproveChooseShipNotHere');",
@@ -34711,7 +34711,7 @@
               "    }",
               "    else AddDialogBlock(tstr2, 0);",
               "",
-              "    InjectAnswer('PlayerHQScienceRelImpChooseShip', Name(merc), merc);",
+              "    InjectAnswer('PlayerHQScienceRelImpChooseShip', tstr2, merc);",
               "}",
               "",
               "tstr2 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.ReliabilityImproveChooseShipOut');"          
@@ -34728,7 +34728,21 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "GAnswerData = Player();"          
+              "cur_ship = Player();"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  -20,
+          "Pos.y":  0,
+          "Parent":  1111,
+          "#":  1114,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "cur_ship = GAnswerData;"          
           ]        
         }      
       ],
@@ -37177,7 +37191,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "1"          
+              "cur_ship == Player()"          
           ]        
         },
         {
@@ -39245,6 +39259,34 @@
           "Pos.y":  40,
           "Parent":  1110,
           "#":  1112,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -1790,
+          "Pos.y":  430,
+          "Parent":  -1,
+          "#":  1115,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "cur_ship != Player()"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  -1790,
+          "Pos.y":  350,
+          "Parent":  -1,
+          "#":  1116,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
           "Code":          
@@ -48013,13 +48055,6 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  1111,
-      "End":  606,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
       "Begin":  1110,
       "End":  1112,
       "Nom":  0,
@@ -48043,6 +48078,55 @@
       "Type":  "TGraphLink",
       "Begin":  1113,
       "End":  606,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1111,
+      "End":  1114,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1114,
+      "End":  606,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  620,
+      "End":  1115,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  621,
+      "End":  1115,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  622,
+      "End":  1115,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1115,
+      "End":  1116,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1116,
+      "End":  1109,
       "Nom":  0,
       "Arrow":  true    
     }  
