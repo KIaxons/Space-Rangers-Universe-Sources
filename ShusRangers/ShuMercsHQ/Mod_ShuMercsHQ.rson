@@ -1,13 +1,13 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -2190,
-  "ViewPos.y":  -240,
+  "ViewPos.x":  -2096,
+  "ViewPos.y":  -130,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
-  "GraphPoint.Count":  1106,
-  "GraphLink.Count":  1021,
+  "GraphPoint.Count":  1114,
+  "GraphLink.Count":  1030,
   "GraphRectText.Count":  2,
   "Variables.Count":  68,
   "Stars.Count":  1,
@@ -18,11 +18,11 @@
   "Places.Count":  6,
   "Items.Count":  4,
   "Ethers.Count":  0,
-  "Dialogs.Count":  52,
-  "DialogMessages.Count":  110,
-  "DialogAnswers.Count":  212,
-  "Operations.Count":  290,
-  "Statements.Count":  309,
+  "Dialogs.Count":  53,
+  "DialogMessages.Count":  111,
+  "DialogAnswers.Count":  213,
+  "Operations.Count":  293,
+  "Statements.Count":  311,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
@@ -966,7 +966,7 @@
           "Pos.y":  40,
           "Parent":  547,
           "#":  548,
-          "Msg":  "<tstr5>",
+          "Msg":  "<tstr6>",
           "AMsg.Num":  "93"        
         },
         {
@@ -2046,7 +2046,7 @@
           "Pos.y":  20,
           "Parent":  1021,
           "#":  1022,
-          "Msg":  "<tstr4>",
+          "Msg":  "<tstr5>",
           "AMsg.Num":  "201"        
         },
         {
@@ -2148,6 +2148,16 @@
           "#":  1104,
           "Msg":  "<tstr3>",
           "AMsg.Num":  "211"        
+        },
+        {
+          "Type":  "TDialogAnswer",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  1106,
+          "#":  1107,
+          "Msg":  "<tstr4>",
+          "AMsg.Num":  "212"        
         }      
       ],
       "DialogMessages":      
@@ -3251,6 +3261,16 @@
           "#":  1100,
           "Msg":  "<tstr1>",
           "DMsg.Num":  "109"        
+        },
+        {
+          "Type":  "TDialogMsg",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  1108,
+          "#":  1109,
+          "Msg":  "<tstr1>",
+          "DMsg.Num":  "110"        
         }      
       ],
       "Dialogs":      
@@ -3481,7 +3501,7 @@
         },
         {
           "Type":  "TDialog",
-          "Name":  "PlayerHQScienceReliabilityImprove",
+          "Name":  "PlayerHQScienceRelImp",
           "Pos.x":  0,
           "Pos.y":  20,
           "Parent":  608,
@@ -3670,6 +3690,14 @@
           "Pos.y":  1040,
           "Parent":  -1,
           "#":  1088        
+        },
+        {
+          "Type":  "TDialog",
+          "Name":  "PlayerHQScienceRelImpChooseShip",
+          "Pos.x":  40,
+          "Pos.y":  -40,
+          "Parent":  1110,
+          "#":  1111        
         }      
       ],
       "Groups":      
@@ -26012,7 +26040,7 @@
           "Pos.y":  20,
           "Parent":  544,
           "#":  545,
-          "Total.Lines":  47,
+          "Total.Lines":  52,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -26029,11 +26057,11 @@
               "else",
               "{",
               "    tstr1 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.Greeting');",
-              "    if(GTL >= 4 || PlayerHQMainArray['Science', 'PortalGenerator'] <= 0)",
+              "    if(GTL >= 4 && PlayerHQMainArray['Science', 'PortalGenerator'] <= 0)",
               "    {",
-              "        if(!PlayerHQMainArray['Science', 'PortalGenerator']) tstr1 = tstr1 + \"<br>\" + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PortalGeneratorAddOffer');",
-              "        else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -1) tstr1 = tstr1 + \"<br>\" + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PortalGeneratorAddOfferAgain');",
-              "        else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -2) tstr1 = tstr1 + \"<br>\" + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PortalGeneratorAddOfferTwice');",
+              "        if(!PlayerHQMainArray['Science', 'PortalGenerator']) tstr1 = tstr1 + Format('<br>') + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PortalGeneratorAddOffer');",
+              "        else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -1) tstr1 = tstr1 + Format('<br>') + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PortalGeneratorAddOfferAgain');",
+              "        else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -2) tstr1 = tstr1 + Format('<br>') + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PortalGeneratorAddOfferTwice');",
               "    }",
               "",
               "    //Если ускорение движка доступно",
@@ -26051,15 +26079,20 @@
               "",
               "    tstr3 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskReliabilityImprove');",
               "",
-              "    if(GTL >= 4 && PlayerHQMainArray['Science', 'PortalGenerator'] <= 0)",
-              "    {",
-              "        if(!PlayerHQMainArray['Science', 'PortalGenerator']) tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGenerator');",
-              "        else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -1) tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGeneratorAgain');",
-              "        else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -2) tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGeneratorTwice');",
-              "    }",
+              "    //Добавляем реплику прокачки \"Эксдюралити\" для ударной группы или крейсера",
+              "    if(GroupCount(PlayerMercsStrike) || GroupCount(CruisersDefenders)) tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskReliabilityImproveForMerc');",
               "    else tstr4 = '';",
               "",
-              "    tstr5 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerOut');",
+              "    //Добавляем реплику установки портального генератора",
+              "    if(GTL >= 4 && PlayerHQMainArray['Science', 'PortalGenerator'] <= 0)",
+              "    {",
+              "        if(!PlayerHQMainArray['Science', 'PortalGenerator']) tstr5 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGenerator');",
+              "        else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -1) tstr5 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGeneratorAgain');",
+              "        else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -2) tstr5 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGeneratorTwice');",
+              "    }",
+              "    else tstr5 = '';",
+              "",
+              "    tstr6 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerOut');",
               "",
               "    tint1 = 1;",
               "}"          
@@ -26560,7 +26593,7 @@
           "Pos.y":  -160,
           "Parent":  604,
           "#":  602,
-          "Total.Lines":  26,
+          "Total.Lines":  31,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -26579,15 +26612,20 @@
               "",
               "tstr3 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskReliabilityImprove');",
               "",
-              "if(GTL >= 4 || PlayerHQMainArray['Science', 'PortalGenerator'] <= 0)",
-              "{",
-              "    if(!PlayerHQMainArray['Science', 'PortalGenerator']) tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGenerator');",
-              "    else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -1) tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGeneratorAgain');",
-              "    else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -2) tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGeneratorTwice');",
-              "}",
+              "//Добавляем реплику прокачки \"Эксдюралити\" для ударной группы или крейсера",
+              "if(GroupCount(PlayerMercsStrike) || GroupCount(CruisersDefenders)) tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskReliabilityImproveForMerc');",
               "else tstr4 = '';",
               "",
-              "tstr5 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerOut');",
+              "//Добавляем реплику установки портального генератора",
+              "if(GTL >= 4 && PlayerHQMainArray['Science', 'PortalGenerator'] <= 0)",
+              "{",
+              "    if(!PlayerHQMainArray['Science', 'PortalGenerator']) tstr5 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGenerator');",
+              "    else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -1) tstr5 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGeneratorAgain');",
+              "    else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -2) tstr5 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGeneratorTwice');",
+              "}",
+              "else tstr5 = '';",
+              "",
+              "tstr6 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerOut');",
               "",
               "tint1 = 1;"          
           ]        
@@ -26611,9 +26649,9 @@
           "Name":  "",
           "Pos.x":  0,
           "Pos.y":  20,
-          "Parent":  549,
+          "Parent":  1113,
           "#":  606,
-          "Total.Lines":  75,
+          "Total.Lines":  76,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -26621,7 +26659,7 @@
               "//Если уровень штаба ещё не максимален, то выводим информацию об ограничениях установки апгрейда",
               "if(PlayerHQMainArray['Main', 'HQLevel'] < 5)",
               "{",
-              "    tstr1 = tstr1 + \"<br>\" + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.ReliabilityImproveRestrictions');",
+              "    tstr1 = tstr1 + Format('<br>') + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.ReliabilityImproveRestrictions');",
               "    tstr1 = tstr1 + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.RestrictionsOnHQLevel' + PlayerHQMainArray['Main', 'HQLevel']);",
               "",
               "    //Задаём сет для фильтрации типов оборудования при переборе",
@@ -26633,9 +26671,10 @@
               "",
               "//Составляем список подходящих для апгрейда \"Эксдюралити\" вещей",
               "ArrayClear(tarr1);",
-              "for(i = 1; i < ShipItems(Player()); i = i + 1)",
+              "//GAnswerData задаётся либо в блоке выше, либо после вызова диалога PlayerHQScienceRelImpChooseShip",
+              "for(i = 1; i < ShipItems(GAnswerData); i = i + 1)",
               "{",
-              "    cur_item = ShipItems(Player(), i);",
+              "    cur_item = ShipItems(GAnswerData, i);",
               "",
               "    tint1 = ItemType(cur_item);",
               "    if(tint1 < t_FuelTanks || tint1 > t_CustomWeapon) continue;",
@@ -26684,12 +26723,12 @@
               "//Проверка на случай, если подходящих для улучшения вещей на корабле игрока нет",
               "if(ArrayDim(tarr1) < 2)",
               "{",
-              "    tstr1 = tstr1 + \"<br>\" + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.ReliabilityImproveNoItems');",
+              "    tstr1 = tstr1 + Format('<br>') + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.ReliabilityImproveNoItems');",
               "    tstr2 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerReliabilityImproveNoItems');",
               "}",
               "else",
               "{",
-              "    tstr1 = tstr1 + \"<br>\" + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.ReliabilityImproveEnd');",
+              "    tstr1 = tstr1 + Format('<br>') + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.ReliabilityImproveEnd');",
               "    tstr2 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerReliabilityImproveNo');",
               "}"          
           ]        
@@ -26698,7 +26737,7 @@
           "Type":  "Top",
           "Name":  "",
           "Pos.x":  0,
-          "Pos.y":  60,
+          "Pos.y":  40,
           "Parent":  607,
           "#":  608,
           "Total.Lines":  9,
@@ -26712,7 +26751,7 @@
               "",
               "    tstr1 = Format(Name(cur_item), '<color=255,167,84>', '<color=255,125,0>', '');",
               "    if(ItemIsInUse(cur_item)) tstr1 = tstr1 + ' ' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.ItemIsInUse');",
-              "    InjectAnswer('PlayerHQScienceReliabilityImprove', tstr1, cur_item);",
+              "    InjectAnswer('PlayerHQScienceRelImp', tstr1, cur_item);",
               "}"          
           ]        
         },
@@ -26731,10 +26770,10 @@
               "cost = round(1.25 * (ItemCost(cur_item) / 2));",
               "",
               "tstr1 = '</color>' + Format(CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.ReliabilityImproveCost'),",
-              "'<EqName'+'>', DeleteTags(ItemFullName(cur_item)),",
-              "'<Cost'+'>', cost,",
-              "'<CurrentBalance'+'>', int(PlayerHQMainArray['Finance', 'CurrentBalance'])",
-              ");",
+              "                               '<EqName'+'>', DeleteTags(ItemFullName(cur_item)),",
+              "                               '<Cost'+'>', cost,",
+              "                               '<CurrentBalance'+'>', int(PlayerHQMainArray['Finance', 'CurrentBalance'])",
+              "                           );",
               "tstr2 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerReliabilityImproveYesOrgBalance');",
               "tstr3 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerReliabilityImproveYesOwnMoney');",
               "tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerReliabilityImproveOut');"          
@@ -30774,7 +30813,7 @@
               "    Sound('Sound.Buy');",
               "",
               "    tstr1 = '</color>' + Format(CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PortalGeneratorBuildStarted' + tstr7), '<DaysLeft'+'>', tint1);",
-              "    tstr4 = '';",
+              "    tstr5 = '';",
               "}",
               "//Оплачиваем постройку генератора со счёта игрока",
               "else if(GAnswerData == 1)",
@@ -30793,16 +30832,16 @@
               "    Sound('Sound.Buy');",
               "",
               "    tstr1 = '</color>' + Format(CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PortalGeneratorBuildStarted' + tstr7), '<DaysLeft'+'>', tint1);",
-              "    tstr4 = '';",
+              "    tstr5 = '';",
               "}",
               "//Игрок передумал строить генератор",
               "else /*if(GAnswerData == 2)*/",
               "{",
               "    tstr1 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PortalGeneratorBuildCancel' + tstr7);",
               "",
-              "    if(PlayerHQMainArray['Science', 'PortalGenerator'] == -1) tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGeneratorAgain');",
-              "    else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -2) tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGeneratorTwice');",
-              "    else tstr4 = '';",
+              "    if(PlayerHQMainArray['Science', 'PortalGenerator'] == -1) tstr5 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGeneratorAgain');",
+              "    else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -2) tstr5 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGeneratorTwice');",
+              "    else tstr5 = '';",
               "}",
               "",
               "//Если ускорение движка доступно",
@@ -30819,7 +30858,7 @@
               "}",
               "",
               "tstr3 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskReliabilityImprove');",
-              "tstr5 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerOut');",
+              "tstr6 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerOut');",
               "",
               "tint1 = 1;"          
           ]        
@@ -30851,8 +30890,8 @@
               "}",
               "InjectAnswer('PortalGeneratorBuild', tstr3, 1);",
               "",
-              "tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerPortalGeneratorNo' + tstr7);",
-              "InjectAnswer('PortalGeneratorBuild', tstr4, 2);"          
+              "tstr5 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerPortalGeneratorNo' + tstr7);",
+              "InjectAnswer('PortalGeneratorBuild', tstr5, 2);"          
           ]        
         },
         {
@@ -34622,6 +34661,75 @@
               "    }",
               "}"          
           ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  1107,
+          "#":  1108,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tstr1 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.ReliabilityImproveChooseShip');"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  1109,
+          "#":  1110,
+          "Total.Lines":  28,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "for(int i = 0; i < GroupCount(PlayerMercsStrike); i = i + 1)",
+              "{",
+              "    dword merc = GroupShip(PlayerMercsStrike, i);",
+              "    tstr2 = Name(merc);",
+              "    if(!StateIs(merc, 'SittingBaseState'))",
+              "    {",
+              "        tstr2 = tstr2 + ' ' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.ReliabilityImproveChooseShipNotHere');",
+              "        AddDialogBlock(tstr2, 1);",
+              "    }",
+              "    else AddDialogBlock(tstr2, 0);",
+              "",
+              "    InjectAnswer('PlayerHQScienceRelImpChooseShip', Name(merc), merc);",
+              "}",
+              "merc = GroupToShip(CruisersDefenders);",
+              "if(merc)",
+              "{",
+              "    tstr2 = Name(merc);",
+              "    if(!StateIs(merc, 'SittingBaseState'))",
+              "    {",
+              "        tstr2 = tstr2 + ' ' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.ReliabilityImproveChooseShipNotHere');",
+              "        AddDialogBlock(tstr2, 1);",
+              "    }",
+              "    else AddDialogBlock(tstr2, 0);",
+              "",
+              "    InjectAnswer('PlayerHQScienceRelImpChooseShip', Name(merc), merc);",
+              "}",
+              "",
+              "tstr2 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.ReliabilityImproveChooseShipOut');"          
+          ]        
+        },
+        {
+          "Type":  "Top",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  549,
+          "#":  1113,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "GAnswerData = Player();"          
+          ]        
         }      
       ],
       "Places":      
@@ -36725,7 +36833,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  40,
+          "Pos.x":  60,
           "Pos.y":  20,
           "Parent":  546,
           "#":  547,
@@ -38727,7 +38835,7 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  60,
+          "Pos.x":  80,
           "Pos.y":  20,
           "Parent":  592,
           "#":  1021,
@@ -38735,7 +38843,7 @@
           "Code.Type":  "Turn",
           "Code":          
           [
-              "tstr4 != ''"          
+              "tstr5 != ''"          
           ]        
         },
         {
@@ -39114,6 +39222,34 @@
           "Code":          
           [
               "!tint1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  60,
+          "Pos.y":  20,
+          "Parent":  592,
+          "#":  1106,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "tstr4 != ''"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  0,
+          "Pos.y":  40,
+          "Parent":  1110,
+          "#":  1112,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "1"          
           ]        
         }      
       ],
@@ -44272,13 +44408,6 @@
     },
     {
       "Type":  "TGraphLink",
-      "Begin":  549,
-      "End":  606,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
       "Begin":  606,
       "End":  607,
       "Nom":  0,
@@ -47844,6 +47973,76 @@
       "Type":  "TGraphLink",
       "Begin":  1105,
       "End":  35,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1106,
+      "End":  1107,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  592,
+      "End":  1106,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1107,
+      "End":  1108,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1108,
+      "End":  1109,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1109,
+      "End":  1110,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1111,
+      "End":  606,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1110,
+      "End":  1112,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1112,
+      "End":  609,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  549,
+      "End":  1113,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  1113,
+      "End":  606,
       "Nom":  0,
       "Arrow":  true    
     }  
