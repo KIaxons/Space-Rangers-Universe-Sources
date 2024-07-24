@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -1428,
-  "ViewPos.y":  311,
+  "ViewPos.x":  -2190,
+  "ViewPos.y":  -240,
   "ScriptName":  "Mod_ShuMercsHQ",
   "ScriptFileOut":  "H:\\Mod_ShuMercsHQ.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercsHQ.txt",
@@ -26560,7 +26560,7 @@
           "Pos.y":  -160,
           "Parent":  604,
           "#":  602,
-          "Total.Lines":  22,
+          "Total.Lines":  26,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -26576,13 +26576,17 @@
               "    tstr2 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskSpeedUpNotEnough');",
               "    tint2 = 0;",
               "}",
+              "",
               "tstr3 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskReliabilityImprove');",
+              "",
               "if(GTL >= 4 || PlayerHQMainArray['Science', 'PortalGenerator'] <= 0)",
               "{",
               "    if(!PlayerHQMainArray['Science', 'PortalGenerator']) tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGenerator');",
               "    else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -1) tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGeneratorAgain');",
               "    else if(PlayerHQMainArray['Science', 'PortalGenerator'] == -2) tstr4 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerAskPortalGeneratorTwice');",
               "}",
+              "else tstr4 = '';",
+              "",
               "tstr5 = '</color>' + CT('Script.Mod_ShuMercs.PlayerHQScienceDialog.PlayerOut');",
               "",
               "tint1 = 1;"          
