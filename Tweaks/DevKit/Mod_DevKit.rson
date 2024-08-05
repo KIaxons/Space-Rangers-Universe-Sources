@@ -1,13 +1,13 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -457,
-  "ViewPos.y":  336,
+  "ViewPos.x":  -415,
+  "ViewPos.y":  -410,
   "ScriptName":  "Mod_DevKit",
   "ScriptFileOut":  "H:\\Mod_DevKit.scr",
   "ScriptTextOut":  "H:\\Mod_DevKit.txt",
-  "GraphPoint.Count":  246,
-  "GraphLink.Count":  275,
+  "GraphPoint.Count":  247,
+  "GraphLink.Count":  276,
   "GraphRectText.Count":  17,
   "Variables.Count":  27,
   "Stars.Count":  1,
@@ -22,7 +22,7 @@
   "DialogMessages.Count":  14,
   "DialogAnswers.Count":  78,
   "Operations.Count":  91,
-  "Statements.Count":  26,
+  "Statements.Count":  27,
   "Loops.Count":  0,
   "Visual.Objects":  
   [
@@ -702,9 +702,9 @@
         {
           "Type":  "TDialogAnswer",
           "Name":  "",
-          "Pos.x":  220,
-          "Pos.y":  320,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  246,
           "#":  176,
           "Msg":  "Быстрое оборудования для тестинга",
           "AMsg.Num":  "67"        
@@ -742,8 +742,8 @@
         {
           "Type":  "TDialogAnswer",
           "Name":  "exit",
-          "Pos.x":  280,
-          "Pos.y":  -230,
+          "Pos.x":  300,
+          "Pos.y":  -220,
           "Parent":  -1,
           "#":  192,
           "Msg":  "",
@@ -4368,9 +4368,9 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  240,
-          "Pos.y":  320,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  176,
           "#":  177,
           "Total.Lines":  68,
           "Code.Type":  "Turn",
@@ -4535,9 +4535,9 @@
         {
           "Type":  "Top",
           "Name":  "",
-          "Pos.x":  620,
-          "Pos.y":  -260,
-          "Parent":  -1,
+          "Pos.x":  20,
+          "Pos.y":  0,
+          "Parent":  194,
           "#":  193,
           "Total.Lines":  26,
           "Code.Type":  "Turn",
@@ -4877,15 +4877,15 @@
               "GetShipRuins(Player()) ||",
               "GetShipPlanet(Player()) ||",
               "GetTalkShip()) &&",
-              "DevKitVisibility"          
+              "DevKitVisibility > 0"          
           ]        
         },
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  610,
-          "Pos.y":  320,
-          "Parent":  -1,
+          "Pos.x":  0,
+          "Pos.y":  20,
+          "Parent":  177,
           "#":  198,
           "Total.Lines":  1,
           "Code.Type":  "Turn",
@@ -5215,6 +5215,20 @@
           "Code":          
           [
               "ShipFindCustomShipInfoByType(Player(), 'Science_rank_infos') == -1"          
+          ]        
+        },
+        {
+          "Type":  "Tif",
+          "Name":  "",
+          "Pos.x":  200,
+          "Pos.y":  220,
+          "Parent":  -1,
+          "#":  246,
+          "Total.Lines":  1,
+          "Code.Type":  "Turn",
+          "Code":          
+          [
+              "1"          
           ]        
         }      
       ],
@@ -7324,13 +7338,6 @@
     {
       "Type":  "TGraphLink",
       "Begin":  229,
-      "End":  176,
-      "Nom":  0,
-      "Arrow":  true    
-    },
-    {
-      "Type":  "TGraphLink",
-      "Begin":  229,
       "End":  44,
       "Nom":  0,
       "Arrow":  true    
@@ -7465,6 +7472,20 @@
       "Type":  "TGraphLink",
       "Begin":  185,
       "End":  217,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  229,
+      "End":  246,
+      "Nom":  0,
+      "Arrow":  true    
+    },
+    {
+      "Type":  "TGraphLink",
+      "Begin":  246,
+      "End":  176,
       "Nom":  0,
       "Arrow":  true    
     }  
