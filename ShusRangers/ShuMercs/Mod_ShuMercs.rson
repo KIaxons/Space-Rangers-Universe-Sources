@@ -7759,7 +7759,7 @@
           "Pos.y":  20,
           "Parent":  443,
           "#":  440,
-          "Total.Lines":  27,
+          "Total.Lines":  29,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -7769,6 +7769,7 @@
               "    if(HeadBountyList['TargetsId', i] > 0)",
               "    {",
               "        dword target_temp = IdToShip(HeadBountyList['TargetsId', i]);",
+              "        if(!target_temp) throw 'No ship found by Id' + HeadBountyList['TargetsId', i];",
               "",
               "        SetName(target_temp, ShipCustomShipInfoTextData(target_temp, 'ShuMercs_HeadBountyInfo', 1));",
               "        str name = Name(target_temp);",
@@ -7777,6 +7778,7 @@
               "    else",
               "    {",
               "        target_temp = IdToItem(abs(HeadBountyList['TargetsId', i]));",
+              "        if(!target_temp) throw 'No capsule found by Id' + abs(HeadBountyList['TargetsId', i]);",
               "",
               "        name = ScriptItemTextData(target_temp, 3);",
               "        bounty_type = GetParFromString(ScriptItemTextData(target_temp, 2), ':', 13, 0);",
@@ -7972,7 +7974,7 @@
           "Pos.y":  20,
           "Parent":  455,
           "#":  459,
-          "Total.Lines":  27,
+          "Total.Lines":  29,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -7982,6 +7984,7 @@
               "    if(HeadBountyList['TargetsId', i] > 0)",
               "    {",
               "        dword target_temp2 = IdToShip(HeadBountyList['TargetsId', i]);",
+              "        if(!target_temp2) throw 'No ship found by Id' + HeadBountyList['TargetsId', i];",
               "",
               "        SetName(target_temp2, ShipCustomShipInfoTextData(target_temp2, 'ShuMercs_HeadBountyInfo', 1));",
               "        str name2 = Name(target_temp2);",
@@ -7990,6 +7993,7 @@
               "    else",
               "    {",
               "        target_temp2 = IdToItem(abs(HeadBountyList['TargetsId', i]));",
+              "        if(!target_temp2) throw 'No capsule found by Id' + abs(HeadBountyList['TargetsId', i]);",
               "",
               "        name2 = ScriptItemTextData(target_temp2, 3);",
               "        bounty_type2 = GetParFromString(ScriptItemTextData(target_temp2, 2), ':', 13, 0);",
