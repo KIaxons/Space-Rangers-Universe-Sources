@@ -1902,7 +1902,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  4,
-          "Total.Lines":  1085,
+          "Total.Lines":  1087,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -2978,11 +2978,13 @@
               "        if(HeadBountyList['TargetsId', i] > 0)",
               "        {",
               "            dword target = IdToShip(HeadBountyList['TargetsId', i]);",
+              "            if(!target) throw 'No ship found by Id' + HeadBountyList['TargetsId', i];",
               "            ShipDeleteCustomShipInfo(target, 'ShuMercs_HeadBountyInfo');",
               "        }",
               "        else",
               "        {",
               "            target = IdToItem(abs(HeadBountyList['TargetsId', i]));",
+              "            if(!target) throw 'No capsule found by Id' + abs(HeadBountyList['TargetsId', i]);",
               "            ScriptItemTextData(target, 2, SetParFromString(ScriptItemTextData(target, 2), ':', 13, ''));",
               "        }",
               "    }",
