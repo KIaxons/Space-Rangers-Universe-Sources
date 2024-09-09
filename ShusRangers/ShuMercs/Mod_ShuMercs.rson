@@ -3002,7 +3002,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  137,
-          "Total.Lines":  872,
+          "Total.Lines":  870,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -3844,7 +3844,6 @@
               "",
               "//Использовалось для ловли ошибки пропажи кораблей без удаления записи из списка",
               "//Если снова будет повторяться, то раскомментировать",
-              "/*",
               "for(i = HeadBountyList['TargetsCount'] - 1; i >= 0; i = i - 1)",
               "{",
               "    if(HeadBountyList['TargetsId', i] > 0)",
@@ -3858,7 +3857,6 @@
               "        if(!cur_ship) throw 'Missing capsule on Id: ' + HeadBountyList['TargetsId', i] + ' Turn is ' + CurTurn();",
               "    }",
               "}",
-              "*/",
               "",
               "if(free_id)",
               "{",

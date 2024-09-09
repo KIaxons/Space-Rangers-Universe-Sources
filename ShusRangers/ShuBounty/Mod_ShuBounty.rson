@@ -1346,7 +1346,7 @@
           "Pos.y":  560,
           "Parent":  -1,
           "#":  92,
-          "Total.Lines":  964,
+          "Total.Lines":  965,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -2127,6 +2127,7 @@
               "        if(!ItemCost(cur_item))",
               "        {",
               "            ship = ScriptItemActShip();",
+              "            ShipDeleteCustomShipInfo(ship, 'ShuBounty_EscapePodEquipped'); //Видимо, блядские рейнджеры продолжают умирать \"понарошку\", чем ломают скрипты",
               "",
               "            //Если за время своей жизни корабль попал в какой-то скрипт, то отменяем дроп капсулы во избежание кринжа",
               "            if(ShipInScript(ship, 0))",
