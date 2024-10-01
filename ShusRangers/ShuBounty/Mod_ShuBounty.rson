@@ -3189,7 +3189,7 @@
               "            //Строка инфошки ShuMercs_HeadBountyInfo (и заодно последний параметр)",
               "            if(cur_par != '')",
               "            {",
-              "                time_left = GetParFromString(cur_par, ',', 1, 0);",
+              "                int time_left = GetParFromString(cur_par, ',', 1, 0);",
               "                if(time_left < CurTurn())",
               "                {",
               "                    RunFunctionFromScript('Mod_ShuMercs', 'RemoveFromHeadBountyList', -Id(item), Id(ship));",
