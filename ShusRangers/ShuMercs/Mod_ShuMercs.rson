@@ -1902,7 +1902,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  4,
-          "Total.Lines":  1087,
+          "Total.Lines":  1086,
           "Code.Type":  "Init",
           "Code":          
           [
@@ -1935,7 +1935,6 @@
               "//Первое обновление списка для механики \"Охоты за головами\"",
               "DeclareHeadBountyList();",
               "UpdateHeadBountyList();",
-              "tempVar1 = 1;",
               "",
               "//Спавним наёмника (всегда рейнджеры)",
               "function SpawnMerc(dword planet, dword transfer_to, int merc_type)",
@@ -8032,7 +8031,7 @@
               "",
               "dword target = IdToShip(GetData(1));",
               "",
-              "if(target)",
+              "if(target && !ShipInFear(CurShip))",
               "{",
               "    ShipSetBad(CurShip, target);",
               "",
