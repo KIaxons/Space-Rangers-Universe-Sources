@@ -1,8 +1,8 @@
 {
   "FileID":  573785173,
   "FileVersion":  8,
-  "ViewPos.x":  -219,
-  "ViewPos.y":  -7,
+  "ViewPos.x":  -358,
+  "ViewPos.y":  345,
   "ScriptName":  "Mod_ShuMercs",
   "ScriptFileOut":  "H:\\Mod_ShuMercs.scr",
   "ScriptTextOut":  "H:\\Mod_ShuMercs.txt",
@@ -256,7 +256,7 @@
           "Pos.y":  30,
           "Parent":  64,
           "#":  114,
-          "Msg":  "",
+          "Msg":  "<tstr2>",
           "AMsg.Num":  "22"        
         },
         {
@@ -296,7 +296,7 @@
           "Pos.y":  30,
           "Parent":  63,
           "#":  118,
-          "Msg":  "",
+          "Msg":  "<tstr2>",
           "AMsg.Num":  "26"        
         },
         {
@@ -336,7 +336,7 @@
           "Pos.y":  30,
           "Parent":  72,
           "#":  122,
-          "Msg":  "",
+          "Msg":  "<tstr2>",
           "AMsg.Num":  "30"        
         },
         {
@@ -356,7 +356,7 @@
           "Pos.y":  20,
           "Parent":  74,
           "#":  124,
-          "Msg":  "",
+          "Msg":  "<tstr2>",
           "AMsg.Num":  "32"        
         },
         {
@@ -386,7 +386,7 @@
           "Pos.y":  30,
           "Parent":  76,
           "#":  203,
-          "Msg":  "",
+          "Msg":  "<tstr2>",
           "AMsg.Num":  "35"        
         },
         {
@@ -396,7 +396,7 @@
           "Pos.y":  20,
           "Parent":  77,
           "#":  204,
-          "Msg":  "",
+          "Msg":  "<tstr2>",
           "AMsg.Num":  "36"        
         },
         {
@@ -526,7 +526,7 @@
           "Pos.y":  20,
           "Parent":  68,
           "#":  217,
-          "Msg":  "",
+          "Msg":  "<tstr2>",
           "AMsg.Num":  "49"        
         },
         {
@@ -616,7 +616,7 @@
           "Pos.y":  20,
           "Parent":  75,
           "#":  344,
-          "Msg":  "",
+          "Msg":  "<tstr2>",
           "AMsg.Num":  "58"        
         },
         {
@@ -626,7 +626,7 @@
           "Pos.y":  20,
           "Parent":  79,
           "#":  345,
-          "Msg":  "",
+          "Msg":  "<tstr2>",
           "AMsg.Num":  "59"        
         },
         {
@@ -4715,7 +4715,7 @@
               "{",
               "    if(base)",
               "    {",
-              "        if(GetShipRuins() != base)",
+              "        if(GetShipRuins(CurShip) != base)",
               "        {",
               "            TransferShip(CurShip, base); //В свой штаб или в ЦН",
               "            ShipRepairEq(CurShip);",
@@ -4761,7 +4761,7 @@
               "",
               "    if(base)",
               "    {",
-              "        if(GetShipRuins() != base)",
+              "        if(GetShipRuins(CurShip) != base)",
               "        {",
               "            TransferShip(CurShip, base); //В свой штаб или в ЦН",
               "            ShipRepairEq(CurShip);",
@@ -4837,21 +4837,25 @@
           "Pos.y":  0,
           "Parent":  155,
           "#":  178,
-          "Total.Lines":  55,
+          "Total.Lines":  59,
           "Code.Type":  "Turn",
           "Code":          
           [
               "if(MercOrganisationsData['NegotiationsInProgress'])",
               "{",
+              "    int cur_org = ShipGroup(CurShip);",
+              "    if(cur_org == RedAxesLeader) cur_org = RedAxesMercs;",
+              "    else if(cur_org == RedAxesLeader) cur_org = AtlantMercs;",
+              "    else /*if(cur_org == RedAxesLeader)*/ cur_org = FaeyangelionMercs;",
+              "",
               "    //Игрок вызвал данного лидера на разговор",
-              "    if(MercOrganisationsData['NegotiationsTargetSide'] == ShipGroup(CurShip))",
+              "    if(MercOrganisationsData['NegotiationsTargetSide'] == cur_org)",
               "    {",
               "        //Корректируем отношения лидера к конкурирующим группировкам",
               "        int red_lead_alive = GroupCount(RedAxesLeader);",
               "        int atlant_lead_alive = GroupCount(AtlantLeader);",
               "        int fei_lead_alive = GroupCount(FaeyangelionLeader);",
               "",
-              "        int cur_org = ShipGroup(CurShip);",
               "        if(cur_org == RedAxesMercs)",
               "        {",
               "            if(atlant_lead_alive)",
@@ -5011,14 +5015,16 @@
           "Pos.y":  30,
           "Parent":  184,
           "#":  197,
-          "Total.Lines":  4,
+          "Total.Lines":  6,
           "Code.Type":  "Turn",
           "Code":          
           [
               "cur_ship = GroupToShip(AtlantLeader);",
               "if(MercOrganisationsData['Atlant', 'RelationBeforeNegotiations'] > 45) MercOrganisationsData['Atlant', 'RelationBeforeNegotiations'] = 45;",
               "cost = (50 - MercOrganisationsData['Atlant', 'RelationBeforeNegotiations']) * GalaxyMoney(0);",
-              "cost = cost + GalaxyMoney(2);"          
+              "cost = cost + GalaxyMoney(2);",
+              "",
+              "tstr2 = '</color>' + CT('Talk.Exit');"          
           ]        
         },
         {
@@ -5053,14 +5059,16 @@
           "Pos.y":  30,
           "Parent":  186,
           "#":  199,
-          "Total.Lines":  4,
+          "Total.Lines":  6,
           "Code.Type":  "Turn",
           "Code":          
           [
               "cur_ship = GroupToShip(RedAxesLeader);",
               "if(MercOrganisationsData['RedAxes', 'RelationBeforeNegotiations'] > 40) MercOrganisationsData['RedAxes', 'RelationBeforeNegotiations'] = 40;",
               "cost = (50 - MercOrganisationsData['RedAxes', 'RelationBeforeNegotiations']) * 0.8 * GalaxyMoney(0);",
-              "cost = cost + GalaxyMoney(3);"          
+              "cost = cost + GalaxyMoney(3);",
+              "",
+              "tstr2 = '</color>' + CT('Talk.Exit');"          
           ]        
         },
         {
@@ -5070,14 +5078,16 @@
           "Pos.y":  30,
           "Parent":  187,
           "#":  200,
-          "Total.Lines":  4,
+          "Total.Lines":  6,
           "Code.Type":  "Turn",
           "Code":          
           [
               "cur_ship = GroupToShip(FaeyangelionLeader);",
               "if(MercOrganisationsData['Faeyangelion', 'RelationBeforeNegotiations'] > 47) MercOrganisationsData['Faeyangelion', 'RelationBeforeNegotiations'] = 47;",
               "cost = (50 - MercOrganisationsData['Faeyangelion', 'RelationBeforeNegotiations']) * 1.3 * GalaxyMoney(0);",
-              "cost = cost + GalaxyMoney(3);"          
+              "cost = cost + GalaxyMoney(3);",
+              "",
+              "tstr2 = '</color>' + CT('Talk.Exit');"          
           ]        
         },
         {
@@ -5838,7 +5848,7 @@
           "Pos.y":  20,
           "Parent":  119,
           "#":  247,
-          "Total.Lines":  30,
+          "Total.Lines":  32,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -5871,7 +5881,9 @@
               "}",
               "",
               "ShipMoney(Player(), ShipMoney(Player()) - cost);",
-              "Sound('Sound.Buy');"          
+              "Sound('Sound.Buy');",
+              "",
+              "tstr2 = '</color>' + CT('Talk.Exit');"          
           ]        
         },
         {
@@ -5923,7 +5935,7 @@
           "Pos.y":  20,
           "Parent":  123,
           "#":  250,
-          "Total.Lines":  30,
+          "Total.Lines":  32,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -5956,7 +5968,9 @@
               "}",
               "",
               "ShipMoney(Player(), ShipMoney(Player()) - cost);",
-              "Sound('Sound.Buy');"          
+              "Sound('Sound.Buy');",
+              "",
+              "tstr2 = '</color>' + CT('Talk.Exit');"          
           ]        
         },
         {
@@ -6008,7 +6022,7 @@
           "Pos.y":  20,
           "Parent":  205,
           "#":  253,
-          "Total.Lines":  30,
+          "Total.Lines":  32,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -6041,7 +6055,9 @@
               "}",
               "",
               "ShipMoney(Player(), ShipMoney(Player()) - cost);",
-              "Sound('Sound.Buy');"          
+              "Sound('Sound.Buy');",
+              "",
+              "tstr2 = '</color>' + CT('Talk.Exit');"          
           ]        
         },
         {
@@ -8323,7 +8339,7 @@
           "Type":  "Tif",
           "Name":  "",
           "Pos.x":  50,
-          "Pos.y":  20,
+          "Pos.y":  0,
           "Parent":  32,
           "#":  277,
           "Total.Lines":  1,
@@ -8378,8 +8394,8 @@
         {
           "Type":  "Tif",
           "Name":  "",
-          "Pos.x":  80,
-          "Pos.y":  150,
+          "Pos.x":  100,
+          "Pos.y":  170,
           "Parent":  277,
           "#":  281,
           "Total.Lines":  1,
