@@ -3001,7 +3001,7 @@
           "Pos.y":  0,
           "Parent":  3,
           "#":  137,
-          "Total.Lines":  870,
+          "Total.Lines":  871,
           "Code.Type":  "Turn",
           "Code":          
           [
@@ -3849,6 +3849,7 @@
               "    {",
               "        cur_ship = IdToShip(HeadBountyList['TargetsId', i]);",
               "        if(!cur_ship) throw 'Missing ship on Id: ' + HeadBountyList['TargetsId', i] + ' Turn is ' + CurTurn();",
+              "        if(ShipFindCustomShipInfoByType(cur_ship, 'ShuMercs_HeadBountyInfo') == -1) throw 'Missing Info ShuMercs_HeadBountyInfo at ship on Id: ' + HeadBountyList['TargetsId', i] + ' Turn is ' + CurTurn();",
               "    }",
               "    else",
               "    {",
